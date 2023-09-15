@@ -25,6 +25,9 @@ public class CustomServletConfig implements WebMvcConfigurer {
         registry.addResourceHandler("/placeholder/**")
                 .addResourceLocations("classpath:/static/placeholder/");
 
+        registry.addResourceHandler("/files/**")    // 파일(.html)을 static 밑에 넣고 localhost:8080/files/index.html 등으로 직접 페이지 접근 가능
+                .addResourceLocations("classpath:/static/");
+
 
     }
 }
