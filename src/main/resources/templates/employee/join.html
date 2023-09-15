@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout.html}">
+<head>
+
+  <title>Member Join Page</title>
+
+</head>
+<div layout:fragment="content">
+  <div class="row mt-3">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          JOIN
+        </div>
+        <div class="card-body">
+          <form id="registerForm" action="/employee/join" method="post">
+            <div class="input-group mb-3">
+              <span class="input-group-text">EMPLOYEE_ID</span>
+              <input type="text" name="employee_id" class="form-control">
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text">EMPLOYEE_PW</span>
+              <input type="text" name="employee_pw" class="form-control">
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text">EMPLOYEE_EMAIL</span>
+              <input type="text" name="employee_email" class="form-control">
+            </div>
+
+            <div class="my-4">
+              <div class="float-end">
+                <button type="submit" class="btn btn-primary submitBtn">Submit</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+              </div>
+            </div>
+          </form>
+        </div> <!-- end card body -->
+      </div> <!-- end card -->
+    </div> <!-- end col -->
+  </div> <!-- end row -->
+</div>
+<script layout:fragment="script" th:inline="javascript">
+
+  const error = [[${error}]]
+
+  if(error %% error === 'employee_id'){
+    alert("동일한 MID를 가진 계정이 존재합니다.")
+  }
+
+</script>
