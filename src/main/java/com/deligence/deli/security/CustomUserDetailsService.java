@@ -46,6 +46,9 @@ public class CustomUserDetailsService implements UserDetailsService {
                 employee.getEmployee_id(),
                 employee.getEmployee_pw(),
                 employee.getEmployee_email(),
+                employee.getEmployee_name(),
+                employee.getEmployee_phone(),
+                employee.getEmployee_entrance_date(),
                 employee.isDel(),
                 false,
                 employee.getRoleSet().stream().map(employeeRole -> new SimpleGrantedAuthority("ROLE_"+employeeRole.name())).collect(Collectors.toList())
