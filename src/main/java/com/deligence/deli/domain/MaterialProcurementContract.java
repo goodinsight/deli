@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = {"employee"})
+@ToString(exclude = {"material","employee", "supplier"})
 public class MaterialProcurementContract extends BaseEntity {
 
     @Id
@@ -20,8 +20,8 @@ public class MaterialProcurementContract extends BaseEntity {
 
     private int material_procurement_contract_no;
 
-//    @ManyToOne
-//    private Material material;    //자재일련번호 (material_no)
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Materials material;    //자재일련번호 (material_no)
 
     private String material_procurement_contract_code;
 
@@ -29,13 +29,13 @@ public class MaterialProcurementContract extends BaseEntity {
 
     private String material_procurement_contract_state;
 
-//    @ManyToOne
+//    @ManyToOne(fetch = FetchType.LAZY)
 //    private DocumentFile document_file;   //문서파일일련번호 (document_file_no)
 
-//    @ManyToOne
-//    private CooperatorSupplier supplier;  //자재조달협력회사일련번호 supplier_no
+    @ManyToOne(fetch = FetchType.LAZY)
+    private CooperatorSupplier supplier;  //자재조달협력회사일련번호 supplier_no
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Employee employee;  //사원일련번호 employee_no
 
     private String material_code;   //자재코드 (검색용)
