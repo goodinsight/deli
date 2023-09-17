@@ -33,7 +33,7 @@ public class Employee extends BaseEntity{
 
 
     @Embedded
-    private Position position;
+    private Position position;   // 직책
 
 
     private boolean del;

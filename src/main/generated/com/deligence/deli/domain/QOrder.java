@@ -60,7 +60,7 @@ public class QOrder extends EntityPathBase<Order> {
 
     public QOrder(Class<? extends Order> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.employee = inits.isInitialized("employee") ? new QEmployee(forProperty("employee")) : null;
+        this.employee = inits.isInitialized("employee") ? new QEmployee(forProperty("employee"), inits.get("employee")) : null;
     }
 
 }

@@ -56,7 +56,7 @@ public class QProgressInspection extends EntityPathBase<ProgressInspection> {
 
     public QProgressInspection(Class<? extends ProgressInspection> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.employee = inits.isInitialized("employee") ? new QEmployee(forProperty("employee")) : null;
+        this.employee = inits.isInitialized("employee") ? new QEmployee(forProperty("employee"), inits.get("employee")) : null;
         this.order = inits.isInitialized("order") ? new QOrder(forProperty("order"), inits.get("order")) : null;
     }
 

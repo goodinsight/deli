@@ -18,6 +18,8 @@ public class QEmployee extends EntityPathBase<Employee> {
 
     private static final long serialVersionUID = 1991054223L;
 
+    private static final PathInits INITS = PathInits.DIRECT2;
+
     public static final QEmployee employee = new QEmployee("employee");
 
     public final QBaseEntity _super = new QBaseEntity(this);
@@ -41,6 +43,8 @@ public class QEmployee extends EntityPathBase<Employee> {
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modDate = _super.modDate;
 
+    public final QPosition position;
+
     //inherited
     public final DateTimePath<java.time.LocalDateTime> regDate = _super.regDate;
 
@@ -49,15 +53,24 @@ public class QEmployee extends EntityPathBase<Employee> {
     public final BooleanPath social = createBoolean("social");
 
     public QEmployee(String variable) {
-        super(Employee.class, forVariable(variable));
+        this(Employee.class, forVariable(variable), INITS);
     }
 
     public QEmployee(Path<? extends Employee> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QEmployee(PathMetadata metadata) {
-        super(Employee.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QEmployee(PathMetadata metadata, PathInits inits) {
+        this(Employee.class, metadata, inits);
+    }
+
+    public QEmployee(Class<? extends Employee> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.position = inits.isInitialized("position") ? new QPosition(forProperty("position")) : null;
     }
 
 }

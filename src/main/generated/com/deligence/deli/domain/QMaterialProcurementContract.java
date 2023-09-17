@@ -68,7 +68,7 @@ public class QMaterialProcurementContract extends EntityPathBase<MaterialProcure
 
     public QMaterialProcurementContract(Class<? extends MaterialProcurementContract> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.employee = inits.isInitialized("employee") ? new QEmployee(forProperty("employee")) : null;
+        this.employee = inits.isInitialized("employee") ? new QEmployee(forProperty("employee"), inits.get("employee")) : null;
     }
 
 }
