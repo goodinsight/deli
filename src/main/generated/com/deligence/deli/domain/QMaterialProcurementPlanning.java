@@ -24,13 +24,11 @@ public class QMaterialProcurementPlanning extends EntityPathBase<MaterialProcure
 
     public final QBaseEntity _super = new QBaseEntity(this);
 
-    public final QEmployee employee_id;
+    public final QEmployee employee;
 
     public final StringPath material_code = createString("material_code");
 
     public final StringPath material_name = createString("material_name");
-
-    public final QMaterials material_no;
 
     public final NumberPath<Integer> material_procurement_plan_no = createNumber("material_procurement_plan_no", Integer.class);
 
@@ -38,12 +36,12 @@ public class QMaterialProcurementPlanning extends EntityPathBase<MaterialProcure
 
     public final NumberPath<Integer> material_requirements_count = createNumber("material_requirements_count", Integer.class);
 
+    public final QMaterials materials;
+
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modDate = _super.modDate;
 
     public final DatePath<java.time.LocalDate> procurement_delivery_date = createDate("procurement_delivery_date", java.time.LocalDate.class);
-
-    public final QProductionPlanning production_plan_no;
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> regDate = _super.regDate;
@@ -66,9 +64,8 @@ public class QMaterialProcurementPlanning extends EntityPathBase<MaterialProcure
 
     public QMaterialProcurementPlanning(Class<? extends MaterialProcurementPlanning> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.employee_id = inits.isInitialized("employee_id") ? new QEmployee(forProperty("employee_id")) : null;
-        this.material_no = inits.isInitialized("material_no") ? new QMaterials(forProperty("material_no")) : null;
-        this.production_plan_no = inits.isInitialized("production_plan_no") ? new QProductionPlanning(forProperty("production_plan_no")) : null;
+        this.employee = inits.isInitialized("employee") ? new QEmployee(forProperty("employee")) : null;
+        this.materials = inits.isInitialized("materials") ? new QMaterials(forProperty("materials")) : null;
     }
 
 }

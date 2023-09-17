@@ -29,7 +29,7 @@ public class MaterialProcurementPlanningDTO {
 
     private int production_plan_no; //생산계획 일련번호 FK
 
-    private int employee_id;    //사원일련번호 FK
+    private int employee_no;    //사원일련번호 FK
 
     private String material_code;   //자재코드 (검색용)
 

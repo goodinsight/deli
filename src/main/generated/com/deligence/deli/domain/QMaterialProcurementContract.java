@@ -24,9 +24,9 @@ public class QMaterialProcurementContract extends EntityPathBase<MaterialProcure
 
     public final QBaseEntity _super = new QBaseEntity(this);
 
-    public final QEmployee employee;
+    public final QCooperatorSupplier cooperatorSupplier;
 
-    public final QMaterials material;
+    public final QEmployee employee;
 
     public final StringPath material_code = createString("material_code");
 
@@ -42,13 +42,13 @@ public class QMaterialProcurementContract extends EntityPathBase<MaterialProcure
 
     public final NumberPath<Long> material_supply_price = createNumber("material_supply_price", Long.class);
 
+    public final QMaterials materials;
+
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modDate = _super.modDate;
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> regDate = _super.regDate;
-
-    public final QCooperatorSupplier supplier;
 
     public final StringPath supplier_name = createString("supplier_name");
 
@@ -72,9 +72,9 @@ public class QMaterialProcurementContract extends EntityPathBase<MaterialProcure
 
     public QMaterialProcurementContract(Class<? extends MaterialProcurementContract> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
+        this.cooperatorSupplier = inits.isInitialized("cooperatorSupplier") ? new QCooperatorSupplier(forProperty("cooperatorSupplier")) : null;
         this.employee = inits.isInitialized("employee") ? new QEmployee(forProperty("employee")) : null;
-        this.material = inits.isInitialized("material") ? new QMaterials(forProperty("material")) : null;
-        this.supplier = inits.isInitialized("supplier") ? new QCooperatorSupplier(forProperty("supplier")) : null;
+        this.materials = inits.isInitialized("materials") ? new QMaterials(forProperty("materials")) : null;
     }
 
 }

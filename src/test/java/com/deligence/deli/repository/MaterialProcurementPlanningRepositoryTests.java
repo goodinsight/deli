@@ -79,16 +79,16 @@ public class MaterialProcurementPlanningRepositoryTests {
     }
 
     @Test   //paging 테스트 실패 (속성 없음)-> localhostDB로 테스트. 학원가서 다시 할 것
-    //No property 'procurement' found for type 'Materials'; Traversed path: MaterialProcurementPlanning.material
+    //No property 'material' found for type 'MaterialProcurementPlanning'; Did you mean 'materials'
     public void testPaging() {
 
         //1 page order by m_p_p_no desc
         Pageable pageable = PageRequest.of(1,10);
-//                Sort.by("material_procurement_plan_no").descending());
-        //오류 원인 : material_procurement_plan_no를 매핑할 때 material로 인식,,
+//                Sort.by("material_procurement_plan_no").descending()); //오류 발생
+        //오류 원인 : material_procurement_plan_no를 매핑할 때 material로 인식하는거 같음,,
 
         Page<MaterialProcurementPlanning> result =
-                materialProcurementPlanningRepository.findAll(pageable);    //오류 발생
+                materialProcurementPlanningRepository.findAll(pageable);
 
         log.info("total count: " + result.getTotalElements());
         log.info("total pages: " + result.getTotalPages());
@@ -113,7 +113,7 @@ public class MaterialProcurementPlanningRepositoryTests {
         materialProcurementPlanningRepository.search1(pageable);
     }
 
-    @Test
+    @Test   //검색 키워드 테스트  -> localhost로 테스트 -> 학원가서 다시 테스트 할 것
     public void testSearchAll() {
 
         //키워드 m:자재코드 n:자재이름 d:납기일 c:자재소요량 s:조달계약상태
@@ -130,7 +130,7 @@ public class MaterialProcurementPlanningRepositoryTests {
     }
 
     //page 관련 정보 추출
-    @Test
+    @Test  //localhost로 테스트 -> 학원가서 다시 테스트 할 것
     public void testSearchAll2() {
 
         //키워드 m:자재코드 n:자재이름 d:납기일 c:자재소요량 s:조달계약상태

@@ -10,7 +10,8 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = {"material_no", "employee_id", "production_plan_no"})
+@ToString(exclude = {"materials", "employee"})
+//@ToString(exclude = {"materials", "employee", "productionPlanning"})
 public class MaterialProcurementPlanning extends BaseEntity {
 
     @Id
@@ -24,13 +25,13 @@ public class MaterialProcurementPlanning extends BaseEntity {
     private String material_procurement_state;  //자재조달상태
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Materials material_no;            //자재일련번호(material_no) (자재 FK)
+    private Materials materials;            //자재일련번호(material_no) (자재 FK)
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    private ProductionPlanning productionPlanning;  //생산계획 일런번호(production_plan_no) (생산계획 FK)
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private ProductionPlanning production_plan_no;  //생산계획 일런번호(production_plan_no) (생산계획 FK)
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Employee employee_id;    //사원일련번호 (employee_no)(사원 FK)
+    private Employee employee;    //사원일련번호 (employee_no)(사원 FK)
 
     private String material_code;   //자재코드 (검색용)
 
