@@ -47,7 +47,11 @@
                         </div>
 
                         <div class="float-end">
-                            <button type="submit" class="btn btn-primary">검수 진행</button>
+                            <button type="button" class="btn btn-danger">반품 진행</button>
+                            <button type="button" class="btn btn-dark">반품 취소</button>
+                            <button type="button" class="btn btn-light">반품 완료</button>
+                            <button type="button" class="btn btn-info">자재 입고 완료</button>
+                            <button type="button" class="btn btn-primary" onclick="toggleBtn1()">검수 진행</button>
                             <button type="button" class="btn btn-secondary">돌아가기</button>
                         </div>
 
@@ -66,12 +70,18 @@
 
 <script layout:fragment="script" th:inline="javascript">
 
+    function toggleBtn1() {
+
+
+
+    }
+
     document.querySelector(".btn-secondary").addEventListener("click", function(e) {
 
         e.preventDefault()
         e.stopPropagation()
 
-        self.location = `/materialInventory/stockList`
+        self.location = `/materialInventory/materialStockList`
 
     }, false)
 

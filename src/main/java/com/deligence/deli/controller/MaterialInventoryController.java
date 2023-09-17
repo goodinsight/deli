@@ -18,13 +18,18 @@ public class MaterialInventoryController {
     @Autowired
     private MaterialInventoryService materialInventoryService;
 
+    @GetMapping("/materialStockList")
+    public void materialStockList() {
+
+    }
+
     @GetMapping("/materialStockInDetail")
-    public void materialStockInDetailListOne() {
+    public void materialStockInDetailList() {
 
     }
 
     @PostMapping("/materialStockInDetail")
-    public void materialStockInDetailListOnePost() {
+    public void materialStockInDetailListOne() {
 
     }
 
