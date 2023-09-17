@@ -32,6 +32,8 @@ public class QEmployee extends EntityPathBase<Employee> {
 
     public final StringPath employee_name = createString("employee_name");
 
+    public final NumberPath<Integer> employee_no = createNumber("employee_no", Integer.class);
+
     public final StringPath employee_phone = createString("employee_phone");
 
     public final StringPath employee_pw = createString("employee_pw");
