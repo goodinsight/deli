@@ -83,8 +83,9 @@ public class MaterialProcurementPlanningRepositoryTests {
     public void testPaging() {
 
         //1 page order by m_p_p_no desc
-        Pageable pageable = PageRequest.of(1,10,
-                Sort.by("material_procurement_plan_no").descending());
+        Pageable pageable = PageRequest.of(1,10);
+//                Sort.by("material_procurement_plan_no").descending());
+        //오류 원인 : material_procurement_plan_no를 매핑할 때 material로 인식,,
 
         Page<MaterialProcurementPlanning> result =
                 materialProcurementPlanningRepository.findAll(pageable);    //오류 발생
@@ -106,10 +107,58 @@ public class MaterialProcurementPlanningRepositoryTests {
     public void testSearch1() {
 
         //2 page order by m_p_p_no desc
-        Pageable pageable = PageRequest.of(1,10,
-                Sort.by("material_procurement_plan_no").descending());
+        Pageable pageable = PageRequest.of(1,10);
+//                Sort.by("material_procurement_plan_no").descending());
 
         materialProcurementPlanningRepository.search1(pageable);
     }
+
+    @Test
+    public void testSearchAll() {
+
+        //키워드 m:자재코드 n:자재이름 d:납기일 c:자재소요량 s:조달계약상태
+        String[] types = {"m", "n", "d", "c", "s"};
+
+        String keyword = "1";
+
+        Pageable pageable = PageRequest.of(0,10);
+//                Sort.by("material_procurement_plan_no").descending();
+
+        Page<MaterialProcurementPlanning> result =
+                materialProcurementPlanningRepository.searchAll(types, keyword, pageable);
+
+    }
+
+    //page 관련 정보 추출
+    @Test
+    public void testSearchAll2() {
+
+        //키워드 m:자재코드 n:자재이름 d:납기일 c:자재소요량 s:조달계약상태
+        String[] types = {"m", "n", "d", "c", "s"};
+
+        String keyword = "1";
+
+        Pageable pageable = PageRequest.of(0,10);
+//                Sort.by("material_procurement_plan_no").descending();
+
+        Page<MaterialProcurementPlanning> result =
+                materialProcurementPlanningRepository.searchAll(types, keyword, pageable);
+
+        //total pages
+        log.info(result.getTotalPages());
+
+        //page size
+        log.info(result.getSize());
+
+        //page number
+        log.info(result.getNumber());
+
+        //prev next
+        log.info(result.hasPrevious() + ": " + result.hasNext());
+
+        result.getContent().forEach(materialProcurementPlanning -> log.info(materialProcurementPlanning));
+
+    }
+
 
 }
