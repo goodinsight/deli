@@ -82,11 +82,12 @@ public class MaterialProcurementPlanningRepositoryTests {
     //No property 'procurement' found for type 'Materials'; Traversed path: MaterialProcurementPlanning.material
     public void testPaging() {
 
-        Pageable pageable = PageRequest.of(0,10,
+        //1 page order by m_p_p_no desc
+        Pageable pageable = PageRequest.of(1,10,
                 Sort.by("material_procurement_plan_no").descending());
 
         Page<MaterialProcurementPlanning> result =
-                materialProcurementPlanningRepository.findAll(pageable);
+                materialProcurementPlanningRepository.findAll(pageable);    //오류 발생
 
         log.info("total count: " + result.getTotalElements());
         log.info("total pages: " + result.getTotalPages());
@@ -99,6 +100,16 @@ public class MaterialProcurementPlanningRepositoryTests {
 
     }
 
-    //Q도메인을 이용한 쿼리 작성 테스트
+    //Q도메인을 이용한 쿼리 작성 테스트 ->  localhostDB로 테스트. 학원가서 다시 할 것
+    //SearchImpl에서 paging처리 코드 추가하면 오류 뜸.
+    @Test
+    public void testSearch1() {
+
+        //2 page order by m_p_p_no desc
+        Pageable pageable = PageRequest.of(1,10,
+                Sort.by("material_procurement_plan_no").descending());
+
+        materialProcurementPlanningRepository.search1(pageable);
+    }
 
 }
