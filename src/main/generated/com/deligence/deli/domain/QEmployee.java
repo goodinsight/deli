@@ -26,19 +26,19 @@ public class QEmployee extends EntityPathBase<Employee> {
 
     public final BooleanPath del = createBoolean("del");
 
-    public final StringPath employee_email = createString("employee_email");
+    public final StringPath employeeEmail = createString("employeeEmail");
 
-    public final DatePath<java.time.LocalDate> employee_entrance_date = createDate("employee_entrance_date", java.time.LocalDate.class);
+    public final DatePath<java.time.LocalDate> employeeEntranceDate = createDate("employeeEntranceDate", java.time.LocalDate.class);
 
-    public final StringPath employee_id = createString("employee_id");
+    public final StringPath employeeId = createString("employeeId");
 
-    public final StringPath employee_name = createString("employee_name");
-
-    public final StringPath employee_phone = createString("employee_phone");
-
-    public final StringPath employee_pw = createString("employee_pw");
+    public final StringPath employeeName = createString("employeeName");
 
     public final NumberPath<Integer> employeeNo = createNumber("employeeNo", Integer.class);
+
+    public final StringPath employeePhone = createString("employeePhone");
+
+    public final StringPath employeePw = createString("employeePw");
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modDate = _super.modDate;

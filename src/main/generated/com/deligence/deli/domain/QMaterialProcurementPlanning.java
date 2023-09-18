@@ -38,8 +38,6 @@ public class QMaterialProcurementPlanning extends EntityPathBase<MaterialProcure
 
     public final QMaterials materials;
 
-    public final QMaterials materials;
-
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modDate = _super.modDate;
 

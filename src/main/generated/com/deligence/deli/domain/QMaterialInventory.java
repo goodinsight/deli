@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -17,30 +18,46 @@ public class QMaterialInventory extends EntityPathBase<MaterialInventory> {
 
     private static final long serialVersionUID = 2064937012L;
 
+    private static final PathInits INITS = PathInits.DIRECT2;
+
     public static final QMaterialInventory materialInventory = new QMaterialInventory("materialInventory");
 
-    public final NumberPath<Integer> material_incoming_quantity = createNumber("material_incoming_quantity", Integer.class);
+    public final QDocumentFile documentFile;
 
-    public final NumberPath<Long> material_no = createNumber("material_no", Long.class);
+    public final NumberPath<Integer> materialIncomingQuantity = createNumber("materialIncomingQuantity", Integer.class);
 
-    public final NumberPath<Integer> material_outgoing_quantity = createNumber("material_outgoing_quantity", Integer.class);
+    public final NumberPath<Integer> materialInventoryNo = createNumber("materialInventoryNo", Integer.class);
 
-    public final NumberPath<Integer> material_stock = createNumber("material_stock", Integer.class);
+    public final NumberPath<Integer> materialOutgoingQuantity = createNumber("materialOutgoingQuantity", Integer.class);
 
-    public final NumberPath<Long> material_supply_price = createNumber("material_supply_price", Long.class);
+    public final QMaterials materials;
 
-    public final NumberPath<Long> material_total_inventory_payments = createNumber("material_total_inventory_payments", Long.class);
+    public final NumberPath<Integer> materialStock = createNumber("materialStock", Integer.class);
+
+    public final NumberPath<Long> materialSupplyPrice = createNumber("materialSupplyPrice", Long.class);
+
+    public final NumberPath<Long> materialTotalInventoryPayments = createNumber("materialTotalInventoryPayments", Long.class);
 
     public QMaterialInventory(String variable) {
-        super(MaterialInventory.class, forVariable(variable));
+        this(MaterialInventory.class, forVariable(variable), INITS);
     }
 
     public QMaterialInventory(Path<? extends MaterialInventory> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QMaterialInventory(PathMetadata metadata) {
-        super(MaterialInventory.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QMaterialInventory(PathMetadata metadata, PathInits inits) {
+        this(MaterialInventory.class, metadata, inits);
+    }
+
+    public QMaterialInventory(Class<? extends MaterialInventory> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.documentFile = inits.isInitialized("documentFile") ? new QDocumentFile(forProperty("documentFile")) : null;
+        this.materials = inits.isInitialized("materials") ? new QMaterials(forProperty("materials")) : null;
     }
 
 }

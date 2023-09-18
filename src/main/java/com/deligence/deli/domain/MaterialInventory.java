@@ -37,7 +37,6 @@ public class MaterialInventory {
     private Long materialTotalInventoryPayments; // 재고 금액
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @Column(length = 1000, nullable = true)
     private DocumentFile documentFile;
 
     public void change(int materialIncomingQuantity, int materialOutgoingQuantity, int materialStock, Long materialSupplyPrice, Long materialTotalInventoryPayments) {
