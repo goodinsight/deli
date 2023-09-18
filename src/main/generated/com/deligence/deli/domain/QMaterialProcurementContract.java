@@ -24,21 +24,25 @@ public class QMaterialProcurementContract extends EntityPathBase<MaterialProcure
 
     public final QBaseEntity _super = new QBaseEntity(this);
 
+    public final QCooperatorSupplier cooperatorSupplier;
+
     public final QEmployee employee;
 
-    public final StringPath material_code = createString("material_code");
+    public final StringPath materialCode = createString("materialCode");
 
-    public final StringPath material_name = createString("material_name");
+    public final StringPath materialName = createString("materialName");
 
-    public final StringPath material_procurement_contract_code = createString("material_procurement_contract_code");
+    public final StringPath materialProcurementContractCode = createString("materialProcurementContractCode");
 
-    public final DatePath<java.time.LocalDate> material_procurement_contract_date = createDate("material_procurement_contract_date", java.time.LocalDate.class);
+    public final DatePath<java.time.LocalDate> materialProcurementContractDate = createDate("materialProcurementContractDate", java.time.LocalDate.class);
 
-    public final NumberPath<Integer> material_procurement_contract_no = createNumber("material_procurement_contract_no", Integer.class);
+    public final NumberPath<Integer> materialProcurementContractNo = createNumber("materialProcurementContractNo", Integer.class);
 
-    public final StringPath material_procurement_contract_state = createString("material_procurement_contract_state");
+    public final StringPath materialProcurementContractState = createString("materialProcurementContractState");
 
-    public final NumberPath<Long> material_supply_price = createNumber("material_supply_price", Long.class);
+    public final QMaterials materials;
+
+    public final NumberPath<Long> materialSupplyPrice = createNumber("materialSupplyPrice", Long.class);
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modDate = _super.modDate;
@@ -46,9 +50,9 @@ public class QMaterialProcurementContract extends EntityPathBase<MaterialProcure
     //inherited
     public final DateTimePath<java.time.LocalDateTime> regDate = _super.regDate;
 
-    public final StringPath supplier_name = createString("supplier_name");
+    public final StringPath supplierName = createString("supplierName");
 
-    public final StringPath supplier_status = createString("supplier_status");
+    public final StringPath supplierStatus = createString("supplierStatus");
 
     public QMaterialProcurementContract(String variable) {
         this(MaterialProcurementContract.class, forVariable(variable), INITS);
@@ -68,7 +72,9 @@ public class QMaterialProcurementContract extends EntityPathBase<MaterialProcure
 
     public QMaterialProcurementContract(Class<? extends MaterialProcurementContract> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
+        this.cooperatorSupplier = inits.isInitialized("cooperatorSupplier") ? new QCooperatorSupplier(forProperty("cooperatorSupplier")) : null;
         this.employee = inits.isInitialized("employee") ? new QEmployee(forProperty("employee"), inits.get("employee")) : null;
+        this.materials = inits.isInitialized("materials") ? new QMaterials(forProperty("materials")) : null;
     }
 
 }

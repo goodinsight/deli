@@ -20,17 +20,17 @@ public class CooperatorSupplierRepositoryTests {
     public void testInsert() {
         IntStream.rangeClosed(1, 100).forEach(i -> {
             CooperatorSupplier cooperatorSupplier = CooperatorSupplier.builder()
-                    .corporate_registration_no(i)
-                    .supplier_ceo("ceo.."+i)
-                    .supplier_email("email.."+i)
-                    .supplier_name("name.."+i)
-                    .supplier_phone("phone.."+i)
-                    .supplier_address("address.."+i)
-                    .supplier_status("ready")
+                    .corporateRegistrationNo(i)
+                    .supplierCeo("ceo.."+i)
+                    .supplierEmail("email.."+i)
+                    .supplierName("name.."+i)
+                    .supplierPhone("phone.."+i)
+                    .supplierAddress("address.."+i)
+                    .supplierStatus("ready")
                     .build();
 
             CooperatorSupplier result = cooperatorSupplierRepository.save(cooperatorSupplier);
-            log.info("C_S_NO : " + result.getSupplier_no());
+            log.info("C_S_NO : " + result.getSupplierNo());
         });
     }
 

@@ -22,13 +22,14 @@ public class MaterialProcurementContractRepositoryTests {
         IntStream.rangeClosed(1,100).forEach(i -> {
 
             MaterialProcurementContract materialProcurementContract = MaterialProcurementContract.builder()
-                    .material_procurement_contract_code("contract_code..."+i)
-                    .material_procurement_contract_date(LocalDate.of(2023, 9,15))
-                    .material_procurement_contract_state("ready..."+i)
+                    .materialProcurementContractCode("contractCode..."+i)
+                    .materialProcurementContractDate(LocalDate.of(2023, 9,15))
+                    .materialProcurementContractState("ready..."+i)
                     .build();
 
-            MaterialProcurementContract result = materialProcurementContractRepository.save(materialProcurementContract);
-            log.info("M_P_C_NO : " + result.getMaterial_procurement_contract_no());
+            MaterialProcurementContract result =
+                    materialProcurementContractRepository.save(materialProcurementContract);
+            log.info("M_P_C_NO : " + result.getMaterialProcurementContractNo());
         });
     }
 }

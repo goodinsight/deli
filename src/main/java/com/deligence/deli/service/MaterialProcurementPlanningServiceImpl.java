@@ -33,20 +33,20 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
         MaterialProcurementPlanning materialProcurementPlanning
                 = modelMapper.map(materialProcurementPlanningDTO, MaterialProcurementPlanning.class);
 
-        int material_procurement_plan_no
+        int materialProcurementPlanNo
                 = materialProcurementPlanningRepository
                 .save(materialProcurementPlanning)
-                .getMaterial_procurement_plan_no();
+                .getMaterialProcurementPlanNo();
 
-        return material_procurement_plan_no;
+        return materialProcurementPlanNo;
 
     }
 
     @Override //조회
-    public MaterialProcurementPlanningDTO readOne(int material_procurement_plan_no) {
+    public MaterialProcurementPlanningDTO readOne(int materialProcurementPlanNo) {
 
         Optional<MaterialProcurementPlanning> result =
-                materialProcurementPlanningRepository.findById(material_procurement_plan_no);
+                materialProcurementPlanningRepository.findById(materialProcurementPlanNo);
 
         MaterialProcurementPlanning materialProcurementPlanning = result.orElseThrow();
 
@@ -61,22 +61,22 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
 
         Optional<MaterialProcurementPlanning> result =
                 materialProcurementPlanningRepository.findById(
-                        materialProcurementPlanningDTO.getMaterial_procurement_plan_no());
+                        materialProcurementPlanningDTO.getMaterialProcurementPlanNo());
 
         MaterialProcurementPlanning materialProcurementPlanning = result.orElseThrow();
 
         materialProcurementPlanning.change(
-                materialProcurementPlanningDTO.getProcurement_delivery_date(),      //납기일 수정
-                materialProcurementPlanningDTO.getMaterial_requirements_count(),    //자재소요량 수정
-                materialProcurementPlanningDTO.getMaterial_procurement_state());    //자재조달상태 수정
+                materialProcurementPlanningDTO.getProcurementDeliveryDate(),      //납기일 수정
+                materialProcurementPlanningDTO.getMaterialRequirementsCount(),    //자재소요량 수정
+                materialProcurementPlanningDTO.getMaterialProcurementState());    //자재조달상태 수정
 
         materialProcurementPlanningRepository.save(materialProcurementPlanning);
     }
 
     @Override   //삭제
-    public void remove(int material_procurement_plan_no) {
+    public void remove(int materialProcurementPlanNo) {
 
-        materialProcurementPlanningRepository.deleteById(material_procurement_plan_no);
+        materialProcurementPlanningRepository.deleteById(materialProcurementPlanNo);
     }
 
     @Override   //목록, 검색
@@ -84,7 +84,7 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
 
         String[] types = pageRequestDTO.getTypes();
         String keyword = pageRequestDTO.getKeyword();
-        Pageable pageable = pageRequestDTO.getPageable("material_procurement_plan_no");
+        Pageable pageable = pageRequestDTO.getPageable("materialProcurementPlanNo");
 
         Page<MaterialProcurementPlanning> result =
 //                materialProcurementPlanningRepository.searchAll(types, keyword, pageable);

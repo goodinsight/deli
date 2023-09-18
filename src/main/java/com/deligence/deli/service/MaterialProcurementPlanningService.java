@@ -10,13 +10,13 @@ public interface MaterialProcurementPlanningService {
     int register(MaterialProcurementPlanningDTO materialProcurementPlanningDTO);
 
     //조회
-    MaterialProcurementPlanningDTO readOne(int material_procurement_plan_no);
+    MaterialProcurementPlanningDTO readOne(int materialProcurementPlanNo);
 
     //수정
     void modify(MaterialProcurementPlanningDTO materialProcurementPlanningDTO);
 
     //삭제
-    void remove(int material_procurement_plan_no);
+    void remove(int materialProcurementPlanNo);
 
     //목록,검색
     PageResponseDTO<MaterialProcurementPlanningDTO> list(PageRequestDTO pageRequestDTO);

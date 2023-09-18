@@ -28,25 +28,26 @@ public class MaterialProcurementPlanningRepositoryTests {
     @Test //insert 테스트
     public void testInsert() {
         IntStream.rangeClosed(1,100).forEach(i -> {
-            MaterialProcurementPlanning materialProcurementPlanning = MaterialProcurementPlanning.builder()
-                    .procurement_delivery_date(LocalDate.of(2023, 11,15))
-                    .material_requirements_count(i)
-                    .material_procurement_state("procurement_state..."+i)
+            MaterialProcurementPlanning materialProcurementPlanning =
+                    MaterialProcurementPlanning.builder()
+                    .procurementDeliveryDate(LocalDate.of(2023, 11,15))
+                    .materialRequirementsCount(i)
+                    .materialProcurementState("procurementState..."+i)
                     .build();
 
             MaterialProcurementPlanning result =
                     materialProcurementPlanningRepository.save(materialProcurementPlanning);
-            log.info("M_P_P_NO: " + result.getMaterial_procurement_plan_no());
+            log.info("M_P_P_NO: " + result.getMaterialProcurementPlanNo());
 
         });
     }
 
-    @Test //select 테스트 -> localhostDB로 테스트. 학원가서 다시 할 것
+    @Test //select 테스트
     public void testSelect() {
-        int material_procurement_plan_no = 100;
+        int materialProcurementPlanNo = 100;
 
         Optional<MaterialProcurementPlanning> result =
-                materialProcurementPlanningRepository.findById(material_procurement_plan_no);
+                materialProcurementPlanningRepository.findById(materialProcurementPlanNo);
 
         MaterialProcurementPlanning materialProcurementPlanning = result.orElseThrow();
 
@@ -54,13 +55,13 @@ public class MaterialProcurementPlanningRepositoryTests {
 
     }
 
-    @Test //update 테스트 ->  localhostDB로 테스트. 학원가서 다시 할 것
+    @Test //update 테스트
     public void testUpdate() {
 
-        int material_procurement_plan_no = 100;
+        int materialProcurementPlanNo = 100;
 
         Optional<MaterialProcurementPlanning> result =
-                materialProcurementPlanningRepository.findById(material_procurement_plan_no);
+                materialProcurementPlanningRepository.findById(materialProcurementPlanNo);
 
         MaterialProcurementPlanning materialProcurementPlanning = result.orElseThrow();
 
@@ -71,21 +72,19 @@ public class MaterialProcurementPlanningRepositoryTests {
 
     }
 
-    @Test   //delete 테스트 -> localhostDB로 테스트. 학원가서 다시할 것
+    @Test   //delete 테스트
     public void testDelete() {
-        int material_procurement_plan_no = 1;
+        int materialProcurementPlanNo = 1;
 
-        materialProcurementPlanningRepository.deleteById(material_procurement_plan_no);
+        materialProcurementPlanningRepository.deleteById(materialProcurementPlanNo);
     }
 
     @Test   //paging 테스트 실패 (속성 없음)-> localhostDB로 테스트. 학원가서 다시 할 것
-    //No property 'material' found for type 'MaterialProcurementPlanning'; Did you mean 'materials'
     public void testPaging() {
 
         //1 page order by m_p_p_no desc
-        Pageable pageable = PageRequest.of(1,10);
-//                Sort.by("material_procurement_plan_no").descending()); //오류 발생
-        //오류 원인 : material_procurement_plan_no를 매핑할 때 material로 인식하는거 같음,,
+        Pageable pageable = PageRequest.of(1,10,
+                Sort.by("materialProcurementPlanNo").descending()); //오류 발생
 
         Page<MaterialProcurementPlanning> result =
                 materialProcurementPlanningRepository.findAll(pageable);
@@ -101,14 +100,14 @@ public class MaterialProcurementPlanningRepositoryTests {
 
     }
 
-    //Q도메인을 이용한 쿼리 작성 테스트 ->  localhostDB로 테스트. 학원가서 다시 할 것
+    //Q도메인을 이용한 쿼리 작성 테스트
     //SearchImpl에서 paging처리 코드 추가하면 오류 뜸.
     @Test
     public void testSearch1() {
 
         //2 page order by m_p_p_no desc
-        Pageable pageable = PageRequest.of(1,10);
-//                Sort.by("material_procurement_plan_no").descending());
+        Pageable pageable = PageRequest.of(1,10,
+                Sort.by("materialProcurementPlanNo").descending());
 
         materialProcurementPlanningRepository.search1(pageable);
     }
@@ -121,8 +120,8 @@ public class MaterialProcurementPlanningRepositoryTests {
 
         String keyword = "1";
 
-        Pageable pageable = PageRequest.of(0,10);
-//                Sort.by("material_procurement_plan_no").descending();
+        Pageable pageable = PageRequest.of(0,10,
+                Sort.by("materialProcurementPlanNo").descending());
 
         Page<MaterialProcurementPlanning> result =
                 materialProcurementPlanningRepository.searchAll(types, keyword, pageable);
@@ -138,8 +137,8 @@ public class MaterialProcurementPlanningRepositoryTests {
 
         String keyword = "1";
 
-        Pageable pageable = PageRequest.of(0,10);
-//                Sort.by("material_procurement_plan_no").descending();
+        Pageable pageable = PageRequest.of(0,10,
+                Sort.by("materialProcurementPlanNo").descending());
 
         Page<MaterialProcurementPlanning> result =
                 materialProcurementPlanningRepository.searchAll(types, keyword, pageable);
