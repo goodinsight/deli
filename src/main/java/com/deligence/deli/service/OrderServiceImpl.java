@@ -32,9 +32,9 @@ public class OrderServiceImpl implements OrderService{
 
         log.info(order);
 
-        int order_no = orderRepository.save(order).getOrderNo();
+        int orderNo = orderRepository.save(order).getOrderNo();
 
-        log.info(order_no);
+        log.info(orderNo);
 
     }
 
