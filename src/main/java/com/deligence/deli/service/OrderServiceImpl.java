@@ -8,10 +8,14 @@ import com.deligence.deli.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Log4j2
@@ -58,7 +62,15 @@ public class OrderServiceImpl implements OrderService{
 
         Order order = result.orElseThrow();
 
+        order.change(orderDTO);
 
+        // 추후 발주 수정에 따라 다른 영역에 관련된 수정 사항이 있으면 여기에 추가
+
+
+
+        // -----------------------------------------
+
+        orderRepository.save(order);
 
 
     }
@@ -66,10 +78,27 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public void remove(int orderNo) {
 
+        orderRepository.deleteById(orderNo);
+
     }
 
     @Override
     public PageResponseDTO<OrderDTO> list(PageRequestDTO pageRequestDTO) {
-        return null;
+
+        String[] types = pageRequestDTO.getTypes();
+        String keyword = pageRequestDTO.getKeyword();
+        Pageable pageable = pageRequestDTO.getPageable();//속성 집어넣으면 오류 발생함.
+
+        Page<Order> result = orderRepository.search(types, keyword, pageable);
+
+        List<OrderDTO> dtoList = result.getContent().stream()
+                .map(order -> modelMapper.map(order, OrderDTO.class))
+                .collect(Collectors.toList());
+
+        return PageResponseDTO.<OrderDTO>withAll()
+                .pageRequestDTO(pageRequestDTO)
+                .dtoList(dtoList)
+                .total((int)result.getTotalElements())
+                .build();
     }
 }
