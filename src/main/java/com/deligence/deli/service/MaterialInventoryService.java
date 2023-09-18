@@ -8,6 +8,6 @@ public interface MaterialInventoryService {
 
     MaterialInventoryDTO materialInventorylistOne(int materialNo);
 
-    PageResponseDTO<MaterialInventoryDTO> list(PageRequestDTO pageRequestDTO);
+    PageResponseDTO<MaterialInventoryDTO> materialInventorylist(PageRequestDTO pageRequestDTO);
 
 }

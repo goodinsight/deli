@@ -38,14 +38,24 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
     }
 
     @Override
-    public PageResponseDTO<MaterialInventoryDTO> list(PageRequestDTO pageRequestDTO) {
+    public PageResponseDTO<MaterialInventoryDTO> materialInventorylist(PageRequestDTO pageRequestDTO) {
 
         String[] types = pageRequestDTO.getTypes();
         String keyword = pageRequestDTO.getKeyword();
         Pageable pageable = pageRequestDTO.getPageable("materials.materialNo");
 
         Page<MaterialInventory> result = materialInventoryRepository.searchAll(types, keyword, pageable);
-        
+
         return null;
     }
 }
+
+
+
+
+
+
+
+
+
+
