@@ -1,5 +1,7 @@
 package com.deligence.deli.dto;
 
+import com.deligence.deli.domain.DocumentFile;
+import com.deligence.deli.domain.Materials;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,16 +13,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MaterialInventoryDTO {
 
-    private Long material_no; // 자제일련번호
+    private int materialInventoryNo; // 자재 재고 일련번호
 
-    private int material_incoming_quantity; // 입고 수량
+    private Materials materials; // 자제 일련번호
 
-    private int material_outgoing_quantity; // 출고 수량
+    private int materialIncomingQuantity; // 입고 수량
 
-    private int material_stock; // 재고 수량
+    private int materialOutgoingQuantity; // 출고 수량
 
-    private Long material_supply_price; // 공급 단가
+    private int materialStock; // 재고 수량
 
-    private Long material_total_inventory_payments; // 재고 금액
+    private Long materialSupplyPrice; // 공급 단가
+
+    private Long materialTotalInventoryPayments; // 재고 금액
+
+    private DocumentFile documentFile; // 문서 파일 일련번호
 
 }
