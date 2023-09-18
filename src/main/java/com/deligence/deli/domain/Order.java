@@ -1,5 +1,6 @@
 package com.deligence.deli.domain;
 
+import com.deligence.deli.dto.OrderDTO;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Orders")
-@ToString(exclude = {"employee"})
+@ToString(exclude = {"employee", "materialProcurementPlanning", "materialProcurementContract"})
 public class Order {
 
     @Id
@@ -43,5 +44,23 @@ public class Order {
     private String materialName; //자재 이름
 
     private String employeeName; //사원명
+
+
+
+
+    public void change(OrderDTO orderDTO){
+
+        this.orderCode = orderDTO.getOrderCode();
+        this.orderQuantity = orderDTO.getOrderQuantity();
+        this.orderDeliveryDate = orderDTO.getOrderDeliveryDate();
+        this.orderDate = orderDTO.getOrderDate();
+        this.orderState = orderDTO.getOrderState();
+        this.orderEtc = orderDTO.getOrderEtc();
+
+
+        //자재 이름
+        //사원명
+
+    }
 
 }
