@@ -24,23 +24,27 @@ public class QOrder extends EntityPathBase<Order> {
 
     public final QEmployee employee;
 
-    public final StringPath employee_name = createString("employee_name");
+    public final StringPath employeeName = createString("employeeName");
 
-    public final StringPath material_name = createString("material_name");
+    public final StringPath materialName = createString("materialName");
 
-    public final StringPath order_code = createString("order_code");
+    public final QMaterialProcurementContract materialProcurementContract;
 
-    public final DatePath<java.time.LocalDate> order_date = createDate("order_date", java.time.LocalDate.class);
+    public final QMaterialProcurementPlanning materialProcurementPlanning;
 
-    public final DatePath<java.time.LocalDate> order_delivery_date = createDate("order_delivery_date", java.time.LocalDate.class);
+    public final StringPath orderCode = createString("orderCode");
 
-    public final StringPath order_etc = createString("order_etc");
+    public final DatePath<java.time.LocalDate> orderDate = createDate("orderDate", java.time.LocalDate.class);
 
-    public final NumberPath<Long> order_no = createNumber("order_no", Long.class);
+    public final DatePath<java.time.LocalDate> orderDeliveryDate = createDate("orderDeliveryDate", java.time.LocalDate.class);
 
-    public final NumberPath<Integer> order_quantity = createNumber("order_quantity", Integer.class);
+    public final StringPath orderEtc = createString("orderEtc");
 
-    public final StringPath order_state = createString("order_state");
+    public final NumberPath<Integer> orderNo = createNumber("orderNo", Integer.class);
+
+    public final NumberPath<Integer> orderQuantity = createNumber("orderQuantity", Integer.class);
+
+    public final StringPath orderState = createString("orderState");
 
     public QOrder(String variable) {
         this(Order.class, forVariable(variable), INITS);
@@ -61,6 +65,8 @@ public class QOrder extends EntityPathBase<Order> {
     public QOrder(Class<? extends Order> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.employee = inits.isInitialized("employee") ? new QEmployee(forProperty("employee"), inits.get("employee")) : null;
+        this.materialProcurementContract = inits.isInitialized("materialProcurementContract") ? new QMaterialProcurementContract(forProperty("materialProcurementContract"), inits.get("materialProcurementContract")) : null;
+        this.materialProcurementPlanning = inits.isInitialized("materialProcurementPlanning") ? new QMaterialProcurementPlanning(forProperty("materialProcurementPlanning"), inits.get("materialProcurementPlanning")) : null;
     }
 
 }

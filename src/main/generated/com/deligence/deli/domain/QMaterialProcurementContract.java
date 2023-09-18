@@ -44,6 +44,8 @@ public class QMaterialProcurementContract extends EntityPathBase<MaterialProcure
 
     public final NumberPath<Long> materialSupplyPrice = createNumber("materialSupplyPrice", Long.class);
 
+    public final QMaterials materials;
+
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modDate = _super.modDate;
 

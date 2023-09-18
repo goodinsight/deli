@@ -25,8 +25,8 @@ public class MaterialsServiceImpl implements MaterialsService {
 
         Materials materials = modelMapper.map(materialsDTO, Materials.class);
 
-        int material_no = materialsRepository.save(materials).getMaterial_no();
+        int materialNo = materialsRepository.save(materials).getMaterialNo();
 
-        return material_no;
+        return materialNo;
     }
 }

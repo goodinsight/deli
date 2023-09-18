@@ -26,17 +26,17 @@ public class QProgressInspection extends EntityPathBase<ProgressInspection> {
 
     public final QOrder order;
 
-    public final DatePath<java.time.LocalDate> progress_inspection_date = createDate("progress_inspection_date", java.time.LocalDate.class);
+    public final DatePath<java.time.LocalDate> progressInspectionDate = createDate("progressInspectionDate", java.time.LocalDate.class);
 
-    public final StringPath progress_inspection_etc = createString("progress_inspection_etc");
+    public final StringPath progressInspectionEtc = createString("progressInspectionEtc");
 
-    public final NumberPath<Long> progress_inspection_no = createNumber("progress_inspection_no", Long.class);
+    public final NumberPath<Integer> progressInspectionNo = createNumber("progressInspectionNo", Integer.class);
 
-    public final StringPath progress_inspection_state = createString("progress_inspection_state");
+    public final StringPath progressInspectionState = createString("progressInspectionState");
 
-    public final NumberPath<Integer> progress_inspection_times = createNumber("progress_inspection_times", Integer.class);
+    public final NumberPath<Integer> progressInspectionTimes = createNumber("progressInspectionTimes", Integer.class);
 
-    public final NumberPath<Float> rate_of_progress = createNumber("rate_of_progress", Float.class);
+    public final NumberPath<Float> rateOfProgress = createNumber("rateOfProgress", Float.class);
 
     public QProgressInspection(String variable) {
         this(ProgressInspection.class, forVariable(variable), INITS);

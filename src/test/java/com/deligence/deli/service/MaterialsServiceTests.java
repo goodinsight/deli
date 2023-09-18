@@ -19,13 +19,13 @@ public class MaterialsServiceTests {
         log.info(materialsService.getClass().getName());
 
         MaterialsDTO materialsDTO = MaterialsDTO.builder()
-                .material_name("Name Test")
-                .material_type("Type Test")
-                .material_explaination("Explaination Test")
+                .materialName("Name Test")
+                .materialType("Type Test")
+                .materialExplaination("Explaination Test")
                 .build();
 
-        int material_no = materialsService.register(materialsDTO);
+        int materialNo = materialsService.register(materialsDTO);
 
-        log.info("material_no: " + material_no);
+        log.info("materialNo: " + materialNo);
     }
 }

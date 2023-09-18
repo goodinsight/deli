@@ -19,15 +19,15 @@ public class MaterialsRepositoryTests {
 //    public void testInsert() {
 //        IntStream.rangeClosed(1, 100).forEach(i -> {
 //            Materials materials = Materials.builder()
-//                    .material_code("code" + i)
-//                    .material_name("name" + i)
-//                    .material_type("type" + i)
-//                    .material_explaination("explaination" + i)
-//                    .material_supply_price((long) (100.00 + i))
+//                    .materialCode("code" + i)
+//                    .materialName("name" + i)
+//                    .materialType("type" + i)
+//                    .materialExplaination("explaination" + i)
+//                    .materialSupplyPrice((long) (100.00 + i))
 //                    .build();
 //
 //            Materials result = materialsRepository.save(materials);
-//            log.info("material_no:" + result.getMaterial_no());
+//            log.info("materialNo:" + result.getMaterialNo());
 //        });
 //    }
 }
