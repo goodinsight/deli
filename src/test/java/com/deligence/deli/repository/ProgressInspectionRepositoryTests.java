@@ -27,13 +27,13 @@ public class ProgressInspectionRepositoryTests {
         IntStream.rangeClosed(1, 10).forEach(i -> {
 
             ProgressInspection progressInspection = ProgressInspection.builder()
-                    .progress_inspection_times(1)
-                    .progress_inspection_state("READY")
-                    .progress_inspection_date(LocalDate.now())
-                    .progress_inspection_etc("비고 ")
-                    .rate_of_progress(10.0F)
-                    .order(Order.builder().order_no(1L).build())
-                    .employee(Employee.builder().employee_id("employee"+i).build())
+                    .progressInspectionTimes(1)
+                    .progressInspectionState("READY")
+                    .progressInspectionDate(LocalDate.now())
+                    .progressInspectionEtc("비고 ")
+                    .rateOfProgress(10.0F)
+                    .order(Order.builder().orderNo(1).build())
+                    .employee(Employee.builder().employeeNo(i).build())
                     .build();
 
 
