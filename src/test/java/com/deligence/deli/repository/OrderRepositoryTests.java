@@ -37,7 +37,7 @@ public class OrderRepositoryTests {
                     .orderEtc("etc"+i)
                     .employee(employee)
                     .employeeName("employee1")
-                    .materialName("material"+i)
+                    .materialName("templates/material" +i)
                     .build();
 
             orderRepository.save(order);

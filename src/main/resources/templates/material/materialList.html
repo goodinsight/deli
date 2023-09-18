@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/basic.html}">
+
+<div layout:fragment="content">
+
+    <div class="row mt-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    자재 정보 상세
+                </div>
+                <div class="card-body">
+
+                    <form action="/materialInventory/materialStockInDetail" method="post">
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">분류(타입)</span>
+                            <input type="text" name="materialType" class="form-control" placeholder="materialType">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">자재코드</span>
+                            <input type="text" name="material_type" class="form-control" placeholder="material_type">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">자재 이름</span>
+                            <input type="text" name="material_name" class="form-control" placeholder="material_name">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">자재 설명</span>
+                            <input type="text" name="material_supply_price" class="form-control" placeholder="material_supply_price">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">이미지</span>
+                            <input type="text" name="material_incoming_quantity" class="form-control" placeholder="material_incoming_quantity">
+                        </div>
+
+
+                        <div class="float-end">
+                            <button type="button" class="btn btn-danger">등록</button>
+                           <button type="button" class="btn btn-dark">수정</button>
+                            <button type="button" class="btn btn-light">삭제</button>
+                           <!-- <button type="button" class="btn btn-primary" onclick="toggleBtn1()">검수 진행</button> !-->
+                            <button type="button" class="btn btn-secondary">돌아가기</button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+<script layout:fragment="script" th:inline="javascript">
+
+    function toggleBtn1() {
+
+
+
+    }
+
+    document.querySelector(".btn-secondary").addEventListener("click", function(e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        self.location = `/materialInventory/materialStockList`
+
+    }, false)
+
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+</body>
+</html>

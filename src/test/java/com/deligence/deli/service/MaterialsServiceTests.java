@@ -14,7 +14,7 @@ public class MaterialsServiceTests {
     private MaterialsService materialsService;
 
     @Test
-    public void testRegister() {
+    public void testRegister() { //등록 test
 
         log.info(materialsService.getClass().getName());
 
@@ -22,10 +22,33 @@ public class MaterialsServiceTests {
                 .materialName("Name Test")
                 .materialType("Type Test")
                 .materialExplaination("Explaination Test")
+                .materialSupplyPrice(10L)
                 .build();
 
         int materialNo = materialsService.register(materialsDTO);
 
         log.info("materialNo: " + materialNo);
+    }
+
+    @Test
+    public void testModify() { //수정 test
+
+        MaterialsDTO materialsDTO = MaterialsDTO.builder()
+                .materialNo(1314)
+                .materialName("Name Test update")
+                .materialExplaination("Explaination Test update")
+                .materialType("Type Test update")
+                .materialSupplyPrice(100000L)
+                .build();
+
+        materialsService.modify(materialsDTO);
+
+    }
+
+    @Test
+    public void testDelete() { //삭제 test
+        int materialNo = 1315;
+
+        materialsService.delete(materialNo);
     }
 }
