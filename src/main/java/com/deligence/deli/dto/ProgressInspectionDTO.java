@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ProgressInspectionDTO {
 
-    private Long progress_inspection_no;//진척 검수 일련번호
+    private int progress_inspection_no;//진척 검수 일련번호
 
     private LocalDate progress_inspection_date; //검수일
 
@@ -29,6 +29,6 @@ public class ProgressInspectionDTO {
 
     private Long order_no;//발주 일련번호
 
-    private String eployee_id;// 사원 아이디?
+    private int employee_no;// 사원 아이디?
 
 }

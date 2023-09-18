@@ -16,7 +16,7 @@ public class ProgressInspection {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long progress_inspection_no;//진척 검수 일련번호
+    private int progress_inspection_no;//진척 검수 일련번호
 
     private LocalDate progress_inspection_date; //검수일
 

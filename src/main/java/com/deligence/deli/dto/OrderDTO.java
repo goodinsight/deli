@@ -33,7 +33,7 @@ public class OrderDTO {
 
     private Long material_procurement_contact_no;//조달계약 일련번호 : FK
 
-    private String eployee_id;// 사원 아이디?
+    private int employee_no;// 사원 아이디
 
     private String material_name; //자재 이름
 

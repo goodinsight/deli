@@ -17,7 +17,7 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long order_no;//발주 일련번호
+    private int order_no;//발주 일련번호
 
     private String order_code;//발주 코드
 
@@ -30,13 +30,13 @@ public class Order {
     private String order_state;//발주 상태
 
     private String order_etc; //비고
-/*
+
     @ManyToOne(fetch = FetchType.LAZY)
-    private MaterialProcurementPlan materialProcurementPlan; // 조달계획 (일련번호)
+    private MaterialProcurementPlanning materialProcurementPlanning; // 조달계획 (일련번호)
 
     @ManyToOne(fetch = FetchType.LAZY)
     private MaterialProcurementContract materialProcurementContract; // 조달계획 (일련번호)
-*/
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Employee employee; //사원 (일련번호)
 
