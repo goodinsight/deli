@@ -22,9 +22,9 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
     private final MaterialInventoryRepository materialInventoryRepository;
 
     @Override
-    public MaterialInventoryDTO materialInventorylistOne(Long material_no) {
+    public MaterialInventoryDTO materialInventorylistOne(int materialInventoryNo) {
 
-        Optional<MaterialInventory> result = materialInventoryRepository.findById(material_no);
+        Optional<MaterialInventory> result = materialInventoryRepository.findById(materialInventoryNo);
 
         MaterialInventory materialInventory = result.orElseThrow();
 

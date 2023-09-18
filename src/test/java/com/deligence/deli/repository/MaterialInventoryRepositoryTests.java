@@ -22,16 +22,16 @@ public class MaterialInventoryRepositoryTests {
         IntStream.rangeClosed(1, 50).forEach(i -> {
 
             MaterialInventory materialInventory = MaterialInventory.builder()
-                    .material_incoming_quantity(i)
-                    .material_outgoing_quantity(i)
-                    .material_stock(i)
-                    .material_supply_price((long) (i * 10))
-                    .material_total_inventory_payments((long) i * 20)
+                    .materialIncomingQuantity(i)
+                    .materialOutgoingQuantity(i)
+                    .materialStock(i)
+                    .materialSupplyPrice((long) (i * 10))
+                    .materialTotalInventoryPayments((long) i * 20)
                     .build();
 
             MaterialInventory result = materialInventoryRepository.save(materialInventory);
 
-            log.info("Material_NO : " + result.getMaterial_no());
+            log.info("Material_NO : " + result.getMaterialInventoryNo());
 
         });
 
@@ -40,9 +40,9 @@ public class MaterialInventoryRepositoryTests {
     @Test
     public void testMaterialInventorySelect() {
 
-        Long material_no = 50L;
+        int materialInventoryNo = 50;
 
-        Optional<MaterialInventory> result = materialInventoryRepository.findById(material_no);
+        Optional<MaterialInventory> result = materialInventoryRepository.findById(materialInventoryNo);
 
         MaterialInventory materialInventory = result.orElseThrow();
 
@@ -53,9 +53,9 @@ public class MaterialInventoryRepositoryTests {
     @Test
     public void testMaterialInventoryUpdate() {
 
-        Long material_no = 50L;
+        int materialInventoryNo = 50;
 
-        Optional<MaterialInventory> result = materialInventoryRepository.findById(material_no);
+        Optional<MaterialInventory> result = materialInventoryRepository.findById(materialInventoryNo);
 
         MaterialInventory materialInventory = result.orElseThrow();
 
@@ -68,9 +68,9 @@ public class MaterialInventoryRepositoryTests {
     @Test
     public void testMaterialInventoryDelete() {
 
-        Long material_no = 1L;
+        int materialInventoryNo = 1;
 
-        materialInventoryRepository.deleteById(material_no);
+        materialInventoryRepository.deleteById(materialInventoryNo);
 
     }
 
