@@ -22,6 +22,8 @@ public class QMaterialProcurementChart extends EntityPathBase<MaterialProcuremen
 
     public static final QMaterialProcurementChart materialProcurementChart = new QMaterialProcurementChart("materialProcurementChart");
 
+    public final QDocumentFile documentFile;
+
     public final StringPath incomingInspection = createString("incomingInspection");
 
     public final StringPath materialCode = createString("materialCode");
@@ -52,6 +54,7 @@ public class QMaterialProcurementChart extends EntityPathBase<MaterialProcuremen
 
     public QMaterialProcurementChart(Class<? extends MaterialProcurementChart> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
+        this.documentFile = inits.isInitialized("documentFile") ? new QDocumentFile(forProperty("documentFile")) : null;
         this.materialProcurementContract = inits.isInitialized("materialProcurementContract") ? new QMaterialProcurementContract(forProperty("materialProcurementContract"), inits.get("materialProcurementContract")) : null;
     }
 

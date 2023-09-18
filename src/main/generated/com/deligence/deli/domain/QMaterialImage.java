@@ -28,7 +28,7 @@ public class QMaterialImage extends EntityPathBase<MaterialImage> {
 
     public final StringPath materialImgPath = createString("materialImgPath");
 
-    public final QMaterials Materials;
+    public final QMaterials materials;
 
     public final StringPath materialUuid = createString("materialUuid");
 
@@ -50,7 +50,7 @@ public class QMaterialImage extends EntityPathBase<MaterialImage> {
 
     public QMaterialImage(Class<? extends MaterialImage> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.Materials = inits.isInitialized("Materials") ? new QMaterials(forProperty("Materials")) : null;
+        this.materials = inits.isInitialized("materials") ? new QMaterials(forProperty("materials")) : null;
     }
 
 }

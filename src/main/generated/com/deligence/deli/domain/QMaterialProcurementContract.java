@@ -26,6 +26,8 @@ public class QMaterialProcurementContract extends EntityPathBase<MaterialProcure
 
     public final QCooperatorSupplier cooperatorSupplier;
 
+    public final QDocumentFile documentFile;
+
     public final QEmployee employee;
 
     public final StringPath materialCode = createString("materialCode");
@@ -72,7 +74,8 @@ public class QMaterialProcurementContract extends EntityPathBase<MaterialProcure
 
     public QMaterialProcurementContract(Class<? extends MaterialProcurementContract> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.cooperatorSupplier = inits.isInitialized("cooperatorSupplier") ? new QCooperatorSupplier(forProperty("cooperatorSupplier")) : null;
+        this.cooperatorSupplier = inits.isInitialized("cooperatorSupplier") ? new QCooperatorSupplier(forProperty("cooperatorSupplier"), inits.get("cooperatorSupplier")) : null;
+        this.documentFile = inits.isInitialized("documentFile") ? new QDocumentFile(forProperty("documentFile")) : null;
         this.employee = inits.isInitialized("employee") ? new QEmployee(forProperty("employee"), inits.get("employee")) : null;
         this.materials = inits.isInitialized("materials") ? new QMaterials(forProperty("materials")) : null;
     }

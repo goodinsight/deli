@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -16,6 +17,8 @@ import com.querydsl.core.types.Path;
 public class QProductionPlanning extends EntityPathBase<ProductionPlanning> {
 
     private static final long serialVersionUID = -468960553L;
+
+    private static final PathInits INITS = PathInits.DIRECT2;
 
     public static final QProductionPlanning productionPlanning = new QProductionPlanning("productionPlanning");
 
@@ -44,19 +47,30 @@ public class QProductionPlanning extends EntityPathBase<ProductionPlanning> {
 
     public final StringPath productionRequirementsProcess = createString("productionRequirementsProcess");
 
+    public final QProducts products;
+
     //inherited
     public final DateTimePath<java.time.LocalDateTime> regDate = _super.regDate;
 
     public QProductionPlanning(String variable) {
-        super(ProductionPlanning.class, forVariable(variable));
+        this(ProductionPlanning.class, forVariable(variable), INITS);
     }
 
     public QProductionPlanning(Path<? extends ProductionPlanning> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QProductionPlanning(PathMetadata metadata) {
-        super(ProductionPlanning.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QProductionPlanning(PathMetadata metadata, PathInits inits) {
+        this(ProductionPlanning.class, metadata, inits);
+    }
+
+    public QProductionPlanning(Class<? extends ProductionPlanning> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.products = inits.isInitialized("products") ? new QProducts(forProperty("products")) : null;
     }
 
 }

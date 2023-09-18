@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -17,9 +18,13 @@ public class QCooperatorSupplier extends EntityPathBase<CooperatorSupplier> {
 
     private static final long serialVersionUID = 1524997789L;
 
+    private static final PathInits INITS = PathInits.DIRECT2;
+
     public static final QCooperatorSupplier cooperatorSupplier = new QCooperatorSupplier("cooperatorSupplier");
 
     public final NumberPath<Integer> corporateRegistrationNo = createNumber("corporateRegistrationNo", Integer.class);
+
+    public final QDocumentFile documentFile;
 
     public final StringPath supplierAddress = createString("supplierAddress");
 
@@ -38,15 +43,24 @@ public class QCooperatorSupplier extends EntityPathBase<CooperatorSupplier> {
     public final StringPath supplierStatus = createString("supplierStatus");
 
     public QCooperatorSupplier(String variable) {
-        super(CooperatorSupplier.class, forVariable(variable));
+        this(CooperatorSupplier.class, forVariable(variable), INITS);
     }
 
     public QCooperatorSupplier(Path<? extends CooperatorSupplier> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QCooperatorSupplier(PathMetadata metadata) {
-        super(CooperatorSupplier.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QCooperatorSupplier(PathMetadata metadata, PathInits inits) {
+        this(CooperatorSupplier.class, metadata, inits);
+    }
+
+    public QCooperatorSupplier(Class<? extends CooperatorSupplier> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.documentFile = inits.isInitialized("documentFile") ? new QDocumentFile(forProperty("documentFile")) : null;
     }
 
 }

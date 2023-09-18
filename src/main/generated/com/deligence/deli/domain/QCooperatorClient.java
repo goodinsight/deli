@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -16,6 +17,8 @@ import com.querydsl.core.types.Path;
 public class QCooperatorClient extends EntityPathBase<CooperatorClient> {
 
     private static final long serialVersionUID = -1171154724L;
+
+    private static final PathInits INITS = PathInits.DIRECT2;
 
     public static final QCooperatorClient cooperatorClient = new QCooperatorClient("cooperatorClient");
 
@@ -37,16 +40,27 @@ public class QCooperatorClient extends EntityPathBase<CooperatorClient> {
 
     public final NumberPath<Integer> corporateRegistrationNo = createNumber("corporateRegistrationNo", Integer.class);
 
+    public final QDocumentFile documentFile;
+
     public QCooperatorClient(String variable) {
-        super(CooperatorClient.class, forVariable(variable));
+        this(CooperatorClient.class, forVariable(variable), INITS);
     }
 
     public QCooperatorClient(Path<? extends CooperatorClient> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QCooperatorClient(PathMetadata metadata) {
-        super(CooperatorClient.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QCooperatorClient(PathMetadata metadata, PathInits inits) {
+        this(CooperatorClient.class, metadata, inits);
+    }
+
+    public QCooperatorClient(Class<? extends CooperatorClient> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.documentFile = inits.isInitialized("documentFile") ? new QDocumentFile(forProperty("documentFile")) : null;
     }
 
 }
