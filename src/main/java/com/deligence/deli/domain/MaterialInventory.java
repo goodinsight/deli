@@ -39,6 +39,9 @@ public class MaterialInventory {
     @ManyToOne(fetch = FetchType.LAZY)
     private DocumentFile documentFile;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Order order;
+
     public void change(int materialIncomingQuantity, int materialOutgoingQuantity, int materialStock, Long materialSupplyPrice, Long materialTotalInventoryPayments) {
 
         this.materialIncomingQuantity = materialIncomingQuantity;
