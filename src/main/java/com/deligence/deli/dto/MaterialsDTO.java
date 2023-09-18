@@ -5,7 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Data
 @Builder
@@ -28,4 +30,16 @@ public class MaterialsDTO {
     private LocalDateTime regDate; //등록일
 
     private LocalDateTime modDate; //수정일
+
+    public MaterialsDTO(String materialName, String materialType, String materialExplaination, long materialSupplyPrice){
+        LocalDate date = LocalDate.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        this.materialName = materialName;
+        this.materialType = materialType;
+        this.materialExplaination = materialExplaination;
+        this.materialSupplyPrice = materialSupplyPrice;
+
+        this.materialCode = "Material" + materialType + date.format(dateTimeFormatter); // 생성시 등록순서 증가하게 추가해야됨
+    }
+
 }

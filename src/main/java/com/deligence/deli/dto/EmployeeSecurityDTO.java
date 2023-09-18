@@ -28,13 +28,13 @@ public class EmployeeSecurityDTO extends User {
     private boolean del;
     private boolean social;
 
-    public EmployeeSecurityDTO(String username, String password, String email, String employeeName, String employeePhone, LocalDate employeeEntranceDate, boolean del, boolean social,
+    public EmployeeSecurityDTO(String username, String password, String employeeEmail, String employeeName, String employeePhone, LocalDate employeeEntranceDate, boolean del, boolean social,
                                Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
 
         this.employeeId = username;
         this.employeePw = password;
-        this.employeeEmail = email;
+        this.employeeEmail = employeeEmail;
         this.employeeName = employeeName;
         this.employeePhone = employeePhone;
         this.employeeEntranceDate = employeeEntranceDate;

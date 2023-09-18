@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@ToString(exclude = "documentFile")
 public class CooperatorSupplier {
 
     @Id
@@ -32,8 +32,8 @@ public class CooperatorSupplier {
 
     private String supplierStatus; //계약상태
 
-//    @ManyToOne
-//    private DocumentFile documentFile;    //문서파일 일련번호 (document_file_no)
+    @ManyToOne(fetch = FetchType.LAZY)
+    private DocumentFile documentFile;    //문서파일 일련번호 (document_file_no)
 
     private String supplierEtc;    //비고
 

@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@ToString(exclude = {"products", "documentFile"})
 public class ProductInventroy extends BaseEntity{
 
     @Id

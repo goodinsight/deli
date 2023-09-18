@@ -27,7 +27,7 @@ public class EmployeeRepositoryTests {
     @Test
     public void insertEmployees(){
 
-        IntStream.rangeClosed(1, 100).forEach(i -> {
+        IntStream.rangeClosed(1, 10).forEach(i -> {
 
             Employee employee = Employee.builder()
                     .employeeId("employee" + i)
@@ -37,7 +37,7 @@ public class EmployeeRepositoryTests {
 
             employee.addRole(EmployeeRole.USER);
 
-            if(i>= 90){
+            if(i>= 9){
                 employee.addRole(EmployeeRole.ADMIN);
             }
             employeeRepository.save(employee);

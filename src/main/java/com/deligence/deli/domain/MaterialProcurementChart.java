@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@ToString(exclude = {"materialProcurementContract"})
+@ToString(exclude = {"materialProcurementContract", "documentFile"})
 public class MaterialProcurementChart {
 
     @Id
@@ -30,8 +30,8 @@ public class MaterialProcurementChart {
 
     private String incomingInspection;  //입고검수
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private documentFile documentFile;  //문서파일일련번호(no) FK
+    @ManyToOne(fetch = FetchType.LAZY)
+    private DocumentFile documentFile;  //문서파일일련번호(no) FK
 
 
 

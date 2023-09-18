@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "Orders")
-@ToString(exclude = {"employee"})
+@ToString(exclude = {"employee", "materialProcurementPlanning", "materialProcurementContract"})
 public class Order {
 
     @Id

@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@ToString(exclude = "materials")
 public class MaterialImage {
 
     @Id
@@ -27,6 +27,6 @@ public class MaterialImage {
     private String materialUuid; //범용식별자
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Materials Materials; //자재일련번호
+    private Materials materials; //자재일련번호
 
 }

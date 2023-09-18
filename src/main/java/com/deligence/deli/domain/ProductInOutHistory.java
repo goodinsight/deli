@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@ToString(exclude = {"employee", "productInventroy"})
 public class ProductInOutHistory extends BaseEntity{
 
     @Id

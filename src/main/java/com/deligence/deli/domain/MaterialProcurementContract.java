@@ -29,8 +29,8 @@ public class MaterialProcurementContract extends BaseEntity {
 
     private String materialProcurementContractState;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private DocumentFile documentFile;   //문서파일일련번호 (document_file_no)
+    @ManyToOne(fetch = FetchType.LAZY)
+    private DocumentFile documentFile;   //문서파일일련번호 (document_file_no)
 
     @ManyToOne(fetch = FetchType.LAZY)
     private CooperatorSupplier cooperatorSupplier;  //자재조달협력회사일련번호 supplier_no

@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@ToString(exclude = {"order", "documentFile"})
 public class OrderChart extends BaseEntity{
     
     @Id

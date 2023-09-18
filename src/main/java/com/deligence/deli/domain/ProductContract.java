@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = {"products", "cooperatorClient", "employee"})
+@ToString(exclude = {"products", "cooperatorClient", "employee", "documentFile"})
 public class ProductContract extends BaseEntity{
 
     @Id
@@ -28,8 +28,8 @@ public class ProductContract extends BaseEntity{
 
     private String productQuotation;    //견적내용
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private DocumentFile documentFile;    //문서파일일련번호(FK)
+    @ManyToOne(fetch = FetchType.LAZY)
+    private DocumentFile documentFile;    //문서파일일련번호(FK)
 
     @ManyToOne(fetch = FetchType.LAZY)
     private CooperatorClient cooperatorClient;  //구매협력회사일련번호 (FK)
