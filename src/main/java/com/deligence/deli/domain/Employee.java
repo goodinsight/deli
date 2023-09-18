@@ -17,7 +17,7 @@ public class Employee extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int employee_no;    //사원일련번호
+    private int employeeNo;    //사원일련번호-
 
     private String employee_id; // 아이디
 
