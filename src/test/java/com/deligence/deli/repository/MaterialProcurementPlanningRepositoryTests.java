@@ -101,7 +101,7 @@ public class MaterialProcurementPlanningRepositoryTests {
     }
 
     //Q도메인을 이용한 쿼리 작성 테스트
-    //SearchImpl에서 paging처리 코드 추가하면 오류 뜸.
+    //SearchImpl에서 paging처리 코드 추가하면 오류 뜸. -> Entity 속성명 캐멀방식으로 변경 후 오류처리완료.
     @Test
     public void testSearch1() {
 
