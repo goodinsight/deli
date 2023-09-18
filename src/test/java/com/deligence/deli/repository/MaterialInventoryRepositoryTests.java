@@ -1,7 +1,6 @@
 package com.deligence.deli.repository;
 
 import com.deligence.deli.domain.MaterialInventory;
-import com.deligence.deli.domain.Materials;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +21,6 @@ public class MaterialInventoryRepositoryTests {
     @Autowired
     private MaterialInventoryRepository materialInventoryRepository;
 
-    @Autowired
-    private MaterialsRepository materialsRepository;
 
     @Test
     public void testMaterialInventoryInsert() {
@@ -86,18 +83,18 @@ public class MaterialInventoryRepositoryTests {
     @Test
     public void testMaterialInventorypaging() {
 
-        Pageable pageable = PageRequest.of(0,10, Sort.by("materialNo").descending());
+        Pageable pageable = PageRequest.of(0,10, Sort.by("materialInventoryNo").descending());
 
-        Page<Materials> result = materialsRepository.findAll(pageable);
+        Page<MaterialInventory> result = materialInventoryRepository.findAll(pageable);
 
         log.info("total count : " + result.getTotalElements());
         log.info("total pages : " + result.getTotalPages());
         log.info("page number : " + result.getNumber());
         log.info("page size : " + result.getSize());
 
-        List<Materials> todoList = result.getContent();
+        List<MaterialInventory> todoList = result.getContent();
 
-        todoList.forEach(materials -> log.info(materials));
+        todoList.forEach(materialInventory -> log.info(materialInventory));
 
     }
 
