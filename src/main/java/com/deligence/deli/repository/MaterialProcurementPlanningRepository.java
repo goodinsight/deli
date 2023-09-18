@@ -1,10 +1,13 @@
 package com.deligence.deli.repository;
 
-//자재조달계획 Repository 생성 - ksy
-
 import com.deligence.deli.domain.MaterialProcurementPlanning;
+import com.deligence.deli.repository.search.MaterialProcurementPlanningSearch;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
-public interface MaterialProcurementPlanningRepository extends JpaRepository<MaterialProcurementPlanning, Integer> {
+public interface MaterialProcurementPlanningRepository
+        extends JpaRepository<MaterialProcurementPlanning, Integer>, MaterialProcurementPlanningSearch {
 
+    @Query(value = "select now()", nativeQuery = true)
+    String getTime();
 }

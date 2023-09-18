@@ -15,10 +15,10 @@ public class CooperatorSupplierRepositoryTests {
     @Autowired
     private CooperatorSupplierRepository cooperatorSupplierRepository;
 
-    //insert테스트
+    //insert테스트 -> //localhost로 테스트 -> 학원가서 다시 테스트 할 것
     @Test
-    private void testInsert() {
-        IntStream.rangeClosed(1,100).forEach(i -> {
+    public void testInsert() {
+        IntStream.rangeClosed(1, 100).forEach(i -> {
             CooperatorSupplier cooperatorSupplier = CooperatorSupplier.builder()
                     .corporate_registration_no(i)
                     .supplier_ceo("ceo.."+i)
@@ -31,7 +31,8 @@ public class CooperatorSupplierRepositoryTests {
 
             CooperatorSupplier result = cooperatorSupplierRepository.save(cooperatorSupplier);
             log.info("C_S_NO : " + result.getSupplier_no());
-
         });
     }
+
+
 }
