@@ -2,7 +2,7 @@ package com.deligence.deli.service;
 
 import com.deligence.deli.domain.Materials;
 import com.deligence.deli.dto.MaterialsDTO;
-import com.deligence.deli.repository.MaterialRepository;
+import com.deligence.deli.repository.MaterialsRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
@@ -14,18 +14,18 @@ import javax.transaction.Transactional;
 @Log4j2
 @RequiredArgsConstructor
 @Transactional
-public class MaterialServiceImpl implements MaterialService{
+public class MaterialsServiceImpl implements MaterialsService {
 
     private final ModelMapper modelMapper;
 
-    private final MaterialRepository materialRepository;
+    private final MaterialsRepository materialsRepository;
 
     @Override
     public int register(MaterialsDTO materialsDTO){
 
         Materials materials = modelMapper.map(materialsDTO, Materials.class);
 
-        int material_no = materialRepository.save(materials).getMaterial_no();
+        int material_no = materialsRepository.save(materials).getMaterial_no();
 
         return material_no;
     }

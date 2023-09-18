@@ -8,15 +8,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @Log4j2
-public class MaterialServiceTests {
+public class MaterialsServiceTests {
 
     @Autowired
-    private MaterialService materialService;
+    private MaterialsService materialsService;
 
     @Test
     public void testRegister() {
 
-        log.info(materialService.getClass().getName());
+        log.info(materialsService.getClass().getName());
 
         MaterialsDTO materialsDTO = MaterialsDTO.builder()
                 .material_name("Name Test")
@@ -24,7 +24,7 @@ public class MaterialServiceTests {
                 .material_explaination("Explaination Test")
                 .build();
 
-        int material_no = materialService.register(materialsDTO);
+        int material_no = materialsService.register(materialsDTO);
 
         log.info("material_no: " + material_no);
     }
