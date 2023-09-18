@@ -35,7 +35,6 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
         query.where(materialProcurementPlanning.materialProcurementState.contains("ing"));
         //where material_procurement_state like...
 
-        //paging -> 페이징 처리 불가. 테스트 시 추가하면 실패로 뜸 ㅠㅠ -> 오류원인인 정렬 삭제 후 페이징 가능.
         this.getQuerydsl().applyPagination(pageable, query);
 
         List<MaterialProcurementPlanning> list = query.fetch();

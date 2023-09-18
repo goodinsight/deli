@@ -21,8 +21,7 @@ public class MaterialProcurementPlanningController {
 
     private final MaterialProcurementPlanningService materialProcurementPlanningService;
 
-    //오류 발생 -> 이전과 같은 페이징 문제
-//    2023-09-17 23:12:59.273 ERROR 8320 --- [nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.data.mapping.PropertyReferenceException: No property 'material' found for type 'MaterialProcurementPlanning'; Did you mean 'materials'] with root cause
+    //오류 발생 -> 이전과 같은 페이징 문제 -> Entity속성명 캐멀방식으로 변경 후 해결.
     @GetMapping("/list")    //목록
     public void list(PageRequestDTO pageRequestDTO, Model model) {
 

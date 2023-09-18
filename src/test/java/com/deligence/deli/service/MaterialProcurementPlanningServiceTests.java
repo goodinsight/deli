@@ -55,8 +55,7 @@ public class MaterialProcurementPlanningServiceTests {
         materialProcurementPlanningService.modify(materialProcurementPlanningDTO);
     }
 
-    //페이징 오류 ->  No property 'material' found for type 'MaterialProcurementPlanning'; Did you mean 'materials'
-    @Test //목록,검색 (list) 테스트 -> localhost로 테스트 -> 학원가서 다시 테스트 할 것
+    @Test //목록,검색 (list) 테스트
     public void testList() {
 
         PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
