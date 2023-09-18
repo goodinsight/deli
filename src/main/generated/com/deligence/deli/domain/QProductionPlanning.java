@@ -21,28 +21,28 @@ public class QProductionPlanning extends EntityPathBase<ProductionPlanning> {
 
     public final QBaseEntity _super = new QBaseEntity(this);
 
-    public final StringPath client_name = createString("client_name");
+    public final StringPath clientName = createString("clientName");
 
-    public final StringPath client_status = createString("client_status");
+    public final StringPath clientStatus = createString("clientStatus");
 
-    public final StringPath detail_explaination = createString("detail_explaination");
+    public final StringPath detailExplaination = createString("detailExplaination");
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modDate = _super.modDate;
 
-    public final StringPath product_code = createString("product_code");
+    public final StringPath productCode = createString("productCode");
 
-    public final DatePath<java.time.LocalDate> production_delivery_date = createDate("production_delivery_date", java.time.LocalDate.class);
+    public final DatePath<java.time.LocalDate> productionDeliveryDate = createDate("productionDeliveryDate", java.time.LocalDate.class);
 
-    public final StringPath production_plan_code = createString("production_plan_code");
+    public final StringPath productionPlanCode = createString("productionPlanCode");
 
-    public final NumberPath<Integer> production_plan_no = createNumber("production_plan_no", Integer.class);
+    public final NumberPath<Integer> productionPlanNo = createNumber("productionPlanNo", Integer.class);
 
-    public final NumberPath<Integer> production_quantity = createNumber("production_quantity", Integer.class);
+    public final NumberPath<Integer> productionQuantity = createNumber("productionQuantity", Integer.class);
 
-    public final NumberPath<Integer> production_requirements_date = createNumber("production_requirements_date", Integer.class);
+    public final NumberPath<Integer> productionRequirementsDate = createNumber("productionRequirementsDate", Integer.class);
 
-    public final StringPath production_requirements_process = createString("production_requirements_process");
+    public final StringPath productionRequirementsProcess = createString("productionRequirementsProcess");
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> regDate = _super.regDate;

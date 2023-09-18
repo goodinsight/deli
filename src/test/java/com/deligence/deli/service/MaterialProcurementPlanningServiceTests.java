@@ -24,20 +24,20 @@ public class MaterialProcurementPlanningServiceTests {
 
         MaterialProcurementPlanningDTO materialProcurementPlanningDTO =
                 MaterialProcurementPlanningDTO.builder()
-                        .procurement_delivery_date(LocalDate.of(2023, 10, 15))
-                        .material_requirements_count(200)
-                        .material_procurement_state("Sample")
-                        .material_no(0)
-                        .production_plan_no(0)
-                        .employee_no(0)
-                        .material_code("Sample")
-                        .material_name("Sample")
+                        .procurementDeliveryDate(LocalDate.of(2023, 10, 15))
+                        .materialRequirementsCount(200)
+                        .materialProcurementState("Sample")
+                        .materialNo(0)
+                        .productionPlanNo(0)
+                        .employeeNo(0)
+                        .materialCode("Sample")
+                        .materialName("Sample")
                         .build();
 
-        int material_procurement_plan_no =
+        int materialProcurementPlanNo =
                 materialProcurementPlanningService.register(materialProcurementPlanningDTO);
 
-        log.info("material_procurement_plan_no : " + material_procurement_plan_no);
+        log.info("materialProcurementPlanNo : " + materialProcurementPlanNo);
     }
 
     @Test //수정(modify) 테스트 -> localhost로 테스트 -> 학원가서 다시 테스트 할 것
@@ -46,10 +46,10 @@ public class MaterialProcurementPlanningServiceTests {
         //변경에 필요한 데이터만
         MaterialProcurementPlanningDTO materialProcurementPlanningDTO =
                 MaterialProcurementPlanningDTO.builder()
-                        .material_procurement_plan_no(2)
-                        .procurement_delivery_date(LocalDate.of(2023, 9, 27))
-                        .material_requirements_count(1000)
-                        .material_procurement_state("ing")
+                        .materialProcurementPlanNo(2)
+                        .procurementDeliveryDate(LocalDate.of(2023, 9, 27))
+                        .materialRequirementsCount(1000)
+                        .materialProcurementState("ing")
                         .build();
 
         materialProcurementPlanningService.modify(materialProcurementPlanningDTO);

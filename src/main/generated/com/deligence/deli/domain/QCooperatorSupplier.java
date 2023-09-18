@@ -19,23 +19,23 @@ public class QCooperatorSupplier extends EntityPathBase<CooperatorSupplier> {
 
     public static final QCooperatorSupplier cooperatorSupplier = new QCooperatorSupplier("cooperatorSupplier");
 
-    public final NumberPath<Integer> corporate_registration_no = createNumber("corporate_registration_no", Integer.class);
+    public final NumberPath<Integer> corporateRegistrationNo = createNumber("corporateRegistrationNo", Integer.class);
 
-    public final StringPath supplier_address = createString("supplier_address");
+    public final StringPath supplierAddress = createString("supplierAddress");
 
-    public final StringPath supplier_ceo = createString("supplier_ceo");
+    public final StringPath supplierCeo = createString("supplierCeo");
 
-    public final StringPath supplier_email = createString("supplier_email");
+    public final StringPath supplierEmail = createString("supplierEmail");
 
-    public final StringPath supplier_etc = createString("supplier_etc");
+    public final StringPath supplierEtc = createString("supplierEtc");
 
-    public final StringPath supplier_name = createString("supplier_name");
+    public final StringPath supplierName = createString("supplierName");
 
-    public final NumberPath<Integer> supplier_no = createNumber("supplier_no", Integer.class);
+    public final NumberPath<Integer> supplierNo = createNumber("supplierNo", Integer.class);
 
-    public final StringPath supplier_phone = createString("supplier_phone");
+    public final StringPath supplierPhone = createString("supplierPhone");
 
-    public final StringPath supplier_status = createString("supplier_status");
+    public final StringPath supplierStatus = createString("supplierStatus");
 
     public QCooperatorSupplier(String variable) {
         super(CooperatorSupplier.class, forVariable(variable));
