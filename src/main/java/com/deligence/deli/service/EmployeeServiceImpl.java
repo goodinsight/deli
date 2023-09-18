@@ -24,16 +24,16 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void join(EmployeeJoinDTO employeeJoinDTO) throws MidExistException {
 
-        String employee_id = employeeJoinDTO.getEmployee_id();
+        String employeeId = employeeJoinDTO.getEmployeeId();
 
-        boolean exist = employeeRepository.existsById(employee_id);
+        boolean exist = employeeRepository.existsById(employeeId);
 
         if(exist) {
             throw new MidExistException();
         }
 
         Employee employee = modelMapper.map(employeeJoinDTO, Employee.class);
-        employee.changePassword(passwordEncoder.encode(employeeJoinDTO.getEmployee_pw()));
+        employee.changePassword(passwordEncoder.encode(employeeJoinDTO.getEmployeePw()));
         employee.addRole(EmployeeRole.USER);
 
         log.info("========================");

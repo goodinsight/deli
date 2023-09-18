@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface EmployeeRepository extends JpaRepository<Employee, String> {
 
     @EntityGraph(attributePaths = "roleSet")
-    @Query("select e from Employee e where e.employee_id = :employee_id and e.social = false")
-    Optional<Employee> getWithRoles(String employee_id);
+    @Query("select e from Employee e where e.employeeId = :employeeId and e.social = false")
+    Optional<Employee> getWithRoles(String employeeId);
 
 }

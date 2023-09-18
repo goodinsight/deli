@@ -30,9 +30,9 @@ public class EmployeeRepositoryTests {
         IntStream.rangeClosed(1, 100).forEach(i -> {
 
             Employee employee = Employee.builder()
-                    .employee_id("employee" + i)
-                    .employee_pw(passwordEncoder.encode("1111"))
-                    .employee_email("email" + i +"@aaa.bbb")
+                    .employeeId("employee" + i)
+                    .employeePw(passwordEncoder.encode("1111"))
+                    .employeeEmail("email" + i +"@aaa.bbb")
                     .build();
 
             employee.addRole(EmployeeRole.USER);

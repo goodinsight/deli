@@ -22,22 +22,22 @@ public class OrderRepositoryTests {
     @Test
     public void testInsert() {
 
-        String employee_id = "employee1";
+        String employeeId = "employee1";
 
         IntStream.rangeClosed(1, 10).forEach(i -> {
 
-            Employee employee = Employee.builder().employee_id(employee_id).build();
+            Employee employee = Employee.builder().employeeId(employeeId).build();
 
             Order order = Order.builder()
-                    .order_code("tmpCode..." + i)
-                    .order_quantity(i*100)
-                    .order_delivery_date(LocalDate.of(2023, 10, 15))
-                    .order_date(LocalDate.now())
-                    .order_state("READY")
-                    .order_etc("etc"+i)
+                    .orderCode("tmpCode..." + i)
+                    .orderQuantity(i*100)
+                    .orderDeliveryDate(LocalDate.of(2023, 10, 15))
+                    .orderDate(LocalDate.now())
+                    .orderState("READY")
+                    .orderEtc("etc"+i)
                     .employee(employee)
-                    .employee_name("employee1")
-                    .material_name("material"+i)
+                    .employeeName("employee1")
+                    .materialName("material"+i)
                     .build();
 
             orderRepository.save(order);

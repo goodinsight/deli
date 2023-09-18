@@ -43,12 +43,12 @@ public class CustomUserDetailsService implements UserDetailsService {
         Employee employee = result.get();
 
         EmployeeSecurityDTO employeeSecurityDTO = new EmployeeSecurityDTO(
-                employee.getEmployee_id(),
-                employee.getEmployee_pw(),
-                employee.getEmployee_email(),
-                employee.getEmployee_name(),
-                employee.getEmployee_phone(),
-                employee.getEmployee_entrance_date(),
+                employee.getEmployeeId(),
+                employee.getEmployeePw(),
+                employee.getEmployeeEmail(),
+                employee.getEmployeeName(),
+                employee.getEmployeePhone(),
+                employee.getEmployeeEntranceDate(),
                 employee.isDel(),
                 false,
                 employee.getRoleSet().stream().map(employeeRole -> new SimpleGrantedAuthority("ROLE_"+employeeRole.name())).collect(Collectors.toList())
