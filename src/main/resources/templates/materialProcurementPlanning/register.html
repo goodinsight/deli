@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout.html}">
+<head>
+  <title>MaterialProcuementPlanning Register</title>
+</head>
+
+<div layout:fragment="content">
+  <div class="row mt-3">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          자재조달계획 등록
+        </div>
+        <div class="card-body">
+          <form action="/materialProcurementPlanning/register" method="post">
+            <div class="input-group mb-3">
+              <span class="input-group-text">생산계획일련번호</span>
+              <input type="text" name="productionPlanNo" class="form-control" placeholder="productionPlanNo">
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">자재코드</span>
+              <input type="text" name="materialCode" class="form-control" placeholder="materialCode">
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">자재타입</span>
+              <!--임의작성. 옵션 방식으로 변경-->
+              <input type="text" name="materialType" class="form-control" placeholder="materialType">
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">자재명</span>
+              <input type="text" name="materialName" class="form-control" placeholder="materialName">
+            </div>
+
+            <!--소요량, 납기일, 담당자-->
+
+
+          </form>
+
+        </div><!--end card body-->
+      </div><!--end card-->
+    </div><!--end col-->
+  </div><!--end row-->
+</div>
+
+<script layout:fragment="script" th:inline="javascript">
+
+</script>
+
+
+</html>
