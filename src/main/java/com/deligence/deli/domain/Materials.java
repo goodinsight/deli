@@ -32,4 +32,11 @@ public class Materials extends BaseEntity{
 
     @Column(length = 50, nullable = true)
     private Long materialSupplyPrice; //자재공급단가
+
+    public void change(String materialName, String materialType, String materialExplaination, Long materialSupplyPrice){
+        this.materialName = materialName;
+        this.materialType = materialType;
+        this.materialExplaination = materialExplaination;
+        this.materialSupplyPrice = materialSupplyPrice;
+    }
 }

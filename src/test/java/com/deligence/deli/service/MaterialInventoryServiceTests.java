@@ -19,9 +19,9 @@ public class MaterialInventoryServiceTests {
     @Test
     public void testMaterialInventoryServicelistOne() {
 
-        Long material_no = 50L;
+        int materialNo = 50;
 
-        MaterialInventoryDTO materialInventoryDTO = materialInventoryService.materialInventorylistOne(material_no);
+        MaterialInventoryDTO materialInventoryDTO = materialInventoryService.materialInventorylistOne(materialNo);
 
         log.info(materialInventoryDTO);
 
