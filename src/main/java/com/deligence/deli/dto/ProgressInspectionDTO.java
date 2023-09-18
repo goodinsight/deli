@@ -15,20 +15,20 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class ProgressInspectionDTO {
 
-    private Long progress_inspection_no;//진척 검수 일련번호
+    private int progressInspectionNo;//진척 검수 일련번호
 
-    private LocalDate progress_inspection_date; //검수일
+    private LocalDate progressInspectionDate; //검수일
 
-    private int progress_inspection_times; //검수 차수
+    private int progressInspectionTimes; //검수 차수
 
-    private String progress_inspection_etc; //검수 기타 사항
+    private String progressInspectionEtc; //검수 기타 사항
 
-    private float rate_of_progress; //검수진척도
+    private float rateOfProgress; //검수진척도
 
-    private String progress_inspection_state; // 검수상태
+    private String progressInspectionState; // 검수상태
 
-    private Long order_no;//발주 일련번호
+    private Long orderNo;//발주 일련번호
 
-    private String eployee_id;// 사원 아이디?
+    private int employeeNo;//
 
 }
