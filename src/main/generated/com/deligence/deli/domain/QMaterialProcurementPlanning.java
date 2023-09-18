@@ -36,6 +36,8 @@ public class QMaterialProcurementPlanning extends EntityPathBase<MaterialProcure
 
     public final NumberPath<Integer> material_requirements_count = createNumber("material_requirements_count", Integer.class);
 
+    public final QMaterials materials;
+
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modDate = _super.modDate;
 
@@ -63,6 +65,7 @@ public class QMaterialProcurementPlanning extends EntityPathBase<MaterialProcure
     public QMaterialProcurementPlanning(Class<? extends MaterialProcurementPlanning> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.employee = inits.isInitialized("employee") ? new QEmployee(forProperty("employee"), inits.get("employee")) : null;
+        this.materials = inits.isInitialized("materials") ? new QMaterials(forProperty("materials")) : null;
     }
 
 }

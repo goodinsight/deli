@@ -13,17 +13,17 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class MaterialsDTO {
 
-    private int material_no; //자재일련번호
+    private int materialNo; //자재일련번호
 
-    private String material_code; //자재코드
+    private String materialCode; //자재코드
 
-    private String material_name; //자재명
+    private String materialName; //자재명
 
-    private String material_type; //자재분류
+    private String materialType; //자재분류
 
-    private String material_explaination; //자재설명
+    private String materialExplaination; //자재설명
 
-    private Long material_supply_price; //자재공급단가
+    private Long materialSupplyPrice; //자재공급단가
 
     private LocalDateTime regDate; //등록일
 

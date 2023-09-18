@@ -21,17 +21,17 @@ public class QMaterials extends EntityPathBase<Materials> {
 
     public final QBaseEntity _super = new QBaseEntity(this);
 
-    public final StringPath material_code = createString("material_code");
+    public final StringPath materialCode = createString("materialCode");
 
-    public final StringPath material_explaination = createString("material_explaination");
+    public final StringPath materialExplaination = createString("materialExplaination");
 
-    public final StringPath material_name = createString("material_name");
+    public final StringPath materialName = createString("materialName");
 
-    public final NumberPath<Integer> material_no = createNumber("material_no", Integer.class);
+    public final NumberPath<Integer> materialNo = createNumber("materialNo", Integer.class);
 
-    public final NumberPath<Long> material_supply_price = createNumber("material_supply_price", Long.class);
+    public final NumberPath<Long> materialSupplyPrice = createNumber("materialSupplyPrice", Long.class);
 
-    public final StringPath material_type = createString("material_type");
+    public final StringPath materialType = createString("materialType");
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modDate = _super.modDate;
