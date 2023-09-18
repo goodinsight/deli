@@ -17,19 +17,19 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int order_no;//발주 일련번호
+    private int orderNo;//발주 일련번호
 
-    private String order_code;//발주 코드
+    private String orderCode;//발주 코드
 
-    private int order_quantity;//발주 수량
+    private int orderQuantity;//발주 수량
 
-    private LocalDate order_delivery_date;//납기일
+    private LocalDate orderDeliveryDate;//납기일
 
-    private LocalDate order_date;//발주일
+    private LocalDate orderDate;//발주일
 
-    private String order_state;//발주 상태
+    private String orderState;//발주 상태
 
-    private String order_etc; //비고
+    private String orderEtc; //비고
 
     @ManyToOne(fetch = FetchType.LAZY)
     private MaterialProcurementPlanning materialProcurementPlanning; // 조달계획 (일련번호)
@@ -40,8 +40,8 @@ public class Order {
     @ManyToOne(fetch = FetchType.LAZY)
     private Employee employee; //사원 (일련번호)
 
-    private String material_name; //자재 이름
+    private String materialName; //자재 이름
 
-    private String employee_name; //사원명
+    private String employeeName; //사원명
 
 }
