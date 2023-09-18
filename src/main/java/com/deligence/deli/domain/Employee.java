@@ -19,17 +19,17 @@ public class Employee extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int employeeNo;    //사원일련번호-
 
-    private String employee_id; // 아이디
+    private String employeeId; // 아이디
 
-    private String employee_pw; // 비밀번호
+    private String employeePw; // 비밀번호
 
-    private String employee_name; //사원명
+    private String employeeName; //사원명
 
-    private String employee_phone;  //사원연락처
+    private String employeePhone;  //사원연락처
 
-    private String employee_email; //사원이메일
+    private String employeeEmail; //사원이메일
 
-    private LocalDate employee_entrance_date;   //사원 입사일
+    private LocalDate employeeEntranceDate;   //사원 입사일
 
 
     @Embedded
@@ -44,12 +44,12 @@ public class Employee extends BaseEntity{
     @Builder.Default
     private Set<EmployeeRole> roleSet = new HashSet<>();
 
-    public void changePassword(String employee_pw) {
-        this.employee_pw = employee_pw;
+    public void changePassword(String employeePw) {
+        this.employeePw = employeePw;
     }
 
-    public void changEmail(String employee_email) {
-        this.employee_email = employee_email;
+    public void changEmail(String employeeEmail) {
+        this.employeeEmail = employeeEmail;
     }
 
     public void changeDel(boolean del) {

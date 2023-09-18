@@ -7,12 +7,12 @@ import java.time.LocalDate;
 @Data
 public class EmployeeJoinDTO {
 
-    private String employee_id;
-    private String employee_pw;
-    private String employee_name;
-    private String employee_phone;
-    private String employee_email;
-    private LocalDate employee_entrance_date;
+    private String employeeId;
+    private String employeePw;
+    private String employeeName;
+    private String employeePhone;
+    private String employeeEmail;
+    private LocalDate employeeEntranceDate;
     private boolean del;
     private boolean social;
 
