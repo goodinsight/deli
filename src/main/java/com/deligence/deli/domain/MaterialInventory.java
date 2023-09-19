@@ -42,6 +42,15 @@ public class MaterialInventory {
     @ManyToOne(fetch = FetchType.LAZY)
     private Order order; // 오더 일련번호
 
+    @Column(length = 500, nullable = false)
+    private String materialName;
+
+    @Column(length = 500, nullable = false)
+    private String materialType;
+
+    @Column(length = 500, nullable = false)
+    private String materialCode;
+
     public void change(int materialIncomingQuantity, int materialOutgoingQuantity, int materialStock, Long materialSupplyPrice, Long materialTotalInventoryPayments) {
 
         this.materialIncomingQuantity = materialIncomingQuantity;

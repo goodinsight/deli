@@ -26,6 +26,8 @@ public class MaterialInventoryController {
     public void
     materialStockList(PageRequestDTO pageRequestDTO, Model model) {
 
+
+
         PageResponseDTO<MaterialInventoryDTO> responseDTO = materialInventoryService.materialStockList(pageRequestDTO);
 
         log.info(responseDTO);

@@ -29,7 +29,7 @@ public class MaterialInventoryRepositoryTests {
     @Test
     public void testMaterialInventoryInsert() {
 
-        IntStream.rangeClosed(526, 527).forEach(i -> {
+        IntStream.rangeClosed(1, 50).forEach(i -> {
 
             MaterialInventory materialInventory = MaterialInventory.builder()
                     .materialIncomingQuantity(i)

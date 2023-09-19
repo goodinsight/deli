@@ -27,11 +27,11 @@ public class MaterialInventorySearchImpl extends QuerydslRepositorySupport imple
 
         BooleanBuilder booleanBuilder = new BooleanBuilder();
 
-        booleanBuilder.or(materialInventory.materials.materialName.contains("11"));
+        booleanBuilder.or(materialInventory.materialName.contains("11"));
 
-        booleanBuilder.or(materialInventory.materials.materialType.contains("11"));
+        booleanBuilder.or(materialInventory.materialType.contains("11"));
 
-        booleanBuilder.or(materialInventory.materials.materialCode.contains("11"));
+        booleanBuilder.or(materialInventory.materialCode.contains("11"));
 
         query.where(booleanBuilder);
         query.where(materialInventory.materialInventoryNo.gt(0));
@@ -62,15 +62,15 @@ public class MaterialInventorySearchImpl extends QuerydslRepositorySupport imple
 
                     case "t":
                         // 자재 이름 검색
-                        booleanBuilder.or(materialInventory.materials.materialName.contains(keyword));
+                        booleanBuilder.or(materialInventory.materialName.contains(keyword));
                         break;
                     case "c":
                         // 자재 타입 검색
-                        booleanBuilder.or(materialInventory.materials.materialType.contains(keyword));
+                        booleanBuilder.or(materialInventory.materialType.contains(keyword));
                         break;
                     case "w":
                         // 자재 코드 검색
-                        booleanBuilder.or(materialInventory.materials.materialCode.contains(keyword));
+                        booleanBuilder.or(materialInventory.materialCode.contains(keyword));
                         break;
 
                 }
