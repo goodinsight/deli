@@ -15,7 +15,7 @@
                     Marerial Register
                 </div>
                 <div class="card-body">
-                    <form action="/material/materialRegister" method="post">
+                    <form action="/material/register" method="post">
                         <div class="input-group mb-3">
                             <span class="input-group-text">분류(타입)</span>
                             <input type="text" name="materialType" class="form-control" placeholder="Title">
@@ -35,7 +35,7 @@
 
                         <div class="my-4">
                             <div class="float-end">
-                                <a th:href="@{/material/materialList}" class="text-decoration-none">
+                                <a th:href="@{/material/list}" class="text-decoration-none">
                                     <button type="button" class="btn btn-outline-dark">List</button>
                                 </a>
                                 <button type="submit" class="btn btn-primary">Submit</button>

@@ -38,7 +38,7 @@ public class MaterialsServiceImpl implements MaterialsService {
     }
 
     @Override
-    public MaterialsDTO detail(int materialNo) { //조회 작업처리
+    public MaterialsDTO readOne(int materialNo) { //조회 작업처리
 
         Optional<Materials> result = materialsRepository.findById(materialNo);
 

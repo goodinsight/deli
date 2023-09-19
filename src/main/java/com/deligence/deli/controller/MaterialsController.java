@@ -24,7 +24,7 @@ public class MaterialsController {
 
     private final MaterialsService materialsService;
 
-    @GetMapping("/materialList")//재고 전체목록
+    @GetMapping("/list")//재고 전체목록
     public void listAll(PageRequestDTO pageRequestDTO, Model model) {
 
         PageResponseDTO<MaterialsDTO> responseDTO = materialsService.list(pageRequestDTO);
@@ -34,12 +34,12 @@ public class MaterialsController {
         model.addAttribute("responseDTO", responseDTO);
     }
 
-    @GetMapping("/materialRegister") //재고 등록
+    @GetMapping("/register") //재고 등록
     public void materialRegisterGET(){
 
     }
 
-    @PostMapping("/materialRegister") //재고 등록
+    @PostMapping("/register") //재고 등록
     public String materialRegisterPost(@Valid MaterialsDTO materialsDTO, BindingResult bindingResult,
                                RedirectAttributes redirectAttributes) {
 
@@ -48,7 +48,7 @@ public class MaterialsController {
         if(bindingResult.hasErrors()) {
             log.info("has errors..");
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
-            return "redirect:/material/materialRegister";
+            return "redirect:/material/register";
         }
 
         log.info(materialsDTO);
@@ -57,6 +57,16 @@ public class MaterialsController {
 
         redirectAttributes.addFlashAttribute("result", materialNo);
 
-        return "redirect:/material/materialList";
+        return "redirect:/material/list";
+    }
+
+    @GetMapping("/read") //재고 조회
+    public void materialRead(int materialNo, PageRequestDTO pageRequestDTO, Model model){
+
+        MaterialsDTO materialsDTO = materialsService.readOne(materialNo);
+
+        log.info(materialsDTO);
+
+        model.addAttribute("materialNo",materialsDTO);
     }
 }
