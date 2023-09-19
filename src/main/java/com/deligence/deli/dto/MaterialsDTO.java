@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -17,10 +18,13 @@ public class MaterialsDTO {
 
     private int materialNo; //자재일련번호
 
+    @NotEmpty
     private String materialCode; //자재코드
 
+    @NotEmpty
     private String materialName; //자재명
 
+    @NotEmpty
     private String materialType; //자재분류
 
     private String materialExplaination; //자재설명

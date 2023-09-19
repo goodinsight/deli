@@ -7,4 +7,6 @@ import org.springframework.data.domain.Pageable;
 public interface MaterialSearch {
 
     Page<Materials> search1(Pageable pageable);
+
+    Page<Materials> searchAll(String[] types, String keyword, Pageable pageable); //검색
 }
