@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -19,6 +20,7 @@ public class MaterialProcurementPlanningDTO {
 
     private LocalDate regDate;  //등록일
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate procurementDeliveryDate;    //납기일
 
     private int materialRequirementsCount;    //자재소요량
