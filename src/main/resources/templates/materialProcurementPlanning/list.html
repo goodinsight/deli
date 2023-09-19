@@ -5,7 +5,7 @@
 
 <div layout:fragment="content">
     <div class="row mt-12 m-l-15">
-        <form class="col-lg-10" action="/board/list" method="get">
+        <form class="col-lg-10" action="/materialProcurementPlanning/list" method="get">
             <div class="form-group">
                 <p class="text-muted m-b-15 f-s-12">
                     "검색하고 싶은
@@ -45,7 +45,7 @@
                 </div>
                 <div class="my-4">
                     <div class="float-left">
-                        <a th:href="@{/board/register}" class="text-decoration-none">
+                        <a th:href="@{/materialProcurementPlanning/register}" class="text-decoration-none">
                             <button type="button" class="btn btn-primary">Register</button>
                         </a>
                     </div>
@@ -59,10 +59,10 @@
                         <tr>
                             <th scope="col">NO</th>
                             <th scope="col">자재코드</th>
-                            <th scope="col">자재명</th>
-                            <th scope="col">소요량</th>
+                            <th scope="col">자재이름</th>
+                            <th scope="col">자재소요량</th>
                             <th scope="col">납기일</th>
-                            <th scope="col">조달상태</th>
+                            <th scope="col">자재조달상태</th>
                         </tr>
                         </thead>
 

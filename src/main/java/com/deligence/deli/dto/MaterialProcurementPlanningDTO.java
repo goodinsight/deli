@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Data
@@ -18,25 +20,25 @@ public class MaterialProcurementPlanningDTO {
 
     private LocalDate modDate;  //수정일
 
-    @NotEmpty
     private LocalDate regDate;  //등록일
 
-    @NotEmpty
+    @NotNull //@NotEmpty는 String타입에만 붙음. 그 외는 @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate procurementDeliveryDate;    //납기일
 
-    @NotEmpty
+    @NotNull
     private int materialRequirementsCount;    //자재소요량
 
-    @NotEmpty
+    //@NotEmpty
     private String materialProcurementState;  //자재조달상태
 
-    @NotEmpty
+    @NotNull
     private int materialNo;    //자재일련번호 FK
 
-    @NotEmpty
+    @NotNull
     private int productionPlanNo; //생산계획 일련번호 FK
 
-    @NotEmpty
+    @NotNull
     private int employeeNo;    //사원일련번호 FK
 
     @NotEmpty

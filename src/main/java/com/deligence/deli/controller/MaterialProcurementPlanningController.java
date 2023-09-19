@@ -54,9 +54,7 @@ public class MaterialProcurementPlanningController {
         log.info("materialProcurementPlanning POST register.......");
 
         if (bindingResult.hasErrors()) {
-
             log.info("has errors........");
-
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors() );
 
             return "redirect:/materialProcurementPlanning/register";
@@ -64,7 +62,8 @@ public class MaterialProcurementPlanningController {
 
         log.info(materialProcurementPlanningDTO);
 
-        int materialProcurementPlanNo = materialProcurementPlanningService.register(materialProcurementPlanningDTO);
+        int materialProcurementPlanNo =
+                materialProcurementPlanningService.register(materialProcurementPlanningDTO);
 
         redirectAttributes.addFlashAttribute("result", materialProcurementPlanNo);
 

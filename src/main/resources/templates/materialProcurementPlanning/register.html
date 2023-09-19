@@ -33,12 +33,45 @@
             </div>
 
             <div class="input-group mb-3">
-              <span class="input-group-text">자재명</span>
+              <span class="input-group-text">자재이름</span>
               <input type="text" name="materialName" class="form-control" placeholder="materialName">
             </div>
 
-            <!--소요량, 납기일, 담당자-->
+            <div class="input-group mb-3">
+              <span class="input-group-text">자재소요량</span>
+              <input type="number" name="materialRequirementsCount" class="form-control" placeholder="materialRequirementsCount">
+            </div>
 
+            <div class="input-group mb-3">
+              <span class="input-group-text">납기일</span>
+              <!--typemismatch 오류 발생-->
+              <input type="date" name="procurementDeliveryDate" class="form-control">
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">담당자</span>
+              <!--임의작성. 옵션 선택 방식으로 변경-->
+              <input type="number" name="employeeNo" class="form-control" placeholder="employeeNo">
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">자재조달상태</span>
+              <select name="materialProcurementState">
+                <option value="진행중" selected>진행중</option>
+                <option value="파기">파기</option>
+                <option value="완료">완료</option>
+              </select>
+            </div>
+
+            <div class="my-4">
+              <div class="float-end">
+                <a th:href="@{/materialProcurementPlanning/list}" class="text-decoration-none">
+                  <button type="button" class="btn btn-outline-dark">List</button>
+                </a>
+                <button type="submit" class="btn btn-primary submitBtn">Submit</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+              </div>
+            </div>
 
           </form>
 
@@ -49,6 +82,22 @@
 </div>
 
 <script layout:fragment="script" th:inline="javascript">
+
+  const errors = [[${errors}]]
+  console.log(errors)
+
+  let errorMsg = ''
+
+  if(errors){
+    for(let i = 0; i < errors.length; i++) {
+      errorMsg += `${errors[i].field}은(는) ${errors[i].code} \n`
+    }
+    alert(errorMsg)
+  }
+//   에러처리 오류 발생
+
+
+
 
 </script>
 
