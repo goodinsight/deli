@@ -13,7 +13,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Log4j2
@@ -61,20 +63,29 @@ public class MaterialsServiceImpl implements MaterialsService {
     }
 
     @Override
-    public void delete(int materialsNo) { //삭제 작업처리
+    public void delete(int materialNo) { //삭제 작업처리
 
-        materialsRepository.deleteById(materialsNo);
+        materialsRepository.deleteById(materialNo);
     }
 
     @Override
-    public PageResponseDTO<MaterialsDTO> list(PageRequestDTO pageRequestDTO) {
+    public PageResponseDTO<MaterialsDTO> list(PageRequestDTO pageRequestDTO) { //전체조회 & 검색기능
 
         String[] types = pageRequestDTO.getTypes();
         String keyword = pageRequestDTO.getKeyword();
-        Pageable pageble = pageRequestDTO.getPageable("materialsNo");
+        Pageable pageble = pageRequestDTO.getPageable("materialNo");
 
-//        Page<Materials> result = materialsRepository
-        return null;
+        Page<Materials> result = materialsRepository.searchAll(types, keyword, pageble);
+
+        List<MaterialsDTO> dtoList = result.getContent().stream()
+                .map(materials -> modelMapper.map(materials, MaterialsDTO.class))
+                .collect(Collectors.toList());
+
+        return PageResponseDTO.<MaterialsDTO>withAll()
+                .pageRequestDTO(pageRequestDTO)
+                .dtoList(dtoList)
+                .total((int) result.getTotalElements())
+                .build();
     }
 
 

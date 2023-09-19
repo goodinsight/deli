@@ -1,10 +1,13 @@
 package com.deligence.deli.service;
 
 import com.deligence.deli.dto.MaterialsDTO;
+import com.deligence.deli.dto.PageRequestDTO;
+import com.deligence.deli.dto.PageResponseDTO;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.core.parameters.P;
 
 @SpringBootTest
 @Log4j2
@@ -50,5 +53,20 @@ public class MaterialsServiceTests {
         int materialNo = 1315;
 
         materialsService.delete(materialNo);
+    }
+
+    @Test
+    public void testList() { //전체조회 / 검색 test
+
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
+                .type("w") // 타입(분류)로 검색
+                .keyword("cpu")
+                .page(1)
+                .size(10)
+                .build();
+
+        PageResponseDTO<MaterialsDTO> responseDTO = materialsService.list(pageRequestDTO);
+
+        log.info(responseDTO);
     }
 }
