@@ -41,19 +41,27 @@
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">계약 일련번호</span>
-                            <input type="text" name="materialProcurementContractNo" class="form-control" placeholder="계약 일련번호 - 추후 숨길 부분">
+                            <input type="text" name="materialProcurementContractNo" class="form-control materialProcurementContractNo" placeholder="계약 일련번호 - 추후 숨길 부분">
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">계약 코드</span>
                             <input type="text" name="materialProcurementContractCode" class="form-control selectContract" placeholder="클릭해주세요" readonly>
                         </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">임시 구역</span>
-                            <textarea name="content" class="form-control col-sm-5"></textarea>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">계약일</span>
+                            <input type="text" name="materialProcurementContractDate" class="form-control materialProcurementContractDate"  readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재공급단가</span>
+                            <input type="text" name="materialSupplyPrice" class="form-control materialSupplyPrice"  readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재협력회사명</span>
+                            <input type="text" name="supplierName" class="form-control supplierName"  readonly>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">발주 코드</span>
-                            <input type="text" name="orderCode" class="form-control" placeholder="발주 코드">
+                            <input type="text" name="orderCode" class="form-control orderCode" placeholder="클릭해주세요" readonly>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">담당자 일련번호</span>
@@ -105,11 +113,7 @@
                 <div class="modal-body">
 
 
-
-
-
                     <div class="row mt-3">
-
                         <div class="col">
                             <div class="card">
                                 <div class="card-body">
@@ -132,9 +136,6 @@
 
                                     <div class="float-end">
                                         <ul class="pagination flex-wrap planPaging">
-
-
-
                                         </ul>
                                     </div>
                                 </div><!--end card body-->
@@ -145,17 +146,61 @@
 
                 </div><!-- modal body end -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary selectPlanBtn">Select</button>
                     <button type="button" class="btn btn-outline-dark closePlanBtn">Close</button>
                 </div>
             </div>
         </div>
-    </div><!-- end upload modal -->
+    </div><!-- end 계획 모달창 -->
+
 
     <!-- 조달 계약 선택을 위한 모달창 -->
-    <div class="modal uploadModal" tabindex="-1">
+    <div class="modal selectContractModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">자재 계약 검색</h5>
+                </div>
+                <div class="modal-body">
 
-    </div><!-- end upload modal -->
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">NO</th>
+                                            <th scope="col">자재코드</th>
+                                            <th scope="col">자재명</th>
+                                            <th scope="col">공급단가</th>
+                                            <th scope="col">납품업체명</th>
+                                            <th scope="col">계약상태</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody class="contractList">
+
+                                        </tbody>
+                                    </table>
+
+                                    <div class="float-end">
+                                        <ul class="pagination flex-wrap contractPaging">
+                                        </ul>
+                                    </div>
+                                </div><!--end card body-->
+                            </div><!--end card-->
+                        </div><!--end col-->
+                    </div><!--end row-->
+
+
+                </div><!-- modal body end -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark closeContractBtn">Close</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- end 계약 모달창 -->
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
@@ -189,7 +234,6 @@
     const planList = document.querySelector(".planList")//조달 계획 목록 DOM
     const planPaging = document.querySelector(".planPaging")//조달 계획 페이지 선택 목록 DOM
 
-    const selectPlanBtn = document.querySelector(".selectPlanBtn")
     const closePlanBtn = document.querySelector(".closePlanBtn")
 
     let planPage = 1
@@ -309,17 +353,172 @@
 
             console.log(plan)
             inputPlanNo.value = plan.materialProcurementPlanNo
-            //조달 계획 정보를 가져와서 화면에 반영해야할 항목들은 여기에
+            //조달 계획 정보를 가져와서 화면에 반영해야할 항목들은 여기에-----------------------------------------------------
             materialCode.value = plan.materialCode
             materialName.value = plan.materialName
             materialRequirementsCount.value = plan.materialRequirementsCount
             procurementDeliveryDate.value = new Date(plan.procurementDeliveryDate).toISOString().split('T')[0]
+            //-----------------------------------------------------------------------------------------------------------
 
             planModal.hide()
 
         }).catch(e => alert('error'))
 
     }, false)
+
+
+    // 계약 선택 -----------------------------------------------------------------------
+
+    const contractModal = new bootstrap.Modal(document.querySelector(".selectContractModal"))
+
+    const contractList = document.querySelector(".contractList")//조달 계획 목록 DOM
+    const contractPaging = document.querySelector(".contractPaging")//조달 계획 페이지 선택 목록 DOM
+
+    const closeContractBtn = document.querySelector(".closeContractBtn")
+
+    let contractPage = 1
+    let contractPageSize = 5
+
+    document.querySelector(".selectContract").addEventListener("click", function (e) {
+        printContracts(1, 5)
+        contractModal.show()
+    }, false)
+
+    closeContractBtn.addEventListener("click", function (e) {
+        contractModal.hide()
+    })
+
+    function printContractList(dtoList){//조달 계획 목록
+
+        let str = ''
+
+        if(dtoList && dtoList.length > 0){
+
+            for( const dto of dtoList) {
+
+                str += `<tr>
+                            <td data-planNo="${dto.materialProcurementContractNo}">${dto.materialProcurementContractNo}</td>
+                            <td data-planNo="${dto.materialProcurementContractNo}">${dto.materialCode}</td>
+                            <td data-planNo="${dto.materialProcurementContractNo}">${dto.materialName}</td>
+                            <td data-planNo="${dto.materialProcurementContractNo}">${dto.materialSupplyPrice}</td>
+                            <td data-planNo="${dto.materialProcurementContractNo}">${dto.supplierName}</td>
+                            <td data-planNo="${dto.materialProcurementContractNo}">${dto.materialProcurementContractState}</td>
+                        </tr>`
+
+            }
+
+        }
+
+        contractList.innerHTML = str
+
+    }
+
+
+    function printContractPages(data){//조달 계획 목록 페이징 처리
+
+        let pageStr = '';
+
+        if(data.prev) {
+            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.start-1}">PREV</a></li>`
+        }
+        for(let i = data.start; i <= data.end; i++){
+            pageStr += `<li class="page-item ${ i == data.page ? "active" : ""}"><a class="page-link" data-page="${i}">${i}</a></li>`
+        }
+        if(data.next) {
+            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end+1}">NEXT</a></li>`
+        }
+        contractPaging.innerHTML = pageStr
+
+        contractPage = data.page
+
+    }
+
+    function printContracts(page, size) {
+
+        getContractList({page, size}).then(
+            data => {
+                printContractList(data.dtoList)
+                printContractPages(data)
+            }
+        ).catch(e => {
+            console.error(e)
+        })
+    }
+
+    //계약 목록 페이징
+    contractPaging.addEventListener("click", function(e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        const target = e.target
+
+        if(!target || target.tagName != 'A'){
+            return
+        }
+
+        const pageNum = target.getAttribute("data-page")
+        contractPage = pageNum
+        printPlans(contractPage, contractPageSize)
+
+    }, false)
+
+
+    const materialProcurementContractNo = document.querySelector(".materialProcurementContractNo")
+    const inputContractCode = document.querySelector(".selectContract")
+    const materialProcurementContractDate = document.querySelector(".materialProcurementContractDate")
+    const materialSupplyPrice = document.querySelector(".materialSupplyPrice")
+    const supplierName = document.querySelector(".supplierName")
+
+    //계획 항목 클릭시 input 에 반영
+    contractList.addEventListener("click", function (e){
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        console.log("plan click")
+
+        const target = e.target
+
+        if(!target || target.tagName != 'TD'){
+            return
+        }
+
+        const contractNo = target.getAttribute("data-planNo")
+
+        if(!contractNo){
+            return
+        }
+
+        getContract(contractNo).then(contract => {
+
+            console.log(contract)
+            materialProcurementContractNo.value = contract.materialProcurementContractNo
+            //계약 정보를 가져와서 화면에 반영해야할 항목들은 여기에------------------------------------------------------------
+            inputContractCode.value = contract.materialProcurementContractCode
+            materialProcurementContractDate.value = new Date(contract.materialProcurementContractDate).toISOString().split('T')[0]
+            materialSupplyPrice.value = contract.materialSupplyPrice
+            supplierName.value = contract.supplierName
+            //-----------------------------------------------------------------------------------------------------------
+            contractModal.hide()
+
+        }).catch(e => alert('error'))
+
+    }, false)
+
+
+    //발주 코드 생성 -------------------------------------------------------------------------------------------------------------
+
+    const orderCode = document.querySelector(".orderCode")
+
+    orderCode.addEventListener("click", function(e) {
+
+        let str = 'ORDER-'
+
+        
+
+    }, false)
+
 
 
 </script>
