@@ -1,5 +1,6 @@
 package com.deligence.deli.service;
 
+import com.deligence.deli.domain.Materials;
 import com.deligence.deli.dto.MaterialProcurementPlanningDTO;
 import com.deligence.deli.dto.PageRequestDTO;
 import com.deligence.deli.dto.PageResponseDTO;
@@ -27,9 +28,7 @@ public class MaterialProcurementPlanningServiceTests {
                         .procurementDeliveryDate(LocalDate.of(2023, 10, 15))
                         .materialRequirementsCount(200)
                         .materialProcurementState("Sample")
-                        .materialNo(0)
                         .productionPlanNo(0)
-                        .employeeNo(0)
                         .materialCode("Sample")
                         .materialName("Sample")
                         .build();

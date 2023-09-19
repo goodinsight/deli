@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -69,5 +70,67 @@ public class MaterialProcurementPlanningController {
 
         return "redirect:/materialProcurementPlanning/list";
     }
+
+    //조회, 수정
+//    @PreAuthorize("isAuthenticated()")
+    @GetMapping({"/read", "/modify"})
+    public void read(int materialProcurementPlanNo, PageRequestDTO pageRequestDTO,
+                     Model model) {
+
+        MaterialProcurementPlanningDTO materialProcurementPlanningDTO =
+                materialProcurementPlanningService.readOne(materialProcurementPlanNo);
+
+        log.info(materialProcurementPlanningDTO);
+        log.info(pageRequestDTO);
+
+        model.addAttribute("dto", materialProcurementPlanningDTO);
+
+    }
+
+    //수정POST
+    @PostMapping("/modify")
+    public String modify( PageRequestDTO pageRequestDTO,
+                          @Valid MaterialProcurementPlanningDTO materialProcurementPlanningDTO,
+                          BindingResult bindingResult,
+                          RedirectAttributes redirectAttributes) {
+
+        log.info("materialProcurementPlanning modify post.........." + materialProcurementPlanningDTO);
+
+        if (bindingResult.hasErrors()) {
+            log.info("has errors.....");
+
+            String link = pageRequestDTO.getLink();
+
+            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors() );
+
+            redirectAttributes.addAttribute("materialProcurementPlanNo",
+                    materialProcurementPlanningDTO.getMaterialProcurementPlanNo());
+
+            return "redirect:/materialProcurementPlanning/modify?"+link;
+        }
+
+        materialProcurementPlanningService.modify(materialProcurementPlanningDTO);
+
+        redirectAttributes.addAttribute("materialProcurementPlanNo",
+                materialProcurementPlanningDTO.getMaterialProcurementPlanNo());
+
+        return "redirect:/materialProcurementPlanning/read";
+    }
+
+    //삭제
+    @PostMapping("/remove")
+    public String remove(int materialProcurementPlanNo, RedirectAttributes redirectAttributes) {
+
+        log.info("remove post...." + materialProcurementPlanNo);
+
+        materialProcurementPlanningService.remove(materialProcurementPlanNo);
+
+        redirectAttributes.addFlashAttribute("result", "removed");
+
+        return "redirect:/materialProcurementPlanning/list";
+
+    }
+
+
 
 }

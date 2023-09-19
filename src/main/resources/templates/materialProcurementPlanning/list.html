@@ -70,7 +70,10 @@
                         <tr th:each="dto:${responseDTO.dtoList}">
                             <th scope="row">[[${dto.materialProcurementPlanNo}]]</th>
                             <td>[[${dto.materialCode}]]</td>
-                            <td>[[${dto.materialName}]]</td>
+                            <td>
+                                <a th:href="|@{/materialProcurementPlanning/read(materialProcurementPlanNo =
+                                 ${dto.materialProcurementPlanNo})}&${link}|"> [[${dto.materialName}]] </a>
+                            </td>
                             <td>[[${dto.materialRequirementsCount}]]</td>
                             <td>[[${dto.procurementDeliveryDate}]]</td>
                             <td>[[${dto.materialProcurementState}]]</td>

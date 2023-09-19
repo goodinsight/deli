@@ -1,6 +1,7 @@
 package com.deligence.deli.service;
 
 import com.deligence.deli.domain.MaterialProcurementPlanning;
+import com.deligence.deli.dto.BoardDTO;
 import com.deligence.deli.dto.MaterialProcurementPlanningDTO;
 import com.deligence.deli.dto.PageRequestDTO;
 import com.deligence.deli.dto.PageResponseDTO;
@@ -50,8 +51,12 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
 
         MaterialProcurementPlanning materialProcurementPlanning = result.orElseThrow();
 
+//        MaterialProcurementPlanningDTO materialProcurementPlanningDTO = entityToDTO(materialProcurementPlanning);
+
         MaterialProcurementPlanningDTO materialProcurementPlanningDTO =
                 modelMapper.map(materialProcurementPlanning, MaterialProcurementPlanningDTO.class);
+
+        log.info(materialProcurementPlanningDTO);
 
         return materialProcurementPlanningDTO;
     }
