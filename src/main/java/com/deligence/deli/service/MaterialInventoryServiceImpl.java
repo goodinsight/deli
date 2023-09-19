@@ -13,7 +13,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Log4j2
@@ -26,9 +28,9 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
     private final MaterialInventoryRepository materialInventoryRepository;
 
     @Override
-    public MaterialInventoryDTO materialInventorylistOne(int materialNo) {
+    public MaterialInventoryDTO materialStockListOne(int materialInventoryNo) {
 
-        Optional<MaterialInventory> result = materialInventoryRepository.findById(materialNo);
+        Optional<MaterialInventory> result = materialInventoryRepository.findById(materialInventoryNo);
 
         MaterialInventory materialInventory = result.orElseThrow();
 
@@ -38,14 +40,34 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
     }
 
     @Override
-    public PageResponseDTO<MaterialInventoryDTO> list(PageRequestDTO pageRequestDTO) {
+    public PageResponseDTO<MaterialInventoryDTO> materialStockList(PageRequestDTO pageRequestDTO) {
 
         String[] types = pageRequestDTO.getTypes();
         String keyword = pageRequestDTO.getKeyword();
-        Pageable pageable = pageRequestDTO.getPageable("materials.materialNo");
+        Pageable pageable = pageRequestDTO.getPageable("materialInventoryNo");
 
-        Page<MaterialInventory> result = materialInventoryRepository.searchAll(types, keyword, pageable);
-        
-        return null;
+        Page<MaterialInventory> result = materialInventoryRepository.materialStockList(types, keyword, pageable);
+
+        List<MaterialInventoryDTO> dtoList = result.getContent().stream()
+                .map(materialInventory -> modelMapper.map(materialInventory, MaterialInventoryDTO.class)).collect(Collectors.toList());
+
+        return PageResponseDTO.<MaterialInventoryDTO>withAll()
+                .pageRequestDTO(pageRequestDTO)
+                .dtoList(dtoList)
+                .total((int) result.getTotalElements())
+                .build();
+
     }
+
+
 }
+
+
+
+
+
+
+
+
+
+

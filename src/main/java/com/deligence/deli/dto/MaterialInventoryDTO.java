@@ -2,6 +2,7 @@ package com.deligence.deli.dto;
 
 import com.deligence.deli.domain.DocumentFile;
 import com.deligence.deli.domain.Materials;
+import com.deligence.deli.domain.Order;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,5 +29,7 @@ public class MaterialInventoryDTO {
     private Long materialTotalInventoryPayments; // 재고 금액
 
     private DocumentFile documentFile; // 문서 파일 일련번호
+
+    private Order order; // 발주 일련번호
 
 }
