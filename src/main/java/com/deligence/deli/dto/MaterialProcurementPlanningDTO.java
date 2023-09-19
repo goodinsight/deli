@@ -13,6 +13,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder
@@ -37,23 +38,13 @@ public class MaterialProcurementPlanningDTO {
     private String materialProcurementState;  //자재조달상태
 
     private Materials materials;    //자재일련번호 FK
+//    private List<MaterialsDTO> materials;
 
     @NotNull
     private int productionPlanNo; //생산계획 일련번호 FK
 
-//    @NotNull
-//    private ProductionPlanning productionPlanning;
-
     private Employee employee;    //사원일련번호 FK
-
-//    @NotEmpty
-//    private String employeeName;    //추가
-//
-//    @NotNull
-//    private int materialNo; //추가
-//
-//    @NotEmpty
-//    private String materialType;    //추가
+//    private List<EmployeeJoinDTO> employee;    //사원일련번호 FK
 
     @NotEmpty
     private String materialCode;   //자재코드 (검색용)

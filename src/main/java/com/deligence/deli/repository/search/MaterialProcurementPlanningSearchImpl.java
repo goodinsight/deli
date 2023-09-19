@@ -32,7 +32,7 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
 //        query.where(materialProcurementPlanning.materialCode.contains("1"));
 //        //where material_code like...
 
-        query.where(materialProcurementPlanning.materialProcurementState.contains("ing"));
+        query.where(materialProcurementPlanning.materialProcurementState.contains("진행중"));
         //where material_procurement_state like...
 
         this.getQuerydsl().applyPagination(pageable, query);

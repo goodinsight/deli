@@ -18,7 +18,7 @@ public class MaterialProcurementPlanningServiceTests {
     @Autowired
     private MaterialProcurementPlanningService materialProcurementPlanningService;
 
-    @Test   //Register 테스트 -> localhost로 테스트 -> 학원가서 다시 테스트 할 것
+    @Test   //Register 테스트
     public void testRegister() {
 
         log.info(materialProcurementPlanningService.getClass().getName());
@@ -39,7 +39,8 @@ public class MaterialProcurementPlanningServiceTests {
         log.info("materialProcurementPlanNo : " + materialProcurementPlanNo);
     }
 
-    @Test //수정(modify) 테스트 -> localhost로 테스트 -> 학원가서 다시 테스트 할 것
+
+    @Test //수정(modify) 테스트
     public void testModify() {
 
         //변경에 필요한 데이터만

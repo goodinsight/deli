@@ -39,9 +39,10 @@ public class MaterialProcurementPlanning extends BaseEntity {
 
 
     //수정가능한 속성 지정 (어떤부분이 수정 가능할 지 몰라서 일단 납기일,자재소요랑,자재조달상태만 지정함)
-    public void change(LocalDate procurementDeliveryDate, int materialRequirementsCount,
+    public void change(String materialCode, LocalDate procurementDeliveryDate, int materialRequirementsCount,
                        String materialProcurementState) {
 
+        this.materialCode = materialCode;
         this.procurementDeliveryDate = procurementDeliveryDate;
         this.materialRequirementsCount = materialRequirementsCount;
         this.materialProcurementState = materialProcurementState;
