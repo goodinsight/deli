@@ -61,7 +61,7 @@ public class MaterialProcurementPlanningServiceTests {
         PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
                 //키워드 m:자재코드 n:자재이름 d:납기일 c:자재소요량 s:조달계약상태
                 .type("s")      //자재조달상태
-                .keyword("ing")
+                .keyword("진행중")
                 .page(1)
                 .size(10)
                 .build();
