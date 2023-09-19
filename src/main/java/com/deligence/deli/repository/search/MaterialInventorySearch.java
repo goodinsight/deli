@@ -4,10 +4,11 @@ import com.deligence.deli.domain.MaterialInventory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+
 public interface MaterialInventorySearch {
 
-    Page<MaterialInventory> search1(Pageable pageable);
+    Page<MaterialInventory> materialStockListOne(Pageable pageable);
 
-    Page<MaterialInventory> searchAll(String[] types, String keyword, Pageable pageable);
+    Page<MaterialInventory> materialStockList(String[] types, String keyword, Pageable pageable);
 
 }

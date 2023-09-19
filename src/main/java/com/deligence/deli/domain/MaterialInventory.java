@@ -37,10 +37,10 @@ public class MaterialInventory {
     private Long materialTotalInventoryPayments; // 재고 금액
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private DocumentFile documentFile;
+    private DocumentFile documentFile; // 파일 일련번호
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Order order;
+    private Order order; // 오더 일련번호
 
     public void change(int materialIncomingQuantity, int materialOutgoingQuantity, int materialStock, Long materialSupplyPrice, Long materialTotalInventoryPayments) {
 

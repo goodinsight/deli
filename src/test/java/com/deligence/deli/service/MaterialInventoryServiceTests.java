@@ -1,5 +1,7 @@
 package com.deligence.deli.service;
 
+import com.deligence.deli.domain.MaterialInventory;
+import com.deligence.deli.domain.Materials;
 import com.deligence.deli.dto.MaterialInventoryDTO;
 import com.deligence.deli.dto.PageRequestDTO;
 import com.deligence.deli.dto.PageResponseDTO;
@@ -8,8 +10,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
+
 @SpringBootTest
 @Log4j2
+@Transactional
 public class MaterialInventoryServiceTests {
 
     @Autowired
@@ -18,7 +23,7 @@ public class MaterialInventoryServiceTests {
     @Test
     public void testMaterialsServicelistOne() {
 
-        int materialInventoryNo = 50;
+        int materialInventoryNo = 30;
 
         MaterialInventoryDTO materialInventoryDTO = materialInventoryService.materialStockListOne(materialInventoryNo);
 
@@ -31,7 +36,7 @@ public class MaterialInventoryServiceTests {
 
         PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
                 .type("tcw")
-                .keyword("2")
+                .keyword("cpu")
                 .page(1)
                 .size(10)
                 .build();
@@ -39,8 +44,6 @@ public class MaterialInventoryServiceTests {
         PageResponseDTO<MaterialInventoryDTO> responseDTO = materialInventoryService.materialStockList(pageRequestDTO);
 
         log.info(responseDTO);
-
-        // 테스트 확인 필요
 
     }
 

@@ -9,6 +9,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 public class MaterialInventorySearchImpl extends QuerydslRepositorySupport implements MaterialInventorySearch {
@@ -18,7 +19,7 @@ public class MaterialInventorySearchImpl extends QuerydslRepositorySupport imple
     }
 
     @Override
-    public Page<MaterialInventory> search1(Pageable pageable) {
+    public Page<MaterialInventory> materialStockListOne(Pageable pageable) {
 
         QMaterialInventory materialInventory = QMaterialInventory.materialInventory;
 
@@ -30,8 +31,10 @@ public class MaterialInventorySearchImpl extends QuerydslRepositorySupport imple
 
         booleanBuilder.or(materialInventory.materials.materialType.contains("11"));
 
+        booleanBuilder.or(materialInventory.materials.materialCode.contains("11"));
+
         query.where(booleanBuilder);
-        query.where(materialInventory.materials.materialNo.gt(0));
+        query.where(materialInventory.materialInventoryNo.gt(0));
 
         this.getQuerydsl().applyPagination(pageable, query);
 
@@ -43,7 +46,7 @@ public class MaterialInventorySearchImpl extends QuerydslRepositorySupport imple
     }
 
     @Override
-    public Page<MaterialInventory> searchAll(String[] types, String keyword, Pageable pageable) {
+    public Page<MaterialInventory> materialStockList(String[] types, String keyword, Pageable pageable) {
 
         QMaterialInventory materialInventory = QMaterialInventory.materialInventory;
 
@@ -75,7 +78,7 @@ public class MaterialInventorySearchImpl extends QuerydslRepositorySupport imple
             }
             query.where(booleanBuilder);
         }
-        query.where(materialInventory.materials.materialNo.gt(0));
+        query.where(materialInventory.materialInventoryNo.gt(0));
 
         this.getQuerydsl().applyPagination(pageable, query);
 

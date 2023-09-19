@@ -1,7 +1,6 @@
 package com.deligence.deli.service;
 
 import com.deligence.deli.domain.MaterialInventory;
-import com.deligence.deli.domain.Materials;
 import com.deligence.deli.dto.MaterialInventoryDTO;
 import com.deligence.deli.dto.PageRequestDTO;
 import com.deligence.deli.dto.PageResponseDTO;
@@ -47,7 +46,7 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
         String keyword = pageRequestDTO.getKeyword();
         Pageable pageable = pageRequestDTO.getPageable("materialInventoryNo");
 
-        Page<MaterialInventory> result = materialInventoryRepository.searchAll(types, keyword, pageable);
+        Page<MaterialInventory> result = materialInventoryRepository.materialStockList(types, keyword, pageable);
 
         List<MaterialInventoryDTO> dtoList = result.getContent().stream()
                 .map(materialInventory -> modelMapper.map(materialInventory, MaterialInventoryDTO.class)).collect(Collectors.toList());
