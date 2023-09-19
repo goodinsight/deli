@@ -39,6 +39,17 @@ public class OrderServiceTests {
     }
 
     @Test
+    public void testRead() {
+
+        int orderNo = 23;
+
+        OrderDTO orderDTO = orderService.read(orderNo);
+
+        log.info(orderDTO);
+
+    }
+
+    @Test
     public void testModify() {
 
         OrderDTO orderDTO = OrderDTO.builder()

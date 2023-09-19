@@ -11,9 +11,102 @@
 
 <div layout:fragment="content">
 
-    <div>
-        test
+    <div class="row mt-3">
+
+        <form action="/order/list" method="get">
+            <div class="col">
+                <input type="hidden" name="size" th:value="${pageRequestDTO.size}">
+                <div class="input-group ">
+                    <div class="input-group-prepend">
+                        <select class="form-select" name="type">
+                            <option value="">---</option>
+                            <option value="t" th:selected="${pageRequestDTO.type == 't'}">제목</option>
+                            <option value="c" th:selected="${pageRequestDTO.type == 'c'}">내용</option>
+                            <option value="w" th:selected="${pageRequestDTO.type == 'w'}">작성자</option>
+                            <option value="tc" th:selected="${pageRequestDTO.type == 'tc'}">제목·내용</option>
+                            <option value="tw" th:selected="${pageRequestDTO.type == 'tw'}">제목·작성자</option>
+                            <option value="tcw" th:selected="${pageRequestDTO.type == 'tcw'}">제목·내용·작성자</option>
+                        </select>
+                    </div>
+
+                    <input type="text" class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary searchBtn" type="submit">Search</button>
+                        <button class="btn btn-outline-secondary clearBtn" type="button">Clear</button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
+        <div>
+            <a th:href="@{/order/register}"><button class="btn btn-outline-primary registerBtn" type="button">Register</button></a>
+        </div>
+
     </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    발주 리스트
+                </div>
+                <div class="card-body">
+
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">no</th>
+                            <th scope="col">발주 코드</th>
+                            <th scope="col">자재 이름</th>
+                            <th scope="col">발주 수량</th>
+                            <th scope="col">발주일</th>
+                            <th scope="col">납품일</th>
+                            <th scope="col">담당자</th>
+                            <th scope="col">상태</th>
+                        </tr>
+                        </thead>
+                        <tbody th:with="link = ${pageRequestDTO.getLink()}">
+                        <tr th:each="dto:${responseDTO.dtoList}">
+                            <td>[[${dto.orderNo}]]</td>
+                            <td>
+                                <a th:href="|@{/order/read(orderNo = ${dto.orderNo})}&${link}|" class="text-decoration-none">[[${dto.orderCode}]]</a>
+                            </td>
+                            <td>[[${dto.materialName}]]</td>
+                            <td>[[${dto.orderQuantity}]]</td>
+                            <td>[[${dto.orderDate}]]</td>
+                            <td>[[${dto.orderDeliveryDate}]]</td>
+                            <td>[[${dto.employeeName}]]</td>
+                            <td>[[${dto.orderState}]]</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="float-end">
+                        <ul class="pagination flex-wrap">
+
+                            <li class="page-item" th:if="${responseDTO.prev}">
+                                <a class="page-link" th:data-num="${responseDTO.start -1}">Previous</a>
+                            </li>
+
+                            <th:block th:each="i: ${#numbers.sequence(responseDTO.start, responseDTO.end)}">
+
+                                <li th:class="${responseDTO.page == i}?'page-item active':'page-item'">
+                                    <a class="page-link" th:data-num="${i}">[[${i}]]</a>
+                                </li>
+
+                            </th:block>
+
+                            <li class="page-item" th:if="${responseDTO.next}">
+                                <a class="page-link" th:data-num="${responseDTO.end + 1}">Next</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div><!-- end card -->
+        </div><!-- end col -->
+    </div><!-- end row -->
 
 </div>
 
@@ -21,6 +114,33 @@
 <script layout:fragment="script" th:inline="javascript">
 
     console.log("발주 리스트 페이지")
+
+    $(document).ready(function () {
+        console.log([[${pageRequestDTO}]])
+        console.log([[${pageRequestDTO.link}]])
+        console.log([[${responseDTO}]])
+    })
+
+    document.querySelector(".pagination").addEventListener("click", function(e){
+        e.preventDefault()
+        e.stopPropagation()
+
+        var target = e.target
+
+        if(target.tagName !== 'A'){
+            return
+        }
+
+        var num = target.getAttribute("data-num")
+
+        var formObj = document.querySelector("form")
+
+        formObj.innerHTML += `<input type="hidden" name="page" value="${num}">`
+
+        formObj.submit()
+
+    }, false)
+
 
 </script>
 

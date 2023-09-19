@@ -6,7 +6,7 @@ import com.deligence.deli.dto.PageResponseDTO;
 
 public interface OrderService {
 
-    void register(OrderDTO orderDTO);
+    int register(OrderDTO orderDTO);
 
     OrderDTO read(int orderNo);
 
