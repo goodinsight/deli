@@ -43,6 +43,8 @@ public class QMaterialProcurementPlanning extends EntityPathBase<MaterialProcure
 
     public final DatePath<java.time.LocalDate> procurementDeliveryDate = createDate("procurementDeliveryDate", java.time.LocalDate.class);
 
+    public final QProductionPlanning productionPlanning;
+
     //inherited
     public final DateTimePath<java.time.LocalDateTime> regDate = _super.regDate;
 
@@ -66,6 +68,7 @@ public class QMaterialProcurementPlanning extends EntityPathBase<MaterialProcure
         super(type, metadata, inits);
         this.employee = inits.isInitialized("employee") ? new QEmployee(forProperty("employee"), inits.get("employee")) : null;
         this.materials = inits.isInitialized("materials") ? new QMaterials(forProperty("materials")) : null;
+        this.productionPlanning = inits.isInitialized("productionPlanning") ? new QProductionPlanning(forProperty("productionPlanning"), inits.get("productionPlanning")) : null;
     }
 
 }

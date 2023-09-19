@@ -5,7 +5,7 @@
 
 <div layout:fragment="content">
     <div class="row mt-12 m-l-15">
-        <form class="col-lg-10" action="/board/list" method="get">
+        <form class="col-lg-10" action="/materialProcurementPlanning/list" method="get">
             <div class="form-group">
                 <p class="text-muted m-b-15 f-s-12">
                     "검색하고 싶은
@@ -45,24 +45,24 @@
                 </div>
                 <div class="my-4">
                     <div class="float-left">
-                        <a th:href="@{/board/register}" class="text-decoration-none">
+                        <a th:href="@{/materialProcurementPlanning/register}" class="text-decoration-none">
                             <button type="button" class="btn btn-primary">Register</button>
                         </a>
                     </div>
                 </div>
 
                 <div class="card-body">
-                    <h5 class="card-title">자재 조달 계획 목록</h5>
+                    <h5 class="card-title">자재조달계획 목록</h5>
 
                     <table class="table table-striped table-bordered">
                         <thead>
                         <tr>
                             <th scope="col">NO</th>
                             <th scope="col">자재코드</th>
-                            <th scope="col">자재명</th>
-                            <th scope="col">소요량</th>
+                            <th scope="col">자재이름</th>
+                            <th scope="col">자재소요량</th>
                             <th scope="col">납기일</th>
-                            <th scope="col">조달상태</th>
+                            <th scope="col">자재조달상태</th>
                         </tr>
                         </thead>
 
@@ -70,7 +70,10 @@
                         <tr th:each="dto:${responseDTO.dtoList}">
                             <th scope="row">[[${dto.materialProcurementPlanNo}]]</th>
                             <td>[[${dto.materialCode}]]</td>
-                            <td>[[${dto.materialName}]]</td>
+                            <td>
+                                <a th:href="|@{/materialProcurementPlanning/read(materialProcurementPlanNo =
+                                 ${dto.materialProcurementPlanNo})}&${link}|"> [[${dto.materialName}]] </a>
+                            </td>
                             <td>[[${dto.materialRequirementsCount}]]</td>
                             <td>[[${dto.procurementDeliveryDate}]]</td>
                             <td>[[${dto.materialProcurementState}]]</td>

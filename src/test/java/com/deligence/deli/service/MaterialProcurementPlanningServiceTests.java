@@ -1,5 +1,6 @@
 package com.deligence.deli.service;
 
+import com.deligence.deli.domain.Materials;
 import com.deligence.deli.dto.MaterialProcurementPlanningDTO;
 import com.deligence.deli.dto.PageRequestDTO;
 import com.deligence.deli.dto.PageResponseDTO;
@@ -17,7 +18,7 @@ public class MaterialProcurementPlanningServiceTests {
     @Autowired
     private MaterialProcurementPlanningService materialProcurementPlanningService;
 
-    @Test   //Register 테스트 -> localhost로 테스트 -> 학원가서 다시 테스트 할 것
+    @Test   //Register 테스트
     public void testRegister() {
 
         log.info(materialProcurementPlanningService.getClass().getName());
@@ -27,9 +28,7 @@ public class MaterialProcurementPlanningServiceTests {
                         .procurementDeliveryDate(LocalDate.of(2023, 10, 15))
                         .materialRequirementsCount(200)
                         .materialProcurementState("Sample")
-                        .materialNo(0)
                         .productionPlanNo(0)
-                        .employeeNo(0)
                         .materialCode("Sample")
                         .materialName("Sample")
                         .build();
@@ -40,7 +39,8 @@ public class MaterialProcurementPlanningServiceTests {
         log.info("materialProcurementPlanNo : " + materialProcurementPlanNo);
     }
 
-    @Test //수정(modify) 테스트 -> localhost로 테스트 -> 학원가서 다시 테스트 할 것
+
+    @Test //수정(modify) 테스트
     public void testModify() {
 
         //변경에 필요한 데이터만

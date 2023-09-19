@@ -1,6 +1,7 @@
 package com.deligence.deli.service;
 
 import com.deligence.deli.domain.MaterialProcurementPlanning;
+import com.deligence.deli.dto.BoardDTO;
 import com.deligence.deli.dto.MaterialProcurementPlanningDTO;
 import com.deligence.deli.dto.PageRequestDTO;
 import com.deligence.deli.dto.PageResponseDTO;
@@ -50,8 +51,12 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
 
         MaterialProcurementPlanning materialProcurementPlanning = result.orElseThrow();
 
+//        MaterialProcurementPlanningDTO materialProcurementPlanningDTO = entityToDTO(materialProcurementPlanning);
+
         MaterialProcurementPlanningDTO materialProcurementPlanningDTO =
                 modelMapper.map(materialProcurementPlanning, MaterialProcurementPlanningDTO.class);
+
+        log.info(materialProcurementPlanningDTO);
 
         return materialProcurementPlanningDTO;
     }
@@ -66,6 +71,7 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
         MaterialProcurementPlanning materialProcurementPlanning = result.orElseThrow();
 
         materialProcurementPlanning.change(
+                materialProcurementPlanning.getMaterialCode(),  //자재코드 수정
                 materialProcurementPlanningDTO.getProcurementDeliveryDate(),      //납기일 수정
                 materialProcurementPlanningDTO.getMaterialRequirementsCount(),    //자재소요량 수정
                 materialProcurementPlanningDTO.getMaterialProcurementState());    //자재조달상태 수정
@@ -87,7 +93,6 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
         Pageable pageable = pageRequestDTO.getPageable("materialProcurementPlanNo");
 
         Page<MaterialProcurementPlanning> result =
-//                materialProcurementPlanningRepository.searchAll(types, keyword, pageable);
                 materialProcurementPlanningRepository.searchAll(types, keyword, pageable);
 
         List<MaterialProcurementPlanningDTO> dtoList =
