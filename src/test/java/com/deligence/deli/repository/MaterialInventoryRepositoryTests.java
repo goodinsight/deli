@@ -39,6 +39,9 @@ public class MaterialInventoryRepositoryTests {
                     .materialTotalInventoryPayments((long) i * 20)
                     .materials(Materials.builder().materialNo(i).build())
                     .order(Order.builder().orderNo(21).build())
+                    .materialName("name" + i)
+                    .materialType("type" + i)
+                    .materialCode("code" + i)
                     .build();
 
             MaterialInventory result = materialInventoryRepository.save(materialInventory);

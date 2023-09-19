@@ -8,6 +8,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+
 @Data
 @Builder
 @AllArgsConstructor
@@ -31,5 +33,11 @@ public class MaterialInventoryDTO {
     private DocumentFile documentFile; // 문서 파일 일련번호
 
     private Order order; // 발주 일련번호
+
+    private String materialName; // 자재명 검색
+
+    private String materialType; // 자재타입 검색
+
+    private String materialCode; // 자재코드 검색
 
 }

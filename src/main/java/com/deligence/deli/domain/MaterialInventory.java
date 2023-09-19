@@ -43,13 +43,13 @@ public class MaterialInventory {
     private Order order; // 오더 일련번호
 
     @Column(length = 500, nullable = false)
-    private String materialName;
+    private String materialName; // 자재명 검색
 
     @Column(length = 500, nullable = false)
-    private String materialType;
+    private String materialType; // 자재타입 검색
 
     @Column(length = 500, nullable = false)
-    private String materialCode;
+    private String materialCode; // 자재코드 검색
 
     public void change(int materialIncomingQuantity, int materialOutgoingQuantity, int materialStock, Long materialSupplyPrice, Long materialTotalInventoryPayments) {
 

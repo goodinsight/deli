@@ -17,16 +17,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/materialInventory")
 @Log4j2
 @RequiredArgsConstructor
+
 public class MaterialInventoryController {
 
     @Autowired
     private MaterialInventoryService materialInventoryService;
 
     @GetMapping("/materialStockList")
-    public void
-    materialStockList(PageRequestDTO pageRequestDTO, Model model) {
-
-
+    public void materialStockList(PageRequestDTO pageRequestDTO, Model model) {
 
         PageResponseDTO<MaterialInventoryDTO> responseDTO = materialInventoryService.materialStockList(pageRequestDTO);
 
@@ -37,13 +35,16 @@ public class MaterialInventoryController {
     }
 
     @GetMapping("/materialStockInDetail")
-    public void materialStockInDetailList() {
+    public void materialStockInDetailListOne(int materialInventoryNo, PageRequestDTO pageRequestDTO, Model model) {
+
+        MaterialInventoryDTO materialInventoryDTO = materialInventoryService.materialStockListOne(materialInventoryNo);
+
+        log.info(materialInventoryDTO);
+
+        model.addAttribute("dto", materialInventoryDTO);
 
     }
 
-    @PostMapping("/materialStockInDetail")
-    public void materialStockInDetailListOne() {
 
-    }
 
 }
