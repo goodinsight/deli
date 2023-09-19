@@ -38,6 +38,8 @@ public class QMaterialProcurementContract extends EntityPathBase<MaterialProcure
 
     public final DatePath<java.time.LocalDate> materialProcurementContractDate = createDate("materialProcurementContractDate", java.time.LocalDate.class);
 
+    public final StringPath materialProcurementContractEtc = createString("materialProcurementContractEtc");
+
     public final NumberPath<Integer> materialProcurementContractNo = createNumber("materialProcurementContractNo", Integer.class);
 
     public final StringPath materialProcurementContractState = createString("materialProcurementContractState");

@@ -65,7 +65,7 @@ public class MaterialProcurementPlanningRepositoryTests {
 
         MaterialProcurementPlanning materialProcurementPlanning = result.orElseThrow();
 
-        materialProcurementPlanning.change("123", LocalDate.of(2023,10,19),
+        materialProcurementPlanning.change(null, "123", LocalDate.of(2023,10,19),
                 200, "ing");
 
         materialProcurementPlanningRepository.save(materialProcurementPlanning);

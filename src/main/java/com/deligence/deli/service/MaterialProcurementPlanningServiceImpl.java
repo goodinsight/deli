@@ -71,6 +71,7 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
         MaterialProcurementPlanning materialProcurementPlanning = result.orElseThrow();
 
         materialProcurementPlanning.change(
+                materialProcurementPlanning.getMaterials(), //자재에서 자재코드 가져와서 수정 가능.
                 materialProcurementPlanning.getMaterialCode(),  //자재코드 수정
                 materialProcurementPlanningDTO.getProcurementDeliveryDate(),      //납기일 수정
                 materialProcurementPlanningDTO.getMaterialRequirementsCount(),    //자재소요량 수정
