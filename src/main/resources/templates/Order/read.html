@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>발주 상세</title>
+</head>
+
+<div layout:fragment="content">
+
+    <div class="row mt-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    발주 상세
+                </div>
+                <div class="card-body mt-3">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">계획 일련번호</span>
+                        <input type="text" name="materialProcurementPlanNo" class="form-control" placeholder="계획 일련번호 - 추후 숨길 부분" th:value="${dto.materialProcurementPlanNo}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">계획 선택</span>
+                        <input type="text" name="materialProcurementPlanCode" class="form-control" placeholder="계획 코드" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">계약 일련번호</span>
+                        <input type="text" name="materialProcurementContractNo" class="form-control" placeholder="계약 일련번호 - 추후 숨길 부분" th:value="${dto.materialProcurementContractNo}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">계약 선택</span>
+                        <input type="text" name="materialProcurementContractCode" class="form-control" placeholder="계약 코드" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">임시 구역</span>
+                        <textarea name="content" class="form-control col-sm-5" readonly></textarea>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">발주 코드</span>
+                        <input type="text" name="orderCode" class="form-control" placeholder="발주 코드" th:value="${dto.orderCode}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">담당자 일련번호</span>
+                        <input type="text" name="employeeNo" class="form-control" placeholder="담당자 일련번호 - 추후 숨길 부분" th:value="${dto.employeeNo}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">담당자 이름</span>
+                        <input type="text" name="employeeName" class="form-control" placeholder="담당자 이름 - 추후 계정 연결 및 read only" th:value="${dto.employeeName}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">발주 수량</span>
+                        <input type="text" name="orderQuantity" class="form-control" placeholder="발주 수량" th:value="${dto.orderQuantity}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">발주일</span>
+                        <input type="date" name="orderDate" class="form-control" placeholder="발주일" th:value="${dto.orderDate}"  readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">납기일</span>
+                        <input type="date" name="orderDeliveryDate" class="form-control" placeholder="납기일" th:value="${dto.orderDeliveryDate}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">발주 상태</span>
+                        <input type="text" name="orderState" class="form-control" placeholder="발주 상태 - 추후 숨길 부분" th:value="${dto.orderState}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">비고</span>
+                        <textarea name="orderEtc" class="form-control col-sm-5" th:value="${dto.orderEtc}" readonly></textarea>
+                    </div>
+
+                    <div class="my-4" >
+                        <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}">
+                            <a th:href="|@{/order/list}?${link}|" class="text-decoration-none">
+                                <button type="button" class="btn btn-primary">List</button>
+                            </a>
+                            <a class="text-decoration-none">
+                                <button type="button" class="btn btn-secondary">Modify</button>
+                            </a>
+                        </div>
+                    </div>
+
+                </div><!-- end card body -->
+            </div><!-- end card -->
+        </div><!-- end col -->
+    </div><!-- end row -->
+
+    <!-- 조달 계획 선택을 위한 모달창 -->
+    <div class="modal uploadModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Upload File</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <input type="file" name="files" class="form-control" multiple>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary uploadBtn">Upload</button>
+                    <button type="button" class="btn btn-outline-dark closeUploadBtn">Close</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- end upload modal -->
+
+    <!-- 조달 계약 선택을 위한 모달창 -->
+    <div class="modal uploadModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Upload File</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <input type="file" name="files" class="form-control" multiple>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary uploadBtn">Upload</button>
+                    <button type="button" class="btn btn-outline-dark closeUploadBtn">Close</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- end upload modal -->
+
+
+</div>
+
+
+
+
+<script layout:fragment="script" th:inline="javascript">
+
+    console.log([[${dto}]])
+
+
+</script>
+
+
+
+
+</html>

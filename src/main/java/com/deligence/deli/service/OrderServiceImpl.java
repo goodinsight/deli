@@ -28,7 +28,7 @@ public class OrderServiceImpl implements OrderService{
     private final OrderRepository orderRepository;
 
     @Override
-    public void register(OrderDTO orderDTO) {
+    public int register(OrderDTO orderDTO) {
 
         //dto -> entity
         Order order = modelMapper.map(orderDTO, Order.class);
@@ -39,6 +39,8 @@ public class OrderServiceImpl implements OrderService{
         int orderNo = orderRepository.save(order).getOrderNo();
 
         log.info(orderNo);
+
+        return orderNo;
 
     }
 
@@ -52,7 +54,7 @@ public class OrderServiceImpl implements OrderService{
         //entity -> dto
         OrderDTO orderDTO = modelMapper.map(order, OrderDTO.class);
 
-        return null;
+        return orderDTO;
     }
 
     @Override
