@@ -8,14 +8,14 @@ import javax.persistence.*;
 @Getter
 public class Position {
 
-    private String position_name;
+    private String positionName;
 
     protected Position() {
 
     }
 
-    public Position(String position_name){
-        this.position_name = position_name;
+    public Position(String positionName){
+        this.positionName = positionName;
     }
 
 }

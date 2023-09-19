@@ -1,9 +1,11 @@
 package com.deligence.deli.controller;
 
 import com.deligence.deli.dto.EmployeeSecurityDTO;
+import com.deligence.deli.dto.PageRequestDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -99,6 +101,11 @@ public class EmployeeController {
         redirectAttributes.addFlashAttribute("result", "success");
 
         return "redirect:/employee/login"; //회원가입후 로그인
+
+    }
+
+    @GetMapping("/employee/list")
+    public void list(PageRequestDTO pageRequestDTO, Model model) {
 
     }
 

@@ -19,7 +19,7 @@ public class QPosition extends BeanPath<Position> {
 
     public static final QPosition position = new QPosition("position1");
 
-    public final StringPath position_name = createString("position_name");
+    public final StringPath positionName = createString("positionName");
 
     public QPosition(String variable) {
         super(Position.class, forVariable(variable));
