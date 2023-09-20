@@ -38,7 +38,7 @@ public class MaterialsServiceImpl implements MaterialsService {
     }
 
     @Override
-    public MaterialsDTO detail(int materialNo) { //조회 작업처리
+    public MaterialsDTO readOne(int materialNo) { //조회 작업처리
 
         Optional<Materials> result = materialsRepository.findById(materialNo);
 
@@ -56,7 +56,7 @@ public class MaterialsServiceImpl implements MaterialsService {
 
         Materials materials = result.orElseThrow();
 
-        materials.change(materialsDTO.getMaterialName(), materialsDTO.getMaterialType(), materialsDTO.getMaterialExplaination(), materialsDTO.getMaterialSupplyPrice());
+        materials.change(materialsDTO.getMaterialName(), materialsDTO.getMaterialType(), materialsDTO.getMaterialExplaination(), materialsDTO.getMaterialSupplyPrice(),materialsDTO.getRegDate() ,materialsDTO.getModDate());
 
         materialsRepository.save(materials);
 

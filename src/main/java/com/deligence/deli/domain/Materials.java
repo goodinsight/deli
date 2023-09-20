@@ -3,13 +3,16 @@ package com.deligence.deli.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@ToString(exclude = "imageSet")
 
 public class Materials extends BaseEntity{
 
@@ -33,10 +36,35 @@ public class Materials extends BaseEntity{
     @Column(length = 50, nullable = true)
     private Long materialSupplyPrice; //자재공급단가
 
-    public void change(String materialName, String materialType, String materialExplaination, Long materialSupplyPrice){
+    public void change(String materialName, String materialType, String materialExplaination, Long materialSupplyPrice, LocalDateTime regDate, LocalDateTime modDate){
         this.materialName = materialName;
         this.materialType = materialType;
         this.materialExplaination = materialExplaination;
         this.materialSupplyPrice = materialSupplyPrice;
     }
+
+    @OneToMany(mappedBy = "materials",
+            cascade = {CascadeType.ALL},
+            fetch = FetchType.LAZY)
+    @Builder.Default
+    private Set<MaterialImage> imageSet = new HashSet<>(); //이미지 첨부
+
+    public void addImage(String materialUuid, String materialImgName) {
+
+        MaterialImage materialImage = MaterialImage.builder()
+                .materialUuid(materialUuid)
+                .materialImgName(materialImgName)
+                .materials(this)
+                .materialImgNo(imageSet.size())
+                .build();
+        imageSet.add(materialImage);
+    }
+
+    public void clearImages(){
+
+        imageSet.forEach(materialImage -> materialImage.changeMaterial(null));
+
+        this.imageSet.clear();
+    }
+
 }

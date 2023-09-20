@@ -15,7 +15,7 @@
                     Marerial Register
                 </div>
                 <div class="card-body">
-                    <form action="/material/materialRegister" method="post">
+                    <form action="/material/register" method="post">
                         <div class="input-group mb-3">
                             <span class="input-group-text">분류(타입)</span>
                             <input type="text" name="materialType" class="form-control" placeholder="Title">
@@ -30,12 +30,21 @@
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">자재설명</span>
-                            <textarea name="materialExplaination" class="form-control col-sm-5" rows="5" placeholder="Explaination"></textarea>
+                            <input type="text" name="materialExplaination" class="form-control" placeholder="Explaination">
                         </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">자재공급단가</span>
+                            <input type="text" name="materialSupplyPrice" class="form-control" placeholder="SupplyPrice">
+                        </div>
+
+                        <!-- 이미지 첨부
+                        <label for="attachFile">이미지 첨부</label>
+                        <input type="file" id="attachFile" name="attachFile"/>
+                        !-->
 
                         <div class="my-4">
                             <div class="float-end">
-                                <a th:href="@{/material/materialList}" class="text-decoration-none">
+                                <a th:href="@{/material/list}" class="text-decoration-none">
                                     <button type="button" class="btn btn-outline-dark">List</button>
                                 </a>
                                 <button type="submit" class="btn btn-primary">Submit</button>
