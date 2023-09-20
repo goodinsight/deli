@@ -29,7 +29,7 @@ public class MaterialInventoryController {
     @GetMapping("/materialStockList")
     public void materialStockList(PageRequestDTO pageRequestDTO, Model model, @Valid MaterialInventoryDTO materialInventoryDTO, RedirectAttributes redirectAttributes) {
 
-        materialInventoryService.materialStockRegister(materialInventoryDTO);
+//        materialInventoryService.materialStockRegister(materialInventoryDTO);
 
         PageResponseDTO<MaterialInventoryDTO> responseDTO = materialInventoryService.materialStockList(pageRequestDTO);
 
