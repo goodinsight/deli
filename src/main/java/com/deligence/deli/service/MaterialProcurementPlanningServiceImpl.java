@@ -31,30 +31,35 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
     @Override  //등록
     public int register(MaterialProcurementPlanningDTO materialProcurementPlanningDTO) {
 
-        MaterialProcurementPlanning materialProcurementPlanning
-                = modelMapper.map(materialProcurementPlanningDTO, MaterialProcurementPlanning.class);
+        //dto -> entity
+        MaterialProcurementPlanning materialProcurementPlanning =
+                modelMapper.map(materialProcurementPlanningDTO, MaterialProcurementPlanning.class);
+        //안되면 인터페이스에 dtoToEntity 메소드 만들기
 
-        int materialProcurementPlanNo
-                = materialProcurementPlanningRepository
-                .save(materialProcurementPlanning)
-                .getMaterialProcurementPlanNo();
+        log.info(materialProcurementPlanning);
+
+        int materialProcurementPlanNo = materialProcurementPlanningRepository
+                .save(materialProcurementPlanning).getMaterialProcurementPlanNo();
+
+        log.info(materialProcurementPlanNo);
 
         return materialProcurementPlanNo;
 
     }
 
     @Override //조회
-    public MaterialProcurementPlanningDTO readOne(int materialProcurementPlanNo) {
+    public MaterialProcurementPlanningDTO read(int materialProcurementPlanNo) {
 
         Optional<MaterialProcurementPlanning> result =
                 materialProcurementPlanningRepository.findById(materialProcurementPlanNo);
 
         MaterialProcurementPlanning materialProcurementPlanning = result.orElseThrow();
 
-//        MaterialProcurementPlanningDTO materialProcurementPlanningDTO = entityToDTO(materialProcurementPlanning);
-
+        //entity -> dto
         MaterialProcurementPlanningDTO materialProcurementPlanningDTO =
                 modelMapper.map(materialProcurementPlanning, MaterialProcurementPlanningDTO.class);
+
+//        MaterialProcurementPlanningDTO materialProcurementPlanningDTO = entityToDTO(materialProcurementPlanning);
 
         log.info(materialProcurementPlanningDTO);
 
@@ -70,13 +75,15 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
 
         MaterialProcurementPlanning materialProcurementPlanning = result.orElseThrow();
 
-        materialProcurementPlanning.change(
-                materialProcurementPlanning.getMaterialCode(),  //자재코드 수정
-                materialProcurementPlanningDTO.getProcurementDeliveryDate(),      //납기일 수정
-                materialProcurementPlanningDTO.getMaterialRequirementsCount(),    //자재소요량 수정
-                materialProcurementPlanningDTO.getMaterialProcurementState());    //자재조달상태 수정
+        materialProcurementPlanning.change(materialProcurementPlanningDTO);
+
+        //추후 자재조달계획 수정에 따라 다른 영역에 관련된 수정 사항이 있으면 여기에 추가
+
+
+        //------------------------------------------------------------------
 
         materialProcurementPlanningRepository.save(materialProcurementPlanning);
+
     }
 
     @Override   //삭제
@@ -91,14 +98,16 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
         String[] types = pageRequestDTO.getTypes();
         String keyword = pageRequestDTO.getKeyword();
         Pageable pageable = pageRequestDTO.getPageable("materialProcurementPlanNo");
+        //속성 넣으면 SearchImpl의 searchAll() paging 부분 오류남.
+//        Pageable pageable = pageRequestDTO.getPageable();
 
         Page<MaterialProcurementPlanning> result =
                 materialProcurementPlanningRepository.searchAll(types, keyword, pageable);
 
-        List<MaterialProcurementPlanningDTO> dtoList =
-                result.getContent().stream().map(materialProcurementPlanning ->
-                        modelMapper.map(materialProcurementPlanning,
-                                MaterialProcurementPlanningDTO.class)).collect(Collectors.toList());
+        List<MaterialProcurementPlanningDTO> dtoList = result.getContent().stream()
+                .map(materialProcurementPlanning -> modelMapper
+                        .map(materialProcurementPlanning, MaterialProcurementPlanningDTO.class))
+                .collect(Collectors.toList());
 
         return PageResponseDTO.<MaterialProcurementPlanningDTO>withAll()
                 .pageRequestDTO(pageRequestDTO)

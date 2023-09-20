@@ -1,0 +1,57 @@
+package com.deligence.deli.dto;
+
+//자재조달계약 DTO
+
+import com.deligence.deli.domain.CooperatorSupplier;
+import com.deligence.deli.domain.Employee;
+import com.deligence.deli.domain.MaterialProcurementContract;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class MaterialProcurementContractDTO {
+
+    private int MaterialProcurementContractNo;  //조달계약일련번호
+
+    private int materialNo; //자재일련번호 (Materials material)
+
+    private String materialProcurementContractCode; //자재조달계약코드
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate materialProcurementContractDate;  //계약일
+
+    private String materialProcurementContractState;    //계약상태
+
+    private String materialProcurementContractEtc;  //조건상세(기타사항)
+
+    private CooperatorSupplier cooperatorSupplier;  //자재협력회사 Entity ->회사명, 대표명, 연락처 가져오기
+//    private int supplierNo; //자재협력회사 일련번호 (FK)
+
+    private Employee employee;  //사원 Entity -> 사원명 가져오기
+//    private int employeeNo; //사원 일련번호 (FK)
+
+    private int documentFileNo; //문서파일 일련번호 (FK)
+
+    private String materialCode;    //자재코드(검색용)
+
+    private String materialName;    //자재이름(검색용)
+
+    private Long materialSupplyPrice;   //자재 공급단가 (검색용)
+
+    private String supplierName;    //자재협력회사명(검색용)
+
+    private String supplierStatus;  //자재협력회사계약상태 (검색용)
+
+    private LocalDateTime regDate;  //등록일
+
+    private LocalDateTime modDate;  //수정일
+}

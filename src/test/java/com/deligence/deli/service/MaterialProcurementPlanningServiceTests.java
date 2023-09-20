@@ -21,47 +21,59 @@ public class MaterialProcurementPlanningServiceTests {
     @Test   //Register 테스트
     public void testRegister() {
 
-        log.info(materialProcurementPlanningService.getClass().getName());
+//        log.info(materialProcurementPlanningService.getClass().getName());
 
         MaterialProcurementPlanningDTO materialProcurementPlanningDTO =
                 MaterialProcurementPlanningDTO.builder()
-                        .procurementDeliveryDate(LocalDate.of(2023, 10, 15))
-                        .materialRequirementsCount(200)
-                        .materialProcurementState("Sample")
-                        .productionPlanNo(0)
-                        .materialCode("Sample")
-                        .materialName("Sample")
+                        .procurementDeliveryDate(LocalDate.of(2023, 9, 27))
+                        .materialRequirementsCount(1)
+                        .materialProcurementState("READY")
+                        .materialCode("registerMaterialCode")
+                        .materialName("registerMaterialName")
                         .build();
 
-        int materialProcurementPlanNo =
-                materialProcurementPlanningService.register(materialProcurementPlanningDTO);
+        materialProcurementPlanningService.register(materialProcurementPlanningDTO);
 
-        log.info("materialProcurementPlanNo : " + materialProcurementPlanNo);
+        log.info("success");
     }
 
+    @Test   //read test
+    public void testRead() {
+
+        int materialProcurementPlanNo = 2;
+
+        MaterialProcurementPlanningDTO materialProcurementPlanningDTO =
+                materialProcurementPlanningService.read(materialProcurementPlanNo);
+
+        log.info(materialProcurementPlanningDTO);
+    }
 
     @Test //수정(modify) 테스트
     public void testModify() {
 
-        //변경에 필요한 데이터만
         MaterialProcurementPlanningDTO materialProcurementPlanningDTO =
                 MaterialProcurementPlanningDTO.builder()
-                        .materialProcurementPlanNo(2)
-                        .procurementDeliveryDate(LocalDate.of(2023, 9, 27))
+                        .materialProcurementPlanNo(2)   //No=2 변경
+                        .procurementDeliveryDate(LocalDate.of(2023, 9, 22))
                         .materialRequirementsCount(1000)
-                        .materialProcurementState("ing")
+                        .materialProcurementState("진행중")
+                        .materialCode("modifyMaterialCode")
+                        .materialName("modifyMaterialName")
                         .build();
 
         materialProcurementPlanningService.modify(materialProcurementPlanningDTO);
+
+        log.info(materialProcurementPlanningDTO);
+
     }
 
     @Test //목록,검색 (list) 테스트
     public void testList() {
 
         PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
-                //키워드 m:자재코드 n:자재이름 d:납기일 c:자재소요량 s:조달계약상태
-                .type("s")      //자재조달상태
-                .keyword("ing")
+                //키워드 a:조달계획일련번호 b:자재코드 c:자재이름 d:납기일 e:자재소요량 f:조달계약상태
+                .type("a")
+                .keyword("1")
                 .page(1)
                 .size(10)
                 .build();

@@ -6,8 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 public interface MaterialProcurementPlanningRepository
-        extends JpaRepository<MaterialProcurementPlanning, Integer>, MaterialProcurementPlanningSearch {
+        extends JpaRepository<MaterialProcurementPlanning, Integer>,
+        MaterialProcurementPlanningSearch {
 
-    @Query(value = "select now()", nativeQuery = true)
-    String getTime();
+//    @Query(value = "select now()", nativeQuery = true)
+//    String getTime();
 }
