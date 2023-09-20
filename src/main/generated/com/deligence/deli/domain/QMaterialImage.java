@@ -26,8 +26,6 @@ public class QMaterialImage extends EntityPathBase<MaterialImage> {
 
     public final NumberPath<Integer> materialImgNo = createNumber("materialImgNo", Integer.class);
 
-    public final StringPath materialImgPath = createString("materialImgPath");
-
     public final QMaterials materials;
 
     public final StringPath materialUuid = createString("materialUuid");

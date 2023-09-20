@@ -24,7 +24,7 @@ public class MaterialsController {
 
     private final MaterialsService materialsService;
 
-    @GetMapping("/list")//재고 전체목록
+    @GetMapping("/list")//자재 전체목록
     public void listAll(PageRequestDTO pageRequestDTO, Model model) {
 
         PageResponseDTO<MaterialsDTO> responseDTO = materialsService.list(pageRequestDTO);
@@ -34,13 +34,13 @@ public class MaterialsController {
         model.addAttribute("responseDTO", responseDTO);
     }
 
-    @GetMapping("/register") //재고 등록
-    public void materialRegisterGET(){
+    @GetMapping("/register") //자재 등록
+    public void registerGET(){
 
     }
 
-    @PostMapping("/register") //재고 등록
-    public String materialRegisterPost(@Valid MaterialsDTO materialsDTO, BindingResult bindingResult,
+    @PostMapping("/register") //자재 등록
+    public String registerPost(@Valid MaterialsDTO materialsDTO, BindingResult bindingResult,
                                RedirectAttributes redirectAttributes) {
 
         log.info("material POST register...");
@@ -60,13 +60,56 @@ public class MaterialsController {
         return "redirect:/material/list";
     }
 
-    @GetMapping("/read") //재고 조회
-    public void materialRead(int materialNo, PageRequestDTO pageRequestDTO, Model model){
+    @GetMapping({"/read", "/modify"}) //자재 조회, 수정
+    public void read(int materialNo, PageRequestDTO pageRequestDTO, Model model){
 
         MaterialsDTO materialsDTO = materialsService.readOne(materialNo);
 
         log.info(materialsDTO);
 
-        model.addAttribute("materialNo",materialsDTO);
+        model.addAttribute("dto",materialsDTO);
     }
+
+    @PostMapping("/modify") //자재 수정
+    public String modify(PageRequestDTO pageRequestDTO,
+                         @Valid MaterialsDTO materialsDTO,
+                         BindingResult bindingResult,
+                         RedirectAttributes redirectAttributes){
+
+        log.info("Materials modify post....." + materialsDTO);
+
+        if(bindingResult.hasErrors()) {
+            log.info("hss errors......");
+
+            String link = pageRequestDTO.getLink();
+
+            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
+
+            redirectAttributes.addAttribute("materialNo", materialsDTO.getMaterialNo());
+
+            return "redirect:/material/modify?"+link;
+        }
+
+        materialsService.modify(materialsDTO);
+
+        redirectAttributes.addFlashAttribute("result","modifed");
+
+        redirectAttributes.addAttribute("materialNo", materialsDTO.getMaterialNo());
+
+        return "redirect:/material/read";
+    }
+
+    @PostMapping("/delete")
+    public String remove(int materialNo, RedirectAttributes redirectAttributes) {
+
+        log.info("remove post..." + materialNo);
+
+        materialsService.delete(materialNo);
+
+        redirectAttributes.addFlashAttribute("result", "removed");
+
+        return "redirect:/material/list";
+    }
+
+
 }

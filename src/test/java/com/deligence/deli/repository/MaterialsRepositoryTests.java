@@ -10,8 +10,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.IntStream;
 
 @SpringBootTest
@@ -56,7 +59,7 @@ public class MaterialsRepositoryTests {
 
         Materials materials = result.orElseThrow();
 
-        materials.change("update test", "update.. test", "update... test", 100000000L);
+        materials.change("update test", "update.. test", "update... test", 100000000L, LocalDateTime.now(),  LocalDateTime.now());
 
         materialsRepository.save(materials);
     }
@@ -118,4 +121,24 @@ public class MaterialsRepositoryTests {
         result.getContent().forEach(materials -> log.info(materials));
 
     }
+
+//    @Test
+//    public void testInsertWithImages() { // 이미지 추가 test
+//
+//        Materials materials = Materials.builder()
+//                .materialCode("이미지 test")
+//                .materialName("이미지 test")
+//                .materialType("이미지 test")
+//                .materialExplaination("이미지 test")
+//                .materialSupplyPrice(1L)
+//                .build();
+//
+//        for (int i = 0; i < 3; i++) {
+//
+//            materials.addImage(UUID.randomUUID().toString(), "file"+i+".jpg");
+//
+//        } //end for
+//
+//        materialsRepository.save(materials);
+//    }
 }

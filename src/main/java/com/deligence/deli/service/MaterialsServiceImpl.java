@@ -56,7 +56,7 @@ public class MaterialsServiceImpl implements MaterialsService {
 
         Materials materials = result.orElseThrow();
 
-        materials.change(materialsDTO.getMaterialName(), materialsDTO.getMaterialType(), materialsDTO.getMaterialExplaination(), materialsDTO.getMaterialSupplyPrice());
+        materials.change(materialsDTO.getMaterialName(), materialsDTO.getMaterialType(), materialsDTO.getMaterialExplaination(), materialsDTO.getMaterialSupplyPrice(),materialsDTO.getRegDate() ,materialsDTO.getModDate());
 
         materialsRepository.save(materials);
 

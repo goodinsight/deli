@@ -28,7 +28,7 @@ public class MaterialsServiceTests {
                 .materialSupplyPrice(10L)
                 .build();
 
-        int materialNo = materialsService.readOne(materialsDTO);
+        int materialNo = materialsService.register(materialsDTO);
 
         log.info("materialNo: " + materialNo);
     }
