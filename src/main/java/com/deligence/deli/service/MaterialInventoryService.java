@@ -8,6 +8,8 @@ import com.deligence.deli.dto.PageResponseDTO;
 
 public interface MaterialInventoryService {
 
+    int materialStockRegister(MaterialInventoryDTO materialInventoryDTO);
+
     MaterialInventoryDTO materialStockListOne(int materialInventoryNo);
 
     PageResponseDTO<MaterialInventoryDTO> materialStockList(PageRequestDTO pageRequestDTO);

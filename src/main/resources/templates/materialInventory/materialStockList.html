@@ -62,8 +62,8 @@
 
                             <td>[[${dto.materials.materialType}]]</td>
                             <td>[[${dto.order.orderQuantity}]]</td>
-                            <td>[[${dto.materialSupplyPrice}]]</td>
-                            <td>[[${dto.order.orderDate}]]</td>
+                            <td>[[${dto.order.materialSupplyPrice}]]</td>
+                            <td>[[${#temporals.format(dto.order.orderDate, 'yyyy-MM-dd HH:mm:ss')}]]</td>
                             <td>[[${dto.order.orderState}]]</td>
                         </tr>
                         </tbody>

@@ -15,6 +15,7 @@ import org.springframework.data.domain.Sort;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.stream.IntStream;
 
 @SpringBootTest
@@ -25,11 +26,16 @@ public class MaterialInventoryRepositoryTests {
     @Autowired
     private MaterialInventoryRepository materialInventoryRepository;
 
+    @Autowired
+    private OrderRepository orderRepository;
+
+    @Autowired
+    private MaterialsRepository materialsRepository;
 
     @Test
     public void testMaterialInventoryInsert() {
 
-        IntStream.rangeClosed(1, 50).forEach(i -> {
+        IntStream.rangeClosed(1, 1).forEach(i -> {
 
             MaterialInventory materialInventory = MaterialInventory.builder()
                     .materialIncomingQuantity(i)
@@ -76,7 +82,7 @@ public class MaterialInventoryRepositoryTests {
 
         MaterialInventory materialInventory = result.orElseThrow();
 
-        materialInventory.change(1,2,3, 4L,5L);
+        materialInventory.change(1, 2, 3, 4L, 5L);
 
         materialInventoryRepository.save(materialInventory);
 
@@ -94,7 +100,7 @@ public class MaterialInventoryRepositoryTests {
     @Test
     public void testMaterialInventorypaging() {
 
-        Pageable pageable = PageRequest.of(0,10, Sort.by("materialInventoryNo").descending());
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("materialInventoryNo").descending());
 
         Page<MaterialInventory> result = materialInventoryRepository.findAll(pageable);
 
@@ -112,7 +118,7 @@ public class MaterialInventoryRepositoryTests {
     @Test
     public void testSearch1() {
 
-        Pageable pageable = PageRequest.of(1,10,Sort.by("materialInventoryNo").descending());
+        Pageable pageable = PageRequest.of(1, 10, Sort.by("materialInventoryNo").descending());
 
         materialInventoryRepository.materialStockListOne(pageable);
 
@@ -121,24 +127,82 @@ public class MaterialInventoryRepositoryTests {
     @Test
     public void testSearchAll() {
 
-        String[] types = {"t","c","w"};
+        String[] types = {"t", "c", "w"};
 
         String keyword = "cpu";
 
-        Pageable pageable = PageRequest.of(0,10,Sort.by("materialInventoryNo").descending());
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("materialInventoryNo").descending());
 
         Page<MaterialInventory> result = materialInventoryRepository.materialStockList(types, keyword, pageable);
 
-        log.info("페이지 : "+result.getTotalPages());
+        log.info("페이지 : " + result.getTotalPages());
 
-        log.info("사이즈 : "+result.getSize());
+        log.info("사이즈 : " + result.getSize());
 
-        log.info("넘버 : "+result.getNumber());
+        log.info("넘버 : " + result.getNumber());
 
         log.info(result.hasPrevious() + " : " + result.hasNext());
 
         result.getContent().forEach(materialInventory -> log.info(materialInventory));
 
     }
+
+//    @Test
+//    public void testrequest() {
+//
+//        List<Materials> list = materialsRepository.findAll();
+//        List<Order> list2 = orderRepository.findAll();
+//
+//        if (list2.size() != 0) {
+//
+//            for (int i = 0; i <= 50; i++) {
+//                if (list.get(i).getMaterialName() == list2.get(i).getMaterialName()) {
+//
+//                    log.info(list.get(i).getMaterialName());
+//                    log.info(list2.get(i).getMaterialName());
+//                    log.info(list.get(i).getMaterialNo());
+//                    log.info(list2.get(i).getOrderNo());
+//                }
+//
+//                Optional<Materials> result2 = materialsRepository.findById(list.get(i).getMaterialNo());
+//                log.info(result2);
+//                Optional<Order> result = orderRepository.findById(list2.get(i).getOrderNo());
+//                log.info(result);
+//
+//                Materials materials = result2.orElseThrow();
+//
+//                log.info(materials);
+//
+//                Order order = result.orElseThrow();
+//
+//                log.info(order);
+//
+//                IntStream.rangeClosed(1, 30).forEach(z -> {
+//                    MaterialInventory materialInventory = MaterialInventory.builder()
+//                            .materialIncomingQuantity(z)
+//                            .materialOutgoingQuantity(z)
+//                            .materialStock(order.getOrderQuantity())
+//                            .materialSupplyPrice(materials.getMaterialSupplyPrice())
+//                            .materialTotalInventoryPayments(z * 100000L)
+//                            .materials(Materials.builder().materialNo(materials.getMaterialNo()).build())
+//                            .order(Order.builder().orderNo(order.getOrderNo()).build())
+//                            .materialCode(materials.getMaterialCode())
+//                            .materialName(materials.getMaterialName())
+//                            .materialType(materials.getMaterialType())
+//                            .build();
+//
+//                    materialInventoryRepository.save(materialInventory);
+//
+//                });
+//
+//            }
+//        }
+//
+//
+//
+//    }
+
+
+
 
 }
