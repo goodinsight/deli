@@ -515,7 +515,17 @@
 
         let str = 'ORDER-'
 
-        
+        str += new Date().toISOString().split('T')[0].replaceAll('-','')
+        str += '-'
+
+        getCodeCount(str).then( result => {
+
+            str += result.data
+
+            orderCode.value = str
+
+        }).catch(e => alert('error'))
+
 
     }, false)
 

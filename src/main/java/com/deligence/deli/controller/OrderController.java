@@ -113,6 +113,17 @@ public class OrderController {
 
     }
 
+    @ResponseBody
+    @GetMapping("/register/getCodeCount/{orderCode}")
+    public int getCodeCount(@PathVariable("orderCode") String orderCode){
+
+        log.info("getCodeCount : " + orderCode);
+
+        int num = orderService.getCodeCount(orderCode);
+
+        return num;
+
+    }
 
 
 

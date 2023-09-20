@@ -103,4 +103,13 @@ public class OrderServiceImpl implements OrderService{
                 .total((int)result.getTotalElements())
                 .build();
     }
+
+    @Override
+    public int getCodeCount(String orderCode) {
+
+        String[] types = {"c"};
+
+
+        return 0;
+    }
 }

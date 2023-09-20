@@ -28,3 +28,10 @@ async function getContract(contractNo) {
     //return response.data
     return null;
 }
+
+async function getCodeCount(orderCode){
+
+    const result = await axios.get(`/order/register/getCodeCount/${orderCode}`)
+
+    return result
+}

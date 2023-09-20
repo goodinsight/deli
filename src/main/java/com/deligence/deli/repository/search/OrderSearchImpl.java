@@ -68,4 +68,17 @@ public class OrderSearchImpl extends QuerydslRepositorySupport implements OrderS
 
         return new PageImpl<>(list, pageable, count);
     }
+
+    @Override
+    public int getCodeCount(String code) {
+
+        QOrder order = QOrder.order;
+
+        JPQLQuery<Order> query = new JPAQueryFactory(em)
+                .selectFrom(order)
+                .where(order.orderCode.contains(code));
+
+        return (int) query.fetchCount();
+
+    }
 }

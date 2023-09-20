@@ -16,4 +16,6 @@ public interface OrderService {
 
     PageResponseDTO<OrderDTO> list(PageRequestDTO pageRequestDTO);
 
+    int getCodeCount(String orderCode);
+
 }

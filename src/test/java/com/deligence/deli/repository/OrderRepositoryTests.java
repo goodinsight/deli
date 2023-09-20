@@ -154,5 +154,16 @@ public class OrderRepositoryTests {
 
     }
 
+    @Test
+    public void testCodeCount() {
+
+        String code = "tmp";
+
+        int result = orderRepository.getCodeCount(code);
+
+        log.info("num : " + result);
+
+    }
+
 
 }

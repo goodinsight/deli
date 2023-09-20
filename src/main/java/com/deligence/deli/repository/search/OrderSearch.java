@@ -8,5 +8,7 @@ public interface OrderSearch {
 
     Page<Order> search(String[] types, String keyword, Pageable pageable);
 
+    int getCodeCount(String orderCode);
+
 
 }
