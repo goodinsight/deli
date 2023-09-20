@@ -42,7 +42,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void modify(EmployeeJoinDTO employeeJoinDTO) {
-        Optional<Employee> result = employeeRepository.findById(employeeJoinDTO.getEmployeeId());
+        Optional<Employee> result = employeeRepository.findByEmployeeId(employeeJoinDTO.getEmployeeId());
 
         Employee employee = result.orElseThrow();
 
@@ -105,7 +105,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public EmployeeJoinDTO findEmployee(String employeeId) {
-        Optional<Employee> result = employeeRepository.findById(employeeId);
+        Optional<Employee> result = employeeRepository.findByEmployeeId(employeeId);
 
         Employee employee = result.orElseThrow();
 

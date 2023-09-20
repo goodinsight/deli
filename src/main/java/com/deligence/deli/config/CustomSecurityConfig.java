@@ -64,7 +64,18 @@ public class CustomSecurityConfig {
         log.info("-------------configure--------------");
 
         //커스텀 로그인 페이지
-        http.formLogin().loginPage("/employee/login");
+        //http.formLogin().loginPage("/employee/login");
+        http.authorizeHttpRequests()
+                .antMatchers("/", "/employee/login").permitAll()    // 비로그인시에도 접근
+                .antMatchers("/employee/**").hasRole("ADMIN")    //   /employee/** url은 ROLE_ADMIN 롤을 가진 사람만 접근
+                .antMatchers( "/**").hasRole("USER")    //  ROLE_USER 롤을 가진 사람은 /** 로만 접근
+                .anyRequest().authenticated()
+                .and()
+                .formLogin().loginPage("/employee/login").defaultSuccessUrl("/board/list")
+                .usernameParameter("username").passwordParameter("password")
+                .and()
+                .logout().invalidateHttpSession(true).deleteCookies("JSESSIONID");
+
         //CSRF 토큰 비활성화
         http.csrf().disable();
 
@@ -73,7 +84,7 @@ public class CustomSecurityConfig {
                 .tokenRepository(persistentTokenRepository())
                 .userDetailsService(userDetailsService)
                 .tokenValiditySeconds(60*60*24*30);
-        
+
         http.exceptionHandling().accessDeniedHandler(accessDeniedHandler());    //403 처리
 
         return http.build();

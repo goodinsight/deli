@@ -18,31 +18,31 @@
                     <form th:action="@{/employee/modify}" method="post" id="f1">
                         <div class="input-group mb-3">
                             <span class="input-group-text">EmployeeNo</span>
-                            <input type="text" class="form-control" th:value="${dto.employeeNo}" readonly>
+                            <input type="text" class="form-control" name="employeeNo" th:value="${dto.employeeNo}" readonly>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">EmployeeID</span>
-                            <input type="text" class="form-control" th:value="${dto.employeeId}" readonly>
+                            <input type="text" class="form-control" name="employeeId" th:value="${dto.employeeId}" readonly>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">EmployeeName</span>
-                            <input type="text" class="form-control" th:value="${dto.employeeName}" >
+                            <input type="text" class="form-control" name="employeeName" th:value="${dto.employeeName}" >
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">EmployeePhone</span>
-                            <input type="text" class="form-control" th:value="${dto.employeePhone}" >
+                            <input type="text" class="form-control" name="employeePhone" th:value="${dto.employeePhone}" >
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">EmployeeEmail</span>
-                            <input type="text" class="form-control" th:value="${dto.employeeEmail}" >
+                            <input type="text" class="form-control" name="employeeEmail" th:value="${dto.employeeEmail}" >
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">EmployeeEntranceDate</span>
-                            <input type="text" class="form-control" th:value="${dto.employeeEntranceDate}" readonly>
+                            <input type="text" class="form-control" name="employeeEntranceDate" th:value="${dto.employeeEntranceDate}" readonly>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">EmployeePosition</span>
-                            <input type="text" class="form-control" th:value="${dto.position.getPositionName()}" readonly>
+                            <input type="text" class="form-control" name="position" th:value="${dto.position.getPositionName()}" readonly>
                         </div>
                         <div class="my-4">
                             <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}">

@@ -22,6 +22,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, String>, Emp
     Boolean existsByEmployeeId(String employeeId);
 
     Optional<Employee> findByEmployeeNo(int employeeNo);    //employeeNo로 직원 조회
+    Optional<Employee> findByEmployeeId(String employeeId);    //employeeId로 직원 조회
 
     Optional<Employee> findByEmployeeEmail(String employeeEmail);   //이메일로 직원들 조회
 
