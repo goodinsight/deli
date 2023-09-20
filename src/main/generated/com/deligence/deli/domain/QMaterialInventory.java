@@ -24,9 +24,13 @@ public class QMaterialInventory extends EntityPathBase<MaterialInventory> {
 
     public final QDocumentFile documentFile;
 
+    public final StringPath materialCode = createString("materialCode");
+
     public final NumberPath<Integer> materialIncomingQuantity = createNumber("materialIncomingQuantity", Integer.class);
 
     public final NumberPath<Integer> materialInventoryNo = createNumber("materialInventoryNo", Integer.class);
+
+    public final StringPath materialName = createString("materialName");
 
     public final NumberPath<Integer> materialOutgoingQuantity = createNumber("materialOutgoingQuantity", Integer.class);
 
@@ -37,6 +41,8 @@ public class QMaterialInventory extends EntityPathBase<MaterialInventory> {
     public final NumberPath<Long> materialSupplyPrice = createNumber("materialSupplyPrice", Long.class);
 
     public final NumberPath<Long> materialTotalInventoryPayments = createNumber("materialTotalInventoryPayments", Long.class);
+
+    public final StringPath materialType = createString("materialType");
 
     public final QOrder order;
 

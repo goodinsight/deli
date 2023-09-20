@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/layout/basic.html}">
+      layout:decorate="~{/layout/layout.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
 
 <div layout:fragment="content">
 
@@ -14,48 +18,53 @@
                 </div>
                 <div class="card-body">
 
-                    <form action="/materialInventory/materialStockInDetail" method="post">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">자재 재고 일련번호</span>
+                            <input type="text" th:value="${dto.materialInventoryNo}" class="form-control" placeholder="materialInventoryNo" readonly>
+                        </div>
 
                         <div class="input-group mb-3">
                             <span class="input-group-text">자제 코드</span>
-                            <input type="text" name="material_code" class="form-control" placeholder="material_code">
+                            <input type="text" th:value="${dto.materialCode}" class="form-control" placeholder="materialCode" readonly>
                         </div>
 
                         <div class="input-group mb-3">
                             <span class="input-group-text">카테고리</span>
-                            <input type="text" name="material_type" class="form-control" placeholder="material_type">
+                            <input type="text" th:value="${dto.materialType}" class="form-control" placeholder="materialType" readonly>
                         </div>
 
                         <div class="input-group mb-3">
-                            <span class="input-group-text">자재 이름</span>
-                            <input type="text" name="material_name" class="form-control" placeholder="material_name">
+                            <span class="input-group-text">자재명</span>
+                            <input type="text" th:value="${dto.materialName}" class="form-control" placeholder="materialName" readonly>
                         </div>
 
                         <div class="input-group mb-3">
                             <span class="input-group-text">공급 단가</span>
-                            <input type="text" name="material_supply_price" class="form-control" placeholder="material_supply_price">
+                            <input type="text" th:value="${dto.materialSupplyPrice}" class="form-control" placeholder="materialSupplyPrice" readonly>
                         </div>
 
                         <div class="input-group mb-3">
                             <span class="input-group-text">입고 수량</span>
-                            <input type="text" name="material_incoming_quantity" class="form-control" placeholder="material_incoming_quantity">
+                            <input type="text" th:value="${dto.order.orderQuantity}" class="form-control" placeholder="materialIncomingQuantity" readonly>
                         </div>
 
                         <div class="input-group mb-3">
                             <span class="input-group-text">담당자</span>
-                            <input type="text" name="employee_name" class="form-control" placeholder="employee_name">
+                            <input type="text" th:value="${dto.order.employeeName}" class="form-control" placeholder="employeeName" readonly>
                         </div>
 
-                        <div class="float-end">
-                            <button type="button" class="btn btn-danger">반품 진행</button>
-                            <button type="button" class="btn btn-dark">반품 취소</button>
-                            <button type="button" class="btn btn-light">반품 완료</button>
-                            <button type="button" class="btn btn-info">자재 입고 완료</button>
-                            <button type="button" class="btn btn-primary" onclick="toggleBtn1()">검수 진행</button>
-                            <button type="button" class="btn btn-secondary">돌아가기</button>
-                        </div>
+                        <div class="my-4">
 
-                    </form>
+                            <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}">
+
+                                <button type="button" class="btn btn-secondary">검수 진행</button>
+
+                                <a th:href="|@{/materialInventory/materialStockList}?${link}|" class="text-decoration-none">
+                                    <button type="button" class="btn btn-primary">돌아가기</button>
+                                </a>
+
+                            </div>
+                        </div>
 
                 </div>
 
@@ -65,32 +74,51 @@
 
     </div>
 
+    <div class="modal returnModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- 모달 이름 -->
+                    <h5 class="modal-title">입고</h5>
+                    <!-- data-dismiss="modal"를 통해 모달을 닫을수 있다. -->
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                </div><!-- end modal-header -->
+                <div class="modal-body">
+                    <!-- 모달 내용 -->
+                    <p>test</p>
+
+                </div> <!-- end modal-body -->
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-danger">반품 진행</button>
+                    <button type="button" class="btn btn-dark">반품 취소</button>
+                    <button type="button" class="btn btn-light">반품 완료</button>
+                    <button type="button" class="btn btn-info">자재 입고 완료</button>
+
+                </div>
+            </div> <!-- end modal-content -->
+        </div>
+    </div><!-- register modal -->
 
 </div>
 
 <script layout:fragment="script" th:inline="javascript">
-
-    function toggleBtn1() {
-
-
-
-    }
 
     document.querySelector(".btn-secondary").addEventListener("click", function(e) {
 
         e.preventDefault()
         e.stopPropagation()
 
-        self.location = `/materialInventory/materialStockList`
+        const modal = new bootstrap.Modal(document.querySelector(".modal"))
+
+        modal.show()
 
     }, false)
 
 </script>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+
 <body>
 
 

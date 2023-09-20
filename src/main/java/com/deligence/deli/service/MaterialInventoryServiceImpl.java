@@ -1,6 +1,7 @@
 package com.deligence.deli.service;
 
 import com.deligence.deli.domain.MaterialInventory;
+import com.deligence.deli.domain.Materials;
 import com.deligence.deli.dto.MaterialInventoryDTO;
 import com.deligence.deli.dto.PageRequestDTO;
 import com.deligence.deli.dto.PageResponseDTO;
@@ -26,6 +27,17 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
     private final ModelMapper modelMapper;
 
     private final MaterialInventoryRepository materialInventoryRepository;
+
+    @Override
+    public int materialStockRegister(MaterialInventoryDTO materialInventoryDTO) {
+
+        MaterialInventory materialInventory = modelMapper.map(materialInventoryDTO, MaterialInventory.class);
+
+        int materialInventoryNo = materialInventoryRepository.save(materialInventory).getMaterialInventoryNo();
+
+        return materialInventoryNo;
+
+    }
 
     @Override
     public MaterialInventoryDTO materialStockListOne(int materialInventoryNo) {
