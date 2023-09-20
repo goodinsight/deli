@@ -1,7 +1,5 @@
 package com.deligence.deli.dto;
 
-
-import com.deligence.deli.domain.Employee;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +12,7 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class OrderDTO {
+public class OrderDetailDTO {
 
     private int orderNo;//발주 일련번호
 
@@ -34,12 +32,28 @@ public class OrderDTO {
 
     private int materialProcurementPlanNo;//조달계획 일련번호 : FK
 
+    private String materialCode;//자재 코드
+
+    private String materialName;//자재 명
+
+    private int materialRequirementsCount;//소요량
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate procurementDeliveryDate;//계획 납기일
+
     private int materialProcurementContractNo;//조달계약 일련번호 : FK
 
-    private int employeeNo;// 사원 일련번호
+    private String materialProcurementContractCode;//계약 코드
 
-    private String materialName; //자재 이름
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate materialProcurementContractDate;//계약일
 
-    private String employeeName; //사원명
+    private Long materialSupplyPrice;//자재공급단가
+
+    private String supplierName;//자재협력회사명
+
+    private int employeeNo;//담당자 사원 일련번호
+
+    private String employeeName; //담당자명
 
 }

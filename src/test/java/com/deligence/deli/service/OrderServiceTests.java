@@ -1,6 +1,7 @@
 package com.deligence.deli.service;
 
 import com.deligence.deli.dto.OrderDTO;
+import com.deligence.deli.dto.OrderDetailDTO;
 import com.deligence.deli.dto.PageRequestDTO;
 import com.deligence.deli.dto.PageResponseDTO;
 import lombok.extern.log4j.Log4j2;
@@ -43,9 +44,9 @@ public class OrderServiceTests {
 
         int orderNo = 23;
 
-        OrderDTO orderDTO = orderService.read(orderNo);
+        OrderDetailDTO orderDetailDTO = orderService.read(orderNo);
 
-        log.info(orderDTO);
+        log.info(orderDetailDTO);
 
     }
 
@@ -83,6 +84,14 @@ public class OrderServiceTests {
 
         log.info(responseDTO);
 
+    }
+
+    @Test
+    public void testCC() {
+
+        int num = orderService.getCodeCount("ORDER-20230920-");
+
+        log.info( "cc :" + num);
     }
 
 

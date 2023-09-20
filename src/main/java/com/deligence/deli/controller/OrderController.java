@@ -1,13 +1,11 @@
 package com.deligence.deli.controller;
 
-import com.deligence.deli.dto.MaterialProcurementPlanningDTO;
-import com.deligence.deli.dto.OrderDTO;
-import com.deligence.deli.dto.PageRequestDTO;
-import com.deligence.deli.dto.PageResponseDTO;
+import com.deligence.deli.dto.*;
 import com.deligence.deli.service.MaterialProcurementPlanningService;
 import com.deligence.deli.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -38,7 +36,11 @@ public class OrderController {
     }
 
     @GetMapping("/register")
-    public void registerGET(){
+    public void registerGET(@AuthenticationPrincipal EmployeeSecurityDTO employeeSecurityDTO, Model model){
+
+        log.info(employeeSecurityDTO);
+
+        model.addAttribute("user", employeeSecurityDTO);
 
     }
 
@@ -74,16 +76,37 @@ public class OrderController {
 
         log.info("search : orderNo = " + orderNo);
 
-        OrderDTO orderDTO = orderService.read(orderNo);
+        OrderDetailDTO orderDetailDTO = orderService.read(orderNo);
 
-        log.info(orderDTO);
+        log.info(orderDetailDTO);
 
-        model.addAttribute("dto", orderDTO);
+        model.addAttribute("dto", orderDetailDTO);
 
         model.addAttribute("pageRequestDTO", pageRequestDTO);
 
     }
 
+
+    @PostMapping("/modify")
+    public String modify(PageRequestDTO pageRequestDTO,
+                         @Valid OrderDTO orderDTO,
+                         BindingResult bindingResult,
+                         RedirectAttributes redirectAttributes){
+
+        log.info("order modify : " + orderDTO);
+
+        //에러 처리----
+
+        //-----------
+
+        orderService.modify(orderDTO);
+
+        redirectAttributes.addFlashAttribute("result", "modified");
+
+        redirectAttributes.addAttribute("orderNo", orderDTO.getOrderNo());
+
+        return "redirect:/order/read";
+    }
 
 
     //-------------------------------------------------------
@@ -105,7 +128,7 @@ public class OrderController {
 
         log.info("getPlanDTO : " + planNo);
 
-        MaterialProcurementPlanningDTO materialProcurementPlanningDTO = materialProcurementPlanningService.readOne(planNo);
+        MaterialProcurementPlanningDTO materialProcurementPlanningDTO = materialProcurementPlanningService.read(planNo);
 
         log.info(materialProcurementPlanningDTO);
 
@@ -113,6 +136,19 @@ public class OrderController {
 
     }
 
+    @ResponseBody
+    @GetMapping("/register/getCodeCount/{orderCode}")
+    public int getCodeCount(@PathVariable("orderCode") String orderCode){
+
+        log.info("getCodeCount : " + orderCode);
+
+        int num = orderService.getCodeCount(orderCode);
+
+        log.info("num : " + num);
+
+        return num;
+
+    }
 
 
 

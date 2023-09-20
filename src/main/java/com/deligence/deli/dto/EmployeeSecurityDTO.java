@@ -16,6 +16,8 @@ import java.util.List;
 @ToString
 public class EmployeeSecurityDTO extends User {
 
+    private int employeeNo;
+
     private String employeeId;
     private String employeePw;
 
@@ -28,10 +30,11 @@ public class EmployeeSecurityDTO extends User {
     private boolean del;
     private boolean social;
 
-    public EmployeeSecurityDTO(String username, String password, String employeeEmail, String employeeName, String employeePhone, LocalDate employeeEntranceDate, boolean del, boolean social,
+    public EmployeeSecurityDTO(int employeeNo, String username, String password, String employeeEmail, String employeeName, String employeePhone, LocalDate employeeEntranceDate, boolean del, boolean social,
                                Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
 
+        this.employeeNo = employeeNo;
         this.employeeId = username;
         this.employeePw = password;
         this.employeeEmail = employeeEmail;

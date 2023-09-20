@@ -43,6 +43,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         Employee employee = result.get();
 
         EmployeeSecurityDTO employeeSecurityDTO = new EmployeeSecurityDTO(
+                employee.getEmployeeNo(),
                 employee.getEmployeeId(),
                 employee.getEmployeePw(),
                 employee.getEmployeeEmail(),
