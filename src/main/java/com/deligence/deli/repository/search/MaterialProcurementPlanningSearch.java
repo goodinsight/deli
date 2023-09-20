@@ -10,4 +10,6 @@ public interface MaterialProcurementPlanningSearch {
     Page<MaterialProcurementPlanning> search1(Pageable pageable);
 
     Page<MaterialProcurementPlanning> searchAll(String[] types, String keyword, Pageable pageable);
+
+
 }

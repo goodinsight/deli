@@ -2,10 +2,9 @@ package com.deligence.deli.controller;
 
 //생산계획 컨트롤러
 
+import com.deligence.deli.domain.Materials;
 import com.deligence.deli.domain.ProductionPlanning;
-import com.deligence.deli.dto.MaterialProcurementPlanningDTO;
-import com.deligence.deli.dto.PageRequestDTO;
-import com.deligence.deli.dto.PageResponseDTO;
+import com.deligence.deli.dto.*;
 import com.deligence.deli.service.MaterialProcurementPlanningService;
 import com.deligence.deli.service.MaterialsService;
 import lombok.Getter;
@@ -16,10 +15,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -105,10 +101,58 @@ public class MaterialProcurementPlanningController {
 
     //----------------------------------------------------------------------------------------
 
-    //230920 작업중
+    //productionPlanningService 구현 한 후에 주석 풀기.
+
 //    @ResponseBody
 //    @GetMapping("/register/selectProductionPlan")
-//    public PageResponseDTO<ProductionPlanningDTO>
+//    public PageResponseDTO<ProductionPlanningDTO> getProductionPlanList(PageRequestDTO pageRequestDTO) {
+//
+//        log.info("getProductionPlanList");
+//
+//        PageResponseDTO<ProductionPlanning> responseDTO = productionPlanningService.list(pageRequestDTO);
+//
+//        return responseDTO;
+//
+//    }
+
+//    @ResponseBody
+//    @GetMapping("/register/getProductionPlan/{productionPlanNo}")
+//    public ProductionPlanningDTO getProductionPlanDTO(@PathVariable("productionPlanNo") int productionPlanNo) {
+//
+//        log.info("getProductionPlanDTO : " + productionPlanNo);
+//
+//        ProductionPlanningDTO productionPlanningDTO = productionPlanningService.read(productionPlanNo);
+//
+//        log.info(productionPlanningDTO);
+//
+//        return productionPlanningDTO;
+//    }
+
+    @ResponseBody
+    @GetMapping("/register/selectMaterialPlan")
+    public PageResponseDTO<MaterialsDTO> getMaterialPlanList(PageRequestDTO pageRequestDTO) {
+
+        log.info("getMaterialPlanList");
+
+        PageResponseDTO<MaterialsDTO> responseDTO = materialsService.list(pageRequestDTO);
+
+        return responseDTO;
+
+    }
+
+    //materialNo -> html에서 materialCode -> materialNo 수정 필요
+    @ResponseBody
+    @GetMapping("/register/getMaterialPlan/{materialNo}")
+    public MaterialsDTO getMaterialsDTO(@PathVariable("materialNo") int materialNo) {
+
+        log.info("getMaterialsDTO : " + materialNo);
+
+        MaterialsDTO materialsDTO = materialsService.readOne(materialNo);
+
+        log.info(materialNo);
+
+        return materialsDTO;
+    }
 
     //수정POST
     @PostMapping("/modify")

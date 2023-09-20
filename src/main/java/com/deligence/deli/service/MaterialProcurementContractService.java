@@ -16,4 +16,5 @@ public interface MaterialProcurementContractService {
 
     PageResponseDTO<MaterialProcurementContractDTO> list(PageRequestDTO pageRequestDTO);
 
+    int getCodeCount(String orderCode);
 }

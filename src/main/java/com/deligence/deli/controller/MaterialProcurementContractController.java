@@ -13,7 +13,9 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 //자재조달계약 Controller
 @Controller
@@ -42,6 +44,20 @@ public class MaterialProcurementContractController {
         log.info(responseDTO);
 
         model.addAttribute("responseDTO", responseDTO);
+
+    }
+
+    @ResponseBody
+    @GetMapping("/register/getCodeCount/{materialProcurementContractCode}")
+    public int getCodeCount(@PathVariable("materialProcurementContractCode") String materialProcurementContractCode){
+
+        log.info("getCodeCount : " + materialProcurementContractCode);
+
+        int num = materialProcurementContractService.getCodeCount(materialProcurementContractCode);
+
+        log.info("num : " + num);
+
+        return num;
 
     }
 }

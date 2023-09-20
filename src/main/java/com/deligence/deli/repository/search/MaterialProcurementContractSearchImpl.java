@@ -1,14 +1,19 @@
 package com.deligence.deli.repository.search;
 
 import com.deligence.deli.domain.MaterialProcurementContract;
+import com.deligence.deli.domain.Order;
 import com.deligence.deli.domain.QMaterialProcurementContract;
+import com.deligence.deli.domain.QOrder;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.JPQLQuery;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySupport
@@ -17,6 +22,9 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
     public MaterialProcurementContractSearchImpl() {
         super(MaterialProcurementContract.class);
     }
+
+    @PersistenceContext
+    EntityManager em;
 
     @Override
     public Page<MaterialProcurementContract> search1(Pageable pageable) {
@@ -48,6 +56,8 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
                 QMaterialProcurementContract.materialProcurementContract;
 
         JPQLQuery<MaterialProcurementContract> query = from(materialProcurementContract);
+
+
 
         if ((types != null && types.length > 0) && keyword != null) {   //검색조건과 키워드가 있다면
 
@@ -101,5 +111,19 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
         long count = query.fetchCount();
 
         return new PageImpl<>(list, pageable, count);
+    }
+
+    @Override
+    public int getCodeCount(String code) {
+
+        QMaterialProcurementContract materialProcurementContract =
+                QMaterialProcurementContract.materialProcurementContract;
+
+        JPQLQuery<MaterialProcurementContract> query = new JPAQueryFactory(em)
+                .selectFrom(materialProcurementContract)
+                .where(materialProcurementContract.materialProcurementContractCode.contains(code));
+
+        return (int) query.fetchCount();
+
     }
 }

@@ -109,4 +109,12 @@ public class MaterialProcurementContractServiceImpl implements MaterialProcureme
                 .total((int)result.getTotalElements())
                 .build();
     }
+
+    @Override
+    public int getCodeCount(String code) {
+
+        int num = materialProcurementContractRepository.getCodeCount(code);
+
+        return num;
+    }
 }

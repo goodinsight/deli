@@ -9,4 +9,6 @@ public interface MaterialProcurementContractSearch {
     Page<MaterialProcurementContract> search1(Pageable pageable);
 
     Page<MaterialProcurementContract> searchAll(String[] types, String keyword, Pageable pageable);
+
+    int getCodeCount(String materialProcurementContractCode);
 }
