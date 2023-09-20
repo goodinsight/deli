@@ -78,7 +78,7 @@ public class MaterialProcurementPlanningController {
                      Model model) {
 
         MaterialProcurementPlanningDTO materialProcurementPlanningDTO =
-                materialProcurementPlanningService.readOne(materialProcurementPlanNo);
+                materialProcurementPlanningService.read(materialProcurementPlanNo);
 
         log.info(materialProcurementPlanningDTO);
         log.info(pageRequestDTO);
@@ -86,7 +86,7 @@ public class MaterialProcurementPlanningController {
         model.addAttribute("dto", materialProcurementPlanningDTO);
 
     }
-
+/*
     //수정POST
     @PostMapping("/modify")
     public String modify( PageRequestDTO pageRequestDTO,
@@ -116,7 +116,7 @@ public class MaterialProcurementPlanningController {
 
         return "redirect:/materialProcurementPlanning/read";
     }
-
+*/
     //삭제
     @PostMapping("/remove")
     public String remove(int materialProcurementPlanNo, RedirectAttributes redirectAttributes) {

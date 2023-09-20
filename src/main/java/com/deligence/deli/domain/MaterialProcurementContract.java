@@ -47,6 +47,7 @@ public class MaterialProcurementContract extends BaseEntity {
     private String supplierName;   //자재협력회사명 (검색용)
 
     private String supplierStatus; //계약상태 (검색용)
+    //검색에 자재조달 계약상태가 필요하면 해당 컬럼은 불필요.
 
     @ManyToOne(fetch = FetchType.LAZY)
     private DocumentFile documentFile;   //문서파일일련번호 (document_file_no)

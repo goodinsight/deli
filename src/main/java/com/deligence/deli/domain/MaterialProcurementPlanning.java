@@ -1,5 +1,6 @@
 package com.deligence.deli.domain;
 
+import com.deligence.deli.dto.MaterialProcurementPlanningDTO;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ public class MaterialProcurementPlanning extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private int materialProcurementPlanNo;   //조달계획일련번호
 
     private LocalDate procurementDeliveryDate;    //납기일
@@ -38,15 +40,17 @@ public class MaterialProcurementPlanning extends BaseEntity {
     private String materialName;   //자재이름 (검색용)
 
 
-    //수정가능한 속성 지정 (어떤부분이 수정 가능할 지 몰라서 일단 자재코드,납기일,자재소요랑,자재조달상태만 지정함)
-    public void change(Materials materials, String materialCode, LocalDate procurementDeliveryDate, int materialRequirementsCount,
-                       String materialProcurementState) {
+    //수정가능한 속성 지정 (일단 납기일,자재소요랑,자재조달상태 지정)
+    public void change(MaterialProcurementPlanningDTO materialProcurementPlanningDTO) {
 
-        this.materials = materials;
-        this.materialCode = materialCode;
-        this.procurementDeliveryDate = procurementDeliveryDate;
-        this.materialRequirementsCount = materialRequirementsCount;
-        this.materialProcurementState = materialProcurementState;
+        this.procurementDeliveryDate = procurementDeliveryDate;         //납기일
+        this.materialRequirementsCount = materialRequirementsCount;     //자재소요량
+        this.materialProcurementState = materialProcurementState;       //자재조달상태
+
+        //생산계획일련번호
+        //자재코드
+        //카테고리, 자재이름
+        //담당자
 
     }
 

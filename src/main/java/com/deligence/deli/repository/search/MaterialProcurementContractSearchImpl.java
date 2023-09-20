@@ -5,6 +5,7 @@ import com.deligence.deli.domain.QMaterialProcurementContract;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.JPQLQuery;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
@@ -54,16 +55,51 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
 
             for (String type : types) {
 
-                switch (type) { //no: No, mc:자재코드, mn:자재이름, sp:공급단가, sn:납품업체명, cs:계약상태
-                    case "no":
+                switch (type) { //a: No, b:자재코드, c:자재이름, d:공급단가, e:납품업체명, f:자재조달계약상태
+                    case "a":
                         booleanBuilder.or(materialProcurementContract
-                                .materialProcurementContractNo.stringValue().contains(keyword));
+                                .materialProcurementContractNo.stringValue().contains(keyword));    //조달계약일련번호
                         break;
 
+                    case "b":
+                        booleanBuilder.or(materialProcurementContract
+                                .materialCode.contains(keyword));   //자재코드
+                        break;
 
+                    case "c":
+                        booleanBuilder.or(materialProcurementContract
+                                .materialName.contains(keyword));   //자재이름
+                        break;
+
+                    case "d":
+                        booleanBuilder.or(materialProcurementContract
+                                .materialSupplyPrice.stringValue().contains(keyword));  //공급단가
+                        break;
+
+                    case "e":
+                        booleanBuilder.or(materialProcurementContract
+                                .supplierName.contains(keyword));   //자재협력회사명
+                        break;
+
+                    case "f":
+                        booleanBuilder.or(materialProcurementContract
+                                .materialProcurementContractState.contains(keyword));   //자재조달계약상태
+                        break;
                 }
-            }
-        }
-        return null;
+            }//end for
+            query.where(booleanBuilder);
+        }//end if
+
+        //materialProcurementContractNo > 0
+        query.where(materialProcurementContract.materialProcurementContractNo.gt(0));
+
+        //paging
+        this.getQuerydsl().applyPagination(pageable, query);
+
+        List<MaterialProcurementContract> list = query.fetch();
+
+        long count = query.fetchCount();
+
+        return new PageImpl<>(list, pageable, count);
     }
 }

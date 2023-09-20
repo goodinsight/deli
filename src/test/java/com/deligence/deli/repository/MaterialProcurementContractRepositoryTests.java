@@ -34,7 +34,7 @@ public class MaterialProcurementContractRepositoryTests {
         int materialNo = 1;
         int supplierNo = 1;
 
-        IntStream.rangeClosed(1,100).forEach(i -> {
+        IntStream.rangeClosed(5,100).forEach(i -> {
 
             Employee employee = Employee.builder().employeeNo(1).build();
             Materials materials = Materials.builder().materialNo(1).build();
@@ -79,7 +79,7 @@ public class MaterialProcurementContractRepositoryTests {
     @Test
     public void testUpdate() {
 
-        int materialProcurementContractNo = 1;
+        int materialProcurementContractNo = 100;
 
         Optional<MaterialProcurementContract> result =
                 materialProcurementContractRepository.findById(materialProcurementContractNo);
@@ -117,7 +117,8 @@ public class MaterialProcurementContractRepositoryTests {
     @Test
     public void testPaging() {
 
-        Pageable pageable = PageRequest.of(0,10, Sort.by("materialProcurementContractNo").descending());
+        Pageable pageable = PageRequest.of(0,10,
+                Sort.by("materialProcurementContractNo").descending());
 
         log.info(pageable);
 
@@ -146,4 +147,36 @@ public class MaterialProcurementContractRepositoryTests {
         materialProcurementContractRepository.search1(pageable);
 
     }
+
+    //searchAll test
+    @Test
+    public void testSearchAll() {
+
+        String[] types = {"a", "b", "c", "d", "e", "f"};
+        //a: No, b:자재코드, c:자재이름, d:공급단가, e:납품업체명, f:자재조달계약상태
+
+        String keyword = "1";
+
+        Pageable pageable = PageRequest.of(0,10,
+                Sort.by("materialProcurementContractNo").descending());
+
+        Page<MaterialProcurementContract> result =
+                materialProcurementContractRepository.searchAll(types, keyword, pageable);
+
+        //total pages
+        log.info(result.getTotalPages());
+
+        //page size
+        log.info(result.getSize());
+
+        //page Number
+        log.info(result.getNumber());
+
+        //prev next
+        log.info(result.hasPrevious() + ": " + result.hasNext());
+
+        result.getContent().forEach(materialProcurementContract ->
+                log.info(materialProcurementContract));
+    }
+
 }

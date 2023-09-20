@@ -18,11 +18,12 @@
                         <select class="form-select" name="type">
                             <option value="">---</option>
                             <!--m:자재코드 n:자재이름 d:납기일 c:소요량 s:조달상태-->
-                            <option value="m" th:selected="${pageRequestDTO.type == 'm'}">자재코드</option>
-                            <option value="n" th:selected="${pageRequestDTO.type == 'n'}">자재이름</option>
+                            <option value="a" th:selected="${pageRequestDTO.type == 'a'}">조달계획일련번호</option>
+                            <option value="b" th:selected="${pageRequestDTO.type == 'b'}">자재코드</option>
+                            <option value="c" th:selected="${pageRequestDTO.type == 'c'}">자재이름</option>
                             <option value="d" th:selected="${pageRequestDTO.type == 'd'}">납기일</option>
-                            <option value="c" th:selected="${pageRequestDTO.type == 'c'}">소요량</option>
-                            <option value="s" th:selected="${pageRequestDTO.type == 's'}">조달상태</option>
+                            <option value="e" th:selected="${pageRequestDTO.type == 'e'}">소요량</option>
+                            <option value="f" th:selected="${pageRequestDTO.type == 'f'}">조달상태</option>
                         </select>
                     </div>
                     <input type="text" class="form-control input-focus" name="keyword" th:value="${pageRequestDTO.keyword}" placeholder="INPUT KEYWORD">

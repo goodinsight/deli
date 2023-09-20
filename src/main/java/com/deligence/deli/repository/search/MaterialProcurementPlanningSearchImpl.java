@@ -58,13 +58,19 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
 
             for (String type : types) {
 
+                //키워드 a:조달계획일련번호 b:자재코드 c:자재이름 d:납기일 e:자재소요량 f:조달계약상태
                 switch (type) {
-                    case "m":
+
+                    case "a":
+                        booleanBuilder.or(materialProcurementPlanning
+                                .materialProcurementPlanNo.stringValue().contains(keyword));    //조달계획일련번호
+
+                    case "b":
                         booleanBuilder.or(materialProcurementPlanning
                                 .materialCode.contains(keyword));  //자재코드
                         break;
 
-                    case "n":
+                    case "c":
                         booleanBuilder.or(materialProcurementPlanning
                                 .materialName.contains(keyword));  //자재이름
 
@@ -73,12 +79,12 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
                                 .procurementDeliveryDate.stringValue().contains(keyword));    //납기일 검색
                         break;
 
-                    case "c":
+                    case "e":
                         booleanBuilder.or(materialProcurementPlanning
                                 .materialRequirementsCount.stringValue().contains(keyword));  //자재소요량 검색
                         break;
 
-                    case "s":
+                    case "f":
                         booleanBuilder.or(materialProcurementPlanning
                                 .materialProcurementState.contains(keyword)); //자재조달상태 검색
                         break;
@@ -90,7 +96,7 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
         //material_procurement_plan_no > 0
         query.where(materialProcurementPlanning.materialProcurementPlanNo.gt(0));
 
-        //paging -> 오류 (정렬삭제 후 페이징 처리 가능)
+        //paging
         this.getQuerydsl().applyPagination(pageable, query);
 
         List<MaterialProcurementPlanning> list = query.fetch();
