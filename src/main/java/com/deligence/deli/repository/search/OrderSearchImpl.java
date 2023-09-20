@@ -43,6 +43,11 @@ public class OrderSearchImpl extends QuerydslRepositorySupport implements OrderS
                     case "c":
                         booleanBuilder.or(order.orderCode.contains(keyword));
                         break;
+                    case "m":
+                        booleanBuilder.or(order.materialName.contains(keyword));
+                        break;
+                    case "w":
+                        booleanBuilder.or(order.employeeName.contains(keyword));
                     //추후 검색조건 설정에 따라 추가할 부분
 
                     //-----------------------------
