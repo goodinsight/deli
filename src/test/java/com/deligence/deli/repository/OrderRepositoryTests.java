@@ -2,6 +2,8 @@ package com.deligence.deli.repository;
 
 
 import com.deligence.deli.domain.Employee;
+import com.deligence.deli.domain.MaterialProcurementContract;
+import com.deligence.deli.domain.MaterialProcurementPlanning;
 import com.deligence.deli.domain.Order;
 import com.deligence.deli.dto.OrderDTO;
 import lombok.extern.log4j.Log4j2;
@@ -33,7 +35,9 @@ public class OrderRepositoryTests {
 
         IntStream.rangeClosed(1, 10).forEach(i -> {
 
-            Employee employee = Employee.builder().employeeNo(1).build();
+            Employee employee = Employee.builder().employeeNo(3).build();
+            MaterialProcurementPlanning materialProcurementPlanning = MaterialProcurementPlanning.builder().materialProcurementPlanNo(110).build();
+            MaterialProcurementContract materialProcurementContract = MaterialProcurementContract.builder().materialProcurementContractNo(3).build();
 
             Order order = Order.builder()
                     .orderCode("tmpCode..." + i)
@@ -42,6 +46,8 @@ public class OrderRepositoryTests {
                     .orderDate(LocalDate.now())
                     .orderState("READY")
                     .orderEtc("etc"+i)
+                    .materialProcurementContract(materialProcurementContract)
+                    .materialProcurementPlanning(materialProcurementPlanning)
                     .employee(employee)
                     .employeeName("employee1")
                     .materialName("templates/material" +i)

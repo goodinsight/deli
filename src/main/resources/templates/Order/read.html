@@ -18,6 +18,10 @@
                     발주 상세
                 </div>
                 <div class="card-body mt-3">
+                    <div class="input-group mb-3 d-none">
+                        <span class="input-group-text">발주 일련번호</span>
+                        <input type="text" name="orderNo" class="form-control materialProcurementContractNo" th:value="${dto.orderNo}" readonly>
+                    </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">계획 일련번호</span>
                         <input type="text" name="materialProcurementPlanNo" class="form-control selectPlan" th:value="${dto.materialProcurementPlanNo}" readonly>
@@ -96,7 +100,7 @@
                             <a th:href="|@{/order/list}?${link}|" class="text-decoration-none">
                                 <button type="button" class="btn btn-primary">List</button>
                             </a>
-                            <a class="text-decoration-none">
+                            <a th:href="|@{/order/modify(orderNo=${dto.orderNo})}&${link}|" class="text-decoration-none" >
                                 <button type="button" class="btn btn-secondary">Modify</button>
                             </a>
                         </div>
@@ -106,48 +110,6 @@
             </div><!-- end card -->
         </div><!-- end col -->
     </div><!-- end row -->
-
-    <!-- 조달 계획 선택을 위한 모달창 -->
-    <div class="modal uploadModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Upload File</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="input-group mb-3">
-                        <input type="file" name="files" class="form-control" multiple>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary uploadBtn">Upload</button>
-                    <button type="button" class="btn btn-outline-dark closeUploadBtn">Close</button>
-                </div>
-            </div>
-        </div>
-    </div><!-- end upload modal -->
-
-    <!-- 조달 계약 선택을 위한 모달창 -->
-    <div class="modal uploadModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Upload File</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="input-group mb-3">
-                        <input type="file" name="files" class="form-control" multiple>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary uploadBtn">Upload</button>
-                    <button type="button" class="btn btn-outline-dark closeUploadBtn">Close</button>
-                </div>
-            </div>
-        </div>
-    </div><!-- end upload modal -->
 
 
 </div>

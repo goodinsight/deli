@@ -87,6 +87,27 @@ public class OrderController {
     }
 
 
+    @PostMapping("/modify")
+    public String modify(PageRequestDTO pageRequestDTO,
+                         @Valid OrderDTO orderDTO,
+                         BindingResult bindingResult,
+                         RedirectAttributes redirectAttributes){
+
+        log.info("order modify : " + orderDTO);
+
+        //에러 처리----
+
+        //-----------
+
+        orderService.modify(orderDTO);
+
+        redirectAttributes.addFlashAttribute("result", "modified");
+
+        redirectAttributes.addAttribute("orderNo", orderDTO.getOrderNo());
+
+        return "redirect:/order/read";
+    }
+
 
     //-------------------------------------------------------
 
