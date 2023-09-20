@@ -123,6 +123,8 @@ public class OrderController {
 
         int num = orderService.getCodeCount(orderCode);
 
+        log.info("num : " + num);
+
         return num;
 
     }

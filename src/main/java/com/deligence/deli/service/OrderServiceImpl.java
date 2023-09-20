@@ -111,11 +111,10 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public int getCodeCount(String orderCode) {
+    public int getCodeCount(String code) {
 
-        String[] types = {"c"};
+        int num = orderRepository.getCodeCount(code);
 
-
-        return 0;
+        return num;
     }
 }

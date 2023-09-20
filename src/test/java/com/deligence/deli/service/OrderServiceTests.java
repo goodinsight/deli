@@ -85,5 +85,13 @@ public class OrderServiceTests {
 
     }
 
+    @Test
+    public void testCC() {
+
+        int num = orderService.getCodeCount("ORDER-20230920-");
+
+        log.info( "cc :" + num);
+    }
+
 
 }

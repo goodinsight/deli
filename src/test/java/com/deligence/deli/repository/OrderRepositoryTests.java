@@ -157,7 +157,7 @@ public class OrderRepositoryTests {
     @Test
     public void testCodeCount() {
 
-        String code = "tmp";
+        String code = "ORDER-20230920-";
 
         int result = orderRepository.getCodeCount(code);
 
