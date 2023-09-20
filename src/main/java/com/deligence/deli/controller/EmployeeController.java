@@ -1,22 +1,25 @@
 package com.deligence.deli.controller;
 
-import com.deligence.deli.dto.EmployeeSecurityDTO;
-import com.deligence.deli.dto.PageRequestDTO;
+import com.deligence.deli.dto.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import com.deligence.deli.dto.EmployeeJoinDTO;
 import com.deligence.deli.service.EmployeeService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @Log4j2
@@ -106,6 +109,108 @@ public class EmployeeController {
 
     @GetMapping("/employee/list")
     public void list(PageRequestDTO pageRequestDTO, Model model) {
+
+        PageResponseDTO<EmployeeJoinDTO> responseDTO = employeeService.list(pageRequestDTO);
+
+        log.info(responseDTO);
+
+        model.addAttribute("responseDTO", responseDTO);
+
+    }
+
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping({"/employee/read", "/employee/modify"})
+    public void read(int employeeNo, PageRequestDTO pageRequestDTO, Model model){
+
+        EmployeeJoinDTO employeeJoinDTO = employeeService.readOne(employeeNo);
+
+        log.info(employeeJoinDTO);
+        log.info(pageRequestDTO);
+
+        model.addAttribute("dto", employeeJoinDTO);
+
+    }
+
+//    /**
+//     * 회원 이름 변경
+//     * @param model
+//     * @param authentication 인증 정보
+//     * @return 회원 이름 변경 페이지
+//     */
+//    @GetMapping("/employee/modify")
+//    public void modify(int employeeNo, PageRequestDTO pageRequestDTO, Model model, Authentication authentication){
+//
+//        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+//
+//        EmployeeJoinDTO employeeJoinDTO = employeeService.findEmployee(userDetails.getUsername());
+//
+//        log.info(employeeJoinDTO);
+//        log.info(pageRequestDTO);
+//
+//        model.addAttribute("dto", employeeJoinDTO);
+//
+//    }
+
+//    /**
+//     * 회원 이름 변경 post
+//     * @param memberUsernameUpdateDTO
+//     * @param errors
+//     * @param model
+//     * @return 회원 정보 페이지
+//     */
+//    @PreAuthorize("principal.username == #employeeJoinDTO.employeeId")
+//    @PostMapping("/employee/modify")
+//    public String modify(PageRequestDTO pageRequestDTO,
+//                         @Valid EmployeeJoinDTO employeeJoinDTO,
+//                         BindingResult bindingResult,
+//                         RedirectAttributes redirectAttributes,
+//                         Errors errors,
+//                         Authentication authentication,
+//                         Model model) {
+//
+//        if (errors.hasErrors()) {
+//            model.addAttribute("member", employeeJoinDTO);
+//            globalService.messageHandling(errors, model);
+//            return "/employee/modify";
+//        }
+//
+//        log.info("employee modify post................." + employeeJoinDTO);
+//
+//        if(bindingResult.hasErrors()) {
+//            log.info("has errors..............");
+//
+//            String link = pageRequestDTO.getLink();
+//
+//            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
+//
+//            redirectAttributes.addAttribute("employeeNo", employeeJoinDTO.getEmployeeNo());
+//
+//            return "redirect:/employee/modify?"+link;
+//        }
+//
+//        employeeService.modify(employeeJoinDTO);
+//
+//        redirectAttributes.addFlashAttribute("result", "modified");
+//
+//        redirectAttributes.addAttribute("employeeNo", employeeJoinDTO.getEmployeeNo());
+//
+//        return "redirect:/employee/read";
+//
+//    }
+
+    @PreAuthorize("principal.username == #employeeJoinDTO.employeeId")
+    @PostMapping("/employee/remove")
+    public String remove(EmployeeJoinDTO employeeJoinDTO, RedirectAttributes redirectAttributes) {
+
+        int employeeNo = employeeJoinDTO.getEmployeeNo();
+        log.info("remove post...." + employeeNo);
+
+        employeeService.remove(employeeNo);
+
+        redirectAttributes.addFlashAttribute("result", "removed");
+
+        return "redirect:/employee/list";
 
     }
 

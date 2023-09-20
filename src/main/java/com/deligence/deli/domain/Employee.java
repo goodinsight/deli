@@ -1,9 +1,11 @@
 package com.deligence.deli.domain;
 
 import lombok.*;
+import org.springframework.format.datetime.DateFormatter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -48,8 +50,15 @@ public class Employee extends BaseEntity{
         this.employeePw = employeePw;
     }
 
-    public void changEmail(String employeeEmail) {
+    public void changeEmail(String employeeEmail) {
         this.employeeEmail = employeeEmail;
+    }
+
+    public void changeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+    public void changePosition(Position position) {
+        this.position = position;
     }
 
     public void changeDel(boolean del) {

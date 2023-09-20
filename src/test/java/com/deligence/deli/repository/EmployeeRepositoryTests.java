@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import com.deligence.deli.domain.Employee;
 import com.deligence.deli.domain.EmployeeRole;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
@@ -43,13 +44,12 @@ public class EmployeeRepositoryTests {
             employeeRepository.save(employee);
 
         });
-
     }
 
     @Test
     public void testRead() {
 
-        Optional<Employee> result = employeeRepository.getWithRoles("employee100");
+        Optional<Employee> result = employeeRepository.getWithRoles("employee1");
 
         Employee employee = result.orElseThrow();
 
@@ -57,6 +57,39 @@ public class EmployeeRepositoryTests {
         log.info(employee.getRoleSet());
 
         employee.getRoleSet().forEach(employeeRole -> log.info(employeeRole.name()));
+
+    }
+
+    @Test
+    public void testFindEmail() {
+        Optional<Employee> result = employeeRepository.findByEmployeeEmail("email2@aaa.bbb");
+
+        Employee employee = result.orElseThrow();
+
+        log.info(employee);
+    }
+
+    @Test
+    public void testUpdateEmployee() {
+        int res = employeeRepository.updateEmployee("emailu@aaa.bbb", "이입고", "010-1234-5678", 8);
+        Optional<Employee> result = employeeRepository.findByEmployeeNo(8);
+        Employee employee = result.orElseThrow();
+
+        log.info(employee);
+    }
+
+    @Test
+    public void testJoinEmployee(){
+
+        Employee employee = Employee.builder()
+                .employeeId("employee" + 11)
+                .employeePw(passwordEncoder.encode("1111"))
+                .employeeEmail("email" + 11 +"@aaa.bbb")
+                .build();
+
+        employee.addRole(EmployeeRole.USER);
+
+        employeeRepository.save(employee);
 
     }
 

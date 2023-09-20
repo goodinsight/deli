@@ -92,7 +92,13 @@
                         <li><a href="#"><i class="ti-layout-list-thumb"></i>저장목록</a></li>
                         <li><a href="#"><i class="ti-zoom-in"></i>저장품목상세</a></li>
                     </ul>
-
+                <li class="label">직원관리</li>
+                <li><a href="/employee/list" class="sidebar-sub-toggle"><i class="ti-user"></i> EMPLOYEE <span
+                        class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a href="/employee/list">직원 목록</a></li>
+                    </ul>
+                </li>
                 <li class="label">파트너관리</li>
                 <li><a href="#" class="sidebar-sub-toggle"><i class="ti-user"></i> 파트너 <span
                         class="sidebar-collapse-icon ti-angle-down"></span></a>
@@ -115,6 +121,7 @@
 
                 <li><a th:href="@{/employee/login}"><i class="ti-power-off"></i>Login</a></li>
                 <li><a th:href="@{/employee/login?logout}"><i class="ti-close"></i> Logout</a></li>
+
             </ul>
         </div>
     </div>
