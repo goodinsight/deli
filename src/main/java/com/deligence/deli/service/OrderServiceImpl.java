@@ -2,6 +2,7 @@ package com.deligence.deli.service;
 
 import com.deligence.deli.domain.Order;
 import com.deligence.deli.dto.OrderDTO;
+import com.deligence.deli.dto.OrderDetailDTO;
 import com.deligence.deli.dto.PageRequestDTO;
 import com.deligence.deli.dto.PageResponseDTO;
 import com.deligence.deli.repository.OrderRepository;
@@ -51,16 +52,11 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public OrderDTO read(int orderNo) {
+    public OrderDetailDTO read(int orderNo) {
 
-        Optional<Order> result = orderRepository.findById(orderNo);
+        OrderDetailDTO result = orderRepository.read(orderNo);
 
-        Order order = result.orElseThrow();
-
-        //entity -> dto
-        OrderDTO orderDTO = modelMapper.map(order, OrderDTO.class);
-
-        return orderDTO;
+        return result;
     }
 
     @Override

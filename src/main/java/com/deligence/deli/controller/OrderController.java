@@ -76,11 +76,11 @@ public class OrderController {
 
         log.info("search : orderNo = " + orderNo);
 
-        OrderDTO orderDTO = orderService.read(orderNo);
+        OrderDetailDTO orderDetailDTO = orderService.read(orderNo);
 
-        log.info(orderDTO);
+        log.info(orderDetailDTO);
 
-        model.addAttribute("dto", orderDTO);
+        model.addAttribute("dto", orderDetailDTO);
 
         model.addAttribute("pageRequestDTO", pageRequestDTO);
 

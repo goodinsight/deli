@@ -1,8 +1,9 @@
 package com.deligence.deli.repository.search;
 
-import com.deligence.deli.domain.Order;
-import com.deligence.deli.domain.QOrder;
+import com.deligence.deli.domain.*;
+import com.deligence.deli.dto.OrderDetailDTO;
 import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.Tuple;
 import com.querydsl.jpa.JPQLQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.data.domain.Page;
@@ -81,4 +82,52 @@ public class OrderSearchImpl extends QuerydslRepositorySupport implements OrderS
         return (int) query.fetchCount();
 
     }
+
+    public OrderDetailDTO read(int orderNo){
+
+        QOrder order = QOrder.order;
+        QMaterialProcurementContract mpc = QMaterialProcurementContract.materialProcurementContract;
+        QMaterialProcurementPlanning mpp = QMaterialProcurementPlanning.materialProcurementPlanning;
+
+        JPQLQuery<Tuple> query = new JPAQueryFactory(em)
+                .select(order, mpc, mpp)
+                .from(order)
+                .join(order.materialProcurementContract, mpc).on(order.materialProcurementContract.eq(mpc))
+                .join(order.materialProcurementPlanning, mpp).on(order.materialProcurementPlanning.eq(mpp))
+                .where(order.orderNo.eq(orderNo));
+
+        List<Tuple> targetDtoList = query.fetch();
+
+        Tuple target = targetDtoList.get(0);
+
+        Order resultOrder = (Order) target.get(order);
+        MaterialProcurementPlanning resultMpp = (MaterialProcurementPlanning) target.get(mpp);
+        MaterialProcurementContract resultMpc = (MaterialProcurementContract) target.get(mpc);
+
+        OrderDetailDTO dto = OrderDetailDTO.builder()
+                .orderNo(resultOrder.getOrderNo())
+                .orderCode(resultOrder.getOrderCode())
+                .orderQuantity(resultOrder.getOrderQuantity())
+                .orderDeliveryDate(resultOrder.getOrderDeliveryDate())
+                .orderDate(resultOrder.getOrderDate())
+                .orderState(resultOrder.getOrderState())
+                .orderEtc(resultOrder.getOrderEtc())
+                .materialProcurementPlanNo(resultMpp.getMaterialProcurementPlanNo())
+                .materialCode(resultMpp.getMaterialCode())
+                .materialName(resultMpp.getMaterialName())
+                .materialRequirementsCount(resultMpp.getMaterialRequirementsCount())
+                .procurementDeliveryDate(resultMpp.getProcurementDeliveryDate())
+                .materialProcurementContractNo(resultMpc.getMaterialProcurementContractNo())
+                .materialProcurementContractCode(resultMpc.getMaterialProcurementContractCode())
+                .materialProcurementContractDate(resultMpc.getMaterialProcurementContractDate())
+                .materialSupplyPrice(resultMpc.getMaterialSupplyPrice())
+                .supplierName(resultMpc.getSupplierName())
+                .employeeNo(resultOrder.getEmployee().getEmployeeNo())
+                .employeeName(resultOrder.getEmployeeName())
+                .build();
+
+        return dto;
+
+    }
+
 }

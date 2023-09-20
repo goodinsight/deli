@@ -5,6 +5,7 @@ import com.deligence.deli.domain.MaterialProcurementContract;
 import com.deligence.deli.domain.MaterialProcurementPlanning;
 import com.deligence.deli.domain.Order;
 import com.deligence.deli.dto.OrderDTO;
+import com.deligence.deli.dto.OrderDetailDTO;
 import com.deligence.deli.dto.PageRequestDTO;
 import com.deligence.deli.dto.PageResponseDTO;
 
@@ -12,7 +13,7 @@ public interface OrderService {
 
     int register(OrderDTO orderDTO);
 
-    OrderDTO read(int orderNo);
+    public OrderDetailDTO read(int orderNo);
 
     void modify(OrderDTO orderDTO);
 
