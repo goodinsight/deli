@@ -8,6 +8,7 @@ import com.deligence.deli.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -30,9 +31,14 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public int register(OrderDTO orderDTO) {
 
+        log.info("register start");
+
+        log.info(orderDTO);
+
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
+
         //dto -> entity
-        Order order = modelMapper.map(orderDTO, Order.class);
-        //안되면 interface 에 DtoToEntity 메소드 만들자.
+        Order order = dtoToEntity(orderDTO);
 
         log.info(order);
 
@@ -94,7 +100,7 @@ public class OrderServiceImpl implements OrderService{
         Page<Order> result = orderRepository.search(types, keyword, pageable);
 
         List<OrderDTO> dtoList = result.getContent().stream()
-                .map(order -> modelMapper.map(order, OrderDTO.class))
+                .map(order -> entityToDto(order))
                 .collect(Collectors.toList());
 
         return PageResponseDTO.<OrderDTO>withAll()

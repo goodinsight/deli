@@ -65,11 +65,11 @@
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">담당자 일련번호</span>
-                            <input type="text" name="employeeNo" class="form-control" th:value="${user.employeeNo}" placeholder="담당자 일련번호 - 추후 숨길 부분">
+                            <input type="text" name="employeeNo" class="form-control" th:value="${user.employeeNo}" readonly>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">담당자 이름</span>
-                            <input type="text" name="employeeName" class="form-control" th:value="${user.employeeName}" placeholder="담당자 이름 - 추후 계정 연결 및 read only">
+                            <input type="text" name="employeeName" class="form-control" th:value="${user.employeeName}" readonly>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">발주 수량</span>
@@ -85,7 +85,7 @@
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">발주 상태</span>
-                            <input type="text" name="orderState" class="form-control" placeholder="발주 상태 - 추후 숨길 부분" th:value="READY" readonly>
+                            <input type="text" name="orderState" class="form-control" placeholder="발주 상태 - 추후 숨길 부분" th:value="진행중" readonly>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">비고</span>

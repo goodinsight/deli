@@ -44,7 +44,7 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
     }
 
     @Override //조회
-    public MaterialProcurementPlanningDTO readOne(int materialProcurementPlanNo) {
+    public MaterialProcurementPlanningDTO read(int materialProcurementPlanNo) {
 
         Optional<MaterialProcurementPlanning> result =
                 materialProcurementPlanningRepository.findById(materialProcurementPlanNo);

@@ -107,7 +107,7 @@ public class OrderController {
 
         log.info("getPlanDTO : " + planNo);
 
-        MaterialProcurementPlanningDTO materialProcurementPlanningDTO = materialProcurementPlanningService.readOne(planNo);
+        MaterialProcurementPlanningDTO materialProcurementPlanningDTO = materialProcurementPlanningService.read(planNo);
 
         log.info(materialProcurementPlanningDTO);
 

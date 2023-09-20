@@ -16,7 +16,7 @@ public interface MaterialProcurementPlanningService {
     int register(MaterialProcurementPlanningDTO materialProcurementPlanningDTO);
 
     //조회
-    MaterialProcurementPlanningDTO readOne(int materialProcurementPlanNo);
+    MaterialProcurementPlanningDTO read(int materialProcurementPlanNo);
 
 
     //수정

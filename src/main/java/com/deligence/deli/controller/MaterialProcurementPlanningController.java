@@ -78,7 +78,7 @@ public class MaterialProcurementPlanningController {
                      Model model) {
 
         MaterialProcurementPlanningDTO materialProcurementPlanningDTO =
-                materialProcurementPlanningService.readOne(materialProcurementPlanNo);
+                materialProcurementPlanningService.read(materialProcurementPlanNo);
 
         log.info(materialProcurementPlanningDTO);
         log.info(pageRequestDTO);
