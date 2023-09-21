@@ -5,7 +5,7 @@ async function uploadToServer (formObj) {
 
     const response = await axios({
        method: 'post',
-        url: '/materialImg',
+        url: '/upload',
         data: formObj,
         headers: {
            'Content-Type': 'multipart/form-data',
