@@ -11,6 +11,6 @@ public interface OrderSearch {
 
     int getCodeCount(String orderCode);
 
-    public OrderDetailDTO read(int orderNo);
+    OrderDetailDTO read(int orderNo);
 
 }

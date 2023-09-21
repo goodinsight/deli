@@ -13,7 +13,7 @@ public interface OrderService {
 
     int register(OrderDTO orderDTO);
 
-    public OrderDetailDTO read(int orderNo);
+    OrderDetailDTO read(int orderNo);
 
     void modify(OrderDTO orderDTO);
 

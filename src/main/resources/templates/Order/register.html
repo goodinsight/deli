@@ -254,11 +254,15 @@
 
     function printPlanList(dtoList){//조달 계획 목록
 
+        console.log("print plan list")
+
         let str = ''
 
         if(dtoList && dtoList.length > 0){
 
             for( const dto of dtoList) {
+
+                console.log(dto)
 
                 str += `<tr>
                             <td data-planNo="${dto.materialProcurementPlanNo}">${dto.materialProcurementPlanNo}</td>
@@ -304,6 +308,7 @@
                 printPlanPages(data)
             }
         ).catch(e => {
+            console.log("print plans error")
             console.error(e)
         })
     }
@@ -375,8 +380,8 @@
 
     const contractModal = new bootstrap.Modal(document.querySelector(".selectContractModal"))
 
-    const contractList = document.querySelector(".contractList")//조달 계획 목록 DOM
-    const contractPaging = document.querySelector(".contractPaging")//조달 계획 페이지 선택 목록 DOM
+    const contractList = document.querySelector(".contractList")//조달 계약 목록 DOM
+    const contractPaging = document.querySelector(".contractPaging")//조달 계약 페이지 선택 목록 DOM
 
     const closeContractBtn = document.querySelector(".closeContractBtn")
 
@@ -392,7 +397,7 @@
         contractModal.hide()
     })
 
-    function printContractList(dtoList){//조달 계획 목록
+    function printContractList(dtoList){//조달 계약 목록
 
         let str = ''
 
@@ -400,13 +405,15 @@
 
             for( const dto of dtoList) {
 
+                console.log(dto)
+
                 str += `<tr>
-                            <td data-planNo="${dto.materialProcurementContractNo}">${dto.materialProcurementContractNo}</td>
-                            <td data-planNo="${dto.materialProcurementContractNo}">${dto.materialCode}</td>
-                            <td data-planNo="${dto.materialProcurementContractNo}">${dto.materialName}</td>
-                            <td data-planNo="${dto.materialProcurementContractNo}">${dto.materialSupplyPrice}</td>
-                            <td data-planNo="${dto.materialProcurementContractNo}">${dto.supplierName}</td>
-                            <td data-planNo="${dto.materialProcurementContractNo}">${dto.materialProcurementContractState}</td>
+                            <td data-contractNo="${dto.materialProcurementContractNo}">${dto.materialProcurementContractNo}</td>
+                            <td data-contractNo="${dto.materialProcurementContractNo}">${dto.materialCode}</td>
+                            <td data-contractNo="${dto.materialProcurementContractNo}">${dto.materialName}</td>
+                            <td data-contractNo="${dto.materialProcurementContractNo}">${dto.materialSupplyPrice}</td>
+                            <td data-contractNo="${dto.materialProcurementContractNo}">${dto.supplierName}</td>
+                            <td data-contractNo="${dto.materialProcurementContractNo}">${dto.materialProcurementContractState}</td>
                         </tr>`
 
             }
@@ -418,7 +425,7 @@
     }
 
 
-    function printContractPages(data){//조달 계획 목록 페이징 처리
+    function printContractPages(data){//조달 계약 목록 페이징 처리
 
         let pageStr = '';
 
@@ -488,7 +495,7 @@
             return
         }
 
-        const contractNo = target.getAttribute("data-planNo")
+        const contractNo = target.getAttribute("data-contractNo")
 
         if(!contractNo){
             return

@@ -24,6 +24,8 @@ public class QProgressInspection extends EntityPathBase<ProgressInspection> {
 
     public final QEmployee employee;
 
+    public final StringPath employeeName = createString("employeeName");
+
     public final QOrder order;
 
     public final DatePath<java.time.LocalDate> progressInspectionDate = createDate("progressInspectionDate", java.time.LocalDate.class);
