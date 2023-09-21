@@ -2,4 +2,5 @@ package com.deligence.deli.domain;
 
 public enum EmployeeRole {
     USER, ADMIN, MATERIAL, ORDER, PROCUREMENT, PRODUCT, COOPERATOR, PARTNER ;
+    //USER 0, ADMIN 1, MATERIAL 2, ORDER 3, PROCUREMENT 4, PRODUCT 5, COOPERATOR 6, PARTNER 7 로 ROLE_SET에 입력됨
 }

@@ -48,7 +48,9 @@
                             <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}">
                                 <button type="button" class="btn btn-primary listBtn">List</button>
                                 <button type="button" class="btn btn-secondary modBtn">Modify</button>
-                                <button type="button" class="btn btn-danger removeBtn">Remove</button>
+                                <th:block  sec:authorize="hasRole('ROLE_ADMIN')">   <!-- ADMIN만 삭제 가능 -->
+                                    <button type="button" class="btn btn-danger removeBtn">Remove</button>
+                                </th:block>
                             </div>
                         </div>
                     </form>

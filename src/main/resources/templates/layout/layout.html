@@ -119,12 +119,11 @@
                         <li><a href="#">클라이언트 메뉴4</a></li>
                     </ul>
                 </li>
-                <!--<th:block sec:authorize access="isAnonymous()"> -->
-                    <li><a th:href="@{/employee/login}"><i class="ti-power-off"></i>Login</a></li>
-                <!--</th:block>
-                <th:block sec:authorize access="isAuthenticated()"> -->
-                    <li><a th:href="@{/employee/login?logout}"><i class="ti-close"></i> Logout</a></li>
-                <!--</th:block> -->
+
+                <li><a sec:authorize="!isAuthenticated()" th:href="@{/employee/login}"><i class="ti-power-off"></i>Login</a></li>
+
+                <li><a sec:authorize="isAuthenticated()" th:href="@{/employee/login?logout}"><i class="ti-power-off"></i> Logout</a></li>
+
 
             </ul>
         </div>
@@ -285,7 +284,7 @@
                     </div>
                     <div class="dropdown dib">
                         <div class="header-icon" data-toggle="dropdown">
-                                <span class="user-avatar">John
+                            <span class="user-avatar"><b sec:authentication="name"></b> <!-- 로그인후 권한 부여받은 사용자의 이름 -->
                                     <i class="ti-angle-down f-s-10"></i>
                                 </span>
                             <div class="drop-down dropdown-profile dropdown-menu dropdown-menu-right">
@@ -346,8 +345,7 @@
                 <div class="col-lg-8 p-r-0 title-margin-right">
                     <div class="page-header">
                         <div class="page-title">
-
-                            <h1> ** 관리 <span>페이지 입니다.</span></h1>
+                            <h1> <span sec:authentication="principal.authorities"> user role </span><span>의 관리 페이지 입니다.</span></h1>
                         </div>
                     </div>
                 </div>
@@ -356,7 +354,7 @@
                     <div class="page-header">
                         <div class="page-title">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a th:href="@{/board/list}">Dashboard</a></li>
                                 <li class="breadcrumb-item active">Home</li>
                             </ol>
                         </div>
