@@ -103,6 +103,9 @@
                             <a th:href="|@{/order/modify(orderNo=${dto.orderNo})}&${link}|" class="text-decoration-none" >
                                 <button type="button" class="btn btn-secondary">Modify</button>
                             </a>
+                            <a th:href="|@{/progressInspection(orderNo=${dto.orderNo})}&${link}|" class="text-decoration-none" >
+                                <button type="button" class="btn btn-secondary">검수 관리</button>
+                            </a>
                         </div>
                     </div>
 

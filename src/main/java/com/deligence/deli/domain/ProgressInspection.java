@@ -1,5 +1,6 @@
 package com.deligence.deli.domain;
 
+import com.deligence.deli.dto.ProgressInspectionDTO;
 import lombok.*;
 
 import javax.persistence.*;
@@ -34,5 +35,16 @@ public class ProgressInspection {
     @ManyToOne(fetch = FetchType.LAZY)
     private Employee employee;// 사원 (일련번호)
 
+    private String employeeName;//담당자 이름
+
+    public void change(ProgressInspectionDTO progressInspectionDTO){
+
+        this.progressInspectionDate = progressInspectionDTO.getProgressInspectionDate();
+        this.progressInspectionTimes = progressInspectionDTO.getProgressInspectionTimes();
+        this.progressInspectionEtc = progressInspectionDTO.getProgressInspectionEtc();
+        this.rateOfProgress = progressInspectionDTO.getRateOfProgress();
+        this.progressInspectionState = progressInspectionDTO.getProgressInspectionState();
+
+    }
 
 }

@@ -27,8 +27,10 @@ public class ProgressInspectionDTO {
 
     private String progressInspectionState; // 검수상태
 
-    private Long orderNo;//발주 일련번호
+    private int orderNo;//발주 일련번호
 
-    private int employeeNo;//
+    private int employeeNo;//담당자 일련번호
+
+    private String employeeName;//담당자 이름
 
 }

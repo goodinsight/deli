@@ -8,8 +8,6 @@ import com.deligence.deli.dto.PageResponseDTO;
 import com.deligence.deli.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -25,18 +23,12 @@ import java.util.stream.Collectors;
 @Transactional
 public class OrderServiceImpl implements OrderService{
 
-    private final ModelMapper modelMapper;
-
     private final OrderRepository orderRepository;
 
     @Override
     public int register(OrderDTO orderDTO) {
 
-        log.info("register start");
-
         log.info(orderDTO);
-
-        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
 
         //dto -> entity
         Order order = dtoToEntity(orderDTO);

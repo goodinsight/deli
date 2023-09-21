@@ -1,6 +1,7 @@
 package com.deligence.deli.controller;
 
 import com.deligence.deli.dto.*;
+import com.deligence.deli.service.MaterialProcurementContractService;
 import com.deligence.deli.service.MaterialProcurementPlanningService;
 import com.deligence.deli.service.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ public class OrderController {
     private final OrderService orderService;
 
     private final MaterialProcurementPlanningService materialProcurementPlanningService;
+    private final MaterialProcurementContractService materialProcurementContractService;
 
     @GetMapping("/list")
     public void list(PageRequestDTO pageRequestDTO, Model model){
@@ -109,7 +111,7 @@ public class OrderController {
     }
 
 
-    //-------------------------------------------------------
+    // 비동기 처리 -------------------------------------------------------
 
     @ResponseBody
     @GetMapping("/register/selectPlan")
@@ -137,6 +139,32 @@ public class OrderController {
     }
 
     @ResponseBody
+    @GetMapping("/order/register/selectContract")
+    public PageResponseDTO<MaterialProcurementContractDTO> getContractList(PageRequestDTO pageRequestDTO){
+
+        log.info("getContractList");
+
+        PageResponseDTO<MaterialProcurementContractDTO> responseDTO = materialProcurementContractService.list(pageRequestDTO);
+
+        return responseDTO;
+
+    }
+
+    @ResponseBody
+    @GetMapping("/order/register/getContract/{contractNo}")
+    public MaterialProcurementContractDTO getContractDTO(@PathVariable("contractNo") int contractNo){
+
+        log.info("getContractDTO : " + contractNo);
+
+        MaterialProcurementContractDTO materialProcurementContractDTO = materialProcurementContractService.read(contractNo);
+
+        log.info(materialProcurementContractDTO);
+
+        return materialProcurementContractDTO;
+
+    }
+
+    @ResponseBody
     @GetMapping("/register/getCodeCount/{orderCode}")
     public int getCodeCount(@PathVariable("orderCode") String orderCode){
 
@@ -150,6 +178,15 @@ public class OrderController {
 
     }
 
+    // 검수 페이지 매핑 ------------------------------------------------------------------------------------
 
+    @GetMapping("/progressInspection")
+    public void toProgressInspectionPage(int orderNo,PageRequestDTO pageRequestDTO, Model model){
+
+        model.addAttribute("orderNo", orderNo);
+
+        model.addAttribute("pageRequestDTO", pageRequestDTO);
+
+    }
 
 }
