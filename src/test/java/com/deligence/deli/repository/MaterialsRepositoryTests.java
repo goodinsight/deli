@@ -133,11 +133,7 @@ public class MaterialsRepositoryTests {
                 .materialSupplyPrice(1L)
                 .build();
 
-        for (int i = 0; i < 3; i++) {
-
-            materials.addImage(UUID.randomUUID().toString(), "file"+i+".jpg");
-
-        } //end for
+        materials.addImage(UUID.randomUUID().toString(), "file.jpg");
 
         materialsRepository.save(materials);
     }
