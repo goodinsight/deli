@@ -18,7 +18,7 @@ public class MaterialInventory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int materialInventoryNo; // 자재 재고 일련번호
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Materials materials; // 자재 일련번호
 
     @Column(length = 500, nullable = false)
@@ -39,7 +39,7 @@ public class MaterialInventory {
     @ManyToOne(fetch = FetchType.LAZY)
     private DocumentFile documentFile; // 파일 일련번호
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Order order; // 오더 일련번호
 
     @Column(length = 500, nullable = false)

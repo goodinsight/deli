@@ -1,9 +1,6 @@
 package com.deligence.deli.controller;
 
-import com.deligence.deli.dto.MaterialInventoryDTO;
-import com.deligence.deli.dto.MaterialsDTO;
-import com.deligence.deli.dto.PageRequestDTO;
-import com.deligence.deli.dto.PageResponseDTO;
+import com.deligence.deli.dto.*;
 import com.deligence.deli.service.MaterialInventoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -29,11 +26,12 @@ public class MaterialInventoryController {
     @GetMapping("/materialStockList")
     public void materialStockList(PageRequestDTO pageRequestDTO, Model model, @Valid MaterialInventoryDTO materialInventoryDTO, RedirectAttributes redirectAttributes) {
 
-//        materialInventoryService.materialStockRegister(materialInventoryDTO);
+//        int num[] = materialInventoryService.materialStockRegister(materialInventoryDTO);
 
         PageResponseDTO<MaterialInventoryDTO> responseDTO = materialInventoryService.materialStockList(pageRequestDTO);
 
         log.info(responseDTO);
+//        log.info("num : " + num.length);
 
         model.addAttribute("responseDTO", responseDTO);
 
