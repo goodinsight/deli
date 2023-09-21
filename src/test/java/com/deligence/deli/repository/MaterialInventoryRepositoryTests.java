@@ -62,7 +62,7 @@ public class MaterialInventoryRepositoryTests {
     @Test
     public void testMaterialInventorySelect() {
 
-        int materialInventoryNo = 10;
+        int materialInventoryNo = 30;
 
         Optional<MaterialInventory> result = materialInventoryRepository.findById(materialInventoryNo);
 
@@ -148,50 +148,50 @@ public class MaterialInventoryRepositoryTests {
 
     }
 
-//    @Test
-//    public void testrequest() {
-//
-//        List<Materials> list = materialsRepository.findAll();
-//        List<Order> list2 = orderRepository.findAll();
+    @Test
+    public void testrequest() {
+
+        List<Materials> list = materialsRepository.findAll();
+        List<Order> list2 = orderRepository.findAll();
 //        log.info(list);
 //        log.info(list2);
-//
-//        for (int i = 0; i < list2.size(); i++) {
-//
-//            log.info(list.get(i).getMaterialNo());
-//            log.info(list.get(i).getMaterialName());
-//            log.info(list2.get(i).getOrderNo());
-//            log.info(list2.get(i).getMaterialName());
-//
-//            Optional<Materials> result2 = materialsRepository.findById(list.get(i).getMaterialNo());
-//            log.info("result2 : " + result2);
-//            Optional<Order> result = materialInventoryRepository.getorNo(list2.get(i).getOrderNo());
-//            log.info("result : " + result);
-//
-//            Materials materials = result2.orElseThrow();
-//            Order order = result.orElseThrow();
-//
-//            log.info("materials : " + materials);
-//
-//            log.info("oredr : " + order);
-//
-//            MaterialInventory materialInventory = MaterialInventory.builder()
-//                    .materialIncomingQuantity(order.getOrderQuantity())
-//                    .materialOutgoingQuantity(100)
-//                    .materialStock(100)
-//                    .materialSupplyPrice(materials.getMaterialSupplyPrice())
-//                    .materialTotalInventoryPayments(100000L)
-//                    .materials(Materials.builder().materialNo(materials.getMaterialNo()).build())
-//                    .order(Order.builder().orderNo(order.getOrderNo()).build())
-//                    .materialCode(materials.getMaterialCode())
-//                    .materialName(materials.getMaterialName())
-//                    .materialType(materials.getMaterialType())
-//                    .build();
-//
-//            materialInventoryRepository.save(materialInventory);
-//
-//        }
-//    }
+
+        for (int i = 0; i < list2.size(); i++) {
+
+            log.info(list.get(i).getMaterialNo());
+            log.info(list.get(i).getMaterialName());
+            log.info(list2.get(i).getOrderNo());
+            log.info(list2.get(i).getMaterialName());
+
+            Optional<Materials> result2 = materialsRepository.findById(list.get(i).getMaterialNo());
+            log.info("result2 : " + result2);
+            Optional<Order> result = materialInventoryRepository.findFristByOrderNo(list2.get(i).getOrderNo());
+            log.info("result : " + result);
+
+            Materials materials = result2.orElseThrow();
+            Order order = result.orElseThrow();
+
+            log.info("materials : " + materials);
+
+            log.info("oredr : " + order);
+
+            MaterialInventory materialInventory = MaterialInventory.builder()
+                    .materialIncomingQuantity(order.getOrderQuantity())
+                    .materialOutgoingQuantity(100)
+                    .materialStock(100)
+                    .materialSupplyPrice(materials.getMaterialSupplyPrice())
+                    .materialTotalInventoryPayments(100000L)
+                    .materials(Materials.builder().materialNo(materials.getMaterialNo()).build())
+                    .order(Order.builder().orderNo(order.getOrderNo()).build())
+                    .materialCode(materials.getMaterialCode())
+                    .materialName(materials.getMaterialName())
+                    .materialType(materials.getMaterialType())
+                    .build();
+
+            materialInventoryRepository.save(materialInventory);
+
+        }
+    }
 }
 
 
