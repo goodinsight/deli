@@ -49,6 +49,8 @@ public class MaterialProcurementContractDTO {
 //    private Employee employee;  //사원 Entity -> 사원명 가져오기
     private int employeeNo; //사원 일련번호 (FK)
 
+    private String employeeName;    //사원명
+
     private int documentFileNo; //문서파일 일련번호 (FK)
 
     private LocalDateTime regDate;  //등록일

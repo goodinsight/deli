@@ -25,23 +25,15 @@ import java.util.stream.Collectors;
 @Transactional
 public class MaterialProcurementContractServiceImpl implements MaterialProcurementContractService{
 
-    private final ModelMapper modelMapper;
-
     private final MaterialProcurementContractRepository materialProcurementContractRepository;
 
     @Override
     public int register(MaterialProcurementContractDTO materialProcurementContractDTO) {
 
-        log.info("register start");
-
         log.info(materialProcurementContractDTO);
-
-        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
 
         //dto -> entity
         MaterialProcurementContract materialProcurementContract = dtoToEntity(materialProcurementContractDTO);
-//        MaterialProcurementContract materialProcurementContract =
-//                modelMapper.map(materialProcurementContractDTO, MaterialProcurementContract.class);
 
         log.info(materialProcurementContract);
 

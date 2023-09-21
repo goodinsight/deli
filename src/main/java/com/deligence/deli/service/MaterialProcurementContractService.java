@@ -7,7 +7,7 @@ public interface MaterialProcurementContractService {
 
     int register(MaterialProcurementContractDTO materialProcurementContractDTO);
 
-    public MaterialProcurementContractDetailDTO read(int materialProcurementContractNo);
+    MaterialProcurementContractDetailDTO read(int materialProcurementContractNo);
 
     void modify(MaterialProcurementContractDTO materialProcurementContractDTO);
 
@@ -34,7 +34,7 @@ public interface MaterialProcurementContractService {
                 .supplierName(materialProcurementContractDTO.getSupplierName())
                 .supplierStatus(materialProcurementContractDTO.getSupplierStatus())
                 .employee(Employee.builder().employeeNo(materialProcurementContractDTO.getEmployeeNo()).build())
-//                .documentFile(DocumentFile.builder().documentFileNo(materialProcurementContractDTO.getDocumentFileNo()).build())
+                .documentFile(DocumentFile.builder().documentFileNo(materialProcurementContractDTO.getDocumentFileNo()).build())
                 .build();
 
         return materialProcurementContract;
@@ -57,7 +57,7 @@ public interface MaterialProcurementContractService {
                 .supplierName(materialProcurementContract.getSupplierName())
                 .supplierStatus(materialProcurementContract.getSupplierStatus())
                 .employeeNo(materialProcurementContract.getEmployee().getEmployeeNo())
-//                .documentFileNo(materialProcurementContract.getDocumentFile().getDocumentFileNo())
+                .documentFileNo(materialProcurementContract.getDocumentFile().getDocumentFileNo())
                 .build();
 
         return materialProcurementContractDTO;

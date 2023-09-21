@@ -51,6 +51,7 @@ public class MaterialProcurementContractRepositoryTests {
                     .materialSupplyPrice(1L)
                     .supplierName("supplierName"+i)
                     .supplierStatus("READY")
+                    .employeeName("담당자")
                     .build();
 
             log.info(materialProcurementContract);
@@ -97,6 +98,7 @@ public class MaterialProcurementContractRepositoryTests {
                 .materialSupplyPrice(2L)
                 .supplierName("supplierName2")
                 .supplierStatus("READY")
+                .employeeName("담당자")
                 .build());
 
         materialProcurementContractRepository.save(materialProcurementContract);

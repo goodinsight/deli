@@ -51,6 +51,8 @@ public class MaterialProcurementContract extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Employee employee;  //사원일련번호 FK
 
+    private String employeeName;    //사원명
+
     @ManyToOne(fetch = FetchType.LAZY)
     private DocumentFile documentFile;   //문서파일일련번호 FK
 
