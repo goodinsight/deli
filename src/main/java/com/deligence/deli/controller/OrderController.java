@@ -111,7 +111,7 @@ public class OrderController {
     }
 
 
-    //-------------------------------------------------------
+    // 비동기 처리 -------------------------------------------------------
 
     @ResponseBody
     @GetMapping("/register/selectPlan")
@@ -178,6 +178,15 @@ public class OrderController {
 
     }
 
+    // 검수 페이지 매핑 ------------------------------------------------------------------------------------
 
+    @GetMapping("/progressInspection")
+    public void toProgressInspectionPage(int orderNo,PageRequestDTO pageRequestDTO, Model model){
+
+        model.addAttribute("orderNo", orderNo);
+
+        model.addAttribute("pageRequestDTO", pageRequestDTO);
+
+    }
 
 }
