@@ -2,12 +2,14 @@ package com.deligence.deli.service;
 
 import com.deligence.deli.domain.MaterialProcurementContract;
 import com.deligence.deli.dto.MaterialProcurementContractDTO;
+import com.deligence.deli.dto.MaterialProcurementContractDetailDTO;
 import com.deligence.deli.dto.PageRequestDTO;
 import com.deligence.deli.dto.PageResponseDTO;
 import com.deligence.deli.repository.MaterialProcurementContractRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -30,10 +32,16 @@ public class MaterialProcurementContractServiceImpl implements MaterialProcureme
     @Override
     public int register(MaterialProcurementContractDTO materialProcurementContractDTO) {
 
+        log.info("register start");
+
+        log.info(materialProcurementContractDTO);
+
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
+
         //dto -> entity
-        MaterialProcurementContract materialProcurementContract =
-                modelMapper.map(materialProcurementContractDTO, MaterialProcurementContract.class);
-        //안되면 인터페이스에 dtoToEntity 메소드 만들기
+        MaterialProcurementContract materialProcurementContract = dtoToEntity(materialProcurementContractDTO);
+//        MaterialProcurementContract materialProcurementContract =
+//                modelMapper.map(materialProcurementContractDTO, MaterialProcurementContract.class);
 
         log.info(materialProcurementContract);
 
@@ -46,19 +54,13 @@ public class MaterialProcurementContractServiceImpl implements MaterialProcureme
     }
 
     @Override
-    public MaterialProcurementContractDTO read(int materialProcurementContractNo) {
-
-        Optional<MaterialProcurementContract> result =
-                materialProcurementContractRepository.findById(materialProcurementContractNo);
-
-        MaterialProcurementContract materialProcurementContract =
-                result.orElseThrow();
+    public MaterialProcurementContractDetailDTO read(int materialProcurementContractNo) {
 
         //entity -> dto
-        MaterialProcurementContractDTO materialProcurementContractDTO =
-                modelMapper.map(materialProcurementContract, MaterialProcurementContractDTO.class);
+        MaterialProcurementContractDetailDTO result = materialProcurementContractRepository.read(materialProcurementContractNo);
 
-        return materialProcurementContractDTO;
+        return result;
+
     }
 
     @Override
@@ -91,16 +93,15 @@ public class MaterialProcurementContractServiceImpl implements MaterialProcureme
 
         String[] types = pageRequestDTO.getTypes();
         String keyword = pageRequestDTO.getKeyword();
+        Pageable pageable = pageRequestDTO.getPageable();
 //        Pageable pageable = pageRequestDTO.getPageable("materialProcurementContractNo");
         //속성 넣으면 SearchImpl의 searchAll() paging 부분 오류남.
-        Pageable pageable = pageRequestDTO.getPageable();
 
         Page<MaterialProcurementContract> result =
                 materialProcurementContractRepository.searchAll(types, keyword, pageable);
 
         List<MaterialProcurementContractDTO> dtoList = result.getContent().stream()
-                .map(materialProcurementContract -> modelMapper
-                        .map(materialProcurementContract, MaterialProcurementContractDTO.class))
+                .map(materialProcurementContract -> entityToDto(materialProcurementContract))
                 .collect(Collectors.toList());
 
         return PageResponseDTO.<MaterialProcurementContractDTO>withAll()

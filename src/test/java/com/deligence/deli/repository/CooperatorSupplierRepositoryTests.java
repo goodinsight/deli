@@ -15,7 +15,6 @@ public class CooperatorSupplierRepositoryTests {
     @Autowired
     private CooperatorSupplierRepository cooperatorSupplierRepository;
 
-    //insert테스트 -> //localhost로 테스트 -> 학원가서 다시 테스트 할 것
     @Test
     public void testInsert() {
         IntStream.rangeClosed(1, 100).forEach(i -> {
@@ -27,6 +26,7 @@ public class CooperatorSupplierRepositoryTests {
                     .supplierPhone("phone.."+i)
                     .supplierAddress("address.."+i)
                     .supplierStatus("ready")
+                    .supplierEtc("테스트중")
                     .build();
 
             CooperatorSupplier result = cooperatorSupplierRepository.save(cooperatorSupplier);
