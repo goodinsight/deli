@@ -35,7 +35,7 @@ public class MaterialProcurementPlanningDetailDTO {
 
     private int productionPlanNo; //생산계획 일련번호 FK
 
-    private int materialNo; //자재 일련번호
+    private int materialNo; //자재 일련번호 FK
 
     private String materialType;    //자재타입
 

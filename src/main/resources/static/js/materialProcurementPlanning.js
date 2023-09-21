@@ -5,7 +5,7 @@ async function getProductionPlanList({page, size}){
     return result.data
 }
 
-async function getProductionPlan(planNo) {
+async function getProductionPlan(productionPlanNo) {
 
     const response = await axios.get(`/materialProcurementPlanning/register/getProductionPlan/${productionPlanNo}`)
 
@@ -19,9 +19,9 @@ async function getMaterialList({page, size}) {
     return result.data
 }
 
-async function getMaterial(materialCode) {
+async function getMaterial(materialsNo) {
 
-    const response = await axios.get(`/materialProcurementPlanning/register/getMaterial/${materialCode}` )
+    const response = await axios.get(`/materialProcurementPlanning/register/getMaterial/${materialsNo}` )
 
     return response.data
 }

@@ -39,17 +39,22 @@
 
             <div class="input-group mb-3">
               <span class="input-group-text">자재 소요량</span>
-              <input type="number" name="materialRequirementsCount" class="form-control" placeholder="materialRequirementsCount">
+              <input type="number" name="materialRequirementsCount" class="form-control" placeholder="자재 소요량">
             </div>
 
             <div class="input-group mb-3">
               <span class="input-group-text">납기일</span>
-              <input type="date" name="procurementDeliveryDate" class="form-control">
+              <input type="date" name="procurementDeliveryDate" class="form-control" placeholder="납기일">
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">담당자 일련번호</span>
+              <input type="text" name="employeeNo" class="form-control" th:value="${user.employeeNo}" readonly>
             </div>
 
             <div class="input-group mb-3">
               <span class="input-group-text">담당자 이름</span>
-              <input type="number" name="employeeName" class="form-control employeeName" readonly>
+              <input type="number" name="employeeName" class="form-control" th:value="${user.employeeName}" readonly>
             </div>
 
             <div class="input-group mb-3">
@@ -124,6 +129,7 @@
     </div>
   </div><!--end 생산 계획 모달창-->
 
+
   <!--자재 선택을 위한 모달창-->
   <div class="modal selectMaterial" tabindex="-1">
     <div class="modal-dialog modal-lg">
@@ -167,7 +173,7 @@
         </div>
       </div>
     </div>
-  </div><!--end 자재 코드 모달창-->
+  </div><!--end 자재 모달창-->
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
@@ -176,7 +182,14 @@
 </div>
 
 
+
 <script layout:fragment="script" th:inline="javascript">
+
+  const auth = [[${#authentication}]]
+
+  console.log(auth)
+
+  // 등록시 에러 처리 ----------------------------------------------------------------
 
   const errors = [[${errors}]]
   console.log(errors)
@@ -193,7 +206,7 @@
 
   //생산 계획 선택 --------------------------------------------------------------------
 
-  const productionPlanModal = new bootstrap.Modal(document.querySelector(".selectProductionPlan"))
+  const productionPlanModal = new bootstrap.Modal(document.querySelector(".selectProductionPlanModal"))
 
   const productionPlanList = document.querySelector(".productionPlanList")  //생산 계획 목록 DOM
   const productionPlanPaging = document.querySelector(".productionPlanPaging")  //생산 계획 페이지 선택 목록 DOM
@@ -201,9 +214,9 @@
   const closeProductionPlanBtn = document.querySelector(".closeProductionPlanBtn")
 
   let productionPlanPage = 1
-  let productionPlanSize = 5
+  let productionPlanPageSize = 5
 
-  document.querySelector(".selectProductionPlan").addEventListener("click", function (e){
+  document.querySelector(".selectProductionPlan").addEventListener("click", function (e) {
     printProductionPlans(1, 5)
     productionPlanModal.show()
   }, false)
@@ -222,6 +235,10 @@
 
         str += `<tr>
                   <td data-productionPlanNo="${dto.productionPlanNo}">${dto.productionPlanNo}</td>
+                  <td data-productionPlanNo="${dto.productionPlanNo}">${dto.productCode}</td>
+                  <td data-productionPlanNo="${dto.productionPlanNo}">${dto.clientName}</td>
+                  <td data-productionPlanNo="${dto.productionPlanNo}">${dto.productionDeliveryDate}</td>
+                  <td data-productionPlanNo="${dto.productionPlanNo}">${dto.clientStatus}</td>
               </tr>`
       }
     }
@@ -264,6 +281,7 @@
 
   //생산계획 목록 페이징
   productionPlanPaging.addEventListener("click", function (e) {
+
     e.preventDefault()
     e.stopPropagation()
 
@@ -275,19 +293,20 @@
 
     const pageNum = target.getAttribute("data-page")
     productionPlanPage = pageNum
-    printProductionPlans(productionPlanPage, productionPlanSize)
+    printProductionPlans(productionPlanPage, productionPlanPageSize)
 
   }, false)
 
   const inputProductionPlanNo = document.querySelector(".selectProductionPlan")
   const productCode = document.querySelector(".productCode")  //제품코드
   const clientName = document.querySelector(".clientName")  //클라이언트회사명
-  const procurementDeliveryDate = document.querySelector(".procurementDeliveryDate")  //납기일
+  const productionDeliveryDate = document.querySelector(".productionDeliveryDate")  //납기일
   const clientStatus = document.querySelector(".clientStatus")  //계약상태
 
 
   //생산 계획 항목 클릭시 input에 반영
   productionPlanList.addEventListener("click", function (e) {
+
     e.preventDefault()
     e.stopPropagation()
 
@@ -308,9 +327,12 @@
     getProductionPlan(productionPlanNo).then(productionPlan => {
 
       console.log(productionPlan)
-      inputProductionPlanNo.value = productionPlan.materialProcurementPlanNo
+      inputProductionPlanNo.value = productionPlan.productionPlanNo
       //생산 계획 정보를 가져와서 화면에 반영해야 할 항복들은 여기에 --------------------------------------------------------
-
+      productCode.value = productionPlan.productCode
+      clientName.value = productionPlan.clientName
+      productionDeliveryDate.value = new Date(productionPlan.productionDeliveryDate).toISOString().split('T')[0]
+      clientStatus.value = productionPlan.clientStatus
       //----------------------------------------------------------------------------------------------------------
 
       productionPlanModal.hide()
@@ -350,10 +372,10 @@
       for (const dto of dtoList) {
 
         str += `<tr>
-                    <td data-materialCode = "${dto.materialNo}">${dto.materialNo}</td>
-                    <td data-materialCode = "${dto.materialCode}">${dto.materialCode}</td>
-                    <td data-materialCode = "${dto.materialType}">${dto.materialType}</td>
-                    <td data-materialCode = "${dto.materialName}">${dto.materialName}</td>
+                    <td data-materialsNo = "${dto.materialNo}">${dto.materialNo}</td>
+                    <td data-materialsNo = "${dto.materialNo}">${dto.materialCode}</td>
+                    <td data-materialsNo = "${dto.materialNo}">${dto.materialType}</td>
+                    <td data-materialsNo = "${dto.materialNo}">${dto.materialName}</td>
                 </tr>`
       }
     }
@@ -381,6 +403,7 @@
   }
 
   function printMaterials(page, size) {
+
     getMaterialList({page, size}).then(
       data => {
         printMaterialList(data.dtoList)
@@ -428,13 +451,13 @@
       return
     }
 
-    const materialCode = target.getAttribute("data-materialCode")
+    const materialsNo = target.getAttribute("data-materialsNo")
 
-    if (!materialCode) {
+    if (!materialsNo) {
       return;
     }
 
-    getMaterial(materialCode).then(material => {
+    getMaterial(materialsNo).then(material => {
 
       console.log(material)
       materialNo.value = material.materialNo
@@ -449,7 +472,6 @@
 
   }, false)
 
-  //
 
 </script>
 
