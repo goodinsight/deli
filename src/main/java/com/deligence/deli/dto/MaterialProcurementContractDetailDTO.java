@@ -2,9 +2,7 @@ package com.deligence.deli.dto;
 
 //자재조달계약 DTO
 
-import com.deligence.deli.domain.CooperatorSupplier;
 import com.deligence.deli.domain.Employee;
-import com.deligence.deli.domain.MaterialProcurementContract;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,7 +16,7 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MaterialProcurementContractDTO {
+public class MaterialProcurementContractDetailDTO {
 
     private int MaterialProcurementContractNo;  //조달계약일련번호
 
@@ -44,10 +42,16 @@ public class MaterialProcurementContractDTO {
 
     private String supplierName;    //자재협력회사명(검색용)
 
+    private String supplierCeo; //자재협력회사 대표명
+
+    private String supplierPhone;   //자재협력회사 연락처
+
     private String supplierStatus;  //자재협력회사계약상태 (검색용)
 
 //    private Employee employee;  //사원 Entity -> 사원명 가져오기
     private int employeeNo; //사원 일련번호 (FK)
+
+    private String employeeName;    //사원명 (담당자 이름)
 
     private int documentFileNo; //문서파일 일련번호 (FK)
 

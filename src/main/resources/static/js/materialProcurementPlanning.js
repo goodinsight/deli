@@ -1,15 +1,20 @@
-async function getProductionPlanList({page, size}){
+async function getPlanList({page, size}){
 
-    const result = await axios.get(`/materialProcurementPlanning/register/selectProductionPlan`, {params: {page, size}})
+    const result = await axios.get(`/materialProcurementPlanning/register/selectPlan`, {params: {page, size}})
 
     return result.data
+
+    // return null;
 }
 
-async function getProductionPlan(planNo) {
 
-    const response = await axios.get(`/materialProcurementPlanning/register/getProductionPlan/${productionPlanNo}`)
+async function getPlan(planNo) {
+
+    const response = await axios.get(`/materialProcurementPlanning/register/getPlan/${planNo}`)
 
     return response.data
+
+    // return null;
 }
 
 async function getMaterialList({page, size}) {
@@ -19,9 +24,9 @@ async function getMaterialList({page, size}) {
     return result.data
 }
 
-async function getMaterial(materialCode) {
+async function getMaterial(materialsNo) {
 
-    const response = await axios.get(`/materialProcurementPlanning/register/getMaterial/${materialCode}` )
+    const response = await axios.get(`/materialProcurementPlanning/register/getMaterial/${materialsNo}` )
 
     return response.data
 }

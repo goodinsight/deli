@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{/layout/layout.html}">
 
@@ -78,11 +78,11 @@
                         <tbody th:with="link = ${pageRequestDTO.getLink()}">
                         <tr th:each="dto:${responseDTO.dtoList}">
                             <th scope="row">[[${dto.materialProcurementPlanNo}]]</th>
-                            <td>[[${dto.materialCode}]]</td>
                             <td>
                                 <a th:href="|@{/materialProcurementPlanning/read(materialProcurementPlanNo =
-                                 ${dto.materialProcurementPlanNo})}&${link}|" class="text-decoration-none"> [[${dto.materialName}]] </a>
+                                 ${dto.materialProcurementPlanNo})}&${link}|" class="text-decoration-none"> [[${dto.materialCode}]] </a>
                             </td>
+                            <td>[[${dto.materialName}]]</td>
                             <td>[[${dto.materialRequirementsCount}]]</td>
                             <td>[[${dto.procurementDeliveryDate}]]</td>
                             <td>[[${dto.materialProcurementState}]]</td>
@@ -142,7 +142,14 @@
 
     console.log("자재조달계획 리스트 페이지")
 
+    $(document).ready(function () {
+        console.log([[${pageRequestDTO}]])
+        console.log([[${pageRequestDTO.link}]])
+        console.log([[${responseDTO}]])
+    })
+
     document.querySelector(".pagination").addEventListener("click", function (e){
+
         e.preventDefault()
         e.stopPropagation()
 

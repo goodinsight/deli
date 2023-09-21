@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = {"products"})
+@ToString(exclude = {"products", "cooperatorClient"})
 public class ProductionPlanning extends BaseEntity {   //제품생산계획테이블 Entity
 
     @Id
@@ -35,6 +35,9 @@ public class ProductionPlanning extends BaseEntity {   //제품생산계획테�
     private Products products;  //제품일련번호 FK
 
     private String productCode;    //제품코드 (검색용)
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private CooperatorClient cooperatorClient;  //구매협력회사 일련번호 FK
 
     private String clientName; //구매협력회사명 (검색용)
 

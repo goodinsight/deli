@@ -9,8 +9,10 @@ import javax.persistence.*;
 @Entity
 @Builder
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+//@Table(name = "CooperatorSupplier")
 @ToString(exclude = "documentFile")
 public class CooperatorSupplier {
 
@@ -32,9 +34,9 @@ public class CooperatorSupplier {
 
     private String supplierStatus; //계약상태
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private DocumentFile documentFile;    //문서파일 일련번호 (document_file_no)
-
     private String supplierEtc;    //비고
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private DocumentFile documentFile;    //문서파일 일련번호 FK
 
 }

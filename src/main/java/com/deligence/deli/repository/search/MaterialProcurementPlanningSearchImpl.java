@@ -1,16 +1,21 @@
 package com.deligence.deli.repository.search;
 
-import com.deligence.deli.domain.Board;
-import com.deligence.deli.domain.MaterialProcurementPlanning;
-import com.deligence.deli.domain.QMaterialProcurementPlanning;
+import com.deligence.deli.domain.*;
+import com.deligence.deli.dto.MaterialProcurementPlanningDTO;
+import com.deligence.deli.dto.MaterialProcurementPlanningDetailDTO;
+import com.deligence.deli.dto.ProductionPlanningDTO;
 import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.Tuple;
 import com.querydsl.jpa.JPQLQuery;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.Querydsl;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySupport
@@ -19,6 +24,9 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
     public MaterialProcurementPlanningSearchImpl() {
         super(MaterialProcurementPlanning.class);
     }
+
+    @PersistenceContext
+    EntityManager em;
 
     @Override
     public Page<MaterialProcurementPlanning> search1(Pageable pageable) {
@@ -50,7 +58,10 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
         QMaterialProcurementPlanning materialProcurementPlanning =
                 QMaterialProcurementPlanning.materialProcurementPlanning;
 
-        JPQLQuery<MaterialProcurementPlanning> query = from(materialProcurementPlanning);
+//        JPQLQuery<MaterialProcurementPlanning> query = from(materialProcurementPlanning);
+
+        JPQLQuery<MaterialProcurementPlanning> query = new JPAQueryFactory(em)
+                .selectFrom(materialProcurementPlanning);
 
         if ((types != null && types.length > 0) && keyword != null) {   //검색조건과 키워드가 있다면
 
@@ -94,7 +105,7 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
         }//end if
 
         //material_procurement_plan_no > 0
-        query.where(materialProcurementPlanning.materialProcurementPlanNo.gt(0));
+//        query.where(materialProcurementPlanning.materialProcurementPlanNo.gt(0));
 
         //paging
         this.getQuerydsl().applyPagination(pageable, query);
@@ -104,5 +115,48 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
         long count = query.fetchCount();
 
         return new PageImpl<>(list, pageable, count);
+    }
+
+    @Override
+    public MaterialProcurementPlanningDetailDTO read(int materialProcurementPlanNo) {
+
+        QMaterialProcurementPlanning materialProcurementPlanning =
+                QMaterialProcurementPlanning.materialProcurementPlanning;
+        QProductionPlanning pp = QProductionPlanning.productionPlanning;
+        QMaterials mr = QMaterials.materials;
+
+        JPQLQuery<Tuple> query = new JPAQueryFactory(em)
+                .select(materialProcurementPlanning, pp, mr)
+                .from(materialProcurementPlanning)
+                .join(materialProcurementPlanning.productionPlanning, pp).on(materialProcurementPlanning.productionPlanning.eq(pp))
+                .join(materialProcurementPlanning.materials, mr).on(materialProcurementPlanning.materials.eq(mr))
+                .where(materialProcurementPlanning.materialProcurementPlanNo.eq(materialProcurementPlanNo));
+
+        List<Tuple> targetDtoList = query.fetch();
+
+        Tuple target = targetDtoList.get(0);
+
+        MaterialProcurementPlanning resultMaterialProcurementPlanning =
+                (MaterialProcurementPlanning) target.get(materialProcurementPlanning);
+        ProductionPlanning resultPp = (ProductionPlanning) target.get(pp);
+        Materials resultMr = (Materials) target.get(mr);
+
+        MaterialProcurementPlanningDetailDTO dto = MaterialProcurementPlanningDetailDTO.builder()
+                .materialProcurementPlanNo(resultMaterialProcurementPlanning.getMaterialProcurementPlanNo())
+                .procurementDeliveryDate(resultMaterialProcurementPlanning.getProcurementDeliveryDate())
+                .materialRequirementsCount(resultMaterialProcurementPlanning.getMaterialRequirementsCount())
+                .materialProcurementState(resultMaterialProcurementPlanning.getMaterialProcurementState())
+                .productionPlanNo(resultPp.getProductionPlanNo())
+                .materialNo(resultMr.getMaterialNo())
+                .materialType(resultMr.getMaterialType())
+                .materialCode(resultMr.getMaterialCode())
+                .materialName(resultMr.getMaterialName())
+                .employeeNo(resultMaterialProcurementPlanning.getEmployee().getEmployeeNo())
+                .employeeName(resultMaterialProcurementPlanning.getMaterialName())
+                .regDate(resultMaterialProcurementPlanning.getRegDate())
+                .modDate(resultMaterialProcurementPlanning.getModDate())
+                .build();
+
+        return dto;
     }
 }

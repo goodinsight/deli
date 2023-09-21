@@ -5,6 +5,7 @@ import com.deligence.deli.domain.Employee;
 import com.deligence.deli.domain.MaterialProcurementContract;
 import com.deligence.deli.domain.Materials;
 import com.deligence.deli.dto.MaterialProcurementContractDTO;
+import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
+import javax.persistence.Lob;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -26,19 +28,18 @@ public class MaterialProcurementContractRepositoryTests {
     @Autowired
     private MaterialProcurementContractRepository materialProcurementContractRepository;
 
-    //insert기능 test
     @Test
     public void testInsert() {
 
-        int employeeNo = 1;
         int materialNo = 1;
         int supplierNo = 1;
+        int employeeNo = 1;
 
         IntStream.rangeClosed(5,100).forEach(i -> {
 
-            Employee employee = Employee.builder().employeeNo(1).build();
             Materials materials = Materials.builder().materialNo(1).build();
             CooperatorSupplier cooperatorSupplier = CooperatorSupplier.builder().supplierNo(1).build();
+            Employee employee = Employee.builder().employeeNo(1).build();
 
             MaterialProcurementContract materialProcurementContract = MaterialProcurementContract.builder()
                     .materialProcurementContractCode("contractCode..."+i)
@@ -52,6 +53,8 @@ public class MaterialProcurementContractRepositoryTests {
                     .supplierStatus("READY")
                     .build();
 
+            log.info(materialProcurementContract);
+
             MaterialProcurementContract result =
                     materialProcurementContractRepository.save(materialProcurementContract);
 
@@ -59,7 +62,6 @@ public class MaterialProcurementContractRepositoryTests {
         });
     }
 
-    //select Test
     @Test
     public void testSelect() {
 
@@ -68,14 +70,12 @@ public class MaterialProcurementContractRepositoryTests {
         Optional<MaterialProcurementContract> result =
                 materialProcurementContractRepository.findById(materialProcurementContractNo);
 
-        MaterialProcurementContract materialProcurementContract =
-                result.orElseThrow();
+        MaterialProcurementContract materialProcurementContract = result.orElseThrow();
 
         log.info(materialProcurementContract);
 
     }
 
-    //update Test
     @Test
     public void testUpdate() {
 
@@ -130,11 +130,11 @@ public class MaterialProcurementContractRepositoryTests {
         log.info("page number: " + result.getNumber());
         log.info("page size: " + result.getSize());
 
-        List<MaterialProcurementContract> todoList = result.getContent();
-//        List<MaterialProcurementContract> list = result.getContent();
+//        List<MaterialProcurementContract> todoList = result.getContent();
+        List<MaterialProcurementContract> list = result.getContent();
 
-        todoList.forEach(materialProcurementContract -> log.info(materialProcurementContract));
-//        list.forEach(log::info);
+//        todoList.forEach(materialProcurementContract -> log.info(materialProcurementContract));
+        list.forEach(log::info);
     }
 
     //search test
@@ -175,8 +175,9 @@ public class MaterialProcurementContractRepositoryTests {
         //prev next
         log.info(result.hasPrevious() + ": " + result.hasNext());
 
-        result.getContent().forEach(materialProcurementContract ->
-                log.info(materialProcurementContract));
+//        result.getContent().forEach(materialProcurementContract -> log.info(materialProcurementContract));
+        result.getContent().forEach(log::info);
+
     }
 
 }

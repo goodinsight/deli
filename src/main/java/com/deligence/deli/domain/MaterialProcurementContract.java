@@ -11,18 +11,17 @@ import java.time.LocalDate;
 @Entity
 @Builder
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = {"materials","employee", "cooperatorSupplier", "documentFile"})
+@Table(name = "MaterialProcurementContract")
+@ToString(exclude = {"materials","cooperatorSupplier", "employee", "documentFile"})
 public class MaterialProcurementContract extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
-    private int materialProcurementContractNo;  //조달계약일련번호
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Materials materials;    //자재일련번호 (material_no)
+    private int materialProcurementContractNo;  //조달계약 일련번호
 
     private String materialProcurementContractCode;     //조달계약코드
 
@@ -33,10 +32,7 @@ public class MaterialProcurementContract extends BaseEntity {
     private String materialProcurementContractEtc;  //조건상세(기타사항)
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private CooperatorSupplier cooperatorSupplier;  //자재조달협력회사일련번호 supplier_no
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Employee employee;  //사원일련번호 employee_no
+    private Materials materials;    //자재일련번호 FK
 
     private String materialCode;   //자재코드 (검색용)
 
@@ -44,13 +40,19 @@ public class MaterialProcurementContract extends BaseEntity {
 
     private Long materialSupplyPrice; //공급단가 (검색용)
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private CooperatorSupplier cooperatorSupplier;  //자재조달협력회사 일련번호 FK
+
     private String supplierName;   //자재협력회사명 (검색용)
 
     private String supplierStatus; //계약상태 (검색용)
     //검색에 자재조달 계약상태가 필요하면 해당 컬럼은 불필요.
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private DocumentFile documentFile;   //문서파일일련번호 (document_file_no)
+    private Employee employee;  //사원일련번호 FK
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private DocumentFile documentFile;   //문서파일일련번호 FK
 
 
     //수정가능한 속성 지정 (계약일, 조건상세, 계약상태 지정)
