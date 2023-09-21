@@ -3,6 +3,7 @@ package com.deligence.deli.repository;
 import com.deligence.deli.domain.MaterialInventory;
 import com.deligence.deli.domain.Materials;
 import com.deligence.deli.domain.Order;
+import com.deligence.deli.dto.MaterialsDTO;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class MaterialInventoryRepositoryTests {
     @Test
     public void testMaterialInventoryInsert() {
 
-        IntStream.rangeClosed(1, 1).forEach(i -> {
+        IntStream.rangeClosed(1, 10).forEach(i -> {
 
             MaterialInventory materialInventory = MaterialInventory.builder()
                     .materialIncomingQuantity(i)
@@ -59,7 +60,6 @@ public class MaterialInventoryRepositoryTests {
     }
 
     @Test
-    @Transactional
     public void testMaterialInventorySelect() {
 
         int materialInventoryNo = 10;
@@ -89,6 +89,7 @@ public class MaterialInventoryRepositoryTests {
     }
 
     @Test
+    @Transactional
     public void testMaterialInventoryDelete() {
 
         int materialInventoryNo = 20;
@@ -152,57 +153,46 @@ public class MaterialInventoryRepositoryTests {
 //
 //        List<Materials> list = materialsRepository.findAll();
 //        List<Order> list2 = orderRepository.findAll();
+//        log.info(list);
+//        log.info(list2);
 //
-//        if (list2.size() != 0) {
+//        for (int i = 0; i < list2.size(); i++) {
 //
-//            for (int i = 0; i <= 50; i++) {
-//                if (list.get(i).getMaterialName() == list2.get(i).getMaterialName()) {
+//            log.info(list.get(i).getMaterialNo());
+//            log.info(list.get(i).getMaterialName());
+//            log.info(list2.get(i).getOrderNo());
+//            log.info(list2.get(i).getMaterialName());
 //
-//                    log.info(list.get(i).getMaterialName());
-//                    log.info(list2.get(i).getMaterialName());
-//                    log.info(list.get(i).getMaterialNo());
-//                    log.info(list2.get(i).getOrderNo());
-//                }
+//            Optional<Materials> result2 = materialsRepository.findById(list.get(i).getMaterialNo());
+//            log.info("result2 : " + result2);
+//            Optional<Order> result = materialInventoryRepository.getorNo(list2.get(i).getOrderNo());
+//            log.info("result : " + result);
 //
-//                Optional<Materials> result2 = materialsRepository.findById(list.get(i).getMaterialNo());
-//                log.info(result2);
-//                Optional<Order> result = orderRepository.findById(list2.get(i).getOrderNo());
-//                log.info(result);
+//            Materials materials = result2.orElseThrow();
+//            Order order = result.orElseThrow();
 //
-//                Materials materials = result2.orElseThrow();
+//            log.info("materials : " + materials);
 //
-//                log.info(materials);
+//            log.info("oredr : " + order);
 //
-//                Order order = result.orElseThrow();
+//            MaterialInventory materialInventory = MaterialInventory.builder()
+//                    .materialIncomingQuantity(order.getOrderQuantity())
+//                    .materialOutgoingQuantity(100)
+//                    .materialStock(100)
+//                    .materialSupplyPrice(materials.getMaterialSupplyPrice())
+//                    .materialTotalInventoryPayments(100000L)
+//                    .materials(Materials.builder().materialNo(materials.getMaterialNo()).build())
+//                    .order(Order.builder().orderNo(order.getOrderNo()).build())
+//                    .materialCode(materials.getMaterialCode())
+//                    .materialName(materials.getMaterialName())
+//                    .materialType(materials.getMaterialType())
+//                    .build();
 //
-//                log.info(order);
+//            materialInventoryRepository.save(materialInventory);
 //
-//                IntStream.rangeClosed(1, 30).forEach(z -> {
-//                    MaterialInventory materialInventory = MaterialInventory.builder()
-//                            .materialIncomingQuantity(z)
-//                            .materialOutgoingQuantity(z)
-//                            .materialStock(order.getOrderQuantity())
-//                            .materialSupplyPrice(materials.getMaterialSupplyPrice())
-//                            .materialTotalInventoryPayments(z * 100000L)
-//                            .materials(Materials.builder().materialNo(materials.getMaterialNo()).build())
-//                            .order(Order.builder().orderNo(order.getOrderNo()).build())
-//                            .materialCode(materials.getMaterialCode())
-//                            .materialName(materials.getMaterialName())
-//                            .materialType(materials.getMaterialType())
-//                            .build();
-//
-//                    materialInventoryRepository.save(materialInventory);
-//
-//                });
-//
-//            }
 //        }
-//
-//
-//
 //    }
-
-
-
-
 }
+
+
+

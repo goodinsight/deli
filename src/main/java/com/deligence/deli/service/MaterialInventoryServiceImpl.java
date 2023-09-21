@@ -2,10 +2,11 @@ package com.deligence.deli.service;
 
 import com.deligence.deli.domain.MaterialInventory;
 import com.deligence.deli.domain.Materials;
-import com.deligence.deli.dto.MaterialInventoryDTO;
-import com.deligence.deli.dto.PageRequestDTO;
-import com.deligence.deli.dto.PageResponseDTO;
+import com.deligence.deli.domain.Order;
+import com.deligence.deli.dto.*;
 import com.deligence.deli.repository.MaterialInventoryRepository;
+import com.deligence.deli.repository.MaterialsRepository;
+import com.deligence.deli.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
@@ -28,14 +29,21 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
 
     private final MaterialInventoryRepository materialInventoryRepository;
 
+    private final MaterialsRepository materialsRepository;
+
+    private final OrderRepository orderRepository;
+
     @Override
-    public int materialStockRegister(MaterialInventoryDTO materialInventoryDTO) {
+    public int[] materialStockRegister(MaterialInventoryDTO materialInventoryDTO) {
 
         MaterialInventory materialInventory = modelMapper.map(materialInventoryDTO, MaterialInventory.class);
-
         int materialInventoryNo = materialInventoryRepository.save(materialInventory).getMaterialInventoryNo();
 
-        return materialInventoryNo;
+        Optional<Order> order = materialInventoryRepository.findFristByOrderNo(materialInventoryDTO.getOrder().getOrderNo());
+        Order order1 = modelMapper.map(order, Order.class);
+        int orderNo = order1.getOrderNo();
+
+        return new int[]{materialInventoryNo, orderNo};
 
     }
 
