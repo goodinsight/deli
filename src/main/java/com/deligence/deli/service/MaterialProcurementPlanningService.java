@@ -1,11 +1,7 @@
 package com.deligence.deli.service;
 
-import com.deligence.deli.domain.Board;
-import com.deligence.deli.domain.MaterialProcurementPlanning;
-import com.deligence.deli.dto.BoardDTO;
-import com.deligence.deli.dto.MaterialProcurementPlanningDTO;
-import com.deligence.deli.dto.PageRequestDTO;
-import com.deligence.deli.dto.PageResponseDTO;
+import com.deligence.deli.domain.*;
+import com.deligence.deli.dto.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,7 +12,7 @@ public interface MaterialProcurementPlanningService {
     int register(MaterialProcurementPlanningDTO materialProcurementPlanningDTO);
 
     //조회
-    MaterialProcurementPlanningDTO read(int materialProcurementPlanNo);
+    public MaterialProcurementPlanningDetailDTO read(int materialProcurementPlanNo);
 
     //수정
     void modify(MaterialProcurementPlanningDTO materialProcurementPlanningDTO);
@@ -35,9 +31,9 @@ public interface MaterialProcurementPlanningService {
                 .procurementDeliveryDate(materialProcurementPlanningDTO.getProcurementDeliveryDate())
                 .materialRequirementsCount(materialProcurementPlanningDTO.getMaterialRequirementsCount())
                 .materialProcurementState(materialProcurementPlanningDTO.getMaterialProcurementState())
-                .materials(materialProcurementPlanningDTO.getMaterials())
-//                .productionPlanning(materialProcurementPlanningDTO.getProductionPlanning().getProductionPlanNo())
-                .employee(materialProcurementPlanningDTO.getEmployee())
+                .productionPlanning(ProductionPlanning.builder().productionPlanNo(materialProcurementPlanningDTO.getProductionPlanNo()).build())
+                .materials(Materials.builder().materialNo(materialProcurementPlanningDTO.getMaterialNo()).build())
+                .employee(Employee.builder().employeeNo(materialProcurementPlanningDTO.getEmployeeNo()).build())
                 .materialCode(materialProcurementPlanningDTO.getMaterialCode())
                 .materialName(materialProcurementPlanningDTO.getMaterialName())
                 .build();
@@ -45,31 +41,21 @@ public interface MaterialProcurementPlanningService {
         return materialProcurementPlanning;
     }
 
-    default MaterialProcurementPlanningDTO entityToDTO(MaterialProcurementPlanning materialProcurementPlanning) {
+    default MaterialProcurementPlanningDTO entityToDto(MaterialProcurementPlanning materialProcurementPlanning) {
 
         MaterialProcurementPlanningDTO materialProcurementPlanningDTO = MaterialProcurementPlanningDTO.builder()
-
                 .materialProcurementPlanNo(materialProcurementPlanning.getMaterialProcurementPlanNo())
-                .modDate(materialProcurementPlanning.getModDate())
-                .regDate(materialProcurementPlanning.getRegDate())
                 .procurementDeliveryDate(materialProcurementPlanning.getProcurementDeliveryDate())
                 .materialRequirementsCount(materialProcurementPlanning.getMaterialRequirementsCount())
                 .materialProcurementState(materialProcurementPlanning.getMaterialProcurementState())
-                .materials(materialProcurementPlanning.getMaterials())
-//                .materialNo(materialProcurementPlanning.getMaterials().getMaterialNo())
                 .productionPlanNo(materialProcurementPlanning.getProductionPlanning().getProductionPlanNo())
-//                .employeeName(materialProcurementPlanning.getEmployee().getEmployeeName())
-                .employee(materialProcurementPlanning.getEmployee())
-                .materialCode(materialProcurementPlanning.getMaterials().getMaterialCode())
-                .materialName(materialProcurementPlanning.getMaterials().getMaterialName())
-//                .materialType(materialProcurementPlanning.getMaterials().getMaterialType())
+                .materialNo(materialProcurementPlanning.getMaterials().getMaterialNo())
+                .employeeNo(materialProcurementPlanning.getEmployee().getEmployeeNo())
+                .materialCode(materialProcurementPlanning.getMaterialCode())
+                .materialName(materialProcurementPlanning.getMaterialName())
+                .regDate(materialProcurementPlanning.getRegDate())
+                .modDate(materialProcurementPlanning.getModDate())
                 .build();
-
-//        List<String> fileNames = materialProcurementPlanning.getImageSet().stream().sorted().map(boardImage ->
-//                boardImage.getUuid()+"_"+boardImage.getFileName()
-//        ).collect(Collectors.toList());
-//
-//        boardDTO.setFileNames(fileNames);
 
         return materialProcurementPlanningDTO;
 

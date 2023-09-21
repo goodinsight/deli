@@ -1,14 +1,12 @@
 package com.deligence.deli.service;
 
 import com.deligence.deli.domain.MaterialProcurementPlanning;
-import com.deligence.deli.dto.BoardDTO;
-import com.deligence.deli.dto.MaterialProcurementPlanningDTO;
-import com.deligence.deli.dto.PageRequestDTO;
-import com.deligence.deli.dto.PageResponseDTO;
+import com.deligence.deli.dto.*;
 import com.deligence.deli.repository.MaterialProcurementPlanningRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -31,10 +29,14 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
     @Override  //등록
     public int register(MaterialProcurementPlanningDTO materialProcurementPlanningDTO) {
 
+        log.info("register start");
+
+        log.info(materialProcurementPlanningDTO);
+
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
+
         //dto -> entity
-        MaterialProcurementPlanning materialProcurementPlanning =
-                modelMapper.map(materialProcurementPlanningDTO, MaterialProcurementPlanning.class);
-        //안되면 인터페이스에 dtoToEntity 메소드 만들기
+        MaterialProcurementPlanning materialProcurementPlanning = dtoToEntity(materialProcurementPlanningDTO);
 
         log.info(materialProcurementPlanning);
 
@@ -48,22 +50,13 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
     }
 
     @Override //조회
-    public MaterialProcurementPlanningDTO read(int materialProcurementPlanNo) {
+    public MaterialProcurementPlanningDetailDTO read(int materialProcurementPlanNo) {
 
-        Optional<MaterialProcurementPlanning> result =
-                materialProcurementPlanningRepository.findById(materialProcurementPlanNo);
+        MaterialProcurementPlanningDetailDTO result =
+                materialProcurementPlanningRepository.read(materialProcurementPlanNo);
 
-        MaterialProcurementPlanning materialProcurementPlanning = result.orElseThrow();
+        return result;
 
-        //entity -> dto
-        MaterialProcurementPlanningDTO materialProcurementPlanningDTO =
-                modelMapper.map(materialProcurementPlanning, MaterialProcurementPlanningDTO.class);
-
-//        MaterialProcurementPlanningDTO materialProcurementPlanningDTO = entityToDTO(materialProcurementPlanning);
-
-        log.info(materialProcurementPlanningDTO);
-
-        return materialProcurementPlanningDTO;
     }
 
     @Override //수정
@@ -105,8 +98,7 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
                 materialProcurementPlanningRepository.searchAll(types, keyword, pageable);
 
         List<MaterialProcurementPlanningDTO> dtoList = result.getContent().stream()
-                .map(materialProcurementPlanning -> modelMapper
-                        .map(materialProcurementPlanning, MaterialProcurementPlanningDTO.class))
+                .map(materialProcurementPlanning -> entityToDto(materialProcurementPlanning))
                 .collect(Collectors.toList());
 
         return PageResponseDTO.<MaterialProcurementPlanningDTO>withAll()

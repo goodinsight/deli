@@ -33,7 +33,6 @@ public class MaterialProcurementPlanningDetailDTO {
 
 //    private Materials materials;    //자재일련번호 FK
 
-    @NotNull
     private int productionPlanNo; //생산계획 일련번호 FK
 
     private int materialNo; //자재 일련번호

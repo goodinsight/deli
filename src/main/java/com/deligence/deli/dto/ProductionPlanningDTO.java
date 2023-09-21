@@ -30,18 +30,19 @@ public class ProductionPlanningDTO {
 
     private String detailExplaination;  //상세내용
 
-    private int productNo;  //제품일련번호
+    private int productNo;  //제품일련번호(FK)
 //    private Products products;
-
-    private LocalDateTime regDate;  //등록일
-
-    private LocalDateTime modDate;  //수정일
 
     private String productCode; //제품코드 (검색용)
 
+    private int clientNo;   //구매협력회사일련번호(FK)
 //    private CooperatorClient cooperatorClient;    //구매협력회사
 
     private String clientName;  //구매협력회사명 (검색용)
 
     private String clientStatus;    //구매협력회사 계약상태 (검색용)
+
+    private LocalDateTime regDate;  //등록일
+
+    private LocalDateTime modDate;  //수정일
 }

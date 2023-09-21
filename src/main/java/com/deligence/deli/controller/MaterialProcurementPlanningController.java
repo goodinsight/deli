@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Value;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -47,7 +48,11 @@ public class MaterialProcurementPlanningController {
 
     //등록GET
     @GetMapping("/register")
-    public void registerGET() {
+    public void registerGET(@AuthenticationPrincipal EmployeeSecurityDTO employeeSecurityDTO, Model model) {
+
+        log.info(employeeSecurityDTO);
+
+        model.addAttribute("user", employeeSecurityDTO);
 
     }
 
@@ -85,13 +90,13 @@ public class MaterialProcurementPlanningController {
 
         log.info("search : materialProcurementPlanNo = " + materialProcurementPlanNo);
 
-        MaterialProcurementPlanningDTO materialProcurementPlanningDTO =
+        MaterialProcurementPlanningDetailDTO materialProcurementPlanningDetailDTO =
                 materialProcurementPlanningService.read(materialProcurementPlanNo);
 
-        log.info(materialProcurementPlanningDTO);
+        log.info(materialProcurementPlanningDetailDTO);
 
 
-        model.addAttribute("dto", materialProcurementPlanningDTO);
+        model.addAttribute("dto", materialProcurementPlanningDetailDTO);
 
         log.info(pageRequestDTO);
 
@@ -177,6 +182,8 @@ public class MaterialProcurementPlanningController {
         }
 
         materialProcurementPlanningService.modify(materialProcurementPlanningDTO);
+
+        redirectAttributes.addFlashAttribute("result", "modified");
 
         redirectAttributes.addAttribute("materialProcurementPlanNo",
                 materialProcurementPlanningDTO.getMaterialProcurementPlanNo());

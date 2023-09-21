@@ -28,6 +28,8 @@ public class QProductionPlanning extends EntityPathBase<ProductionPlanning> {
 
     public final StringPath clientStatus = createString("clientStatus");
 
+    public final QCooperatorClient cooperatorClient;
+
     public final StringPath detailExplaination = createString("detailExplaination");
 
     //inherited
@@ -70,6 +72,7 @@ public class QProductionPlanning extends EntityPathBase<ProductionPlanning> {
 
     public QProductionPlanning(Class<? extends ProductionPlanning> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
+        this.cooperatorClient = inits.isInitialized("cooperatorClient") ? new QCooperatorClient(forProperty("cooperatorClient"), inits.get("cooperatorClient")) : null;
         this.products = inits.isInitialized("products") ? new QProducts(forProperty("products")) : null;
     }
 
