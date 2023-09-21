@@ -4,31 +4,32 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{/layout/layout.html}">
 <head>
+  <meta charset="UTF-8">
   <title>자재조달계획 등록</title>
 </head>
 
 <div layout:fragment="content">
+
   <div class="row mt-3">
     <div class="col">
       <div class="card">
         <div class="card-header">
           자재조달계획 등록
         </div>
-        <div class="card-body">
+        <div class="card-body mt-3">
           <form action="/materialProcurementPlanning/register" method="post">
             <div class="input-group mb-3">
               <span class="input-group-text">생산계획 일련번호</span>
-              <input type="text" name="productionPlanNo" class="form-control selectProductionPlan" placeholder="클릭해주세요" readonly>
+              <input type="text" name="productionPlanNo" class="form-control selectPlan" placeholder="클릭해주세요" readonly>
             </div>
 
-            <div class="input-group mb-3">
+            <div class="input-group mb-3 pl-5">
               <span class="input-group-text">자재 코드</span>
               <input type="text" name="materialCode" class="form-control selectMaterial" placeholder="클릭해주세요" readonly>
             </div>
 
             <div class="input-group mb-3 pl-5">
               <span class="input-group-text">자재 타입</span>
-              <!--임의작성. 옵션 방식으로 변경-->
               <input type="text" name="materialType" class="form-control materialType" readonly>
             </div>
 
@@ -39,22 +40,22 @@
 
             <div class="input-group mb-3">
               <span class="input-group-text">자재 소요량</span>
-              <input type="number" name="materialRequirementsCount" class="form-control" placeholder="자재 소요량">
+              <input type="number" name="materialRequirementsCount" class="form-control materialRequirementsCount" placeholder="자재 소요량">
             </div>
 
             <div class="input-group mb-3">
               <span class="input-group-text">납기일</span>
-              <input type="date" name="procurementDeliveryDate" class="form-control" placeholder="납기일">
+              <input type="date" name="procurementDeliveryDate" class="form-control procurementDeliveryDate" placeholder="납기일">
             </div>
 
             <div class="input-group mb-3">
               <span class="input-group-text">담당자 일련번호</span>
-              <input type="text" name="employeeNo" class="form-control employeeNo" th:value="${user.employeeNo}" readonly>
+              <input type="text" name="employeeNo" class="form-control" th:value="${user.employeeNo}" readonly>
             </div>
 
             <div class="input-group mb-3">
               <span class="input-group-text">담당자 이름</span>
-              <input type="number" name="employeeName" class="form-control employeeName" th:value="${user.employeeName}" readonly>
+              <input type="text" name="employeeName" class="form-control" th:value="${user.employeeName}" readonly>
             </div>
 
             <div class="input-group mb-3">
@@ -84,7 +85,7 @@
   </div><!--end row-->
 
   <!--생산 계획 선택을 위한 모달창-->
-  <div class="modal selectProductionPlan" tabindex="-1">
+  <div class="modal selectPlanModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -99,7 +100,6 @@
                   <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                      <!--임시 작성. 추후 변경될 수 있음.-->
                       <th scope="col">NO</th>
                       <th scope="col">제품코드</th>
                       <th scope="col">클라이언트 회사명</th>
@@ -108,13 +108,13 @@
                     </tr>
                     </thead>
 
-                    <tbody class="productionPlanList">
+                    <tbody class="PlanList">
 
                     </tbody>
                   </table>
 
                   <div class="float-end">
-                    <ul class="pagination flex-wrap productionPlanPaging"></ul>
+                    <ul class="pagination flex-wrap planPaging"></ul>
                   </div>
                 </div><!--end card body-->
               </div><!--end card-->
@@ -123,7 +123,7 @@
 
         </div><!--end modal body-->
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark closeProductionPlanBtn">Close</button>
+          <button type="button" class="btn btn-outline-dark closePlanBtn">Close</button>
         </div>
       </div>
     </div>
@@ -131,7 +131,7 @@
 
 
   <!--자재 선택을 위한 모달창-->
-  <div class="modal selectMaterial" tabindex="-1">
+  <div class="modal selectMaterialModal" tabindex="-1">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
@@ -146,7 +146,6 @@
                   <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                      <!--임시 작성. 추후 변경될 수 있음.-->
                       <th scope="col">NO</th>
                       <th scope="col">자재 코드</th>
                       <th scope="col">자재 이름</th>
@@ -206,49 +205,49 @@
 
   //생산 계획 선택 --------------------------------------------------------------------
 
-  const productionPlanModal = new bootstrap.Modal(document.querySelector(".selectProductionPlanModal"))
+  const planModal = new bootstrap.Modal(document.querySelector(".selectPlanModal"))
 
-  const productionPlanList = document.querySelector(".productionPlanList")  //생산 계획 목록 DOM
-  const productionPlanPaging = document.querySelector(".productionPlanPaging")  //생산 계획 페이지 선택 목록 DOM
+  const planList = document.querySelector(".planList")  //생산 계획 목록 DOM
+  const planPaging = document.querySelector(".planPaging")  //생산 계획 페이지 선택 목록 DOM
 
-  const closeProductionPlanBtn = document.querySelector(".closeProductionPlanBtn")
+  const closePlanBtn = document.querySelector(".closePlanBtn")
 
-  let productionPlanPage = 1
-  let productionPlanPageSize = 5
+  let planPage = 1
+  let planPageSize = 5
 
-  document.querySelector(".selectProductionPlan").addEventListener("click", function (e) {
-    printProductionPlans(1, 5)
-    productionPlanModal.show()
+  document.querySelector(".selectPlan").addEventListener("click", function (e) {
+    printPlans(1, 5)
+    planModal.show()
   }, false)
 
-  closeProductionPlanBtn.addEventListener("click", function (e) {
-    productionPlanModal.hide()
+  closePlanBtn.addEventListener("click", function (e) {
+    planModal.hide()
   })
 
-  function printProductionPlanList(dtoList) { //생산 계획 목록
+  function printPlanList(dtoList) { //생산 계획 목록
 
     let str = ''
 
     if (dtoList && dtoList.length > 0) {
 
-      for (const dto of dtoList) {
+      for ( const dto of dtoList) {
 
         str += `<tr>
-                  <td data-productionPlanNo="${dto.productionPlanNo}">${dto.productionPlanNo}</td>
-                  <td data-productionPlanNo="${dto.productionPlanNo}">${dto.productCode}</td>
-                  <td data-productionPlanNo="${dto.productionPlanNo}">${dto.clientName}</td>
-                  <td data-productionPlanNo="${dto.productionPlanNo}">${dto.productionDeliveryDate}</td>
-                  <td data-productionPlanNo="${dto.productionPlanNo}">${dto.clientStatus}</td>
+                  <td data-planNo="${dto.productionPlanNo}">${dto.productionPlanNo}</td>
+                  <td data-planNo="${dto.productionPlanNo}">${dto.productCode}</td>
+                  <td data-planNo="${dto.productionPlanNo}">${dto.clientName}</td>
+                  <td data-planNo="${dto.productionPlanNo}">${dto.productionDeliveryDate}</td>
+                  <td data-planNo="${dto.productionPlanNo}">${dto.clientStatus}</td>
               </tr>`
       }
     }
 
-    productionPlanList.innerHTML = str
+    planList.innerHTML = str
 
   }
 
   //생산 계획 목록 페이징 처리
-  function printProductionPlanPages(data) {
+  function printPlanPages(data) {
 
     let pageStr = '';
 
@@ -261,18 +260,18 @@
     if(data.next) {
       pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end+1}">NEXT</a></li>`
     }
-    productionPlanPage.innerHTML = pageStr
+    planPaging.innerHTML = pageStr
 
-    productionPlanPage = data.page
+    planPage = data.page
 
   }
 
-  function printProductionPlans(page, size) {
+  function printPlans(page, size) {
 
-    getProductionPlanList({page, size}).then(
+    getPlanList({page, size}).then(
             data => {
-              printProductionPlanList(data.dtoList)
-              printProductionPlanPages(data)
+              printPlanList(data.dtoList)
+              printPlanPages(data)
             }
     ).catch(e => {
       console.error(e)
@@ -280,7 +279,7 @@
   }
 
   //생산계획 목록 페이징
-  productionPlanPaging.addEventListener("click", function (e) {
+  planPaging.addEventListener("click", function (e) {
 
     e.preventDefault()
     e.stopPropagation()
@@ -292,12 +291,12 @@
     }
 
     const pageNum = target.getAttribute("data-page")
-    productionPlanPage = pageNum
-    printProductionPlans(productionPlanPage, productionPlanPageSize)
+    planPage = pageNum
+    printPlans(planPage, planPageSize)
 
   }, false)
 
-  const inputProductionPlanNo = document.querySelector(".selectProductionPlan")
+  const inputPlanNo = document.querySelector(".selectPlan")
   const productCode = document.querySelector(".productCode")  //제품코드
   const clientName = document.querySelector(".clientName")  //클라이언트회사명
   const productionDeliveryDate = document.querySelector(".productionDeliveryDate")  //납기일
@@ -305,7 +304,7 @@
 
 
   //생산 계획 항목 클릭시 input에 반영
-  productionPlanList.addEventListener("click", function (e) {
+  planList.addEventListener("click", function (e) {
 
     e.preventDefault()
     e.stopPropagation()
@@ -318,24 +317,24 @@
       return
     }
 
-    const productionPlanNo = target.getAttribute("data-productionPlanNo")
+    const planNo = target.getAttribute("data-planNo")
 
-    if (!productionPlanNo) {
+    if (!planNo) {
       return;
     }
 
-    getProductionPlan(productionPlanNo).then(productionPlan => {
+    getPlan(planNo).then(plan => {
 
-      console.log(productionPlan)
-      inputProductionPlanNo.value = productionPlan.productionPlanNo
+      console.log(plan)
+      inputPlanNo.value = plan.productionPlanNo
       //생산 계획 정보를 가져와서 화면에 반영해야 할 항복들은 여기에 --------------------------------------------------------
-      productCode.value = productionPlan.productCode
-      clientName.value = productionPlan.clientName
-      productionDeliveryDate.value = new Date(productionPlan.productionDeliveryDate).toISOString().split('T')[0]
-      clientStatus.value = productionPlan.clientStatus
+      productCode.value = plan.productCode
+      clientName.value = plan.clientName
+      productionDeliveryDate.value = new Date(plan.productionDeliveryDate).toISOString().split('T')[0]
+      clientStatus.value = plan.clientStatus
       //----------------------------------------------------------------------------------------------------------
 
-      productionPlanModal.hide()
+      planModal.hide()
 
     }).catch(e => alert('error'))
 
@@ -432,10 +431,10 @@
 
   }, false)
 
-  const materialNo = document.querySelector(".materialNo")
-  const inputMaterialCode = document.querySelector(".selectMaterial")
-  const inputMaterialType = document.querySelector(".selectMaterial")
-  const inputMaterialName = document.querySelector(".selectMaterial")
+  const materialsNo = document.querySelector(".selectMaterial")
+  const inputMaterialCode = document.querySelector(".materialCode")
+  const inputMaterialType = document.querySelector(".materialType")
+  const inputMaterialName = document.querySelector(".materialName")
 
   //자재 항목 클릭시 input에 반영
   materialList.addEventListener("click", function (e) {
@@ -460,7 +459,7 @@
     getMaterial(materialsNo).then(material => {
 
       console.log(material)
-      materialNo.value = material.materialNo
+      materialsNo.value = material.materialNo
       //자재 정보를 가져와서 화면에 반영해야 할 항복들은 여기에 --------------------------------------------------------
       inputMaterialCode.value = material.materialCode
       inputMaterialType.value = material.materialType
