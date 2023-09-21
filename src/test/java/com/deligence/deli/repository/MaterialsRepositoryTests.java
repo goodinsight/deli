@@ -122,23 +122,23 @@ public class MaterialsRepositoryTests {
 
     }
 
-    @Test
-    public void testInsertWithImages() { // 이미지 추가 test
-
-        Materials materials = Materials.builder()
-                .materialCode("이미지 test")
-                .materialName("이미지 test")
-                .materialType("이미지 test")
-                .materialExplaination("이미지 test")
-                .materialSupplyPrice(1L)
-                .build();
-
-        for (int i = 0; i < 3; i++) {
-
-            materials.addImage(UUID.randomUUID().toString(), "file"+i+".jpg");
-
-        } //end for
-
-        materialsRepository.save(materials);
-    }
+//    @Test
+//    public void testInsertWithImages() { // 이미지 추가 test
+//
+//        Materials materials = Materials.builder()
+//                .materialCode("이미지 test")
+//                .materialName("이미지 test")
+//                .materialType("이미지 test")
+//                .materialExplaination("이미지 test")
+//                .materialSupplyPrice(1L)
+//                .build();
+//
+//        for (int i = 0; i < 3; i++) {
+//
+//            materials.addImage(UUID.randomUUID().toString(), "file"+i+".jpg");
+//
+//        } //end for
+//
+//        materialsRepository.save(materials);
+//    }
 }

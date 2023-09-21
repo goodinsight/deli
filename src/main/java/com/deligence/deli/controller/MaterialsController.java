@@ -9,9 +9,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
@@ -99,7 +97,7 @@ public class MaterialsController {
         return "redirect:/material/read";
     }
 
-    @PostMapping("/delete")
+    @PostMapping("/delete") //자재삭제
     public String remove(int materialNo, RedirectAttributes redirectAttributes) {
 
         log.info("remove post..." + materialNo);
@@ -110,6 +108,20 @@ public class MaterialsController {
 
         return "redirect:/material/list";
     }
+
+//    @ResponseBody
+//    @GetMapping("/register/getCodeCount/{materialCode}") //자재코드생성
+//    public int getCodeCount(@PathVariable("materialCode") String orderCode){
+//
+//        log.info("getCodeCount : " + materialCode);
+//
+//        int num = materialsService.getCodeCount(materialCode);
+//
+//        log.info("num : " + num);
+//
+//        return num;
+//
+//    }
 
 
 }

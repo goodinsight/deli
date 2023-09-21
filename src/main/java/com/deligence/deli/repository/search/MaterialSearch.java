@@ -9,4 +9,6 @@ public interface MaterialSearch {
     Page<Materials> search1(Pageable pageable);
 
     Page<Materials> searchAll(String[] types, String keyword, Pageable pageable); //검색
+
+    int getCodeCount(String materialCode); //자재코드생성
 }

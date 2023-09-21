@@ -88,5 +88,13 @@ public class MaterialsServiceImpl implements MaterialsService {
                 .build();
     }
 
+    @Override
+    public int getCodeCount(String code) { //자재코드생성
+
+        int num = materialsRepository.getCodeCount(code);
+
+        return num;
+    }
+
 
 }

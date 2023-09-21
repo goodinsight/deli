@@ -78,25 +78,26 @@
                     </thead>
                 </table>
 
-                <div class="float-end">
-                    <ul class="pagination flex-wrap">
+                    <div class="float-end">
+                        <ul class="pagination flex-wrap">
 
-                        <li class="page-item" th:if="${responseDTO.prev}">
-                            <a class="page-link" th:data-num="${responseDTO.start-1}">Previous</a>
-                        </li>
-
-                        <th:block th:each="i: ${#numbers.sequence(responseDTO.start, responseDTO.end)}">
-
-                            <li th:class="${responseDTO.page == i}?'page-item active' : 'page-item'">
-                                <a class="page-link" th:data-num="${i}">[[${i}]]</a>
+                            <li class="page-item" th:if="${responseDTO.prev}">
+                                <a class="page-link" th:data-num="${responseDTO.start -1}">Previous</a>
                             </li>
 
-                        </th:block>
+                            <th:block th:each="i: ${#numbers.sequence(responseDTO.start, responseDTO.end)}">
 
-                        <li class="page-item" th:if="${responseDTO.next}">
-                            <a class="page-link" th:data-num="${responseDTO.end + 1}">NEXT</a>
-                        </li>
-                    </ul>
+                                <li th:class="${responseDTO.page == i}?'page-item active':'page-item'">
+                                    <a class="page-link" th:data-num="${i}">[[${i}]]</a>
+                                </li>
+
+                            </th:block>
+
+                            <li class="page-item" th:if="${responseDTO.next}">
+                                <a class="page-link" th:data-num="${responseDTO.end + 1}">Next</a>
+                            </li>
+
+                        </ul>
                     </div>
                 </div>
             </div> <!-- end card -->
@@ -126,26 +127,31 @@
 
 <script layout:fragment="script" th:inline="javascript">
 
-    document.querySelector(".pagination").addEventListener("click", function (e){
+    document.querySelector(".pagination").addEventListener("click", function(e){
         e.preventDefault()
         e.stopPropagation()
-        const target = e.target
 
-        if (target.tagName !== 'A') {
+        var target = e.target
+
+        if(target.tagName !== 'A'){
             return
         }
 
-        const num = target.getAttribute("data-num")
-        const formObj = document.querySelector("form")
-        formObj.innerHTML += `<input type = 'hidden' name='page' value'${num}'>`
-        formObj.submit();
+        var num = target.getAttribute("data-num")
+
+        var formObj = document.querySelector("form")
+
+        formObj.innerHTML += `<input type="hidden" name="page" value="${num}">`
+
+        formObj.submit()
+
     }, false)
 
     document.querySelector(".clearBtn").addEventListener("click", function (e){
         e.preventDefault()
         e.stopPropagation()
 
-        self.location = '/materialProcurementPlanning/list'
+        self.location = '/material/list'
     }, false)
 
     //show modal
