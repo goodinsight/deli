@@ -126,15 +126,15 @@ public class OrderController {
 
     @ResponseBody
     @GetMapping("/register/getPlan/{planNo}")
-    public MaterialProcurementPlanningDTO getPlanDTO(@PathVariable("planNo") int planNo) {
+    public MaterialProcurementPlanningDetailDTO getPlanDTO(@PathVariable("planNo") int planNo) {
 
         log.info("getPlanDTO : " + planNo);
 
-        MaterialProcurementPlanningDTO materialProcurementPlanningDTO = materialProcurementPlanningService.read(planNo);
+        MaterialProcurementPlanningDetailDTO materialProcurementPlanningDetailDTO = materialProcurementPlanningService.read(planNo);
 
-        log.info(materialProcurementPlanningDTO);
+        log.info(materialProcurementPlanningDetailDTO);
 
-        return materialProcurementPlanningDTO;
+        return materialProcurementPlanningDetailDTO;
 
     }
 
@@ -152,15 +152,15 @@ public class OrderController {
 
     @ResponseBody
     @GetMapping("/order/register/getContract/{contractNo}")
-    public MaterialProcurementContractDTO getContractDTO(@PathVariable("contractNo") int contractNo){
+    public MaterialProcurementContractDetailDTO getContractDTO(@PathVariable("contractNo") int contractNo){
 
         log.info("getContractDTO : " + contractNo);
 
-        MaterialProcurementContractDTO materialProcurementContractDTO = materialProcurementContractService.read(contractNo);
+        MaterialProcurementContractDetailDTO materialProcurementContractDetailDTO = materialProcurementContractService.read(contractNo);
 
-        log.info(materialProcurementContractDTO);
+        log.info(materialProcurementContractDetailDTO);
 
-        return materialProcurementContractDTO;
+        return materialProcurementContractDetailDTO;
 
     }
 
