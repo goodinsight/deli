@@ -53,8 +53,6 @@ public interface MaterialProcurementPlanningService {
                 .employeeNo(materialProcurementPlanning.getEmployee().getEmployeeNo())
                 .materialCode(materialProcurementPlanning.getMaterialCode())
                 .materialName(materialProcurementPlanning.getMaterialName())
-                .regDate(materialProcurementPlanning.getRegDate())
-                .modDate(materialProcurementPlanning.getModDate())
                 .build();
 
         return materialProcurementPlanningDTO;

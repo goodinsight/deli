@@ -90,15 +90,17 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
 
         String[] types = pageRequestDTO.getTypes();
         String keyword = pageRequestDTO.getKeyword();
-        Pageable pageable = pageRequestDTO.getPageable("materialProcurementPlanNo");
+        Pageable pageable = pageRequestDTO.getPageable();
+//        Pageable pageable = pageRequestDTO.getPageable("materialProcurementPlanNo");
         //속성 넣으면 SearchImpl의 searchAll() paging 부분 오류남.
-//        Pageable pageable = pageRequestDTO.getPageable();
 
         Page<MaterialProcurementPlanning> result =
                 materialProcurementPlanningRepository.searchAll(types, keyword, pageable);
 
         List<MaterialProcurementPlanningDTO> dtoList = result.getContent().stream()
                 .map(materialProcurementPlanning -> entityToDto(materialProcurementPlanning))
+//                .map(materialProcurementPlanning -> modelMapper
+//                        .map(MaterialProcurementPlanning, MaterialProcurementPlanningDetailDTO.class))
                 .collect(Collectors.toList());
 
         return PageResponseDTO.<MaterialProcurementPlanningDTO>withAll()

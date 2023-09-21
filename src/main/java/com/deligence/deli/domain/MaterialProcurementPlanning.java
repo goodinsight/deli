@@ -8,9 +8,11 @@ import java.time.LocalDate;
 
 @Entity
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "MaterialProcurementPlanning")
 @ToString(exclude = {"materials", "employee", "productionPlanning"})
 public class MaterialProcurementPlanning extends BaseEntity {
 

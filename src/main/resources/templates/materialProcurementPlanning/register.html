@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{/layout/layout.html}">
@@ -49,12 +49,12 @@
 
             <div class="input-group mb-3">
               <span class="input-group-text">담당자 일련번호</span>
-              <input type="text" name="employeeNo" class="form-control" th:value="${user.employeeNo}" readonly>
+              <input type="text" name="employeeNo" class="form-control employeeNo" th:value="${user.employeeNo}" readonly>
             </div>
 
             <div class="input-group mb-3">
               <span class="input-group-text">담당자 이름</span>
-              <input type="number" name="employeeName" class="form-control" th:value="${user.employeeName}" readonly>
+              <input type="number" name="employeeName" class="form-control employeeName" th:value="${user.employeeName}" readonly>
             </div>
 
             <div class="input-group mb-3">
