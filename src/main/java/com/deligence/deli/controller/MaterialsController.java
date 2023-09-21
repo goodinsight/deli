@@ -109,19 +109,19 @@ public class MaterialsController {
         return "redirect:/material/list";
     }
 
-//    @ResponseBody
-//    @GetMapping("/register/getCodeCount/{materialCode}") //자재코드생성
-//    public int getCodeCount(@PathVariable("materialCode") String orderCode){
-//
-//        log.info("getCodeCount : " + materialCode);
-//
-//        int num = materialsService.getCodeCount(materialCode);
-//
-//        log.info("num : " + num);
-//
-//        return num;
-//
-//    }
+    @ResponseBody
+    @GetMapping("/register/getCodeCount/{materialCode}") //자재코드생성
+    public int getCodeCount(@PathVariable("materialCode") String materialCode){
+
+        log.info("getCodeCount : " + materialCode);
+
+        int num = materialsService.getCodeCount(materialCode);
+
+        log.info("num : " + num);
+
+        return num;
+
+    }
 
 
 }

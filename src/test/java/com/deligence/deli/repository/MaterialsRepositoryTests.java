@@ -1,6 +1,9 @@
 package com.deligence.deli.repository;
 
+import com.deligence.deli.domain.Board;
+import com.deligence.deli.domain.MaterialImage;
 import com.deligence.deli.domain.Materials;
+import com.deligence.deli.service.MaterialsService;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.test.annotation.Commit;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -23,6 +28,8 @@ public class MaterialsRepositoryTests {
 
     @Autowired
     private MaterialsRepository materialsRepository;
+
+    private MaterialsService materialsService;
 
     @Test
     public void testInsert() { // 자재등록 test
@@ -137,4 +144,49 @@ public class MaterialsRepositoryTests {
 
         materialsRepository.save(materials);
     }
+
+    @Test
+    public void testReadWithImages() { //이미지 조회 test
+
+        //반드시 존재하는 materialsNo로 확인
+        Optional<Materials> result = materialsRepository.findByIdWithImages(1348);
+
+        Materials materials = result.orElseThrow();
+
+        log.info(materials);
+        log.info("--------------------");
+
+            log.info(materials.getImageSet());
+
+
+    }
+
+    @Transactional
+    @Commit
+    @Test
+    public void testModifyImages() { //이미지수정 test
+
+        Optional<Materials> result = materialsRepository.findByIdWithImages(1348);
+
+        Materials materials = result.orElseThrow();
+
+        //기존의 첨부파일들 삭제
+        materials.clearImages();
+
+        //새로운 첨부파일
+            materials.addImage(UUID.randomUUID().toString(), "updatefile" +".jpg");
+
+        materialsRepository.save(materials);
+    }
+
+    @Test
+    public void testRemoveAll(){ //이미지 삭제 test
+
+        int materialNo = 1348;
+
+        materialsService.delete(materialNo);
+
+    }
+
+
 }
