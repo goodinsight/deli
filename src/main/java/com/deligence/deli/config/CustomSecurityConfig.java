@@ -67,8 +67,8 @@ public class CustomSecurityConfig {
         //http.formLogin().loginPage("/employee/login");
         http.authorizeHttpRequests()
                 .antMatchers("/", "/employee/login").permitAll()    // 비로그인시에도 접근
-                .antMatchers("/employee/**").hasRole("ADMIN")    //   /employee/** url은 ROLE_ADMIN 롤을 가진 사람만 접근
-                .antMatchers( "/**").hasRole("USER")    //  ROLE_USER 롤을 가진 사람은 /** 로만 접근
+                .antMatchers("/employee/remove","/employee/modify").hasRole("ADMIN")    //   /employee/** url은 ROLE_ADMIN 롤을 가진 사람만 접근
+                .antMatchers( "/**","/employee/list","employee/read").hasAnyRole("USER","ADMIN")    //  ROLE_USER 롤을 가진 사람은 /** 로만 접근
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/employee/login").defaultSuccessUrl("/board/list")

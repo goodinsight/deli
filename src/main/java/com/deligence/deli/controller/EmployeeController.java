@@ -106,6 +106,7 @@ public class EmployeeController {
 
     }
 
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/employee/list")
     public void list(PageRequestDTO pageRequestDTO, Model model) {
 
@@ -131,21 +132,21 @@ public class EmployeeController {
 
     }
 
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("isAuthenticated() or principal.username == #employeeJoinDTO.employeeId")
     @GetMapping("/employee/modify")
-    public void modify(int employeeNo, PageRequestDTO pageRequestDTO, Model model){
+    public void modify(int employeeNo, PageRequestDTO pageRequestDTO, Model model, @Valid EmployeeJoinDTO employeeJoinDTO){
 
-        EmployeeJoinDTO employeeJoinDTO = employeeService.readOne(employeeNo);
+        EmployeeJoinDTO employeeJoinDTO1 = employeeService.readOne(employeeNo);
 
-        log.info(employeeJoinDTO);
+        log.info(employeeJoinDTO1);
         log.info(pageRequestDTO);
 
-        model.addAttribute("dto", employeeJoinDTO);
+        model.addAttribute("dto", employeeJoinDTO1);
 
     }
 
     //@PreAuthorize("principal.username == #employeeJoinDTO.employeeId")    //해당 사용자가 일치하는 경우 수정 권한
-    @PreAuthorize("isAuthenticated()")  // 인가받은 사용자(운영자)만 접근가능
+    @PreAuthorize("isAuthenticated() or principal.username == #employeeJoinDTO.employeeId")  // 인가받은 사용자(운영자)와 본인 정보만 접근가능
     @PostMapping("/employee/modify")
     public String modify(PageRequestDTO pageRequestDTO,
                          @Valid EmployeeJoinDTO employeeJoinDTO,
