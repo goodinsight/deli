@@ -47,6 +47,7 @@ public class MaterialProcurementContractController {
 
     }
 
+    //비동기처리 -----------------------------------------------------
     @ResponseBody
     @GetMapping("/register/getCodeCount/{materialProcurementContractCode}")
     public int getCodeCount(@PathVariable("materialProcurementContractCode") String materialProcurementContractCode){

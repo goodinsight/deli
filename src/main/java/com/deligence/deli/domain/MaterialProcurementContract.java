@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "MaterialProcurementContract")
+//@Table(name = "MaterialProcurementContract")
 @ToString(exclude = {"materials","cooperatorSupplier", "employee", "documentFile"})
 public class MaterialProcurementContract extends BaseEntity {
 
@@ -40,7 +40,8 @@ public class MaterialProcurementContract extends BaseEntity {
 
     private Long materialSupplyPrice; //공급단가 (검색용)
 
-    @ManyToOne(fetch = FetchType.LAZY)
+//    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL)
     private CooperatorSupplier cooperatorSupplier;  //자재조달협력회사 일련번호 FK
 
     private String supplierName;   //자재협력회사명 (검색용)
