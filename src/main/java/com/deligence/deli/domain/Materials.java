@@ -1,6 +1,7 @@
 package com.deligence.deli.domain;
 
 import lombok.*;
+import org.hibernate.annotations.BatchSize;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -36,18 +37,20 @@ public class Materials extends BaseEntity{
     @Column(length = 50, nullable = true)
     private Long materialSupplyPrice; //자재공급단가
 
+    @OneToMany(mappedBy = "materials",
+            cascade = {CascadeType.ALL},
+            fetch = FetchType.LAZY,
+            orphanRemoval = true)
+    @Builder.Default
+    @BatchSize(size = 20)
+    private Set<MaterialImage> imageSet = new HashSet<>(); //이미지 첨부
+
     public void change(String materialName, String materialType, String materialExplaination, Long materialSupplyPrice, LocalDateTime regDate, LocalDateTime modDate){
         this.materialName = materialName;
         this.materialType = materialType;
         this.materialExplaination = materialExplaination;
         this.materialSupplyPrice = materialSupplyPrice;
     }
-
-    @OneToMany(mappedBy = "materials",
-            cascade = {CascadeType.ALL},
-            fetch = FetchType.LAZY)
-    @Builder.Default
-    private Set<MaterialImage> imageSet = new HashSet<>(); //이미지 첨부
 
     public void addImage(String materialUuid, String materialImgName) {
 
