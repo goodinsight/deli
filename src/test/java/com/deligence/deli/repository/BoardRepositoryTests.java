@@ -167,7 +167,7 @@ public class BoardRepositoryTests {
         Board board = Board.builder()
                 .title("image Test")
                 .content("첨부파일 테스트")
-                .writer("tester")
+                .writer("employee1")
                 .build();
 
         for(int i = 0; i < 3; i++) {

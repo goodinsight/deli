@@ -58,7 +58,6 @@ public class Materials extends BaseEntity{
                 .materialUuid(materialUuid)
                 .materialImgName(materialImgName)
                 .materials(this)
-                .materialImgNo(imageSet.size())
                 .build();
         imageSet.add(materialImage);
     }
