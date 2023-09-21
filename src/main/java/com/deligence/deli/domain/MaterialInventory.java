@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = {"documentFile", "materials"})
+@ToString(exclude = {"documentFile", "materials", "order"})
 
 public class MaterialInventory {
 
