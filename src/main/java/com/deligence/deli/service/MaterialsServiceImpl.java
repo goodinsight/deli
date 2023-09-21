@@ -1,6 +1,8 @@
 package com.deligence.deli.service;
 
+import com.deligence.deli.domain.Board;
 import com.deligence.deli.domain.Materials;
+import com.deligence.deli.dto.BoardDTO;
 import com.deligence.deli.dto.MaterialsDTO;
 import com.deligence.deli.dto.PageRequestDTO;
 import com.deligence.deli.dto.PageResponseDTO;
@@ -30,7 +32,9 @@ public class MaterialsServiceImpl implements MaterialsService {
     @Override
     public int register(MaterialsDTO materialsDTO){ //등록 작업처리
 
-        Materials materials = modelMapper.map(materialsDTO, Materials.class);
+//        Materials materials = modelMapper.map(materialsDTO, Materials.class);
+
+        Materials materials = dtoToEntity(materialsDTO);
 
         int materialNo = materialsRepository.save(materials).getMaterialNo();
 
@@ -40,12 +44,13 @@ public class MaterialsServiceImpl implements MaterialsService {
     @Override
     public MaterialsDTO readOne(int materialNo) { //조회 작업처리
 
-        Optional<Materials> result = materialsRepository.findById(materialNo);
+//        Optional<Materials> result = materialsRepository.findById(materialNo);
+//        Materials materials = result.orElseThrow();
+//        MaterialsDTO materialsDTO = modelMapper.map(materials, MaterialsDTO.class);
 
+        Optional<Materials> result = materialsRepository.findByIdWithImages(materialNo);
         Materials materials = result.orElseThrow();
-
-        MaterialsDTO materialsDTO = modelMapper.map(materials, MaterialsDTO.class);
-
+        MaterialsDTO materialsDTO = entityToDTO(materials);
         return materialsDTO;
     }
 
@@ -56,10 +61,17 @@ public class MaterialsServiceImpl implements MaterialsService {
 
         Materials materials = result.orElseThrow();
 
-        materials.change(materialsDTO.getMaterialName(), materialsDTO.getMaterialType(), materialsDTO.getMaterialExplaination(), materialsDTO.getMaterialSupplyPrice(),materialsDTO.getRegDate() ,materialsDTO.getModDate());
+        materials.change(materialsDTO.getMaterialName(), materialsDTO.getMaterialType(), materialsDTO.getMaterialExplaination(), materialsDTO.getMaterialSupplyPrice(), materialsDTO.getRegDate(), materialsDTO.getModDate());
 
+        //첨부파일 처리
+        materials.clearImages();
+
+        if(materialsDTO.getFileNames() != null){
+            String fileName = materialsDTO.getFileNames();
+            String[] arr = fileName.split("-");
+            materials.addImage(arr[0],arr[1]);
+        }
         materialsRepository.save(materials);
-
     }
 
     @Override
@@ -88,5 +100,29 @@ public class MaterialsServiceImpl implements MaterialsService {
                 .build();
     }
 
+    @Override
+    public int getCodeCount(String code) { //자재코드생성
+
+        int num = materialsRepository.getCodeCount(code);
+
+        return num;
+    }
+
+//    public int registerImg(MaterialsDTO materialsDTO) { //이미지 등록
+//        Materials materials = dtoToEntity(materialsDTO);
+//        int materialNo = materialsRepository.save(materials).getMaterialNo();
+//        return materialNo;
+//    }
+//
+//    public MaterialsDTO readOneImg(int materialNo) { //이미지조회
+//
+//        Optional<Materials> result = materialsRepository.findByIdWithImages(materialNo); //board_image까지 조인 처리
+//
+//        Materials materials = result.orElseThrow();
+//
+//        MaterialsDTO materialsDTO = entityToDTO(materials);
+//
+//        return materialsDTO;
+//    }
 
 }

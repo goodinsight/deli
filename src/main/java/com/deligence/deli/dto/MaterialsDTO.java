@@ -9,6 +9,7 @@ import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @Data
 @Builder
@@ -34,6 +35,8 @@ public class MaterialsDTO {
     private LocalDateTime regDate; //등록일
 
     private LocalDateTime modDate; //수정일
+
+    private String fileNames; //첨부파일 이름들
 
     public MaterialsDTO(String materialName, String materialType, String materialExplaination, long materialSupplyPrice){
         LocalDate date = LocalDate.now();

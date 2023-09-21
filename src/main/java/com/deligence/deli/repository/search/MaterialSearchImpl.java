@@ -1,14 +1,19 @@
 package com.deligence.deli.repository.search;
 
 import com.deligence.deli.domain.Materials;
+import com.deligence.deli.domain.Order;
 import com.deligence.deli.domain.QMaterials;
+import com.deligence.deli.domain.QOrder;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.JPQLQuery;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 public class MaterialSearchImpl extends QuerydslRepositorySupport implements MaterialSearch {
@@ -16,6 +21,9 @@ public class MaterialSearchImpl extends QuerydslRepositorySupport implements Mat
     public MaterialSearchImpl(){
         super(Materials.class);
     }
+
+    @PersistenceContext
+    EntityManager em;
 
     @Override
     public Page<Materials> search1(Pageable pageable) {
@@ -74,6 +82,19 @@ public class MaterialSearchImpl extends QuerydslRepositorySupport implements Mat
         long count = query.fetchCount();
 
         return new PageImpl<>(list, pageable, count);
+
+    }
+
+    @Override
+    public int getCodeCount(String code) { //자재코드생성
+
+        QMaterials materials = QMaterials.materials;
+
+        JPQLQuery<Materials> query = new JPAQueryFactory(em)
+                .selectFrom(materials)
+                .where(materials.materialCode.contains(code));
+
+        return (int) query.fetchCount();
 
     }
 

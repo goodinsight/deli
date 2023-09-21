@@ -22,7 +22,7 @@
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">자제코드</span>
-                            <input type="text" name="materialCode" class="form-control" placeholder="Code">
+                            <input type="text" name="materialCode" class="form-control materialCode" placeholder="클릭해주세요" >
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">자재이름</span>
@@ -37,18 +37,25 @@
                             <input type="text" name="materialSupplyPrice" class="form-control" placeholder="SupplyPrice">
                         </div>
 
-                        <!-- 이미지 첨부
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">이미지 첨부</span>
+                            <div class="float-end uploadHidden">
+                                <button type="button" class="btn btn-primary uploadFileBtn">파일 선택</button>
+                            </div>
+                        </div>
+                        <!--
                         <label for="attachFile">이미지 첨부</label>
                         <input type="file" id="attachFile" name="attachFile"/>
                         !-->
 
+
                         <div class="my-4">
                             <div class="float-end">
                                 <a th:href="@{/material/list}" class="text-decoration-none">
-                                    <button type="button" class="btn btn-outline-dark">List</button>
+                                    <button type="button" class="btn btn-outline-dark">자재목록</button>
                                 </a>
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                                <button type="reset" class="btn btn-secondary">Reset</button>
+                                <button type="submit" class="btn btn-primary">저장</button>
+                                <button type="reset" class="btn btn-secondary">되돌리기</button>
                             </div>
                         </div>
                     </form>
@@ -72,5 +79,27 @@
         alert(errorMsg)
     }
 
+
+    //자재 코드 생성 ---------------------------------------------------------------------------------------------
+
+    const materialCode = document.querySelector(".materialCode")
+
+    materialCode.addEventListener("click", function(e) {
+
+        let str = 'Material-'
+
+        str += new Date().toISOString().split('T')[0].replaceAll('-','')
+        str += '-'
+
+        getCodeCount(str).then( result => {
+
+            str += result.data
+
+            materialCode.value = str
+
+        }).catch(e => alert('error'))
+
+
+    }, false)
 </script>
 </html>
