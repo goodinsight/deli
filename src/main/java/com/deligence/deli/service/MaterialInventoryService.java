@@ -10,5 +10,4 @@ public interface MaterialInventoryService {
 
     PageResponseDTO<MaterialInventoryDTO> materialStockList(PageRequestDTO pageRequestDTO);
 
-
 }

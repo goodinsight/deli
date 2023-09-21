@@ -36,7 +36,7 @@ public class OrderRepositoryTests {
         IntStream.rangeClosed(1, 10).forEach(i -> {
 
             Employee employee = Employee.builder().employeeNo(3).build();
-            MaterialProcurementPlanning materialProcurementPlanning = MaterialProcurementPlanning.builder().materialProcurementPlanNo(110).build();
+            MaterialProcurementPlanning materialProcurementPlanning = MaterialProcurementPlanning.builder().materialProcurementPlanNo(10).build();
             MaterialProcurementContract materialProcurementContract = MaterialProcurementContract.builder().materialProcurementContractNo(3).build();
 
             Order order = Order.builder()
