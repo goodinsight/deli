@@ -1,9 +1,7 @@
 package com.deligence.deli.repository.search;
 
-import com.deligence.deli.domain.Materials;
-import com.deligence.deli.domain.Order;
-import com.deligence.deli.domain.QMaterials;
-import com.deligence.deli.domain.QOrder;
+import com.deligence.deli.domain.*;
+import com.deligence.deli.dto.MaterialImageDTO;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.JPQLQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -15,6 +13,7 @@ import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MaterialSearchImpl extends QuerydslRepositorySupport implements MaterialSearch {
 
@@ -96,6 +95,58 @@ public class MaterialSearchImpl extends QuerydslRepositorySupport implements Mat
 
         return (int) query.fetchCount();
 
+    }
+
+    private Materials materials1;
+    private MaterialImageDTO materialImageDTO;
+    @Override
+    public Page<MaterialImageDTO> searchWithAll(String[] types, String keyword, Pageable pageable) {
+
+        QMaterials materials = QMaterials.materials;
+
+        JPQLQuery<Materials> materialsJPQLQuery = from(materials);
+
+        if( (types != null && types.length > 0) && keyword != null) {
+
+            BooleanBuilder booleanBuilder = new BooleanBuilder();
+
+            for(String type: types) {
+
+                switch (type) {
+
+                    case "t": //자재코드
+                        booleanBuilder.or(materials.materialCode.contains(keyword));
+                        break;
+                    case "c": //자재명
+                        booleanBuilder.or(materials.materialName.contains(keyword));
+                        break;
+                    case "w": //자재분류(카테고리)
+                        booleanBuilder.or(materials.materialType.contains(keyword));
+                        break;
+                }
+
+
+
+            } // end for
+            materialsJPQLQuery.where(booleanBuilder);
+        }
+
+        materialsJPQLQuery.groupBy(materials);
+        getQuerydsl().applyPagination(pageable, materialsJPQLQuery);
+
+        List<MaterialImageDTO> imageDTOS = materials1.getImageSet().stream().sorted()
+                .map(materialImage -> MaterialImageDTO.builder()
+                        .materialNo(materialImage.getMaterialImgNo())
+                        .materialImgName(materialImage.getMaterialImgName())
+                        .materialUuid(materialImage.getMaterialUuid())
+                        .build()
+                ).collect(Collectors.toList());
+
+
+
+
+        return new PageImpl<>(imageDTOS);
+        //materialImageDTO.setMaterialImages(imageDTOS);
     }
 
 

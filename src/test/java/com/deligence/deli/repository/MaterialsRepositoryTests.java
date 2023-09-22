@@ -149,14 +149,14 @@ public class MaterialsRepositoryTests {
     public void testReadWithImages() { //이미지 조회 test
 
         //반드시 존재하는 materialsNo로 확인
-        Optional<Materials> result = materialsRepository.findByIdWithImages(1348);
+        Optional<Materials> result = materialsRepository.findByIdWithImages(1351);
 
         Materials materials = result.orElseThrow();
 
         log.info(materials);
         log.info("--------------------");
 
-            log.info(materials.getImageSet());
+        log.info(materials.getImageSet());
 
 
     }
@@ -166,7 +166,7 @@ public class MaterialsRepositoryTests {
     @Test
     public void testModifyImages() { //이미지수정 test
 
-        Optional<Materials> result = materialsRepository.findByIdWithImages(1348);
+        Optional<Materials> result = materialsRepository.findByIdWithImages(1351);
 
         Materials materials = result.orElseThrow();
 
@@ -174,7 +174,7 @@ public class MaterialsRepositoryTests {
         materials.clearImages();
 
         //새로운 첨부파일
-            materials.addImage(UUID.randomUUID().toString(), "updatefile" +".jpg");
+        materials.addImage(UUID.randomUUID().toString(), "updatefile" +".jpg");
 
         materialsRepository.save(materials);
     }
@@ -188,5 +188,26 @@ public class MaterialsRepositoryTests {
 
     }
 
+    @Test
+    public void testInsertAll(){ //게시물 + 이미지 ( 2의 배수만) 추가(등록) test
+
+        for (int i = 1; i<=10; i++){
+            Materials materials = Materials.builder()
+                    .materialCode("test" + i)
+                    .materialName("test" + i)
+                    .materialType("test" + i)
+                    .materialExplaination("test" + i)
+                    .materialSupplyPrice(30L)
+                    .build();
+
+            for (int j=0; j<5; j++){
+                if(i%2 == 0) {
+                    continue;
+                }
+                materials.addImage(UUID.randomUUID().toString(),i+"file"+j+",jpg");
+            }
+            materialsRepository.save(materials);
+        } //end for
+    }
 
 }

@@ -1,10 +1,10 @@
 package com.deligence.deli.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import java.util.List;
+
+@Setter
 @Data
 @Builder
 @AllArgsConstructor
@@ -20,6 +20,8 @@ public class MaterialImageDTO {
     private String materialUuid; //범용식별자
 
     private int materialNo; //자재일련번호
+
+    private List<MaterialImageDTO> materialImages;
 
 
 }

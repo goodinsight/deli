@@ -2,10 +2,7 @@ package com.deligence.deli.service;
 
 import com.deligence.deli.domain.Board;
 import com.deligence.deli.domain.Materials;
-import com.deligence.deli.dto.BoardDTO;
-import com.deligence.deli.dto.MaterialsDTO;
-import com.deligence.deli.dto.PageRequestDTO;
-import com.deligence.deli.dto.PageResponseDTO;
+import com.deligence.deli.dto.*;
 import com.deligence.deli.repository.MaterialsRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -30,7 +27,7 @@ public class MaterialsServiceImpl implements MaterialsService {
     private final MaterialsRepository materialsRepository;
 
     @Override
-    public int register(MaterialsDTO materialsDTO){ //등록 작업처리
+    public int register(MaterialsDTO materialsDTO) throws Exception { //등록 작업처리
 
 //        Materials materials = modelMapper.map(materialsDTO, Materials.class);
 
@@ -68,7 +65,7 @@ public class MaterialsServiceImpl implements MaterialsService {
 
         if(materialsDTO.getFileNames() != null){
             String fileName = materialsDTO.getFileNames();
-            String[] arr = fileName.split("-");
+            String[] arr = fileName.split("_");
             materials.addImage(arr[0],arr[1]);
         }
         materialsRepository.save(materials);
@@ -106,6 +103,23 @@ public class MaterialsServiceImpl implements MaterialsService {
         int num = materialsRepository.getCodeCount(code);
 
         return num;
+    }
+
+
+    @Override
+    public PageResponseDTO<MaterialImageDTO> listWithAll(PageRequestDTO pageRequestDTO){     //게시글 이미지 숫자처리
+
+        String[] types = pageRequestDTO.getTypes();
+        String keyword = pageRequestDTO.getKeyword();
+        Pageable pageable = pageRequestDTO.getPageable("MaterialNo");
+
+        Page<MaterialImageDTO> result = materialsRepository.searchWithAll(types, keyword,pageable);
+
+        return PageResponseDTO.<MaterialImageDTO>withAll()
+                .pageRequestDTO(pageRequestDTO)
+                .dtoList(result.getContent())
+                .total((int) result.getTotalElements())
+                .build();
     }
 
 //    public int registerImg(MaterialsDTO materialsDTO) { //이미지 등록

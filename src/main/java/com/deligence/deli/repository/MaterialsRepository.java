@@ -20,9 +20,5 @@ public interface MaterialsRepository extends JpaRepository<Materials, Integer>, 
     @EntityGraph(attributePaths = {"imageSet"})
     @Query("select b from Materials b where b.materialNo =:materialNo")
     Optional<Materials> findByIdWithImages(int materialNo);
-
-//    Page<Materials> listOfMaterial(int materialNo, Pageable pageable);
-//
-//    void deleteByMaterialNo(int materialNo);
 }
 

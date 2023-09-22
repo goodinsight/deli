@@ -2,17 +2,14 @@ package com.deligence.deli.service;
 
 import com.deligence.deli.domain.Board;
 import com.deligence.deli.domain.Materials;
-import com.deligence.deli.dto.BoardDTO;
-import com.deligence.deli.dto.MaterialsDTO;
-import com.deligence.deli.dto.PageRequestDTO;
-import com.deligence.deli.dto.PageResponseDTO;
+import com.deligence.deli.dto.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public interface MaterialsService {
 
-    int register(MaterialsDTO materialsDTO); //등록작업처리
+    int register(MaterialsDTO materialsDTO) throws Exception; //등록작업처리
     MaterialsDTO readOne(int materialNo); //조회작업처리
     void modify(MaterialsDTO materialsDTO); //수정작업처리
     void delete(int materialsNo); //삭제작업처리
@@ -20,7 +17,10 @@ public interface MaterialsService {
 
     int getCodeCount(String code); //자재코드생성
 
-    default Materials dtoToEntity(MaterialsDTO materialsDTO){ //이미지등록
+    //게시글 이미지 숫자처리
+    PageResponseDTO<MaterialImageDTO> listWithAll(PageRequestDTO pageRequestDTO);
+
+    default Materials dtoToEntity(MaterialsDTO materialsDTO) throws Exception { //이미지등록
 
         Materials materials = Materials.builder()
                 .materialNo(materialsDTO.getMaterialNo())
@@ -41,6 +41,7 @@ public interface MaterialsService {
     }
 
     default MaterialsDTO entityToDTO(Materials materials) { //이미지조회
+
         MaterialsDTO materialsDTO = MaterialsDTO.builder()
                 .materialNo(materials.getMaterialNo())
                 .materialCode(materials.getMaterialCode())
@@ -52,12 +53,17 @@ public interface MaterialsService {
                 .modDate(materials.getModDate())
                 .build();
 
-        String fileNames = materials.getImageSet().stream().sorted().map(materialImage ->
-                materialImage.getMaterialUuid()+"_"+materialImage.getMaterialImgName()
-        ).collect(Collectors.toList()).get(0);
+            String fileNames = materials.getImageSet().stream().sorted().map(materialImage ->
+                    materialImage.getMaterialUuid() + "_" + materialImage.getMaterialImgName()
+            ).collect(Collectors.toList()).get(0);
 
-        materialsDTO.setFileNames(fileNames);
+            materialsDTO.setFileNames(fileNames);
 
+
+
+//        if( tmpList.size()!=0){
+//            tmpList.get(0).getName();
+//        }
         return materialsDTO;
 
     }
