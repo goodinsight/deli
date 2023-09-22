@@ -54,15 +54,15 @@
                         <tbody>
                         <tr th:each="dto:${responseDTO.dtoList}">
                             <th scope="row">[[${dto.materialInventoryNo}]]</th>
-                            <td>[[${dto.materials.materialCode}]]</td>
+                            <td>[[${dto.materialCode}]]</td>
 
                             <td>
-                                <a th:href="|@{/materialInventory/materialStockInDetail(materialInventoryNo = ${dto.materialInventoryNo})}|">[[${dto.materials.materialName}]]</a>
+                                <a th:href="|@{/materialInventory/materialStockInDetail(materialInventoryNo = ${dto.materialInventoryNo})}|">[[${dto.materialName}]]</a>
                             </td>
 
-                            <td>[[${dto.materials.materialType}]]</td>
+                            <td>[[${dto.materialType}]]</td>
                             <td>[[${dto.order.orderQuantity}]]</td>
-                            <td>[[${dto.materials.materialSupplyPrice}]]</td>
+                            <td>[[${dto.materialSupplyPrice}]]</td>
                             <td>[[${#temporals.format(dto.order.orderDate, 'yyyy-MM-dd HH:mm:ss')}]]</td>
                             <td>[[${dto.order.orderState}]]</td>
                         </tr>

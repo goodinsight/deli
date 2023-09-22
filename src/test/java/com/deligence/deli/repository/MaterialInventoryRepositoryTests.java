@@ -73,6 +73,20 @@ public class MaterialInventoryRepositoryTests {
     }
 
     @Test
+    public void testnumcheck() {
+
+        int orderNo = 20;
+
+        Optional<Order> result = orderRepository.findById(orderNo);
+
+        Order order = result.orElseThrow();
+
+        log.info(order);
+
+    }
+
+
+    @Test
     @Transactional
     public void testMaterialInventoryUpdate() {
 
@@ -148,50 +162,7 @@ public class MaterialInventoryRepositoryTests {
 
     }
 
-    @Test
-    public void testrequest() {
 
-        List<Materials> list = materialsRepository.findAll();
-        List<Order> list2 = orderRepository.findAll();
-//        log.info(list);
-//        log.info(list2);
-
-        for (int i = 0; i < list2.size(); i++) {
-
-            log.info(list.get(i).getMaterialNo());
-            log.info(list.get(i).getMaterialName());
-            log.info(list2.get(i).getOrderNo());
-            log.info(list2.get(i).getMaterialName());
-
-            Optional<Materials> result2 = materialsRepository.findById(list.get(i).getMaterialNo());
-            log.info("result2 : " + result2);
-            Optional<Order> result = materialInventoryRepository.findFristByOrderNo(list2.get(list2.size() - 1).getOrderNo());
-            log.info("result : " + result);
-
-            Materials materials = result2.orElseThrow();
-            Order order = result.orElseThrow();
-
-            log.info("materials : " + materials);
-
-            log.info("oredr : " + order);
-
-            MaterialInventory materialInventory = MaterialInventory.builder()
-                    .materialIncomingQuantity(order.getOrderQuantity())
-                    .materialOutgoingQuantity(100)
-                    .materialStock(100)
-                    .materialSupplyPrice(materials.getMaterialSupplyPrice())
-                    .materialTotalInventoryPayments(100000L)
-                    .materials(Materials.builder().materialNo(materials.getMaterialNo()).build())
-                    .order(Order.builder().orderNo(order.getOrderNo()).build())
-                    .materialCode(materials.getMaterialCode())
-                    .materialName(materials.getMaterialName())
-                    .materialType(materials.getMaterialType())
-                    .build();
-
-            materialInventoryRepository.save(materialInventory);
-
-        }
-    }
 }
 
 
