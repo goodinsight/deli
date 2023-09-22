@@ -29,10 +29,6 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
 
     private final MaterialInventoryRepository materialInventoryRepository;
 
-    private final MaterialsRepository materialsRepository;
-
-    private final OrderRepository orderRepository;
-
     @Override
     public int[] materialStockRegister(MaterialInventoryDTO materialInventoryDTO) {
 
@@ -42,6 +38,9 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
         Optional<Order> order = materialInventoryRepository.findFristByOrderNo(materialInventoryDTO.getOrder().getOrderNo());
         Order order1 = modelMapper.map(order, Order.class);
         int orderNo = order1.getOrderNo();
+
+        log.info("materialInventoryNo : "+materialInventoryNo);
+        log.info("order : "+orderNo);
 
         return new int[]{materialInventoryNo, orderNo};
 

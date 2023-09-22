@@ -86,7 +86,32 @@
                 </div><!-- end modal-header -->
                 <div class="modal-body">
                     <!-- 모달 내용 -->
-                    <p>test</p>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">자제 코드</span>
+                        <input type="text" th:value="${dto.materials.materialCode}" class="form-control" placeholder="materialCode" readonly>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">카테고리</span>
+                        <input type="text" th:value="${dto.materialType}" class="form-control" placeholder="materialType" readonly>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">자재명</span>
+                        <input type="text" th:value="${dto.materialName}" class="form-control" placeholder="materialName" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">입고 수량</span>
+                        <input type="text" id="quantity" th:value="${dto.order.orderQuantity}" class="form-control" placeholder="materialIncomingQuantity" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">반품 수량</span>
+                        <input type="text" th:value="${num}" class="form-control" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">정상 입고 수량</span>
+                        <input type="text" id="reresult" th:value="${result}" class="form-control" readonly>
+                    </div>
 
                 </div> <!-- end modal-body -->
                 <div class="modal-footer">
@@ -113,6 +138,49 @@
         const modal = new bootstrap.Modal(document.querySelector(".modal"))
 
         modal.show()
+
+    }, false)
+
+    document.querySelector(".btn-danger").addEventListener("click", function(e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        alert("반품 진행 클릭")
+
+    }, false)
+
+    document.querySelector(".btn-dark").addEventListener("click", function(e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        alert("반품 취소 클릭")
+
+    }, false)
+
+    document.querySelector(".btn-light").addEventListener("click", function(e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        alert("반품 완료 클릭")
+
+    }, false)
+
+    document.querySelector(".btn-info").addEventListener("click", function(e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        const remain = document.getElementById("quantity").value
+        const store = document.getElementById("reresult").value
+
+        if (remain != store) {
+            alert("입고 수량이 맞지 않음")
+        } else {
+            alert("입고 완료")
+        }
 
     }, false)
 

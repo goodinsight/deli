@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Optional;
 import java.util.stream.IntStream;
 
 @SpringBootTest
@@ -36,6 +37,17 @@ public class MaterialInOutHistoryRepositoryTests {
 
         });
 
+    }
+
+    @Test
+    public void testSelect() {
+        int materialHistoryNo = 2;
+
+        Optional<MeterialInOutHistory> result = materialInOutHistoryRepository.findById(materialHistoryNo);
+
+        MeterialInOutHistory meterialInOutHistory = result.orElseThrow();
+
+        log.info(meterialInOutHistory);
     }
 
 }
