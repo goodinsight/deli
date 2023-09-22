@@ -1,9 +1,7 @@
 package com.deligence.deli.service;
 
-import com.deligence.deli.dto.BoardDTO;
-import com.deligence.deli.dto.MaterialsDTO;
-import com.deligence.deli.dto.PageRequestDTO;
-import com.deligence.deli.dto.PageResponseDTO;
+import com.deligence.deli.domain.MaterialImage;
+import com.deligence.deli.dto.*;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +9,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.parameters.P;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.IntStream;
 
 @SpringBootTest
 @Log4j2
@@ -21,7 +21,7 @@ public class MaterialsServiceTests {
     private MaterialsService materialsService;
 
     @Test
-    public void testRegister() { //등록 test
+    public void testRegister() throws Exception { // 게시물 등록 test
 
         log.info(materialsService.getClass().getName());
 
@@ -40,15 +40,24 @@ public class MaterialsServiceTests {
     @Test
     public void testModify() { // 게시글 수정 test + 파일 추가
 
+//        IntStream.rangeClosed(1,10).forEach(i ->{
+//            MaterialImageDTO materialImageDTO = MaterialImageDTO.builder()
+//                    .materialNo(i)
+//                    .materialImgName("file.jpg")
+//                    .materialUuid("b51f9013-6ba8-4f92-bb45-286574b246c"+(5+i))
+//                    .build();
+//
+//            materialsService.dtoToEntity(materialImageDTO);
+//        });
         MaterialsDTO materialsDTO = MaterialsDTO.builder()
-                .materialNo(1348)
-                .materialName("update")
-                .materialExplaination("update")
-                .materialType("update")
+                .materialNo(1365)
+                .materialName("update.............1365")
+                .materialExplaination("update.............1365")
+                .materialType("update.............1365")
                 .materialSupplyPrice(10L)
                 .build();
 
-        //첨부파일 추가
+//        첨부파일 추가
         materialsDTO.setFileNames(UUID.randomUUID()+"_yyy.jpg");
 
         materialsService.modify(materialsDTO);
@@ -56,7 +65,7 @@ public class MaterialsServiceTests {
     }
 
     @Test
-    public void testDelete() { //삭제 test
+    public void testDelete() { // 게시물 삭제 test
         int materialNo = 1315;
 
         materialsService.delete(materialNo);
@@ -78,7 +87,7 @@ public class MaterialsServiceTests {
     }
 
     @Test
-    public void testRegisterWithImages() { //이미지 추가 test
+    public void testRegisterWithImages() throws Exception { //이미지 추가 test
 
         log.info(materialsService.getClass().getName());
 
@@ -102,7 +111,7 @@ public class MaterialsServiceTests {
     @Test
     public void testReadAll() { // 이미지조회
 
-        int materialNo = 1348;
+        int materialNo = 1365;
 
         MaterialsDTO materialsDTO = materialsService.readOne(materialNo);
 
@@ -115,8 +124,33 @@ public class MaterialsServiceTests {
     }
 
     @Test
-    public void testRemoveAll(){
+    public void testRemoveAll(){ //이미지 삭제
         int materialNo = 1348;
         materialsService.delete(materialNo);
+    }
+
+    @Test
+    public void testListWithAll(){
+
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
+                .page(1)
+                .size(10)
+                .build();
+
+        PageResponseDTO<MaterialImageDTO> responseDTO = materialsService.listWithAll(pageRequestDTO);
+
+        List<MaterialImageDTO> dtoList = responseDTO.getDtoList();
+
+        dtoList.forEach(materialImageDTO -> {
+                log.info(materialImageDTO.getMaterialNo());
+
+            if(materialImageDTO.getMaterialImages() != null){
+                for(MaterialImageDTO materialImage : materialImageDTO.getMaterialImages()) {
+                    log.info(materialImage);
+                }
+            }
+
+            log.info("--------------------------------------------");
+        });
     }
 }

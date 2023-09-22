@@ -39,7 +39,7 @@ public class MaterialsController {
 
     @PostMapping("/register") //자재 등록
     public String registerPost(@Valid MaterialsDTO materialsDTO, BindingResult bindingResult,
-                               RedirectAttributes redirectAttributes) {
+                               RedirectAttributes redirectAttributes) throws Exception {
 
         log.info("material POST register...");
 

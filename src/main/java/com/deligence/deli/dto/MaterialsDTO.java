@@ -36,7 +36,7 @@ public class MaterialsDTO {
 
     private LocalDateTime modDate; //수정일
 
-    private String fileNames; //첨부파일 이름들
+    private String fileNames; //첨부파일 이름
 
     public MaterialsDTO(String materialName, String materialType, String materialExplaination, long materialSupplyPrice){
         LocalDate date = LocalDate.now();

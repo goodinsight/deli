@@ -55,6 +55,7 @@ public class Materials extends BaseEntity{
     public void addImage(String materialUuid, String materialImgName) {
 
         MaterialImage materialImage = MaterialImage.builder()
+                .materialImgNo(materialNo)
                 .materialUuid(materialUuid)
                 .materialImgName(materialImgName)
                 .materials(this)
