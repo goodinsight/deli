@@ -54,6 +54,9 @@ public class Employee extends BaseEntity{
         this.employeeEmail = employeeEmail;
     }
 
+    public void changePhone(String employeePhone) {
+        this.employeePhone = employeePhone;
+    }
     public void changeName(String employeeName) {
         this.employeeName = employeeName;
     }

@@ -48,6 +48,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         employee.changeEmail(employeeJoinDTO.getEmployeeEmail());
         employee.changeName(employeeJoinDTO.getEmployeeName());
+        employee.changePhone(employeeJoinDTO.getEmployeePhone());
         employee.changePosition(employeeJoinDTO.getPosition());
 
         employeeRepository.save(employee);

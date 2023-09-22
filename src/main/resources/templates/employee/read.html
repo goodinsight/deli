@@ -50,7 +50,7 @@
                                 <button type="button" class="btn btn-primary">List</button>
                             </a>
                             <!--<a th:if="${user != null && user.username == dto.employeeId}"-->
-                                <a sec:authorize="isAuthenticated() or principal.username == #employeeJoinDTO.employeeId"
+                                <a sec:authorize="isAuthenticated()"
                                     th:href="|@{/employee/modify(employeeNo=${dto.employeeNo})}&${link}|" class="text-decoration-none">
                                 <button type="button" class="btn btn-secondary">Modify</button>
                             </a>
