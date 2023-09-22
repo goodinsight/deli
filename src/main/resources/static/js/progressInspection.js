@@ -22,6 +22,7 @@ async function addProgressInspection(piObj) {
 
 async function getProgressInspection(progressInspectionNo) {
     const response = await axios.get(`/progressInspection/${progressInspectionNo}`)
+
     return response.data
 }
 

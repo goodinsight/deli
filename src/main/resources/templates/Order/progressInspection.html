@@ -89,6 +89,10 @@
                         <span class="input-group-text">검수 일련번호</span>
                         <input type="text" class="form-control modifyProgressInspectionNo" readonly>
                     </div>
+                    <div class="d-none input-group mb-3">
+                        <span class="input-group-text">검수 차수</span>
+                        <input type="text" class="form-control modifyProgressInspectionTimes" readonly>
+                    </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">검수일</span>
                         <input type="date" class="form-control modifyProgressInspectionDate">
@@ -124,7 +128,7 @@
                 </div>
             </div>
         </div>
-    </div><!-- registerModal -->
+    </div><!-- modifyModal -->
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
@@ -332,6 +336,7 @@
 
     //수정 정보
     const modifyProgressInspectionNo = document.querySelector(".modifyProgressInspectionNo")
+    const modifyProgressInspectionTimes = document.querySelector(".modifyProgressInspectionTimes")
     const modifyProgressInspectionDate = document.querySelector(".modifyProgressInspectionDate")
     const modifyEmployeeNo = document.querySelector(".modifyEmployeeNo")
     const modifyEmployeeName = document.querySelector(".modifyEmployeeName")
@@ -356,8 +361,23 @@
 
             console.log(pi)
 
+            let date = pi.progressInspectionDate[0] + '-'
+
+            if(pi.progressInspectionDate[1] < 10){
+                date += 0
+            }
+            date += pi.progressInspectionDate[1] + '-'
+
+            if(pi.progressInspectionDate[2] < 10){
+                date += 0
+            }
+            date += pi.progressInspectionDate[2]
+
+            console.log(date)
+
             modifyProgressInspectionNo.value = pi.progressInspectionNo
-            modifyProgressInspectionDate.value = pi.progressInspectionDate
+            modifyProgressInspectionDate.value = date
+            modifyProgressInspectionTimes.value = pi.progressInspectionTimes
             modifyEmployeeNo.value = pi.employeeNo
             modifyEmployeeName.value = pi.employeeName
             modifyRateOfProgress.value = pi.rateOfProgress
@@ -373,6 +393,33 @@
 
     closeModifyBtn.addEventListener("click", function (e) {
         modifyModal.hide()
+    }, false)
+
+
+    modifyBtn.addEventListener("click", function (e){
+
+        const piObj = {
+            progressInspectionNo : modifyProgressInspectionNo.value,
+            progressInspectionDate : modifyProgressInspectionDate.value,
+            progressInspectionTimes : modifyProgressInspectionTimes.value,
+            progressInspectionEtc : modifyProgressInspectionEtc.value,
+            rateOfProgress : modifyRateOfProgress.value,
+            progressInspectionState : modifyProgressInspectionState.value,
+            orderNo : orderNo,
+            employeeNo : modifyEmployeeNo.value,
+            employeeName : modifyEmployeeName.value
+        }
+
+        modifyProgressInspection(piObj).then(result => {
+
+            alert("검수가 수정되었습니다. : " + result.progressInspectionNo)
+            modifyModal.hide()
+            printProgressInspections(page, size)
+
+        }).catch(e => {
+            console.log(e)
+        })
+
     }, false)
 
 
