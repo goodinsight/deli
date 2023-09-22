@@ -2,10 +2,7 @@ package com.deligence.deli.controller;
 
 import com.deligence.deli.domain.CooperatorSupplier;
 import com.deligence.deli.domain.MaterialProcurementContract;
-import com.deligence.deli.dto.EmployeeSecurityDTO;
-import com.deligence.deli.dto.MaterialProcurementContractDTO;
-import com.deligence.deli.dto.PageRequestDTO;
-import com.deligence.deli.dto.PageResponseDTO;
+import com.deligence.deli.dto.*;
 import com.deligence.deli.service.EmployeeService;
 import com.deligence.deli.service.MaterialProcurementContractService;
 import com.deligence.deli.service.MaterialsService;
@@ -84,7 +81,21 @@ public class MaterialProcurementContractController {
         return "redirect:/materialProcurementContract/list";
     }
 
+    @GetMapping({"/read", "modify"})
+    public void read(int materialProcurementContractNo, PageRequestDTO pageRequestDTO, Model model) {
 
+        log.info("search : materialProcurementContractNo = " + materialProcurementContractNo);
+
+        MaterialProcurementContractDetailDTO materialProcurementContractDetailDTO =
+                materialProcurementContractService.read(materialProcurementContractNo);
+
+        log.info(materialProcurementContractDetailDTO);
+
+        model.addAttribute("dto", materialProcurementContractDetailDTO);
+
+        model.addAttribute("pageRequestDTO", pageRequestDTO);
+
+    }
 
     //비동기처리 -----------------------------------------------------
     @ResponseBody

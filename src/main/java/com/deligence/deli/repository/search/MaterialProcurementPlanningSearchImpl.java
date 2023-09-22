@@ -151,8 +151,9 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
                 .materialType(resultMr.getMaterialType())
                 .materialCode(resultMr.getMaterialCode())
                 .materialName(resultMr.getMaterialName())
+                .materialSupplyPrice(resultMr.getMaterialSupplyPrice())
                 .employeeNo(resultMaterialProcurementPlanning.getEmployee().getEmployeeNo())
-                .employeeName(resultMaterialProcurementPlanning.getMaterialName())
+                .employeeName(resultMaterialProcurementPlanning.getEmployee().getEmployeeName())
                 .regDate(resultMaterialProcurementPlanning.getRegDate())
                 .modDate(resultMaterialProcurementPlanning.getModDate())
                 .build();

@@ -58,18 +58,18 @@
               <input type="text" name="employeeName" class="form-control" th:value="${user.employeeName}" readonly>
             </div>
 
-            <div class="input-group mb-3">
-              <span class="input-group-text">자재조달상태</span>
-              <select name="materialProcurementState">
-                <option value="진행중" selected>진행중</option>
-                <option value="파기">파기</option>
-                <option value="완료">완료</option>
-              </select>
+<!--            <div class="input-group mb-3">-->
+<!--              <span class="input-group-text">자재조달상태</span>-->
+<!--              <select name="materialProcurementState">-->
+<!--                <option value="진행중" selected>진행중</option>-->
+<!--                <option value="파기">파기</option>-->
+<!--                <option value="완료">완료</option>-->
+<!--              </select>-->
 
 
               <div class="input-group mb-3">
-                <span class="input-group-text">계약 상태</span>
-                <input type="text" name="materialProcurementContractState" class="form-control" placeholder="계약 상태 - 추후 숨길 부분" th:value="진행중" readonly>
+                <span class="input-group-text">자재조달상태</span>
+                <input type="text" name="materialProcurementState" class="form-control" placeholder="자재조달상태 - 추후 숨길 부분" th:value="진행중" readonly>
               </div>
 
             </div>

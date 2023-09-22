@@ -33,6 +33,8 @@ public class MaterialProcurementContractDetailDTO {
 
     private String materialCode;    //자재코드(검색용)
 
+    private String materialType;    //자재분류
+
     private String materialName;    //자재이름(검색용)
 
     private Long materialSupplyPrice;   //자재 공급단가 (검색용)
