@@ -1,6 +1,7 @@
 package com.deligence.deli.service;
 
 import com.deligence.deli.domain.Board;
+import com.deligence.deli.domain.MaterialImage;
 import com.deligence.deli.domain.Materials;
 import com.deligence.deli.dto.*;
 
