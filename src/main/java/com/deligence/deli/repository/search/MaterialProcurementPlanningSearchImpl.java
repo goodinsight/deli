@@ -135,6 +135,7 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
 
         QMaterialProcurementPlanning materialProcurementPlanning =
                 QMaterialProcurementPlanning.materialProcurementPlanning;
+
         QProductionPlanning pp = QProductionPlanning.productionPlanning;
         QMaterials mr = QMaterials.materials;
 

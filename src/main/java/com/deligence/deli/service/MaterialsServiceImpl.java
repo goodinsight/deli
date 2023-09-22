@@ -44,10 +44,18 @@ public class MaterialsServiceImpl implements MaterialsService {
 //        Optional<Materials> result = materialsRepository.findById(materialNo);
 //        Materials materials = result.orElseThrow();
 //        MaterialsDTO materialsDTO = modelMapper.map(materials, MaterialsDTO.class);
+        MaterialsDTO materialsDTO = null;
 
-        Optional<Materials> result = materialsRepository.findByIdWithImages(materialNo);
-        Materials materials = result.orElseThrow();
-        MaterialsDTO materialsDTO = entityToDTO(materials);
+        try {
+            Optional<Materials> result = materialsRepository.findByIdWithImages(materialNo);
+            Materials materials = result.orElseThrow();
+            materialsDTO = entityToDTO(materials);
+        } catch (IndexOutOfBoundsException e){
+            log.info("이미지가 없습니다.");
+            Optional<Materials> result = materialsRepository.findById(materialNo);
+            Materials materials = result.orElseThrow();
+            materialsDTO = modelMapper.map(materials, MaterialsDTO.class);
+        }
         return materialsDTO;
     }
 

@@ -18,6 +18,7 @@
         </div>
         <div class="card-body mt-3">
           <form action="/materialProcurementPlanning/register" method="post">
+
             <div class="input-group mb-3">
               <span class="input-group-text">자재조달계획 코드</span>
               <input type="text" name="materialProcurementPlanCode" class="form-control materialProcurementPlanCode" placeholder="클릭해주세요" readonly>
@@ -375,7 +376,7 @@
 
   document.querySelector("#selectMaterial").addEventListener("click", function (e) {
     console.log("select material modal show")
-    //printMaterials(1, 5)
+    printMaterials(1, 5)
     materialModal.show()
   }, false)
 
@@ -483,7 +484,7 @@
 
       console.log(material)
       materialNo.value = material.materialNo
-      //자재 정보를 가져와서 화면에 반영해야 할 항복들은 여기에 --------------------------------------------------------
+      //자재 정보를 가져와서 화면에 반영해야 할 항목들은 여기에 --------------------------------------------------------
       inputMaterialCode.value = material.materialCode
       materialType.value = material.materialType
       materialName.value = material.materialName
