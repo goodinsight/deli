@@ -66,7 +66,7 @@ public class MaterialsServiceTests {
 
     @Test
     public void testDelete() { // 게시물 삭제 test
-        int materialNo = 1315;
+        int materialNo = 1360;
 
         materialsService.delete(materialNo);
     }

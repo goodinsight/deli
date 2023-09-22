@@ -41,9 +41,6 @@ public class MaterialsServiceImpl implements MaterialsService {
     @Override
     public MaterialsDTO readOne(int materialNo) { //조회 작업처리
 
-//        Optional<Materials> result = materialsRepository.findById(materialNo);
-//        Materials materials = result.orElseThrow();
-//        MaterialsDTO materialsDTO = modelMapper.map(materials, MaterialsDTO.class);
         MaterialsDTO materialsDTO = null;
 
         try {
