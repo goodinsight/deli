@@ -13,6 +13,8 @@ public interface MaterialProcurementPlanningSearch {
 
     Page<MaterialProcurementPlanning> searchAll(String[] types, String keyword, Pageable pageable);
 
+    int getCodeCount(String materialProcurementPlanCode);
+
     public MaterialProcurementPlanningDetailDTO read(int materialProcurementPlanNo);
 
 

@@ -22,18 +22,18 @@ import java.util.stream.Collectors;
 @Transactional
 public class MaterialProcurementPlanningServiceImpl implements MaterialProcurementPlanningService{
 
-    private final ModelMapper modelMapper;
+//    private final ModelMapper modelMapper;
 
     private final MaterialProcurementPlanningRepository materialProcurementPlanningRepository;
 
     @Override  //등록
     public int register(MaterialProcurementPlanningDTO materialProcurementPlanningDTO) {
 
-        log.info("register start");
+//        log.info("register start");
 
         log.info(materialProcurementPlanningDTO);
 
-        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
+//        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
 
         //dto -> entity
         MaterialProcurementPlanning materialProcurementPlanning = dtoToEntity(materialProcurementPlanningDTO);
@@ -108,5 +108,13 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
                 .dtoList(dtoList)
                 .total((int) result.getTotalElements())
                 .build();
+    }
+
+    @Override
+    public int getCodeCount(String code) {
+
+        int num = materialProcurementPlanningRepository.getCodeCount(code);
+
+        return num;
     }
 }

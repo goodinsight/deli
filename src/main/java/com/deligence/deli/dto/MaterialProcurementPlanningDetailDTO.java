@@ -21,6 +21,8 @@ public class MaterialProcurementPlanningDetailDTO {
 
     private int materialProcurementPlanNo;   //조달계획 일련번호
 
+    private String materialProcurementPlanCode; //조달계획코드
+
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate procurementDeliveryDate;    //납기일
@@ -44,6 +46,8 @@ public class MaterialProcurementPlanningDetailDTO {
 
     @NotEmpty
     private String materialName;   //자재이름 (검색용)
+
+    private Long materialSupplyPrice;   //자재 공급단가
 
 //    private Employee employee;    //사원일련번호 FK
 

@@ -23,11 +23,15 @@ public interface MaterialProcurementPlanningService {
     //목록,검색
     PageResponseDTO<MaterialProcurementPlanningDTO> list(PageRequestDTO pageRequestDTO);
 
+    //코드생성
+    int getCodeCount(String materialProcurementPlanCode);
+
 
     default MaterialProcurementPlanning dtoToEntity(MaterialProcurementPlanningDTO materialProcurementPlanningDTO) {
 
         MaterialProcurementPlanning materialProcurementPlanning = MaterialProcurementPlanning.builder()
                 .materialProcurementPlanNo(materialProcurementPlanningDTO.getMaterialProcurementPlanNo())
+                .materialProcurementPlanCode(materialProcurementPlanningDTO.getMaterialProcurementPlanCode())
                 .procurementDeliveryDate(materialProcurementPlanningDTO.getProcurementDeliveryDate())
                 .materialRequirementsCount(materialProcurementPlanningDTO.getMaterialRequirementsCount())
                 .materialProcurementState(materialProcurementPlanningDTO.getMaterialProcurementState())
@@ -45,6 +49,7 @@ public interface MaterialProcurementPlanningService {
 
         MaterialProcurementPlanningDTO materialProcurementPlanningDTO = MaterialProcurementPlanningDTO.builder()
                 .materialProcurementPlanNo(materialProcurementPlanning.getMaterialProcurementPlanNo())
+                .materialProcurementPlanCode(materialProcurementPlanning.getMaterialProcurementPlanCode())
                 .procurementDeliveryDate(materialProcurementPlanning.getProcurementDeliveryDate())
                 .materialRequirementsCount(materialProcurementPlanning.getMaterialRequirementsCount())
                 .materialProcurementState(materialProcurementPlanning.getMaterialProcurementState())

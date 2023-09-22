@@ -7,7 +7,7 @@ public interface MaterialProcurementContractService {
 
     int register(MaterialProcurementContractDTO materialProcurementContractDTO);
 
-    public MaterialProcurementContractDetailDTO read(int materialProcurementContractNo);
+    MaterialProcurementContractDetailDTO read(int materialProcurementContractNo);
 
     void modify(MaterialProcurementContractDTO materialProcurementContractDTO);
 
@@ -30,11 +30,12 @@ public interface MaterialProcurementContractService {
                 .materialCode(materialProcurementContractDTO.getMaterialCode())
                 .materialName(materialProcurementContractDTO.getMaterialName())
                 .materialSupplyPrice(materialProcurementContractDTO.getMaterialSupplyPrice())
+                .materialRequirementsCount(materialProcurementContractDTO.getMaterialRequirementsCount())
                 .cooperatorSupplier(CooperatorSupplier.builder().supplierNo(materialProcurementContractDTO.getSupplierNo()).build())
                 .supplierName(materialProcurementContractDTO.getSupplierName())
                 .supplierStatus(materialProcurementContractDTO.getSupplierStatus())
                 .employee(Employee.builder().employeeNo(materialProcurementContractDTO.getEmployeeNo()).build())
-//                .documentFile(DocumentFile.builder().documentFileNo(materialProcurementContractDTO.getDocumentFileNo()).build())
+                .documentFile(DocumentFile.builder().documentFileNo(materialProcurementContractDTO.getDocumentFileNo()).build())
                 .build();
 
         return materialProcurementContract;
@@ -53,11 +54,12 @@ public interface MaterialProcurementContractService {
                 .materialCode(materialProcurementContract.getMaterialCode())
                 .materialName(materialProcurementContract.getMaterialName())
                 .materialSupplyPrice(materialProcurementContract.getMaterialSupplyPrice())
+                .materialRequirementsCount(materialProcurementContract.getMaterialRequirementsCount())
                 .supplierNo(materialProcurementContract.getCooperatorSupplier().getSupplierNo())
                 .supplierName(materialProcurementContract.getSupplierName())
                 .supplierStatus(materialProcurementContract.getSupplierStatus())
                 .employeeNo(materialProcurementContract.getEmployee().getEmployeeNo())
-//                .documentFileNo(materialProcurementContract.getDocumentFile().getDocumentFileNo())
+                .documentFileNo(materialProcurementContract.getDocumentFile().getDocumentFileNo())
                 .build();
 
         return materialProcurementContractDTO;

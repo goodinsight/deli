@@ -25,23 +25,15 @@ import java.util.stream.Collectors;
 @Transactional
 public class MaterialProcurementContractServiceImpl implements MaterialProcurementContractService{
 
-    private final ModelMapper modelMapper;
-
     private final MaterialProcurementContractRepository materialProcurementContractRepository;
 
     @Override
     public int register(MaterialProcurementContractDTO materialProcurementContractDTO) {
 
-        log.info("register start");
-
         log.info(materialProcurementContractDTO);
-
-        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
 
         //dto -> entity
         MaterialProcurementContract materialProcurementContract = dtoToEntity(materialProcurementContractDTO);
-//        MaterialProcurementContract materialProcurementContract =
-//                modelMapper.map(materialProcurementContractDTO, MaterialProcurementContract.class);
 
         log.info(materialProcurementContract);
 
@@ -72,6 +64,8 @@ public class MaterialProcurementContractServiceImpl implements MaterialProcureme
         MaterialProcurementContract materialProcurementContract = result.orElseThrow();
 
         materialProcurementContract.change(materialProcurementContractDTO);
+
+        log.info(materialProcurementContractDTO);
 
         // 추후 자재조달계약 수정에 따라 다른 영역에 관련된 수정 사항이 있으면 여기에 추가
 

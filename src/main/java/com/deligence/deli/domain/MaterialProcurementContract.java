@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "MaterialProcurementContract")
+//@Table(name = "MaterialProcurementContract")
 @ToString(exclude = {"materials","cooperatorSupplier", "employee", "documentFile"})
 public class MaterialProcurementContract extends BaseEntity {
 
@@ -40,7 +40,10 @@ public class MaterialProcurementContract extends BaseEntity {
 
     private Long materialSupplyPrice; //공급단가 (검색용)
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    private int materialRequirementsCount;  //자재 수량
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL)
     private CooperatorSupplier cooperatorSupplier;  //자재조달협력회사 일련번호 FK
 
     private String supplierName;   //자재협력회사명 (검색용)
@@ -51,6 +54,8 @@ public class MaterialProcurementContract extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Employee employee;  //사원일련번호 FK
 
+    private String employeeName;    //사원명
+
     @ManyToOne(fetch = FetchType.LAZY)
     private DocumentFile documentFile;   //문서파일일련번호 FK
 
@@ -60,6 +65,7 @@ public class MaterialProcurementContract extends BaseEntity {
         this.materialProcurementContractDate = materialProcurementContractDate;
         this.materialProcurementContractState = materialProcurementContractState;
         this.materialProcurementContractEtc = materialProcurementContractEtc;
+        this.materialRequirementsCount = materialRequirementsCount;
 
         //자재코드
         //분류

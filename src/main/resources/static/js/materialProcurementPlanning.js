@@ -30,3 +30,10 @@ async function getMaterial(materialsNo) {
 
     return response.data
 }
+
+async function getCodeCount(materialProcurementPlanCode){
+
+    const result = await axios.get(`/materialProcurementPlanning/register/getCodeCount/${materialProcurementPlanCode}`)
+
+    return result
+}

@@ -30,6 +30,8 @@ public class QMaterialProcurementContract extends EntityPathBase<MaterialProcure
 
     public final QEmployee employee;
 
+    public final StringPath employeeName = createString("employeeName");
+
     public final StringPath materialCode = createString("materialCode");
 
     public final StringPath materialName = createString("materialName");
@@ -43,6 +45,8 @@ public class QMaterialProcurementContract extends EntityPathBase<MaterialProcure
     public final NumberPath<Integer> materialProcurementContractNo = createNumber("materialProcurementContractNo", Integer.class);
 
     public final StringPath materialProcurementContractState = createString("materialProcurementContractState");
+
+    public final NumberPath<Integer> materialRequirementsCount = createNumber("materialRequirementsCount", Integer.class);
 
     public final QMaterials materials;
 

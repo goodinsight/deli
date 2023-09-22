@@ -30,8 +30,9 @@ public class MaterialProcurementContractServiceTests {
                         .materialCode("materialCode")
                         .materialName("materialName")
                         .materialSupplyPrice(100L)
-                        .supplierName("supplierName")
-                        .supplierStatus("자재협력회사계약상태는왜?")
+//                        .supplierName("supplierName")
+//                        .supplierStatus("필요한지모르겠음")
+                        .employeeName("혜인")
                         .build();
 
         materialProcurementContractService.register(materialProcurementContractDTO);
@@ -56,7 +57,7 @@ public class MaterialProcurementContractServiceTests {
 
         MaterialProcurementContractDTO materialProcurementContractDTO =
                 MaterialProcurementContractDTO.builder()
-                        .MaterialProcurementContractNo(100)
+                        .MaterialProcurementContractNo(100) //1,2번 없음
                         .materialProcurementContractCode("modifyContractCode..")
                         .materialProcurementContractDate(LocalDate.of(2023,9,22))
                         .materialProcurementContractState("진행중")
@@ -66,6 +67,7 @@ public class MaterialProcurementContractServiceTests {
                         .materialSupplyPrice(1000L)
                         .supplierName("modifySupplierName")
                         .supplierStatus("컬럼존재이유를모르겠음")
+                        .employeeName("혜인")
                         .build();
 
         materialProcurementContractService.modify(materialProcurementContractDTO);
@@ -88,6 +90,14 @@ public class MaterialProcurementContractServiceTests {
                 materialProcurementContractService.list(pageRequestDTO);
 
         log.info(responseDTO);
+    }
+
+    @Test
+    public void testCC() {
+
+        int num = materialProcurementContractService.getCodeCount("MP-CONTRACT-20230921-");
+
+        log.info("cc: " + num);
     }
 
 

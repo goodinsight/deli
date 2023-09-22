@@ -118,6 +118,19 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
     }
 
     @Override
+    public int getCodeCount(String code) {
+
+        QMaterialProcurementPlanning materialProcurementPlanning = QMaterialProcurementPlanning.materialProcurementPlanning;
+
+        JPQLQuery<MaterialProcurementPlanning> query = new JPAQueryFactory(em)
+                .selectFrom(materialProcurementPlanning)
+                .where(materialProcurementPlanning.materialProcurementPlanCode.contains(code));
+
+        return (int) query.fetchCount();
+
+    }
+
+    @Override
     public MaterialProcurementPlanningDetailDTO read(int materialProcurementPlanNo) {
 
         QMaterialProcurementPlanning materialProcurementPlanning =
@@ -143,6 +156,7 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
 
         MaterialProcurementPlanningDetailDTO dto = MaterialProcurementPlanningDetailDTO.builder()
                 .materialProcurementPlanNo(resultMaterialProcurementPlanning.getMaterialProcurementPlanNo())
+                .materialProcurementPlanCode(resultMaterialProcurementPlanning.getMaterialProcurementPlanCode())
                 .procurementDeliveryDate(resultMaterialProcurementPlanning.getProcurementDeliveryDate())
                 .materialRequirementsCount(resultMaterialProcurementPlanning.getMaterialRequirementsCount())
                 .materialProcurementState(resultMaterialProcurementPlanning.getMaterialProcurementState())
@@ -151,8 +165,9 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
                 .materialType(resultMr.getMaterialType())
                 .materialCode(resultMr.getMaterialCode())
                 .materialName(resultMr.getMaterialName())
+                .materialSupplyPrice(resultMr.getMaterialSupplyPrice())
                 .employeeNo(resultMaterialProcurementPlanning.getEmployee().getEmployeeNo())
-                .employeeName(resultMaterialProcurementPlanning.getMaterialName())
+                .employeeName(resultMaterialProcurementPlanning.getEmployee().getEmployeeName())
                 .regDate(resultMaterialProcurementPlanning.getRegDate())
                 .modDate(resultMaterialProcurementPlanning.getModDate())
                 .build();

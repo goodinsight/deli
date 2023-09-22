@@ -14,13 +14,16 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    자재조달계획 조회
+                    자재조달계획 상세
                 </div>
                 <div class="card-body mt-3">
-                    <div class="input-group mb-3 d-none">
+                    <div class="input-group mb-3">
                         <span class="input-group-text">자재조달계획 일련번호</span>
-                        <input type="text" name="materialProcurementPlanNo" class="form-control"
-                               th:value="${dto.materialProcurementPlanNo}" readonly>
+                        <input type="text" name="materialProcurementPlanNo" class="form-control" th:value="${dto.materialProcurementPlanNo}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">자재조달계획 코드</span>
+                        <input type="text" name="materialProcurementPlanCode" class="form-control materialProcurementPlanCode" th:value="${dto.materialProcurementPlanCode}" readonly>
                     </div>
 
                     <div class="input-group mb-3">
@@ -28,7 +31,7 @@
                         <input type="text" name="productionPlan" class="form-control selectProductionPlan" th:value="${dto.productionPlanNo}" readonly>
                     </div>
 
-                    <div class="input-group mb-3 pl-5">
+                    <div class="input-group mb-3">
                         <span class="input-group-text">자재코드</span>
                         <input type="text" name="materialCode" class="form-control" th:value="${dto.materialCode}" readonly>
                     </div>
@@ -41,6 +44,11 @@
                     <div class="input-group mb-3 pl-5">
                         <span class="input-group-text">자재이름</span>
                         <input type="text" name="materialName" class="form-control" th:value="${dto.materialName}" readonly>
+                    </div>
+
+                    <div class="input-group mb-3 pl-5">
+                        <span class="input-group-text">자재 공급단가</span>
+                        <input type="text" name="materialSupplyPrice" class="form-control" th:value="${dto.materialSupplyPrice}" readonly>
                     </div>
 
                     <div class="input-group mb-3">

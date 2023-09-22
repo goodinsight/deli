@@ -59,10 +59,14 @@ public class MaterialProcurementPlanningController {
     //등록POST
     @PostMapping("/register")
     public String registerPOST(@Valid MaterialProcurementPlanningDTO materialProcurementPlanningDTO,
-                               BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+                               BindingResult bindingResult,
+                               RedirectAttributes redirectAttributes) {
 
         log.info("materialProcurementPlanning POST register.......");
 
+        log.info(materialProcurementPlanningDTO);
+
+        // 에러처리---------------------------------------------------------------------
         if (bindingResult.hasErrors()) {
 
             log.info("materialProcurementPlanning register has errors........");
@@ -71,8 +75,7 @@ public class MaterialProcurementPlanningController {
 
             return "redirect:/materialProcurementPlanning/register";
         }
-
-        log.info(materialProcurementPlanningDTO);
+        //-------------------------------------------------------------------------------
 
         int materialProcurementPlanNo =
                 materialProcurementPlanningService.register(materialProcurementPlanningDTO);
@@ -85,8 +88,7 @@ public class MaterialProcurementPlanningController {
     //조회, 수정
 //    @PreAuthorize("isAuthenticated()")
     @GetMapping({"/read", "/modify"})
-    public void read(int materialProcurementPlanNo, PageRequestDTO pageRequestDTO,
-                     Model model) {
+    public void read(int materialProcurementPlanNo, PageRequestDTO pageRequestDTO, Model model) {
 
         log.info("search : materialProcurementPlanNo = " + materialProcurementPlanNo);
 
@@ -104,61 +106,6 @@ public class MaterialProcurementPlanningController {
 
     }
 
-    //----------------------------------------------------------------------------------------
-
-    //productionPlanningService 구현 한 후에 주석 풀기.
-
-//    @ResponseBody
-//    @GetMapping("/register/selectProductionPlan")
-//    public PageResponseDTO<ProductionPlanningDTO> getProductionPlanList(PageRequestDTO pageRequestDTO) {
-//
-//        log.info("getProductionPlanList");
-//
-//        PageResponseDTO<ProductionPlanning> responseDTO = productionPlanningService.list(pageRequestDTO);
-//
-//        return responseDTO;
-//
-//    }
-
-//    @ResponseBody
-//    @GetMapping("/register/getProductionPlan/{productionPlanNo}")
-//    public ProductionPlanningDTO getProductionPlanDTO(@PathVariable("productionPlanNo") int productionPlanNo) {
-//
-//        log.info("getProductionPlanDTO : " + productionPlanNo);
-//
-//        ProductionPlanningDTO productionPlanningDTO = productionPlanningService.read(productionPlanNo);
-//
-//        log.info(productionPlanningDTO);
-//
-//        return productionPlanningDTO;
-//    }
-
-    @ResponseBody
-    @GetMapping("/register/selectMaterialPlan")
-    public PageResponseDTO<MaterialsDTO> getMaterialPlanList(PageRequestDTO pageRequestDTO) {
-
-        log.info("getMaterialPlanList");
-
-        PageResponseDTO<MaterialsDTO> responseDTO = materialsService.list(pageRequestDTO);
-
-        return responseDTO;
-
-    }
-
-    //materialNo -> html에서 materialCode -> materialNo 수정 필요
-    @ResponseBody
-    @GetMapping("/register/getMaterialPlan/{materialNo}")
-    public MaterialsDTO getMaterialsDTO(@PathVariable("materialNo") int materialNo) {
-
-        log.info("getMaterialsDTO : " + materialNo);
-
-        MaterialsDTO materialsDTO = materialsService.readOne(materialNo);
-
-        log.info(materialNo);
-
-        return materialsDTO;
-    }
-
     //수정POST
     @PostMapping("/modify")
     public String modify( PageRequestDTO pageRequestDTO,
@@ -168,6 +115,7 @@ public class MaterialProcurementPlanningController {
 
         log.info("materialProcurementPlanning modify post.........." + materialProcurementPlanningDTO);
 
+        // 에러 처리 ---------------------------------------------------------------------------------------
         if (bindingResult.hasErrors()) {
             log.info("has errors.....");
 
@@ -180,6 +128,7 @@ public class MaterialProcurementPlanningController {
 
             return "redirect:/materialProcurementPlanning/modify?"+link;
         }
+        // -------------------------------------------------------------------------------------------------
 
         materialProcurementPlanningService.modify(materialProcurementPlanningDTO);
 
@@ -202,6 +151,75 @@ public class MaterialProcurementPlanningController {
         redirectAttributes.addFlashAttribute("result", "removed");
 
         return "redirect:/materialProcurementPlanning/list";
+
+    }
+
+    // 비동기 처리 ----------------------------------------------------------------------------------------
+
+    //productionPlanningService 구현 한 후에 주석 풀기.
+
+//    @ResponseBody
+//    @GetMapping("/register/selectPlan")
+//    public PageResponseDTO<ProductionPlanningDTO> getPlanList(PageRequestDTO pageRequestDTO) {
+//
+//        log.info("getPlanList");
+//
+//        PageResponseDTO<ProductionPlanningDTO> responseDTO = productionPlanningService.list(pageRequestDTO);
+//
+//        return responseDTO;
+//
+//    }
+
+//    @ResponseBody
+//    @GetMapping("/register/getPlan/{planNo}")
+//    public ProductionPlanning(Detail)DTO getPlanDTO(@PathVariable("planNo") int planNo) {
+//
+//        log.info("getPlanDTO : " + planNo);
+//
+//        ProductionPlanning(Detail)DTO productionPlanning(Detail)DTO = productionPlanningService.read(planNo);
+//
+//        log.info(productionPlanning(Detail)DTO);
+//
+//        return productionPlanning(Detail)DTO;
+//    }
+
+    @ResponseBody
+    @GetMapping("/register/selectMaterial")
+    public PageResponseDTO<MaterialsDTO> getMaterialList(PageRequestDTO pageRequestDTO) {
+
+        log.info("getMaterialList");
+
+        PageResponseDTO<MaterialsDTO> responseDTO = materialsService.list(pageRequestDTO);
+
+        return responseDTO;
+
+    }
+
+    //materialNo -> html에서 materialCode -> materialNo 수정 필요
+    @ResponseBody
+    @GetMapping("/register/getMaterial/{materialsNo}")
+    public MaterialsDTO getMaterialsDTO(@PathVariable("materialsNo") int materialsNo) {
+
+        log.info("getMaterialsDTO : " + materialsNo);
+
+        MaterialsDTO materialsDTO = materialsService.readOne(materialsNo);
+
+        log.info(materialsNo);
+
+        return materialsDTO;
+    }
+
+    @ResponseBody
+    @GetMapping("/register/getCodeCount/{materialProcurementPlanCode}")
+    public int getCodeCount(@PathVariable("materialProcurementPlanCode") String materialProcurementPlanCode){
+
+        log.info("getCodeCount : " + materialProcurementPlanCode);
+
+        int num = materialProcurementPlanningService.getCodeCount(materialProcurementPlanCode);
+
+        log.info("num : " + num);
+
+        return num;
 
     }
 

@@ -51,6 +51,7 @@ public class MaterialProcurementContractRepositoryTests {
                     .materialSupplyPrice(1L)
                     .supplierName("supplierName"+i)
                     .supplierStatus("READY")
+                    .employeeName("담당자")
                     .build();
 
             log.info(materialProcurementContract);
@@ -97,6 +98,7 @@ public class MaterialProcurementContractRepositoryTests {
                 .materialSupplyPrice(2L)
                 .supplierName("supplierName2")
                 .supplierStatus("READY")
+                .employeeName("담당자")
                 .build());
 
         materialProcurementContractRepository.save(materialProcurementContract);
@@ -177,6 +179,17 @@ public class MaterialProcurementContractRepositoryTests {
 
 //        result.getContent().forEach(materialProcurementContract -> log.info(materialProcurementContract));
         result.getContent().forEach(log::info);
+
+    }
+
+    @Test
+    public void testCodeCount() {
+
+        String code = "MP-CONTRACT-20230922-";
+
+        int result = materialProcurementContractRepository.getCodeCount(code);
+
+        log.info("num : " + result);
 
     }
 

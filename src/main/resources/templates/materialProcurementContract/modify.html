@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>자재조달계약 수정</title>
+</head>
+
+<div layout:fragment="content">
+
+    <div class="row mt-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    자재조달계약 수정
+                </div>
+                <div class="card-body mt-3">
+                    <form th:action="@{/materialProcurementContract/modify}" method="post" id="modifyForm">
+                        <!--<div class="input-group mb-3 d-none">-->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">자재조달 계약일련번호</span>
+                            <input type="text" name="materialProcurementContractNo" class="form-control materialProcurementContractNo" th:value="${dto.materialProcurementContractNo}" readonly>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">자재조달 계약코드</span>
+                            <input type="text" name="materialProcurementContractCode" class="form-control materialProcurementContractCode" th:value="${dto.materialProcurementContractCode}" readonly>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">계약일</span>
+                            <input type="date" name="materialProcurementContractDate" class="form-control" th:value="${dto.materialProcurementContractDate}" >
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">자재 코드</span>
+                            <input type="text" name="materialCode" class="form-control materialCode" th:value="${dto.materialCode}" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재 타입</span>
+                            <input type="text" name="materialType" class="form-control materialType" th:value="${dto.materialType}" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재 이름</span>
+                            <input type="text" name="materialName" class="form-control materialName" th:value="${dto.materialName}" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재 공급단가</span>
+                            <input type="text" name="materialSupplyPrice" class="form-control materialSupplyPrice" th:value="${dto.materialSupplyPrice}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">자재 수량</span>
+                            <input type="text" name="materialRequirementsCount" class="form-control materialRequirementsCount" th:value="${dto.materialRequirementsCount}" >
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">자재협력회사명</span>
+                            <input type="text" name="supplierName" class="form-control supplierName" th:value="${dto.supplierName}" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">대표명</span>
+                            <input type="text" name="supplierCeo" class="form-control supplierCeo" th:value="${dto.supplierCeo}" readonly>
+                            <span class="input-group-text">연락처</span>
+                            <input type="text" name="supplierPhone" class="form-control supplierPhone" th:value="${dto.supplierPhone}" readonly>
+                        </div>
+
+                        <!--
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">자재조달 계약상태</span>
+                            <input type="text" name="materialProcurementContractState" class="form-control" th:value="${dto.materialProcurementContractState}">
+                        </div>
+                        -->
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">자재조달 계약상태</span>
+                            <select name="materialProcurementContractState">
+                                <option value="진행중" selected>진행중</option>
+                                <option value="파기">파기</option>
+                                <option value="완료">완료</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">비고</span>
+                            <textarea name="materialProcurementContractEtc" class="form-control col-sm-5" >[[${dto.materialProcurementContractEtc}]]</textarea>
+                        </div>
+
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">담당자 일련번호</span>
+                            <input type="text" name="employeeNo" class="form-control" th:value="${dto.employeeNo}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">담당자 이름</span>
+                            <input type="text" name="employeeName" class="form-control" th:value="${dto.employeeName}" readonly>
+                        </div>
+
+                        <div class="my-4">
+                            <div class="float-end">
+                                <button type="button" class="btn btn-primary listBtn">List</button>
+                                <button type="button" class="btn btn-secondary modBtn">Modify</button>
+                                <button type="button" class="btn btn-danger removeBtn">Remove</button>
+                            </div>
+                        </div>
+                    </form>
+                </div><!-- end card body -->
+            </div><!-- end card -->
+        </div><!-- end col -->
+    </div><!-- end row -->
+
+
+</div>
+
+<script layout:fragment="script" th:inline="javascript">
+
+    console.log([[${dto}]])
+
+    // 에러 처리 ---------------------------------------------------
+
+    const errors = [[${errors}]]
+    console.log(errors)
+
+    let errorMsg = ''
+
+    if (errors) {
+        for(let i = 0; i < errors.length; i++) {
+            errorMsg += `${errors[i].field}은(는) ${errors[i].code} \n`
+        }
+        history.replaceState({}, null, null)
+        alert(errorMsg)
+    }
+
+    // 수정 처리 ------------------------------------------------------
+
+    const link = [[${pageRequestDTO.getLink()}]]
+    const formObj = document.querySelector("#modifyForm")
+
+    document.querySelector(".modBtn").addEventListener("click", function (e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        formObj.action = `/materialProcurementContract/modify?${link}`
+        formObj.method = 'post'
+        formObj.submit()
+
+    }, false)
+
+    // 목록 페이지로 이동 ---------------------------------------------------------
+
+    document.querySelector(".listBtn").addEventListener("click", function (e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        formObj.reset()
+        self.location = `/materialProcurementContract/list?${link}`
+
+    }, false)
+
+    // 삭제 처리 (임시) -----------------------------------------------------------
+
+    document.querySelector(".removeBtn").addEventListener("click", function (e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        formObj.action = '/materialProcurementContract/remove'
+        formObj.method = 'post'
+        formObj.submit()
+
+    }, false);
+
+</script>
+
+
+</html>

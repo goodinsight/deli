@@ -23,6 +23,8 @@ public class MaterialProcurementPlanningDTO {
 
     private int materialProcurementPlanNo;   //조달계획일련번호
 
+    private String materialProcurementPlanCode; //조달계획코드
+
 //    @NotNull //@NotEmpty는 String타입에만 붙음. 그 외는 @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate procurementDeliveryDate;    //납기일
