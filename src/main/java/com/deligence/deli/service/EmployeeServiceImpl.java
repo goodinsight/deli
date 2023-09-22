@@ -7,12 +7,15 @@ import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.deligence.deli.domain.Employee;
 import com.deligence.deli.domain.EmployeeRole;
 import com.deligence.deli.repository.EmployeeRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -113,5 +116,56 @@ public class EmployeeServiceImpl implements EmployeeService {
         EmployeeJoinDTO employeeJoinDTO = modelMapper.map(employee, EmployeeJoinDTO.class);
 
         return employeeJoinDTO;
+    }
+
+    @Override
+    public PageResponseDTO<EmployeeAuthorityDTO> listForAuthority(PageRequestDTO pageRequestDTO) {
+
+        String[] types = pageRequestDTO.getTypes();
+        String keyword = pageRequestDTO.getKeyword();
+        Pageable pageable = pageRequestDTO.getPageable("employeeNo");
+
+        Page<Employee> result = employeeRepository.searchAll(types, keyword, pageable);
+
+        List<EmployeeAuthorityDTO> dtoList = result.getContent().stream()
+                .map(employee -> modelMapper.map(employee, EmployeeAuthorityDTO.class))
+                .collect(Collectors.toList());
+
+
+        return PageResponseDTO.<EmployeeAuthorityDTO>withAll()
+                .pageRequestDTO(pageRequestDTO)
+                .dtoList(dtoList)
+                .total((int)result.getTotalElements())
+                .build();
+
+
+//        List<Employee> employeeList = employeeRepository.getListWithRoles();
+//
+//        List<EmployeeSecurityDTO> employeeSecurityDTOList= new ArrayList<EmployeeSecurityDTO>();
+//        for(int i=0; i<employeeList.size(); i++) {
+//            EmployeeSecurityDTO employeeSecurityDTO = new EmployeeSecurityDTO(
+//                    employeeList.get(i).getEmployeeNo(),
+//                    employeeList.get(i).getEmployeeId(),
+//                    employeeList.get(i).getEmployeePw(),
+//                    employeeList.get(i).getEmployeeEmail(),
+//                    employeeList.get(i).getEmployeeName(),
+//                    employeeList.get(i).getEmployeePhone(),
+//                    employeeList.get(i).getEmployeeEntranceDate(),
+//                    employeeList.get(i).isDel(),
+//                    false,
+//                    employeeList.get(i).getRoleSet().stream().map(employeeRole -> new SimpleGrantedAuthority("ROLE_" + employeeRole.name())).collect(Collectors.toList())
+//            );
+//
+//            employeeSecurityDTOList.add(employeeSecurityDTO);
+//
+//        }
+//
+//        log.info("employeeSecurityDTOList");
+//        log.info(employeeSecurityDTOList);
+//
+//        return employeeSecurityDTOList;
+
+
+
     }
 }

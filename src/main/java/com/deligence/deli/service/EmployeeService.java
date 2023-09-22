@@ -3,6 +3,8 @@ package com.deligence.deli.service;
 import com.deligence.deli.domain.Employee;
 import com.deligence.deli.dto.*;
 
+import java.util.List;
+
 public interface EmployeeService {
 
 
@@ -21,4 +23,6 @@ public interface EmployeeService {
     PageResponseDTO<EmployeeJoinDTO> list(PageRequestDTO pageRequestDTO);
 
     EmployeeJoinDTO findEmployee(String employeeId);
+
+    PageResponseDTO<EmployeeAuthorityDTO> listForAuthority(PageRequestDTO pageRequestDTO);
 }

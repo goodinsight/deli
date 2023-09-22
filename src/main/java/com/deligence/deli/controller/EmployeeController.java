@@ -4,6 +4,7 @@ import com.deligence.deli.dto.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,8 +16,6 @@ import com.deligence.deli.service.EmployeeService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.io.IOException;
-import java.util.List;
 
 @Controller
 @Log4j2
@@ -26,9 +25,28 @@ public class EmployeeController {
     //의존성 주입
     private final EmployeeService employeeService;
 
-    @GetMapping("/")    // 시작은 비로그인 페이지로
-    public String main(){
-        return "redirect:/board/list";
+    @GetMapping("/")
+    public String main(Authentication authentication) throws NullPointerException{
+        try {
+            // 각자 권한에 따라 관리해야하는 페이지로
+            Object auth = authentication.getAuthorities();
+            log.info("auth : " + auth.toString());
+            if (auth.toString().contains("ROLE_ADMIN")) {
+                return "redirect:/employee/list";
+            } else if (auth.toString().contains("ROLE_PROCUREMENT")) {
+                return "redirect:/materialProcurementPlanning/list";
+            } else if (auth.toString().contains("ROLE_ORDER")) {
+                return "redirect:/order/list";
+            } else if (auth.toString().contains("ROLE_MATERIAL")) {
+                return "redirect:/material/list";
+            } else {
+                return "redirect:/board/list";
+            }
+        } catch (NullPointerException npe){
+            // 권한 없는 일반 유저는 게시판으로
+            log.info("비로그인 상태의 접속입니다.");
+            return "redirect:/board/list";
+        }
     }
 
     @GetMapping("/employee/login")
@@ -62,7 +80,9 @@ public class EmployeeController {
     }
 
     @PostMapping("/employee/login")
-    public String loginPOST(@Valid EmployeeSecurityDTO employeeSecurityDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String loginPOST(@Valid EmployeeSecurityDTO employeeSecurityDTO,
+                            BindingResult bindingResult,
+                            RedirectAttributes redirectAttributes){
 
         log.info("login POST  ......................");
 
@@ -77,7 +97,8 @@ public class EmployeeController {
 
         redirectAttributes.addFlashAttribute("result", employeeSecurityDTO);
 
-        return "redirect:/board/list";
+
+        return "redirect:/";
     }
 
     @GetMapping("/employee/join")
@@ -132,9 +153,9 @@ public class EmployeeController {
 
     }
 
-    @PreAuthorize("isAuthenticated() or principal.username == #employeeJoinDTO.employeeId")
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/employee/modify")
-    public void modify(int employeeNo, PageRequestDTO pageRequestDTO, Model model, @Valid EmployeeJoinDTO employeeJoinDTO){
+    public void modify(int employeeNo, PageRequestDTO pageRequestDTO, Model model){
 
         EmployeeJoinDTO employeeJoinDTO1 = employeeService.readOne(employeeNo);
 
@@ -146,7 +167,7 @@ public class EmployeeController {
     }
 
     //@PreAuthorize("principal.username == #employeeJoinDTO.employeeId")    //해당 사용자가 일치하는 경우 수정 권한
-    @PreAuthorize("isAuthenticated() or principal.username == #employeeJoinDTO.employeeId")  // 인가받은 사용자(운영자)와 본인 정보만 접근가능
+    @PreAuthorize("isAuthenticated() and principal.username.equals(#employeeJoinDTO.employeeId)")  // 인가받은 사용자(운영자)와 본인 정보만 접근가능
     @PostMapping("/employee/modify")
     public String modify(PageRequestDTO pageRequestDTO,
                          @Valid EmployeeJoinDTO employeeJoinDTO,
@@ -155,7 +176,7 @@ public class EmployeeController {
 
         log.info("employee modify post................." + employeeJoinDTO);
 
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             log.info("has errors..............");
 
             String link = pageRequestDTO.getLink();
@@ -164,7 +185,7 @@ public class EmployeeController {
 
             redirectAttributes.addAttribute("employeeNo", employeeJoinDTO.getEmployeeNo());
 
-            return "redirect:/employee/modify?"+link;
+            return "redirect:/employee/modify?" + link;
         }
 
         employeeService.modify(employeeJoinDTO);
@@ -191,6 +212,16 @@ public class EmployeeController {
         return "redirect:/employee/list";
 
     }
+
+    @GetMapping("/employee/authority")
+    public void authorityGET(Model model, PageRequestDTO pageRequestDTO) {
+        PageResponseDTO<EmployeeAuthorityDTO> responseDTO = employeeService.listForAuthority(pageRequestDTO);
+
+        log.info(responseDTO);
+
+        model.addAttribute("responseDTO", responseDTO);
+    }
+
 
     @GetMapping(value = "/error/deniedpage")
     public String accessDenied(){

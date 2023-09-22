@@ -42,19 +42,16 @@
 
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Employee List</h5>
-
                     <table class="table table-striped table-bordered">
                         <thead>
                         <tr>
                             <th scope="col">EmployeeNo</th>
                             <th scope="col">EmployeeId</th>
                             <th scope="col">EmployeeName</th>
-                            <th scope="col">EmployeePhone</th>
-                            <th scope="col">EmployeeEmail</th>
                             <th scope="col">EmployeeEntranceDate</th>
                             <th scope="col">EmployeePosition</th>
                             <th scope="col">EmployeeDel</th>
+                            <th scope="col">EmployeeRole</th>
                         </tr>
                         </thead>
                         <tbody th:with="link = ${pageRequestDTO.getLink()}">
@@ -64,12 +61,10 @@
                                 <a th:href="|@{/employee/read(employeeNo =${dto.employeeNo})}&${link}|" class="text-decoration-none">[[${dto.employeeId}]]</a>
                             </td>
                             <td>[[${dto.employeeName}]]</td>
-                            <td>[[${dto.employeePhone}]]</td>
-                            <td>[[${dto.employeeEmail}]]</td>
                             <td>[[${#temporals.format(dto.employeeEntranceDate, 'yyyy-MM-dd')}]]</td>
                             <td>[[${dto.position.positionName}]]</td>
                             <td>[[${dto.del}]]</td>
-
+                            <td>[[${dto.role}]]</td>
                         </tr>
                         </tbody>
                     </table>

@@ -8,6 +8,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +19,7 @@ import java.io.IOException;
 @Log4j2
 public class Custom403Handler implements AccessDeniedHandler {
     @Override
-    public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException, NullPointerException {
+    public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException, NullPointerException, HttpRequestMethodNotSupportedException {
 
         log.info("------------ACCESS DENIED--------------");
 
@@ -61,9 +63,12 @@ public class Custom403Handler implements AccessDeniedHandler {
             request.setAttribute("msg", "해당페이지에 대한 권한이 없는 아이디입니다.");
             request.setAttribute("nextPage", "/");
             request.getRequestDispatcher("/error/deniedpage").forward(request, response);
+        } catch (HttpRequestMethodNotSupportedException hrmnse){
+            log.error("HttpRequestMethodNotSupportedException : " + hrmnse.getMessage());
+            request.setAttribute("msg", "해당페이지에 대한 권한이 없는 아이디입니다.");
+            request.setAttribute("nextPage", "/");
+            request.getRequestDispatcher("/error/deniedpage").forward(request, response);
         }
-
-
 
     }
 }

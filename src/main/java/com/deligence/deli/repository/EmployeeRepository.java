@@ -1,5 +1,6 @@
 package com.deligence.deli.repository;
 
+import com.deligence.deli.domain.EmployeeRole;
 import com.deligence.deli.repository.search.EmployeeSearch;
 import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -33,4 +34,8 @@ public interface EmployeeRepository extends JpaRepository<Employee, String>, Emp
 
     @Transactional
     void deleteByEmployeeNo(int employeeNo);
+
+//    public List<Integer> findEmployeeRoleByEmployeeNo(int employeeNo) {
+//
+//    }
 }
