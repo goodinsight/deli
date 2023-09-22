@@ -92,7 +92,7 @@
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">비고</span>
-                        <textarea name="orderEtc" class="form-control col-sm-5" readonly>[[${dto.orderEtc}]]</textarea>
+                        <textarea name="orderEtc" rows="5" cols="50" class="form-control h-25" readonly>[[${dto.orderEtc}]]</textarea>
                     </div>
 
                     <div class="my-4" >
@@ -103,7 +103,7 @@
                             <a th:href="|@{/order/modify(orderNo=${dto.orderNo})}&${link}|" class="text-decoration-none" >
                                 <button type="button" class="btn btn-secondary">Modify</button>
                             </a>
-                            <a th:href="|@{/progressInspection(orderNo=${dto.orderNo})}&${link}|" class="text-decoration-none" >
+                            <a th:href="|@{/order/progressInspection(orderNo=${dto.orderNo})}&${link}|" class="text-decoration-none" >
                                 <button type="button" class="btn btn-secondary">검수 관리</button>
                             </a>
                         </div>

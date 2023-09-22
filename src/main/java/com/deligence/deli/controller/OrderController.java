@@ -139,7 +139,7 @@ public class OrderController {
     }
 
     @ResponseBody
-    @GetMapping("/order/register/selectContract")
+    @GetMapping("/register/selectContract")
     public PageResponseDTO<MaterialProcurementContractDTO> getContractList(PageRequestDTO pageRequestDTO){
 
         log.info("getContractList");
@@ -151,7 +151,7 @@ public class OrderController {
     }
 
     @ResponseBody
-    @GetMapping("/order/register/getContract/{contractNo}")
+    @GetMapping("/register/getContract/{contractNo}")
     public MaterialProcurementContractDetailDTO getContractDTO(@PathVariable("contractNo") int contractNo){
 
         log.info("getContractDTO : " + contractNo);
@@ -181,11 +181,13 @@ public class OrderController {
     // 검수 페이지 매핑 ------------------------------------------------------------------------------------
 
     @GetMapping("/progressInspection")
-    public void toProgressInspectionPage(int orderNo,PageRequestDTO pageRequestDTO, Model model){
+    public void toProgressInspectionPage(@AuthenticationPrincipal EmployeeSecurityDTO employeeSecurityDTO, int orderNo,PageRequestDTO pageRequestDTO, Model model){
 
         model.addAttribute("orderNo", orderNo);
 
         model.addAttribute("pageRequestDTO", pageRequestDTO);
+
+        model.addAttribute("user", employeeSecurityDTO);
 
     }
 

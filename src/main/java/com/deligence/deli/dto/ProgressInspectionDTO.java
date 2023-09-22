@@ -1,11 +1,10 @@
 package com.deligence.deli.dto;
 
-import com.deligence.deli.domain.Employee;
-import com.deligence.deli.domain.Order;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -17,6 +16,7 @@ public class ProgressInspectionDTO {
 
     private int progressInspectionNo;//진척 검수 일련번호
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate progressInspectionDate; //검수일
 
     private int progressInspectionTimes; //검수 차수

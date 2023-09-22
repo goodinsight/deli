@@ -43,12 +43,29 @@ public class ProgressInspectionController {
     }
 
     @GetMapping("/list/{orderNo}")
-    public PageResponseDTO<ProgressInspectionDTO> getlist(@PathVariable("orderNo") int orderNo,
+    public PageResponseDTO<ProgressInspectionDTO> getList(@PathVariable("orderNo") int orderNo,
                                                           PageRequestDTO pageRequestDTO){
+
+        log.info("start get list : orderNo = " + orderNo);
+        log.info("pageRequestDTO = " + pageRequestDTO);
 
         PageResponseDTO<ProgressInspectionDTO> responseDTO = progressInspectionService.list(orderNo, pageRequestDTO);
 
+        log.info("getList result : " + responseDTO);
+
         return responseDTO;
+    }
+
+    @GetMapping(value = "/{progressInspectionNo}")
+    public ProgressInspectionDTO getProgressInspectionDTO(@PathVariable("progressInspectionNo") int piNo){
+
+        log.info(piNo);
+
+        ProgressInspectionDTO progressInspectionDTO = progressInspectionService.read(piNo);
+
+        log.info(progressInspectionDTO);
+
+        return progressInspectionDTO;
     }
 
     @PutMapping(value = "/{progressInspectionNo}", consumes = MediaType.APPLICATION_JSON_VALUE)

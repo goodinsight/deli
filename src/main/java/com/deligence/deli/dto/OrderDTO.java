@@ -1,7 +1,6 @@
 package com.deligence.deli.dto;
 
 
-import com.deligence.deli.domain.Employee;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
