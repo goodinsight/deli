@@ -25,7 +25,7 @@
 
             <div class="input-group mb-3 pl-5">
               <span class="input-group-text">자재 코드</span>
-              <input type="text" name="materialCode" class="form-control selectMaterial" placeholder="클릭해주세요" readonly>
+              <input type="text" name="materialCode" class="form-control" id="selectMaterial" placeholder="클릭해주세요" readonly>
             </div>
 
             <div class="input-group mb-3 pl-5">
@@ -65,6 +65,13 @@
                 <option value="파기">파기</option>
                 <option value="완료">완료</option>
               </select>
+
+
+              <div class="input-group mb-3">
+                <span class="input-group-text">계약 상태</span>
+                <input type="text" name="materialProcurementContractState" class="form-control" placeholder="계약 상태 - 추후 숨길 부분" th:value="진행중" readonly>
+              </div>
+
             </div>
 
             <div class="my-4">
@@ -108,7 +115,7 @@
                     </tr>
                     </thead>
 
-                    <tbody class="PlanList">
+                    <tbody class="planList">
 
                     </tbody>
                   </table>
@@ -150,6 +157,7 @@
                       <th scope="col">자재 코드</th>
                       <th scope="col">자재 이름</th>
                       <th scope="col">자재 분류</th>
+                      <th scope="col">공급 단가</th>
                     </tr>
                     </thead>
 
@@ -174,8 +182,6 @@
     </div>
   </div><!--end 자재 모달창-->
 
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
   <script src="/js/materialProcurementPlanning.js"></script>
 
 </div>
@@ -183,6 +189,7 @@
 
 
 <script layout:fragment="script" th:inline="javascript">
+
 
   const auth = [[${#authentication}]]
 
@@ -195,8 +202,8 @@
 
   let errorMsg = ''
 
-  if(errors){
-    for(let i = 0; i < errors.length; i++) {
+  if (errors) {
+    for (let i = 0; i < errors.length; i++) {
       errorMsg += `${errors[i].field}은(는) ${errors[i].code} \n`
     }
     alert(errorMsg)
@@ -216,6 +223,7 @@
   let planPageSize = 5
 
   document.querySelector(".selectPlan").addEventListener("click", function (e) {
+    console.log("select plan click")
     printPlans(1, 5)
     planModal.show()
   }, false)
@@ -230,15 +238,15 @@
 
     if (dtoList && dtoList.length > 0) {
 
-      for ( const dto of dtoList) {
+      for (const dto of dtoList) {
 
         str += `<tr>
-                  <td data-planNo="${dto.productionPlanNo}">${dto.productionPlanNo}</td>
-                  <td data-planNo="${dto.productionPlanNo}">${dto.productCode}</td>
-                  <td data-planNo="${dto.productionPlanNo}">${dto.clientName}</td>
-                  <td data-planNo="${dto.productionPlanNo}">${dto.productionDeliveryDate}</td>
-                  <td data-planNo="${dto.productionPlanNo}">${dto.clientStatus}</td>
-              </tr>`
+                <td data-planNo="${dto.productionPlanNo}">${dto.productionPlanNo}</td>
+                <td data-planNo="${dto.productionPlanNo}">${dto.productCode}</td>
+                <td data-planNo="${dto.productionPlanNo}">${dto.clientName}</td>
+                <td data-planNo="${dto.productionPlanNo}">${dto.productionDeliveryDate}</td>
+                <td data-planNo="${dto.productionPlanNo}">${dto.clientStatus}</td>
+            </tr>`
       }
     }
 
@@ -252,13 +260,13 @@
     let pageStr = '';
 
     if (data.prev) {
-      pageStr += `<li class="page-item"><a class="page-link" data-page="${data.start-1}">PREV</a></li>`
+      pageStr += `<li class="page-item"><a class="page-link" data-page="${data.start - 1}">PREV</a></li>`
     }
-    for(let i = data.start; i <= data.end; i++){
-      pageStr += `<li class="page-item ${ i == data.page ? "active" : ""}"><a class="page-link" data-page="${i}">${i}</a></li>`
+    for (let i = data.start; i <= data.end; i++) {
+      pageStr += `<li class="page-item ${i == data.page ? "active" : ""}"><a class="page-link" data-page="${i}">${i}</a></li>`
     }
-    if(data.next) {
-      pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end+1}">NEXT</a></li>`
+    if (data.next) {
+      pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end + 1}">NEXT</a></li>`
     }
     planPaging.innerHTML = pageStr
 
@@ -343,7 +351,7 @@
 
   //자재 선택 --------------------------------------------------------------------------------------------------
 
-  const materialModal = new bootstrap.Modal(document.querySelector("selectMaterialModal"))
+  const materialModal = new bootstrap.Modal(document.querySelector(".selectMaterialModal"))
 
   const materialList = document.querySelector(".materialList")  //자재 목록 DOM
   const materialPaging = document.querySelector(".materialPaging")  //자재 페이지 선택 목록 DOM
@@ -353,8 +361,9 @@
   let materialPage = 1
   let materialPageSize = 5
 
-  document.querySelector(".selectMaterial").addEventListener("click", function (e) {
-    printMaterials(1, 5)
+  document.querySelector("#selectMaterial").addEventListener("click", function (e) {
+    console.log("select material modal show")
+    //printMaterials(1, 5)
     materialModal.show()
   }, false)
 
@@ -371,11 +380,12 @@
       for (const dto of dtoList) {
 
         str += `<tr>
-                    <td data-materialsNo = "${dto.materialNo}">${dto.materialNo}</td>
-                    <td data-materialsNo = "${dto.materialNo}">${dto.materialCode}</td>
-                    <td data-materialsNo = "${dto.materialNo}">${dto.materialType}</td>
-                    <td data-materialsNo = "${dto.materialNo}">${dto.materialName}</td>
-                </tr>`
+                  <td data-materialsNo = "${dto.materialNo}">${dto.materialNo}</td>
+                  <td data-materialsNo = "${dto.materialNo}">${dto.materialCode}</td>
+                  <td data-materialsNo = "${dto.materialNo}">${dto.materialType}</td>
+                  <td data-materialsNo = "${dto.materialNo}">${dto.materialName}</td>
+                  <td data-materialsNo = "${dto.materialNo}">${dto.materialSupplyPrice}</td>
+              </tr>`
       }
     }
 
@@ -386,14 +396,14 @@
 
     let pageStr = '';
 
-    if(data.prev) {
-      pageStr += `<li class="page-item"><a class="page-link" data-page="${data.start-1}">PREV</a></li>`
+    if (data.prev) {
+      pageStr += `<li class="page-item"><a class="page-link" data-page="${data.start - 1}">PREV</a></li>`
     }
-    for(let i = data.start; i <= data.end; i++){
-      pageStr += `<li class="page-item ${ i == data.page ? "active" : ""}"><a class="page-link" data-page="${i}">${i}</a></li>`
+    for (let i = data.start; i <= data.end; i++) {
+      pageStr += `<li class="page-item ${i == data.page ? "active" : ""}"><a class="page-link" data-page="${i}">${i}</a></li>`
     }
-    if(data.next) {
-      pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end+1}">NEXT</a></li>`
+    if (data.next) {
+      pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end + 1}">NEXT</a></li>`
     }
     materialPaging.innerHTML = pageStr
 
@@ -404,10 +414,10 @@
   function printMaterials(page, size) {
 
     getMaterialList({page, size}).then(
-      data => {
-        printMaterialList(data.dtoList)
-        printMaterialPages(data)
-      }
+            data => {
+              printMaterialList(data.dtoList)
+              printMaterialPages(data)
+            }
     ).catch(e => {
       console.error(e)
     })
@@ -431,10 +441,11 @@
 
   }, false)
 
-  const materialsNo = document.querySelector(".selectMaterial")
-  const inputMaterialCode = document.querySelector(".materialCode")
-  const inputMaterialType = document.querySelector(".materialType")
-  const inputMaterialName = document.querySelector(".materialName")
+  const materialNo = document.querySelector(".materialNo")
+  const inputMaterialCode = document.querySelector(".selectMaterial")
+  const materialType = document.querySelector(".materialType")
+  const materialName = document.querySelector(".materialName")
+  const materialSupplyPrice = document.querySelector(".materialSupplyPrice")
 
   //자재 항목 클릭시 input에 반영
   materialList.addEventListener("click", function (e) {
@@ -459,12 +470,13 @@
     getMaterial(materialsNo).then(material => {
 
       console.log(material)
-      materialsNo.value = material.materialNo
+      materialNo.value = material.materialNo
       //자재 정보를 가져와서 화면에 반영해야 할 항복들은 여기에 --------------------------------------------------------
       inputMaterialCode.value = material.materialCode
-      inputMaterialType.value = material.materialType
-      inputMaterialName.value = material.materialName
+      materialType.value = material.materialType
+      materialName.value = material.materialName
       //------------------------------------------------------------------------------------------------------
+      materialSupplyPrice.value = material.materialSupplyPrice
       materialModal.hide()
 
     }).catch(e => alert('error'))
