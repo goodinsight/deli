@@ -4,8 +4,10 @@ import com.deligence.deli.domain.MaterialInventory;
 import com.deligence.deli.domain.Materials;
 import com.deligence.deli.domain.Order;
 import com.deligence.deli.dto.MaterialInventoryDTO;
+import com.deligence.deli.dto.OrderDTO;
 import com.deligence.deli.dto.PageRequestDTO;
 import com.deligence.deli.dto.PageResponseDTO;
+import com.deligence.deli.repository.OrderRepository;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class MaterialInventoryServiceTests {
 
     @Autowired
     private MaterialInventoryService materialInventoryService;
+
+    @Autowired
+    private OrderRepository orderRepository;
 
     @Test
     public void testMaterialsServicelistOne() {
@@ -53,14 +58,21 @@ public class MaterialInventoryServiceTests {
     @Test
     public void test() {
 
-        MaterialInventoryDTO materialInventoryDTO = MaterialInventoryDTO.builder()
-                .materialInventoryNo(20)
-                .order(Order.builder().orderNo(20).build())
-                .build();
+        List<Order> list = orderRepository.findAll();
 
-        int[] result = materialInventoryService.materialStockRegister(materialInventoryDTO);
+        for (int i = 0; i < list.size(); i++) {
 
-        log.info(result);
+            MaterialInventoryDTO materialInventoryDTO = MaterialInventoryDTO.builder()
+                    .materialInventoryNo(i)
+                    .order(Order.builder().orderNo(i).build())
+                    .build();
+
+            int[] result = materialInventoryService.materialStockRegister(materialInventoryDTO);
+
+            log.info("result : " + result.length);
+
+        }
+
 
     }
 

@@ -82,7 +82,7 @@ public class MaterialInventoryRepositoryTests {
 
         MaterialInventory materialInventory = result.orElseThrow();
 
-        materialInventory.change(1, 2, 3, 4L, 5L);
+        materialInventory.change(1, 2, 3, 4L, 5L, "123", "123", "123");
 
         materialInventoryRepository.save(materialInventory);
 
@@ -165,7 +165,7 @@ public class MaterialInventoryRepositoryTests {
 
             Optional<Materials> result2 = materialsRepository.findById(list.get(i).getMaterialNo());
             log.info("result2 : " + result2);
-            Optional<Order> result = materialInventoryRepository.findFristByOrderNo(list2.get(i).getOrderNo());
+            Optional<Order> result = materialInventoryRepository.findFristByOrderNo(list2.get(list2.size() - 1).getOrderNo());
             log.info("result : " + result);
 
             Materials materials = result2.orElseThrow();

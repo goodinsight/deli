@@ -51,13 +51,16 @@ public class MaterialInventory {
     @Column(length = 500, nullable = false)
     private String materialCode; // 자재코드 검색
 
-    public void change(int materialIncomingQuantity, int materialOutgoingQuantity, int materialStock, Long materialSupplyPrice, Long materialTotalInventoryPayments) {
+    public void change(int materialIncomingQuantity, int materialOutgoingQuantity, int materialStock, Long materialSupplyPrice, Long materialTotalInventoryPayments, String materialName, String materialCode, String materialType) {
 
         this.materialIncomingQuantity = materialIncomingQuantity;
         this.materialOutgoingQuantity = materialOutgoingQuantity;
         this.materialStock = materialStock;
         this.materialSupplyPrice = materialSupplyPrice;
         this.materialTotalInventoryPayments = materialTotalInventoryPayments;
+        this.materialName = materialName;
+        this.materialType = materialType;
+        this.materialCode = materialCode;
 
     }
 

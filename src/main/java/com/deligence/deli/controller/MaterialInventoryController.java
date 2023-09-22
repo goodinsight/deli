@@ -9,9 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/materialInventory")
@@ -24,7 +21,7 @@ public class MaterialInventoryController {
     private MaterialInventoryService materialInventoryService;
 
     @GetMapping("/materialStockList")
-    public void materialStockList(PageRequestDTO pageRequestDTO, Model model, RedirectAttributes redirectAttributes) {
+    public void materialStockList(PageRequestDTO pageRequestDTO, Model model) {
 
         PageResponseDTO<MaterialInventoryDTO> responseDTO = materialInventoryService.materialStockList(pageRequestDTO);
 
@@ -41,7 +38,15 @@ public class MaterialInventoryController {
 
         log.info(materialInventoryDTO);
 
+        int num = (int) (Math.random() * 9) + 0;
+
+        model.addAttribute("num", num);
+
         model.addAttribute("dto", materialInventoryDTO);
+
+        int result = materialInventoryDTO.getOrder().getOrderQuantity() - num;
+
+        model.addAttribute("result", result);
 
     }
 
