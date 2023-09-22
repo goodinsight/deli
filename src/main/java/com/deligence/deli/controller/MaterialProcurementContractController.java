@@ -97,7 +97,110 @@ public class MaterialProcurementContractController {
 
     }
 
+    @PostMapping("/modify")
+    public String modify(PageRequestDTO pageRequestDTO,
+                         @Valid MaterialProcurementContractDTO materialProcurementContractDTO,
+                         BindingResult bindingResult,
+                         RedirectAttributes redirectAttributes) {
+
+        log.info("materialProcurementContract modify : " + materialProcurementContractDTO);
+
+        //에러 처리 ------------------------------------------------------------------------------
+        if (bindingResult.hasErrors()) {
+            log.info("has errors.....");
+
+            String link = pageRequestDTO.getLink();
+
+            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors() );
+
+            redirectAttributes.addAttribute("materialProcurementContractNo",
+                    materialProcurementContractDTO.getMaterialProcurementContractNo());
+
+            return "redirect:/materialProcurementContract/modify?"+link;
+        }
+        //--------------------------------------------------------------------------------------------
+
+        materialProcurementContractService.modify(materialProcurementContractDTO);
+
+        redirectAttributes.addFlashAttribute("result", "modified");
+
+        redirectAttributes.addAttribute("materialProcurementContractNo",
+                materialProcurementContractDTO.getMaterialProcurementContractNo());
+
+        return "redirect:/materialProcurementContract/read";
+
+    }
+
+    @PostMapping("/remove")
+    public String remove(int materialProcurementContractNo, RedirectAttributes redirectAttributes) {
+
+        log.info("remove post...." + materialProcurementContractNo);
+
+        materialProcurementContractService.remove(materialProcurementContractNo);
+
+        redirectAttributes.addFlashAttribute("result", "removed");
+
+        return "redirect:/materialProcurementContract/list";
+
+    }
+
     //비동기처리 -----------------------------------------------------
+    //자재코드클릭->자재목록, 협력회사이름클릭->협력회사목록
+    @ResponseBody
+    @GetMapping("/register/selectMaterial")
+    public PageResponseDTO<MaterialsDTO> getMaterialList(PageRequestDTO pageRequestDTO){
+
+        log.info("getMaterialList");
+
+        PageResponseDTO<MaterialsDTO> responseDTO = materialsService.list(pageRequestDTO);
+
+        return responseDTO;
+    }
+
+    @ResponseBody
+    @GetMapping("/register/getMaterial/{materialsNo}")
+    public MaterialsDTO getMaterialDTO(@PathVariable("materialsNo") int materialsNo) {
+
+        log.info("getMaterialDTO : " + materialsNo);
+
+        MaterialsDTO materialsDTO = materialsService.readOne(materialsNo);
+
+        log.info(materialsDTO);
+
+        return materialsDTO;
+
+    }
+
+    //자재조달협력회사 Service만들면 주석 풀기
+    /*
+    @ResponseBody
+    @GetMapping("/materialProcurementContract/register/selectSupplier")
+    public PageResponseDTO<CooperatorSupplierDTO> getSupplierList(PageRequestDTO pageRequestDTO){
+
+        log.info("getSupplierList");
+
+        PageResponseDTO<CooperatorSupplierDTO> responseDTO = cooperatorSupplierService.list(pageRequestDTO);
+
+        return responseDTO;
+
+    }
+
+    @ResponseBody
+    @GetMapping("/materialProcurementContract/register/getSupplier/{suppliersNo}")
+    public CooperatorSupplierDTO getSupplierDTO(@PathVariable("suppliersNo") int suppliersNo){
+
+        log.info("getSupplierDTO : " + suppliersNo);
+
+        CooperatorSupplierDTO cooperatorSupplierDTO = cooperatorSupplierService.read(suppliersNo);
+
+        log.info(cooperatorSupplierDTO);
+
+        return cooperatorSupplierDTO;
+
+    }
+*/
+
+
     @ResponseBody
     @GetMapping("/register/getCodeCount/{materialProcurementContractCode}")
     public int getCodeCount(@PathVariable("materialProcurementContractCode") String materialProcurementContractCode){

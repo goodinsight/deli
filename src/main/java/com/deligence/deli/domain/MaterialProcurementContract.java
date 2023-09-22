@@ -65,6 +65,7 @@ public class MaterialProcurementContract extends BaseEntity {
         this.materialProcurementContractDate = materialProcurementContractDate;
         this.materialProcurementContractState = materialProcurementContractState;
         this.materialProcurementContractEtc = materialProcurementContractEtc;
+        this.materialRequirementsCount = materialRequirementsCount;
 
         //자재코드
         //분류
