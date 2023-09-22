@@ -39,9 +39,9 @@
                             <span class="input-group-text">납기일</span>
                             <input type="text" name="procurementDeliveryDate" class="form-control procurementDeliveryDate" readonly>
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="d-none input-group mb-3">
                             <span class="input-group-text">계약 일련번호</span>
-                            <input type="text" name="materialProcurementContractNo" class="form-control materialProcurementContractNo" placeholder="계약 일련번호 - 추후 숨길 부분">
+                            <input type="text" name="materialProcurementContractNo" class="form-control materialProcurementContractNo" placeholder="계약 일련번호" readonly>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">계약 코드</span>
@@ -63,7 +63,7 @@
                             <span class="input-group-text">발주 코드</span>
                             <input type="text" name="orderCode" class="form-control orderCode" placeholder="클릭해주세요" readonly>
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="d-none input-group mb-3">
                             <span class="input-group-text">담당자 일련번호</span>
                             <input type="text" name="employeeNo" class="form-control" th:value="${user.employeeNo}" readonly>
                         </div>
@@ -83,13 +83,13 @@
                             <span class="input-group-text">납기일</span>
                             <input type="date" name="orderDeliveryDate" class="form-control" placeholder="납기일">
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="d-none input-group mb-3">
                             <span class="input-group-text">발주 상태</span>
                             <input type="text" name="orderState" class="form-control" placeholder="발주 상태 - 추후 숨길 부분" th:value="진행중" readonly>
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3" >
                             <span class="input-group-text">비고</span>
-                            <textarea name="orderEtc" class="form-control col-sm-5"></textarea>
+                            <textarea name="orderEtc" rows="5" cols="50" class="form-control h-25"></textarea>
                         </div>
                         <div class="my-4">
                             <div class="float-end">
@@ -470,7 +470,7 @@
 
         const pageNum = target.getAttribute("data-page")
         contractPage = pageNum
-        printPlans(contractPage, contractPageSize)
+        printContracts(contractPage, contractPageSize)
 
     }, false)
 

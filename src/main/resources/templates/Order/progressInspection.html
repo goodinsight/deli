@@ -10,13 +10,438 @@
 
 <div layout:fragment="content">
 
-    검수 페이지
+    <div class="row mt-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="list-group progressInspectionList">
+                    </div>
+
+                    <div class="pagination progressInspectionPaging">
+                    </div>
+
+                    <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}">
+                        <button type="button" class="btn btn-primary float-right openRegisterBtn">검수 등록</button>
+                        <a th:href="|@{/order/read(orderNo=${orderNo})}&${link}|" class="text-decoration-none">
+                            <button type="button" class="btn btn-secondary float-right">발주 페이지로</button>
+                        </a>
+                    </div>
+
+                </div><!-- end card body -->
+
+            </div><!-- end card -->
+        </div>
+    </div><!-- end row -->
+
+    <div class="modal registerModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">검수 등록</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">검수일</span>
+                        <input type="date" class="form-control registerProgressInspectionDate">
+                    </div>
+                    <div class="d-none input-group mb-3">
+                        <span class="input-group-text">담당자 일련번호</span>
+                        <input type="text" class="form-control registerEmployeeNo" th:value="${user.employeeNo}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">담당자</span>
+                        <input type="text" class="form-control registerEmployeeName" th:value="${user.employeeName}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">비고</span>
+                        <textarea rows="3" cols="50" class="form-control h-25 registerProgressInspectionEtc"></textarea>
+                    </div>
+                    <div class="d-none input-group mb-3">
+                        <span class="input-group-text">검수 진척도</span>
+                        <input type="text" class="form-control registerRateOfProgress" th:value="0" readonly>
+                    </div>
+                    <div class="d-none input-group mb-3">
+                        <span class="input-group-text">검수 상태</span>
+                        <input type="text" class="form-control registerProgressInspectionState" th:value="진행중" readonly>
+                    </div>
+                    <div class="d-none input-group mb-3">
+                        <span class="input-group-text">발주 일련번호</span>
+                        <input type="text" class="form-control registerOrderNo" th:value="${orderNo}" readonly>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary registerBtn">제출</button>
+                    <button type="button" class="btn btn-outline-dark closeRegisterBtn">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- registerModal -->
+
+    <div class="modal modifyModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">검수 수정</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="d-none input-group mb-3">
+                        <span class="input-group-text">검수 일련번호</span>
+                        <input type="text" class="form-control modifyProgressInspectionNo" readonly>
+                    </div>
+                    <div class="d-none input-group mb-3">
+                        <span class="input-group-text">검수 차수</span>
+                        <input type="text" class="form-control modifyProgressInspectionTimes" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">검수일</span>
+                        <input type="date" class="form-control modifyProgressInspectionDate">
+                    </div>
+                    <div class="d-none input-group mb-3">
+                        <span class="input-group-text">담당자 일련번호</span>
+                        <input type="text" class="form-control modifyEmployeeNo" th:value="${user.employeeNo}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">담당자</span>
+                        <input type="text" class="form-control modifyEmployeeName" th:value="${user.employeeName}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">검수 진척도</span>
+                        <input type="range" class="form-control modifyRateOfProgress" th:value="0">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">비고</span>
+                        <textarea rows="3" cols="50" class="form-control h-25 modifyProgressInspectionEtc"></textarea>
+                    </div>
+                    <div class="d-none input-group mb-3">
+                        <span class="input-group-text">검수 상태</span>
+                        <input type="text" class="form-control modifyProgressInspectionState" th:value="진행중" readonly>
+                    </div>
+                    <div class="d-none input-group mb-3">
+                        <span class="input-group-text">발주 일련번호</span>
+                        <input type="text" class="form-control modifyOrderNo" th:value="${orderNo}" readonly>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary modifyBtn">제출</button>
+                    <button type="button" class="btn btn-outline-dark closeModifyBtn">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- modifyModal -->
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="/js/progressInspection.js"></script>
 
 </div>
 
 
 <script layout:fragment="script" th:inline="javascript">
 
+    const orderNo = [[${orderNo}]]
+
+    const piList = document.querySelector('.progressInspectionList')
+    const piPaging = document.querySelector('.progressInspectionPaging')
+
+    // 검수 목록 ---------------------------------------------------
+
+    let page = 1
+    let size = 3
+
+    function printList(dtoList) {
+
+        let str = '';
+
+        if(dtoList && dtoList.length > 0){
+
+            for ( const dto of dtoList ) {
+
+                console.log(dto);
+
+                str += `
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-none input-group mb-3">
+                            <span class="input-group-text">검수 일련번호</span>
+                            <input type="text" class="form-control" value="${dto.progressInspectionNo}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">검수 차수</span>
+                            <input type="text" class="form-control" value="${dto.progressInspectionTimes}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">검수일</span>
+                            <input type="text" class="form-control" value="${dto.progressInspectionDate.toString().replaceAll(',','-')}" readonly>
+                        </div>
+                        <div class="d-none input-group mb-3">
+                            <span class="input-group-text">담당자 일련번호</span>
+                            <input type="text" class="form-control" value="${dto.employeeNo}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">담당자</span>
+                            <input type="text" class="form-control" value="${dto.employeeName}" readonly>
+                        </div>
+                        <div class=" input-group mb-3">
+                            <span class="input-group-text">검수 진척도</span>
+                            <input type="range" class="form-control" value="${dto.rateOfProgress}" disabled>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">비고</span>
+                            <textarea rows="3" cols="50" class="form-control h-25" readonly>${dto.progressInspectionEtc}</textarea>
+                        </div>
+                        <div class="d-none input-group mb-3">
+                            <span class="input-group-text">검수 상태</span>
+                            <input type="text" class="form-control" value="${dto.progressInspectionState}" readonly>
+                        </div>
+                        <div class="d-none input-group mb-3">
+                            <span class="input-group-text">발주 일련번호</span>
+                            <input type="text" class="form-control" value="${dto.orderNo}" readonly>
+                        </div>
+
+                        <div>
+                            <button type="button" onclick="openModifyModal(${dto.progressInspectionNo})" class="btn btn-primary float-right">수정</button>
+                            <button type="button" onclick="removeBtn(${dto.progressInspectionNo})" class="btn btn-danger float-right">삭제</button>
+                        </div>
+                    </div>
+                </div>
+                `
+
+            }
+
+        }else{
+            str += `<div><h2>검수가 등록되어있지 않습니다.</h2></div>`
+        }
+
+        piList.innerHTML = str
+
+    }
+
+    function printPages(data){
+
+        let pageStr = '';
+
+        if(data.prev) {
+            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.start-1}">PREV</a></li>`
+        }
+        for(let i = data.start; i <= data.end; i++){
+            pageStr += `<li class="page-item ${ i == data.page ? "active" : ""}"><a class="page-link" data-page="${i}">${i}</a></li>`
+        }
+        if(data.next) {
+            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end+1}">NEXT</a></li>`
+        }
+        piPaging.innerHTML = pageStr
+
+        page = data.page
+
+    }
+
+    function printProgressInspections(page, size, goLast) {
+
+        getList({orderNo, page, size, goLast}).then(
+            data => {
+                printList(data.dtoList) // 목록처리
+                printPages(data) //페이지 처리
+            }
+        ).catch(e => {
+            console.log("getList failed")
+            console.error(e)
+        })
+
+    }
+
+    printProgressInspections(1, 3, true)
+
+    // 검수 페이지 버튼 --------------------------------------------
+
+    piPaging.addEventListener("click", function (e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        const target = e.target
+
+        if(!target || target.tagName != 'A'){
+            return
+        }
+
+        const pageNum = target.getAttribute("data-page")
+        page = pageNum
+        printProgressInspections(page, size)
+
+    }, false)
+
+
+    // 검수 등록 ---------------------------------------------------
+
+    //검수 등록 모달
+    const registerModal = new bootstrap.Modal(document.querySelector('.registerModal'))
+
+    const openRegisterBtn = document.querySelector(".openRegisterBtn")
+    const closeRegisterBtn = document.querySelector(".closeRegisterBtn")
+    const registerBtn = document.querySelector(".registerBtn")
+
+    //모달 내용
+    const registerProgressInspectionDate = document.querySelector('.registerProgressInspectionDate')
+    const registerEmployeeNo = document.querySelector('.registerEmployeeNo')
+    const registerEmployeeName = document.querySelector('.registerEmployeeName')
+    const registerProgressInspectionEtc = document.querySelector('.registerProgressInspectionEtc')
+    const registerRateOfProgress = document.querySelector('.registerRateOfProgress')
+    const registerProgressInspectionState = document.querySelector('.registerProgressInspectionState')
+
+
+    openRegisterBtn.addEventListener("click", function (e) {
+        registerModal.show()
+    }, false)
+
+    closeRegisterBtn.addEventListener("click", function (e) {
+        registerModal.hide()
+    }, false)
+
+    registerBtn.addEventListener("click", function (e) {
+
+        const piObj = {
+            progressInspectionDate : registerProgressInspectionDate.value,
+            progressInspectionEtc : registerProgressInspectionEtc.value,
+            rateOfProgress : registerRateOfProgress.value,
+            progressInspectionState : registerProgressInspectionState.value,
+            orderNo : orderNo,
+            employeeNo : registerEmployeeNo.value,
+            employeeName : registerEmployeeName.value
+        }
+
+        console.log(piObj)
+
+        addProgressInspection(piObj).then(result => {
+            alert("등록되었습니다.")
+            registerModal.hide()
+            registerProgressInspectionDate.value = null
+            registerProgressInspectionEtc.value = ''
+            printProgressInspections(1, 3, true)
+
+        }).catch(e => {
+            alert("등록 실패")
+        })
+
+    }, false)
+
+
+
+    // 검수 수정 ----------------------------------------------------------
+
+    const modifyModal = new bootstrap.Modal(document.querySelector(".modifyModal"))
+
+    const closeModifyBtn = document.querySelector(".closeModifyBtn")
+    const modifyBtn = document.querySelector(".modifyBtn")
+
+    //수정 정보
+    const modifyProgressInspectionNo = document.querySelector(".modifyProgressInspectionNo")
+    const modifyProgressInspectionTimes = document.querySelector(".modifyProgressInspectionTimes")
+    const modifyProgressInspectionDate = document.querySelector(".modifyProgressInspectionDate")
+    const modifyEmployeeNo = document.querySelector(".modifyEmployeeNo")
+    const modifyEmployeeName = document.querySelector(".modifyEmployeeName")
+    const modifyRateOfProgress = document.querySelector(".modifyRateOfProgress")
+    const modifyProgressInspectionEtc = document.querySelector(".modifyProgressInspectionEtc")
+    const modifyProgressInspectionState = document.querySelector(".modifyProgressInspectionState")
+    const modifyOrderNo = document.querySelector(".modifyOrderNo")
+
+
+    function openModifyModal(piNo) {
+
+        if(!piNo){
+            console.log("piNo is null!")
+            return
+        }else{
+            console.log("piNo = " + piNo)
+        }
+
+
+
+        getProgressInspection(piNo).then(pi => {
+
+            console.log(pi)
+
+            let date = pi.progressInspectionDate[0] + '-'
+
+            if(pi.progressInspectionDate[1] < 10){
+                date += 0
+            }
+            date += pi.progressInspectionDate[1] + '-'
+
+            if(pi.progressInspectionDate[2] < 10){
+                date += 0
+            }
+            date += pi.progressInspectionDate[2]
+
+            console.log(date)
+
+            modifyProgressInspectionNo.value = pi.progressInspectionNo
+            modifyProgressInspectionDate.value = date
+            modifyProgressInspectionTimes.value = pi.progressInspectionTimes
+            modifyEmployeeNo.value = pi.employeeNo
+            modifyEmployeeName.value = pi.employeeName
+            modifyRateOfProgress.value = pi.rateOfProgress
+            modifyProgressInspectionEtc.value = pi.progressInspectionEtc
+            modifyProgressInspectionState.value = pi.progressInspectionState
+            modifyOrderNo.value = pi.orderNo
+
+            modifyModal.show()
+
+        }).catch(e => alert('error'))
+
+    }
+
+    closeModifyBtn.addEventListener("click", function (e) {
+        modifyModal.hide()
+    }, false)
+
+
+    modifyBtn.addEventListener("click", function (e){
+
+        const piObj = {
+            progressInspectionNo : modifyProgressInspectionNo.value,
+            progressInspectionDate : modifyProgressInspectionDate.value,
+            progressInspectionTimes : modifyProgressInspectionTimes.value,
+            progressInspectionEtc : modifyProgressInspectionEtc.value,
+            rateOfProgress : modifyRateOfProgress.value,
+            progressInspectionState : modifyProgressInspectionState.value,
+            orderNo : orderNo,
+            employeeNo : modifyEmployeeNo.value,
+            employeeName : modifyEmployeeName.value
+        }
+
+        modifyProgressInspection(piObj).then(result => {
+
+            alert("검수가 수정되었습니다. : " + result.progressInspectionNo)
+            modifyModal.hide()
+            printProgressInspections(page, size)
+
+        }).catch(e => {
+            console.log(e)
+        })
+
+    }, false)
+
+
+    // 삭제 ---------------------------------------------------------
+
+    function removeBtn(piNo){
+
+        /*권한 확인
+
+         */
+
+        removeProgressInspection(piNo).then(result => {
+
+            alert("삭제 성공 : "+result.progressInspectionNo)
+
+            printProgressInspections(page, size, true)
+
+        }).catch(e => {
+            console.log(e)
+        })
+
+    }
 
 </script>
 

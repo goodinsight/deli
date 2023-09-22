@@ -13,11 +13,15 @@ import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Log4j2
@@ -39,6 +43,8 @@ public class ProgressInspectionServiceImpl implements ProgressInspectionService{
 
         // dto 차수에 count + 1 설정
         progressInspectionDTO.setProgressInspectionTimes((int)(count +1));
+
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
         ProgressInspection progressInspection = modelMapper.map(progressInspectionDTO, ProgressInspection.class);
 
@@ -95,16 +101,30 @@ public class ProgressInspectionServiceImpl implements ProgressInspectionService{
     }
 
     @Override
-    public PageResponseDTO<ProgressInspectionDTO> list(int progressInspectionNo, PageRequestDTO pageRequestDTO) {
+    public PageResponseDTO<ProgressInspectionDTO> list(int orderNo, PageRequestDTO pageRequestDTO) {
 
-        String[] types = pageRequestDTO.getTypes();
-        String keyword = pageRequestDTO.getKeyword();
-        Pageable pageable = pageRequestDTO.getPageable();//속성 집어넣으면 오류 발생함.
+        Pageable pageable = PageRequest.of(
+                pageRequestDTO.getPage() <= 0 ? 0 : pageRequestDTO.getPage() - 1,
+                pageRequestDTO.getSize(),
+                Sort.by("progressInspectionNo").ascending()
+        );
 
-        //Page<ProgressInspection> result = progressInspectionRepository.search(types, keyword, pageable);
+        Page<ProgressInspection> result = progressInspectionRepository.listOfOrder(orderNo, pageable);
+
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
 
 
-        return null;
+        List<ProgressInspectionDTO> dtoList = result.getContent().stream().map(
+                progressInspection -> modelMapper.map(progressInspection, ProgressInspectionDTO.class)
+        ).collect(Collectors.toList());
+
+
+        return PageResponseDTO.<ProgressInspectionDTO>withAll()
+                .pageRequestDTO(pageRequestDTO)
+                .dtoList(dtoList)
+                .total((int) result.getTotalElements())
+                .build();
+
     }
 
 }
