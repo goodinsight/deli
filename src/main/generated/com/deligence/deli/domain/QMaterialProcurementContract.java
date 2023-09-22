@@ -46,6 +46,8 @@ public class QMaterialProcurementContract extends EntityPathBase<MaterialProcure
 
     public final StringPath materialProcurementContractState = createString("materialProcurementContractState");
 
+    public final NumberPath<Integer> materialRequirementsCount = createNumber("materialRequirementsCount", Integer.class);
+
     public final QMaterials materials;
 
     public final NumberPath<Long> materialSupplyPrice = createNumber("materialSupplyPrice", Long.class);

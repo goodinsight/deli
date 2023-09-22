@@ -166,6 +166,7 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
                 .materialCode(resultMr.getMaterialCode())
                 .materialName(resultMr.getMaterialName())
                 .materialSupplyPrice(resultMr.getMaterialSupplyPrice())
+                .materialRequirementsCount(resultMaterialProcurementContract.getMaterialRequirementsCount())
                 .supplierNo(resultCs.getSupplierNo())
                 .supplierName(resultCs.getSupplierName())
                 .supplierCeo(resultCs.getSupplierCeo())

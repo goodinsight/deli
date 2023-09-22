@@ -39,6 +39,8 @@ public class MaterialProcurementContractDTO {
 
     private Long materialSupplyPrice;   //자재 공급단가 (검색용)
 
+    private int materialRequirementsCount;  //자재 수량
+
 //    private CooperatorSupplier cooperatorSupplier;  //자재협력회사 Entity ->회사명, 대표명, 연락처 가져오기
     private int supplierNo; //자재협력회사 일련번호 (FK)
 
