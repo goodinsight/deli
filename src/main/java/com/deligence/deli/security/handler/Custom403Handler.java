@@ -57,7 +57,7 @@ public class Custom403Handler implements AccessDeniedHandler {
 
             }
         } catch (NullPointerException npe) {
-            log.error("nullpointerror : " +npe.getMessage());
+            log.error("NULLPointerException : " +npe.getMessage());
             request.setAttribute("msg", "해당페이지에 대한 권한이 없는 아이디입니다.");
             request.setAttribute("nextPage", "/");
             request.getRequestDispatcher("/error/deniedpage").forward(request, response);

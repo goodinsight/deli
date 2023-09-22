@@ -55,18 +55,46 @@
                 </li>
 
                 <li class="label">물류관리</li>
+                <li><a href="#" class="sidebar-sub-toggle"><i class="ti-hummer"></i> 자재관리 <span
+                        class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a th:href="@{/material/list}"><i class="ti-layout-list-thumb"></i>자재 리스트</a></li>
+                        <li><a th:href="@{/material/register}"><i class="ti-zoom-in"></i>자재 등록</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="sidebar-sub-toggle"><i class="ti-shopping-cart"></i> 조달계약관리 <span
+                        class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a th:href="@{/materialProcurementContract/list}"><i class="ti-layout-list-thumb"></i>조달계약 리스트</a></li>
+                        <li><a th:href="@{/materialProcurementContract/register}"><i class="ti-zoom-in"></i>조달계약 등록</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="sidebar-sub-toggle"><i class="ti-shopping-cart"></i> 조달계획관리 <span
+                    class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a th:href="@{/materialProcurementPlanning/list}"><i class="ti-layout-list-thumb"></i>조달계획 리스트</a></li>
+                        <li><a th:href="@{/materialProcurementPlanning/register}"><i class="ti-zoom-in"></i>조달계획 등록</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="sidebar-sub-toggle"><i class="ti-stamp"></i> 발주관리 <span
+                    class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a th:href="@{/order/list}"><i class="ti-layout-list-thumb"></i>발주 리스트</a></li>
+                        <li><a th:href="@{/order/register}"><i class="ti-zoom-in"></i>발주 등록 </a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="sidebar-sub-toggle"><i class="ti-package"></i> 저장관리  <span
+                    class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a th:href="@{/materialInventory/materialStockList}"><i class="ti-layout-list-thumb"></i>저장 목록</a></li>
+                        <li><a th:href="@{/materialInventory/register}"><i class="ti-zoom-in"></i>자재 등록</a></li>
+                    </ul>
+                </li>
                 <li><a href="#" class="sidebar-sub-toggle"><i class="ti-desktop"></i> 제품관리 <span
                         class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
                         <li><a href="#"><i class="ti-layout-list-thumb"></i>제품 리스트</a></li>
-                        <li><a href="#"><i class="ti-zoom-in"></i>제품 상세</a></li>
-                    </ul>
-                </li>
-                <li><a href="#" class="sidebar-sub-toggle"><i class="ti-hummer"></i> 자재관리 <span
-                        class="sidebar-collapse-icon ti-angle-down"></span></a>
-                    <ul>
-                        <li><a href="#"><i class="ti-layout-list-thumb"></i>자재 리스트</a></li>
-                        <li><a href="#"><i class="ti-zoom-in"></i>자재 상세</a></li>
+                        <li><a href="#"><i class="ti-zoom-in"></i>제품 등록</a></li>
                     </ul>
                 </li>
                 <li><a href="#" class="sidebar-sub-toggle"><i class="ti-calendar"></i> 계약관리 <span
@@ -75,29 +103,13 @@
                         <li><a href="#"><i class="ti-layout-list-thumb"></i>계약 리스트</a></li>
                         <li><a href="#"><i class="ti-zoom-in"></i>계약 상세</a></li>
                     </ul>
-                <li><a href="#" class="sidebar-sub-toggle"><i class="ti-shopping-cart"></i> 조달관리 <span
-                    class="sidebar-collapse-icon ti-angle-down"></span></a>
-                    <ul>
-                        <li><a href="/materialProcurementPlanning/list"><i class="ti-layout-list-thumb"></i>조달계획 리스트</a></li>
-                        <li><a href="#"><i class="ti-zoom-in"></i>조달계획상세</a></li>
-                    </ul>
-                <li><a href="#" class="sidebar-sub-toggle"><i class="ti-stamp"></i> 발주관리 <span
-                    class="sidebar-collapse-icon ti-angle-down"></span></a>
-                    <ul>
-                        <li><a href="/order/list"><i class="ti-layout-list-thumb"></i>발주 리스트</a></li>
-                        <li><a href="#"><i class="ti-zoom-in"></i>발주계약 상세</a></li>
-                    </ul>
-                <li><a href="#" class="sidebar-sub-toggle"><i class="ti-package"></i> 저장관리  <span
-                    class="sidebar-collapse-icon ti-angle-down"></span></a>
-                    <ul>
-                        <li><a href="/materialInventory/materialStockList"><i class="ti-layout-list-thumb"></i>저장목록</a></li>
-                        <li><a href="#"><i class="ti-zoom-in"></i>저장품목상세</a></li>
-                    </ul>
+                </li>
                 <li class="label">직원관리</li>
                 <li><a href="/employee/list" class="sidebar-sub-toggle"><i class="ti-user"></i> EMPLOYEE <span
                         class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
                         <li><a href="/employee/list">직원 목록</a></li>
+                        <li><a sec:authorize="isAuthenticated()" th:href="@{/employee/authority}">직원 권한 부여</a></li> <!--권한 잇는 운영자만 보임 -->
                     </ul>
                 </li>
                 <li class="label">파트너관리</li>
@@ -345,7 +357,7 @@
                 <div class="col-lg-8 p-r-0 title-margin-right">
                     <div class="page-header">
                         <div class="page-title">
-                            <h1> <span sec:authentication="principal.authorities"> user role </span><span>의 관리 페이지 입니다.</span></h1>
+                            <h1> <span sec:authentication="principal.username" /><span>님의 권한은 <span sec:authentication="principal.authorities" />입니다.</span></h1>
                         </div>
                     </div>
                 </div>
