@@ -19,11 +19,16 @@
         <div class="card-body mt-3">
           <form action="/materialProcurementPlanning/register" method="post">
             <div class="input-group mb-3">
+              <span class="input-group-text">자재조달계획 코드</span>
+              <input type="text" name="materialProcurementPlanCode" class="form-control materialProcurementPlanCode" placeholder="클릭해주세요" readonly>
+            </div>
+
+            <div class="input-group mb-3">
               <span class="input-group-text">생산계획 일련번호</span>
               <input type="text" name="productionPlanNo" class="form-control selectPlan" placeholder="클릭해주세요" readonly>
             </div>
 
-            <div class="input-group mb-3 pl-5">
+            <div class="input-group mb-3">
               <span class="input-group-text">자재 코드</span>
               <input type="text" name="materialCode" class="form-control" id="selectMaterial" placeholder="클릭해주세요" readonly>
             </div>
@@ -38,6 +43,11 @@
               <input type="text" name="materialName" class="form-control materialName" readonly>
             </div>
 
+            <div class="input-group mb-3 pl-5">
+              <span class="input-group-text">자재 공급단가</span>
+              <input type="text" name="materialSupplyPrice" class="form-control materialSupplyPrice" readonly>
+            </div>
+
             <div class="input-group mb-3">
               <span class="input-group-text">자재 소요량</span>
               <input type="number" name="materialRequirementsCount" class="form-control materialRequirementsCount" placeholder="자재 소요량">
@@ -48,7 +58,7 @@
               <input type="date" name="procurementDeliveryDate" class="form-control procurementDeliveryDate" placeholder="납기일">
             </div>
 
-            <div class="input-group mb-3">
+            <div class="input-group mb-3 d-none">
               <span class="input-group-text">담당자 일련번호</span>
               <input type="text" name="employeeNo" class="form-control" th:value="${user.employeeNo}" readonly>
             </div>
@@ -482,6 +492,28 @@
       materialModal.hide()
 
     }).catch(e => alert('error'))
+
+  }, false)
+
+  //조달계획 코드 생성 -------------------------------------------------------------------------------------------------------------
+
+  const materialProcurementPlanCode = document.querySelector(".materialProcurementPlanCode")
+
+  materialProcurementPlanCode.addEventListener("click", function(e) {
+
+    let str = 'MP-PLANNING-'
+
+    str += new Date().toISOString().split('T')[0].replaceAll('-','')
+    str += '-'
+
+    getCodeCount(str).then( result => {
+
+      str += result.data
+
+      materialProcurementPlanCode.value = str
+
+    }).catch(e => alert('error'))
+
 
   }, false)
 

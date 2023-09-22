@@ -21,6 +21,8 @@ public class MaterialProcurementPlanning extends BaseEntity {
 
     private int materialProcurementPlanNo;   //조달계획일련번호
 
+    private String materialProcurementPlanCode; //조달계획코드
+
     private LocalDate procurementDeliveryDate;    //납기일
 
     private int materialRequirementsCount;    //자재소요량

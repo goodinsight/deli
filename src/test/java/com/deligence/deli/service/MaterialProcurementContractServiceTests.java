@@ -95,7 +95,7 @@ public class MaterialProcurementContractServiceTests {
     @Test
     public void testCC() {
 
-        int num = materialProcurementContractService.getCodeCount("M-CONTRACT-20230921-");
+        int num = materialProcurementContractService.getCodeCount("MP-CONTRACT-20230921-");
 
         log.info("cc: " + num);
     }

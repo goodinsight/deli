@@ -144,8 +144,9 @@ public class MaterialProcurementContractController {
 
     }
 
-    //비동기처리 -----------------------------------------------------
+    // 비동기 처리 -----------------------------------------------------
     //자재코드클릭->자재목록, 협력회사이름클릭->협력회사목록
+
     @ResponseBody
     @GetMapping("/register/selectMaterial")
     public PageResponseDTO<MaterialsDTO> getMaterialList(PageRequestDTO pageRequestDTO){
@@ -171,10 +172,11 @@ public class MaterialProcurementContractController {
 
     }
 
+
     //자재조달협력회사 Service만들면 주석 풀기
     /*
     @ResponseBody
-    @GetMapping("/materialProcurementContract/register/selectSupplier")
+    @GetMapping("/register/selectSupplier")
     public PageResponseDTO<CooperatorSupplierDTO> getSupplierList(PageRequestDTO pageRequestDTO){
 
         log.info("getSupplierList");
@@ -186,20 +188,19 @@ public class MaterialProcurementContractController {
     }
 
     @ResponseBody
-    @GetMapping("/materialProcurementContract/register/getSupplier/{suppliersNo}")
-    public CooperatorSupplierDTO getSupplierDTO(@PathVariable("suppliersNo") int suppliersNo){
+    @GetMapping("/register/getSupplier/{suppliersNo}")
+    public CooperatorSupplier(Detail)DTO getSupplierDTO(@PathVariable("suppliersNo") int suppliersNo){
 
         log.info("getSupplierDTO : " + suppliersNo);
 
-        CooperatorSupplierDTO cooperatorSupplierDTO = cooperatorSupplierService.read(suppliersNo);
+        CooperatorSupplier(Detail)DTO cooperatorSupplier(Detail)DTO = cooperatorSupplierService.read(suppliersNo);
 
-        log.info(cooperatorSupplierDTO);
+        log.info(cooperatorSupplier(Detail)DTO);
 
-        return cooperatorSupplierDTO;
+        return cooperatorSupplier(Detail)DTO;
 
     }
 */
-
 
     @ResponseBody
     @GetMapping("/register/getCodeCount/{materialProcurementContractCode}")

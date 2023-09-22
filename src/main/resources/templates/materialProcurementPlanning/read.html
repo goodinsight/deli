@@ -19,8 +19,11 @@
                 <div class="card-body mt-3">
                     <div class="input-group mb-3">
                         <span class="input-group-text">자재조달계획 일련번호</span>
-                        <input type="text" name="materialProcurementPlanNo" class="form-control"
-                               th:value="${dto.materialProcurementPlanNo}" readonly>
+                        <input type="text" name="materialProcurementPlanNo" class="form-control" th:value="${dto.materialProcurementPlanNo}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">자재조달계획 코드</span>
+                        <input type="text" name="materialProcurementPlanCode" class="form-control materialProcurementPlanCode" th:value="${dto.materialProcurementPlanCode}" readonly>
                     </div>
 
                     <div class="input-group mb-3">
@@ -28,7 +31,7 @@
                         <input type="text" name="productionPlan" class="form-control selectProductionPlan" th:value="${dto.productionPlanNo}" readonly>
                     </div>
 
-                    <div class="input-group mb-3 pl-5">
+                    <div class="input-group mb-3">
                         <span class="input-group-text">자재코드</span>
                         <input type="text" name="materialCode" class="form-control" th:value="${dto.materialCode}" readonly>
                     </div>

@@ -26,6 +26,7 @@ public class MaterialProcurementPlanningServiceTests {
 
         MaterialProcurementPlanningDTO materialProcurementPlanningDTO =
                 MaterialProcurementPlanningDTO.builder()
+                        .materialProcurementPlanCode("codeTest")
                         .procurementDeliveryDate(LocalDate.of(2023, 9, 27))
                         .materialRequirementsCount(1)
                         .materialProcurementState("READY")
@@ -57,15 +58,16 @@ public class MaterialProcurementPlanningServiceTests {
 
         MaterialProcurementPlanningDTO materialProcurementPlanningDTO =
                 MaterialProcurementPlanningDTO.builder()
-                        .materialProcurementPlanNo(110)
+                        .materialProcurementPlanNo(99)
+                        .materialProcurementPlanCode("modifyTestCode")
                         .procurementDeliveryDate(LocalDate.of(2023, 9, 22))
                         .materialRequirementsCount(1000)
                         .materialProcurementState("진행중")
-                        .productionPlanNo(27)
-                        .materialNo(27)
+                        .productionPlanNo(2)
+                        .materialNo(2)
                         .materialCode("modifyMaterialCode")
                         .materialName("modifyMaterialName")
-                        .employeeNo(27)
+                        .employeeNo(2)
                         .build();
 
         materialProcurementPlanningService.modify(materialProcurementPlanningDTO);
@@ -89,6 +91,14 @@ public class MaterialProcurementPlanningServiceTests {
                 materialProcurementPlanningService.list(pageRequestDTO);
 
         log.info(responseDTO);
+    }
+
+    @Test
+    public void testCC() {
+
+        int num = materialProcurementPlanningService.getCodeCount("MP-PLANNING-20230922-");
+
+        log.info( "cc :" + num);
     }
 
 }

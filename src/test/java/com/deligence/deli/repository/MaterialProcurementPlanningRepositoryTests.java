@@ -34,9 +34,9 @@ public class MaterialProcurementPlanningRepositoryTests {
 
         int productionPlanNo = 1;
         int materialNo = 1;
-        int employeeNo = 1;
+        int employeeNo = 2;
 
-        IntStream.rangeClosed(1,100).forEach(i -> {
+        IntStream.rangeClosed(1,10).forEach(i -> {
 
             ProductionPlanning productionPlanning = ProductionPlanning.builder().productionPlanNo(1).build();
             Materials materials = Materials.builder().materialNo(1).build();
@@ -164,6 +164,17 @@ public class MaterialProcurementPlanningRepositoryTests {
 
         result.getContent().forEach(materialProcurementPlanning ->
                 log.info(materialProcurementPlanning));
+
+    }
+
+    @Test
+    public void testCodeCount() {
+
+        String code = "MP-PLANNING-20230922-";
+
+        int result = materialProcurementPlanningRepository.getCodeCount(code);
+
+        log.info("num : " + result);
 
     }
 

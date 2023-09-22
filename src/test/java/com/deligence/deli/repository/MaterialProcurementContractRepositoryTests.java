@@ -182,4 +182,15 @@ public class MaterialProcurementContractRepositoryTests {
 
     }
 
+    @Test
+    public void testCodeCount() {
+
+        String code = "MP-CONTRACT-20230922-";
+
+        int result = materialProcurementContractRepository.getCodeCount(code);
+
+        log.info("num : " + result);
+
+    }
+
 }

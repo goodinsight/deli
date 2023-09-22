@@ -30,6 +30,8 @@ public class QMaterialProcurementPlanning extends EntityPathBase<MaterialProcure
 
     public final StringPath materialName = createString("materialName");
 
+    public final StringPath materialProcurementPlanCode = createString("materialProcurementPlanCode");
+
     public final NumberPath<Integer> materialProcurementPlanNo = createNumber("materialProcurementPlanNo", Integer.class);
 
     public final StringPath materialProcurementState = createString("materialProcurementState");

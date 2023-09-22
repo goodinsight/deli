@@ -139,7 +139,7 @@ public class OrderController {
     }
 
     @ResponseBody
-    @GetMapping("/order/register/selectContract")
+    @GetMapping("/register/selectContract")
     public PageResponseDTO<MaterialProcurementContractDTO> getContractList(PageRequestDTO pageRequestDTO){
 
         log.info("getContractList");
@@ -151,7 +151,7 @@ public class OrderController {
     }
 
     @ResponseBody
-    @GetMapping("/order/register/getContract/{contractNo}")
+    @GetMapping("/register/getContract/{contractNo}")
     public MaterialProcurementContractDetailDTO getContractDTO(@PathVariable("contractNo") int contractNo){
 
         log.info("getContractDTO : " + contractNo);

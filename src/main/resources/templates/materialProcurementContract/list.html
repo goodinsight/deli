@@ -49,7 +49,7 @@
 
     </div>
 
-    <div class="row">
+    <div class="row mt-3">
         <div class="col">
             <div class="card">
                 <div class="card-header">
@@ -148,6 +148,22 @@
         formObj.submit()
 
     }, false)
+
+    document.querySelector(".clearBtn").addEventListener("click", function (e){
+        e.preventDefault()
+        e.stopPropagation()
+
+        self.location = '/materialProcurementPlanning/list'
+    }, false)
+
+    //show modal
+    const result = [[${result}]]
+
+    const modal = new bootstrap.Modal(document.querySelector(".modal"))
+
+    if(result){
+        modal.show()
+    }
 
 
 </script>
