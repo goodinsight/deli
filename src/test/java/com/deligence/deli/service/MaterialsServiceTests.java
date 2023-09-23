@@ -87,6 +87,14 @@ public class MaterialsServiceTests {
     }
 
     @Test
+    public void testCC() {
+
+        int num = materialsService.getCodeCount("Material-GPU-20230924-");
+
+        log.info( "cc :" + num);
+    }
+
+    @Test
     public void testRegisterWithImages() throws Exception { //이미지 추가 test
 
         log.info(materialsService.getClass().getName());

@@ -129,6 +129,17 @@ public class MaterialsRepositoryTests {
 
     }
 
+    @Test //자재 코드 test
+    public void testCodeCount() {
+
+        String code = "Matrials-GPU-20230924-";
+
+        int result = materialsRepository.getCodeCount(code);
+
+        log.info("num : " + result);
+
+    }
+
     @Test
     public void testInsertWithImages() { // 이미지 추가 test
 

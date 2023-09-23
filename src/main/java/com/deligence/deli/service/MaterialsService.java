@@ -16,7 +16,7 @@ public interface MaterialsService {
     void delete(int materialsNo); //삭제작업처리
     PageResponseDTO<MaterialsDTO> list(PageRequestDTO pageRequestDTO); //전체조회 & 검색기능
 
-    int getCodeCount(String code); //자재코드생성
+    int getCodeCount(String materialCode); //자재코드생성
 
     //게시글 이미지 숫자처리
     PageResponseDTO<MaterialImageDTO> listWithAll(PageRequestDTO pageRequestDTO);

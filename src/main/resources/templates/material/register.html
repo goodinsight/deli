@@ -21,8 +21,8 @@
                             <input type="text" name="materialType" class="form-control" placeholder="Title">
                         </div>
                         <div class="input-group mb-3">
-                            <span class="input-group-text">자제코드</span>
-                            <input type="text" name="materialCode" class="form-control materialCode" placeholder="클릭해주세요" >
+                            <span class="input-group-text">자재코드</span>
+                            <input type="text" name="materialCode" class="form-control materialCode" placeholder="클릭해주세요" readonly>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">자재이름</span>
@@ -176,9 +176,11 @@
 
     materialCode.addEventListener("click", function(e) {
 
-        let str = 'Material-'
+        let str = 'Material-(".materialType")-'
 
         str += new Date().toISOString().split('T')[0].replaceAll('-','')
+        //toISOString() 메서드를 사용해서 "YYYY-MM-DDTHH:mm:ss.sssZ"의 날짜 및 시간 정보를 받옴
+        // 해당 형식에서 "T"를 기준으로 잘라 날짜만 가져옴
         str += '-'
 
         getCodeCount(str).then( result => {
@@ -191,5 +193,7 @@
 
 
     }, false)
+
 </script>
+
 </html>
