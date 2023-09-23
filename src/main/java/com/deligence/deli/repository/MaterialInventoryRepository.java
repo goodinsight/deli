@@ -10,6 +10,4 @@ import java.util.Optional;
 
 public interface MaterialInventoryRepository extends JpaRepository<MaterialInventory, Integer>, MaterialInventorySearch {
 
-
-
 }

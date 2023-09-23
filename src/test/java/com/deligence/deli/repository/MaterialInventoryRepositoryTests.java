@@ -1,6 +1,7 @@
 package com.deligence.deli.repository;
 
 import com.deligence.deli.domain.MaterialInventory;
+import com.deligence.deli.domain.MaterialProcurementPlanning;
 import com.deligence.deli.domain.Materials;
 import com.deligence.deli.domain.Order;
 import com.deligence.deli.dto.MaterialsDTO;
@@ -29,6 +30,9 @@ public class MaterialInventoryRepositoryTests {
 
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private MaterialProcurementPlanningRepository materialProcurementPlanningRepository;
 
     @Autowired
     private MaterialsRepository materialsRepository;
@@ -85,6 +89,19 @@ public class MaterialInventoryRepositoryTests {
 
     }
 
+    @Test
+    public void testplannignumcheck() {
+
+        int materialProcurementPlanNo = 20;
+
+        Optional<MaterialProcurementPlanning> result = materialProcurementPlanningRepository.findById(materialProcurementPlanNo);
+
+        MaterialProcurementPlanning materialProcurementPlanning = result.orElseThrow();
+
+        log.info(materialProcurementPlanning);
+
+    }
+
 
     @Test
     @Transactional
@@ -127,6 +144,23 @@ public class MaterialInventoryRepositoryTests {
         List<MaterialInventory> todoList = result.getContent();
 
         todoList.forEach(materialInventory -> log.info(materialInventory));
+
+    }
+    @Test
+    public void testMaterialOrderPaging() {
+
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("orderNo").descending());
+
+        Page<Order> result = orderRepository.findAll(pageable);
+
+        log.info("total count : " + result.getTotalElements());
+        log.info("total pages : " + result.getTotalPages());
+        log.info("page number : " + result.getNumber());
+        log.info("page size : " + result.getSize());
+
+        List<Order> todoList = result.getContent();
+
+        todoList.forEach(order -> log.info(order));
 
     }
 

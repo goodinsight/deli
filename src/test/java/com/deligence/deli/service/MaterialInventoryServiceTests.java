@@ -25,14 +25,31 @@ public class MaterialInventoryServiceTests {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private MaterialProcurementPlanningService materialProcurementPlanningService;
+
+    @Autowired
+    private MaterialsService materialsService;
+
     @Test
     public void testMaterialsServicelistOne() {
 
-        int materialInventoryNo = 30;
+        int orderNo = 114;
 
-        MaterialInventoryDTO materialInventoryDTO = materialInventoryService.materialStockListOne(materialInventoryNo);
+        OrderDetailDTO orderDetailDTO = materialInventoryService.materialInRead(orderNo);
+        log.info(orderDetailDTO);
+        log.info("자재 이름 : " + orderDetailDTO.getMaterialName());
+        log.info("담당자 : " + orderDetailDTO.getEmployeeName());
 
-        log.info(materialInventoryDTO);
+//        MaterialProcurementPlanningDetailDTO mppDTO = materialProcurementPlanningService.read(orderDTO.getMaterialProcurementPlanNo());
+//
+//        log.info(mppDTO.getMaterialProcurementPlanNo());
+//        log.info(mppDTO.getMaterialName());
+//        log.info(mppDTO.getMaterialNo());
+
+//        MaterialsDTO materialsDTO = materialsService.readOne(mppDTO.getMaterialNo());
+//
+//        log.info(materialsDTO.getMaterialName());
 
     }
 
@@ -46,6 +63,26 @@ public class MaterialInventoryServiceTests {
         log.info(orderDetailDTO);
 
     }
+    @Test
+    public void testmpListOne() {
+
+        int materialProcurementPlanningNo = 30;
+
+        MaterialProcurementPlanningDetailDTO materialProcurementPlanningDetailDTO = materialProcurementPlanningService.read(materialProcurementPlanningNo);
+
+        log.info(materialProcurementPlanningDetailDTO);
+
+    }
+    @Test
+    public void testmListOne() {
+
+        int materialNo = 30;
+
+//        MaterialsDTO materialsDTO = materialsService.readOne(materialNo);
+
+//        log.info(materialsDTO);
+
+    }
 
     @Test
     public void testList() {
@@ -57,7 +94,7 @@ public class MaterialInventoryServiceTests {
                 .size(10)
                 .build();
 
-        PageResponseDTO<MaterialInventoryDTO> responseDTO = materialInventoryService.materialStockList(pageRequestDTO);
+        PageResponseDTO<OrderDetailDTO> responseDTO = materialInventoryService.materialInListAll(pageRequestDTO);
 
         log.info(responseDTO);
 

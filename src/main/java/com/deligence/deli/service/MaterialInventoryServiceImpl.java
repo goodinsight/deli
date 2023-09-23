@@ -1,10 +1,12 @@
 package com.deligence.deli.service;
 
 import com.deligence.deli.domain.MaterialInventory;
+import com.deligence.deli.domain.MaterialProcurementPlanning;
 import com.deligence.deli.domain.Materials;
 import com.deligence.deli.domain.Order;
 import com.deligence.deli.dto.*;
 import com.deligence.deli.repository.MaterialInventoryRepository;
+import com.deligence.deli.repository.MaterialProcurementPlanningRepository;
 import com.deligence.deli.repository.MaterialsRepository;
 import com.deligence.deli.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
@@ -31,27 +33,59 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
 
     private final OrderRepository orderRepository;
 
+    private final MaterialProcurementPlanningRepository materialProcurementPlanningRepository;
+
+    private final MaterialsRepository materialsRepository;
+
+
+
+    // 자재 입고 상세보기
+    @Override
+    public OrderDTO materialInRead(int orderNo) {
+
+        Optional<Order> result = orderRepository.findById(orderNo);
+
+        Order order = result.orElseThrow();
+
+        log.info("조달 계획 일련 번호 : " + order.getMaterialProcurementPlanning().getMaterialProcurementPlanNo());
+
+        Optional<MaterialProcurementPlanning> result2 = materialProcurementPlanningRepository.findById(result.get().getMaterialProcurementPlanning().getMaterialProcurementPlanNo());
+
+        MaterialProcurementPlanning materialProcurementPlanning = result2.orElseThrow();
+
+        log.info("자재 일련 번호 : " + materialProcurementPlanning.getMaterials().getMaterialNo());
+
+        Optional<Materials> result3 = materialsRepository.findById(materialProcurementPlanning.getMaterials().getMaterialNo());
+
+        Materials materials = result3.orElseThrow();
+
+        log.info("자재 이름 : " + materials.getMaterialName());
+
+        OrderDTO orderDTO = modelMapper.map(order, OrderDTO.class);
+
+        log.info("orderDetailDTO : " + orderDTO);
+
+        return orderDTO;
+
+    }
+
+
+    // 자재 목록 수정
     @Override
     public int materialStockRegister(MaterialInventoryDTO materialInventoryDTO) {
 
         MaterialInventory materialInventory = modelMapper.map(materialInventoryDTO, MaterialInventory.class);
         int materialInventoryNo = materialInventoryRepository.save(materialInventory).getMaterialInventoryNo();
 
-//        Optional<Order> order = materialInventoryRepository.findFristByOrderNo(materialInventoryDTO.getOrder().getOrderNo());
-//        Order order1 = modelMapper.map(order, Order.class);
-//        int orderNo = order1.getOrderNo();
-
-        log.info("materialInventoryNo : "+materialInventoryNo);
-//        log.info("order : "+orderNo);
-
-//        int[] tmp = new int[]{materialInventoryNo, orderNo};
+        log.info("materialInventoryNo : " + materialInventoryNo);
 
         return materialInventoryNo;
 
     }
 
+    // 자재 목록 상세보기
     @Override
-    public MaterialInventoryDTO materialStockListOne(int materialInventoryNo) {
+    public MaterialInventoryDTO materialStockRead(int materialInventoryNo) {
 
         Optional<MaterialInventory> result = materialInventoryRepository.findById(materialInventoryNo);
 
@@ -62,19 +96,20 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
         return materialInventoryDTO;
     }
 
+    // 자재 목록 리스트 출력
     @Override
-    public PageResponseDTO<MaterialInventoryDTO> materialStockList(PageRequestDTO pageRequestDTO) {
+    public PageResponseDTO<OrderDTO> materialInListAll(PageRequestDTO pageRequestDTO) {
 
         String[] types = pageRequestDTO.getTypes();
         String keyword = pageRequestDTO.getKeyword();
-        Pageable pageable = pageRequestDTO.getPageable("materialInventoryNo");
+        Pageable pageable = pageRequestDTO.getPageable("orderNo");
 
-        Page<MaterialInventory> result = materialInventoryRepository.materialStockList(types, keyword, pageable);
+        Page<Order> result = orderRepository.search(types, keyword, pageable);
 
-        List<MaterialInventoryDTO> dtoList = result.getContent().stream()
-                .map(materialInventory -> modelMapper.map(materialInventory, MaterialInventoryDTO.class)).collect(Collectors.toList());
+        List<OrderDTO> dtoList = result.getContent().stream()
+                .map(order -> modelMapper.map(order, OrderDTO.class)).collect(Collectors.toList());
 
-        return PageResponseDTO.<MaterialInventoryDTO>withAll()
+        return PageResponseDTO.<OrderDTO>withAll()
                 .pageRequestDTO(pageRequestDTO)
                 .dtoList(dtoList)
                 .total((int) result.getTotalElements())
