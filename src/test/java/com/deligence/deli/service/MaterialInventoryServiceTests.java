@@ -41,12 +41,14 @@ public class MaterialInventoryServiceTests {
         log.info("자재 이름 : " + orderDetailDTO.getMaterialName());
         log.info("담당자 : " + orderDetailDTO.getEmployeeName());
 
-//        MaterialProcurementPlanningDetailDTO mppDTO = materialProcurementPlanningService.read(orderDTO.getMaterialProcurementPlanNo());
+        log.info("No : " + orderDetailDTO.getMaterialProcurementPlanNo());
+
+//        MaterialProcurementPlanningDetailDTO mppDTO = materialProcurementPlanningService.read();
 //
 //        log.info(mppDTO.getMaterialProcurementPlanNo());
 //        log.info(mppDTO.getMaterialName());
 //        log.info(mppDTO.getMaterialNo());
-
+//
 //        MaterialsDTO materialsDTO = materialsService.readOne(mppDTO.getMaterialNo());
 //
 //        log.info(materialsDTO.getMaterialName());
@@ -94,7 +96,7 @@ public class MaterialInventoryServiceTests {
                 .size(10)
                 .build();
 
-        PageResponseDTO<OrderDetailDTO> responseDTO = materialInventoryService.materialInListAll(pageRequestDTO);
+        PageResponseDTO<OrderDTO> responseDTO = materialInventoryService.materialInListAll(pageRequestDTO);
 
         log.info(responseDTO);
 

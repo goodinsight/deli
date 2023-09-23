@@ -1,9 +1,7 @@
 package com.deligence.deli.controller;
 
-import com.deligence.deli.domain.Materials;
 import com.deligence.deli.dto.*;
 import com.deligence.deli.service.MaterialInventoryService;
-import com.deligence.deli.service.MaterialProcurementPlanningService;
 import com.deligence.deli.service.MaterialsService;
 import com.deligence.deli.service.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -13,8 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/materialInventory")
@@ -29,6 +25,9 @@ public class MaterialInventoryController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private MaterialsService materialsService;
+
     @GetMapping("/materialInlist")
     public void materialInListAll(PageRequestDTO pageRequestDTO, Model model) {
 
@@ -38,11 +37,6 @@ public class MaterialInventoryController {
 
         model.addAttribute("responseDTO", responseDTO);
 
-        for (int i = 0; i < responseDTO.getDtoList().size(); i++) {
-
-            log.info(responseDTO.getDtoList().get(i).getMaterialName());
-
-        }
 
     }
 

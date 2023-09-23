@@ -12,6 +12,7 @@ import com.deligence.deli.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -41,19 +42,19 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
 
     // 자재 입고 상세보기
     @Override
-    public OrderDTO materialInRead(int orderNo) {
+    public OrderDetailDTO materialInRead(int orderNo) {
 
         Optional<Order> result = orderRepository.findById(orderNo);
 
         Order order = result.orElseThrow();
 
-        log.info("조달 계획 일련 번호 : " + order.getMaterialProcurementPlanning().getMaterialProcurementPlanNo());
+        log.info(order.getOrderNo());
 
-        Optional<MaterialProcurementPlanning> result2 = materialProcurementPlanningRepository.findById(result.get().getMaterialProcurementPlanning().getMaterialProcurementPlanNo());
+        Optional<MaterialProcurementPlanning> result2 = materialProcurementPlanningRepository.findById(order.getMaterialProcurementPlanning().getMaterialProcurementPlanNo());
 
         MaterialProcurementPlanning materialProcurementPlanning = result2.orElseThrow();
 
-        log.info("자재 일련 번호 : " + materialProcurementPlanning.getMaterials().getMaterialNo());
+        log.info(materialProcurementPlanning.getMaterialProcurementPlanNo());
 
         Optional<Materials> result3 = materialsRepository.findById(materialProcurementPlanning.getMaterials().getMaterialNo());
 
@@ -61,11 +62,11 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
 
         log.info("자재 이름 : " + materials.getMaterialName());
 
-        OrderDTO orderDTO = modelMapper.map(order, OrderDTO.class);
+        OrderDetailDTO orderDetailDTO = modelMapper.map(order, OrderDetailDTO.class);
 
-        log.info("orderDetailDTO : " + orderDTO);
+        log.info("orderDetailDTO : " + orderDetailDTO);
 
-        return orderDTO;
+        return orderDetailDTO;
 
     }
 
