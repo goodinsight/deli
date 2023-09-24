@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public interface MaterialsService {
 
-    int register(MaterialsDTO materialsDTO) throws Exception; //등록작업처리
+    int register(MaterialsDTO materialsDTO); //등록작업처리
     MaterialsDTO readOne(int materialNo); //조회작업처리
     void modify(MaterialsDTO materialsDTO); //수정작업처리
     void delete(int materialsNo); //삭제작업처리
@@ -18,10 +18,9 @@ public interface MaterialsService {
 
     int getCodeCount(String materialCode); //자재코드생성
 
-    //게시글 이미지 숫자처리
-    PageResponseDTO<MaterialImageDTO> listWithAll(PageRequestDTO pageRequestDTO);
+    PageResponseDTO<MaterialListAllDTO> listWithAll(PageRequestDTO pageRequestDTO);    //게시글 이미지 숫자처리
 
-    default Materials dtoToEntity(MaterialsDTO materialsDTO) throws Exception { //이미지등록
+    default Materials dtoToEntity(MaterialsDTO materialsDTO) { //이미지등록
 
         Materials materials = Materials.builder()
                 .materialNo(materialsDTO.getMaterialNo())
@@ -33,9 +32,13 @@ public interface MaterialsService {
                 .build();
 
         if(materialsDTO.getFileNames() != null) {
-            String tmp = materialsDTO.getFileNames();
-            String[] arr = tmp.split("_");
-            materials.addImage(arr[0], arr[1]);
+            materialsDTO.getFileNames().forEach(fileName -> {
+                String[] arr = fileName.split("_");
+                materials.addImage(arr[0], arr[1]);
+            });
+//            String tmp = materialsDTO.getFileNames();
+//            String[] arr = tmp.split("_");
+//            materials.addImage(arr[0], arr[1]);
 
         }
         return materials;
@@ -54,17 +57,12 @@ public interface MaterialsService {
                 .modDate(materials.getModDate())
                 .build();
 
-//            String fileNames = materials.getImageSet().stream().sorted().map(materialImage ->
-//                    materialImage.getMaterialUuid() + "_" + materialImage.getMaterialImgName()
-//            ).collect(Collectors.toList()).get(0);
-//
-//            materialsDTO.setFileNames(fileNames);
+            List<String> fileNames = materials.getImageSet().stream().sorted().map(materialImage ->
+                    materialImage.getMaterialUuid() + "_" + materialImage.getMaterialImgName()
+            ).collect(Collectors.toList());
 
+            materialsDTO.setFileNames(fileNames);
 
-
-//        if( tmpList.size()!=0){
-//            tmpList.get(0).getName();
-//        }
         return materialsDTO;
 
     }

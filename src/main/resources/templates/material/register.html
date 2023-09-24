@@ -45,10 +45,6 @@
                                 <button type="button" class="btn btn-primary uploadFileBtn">파일 선택</button>
                             </div>
                         </div>
-                        <!--
-                        <label for="attachFile">이미지 첨부</label>
-                        <input type="file" id="attachFile" name="attachFile"/>
-                        !-->
 
                         <div class="my-4">
                             <div class="float-end">
@@ -69,7 +65,6 @@
     <div class="row mt-3">
         <div class="col">
             <div class="container-fluid d-flex uploadResult" style="flex-wrap: wrap;">
-
             </div>
         </div>
     </div>
@@ -79,7 +74,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Upload File</h5>
+                    <h5 class="modal-title">자재 이미지 첨부</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -97,7 +92,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <script src="/js/materialImg.js"></script>
+    <script src="/js/materialImg.js" ></script>
     <script src="/js/material.js"></script>
 
 </div> <!-- layout fragment end -->
@@ -136,19 +131,18 @@
 
         const files = fileInput.files
 
-        formObj.append("files", files);
+        for (let i = 0; i < files.length; i++ ) {
+
+            formObj.append("files", files[i]);
+
+        }
 
         uploadToServer(formObj).then(result => {
-
             //console.log(result)
-            // for(const uploadResult of result){
-            //     showUploadFile(uploadResult)
-            // }
-
-            showUploadFile(uploadResult)
-
+            for (const uploadResult of result) {
+                showUploadFile(uploadResult)
+            }
             uploadModal.hide()
-
         }).catch(e => {
             uploadModal.hide()
         })
@@ -171,6 +165,39 @@
         uploadResult.innerHTML += str
     }
 
+    function removeFile(materialUuid, materialImgName, obj){
+        console.log(materialUuid)
+        console.log(materialImgName)
+        console.log(obj)
+
+        const targetDiv = obj.closest(".card")
+
+        removeFileToServer(materialUuid, materialImgName).then(data =>{
+            targetDiv.remove()
+        })
+    }
+
+    document.querySelector(".submitBtn").addEventListener("click", function (e){
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        const target = document.querySelector(".uploadHidden")
+
+        const uploadFiles = uploadResult.querySelectorAll("img")
+
+        let str = ''
+
+        for(let i = 0; i < uploadFiles.length; i++){
+            const uploadFile = uploadFiles[i]
+            const imgLink = uploadFile.getAttribute("src") //data-src
+
+            str +=`<input type='hidden' name='fileNames' value="${imgLink}">`
+        }
+        target.innerHTML = str;
+
+        document.querySelector("form").submit();
+    }, false)
 
     //자재 코드 생성 ---------------------------------------------------------------------------------------------
 

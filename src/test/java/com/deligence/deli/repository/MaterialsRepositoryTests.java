@@ -3,6 +3,8 @@ package com.deligence.deli.repository;
 import com.deligence.deli.domain.Board;
 import com.deligence.deli.domain.MaterialImage;
 import com.deligence.deli.domain.Materials;
+import com.deligence.deli.dto.MaterialListAllDTO;
+import com.deligence.deli.dto.MaterialsDTO;
 import com.deligence.deli.service.MaterialsService;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
@@ -12,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.parameters.P;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -59,14 +62,14 @@ public class MaterialsRepositoryTests {
     }
 
     @Test
-    public void testUpeate() { //Update test
+    public void testUpeate(MaterialsDTO materialsDTO) { //Update test
         int materialNo = 1313;
 
         Optional<Materials> result = materialsRepository.findById(materialNo);
 
         Materials materials = result.orElseThrow();
 
-        materials.change("update test", "update.. test", "update... test", 100000000L, LocalDateTime.now(),  LocalDateTime.now());
+        materials.change(materialsDTO);
 
         materialsRepository.save(materials);
     }
@@ -151,7 +154,11 @@ public class MaterialsRepositoryTests {
                 .materialSupplyPrice(1L)
                 .build();
 
-        materials.addImage(UUID.randomUUID().toString(), "file.jpg");
+        for (int i = 0; i < 1; i++ ) {
+
+            materials.addImage(UUID.randomUUID().toString(), "file"+i+".jpg");
+
+        } // end for
 
         materialsRepository.save(materials);
     }
@@ -160,16 +167,16 @@ public class MaterialsRepositoryTests {
     public void testReadWithImages() { //이미지 조회 test
 
         //반드시 존재하는 materialsNo로 확인
-        Optional<Materials> result = materialsRepository.findByIdWithImages(1351);
+        Optional<Materials> result = materialsRepository.findByIdWithImages(1385);
 
         Materials materials = result.orElseThrow();
 
         log.info(materials);
         log.info("--------------------");
 
-        log.info(materials.getImageSet());
-
-
+        for (MaterialImage materialImage : materials.getImageSet()) {
+            log.info(materialImage);
+        }
     }
 
     @Transactional
@@ -177,7 +184,7 @@ public class MaterialsRepositoryTests {
     @Test
     public void testModifyImages() { //이미지수정 test
 
-        Optional<Materials> result = materialsRepository.findByIdWithImages(1351);
+        Optional<Materials> result = materialsRepository.findByIdWithImages(1385);
 
         Materials materials = result.orElseThrow();
 
@@ -185,7 +192,11 @@ public class MaterialsRepositoryTests {
         materials.clearImages();
 
         //새로운 첨부파일
-        materials.addImage(UUID.randomUUID().toString(), "updatefile" +".jpg");
+        for (int i = 0; i < 1; i ++) {
+
+            materials.addImage(UUID.randomUUID().toString(), "updatefile"+i+".jpg");
+
+        }
 
         materialsRepository.save(materials);
     }
@@ -202,7 +213,8 @@ public class MaterialsRepositoryTests {
     @Test
     public void testInsertAll(){ //게시물 + 이미지 ( 2의 배수만) 추가(등록) test
 
-        for (int i = 1; i<=10; i++){
+        for (int i = 1; i <= 10; i++) {
+
             Materials materials = Materials.builder()
                     .materialCode("test" + i)
                     .materialName("test" + i)
@@ -211,14 +223,33 @@ public class MaterialsRepositoryTests {
                     .materialSupplyPrice(30L)
                     .build();
 
-            for (int j=0; j<5; j++){
-                if(i%2 == 0) {
+            for (int j = 0; j < 1; j++) {
+
+                if(i % 2 == 0) {
                     continue;
                 }
-                materials.addImage(UUID.randomUUID().toString(),i+"file"+j+",jpg");
+                materials.addImage(UUID.randomUUID().toString(),i+"file"+j+".jpg");
             }
             materialsRepository.save(materials);
         } //end for
     }
+
+    @Transactional
+    @Test
+    public void testSearchImageMaterialCount(){
+
+        Pageable pageable = PageRequest.of(0,10,Sort.by("materialNo").descending());
+
+//        materialsRepository.searchWithAll(null, null, pageable);
+
+        Page<MaterialListAllDTO> result = materialsRepository.searchWithAll(null, null, pageable);
+
+        log.info("------------------------");
+        log.info(result.getTotalElements());
+
+        result.getContent().forEach(materialListAllDTO -> log.info(materialListAllDTO));
+    }
+
+
 
 }
