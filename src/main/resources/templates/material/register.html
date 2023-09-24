@@ -12,7 +12,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    Marerial Register
+                    Material Register
                 </div>
                 <div class="card-body">
                     <form action="/material/register" method="post">
@@ -138,12 +138,12 @@
 
         uploadToServer(formObj).then(result => {
 
-            //console.log(result)
-            // for(const uploadResult of result){
-            //     showUploadFile(uploadResult)
-            // }
+            console.log(result)
+            for(const uploadResult of result){
+                showUploadFile(uploadResult)
+            }
 
-            showUploadFile(uploadResult)
+            //showUploadFile(uploadResult)
 
             uploadModal.hide()
 
@@ -191,5 +191,46 @@
 
 
     }, false)
+
+
+    function removeFile(uuid, fileName, obj){
+        console.log(uuid)
+        console.log(fileName)
+        console.log(obj)
+
+        const targetDiv = obj.closest(".card")
+
+        removeFileToServer(uuid, fileName).then(data =>{
+            targetDiv.remove()
+        })
+    }
+
+    document.querySelector(".submitBtn").addEventListener("click", function (e){
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        const target = document.querySelector(".uploadHidden")
+
+        const uploadFiles = uploadResult.querySelectorAll("img")
+
+        let str = ''
+
+        for(let i = 0; i < uploadFiles.length; i++){
+            const uploadFile = uploadFiles[i]
+            const imgLink = uploadFile.getAttribute("data-src")  // 서비스에서 첨부파일 이름 db에 추가할때 이름을 배열로 처리 src가 아니고 data-src를 보내줘야됨
+
+            str +=`<input type='hidden' name='fileNames' value="${imgLink}">`
+        }
+        target.innerHTML = str;
+
+        document.querySelector("form").submit();
+    }, false)
+
+    const auth = [[${#authentication}]]
+
+    const error = [[${errors}]]
+    console.log(error)
+
 </script>
 </html>

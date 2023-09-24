@@ -2,6 +2,7 @@ package com.deligence.deli.repository.search;
 
 import com.deligence.deli.domain.*;
 import com.deligence.deli.dto.MaterialImageDTO;
+import com.deligence.deli.dto.MaterialsDTO;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.JPQLQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -100,7 +101,7 @@ public class MaterialSearchImpl extends QuerydslRepositorySupport implements Mat
     private Materials materials1;
     private MaterialImageDTO materialImageDTO;
     @Override
-    public Page<MaterialImageDTO> searchWithAll(String[] types, String keyword, Pageable pageable) {
+    public Page<MaterialsDTO> searchWithAll(String[] types, String keyword, Pageable pageable) {
 
         QMaterials materials = QMaterials.materials;
 
@@ -134,19 +135,35 @@ public class MaterialSearchImpl extends QuerydslRepositorySupport implements Mat
         materialsJPQLQuery.groupBy(materials);
         getQuerydsl().applyPagination(pageable, materialsJPQLQuery);
 
-        List<MaterialImageDTO> imageDTOS = materials1.getImageSet().stream().sorted()
-                .map(materialImage -> MaterialImageDTO.builder()
-                        .materialNo(materialImage.getMaterialImgNo())
-                        .materialImgName(materialImage.getMaterialImgName())
-                        .materialUuid(materialImage.getMaterialUuid())
-                        .build()
-                ).collect(Collectors.toList());
+        List<Materials> materialsList = materialsJPQLQuery.fetch();
 
+        List<MaterialsDTO> dtoList = (List<MaterialsDTO>) materialsList.stream().map(material -> {
 
+            MaterialsDTO dto = MaterialsDTO.builder()
+                    .materialNo(material.getMaterialNo())
+                    .materialCode(material.getMaterialCode())
+                    .materialExplaination(material.getMaterialExplaination())
+                    .materialName(material.getMaterialName())
+                    .materialType(material.getMaterialType())
+                    .regDate(material.getRegDate())
+                    .build();
 
+            List<MaterialImageDTO> imageDTOS = material.getImageSet().stream().sorted()
+                    .map(materialImage -> MaterialImageDTO.builder()
+                            .materialNo(materialImage.getMaterialImgNo())
+                            .materialImgName(materialImage.getMaterialImgName())
+                            .materialUuid(materialImage.getMaterialUuid())
+                            .build()
+                    ).collect(Collectors.toList());
 
-        return new PageImpl<>(imageDTOS);
-        //materialImageDTO.setMaterialImages(imageDTOS);
+            dto.setMaterialImage(imageDTOS);
+
+            return dto;
+        }).collect(Collectors.toList());
+
+        long totalCount = materialsJPQLQuery.fetchCount();
+
+        return new PageImpl<>(dtoList, pageable, totalCount);
     }
 
 

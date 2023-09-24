@@ -1,6 +1,7 @@
 package com.deligence.deli.service;
 
 import com.deligence.deli.domain.MaterialImage;
+import com.deligence.deli.domain.Materials;
 import com.deligence.deli.dto.*;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
@@ -58,7 +59,7 @@ public class MaterialsServiceTests {
                 .build();
 
 //        첨부파일 추가
-        materialsDTO.setFileNames(UUID.randomUUID()+"_yyy.jpg");
+        materialsDTO.setFileNames(Arrays.asList(UUID.randomUUID()+"_yyy.jpg"));
 
         materialsService.modify(materialsDTO);
 
@@ -100,7 +101,7 @@ public class MaterialsServiceTests {
                 .build();
 
         materialsDTO.setFileNames(
-                UUID.randomUUID() + "_aaa.jpg"
+                Arrays.asList(UUID.randomUUID() + "_aaa.jpg")
 
         );
         int materialNo = materialsService.register(materialsDTO);
@@ -117,9 +118,10 @@ public class MaterialsServiceTests {
 
         log.info(materialsDTO);
 
-        String fileName = materialsDTO.getFileNames();
+        for(String fileName : materialsDTO.getFileNames()) {
+            log.info(fileName);
+        };
 
-        log.info(fileName);
 
     }
 
@@ -137,15 +139,15 @@ public class MaterialsServiceTests {
                 .size(10)
                 .build();
 
-        PageResponseDTO<MaterialImageDTO> responseDTO = materialsService.listWithAll(pageRequestDTO);
+        PageResponseDTO<MaterialsDTO> responseDTO = materialsService.listWithAll(pageRequestDTO);
 
-        List<MaterialImageDTO> dtoList = responseDTO.getDtoList();
+        List<MaterialsDTO> dtoList = responseDTO.getDtoList();
 
         dtoList.forEach(materialImageDTO -> {
                 log.info(materialImageDTO.getMaterialNo());
 
-            if(materialImageDTO.getMaterialImages() != null){
-                for(MaterialImageDTO materialImage : materialImageDTO.getMaterialImages()) {
+            if(materialImageDTO.getMaterialImage() != null){
+                for(MaterialImageDTO materialImage : materialImageDTO.getMaterialImage()) {
                     log.info(materialImage);
                 }
             }

@@ -35,8 +35,10 @@ public class MaterialsDTO {
     private LocalDateTime regDate; //등록일
 
     private LocalDateTime modDate; //수정일
+    
+    private List<MaterialImageDTO> materialImage;   //자재 이미지
 
-    private String fileNames; //첨부파일 이름
+    private List<String> fileNames; //첨부파일 이름
 
     public MaterialsDTO(String materialName, String materialType, String materialExplaination, long materialSupplyPrice){
         LocalDate date = LocalDate.now();

@@ -25,7 +25,7 @@ public class MaterialsController {
     @GetMapping("/list")//자재 전체목록
     public void listAll(PageRequestDTO pageRequestDTO, Model model) {
 
-        PageResponseDTO<MaterialsDTO> responseDTO = materialsService.list(pageRequestDTO);
+        PageResponseDTO<MaterialsDTO> responseDTO = materialsService.listWithAll(pageRequestDTO);
 
         log.info(responseDTO);
 

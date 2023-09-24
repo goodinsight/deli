@@ -10,7 +10,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString(exclude = "materials")
-public class MaterialImage { //implements Comparable<MaterialImage>
+public class MaterialImage implements Comparable<MaterialImage>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,10 +26,10 @@ public class MaterialImage { //implements Comparable<MaterialImage>
     @ManyToOne(fetch = FetchType.LAZY)
     private Materials materials; //자재일련번호
 
-//    @Override
-//    public int compareTo(MaterialImage other) {
-//        return this.materialImgNo - other.materialImgNo;
-//    }
+    @Override
+    public int compareTo(MaterialImage other) {
+        return this.materialImgNo - other.materialImgNo;
+    }
     public void changeMaterial(Materials materials){
         this.materials = materials;
     }

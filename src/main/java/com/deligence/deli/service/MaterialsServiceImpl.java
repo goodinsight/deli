@@ -63,10 +63,12 @@ public class MaterialsServiceImpl implements MaterialsService {
         //첨부파일 처리
         materials.clearImages();
 
-        if(materialsDTO.getFileNames() != null){
-            String fileName = materialsDTO.getFileNames();
-            String[] arr = fileName.split("_");
-            materials.addImage(arr[0],arr[1]);
+        if(materialsDTO.getMaterialImage() != null){
+            for(String fileName : materialsDTO.getFileNames()) {
+                String[] arr = fileName.split("_");
+                materials.addImage(arr[0], arr[1]);
+                //materials.addImage(materialsDTO.getMaterialImage().get(0).getMaterialUuid(),materialsDTO.getMaterialImage().get(0).getMaterialImgName());
+            }
         }
         materialsRepository.save(materials);
     }
@@ -107,15 +109,15 @@ public class MaterialsServiceImpl implements MaterialsService {
 
 
     @Override
-    public PageResponseDTO<MaterialImageDTO> listWithAll(PageRequestDTO pageRequestDTO){     //게시글 이미지 숫자처리
+    public PageResponseDTO<MaterialsDTO> listWithAll(PageRequestDTO pageRequestDTO){     //게시글 이미지 숫자처리
 
         String[] types = pageRequestDTO.getTypes();
         String keyword = pageRequestDTO.getKeyword();
         Pageable pageable = pageRequestDTO.getPageable("MaterialNo");
 
-        Page<MaterialImageDTO> result = materialsRepository.searchWithAll(types, keyword,pageable);
+        Page<MaterialsDTO> result = materialsRepository.searchWithAll(types, keyword,pageable);
 
-        return PageResponseDTO.<MaterialImageDTO>withAll()
+        return PageResponseDTO.<MaterialsDTO>withAll()
                 .pageRequestDTO(pageRequestDTO)
                 .dtoList(result.getContent())
                 .total((int) result.getTotalElements())

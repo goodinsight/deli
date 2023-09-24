@@ -18,7 +18,7 @@ public interface MaterialsService {
     int getCodeCount(String code); //자재코드생성
 
     //게시글 이미지 숫자처리
-    PageResponseDTO<MaterialImageDTO> listWithAll(PageRequestDTO pageRequestDTO);
+    PageResponseDTO<MaterialsDTO> listWithAll(PageRequestDTO pageRequestDTO);
 
     default Materials dtoToEntity(MaterialsDTO materialsDTO) throws Exception { //이미지등록
 
@@ -32,9 +32,10 @@ public interface MaterialsService {
                 .build();
 
         if(materialsDTO.getFileNames() != null) {
-            String tmp = materialsDTO.getFileNames();
-            String[] arr = tmp.split("_");
-            materials.addImage(arr[0], arr[1]);
+            materialsDTO.getFileNames().forEach(fileName -> {
+               String[] arr = fileName.split("_");
+               materials.addImage(arr[0], arr[1]);
+            });
 
         }
         return materials;
@@ -53,9 +54,9 @@ public interface MaterialsService {
                 .modDate(materials.getModDate())
                 .build();
 
-            String fileNames = materials.getImageSet().stream().sorted().map(materialImage ->
-                    materialImage.getMaterialUuid() + "_" + materialImage.getMaterialImgName()
-            ).collect(Collectors.toList()).get(0);
+            List<String> fileNames = materials.getImageSet().stream().sorted().map(materialImage ->
+                    materialImage.getMaterialUuid()+"_"+materialImage.getMaterialImgName()
+            ).collect(Collectors.toList());
 
             materialsDTO.setFileNames(fileNames);
 
