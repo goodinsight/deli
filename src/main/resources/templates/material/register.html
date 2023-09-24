@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{/layout/layout.html}">
 
 <head>
-    <title>Marerial Register</title>
+    <title>Material Register</title>
 </head>
 
 <div layout:fragment="content">
@@ -54,7 +55,7 @@
                                 <a th:href="@{/material/list}" class="text-decoration-none">
                                     <button type="button" class="btn btn-outline-dark">자재목록</button>
                                 </a>
-                                <button type="submit" class="btn btn-primary">저장</button>
+                                <button type="submit" class="btn btn-primary submintBtn">저장</button>
                                 <button type="reset" class="btn btn-secondary">되돌리기</button>
                             </div>
                         </div>
@@ -134,7 +135,9 @@
 
         const files = fileInput.files
 
-        formObj.append("files", files);
+        for(let i = 0; i < files.length; i++) {
+            formObj.append("files", files[i]);
+        }
 
         uploadToServer(formObj).then(result => {
 
@@ -163,9 +166,10 @@
                             <button class="btn-sm btn-danger" onclick="javascript:removeFile('${materialUuid}', '${materialImgName}', this)" >X</button>
                         </div>
                         <div class="card-body">
-                            <img src="/view/${link}" data-src="${materialUuid+"_"+materialImgName}" >
+                            <img src="/viewMaterial/${link}" data-src="${materialUuid+"_"+materialImgName}" >
                         </div>
                     </div><!-- card -->`
+
         uploadResult.innerHTML += str
     }
 
@@ -193,14 +197,14 @@
     }, false)
 
 
-    function removeFile(uuid, fileName, obj){
-        console.log(uuid)
-        console.log(fileName)
+    function removeFile(materialUuid, materialImgName, obj){
+        console.log(materialUuid)
+        console.log(materialImgName)
         console.log(obj)
 
         const targetDiv = obj.closest(".card")
 
-        removeFileToServer(uuid, fileName).then(data =>{
+        removeFileToServer(materialUuid, materialImgName).then(data =>{
             targetDiv.remove()
         })
     }
@@ -233,4 +237,4 @@
     console.log(error)
 
 </script>
-</html>
+

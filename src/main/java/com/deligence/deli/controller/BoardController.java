@@ -54,7 +54,8 @@ public class BoardController {
     }
 
     @PostMapping("/register")
-    public String registerPost(@Valid BoardDTO boardDTO, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String registerPost(@Valid BoardDTO boardDTO, BindingResult bindingResult,
+                               RedirectAttributes redirectAttributes) {
 
         log.info("board POST register ......................");
 

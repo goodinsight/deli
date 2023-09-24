@@ -156,7 +156,7 @@ public class MaterialSearchImpl extends QuerydslRepositorySupport implements Mat
                             .build()
                     ).collect(Collectors.toList());
 
-            dto.setMaterialImage(imageDTOS);
+            //dto.setMaterialImage(imageDTOS); //처리된 BoardImageDTO들을 추가
 
             return dto;
         }).collect(Collectors.toList());

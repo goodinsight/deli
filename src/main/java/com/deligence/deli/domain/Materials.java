@@ -45,7 +45,7 @@ public class Materials extends BaseEntity{
     @BatchSize(size = 20)
     private Set<MaterialImage> imageSet = new HashSet<>(); //이미지 첨부
 
-    public void change(String materialName, String materialType, String materialExplaination, Long materialSupplyPrice, LocalDateTime regDate, LocalDateTime modDate){
+    public void change(String materialName, String materialType, String materialExplaination, Long materialSupplyPrice){
         this.materialName = materialName;
         this.materialType = materialType;
         this.materialExplaination = materialExplaination;
@@ -55,7 +55,7 @@ public class Materials extends BaseEntity{
     public void addImage(String materialUuid, String materialImgName) {
 
         MaterialImage materialImage = MaterialImage.builder()
-                .materialImgNo(materialNo)
+                //.materialImgNo(materialNo)   ----> 이거때문에 이미지 안들어 갔었음
                 .materialUuid(materialUuid)
                 .materialImgName(materialImgName)
                 .materials(this)

@@ -58,12 +58,12 @@ public class MaterialsServiceImpl implements MaterialsService {
 
         Materials materials = result.orElseThrow();
 
-        materials.change(materialsDTO.getMaterialName(), materialsDTO.getMaterialType(), materialsDTO.getMaterialExplaination(), materialsDTO.getMaterialSupplyPrice(), materialsDTO.getRegDate(), materialsDTO.getModDate());
+        materials.change(materialsDTO.getMaterialName(), materialsDTO.getMaterialType(), materialsDTO.getMaterialExplaination(), materialsDTO.getMaterialSupplyPrice());
 
         //첨부파일 처리
         materials.clearImages();
 
-        if(materialsDTO.getMaterialImage() != null){
+        if(materialsDTO.getFileNames() != null){
             for(String fileName : materialsDTO.getFileNames()) {
                 String[] arr = fileName.split("_");
                 materials.addImage(arr[0], arr[1]);

@@ -66,7 +66,7 @@ public class MaterialsRepositoryTests {
 
         Materials materials = result.orElseThrow();
 
-        materials.change("update test", "update.. test", "update... test", 100000000L, LocalDateTime.now(),  LocalDateTime.now());
+        materials.change("update test", "update.. test", "update... test", 100000000L);
 
         materialsRepository.save(materials);
     }
