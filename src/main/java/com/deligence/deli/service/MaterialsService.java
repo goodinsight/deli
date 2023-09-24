@@ -54,11 +54,11 @@ public interface MaterialsService {
                 .modDate(materials.getModDate())
                 .build();
 
-            String fileNames = materials.getImageSet().stream().sorted().map(materialImage ->
-                    materialImage.getMaterialUuid() + "_" + materialImage.getMaterialImgName()
-            ).collect(Collectors.toList()).get(0);
-
-            materialsDTO.setFileNames(fileNames);
+//            String fileNames = materials.getImageSet().stream().sorted().map(materialImage ->
+//                    materialImage.getMaterialUuid() + "_" + materialImage.getMaterialImgName()
+//            ).collect(Collectors.toList()).get(0);
+//
+//            materialsDTO.setFileNames(fileNames);
 
 
 
