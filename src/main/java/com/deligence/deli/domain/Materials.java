@@ -1,5 +1,6 @@
 package com.deligence.deli.domain;
 
+import com.deligence.deli.dto.MaterialsDTO;
 import lombok.*;
 import org.hibernate.annotations.BatchSize;
 
@@ -45,7 +46,7 @@ public class Materials extends BaseEntity{
     @BatchSize(size = 20)
     private Set<MaterialImage> imageSet = new HashSet<>(); //이미지 첨부
 
-    public void change(String materialName, String materialType, String materialExplaination, Long materialSupplyPrice, LocalDateTime regDate, LocalDateTime modDate){
+    public void change(MaterialsDTO materialsDTO){
         this.materialName = materialName;
         this.materialType = materialType;
         this.materialExplaination = materialExplaination;

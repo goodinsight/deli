@@ -4,21 +4,23 @@
       layout:decorate="~{/layout/layout.html}">
 
 <head>
-    <title>Marerial Register</title>
+    <meta charset="UTF-8">
+    <title>자재 등록</title>
 </head>
 
 <div layout:fragment="content">
+
     <div class="row mt-3">
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    Marerial Register
+                    자재 등록
                 </div>
                 <div class="card-body">
                     <form action="/material/register" method="post">
                         <div class="input-group mb-3">
                             <span class="input-group-text">분류(타입)</span>
-                            <input type="text" name="materialType" class="form-control" placeholder="Title">
+                            <input type="text" name="materialType" class="form-control materialType" placeholder="Title">
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">자재코드</span>
@@ -26,15 +28,15 @@
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">자재이름</span>
-                            <input type="text" name="materialName" class="form-control" placeholder="Name">
+                            <input type="text" name="materialName" class="form-control materialName" placeholder="Name">
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">자재설명</span>
-                            <input type="text" name="materialExplaination" class="form-control" placeholder="Explaination">
+                            <input type="text" name="materialExplaination" class="form-control materialExplaination" placeholder="Explaination">
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">자재공급단가</span>
-                            <input type="text" name="materialSupplyPrice" class="form-control" placeholder="SupplyPrice">
+                            <input type="text" name="materialSupplyPrice" class="form-control materialSupplyPrice" placeholder="SupplyPrice">
                         </div>
 
                         <div class="input-group mb-3">
@@ -48,13 +50,12 @@
                         <input type="file" id="attachFile" name="attachFile"/>
                         !-->
 
-
                         <div class="my-4">
                             <div class="float-end">
                                 <a th:href="@{/material/list}" class="text-decoration-none">
                                     <button type="button" class="btn btn-outline-dark">자재목록</button>
                                 </a>
-                                <button type="submit" class="btn btn-primary">저장</button>
+                                <button type="submit" class="btn btn-primary submitBtn">저장</button>
                                 <button type="reset" class="btn btn-secondary">되돌리기</button>
                             </div>
                         </div>
@@ -97,6 +98,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script src="/js/materialImg.js"></script>
+    <script src="/js/material.js"></script>
 
 </div> <!-- layout fragment end -->
 
@@ -174,13 +176,15 @@
 
     const materialCode = document.querySelector(".materialCode")
 
+
     materialCode.addEventListener("click", function(e) {
 
-        let str = 'Material-(".materialType")-'
+        let str = `Material-`
 
         str += new Date().toISOString().split('T')[0].replaceAll('-','')
         //toISOString() 메서드를 사용해서 "YYYY-MM-DDTHH:mm:ss.sssZ"의 날짜 및 시간 정보를 받옴
-        // 해당 형식에서 "T"를 기준으로 잘라 날짜만 가져옴
+        //해당 형식에서 "T"를 기준으로 잘라 날짜만 가져옴 !
+
         str += '-'
 
         getCodeCount(str).then( result => {

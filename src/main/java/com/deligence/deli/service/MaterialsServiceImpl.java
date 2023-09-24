@@ -64,7 +64,7 @@ public class MaterialsServiceImpl implements MaterialsService {
 
         Materials materials = result.orElseThrow();
 
-        materials.change(materialsDTO.getMaterialName(), materialsDTO.getMaterialType(), materialsDTO.getMaterialExplaination(), materialsDTO.getMaterialSupplyPrice(), materialsDTO.getRegDate(), materialsDTO.getModDate());
+        materials.change(materialsDTO);
 
         //첨부파일 처리
         materials.clearImages();
@@ -93,7 +93,7 @@ public class MaterialsServiceImpl implements MaterialsService {
         Page<Materials> result = materialsRepository.searchAll(types, keyword, pageble);
 
         List<MaterialsDTO> dtoList = result.getContent().stream()
-                .map(materials -> modelMapper.map(materials, MaterialsDTO.class))
+                .map(materials -> entityToDTO(materials))
                 .collect(Collectors.toList());
 
         return PageResponseDTO.<MaterialsDTO>withAll()

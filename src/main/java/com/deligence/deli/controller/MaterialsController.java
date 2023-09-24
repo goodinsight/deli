@@ -1,11 +1,13 @@
 package com.deligence.deli.controller;
 
+import com.deligence.deli.dto.EmployeeSecurityDTO;
 import com.deligence.deli.dto.MaterialsDTO;
 import com.deligence.deli.dto.PageRequestDTO;
 import com.deligence.deli.dto.PageResponseDTO;
 import com.deligence.deli.service.MaterialsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,8 +34,12 @@ public class MaterialsController {
         model.addAttribute("responseDTO", responseDTO);
     }
 
-    @GetMapping("/register") //자재 등록
-    public void registerGET(){
+    @GetMapping("/register") //자재 등록 (자재 employee6)
+    public void registerGET(@AuthenticationPrincipal EmployeeSecurityDTO employeeSecurityDTO, Model model){
+
+        log.info(employeeSecurityDTO);
+
+        model.addAttribute("user", employeeSecurityDTO);
 
     }
 
@@ -66,6 +72,8 @@ public class MaterialsController {
         log.info(materialsDTO);
 
         model.addAttribute("dto",materialsDTO);
+
+        model.addAttribute("pageRequestDTO", pageRequestDTO);
     }
 
     @PostMapping("/modify") //자재 수정
@@ -76,6 +84,7 @@ public class MaterialsController {
 
         log.info("Materials modify post....." + materialsDTO);
 
+        //에러 처리 ------------------------------------------------------------------------------
         if(bindingResult.hasErrors()) {
             log.info("hss errors......");
 
@@ -87,6 +96,7 @@ public class MaterialsController {
 
             return "redirect:/material/modify?"+link;
         }
+        //--------------------------------------------------------------------------------------------
 
         materialsService.modify(materialsDTO);
 

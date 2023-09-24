@@ -31,7 +31,7 @@ public class MaterialSearchImpl extends QuerydslRepositorySupport implements Mat
 
         JPQLQuery<Materials> query = from(materials); // select..from materials
 
-        query.where(materials.materialExplaination.contains("1")); //where materialExplaination like.....
+        query.where(materials.materialNo.stringValue().contains("1")); //where materialExplaination like.....
 
         //paging
         this.getQuerydsl().applyPagination(pageable, query);
@@ -47,7 +47,8 @@ public class MaterialSearchImpl extends QuerydslRepositorySupport implements Mat
     public Page<Materials> searchAll(String[] types, String keyword, Pageable pageable) { //검색
 
         QMaterials materials = QMaterials.materials;
-        JPQLQuery<Materials> query = from(materials);
+        JPQLQuery<Materials> query = new JPAQueryFactory(em)
+                .selectFrom(materials);
 
         if ((types != null && types.length > 0) && keyword != null) { //검색조건 + 키워드가 있으면
 
@@ -71,7 +72,7 @@ public class MaterialSearchImpl extends QuerydslRepositorySupport implements Mat
         }//end if
 
         //materialNo > 0
-        query.where(materials.materialNo.gt(0L));
+        query.where(materials.materialNo.gt(0));
 
         //paging
         this.getQuerydsl().applyPagination(pageable, query);
