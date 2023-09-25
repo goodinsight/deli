@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout.html}">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<div layout:fragment="content">
+
+  <div class="row mt-3">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          자재 입고 상세
+        </div>
+        <div class="card-body">
+
+          <div class="input-group mb-3">
+            <span class="input-group-text">카테고리</span>
+            <input type="text" th:value="${dto.materialType}" class="form-control" placeholder="materialType" readonly>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text">자재 코드</span>
+            <input type="text" th:value="${dto.materialCode}" class="form-control" placeholder="materialCode" readonly>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text">자재 이름</span>
+            <input type="text" th:value="${dto.materialName}" class="form-control" placeholder="materialName" readonly>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text">자재 설명</span>
+            <textarea type="text"  class="form-control" placeholder="materialExplaination" readonly></textarea>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text">이미지</span>
+            <input type="text"  class="form-control" placeholder="materialIncomingQuantity" readonly>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text">재고</span>
+            <input type="text" th:value="${dto.materialStock}" class="form-control" placeholder="materialStock" readonly>
+          </div>
+
+          <hr>
+
+          <table class="table">
+
+            <tr>
+              <td>NO</td>
+              <td>입*출고</td>
+              <td>수량</td>
+              <td>날짜</td>
+              <td>담당자</td>
+            </tr>
+            <tr>
+              <td>[[dto.materialInventoryNo]]</td>
+              <td>입*출고</td>
+              <td>수량</td>
+              <td>날짜</td>
+              <td>담당자</td>
+            </tr>
+
+
+          </table>
+
+          <div class="my-4">
+
+            <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}">
+
+              <a th:href="|@{/materialInventory/materialStockList}?${link}|" class="text-decoration-none">
+                <button type="button" class="btn btn-primary">돌아가기</button>
+              </a>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script layout:fragment="script" th:inline="javascript">
+
+  document.querySelector(".btn-secondary").addEventListener("click", function(e) {
+
+    e.preventDefault()
+    e.stopPropagation()
+
+    const modal = new bootstrap.Modal(document.querySelector(".modal"))
+
+    modal.show()
+
+  }, false)
+
+  document.querySelector(".clearBtn").addEventListener("click", function(e) {
+    e.preventDefault()
+    e.stopPropagation()
+
+    self.location = '/materialInventory/stockList'
+
+  }, false)
+
+
+
+</script>
+
+
+<body>
+
+
+
+</body>
+</html>

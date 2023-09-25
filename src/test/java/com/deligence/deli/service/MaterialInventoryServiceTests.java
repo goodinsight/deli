@@ -22,32 +22,13 @@ public class MaterialInventoryServiceTests {
     @Autowired
     private MaterialInventoryService materialInventoryService;
 
-    @Autowired
-    private OrderService orderService;
-
     @Test
     public void testMaterialsServicelistOne() {
 
-        int orderNo = 114;
+        int materialInventoryNo = 74;
 
-        OrderDetailDTO orderDetailDTO = materialInventoryService.materialStockListOne(orderNo);
-        log.info(orderDetailDTO);
-        log.info("자재 이름 : " + orderDetailDTO.getMaterialName());
-        log.info("담당자 : " + orderDetailDTO.getEmployeeName());
-
-        log.info("No : " + orderDetailDTO.getMaterialProcurementPlanNo());
-
-
-    }
-
-    @Test
-    public void testListOne() {
-
-        int orderNo = 30;
-
-        OrderDetailDTO orderDetailDTO = orderService.read(orderNo);
-
-        log.info(orderDetailDTO);
+        MaterialInventoryDTO materialInventoryDTO = materialInventoryService.materialStockRead(materialInventoryNo);
+        log.info(materialInventoryDTO);
 
     }
 
@@ -61,7 +42,7 @@ public class MaterialInventoryServiceTests {
                 .size(10)
                 .build();
 
-        PageResponseDTO<OrderDTO> responseDTO = orderService.list(pageRequestDTO);
+        PageResponseDTO<MaterialInventoryDTO> responseDTO = materialInventoryService.materialStockList(pageRequestDTO);
 
         log.info(responseDTO);
 

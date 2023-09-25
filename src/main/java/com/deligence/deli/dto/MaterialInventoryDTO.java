@@ -14,6 +14,8 @@ public class MaterialInventoryDTO {
 
     private int materialInventoryNo; // 자재 재고 일련번호
 
+    private int materialNo;
+
     private int materialIncomingQuantity; // 입고 수량
 
     private int materialOutgoingQuantity; // 출고 수량

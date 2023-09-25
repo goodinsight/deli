@@ -2,7 +2,6 @@ package com.deligence.deli.controller;
 
 import com.deligence.deli.dto.*;
 import com.deligence.deli.service.MaterialInventoryService;
-import com.deligence.deli.service.MaterialsService;
 import com.deligence.deli.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -23,8 +22,11 @@ public class MaterialInventoryController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private MaterialInventoryService materialInventoryService;
+
     @GetMapping("/stockList")
-    public void materialStockList(PageRequestDTO pageRequestDTO, Model model) {
+    public void stockList(PageRequestDTO pageRequestDTO, Model model) {
 
         PageResponseDTO<OrderDTO> responseDTO = orderService.list(pageRequestDTO);
 
@@ -32,6 +34,27 @@ public class MaterialInventoryController {
 
         model.addAttribute("responseDTO", responseDTO);
 
+    }
+
+    @GetMapping("/materialStockList")
+    public void materialStockList(PageRequestDTO pageRequestDTO, Model model) {
+
+        PageResponseDTO<MaterialInventoryDTO> responseDTO = materialInventoryService.materialStockList(pageRequestDTO);
+
+        log.info(responseDTO);
+
+        model.addAttribute("responseDTO", responseDTO);
+
+    }
+
+    @GetMapping("/materialStockDetail")
+    public void materialStockRead(int materialInventoryNo,PageRequestDTO pageRequestDTO, Model model) {
+
+        MaterialInventoryDTO materialInventoryDTO = materialInventoryService.materialStockRead(materialInventoryNo);
+
+        log.info(materialInventoryDTO);
+
+        model.addAttribute("dto", materialInventoryDTO);
 
     }
 
