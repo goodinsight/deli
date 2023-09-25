@@ -12,7 +12,7 @@ public interface MaterialProcurementPlanningService {
     int register(MaterialProcurementPlanningDTO materialProcurementPlanningDTO);
 
     //조회
-    public MaterialProcurementPlanningDetailDTO read(int materialProcurementPlanNo);
+    MaterialProcurementPlanningDetailDTO read(int materialProcurementPlanNo);
 
     //수정
     void modify(MaterialProcurementPlanningDTO materialProcurementPlanningDTO);

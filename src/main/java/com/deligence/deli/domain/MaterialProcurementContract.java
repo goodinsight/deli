@@ -62,10 +62,10 @@ public class MaterialProcurementContract extends BaseEntity {
 
     //수정가능한 속성 지정 (계약일, 조건상세, 계약상태 지정)
     public void change(MaterialProcurementContractDTO materialProcurementContractDTO) {
-        this.materialProcurementContractDate = materialProcurementContractDate;
-        this.materialProcurementContractState = materialProcurementContractState;
-        this.materialProcurementContractEtc = materialProcurementContractEtc;
-        this.materialRequirementsCount = materialRequirementsCount;
+        this.materialProcurementContractDate = materialProcurementContractDTO.getMaterialProcurementContractDate();
+        this.materialProcurementContractState = materialProcurementContractDTO.getMaterialProcurementContractState();
+        this.materialProcurementContractEtc = materialProcurementContractDTO.getMaterialProcurementContractEtc();
+        this.materialRequirementsCount = materialProcurementContractDTO.getMaterialRequirementsCount();
 
         //자재코드
         //분류

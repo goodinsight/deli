@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{/layout/layout.html}">
@@ -18,14 +19,20 @@
         </div>
         <div class="card-body mt-3">
           <form action="/materialProcurementPlanning/register" method="post">
+
             <div class="input-group mb-3">
               <span class="input-group-text">자재조달계획 코드</span>
-              <input type="text" name="materialProcurementPlanCode" class="form-control materialProcurementPlanCode" placeholder="클릭해주세요" readonly>
+              <input type="text" name="materialProcurementPlanCode" class="form-control" id="materialProcurementPlanCode" placeholder="클릭해주세요" readonly>
             </div>
 
             <div class="input-group mb-3">
               <span class="input-group-text">생산계획 일련번호</span>
               <input type="text" name="productionPlanNo" class="form-control selectPlan" placeholder="클릭해주세요" readonly>
+            </div>
+
+            <div class="d-none input-group mb-3">
+              <span class="input-group-text">자재 일련번호</span>
+              <input type="text" name="materialNo" class="form-control materialNo" placeholder="클릭해주세요" readonly>
             </div>
 
             <div class="input-group mb-3">
@@ -85,7 +92,6 @@
               </div>
 
 
-
             <div class="my-4">
               <div class="float-end">
                 <a th:href="@{/materialProcurementPlanning/list}" class="text-decoration-none">
@@ -111,6 +117,7 @@
           <h5 class="modal-title">생산 계획 검색</h5>
         </div>
         <div class="modal-body">
+
 
           <div class="row mt-3">
             <div class="col">
@@ -158,6 +165,7 @@
         </div>
         <div class="modal-body">
 
+
           <div class="row mt-3">
             <div class="col">
               <div class="card">
@@ -193,6 +201,8 @@
       </div>
     </div>
   </div><!--end 자재 모달창-->
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
   <script src="/js/materialProcurementPlanning.js"></script>
 
@@ -246,17 +256,21 @@
 
   function printPlanList(dtoList) { //생산 계획 목록
 
+    console.log("print production plan list")
+
     let str = ''
 
     if (dtoList && dtoList.length > 0) {
 
-      for (const dto of dtoList) {
+      for ( const dto of dtoList) {
+
+        console.log(dto)
 
         str += `<tr>
                 <td data-planNo="${dto.productionPlanNo}">${dto.productionPlanNo}</td>
                 <td data-planNo="${dto.productionPlanNo}">${dto.productCode}</td>
                 <td data-planNo="${dto.productionPlanNo}">${dto.clientName}</td>
-                <td data-planNo="${dto.productionPlanNo}">${dto.productionDeliveryDate}</td>
+                <td data-planNo="${dto.productionPlanNo}">${dto.productDeliveryDate}</td>
                 <td data-planNo="${dto.productionPlanNo}">${dto.clientStatus}</td>
             </tr>`
       }
@@ -294,6 +308,7 @@
               printPlanPages(data)
             }
     ).catch(e => {
+      console.log("print production plans error")
       console.error(e)
     })
   }
@@ -319,7 +334,7 @@
   const inputPlanNo = document.querySelector(".selectPlan")
   const productCode = document.querySelector(".productCode")  //제품코드
   const clientName = document.querySelector(".clientName")  //클라이언트회사명
-  const productionDeliveryDate = document.querySelector(".productionDeliveryDate")  //납기일
+  const productDeliveryDate = document.querySelector(".productDeliveryDate")  //제품납기일
   const clientStatus = document.querySelector(".clientStatus")  //계약상태
 
 
@@ -340,7 +355,7 @@
     const planNo = target.getAttribute("data-planNo")
 
     if (!planNo) {
-      return;
+      return
     }
 
     getPlan(planNo).then(plan => {
@@ -350,7 +365,7 @@
       //생산 계획 정보를 가져와서 화면에 반영해야 할 항복들은 여기에 --------------------------------------------------------
       productCode.value = plan.productCode
       clientName.value = plan.clientName
-      productionDeliveryDate.value = new Date(plan.productionDeliveryDate).toISOString().split('T')[0]
+      productDeliveryDate.value = new Date(plan.productDeliveryDate).toISOString().split('T')[0]
       clientStatus.value = plan.clientStatus
       //----------------------------------------------------------------------------------------------------------
 
@@ -375,7 +390,7 @@
 
   document.querySelector("#selectMaterial").addEventListener("click", function (e) {
     console.log("select material modal show")
-    //printMaterials(1, 5)
+    printMaterials(1, 5)
     materialModal.show()
   }, false)
 
@@ -389,7 +404,9 @@
 
     if (dtoList && dtoList.length > 0) {
 
-      for (const dto of dtoList) {
+      for ( const dto of dtoList) {
+
+        console.log(dto)
 
         str += `<tr>
                   <td data-materialsNo = "${dto.materialNo}">${dto.materialNo}</td>
@@ -454,7 +471,7 @@
   }, false)
 
   const materialNo = document.querySelector(".materialNo")
-  const inputMaterialCode = document.querySelector(".selectMaterial")
+  const inputMaterialCode = document.querySelector("#selectMaterial")
   const materialType = document.querySelector(".materialType")
   const materialName = document.querySelector(".materialName")
   const materialSupplyPrice = document.querySelector(".materialSupplyPrice")
@@ -482,13 +499,17 @@
     getMaterial(materialsNo).then(material => {
 
       console.log(material)
+      console.log("check0")
       materialNo.value = material.materialNo
-      //자재 정보를 가져와서 화면에 반영해야 할 항복들은 여기에 --------------------------------------------------------
+      //자재 정보를 가져와서 화면에 반영해야 할 항목들은 여기에 --------------------------------------------------------
+      console.log("check1")
       inputMaterialCode.value = material.materialCode
       materialType.value = material.materialType
+      console.log("check2")
       materialName.value = material.materialName
       //------------------------------------------------------------------------------------------------------
       materialSupplyPrice.value = material.materialSupplyPrice
+      console.log("성공")
       materialModal.hide()
 
     }).catch(e => alert('error'))
@@ -497,7 +518,7 @@
 
   //조달계획 코드 생성 -------------------------------------------------------------------------------------------------------------
 
-  const materialProcurementPlanCode = document.querySelector(".materialProcurementPlanCode")
+  const materialProcurementPlanCode = document.querySelector("#materialProcurementPlanCode")
 
   materialProcurementPlanCode.addEventListener("click", function(e) {
 

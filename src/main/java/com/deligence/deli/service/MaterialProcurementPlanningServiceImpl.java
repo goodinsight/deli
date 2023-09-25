@@ -106,7 +106,7 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
         return PageResponseDTO.<MaterialProcurementPlanningDTO>withAll()
                 .pageRequestDTO(pageRequestDTO)
                 .dtoList(dtoList)
-                .total((int) result.getTotalElements())
+                .total((int)result.getTotalElements())
                 .build();
     }
 
