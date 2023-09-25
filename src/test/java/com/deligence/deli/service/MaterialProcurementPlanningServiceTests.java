@@ -99,6 +99,7 @@ public class MaterialProcurementPlanningServiceTests {
         int num = materialProcurementPlanningService.getCodeCount("MP-PLANNING-20230922-");
 
         log.info( "cc :" + num);
+
     }
 
 }

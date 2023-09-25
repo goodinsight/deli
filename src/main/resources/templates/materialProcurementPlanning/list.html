@@ -43,6 +43,16 @@
                 </div>
             </div>
         </form>
+
+        <div class="my-4">
+            <div class="float-left">
+                <a th:href="@{/materialProcurementPlanning/register}" class="text-decoration-none">
+                    <button type="button" class="btn btn-primary">Register</button>
+                </a>
+            </div>
+        </div>
+
+
     </div>
 
 
@@ -53,13 +63,13 @@
                 <div class="card-header">
                     자재조달계획 리스트
                 </div>
-                <div class="my-4">
+                <!--<div class="my-4">
                     <div class="float-left">
                         <a th:href="@{/materialProcurementPlanning/register}" class="text-decoration-none">
                             <button type="button" class="btn btn-primary">Register</button>
                         </a>
                     </div>
-                </div>
+                </div>-->
 
                 <div class="card-body">
 
@@ -163,7 +173,7 @@
 
         const formObj = document.querySelector("form")
 
-        formObj.innerHTML += `<input type = 'hidden' name='page' value='${num}'>`
+        formObj.innerHTML += `<input type = "hidden" name="page" value="${num}">`
 
         formObj.submit();
 

@@ -35,6 +35,9 @@ public class ProductionPlanningDTO {
 
     private String productCode; //제품코드 (검색용)
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate productDeliveryDate;  //제품 납기일
+
     private int clientNo;   //구매협력회사일련번호(FK)
 //    private CooperatorClient cooperatorClient;    //구매협력회사
 
