@@ -21,10 +21,11 @@
                     <div class="pagination progressInspectionPaging">
                     </div>
 
-                    <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}">
-                        <button type="button" class="btn btn-primary float-right openRegisterBtn">검수 등록</button>
+                    <div class="float-right" th:with="link = ${pageRequestDTO.getLink()}">
+                        <button type="button" class="btn btn-warning completePI">검수 완료</button>
+                        <button type="button" class="btn btn-primary openRegisterBtn">검수 등록</button>
                         <a th:href="|@{/order/read(orderNo=${orderNo})}&${link}|" class="text-decoration-none">
-                            <button type="button" class="btn btn-secondary float-right">발주 페이지로</button>
+                            <button type="button" class="btn btn-secondary">발주 페이지로</button>
                         </a>
                     </div>
 
@@ -48,6 +49,10 @@
                     <div class="d-none input-group mb-3">
                         <span class="input-group-text">담당자 일련번호</span>
                         <input type="text" class="form-control registerEmployeeNo" th:value="${user.employeeNo}" readonly>
+                    </div>
+                    <div class="d-none input-group mb-3">
+                        <span class="input-group-text">검수 차수</span>
+                        <input type="text" class="form-control registerProgressInspectionTimes" readonly>
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">담당자</span>
@@ -107,6 +112,9 @@
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">검수 진척도</span>
+                        <input type="text" class="form-control modifyROPText">
+                    </div>
+                    <div class="input-group mb-3">
                         <input type="range" class="form-control modifyRateOfProgress" th:value="0">
                     </div>
                     <div class="input-group mb-3">
@@ -144,14 +152,25 @@
     const piList = document.querySelector('.progressInspectionList')
     const piPaging = document.querySelector('.progressInspectionPaging')
 
+    const registerProgressInspectionTimes = document.querySelector('.registerProgressInspectionTimes')
+
+    const completePIButton = document.querySelector('.completePI')
+    const openRegisterBtn = document.querySelector(".openRegisterBtn")
+
     // 검수 목록 ---------------------------------------------------
 
     let page = 1
     let size = 3
 
+    let maxTimes = 0; //  검수 등록 시 차수 계산에 참조
+
+    let state = 0//not Comp
+
     function printList(dtoList) {
 
         let str = '';
+
+        maxTimes = 0
 
         if(dtoList && dtoList.length > 0){
 
@@ -184,6 +203,8 @@
                         </div>
                         <div class=" input-group mb-3">
                             <span class="input-group-text">검수 진척도</span>
+                        </div>
+                        <div class=" input-group mb-3">
                             <div class="progress-bar bg-success" style="width: ${dto.rateOfProgress}%; height:auto;" role="progressbar">${dto.rateOfProgress}%</div>
                         </div>
                         <div class="input-group mb-3">
@@ -207,11 +228,27 @@
                 </div>
                 `
 
+                if(maxTimes < dto.progressInspectionTimes){
+                    maxTimes = dto.progressInspectionTimes
+                }
+
+            }
+
+            registerProgressInspectionTimes.value = maxTimes + 1
+
+            if(dtoList[dtoList.length-1].rateOfProgress >= 100){
+                state = 1
+                console.log("검수 완료!")
+            }else {
+                state = 0
             }
 
         }else{
             str += `<div><h2>검수가 등록되어있지 않습니다.</h2></div>`
         }
+
+        //버튼 출력
+        printButton(state)
 
         piList.innerHTML = str
 
@@ -277,7 +314,7 @@
     //검수 등록 모달
     const registerModal = new bootstrap.Modal(document.querySelector('.registerModal'))
 
-    const openRegisterBtn = document.querySelector(".openRegisterBtn")
+
     const closeRegisterBtn = document.querySelector(".closeRegisterBtn")
     const registerBtn = document.querySelector(".registerBtn")
 
@@ -301,6 +338,7 @@
     registerBtn.addEventListener("click", function (e) {
 
         const piObj = {
+            progressInspectionTimes: registerProgressInspectionTimes.value,
             progressInspectionDate : registerProgressInspectionDate.value,
             progressInspectionEtc : registerProgressInspectionEtc.value,
             rateOfProgress : registerRateOfProgress.value,
@@ -420,6 +458,8 @@
             console.log(e)
         })
 
+        printButton(state)
+
     }, false)
 
 
@@ -440,6 +480,30 @@
         }).catch(e => {
             console.log(e)
         })
+
+    }
+
+    //버튼 출력
+    function printButton(state){
+
+        console.log("state : " + state)
+
+        switch (state){
+
+            case 0://not comp
+                completePIButton.style.display = 'none' // 검수 완료 버튼 비표시
+                console.log("comp button none")
+                openRegisterBtn.style.display = 'dafault'//검수 등록 버튼 표시
+                console.log("reg button default")
+                break;
+            case 1:
+                completePIButton.style.display = 'default' //검수 완료 버튼 표시
+                console.log("comp button default")
+                openRegisterBtn.style.display = 'none'//검수 등록 버튼 비표시
+                console.log("reg button none")
+                break;
+
+        }
 
     }
 
