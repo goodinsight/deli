@@ -13,5 +13,5 @@ public interface MaterialProcurementContractSearch {
 
     int getCodeCount(String materialProcurementContractCode);
 
-    public MaterialProcurementContractDetailDTO read(int materialProcurementContractNo);
+    MaterialProcurementContractDetailDTO read(int materialProcurementContractNo);
 }
