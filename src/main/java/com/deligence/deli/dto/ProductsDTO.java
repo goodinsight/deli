@@ -13,40 +13,37 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MaterialsDTO {
+public class ProductsDTO {
 
-    private int materialNo; //자재일련번호
-
-    @NotEmpty
-    private String materialCode; //자재코드
+    private int productNo; //제품일련번호
 
     @NotEmpty
-    private String materialName; //자재명
+    private String productCode; //제품코드
 
     @NotEmpty
-    private String materialType; //자재분류
+    private String productName; //제품명
 
-    private String materialExplaination; //자재설명
+    @NotEmpty
+    private String productType; //제품분류
 
-    private Long materialSupplyPrice; //자재공급단가
+    private String productContent; //제품설명
 
     private LocalDateTime regDate; //등록일
 
     private LocalDateTime modDate; //수정일
     
-    //private List<MaterialImageDTO> materialImage;   //자재 이미지MaterialsDTO
+    //private List<ProductImageDTO> productImage;   //자재 이미지MaterialsDTO
 
     private List<String> fileNames; //첨부파일 이름들
 
 
-//    public MaterialsDTO(String materialName, String materialType, String materialExplaination, long materialSupplyPrice){
+//    public ProductsDTO(String productName, String productType, String productContent){
 //        LocalDate date = LocalDate.now();
 //        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd");
-//        this.materialName = materialName;
-//        this.materialType = materialType;
-//        this.materialExplaination = materialExplaination;
-//        this.materialSupplyPrice = materialSupplyPrice;
-//
+//        this.productName = productName;
+//        this.productType = productType;
+//        this.productContent = productContent;
+//        //
 //        this.materialCode = "Material" + materialType + date.format(dateTimeFormatter); // 생성시 등록순서 증가하게 추가해야됨
 //    }
 
