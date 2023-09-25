@@ -1,9 +1,6 @@
 package com.deligence.deli.repository;
 
-import com.deligence.deli.domain.CooperatorSupplier;
-import com.deligence.deli.domain.Employee;
-import com.deligence.deli.domain.MaterialProcurementContract;
-import com.deligence.deli.domain.Materials;
+import com.deligence.deli.domain.*;
 import com.deligence.deli.dto.MaterialProcurementContractDTO;
 import lombok.extern.java.Log;
 import lombok.extern.log4j.Log4j2;
@@ -31,24 +28,26 @@ public class MaterialProcurementContractRepositoryTests {
     @Test
     public void testInsert() {
 
-        int materialNo = 1;
+        int materialProcurementPlanNo = 10;
         int supplierNo = 1;
-        int employeeNo = 1;
+        int employeeNo = 2;
 
-        IntStream.rangeClosed(5,100).forEach(i -> {
+        IntStream.rangeClosed(1,10).forEach(i -> {
 
-            Materials materials = Materials.builder().materialNo(1).build();
+            MaterialProcurementPlanning materialProcurementPlanning = MaterialProcurementPlanning.builder().materialProcurementPlanNo(10).build();
             CooperatorSupplier cooperatorSupplier = CooperatorSupplier.builder().supplierNo(1).build();
-            Employee employee = Employee.builder().employeeNo(1).build();
+            Employee employee = Employee.builder().employeeNo(2).build();
 
             MaterialProcurementContract materialProcurementContract = MaterialProcurementContract.builder()
                     .materialProcurementContractCode("contractCode..."+i)
                     .materialProcurementContractDate(LocalDate.of(2023, 9,27))
                     .materialProcurementContractState("READY")
                     .materialProcurementContractEtc("Etc"+i)
+                    .materialProcurementPlanCode("planCode"+i)
                     .materialCode("materialCode"+i)
                     .materialName("materialName"+i)
                     .materialSupplyPrice(1L)
+                    .procurementQuantity(100)
                     .supplierName("supplierName"+i)
                     .supplierStatus("READY")
                     .employeeName("담당자")
@@ -80,7 +79,7 @@ public class MaterialProcurementContractRepositoryTests {
     @Test
     public void testUpdate() {
 
-        int materialProcurementContractNo = 100;
+        int materialProcurementContractNo = 208;
 
         Optional<MaterialProcurementContract> result =
                 materialProcurementContractRepository.findById(materialProcurementContractNo);
@@ -95,9 +94,10 @@ public class MaterialProcurementContractRepositoryTests {
                 .materialProcurementContractEtc("Etc2")
                 .materialCode("materialCode2")
                 .materialName("materialName2")
-                .materialSupplyPrice(2L)
+                .materialSupplyPrice(20000L)
+                .procurementQuantity(1000)
                 .supplierName("supplierName2")
-                .supplierStatus("READY")
+                .supplierStatus("DELETE")
                 .employeeName("담당자")
                 .build());
 
@@ -155,7 +155,7 @@ public class MaterialProcurementContractRepositoryTests {
     public void testSearchAll() {
 
         String[] types = {"a", "b", "c", "d", "e", "f"};
-        //a: No, b:자재코드, c:자재이름, d:공급단가, e:납품업체명, f:자재조달계약상태
+        //a: 계획코드, b:자재코드, c:자재이름, d:공급단가, e:납품업체명, f:자재조달계약상태
 
         String keyword = "1";
 

@@ -67,10 +67,18 @@ public class MaterialProcurementContractServiceImpl implements MaterialProcureme
 
         log.info(materialProcurementContractDTO);
 
-        // 추후 자재조달계약 수정에 따라 다른 영역에 관련된 수정 사항이 있으면 여기에 추가
 
+        materialProcurementContractRepository.save(materialProcurementContract);
+    }
 
-        //------------------------------------------------------------------
+    @Override
+    public void changeState(int materialProcurementContractNo, String state) {
+
+        Optional<MaterialProcurementContract> result = materialProcurementContractRepository.findById(materialProcurementContractNo);
+
+        MaterialProcurementContract materialProcurementContract = result.orElseThrow();
+
+        materialProcurementContract.changeState(state);
 
         materialProcurementContractRepository.save(materialProcurementContract);
     }
@@ -93,6 +101,23 @@ public class MaterialProcurementContractServiceImpl implements MaterialProcureme
 
         Page<MaterialProcurementContract> result =
                 materialProcurementContractRepository.searchAll(types, keyword, pageable);
+
+        List<MaterialProcurementContractDTO> dtoList = result.getContent().stream()
+                .map(materialProcurementContract -> entityToDto(materialProcurementContract))
+                .collect(Collectors.toList());
+
+        return PageResponseDTO.<MaterialProcurementContractDTO>withAll()
+                .pageRequestDTO(pageRequestDTO)
+                .dtoList(dtoList)
+                .total((int)result.getTotalElements())
+                .build();
+    }
+
+    @Override
+    public PageResponseDTO<MaterialProcurementContractDTO> listByState(String[] keywords, PageRequestDTO pageRequestDTO) {
+
+        Page<MaterialProcurementContract> result =
+                materialProcurementContractRepository.searchByState(keywords, pageRequestDTO.getPageable());
 
         List<MaterialProcurementContractDTO> dtoList = result.getContent().stream()
                 .map(materialProcurementContract -> entityToDto(materialProcurementContract))

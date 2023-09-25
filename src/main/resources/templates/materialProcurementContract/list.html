@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>자재조달계약 리스트</title>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<!--    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>-->
 </head>
 
 <div layout:fragment="content">
@@ -24,7 +24,7 @@
                     <div class="input-group-prepend">
                         <select class="form-select" name="type">
                             <option value="">---</option>
-                            <!--a: No, b:자재코드, c:자재이름, d:공급단가, e:납품업체명, f:자재조달계약상태-->
+                            <!--a:계획코드, b:자재코드, c:자재이름, d:공급단가, e:납품업체명, f:자재조달계약상태-->
                             <option value="a" th:selected="${pageRequestDTO.type == 'a'}">조달계획 코드</option>
                             <option value="b" th:selected="${pageRequestDTO.type == 'b'}">자재 코드</option>
                             <option value="c" th:selected="${pageRequestDTO.type == 'c'}">자재 이름</option>
@@ -38,7 +38,7 @@
                            th:value="${pageRequestDTO.keyword}" placeholder="INPUT KEYWORD">
                     <div class="input-group-append">
                         <button class="btn btn-outline-success searchBtn" type="submit">
-                            <i class="ti-search"></i> Search</button>
+                            <i class="ti-search"></i>Search</button>
                         <button class="btn btn-outline-danger clearBtn" type="button">Clear</button>
                     </div>
 
