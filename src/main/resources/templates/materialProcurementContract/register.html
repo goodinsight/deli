@@ -238,7 +238,7 @@
     let materialPage = 1
     let materialPageSize = 5
 
-    document.querySelector(".selectMaterial").addEventListener("click", function (e) {
+    document.querySelector("#selectMaterial").addEventListener("click", function (e) {
         printMaterials(1, 5)
         materialModal.show()
     }, false)
@@ -275,7 +275,7 @@
 
     }
 
-    function printmaterialPages(data){//자재 목록 페이징 처리
+    function printMaterialPages(data){//자재 목록 페이징 처리
 
         let pageStr = '';
 
@@ -326,7 +326,7 @@
     }, false)
 
     const materialNo = document.querySelector(".materialNo")
-    const inputMaterialCode = document.querySelector(".selectMaterial")
+    const inputMaterialCode = document.querySelector("#selectMaterial")
     const materialName = document.querySelector(".materialName")
     const materialType = document.querySelector(".materialType")
     const materialSupplyPrice = document.querySelector(".materialSupplyPrice")
