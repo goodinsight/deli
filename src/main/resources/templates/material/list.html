@@ -18,9 +18,9 @@
                         <select class="form-select" name="type">
                             <option value="">---</option>
                             <!--t:자재코드 c:자재이름 w:자재분류(카테고리) -->
-                            <option value="t" th:selected="${pageRequestDTO.type == 'm'}">자재코드</option>
-                            <option value="c" th:selected="${pageRequestDTO.type == 'n'}">자재이름</option>
-                            <option value="w" th:selected="${pageRequestDTO.type == 'd'}">자재 카테고리</option>
+                            <option value="t" th:selected="${pageRequestDTO.type == 't'}">자재코드</option>
+                            <option value="c" th:selected="${pageRequestDTO.type == 'c'}">자재이름</option>
+                            <option value="w" th:selected="${pageRequestDTO.type == 'w'}">자재 카테고리</option>
                         </select>
                     </div>
                     <input type="text" class="form-control input-focus" name="keyword" th:value="${pageRequestDTO.keyword}" placeholder="INPUT KEYWORD">
@@ -150,3 +150,5 @@
 
 
 </script>
+
+</html>

@@ -10,7 +10,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class MeterialInOutHistory extends BaseEntity {
+public class MaterialInOutHistory extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +26,9 @@ public class MeterialInOutHistory extends BaseEntity {
     private MaterialInventory materialInventory; // 자재재고 일련번호
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Employee employee; // 담당자
+    private Employee employee; // 담당자(사원일련번호)
 
-    public void change(String inOutSeparator, int quantity) {
+    public void change(String inOutSeparator, int quantity) { //나중에 dto 만들면 dto로 수정
 
         this.inOutSeparator = inOutSeparator;
         this.quantity = quantity;
