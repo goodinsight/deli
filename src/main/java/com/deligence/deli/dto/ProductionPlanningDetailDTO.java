@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductionPlanningDTO {
+public class ProductionPlanningDetailDTO {
 
     private int productionPlanNo;   //생산계획 일련번호
 
@@ -32,18 +32,29 @@ public class ProductionPlanningDTO {
 
     private int productContractNo;  //제품계약일련번호 (FK)
 
-//    private int productNo;  //제품일련번호(FK)
+    private int employeeNo; //제품계약 -> 사원일련번호 (계약담당자)
 
-    private String productCode; //제품코드 (검색용)
+    private String employeeName;
+
+    private int productNo;  //제품일련번호(FK)    (제품계약에서 가져올 수 있음)
+
+    private String productCode; //제품코드 (검색용)    (제품계약->제품코드)
+
+    //제품관련
+    private String productName; //제품->제품이름
+
+    private String productType; //제품->제품타입
+
+    private String productContent;  //제품->제품내용
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate productDeliveryDate;  //제품 납기일
 
-//    private int clientNo;   //구매협력회사일련번호(FK)
+    private int clientNo;   //구매협력회사일련번호(FK)    (제품계약->구매협력회사일련번호)
 
-    private String clientName;  //구매협력회사명 (검색용)
+    private String clientName;  //구매협력회사명 (검색용) (제품계약->구매협력회사명)
 
-    private String clientStatus;    //구매협력회사 계약상태 (검색용)
+    private String clientStatus;    //구매협력회사 계약상태 (검색용) (제품계약->구매협력회사 계약상태)
 
     private LocalDateTime regDate;  //등록일
 
