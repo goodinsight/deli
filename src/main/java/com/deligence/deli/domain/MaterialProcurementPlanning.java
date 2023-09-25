@@ -46,9 +46,10 @@ public class MaterialProcurementPlanning extends BaseEntity {
     //수정가능한 속성 지정 (일단 납기일,자재소요랑,자재조달상태 지정)
     public void change(MaterialProcurementPlanningDTO materialProcurementPlanningDTO) {
 
-        this.procurementDeliveryDate = procurementDeliveryDate;         //납기일
-        this.materialRequirementsCount = materialRequirementsCount;     //자재소요량
-        this.materialProcurementState = materialProcurementState;       //자재조달상태
+        this.materialProcurementPlanCode = materialProcurementPlanningDTO.getMaterialProcurementPlanCode(); //조달계획코드
+        this.procurementDeliveryDate = materialProcurementPlanningDTO.getProcurementDeliveryDate();         //납기일
+        this.materialRequirementsCount = materialProcurementPlanningDTO.getMaterialRequirementsCount();     //자재소요량
+        this.materialProcurementState = materialProcurementPlanningDTO.getMaterialProcurementState();       //자재조달상태
 
         //생산계획일련번호
         //자재코드

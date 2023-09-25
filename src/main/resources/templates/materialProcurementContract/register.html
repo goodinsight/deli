@@ -29,9 +29,13 @@
                             <input type="date" name="materialProcurementContractDate" class="form-control" placeholder="계약일">
                         </div>
 
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">자재 일련번호</span>
+                            <input type="text" name="materialNo" class="form-control materialNo" readonly>
+                        </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">자재 코드</span>
-                            <input type="text" name="materialNo" class="form-control selectMaterial" placeholder="클릭해주세요" readonly>
+                            <input type="text" name="materialCode" class="form-control" id="selectMaterial" placeholder="클릭해주세요" readonly>
                         </div>
                         <div class="input-group mb-3 pl-5">
                             <span class="input-group-text">자재 타입</span>
@@ -51,6 +55,10 @@
                             <input type="text" name="materialRequirementsCount" class="form-control" placeholder="자재 수량">
                         </div>
 
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">자재 협력회사 일련번호</span>
+                            <input type="text" name="supplierNo" class="form-control supplierNo" readonly>
+                        </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">자재 협력회사명</span>
                             <input type="text" name="supplierName" class="form-control selectSupplier" placeholder="클릭해주세요" readonly>
@@ -67,9 +75,9 @@
                             <span class="input-group-text">자재조달 계약상태</span>
                             <input type="text" name="materialProcurementContractState" class="form-control" placeholder="계약 상태 - 추후 숨길 부분" th:value="진행중" readonly>
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3" >
                             <span class="input-group-text">비고</span>
-                            <textarea name="materialProcurementContractEtc" class="form-control col-sm-5"></textarea>
+                            <textarea name="orderEtc" rows="5" cols="50" class="form-control h-25"></textarea>
                         </div>
 
                         <div class="input-group mb-3">
@@ -230,7 +238,7 @@
     let materialPage = 1
     let materialPageSize = 5
 
-    document.querySelector(".selectMaterial").addEventListener("click", function (e) {
+    document.querySelector("#selectMaterial").addEventListener("click", function (e) {
         printMaterials(1, 5)
         materialModal.show()
     }, false)
@@ -267,7 +275,7 @@
 
     }
 
-    function printmaterialPages(data){//자재 목록 페이징 처리
+    function printMaterialPages(data){//자재 목록 페이징 처리
 
         let pageStr = '';
 
@@ -318,7 +326,7 @@
     }, false)
 
     const materialNo = document.querySelector(".materialNo")
-    const inputMaterialCode = document.querySelector(".selectMaterial")
+    const inputMaterialCode = document.querySelector("#selectMaterial")
     const materialName = document.querySelector(".materialName")
     const materialType = document.querySelector(".materialType")
     const materialSupplyPrice = document.querySelector(".materialSupplyPrice")
