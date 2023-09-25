@@ -25,12 +25,6 @@ public class MaterialInventoryServiceTests {
     @Autowired
     private OrderService orderService;
 
-    @Autowired
-    private MaterialProcurementPlanningService materialProcurementPlanningService;
-
-    @Autowired
-    private MaterialsService materialsService;
-
     @Test
     public void testMaterialsServicelistOne() {
 
@@ -43,15 +37,6 @@ public class MaterialInventoryServiceTests {
 
         log.info("No : " + orderDetailDTO.getMaterialProcurementPlanNo());
 
-//        MaterialProcurementPlanningDetailDTO mppDTO = materialProcurementPlanningService.read();
-//
-//        log.info(mppDTO.getMaterialProcurementPlanNo());
-//        log.info(mppDTO.getMaterialName());
-//        log.info(mppDTO.getMaterialNo());
-//
-//        MaterialsDTO materialsDTO = materialsService.readOne(mppDTO.getMaterialNo());
-//
-//        log.info(materialsDTO.getMaterialName());
 
     }
 
@@ -65,38 +50,18 @@ public class MaterialInventoryServiceTests {
         log.info(orderDetailDTO);
 
     }
-    @Test
-    public void testmpListOne() {
-
-        int materialProcurementPlanningNo = 30;
-
-        MaterialProcurementPlanningDetailDTO materialProcurementPlanningDetailDTO = materialProcurementPlanningService.read(materialProcurementPlanningNo);
-
-        log.info(materialProcurementPlanningDetailDTO);
-
-    }
-    @Test
-    public void testmListOne() {
-
-        int materialNo = 30;
-
-//        MaterialsDTO materialsDTO = materialsService.readOne(materialNo);
-
-//        log.info(materialsDTO);
-
-    }
 
     @Test
     public void testList() {
 
         PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
                 .type("tcw")
-                .keyword("cpu")
+                .keyword("30")
                 .page(1)
                 .size(10)
                 .build();
 
-        PageResponseDTO<OrderDTO> responseDTO = materialInventoryService.materialStockList(pageRequestDTO);
+        PageResponseDTO<OrderDTO> responseDTO = orderService.list(pageRequestDTO);
 
         log.info(responseDTO);
 

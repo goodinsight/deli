@@ -54,7 +54,7 @@
 
                                 <button type="button" class="btn btn-secondary">검수 진행</button>
 
-                                <a th:href="|@{/materialInventory/materialStockList}?${link}|" class="text-decoration-none">
+                                <a th:href="|@{/materialInventory/stockList}?${link}|" class="text-decoration-none">
                                     <button type="button" class="btn btn-primary">돌아가기</button>
                                 </a>
 
@@ -83,12 +83,7 @@
                     <!-- 모달 내용 -->
                     <div class="input-group mb-3">
                         <span class="input-group-text">자제 코드</span>
-                        <input type="text" th:value="${dto.materials.materialCode}" class="form-control" placeholder="materialCode" readonly>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">카테고리</span>
-                        <input type="text" th:value="${dto.materialType}" class="form-control" placeholder="materialType" readonly>
+                        <input type="text" th:value="${dto.orderCode}" class="form-control" placeholder="orderCode" readonly>
                     </div>
 
                     <div class="input-group mb-3">
@@ -97,7 +92,7 @@
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">입고 수량</span>
-                        <input type="text" id="quantity" th:value="${dto.order.orderQuantity}" class="form-control" placeholder="materialIncomingQuantity" readonly>
+                        <input type="text" id="quantity" th:value="${dto.orderQuantity}" class="form-control" placeholder="orderQuantity" readonly>
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">반품 수량</span>

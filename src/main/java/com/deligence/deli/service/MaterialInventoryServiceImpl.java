@@ -1,18 +1,12 @@
 package com.deligence.deli.service;
 
-import com.deligence.deli.domain.MaterialInventory;
-import com.deligence.deli.domain.MaterialProcurementPlanning;
-import com.deligence.deli.domain.Materials;
 import com.deligence.deli.domain.Order;
 import com.deligence.deli.dto.*;
 import com.deligence.deli.repository.MaterialInventoryRepository;
-import com.deligence.deli.repository.MaterialProcurementPlanningRepository;
-import com.deligence.deli.repository.MaterialsRepository;
 import com.deligence.deli.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -34,12 +28,6 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
 
     private final OrderRepository orderRepository;
 
-    private final MaterialProcurementPlanningRepository materialProcurementPlanningRepository;
-
-    private final MaterialsRepository materialsRepository;
-
-
-
     // 자재 입고 상세보기
     @Override
     public OrderDetailDTO materialStockListOne(int orderNo) {
@@ -59,19 +47,14 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
     }
 
 
-    // 자재 목록 수정
+    // 자재 입고 수정
     @Override
     public int materialStockRegister(MaterialInventoryDTO materialInventoryDTO) {
 
-        MaterialInventory materialInventory = modelMapper.map(materialInventoryDTO, MaterialInventory.class);
-        int materialInventoryNo = materialInventoryRepository.save(materialInventory).getMaterialInventoryNo();
 
-        log.info("materialInventoryNo : " + materialInventoryNo);
-
-        return materialInventoryNo;
+        return 0;
 
     }
-
 
     // 자재 입고 리스트 출력
     @Override

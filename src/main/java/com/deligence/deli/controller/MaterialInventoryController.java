@@ -23,11 +23,7 @@ public class MaterialInventoryController {
     @Autowired
     private OrderService orderService;
 
-    @Autowired
-    private MaterialsService materialsService;
-
-
-    @GetMapping("/materialStockList")
+    @GetMapping("/stockList")
     public void materialStockList(PageRequestDTO pageRequestDTO, Model model) {
 
         PageResponseDTO<OrderDTO> responseDTO = orderService.list(pageRequestDTO);
@@ -39,22 +35,22 @@ public class MaterialInventoryController {
 
     }
 
-    @GetMapping("/materialStockDetail")
+    @GetMapping("/materialStockInDetail")
     public void materialInRead(int orderNo, PageRequestDTO pageRequestDTO, Model model) {
 
         OrderDetailDTO orderDetailDTO = orderService.read(orderNo);
 
         log.info(orderDetailDTO);
 
-//        int num = (int) (Math.random() * 9) + 0;
-//
-//        model.addAttribute("num", num);
+        int num = (int) (Math.random() * 9) + 0;
+
+        model.addAttribute("num", num);
 
         model.addAttribute("dto", orderDetailDTO);
 
-//        int result = orderDetailDTO.getOrderQuantity() - num;
-//
-//        model.addAttribute("result", result);
+        int result = orderDetailDTO.getOrderQuantity() - num;
+
+        model.addAttribute("result", result);
 
     }
 

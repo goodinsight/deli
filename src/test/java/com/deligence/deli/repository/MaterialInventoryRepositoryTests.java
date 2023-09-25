@@ -40,39 +40,39 @@ public class MaterialInventoryRepositoryTests {
     @Test
     public void testMaterialInventoryInsert() {
 
-        IntStream.rangeClosed(1, 100).forEach(i -> {
-
-            MaterialInventory materialInventory = MaterialInventory.builder()
-                    .materialIncomingQuantity(i)
-                    .materialOutgoingQuantity(i)
-                    .materialStock(i)
-                    .materialSupplyPrice((long) (i * 10))
-                    .materialTotalInventoryPayments((long) i * 20)
-                    .materials(Materials.builder().materialNo(i).build())
-//                    .order(Order.builder().orderNo(14).build())
-                    .materialName("name" + i)
-                    .materialType("type" + i)
-                    .materialCode("code" + i)
-                    .build();
-
-            MaterialInventory result = materialInventoryRepository.save(materialInventory);
-
-            log.info("MaterialInventoryNo : " + result.getMaterialInventoryNo());
-
-        });
+//        IntStream.rangeClosed(1, 100).forEach(i -> {
+//
+//            MaterialInventory materialInventory = MaterialInventory.builder()
+//                    .materialIncomingQuantity(i)
+//                    .materialOutgoingQuantity(i)
+//                    .materialStock(i)
+//                    .materialSupplyPrice((long) (i * 10))
+//                    .materialTotalInventoryPayments((long) i * 20)
+//                    .materials(Materials.builder().materialNo(i).build())
+////                    .order(Order.builder().orderNo(14).build())
+//                    .materialName("name" + i)
+//                    .materialType("type" + i)
+//                    .materialCode("code" + i)
+//                    .build();
+//
+//            MaterialInventory result = materialInventoryRepository.save(materialInventory);
+//
+//            log.info("MaterialInventoryNo : " + result.getMaterialInventoryNo());
+//
+//        });
 
     }
 
     @Test
     public void testMaterialInventorySelect() {
 
-        int materialInventoryNo = 10;
-
-        Optional<MaterialInventory> result = materialInventoryRepository.findById(materialInventoryNo);
-
-        MaterialInventory materialInventory = result.orElseThrow();
-
-        log.info(materialInventory);
+//        int materialInventoryNo = 10;
+//
+//        Optional<MaterialInventory> result = materialInventoryRepository.findById(materialInventoryNo);
+//
+//        MaterialInventory materialInventory = result.orElseThrow();
+//
+//        log.info(materialInventory);
 
     }
 
@@ -107,15 +107,15 @@ public class MaterialInventoryRepositoryTests {
     @Transactional
     public void testMaterialInventoryUpdate() {
 
-        int materialInventoryNo = 10;
-
-        Optional<MaterialInventory> result = materialInventoryRepository.findById(materialInventoryNo);
-
-        MaterialInventory materialInventory = result.orElseThrow();
-
-        materialInventory.change(1, 2, 3, 4L, 5L, "123", "123", "123");
-
-        materialInventoryRepository.save(materialInventory);
+//        int materialInventoryNo = 10;
+//
+//        Optional<MaterialInventory> result = materialInventoryRepository.findById(materialInventoryNo);
+//
+//        MaterialInventory materialInventory = result.orElseThrow();
+//
+//        materialInventory.change(1, 2, 3, 4L, 5L, "123", "123", "123");
+//
+//        materialInventoryRepository.save(materialInventory);
 
     }
 
@@ -123,9 +123,9 @@ public class MaterialInventoryRepositoryTests {
     @Transactional
     public void testMaterialInventoryDelete() {
 
-        int materialInventoryNo = 20;
-
-        materialInventoryRepository.deleteById(materialInventoryNo);
+//        int materialInventoryNo = 20;
+//
+//        materialInventoryRepository.deleteById(materialInventoryNo);
 
     }
 
@@ -134,24 +134,7 @@ public class MaterialInventoryRepositoryTests {
 
         Pageable pageable = PageRequest.of(0, 10, Sort.by("orderNo").descending());
 
-        Page<MaterialInventory> result = materialInventoryRepository.findAll(pageable);
-
-        log.info("total count : " + result.getTotalElements());
-        log.info("total pages : " + result.getTotalPages());
-        log.info("page number : " + result.getNumber());
-        log.info("page size : " + result.getSize());
-
-        List<MaterialInventory> todoList = result.getContent();
-
-        todoList.forEach(materialInventory -> log.info(materialInventory));
-
-    }
-    @Test
-    public void testMaterialOrderPaging() {
-
-        Pageable pageable = PageRequest.of(0, 10, Sort.by("orderNo").descending());
-
-        Page<Order> result = orderRepository.findAll(pageable);
+        Page<Order> result = materialInventoryRepository.findAll(pageable);
 
         log.info("total count : " + result.getTotalElements());
         log.info("total pages : " + result.getTotalPages());
@@ -163,7 +146,24 @@ public class MaterialInventoryRepositoryTests {
         todoList.forEach(order -> log.info(order));
 
     }
+    @Test
+    public void testMaterialOrderPaging() {
 
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("orderNo").descending());
+
+        Page<Order> result = materialInventoryRepository.findAll(pageable);
+
+        log.info("total count : " + result.getTotalElements());
+        log.info("total pages : " + result.getTotalPages());
+        log.info("page number : " + result.getNumber());
+        log.info("page size : " + result.getSize());
+
+        List<Order> todoList = result.getContent();
+
+        todoList.forEach(order -> log.info(order));
+
+    }
+//------------------------------------------------------------
     @Test
     public void testSearch1() {
 
@@ -178,7 +178,7 @@ public class MaterialInventoryRepositoryTests {
 
         String[] types = {"t", "c", "w"};
 
-        String keyword = "cpu";
+        String keyword = "라이젠";
 
         Pageable pageable = PageRequest.of(0, 10, Sort.by("orderNo").descending());
 

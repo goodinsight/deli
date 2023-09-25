@@ -17,7 +17,7 @@ import java.util.List;
 public class MaterialInventorySearchImpl extends QuerydslRepositorySupport implements MaterialInventorySearch {
 
     public MaterialInventorySearchImpl() {
-        super(MaterialInventory.class);
+        super(Order.class);
     }
 
     @Override
