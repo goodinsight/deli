@@ -63,4 +63,10 @@ public class Order {
 
     }
 
+    public void changeState(String orderState){
+
+        this.orderState = orderState;
+
+    }
+
 }
