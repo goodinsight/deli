@@ -25,7 +25,7 @@
                         <select class="form-select" name="type">
                             <option value="">---</option>
                             <!--a: No, b:자재코드, c:자재이름, d:공급단가, e:납품업체명, f:자재조달계약상태-->
-                            <option value="a" th:selected="${pageRequestDTO.type == 'a'}">조달계약 일련번호</option>
+                            <option value="a" th:selected="${pageRequestDTO.type == 'a'}">조달계획 코드</option>
                             <option value="b" th:selected="${pageRequestDTO.type == 'b'}">자재 코드</option>
                             <option value="c" th:selected="${pageRequestDTO.type == 'c'}">자재 이름</option>
                             <option value="d" th:selected="${pageRequestDTO.type == 'd'}">공급 단가</option>
@@ -69,16 +69,18 @@
                         <thead>
                         <tr>
                             <th scope="col">no</th>
+                            <th scope="col">조달계획 코드</th>
                             <th scope="col">자재 코드</th>
                             <th scope="col">자재 이름</th>
-                            <th scope="col">공급 단가</th>
+                            <th scope="col">공급단가</th>
                             <th scope="col">납품 업체명</th>
-                            <th scope="col">계약 상태</th>
+                            <th scope="col">계약상태</th>
                         </tr>
                         </thead>
                         <tbody th:with="link = ${pageRequestDTO.getLink()}">
                         <tr th:each="dto:${responseDTO.dtoList}">
                             <td>[[${dto.materialProcurementContractNo}]]</td>
+                            <td>[[${dto.materialProcurementPlanNo}]]</td>
                             <td>
                                 <a th:href="|@{/materialProcurementContract/read(materialProcurementContractNo =
                                  ${dto.materialProcurementContractNo})}&${link}|" class="text-decoration-none">[[${dto.materialCode}]]</a>

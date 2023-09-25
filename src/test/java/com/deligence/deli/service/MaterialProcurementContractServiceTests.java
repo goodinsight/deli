@@ -27,6 +27,7 @@ public class MaterialProcurementContractServiceTests {
                         .materialProcurementContractDate(LocalDate.of(2023, 9, 22))
                         .materialProcurementContractState("계약전")
                         .materialProcurementContractEtc("등록테스트")
+                        .materialProcurementPlanCode("planCode")
                         .materialCode("materialCode")
                         .materialName("materialName")
                         .materialSupplyPrice(100L)

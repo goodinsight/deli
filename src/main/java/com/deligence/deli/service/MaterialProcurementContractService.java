@@ -15,7 +15,7 @@ public interface MaterialProcurementContractService {
 
     PageResponseDTO<MaterialProcurementContractDTO> list(PageRequestDTO pageRequestDTO);
 
-    int getCodeCount(String orderCode);
+    int getCodeCount(String materialProcurementContractCode);
 
     //DTO To Entity
     default MaterialProcurementContract dtoToEntity(MaterialProcurementContractDTO materialProcurementContractDTO) {
@@ -27,10 +27,13 @@ public interface MaterialProcurementContractService {
                 .materialProcurementContractState(materialProcurementContractDTO.getMaterialProcurementContractState())
                 .materialProcurementContractEtc(materialProcurementContractDTO.getMaterialProcurementContractEtc())
                 .materials(Materials.builder().materialNo(materialProcurementContractDTO.getMaterialNo()).build())
+                //추가 부분
+                .materialProcurementPlanning(MaterialProcurementPlanning.builder().materialProcurementPlanNo(materialProcurementContractDTO.getMaterialProcurementPlanNo()).build())
+                .materialProcurementPlanCode(materialProcurementContractDTO.getMaterialProcurementPlanCode())
                 .materialCode(materialProcurementContractDTO.getMaterialCode())
                 .materialName(materialProcurementContractDTO.getMaterialName())
                 .materialSupplyPrice(materialProcurementContractDTO.getMaterialSupplyPrice())
-                .materialRequirementsCount(materialProcurementContractDTO.getMaterialRequirementsCount())
+                .procurementQuantity(materialProcurementContractDTO.getProcurementQuantity())
                 .cooperatorSupplier(CooperatorSupplier.builder().supplierNo(materialProcurementContractDTO.getSupplierNo()).build())
                 .supplierName(materialProcurementContractDTO.getSupplierName())
                 .supplierStatus(materialProcurementContractDTO.getSupplierStatus())
@@ -51,10 +54,13 @@ public interface MaterialProcurementContractService {
                 .materialProcurementContractState(materialProcurementContract.getMaterialProcurementContractState())
                 .materialProcurementContractEtc(materialProcurementContract.getMaterialProcurementContractEtc())
                 .materialNo(materialProcurementContract.getMaterials().getMaterialNo())
+                //추가 부분
+                .materialProcurementPlanNo(materialProcurementContract.getMaterialProcurementContractNo())
+                .materialProcurementPlanCode(materialProcurementContract.getMaterialProcurementPlanCode())
                 .materialCode(materialProcurementContract.getMaterialCode())
                 .materialName(materialProcurementContract.getMaterialName())
                 .materialSupplyPrice(materialProcurementContract.getMaterialSupplyPrice())
-                .materialRequirementsCount(materialProcurementContract.getMaterialRequirementsCount())
+                .procurementQuantity(materialProcurementContract.getProcurementQuantity())
                 .supplierNo(materialProcurementContract.getCooperatorSupplier().getSupplierNo())
                 .supplierName(materialProcurementContract.getSupplierName())
                 .supplierStatus(materialProcurementContract.getSupplierStatus())

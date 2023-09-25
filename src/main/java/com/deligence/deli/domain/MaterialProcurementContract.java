@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 //@Table(name = "MaterialProcurementContract")
-@ToString(exclude = {"materials","cooperatorSupplier", "employee", "documentFile"})
+@ToString(exclude = {"materials","materialProcurementPlanning","cooperatorSupplier", "employee", "documentFile"})
 public class MaterialProcurementContract extends BaseEntity {
 
     @Id
@@ -31,6 +31,13 @@ public class MaterialProcurementContract extends BaseEntity {
 
     private String materialProcurementContractEtc;  //조건상세(기타사항)
 
+    //9.25 추가사항 (자재정보, 소요량 가져옴)
+    @ManyToOne(fetch = FetchType.LAZY)
+    private MaterialProcurementPlanning materialProcurementPlanning;
+
+    private String materialProcurementPlanCode;   //조달계획코드(검색용)
+
+    //실질적으로 필요 없을 부분(9.25 수정) -> 조달계획에서 자재 정보 가져옴.
     @ManyToOne(fetch = FetchType.LAZY)
     private Materials materials;    //자재일련번호 FK
 
@@ -40,7 +47,7 @@ public class MaterialProcurementContract extends BaseEntity {
 
     private Long materialSupplyPrice; //공급단가 (검색용)
 
-    private int materialRequirementsCount;  //자재 수량
+    private int procurementQuantity;  //자재 조달 수량 (한 협력회사에서 실직적으로 조달할 양)
 
 //    @ManyToOne(fetch = FetchType.LAZY)
     @ManyToOne(cascade = CascadeType.ALL)
@@ -62,10 +69,11 @@ public class MaterialProcurementContract extends BaseEntity {
 
     //수정가능한 속성 지정 (계약일, 조건상세, 계약상태 지정)
     public void change(MaterialProcurementContractDTO materialProcurementContractDTO) {
+        this.materialProcurementContractCode = materialProcurementContractDTO.getMaterialProcurementContractCode();
         this.materialProcurementContractDate = materialProcurementContractDTO.getMaterialProcurementContractDate();
         this.materialProcurementContractState = materialProcurementContractDTO.getMaterialProcurementContractState();
         this.materialProcurementContractEtc = materialProcurementContractDTO.getMaterialProcurementContractEtc();
-        this.materialRequirementsCount = materialProcurementContractDTO.getMaterialRequirementsCount();
+        this.procurementQuantity = materialProcurementContractDTO.getProcurementQuantity();
 
         //자재코드
         //분류
