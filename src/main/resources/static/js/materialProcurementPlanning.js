@@ -4,7 +4,6 @@ async function getPlanList({page, size}){
 
     return result.data
 
-    // return null;
 }
 
 
@@ -14,7 +13,6 @@ async function getPlan(planNo) {
 
     return result.data
 
-    // return null;
 }
 
 async function getMaterialList({page, size}) {

@@ -31,7 +31,23 @@
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text">생산계획 코드</span>
-              <input type="text" name="productionPlanCode" class="form-control selectPlan" placeholder="클릭해주세요" readonly>
+              <input type="text" name="productionPlanCode" class="form-control" id="selectPlan" placeholder="클릭해주세요" readonly>
+            </div>
+            <div class="input-group mb-3 pl-5">
+              <span class="input-group-text">제품 코드</span>
+              <input type="text" name="productCode" class="form-control productCode" readonly>
+            </div>
+            <div class="input-group mb-3 pl-5">
+              <span class="input-group-text">클라이언트 회사명</span>
+              <input type="text" name="clientName" class="form-control clientName" readonly>
+            </div>
+            <div class="input-group mb-3 pl-5">
+              <span class="input-group-text">제품 납기일</span>
+              <input type="text" name="productDeliveryDate" class="form-control productDeliveryDate" readonly>
+            </div>
+            <div class="input-group mb-3 pl-5">
+              <span class="input-group-text">계약 상태</span>
+              <input type="text" name="clientStatus" class="form-control clientStatus" readonly>
             </div>
 
             <div class="d-none input-group mb-3">
@@ -61,7 +77,7 @@
             </div>
 
             <div class="input-group mb-3">
-              <span class="input-group-text">납기일</span>
+              <span class="input-group-text">조달 납기일</span>
               <input type="date" name="procurementDeliveryDate" class="form-control procurementDeliveryDate" placeholder="납기일">
             </div>
 
@@ -115,6 +131,7 @@
                     <thead>
                     <tr>
                       <th scope="col">NO</th>
+                      <th scope="col">생산계획 코드</th>
                       <th scope="col">제품코드</th>
                       <th scope="col">클라이언트 회사명</th>
                       <th scope="col">납기일</th>
@@ -232,10 +249,11 @@
   let planPage = 1
   let planPageSize = 5
 
-  document.querySelector(".selectPlan").addEventListener("click", function (e) {
+  document.querySelector("#selectPlan").addEventListener("click", function (e) {
     console.log("select plan click")
     printPlans(1, 5)
     planModal.show()
+
   }, false)
 
   closePlanBtn.addEventListener("click", function (e) {
@@ -256,6 +274,7 @@
 
         str += `<tr>
                 <td data-planNo="${dto.productionPlanNo}">${dto.productionPlanNo}</td>
+                <td data-planNo="${dto.productionPlanNo}">${dto.productionPlanCode}</td>
                 <td data-planNo="${dto.productionPlanNo}">${dto.productCode}</td>
                 <td data-planNo="${dto.productionPlanNo}">${dto.clientName}</td>
                 <td data-planNo="${dto.productionPlanNo}">${dto.productDeliveryDate}</td>
@@ -319,7 +338,8 @@
 
   }, false)
 
-  const inputPlanNo = document.querySelector(".selectPlan")
+  const productionPlanNo = document.querySelector(".productionPlanNo")
+  const inputPlanCode = document.querySelector("#selectPlan")
   const productCode = document.querySelector(".productCode")  //제품코드
   const clientName = document.querySelector(".clientName")  //클라이언트회사명
   const productDeliveryDate = document.querySelector(".productDeliveryDate")  //제품납기일
@@ -349,8 +369,9 @@
     getPlan(planNo).then(plan => {
 
       console.log(plan)
-      inputPlanNo.value = plan.productionPlanNo
+      productionPlanNo.value = plan.productionPlanNo
       //생산 계획 정보를 가져와서 화면에 반영해야 할 항복들은 여기에 --------------------------------------------------------
+      inputPlanCode.value = plan.productionPlanCode
       productCode.value = plan.productCode
       clientName.value = plan.clientName
       productDeliveryDate.value = new Date(plan.productDeliveryDate).toISOString().split('T')[0]
