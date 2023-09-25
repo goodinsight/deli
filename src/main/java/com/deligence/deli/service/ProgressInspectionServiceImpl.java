@@ -37,13 +37,13 @@ public class ProgressInspectionServiceImpl implements ProgressInspectionService{
     public int register(ProgressInspectionDTO progressInspectionDTO) {
 
         log.info(progressInspectionDTO);
-
+/*
         // 발주에 할당된 검수 갯수
         long count = progressInspectionRepository.countByOrder_OrderNo(progressInspectionDTO.getOrderNo());
 
         // dto 차수에 count + 1 설정
         progressInspectionDTO.setProgressInspectionTimes((int)(count +1));
-
+*/
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
         ProgressInspection progressInspection = modelMapper.map(progressInspectionDTO, ProgressInspection.class);
