@@ -100,8 +100,6 @@ public class MaterialSearchImpl extends QuerydslRepositorySupport implements Mat
 
     }
 
-    private Materials materials1;
-    private MaterialImageDTO materialImageDTO;
     @Override
     public Page<MaterialListAllDTO> searchWithAll(String[] types, String keyword, Pageable pageable) {
 
