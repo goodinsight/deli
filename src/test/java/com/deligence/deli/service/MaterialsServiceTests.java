@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.core.parameters.P;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.IntStream;
@@ -22,7 +23,7 @@ public class MaterialsServiceTests {
     private MaterialsService materialsService;
 
     @Test
-    public void testRegister() throws Exception { // 게시물 등록 test
+    public void testRegister() { // 게시물 등록 test
 
         log.info(materialsService.getClass().getName());
 
@@ -51,15 +52,16 @@ public class MaterialsServiceTests {
 //            materialsService.dtoToEntity(materialImageDTO);
 //        });
         MaterialsDTO materialsDTO = MaterialsDTO.builder()
-                .materialNo(1365)
-                .materialName("update.............1365")
-                .materialExplaination("update.............1365")
-                .materialType("update.............1365")
+                .materialNo(1385)
+                .materialName("update.............1385")
+                .materialExplaination("update.............1385")
+                .materialType("update.............1385")
                 .materialSupplyPrice(10L)
                 .build();
 
 //        첨부파일 추가
-        materialsDTO.setFileNames(Arrays.asList(UUID.randomUUID()+"_yyy.jpg"));
+
+        materialsDTO.setFileNames(Arrays.asList(UUID.randomUUID() + "_zzz.jpg"));
 
         materialsService.modify(materialsDTO);
 
@@ -67,7 +69,7 @@ public class MaterialsServiceTests {
 
     @Test
     public void testDelete() { // 게시물 삭제 test
-        int materialNo = 1315;
+        int materialNo = 1360;
 
         materialsService.delete(materialNo);
     }
@@ -88,7 +90,15 @@ public class MaterialsServiceTests {
     }
 
     @Test
-    public void testRegisterWithImages() throws Exception { //이미지 추가 test
+    public void testCC() {
+
+        int num = materialsService.getCodeCount("Material-GPU-20230924-");
+
+        log.info( "cc :" + num);
+    }
+
+    @Test
+    public void testRegisterWithImages() { //이미지 추가 test
 
         log.info(materialsService.getClass().getName());
 
@@ -101,9 +111,12 @@ public class MaterialsServiceTests {
                 .build();
 
         materialsDTO.setFileNames(
-                Arrays.asList(UUID.randomUUID() + "_aaa.jpg")
 
-        );
+                Arrays.asList(
+                        UUID.randomUUID() + "_aaa.jpg"
+                ));
+
+
         int materialNo = materialsService.register(materialsDTO);
 
         log.info("materialNo: " + materialNo);
@@ -112,22 +125,21 @@ public class MaterialsServiceTests {
     @Test
     public void testReadAll() { // 이미지조회
 
-        int materialNo = 1365;
+        int materialNo = 1385;
 
         MaterialsDTO materialsDTO = materialsService.readOne(materialNo);
 
         log.info(materialsDTO);
 
-        for(String fileName : materialsDTO.getFileNames()) {
-            log.info(fileName);
-        };
 
-
+        for (String fileName : materialsDTO.getFileNames()){
+           log.info(fileName);
+        } //end for
     }
 
     @Test
     public void testRemoveAll(){ //이미지 삭제
-        int materialNo = 1348;
+        int materialNo = 1370;
         materialsService.delete(materialNo);
     }
 
@@ -139,18 +151,29 @@ public class MaterialsServiceTests {
                 .size(10)
                 .build();
 
+
         PageResponseDTO<MaterialsDTO> responseDTO = materialsService.listWithAll(pageRequestDTO);
 
         List<MaterialsDTO> dtoList = responseDTO.getDtoList();
 
-        dtoList.forEach(materialImageDTO -> {
-                log.info(materialImageDTO.getMaterialNo());
+//        PageResponseDTO<MaterialListAllDTO> responseDTO = materialsService.listWithAll(pageRequestDTO);
+//
+//        List<MaterialListAllDTO> dtoList = responseDTO.getDtoList();
 
-            if(materialImageDTO.getMaterialImage() != null){
-                for(MaterialImageDTO materialImage : materialImageDTO.getMaterialImage()) {
-                    log.info(materialImage);
-                }
-            }
+
+        dtoList.forEach(materialListAllDTO -> {
+                log.info(materialListAllDTO.getMaterialNo()+":"+materialListAllDTO.getMaterialName());
+
+
+//            if(materialImageDTO.getMaterialImage() != null){
+//                for(MaterialImageDTO materialImage : materialImageDTO.getMaterialImage()) {
+//
+//            if(materialListAllDTO.getMaterialImages() != null){
+//                for(MaterialImageDTO materialImage : materialListAllDTO.getMaterialImages()) {
+//
+//                    log.info(materialImage);
+//                }
+//            };
 
             log.info("--------------------------------------------");
         });

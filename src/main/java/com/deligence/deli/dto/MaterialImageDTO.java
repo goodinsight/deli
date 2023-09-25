@@ -1,5 +1,6 @@
 package com.deligence.deli.dto;
 
+import com.deligence.deli.domain.MaterialImage;
 import lombok.*;
 
 @Data

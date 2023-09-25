@@ -1,5 +1,6 @@
 package com.deligence.deli.domain;
 
+import com.deligence.deli.dto.MaterialsDTO;
 import lombok.*;
 import org.hibernate.annotations.BatchSize;
 
@@ -37,6 +38,19 @@ public class Materials extends BaseEntity{
     @Column(length = 50, nullable = true)
     private Long materialSupplyPrice; //자재공급단가
 
+    public void change(MaterialsDTO materialsDTO){
+        this.materialName = materialName;
+        this.materialType = materialType;
+        this.materialExplaination = materialExplaination;
+        this.materialSupplyPrice = materialSupplyPrice;
+    }
+//    public void change(String materialName, String materialType, String materialExplaination, Long materialSupplyPrice){
+//        this.materialName = materialName;
+//        this.materialType = materialType;
+//        this.materialExplaination = materialExplaination;
+//        this.materialSupplyPrice = materialSupplyPrice;
+//    }
+
     @OneToMany(mappedBy = "materials",
             cascade = {CascadeType.ALL},
             fetch = FetchType.LAZY,
@@ -45,12 +59,7 @@ public class Materials extends BaseEntity{
     @BatchSize(size = 20)
     private Set<MaterialImage> imageSet = new HashSet<>(); //이미지 첨부
 
-    public void change(String materialName, String materialType, String materialExplaination, Long materialSupplyPrice){
-        this.materialName = materialName;
-        this.materialType = materialType;
-        this.materialExplaination = materialExplaination;
-        this.materialSupplyPrice = materialSupplyPrice;
-    }
+
 
     public void addImage(String materialUuid, String materialImgName) {
 

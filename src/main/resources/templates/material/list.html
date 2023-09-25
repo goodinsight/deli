@@ -44,9 +44,6 @@
                         <a th:href="@{/material/list}" class="text-decoration-none">
                             <button type="button" class="btn btn-primary">Register</button>
                         </a>
-                        <a th:href="|@{/material/register}|" class="text-decoration-none">
-                            <button type="button" class="btn btn-secondary">추가</button>
-                        </a>
                     </div>
                 </div>
 
@@ -68,15 +65,14 @@
                             <th scope="row">[[${dto.materialNo}]]</th>
                             <td> [[${dto.materialCode}]] </td>
                             <td>
-                                <a th:href="|@{/material/read(materialNo = ${dto.materialNo})}&${link}|">
+                                <a th:href="|@{/material/read(materialNo = ${dto.materialNo})}&${link}|" class="text-decoration-none">
                                 [[${dto.materialName}]]
                                 </a>
                             </td>
                             <td> [[${dto.materialType}]] </td>
                         </tr>
-
-                    </thead>
-                </table>
+                        </tbody>
+                    </table>
 
                     <div class="float-end">
                         <ul class="pagination flex-wrap">
@@ -104,28 +100,17 @@
         </div> <!-- end col -->
     </div> <!-- end row -->
 
-    <div class="modal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Modal body text goes here.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" >Save changes</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
 </div>
 
 <script layout:fragment="script" th:inline="javascript">
+
+    console.log("자재 리스트 페이지")
+
+    $(document).ready(function () {
+        console.log([[${pageRequestDTO}]])
+        console.log([[${pageRequestDTO.link}]])
+        console.log([[${responseDTO}]])
+    })
 
     document.querySelector(".pagination").addEventListener("click", function(e){
         e.preventDefault()

@@ -1,14 +1,13 @@
 package com.deligence.deli.controller;
 
-import com.deligence.deli.dto.MaterialsDTO;
-import com.deligence.deli.dto.PageRequestDTO;
-import com.deligence.deli.dto.PageResponseDTO;
+import com.deligence.deli.dto.*;
 import com.deligence.deli.service.MaterialsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -29,27 +28,34 @@ public class MaterialsController {
     @Value("${com.deligence.upload.path}") //import 시에 springframework으로 시작하는 Value
     private String uploadPath;
 
-
     private final MaterialsService materialsService;
 
     @GetMapping("/list")//자재 전체목록
     public void listAll(PageRequestDTO pageRequestDTO, Model model) {
 
+
         PageResponseDTO<MaterialsDTO> responseDTO = materialsService.listWithAll(pageRequestDTO);
+
+       // PageResponseDTO<MaterialListAllDTO> responseDTO = materialsService.listWithAll(pageRequestDTO);
+
 
         log.info(responseDTO);
 
         model.addAttribute("responseDTO", responseDTO);
     }
 
-    @GetMapping("/register") //자재 등록
-    public void registerGET(){
+    @GetMapping("/register") //자재 등록 (자재 employee6)
+    public void registerGET(@AuthenticationPrincipal EmployeeSecurityDTO employeeSecurityDTO, Model model){
+
+        log.info(employeeSecurityDTO);
+
+        model.addAttribute("user", employeeSecurityDTO);
 
     }
 
     @PostMapping("/register") //자재 등록
     public String registerPost(@Valid MaterialsDTO materialsDTO, BindingResult bindingResult,
-                               RedirectAttributes redirectAttributes) throws Exception {
+                               RedirectAttributes redirectAttributes) {
 
         log.info("material POST register...");
 
@@ -77,6 +83,8 @@ public class MaterialsController {
         log.info(pageRequestDTO);
 
         model.addAttribute("dto",materialsDTO);
+
+        model.addAttribute("pageRequestDTO", pageRequestDTO);
     }
 
     @PostMapping("/modify") //자재 수정
@@ -87,6 +95,7 @@ public class MaterialsController {
 
         log.info("Materials modify post....." + materialsDTO);
 
+        //에러 처리 ------------------------------------------------------------------------------
         if(bindingResult.hasErrors()) {
             log.info("hss errors......");
 
@@ -98,6 +107,7 @@ public class MaterialsController {
 
             return "redirect:/material/modify?"+link;
         }
+        //--------------------------------------------------------------------------------------------
 
         materialsService.modify(materialsDTO);
 
@@ -111,9 +121,7 @@ public class MaterialsController {
     @PostMapping("/delete") //자재삭제
     public String remove(MaterialsDTO materialsDTO, RedirectAttributes redirectAttributes) {
 
-
         int materialNo = materialsDTO.getMaterialNo();
-
         log.info("remove post..." + materialNo);
 
         materialsService.delete(materialNo);
@@ -145,7 +153,9 @@ public class MaterialsController {
 
                 // 섬네일이 존재한다면
                 if(contentType.startsWith("image")) {
+
                     File thumbnailFile = new File(uploadPath + File.separator + "s_" + materialImgName);
+
                     thumbnailFile.delete();
                 }
 

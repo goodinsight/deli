@@ -38,7 +38,8 @@ public class MaterialsDTO {
     
     //private List<MaterialImageDTO> materialImage;   //자재 이미지
 
-    private List<String> fileNames; //첨부파일 이름
+    private List<String> fileNames; //첨부파일 이름들
+
 
 //    public MaterialsDTO(String materialName, String materialType, String materialExplaination, long materialSupplyPrice){
 //        LocalDate date = LocalDate.now();
