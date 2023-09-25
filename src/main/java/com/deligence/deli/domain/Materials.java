@@ -51,6 +51,10 @@ public class Materials extends BaseEntity{
 //        this.materialSupplyPrice = materialSupplyPrice;
 //    }
 
+    public void changeCode(String materialCode){
+        this.materialCode = materialCode;
+    }
+
     @OneToMany(mappedBy = "materials",
             cascade = {CascadeType.ALL},
             fetch = FetchType.LAZY,

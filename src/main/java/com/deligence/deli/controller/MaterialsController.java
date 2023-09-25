@@ -31,10 +31,10 @@ public class MaterialsController {
     private final MaterialsService materialsService;
 
     @GetMapping("/list")//자재 전체목록
-    public void listAll(PageRequestDTO pageRequestDTO, Model model) {
+    public void list(PageRequestDTO pageRequestDTO, Model model) {
 
 
-        PageResponseDTO<MaterialsDTO> responseDTO = materialsService.listWithAll(pageRequestDTO);
+        PageResponseDTO<MaterialsDTO> responseDTO = materialsService.list(pageRequestDTO);
 
        // PageResponseDTO<MaterialListAllDTO> responseDTO = materialsService.listWithAll(pageRequestDTO);
 
