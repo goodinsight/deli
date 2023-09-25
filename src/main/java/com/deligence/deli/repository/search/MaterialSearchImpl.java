@@ -2,11 +2,8 @@ package com.deligence.deli.repository.search;
 
 import com.deligence.deli.domain.*;
 import com.deligence.deli.dto.MaterialImageDTO;
-<<<<<<< HEAD
 import com.deligence.deli.dto.MaterialsDTO;
-=======
 import com.deligence.deli.dto.MaterialListAllDTO;
->>>>>>> origin/joo15
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.Tuple;
 import com.querydsl.jpa.JPQLQuery;
