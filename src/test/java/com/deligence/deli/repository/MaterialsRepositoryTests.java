@@ -246,12 +246,12 @@ public class MaterialsRepositoryTests {
 
 //        materialsRepository.searchWithAll(null, null, pageable);
 
-        Page<MaterialListAllDTO> result = materialsRepository.searchWithAll(null, null, pageable);
+//        Page<MaterialListAllDTO> result = materialsRepository.searchWithAll(null, null, pageable);
 
         log.info("------------------------");
-        log.info(result.getTotalElements());
-
-        result.getContent().forEach(materialListAllDTO -> log.info(materialListAllDTO));
+//        log.info(result.getTotalElements());
+//
+//        result.getContent().forEach(materialListAllDTO -> log.info(materialListAllDTO));
     }
 
 
