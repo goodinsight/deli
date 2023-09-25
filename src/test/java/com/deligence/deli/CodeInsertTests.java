@@ -4,13 +4,19 @@ import com.deligence.deli.domain.Materials;
 import com.deligence.deli.dto.MaterialsDTO;
 import com.deligence.deli.repository.MaterialsRepository;
 import lombok.extern.log4j.Log4j2;
+import net.coobird.thumbnailator.Thumbnailator;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -43,47 +49,59 @@ public class CodeInsertTests {
         }
     }
 
-//    @Test
-//    public void imageUpdate() throws IOException {
-//
-//        String[] types = {"cpu", "MAINBOARD", "MEMORY", "SSD", "HDD", "GPU","CASE", "POWER", "COOLER", "SOUNDCARD", "MONITER", "KEYBOARD", "MOUSE"}
-//
-//        Optional<Materials> result = materialsRepository.findById(1);
-//
-//        Materials materials = result.orElseThrow();
-//
-//        for(int i = 0; i < types.length; i++){
-//
-//            if( materials.getMaterialType().equals(types[i]) ){
-//                int tmp = (int) (1 + Math.random() * 100);
-//                File imgFile = new File("C:/Users/168/Pictures/Saved Pictures/"+types[i]+tmp+".jpg");
-//
-//
-//
-////                materials.addImage(UUID.randomUUID().toString(), types[i]+".jpg");
-////                materialsRepository.save(materials);
-//
-//                break;
-//            }
-//
-//        }
-//
-//
-//
-//
-//
-//        //확장자를 제외한 파일 이름 만 출력
-//        private String getFileNameNoExt(String filepath){
-//            String fileName = filepath.substring(0,  filepath.lastIndexOf("."));
-//            return fileName;
-//        }
-//
-//        //파일 확장자만 출력
-//        private String getFileExt(String filepath){
-//            String ext = filepath.substring(filepath.lastIndexOf(".")+1);
-//            return ext;
-//        }
-//    }
+    @Test
+    @Transactional
+    @Rollback(false)    // 롤백 되지 않도록 설정
+    public void imageUpdate() throws IOException, InterruptedException {
+
+        String[] types = {"cpu", "MAINBOARD", "MEMORY", "SSD", "HDD", "GPU","CASE", "POWER", "COOLER", "SOUNDCARD", "MONITER", "KEYBOARD", "MOUSE"};
+
+
+        for(int j = 1169; j <= 1312; j++) {
+
+            Optional<Materials> result = materialsRepository.findById(j);
+
+            Materials materials = result.orElseThrow();
+
+            for (int i = 0; i < types.length; i++) {
+
+                if (materials.getMaterialType().equals(types[i])) {
+                    int tmp = 0;
+                    if(types[i].equals("SOUNDCARD")) {
+                        tmp = (int) (1 + Math.random() * 70);
+                    } else{
+                        tmp = (int) (1 + Math.random() * 100);
+                    }
+                    log.info("number: " + tmp);
+                    File imgFile = new File("C:/Users/168/Pictures/Saved Pictures/" + types[i] + tmp + ".jpg");
+                    imgFile.createNewFile();
+                    String uuid = UUID.randomUUID().toString();
+
+                    File newFile = new File("C:/Upload/" + uuid + "_" + types[i] + tmp + ".jpg");
+                    File thumbFile = new File("C:/Upload/" + "s_" + uuid + "_" + types[i] + tmp + ".jpg");
+                    boolean result1 = imgFile.renameTo(newFile);
+                    log.info("result : " + result1);
+
+                    File copyFile = new File("C:/Users/168/Pictures/Saved Pictures/material_image/" + types[i] + tmp + ".jpg");
+                    File copyToFile = new File("C:/Users/168/Pictures/Saved Pictures/" + types[i] + tmp + ".jpg");
+                    Files.copy(copyFile.toPath(), copyToFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+//                    Thread.sleep(100);
+
+                    Thumbnailator.createThumbnail(Paths.get("C:/Upload/", uuid + "_" + types[i] + tmp + ".jpg").toFile(), thumbFile, 200, 200);
+
+
+                    materials.addImage(uuid, types[i] + tmp + ".jpg");
+                    materialsRepository.save(materials);
+
+
+                    break;
+                }
+
+            }
+        }
+
+    }
 
 
 }
