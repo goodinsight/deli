@@ -80,7 +80,7 @@
                         <tbody th:with="link = ${pageRequestDTO.getLink()}">
                         <tr th:each="dto:${responseDTO.dtoList}">
                             <td>[[${dto.materialProcurementContractNo}]]</td>
-                            <td>[[${dto.materialProcurementPlanNo}]]</td>
+                            <td>[[${dto.materialProcurementPlanCode}]]</td>
                             <td>
                                 <a th:href="|@{/materialProcurementContract/read(materialProcurementContractNo =
                                  ${dto.materialProcurementContractNo})}&${link}|" class="text-decoration-none">[[${dto.materialCode}]]</a>
