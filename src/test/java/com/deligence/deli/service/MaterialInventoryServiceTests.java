@@ -36,7 +36,7 @@ public class MaterialInventoryServiceTests {
 
         int orderNo = 114;
 
-        OrderDetailDTO orderDetailDTO = materialInventoryService.materialInRead(orderNo);
+        OrderDetailDTO orderDetailDTO = materialInventoryService.materialStockListOne(orderNo);
         log.info(orderDetailDTO);
         log.info("자재 이름 : " + orderDetailDTO.getMaterialName());
         log.info("담당자 : " + orderDetailDTO.getEmployeeName());
@@ -96,7 +96,7 @@ public class MaterialInventoryServiceTests {
                 .size(10)
                 .build();
 
-        PageResponseDTO<OrderDTO> responseDTO = materialInventoryService.materialInListAll(pageRequestDTO);
+        PageResponseDTO<OrderDTO> responseDTO = materialInventoryService.materialStockList(pageRequestDTO);
 
         log.info(responseDTO);
 

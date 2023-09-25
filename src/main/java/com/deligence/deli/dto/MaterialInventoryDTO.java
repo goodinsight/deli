@@ -24,7 +24,7 @@ public class MaterialInventoryDTO {
 
     private Long materialTotalInventoryPayments; // 재고 금액
 
-    private DocumentFile documentFile; // 문서 파일 일련번호
+    private int documentFile; // 문서 파일 일련번호
 
     private String materialName; // 자재명 검색
 

@@ -28,6 +28,7 @@ public class MeterialInOutHistory extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Employee employee; // 담당자
 
+
     public void change(String inOutSeparator, int quantity) {
 
         this.inOutSeparator = inOutSeparator;

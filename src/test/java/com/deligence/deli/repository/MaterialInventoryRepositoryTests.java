@@ -132,7 +132,7 @@ public class MaterialInventoryRepositoryTests {
     @Test
     public void testMaterialInventorypaging() {
 
-        Pageable pageable = PageRequest.of(0, 10, Sort.by("materialInventoryNo").descending());
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("orderNo").descending());
 
         Page<MaterialInventory> result = materialInventoryRepository.findAll(pageable);
 
@@ -167,7 +167,7 @@ public class MaterialInventoryRepositoryTests {
     @Test
     public void testSearch1() {
 
-        Pageable pageable = PageRequest.of(1, 10, Sort.by("materialInventoryNo").descending());
+        Pageable pageable = PageRequest.of(1, 10, Sort.by("orderNo").descending());
 
         materialInventoryRepository.materialStockListOne(pageable);
 
@@ -180,9 +180,9 @@ public class MaterialInventoryRepositoryTests {
 
         String keyword = "cpu";
 
-        Pageable pageable = PageRequest.of(0, 10, Sort.by("materialInventoryNo").descending());
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("orderNo").descending());
 
-        Page<MaterialInventory> result = materialInventoryRepository.materialStockList(types, keyword, pageable);
+        Page<Order> result = materialInventoryRepository.materialStockList(types, keyword, pageable);
 
         log.info("페이지 : " + result.getTotalPages());
 
@@ -192,7 +192,7 @@ public class MaterialInventoryRepositoryTests {
 
         log.info(result.hasPrevious() + " : " + result.hasNext());
 
-        result.getContent().forEach(materialInventory -> log.info(materialInventory));
+        result.getContent().forEach(order -> log.info(order));
 
     }
 
