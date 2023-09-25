@@ -50,4 +50,6 @@ public class MaterialInOutHistoryRepositoryTests {
         log.info(meterialInOutHistory);
     }
 
+
+
 }

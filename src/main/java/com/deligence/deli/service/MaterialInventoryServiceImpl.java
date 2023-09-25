@@ -42,25 +42,13 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
 
     // 자재 입고 상세보기
     @Override
-    public OrderDetailDTO materialInRead(int orderNo) {
+    public OrderDetailDTO materialStockListOne(int orderNo) {
 
         Optional<Order> result = orderRepository.findById(orderNo);
 
         Order order = result.orElseThrow();
 
         log.info(order.getOrderNo());
-
-        Optional<MaterialProcurementPlanning> result2 = materialProcurementPlanningRepository.findById(order.getMaterialProcurementPlanning().getMaterialProcurementPlanNo());
-
-        MaterialProcurementPlanning materialProcurementPlanning = result2.orElseThrow();
-
-        log.info(materialProcurementPlanning.getMaterialProcurementPlanNo());
-
-        Optional<Materials> result3 = materialsRepository.findById(materialProcurementPlanning.getMaterials().getMaterialNo());
-
-        Materials materials = result3.orElseThrow();
-
-        log.info("자재 이름 : " + materials.getMaterialName());
 
         OrderDetailDTO orderDetailDTO = modelMapper.map(order, OrderDetailDTO.class);
 
@@ -84,22 +72,10 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
 
     }
 
-    // 자재 목록 상세보기
+
+    // 자재 입고 리스트 출력
     @Override
-    public MaterialInventoryDTO materialStockRead(int materialInventoryNo) {
-
-        Optional<MaterialInventory> result = materialInventoryRepository.findById(materialInventoryNo);
-
-        MaterialInventory materialInventory = result.orElseThrow();
-
-        MaterialInventoryDTO materialInventoryDTO = modelMapper.map(materialInventory, MaterialInventoryDTO.class);
-
-        return materialInventoryDTO;
-    }
-
-    // 자재 목록 리스트 출력
-    @Override
-    public PageResponseDTO<OrderDTO> materialInListAll(PageRequestDTO pageRequestDTO) {
+    public PageResponseDTO<OrderDTO> materialStockList(PageRequestDTO pageRequestDTO) {
 
         String[] types = pageRequestDTO.getTypes();
         String keyword = pageRequestDTO.getKeyword();

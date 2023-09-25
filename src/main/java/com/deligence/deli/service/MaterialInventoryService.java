@@ -7,10 +7,8 @@ public interface MaterialInventoryService {
 
     int materialStockRegister(MaterialInventoryDTO materialInventoryDTO);
 
-    OrderDetailDTO materialInRead(int orderNo);
+    OrderDetailDTO materialStockListOne(int orderNo);
 
-    MaterialInventoryDTO materialStockRead(int materialInventoryNo);
-
-    PageResponseDTO<OrderDTO> materialInListAll(PageRequestDTO pageRequestDTO);
+    PageResponseDTO<OrderDTO> materialStockList(PageRequestDTO pageRequestDTO);
 
 }

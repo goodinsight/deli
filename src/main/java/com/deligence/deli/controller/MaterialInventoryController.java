@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 public class MaterialInventoryController {
 
-    @Autowired
-    private MaterialInventoryService materialInventoryService;
 
     @Autowired
     private OrderService orderService;
@@ -28,8 +26,9 @@ public class MaterialInventoryController {
     @Autowired
     private MaterialsService materialsService;
 
-    @GetMapping("/materialInlist")
-    public void materialInListAll(PageRequestDTO pageRequestDTO, Model model) {
+
+    @GetMapping("/materialStockList")
+    public void materialStockList(PageRequestDTO pageRequestDTO, Model model) {
 
         PageResponseDTO<OrderDTO> responseDTO = orderService.list(pageRequestDTO);
 
@@ -40,20 +39,20 @@ public class MaterialInventoryController {
 
     }
 
-    @GetMapping("/materialIndetail")
-    public void materialInRead(int materialInventoryNo, PageRequestDTO pageRequestDTO, Model model) {
+    @GetMapping("/materialStockDetail")
+    public void materialInRead(int orderNo, PageRequestDTO pageRequestDTO, Model model) {
 
-//        OrderDTO materialInventoryDTO = materialInventoryService.materialInRead(materialInventoryNo);
-//
-//        log.info(materialInventoryDTO);
-//
+        OrderDetailDTO orderDetailDTO = orderService.read(orderNo);
+
+        log.info(orderDetailDTO);
+
 //        int num = (int) (Math.random() * 9) + 0;
 //
 //        model.addAttribute("num", num);
-//
-//        model.addAttribute("dto", materialInventoryDTO);
-//
-//        int result = materialInventoryDTO.getOrder().getOrderQuantity() - num;
+
+        model.addAttribute("dto", orderDetailDTO);
+
+//        int result = orderDetailDTO.getOrderQuantity() - num;
 //
 //        model.addAttribute("result", result);
 
