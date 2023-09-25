@@ -1,16 +1,18 @@
 package com.deligence.deli.repository;
 
 import com.deligence.deli.domain.Employee;
+import com.deligence.deli.domain.MaterialInOutHistory;
 import com.deligence.deli.domain.MaterialInventory;
-import com.deligence.deli.domain.MeterialInOutHistory;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.stream.IntStream;
 
+@Transactional
 @SpringBootTest
 @Log4j2
 public class MaterialInOutHistoryRepositoryTests {
@@ -23,15 +25,16 @@ public class MaterialInOutHistoryRepositoryTests {
 
         materialInOutHistoryRepository.findAll();
 
-        IntStream.rangeClosed(1, 50).forEach(i -> {
+        IntStream.rangeClosed(2, 10).forEach(i -> {
 
-            MeterialInOutHistory meterialInOutHistory = MeterialInOutHistory.builder()
-                    .inOutSeparator("kwon")
-                    .quantity(100 + i)
+            MaterialInOutHistory meterialInOutHistory = MaterialInOutHistory.builder()
+                    .inOutSeparator("IN")
+                    .quantity(99 + i)
                     .employee(Employee.builder().employeeNo(i).build())
+                    .materialInventory(MaterialInventory.builder().materialInventoryNo(i).build())
                     .build();
 
-            MeterialInOutHistory result = materialInOutHistoryRepository.save(meterialInOutHistory);
+            MaterialInOutHistory result = materialInOutHistoryRepository.save(meterialInOutHistory);
 
             log.info("MaterialHistoryNo : " + result.getMaterialHistoryNo());
 
@@ -39,15 +42,16 @@ public class MaterialInOutHistoryRepositoryTests {
 
     }
 
+
     @Test
     public void testSelect() {
-        int materialHistoryNo = 2;
+        int materialHistoryNo = 1;
 
-        Optional<MeterialInOutHistory> result = materialInOutHistoryRepository.findById(materialHistoryNo);
+        Optional<MaterialInOutHistory> result = materialInOutHistoryRepository.findById(materialHistoryNo);
 
-        MeterialInOutHistory meterialInOutHistory = result.orElseThrow();
+        MaterialInOutHistory materialInOutHistory = result.orElseThrow();
 
-        log.info(meterialInOutHistory);
+        log.info(materialInOutHistory);
     }
 
 

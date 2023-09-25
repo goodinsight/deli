@@ -63,7 +63,7 @@ public class OrderSearchImpl extends QuerydslRepositorySupport implements OrderS
         //query.where(order.orderNo.gt(0));
 
         query.orderBy(order.orderNo.desc());
-        
+
         //paging
         this.getQuerydsl().applyPagination(pageable, query);// 오류 발생 부분. pageable에 sort를 담아 실행하면 오류가 발생한다.
 

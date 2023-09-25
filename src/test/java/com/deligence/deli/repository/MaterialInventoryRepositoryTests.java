@@ -49,7 +49,7 @@ public class MaterialInventoryRepositoryTests {
                     .materialSupplyPrice((long) (i * 10))
                     .materialTotalInventoryPayments((long) i * 20)
                     .materials(Materials.builder().materialNo(i).build())
-                    .order(Order.builder().orderNo(14).build())
+//                    .order(Order.builder().orderNo(14).build())
                     .materialName("name" + i)
                     .materialType("type" + i)
                     .materialCode("code" + i)
