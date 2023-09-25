@@ -37,11 +37,12 @@ async function removeProgressInspection(progressInspectionNo) {
 }
 
 
-async function completePI(orderNo, state) {
-    const response = await axios.post(`/progressInspection/completePI/${orderNo}&${state}`)
-    return response.data()
+async function completePI(orderNo) {
+    const response = await axios.post(`/progressInspection/completePI/${orderNo}`)
+    return response.data
 }
 
 async function getOS(orderNo){
-    return await axios.get(`/progressInspection/getOrderState/${orderNo}`)
+    const response = await axios.get(`/progressInspection/getOrderState/${orderNo}`)
+    return response.data
 }

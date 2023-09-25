@@ -94,10 +94,10 @@ public class ProgressInspectionController {
 
     }
 
-    @PostMapping(value = "/completePI/{orderNo}&{state}")
-    public void completeProgressInspection(@PathVariable("orderNo") int orderNo, @PathVariable("state") String state){
+    @PostMapping(value = "/completePI/{orderNo}")
+    public void completeProgressInspection(@PathVariable("orderNo") int orderNo){
 
-        orderService.changeState(orderNo, state);
+        orderService.changeState(orderNo, "검수완료");
 
     }
 

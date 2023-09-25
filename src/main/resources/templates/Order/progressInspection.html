@@ -241,11 +241,14 @@
 
             registerProgressInspectionTimes.value = maxTimes + 1
 
-            if(dtoList[dtoList.length-1].rateOfProgress >= 100){
-                state = 1
-                console.log("검수 완료!")
-            }else {
-                state = 0
+
+            if(state != 2){
+                if(dtoList[dtoList.length-1].rateOfProgress >= 100){
+                    state = 1
+                    console.log("검수 완료!")
+                }else{
+                    state = 0
+                }
             }
 
         }else{
@@ -279,6 +282,11 @@
     }
 
     function printProgressInspections(page, size, goLast) {
+
+        getOrderState();
+        if(orderState == '검수완료'){
+            state = 2
+        }
 
         getList({orderNo, page, size, goLast}).then(
             data => {
@@ -317,6 +325,7 @@
 
     function getOrderState(){
         getOS(orderNo).then(result => {
+            console.log("get order State! : " + result.orderState)
             orderState = result.orderState
             if(orderState == '검수완료'){
                 state = 2
@@ -507,6 +516,7 @@
     function printButton(state){
 
         console.log("state : " + state)
+        console.log("orderState : " + orderState)
 
         const buttonSet = document.querySelector('.buttonSet')
         const afterComp = document.querySelector('.afterComp')
@@ -535,12 +545,14 @@
     //검수 완료
     function completeProgressInspection(){
 
-        completePI(orderNo, "검수완료").then(result => {
+        console.log("click 검수완료")
+
+        completePI(orderNo).then(result => {
+            state = 2
             getOrderState()
             printButton()
-            state = 2
         }).catch(e => {
-
+            console.log(e)
         })
 
     }
