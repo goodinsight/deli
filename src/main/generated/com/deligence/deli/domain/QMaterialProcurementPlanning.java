@@ -26,6 +26,8 @@ public class QMaterialProcurementPlanning extends EntityPathBase<MaterialProcure
 
     public final QEmployee employee;
 
+    public final StringPath employeeName = createString("employeeName");
+
     public final StringPath materialCode = createString("materialCode");
 
     public final StringPath materialName = createString("materialName");

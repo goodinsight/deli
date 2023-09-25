@@ -25,31 +25,31 @@
               <input type="text" name="materialProcurementPlanCode" class="form-control" id="materialProcurementPlanCode" placeholder="클릭해주세요" readonly>
             </div>
 
-            <div class="input-group mb-3">
+            <div class="input-group mb-3 d-none">
               <span class="input-group-text">생산계획 일련번호</span>
-              <input type="text" name="productionPlanNo" class="form-control selectPlan" placeholder="클릭해주세요" readonly>
+              <input type="text" name="productionPlanNo" class="form-control productionPlanNo" readonly>
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text">생산계획 코드</span>
+              <input type="text" name="productionPlanCode" class="form-control selectPlan" placeholder="클릭해주세요" readonly>
             </div>
 
             <div class="d-none input-group mb-3">
               <span class="input-group-text">자재 일련번호</span>
-              <input type="text" name="materialNo" class="form-control materialNo" placeholder="클릭해주세요" readonly>
+              <input type="text" name="materialNo" class="form-control materialNo" readonly>
             </div>
-
             <div class="input-group mb-3">
               <span class="input-group-text">자재 코드</span>
               <input type="text" name="materialCode" class="form-control" id="selectMaterial" placeholder="클릭해주세요" readonly>
             </div>
-
             <div class="input-group mb-3 pl-5">
               <span class="input-group-text">자재 타입</span>
               <input type="text" name="materialType" class="form-control materialType" readonly>
             </div>
-
             <div class="input-group mb-3 pl-5">
               <span class="input-group-text">자재 이름</span>
               <input type="text" name="materialName" class="form-control materialName" readonly>
             </div>
-
             <div class="input-group mb-3 pl-5">
               <span class="input-group-text">자재 공급단가</span>
               <input type="text" name="materialSupplyPrice" class="form-control materialSupplyPrice" readonly>
@@ -65,31 +65,19 @@
               <input type="date" name="procurementDeliveryDate" class="form-control procurementDeliveryDate" placeholder="납기일">
             </div>
 
-            <div class="input-group mb-3 d-none">
-              <span class="input-group-text">담당자 일련번호</span>
-              <input type="text" name="employeeNo" class="form-control" th:value="${user.employeeNo}" readonly>
-            </div>
-
-            <div class="input-group mb-3">
-              <span class="input-group-text">담당자</span>
-              <input type="text" name="employeeName" class="form-control" th:value="${user.employeeName}" readonly>
-            </div>
-
-            <!--
-               <div class="input-group mb-3">
-                  <span class="input-group-text">자재조달상태</span>
-                    <select name="materialProcurementState">
-                        <option value="진행중" selected>진행중</option>
-                        <option value="파기">파기</option>
-                        <option value="완료">완료</option>
-                    </select>
-                </div>
-            -->
-
               <div class="input-group mb-3">
                 <span class="input-group-text">자재조달상태</span>
                 <input type="text" name="materialProcurementState" class="form-control" placeholder="자재조달상태 - 추후 숨길 부분" th:value="진행중" readonly>
               </div>
+
+            <div class="input-group mb-3 d-none">
+              <span class="input-group-text">담당자 일련번호</span>
+              <input type="text" name="employeeNo" class="form-control" th:value="${user.employeeNo}" readonly>
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text">담당자</span>
+              <input type="text" name="employeeName" class="form-control" th:value="${user.employeeName}" readonly>
+            </div>
 
 
             <div class="my-4">

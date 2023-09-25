@@ -1,6 +1,7 @@
 package com.deligence.deli.service;
 
 import com.deligence.deli.domain.MaterialProcurementPlanning;
+import com.deligence.deli.domain.Order;
 import com.deligence.deli.dto.*;
 import com.deligence.deli.repository.MaterialProcurementPlanningRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,8 +23,6 @@ import java.util.stream.Collectors;
 @Transactional
 public class MaterialProcurementPlanningServiceImpl implements MaterialProcurementPlanningService{
 
-//    private final ModelMapper modelMapper;
-
     private final MaterialProcurementPlanningRepository materialProcurementPlanningRepository;
 
     @Override  //등록
@@ -32,8 +31,6 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
 //        log.info("register start");
 
         log.info(materialProcurementPlanningDTO);
-
-//        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
 
         //dto -> entity
         MaterialProcurementPlanning materialProcurementPlanning = dtoToEntity(materialProcurementPlanningDTO);
@@ -70,13 +67,21 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
 
         materialProcurementPlanning.change(materialProcurementPlanningDTO);
 
-        //추후 자재조달계획 수정에 따라 다른 영역에 관련된 수정 사항이 있으면 여기에 추가
-
-
-        //------------------------------------------------------------------
 
         materialProcurementPlanningRepository.save(materialProcurementPlanning);
 
+    }
+
+    @Override
+    public void changeState(int materialProcurementPlanNo, String state) {
+
+        Optional<MaterialProcurementPlanning> result = materialProcurementPlanningRepository.findById(materialProcurementPlanNo);
+
+        MaterialProcurementPlanning materialProcurementPlanning = result.orElseThrow();
+
+        materialProcurementPlanning.changeState(state);
+
+        materialProcurementPlanningRepository.save(materialProcurementPlanning);
     }
 
     @Override   //삭제
@@ -99,8 +104,23 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
 
         List<MaterialProcurementPlanningDTO> dtoList = result.getContent().stream()
                 .map(materialProcurementPlanning -> entityToDto(materialProcurementPlanning))
-//                .map(materialProcurementPlanning -> modelMapper
-//                        .map(MaterialProcurementPlanning, MaterialProcurementPlanningDetailDTO.class))
+                .collect(Collectors.toList());
+
+        return PageResponseDTO.<MaterialProcurementPlanningDTO>withAll()
+                .pageRequestDTO(pageRequestDTO)
+                .dtoList(dtoList)
+                .total((int)result.getTotalElements())
+                .build();
+    }
+
+    @Override
+    public PageResponseDTO<MaterialProcurementPlanningDTO> listByState(String[] keywords, PageRequestDTO pageRequestDTO) {
+
+        Page<MaterialProcurementPlanning> result =
+                materialProcurementPlanningRepository.searchByState(keywords, pageRequestDTO.getPageable());
+
+        List<MaterialProcurementPlanningDTO> dtoList = result.getContent().stream()
+                .map(materialProcurementPlanning -> entityToDto(materialProcurementPlanning))
                 .collect(Collectors.toList());
 
         return PageResponseDTO.<MaterialProcurementPlanningDTO>withAll()

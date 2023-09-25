@@ -38,6 +38,8 @@ public class MaterialProcurementPlanning extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Employee employee;    //사원일련번호 (employee_no)(사원 FK)
 
+    private String employeeName;    //담당자
+
     private String materialCode;   //자재코드 (검색용)
 
     private String materialName;   //자재이름 (검색용)
@@ -55,6 +57,12 @@ public class MaterialProcurementPlanning extends BaseEntity {
         //자재코드
         //카테고리, 자재이름
         //담당자
+
+    }
+
+    public void changeState(String materialProcurementState){
+
+        this.materialProcurementState = materialProcurementState;
 
     }
 

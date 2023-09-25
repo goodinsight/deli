@@ -19,7 +19,7 @@
                 </div>
                 <div class="card-body mt-3">
                     <form th:action="@{/materialProcurementPlanning/modify}" method="post" id="modifyForm">
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3 d-none">
                             <span class="input-group-text">자재조달계획 일련번호</span>
                             <input type="text" name="materialProcurementPlanNo" class="form-control" th:value="${dto.materialProcurementPlanNo}" readonly>
                         </div>
@@ -28,47 +28,40 @@
                             <input type="text" name="materialProcurementPlanCode" class="form-control materialProcurementPlanCode" th:value="${dto.materialProcurementPlanCode}" readonly>
                         </div>
 
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3 d-none">
                             <span class="input-group-text">생산계획 일련번호</span>
                             <input type="text" name="productionPlanNo" class="form-control" th:value="${dto.productionPlanNo}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">생산계획 코드</span>
+                            <input type="text" name="productionPlanCode" class="form-control selectPlan" th:value="${dto.productionPlanCode}" readonly>
                         </div>
 
                         <div class="input-group mb-3">
                             <span class="input-group-text">자재 코드</span>
-                            <input type="text" name="materialCode" class="form-control" th:value="${dto.materialCode}" readonly>
+                            <input type="text" name="materialCode" class="form-control selectMaterial" th:value="${dto.materialCode}" readonly>
                         </div>
-
                         <div class="input-group mb-3 pl-5">
                             <span class="input-group-text">자재 타입</span>
-                            <input type="text" name="materialType" class="form-control" th:value="${dto.materialType}" readonly>
+                            <input type="text" name="materialType" class="form-control materialType" th:value="${dto.materialType}" readonly>
                         </div>
-
                         <div class="input-group mb-3 pl-5">
                             <span class="input-group-text">자재 이름</span>
-                            <input type="text" name="materialName" class="form-control" th:value="${dto.materialName}" readonly>
+                            <input type="text" name="materialName" class="form-control materialName" th:value="${dto.materialName}" readonly>
                         </div>
                         <div class="input-group mb-3 pl-5">
                             <span class="input-group-text">자재 공급단가</span>
-                            <input type="text" name="materialSupplyPrice" class="form-control" th:value="${dto.materialSupplyPrice}" readonly>
+                            <input type="text" name="materialSupplyPrice" class="form-control materialSupplyPrice" th:value="${dto.materialSupplyPrice}" readonly>
                         </div>
 
                         <div class="input-group mb-3">
                             <span class="input-group-text">자재 소요량</span>
-                            <input type="number" name="materialRequirementsCount" class="form-control" th:value="${dto.materialRequirementsCount}">
+                            <input type="number" name="materialRequirementsCount" class="form-control materialRequirementsCount" th:value="${dto.materialRequirementsCount}">
                         </div>
 
                         <div class="input-group mb-3">
                             <span class="input-group-text">납기일</span>
-                            <input type="date" name="procurementDeliveryDate" class="form-control" th:value="${dto.procurementDeliveryDate}">
-                        </div>
-
-                        <div class="input-group mb-3 d-none">
-                            <span class="input-group-text">담당자 일련번호</span>
-                            <input type="text" name="employeeNo" class="form-control" th:value="${dto.employeeNo}" readonly>
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">담당자 이름</span>
-                            <input type="text" name="employeeName" class="form-control" th:value="${dto.employeeName}" readonly>
+                            <input type="date" name="procurementDeliveryDate" class="form-control procurementDeliveryDate" th:value="${dto.procurementDeliveryDate}">
                         </div>
 
                         <div class="input-group mb-3">
@@ -78,6 +71,15 @@
                                 <option value="파기">파기</option>
                                 <option value="완료">완료</option>
                             </select>
+                        </div>
+
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">담당자 일련번호</span>
+                            <input type="text" name="employeeNo" class="form-control" th:value="${dto.employeeNo}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">담당자 이름</span>
+                            <input type="text" name="employeeName" class="form-control" th:value="${dto.employeeName}" readonly>
                         </div>
 
                         <div class="input-group mb-3">

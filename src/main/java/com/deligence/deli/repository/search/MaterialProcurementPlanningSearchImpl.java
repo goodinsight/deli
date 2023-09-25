@@ -69,12 +69,12 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
 
             for (String type : types) {
 
-                //키워드 a:조달계획일련번호 b:자재코드 c:자재이름 d:납기일 e:자재소요량 f:조달계약상태
+                //키워드 a:조달계획코드 b:자재코드 c:자재이름 d:납기일 e:자재소요량 f:조달계약상태
                 switch (type) {
 
                     case "a":
                         booleanBuilder.or(materialProcurementPlanning
-                                .materialProcurementPlanNo.stringValue().contains(keyword));    //조달계획일련번호
+                                .materialProcurementPlanCode.stringValue().contains(keyword));    //조달계획코드
 
                     case "b":
                         booleanBuilder.or(materialProcurementPlanning
@@ -118,6 +118,38 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
     }
 
     @Override
+    public Page<MaterialProcurementPlanning> searchByState(String[] keywords, Pageable pageable) {
+
+        QMaterialProcurementPlanning materialProcurementPlanning = QMaterialProcurementPlanning.materialProcurementPlanning;
+
+        JPQLQuery<MaterialProcurementPlanning> query = new JPAQueryFactory(em)
+                .selectFrom(materialProcurementPlanning);
+
+        if( keywords != null && keywords.length > 0) { //검색조건과 키워드가 있다면
+
+            BooleanBuilder booleanBuilder = new BooleanBuilder(); // (
+
+            for(String keyword : keywords) {
+
+                booleanBuilder.or(materialProcurementPlanning.materialProcurementState.contains(keyword));
+
+            }//end for
+
+            query.where(booleanBuilder);
+
+        }//end if
+
+        //paging
+        this.getQuerydsl().applyPagination(pageable, query);// 오류 발생 부분. pageable에 sort를 담아 실행하면 오류가 발생한다.
+
+        List<MaterialProcurementPlanning> list = query.fetch();
+
+        long count = query.fetchCount();
+
+        return new PageImpl<>(list, pageable, count);
+    }
+
+    @Override
     public int getCodeCount(String code) {
 
         QMaterialProcurementPlanning materialProcurementPlanning = QMaterialProcurementPlanning.materialProcurementPlanning;
@@ -133,9 +165,7 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
     @Override
     public MaterialProcurementPlanningDetailDTO read(int materialProcurementPlanNo) {
 
-        QMaterialProcurementPlanning materialProcurementPlanning =
-                QMaterialProcurementPlanning.materialProcurementPlanning;
-
+        QMaterialProcurementPlanning materialProcurementPlanning = QMaterialProcurementPlanning.materialProcurementPlanning;
         QProductionPlanning pp = QProductionPlanning.productionPlanning;
         QMaterials mr = QMaterials.materials;
 
@@ -162,17 +192,21 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
                 .materialRequirementsCount(resultMaterialProcurementPlanning.getMaterialRequirementsCount())
                 .materialProcurementState(resultMaterialProcurementPlanning.getMaterialProcurementState())
                 .productionPlanNo(resultPp.getProductionPlanNo())
+                .productionPlanCode(resultPp.getProductionPlanCode())
+//                .productCode(resultPp.getProductContract().getProductCode())
                 .productCode(resultPp.getProductCode())
                 .productDeliveryDate(resultPp.getProductDeliveryDate())
                 .clientName(resultPp.getClientName())
                 .clientStatus(resultPp.getClientStatus())
+//                .materialNo(resultMaterialProcurementPlanning.getMaterials().getMaterialNo())
                 .materialNo(resultMr.getMaterialNo())
+//                .materialCode(resultMaterialProcurementPlanning.getMaterials().getMaterialCode())
                 .materialCode(resultMr.getMaterialCode())
                 .materialType(resultMr.getMaterialType())
                 .materialName(resultMr.getMaterialName())
                 .materialSupplyPrice(resultMr.getMaterialSupplyPrice())
                 .employeeNo(resultMaterialProcurementPlanning.getEmployee().getEmployeeNo())
-                .employeeName(resultMaterialProcurementPlanning.getEmployee().getEmployeeName())
+                .employeeName(resultMaterialProcurementPlanning.getEmployeeName())
                 .regDate(resultMaterialProcurementPlanning.getRegDate())
                 .modDate(resultMaterialProcurementPlanning.getModDate())
                 .build();

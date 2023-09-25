@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>자재조달계획 리스트</title>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<!--    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>-->
 </head>
 
 <div layout:fragment="content">
@@ -24,8 +24,8 @@
                     <div class="input-group-prepend">
                         <select class="form-select" name="type">
                             <option value="">---</option>
-                            <!--a:no b:자재코드 c:자재이름 d:납기일 e:소요량 f:조달상태-->
-                            <option value="a" th:selected="${pageRequestDTO.type == 'a'}">조달계획일련번호</option>
+                            <!--a:조달계획코드 b:자재코드 c:자재이름 d:납기일 e:소요량 f:조달상태-->
+                            <option value="a" th:selected="${pageRequestDTO.type == 'a'}">조달계획코드</option>
                             <option value="b" th:selected="${pageRequestDTO.type == 'b'}">자재 코드</option>
                             <option value="c" th:selected="${pageRequestDTO.type == 'c'}">자재 이름</option>
                             <option value="d" th:selected="${pageRequestDTO.type == 'd'}">납기일</option>
@@ -69,6 +69,7 @@
                         <thead>
                         <tr>
                             <th scope="col">NO</th>
+                            <th scope="col">조달계획 코드</th>
                             <th scope="col">자재 코드</th>
                             <th scope="col">자재 이름</th>
                             <th scope="col">자재 소요량</th>
@@ -82,8 +83,9 @@
                             <td>[[${dto.materialProcurementPlanNo}]]</td>
                             <td>
                                 <a th:href="|@{/materialProcurementPlanning/read(materialProcurementPlanNo =
-                                 ${dto.materialProcurementPlanNo})}&${link}|" class="text-decoration-none"> [[${dto.materialCode}]] </a>
-                            </td>
+                                 ${dto.materialProcurementPlanNo})}&${link}|" class="text-decoration-none">
+                                    [[${dto.materialProcurementPlanCode}]]</a></td>
+                            <td>[[${dto.materialCode}]]</td>
                             <td>[[${dto.materialName}]]</td>
                             <td>[[${dto.materialRequirementsCount}]]</td>
                             <td>[[${dto.procurementDeliveryDate}]]</td>
