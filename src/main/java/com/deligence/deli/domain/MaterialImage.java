@@ -14,7 +14,7 @@ public class MaterialImage { //implements Comparable<MaterialImage>
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(length = 100, nullable = false)
+    @Column(length = 100, nullable = true)
     private int materialImgNo; //이미지일련번호
 
     @Column(length = 100, nullable = false)

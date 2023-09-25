@@ -18,6 +18,5 @@ async function uploadToServer (formObj) {
 async function removeFileToServer(materialUuid, materialImgName) {
 
     const response = await axios.delete(`/remove/${materialUuid}_${materialImgName}`)
-// 주소 수정중
     return response.data
 }
