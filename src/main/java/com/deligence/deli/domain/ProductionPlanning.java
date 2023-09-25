@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = {"products", "cooperatorClient"})
+@ToString(exclude = {"products","productContract", "cooperatorClient"})
 public class ProductionPlanning extends BaseEntity {   //제품생산계획테이블 Entity
 
     @Id
@@ -30,6 +30,10 @@ public class ProductionPlanning extends BaseEntity {   //제품생산계획테�
     private LocalDate productionDeliveryDate; //생산 납기일
 
     private String detailExplaination; //상세내용
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private ProductContract productContract;    //제품계약(일련번호) FK
+    //제품계약 -> 제품일련번호, 제품수량, 납기일 가져올 수 있음.
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Products products;  //제품일련번호 FK

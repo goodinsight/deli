@@ -30,8 +30,9 @@ public class ProductionPlanningDTO {
 
     private String detailExplaination;  //상세내용
 
+    private int productContractNo;  //제품계약일련번호 (FK)
+
     private int productNo;  //제품일련번호(FK)
-//    private Products products;
 
     private String productCode; //제품코드 (검색용)
 
@@ -39,7 +40,6 @@ public class ProductionPlanningDTO {
     private LocalDate productDeliveryDate;  //제품 납기일
 
     private int clientNo;   //구매협력회사일련번호(FK)
-//    private CooperatorClient cooperatorClient;    //구매협력회사
 
     private String clientName;  //구매협력회사명 (검색용)
 

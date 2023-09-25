@@ -37,6 +37,8 @@ public class QProductionPlanning extends EntityPathBase<ProductionPlanning> {
 
     public final StringPath productCode = createString("productCode");
 
+    public final QProductContract productContract;
+
     public final DatePath<java.time.LocalDate> productDeliveryDate = createDate("productDeliveryDate", java.time.LocalDate.class);
 
     public final DatePath<java.time.LocalDate> productionDeliveryDate = createDate("productionDeliveryDate", java.time.LocalDate.class);
@@ -75,6 +77,7 @@ public class QProductionPlanning extends EntityPathBase<ProductionPlanning> {
     public QProductionPlanning(Class<? extends ProductionPlanning> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.cooperatorClient = inits.isInitialized("cooperatorClient") ? new QCooperatorClient(forProperty("cooperatorClient"), inits.get("cooperatorClient")) : null;
+        this.productContract = inits.isInitialized("productContract") ? new QProductContract(forProperty("productContract"), inits.get("productContract")) : null;
         this.products = inits.isInitialized("products") ? new QProducts(forProperty("products")) : null;
     }
 
