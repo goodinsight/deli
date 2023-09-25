@@ -3,6 +3,7 @@ package com.deligence.deli.controller;
 import com.deligence.deli.dto.PageRequestDTO;
 import com.deligence.deli.dto.PageResponseDTO;
 import com.deligence.deli.dto.ProgressInspectionDTO;
+import com.deligence.deli.service.OrderService;
 import com.deligence.deli.service.ProgressInspectionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -23,6 +24,7 @@ public class ProgressInspectionController {
 
     private final ProgressInspectionService progressInspectionService;
 
+    private final OrderService orderService;
 
     @PostMapping(value = "/", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, Integer> register(@Valid @RequestBody ProgressInspectionDTO progressInspectionDTO,
@@ -92,5 +94,17 @@ public class ProgressInspectionController {
 
     }
 
+    @PostMapping(value = "/completePI/{orderNo}")
+    public void completeProgressInspection(@PathVariable("orderNo") int orderNo){
+
+        orderService.changeState(orderNo, "검수완료");
+
+    }
+
+
+    @GetMapping(value = "/getOrderState/{orderNo}")
+    public String getOrderState(@PathVariable("orderNo") int orderNo){
+        return orderService.read(orderNo).getOrderState();
+    }
 
 }

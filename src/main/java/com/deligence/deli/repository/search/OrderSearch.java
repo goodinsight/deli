@@ -9,6 +9,8 @@ public interface OrderSearch {
 
     Page<Order> search(String[] types, String keyword, Pageable pageable);
 
+    Page<Order> searchByState(String[] keywords, Pageable pageable);
+
     int getCodeCount(String orderCode);
 
     OrderDetailDTO read(int orderNo);

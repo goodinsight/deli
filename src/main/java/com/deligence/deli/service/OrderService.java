@@ -23,6 +23,11 @@ public interface OrderService {
 
     int getCodeCount(String orderCode);
 
+    void changeState(int orderNo, String state);
+
+    PageResponseDTO<OrderDTO> listByState(String[] keywords, PageRequestDTO pageRequestDTO);
+
+
     default Order dtoToEntity(OrderDTO orderDTO){
 
         Order order = Order.builder()
