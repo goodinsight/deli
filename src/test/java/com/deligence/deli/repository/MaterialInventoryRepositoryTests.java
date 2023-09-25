@@ -1,6 +1,7 @@
 package com.deligence.deli.repository;
 
 import com.deligence.deli.domain.MaterialInventory;
+import com.deligence.deli.domain.MaterialProcurementPlanning;
 import com.deligence.deli.domain.Materials;
 import com.deligence.deli.domain.Order;
 import com.deligence.deli.dto.MaterialsDTO;
@@ -29,6 +30,9 @@ public class MaterialInventoryRepositoryTests {
 
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private MaterialProcurementPlanningRepository materialProcurementPlanningRepository;
 
     @Autowired
     private MaterialsRepository materialsRepository;
@@ -73,6 +77,33 @@ public class MaterialInventoryRepositoryTests {
     }
 
     @Test
+    public void testnumcheck() {
+
+        int orderNo = 20;
+
+        Optional<Order> result = orderRepository.findById(orderNo);
+
+        Order order = result.orElseThrow();
+
+        log.info(order);
+
+    }
+
+    @Test
+    public void testplannignumcheck() {
+
+        int materialProcurementPlanNo = 20;
+
+        Optional<MaterialProcurementPlanning> result = materialProcurementPlanningRepository.findById(materialProcurementPlanNo);
+
+        MaterialProcurementPlanning materialProcurementPlanning = result.orElseThrow();
+
+        log.info(materialProcurementPlanning);
+
+    }
+
+
+    @Test
     @Transactional
     public void testMaterialInventoryUpdate() {
 
@@ -115,6 +146,23 @@ public class MaterialInventoryRepositoryTests {
         todoList.forEach(materialInventory -> log.info(materialInventory));
 
     }
+    @Test
+    public void testMaterialOrderPaging() {
+
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("orderNo").descending());
+
+        Page<Order> result = orderRepository.findAll(pageable);
+
+        log.info("total count : " + result.getTotalElements());
+        log.info("total pages : " + result.getTotalPages());
+        log.info("page number : " + result.getNumber());
+        log.info("page size : " + result.getSize());
+
+        List<Order> todoList = result.getContent();
+
+        todoList.forEach(order -> log.info(order));
+
+    }
 
     @Test
     public void testSearch1() {
@@ -148,50 +196,7 @@ public class MaterialInventoryRepositoryTests {
 
     }
 
-    @Test
-    public void testrequest() {
 
-        List<Materials> list = materialsRepository.findAll();
-        List<Order> list2 = orderRepository.findAll();
-//        log.info(list);
-//        log.info(list2);
-
-        for (int i = 0; i < list2.size(); i++) {
-
-            log.info(list.get(i).getMaterialNo());
-            log.info(list.get(i).getMaterialName());
-            log.info(list2.get(i).getOrderNo());
-            log.info(list2.get(i).getMaterialName());
-
-            Optional<Materials> result2 = materialsRepository.findById(list.get(i).getMaterialNo());
-            log.info("result2 : " + result2);
-            Optional<Order> result = materialInventoryRepository.findFristByOrderNo(list2.get(list2.size() - 1).getOrderNo());
-            log.info("result : " + result);
-
-            Materials materials = result2.orElseThrow();
-            Order order = result.orElseThrow();
-
-            log.info("materials : " + materials);
-
-            log.info("oredr : " + order);
-
-            MaterialInventory materialInventory = MaterialInventory.builder()
-                    .materialIncomingQuantity(order.getOrderQuantity())
-                    .materialOutgoingQuantity(100)
-                    .materialStock(100)
-                    .materialSupplyPrice(materials.getMaterialSupplyPrice())
-                    .materialTotalInventoryPayments(100000L)
-                    .materials(Materials.builder().materialNo(materials.getMaterialNo()).build())
-                    .order(Order.builder().orderNo(order.getOrderNo()).build())
-                    .materialCode(materials.getMaterialCode())
-                    .materialName(materials.getMaterialName())
-                    .materialType(materials.getMaterialType())
-                    .build();
-
-            materialInventoryRepository.save(materialInventory);
-
-        }
-    }
 }
 
 
