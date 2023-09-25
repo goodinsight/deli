@@ -29,9 +29,22 @@
                             <input type="date" name="materialProcurementContractDate" class="form-control" placeholder="계약일">
                         </div>
 
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">조달계획 일련번호</span>
+                            <input type="text" name="materialProcurementPlanNo" class="form-control materialProcurementPlanNo" readonly>
+                        </div>
                         <div class="input-group mb-3">
+                            <span class="input-group-text">조달계획 코드</span>
+                            <input type="text" name="materialProcurementPlanCode" class="form-control" id="selectPlan" placeholder="클릭해주세요" readonly>
+                        </div>
+
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">자재 일련번호</span>
+                            <input type="text" name="materialNo" class="form-control materialNo" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
                             <span class="input-group-text">자재 코드</span>
-                            <input type="text" name="materialNo" class="form-control selectMaterial" placeholder="클릭해주세요" readonly>
+                            <input type="text" name="materialCode" class="form-control" id="materialCode" readonly>
                         </div>
                         <div class="input-group mb-3 pl-5">
                             <span class="input-group-text">자재 타입</span>
@@ -46,11 +59,21 @@
                             <input type="text" name="materialSupplyPrice" class="form-control materialSupplyPrice" readonly>
                         </div>
 
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">자재 수량</span>
-                            <input type="text" name="materialRequirementsCount" class="form-control" placeholder="자재 수량">
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재 소요량</span>
+                            <input type="text" name="materialRequirementsCount" class="form-control materialRequirementsCount" placeholder="자재 소요량">
                         </div>
 
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">조달 수량</span>
+                            <input type="text" name="procurementQuantity" class="form-control procurementQuantity" placeholder="조달 수량">
+                        </div>
+
+
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">자재 협력회사 일련번호</span>
+                            <input type="text" name="supplierNo" class="form-control supplierNo" readonly>
+                        </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">자재 협력회사명</span>
                             <input type="text" name="supplierName" class="form-control selectSupplier" placeholder="클릭해주세요" readonly>
@@ -67,9 +90,9 @@
                             <span class="input-group-text">자재조달 계약상태</span>
                             <input type="text" name="materialProcurementContractState" class="form-control" placeholder="계약 상태 - 추후 숨길 부분" th:value="진행중" readonly>
                         </div>
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-3" >
                             <span class="input-group-text">비고</span>
-                            <textarea name="materialProcurementContractEtc" class="form-control col-sm-5"></textarea>
+                            <textarea name="orderEtc" rows="5" cols="50" class="form-control h-25"></textarea>
                         </div>
 
                         <div class="input-group mb-3">
@@ -94,12 +117,12 @@
         </div><!-- end col -->
     </div><!-- end row -->
 
-    <!-- 자재 선택을 위한 모달창 -->
-    <div class="modal selectMaterialModal" tabindex="-1">
+    <!-- 조달 계획 선택을 위한 모달창 -->
+    <div class="modal selectPlanModal" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">자재 검색</h5>
+                    <h5 class="modal-title">조달 계획 검색</h5>
                 </div>
                 <div class="modal-body">
 
@@ -112,20 +135,22 @@
                                         <thead>
                                         <tr>
                                             <th scope="col">NO</th>
+                                            <th scope="col">조달계획코드</th>
                                             <th scope="col">자재코드</th>
-                                            <th scope="col">자재이름</th>
                                             <th scope="col">자재타입</th>
+                                            <th scope="col">자재이름</th>
                                             <th scope="col">공급단가</th>
+                                            <th scope="col">자재소요량</th>
                                         </tr>
                                         </thead>
 
-                                        <tbody class="materialList">
+                                        <tbody class="planList">
 
                                         </tbody>
                                     </table>
 
                                     <div class="float-end">
-                                        <ul class="pagination flex-wrap materialPaging">
+                                        <ul class="pagination flex-wrap planPaging">
                                         </ul>
                                     </div>
                                 </div><!--end card body-->
@@ -136,7 +161,7 @@
 
                 </div><!-- modal body end -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-dark closeMaterialBtn">Close</button>
+                    <button type="button" class="btn btn-outline-dark closePlanBtn">Close</button>
                 </div>
             </div>
         </div>
@@ -218,30 +243,30 @@
         alert(errorMsg)
     }
 
-    // 자재 선택 ------------------------------------------------
+    // 조달 계획 선택 ------------------------------------------------
 
-    const materialModal = new bootstrap.Modal(document.querySelector(".selectMaterialModal"))
+    const planModal = new bootstrap.Modal(document.querySelector(".selectPlanModal"))
 
-    const materialList = document.querySelector(".materialList")//자재 목록 DOM
-    const materialPaging = document.querySelector(".materialPaging")//자재 페이지 선택 목록 DOM
+    const planList = document.querySelector(".planList")//조달 계획 목록 DOM
+    const planPaging = document.querySelector(".planPaging")//조달 계획 페이지 선택 목록 DOM
 
-    const closeMaterialBtn = document.querySelector(".closeMaterialBtn")
+    const closePlanBtn = document.querySelector(".closePlanBtn")
 
-    let materialPage = 1
-    let materialPageSize = 5
+    let planPage = 1
+    let planPageSize = 5
 
-    document.querySelector(".selectMaterial").addEventListener("click", function (e) {
-        printMaterials(1, 5)
-        materialModal.show()
+    document.querySelector(".selectPlan").addEventListener("click", function (e) {
+        printPlans(1, 5)
+        planModal.show()
     }, false)
 
-    closeMaterialBtn.addEventListener("click", function (e) {
-        materialModal.hide()
+    closePlanBtn.addEventListener("click", function (e) {
+        planModal.hide()
     })
 
-    function printMaterialList(dtoList){//자재 목록
+    function printPlanList(dtoList){//조달 계획 목록
 
-        console.log("print material list")
+        console.log("print plan list")
 
         let str = ''
 
@@ -252,22 +277,24 @@
                 console.log(dto)
 
                 str += `<tr>
-                            <td data-materialsNo="${dto.materialNo}">${dto.materialNo}</td>
-                            <td data-materialsNo="${dto.materialNo}">${dto.materialCode}</td>
-                            <td data-materialsNo="${dto.materialNo}">${dto.materialName}</td>
-                            <td data-materialsNo="${dto.materialNo}">${dto.materialType}</td>
-                            <td data-materialsNo="${dto.materialSupplyPrice}">${dto.materialSupplyPrice}</td>
+                            <td data-planNo="${dto.materialProcurementPlanNo}">${dto.materialProcurementPlanNo}</td>
+                            <td data-planNo="${dto.materialProcurementPlanNo}">${dto.materialProcurementPlanCode}</td>
+                            <td data-planNo="${dto.materialProcurementPlanNo}">${dto.materialCode}</td>
+                            <td data-planNo="${dto.materialProcurementPlanNo}">${dto.materialType}</td>
+                            <td data-planNo="${dto.materialProcurementPlanNo}">${dto.materialName}</td>
+                            <td data-planNo="${dto.materialProcurementPlanNo}">${dto.materialSupplyPrice}</td>
+                            <td data-planNo="${dto.materialProcurementPlanNo}">${dto.materialRequirementsCount}</td>
                         </tr>`
 
             }
 
         }
 
-        materialList.innerHTML = str
+        planList.innerHTML = str
 
     }
 
-    function printmaterialPages(data){//자재 목록 페이징 처리
+    function printPlanPages(data){//조달 계획 목록 페이징 처리
 
         let pageStr = '';
 
@@ -280,27 +307,27 @@
         if(data.next) {
             pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end+1}">NEXT</a></li>`
         }
-        materialPaging.innerHTML = pageStr
+        planPaging.innerHTML = pageStr
 
-        materialPage = data.page
+        planPage = data.page
 
     }
 
-    function printMaterials(page, size) {
+    function printPlans(page, size) {
 
-        getMaterialList({page, size}).then(
+        getPlanList({page, size}).then(
             data => {
-                printMaterialList(data.dtoList)
-                printMaterialPages(data)
+                printPlanList(data.dtoList)
+                printPlanPages(data)
             }
         ).catch(e => {
-            console.log("print materials error")
+            console.log("print plans error")
             console.error(e)
         })
     }
 
-    //자재 목록 페이징
-    materialPaging.addEventListener("click", function(e) {
+    //계획 목록 페이징
+    planPaging.addEventListener("click", function(e) {
 
         e.preventDefault()
         e.stopPropagation()
@@ -312,25 +339,27 @@
         }
 
         const pageNum = target.getAttribute("data-page")
-        materialPage = pageNum
-        printMaterials(materialPage, materialPageSize)
+        planPage = pageNum
+        printPlans(planPage, planPageSize)
 
     }, false)
 
-    const materialNo = document.querySelector(".materialNo")
-    const inputMaterialCode = document.querySelector(".selectMaterial")
-    const materialName = document.querySelector(".materialName")
+    const materialProcurementPlanNo = document.querySelector(".materialProcurementPlanNo")
+    const inputPlanCode = document.querySelector(".selectPlan")
+    const materialCode = document.querySelector(".materialCode")
     const materialType = document.querySelector(".materialType")
+    const materialName = document.querySelector(".materialName")
     const materialSupplyPrice = document.querySelector(".materialSupplyPrice")
+    const materialRequirementsCount = document.querySelector(".materialRequirementsCount")
 
 
-    //자재 항목 클릭시 input 에 반영
-    materialList.addEventListener("click", function (e){
+    //계획 항목 클릭시 input 에 반영
+    planList.addEventListener("click", function (e){
 
         e.preventDefault()
         e.stopPropagation()
 
-        console.log("material click")
+        console.log("plan click")
 
         const target = e.target
 
@@ -338,24 +367,26 @@
             return
         }
 
-        const materialsNo = target.getAttribute("data-materialsNo")
+        const planNo = target.getAttribute("data-planNo")
 
-        if(!materialsNo){
+        if(!planNo){
             return
         }
 
-        getMaterial(materialsNo).then(material => {
+        getPlan(planNo).then(plan => {
 
-            console.log(material)
-            materialNo.value = material.materialNo
-            //자재 정보를 가져와서 화면에 반영해야할 항목들은 여기에-----------------------------------------------------
-            inputMaterialCode.value = material.materialCode
-            materialName.value = material.materialName
-            materialType.value = material.materialType
-            materialSupplyPrice.value = material.materialSupplyPrice
+            console.log(plan)
+            materialProcurementPlanNo.value = plan.materialProcurementPlanNo
+            //조달 계획 정보를 가져와서 화면에 반영해야할 항목들은 여기에-----------------------------------------------------
+            inputPlanCode.value = plan.materialProcurementPlanCode
+            materialCode.value = plan.materialCode
+            materialType.value = plan.materialType
+            materialName.value = plan.materialName
+            materialSupplyPrice.value = plan.materialSupplyPrice
+            materialRequirementsCount.value = plan.materialRequirementsCount
             //-----------------------------------------------------------------------------------------------------------
 
-            materialModal.hide()
+            planModal.hide()
 
         }).catch(e => alert('error'))
 

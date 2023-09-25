@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>자재조달계획 리스트</title>
-<!--    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 </head>
 
 <div layout:fragment="content">
@@ -43,6 +43,8 @@
                 </div>
             </div>
         </form>
+
+
     </div>
 
 
@@ -163,7 +165,7 @@
 
         const formObj = document.querySelector("form")
 
-        formObj.innerHTML += `<input type = 'hidden' name='page' value='${num}'>`
+        formObj.innerHTML += `<input type = "hidden" name="page" value="${num}">`
 
         formObj.submit();
 

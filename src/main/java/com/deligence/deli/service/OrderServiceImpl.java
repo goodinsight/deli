@@ -60,16 +60,25 @@ public class OrderServiceImpl implements OrderService{
 
         order.change(orderDTO);
 
-        // 추후 발주 수정에 따라 다른 영역에 관련된 수정 사항이 있으면 여기에 추가
-
-
-
-        // -----------------------------------------
 
         orderRepository.save(order);
 
+    }
+
+    @Override
+    public void changeState(int orderNo, String state) {
+
+        Optional<Order> result = orderRepository.findById(orderNo);
+
+        Order order = result.orElseThrow();
+
+        order.changeState(state);
+
+        orderRepository.save(order);
 
     }
+
+
 
     @Override
     public void remove(int orderNo) {
@@ -99,10 +108,29 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
+    public PageResponseDTO<OrderDTO> listByState(String[] keywords, PageRequestDTO pageRequestDTO) {
+
+        Page<Order> result = orderRepository.searchByState(keywords, pageRequestDTO.getPageable());
+
+        List<OrderDTO> dtoList = result.getContent().stream()
+                .map(order -> entityToDto(order))
+                .collect(Collectors.toList());
+
+        return PageResponseDTO.<OrderDTO>withAll()
+                .pageRequestDTO(pageRequestDTO)
+                .dtoList(dtoList)
+                .total((int)result.getTotalElements())
+                .build();
+    }
+
+
+    @Override
     public int getCodeCount(String code) {
 
         int num = orderRepository.getCodeCount(code);
 
         return num;
     }
+
+
 }

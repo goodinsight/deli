@@ -10,9 +10,9 @@ async function getPlanList({page, size}){
 
 async function getPlan(planNo) {
 
-    const response = await axios.get(`/materialProcurementPlanning/register/getPlan/${planNo}`)
+    const result = await axios.get(`/materialProcurementPlanning/register/getPlan/${planNo}`)
 
-    return response.data
+    return result.data
 
     // return null;
 }
@@ -26,9 +26,9 @@ async function getMaterialList({page, size}) {
 
 async function getMaterial(materialsNo) {
 
-    const response = await axios.get(`/materialProcurementPlanning/register/getMaterial/${materialsNo}` )
+    const result = await axios.get(`/materialProcurementPlanning/register/getMaterial/${materialsNo}` )
 
-    return response.data
+    return result.data
 }
 
 async function getCodeCount(materialProcurementPlanCode){

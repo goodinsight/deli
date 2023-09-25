@@ -27,7 +27,7 @@ public class ProductionPlanning extends BaseEntity {   //제품생산계획테�
 
     private String productionRequirementsProcess; //생산소요공정
 
-    private LocalDate productionDeliveryDate; //납기일
+    private LocalDate productionDeliveryDate; //생산 납기일
 
     private String detailExplaination; //상세내용
 
@@ -35,6 +35,8 @@ public class ProductionPlanning extends BaseEntity {   //제품생산계획테�
     private Products products;  //제품일련번호 FK
 
     private String productCode;    //제품코드 (검색용)
+
+    private LocalDate productDeliveryDate;  //제품 납기일
 
     @ManyToOne(fetch = FetchType.LAZY)
     private CooperatorClient cooperatorClient;  //구매협력회사 일련번호 FK

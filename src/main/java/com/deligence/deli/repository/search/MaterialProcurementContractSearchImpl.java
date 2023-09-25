@@ -64,11 +64,11 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
 
             for (String type : types) {
 
-                switch (type) { //a: No, b:자재코드, c:자재이름, d:공급단가, e:납품업체명, f:자재조달계약상태
+                switch (type) { //a:조달계획코드, b:자재코드, c:자재이름, d:공급단가, e:납품업체명, f:자재조달계약상태
 
                     case "a":
                         booleanBuilder.or(materialProcurementContract
-                                .materialProcurementContractNo.stringValue().contains(keyword));    //조달계약일련번호
+                                .materialProcurementPlanCode.contains(keyword));    //조달계획코드
                         break;
 
                     case "b":
@@ -136,13 +136,15 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
                 QMaterialProcurementContract.materialProcurementContract;
 
         //자재->자재코드,자재분류,자재이름,공급단가 / 협력회사->협력회사명, 대표명, 연락처
-        QMaterials mr = QMaterials.materials;
+//        QMaterials mr = QMaterials.materials;
+        QMaterialProcurementPlanning mp = QMaterialProcurementPlanning.materialProcurementPlanning;
         QCooperatorSupplier cs = QCooperatorSupplier.cooperatorSupplier;
 
         JPQLQuery<Tuple> query = new JPAQueryFactory(em)
-                .select(materialProcurementContract, mr, cs)
+                .select(materialProcurementContract, mp, cs)
                 .from(materialProcurementContract)
-                .join(materialProcurementContract.materials, mr).on(materialProcurementContract.materials.eq(mr))
+//                .join(materialProcurementContract.materials, mr).on(materialProcurementContract.materials.eq(mr))
+                .join(materialProcurementContract.materialProcurementPlanning, mp).on(materialProcurementContract.materialProcurementPlanning.eq(mp))
                 .join(materialProcurementContract.cooperatorSupplier, cs).on(materialProcurementContract.cooperatorSupplier.eq(cs))
                 .where(materialProcurementContract.materialProcurementContractNo.eq(materialProcurementContractNo));
 
@@ -152,7 +154,8 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
 
         MaterialProcurementContract resultMaterialProcurementContract =
                 (MaterialProcurementContract) target.get(materialProcurementContract);
-        Materials resultMr = (Materials) target.get(mr);
+//        Materials resultMr = (Materials) target.get(mr);
+        MaterialProcurementPlanning resultMp = (MaterialProcurementPlanning) target.get(mp);
         CooperatorSupplier resultCs = (CooperatorSupplier) target.get(cs);
 
         MaterialProcurementContractDetailDTO dto = MaterialProcurementContractDetailDTO.builder()
@@ -161,20 +164,30 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
                 .materialProcurementContractDate(resultMaterialProcurementContract.getMaterialProcurementContractDate())
                 .materialProcurementContractState(resultMaterialProcurementContract.getMaterialProcurementContractState())
                 .materialProcurementContractEtc(resultMaterialProcurementContract.getMaterialProcurementContractEtc())
-                .materialNo(resultMr.getMaterialNo())
-                .materialType(resultMr.getMaterialType())
-                .materialCode(resultMr.getMaterialCode())
-                .materialName(resultMr.getMaterialName())
-                .materialSupplyPrice(resultMr.getMaterialSupplyPrice())
-                .materialRequirementsCount(resultMaterialProcurementContract.getMaterialRequirementsCount())
+                .materialProcurementPlanNo(resultMp.getMaterialProcurementPlanNo())
+                .materialProcurementPlanCode(resultMp.getMaterialProcurementPlanCode())
+                //계획에서 자재 정보 가져오기
+                .materialNo(resultMp.getMaterials().getMaterialNo())
+                .materialCode(resultMp.getMaterials().getMaterialCode())
+                .materialType(resultMp.getMaterials().getMaterialType())
+                .materialName(resultMp.getMaterials().getMaterialName())
+                .materialSupplyPrice(resultMp.getMaterials().getMaterialSupplyPrice())
+//                .materialNo(resultMr.getMaterialNo())
+//                .materialCode(resultMr.getMaterialCode())
+//                .materialType(resultMr.getMaterialType())
+//                .materialName(resultMr.getMaterialName())
+//                .materialSupplyPrice(resultMr.getMaterialSupplyPrice())
+                //자재소요량 추가
+                .materialRequirementsCount(resultMp.getMaterialRequirementsCount())
+                .procurementQuantity(resultMaterialProcurementContract.getProcurementQuantity())
                 .supplierNo(resultCs.getSupplierNo())
                 .supplierName(resultCs.getSupplierName())
                 .supplierCeo(resultCs.getSupplierCeo())
                 .supplierPhone(resultCs.getSupplierPhone())
                 .supplierStatus(resultCs.getSupplierStatus())
                 .employeeNo(resultMaterialProcurementContract.getEmployee().getEmployeeNo())
-                .employeeName(resultMaterialProcurementContract.getEmployeeName())
-//                .documentFileNo(resultMaterialProcurementContract.getDocumentFile().getDocumentFileNo())
+                .employeeName(resultMaterialProcurementContract.getEmployee().getEmployeeName())
+                .documentFileNo(resultMaterialProcurementContract.getDocumentFile().getDocumentFileNo())
                 .regDate(resultMaterialProcurementContract.getRegDate())
                 .modDate(resultMaterialProcurementContract.getModDate())
                 .build();

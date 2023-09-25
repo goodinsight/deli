@@ -6,9 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Data
@@ -35,18 +33,21 @@ public class MaterialsDTO {
     private LocalDateTime regDate; //등록일
 
     private LocalDateTime modDate; //수정일
+    
+    //private List<MaterialImageDTO> materialImage;   //자재 이미지MaterialsDTO
 
-    private String fileNames; //첨부파일 이름
+    private List<String> fileNames; //첨부파일 이름들
 
-    public MaterialsDTO(String materialName, String materialType, String materialExplaination, long materialSupplyPrice){
-        LocalDate date = LocalDate.now();
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd");
-        this.materialName = materialName;
-        this.materialType = materialType;
-        this.materialExplaination = materialExplaination;
-        this.materialSupplyPrice = materialSupplyPrice;
 
-        this.materialCode = "Material" + materialType + date.format(dateTimeFormatter); // 생성시 등록순서 증가하게 추가해야됨
-    }
+//    public MaterialsDTO(String materialName, String materialType, String materialExplaination, long materialSupplyPrice){
+//        LocalDate date = LocalDate.now();
+//        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+//        this.materialName = materialName;
+//        this.materialType = materialType;
+//        this.materialExplaination = materialExplaination;
+//        this.materialSupplyPrice = materialSupplyPrice;
+//
+//        this.materialCode = "Material" + materialType + date.format(dateTimeFormatter); // 생성시 등록순서 증가하게 추가해야됨
+//    }
 
 }

@@ -37,6 +37,8 @@ public class QProductionPlanning extends EntityPathBase<ProductionPlanning> {
 
     public final StringPath productCode = createString("productCode");
 
+    public final DatePath<java.time.LocalDate> productDeliveryDate = createDate("productDeliveryDate", java.time.LocalDate.class);
+
     public final DatePath<java.time.LocalDate> productionDeliveryDate = createDate("productionDeliveryDate", java.time.LocalDate.class);
 
     public final StringPath productionPlanCode = createString("productionPlanCode");

@@ -1,91 +1,101 @@
-<!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/layout/layout.html}">
+    <!DOCTYPE html>
+    <html xmlns:th="http://thymeleaf.org"
+          xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+          layout:decorate="~{/layout/layout.html}">
 
-<head>
-    <title>Materials Read</title>
-</head>
+    <head>
+        <title>Materials Read</title>
+    </head>
 
-<div layout:fragment="content">
-    <div class="row mt-3">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    자재 조회
-                </div>
-                <div class="card-body">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">자재 일련번호</span>
-                        <input type="text" class="form-control" th:value="${dto.materialNo}" readonly>
+    <div layout:fragment="content">
+        <div class="row mt-3">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        자재 조회
                     </div>
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">자재코드</span>
-                        <input type="text" class="form-control" th:value="${dto.materialCode}" readonly>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">자재명</span>
-                        <input type="text" class="form-control" th:value="${dto.materialName}" readonly>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">자재타입</span>
-                        <input type="text" class="form-control" th:value="${dto.materialType}" readonly>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">자재설명</span>
-                        <input class="form-control" th:value="${dto.materialExplaination}" readonly>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">자재공급단가</span>
-                        <input type="number" class="form-control" th:value="${dto.materialSupplyPrice}" readonly>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">등록일</span>
-                        <input type="text" class="form-control"
-                               th:value="${#temporals.format(dto.regDate, 'yyyy-MM-dd')}" readonly>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">수정일</span>
-                        <input type="text" class="form-control"
-                               th:value="${#temporals.format(dto.modDate, 'yyyy-MM-dd')}" readonly>
-                    </div>
-
-                   <!-- 이미지 첨부
+                    <div class="card-body">
                         <div class="input-group mb-3">
-                        <span class="input-group-text">자재 이미지</span>
-                        <input type="file" class="form-control" th:value="${dto.attachFile}" readonly>
-                    </div> !-->
-
-
-
-
-                    <div class="my-4">
-                        <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}" >
-                            <a th:href="|@{/material/list}?${link}|" class="text-decoration-none">
-                                <button type="button" class="btn btn-primary">자재목록</button>
-                            </a>
-                            <a th:href="|@{/material/modify(materialNo=${dto.materialNo})}&${link}|" class="text-decoration-none">
-                                <button type="button" class="btn btn-secondary">수정</button>
-                            </a>
+                            <span class="input-group-text">자재 일련번호</span>
+                            <input type="text" class="form-control" th:value="${dto.materialNo}" readonly>
                         </div>
-                    </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">자재코드</span>
+                            <input type="text" class="form-control" th:value="${dto.materialCode}" readonly>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">자재명</span>
+                            <input type="text" class="form-control" th:value="${dto.materialName}" readonly>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">자재타입</span>
+                            <input type="text" class="form-control" th:value="${dto.materialType}" readonly>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">자재설명</span>
+                            <input class="form-control" th:value="${dto.materialExplaination}" readonly>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">자재공급단가</span>
+                            <input type="number" class="form-control" th:value="${dto.materialSupplyPrice}" readonly>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">등록일</span>
+                            <input type="text" class="form-control"
+                                   th:value="${#temporals.format(dto.regDate, 'yyyy-MM-dd')}" readonly>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">수정일</span>
+                            <input type="text" class="form-control"
+                                   th:value="${#temporals.format(dto.modDate, 'yyyy-MM-dd')}" readonly>
+                        </div>
+
+                        <div class="my-4">
+                            <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}" >
+                                <a th:href="|@{/material/list}?${link}|" class="text-decoration-none">
+                                    <button type="button" class="btn btn-primary">자재목록</button>
+                                </a>
+                                <a th:href="|@{/material/modify(materialNo=${dto.materialNo})}&${link}|" class="text-decoration-none">
+                                    <button type="button" class="btn btn-secondary">수정</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div><!--end card body-->
+
+
+
 
                 </div><!--end card body-->
+
+                <div class="col">
+
+                    <div class="card" th:if="${dto.fileNames != null && dto.fileNames.size() > 0}" >
+
+                        <img class="card-img-top" th:each="fileName: ${dto.fileNames}" th:src="|/viewMaterial/${fileName}|">
+
+                    </div>
+
+                </div>
+
             </div><!--end card-->
         </div><!--end col-->
     </div><!--end row-->
 
-</div>
 
-<script layout:fragment="script" th:inline="javascript">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-</script>
+    </div>
 
-</html>
+    <script layout:fragment="script" th:inline="javascript">
+
+        console.log([[${dto}]])
+
+    </script>
+

@@ -15,7 +15,7 @@ public interface MaterialProcurementPlanningSearch {
 
     int getCodeCount(String materialProcurementPlanCode);
 
-    public MaterialProcurementPlanningDetailDTO read(int materialProcurementPlanNo);
+    MaterialProcurementPlanningDetailDTO read(int materialProcurementPlanNo);
 
 
 }

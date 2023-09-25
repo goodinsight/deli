@@ -109,6 +109,7 @@ public class MaterialProcurementPlanningController {
     //수정POST
     @PostMapping("/modify")
     public String modify( PageRequestDTO pageRequestDTO,
+//                          @Valid MaterialProcurementPlanningDTO materialProcurementPlanningDTO,
                           @Valid MaterialProcurementPlanningDTO materialProcurementPlanningDTO,
                           BindingResult bindingResult,
                           RedirectAttributes redirectAttributes) {
@@ -195,7 +196,6 @@ public class MaterialProcurementPlanningController {
 
     }
 
-    //materialNo -> html에서 materialCode -> materialNo 수정 필요
     @ResponseBody
     @GetMapping("/register/getMaterial/{materialsNo}")
     public MaterialsDTO getMaterialsDTO(@PathVariable("materialsNo") int materialsNo) {
@@ -204,7 +204,7 @@ public class MaterialProcurementPlanningController {
 
         MaterialsDTO materialsDTO = materialsService.readOne(materialsNo);
 
-        log.info(materialsNo);
+        log.info(materialsDTO);
 
         return materialsDTO;
     }

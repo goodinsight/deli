@@ -5,7 +5,7 @@ async function uploadToServer (formObj) {
 
     const response = await axios({
        method: 'post',
-        url: '/upload',
+        url: '/uploadMaterial',
         data: formObj,
         headers: {
            'Content-Type': 'multipart/form-data',
@@ -17,7 +17,8 @@ async function uploadToServer (formObj) {
 
 async function removeFileToServer(materialUuid, materialImgName) {
 
-    const response = await axios.delete(`/remove/${materialUuid}_${materialImgName}`)
-// 주소 수정중
+
+    const response = await axios.delete(`/removeMaterial/${materialUuid}_${materialImgName}`)
+
     return response.data
 }

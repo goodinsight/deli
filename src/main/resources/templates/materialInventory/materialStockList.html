@@ -15,8 +15,8 @@
                         <select class="form-select" name="type">
                             <option value="">---</option>
                             <option value="t" th:selected="${pageRequestDTO.type == 't'}">자재 이름</option>
-                            <option value="c" th:selected="${pageRequestDTO.type == 'c'}">자재 타입</option>
-                            <option value="w" th:selected="${pageRequestDTO.type == 'w'}">자재 코드</option>
+                            <option value="c" th:selected="${pageRequestDTO.type == 'c'}">발주 코드</option>
+                            <option value="w" th:selected="${pageRequestDTO.type == 'w'}">담당자</option>
                         </select>
                     </div>
                     <input type="text" class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
@@ -42,29 +42,27 @@
                         <thead>
                         <tr>
                             <th scope="col">NO</th>
-                            <th scope="col">자재 코드</th>
+                            <th scope="col">발주 코드</th>
                             <th scope="col">자재 이름</th>
-                            <th scope="col">카테고리</th>
                             <th scope="col">입고 수량</th>
-                            <th scope="col">공급 단가</th>
                             <th scope="col">발주 일자</th>
+                            <th scope="col">납기 일자</th>
+                            <th scope="col">담당자</th>
                             <th scope="col">발주 상태</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="dto:${responseDTO.dtoList}">
-                            <th scope="row">[[${dto.materialInventoryNo}]]</th>
-                            <td>[[${dto.materials.materialCode}]]</td>
-
+                            <th scope="row">[[${dto.orderNo}]]</th>
                             <td>
-                                <a th:href="|@{/materialInventory/materialStockInDetail(materialInventoryNo = ${dto.materialInventoryNo})}|">[[${dto.materials.materialName}]]</a>
+                                <a th:href="|@{/materialInventory/materialStockDetail(orderNo = ${dto.orderNo})}&${link}|" class="text-decoration-none">[[${dto.orderCode}]]</a>
                             </td>
-
-                            <td>[[${dto.materials.materialType}]]</td>
-                            <td>[[${dto.order.orderQuantity}]]</td>
-                            <td>[[${dto.materials.materialSupplyPrice}]]</td>
-                            <td>[[${#temporals.format(dto.order.orderDate, 'yyyy-MM-dd HH:mm:ss')}]]</td>
-                            <td>[[${dto.order.orderState}]]</td>
+                            <td>[[${dto.materialName}]]</td>
+                            <td>[[${dto.orderQuantity}]]</td>
+                            <td>[[${dto.orderDate}]]</td>
+                            <td>[[${dto.orderDeliveryDate}]]</td>
+                            <td>[[${dto.employeeName}]]</td>
+                            <td>[[${dto.orderState}]]</td>
                         </tr>
                         </tbody>
 

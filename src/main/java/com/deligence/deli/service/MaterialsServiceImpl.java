@@ -26,8 +26,9 @@ public class MaterialsServiceImpl implements MaterialsService {
 
     private final MaterialsRepository materialsRepository;
 
+
     @Override
-    public int register(MaterialsDTO materialsDTO) throws Exception { //등록 작업처리
+    public int register(MaterialsDTO materialsDTO) { //등록 작업처리
 
 //        Materials materials = modelMapper.map(materialsDTO, Materials.class);
 
@@ -41,14 +42,28 @@ public class MaterialsServiceImpl implements MaterialsService {
     @Override
     public MaterialsDTO readOne(int materialNo) { //조회 작업처리
 
-//        Optional<Materials> result = materialsRepository.findById(materialNo);
-//        Materials materials = result.orElseThrow();
-//        MaterialsDTO materialsDTO = modelMapper.map(materials, MaterialsDTO.class);
-
+        //materialimage까지 조인 처리되는 findByIdWithImages()를 이용
         Optional<Materials> result = materialsRepository.findByIdWithImages(materialNo);
+
         Materials materials = result.orElseThrow();
+
         MaterialsDTO materialsDTO = entityToDTO(materials);
+
         return materialsDTO;
+
+//        MaterialsDTO materialsDTO = null;
+//
+//        try {
+//            Optional<Materials> result = materialsRepository.findByIdWithImages(materialNo);
+//            Materials materials = result.orElseThrow();
+//            materialsDTO = entityToDTO(materials);
+//        } catch (IndexOutOfBoundsException e){
+//            log.info("이미지가 없습니다.");
+//            Optional<Materials> result = materialsRepository.findById(materialNo);
+//            Materials materials = result.orElseThrow();
+//            materialsDTO = modelMapper.map(materials, MaterialsDTO.class);
+//        }
+//            return materialsDTO;
     }
 
     @Override
@@ -58,15 +73,19 @@ public class MaterialsServiceImpl implements MaterialsService {
 
         Materials materials = result.orElseThrow();
 
-        materials.change(materialsDTO.getMaterialName(), materialsDTO.getMaterialType(), materialsDTO.getMaterialExplaination(), materialsDTO.getMaterialSupplyPrice(), materialsDTO.getRegDate(), materialsDTO.getModDate());
+//        materials.change(materialsDTO.getMaterialName(), materialsDTO.getMaterialType(), materialsDTO.getMaterialExplaination(), materialsDTO.getMaterialSupplyPrice());
+
+        materials.change(materialsDTO);
 
         //첨부파일 처리
         materials.clearImages();
 
         if(materialsDTO.getFileNames() != null){
-            String fileName = materialsDTO.getFileNames();
-            String[] arr = fileName.split("_");
-            materials.addImage(arr[0],arr[1]);
+            for (String fileName : materialsDTO.getFileNames()) {
+                String[] arr = fileName.split("_");
+                materials.addImage(arr[0],arr[1]);
+
+            }
         }
         materialsRepository.save(materials);
     }
@@ -87,7 +106,7 @@ public class MaterialsServiceImpl implements MaterialsService {
         Page<Materials> result = materialsRepository.searchAll(types, keyword, pageble);
 
         List<MaterialsDTO> dtoList = result.getContent().stream()
-                .map(materials -> modelMapper.map(materials, MaterialsDTO.class))
+                .map(materials -> entityToDTO(materials))
                 .collect(Collectors.toList());
 
         return PageResponseDTO.<MaterialsDTO>withAll()
@@ -107,19 +126,29 @@ public class MaterialsServiceImpl implements MaterialsService {
 
 
     @Override
-    public PageResponseDTO<MaterialImageDTO> listWithAll(PageRequestDTO pageRequestDTO){     //게시글 이미지 숫자처리
+    public PageResponseDTO<MaterialsDTO> listWithAll(PageRequestDTO pageRequestDTO){     //게시글 이미지 숫자처리
+
+//    public PageResponseDTO<MaterialListAllDTO> listWithAll(PageRequestDTO pageRequestDTO){     //게시글 이미지 숫자처리
 
         String[] types = pageRequestDTO.getTypes();
         String keyword = pageRequestDTO.getKeyword();
         Pageable pageable = pageRequestDTO.getPageable("MaterialNo");
 
-        Page<MaterialImageDTO> result = materialsRepository.searchWithAll(types, keyword,pageable);
+        Page<MaterialsDTO> result = materialsRepository.searchWithAll(types, keyword,pageable);
 
-        return PageResponseDTO.<MaterialImageDTO>withAll()
+        return PageResponseDTO.<MaterialsDTO>withAll()
                 .pageRequestDTO(pageRequestDTO)
                 .dtoList(result.getContent())
                 .total((int) result.getTotalElements())
                 .build();
+
+//        Page<MaterialListAllDTO> result = materialsRepository.searchWithAll(types, keyword,pageable);
+//
+//        return PageResponseDTO.<MaterialListAllDTO>withAll()
+//                .pageRequestDTO(pageRequestDTO)
+//                .dtoList(result.getContent())
+//                .total((int) result.getTotalElements())
+//                .build();
     }
 
 //    public int registerImg(MaterialsDTO materialsDTO) { //이미지 등록

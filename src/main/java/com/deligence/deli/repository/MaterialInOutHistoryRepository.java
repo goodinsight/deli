@@ -1,12 +1,10 @@
 package com.deligence.deli.repository;
 
-import com.deligence.deli.domain.MeterialInOutHistory;
+import com.deligence.deli.domain.MaterialInOutHistory;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
-public interface MaterialInOutHistoryRepository extends JpaRepository<MeterialInOutHistory, Integer> {
 
-    @Query(value = "select now()", nativeQuery = true)
-    String getTime();
+public interface MaterialInOutHistoryRepository extends JpaRepository<MaterialInOutHistory, Integer> {
+
 
 }

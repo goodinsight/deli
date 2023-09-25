@@ -46,7 +46,9 @@ public class QMaterialProcurementContract extends EntityPathBase<MaterialProcure
 
     public final StringPath materialProcurementContractState = createString("materialProcurementContractState");
 
-    public final NumberPath<Integer> materialRequirementsCount = createNumber("materialRequirementsCount", Integer.class);
+    public final StringPath materialProcurementPlanCode = createString("materialProcurementPlanCode");
+
+    public final QMaterialProcurementPlanning materialProcurementPlanning;
 
     public final QMaterials materials;
 
@@ -54,6 +56,8 @@ public class QMaterialProcurementContract extends EntityPathBase<MaterialProcure
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modDate = _super.modDate;
+
+    public final NumberPath<Integer> procurementQuantity = createNumber("procurementQuantity", Integer.class);
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> regDate = _super.regDate;
@@ -83,6 +87,7 @@ public class QMaterialProcurementContract extends EntityPathBase<MaterialProcure
         this.cooperatorSupplier = inits.isInitialized("cooperatorSupplier") ? new QCooperatorSupplier(forProperty("cooperatorSupplier"), inits.get("cooperatorSupplier")) : null;
         this.documentFile = inits.isInitialized("documentFile") ? new QDocumentFile(forProperty("documentFile")) : null;
         this.employee = inits.isInitialized("employee") ? new QEmployee(forProperty("employee"), inits.get("employee")) : null;
+        this.materialProcurementPlanning = inits.isInitialized("materialProcurementPlanning") ? new QMaterialProcurementPlanning(forProperty("materialProcurementPlanning"), inits.get("materialProcurementPlanning")) : null;
         this.materials = inits.isInitialized("materials") ? new QMaterials(forProperty("materials")) : null;
     }
 

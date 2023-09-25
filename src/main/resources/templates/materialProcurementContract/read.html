@@ -36,10 +36,20 @@
                                th:value="${dto.materialProcurementContractDate}" readonly>
                     </div>
 
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">자재 코드</span>
-                        <input type="text" name="materialCode" class="form-control selectMaterial" th:value="${dto.materialCode}" readonly>
+                    <div class="input-group mb-3 d-none">
+                        <span class="input-group-text">조달계획 일련번호</span>
+                        <input type="text" name="materialProcurementPlanNo" class="form-control materialProcurementPlanNo" th:value="${dto.materialProcurementPlanNO}" readonly>
                     </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">조달계획 코드</span>
+                        <input type="text" name="materialProcurementPlanCode" class="form-control selectPlan" th:value="${dto.materialProcurementPlanCode}" readonly>
+                    </div>
+
+                    <div class="input-group mb-3 pl-5">
+                        <span class="input-group-text">자재 코드</span>
+                        <input type="text" name="materialCode" class="form-control materialCode" th:value="${dto.materialCode}" readonly>
+                    </div>
+
                     <div class="input-group mb-3 pl-5">
                         <span class="input-group-text">자재 타입</span>
                         <input type="text" name="materialType" class="form-control materialType" th:value="${dto.materialType}" readonly>
@@ -53,8 +63,8 @@
                         <input type="text" name="materialSupplyPrice" class="form-control materialSupplyPrice" th:value="${dto.materialSupplyPrice}" readonly>
                     </div>
 
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">자재 수량</span>
+                    <div class="input-group mb-3 pl-5">
+                        <span class="input-group-text">자재 소요량</span>
                         <input type="text" name="materialRequirementsCount" class="form-control materialRequirementsCount" th:value="${dto.materialRequirementsCount}" readonly>
                     </div>
 

@@ -62,6 +62,8 @@ public class OrderSearchImpl extends QuerydslRepositorySupport implements OrderS
 
         //query.where(order.orderNo.gt(0));
 
+        query.orderBy(order.orderNo.desc());
+
         //paging
         this.getQuerydsl().applyPagination(pageable, query);// 오류 발생 부분. pageable에 sort를 담아 실행하면 오류가 발생한다.
 
@@ -73,6 +75,39 @@ public class OrderSearchImpl extends QuerydslRepositorySupport implements OrderS
         long count = query.fetchCount();
 
         return new PageImpl<>(list, pageable, count);
+    }
+
+    @Override
+    public Page<Order> searchByState(String[] keywords, Pageable pageable) {
+
+        QOrder order = QOrder.order;
+
+        JPQLQuery<Order> query = new JPAQueryFactory(em)
+                .selectFrom(order);
+
+        if( keywords != null && keywords.length > 0) { //검색조건과 키워드가 있다면
+
+            BooleanBuilder booleanBuilder = new BooleanBuilder(); // (
+
+            for(String keyword : keywords) {
+
+                booleanBuilder.or(order.orderState.contains(keyword));
+
+            }//end for
+
+            query.where(booleanBuilder);
+
+        }//end if
+
+        //paging
+        this.getQuerydsl().applyPagination(pageable, query);// 오류 발생 부분. pageable에 sort를 담아 실행하면 오류가 발생한다.
+
+        List<Order> list = query.fetch();
+
+        long count = query.fetchCount();
+
+        return new PageImpl<>(list, pageable, count);
+
     }
 
     @Override
