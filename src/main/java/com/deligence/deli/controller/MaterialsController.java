@@ -34,7 +34,7 @@ public class MaterialsController {
     public void listAll(PageRequestDTO pageRequestDTO, Model model) {
 
 
-        PageResponseDTO<MaterialsDTO> responseDTO = materialsService.listWithAll(pageRequestDTO);
+        PageResponseDTO<MaterialsDTO> responseDTO = materialsService.list(pageRequestDTO);
 
        // PageResponseDTO<MaterialListAllDTO> responseDTO = materialsService.listWithAll(pageRequestDTO);
 
