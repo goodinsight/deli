@@ -48,7 +48,7 @@ public class QMaterialImage extends EntityPathBase<MaterialImage> {
 
     public QMaterialImage(Class<? extends MaterialImage> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.materials = inits.isInitialized("materials") ? new QMaterials(forProperty("materials")) : null;
+        this.materials = inits.isInitialized("materials") ? new QMaterials(forProperty("materials"), inits.get("materials")) : null;
     }
 
 }

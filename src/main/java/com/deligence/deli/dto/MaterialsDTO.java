@@ -38,6 +38,11 @@ public class MaterialsDTO {
 
     private List<String> fileNames; //첨부파일 이름들
 
+    private int materialInventoryNo;    //자재정보 FK 추가
+
+    private int employeeNo; //담당자 FK 추가가
+
+
 
 //    public MaterialsDTO(String materialName, String materialType, String materialExplaination, long materialSupplyPrice){
 //        LocalDate date = LocalDate.now();
