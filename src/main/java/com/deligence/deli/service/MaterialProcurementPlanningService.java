@@ -27,6 +27,9 @@ public interface MaterialProcurementPlanningService {
     int getCodeCount(String materialProcurementPlanCode);
 
 
+    void completePlan(int materialProcurementPlanNo);
+
+
     default MaterialProcurementPlanning dtoToEntity(MaterialProcurementPlanningDTO materialProcurementPlanningDTO) {
 
         MaterialProcurementPlanning materialProcurementPlanning = MaterialProcurementPlanning.builder()

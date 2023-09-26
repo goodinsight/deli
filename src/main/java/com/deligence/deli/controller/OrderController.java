@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.Map;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("/order")
@@ -110,7 +112,6 @@ public class OrderController {
         return "redirect:/order/read";
     }
 
-
     // 비동기 처리 -------------------------------------------------------
 
     @ResponseBody
@@ -175,6 +176,38 @@ public class OrderController {
         log.info("num : " + num);
 
         return num;
+
+    }
+
+    @ResponseBody
+    @PostMapping("/completeOrder")
+    public void completeOrder(Map<String, Object> map){
+
+
+        int orderNo = Integer.valueOf(map.get("orderNo").toString()).intValue();
+        int materialProcurementPlanNo = Integer.valueOf(map.get("materialProcurementPlanNo").toString()).intValue();
+
+        log.info("compOrder - get values : " + orderNo + ", " + materialProcurementPlanNo);
+
+
+        //해당 발주 완료
+        orderService.changeState(orderNo, "발주완료");
+
+        //조달 계획 소요량 확인
+        int materialRequirementsCount = materialProcurementPlanningService.read(materialProcurementPlanNo).getMaterialRequirementsCount();
+        log.info("조달 계획 : " + materialRequirementsCount);
+
+        //연관 계획중 발주 완료된 수량 확인
+        int sumOfOrderQuantity = orderService.sumOfOrderQuantity(materialProcurementPlanNo);
+        log.info("발주 완료 수량 : " + sumOfOrderQuantity);
+
+        //비교
+        if(materialRequirementsCount <= sumOfOrderQuantity){
+            log.info("조달 완료 프로세스 시작");
+            //조달 계획 완료
+            materialProcurementPlanningService.completePlan(materialProcurementPlanNo);
+        }
+
 
     }
 

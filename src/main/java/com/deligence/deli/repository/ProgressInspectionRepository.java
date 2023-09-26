@@ -14,7 +14,7 @@ public interface ProgressInspectionRepository extends JpaRepository<ProgressInsp
     @Query("select pi " +
             "from ProgressInspection pi " +
             "where pi.order.orderNo = :orderNo")
-    Page<ProgressInspection> listOfOrder(@Param("orderNo") int orderNo, Pageable pageable);
+    Page<ProgressInspection> listOfPI(@Param("orderNo") int orderNo, Pageable pageable);
 
     Long countByOrder_OrderNo(int orderNo);
 

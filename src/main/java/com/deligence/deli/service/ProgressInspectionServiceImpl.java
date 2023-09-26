@@ -109,7 +109,7 @@ public class ProgressInspectionServiceImpl implements ProgressInspectionService{
                 Sort.by("progressInspectionNo").ascending()
         );
 
-        Page<ProgressInspection> result = progressInspectionRepository.listOfOrder(orderNo, pageable);
+        Page<ProgressInspection> result = progressInspectionRepository.listOfPI(orderNo, pageable);
 
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
 

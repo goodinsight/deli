@@ -25,6 +25,8 @@ public interface OrderService {
 
     void changeState(int orderNo, String state);
 
+    int sumOfOrderQuantity(int materialProcurementPlanningNo);
+
     PageResponseDTO<OrderDTO> listByState(String[] keywords, PageRequestDTO pageRequestDTO);
 
 
