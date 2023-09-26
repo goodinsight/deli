@@ -81,7 +81,7 @@ public interface MaterialProcurementPlanningService {
     //조달 계획 상세(연관 발주 목록)
     PageResponseDTO<OrderDTO> orderList(int materialProcurementPlanNo, PageRequestDTO pageRequestDTO);
 
-    default OrderDTO entityToDto(Order order) {
+    default OrderDTO entityToDto2(Order order) {
 
         OrderDTO orderDTO = OrderDTO.builder()
                 .orderNo(order.getOrderNo())

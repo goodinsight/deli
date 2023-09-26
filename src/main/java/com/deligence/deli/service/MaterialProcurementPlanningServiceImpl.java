@@ -153,7 +153,7 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
         Page<Order> result = materialProcurementPlanningRepository.orderList(materialProcurementPlanNo, pageable);
 
         List<OrderDTO> dtoList = result.getContent().stream()
-                .map(order -> entityToDto(order))
+                .map(order -> entityToDto2(order))
                 .collect(Collectors.toList());
 
         return PageResponseDTO.<OrderDTO>withAll()

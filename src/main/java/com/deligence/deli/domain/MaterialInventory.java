@@ -12,68 +12,61 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = {"documentFile", "materials", "order","materialImage","materialInOutHistory" })
+@ToString(exclude = {"materials", "materialImage", "order", "materialInOutHistory", "documentFile"})
 public class MaterialInventory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int materialInventoryNo; // 자재 재고 일련번호
+    private int materialInventoryNo;                 // 자재 재고 일련번호 (-> 자재재고 목록)
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Materials materials; // 자재 일련번호
+    private Materials materials;                    // 자재 일련번호 -> 자재타입, 자재코드, 자재이름 (-> 자재재고 목록 / 자재 재고 상세 - 자재 설명)
 
-    @Column(length = 500, nullable = false)
-    private int materialIncomingQuantity; // 입고 수량
+    private int materialIncomingQuantity;           // 입고 수량 (-> 자재재고 목록)
 
-    @Column(length = 500, nullable = false)
-    private int materialOutgoingQuantity; // 출고 수량
+    private int materialOutgoingQuantity;           // 출고 수량 (-> 자재재고 목록)
 
-    @Column(length = 500, nullable = false)
-    private int materialStock; // 재고 수량
+    private int materialStock;                      // 재고 수량 (-> 자재재고 목록 / 자재 재고 상세)
 
-    @Column(length = 500, nullable = false)
-    private Long materialSupplyPrice; // 공급 단가
+    private Long materialSupplyPrice;               // 공급 단가 (-> 자재재고 목록)
 
-    @Column(length = 500, nullable = false)
-    private Long materialTotalInventoryPayments; // 재고 금액
+    private Long materialTotalInventoryPayments;    // 총 재고 금액 (입고수량*공급단가 - 출고수량*공급단가) (-> 자재재고 목록)
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Order order; // 오더 일련번호
+    private String materialCode;                    // 자재코드 (자재재고 목록 검색용)
+
+    private String materialName;                    // 자재이름 (자재재고 목록 / 재고 > 입고관리 검색용)
+
+    private String materialType;                    // 자재타입 (자재재고 목록 검색용)
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private MaterialImage materialImage;    //자재이미지 FK
+    private MaterialImage materialImage;            //자재이미지 FK (-> 자재 재고 상세)
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Order order;                            // 발주 일련번호 (재고 > 입고관리) -> 발주코드, (발주)자재이름, 입고수량, 발주일, 납기일, 담당자, (발주)상태
+
+    private String orderCode;                       //발주코드 (재고 > 입고관리 검색용)
+
+    private String employeeName;                    //(발주)담당자 (재고 > 입고관리 검색용)
+
+    private String orderState;                      //발주상태 (재고 > 입고관리 검색용)
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private MaterialInOutHistory materialInOutHistory;    //입출고 기록 (->일련번호, 입출고구분자, 수량, 날짜, 담당자)
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private MaterialInOutHistory materialInOutHistory;
-
-    @Column(length = 500, nullable = false)
-    private String materialName; // 자재명 검색
-
-    @Column(length = 500, nullable = false)
-    private String materialType; // 자재타입 검색
-
-    @Column(length = 500, nullable = false)
-    private String materialCode; // 자재코드 검색
-
-    private String orderCode;   //발주코드(검색용)
-
-    private String employeeName;    //담당자(검색용)
-
-    private String orderState;  //발주상태 (검색용)
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private DocumentFile documentFile; // 파일 일련번호
+    private DocumentFile documentFile;              // 파일 일련번호
 
     public void change(MaterialInventoryDTO materialInventoryDTO ) {
+        //입고수량, 출고수량, 재고수량, 공급단가, 총재고금액
 
         this.materialIncomingQuantity = materialInventoryDTO.getMaterialIncomingQuantity();
         this.materialOutgoingQuantity = materialInventoryDTO.getMaterialOutgoingQuantity();
         this.materialStock = materialInventoryDTO.getMaterialStock();
         this.materialSupplyPrice = materialInventoryDTO.getMaterialSupplyPrice();
         this.materialTotalInventoryPayments = materialInventoryDTO.getMaterialTotalInventoryPayments();
-        this.materialName = materialInventoryDTO.getMaterialName();
-        this.materialType = materialInventoryDTO.getMaterialType();
-        this.materialCode = materialInventoryDTO.getMaterialCode();
+//        this.materialName = materialInventoryDTO.getMaterialName();
+//        this.materialType = materialInventoryDTO.getMaterialType();
+//        this.materialCode = materialInventoryDTO.getMaterialCode();
 
     }
 
