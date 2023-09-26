@@ -208,6 +208,7 @@
                         </div>
                         <div class=" input-group mb-3">
                             <span class="input-group-text">검수 진척도</span>
+                            <input type="text" class="form-control" value="${dto.rateOfProgress}%" readonly>
                         </div>
                         <div class=" input-group mb-3">
                             <div class="progress-bar bg-success" style="width: ${dto.rateOfProgress}%; height:auto;" role="progressbar">${dto.rateOfProgress}%</div>
@@ -420,6 +421,7 @@
     const modifyProgressInspectionDate = document.querySelector(".modifyProgressInspectionDate")
     const modifyEmployeeNo = document.querySelector(".modifyEmployeeNo")
     const modifyEmployeeName = document.querySelector(".modifyEmployeeName")
+    const modifyROPText = document.querySelector(".modifyROPText")
     const modifyRateOfProgress = document.querySelector(".modifyRateOfProgress")
     const modifyProgressInspectionEtc = document.querySelector(".modifyProgressInspectionEtc")
     const modifyProgressInspectionState = document.querySelector(".modifyProgressInspectionState")
@@ -460,6 +462,7 @@
             modifyProgressInspectionTimes.value = pi.progressInspectionTimes
             modifyEmployeeNo.value = pi.employeeNo
             modifyEmployeeName.value = pi.employeeName
+            modifyROPText.value = pi.rateOfProgress + "%"
             modifyRateOfProgress.value = pi.rateOfProgress
             modifyProgressInspectionEtc.value = pi.progressInspectionEtc
             modifyProgressInspectionState.value = pi.progressInspectionState
@@ -504,6 +507,25 @@
 
 
     }, false)
+
+
+    // 검수 수정 진척도 바 ---------------------------------------------
+
+    modifyRateOfProgress.addEventListener("mousedown", function (e) {
+
+        modifyROPText.value = modifyRateOfProgress.value + "%"
+
+        modifyRateOfProgress.addEventListener("mousemove", function(e) {
+            modifyROPText.value = modifyRateOfProgress.value + "%"
+        })
+
+    })
+
+    modifyRateOfProgress.addEventListener("mouseup", function(e) {
+        modifyRateOfProgress.removeEventListener("mousemove", function(){
+            console.log("remove mousemove")
+        })
+    })
 
 
     // 삭제 ---------------------------------------------------------
