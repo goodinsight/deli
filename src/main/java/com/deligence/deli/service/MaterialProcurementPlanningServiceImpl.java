@@ -142,6 +142,7 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
         return num;
     }
 
+
     //조달계획상세(연관발주목록)
 
     @Override
@@ -162,4 +163,20 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
                 .build();
 
     }
+
+    @Override
+    public void completePlan(int materialProcurementPlanNo) {
+
+        Optional<MaterialProcurementPlanning> result =
+                materialProcurementPlanningRepository.findById(materialProcurementPlanNo);
+
+        MaterialProcurementPlanning materialProcurementPlanning = result.orElseThrow();
+
+        materialProcurementPlanning.changeState("계획완료");
+
+        materialProcurementPlanningRepository.save(materialProcurementPlanning);
+
+    }
+
+
 }

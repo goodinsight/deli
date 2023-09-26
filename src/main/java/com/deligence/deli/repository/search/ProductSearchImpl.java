@@ -1,11 +1,7 @@
 package com.deligence.deli.repository.search;
 
-import com.deligence.deli.domain.Materials;
 import com.deligence.deli.domain.Products;
-import com.deligence.deli.domain.QMaterials;
 import com.deligence.deli.domain.QProducts;
-import com.deligence.deli.dto.MaterialImageDTO;
-import com.deligence.deli.dto.MaterialsDTO;
 import com.deligence.deli.dto.ProductsDTO;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.jpa.JPQLQuery;
@@ -23,7 +19,7 @@ import java.util.stream.Collectors;
 public class ProductSearchImpl extends QuerydslRepositorySupport implements ProductSearch {
 
     public ProductSearchImpl(){
-        super(Materials.class);
+        super(Products.class);
     }
 
     @PersistenceContext
@@ -34,9 +30,9 @@ public class ProductSearchImpl extends QuerydslRepositorySupport implements Prod
 
         QProducts products = QProducts.products; //Q도메인 객체
 
-        JPQLQuery<Products> query = from(products); // select..from materials
+        JPQLQuery<Products> query = from(products); // select..from products
 
-        query.where(products.productNo.stringValue().contains("1")); //where materialExplaination like.....
+        query.where(products.productNo.stringValue().contains("1")); //where productContent like.....
 
         //paging
         this.getQuerydsl().applyPagination(pageable, query);
@@ -76,7 +72,7 @@ public class ProductSearchImpl extends QuerydslRepositorySupport implements Prod
             query.where(booleanBuilder);
         }//end if
 
-        //materialNo > 0
+        //productNo > 0
         query.where(products.productNo.gt(0));
 
         //paging
@@ -107,7 +103,7 @@ public class ProductSearchImpl extends QuerydslRepositorySupport implements Prod
 
     public Page<ProductsDTO> searchWithAll(String[] types, String keyword, Pageable pageable) {
 
-//    public Page<MaterialListAllDTO> searchWithAll(String[] types, String keyword, Pageable pageable) {
+//    public Page<ProductListAllDTO> searchWithAll(String[] types, String keyword, Pageable pageable) {
 
 
         QProducts products = QProducts.products;
@@ -152,78 +148,77 @@ public class ProductSearchImpl extends QuerydslRepositorySupport implements Prod
                     //.regDate(product.getRegDate())
                     .build();
 
-//            List<MaterialImageDTO> imageDTOS = material.getImageSet().stream().sorted()
-//                    .map(materialImage -> MaterialImageDTO.builder()
-//                            .materialNo(materialImage.getMaterialImgNo())
-//                            .materialImgName(materialImage.getMaterialImgName())
-//                            .materialUuid(materialImage.getMaterialUuid())
+//            List<ProductImageDTO> imageDTOS = product.getImageSet().stream().sorted()
+//                    .map(productImage -> ProductImageDTO.builder()
+//                            .productNo(productImage.getProductImgNo())
+//                            .productImgName(productImage.getProductImgName())
+//                            .productImgUuid(productImage.getProductImgUuid())
 //                            .build()
 //                    ).collect(Collectors.toList());
 
-            //dto.setMaterialImage(imageDTOS); //처리된 BoardImageDTO들을 추가
+            //dto.setProductImage(imageDTOS); //처리된 BoardImageDTO들을 추가
 
             return dto;
         }).collect(Collectors.toList());
 
         long totalCount = productsJPQLQuery.fetchCount();
 
-//        getQuerydsl().applyPagination(pageable, materialsJPQLQuery); // pageing
+//        getQuerydsl().applyPagination(pageable, productsJPQLQuery); // pageing
 //
 //
-//        JPQLQuery<Tuple> tupleJPQLQuery = materialsJPQLQuery.select(materials, materials.countDistinct());
+//        JPQLQuery<Tuple> tupleJPQLQuery = productsJPQLQuery.select(products, products.countDistinct());
 //
 //        List<Tuple> tupleList = tupleJPQLQuery.fetch();
 //
-//        List<MaterialListAllDTO> dtoList = tupleList.stream().map(tuple -> {
+//        List<ProductListAllDTO> dtoList = tupleList.stream().map(tuple -> {
 //
-//            Materials materials1 = (Materials) tuple.get(materials);
-//            long materialCount = tuple.get(1, Long.class);
+//            Products products1 = (Products) tuple.get(products);
+//            long productCount = tuple.get(1, Long.class);
 //
-//            MaterialListAllDTO dto = MaterialListAllDTO.builder()
-//                    .materialNo(materials1.getMaterialNo())
-//                    .materialCode(materials1.getMaterialCode())
-//                    .materialName(materials1.getMaterialName())
-//                    .materialType(materials1.getMaterialType())
-//                    .materialExplaination(materials1.getMaterialExplaination())
-//                    .materialSupplyPrice(materials1.getMaterialSupplyPrice())
-//                    .materialCount(materialCount)
+//            ProductListAllDTO dto = ProductListAllDTO.builder()
+//                    .productNo(products1.getProductNo())
+//                    .productCode(products1.getProductCode())
+//                    .productName(products1.getProductName())
+//                    .productType(products1.getProductType())
+//                    .productContent(products1.getProductContent())
+//                    .productCount(productCount)
 //                    .build();
 //
-//            //materialImage를 materialImageDTO 처리할 부분
-//            List<MaterialImageDTO> imageDTOS = materials1.getImageSet().stream().sorted()
-//                .map(materialImage -> MaterialImageDTO.builder()
-//                        .materialNo(materialImage.getMaterialImgNo())
-//                        .materialImgName(materialImage.getMaterialImgName())
-//                        .materialUuid(materialImage.getMaterialUuid())
-//                        .materialNo(materialImage.getMaterials().getMaterialNo())
+//            //productImage를 productImageDTO 처리할 부분
+//            List<ProductImageDTO> imageDTOS = products1.getImageSet().stream().sorted()
+//                .map(productImage -> ProductImageDTO.builder()
+//                        .productNo(productImage.getProductImgNo())
+//                        .productImgName(productImage.getProductImgName())
+//                        .productImgUuid(productImage.getProductImgUuid())
+//                        .productNo(productImage.getProducts().getProductNo())
 //                        .build()
 //                ).collect(Collectors.toList());
 //
-//            dto.setMaterialImages(imageDTOS); //처리된 MaterialImageDTO들을 추가
+//            dto.setProductImages(imageDTOS); //처리된 ProductImageDTO들을 추가
 //
 //            return dto;
 //        }).collect(Collectors.toList());
 //
-//        long totalCount = materialsJPQLQuery.fetchCount();
+//        long totalCount = productsJPQLQuery.fetchCount();
 
         return new PageImpl<>(dtoList, pageable, totalCount);
     }
 
 
 }
-//        List<Materials> materialsList = materialsJPQLQuery.fetch();
+//        List<Products> productsList = productsJPQLQuery.fetch();
 //
-//        materialsList.forEach(materials1 -> {
-//            System.out.println(materials1.getMaterialNo());
-//            System.out.println(materials1.getImageSet());
+//        productsList.forEach(products1 -> {
+//            System.out.println(products1.getProductNo());
+//            System.out.println(products1.getImageSet());
 //            System.out.println("--------------------");
 //        });
 
-//        List<MaterialImageDTO> imageDTOS = materials1.getImageSet().stream().sorted()
-//                .map(materialImage -> MaterialImageDTO.builder()
-//                        .materialNo(materialImage.getMaterialImgNo())
-//                        .materialImgName(materialImage.getMaterialImgName())
-//                        .materialUuid(materialImage.getMaterialUuid())
+//        List<ProductImageDTO> imageDTOS = products1.getImageSet().stream().sorted()
+//                .map(productImage -> ProductImageDTO.builder()
+//                        .productNo(productImage.getProductImgNo())
+//                        .productImgName(productImage.getProductImgName())
+//                        .productImgUuid(productImage.getProductImgUuid())
 //                        .build()
 //                ).collect(Collectors.toList());
 //
@@ -232,5 +227,5 @@ public class ProductSearchImpl extends QuerydslRepositorySupport implements Prod
 //
 //        return new PageImpl<>(imageDTOS);
 
-        //materialImageDTO.setMaterialImages(imageDTOS);
+        //productImageDTO.setProductImages(imageDTOS);
 

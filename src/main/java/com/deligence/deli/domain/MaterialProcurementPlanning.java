@@ -60,9 +60,9 @@ public class MaterialProcurementPlanning extends BaseEntity {
 
     }
 
-    public void changeState(String materialProcurementState){
 
-        this.materialProcurementState = materialProcurementState;
+    public void changeState(String state){
+        this.materialProcurementState = state;
 
     }
 

@@ -26,7 +26,7 @@
                         <button type="button" onclick="completeProgressInspection()" class="btn btn-warning completePI">검수 완료</button>
                         <button type="button" class="btn btn-primary openRegisterBtn">검수 등록</button>
                         <a th:href="|@{/order/read(orderNo=${orderNo})}&${link}|" class="text-decoration-none">
-                            <button type="button" class="btn btn-secondary">발주 페이지로</button>
+                            <button type="button" class="btn btn-secondary">발주 페이지</button>
                         </a>
                     </div>
 
@@ -224,14 +224,20 @@
                             <span class="input-group-text">발주 일련번호</span>
                             <input type="text" class="form-control" value="${dto.orderNo}" readonly>
                         </div>
-
-                        <div class="buttonSet">
+                `
+                    if(state != 2){
+                        str+=`
+                        <div>
                             <button type="button" onclick="openModifyModal(${dto.progressInspectionNo})" class="btn btn-primary float-right">수정</button>
                             <button type="button" onclick="removeBtn(${dto.progressInspectionNo})" class="btn btn-danger float-right">삭제</button>
                         </div>
+                        `
+                    }
+                    str +=`
                     </div>
                 </div>
-                `
+
+                    `
 
                 if(maxTimes < dto.progressInspectionTimes){
                     maxTimes = dto.progressInspectionTimes
@@ -255,8 +261,7 @@
             str += `<div><h2>검수가 등록되어있지 않습니다.</h2></div>`
         }
 
-        //버튼 출력
-        printButton(state)
+
 
         piList.innerHTML = str
 
@@ -283,15 +288,22 @@
 
     function printProgressInspections(page, size, goLast) {
 
+        console.log("prints PI start")
+
         getOrderState();
+
         if(orderState == '검수완료'){
             state = 2
         }
 
         getList({orderNo, page, size, goLast}).then(
             data => {
+                console.log("목록처리")
                 printList(data.dtoList) // 목록처리
+                console.log("페이지처리")
                 printPages(data) //페이지 처리
+                console.log("버튼처리")
+                printButton(state)//버튼 출력
             }
         ).catch(e => {
             console.log("getList failed")
@@ -324,10 +336,11 @@
     // 발주 상태 -----------------------
 
     function getOrderState(){
+        console.log("start getOrderState")
         getOS(orderNo).then(result => {
-            console.log("get order State! : " + result.orderState)
-            orderState = result.orderState
-            if(orderState == '검수완료'){
+            console.log("get order State! : " + result)
+            orderState = result
+            if(orderState != '진행중'){//
                 state = 2
             }
         }).catch(e => {
@@ -482,12 +495,13 @@
             alert("검수가 수정되었습니다. : " + result.progressInspectionNo)
             modifyModal.hide()
             printProgressInspections(page, size)
+            printButton(state)
 
         }).catch(e => {
             console.log(e)
         })
 
-        printButton(state)
+
 
     }, false)
 
@@ -518,7 +532,6 @@
         console.log("state : " + state)
         console.log("orderState : " + orderState)
 
-        const buttonSet = document.querySelector('.buttonSet')
         const afterComp = document.querySelector('.afterComp')
 
         switch (state){
@@ -534,9 +547,7 @@
             case 2:
                 completePIButton.style.display = 'none'
                 openRegisterBtn.style.display = 'none'
-                buttonSet.style.display = 'none'
                 afterComp.style.display = 'inline'
-                //case 2: after comp btn click
 
         }
 
@@ -549,8 +560,7 @@
 
         completePI(orderNo).then(result => {
             state = 2
-            getOrderState()
-            printButton()
+            printProgressInspections()
         }).catch(e => {
             console.log(e)
         })

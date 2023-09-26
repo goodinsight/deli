@@ -36,6 +36,9 @@ public interface MaterialProcurementPlanningService {
     PageResponseDTO<MaterialProcurementPlanningDTO> listByState(String[] keywords, PageRequestDTO pageRequestDTO);
 
 
+    void completePlan(int materialProcurementPlanNo);
+
+
     default MaterialProcurementPlanning dtoToEntity(MaterialProcurementPlanningDTO materialProcurementPlanningDTO) {
 
         MaterialProcurementPlanning materialProcurementPlanning = MaterialProcurementPlanning.builder()

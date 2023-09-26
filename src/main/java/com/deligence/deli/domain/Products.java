@@ -2,7 +2,7 @@ package com.deligence.deli.domain;
 
 //제품 Entity
 
-import com.deligence.deli.dto.MaterialsDTO;
+import com.deligence.deli.dto.ProductsDTO;
 import lombok.*;
 import org.hibernate.annotations.BatchSize;
 
@@ -16,7 +16,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString(exclude = "imageSet")
-public class Products {
+public class Products extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,12 +35,12 @@ public class Products {
     @Column(length = 1000, nullable = true)
     private String productContent;  //제품내용
 
-//    public void change(ProductsDTO productsDTO){
-//        this.productName = productName;
-//        this.productType = productType;
-//        this.productContent = productContent;
-//
-//    }
+    public void change(ProductsDTO productsDTO){
+        this.productName = productName;
+        this.productType = productType;
+        this.productContent = productContent;
+
+    }
 
     @OneToMany(mappedBy = "products", //ProductImage의 products변수
             cascade = {CascadeType.ALL},
@@ -60,12 +60,12 @@ public class Products {
         imageSet.add(productImage);
     }
 
-//    public void clearImages(){
-//
-//        imageSet.forEach(productImage -> productImage.changeProduct(null));
-//
-//        this.imageSet.clear();
-//    }
+    public void clearImages(){
+
+        imageSet.forEach(productImage -> productImage.changeProduct(null));
+
+        this.imageSet.clear();
+    }
 
 
 }

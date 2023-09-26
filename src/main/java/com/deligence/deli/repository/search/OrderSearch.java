@@ -4,6 +4,7 @@ import com.deligence.deli.domain.Order;
 import com.deligence.deli.dto.OrderDetailDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 
 public interface OrderSearch {
 
@@ -14,5 +15,8 @@ public interface OrderSearch {
     int getCodeCount(String orderCode);
 
     OrderDetailDTO read(int orderNo);
+
+
+    int sumOfOrderQuantity(int materialProcurementPlanningNo);
 
 }

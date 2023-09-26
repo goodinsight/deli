@@ -49,7 +49,7 @@ public class MaterialInventoryRepositoryTests {
                     .materialSupplyPrice((long) (i * 10))
                     .materialTotalInventoryPayments((long) i * 20)
                     .materials(Materials.builder().materialNo(i).build())
-//                    .order(Order.builder().orderNo(14).build())
+                    .order(Order.builder().orderNo(14).build())
                     .materialName("name" + i)
                     .materialType("type" + i)
                     .materialCode("code" + i)
@@ -75,33 +75,6 @@ public class MaterialInventoryRepositoryTests {
         log.info(materialInventory);
 
     }
-
-    @Test
-    public void testnumcheck() {
-
-        int orderNo = 20;
-
-        Optional<Order> result = orderRepository.findById(orderNo);
-
-        Order order = result.orElseThrow();
-
-        log.info(order);
-
-    }
-
-    @Test
-    public void testplannignumcheck() {
-
-        int materialProcurementPlanNo = 20;
-
-        Optional<MaterialProcurementPlanning> result = materialProcurementPlanningRepository.findById(materialProcurementPlanNo);
-
-        MaterialProcurementPlanning materialProcurementPlanning = result.orElseThrow();
-
-        log.info(materialProcurementPlanning);
-
-    }
-
 
     @Test
     @Transactional
@@ -149,27 +122,27 @@ public class MaterialInventoryRepositoryTests {
     @Test
     public void testMaterialOrderPaging() {
 
-        Pageable pageable = PageRequest.of(0, 10, Sort.by("orderNo").descending());
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("materialInventoryNo").descending());
 
-        Page<Order> result = orderRepository.findAll(pageable);
+        Page<MaterialInventory> result = materialInventoryRepository.findAll(pageable);
 
         log.info("total count : " + result.getTotalElements());
         log.info("total pages : " + result.getTotalPages());
         log.info("page number : " + result.getNumber());
         log.info("page size : " + result.getSize());
 
-        List<Order> todoList = result.getContent();
+        List<MaterialInventory> todoList = result.getContent();
 
-        todoList.forEach(order -> log.info(order));
+        todoList.forEach(materialInventory -> log.info(materialInventory));
 
     }
-
+//------------------------------------------------------------
     @Test
     public void testSearch1() {
 
-        Pageable pageable = PageRequest.of(1, 10, Sort.by("orderNo").descending());
+        Pageable pageable = PageRequest.of(1, 10, Sort.by("materialInventoryNo").descending());
 
-        materialInventoryRepository.materialStockListOne(pageable);
+        materialInventoryRepository.materialStockRead(pageable);
 
     }
 
@@ -178,11 +151,11 @@ public class MaterialInventoryRepositoryTests {
 
         String[] types = {"t", "c", "w"};
 
-        String keyword = "cpu";
+        String keyword = "라이젠";
 
-        Pageable pageable = PageRequest.of(0, 10, Sort.by("orderNo").descending());
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("materialInventoryNo").descending());
 
-        Page<Order> result = materialInventoryRepository.materialStockList(types, keyword, pageable);
+        Page<MaterialInventory> result = materialInventoryRepository.materialStockList(types, keyword, pageable);
 
         log.info("페이지 : " + result.getTotalPages());
 
@@ -192,10 +165,9 @@ public class MaterialInventoryRepositoryTests {
 
         log.info(result.hasPrevious() + " : " + result.hasNext());
 
-        result.getContent().forEach(order -> log.info(order));
+        result.getContent().forEach(materialInventory -> log.info(materialInventory));
 
     }
-
 
 }
 

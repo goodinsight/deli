@@ -51,6 +51,15 @@ public class MaterialInventory {
     @Column(length = 500, nullable = false)
     private String materialCode; // 자재코드 검색
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private MaterialInOutHistory materialInOutHistory;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Employee employee;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private MaterialImage materialImage;
+
     public void change(int materialIncomingQuantity, int materialOutgoingQuantity, int materialStock, Long materialSupplyPrice, Long materialTotalInventoryPayments, String materialName, String materialCode, String materialType) {
 
         this.materialIncomingQuantity = materialIncomingQuantity;
