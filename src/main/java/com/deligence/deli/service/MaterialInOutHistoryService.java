@@ -9,7 +9,7 @@ public interface MaterialInOutHistoryService {
 
     MaterialInOutHistoryDetailDTO readOne(int materialHistoryNo);  //자재 재고 입고,출고 조회작업처리
 
-    PageResponseDTO<MaterialInOutHistoryDetailDTO> List(PageRequestDTO pageRequestDTO);
+    PageResponseDTO<MaterialInOutHistoryDetailDTO> list(PageRequestDTO pageRequestDTO);
 
 //    PageResponseDTO<MaterialInventoryDTO> materialStockStateListOne(PageRequestDTO pageRequestDTO);
 

@@ -65,7 +65,7 @@ public class MaterialInOutHistoryServiceImpl implements MaterialInOutHistoryServ
     }
 
     @Override
-    public PageResponseDTO<MaterialInOutHistoryDetailDTO> List(PageRequestDTO pageRequestDTO) {
+    public PageResponseDTO<MaterialInOutHistoryDetailDTO> list(PageRequestDTO pageRequestDTO) {
 
         String[] types = pageRequestDTO.getTypes();
         String keyword = pageRequestDTO.getKeyword();
