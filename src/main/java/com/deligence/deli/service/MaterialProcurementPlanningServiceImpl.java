@@ -2,13 +2,17 @@ package com.deligence.deli.service;
 
 import com.deligence.deli.domain.MaterialProcurementPlanning;
 import com.deligence.deli.domain.Order;
+import com.deligence.deli.domain.QOrder;
 import com.deligence.deli.dto.*;
 import com.deligence.deli.repository.MaterialProcurementPlanningRepository;
+import com.querydsl.jpa.JPQLQuery;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -136,5 +140,26 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
         int num = materialProcurementPlanningRepository.getCodeCount(code);
 
         return num;
+    }
+
+    //조달계획상세(연관발주목록)
+
+    @Override
+    public PageResponseDTO<OrderDTO> orderList(int materialProcurementPlanNo, PageRequestDTO pageRequestDTO) {
+
+        Pageable pageable = pageRequestDTO.getPageable();
+
+        Page<Order> result = materialProcurementPlanningRepository.orderList(materialProcurementPlanNo, pageable);
+
+        List<OrderDTO> dtoList = result.getContent().stream()
+                .map(order -> entityToDto(order))
+                .collect(Collectors.toList());
+
+        return PageResponseDTO.<OrderDTO>withAll()
+                .pageRequestDTO(pageRequestDTO)
+                .dtoList(dtoList)
+                .total((int) result.getTotalElements())
+                .build();
+
     }
 }

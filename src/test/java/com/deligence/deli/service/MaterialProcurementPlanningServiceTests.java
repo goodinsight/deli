@@ -1,16 +1,18 @@
 package com.deligence.deli.service;
 
 import com.deligence.deli.domain.Materials;
-import com.deligence.deli.dto.MaterialProcurementPlanningDTO;
-import com.deligence.deli.dto.MaterialProcurementPlanningDetailDTO;
-import com.deligence.deli.dto.PageRequestDTO;
-import com.deligence.deli.dto.PageResponseDTO;
+import com.deligence.deli.domain.Order;
+import com.deligence.deli.dto.*;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @SpringBootTest
 @Log4j2
@@ -100,6 +102,29 @@ public class MaterialProcurementPlanningServiceTests {
 
         log.info( "cc :" + num);
 
+    }
+
+    //조달계획상세 (연관 발주 목록) 테스트
+    @Test
+    public void orderList() {
+
+//        int materialProcurementPlanNo = 10;
+//
+//        Pageable pageable = PageRequest.of(0,10);
+//
+//        Page<Order> order = materialProcurementPlanningService.orderList(materialProcurementPlanNo, pageable);
+//
+//        log.info(order.getTotalElements());
+
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
+                .page(1)
+                .size(10)
+                .build();
+
+        PageResponseDTO<OrderDTO> responseDTO =
+                materialProcurementPlanningService.orderList(10, pageRequestDTO);
+
+        log.info(responseDTO);
     }
 
 }

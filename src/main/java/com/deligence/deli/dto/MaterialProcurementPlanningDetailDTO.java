@@ -67,6 +67,8 @@ public class MaterialProcurementPlanningDetailDTO {
     private LocalDateTime modDate;  //수정일
 
 
+
+
 }
 
 

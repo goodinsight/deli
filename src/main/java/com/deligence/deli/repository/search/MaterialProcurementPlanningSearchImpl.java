@@ -3,6 +3,7 @@ package com.deligence.deli.repository.search;
 import com.deligence.deli.domain.*;
 import com.deligence.deli.dto.MaterialProcurementPlanningDTO;
 import com.deligence.deli.dto.MaterialProcurementPlanningDetailDTO;
+import com.deligence.deli.dto.OrderDetailDTO;
 import com.deligence.deli.dto.ProductionPlanningDTO;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.Tuple;
@@ -212,5 +213,27 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
                 .build();
 
         return dto;
+    }
+
+
+    //조달계획 상세(연관 발주 목록)
+    @Override
+    public Page<Order> orderList(int materialProcurementPlanNo, Pageable pageable) {
+
+        QOrder order = QOrder.order;
+
+        JPQLQuery<Order> query = new JPAQueryFactory(em)
+                .selectFrom(order)
+                .where(order.materialProcurementPlanning.materialProcurementPlanNo.eq(materialProcurementPlanNo));
+
+        this.getQuerydsl().applyPagination(pageable, query);
+
+        List<Order> list = query.fetch();
+
+        long count = query.fetchCount();
+
+        return new PageImpl<>(list, pageable, count);
+
+
     }
 }

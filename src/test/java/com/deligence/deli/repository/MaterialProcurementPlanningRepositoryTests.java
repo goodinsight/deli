@@ -1,9 +1,6 @@
 package com.deligence.deli.repository;
 
-import com.deligence.deli.domain.Employee;
-import com.deligence.deli.domain.MaterialProcurementPlanning;
-import com.deligence.deli.domain.Materials;
-import com.deligence.deli.domain.ProductionPlanning;
+import com.deligence.deli.domain.*;
 import com.deligence.deli.dto.MaterialProcurementPlanningDTO;
 import jdk.swing.interop.LightweightContentWrapper;
 import lombok.extern.log4j.Log4j2;
@@ -175,6 +172,19 @@ public class MaterialProcurementPlanningRepositoryTests {
         int result = materialProcurementPlanningRepository.getCodeCount(code);
 
         log.info("num : " + result);
+
+    }
+
+    //조달계획상세(연관발주목록)테스트
+    @Test
+    public void orderList() {
+
+        Pageable pageable = PageRequest.of(0,10);
+
+        Page<Order> result = materialProcurementPlanningRepository.orderList(10, pageable);
+
+        log.info(result.getTotalElements());
+
 
     }
 

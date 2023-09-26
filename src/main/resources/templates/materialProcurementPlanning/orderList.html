@@ -5,63 +5,29 @@
       layout:decorate="~{/layout/layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>자재조달계획 리스트</title>
+    <title>자재조달상세-연관발주목록</title>
 <!--    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>-->
 </head>
 
 <div layout:fragment="content">
 
-    <div class="row mt-12 m-l-15">
-        <form class="col-lg-10" action="/materialProcurementPlanning/list" method="get">
-            <div class="form-group">
-                <p class="text-muted m-b-15 f-s-12">
-                    "검색하고 싶은
-                    <code>카테고리를 선택하고 키워드</code>
-                    를 입력한 뒤 search버튼을 누르세요"
-                </p>
-                <input type="hidden" name="size" th:value="${pageRequestDTO.size}">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <select class="form-select" name="type">
-                            <option value="">---</option>
-                            <!--a:조달계획코드 b:자재코드 c:자재이름 d:납기일 e:소요량 f:조달상태-->
-                            <option value="a" th:selected="${pageRequestDTO.type == 'a'}">조달계획코드</option>
-                            <option value="b" th:selected="${pageRequestDTO.type == 'b'}">자재 코드</option>
-                            <option value="c" th:selected="${pageRequestDTO.type == 'c'}">자재 이름</option>
-                            <option value="d" th:selected="${pageRequestDTO.type == 'd'}">납기일</option>
-                            <option value="e" th:selected="${pageRequestDTO.type == 'e'}">자재 소요량</option>
-                            <option value="f" th:selected="${pageRequestDTO.type == 'f'}">조달상태</option>
-                        </select>
-                    </div>
-                    <input type="text" class="form-control input-focus" name="keyword"
-                           th:value="${pageRequestDTO.keyword}" placeholder="INPUT KEYWORD">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-success searchBtn" type="submit">
-                            <i class="ti-search"></i> Search</button>
-                        <button class="btn btn-outline-danger clearBtn" type="button">Clear</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-
-
-    </div>
-
-
     <div class="row mt-3">
+
+
 
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    자재조달계획 리스트
-                </div>
-                <div class="my-4">
-                    <div class="float-left">
-                        <a th:href="@{/materialProcurementPlanning/register}" class="text-decoration-none">
-                            <button type="button" class="btn btn-primary">Register</button>
-                        </a>
+                    조달계획상세-연관발주목록
+
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary listBtn" type="button">Procurement List</button>
                     </div>
+
                 </div>
+
+
+
 
                 <div class="card-body">
 
@@ -69,27 +35,25 @@
                         <thead>
                         <tr>
                             <th scope="col">NO</th>
-                            <th scope="col">조달계획 코드</th>
-                            <th scope="col">자재 코드</th>
-                            <th scope="col">자재 이름</th>
-                            <th scope="col">자재 소요량</th>
+                            <th scope="col">발주 코드</th>
+                            <th scope="col">담당자</th>
+                            <th scope="col">발주 수량</th>
+                            <th scope="col">발주일</th>
                             <th scope="col">납기일</th>
-                            <th scope="col">자재 조달 상태</th>
+                            <th scope="col">상태</th>
                         </tr>
                         </thead>
 
                         <tbody th:with="link = ${pageRequestDTO.getLink()}">
                         <tr th:each="dto:${responseDTO.dtoList}">
-                            <td>[[${dto.materialProcurementPlanNo}]]</td>
-                            <td>
-                                <a th:href="|@{/materialProcurementPlanning/read(materialProcurementPlanNo =
-                                 ${dto.materialProcurementPlanNo})}&${link}|" class="text-decoration-none">
-                                    [[${dto.materialProcurementPlanCode}]]</a></td>
-                            <td>[[${dto.materialCode}]]</td>
-                            <td>[[${dto.materialName}]]</td>
-                            <td>[[${dto.materialRequirementsCount}]]</td>
-                            <td>[[${dto.procurementDeliveryDate}]]</td>
-                            <td>[[${dto.materialProcurementState}]]</td>
+                            <td>[[${dto.orderNo}]]</td>
+                            <td>[[${dto.orderCode}]]</td>
+                            <td>[[${dto.employeeName}]]</td>
+                            <td>[[${dto.orderQuantity}]]</td>
+                            <td>[[${dto.orderDate}]]</td>
+                            <td>[[${dto.orderDeliveryDate}]]</td>
+                            <td>[[${dto.orderState}]]</td>
+
                         </tr>
 
                         </tbody>
@@ -115,6 +79,8 @@
                             </li>
                         </ul>
                     </div>
+
+
 
                 </div><!--end card body-->
             </div><!--end card-->
@@ -146,7 +112,7 @@
 
 <script layout:fragment="script" th:inline="javascript">
 
-    console.log("자재조달계획 리스트 페이지")
+    console.log("조달계획상세-연관발주목록 페이지")
 
     $(document).ready(function () {
         console.log([[${pageRequestDTO}]])
@@ -175,7 +141,7 @@
 
     }, false)
 
-    document.querySelector(".clearBtn").addEventListener("click", function (e){
+    document.querySelector(".listBtn").addEventListener("click", function (e){
         e.preventDefault()
         e.stopPropagation()
 

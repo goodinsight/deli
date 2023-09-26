@@ -2,6 +2,11 @@ package com.deligence.deli.service;
 
 import com.deligence.deli.domain.*;
 import com.deligence.deli.dto.*;
+import com.querydsl.jpa.JPQLQuery;
+import com.querydsl.jpa.impl.JPAQueryFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -68,6 +73,24 @@ public interface MaterialProcurementPlanningService {
 
         return materialProcurementPlanningDTO;
 
+    }
+
+    //조달 계획 상세(연관 발주 목록)
+    PageResponseDTO<OrderDTO> orderList(int materialProcurementPlanNo, PageRequestDTO pageRequestDTO);
+
+    default OrderDTO entityToDto(Order order) {
+
+        OrderDTO orderDTO = OrderDTO.builder()
+                .orderNo(order.getOrderNo())
+                .orderCode(order.getOrderCode())
+                .employeeName(order.getEmployeeName())
+                .orderQuantity(order.getOrderQuantity())
+                .orderDate(order.getOrderDate())
+                .orderDeliveryDate(order.getOrderDeliveryDate())
+                .orderState(order.getOrderState())
+                .build();
+
+        return orderDTO;
     }
 
 }

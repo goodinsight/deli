@@ -20,5 +20,9 @@ public interface MaterialProcurementPlanningSearch {
 
     MaterialProcurementPlanningDetailDTO read(int materialProcurementPlanNo);
 
+    //조달계획 상세(연관 발주 목록)
+//    OrderDetailDTO readOrder(int orderNo);
+    Page<Order> orderList(int materialProcurementPlanNo, Pageable pageable);
+
 
 }

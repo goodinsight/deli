@@ -1,11 +1,15 @@
 package com.deligence.deli.controller;
 
+import com.deligence.deli.domain.Order;
 import com.deligence.deli.dto.*;
 import com.deligence.deli.service.MaterialProcurementPlanningService;
 import com.deligence.deli.service.MaterialsService;
 import com.deligence.deli.service.ProductionPlanningService;
+import io.swagger.v3.oas.models.links.Link;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -76,7 +80,7 @@ public class MaterialProcurementPlanningController {
 
         redirectAttributes.addFlashAttribute("result", materialProcurementPlanNo);
 
-        return "redirect:/materialProcurementPlanning/list";
+        return "redirect:/materialProcurementPlanning/list?";
     }
 
     //조회, 수정
@@ -216,6 +220,16 @@ public class MaterialProcurementPlanningController {
 
     }
 
+    //조달계획상세 (연관 발주 목록)
+    @GetMapping("/orderList" )
+    public void orderList(int materialProcurementPlanNo, PageRequestDTO pageRequestDTO, Model model) {
 
+        PageResponseDTO<OrderDTO> responseDTO =
+                materialProcurementPlanningService.orderList(materialProcurementPlanNo, pageRequestDTO);
+
+        log.info(responseDTO);
+
+        model.addAttribute("responseDTO", responseDTO);
+    }
 
 }
