@@ -34,7 +34,22 @@ public class MaterialInOutHistoryController {
 
     }
 
-    @GetMapping("/materialOutRegister")
+    @GetMapping("/materialOutRead")
+    public void read(int materialHistoryNo,PageRequestDTO pageRequestDTO, Model model) {
+
+        log.info("search : materialHistoryNo = " + materialHistoryNo);
+
+        MaterialInOutHistoryDetailDTO materialInOutHistoryDetailDTO = materialInOutHistoryService.readOne(materialHistoryNo);
+
+        log.info(materialInOutHistoryDetailDTO);
+
+        model.addAttribute("dto", materialInOutHistoryDetailDTO);
+
+        model.addAttribute("pageRequestDTO", pageRequestDTO);
+
+    }
+
+    @GetMapping("/materialOutRegister") //register 시 자재 & 사원정보 검색 또는 선택용
     public void materialOutGET(@AuthenticationPrincipal EmployeeSecurityDTO employeeSecurityDTO, Model model) {
 
         log.info(employeeSecurityDTO);
@@ -43,7 +58,7 @@ public class MaterialInOutHistoryController {
 
     }
 
-    @PostMapping("/materialOutRegister")
+    @PostMapping("/materialOutRegister") //register 시 자재 & 사원정보 검색 또는 선택용
     public String materialOutPOST(@Valid MaterialsDTO materialsDTO,
                                   MaterialInventoryDTO materialInventoryDTO,
                                   EmployeeSecurityDTO employeeSecurityDTO,

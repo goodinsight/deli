@@ -23,7 +23,7 @@
                     <div class="input-group-prepend">
                         <select class="form-select" name="type">
                             <option value="">---</option>
-                            <option value="a" th:selected="${pageRequestDTO.type == 't'}">입/출고 구분자</option>
+                            <option value="t" th:selected="${pageRequestDTO.type == 't'}">입/출고 구분자</option>
                         </select>
                     </div>
                     <input type="text" class="form-control input-focus" name="keyword"
@@ -32,7 +32,6 @@
                         <button class="btn btn-outline-success searchBtn" type="submit">
                             <i class="ti-search"></i> Search</button>
                         <button class="btn btn-outline-danger clearBtn" type="button">Clear</button>
-                        <a th:href="@{/materialInventory/materialOutIster}"><button class="btn btn-outline-primary registerBtn" type="button">출고 등록</button></a>
                     </div>
                 </div>
             </div>
@@ -53,21 +52,25 @@
                             <th scope="col">No</th>
                             <th scope="col">자재 코드</th>
                             <th scope="col">자재 이름</th>
-                            <th scope="col">입고 수량</th>
-                            <th scope="col">출고 수량</th>
+                            <th scope="col">입/출고 수량</th>
+                            <th scope="col">재고 수량</th>
+                            <th scope="col">입/출고 구분자</th>
                             <th scope="col">담당자</th>
                         </tr>
                         </thead>
                         <tbody th:with="link = ${pageRequestDTO.getLink()}">
                         <tr th:each="dto:${responseDTO.dtoList}">
-                            <td>[[${dto.materialHistoryNo}]]</td>
+                            <td> <!-- 임시로 일련번호, 코드 둘 다 선택 되게 해놨음 나중에 목록 많아지면 꼭 수정하기 -->
+                                <a th:href="|@{/materialInventory/materialOutRead(materialHistoryNo = ${dto.materialHistoryNo})}&${link}|" class="text-decoration-none">
+                                [[${dto.materialHistoryNo}]] </a>
+                            </td>
                             <td>
-                                <a th:href="|@{/materialInventory/materialStockOutRead(materialHistoryNo = ${dto.materialHistoryNo})}&${link}|" class="text-decoration-none">[[${dto.materialCode}]]</a>
+                                <a th:href="|@{/materialInventory/materialOutRead(materialHistoryNo = ${dto.materialHistoryNo})}&${link}|" class="text-decoration-none">[[${dto.materialCode}]]</a>
                             </td>
                             <td>[[${dto.materialName}]]</td>
+                            <td>[[${dto.materialInOutQuantity}]]</td>
                             <td>[[${dto.materialStock}]]</td>
-                            <td>[[${dto.quantity}]]</td>
-                            <td>[[${dto.materialStock}]]</td>
+                            <td>[[${dto.inOutSeparator}]]</td>
                             <td>[[${dto.employeeName}]]</td>
                         </tr>
                         </tbody>

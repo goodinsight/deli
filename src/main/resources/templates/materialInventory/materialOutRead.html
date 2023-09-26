@@ -22,33 +22,29 @@
                         <span class="input-group-text">No</span>
                         <input type="text" name="materialHistoryNo" class="form-control materialHistoryNo" th:value="${dto.materialHistoryNo}" readonly>
                     </div>
-                    <div class="input-group mb-3 pl-5">
+                    <div class="input-group mb-3">
                         <span class="input-group-text">자재 코드</span>
                         <input type="text" name="materialCode" class="form-control materialCode" th:value="${dto.materialCode}" readonly>
                     </div>
-                    <div class="input-group mb-3 pl-5">
+                    <div class="input-group mb-3">
                         <span class="input-group-text">자재 명</span>
                         <input type="text" name="materialName" class="form-control materialName" th:value="${dto.materialName}" readonly>
                     </div>
-                    <div class="input-group mb-3 pl-5">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">입/출고 수량</span>
+                        <input type="text" name="materialInOutQuantity" class="form-control materialInOutQuantity" th:value="${dto.materialInOutQuantity}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
                         <span class="input-group-text">재고 수량</span>
                         <input type="text" name="materialStock" class="form-control materialStock" th:value="${dto.materialStock}" readonly>
                     </div>
-                    <div class="input-group mb-3 pl-5">
-                        <span class="input-group-text">출고 수량</span>
-                        <input type="text" name="quantity" class="form-control quantity" th:value="${dto.quantity}" readonly>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">입/출고 구분자</span>
+                        <input type="text" name="inOutSeparator" class="form-control inOutSeparator" th:value="${dto.inOutSeparator}" readonly>
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">담당자 명</span>
                         <input type="text" name="employeeName" class="form-control" th:value="${dto.employeeName}" readonly>
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">등록일</span>
-                        <input type="date" name="orderDate" class="form-control" th:value="${dto.orderDate}" readonly>
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">수정일</span>
-                        <input type="date" name="orderDeliveryDate" class="form-control" th:value="${dto.orderDeliveryDate}" readonly>
                     </div>
 
 
