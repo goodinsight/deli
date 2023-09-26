@@ -1,8 +1,7 @@
 package com.deligence.deli.controller;
 
-import com.deligence.deli.dto.EmployeeSecurityDTO;
-import com.deligence.deli.dto.MaterialInventoryDTO;
-import com.deligence.deli.dto.MaterialsDTO;
+import com.deligence.deli.dto.*;
+import com.deligence.deli.service.MaterialInOutHistoryService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -21,6 +20,19 @@ import javax.validation.Valid;
 @Log4j2
 @RequiredArgsConstructor
 public class MaterialInOutHistoryController {
+
+    private final MaterialInOutHistoryService materialInOutHistoryService;
+
+    @GetMapping("/materialOutList")
+    public void list(PageRequestDTO pageRequestDTO, Model model){
+
+        PageResponseDTO<MaterialInOutHistoryDetailDTO> responseDTO = materialInOutHistoryService.list(pageRequestDTO);
+
+        log.info(responseDTO);
+
+        model.addAttribute("responseDTO", responseDTO);
+
+    }
 
     @GetMapping("/materialOutRegister")
     public void materialOutGET(@AuthenticationPrincipal EmployeeSecurityDTO employeeSecurityDTO, Model model) {
