@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 import java.util.stream.IntStream;
 
-@Transactional
 @SpringBootTest
 @Log4j2
 public class MaterialInOutHistoryRepositoryTests {
@@ -43,9 +42,10 @@ public class MaterialInOutHistoryRepositoryTests {
     }
 
 
+    @Transactional
     @Test
     public void testSelect() {
-        int materialHistoryNo = 1;
+        int materialHistoryNo = 5;
 
         Optional<MaterialInOutHistory> result = materialInOutHistoryRepository.findById(materialHistoryNo);
 
