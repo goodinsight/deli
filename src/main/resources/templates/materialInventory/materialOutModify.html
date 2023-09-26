@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>출고 수정</title>
+</head>
+
+<div layout:fragment="content">
+
+    <div class="row mt-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    출고 수정
+                </div>
+                <div class="card-body mt-3">
+                    <form th:action="@{/materialInventory/materialOutModify}" method="post" id="modifyForm">
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">No</span>
+                            <input type="text" name="materialHistoryNo" class="form-control materialHistoryNo" th:value="${dto.materialHistoryNo}" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재 코드</span>
+                            <input type="text" name="materialCode" class="form-control materialCode" th:value="${dto.materialCode}" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재 명</span>
+                            <input type="text" name="materialName" class="form-control materialName" th:value="${dto.materialName}" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">재고 수량</span>
+                            <input type="text" name="materialStock" class="form-control materialStock" th:value="${dto.materialStock}" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">출고 수량</span>
+                            <input type="text" name="quantity" class="form-control quantity" th:value="${dto.quantity}" >
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">담당자 명</span>
+                            <input type="text" name="employeeName" class="form-control" th:value="${dto.employeeName}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">등록일</span>
+                            <input type="date" name="orderDate" class="form-control" th:value="${dto.orderDate}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">수정일</span>
+                            <input type="date" name="orderDeliveryDate" class="form-control" th:value="${dto.orderDeliveryDate}" readonly>
+                        </div>
+
+                        <div class="my-4">
+                            <div class="float-end">
+                                <button type="button" class="btn btn-primary listBtn">출고 목록</button>
+                                <button type="button" class="btn btn-secondary modBtn">수정</button>
+                                <button type="button" class="btn btn-danger removeBtn">삭제</button>
+                            </div>
+                        </div>
+                    </form>
+                </div><!-- end card body -->
+            </div><!-- end card -->
+        </div><!-- end col -->
+    </div><!-- end row -->
+
+
+</div>
+
+
+
+
+<script layout:fragment="script" th:inline="javascript">
+
+    console.log([[${dto}]])
+
+    // 에러 처리 ---------------------------------------------------
+
+    const errors = [[${errors}]]
+    console.log(errors)
+
+    let errorMsg = ''
+
+    if (errors) {
+        for(let i = 0; i < errors.length; i++) {
+            errorMsg += `${errors[i].field}은(는) ${errors[i].code} \n`
+        }
+        history.replaceState({}, null, null)
+        alert(errorMsg)
+    }
+
+    // 수정 처리 ------------------------------------------------------
+
+    const link = [[${pageRequestDTO.getLink()}]]
+    const formObj = document.querySelector("#modifyForm")
+
+    document.querySelector(".modBtn").addEventListener("click", function (e) {
+        e.preventDefault()
+        e.stopPropagation()
+
+
+        formObj.action = `/materialInventory/materialOutModify?${link}`
+        formObj.method = 'post'
+        formObj.submit()
+
+    }, false)
+
+    // 목록 페이지로 이동 ---------------------------------------------------------
+
+    document.querySelector(".listBtn").addEventListener("click", function (e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        formObj.reset()
+        self.location = `/materialInventory/materialOutlist?${link}`
+
+    }, false)
+
+</script>
+
+
+
+
+</html>

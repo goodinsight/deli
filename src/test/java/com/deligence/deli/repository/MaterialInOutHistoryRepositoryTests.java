@@ -43,10 +43,13 @@ public class MaterialInOutHistoryRepositoryTests {
     }
 
 
+
     @Test
     @Transactional
     public void testSelect() {
-        int materialHistoryNo = 33;
+
+        int materialHistoryNo = 5;
+
 
         Optional<MaterialInOutHistory> result = materialInOutHistoryRepository.findById(materialHistoryNo);
 
