@@ -104,6 +104,8 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
         //materialProcurementContractNo > 0
 //        query.where(materialProcurementContract.materialProcurementContractNo.gt(0));
 
+        query.orderBy(materialProcurementContract.materialProcurementContractNo.desc());
+
         //paging
         this.getQuerydsl().applyPagination(pageable, query);
         //JPA기능이 아닌 별도의 search를 만들어서 pageable에 sort를 담아 실행하면 오류 발생.

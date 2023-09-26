@@ -108,6 +108,8 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
         //material_procurement_plan_no > 0
 //        query.where(materialProcurementPlanning.materialProcurementPlanNo.gt(0));
 
+        query.orderBy(materialProcurementPlanning.materialProcurementPlanNo.desc());
+
         //paging
         this.getQuerydsl().applyPagination(pageable, query);
 

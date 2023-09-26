@@ -76,21 +76,21 @@ public class MaterialInventoryRepositoryTests {
 
     }
 
-    @Test
-    @Transactional
-    public void testMaterialInventoryUpdate() {
-
-        int materialInventoryNo = 10;
-
-        Optional<MaterialInventory> result = materialInventoryRepository.findById(materialInventoryNo);
-
-        MaterialInventory materialInventory = result.orElseThrow();
-
-        materialInventory.change(1, 2, 3, 4L, 5L, "123", "123", "123");
-
-        materialInventoryRepository.save(materialInventory);
-
-    }
+//    @Test
+//    @Transactional
+//    public void testMaterialInventoryUpdate() {
+//
+//        int materialInventoryNo = 10;
+//
+//        Optional<MaterialInventory> result = materialInventoryRepository.findById(materialInventoryNo);
+//
+//        MaterialInventory materialInventory = result.orElseThrow();
+//
+//        materialInventory.change(1, 2, 3, 4L, 5L, "123", "123", "123");
+//
+//        materialInventoryRepository.save(materialInventory);
+//
+//    }
 
     @Test
     @Transactional
@@ -137,14 +137,6 @@ public class MaterialInventoryRepositoryTests {
 
     }
 //------------------------------------------------------------
-    @Test
-    public void testSearch1() {
-
-        Pageable pageable = PageRequest.of(1, 10, Sort.by("materialInventoryNo").descending());
-
-        materialInventoryRepository.materialStockRead(pageable);
-
-    }
 
     @Test
     public void testSearchAll() {
@@ -155,7 +147,7 @@ public class MaterialInventoryRepositoryTests {
 
         Pageable pageable = PageRequest.of(0, 10, Sort.by("materialInventoryNo").descending());
 
-        Page<MaterialInventory> result = materialInventoryRepository.materialStockList(types, keyword, pageable);
+        Page<MaterialInventory> result = materialInventoryRepository.searchAll(types, keyword, pageable);
 
         log.info("페이지 : " + result.getTotalPages());
 

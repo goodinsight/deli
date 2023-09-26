@@ -1,6 +1,8 @@
 package com.deligence.deli.domain;
 
 
+import com.deligence.deli.dto.MaterialInventoryDTO;
+import com.deligence.deli.dto.MaterialInventoryDetailDTO;
 import lombok.*;
 
 import javax.persistence.*;
@@ -10,8 +12,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = {"documentFile", "materials", "order"})
-
+@ToString(exclude = {"documentFile", "materials", "order","materialImage","materialInOutHistory" })
 public class MaterialInventory {
 
     @Id
@@ -37,10 +38,13 @@ public class MaterialInventory {
     private Long materialTotalInventoryPayments; // 재고 금액
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private DocumentFile documentFile; // 파일 일련번호
+    private Order order; // 오더 일련번호
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Order order; // 오더 일련번호
+    private MaterialImage materialImage;    //자재이미지 FK
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private MaterialInOutHistory materialInOutHistory;
 
     @Column(length = 500, nullable = false)
     private String materialName; // 자재명 검색
@@ -51,25 +55,25 @@ public class MaterialInventory {
     @Column(length = 500, nullable = false)
     private String materialCode; // 자재코드 검색
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private MaterialInOutHistory materialInOutHistory;
+    private String orderCode;   //발주코드(검색용)
+
+    private String employeeName;    //담당자(검색용)
+
+    private String orderState;  //발주상태 (검색용)
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Employee employee;
+    private DocumentFile documentFile; // 파일 일련번호
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private MaterialImage materialImage;
+    public void change(MaterialInventoryDTO materialInventoryDTO ) {
 
-    public void change(int materialIncomingQuantity, int materialOutgoingQuantity, int materialStock, Long materialSupplyPrice, Long materialTotalInventoryPayments, String materialName, String materialCode, String materialType) {
-
-        this.materialIncomingQuantity = materialIncomingQuantity;
-        this.materialOutgoingQuantity = materialOutgoingQuantity;
-        this.materialStock = materialStock;
-        this.materialSupplyPrice = materialSupplyPrice;
-        this.materialTotalInventoryPayments = materialTotalInventoryPayments;
-        this.materialName = materialName;
-        this.materialType = materialType;
-        this.materialCode = materialCode;
+        this.materialIncomingQuantity = materialInventoryDTO.getMaterialIncomingQuantity();
+        this.materialOutgoingQuantity = materialInventoryDTO.getMaterialOutgoingQuantity();
+        this.materialStock = materialInventoryDTO.getMaterialStock();
+        this.materialSupplyPrice = materialInventoryDTO.getMaterialSupplyPrice();
+        this.materialTotalInventoryPayments = materialInventoryDTO.getMaterialTotalInventoryPayments();
+        this.materialName = materialInventoryDTO.getMaterialName();
+        this.materialType = materialInventoryDTO.getMaterialType();
+        this.materialCode = materialInventoryDTO.getMaterialCode();
 
     }
 
