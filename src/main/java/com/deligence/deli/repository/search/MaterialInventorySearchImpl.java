@@ -17,6 +17,8 @@ import java.util.List;
 
 public class MaterialInventorySearchImpl extends QuerydslRepositorySupport implements MaterialInventorySearch {
 
+    //자재재고 관련 페이지는 Inventory / 재고>입고관리 관련 페이지는 Incoming을 붙임.
+
     public MaterialInventorySearchImpl() {
         super(MaterialInventory.class);
     }
@@ -72,7 +74,7 @@ public class MaterialInventorySearchImpl extends QuerydslRepositorySupport imple
 
     //재고 > 입고관리 목록 search (+상태검색)
     @Override
-    public Page<MaterialInventory> searchInOut(String[] types, String keyword, String state, Pageable pageable) {
+    public Page<MaterialInventory> searchIncoming(String[] types, String keyword, String state, Pageable pageable) {
 
         QMaterialInventory materialInventory = QMaterialInventory.materialInventory;
 
@@ -179,7 +181,7 @@ public class MaterialInventorySearchImpl extends QuerydslRepositorySupport imple
     //재고 > 입고관리 상세/목록
     //  -> 발주정보(자재코드, 자재이름),자재분류, 공급단가, 입고?발주수량, 담당자
     @Override
-    public MaterialInventoryDetailDTO readInOut(int materialInventoryNo) {
+    public MaterialInventoryDetailDTO readIncoming(int materialInventoryNo) {
 
         QMaterialInventory materialInventory = QMaterialInventory.materialInventory;
         QOrder order = QOrder.order;
@@ -198,6 +200,7 @@ public class MaterialInventorySearchImpl extends QuerydslRepositorySupport imple
         Order resultOrder = (Order) target.get(order);
 
         MaterialInventoryDetailDTO dto = MaterialInventoryDetailDTO.builder()
+                .materialIncomingNo(resultMaterialInventory.getMaterialIncomingNo())    //입고관리일련번호
                 .orderNo(resultOrder.getOrderNo())                          //발주일련번호
                 .orderCode(resultOrder.getOrderCode())                      //발주코드
                 .materialCode(resultOrder.getMaterialProcurementContract().getMaterialCode())       //자재코드

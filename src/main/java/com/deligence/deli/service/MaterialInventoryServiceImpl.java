@@ -20,18 +20,21 @@ import java.util.stream.Collectors;
 @Service
 @Log4j2
 @RequiredArgsConstructor
-//@Transactional
+@Transactional
 public class MaterialInventoryServiceImpl implements MaterialInventoryService {
+
+    //자재재고 관련 페이지는 Inventory / 재고>입고관리 관련 페이지는 Incoming을 붙임.
 
     private final MaterialInventoryRepository materialInventoryRepository;
 
+    //자재재고 register
     @Override
-    public int stockRegister(MaterialInventoryDTO materialInventoryDTO) {
+    public int registerInventory(MaterialInventoryDTO materialInventoryDTO) {
 
         log.info(materialInventoryDTO);
 
         //dto -> entity
-        MaterialInventory materialInventory = dtoToEntity(materialInventoryDTO);
+        MaterialInventory materialInventory = dtoToEntityInventory(materialInventoryDTO);
 
         log.info(materialInventory);
 
@@ -42,17 +45,46 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
         return materialInventoryNo;
     }
 
+    //재고>입고관리 register
     @Override
-    public MaterialInventoryDetailDTO stockRead(int materialInventoryNo) {
+    public int registerIncoming(MaterialInventoryDTO materialInventoryDTO) {
+
+        log.info(materialInventoryDTO);
+
+        //dto -> entity
+        MaterialInventory materialInventory = dtoToEntityIncoming(materialInventoryDTO);
+
+        log.info(materialInventory);
+
+//        int materialInventoryNo = materialInventoryRepository.save(materialInventory).getMaterialInventoryNo();
+        int orderNo = materialInventoryRepository.save(materialInventory).getOrder().getOrderNo();
+
+        log.info(orderNo);
+
+        return orderNo;
+    }
+
+    //자재재고 read
+    @Override
+    public MaterialInventoryDetailDTO readInventory(int materialInventoryNo) {
 
         MaterialInventoryDetailDTO result = materialInventoryRepository.readInventory(materialInventoryNo);
 
         return result;
-
     }
 
+    //재고>입고관리 read
     @Override
-    public void stockModify(MaterialInventoryDTO materialInventoryDTO) {
+    public MaterialInventoryDetailDTO readIncoming(int orderNo) {
+
+        MaterialInventoryDetailDTO result = materialInventoryRepository.readIncoming(orderNo);
+
+        return result;
+    }
+
+    //자재재고 modify
+    @Override
+    public void modifyInventory(MaterialInventoryDTO materialInventoryDTO) {
 
         Optional<MaterialInventory> result = materialInventoryRepository.findById(materialInventoryDTO.getMaterialInventoryNo());
 
@@ -64,18 +96,37 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
 
     }
 
+    //재고>입고관리 modify
     @Override
-    public void remove(int materialInventoryNo) {
+    public void modifyIncoming(MaterialInventoryDTO materialInventoryDTO) {
 
-        materialInventoryRepository.deleteById(materialInventoryNo);
+        Optional<MaterialInventory> result = materialInventoryRepository.findById(materialInventoryDTO.getOrderNo());
+
+        MaterialInventory materialInventory = result.orElseThrow();
+
+        materialInventory.change(materialInventoryDTO);
+
+        materialInventoryRepository.save(materialInventory);
 
     }
 
-    // 자재 리스트 출력
-
-
+    //자재재고 remove
     @Override
-    public PageResponseDTO<MaterialInventoryDTO> stockList(PageRequestDTO pageRequestDTO) {
+    public void removeInventory(int materialInventoryNo) {
+
+        materialInventoryRepository.deleteById(materialInventoryNo);
+    }
+
+    //재고>입고관리 remove
+    @Override
+    public void removeIncoming(int orderNo) {
+
+        materialInventoryRepository.deleteById(orderNo);
+    }
+
+    //자재재고 list
+    @Override
+    public PageResponseDTO<MaterialInventoryDTO> listInventory(PageRequestDTO pageRequestDTO) {
 
         String[] types = pageRequestDTO.getTypes();
         String keyword = pageRequestDTO.getKeyword();
@@ -84,7 +135,7 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
         Page<MaterialInventory> result = materialInventoryRepository.searchInventory(types, keyword, pageable);
 
         List<MaterialInventoryDTO> dtoList = result.getContent().stream()
-                .map(materialInventory -> entityToDto(materialInventory))
+                .map(materialInventory -> entityToDtoInventory(materialInventory))
                 .collect(Collectors.toList());
 
         return PageResponseDTO.<MaterialInventoryDTO>withAll()
@@ -93,6 +144,29 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
                 .total((int)result.getTotalElements())
                 .build();
     }
+
+    //재고>입고관리 list
+    @Override
+    public OrderPageResponseDTO<MaterialInventoryDTO> listIncoming(OrderPageRequestDTO orderPageRequestDTO) {
+
+        String[] types = orderPageRequestDTO.getTypes();
+        String keyword = orderPageRequestDTO.getKeyword();
+        String state = orderPageRequestDTO.getState();
+        Pageable pageable = orderPageRequestDTO.getPageable();//속성 집어넣으면 오류 발생함.
+
+        Page<MaterialInventory> result = materialInventoryRepository.searchIncoming(types, keyword, state, pageable);
+
+        List<MaterialInventoryDTO> dtoList = result.getContent().stream()
+                .map(materialInventory -> entityToDtoIncoming(materialInventory))
+                .collect(Collectors.toList());
+
+        return OrderPageResponseDTO.<MaterialInventoryDTO>withAll()
+                .orderPageRequestDTO(orderPageRequestDTO)
+                .dtoList(dtoList)
+                .total((int)result.getTotalElements())
+                .build();
+    }
+
 }
 
 

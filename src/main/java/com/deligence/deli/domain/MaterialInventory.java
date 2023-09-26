@@ -19,6 +19,8 @@ public class MaterialInventory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int materialInventoryNo;                 // 자재 재고 일련번호 (-> 자재재고 목록)
 
+    private int materialIncomingNo;                 // 입고관리 일련번호 (-> 재고 > 입고관리)
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Materials materials;                    // 자재 일련번호 -> 자재타입, 자재코드, 자재이름, 공급단가 (-> 자재재고 목록 / 자재 재고 상세 - 자재 설명)
 

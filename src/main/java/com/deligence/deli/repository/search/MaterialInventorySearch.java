@@ -9,17 +9,19 @@ import org.springframework.data.domain.Pageable;
 
 public interface MaterialInventorySearch {
 
+    //자재재고 관련 페이지는 Inventory / 재고>입고관리 관련 페이지는 Incoming을 붙임.
+
     //자재 재고 목록 search
     Page<MaterialInventory> searchInventory(String[] types, String keyword, Pageable pageable);
 
     //입출고관리 목록 search (+상태검색)
-    Page<MaterialInventory> searchInOut(String[] types, String keyword, String state, Pageable pageable);
+    Page<MaterialInventory> searchIncoming(String[] types, String keyword, String state, Pageable pageable);
 
     //자재 재고 상세
     MaterialInventoryDetailDTO readInventory(int materialInventoryNo);
 
     //재고 > 입고 상세
-    MaterialInventoryDetailDTO readInOut(int orderNo);
+    MaterialInventoryDetailDTO readIncoming(int orderNo);
 //    MaterialInventoryDetailDTO readInOut(int materialInventoryNo);
 
 

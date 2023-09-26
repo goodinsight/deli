@@ -27,6 +27,8 @@ public class MaterialInOutHistoryDTO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate historyDate;  //입/출고 날짜
 
-    private Employee employee;
+    private int employeeNo; //사원일련번호 FK
+
+    private String employeeName;    //담당자
 
 }

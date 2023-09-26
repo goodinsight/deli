@@ -31,6 +31,8 @@ public class MaterialInOutHistory extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Employee employee; // 담당자(사원일련번호)
 
+    private String employeeName;    //담당자
+
 
 
 
