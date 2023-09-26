@@ -121,8 +121,8 @@ public class MaterialInventorySearchImpl extends QuerydslRepositorySupport imple
         return new PageImpl<>(list, pageable, count);
     }
 
-    //자재 재고 상세
-    //  -> 자재 (자재분류, 자재코드, 자재이름, 자재설명) / 자재이미지 / 재고수량 /
+    //자재 재고 상세/목록
+    //  -> 자재 (자재분류, 자재코드, 자재이름, 공급단가, 자재설명) / 자재이미지 / 재고수량 /
     //  -> 자재에 대한 입출고기록 (no, 입출고구분자(IN/OUT), (입출고)수량, (입출고)날짜, (기록)담당자)
     @Override
     public MaterialInventoryDetailDTO readInventory(int materialInventoryNo) {
@@ -159,6 +159,10 @@ public class MaterialInventorySearchImpl extends QuerydslRepositorySupport imple
                 .materialImageNo(resultMi.getMaterialImgNo())                       // 자재이미지 일련번호
                 .materialImgName(resultMi.getMaterialImgName())                     // 자재이미지명
                 .materialUuid(resultMi.getMaterialUuid())                           // 자재이미지 uuid
+                .materialIncomingQuantity(resultMaterialInventory.getMaterialIncomingQuantity())                //입고수량
+                .materialOutgoingQuantity(resultMaterialInventory.getMaterialOutgoingQuantity())                //출고수량
+                .materialSupplyPrice(resultMaterials.getMaterialSupplyPrice())                                   //공급단가
+                .materialTotalInventoryPayments(resultMaterialInventory.getMaterialTotalInventoryPayments())    //총재고금액
                 .materialStock(resultMaterialInventory.getMaterialStock())          // 재고수량
                 .materialHistoryNo(resultMioh.getMaterialHistoryNo())               // 입출고기록 일련번호
                 .inOutSeparator(resultMioh.getInOutSeparator())                     // 입/출고 구분자
@@ -172,7 +176,7 @@ public class MaterialInventorySearchImpl extends QuerydslRepositorySupport imple
     }
 
 
-    //재고 > 입고관리 상세
+    //재고 > 입고관리 상세/목록
     //  -> 발주정보(자재코드, 자재이름),자재분류, 공급단가, 입고?발주수량, 담당자
     @Override
     public MaterialInventoryDetailDTO readInOut(int materialInventoryNo) {

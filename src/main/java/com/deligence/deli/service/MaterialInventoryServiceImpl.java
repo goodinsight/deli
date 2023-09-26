@@ -45,7 +45,7 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
     @Override
     public MaterialInventoryDetailDTO stockRead(int materialInventoryNo) {
 
-        MaterialInventoryDetailDTO result = materialInventoryRepository.read(materialInventoryNo);
+        MaterialInventoryDetailDTO result = materialInventoryRepository.readInventory(materialInventoryNo);
 
         return result;
 
@@ -81,7 +81,7 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
         String keyword = pageRequestDTO.getKeyword();
         Pageable pageable = pageRequestDTO.getPageable();//속성 집어넣으면 오류 발생함.
 
-        Page<MaterialInventory> result = materialInventoryRepository.searchAll(types, keyword, pageable);
+        Page<MaterialInventory> result = materialInventoryRepository.searchInventory(types, keyword, pageable);
 
         List<MaterialInventoryDTO> dtoList = result.getContent().stream()
                 .map(materialInventory -> entityToDto(materialInventory))
