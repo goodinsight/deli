@@ -170,4 +170,20 @@ public class OrderSearchImpl extends QuerydslRepositorySupport implements OrderS
 
     }
 
+    @Override
+    public int sumOfOrderQuantity(int materialProcurementPlanningNo) {
+
+        QOrder order = QOrder.order;
+
+        JPQLQuery<Integer> query = new JPAQueryFactory(em)
+                .select(order.orderQuantity.sum())
+                .from(order)
+                .where(order.materialProcurementPlanning.materialProcurementPlanNo.eq(materialProcurementPlanningNo).and(order.orderState.eq("발주완료")));
+
+        int result = query.fetchOne();
+
+        return result;
+
+    }
+
 }

@@ -78,6 +78,13 @@ public class OrderServiceImpl implements OrderService{
 
     }
 
+    @Override
+    public int sumOfOrderQuantity(int materialProcurementPlanningNo) {
+
+        int result = orderRepository.sumOfOrderQuantity(materialProcurementPlanningNo);
+
+        return result;
+    }
 
 
     @Override

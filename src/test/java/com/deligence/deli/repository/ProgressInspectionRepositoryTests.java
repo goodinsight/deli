@@ -79,7 +79,7 @@ public class ProgressInspectionRepositoryTests {
 
         Pageable pageable = PageRequest.of(0, 10, Sort.by("progressInspectionTimes").ascending());
 
-        Page<ProgressInspection> result = progressInspectionRepository.listOfOrder(orderNo, pageable);
+        Page<ProgressInspection> result = progressInspectionRepository.listOfPI(orderNo, pageable);
 
         result.getContent().forEach(log::info);
 
