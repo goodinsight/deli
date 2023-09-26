@@ -14,7 +14,7 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = "imageSet")
+@ToString(exclude = {"imageSet", "materialInventory", "employee"})
 
 public class Materials extends BaseEntity{
 
@@ -37,6 +37,12 @@ public class Materials extends BaseEntity{
 
     @Column(length = 50, nullable = true)
     private Long materialSupplyPrice; //자재공급단가
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private MaterialInventory materialInventory;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Employee employee;
 
     public void change(MaterialsDTO materialsDTO){
         this.materialName = materialName;

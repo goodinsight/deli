@@ -48,12 +48,12 @@
 
             <div class="input-group mb-3 d-none">
               <span class="input-group-text">담당자 일련번호</span>
-              <input type="text" name="employeeNo" class="form-control" th:value="${user.employeeNo}" readonly>
+              <input type="text" name="employeeNo" class="form-control employeeNo" th:value="${user.employeeNo}" readonly>
             </div>
 
             <div class="input-group mb-3">
               <span class="input-group-text">담당자 이름</span>
-              <input type="text" name="employeeName" class="form-control" th:value="${user.employeeName}" readonly>
+              <input type="text" name="employeeName" class="form-control employeeName" th:value="${user.employeeName}" readonly>
             </div>
 
             <div class="my-4">
@@ -373,7 +373,6 @@
         str += `<tr>
                   <td data-materialsNo = "${dto.materialNo}">${dto.materialNo}</td>
                   <td data-materialsNo = "${dto.materialNo}">${dto.materialCode}</td>
-                  <td data-materialsNo = "${dto.materialNo}">${dto.materialType}</td>
                   <td data-materialsNo = "${dto.materialNo}">${dto.materialName}</td>
                   <td data-materialsNo = "${dto.materialNo}">${dto.materialStock}</td>
               </tr>`
@@ -434,7 +433,6 @@
 
   const materialNo = document.querySelector(".materialNo")
   const inputMaterialCode = document.querySelector("#selectMaterial")
-  const materialType = document.querySelector(".materialType")
   const materialName = document.querySelector(".materialName")
   const materialStock = document.querySelector(".materialStock")
 

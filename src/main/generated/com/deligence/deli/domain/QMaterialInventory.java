@@ -74,7 +74,7 @@ public class QMaterialInventory extends EntityPathBase<MaterialInventory> {
         this.employee = inits.isInitialized("employee") ? new QEmployee(forProperty("employee"), inits.get("employee")) : null;
         this.materialImage = inits.isInitialized("materialImage") ? new QMaterialImage(forProperty("materialImage"), inits.get("materialImage")) : null;
         this.materialInOutHistory = inits.isInitialized("materialInOutHistory") ? new QMaterialInOutHistory(forProperty("materialInOutHistory"), inits.get("materialInOutHistory")) : null;
-        this.materials = inits.isInitialized("materials") ? new QMaterials(forProperty("materials")) : null;
+        this.materials = inits.isInitialized("materials") ? new QMaterials(forProperty("materials"), inits.get("materials")) : null;
         this.order = inits.isInitialized("order") ? new QOrder(forProperty("order"), inits.get("order")) : null;
     }
 

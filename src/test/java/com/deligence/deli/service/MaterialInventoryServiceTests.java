@@ -27,8 +27,8 @@ public class MaterialInventoryServiceTests {
 
         int materialInventoryNo = 74;
 
-        MaterialInventoryDTO materialInventoryDTO = materialInventoryService.materialStockRead(materialInventoryNo);
-        log.info(materialInventoryDTO);
+        MaterialInventoryDetailDTO materialInventoryDetailDTO = materialInventoryService.materialStockRead(materialInventoryNo);
+        log.info(materialInventoryDetailDTO);
 
     }
 

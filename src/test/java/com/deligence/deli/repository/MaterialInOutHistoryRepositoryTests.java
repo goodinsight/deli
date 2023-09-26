@@ -3,8 +3,10 @@ package com.deligence.deli.repository;
 import com.deligence.deli.domain.Employee;
 import com.deligence.deli.domain.MaterialInOutHistory;
 import com.deligence.deli.domain.MaterialInventory;
+import com.deligence.deli.dto.MaterialInOutHistoryDetailDTO;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -19,6 +21,9 @@ public class MaterialInOutHistoryRepositoryTests {
 
     @Autowired
     private MaterialInOutHistoryRepository materialInOutHistoryRepository;
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Test
     public void testInsert() {
@@ -60,6 +65,26 @@ public class MaterialInOutHistoryRepositoryTests {
         log.info(materialInOutHistory);
     }
 
+
+    @Test
+    @Transactional
+    public void testSelectOne() {
+
+        int materialHistoryNo = 10;
+
+
+        Optional<MaterialInOutHistory> result = materialInOutHistoryRepository.findById(materialHistoryNo);
+
+        log.info(result);
+
+        MaterialInOutHistory materialInOutHistory = result.orElseThrow();
+
+        log.info(materialInOutHistory);
+
+        MaterialInOutHistoryDetailDTO materialInOutHistoryDetailDTO = modelMapper.map(materialInOutHistory, MaterialInOutHistoryDetailDTO.class);
+
+        log.info(materialInOutHistoryDetailDTO);
+    }
 
 
 }
