@@ -25,11 +25,11 @@ public class MaterialInventoryDTO {
 
     private Long materialTotalInventoryPayments; // 총 재고 금액 (입고수량*공급단가 - 출고수량*공급단가) (-> 자재재고 목록)
 
+    private String materialType;            // 자재타입 (자재재고 목록 검색용)
+
     private String materialCode;            // 자재코드 (자재재고 목록 검색용)
 
     private String materialName;            // 자재이름 (자재재고 목록 / 재고 > 입고관리 검색용)
-
-    private String materialType;            // 자재타입 (자재재고 목록 검색용)
 
     private int materialImageNo;            // 자재이미지 일련번호 FK (-> 자재 재고 상세)
 

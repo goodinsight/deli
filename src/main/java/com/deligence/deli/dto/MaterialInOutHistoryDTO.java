@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -20,6 +23,9 @@ public class MaterialInOutHistoryDTO {
     private String inOutSeparator;
 
     private int quantity;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate historyDate;  //입/출고 날짜
 
     private Employee employee;
 

@@ -29,11 +29,11 @@ public class MaterialInventoryDetailDTO {
 
     private Long materialTotalInventoryPayments;    // 총 재고 금액 (입고수량*공급단가 - 출고수량*공급단가) (-> 자재재고 목록)
 
+    private String materialType;            // 자재타입 (-> 자재재고 목록, 검색용)
+
     private String materialCode;            // 자재코드 (-> 자재재고 목록, 검색용)
 
     private String materialName;            // 자재이름 (-> 자재재고 목록 / 재고 > 입고관리, 검색용)
-
-    private String materialType;            // 자재타입 (-> 자재재고 목록, 검색용)
 
     private String materialExplaination;    // 자재설명 (-> 자재재고 상세)
 
@@ -68,9 +68,12 @@ public class MaterialInventoryDetailDTO {
 
     private int quantity;                   // (입/출고) 수량
 
-    private LocalDateTime regDate;          // (입/출고) 등록일
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate historyDate;          // (입/출고) 날짜
 
-    private LocalDateTime modDate;          // (입/출고) 수정일
+    private LocalDateTime regDate;          // 등록일
+
+    private LocalDateTime modDate;          // 수정일
 
     private int documentFileNo;             // 문서 파일 일련번호
 
