@@ -1,10 +1,7 @@
 package com.deligence.deli.service;
 
 import com.deligence.deli.domain.Order;
-import com.deligence.deli.dto.OrderDTO;
-import com.deligence.deli.dto.OrderDetailDTO;
-import com.deligence.deli.dto.PageRequestDTO;
-import com.deligence.deli.dto.PageResponseDTO;
+import com.deligence.deli.dto.*;
 import com.deligence.deli.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -115,21 +112,25 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public PageResponseDTO<OrderDTO> listByState(String[] keywords, PageRequestDTO pageRequestDTO) {
+    public OrderPageResponseDTO<OrderDTO> listWithState(OrderPageRequestDTO orderPageRequestDTO) {
 
-        Page<Order> result = orderRepository.searchByState(keywords, pageRequestDTO.getPageable());
+        String[] types = orderPageRequestDTO.getTypes();
+        String keyword = orderPageRequestDTO.getKeyword();
+        String state = orderPageRequestDTO.getState();
+        Pageable pageable = orderPageRequestDTO.getPageable();//속성 집어넣으면 오류 발생함.
+
+        Page<Order> result = orderRepository.searchWithState(types, keyword, state, pageable);
 
         List<OrderDTO> dtoList = result.getContent().stream()
                 .map(order -> entityToDto(order))
                 .collect(Collectors.toList());
 
-        return PageResponseDTO.<OrderDTO>withAll()
-                .pageRequestDTO(pageRequestDTO)
+        return OrderPageResponseDTO.<OrderDTO>withAll()
+                .orderPageRequestDTO(orderPageRequestDTO)
                 .dtoList(dtoList)
                 .total((int)result.getTotalElements())
                 .build();
     }
-
 
     @Override
     public int getCodeCount(String code) {

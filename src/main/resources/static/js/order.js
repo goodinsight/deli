@@ -13,9 +13,9 @@ async function getPlan(planNo) {
 }
 
 
-async function getContractList({page, size}){
+async function getContractList({page, size, type, keyword}){
 
-    const result = await axios.get(`/order/register/selectContract`, {params: {page, size}})
+    const result = await axios.get(`/order/register/selectContract`, {params: {page, size, type, keyword}})
 
     return result.data
 }

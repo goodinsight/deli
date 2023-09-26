@@ -30,9 +30,11 @@ public class OrderController {
     private final MaterialProcurementContractService materialProcurementContractService;
 
     @GetMapping("/list")
-    public void list(PageRequestDTO pageRequestDTO, Model model){
+    public void list(OrderPageRequestDTO orderPageRequestDTO, Model model){
 
-        PageResponseDTO<OrderDTO> responseDTO = orderService.list(pageRequestDTO);
+        log.info(orderPageRequestDTO);
+
+        OrderPageResponseDTO<OrderDTO> responseDTO = orderService.listWithState(orderPageRequestDTO);
 
         log.info(responseDTO);
 
@@ -120,6 +122,10 @@ public class OrderController {
     public PageResponseDTO<MaterialProcurementPlanningDTO> getPlanList(PageRequestDTO pageRequestDTO){
 
         log.info("getPlanList");
+
+        //조달 계획 상태 : 진행중  검색
+        pageRequestDTO.setType("f");
+        pageRequestDTO.setKeyword("진행중");
 
         PageResponseDTO<MaterialProcurementPlanningDTO> responseDTO = materialProcurementPlanningService.list(pageRequestDTO);
 

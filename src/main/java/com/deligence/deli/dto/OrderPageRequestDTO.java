@@ -15,7 +15,7 @@ import java.net.URLEncoder;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PageRequestDTO {
+public class OrderPageRequestDTO {
 
     @Builder.Default
     private int page = 1;
@@ -28,6 +28,8 @@ public class PageRequestDTO {
     private String keyword;
 
     private String link;
+
+    private String state;
 
     public String[] getTypes() {
         if(type == null || type.isEmpty()) {
@@ -57,6 +59,14 @@ public class PageRequestDTO {
                 } catch (UnsupportedEncodingException e) {
                 }
             }
+
+            if (state != null) {
+                try {
+                    builder.append("&state=" + URLEncoder.encode(state, "UTF-8"));
+                } catch (UnsupportedEncodingException e) {
+                }
+            }
+
             link = builder.toString();
         }
         return link;

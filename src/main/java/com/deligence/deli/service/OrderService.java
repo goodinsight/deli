@@ -4,10 +4,7 @@ import com.deligence.deli.domain.Employee;
 import com.deligence.deli.domain.MaterialProcurementContract;
 import com.deligence.deli.domain.MaterialProcurementPlanning;
 import com.deligence.deli.domain.Order;
-import com.deligence.deli.dto.OrderDTO;
-import com.deligence.deli.dto.OrderDetailDTO;
-import com.deligence.deli.dto.PageRequestDTO;
-import com.deligence.deli.dto.PageResponseDTO;
+import com.deligence.deli.dto.*;
 
 public interface OrderService {
 
@@ -20,15 +17,13 @@ public interface OrderService {
     void remove(int orderNo);
 
     PageResponseDTO<OrderDTO> list(PageRequestDTO pageRequestDTO);
+    OrderPageResponseDTO<OrderDTO> listWithState(OrderPageRequestDTO orderPageRequestDTO);
 
     int getCodeCount(String orderCode);
 
     void changeState(int orderNo, String state);
 
     int sumOfOrderQuantity(int materialProcurementPlanningNo);
-
-    PageResponseDTO<OrderDTO> listByState(String[] keywords, PageRequestDTO pageRequestDTO);
-
 
     default Order dtoToEntity(OrderDTO orderDTO){
 

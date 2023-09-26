@@ -389,8 +389,14 @@
     let contractPageSize = 5
 
     document.querySelector(".selectContract").addEventListener("click", function (e) {
-        printContracts(1, 5)
-        contractModal.show()
+
+        if(materialCode.value.length > 0){
+            printContracts(1, 5)
+            contractModal.show()
+        }else {
+            alert("계획을 먼저 선택해주세요.")
+        }
+
     }, false)
 
     closeContractBtn.addEventListener("click", function (e) {
@@ -446,7 +452,10 @@
 
     function printContracts(page, size) {
 
-        getContractList({page, size}).then(
+        const type = "b"
+        const keyword = materialCode.value
+
+        getContractList({page, size, type, keyword}).then(
             data => {
                 printContractList(data.dtoList)
                 printContractPages(data)

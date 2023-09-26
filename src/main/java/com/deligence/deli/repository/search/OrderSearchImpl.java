@@ -48,9 +48,7 @@ public class OrderSearchImpl extends QuerydslRepositorySupport implements OrderS
                         break;
                     case "w":
                         booleanBuilder.or(order.employeeName.contains(keyword));
-                    //추후 검색조건 설정에 따라 추가할 부분
-
-                    //-----------------------------
+                        break;
 
                 }
 
@@ -59,8 +57,6 @@ public class OrderSearchImpl extends QuerydslRepositorySupport implements OrderS
             query.where(booleanBuilder);
 
         }//end if
-
-        //query.where(order.orderNo.gt(0));
 
         query.orderBy(order.orderNo.desc());
 
@@ -78,36 +74,51 @@ public class OrderSearchImpl extends QuerydslRepositorySupport implements OrderS
     }
 
     @Override
-    public Page<Order> searchByState(String[] keywords, Pageable pageable) {
+    public Page<Order> searchWithState(String[] types, String keyword, String state, Pageable pageable) {
 
         QOrder order = QOrder.order;
 
         JPQLQuery<Order> query = new JPAQueryFactory(em)
                 .selectFrom(order);
 
-        if( keywords != null && keywords.length > 0) { //검색조건과 키워드가 있다면
+        if( (types != null && types.length > 0) && keyword != null ) { //검색조건과 키워드가 있다면
 
             BooleanBuilder booleanBuilder = new BooleanBuilder(); // (
 
-            for(String keyword : keywords) {
+            for(String type : types) {
 
-                booleanBuilder.or(order.orderState.contains(keyword));
+                switch(type){
+
+                    case "c":
+                        booleanBuilder.or(order.orderCode.contains(keyword));
+                        break;
+                    case "m":
+                        booleanBuilder.or(order.materialName.contains(keyword));
+                        break;
+                    case "w":
+                        booleanBuilder.or(order.employeeName.contains(keyword));
+                        break;
+
+                }
 
             }//end for
 
             query.where(booleanBuilder);
 
+            query.where(order.orderState.contains(state));//발주 상태 검색
+
         }//end if
 
+        query.orderBy(order.orderNo.desc());
+
         //paging
-        this.getQuerydsl().applyPagination(pageable, query);// 오류 발생 부분. pageable에 sort를 담아 실행하면 오류가 발생한다.
+        this.getQuerydsl().applyPagination(pageable, query);
 
         List<Order> list = query.fetch();
 
         long count = query.fetchCount();
 
         return new PageImpl<>(list, pageable, count);
-
     }
 
     @Override
