@@ -1,65 +1,83 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org"
+<html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{/layout/layout.html}">
 
+<head>
+    <meta charset="UTF-8">
+    <title>자재재고-입고관리</title>
+</head>
 
 <div layout:fragment="content">
-    <div class="row mt-3">
 
-        <form action="/materialInventory/stockList" method="get">
-            <div class="col">
-                <input type="hidden" name="size" th:value="${pageRequestDTO.size}">
+    <div class="row mt-12 m-l-15">
+        <form class="col-lg-10" action="/materialInventory/listIncoming" method="get">
+            <div class="form-group">
+                <p class="text-muted m-b-15 f-s-12">
+                    "검색하고 싶은
+                    <code>카테고리를 선택하고 키워드</code>
+                    를 입력한 뒤 search버튼을 누르세요"
+                </p>
+                <input type="hidden" name="size" th:value="${orderPageRequestDTO.size}">
                 <div class="input-group">
+                    <div class="input-group-prepend">
+                        <select class="form-select" name="state">
+                            <option value="">발주 상태</option>
+                            <option value="진행중" th:selected="${orderPageRequestDTO.state == '진행중'}">진행중</option>
+                            <option value="검수완료" th:selected="${orderPageRequestDTO.state == '검수완료'}">검수완료</option>
+                            <option value="자재입고완료" th:selected="${orderPageRequestDTO.state == '자재입고완료'}">자재입고완료</option>
+                            <option value="발주완료" th:selected="${orderPageRequestDTO.state == '발주완료'}">발주완료</option>
+                        </select>
+                    </div>
                     <div class="input-group-prepend">
                         <select class="form-select" name="type">
                             <option value="">---</option>
-                            <option value="t" th:selected="${pageRequestDTO.type == 't'}">자재 이름</option>
-                            <option value="c" th:selected="${pageRequestDTO.type == 'c'}">발주 코드</option>
-                            <option value="w" th:selected="${pageRequestDTO.type == 'w'}">담당자</option>
+                            <option value="a" th:selected="${orderPageRequestDTO.type == 'a'}">발주 코드</option>
+                            <option value="b" th:selected="${orderPageRequestDTO.type == 'b'}">자재 이름</option>
+                            <option value="c" th:selected="${orderPageRequestDTO.type == 'c'}">담당자</option>
                         </select>
                     </div>
-                    <input type="text" class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
+                    <input type="text" class="form-control" name="keyword" th:value="${orderPageRequestDTO.keyword}">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary searchBtn">검색</button>
-                        <button class="btn btn-outline-secondary clearBtn">초기화</button>
+                        <button class="btn btn-outline-secondary searchBtn" type="submit">Search</button>
+                        <button class="btn btn-outline-secondary clearBtn">Clear</button>
                     </div>
+
                 </div>
             </div>
         </form>
 
     </div>
+
     <div class="row mt-3">
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    MaterialInventory
+                    재고-입고관리
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">MaterialInventory</h5>
 
-                    <table class="table">
+                    <h5 class="card-title">입고관리</h5>
+
+                    <table class="table table-responsive-lg table-bordered table-hover">
                         <thead>
                         <tr>
                             <th scope="col">NO</th>
                             <th scope="col">발주 코드</th>
                             <th scope="col">자재 이름</th>
-                            <th scope="col">입고 수량</th>
-                            <th scope="col">발주 일자</th>
-                            <th scope="col">납기 일자</th>
+                            <th scope="col">발주 수량</th>
+                            <th scope="col">발주일</th>
+                            <th scope="col">납품일</th>
                             <th scope="col">담당자</th>
-                            <th scope="col">발주 상태</th>
+                            <th scope="col">상태</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody th:with="link = ${orderPageRequestDTO.getLink()}">
                         <tr th:each="dto:${responseDTO.dtoList}">
-                            <th scope="row">[[${dto.orderNo}]]</th>
+                            <td>[[${dto.orderNo}]]</td>
+                            <td>[[${dto.orderCode}]]</td>
                             <td>
-                                [[${dto.orderCode}]]
-                            </td>
-                            <td>
-                                <a th:href="|@{/materialInventory/materialStockInDetail(orderNo = ${dto.orderNo})}&${link}|" class="text-decoration-none">
-                                    [[${dto.materialName}]]</a>
+                                <a th:href="|@{/materialInventory/readInventory(orderNo = ${dto.orderNo})}&${link}|" class="text-decoration-none">[[${dto.materialName}]]</a>
                             </td>
                             <td>[[${dto.orderQuantity}]]</td>
                             <td>[[${dto.orderDate}]]</td>
@@ -75,7 +93,7 @@
                         <ul class="pagination flex-wrap">
 
                             <li class="page-item" th:if="${responseDTO.prev}">
-                                <a class="page-item" th:data-num="${responseDTO.start -1}">이전</a>
+                                <a class="page-item" th:data-num="${responseDTO.start -1}">PREV</a>
                             </li>
 
                             <th:block th:each="i : ${#numbers.sequence(responseDTO.start, responseDTO.end)}">
@@ -85,21 +103,32 @@
                             </th:block>
 
                             <li class="page-item" th:if="${responseDTO.next}">
-                                <a class="page-link" th:data-num="responseDTO.end">다음</a>
+                                <a class="page-link" th:data-num="responseDTO.end">NEXT</a>
                             </li>
 
                         </ul>
                     </div>
-
                 </div>
+            </div><!--end card-->
 
+            <div class="float-right">
+                <a th:href="@{/materialInventory/registerIncoming}"><button class="btn btn-primary registerBtn" type="button">입고 등록</button></a>
             </div>
-        </div>
-    </div>
+
+        </div><!--end col-->
+    </div><!--end row-->
 </div>
 
 
 <script layout:fragment="script" th:inline="javascript">
+
+    console.log("자재재고 - 입고관리 페이지")
+
+    $(document).ready(function () {
+        console.log([[${orderPageRequestDTO}]])
+        console.log([[${orderPageRequestDTO.link}]])
+        console.log([[${responseDTO}]])
+    })
 
     document.querySelector(".pagination").addEventListener("click", function(e) {
         e.preventDefault()
@@ -125,7 +154,7 @@
         e.preventDefault()
         e.stopPropagation()
 
-        self.location = '/materialInventory/stockList'
+        self.location = '/materialInventory/listInventory'
 
     }, false)
 
@@ -133,11 +162,6 @@
 
 </script>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
+
 </html>
