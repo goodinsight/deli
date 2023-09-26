@@ -155,8 +155,6 @@
     const piList = document.querySelector('.progressInspectionList')
     const piPaging = document.querySelector('.progressInspectionPaging')
 
-    const registerProgressInspectionTimes = document.querySelector('.registerProgressInspectionTimes')
-
     const completePIButton = document.querySelector('.completePI')
     const openRegisterBtn = document.querySelector(".openRegisterBtn")
 
@@ -246,9 +244,6 @@
 
             }
 
-            registerProgressInspectionTimes.value = maxTimes + 1
-
-
             if(state != 2){
                 if(dtoList[dtoList.length-1].rateOfProgress >= 100){
                     state = 1
@@ -299,12 +294,10 @@
 
         getList({orderNo, page, size, goLast}).then(
             data => {
-                console.log("목록처리")
                 printList(data.dtoList) // 목록처리
-                console.log("페이지처리")
                 printPages(data) //페이지 처리
-                console.log("버튼처리")
                 printButton(state)//버튼 출력
+                console.log("maxTimes : " + maxTimes)
             }
         ).catch(e => {
             console.log("getList failed")
@@ -362,6 +355,7 @@
     const registerBtn = document.querySelector(".registerBtn")
 
     //모달 내용
+    const registerProgressInspectionTimes = document.querySelector('.registerProgressInspectionTimes')
     const registerProgressInspectionDate = document.querySelector('.registerProgressInspectionDate')
     const registerEmployeeNo = document.querySelector('.registerEmployeeNo')
     const registerEmployeeName = document.querySelector('.registerEmployeeName')
@@ -371,6 +365,8 @@
 
 
     openRegisterBtn.addEventListener("click", function (e) {
+        registerProgressInspectionTimes.value = maxTimes + 1;
+        console.log("차수 : " + registerProgressInspectionTimes.value)
         registerModal.show()
     }, false)
 
