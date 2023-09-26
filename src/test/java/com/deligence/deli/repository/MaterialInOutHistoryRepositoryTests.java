@@ -27,14 +27,14 @@ public class MaterialInOutHistoryRepositoryTests {
 
         IntStream.rangeClosed(1, 10).forEach(i -> {
 
-            MaterialInOutHistory meterialInOutHistory = MaterialInOutHistory.builder()
+            MaterialInOutHistory materialInOutHistory = MaterialInOutHistory.builder()
                     .inOutSeparator("IN")
                     .quantity(99 + i)
                     .employee(Employee.builder().employeeNo(i).build())
                     .materialInventory(MaterialInventory.builder().materialInventoryNo(i).build())
                     .build();
 
-            MaterialInOutHistory result = materialInOutHistoryRepository.save(meterialInOutHistory);
+            MaterialInOutHistory result = materialInOutHistoryRepository.save(materialInOutHistory);
 
             log.info("MaterialHistoryNo : " + result.getMaterialHistoryNo());
 

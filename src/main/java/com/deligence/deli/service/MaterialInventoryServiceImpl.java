@@ -27,9 +27,8 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
 
     private final MaterialInventoryRepository materialInventoryRepository;
 
-    // 자재 입고 상세보기
     @Override
-    public MaterialInventoryDTO materialStockRead(int materialInventoryNo) {
+    public MaterialInventoryDetailDTO materialStockRead(int materialInventoryNo) {
 
         Optional<MaterialInventory> result = materialInventoryRepository.findById(materialInventoryNo);
 
@@ -37,16 +36,15 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
 
         log.info(materialInventory);
 
-        MaterialInventoryDTO materialInventoryDTO = modelMapper.map(materialInventory, MaterialInventoryDTO.class);
+        MaterialInventoryDetailDTO materialInventoryDetailDTO = modelMapper.map(materialInventory, MaterialInventoryDetailDTO.class);
 
-        log.info("orderDetailDTO : " + materialInventoryDTO);
+        log.info("orderDetailDTO : " + materialInventoryDetailDTO);
 
-        return materialInventoryDTO;
+        return materialInventoryDetailDTO;
 
     }
 
 
-    // 자재 입고 수정
     @Override
     public int materialStockRegister(MaterialInventoryDTO materialInventoryDTO) {
 
@@ -55,7 +53,7 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
 
     }
 
-    // 자재 입고 리스트 출력
+    // 자재 리스트 출력
     @Override
     public PageResponseDTO<MaterialInventoryDTO> materialStockList(PageRequestDTO pageRequestDTO) {
 
@@ -74,6 +72,25 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
                 .total((int) result.getTotalElements())
                 .build();
 
+    }
+
+    // 자재 목록 상세 리스트
+    @Override
+    public PageResponseDTO<MaterialInventoryDTO> materialStockStateListOne(PageRequestDTO pageRequestDTO) {
+        String[] types = pageRequestDTO.getTypes();
+        String keyword = pageRequestDTO.getKeyword();
+        Pageable pageable = pageRequestDTO.getPageable("materialInventoryNo");
+
+        Page<MaterialInventory> result = materialInventoryRepository.materialStockList(types, keyword, pageable);
+
+        List<MaterialInventoryDTO> dtoList = result.getContent().stream()
+                .map(materialInventory -> entityDtoTo(materialInventory)).collect(Collectors.toList());
+
+        return PageResponseDTO.<MaterialInventoryDTO>withAll()
+                .pageRequestDTO(pageRequestDTO)
+                .dtoList(dtoList)
+                .total((int) result.getTotalElements())
+                .build();
     }
 
 

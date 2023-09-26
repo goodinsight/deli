@@ -30,9 +30,17 @@ public class MaterialInventoryController {
 
         PageResponseDTO<OrderDTO> responseDTO = orderService.list(pageRequestDTO);
 
-        log.info(responseDTO);
+        for (int i = 0; i <responseDTO.getDtoList().size(); i++) {
 
-        model.addAttribute("responseDTO", responseDTO);
+            if (responseDTO.getDtoList().get(i).getOrderState().equals("검수완료")){
+
+                log.info(responseDTO);
+
+                model.addAttribute("responseDTO", responseDTO);
+
+            }
+
+        }
 
     }
 
@@ -48,13 +56,13 @@ public class MaterialInventoryController {
     }
 
     @GetMapping("/materialStockDetail")
-    public void materialStockRead(int materialInventoryNo,PageRequestDTO pageRequestDTO, Model model) {
+    public void materialStockRead(int materialInventoryNo, PageRequestDTO pageRequestDTO, Model model) {
 
-        MaterialInventoryDTO materialInventoryDTO = materialInventoryService.materialStockRead(materialInventoryNo);
+        MaterialInventoryDetailDTO materialInventoryDetailDTO = materialInventoryService.materialStockRead(materialInventoryNo);
 
-        log.info(materialInventoryDTO);
+        log.info(materialInventoryDetailDTO);
 
-        model.addAttribute("dto", materialInventoryDTO);
+        model.addAttribute("dto", materialInventoryDetailDTO);
 
     }
 
