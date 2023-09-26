@@ -15,12 +15,12 @@ public class MaterialInOutHistoryDTO {
 
     private int materialHistoryNo;
 
-    private int materialInventory;
+    private MaterialInventory materialInventory;
 
     private String inOutSeparator;
 
     private int quantity;
 
-    private int employee;
+    private Employee employee;
 
 }

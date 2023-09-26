@@ -2,9 +2,13 @@ package com.deligence.deli.repository.search;
 
 import com.deligence.deli.domain.*;
 import com.deligence.deli.dto.MaterialInOutHistoryDetailDTO;
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.Tuple;
 import com.querydsl.jpa.JPQLQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 
 import javax.persistence.EntityManager;
@@ -20,6 +24,47 @@ public class MaterialInOutHistorySearchImpl extends QuerydslRepositorySupport im
 
     @PersistenceContext
     EntityManager em;
+
+    @Override
+    public Page<MaterialInOutHistory> searchAll(String[] types, String keyword, Pageable pageable) {
+
+        QMaterialInOutHistory materialInOutHistory = QMaterialInOutHistory.materialInOutHistory;
+        JPQLQuery<MaterialInOutHistory> query = from(materialInOutHistory);
+
+        if( (types != null && types.length >0 ) && keyword != null) {
+
+            BooleanBuilder booleanBuilder = new BooleanBuilder();
+
+            for(String type: types){
+
+                switch(type){
+                    case "t":
+                        booleanBuilder.or(materialInOutHistory.inOutSeparator.contains(keyword));   // 입 출고 구분자로 검색
+                        break;
+//                    case "c":
+//                        booleanBuilder.or(materialInOutHistory..contains(keyword));
+//                        break;
+//                    case "w":
+//                        booleanBuilder.or(materialInOutHistory.writer.contains(keyword));
+//                        break;
+                }
+            } // end for
+            query.where(booleanBuilder);
+
+        } // end if
+
+        // bno > 0
+        query.where(materialInOutHistory.materialHistoryNo.gt(0));
+
+        //paging
+        this.getQuerydsl().applyPagination(pageable, query);
+
+        List<MaterialInOutHistory> list = query.fetch();
+
+        long count = query.fetchCount();
+
+        return new PageImpl<>(list, pageable, count);
+    }
 
     @Override
     public MaterialInOutHistoryDetailDTO read(int materialNo){

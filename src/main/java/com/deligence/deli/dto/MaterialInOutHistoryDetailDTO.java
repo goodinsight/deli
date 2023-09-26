@@ -18,6 +18,11 @@ public class MaterialInOutHistoryDetailDTO {
 // 자재일련번호, 자재코드 ,자재명, 자재분류, 자재공급단가
 // 자재 재고 목록 일련번호, 재고수량
 // 담당자 사원 일련번호. 담당자명
+    private int materialHistoryNo;  //자재기록번호
+
+    private String inOutSeparator;  //입출고 구분자
+
+    private int materialInOutQuantity;  //입고 또는 출고 수량
 
     private int materialNo; //자재일련번호 : FK
 
