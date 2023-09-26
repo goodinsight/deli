@@ -78,8 +78,8 @@ public interface MaterialInventoryService {
                 .materialName(materialInventory.getMaterials().getMaterialName())
                 .materialCode(materialInventory.getMaterials().getMaterialCode())
                 .materialImageNo(materialInventory.getMaterialImage().getMaterialImgNo())
-                .materialHistoryNo(materialInventory.getMaterialInOutHistory().getMaterialHistoryNo())
-                .employeeName(materialInventory.getMaterialInOutHistory().getEmployeeName())
+//                .materialHistoryNo(materialInventory.getMaterialInOutHistory().getMaterialHistoryNo())
+//                .employeeName(materialInventory.getMaterialInOutHistory().getEmployeeName())
                 .build();
 
         return materialInventoryDTO;
