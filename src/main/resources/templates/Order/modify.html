@@ -98,9 +98,9 @@
 
                         <div class="my-4">
                             <div class="float-end">
-                                <button type="button" class="btn btn-primary listBtn">List</button>
-                                <button type="button" class="btn btn-secondary modBtn">Modify</button>
-                                <button type="button" class="btn btn-danger removeBtn">Remove</button>
+                                <button type="button" class="btn btn-primary modBtn">수정</button>
+                                <button type="button" class="btn btn-secondary readBtn">상세페이지</button>
+                                <button type="button" class="btn btn-danger removeBtn">제거</button>
                             </div>
                         </div>
                     </form>
@@ -138,6 +138,7 @@
 
     const link = [[${pageRequestDTO.getLink()}]]
     const formObj = document.querySelector("#modifyForm")
+    const orderNo = [[${dto.orderNo}]]
 
     document.querySelector(".modBtn").addEventListener("click", function (e) {
         e.preventDefault()
@@ -150,15 +151,15 @@
 
     }, false)
 
-    // 목록 페이지로 이동 ---------------------------------------------------------
+    // 상세 페이지로 이동 ---------------------------------------------------------
 
-    document.querySelector(".listBtn").addEventListener("click", function (e) {
+    document.querySelector(".readBtn").addEventListener("click", function (e) {
 
         e.preventDefault()
         e.stopPropagation()
 
         formObj.reset()
-        self.location = `/order/list?${link}`
+        self.location = `/order/read?orderNo=${orderNo}&${link}`
 
     }, false)
 
