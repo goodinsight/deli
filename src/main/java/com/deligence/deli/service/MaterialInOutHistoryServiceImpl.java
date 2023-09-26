@@ -71,7 +71,7 @@ public class MaterialInOutHistoryServiceImpl implements MaterialInOutHistoryServ
         String keyword = pageRequestDTO.getKeyword();
         Pageable pageable = pageRequestDTO.getPageable("materialHistoryNo");
 
-        Page<MaterialInOutHistoryDetailDTO> result = materialInOutHistoryRepository.searchAll(types, keyword, pageable);
+        Page<MaterialInOutHistory> result = materialInOutHistoryRepository.searchAll(types, keyword, pageable);
 
         List<MaterialInOutHistoryDetailDTO> dtoList = result.getContent().stream()
                 .map(materialInOutHistoryDetailDTO -> modelMapper.map(materialInOutHistoryDetailDTO, MaterialInOutHistoryDetailDTO.class)).collect(Collectors.toList());
