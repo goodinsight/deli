@@ -37,13 +37,15 @@ public class MaterialInventory {
     @Column(length = 500, nullable = false)
     private Long materialTotalInventoryPayments; // 재고 금액
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,
+    cascade = CascadeType.ALL)
     private Order order; // 오더 일련번호
 
     @ManyToOne(fetch = FetchType.LAZY)
     private MaterialImage materialImage;    //자재이미지 FK
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private MaterialInOutHistory materialInOutHistory;
 
     @Column(length = 500, nullable = false)

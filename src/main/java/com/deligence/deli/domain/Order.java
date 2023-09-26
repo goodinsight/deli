@@ -32,13 +32,16 @@ public class Order {
 
     private String orderEtc; //비고
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private MaterialProcurementPlanning materialProcurementPlanning; // 조달계획 (일련번호)
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
     private MaterialProcurementContract materialProcurementContract; // 조달계획 (일련번호)
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,
+               cascade = CascadeType.ALL)
     private Employee employee; //사원 (일련번호)
 
     private String materialName; //자재 이름

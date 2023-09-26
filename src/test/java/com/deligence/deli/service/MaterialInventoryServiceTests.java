@@ -1,10 +1,7 @@
 package com.deligence.deli.service;
 
-import com.deligence.deli.domain.MaterialInventory;
-import com.deligence.deli.domain.Materials;
-import com.deligence.deli.domain.Order;
+import com.deligence.deli.domain.*;
 import com.deligence.deli.dto.*;
-import com.deligence.deli.repository.OrderRepository;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +20,20 @@ public class MaterialInventoryServiceTests {
     @Autowired
     private MaterialInventoryService materialInventoryService;
 
+    @Autowired
+    private OrderService orderService;
+
+    @Autowired
+    private MaterialInOutHistoryService materialInOutHistoryService;
+
     @Test   //테스트 다시 해볼 것
-    public void testStockRegister() {
+    public void testStockRegister(){
+
+        OrderDTO orderDTO = OrderDTO.builder().orderNo(45).employeeNo(5).employeeName("김재고").build();
+        orderService.register(orderDTO);
+
+        MaterialInOutHistoryDetailDTO materialInOutHistoryDetailDTO = MaterialInOutHistoryDetailDTO.builder().materialHistoryNo(5).inOutSeparator("IN").build();
+        materialInOutHistoryService.register(materialInOutHistoryDetailDTO);
 
         MaterialInventoryDTO materialInventoryDTO = MaterialInventoryDTO.builder()
                 .materialNo(1111)
