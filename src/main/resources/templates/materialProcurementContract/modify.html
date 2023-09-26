@@ -86,21 +86,12 @@
                             <input type="text" name="supplierPhone" class="form-control supplierPhone" th:value="${dto.supplierPhone}" readonly>
                         </div>
 
-                        <!--
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">자재조달 계약상태</span>
-                            <input type="text" name="materialProcurementContractState" class="form-control" th:value="${dto.materialProcurementContractState}">
-                        </div>
-                        -->
 
-                        <div class="input-group mb-3 pl-5">
+                        <div class="input-group mb-3">
                             <span class="input-group-text">계약상태</span>
-                            <select name="supplierStatus">
-                                <option value="계약중" selected>계약중</option>
-                                <option value="계약파기">파기</option>
-                                <option value="계약종료">종료</option>
-                            </select>
+                            <input type="text" name="supplierStatus" class="form-control" th:value="${dto.supplierStatus}" readonly>
                         </div>
+                        
                         <div class="input-group mb-3">
                             <span class="input-group-text">조달상태</span>
                             <select name="materialProcurementContractState">

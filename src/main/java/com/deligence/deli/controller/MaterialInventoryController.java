@@ -47,7 +47,7 @@ public class MaterialInventoryController {
     @GetMapping("/materialStockList")
     public void materialStockList(PageRequestDTO pageRequestDTO, Model model) {
 
-        PageResponseDTO<MaterialInventoryDTO> responseDTO = materialInventoryService.materialStockList(pageRequestDTO);
+        PageResponseDTO<MaterialInventoryDTO> responseDTO = materialInventoryService.stockList(pageRequestDTO);
 
         log.info(responseDTO);
 
@@ -58,7 +58,7 @@ public class MaterialInventoryController {
     @GetMapping("/materialStockDetail")
     public void materialStockRead(int materialInventoryNo, PageRequestDTO pageRequestDTO, Model model) {
 
-        MaterialInventoryDetailDTO materialInventoryDetailDTO = materialInventoryService.materialStockRead(materialInventoryNo);
+        MaterialInventoryDetailDTO materialInventoryDetailDTO = materialInventoryService.stockRead(materialInventoryNo);
 
         log.info(materialInventoryDetailDTO);
 

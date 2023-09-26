@@ -11,42 +11,126 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
 @Log4j2
-@Transactional
+//    @Transactional
 public class MaterialInventoryServiceTests {
 
     @Autowired
     private MaterialInventoryService materialInventoryService;
 
-    @Test
-    public void testMaterialsServicelistOne() {
+    @Test   //테스트 다시 해볼 것
+    public void testStockRegister() {
 
-        int materialInventoryNo = 74;
+        MaterialInventoryDTO materialInventoryDTO = MaterialInventoryDTO.builder()
+                .materialNo(1111)
+                .materialIncomingQuantity(100)
+                .materialOutgoingQuantity(50)
+                .materialStock(50)
+                .materialSupplyPrice(1000L)
+                .materialTotalInventoryPayments(50000L)
+                .materialImageNo(50)
+                .materialHistoryNo(5)
+                .materialName("materialName")
+                .materialType("materialType")
+                .materialCode("materialCode")
+                .employeeName("김재고")
+                .orderNo(45)
+                .orderCode("ORDER-20230926-")
+                .orderState("입고완료")
+//                .documentFileNo(1)
+                .build();
 
-        MaterialInventoryDTO materialInventoryDTO = materialInventoryService.materialStockRead(materialInventoryNo);
-        log.info(materialInventoryDTO);
+        materialInventoryService.stockRegister(materialInventoryDTO);
+
+        log.info("success");
 
     }
 
+    @Test //테스트확인
+    public void testStockRead() {
+
+        int materialInventoryNo = 1;
+
+        MaterialInventoryDetailDTO materialInventoryDetailDTO = materialInventoryService.stockRead(materialInventoryNo);
+
+        log.info(materialInventoryDetailDTO);
+
+    }
+
+    @Test   //나중에 테스트 다시 해볼 것
+    public void testStockModify() {
+
+        MaterialInventoryDTO materialInventoryDTO = MaterialInventoryDTO.builder()
+                .materialHistoryNo(1)
+                .materialNo(1111)
+                .materialIncomingQuantity(100)
+                .materialOutgoingQuantity(50)
+                .materialStock(50)
+                .materialSupplyPrice(1000L)
+                .materialTotalInventoryPayments(50000L)
+                .materialImageNo(50)
+                .materialHistoryNo(5)
+                .materialName("materialName")
+                .materialType("materialType")
+                .materialCode("materialCode")
+                .employeeName("김재고")
+                .orderNo(45)
+                .orderCode("ORDER-20230926-")
+                .orderState("입고완료")
+//                .documentFileNo(1)
+                .build();
+
+        materialInventoryService.stockModify(materialInventoryDTO);
+
+        log.info(materialInventoryDTO);
+    }
+
     @Test
-    public void testList() {
+    public void testStockList() {
 
         PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
-                .type("tcw")
-                .keyword("30")
+                .type("t")
+                .keyword("1")
                 .page(1)
                 .size(10)
                 .build();
 
-        PageResponseDTO<MaterialInventoryDTO> responseDTO = materialInventoryService.materialStockList(pageRequestDTO);
+        PageResponseDTO<MaterialInventoryDTO> responseDTO = materialInventoryService.stockList(pageRequestDTO);
 
         log.info(responseDTO);
 
     }
+
+//    @Test
+//    public void testMaterialsServicelistOne() {
+//
+//        int materialInventoryNo = 74;
+//
+//        MaterialInventoryDTO materialInventoryDTO = materialInventoryService.stockRead(materialInventoryNo);
+//        log.info(materialInventoryDTO);
+//
+//    }
+//
+//    @Test
+//    public void testList() {
+//
+//        PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
+//                .type("tcw")
+//                .keyword("30")
+//                .page(1)
+//                .size(10)
+//                .build();
+//
+//        PageResponseDTO<MaterialInventoryDTO> responseDTO = materialInventoryService.materialStockList(pageRequestDTO);
+//
+//        log.info(responseDTO);
+//
+//    }
 
 
 

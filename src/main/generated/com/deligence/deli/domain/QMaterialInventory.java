@@ -24,7 +24,7 @@ public class QMaterialInventory extends EntityPathBase<MaterialInventory> {
 
     public final QDocumentFile documentFile;
 
-    public final QEmployee employee;
+    public final StringPath employeeName = createString("employeeName");
 
     public final StringPath materialCode = createString("materialCode");
 
@@ -52,6 +52,10 @@ public class QMaterialInventory extends EntityPathBase<MaterialInventory> {
 
     public final QOrder order;
 
+    public final StringPath orderCode = createString("orderCode");
+
+    public final StringPath orderState = createString("orderState");
+
     public QMaterialInventory(String variable) {
         this(MaterialInventory.class, forVariable(variable), INITS);
     }
@@ -71,7 +75,6 @@ public class QMaterialInventory extends EntityPathBase<MaterialInventory> {
     public QMaterialInventory(Class<? extends MaterialInventory> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.documentFile = inits.isInitialized("documentFile") ? new QDocumentFile(forProperty("documentFile")) : null;
-        this.employee = inits.isInitialized("employee") ? new QEmployee(forProperty("employee"), inits.get("employee")) : null;
         this.materialImage = inits.isInitialized("materialImage") ? new QMaterialImage(forProperty("materialImage"), inits.get("materialImage")) : null;
         this.materialInOutHistory = inits.isInitialized("materialInOutHistory") ? new QMaterialInOutHistory(forProperty("materialInOutHistory"), inits.get("materialInOutHistory")) : null;
         this.materials = inits.isInitialized("materials") ? new QMaterials(forProperty("materials")) : null;
