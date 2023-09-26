@@ -36,13 +36,14 @@ async function getCodeCount(orderCode){
 
 async function completeOrder({orderNo, materialProcurementPlanNo}){
 
-    const map = {
+    data = {
         orderNo : orderNo,
         materialProcurementPlanNo : materialProcurementPlanNo
     }
 
-    console.log("map create :" + map.)
+    console.log(data.orderNo)
+    console.log(data.materialProcurementPlanNo)
 
-    await axios.post(`/order/completeOrder/`, map)
+    await axios.post(`/order/completeOrder/`, data)
 
 }

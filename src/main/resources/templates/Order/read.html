@@ -135,14 +135,16 @@
 
     const orderNo = [[${dto.orderNo}]]
     const materialProcurementPlanNo = [[${dto.materialProcurementPlanNo}]]
+    const link = [[${pageRequestDTO.getLink()}]]
 
-    console.log(state)
 
     const afterCompButton = document.querySelector('.afterComp')
     const completeButton = document.querySelector('.completeButton')
     const modifyButton = document.querySelector('.modifyButton')
 
     function printButton(state){
+
+        console.log(state)
 
         switch (state){
 
@@ -171,7 +173,7 @@
     function compOrder(){
 
         completeOrder({orderNo, materialProcurementPlanNo}).then(
-            console.log("성공")
+            location.href="/order/read?orderNo="+orderNo+"&"+link
         ).catch( e =>{
             console.log(e)
         })
