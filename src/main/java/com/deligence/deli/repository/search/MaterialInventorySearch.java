@@ -8,8 +8,8 @@ import org.springframework.data.domain.Pageable;
 
 public interface MaterialInventorySearch {
 
-    Page<Order> materialStockListOne(Pageable pageable);
+    Page<MaterialInventory> materialStockRead(Pageable pageable);
 
-    Page<Order> materialStockList(String[] types, String keyword, Pageable pageable);
+    Page<MaterialInventory> materialStockList(String[] types, String keyword, Pageable pageable);
 
 }

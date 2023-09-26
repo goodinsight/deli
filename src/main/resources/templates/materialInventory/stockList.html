@@ -3,10 +3,11 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{/layout/layout.html}">
 
+
 <div layout:fragment="content">
     <div class="row mt-3">
 
-        <form action="/materialInventory/materialStockList" method="get">
+        <form action="/materialInventory/stockList" method="get">
             <div class="col">
                 <input type="hidden" name="size" th:value="${pageRequestDTO.size}">
                 <div class="input-group">
@@ -14,8 +15,8 @@
                         <select class="form-select" name="type">
                             <option value="">---</option>
                             <option value="t" th:selected="${pageRequestDTO.type == 't'}">자재 이름</option>
-                            <option value="c" th:selected="${pageRequestDTO.type == 'c'}">자재 코드</option>
-                            <option value="w" th:selected="${pageRequestDTO.type == 'w'}">자재 분류</option>
+                            <option value="c" th:selected="${pageRequestDTO.type == 'c'}">발주 코드</option>
+                            <option value="w" th:selected="${pageRequestDTO.type == 'w'}">담당자</option>
                         </select>
                     </div>
                     <input type="text" class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
@@ -41,32 +42,30 @@
                         <thead>
                         <tr>
                             <th scope="col">NO</th>
-                            <th scope="col">자재 코드</th>
+                            <th scope="col">발주 코드</th>
                             <th scope="col">자재 이름</th>
-                            <th scope="col">자재 분류</th>
                             <th scope="col">입고 수량</th>
-                            <th scope="col">출고 수량</th>
-                            <th scope="col">재고 수량</th>
-                            <th scope="col">공급 단가</th>
-                            <th scope="col">재고 금액</th>
+                            <th scope="col">발주 일자</th>
+                            <th scope="col">납기 일자</th>
+                            <th scope="col">담당자</th>
+                            <th scope="col">발주 상태</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:each="dto:${responseDTO.dtoList}">
-                            <th scope="row">[[${dto.materialInventoryNo}]]</th>
+                            <th scope="row">[[${dto.orderNo}]]</th>
                             <td>
-                                [[${dto.materialCode}]]
+                                [[${dto.orderCode}]]
                             </td>
                             <td>
-                                <a th:href="|@{/materialInventory/materialStockDetail(materialInventoryNo = ${dto.materialInventoryNo})}&${link}|" class="text-decoration-none">
+                                <a th:href="|@{/materialInventory/materialStockInDetail(orderNo = ${dto.orderNo})}&${link}|" class="text-decoration-none">
                                     [[${dto.materialName}]]</a>
                             </td>
-                            <td>[[${dto.materialType}]]</td>
-                            <td>[[${dto.materialIncomingQuantity}]]</td>
-                            <td>[[${dto.materialOutgoingQuantity}]]</td>
-                            <td>[[${dto.materialStock}]]</td>
-                            <td>[[${dto.materialSupplyPrice}]]</td>
-                            <td>[[${dto.materialTotalInventoryPayments}]]</td>
+                            <td>[[${dto.orderQuantity}]]</td>
+                            <td>[[${dto.orderDate}]]</td>
+                            <td>[[${dto.orderDeliveryDate}]]</td>
+                            <td>[[${dto.employeeName}]]</td>
+                            <td>[[${dto.orderState}]]</td>
                         </tr>
                         </tbody>
 
@@ -126,15 +125,13 @@
         e.preventDefault()
         e.stopPropagation()
 
-        self.location = '/materialInventory/materialStockList'
+        self.location = '/materialInventory/stockList'
 
     }, false)
 
 
 
 </script>
-
-
 
 <head>
     <meta charset="UTF-8">

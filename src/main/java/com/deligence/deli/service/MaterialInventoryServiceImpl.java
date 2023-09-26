@@ -1,18 +1,13 @@
 package com.deligence.deli.service;
 
 import com.deligence.deli.domain.MaterialInventory;
-import com.deligence.deli.domain.MaterialProcurementPlanning;
-import com.deligence.deli.domain.Materials;
 import com.deligence.deli.domain.Order;
 import com.deligence.deli.dto.*;
 import com.deligence.deli.repository.MaterialInventoryRepository;
-import com.deligence.deli.repository.MaterialProcurementPlanningRepository;
-import com.deligence.deli.repository.MaterialsRepository;
 import com.deligence.deli.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -32,66 +27,70 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
 
     private final MaterialInventoryRepository materialInventoryRepository;
 
-    private final OrderRepository orderRepository;
-
-    private final MaterialProcurementPlanningRepository materialProcurementPlanningRepository;
-
-    private final MaterialsRepository materialsRepository;
-
-
-
-    // 자재 입고 상세보기
     @Override
-    public OrderDetailDTO materialStockListOne(int orderNo) {
+    public MaterialInventoryDetailDTO materialStockRead(int materialInventoryNo) {
 
-        Optional<Order> result = orderRepository.findById(orderNo);
+        Optional<MaterialInventory> result = materialInventoryRepository.findById(materialInventoryNo);
 
-        Order order = result.orElseThrow();
+        MaterialInventory materialInventory = result.orElseThrow();
 
-        log.info(order.getOrderNo());
+        log.info(materialInventory);
 
-        OrderDetailDTO orderDetailDTO = modelMapper.map(order, OrderDetailDTO.class);
+        MaterialInventoryDetailDTO materialInventoryDetailDTO = modelMapper.map(materialInventory, MaterialInventoryDetailDTO.class);
 
-        log.info("orderDetailDTO : " + orderDetailDTO);
+        log.info("orderDetailDTO : " + materialInventoryDetailDTO);
 
-        return orderDetailDTO;
+        return materialInventoryDetailDTO;
 
     }
 
 
-    // 자재 목록 수정
     @Override
     public int materialStockRegister(MaterialInventoryDTO materialInventoryDTO) {
 
-        MaterialInventory materialInventory = modelMapper.map(materialInventoryDTO, MaterialInventory.class);
-        int materialInventoryNo = materialInventoryRepository.save(materialInventory).getMaterialInventoryNo();
 
-        log.info("materialInventoryNo : " + materialInventoryNo);
-
-        return materialInventoryNo;
+        return 0;
 
     }
 
-
-    // 자재 입고 리스트 출력
+    // 자재 리스트 출력
     @Override
-    public PageResponseDTO<OrderDTO> materialStockList(PageRequestDTO pageRequestDTO) {
+    public PageResponseDTO<MaterialInventoryDTO> materialStockList(PageRequestDTO pageRequestDTO) {
 
         String[] types = pageRequestDTO.getTypes();
         String keyword = pageRequestDTO.getKeyword();
-        Pageable pageable = pageRequestDTO.getPageable("orderNo");
+        Pageable pageable = pageRequestDTO.getPageable("materialInventoryNo");
 
-        Page<Order> result = orderRepository.search(types, keyword, pageable);
+        Page<MaterialInventory> result = materialInventoryRepository.materialStockList(types, keyword, pageable);
 
-        List<OrderDTO> dtoList = result.getContent().stream()
-                .map(order -> modelMapper.map(order, OrderDTO.class)).collect(Collectors.toList());
+        List<MaterialInventoryDTO> dtoList = result.getContent().stream()
+                .map(materialInventory -> modelMapper.map(materialInventory, MaterialInventoryDTO.class)).collect(Collectors.toList());
 
-        return PageResponseDTO.<OrderDTO>withAll()
+        return PageResponseDTO.<MaterialInventoryDTO>withAll()
                 .pageRequestDTO(pageRequestDTO)
                 .dtoList(dtoList)
                 .total((int) result.getTotalElements())
                 .build();
 
+    }
+
+    // 자재 목록 상세 리스트
+    @Override
+    public PageResponseDTO<MaterialInventoryDTO> materialStockStateListOne(PageRequestDTO pageRequestDTO) {
+        String[] types = pageRequestDTO.getTypes();
+        String keyword = pageRequestDTO.getKeyword();
+        Pageable pageable = pageRequestDTO.getPageable("materialInventoryNo");
+
+        Page<MaterialInventory> result = materialInventoryRepository.materialStockList(types, keyword, pageable);
+
+        List<MaterialInventoryDTO> dtoList = result.getContent().stream()
+                .map(materialInventory -> entityDtoTo(materialInventory)).collect(Collectors.toList());
+
+        return PageResponseDTO.<MaterialInventoryDTO>withAll()
+                .pageRequestDTO(pageRequestDTO)
+                .dtoList(dtoList)
+                .total((int) result.getTotalElements())
+                .build();
     }
 
 
