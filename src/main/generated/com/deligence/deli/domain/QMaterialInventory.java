@@ -30,6 +30,8 @@ public class QMaterialInventory extends EntityPathBase<MaterialInventory> {
 
     public final QMaterialImage materialImage;
 
+    public final NumberPath<Integer> materialIncomingNo = createNumber("materialIncomingNo", Integer.class);
+
     public final NumberPath<Integer> materialIncomingQuantity = createNumber("materialIncomingQuantity", Integer.class);
 
     public final QMaterialInOutHistory materialInOutHistory;
