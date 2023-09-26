@@ -32,7 +32,7 @@ public class ProductsDTO {
 
     private LocalDateTime modDate; //수정일
     
-    //private List<ProductImageDTO> productImage;   //자재 이미지MaterialsDTO
+    //private List<ProductImageDTO> productImage;   //자재 이미지ProductsDTO
 
     private List<String> fileNames; //첨부파일 이름들
 
@@ -44,7 +44,7 @@ public class ProductsDTO {
 //        this.productType = productType;
 //        this.productContent = productContent;
 //        //
-//        this.materialCode = "Material" + materialType + date.format(dateTimeFormatter); // 생성시 등록순서 증가하게 추가해야됨
+//        this.productCode = "Product" + productType + date.format(dateTimeFormatter); // 생성시 등록순서 증가하게 추가해야됨
 //    }
 
 }

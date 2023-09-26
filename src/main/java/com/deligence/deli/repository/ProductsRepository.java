@@ -1,6 +1,5 @@
 package com.deligence.deli.repository;
 
-import com.deligence.deli.domain.Materials;
 import com.deligence.deli.domain.Products;
 import com.deligence.deli.repository.search.ProductSearch;
 import org.springframework.data.jpa.repository.EntityGraph;
@@ -9,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.Optional;
 
-public interface ProductsRepository extends JpaRepository<Materials, Integer>, ProductSearch {
+public interface ProductsRepository extends JpaRepository<Products, Integer>, ProductSearch {
 
 //    @Query(value = "select now()", nativeQuery = true)
 //    String getTime();

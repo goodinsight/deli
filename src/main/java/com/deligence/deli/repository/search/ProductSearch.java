@@ -11,13 +11,13 @@ public interface ProductSearch {
 
     Page<Products> searchAll(String[] types, String keyword, Pageable pageable); //검색
 
-    int getCodeCount(String materialCode); //자재코드생성
+    int getCodeCount(String productCode); //자재코드생성
 
 
     Page<ProductsDTO> searchWithAll(String[] types,
                                     String keyword,
                                     Pageable pageable);
-//    Page<MaterialListAllDTO> searchWithAll(String[] types,
+//    Page<ProductListAllDTO> searchWithAll(String[] types,
 //                                           String keyword,
 //                                           Pageable pageable);
 

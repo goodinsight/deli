@@ -1,7 +1,5 @@
 package com.deligence.deli.controller;
 
-import com.deligence.deli.dto.upload.UploadMaterialFileDTO;
-import com.deligence.deli.dto.upload.UploadMaterialResultDTO;
 import com.deligence.deli.dto.upload.UploadProductFileDTO;
 import com.deligence.deli.dto.upload.UploadProductResultDTO;
 import io.swagger.annotations.ApiOperation;

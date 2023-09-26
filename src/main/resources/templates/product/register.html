@@ -6,7 +6,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>자재 등록</title>
+    <title>제품 등록</title>
 </head>
 
 <div layout:fragment="content">
@@ -15,30 +15,27 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    자재 등록
+                    제품 등록
                 </div>
                 <div class="card-body">
-                    <form action="/material/register" method="post">
+                    <form action="/product/register" method="post">
                         <div class="input-group mb-3">
                             <span class="input-group-text">분류(타입)</span>
-                            <input type="text" name="materialType" class="form-control materialType" placeholder="Title">
+                            <input type="text" name="productType" class="form-control productType" placeholder="Title">
                         </div>
                         <div class="input-group mb-3">
-                            <span class="input-group-text">자재코드</span>
-                            <input type="text" name="materialCode" class="form-control materialCode" placeholder="클릭해주세요" readonly>
+                            <span class="input-group-text">제품코드</span>
+                            <input type="text" name="productCode" class="form-control productCode" placeholder="클릭해주세요" readonly>
                         </div>
                         <div class="input-group mb-3">
-                            <span class="input-group-text">자재이름</span>
-                            <input type="text" name="materialName" class="form-control materialName" placeholder="Name">
+                            <span class="input-group-text">제품이름</span>
+                            <input type="text" name="productName" class="form-control productName" placeholder="Name">
                         </div>
                         <div class="input-group mb-3">
-                            <span class="input-group-text">자재설명</span>
-                            <input type="text" name="materialExplaination" class="form-control materialExplaination" placeholder="Explaination">
+                            <span class="input-group-text">제품설명</span>
+                            <input type="text" name="productContent" class="form-control productContent" placeholder="Content">
                         </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">자재공급단가</span>
-                            <input type="text" name="materialSupplyPrice" class="form-control materialSupplyPrice" placeholder="SupplyPrice">
-                        </div>
+
 
                         <div class="input-group mb-3">
                             <span class="input-group-text">이미지 첨부</span>
@@ -49,8 +46,8 @@
 
                         <div class="my-4">
                             <div class="float-end">
-                                <a th:href="@{/material/list}" class="text-decoration-none">
-                                    <button type="button" class="btn btn-outline-dark">자재목록</button>
+                                <a th:href="@{/product/list}" class="text-decoration-none">
+                                    <button type="button" class="btn btn-outline-dark">제품목록</button>
                                 </a>
                                 <button type="submit" class="btn btn-primary submitBtn">저장</button>
                                 <button type="reset" class="btn btn-secondary">되돌리기</button>
@@ -75,7 +72,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">자재 이미지 첨부</h5>
+                    <h5 class="modal-title">제품 이미지 첨부</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -93,8 +90,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-    <script src="/js/materialImg.js" ></script>
-    <script src="/js/material.js"></script>
+    <script src="/js/productImg.js" ></script>
+    <script src="/js/product.js"></script>
 
 </div> <!-- layout fragment end -->
 
@@ -154,29 +151,29 @@
 
     const uploadResult = document.querySelector(".uploadResult")
 
-    function showUploadFile({materialUuid, materialImgName, link}){
+    function showUploadFile({productImgUuid, productImgName, link}){
 
         const str = `<div class="card col-4">
                         <div class="card-header d-flex justify-content-center">
-                            ${materialImgName}
-                            <button class="btn-sm btn-danger" onclick="javascript:removeFile('${materialUuid}', '${materialImgName}', this)" >X</button>
+                            ${productImgName}
+                            <button class="btn-sm btn-danger" onclick="javascript:removeFile('${productImgUuid}', '${productImgName}', this)" >X</button>
                         </div>
                         <div class="card-body">
-                            <img src="/viewMaterial/${link}" data-src="${materialUuid+"_"+materialImgName}" >
+                            <img src="/viewProduct/${link}" data-src="${productImgUuid+"_"+productImgName}" >
                         </div>
                     </div><!-- card -->`
 
         uploadResult.innerHTML += str
     }
 
-    function removeFile(materialUuid, materialImgName, obj){
-        console.log(materialUuid)
-        console.log(materialImgName)
+    function removeFile(productImgUuid, productImgName, obj){
+        console.log(productImgUuid)
+        console.log(productImgName)
         console.log(obj)
 
         const targetDiv = obj.closest(".card")
 
-        removeFileToServer(materialUuid, materialImgName).then(data =>{
+        removeFileToServer(productImgUuid, productImgName).then(data =>{
             targetDiv.remove()
         })
     }
@@ -203,14 +200,14 @@
         document.querySelector("form").submit();
     }, false)
 
-    //자재 코드 생성 ---------------------------------------------------------------------------------------------
+    //제품 코드 생성 ---------------------------------------------------------------------------------------------
 
-    const materialCode = document.querySelector(".materialCode")
+    const productCode = document.querySelector(".productCode")
 
 
-    materialCode.addEventListener("click", function(e) {
+    productCode.addEventListener("click", function(e) {
 
-        let str = `Material-`
+        let str = `Product-`
 
         str += new Date().toISOString().split('T')[0].replaceAll('-','')
         //toISOString() 메서드를 사용해서 "YYYY-MM-DDTHH:mm:ss.sssZ"의 날짜 및 시간 정보를 받옴
@@ -222,21 +219,21 @@
 
             str += result.data
 
-            materialCode.value = str
+            productCode.value = str
 
         }).catch(e => alert('error'))
 
 
     }, false)
 
-    function removeFile(materialUuid, materialImgName, obj){
-        console.log(materialUuid)
-        console.log(materialImgName)
+    function removeFile(productImgUuid, productImgName, obj){
+        console.log(productImgUuid)
+        console.log(productImgName)
         console.log(obj)
 
         const targetDiv = obj.closest(".card")
 
-        removeFileToServer(materialUuid, materialImgName).then(data =>{
+        removeFileToServer(productImgUuid, productImgName).then(data =>{
             targetDiv.remove()
         })
     }

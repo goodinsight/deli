@@ -5,7 +5,7 @@
 
 <div layout:fragment="content">
     <div class="row mt-12 m-l-15">
-        <form class="col-lg-10" action="/material/list" method="get">
+        <form class="col-lg-10" action="/product/list" method="get">
             <div class="form-group">
                 <p class="text-muted m-b-15 f-s-12">
                     "검색하고 싶은
@@ -18,9 +18,9 @@
                         <select class="form-select" name="type">
                             <option value="">---</option>
                             <!--t:자재코드 c:자재이름 w:자재분류(카테고리) -->
-                            <option value="t" th:selected="${pageRequestDTO.type == 't'}">자재코드</option>
-                            <option value="c" th:selected="${pageRequestDTO.type == 'c'}">자재이름</option>
-                            <option value="w" th:selected="${pageRequestDTO.type == 'w'}">자재 카테고리</option>
+                            <option value="t" th:selected="${pageRequestDTO.type == 't'}">제품코드</option>
+                            <option value="c" th:selected="${pageRequestDTO.type == 'c'}">제품이름</option>
+                            <option value="w" th:selected="${pageRequestDTO.type == 'w'}">제품 카테고리</option>
                         </select>
                     </div>
                     <input type="text" class="form-control input-focus" name="keyword" th:value="${pageRequestDTO.keyword}" placeholder="INPUT KEYWORD">
@@ -37,39 +37,40 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    Material List
+                    Product List
                 </div>
                 <div class="my-4">
                     <div class="float-left">
-                        <a th:href="@{/material/register}" class="text-decoration-none">
+                        <a th:href="@{/product/register}" class="text-decoration-none">
+                        <a th:href="@{/product/register}" class="text-decoration-none">
                             <button type="button" class="btn btn-primary">Register</button>
                         </a>
                     </div>
                 </div>
 
                 <div class="card-body">
-                    <h5 class="card-title">자재 목록</h5>
+                    <h5 class="card-title">제품 목록</h5>
 
                     <table class="table table-striped table-bordered">
                         <thead>
                         <tr>
                             <th scope="col">No</th>
-                            <th scope="col">자재코드</th>
-                            <th scope="col">자재이름</th>
-                            <th scope="col">자재 카테고리</th>
+                            <th scope="col">제품코드</th>
+                            <th scope="col">제품이름</th>
+                            <th scope="col">제품 카테고리</th>
                         </tr>
                         </thead>
 
                         <tbody th:with="link = ${pageRequestDTO.getLink()}">
                         <tr th:each="dto:${responseDTO.dtoList}">
-                            <th scope="row">[[${dto.materialNo}]]</th>
-                            <td> [[${dto.materialCode}]] </td>
+                            <th scope="row">[[${dto.productNo}]]</th>
+                            <td> [[${dto.productCode}]] </td>
                             <td>
-                                <a th:href="|@{/material/read(materialNo = ${dto.materialNo})}&${link}|" class="text-decoration-none">
-                                [[${dto.materialName}]]
+                                <a th:href="|@{/product/read(productNo = ${dto.productNo})}&${link}|" class="text-decoration-none">
+                                [[${dto.productName}]]
                                 </a>
                             </td>
-                            <td> [[${dto.materialType}]] </td>
+                            <td> [[${dto.productType}]] </td>
                         </tr>
                         </tbody>
                     </table>
@@ -104,7 +105,7 @@
 
 <script layout:fragment="script" th:inline="javascript">
 
-    console.log("자재 리스트 페이지")
+    console.log("제품 리스트 페이지")
 
     $(document).ready(function () {
         console.log([[${pageRequestDTO}]])
@@ -136,7 +137,7 @@
         e.preventDefault()
         e.stopPropagation()
 
-        self.location = '/material/list'
+        self.location = '/product/list'
     }, false)
 
     //show modal
