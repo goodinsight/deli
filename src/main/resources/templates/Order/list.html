@@ -14,30 +14,34 @@
 
         <form action="/order/list" method="get">
             <div class="col">
-                <input type="hidden" name="size" th:value="${pageRequestDTO.size}">
+                <input type="hidden" name="size" th:value="${orderPageRequestDTO.size}">
                 <div class="input-group ">
+                    <div class="input-group-prepend">
+                        <select class="form-select" name="state">
+                            <option value="">발주 상태</option>
+                            <option value="진행중" th:selected="${orderPageRequestDTO.state == '진행중'}">진행중</option>
+                            <option value="검수완료" th:selected="${orderPageRequestDTO.state == '검수완료'}">검수완료</option>
+                            <option value="자재입고완료" th:selected="${orderPageRequestDTO.state == '자재입고완료'}">자재입고완료</option>
+                            <option value="발주완료" th:selected="${orderPageRequestDTO.state == '발주완료'}">발주완료</option>
+                        </select>
+                    </div>
                     <div class="input-group-prepend">
                         <select class="form-select" name="type">
                             <option value="">---</option>
-                            <option value="c" th:selected="${pageRequestDTO.type == 'c'}">발주 코드</option>
-                            <option value="m" th:selected="${pageRequestDTO.type == 'm'}">자재 이름</option>
-                            <option value="w" th:selected="${pageRequestDTO.type == 'w'}">담당자</option>
+                            <option value="c" th:selected="${orderPageRequestDTO.type == 'c'}">발주 코드</option>
+                            <option value="m" th:selected="${orderPageRequestDTO.type == 'm'}">자재 이름</option>
+                            <option value="w" th:selected="${orderPageRequestDTO.type == 'w'}">담당자</option>
                         </select>
                     </div>
 
-                    <input type="text" class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">
+                    <input type="text" class="form-control" name="keyword" th:value="${orderPageRequestDTO.keyword}">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary searchBtn" type="submit">Search</button>
-                        <button class="btn btn-outline-secondary clearBtn" type="button">Clear</button>
                     </div>
 
                 </div>
             </div>
         </form>
-
-        <div>
-            <a th:href="@{/order/register}"><button class="btn btn-outline-primary registerBtn" type="button">Register</button></a>
-        </div>
 
     </div>
 
@@ -49,7 +53,7 @@
                 </div>
                 <div class="card-body">
 
-                    <table class="table">
+                    <table class="table table-responsive-lg table-bordered table-hover">
                         <thead>
                         <tr>
                             <th scope="col">no</th>
@@ -62,7 +66,7 @@
                             <th scope="col">상태</th>
                         </tr>
                         </thead>
-                        <tbody th:with="link = ${pageRequestDTO.getLink()}">
+                        <tbody th:with="link = ${orderPageRequestDTO.getLink()}">
                         <tr th:each="dto:${responseDTO.dtoList}">
                             <td>[[${dto.orderNo}]]</td>
                             <td>
@@ -101,6 +105,11 @@
                     </div>
                 </div>
             </div><!-- end card -->
+
+            <div class="float-right">
+                <a th:href="@{/order/register}"><button class="btn btn-primary registerBtn" type="button">발주 등록</button></a>
+            </div>
+
         </div><!-- end col -->
     </div><!-- end row -->
 
@@ -112,8 +121,8 @@
     console.log("발주 리스트 페이지")
 
     $(document).ready(function () {
-        console.log([[${pageRequestDTO}]])
-        console.log([[${pageRequestDTO.link}]])
+        console.log([[${orderPageRequestDTO}]])
+        console.log([[${orderPageRequestDTO.link}]])
         console.log([[${responseDTO}]])
     })
 

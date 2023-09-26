@@ -2,8 +2,6 @@ async function getList({orderNo, page, size, goLast}){
 
     const result = await axios.get(`/progressInspection/list/${orderNo}`, {params: {page, size}})
 
-    console.log(result.data)
-
     if(goLast){
 
         const total = result.data.total

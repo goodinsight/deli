@@ -6,6 +6,7 @@ import com.deligence.deli.service.MaterialProcurementPlanningService;
 import com.deligence.deli.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,9 +30,11 @@ public class OrderController {
     private final MaterialProcurementContractService materialProcurementContractService;
 
     @GetMapping("/list")
-    public void list(PageRequestDTO pageRequestDTO, Model model){
+    public void list(OrderPageRequestDTO orderPageRequestDTO, Model model){
 
-        PageResponseDTO<OrderDTO> responseDTO = orderService.list(pageRequestDTO);
+        log.info(orderPageRequestDTO);
+
+        OrderPageResponseDTO<OrderDTO> responseDTO = orderService.listWithState(orderPageRequestDTO);
 
         log.info(responseDTO);
 
@@ -120,6 +123,10 @@ public class OrderController {
 
         log.info("getPlanList");
 
+        //조달 계획 상태 : 진행중  검색
+        pageRequestDTO.setType("f");
+        pageRequestDTO.setKeyword("진행중");
+
         PageResponseDTO<MaterialProcurementPlanningDTO> responseDTO = materialProcurementPlanningService.list(pageRequestDTO);
 
         return responseDTO;
@@ -180,14 +187,11 @@ public class OrderController {
     }
 
     @ResponseBody
-    @PostMapping("/completeOrder")
-    public void completeOrder(Map<String, Object> map){
+    @PostMapping(value = "/completeOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void completeOrder(@RequestBody Map<String, Object> map){
 
-
-        int orderNo = Integer.valueOf(map.get("orderNo").toString()).intValue();
-        int materialProcurementPlanNo = Integer.valueOf(map.get("materialProcurementPlanNo").toString()).intValue();
-
-        log.info("compOrder - get values : " + orderNo + ", " + materialProcurementPlanNo);
+        int orderNo = Integer.parseInt(map.get("orderNo").toString());
+        int materialProcurementPlanNo = Integer.parseInt(map.get("materialProcurementPlanNo").toString());
 
 
         //해당 발주 완료

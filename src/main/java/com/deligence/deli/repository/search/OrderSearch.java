@@ -10,7 +10,7 @@ public interface OrderSearch {
 
     Page<Order> search(String[] types, String keyword, Pageable pageable);
 
-    Page<Order> searchByState(String[] keywords, Pageable pageable);
+    Page<Order> searchWithState(String[] types, String keyword, String state, Pageable pageable);
 
     int getCodeCount(String orderCode);
 

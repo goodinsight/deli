@@ -13,9 +13,9 @@ async function getPlan(planNo) {
 }
 
 
-async function getContractList({page, size}){
+async function getContractList({page, size, type, keyword}){
 
-    const result = await axios.get(`/order/register/selectContract`, {params: {page, size}})
+    const result = await axios.get(`/order/register/selectContract`, {params: {page, size, type, keyword}})
 
     return result.data
 }
@@ -36,13 +36,14 @@ async function getCodeCount(orderCode){
 
 async function completeOrder({orderNo, materialProcurementPlanNo}){
 
-    const map = {
+    data = {
         orderNo : orderNo,
         materialProcurementPlanNo : materialProcurementPlanNo
     }
 
-    console.log("map create :" + map.)
+    console.log(data.orderNo)
+    console.log(data.materialProcurementPlanNo)
 
-    await axios.post(`/order/completeOrder/`, map)
+    await axios.post(`/order/completeOrder/`, data)
 
 }
