@@ -39,10 +39,10 @@ public class MaterialProcurementPlanningDTO {
     private int productionPlanNo; //생산계획 일련번호 FK
 
     private int materialNo;  //자재일련번호 FK
-//    private Materials materials;
 
     private int employeeNo;  //사원일련번호 FK
-//    private Employee employee;
+
+    private String employeeName;    //담당자
 
 //    @NotEmpty
     private String materialCode;   //자재코드 (검색용)

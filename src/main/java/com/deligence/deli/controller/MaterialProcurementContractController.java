@@ -1,13 +1,8 @@
 package com.deligence.deli.controller;
 
-import com.deligence.deli.domain.CooperatorSupplier;
-import com.deligence.deli.domain.MaterialProcurementContract;
-import com.deligence.deli.domain.MaterialProcurementPlanning;
 import com.deligence.deli.dto.*;
-import com.deligence.deli.service.EmployeeService;
 import com.deligence.deli.service.MaterialProcurementContractService;
 import com.deligence.deli.service.MaterialProcurementPlanningService;
-import com.deligence.deli.service.MaterialsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -19,7 +14,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
-//자재조달계약 Controller
 @Controller
 @RequestMapping("/materialProcurementContract")
 @Log4j2
@@ -28,17 +22,11 @@ public class MaterialProcurementContractController {
 
     private final MaterialProcurementContractService materialProcurementContractService;
 
-    //자재정보(일련번호->코드,분류,이름) 조회 구현
-    private final MaterialsService materialsService;
-
     //자재조달계획에서 자재정보(일련번호,코드,분류,이름,공급단가), 자재소요량 조회 구현
     private final MaterialProcurementPlanningService materialProcurementPlanningService;
 
     //자재협력회사정보(협력회사일련번호->협력회사명,대표명, 연락처) 조회 구현
 //    private final CooperatorSupplierService cooperatorSupplierService;
-
-    //담당자정보(사원일련번호->사원명) 조회구현(없어도됨)
-    private EmployeeService employeeService;
 
     @GetMapping("/list")
     public void list(PageRequestDTO pageRequestDTO, Model model) {
@@ -61,7 +49,7 @@ public class MaterialProcurementContractController {
 
     }
 
-    @PostMapping("register")
+    @PostMapping("/register")
     public String registerPOST(@Valid MaterialProcurementContractDTO materialProcurementContractDTO,
                                BindingResult bindingResult,
                                RedirectAttributes redirectAttributes) {
@@ -87,7 +75,7 @@ public class MaterialProcurementContractController {
         return "redirect:/materialProcurementContract/list";
     }
 
-    @GetMapping({"/read", "modify"})
+    @GetMapping({"/read", "/modify"})
     public void read(int materialProcurementContractNo, PageRequestDTO pageRequestDTO, Model model) {
 
         log.info("search : materialProcurementContractNo = " + materialProcurementContractNo);
@@ -151,38 +139,10 @@ public class MaterialProcurementContractController {
     }
 
     // 비동기 처리 -----------------------------------------------------
-    //조달계획 클릭 -> 계획목록 -> 자재정보(자재일련번호?,자재코드,자재분류,자재이름,공급단가), 자재소요량
+    //조달계획 클릭 -> 계획목록 -> 자재정보(자재코드,자재분류,자재이름,공급단가), 자재소요량
     //협력회사이름클릭->협력회사목록
 
-    /*
-    @ResponseBody
-    @GetMapping("/register/selectMaterial")
-    public PageResponseDTO<MaterialsDTO> getMaterialList(PageRequestDTO pageRequestDTO){
 
-        log.info("getMaterialList");
-
-        PageResponseDTO<MaterialsDTO> responseDTO = materialsService.list(pageRequestDTO);
-
-        return responseDTO;
-    }
-
-    @ResponseBody
-    @GetMapping("/register/getMaterial/{materialsNo}")
-    public MaterialsDTO getMaterialDTO(@PathVariable("materialsNo") int materialsNo) {
-
-        log.info("getMaterialDTO : " + materialsNo);
-
-        MaterialsDTO materialsDTO = materialsService.readOne(materialsNo);
-
-        log.info(materialsDTO);
-
-        return materialsDTO;
-
-    }
-
-     */
-
-    //9.25 수정
     @ResponseBody
     @GetMapping("/register/selectPlan")
     public PageResponseDTO<MaterialProcurementPlanningDTO> getPlanList(PageRequestDTO pageRequestDTO){

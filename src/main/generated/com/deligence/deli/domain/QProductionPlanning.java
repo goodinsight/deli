@@ -28,14 +28,14 @@ public class QProductionPlanning extends EntityPathBase<ProductionPlanning> {
 
     public final StringPath clientStatus = createString("clientStatus");
 
-    public final QCooperatorClient cooperatorClient;
-
     public final StringPath detailExplaination = createString("detailExplaination");
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modDate = _super.modDate;
 
     public final StringPath productCode = createString("productCode");
+
+    public final QProductContract productContract;
 
     public final DatePath<java.time.LocalDate> productDeliveryDate = createDate("productDeliveryDate", java.time.LocalDate.class);
 
@@ -50,8 +50,6 @@ public class QProductionPlanning extends EntityPathBase<ProductionPlanning> {
     public final NumberPath<Integer> productionRequirementsDate = createNumber("productionRequirementsDate", Integer.class);
 
     public final StringPath productionRequirementsProcess = createString("productionRequirementsProcess");
-
-    public final QProducts products;
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> regDate = _super.regDate;
@@ -74,8 +72,7 @@ public class QProductionPlanning extends EntityPathBase<ProductionPlanning> {
 
     public QProductionPlanning(Class<? extends ProductionPlanning> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.cooperatorClient = inits.isInitialized("cooperatorClient") ? new QCooperatorClient(forProperty("cooperatorClient"), inits.get("cooperatorClient")) : null;
-        this.products = inits.isInitialized("products") ? new QProducts(forProperty("products")) : null;
+        this.productContract = inits.isInitialized("productContract") ? new QProductContract(forProperty("productContract"), inits.get("productContract")) : null;
     }
 
 }

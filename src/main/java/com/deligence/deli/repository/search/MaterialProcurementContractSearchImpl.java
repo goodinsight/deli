@@ -54,7 +54,6 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
         QMaterialProcurementContract materialProcurementContract =
                 QMaterialProcurementContract.materialProcurementContract;
 
-//        JPQLQuery<MaterialProcurementContract> query = from(materialProcurementContract);
         JPQLQuery<MaterialProcurementContract> query = new JPAQueryFactory(em)
                 .selectFrom(materialProcurementContract);
 
@@ -116,6 +115,40 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
         return new PageImpl<>(list, pageable, count);
     }
 
+    //상태 검색
+    @Override
+    public Page<MaterialProcurementContract> searchByState(String[] keywords, Pageable pageable) {
+
+        QMaterialProcurementContract materialProcurementContract = QMaterialProcurementContract.materialProcurementContract;
+
+        JPQLQuery<MaterialProcurementContract> query = new JPAQueryFactory(em)
+                .selectFrom(materialProcurementContract);
+
+        if( keywords != null && keywords.length > 0) { //검색조건과 키워드가 있다면
+
+            BooleanBuilder booleanBuilder = new BooleanBuilder(); // (
+
+            for(String keyword : keywords) {
+
+                booleanBuilder.or(materialProcurementContract.materialProcurementContractState.contains(keyword));
+
+            }//end for
+
+            query.where(booleanBuilder);
+
+        }//end if
+
+        //paging
+        this.getQuerydsl().applyPagination(pageable, query);// 오류 발생 부분. pageable에 sort를 담아 실행하면 오류가 발생한다.
+
+        List<MaterialProcurementContract> list = query.fetch();
+
+        long count = query.fetchCount();
+
+        return new PageImpl<>(list, pageable, count);
+
+    }
+
     @Override
     public int getCodeCount(String code) {
 
@@ -135,16 +168,14 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
         QMaterialProcurementContract materialProcurementContract =
                 QMaterialProcurementContract.materialProcurementContract;
 
-        //자재->자재코드,자재분류,자재이름,공급단가 / 협력회사->협력회사명, 대표명, 연락처
-//        QMaterials mr = QMaterials.materials;
-        QMaterialProcurementPlanning mp = QMaterialProcurementPlanning.materialProcurementPlanning;
+        //조달계획->자재(자재코드,자재분류,자재이름,공급단가) / 협력회사->협력회사명, 대표명, 연락처
+        QMaterialProcurementPlanning mpp = QMaterialProcurementPlanning.materialProcurementPlanning;
         QCooperatorSupplier cs = QCooperatorSupplier.cooperatorSupplier;
 
         JPQLQuery<Tuple> query = new JPAQueryFactory(em)
-                .select(materialProcurementContract, mp, cs)
+                .select(materialProcurementContract, mpp, cs)
                 .from(materialProcurementContract)
-//                .join(materialProcurementContract.materials, mr).on(materialProcurementContract.materials.eq(mr))
-                .join(materialProcurementContract.materialProcurementPlanning, mp).on(materialProcurementContract.materialProcurementPlanning.eq(mp))
+                .join(materialProcurementContract.materialProcurementPlanning, mpp).on(materialProcurementContract.materialProcurementPlanning.eq(mpp))
                 .join(materialProcurementContract.cooperatorSupplier, cs).on(materialProcurementContract.cooperatorSupplier.eq(cs))
                 .where(materialProcurementContract.materialProcurementContractNo.eq(materialProcurementContractNo));
 
@@ -154,8 +185,7 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
 
         MaterialProcurementContract resultMaterialProcurementContract =
                 (MaterialProcurementContract) target.get(materialProcurementContract);
-//        Materials resultMr = (Materials) target.get(mr);
-        MaterialProcurementPlanning resultMp = (MaterialProcurementPlanning) target.get(mp);
+        MaterialProcurementPlanning resultMpp = (MaterialProcurementPlanning) target.get(mpp);
         CooperatorSupplier resultCs = (CooperatorSupplier) target.get(cs);
 
         MaterialProcurementContractDetailDTO dto = MaterialProcurementContractDetailDTO.builder()
@@ -164,21 +194,15 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
                 .materialProcurementContractDate(resultMaterialProcurementContract.getMaterialProcurementContractDate())
                 .materialProcurementContractState(resultMaterialProcurementContract.getMaterialProcurementContractState())
                 .materialProcurementContractEtc(resultMaterialProcurementContract.getMaterialProcurementContractEtc())
-                .materialProcurementPlanNo(resultMp.getMaterialProcurementPlanNo())
-                .materialProcurementPlanCode(resultMp.getMaterialProcurementPlanCode())
+                .materialProcurementPlanNo(resultMpp.getMaterialProcurementPlanNo())
+                .materialProcurementPlanCode(resultMpp.getMaterialProcurementPlanCode())
+                .materialRequirementsCount(resultMpp.getMaterialRequirementsCount())
                 //계획에서 자재 정보 가져오기
-                .materialNo(resultMp.getMaterials().getMaterialNo())
-                .materialCode(resultMp.getMaterials().getMaterialCode())
-                .materialType(resultMp.getMaterials().getMaterialType())
-                .materialName(resultMp.getMaterials().getMaterialName())
-                .materialSupplyPrice(resultMp.getMaterials().getMaterialSupplyPrice())
-//                .materialNo(resultMr.getMaterialNo())
-//                .materialCode(resultMr.getMaterialCode())
-//                .materialType(resultMr.getMaterialType())
-//                .materialName(resultMr.getMaterialName())
-//                .materialSupplyPrice(resultMr.getMaterialSupplyPrice())
-                //자재소요량 추가
-                .materialRequirementsCount(resultMp.getMaterialRequirementsCount())
+                .materialCode(resultMpp.getMaterials().getMaterialCode())
+                .materialType(resultMpp.getMaterials().getMaterialType())
+                .materialName(resultMpp.getMaterials().getMaterialName())
+                .materialSupplyPrice(resultMpp.getMaterials().getMaterialSupplyPrice())
+                //자재조달수량 추가
                 .procurementQuantity(resultMaterialProcurementContract.getProcurementQuantity())
                 .supplierNo(resultCs.getSupplierNo())
                 .supplierName(resultCs.getSupplierName())
@@ -186,7 +210,7 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
                 .supplierPhone(resultCs.getSupplierPhone())
                 .supplierStatus(resultCs.getSupplierStatus())
                 .employeeNo(resultMaterialProcurementContract.getEmployee().getEmployeeNo())
-                .employeeName(resultMaterialProcurementContract.getEmployee().getEmployeeName())
+                .employeeName(resultMaterialProcurementContract.getEmployeeName())
                 .documentFileNo(resultMaterialProcurementContract.getDocumentFile().getDocumentFileNo())
                 .regDate(resultMaterialProcurementContract.getRegDate())
                 .modDate(resultMaterialProcurementContract.getModDate())

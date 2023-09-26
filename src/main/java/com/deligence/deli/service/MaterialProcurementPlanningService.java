@@ -26,6 +26,10 @@ public interface MaterialProcurementPlanningService {
     //코드생성
     int getCodeCount(String materialProcurementPlanCode);
 
+    void changeState(int materialProcurementPlanNo, String state);
+
+    PageResponseDTO<MaterialProcurementPlanningDTO> listByState(String[] keywords, PageRequestDTO pageRequestDTO);
+
 
     void completePlan(int materialProcurementPlanNo);
 
@@ -41,6 +45,7 @@ public interface MaterialProcurementPlanningService {
                 .productionPlanning(ProductionPlanning.builder().productionPlanNo(materialProcurementPlanningDTO.getProductionPlanNo()).build())
                 .materials(Materials.builder().materialNo(materialProcurementPlanningDTO.getMaterialNo()).build())
                 .employee(Employee.builder().employeeNo(materialProcurementPlanningDTO.getEmployeeNo()).build())
+                .employeeName(materialProcurementPlanningDTO.getEmployeeName())
                 .materialCode(materialProcurementPlanningDTO.getMaterialCode())
                 .materialName(materialProcurementPlanningDTO.getMaterialName())
                 .build();
@@ -59,8 +64,9 @@ public interface MaterialProcurementPlanningService {
                 .productionPlanNo(materialProcurementPlanning.getProductionPlanning().getProductionPlanNo())
                 .materialNo(materialProcurementPlanning.getMaterials().getMaterialNo())
                 .employeeNo(materialProcurementPlanning.getEmployee().getEmployeeNo())
-                .materialCode(materialProcurementPlanning.getMaterialCode())
-                .materialName(materialProcurementPlanning.getMaterialName())
+                .employeeName(materialProcurementPlanning.getEmployeeName())
+                .materialCode(materialProcurementPlanning.getMaterials().getMaterialCode())
+                .materialName(materialProcurementPlanning.getMaterials().getMaterialName())
                 .build();
 
         return materialProcurementPlanningDTO;

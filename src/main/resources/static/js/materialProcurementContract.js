@@ -1,19 +1,3 @@
-/*
-async function getMaterialList({page, size}){
-
-    const result = await axios.get(`/materialProcurementContract/register/selectMaterial`, {params: {page, size}})
-
-    return result.data
-}
-
-async function getMaterial(materialsNo) {
-
-    const result = await axios.get(`/materialProcurementContract/register/getMaterial/${materialsNo}`)
-
-    return result.data
-}
- */
-
 async function getPlanList({page, size}){
 
     const result = await axios.get(`/materialProcurementContract/register/selectPlan`, {params: {page, size}})
