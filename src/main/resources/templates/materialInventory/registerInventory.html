@@ -57,8 +57,11 @@
                   <button type="button" class="btn btn-outline-dark">List</button>
                 </a>
                 !-->
-                <button type="submit" class="btn btn-primary submitBtn">Submit</button>
-                <button type="reset" class="btn btn-secondary">Reset</button>
+                <button type="submit" class="btn btn-primary submitBtn">저장</button>
+                <button type="reset" class="btn btn-secondary">초기화</button>
+                <a th:href="|@{/materialInventory/listInventory}?${link}|" class="text-decoration-none">
+                  <button type="button" class="btn btn-primary">돌아가기</button>
+                </a>
               </div>
             </div>
 
