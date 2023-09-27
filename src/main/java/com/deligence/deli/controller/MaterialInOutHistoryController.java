@@ -23,7 +23,7 @@ public class MaterialInOutHistoryController {
 
     private final MaterialInOutHistoryService materialInOutHistoryService;
 
-    @GetMapping("/materialOutList")
+    @GetMapping("/materialInOutHistoryList")
     public void list(PageRequestDTO pageRequestDTO, Model model){
 
         PageResponseDTO<MaterialInOutHistoryDetailDTO> responseDTO = materialInOutHistoryService.list(pageRequestDTO);
@@ -34,7 +34,7 @@ public class MaterialInOutHistoryController {
 
     }
 
-    @GetMapping("/materialOutRead")
+    @GetMapping("/materialInOutHistoryRead")
     public void read(int materialHistoryNo,PageRequestDTO pageRequestDTO, Model model) {
 
         log.info("search : materialHistoryNo = " + materialHistoryNo);
