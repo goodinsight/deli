@@ -5,7 +5,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>입고 검수</title>
 </head>
 
 <div layout:fragment="content">
@@ -16,50 +16,46 @@
                 <div class="card-header">
                     자재 입고 상세
                 </div>
-                <div class="card-body">
+                <div class="card-body mt-3">
 
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">자재 재고 일련번호</span>
-                            <input type="text" th:value="${dto.orderNo}" class="form-control" placeholder="orderNo" readonly>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">자재 코드</span>
+                        <input type="text" name="materialCode" class="form-control materialCode" th:value="${dto.materialCode}" readonly>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">자재명</span>
+                        <input type="text" class="form-control" th:value="${dto.materialName}" readonly>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">공급 단가</span>
+                        <input type="text" class="form-control" th:value="${dto.materialSupplyPrice}" readonly>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">입고 수량</span>
+                        <input type="text" class="form-control" th:value="${dto.orderQuantity}" readonly>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">담당자</span>
+                        <input type="text" class="form-control" th:value="${dto.employeeName}" readonly>
+                    </div>
+
+                    <div class="my-4">
+                        <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}">
+                            <button type="button" class="btn btn-outline-default afterComp">입고 완료됨</button>
+                            <button type="button" class="btn btn-primary startCheck">검수 진행</button>
+                            <button type="button" class="btn btn-info startReturn">반품 진행</button>
+                            <button type="button" class="btn btn-warning cancelReturn">반품 취소</button>
+                            <button type="button" class="btn btn-success compReturn">반품 완료</button>
+                            <button type="button" class="btn btn-primary compIncoming">자재 입고 완료</button>
+                            <a th:href="|@{/materialInventory/listIncoming}?${link}|" class="text-decoration-none">
+                                <button type="button" class="btn btn-default">목록 페이지</button>
+                            </a>
                         </div>
-
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">발주 코드</span>
-                            <input type="text" th:value="${dto.orderCode}" class="form-control" placeholder="orderCode" readonly>
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">자재명</span>
-                            <input type="text" th:value="${dto.materialName}" class="form-control" placeholder="materialName" readonly>
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">공급 단가</span>
-                            <input type="text" th:value="${dto.materialSupplyPrice}" class="form-control" placeholder="materialSupplyPrice" readonly>
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">입고 수량</span>
-                            <input type="text" th:value="${dto.orderQuantity}" class="form-control" placeholder="materialIncomingQuantity" readonly>
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">담당자</span>
-                            <input type="text" th:value="${dto.employeeName}" class="form-control" placeholder="employeeName" readonly>
-                        </div>
-
-                        <div class="my-4">
-
-                            <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}">
-
-                                <button type="button" class="btn btn-secondary">검수 진행</button>
-
-                                <a th:href="|@{/materialInventory/stockList}?${link}|" class="text-decoration-none">
-                                    <button type="button" class="btn btn-primary">돌아가기</button>
-                                </a>
-
-                            </div>
-                        </div>
+                    </div>
 
                 </div>
 
@@ -69,114 +65,141 @@
 
     </div>
 
-    <div class="modal returnModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <!-- 모달 이름 -->
-                    <h5 class="modal-title">입고</h5>
-                    <!-- data-dismiss="modal"를 통해 모달을 닫을수 있다. -->
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-                </div><!-- end modal-header -->
-                <div class="modal-body">
-                    <!-- 모달 내용 -->
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">자제 코드</span>
-                        <input type="text" th:value="${dto.orderCode}" class="form-control" placeholder="orderCode" readonly>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">자재명</span>
-                        <input type="text" th:value="${dto.materialName}" class="form-control" placeholder="materialName" readonly>
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">입고 수량</span>
-                        <input type="text" id="quantity" th:value="${dto.orderQuantity}" class="form-control" placeholder="orderQuantity" readonly>
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">반품 수량</span>
-                        <input type="text" th:value="${num}" class="form-control" readonly>
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">정상 입고 수량</span>
-                        <input type="text" id="reresult" th:value="${result}" class="form-control" readonly>
-                    </div>
-
-                </div> <!-- end modal-body -->
-                <div class="modal-footer">
-
-                    <button type="button" class="btn btn-danger">반품 진행</button>
-                    <button type="button" class="btn btn-dark">반품 취소</button>
-                    <button type="button" class="btn btn-light">반품 완료</button>
-                    <button type="button" class="btn btn-info">자재 입고 완료</button>
-
-                </div>
-            </div> <!-- end modal-content -->
-        </div>
-    </div><!-- register modal -->
+    <script src="/js/order.js"></script>
 
 </div>
 
 <script layout:fragment="script" th:inline="javascript">
 
-    document.querySelector(".btn-secondary").addEventListener("click", function(e) {
+
+    const orderNo = [[${dto.orderNo}]]
+    let state = [[${dto.orderState}]]
+
+    console.log(state)
+
+    const afterComp = document.querySelector('.afterComp')
+    const startCheck = document.querySelector('.startCheck')
+    const startReturn = document.querySelector('.startReturn')
+    const cancelReturn = document.querySelector('.cancelReturn')
+    const compReturn = document.querySelector('.compReturn')
+
+    const compIncoming = document.querySelector('.compIncoming')
+
+    //검수진행
+    startCheck.addEventListener("click", function(e) {
 
         e.preventDefault()
         e.stopPropagation()
 
-        const modal = new bootstrap.Modal(document.querySelector(".modal"))
+        state = "입고검수진행중"
 
-        modal.show()
+        //상태 변환
+        changeState({orderNo, state}).then(result => {
+            //버튼 출력
+            printButton()
+        })
 
     }, false)
 
-    document.querySelector(".btn-danger").addEventListener("click", function(e) {
+    //반품진행
+    startReturn.addEventListener("click", function(e) {
 
         e.preventDefault()
         e.stopPropagation()
 
-        alert("반품 진행 클릭")
+        state = "반품진행중"
+
+        //상태 변환
+        changeState({orderNo, state}).then(result => {
+            //버튼 출력
+            printButton()
+        })
 
     }, false)
 
-    document.querySelector(".btn-dark").addEventListener("click", function(e) {
+    //반품취소
+    cancelReturn.addEventListener("click", function(e) {
 
         e.preventDefault()
         e.stopPropagation()
 
-        alert("반품 취소 클릭")
+        state = "검수완료"
+
+        //상태 변환
+        changeState({orderNo, state}).then(result => {
+            //버튼 출력
+            printButton()
+        })
 
     }, false)
 
-    document.querySelector(".btn-light").addEventListener("click", function(e) {
+    //반품완료
+    compReturn.addEventListener("click", function(e) {
 
         e.preventDefault()
         e.stopPropagation()
 
-        alert("반품 완료 클릭")
+        state = "검수완료"
+
+        //상태 변환
+        changeState({orderNo, state}).then(result => {
+            //버튼 출력
+            printButton()
+        })
 
     }, false)
 
-    document.querySelector(".btn-info").addEventListener("click", function(e) {
+
+    //자재입고완료
+    compIncoming.addEventListener("click", function(e) {
 
         e.preventDefault()
         e.stopPropagation()
 
-        const remain = document.getElementById("quantity").value
-        const store = document.getElementById("reresult").value
+        state = "자재입고완료"
 
-        if (remain != store) {
+        //상태 변환
+        changeState({orderNo, state}).then(result => {
+            //버튼 출력
+            printButton()
+        })
 
-            alert("입고 수량이 맞지 않음")
+    }, false)
 
-        } else {
 
-            alert("입고 완료")
+    function printButton(){
+
+        switch (state) {
+            case "입고검수진행중":
+                afterComp.style.display = 'none'
+                startCheck.style.display = 'none'
+                startReturn.style.display = 'inline'
+                cancelReturn.style.display = 'none'
+                compReturn.style.display = 'none'
+                compIncoming.style.display = 'inline'
+                break
+            case "반품진행중" :
+                afterComp.style.display = 'none'
+                startCheck.style.display = 'none'
+                startReturn.style.display = 'none'
+                cancelReturn.style.display = 'inline'
+                compReturn.style.display = 'inline'
+                compIncoming.style.display = 'none'
+                break
+            default :
+                afterComp.style.display = 'none'
+                startCheck.style.display = 'inline'
+                startReturn.style.display = 'none'
+                cancelReturn.style.display = 'none'
+                compReturn.style.display = 'none'
+                compIncoming.style.display = 'none'
 
         }
+    }
 
-    }, false)
+    printButton()
 
 </script>
 

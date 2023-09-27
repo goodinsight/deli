@@ -79,7 +79,7 @@ public class OrderController {
     }
 
     @GetMapping({"/read", "/modify"})
-    public void read(int orderNo,PageRequestDTO pageRequestDTO, Model model) {
+    public void read(int orderNo, OrderPageRequestDTO orderPageRequestDTO, Model model) {
 
         log.info("search : orderNo = " + orderNo);
 
@@ -89,13 +89,13 @@ public class OrderController {
 
         model.addAttribute("dto", orderDetailDTO);
 
-        model.addAttribute("pageRequestDTO", pageRequestDTO);
+        model.addAttribute("pageRequestDTO", orderPageRequestDTO);
 
     }
 
 
     @PostMapping("/modify")
-    public String modify(PageRequestDTO pageRequestDTO,
+    public String modify(OrderPageRequestDTO orderPageRequestDTO,
                          @Valid OrderDTO orderDTO,
                          BindingResult bindingResult,
                          RedirectAttributes redirectAttributes){
@@ -212,6 +212,17 @@ public class OrderController {
             materialProcurementPlanningService.completePlan(materialProcurementPlanNo);
         }
 
+
+    }
+
+    @ResponseBody
+    @PostMapping(value = "/changeOrderState", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void changeOrderState(@RequestBody Map<String, Object> map){
+
+        int orderNo = Integer.parseInt(map.get("orderNo").toString());
+        String state = map.get("state").toString();
+
+        orderService.changeState(orderNo, state);
 
     }
 

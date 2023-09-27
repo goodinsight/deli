@@ -19,6 +19,8 @@ public interface OrderService {
     PageResponseDTO<OrderDTO> list(PageRequestDTO pageRequestDTO);
     OrderPageResponseDTO<OrderDTO> listWithState(OrderPageRequestDTO orderPageRequestDTO);
 
+    OrderPageResponseDTO<OrderDTO> listIncoming(OrderPageRequestDTO orderPageRequestDTO, String[] states);
+
     int getCodeCount(String orderCode);
 
     void changeState(int orderNo, String state);

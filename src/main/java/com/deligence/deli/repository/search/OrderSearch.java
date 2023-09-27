@@ -16,6 +16,7 @@ public interface OrderSearch {
 
     OrderDetailDTO read(int orderNo);
 
+    Page<Order> searchIncoming(String[] types, String keyword, String[] states, Pageable pageable);
 
     int sumOfOrderQuantity(int materialProcurementPlanningNo);
 

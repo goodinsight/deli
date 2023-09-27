@@ -101,13 +101,20 @@ public class OrderSearchImpl extends QuerydslRepositorySupport implements OrderS
 
                 }
 
+
             }//end for
 
             query.where(booleanBuilder);
 
-            query.where(order.orderState.contains(state));//발주 상태 검색
+
+
+
 
         }//end if
+        
+        if(state != null){
+            query.where(order.orderState.contains(state));//발주 상태 검색
+        }
 
         query.orderBy(order.orderNo.desc());
 
@@ -195,6 +202,82 @@ public class OrderSearchImpl extends QuerydslRepositorySupport implements OrderS
 
         return result;
 
+    }
+
+
+    @Override
+    public Page<Order> searchIncoming(String[] types, String keyword, String[] states, Pageable pageable) {
+
+        QOrder order = QOrder.order;
+
+        JPQLQuery<Order> query = new JPAQueryFactory(em)
+                .selectFrom(order);
+
+        if( (types != null && types.length > 0) && keyword != null ) { //검색조건과 키워드가 있다면
+
+            BooleanBuilder booleanBuilder = new BooleanBuilder(); // (
+
+            for(String type : types) {
+
+                switch(type){
+
+                    case "c":
+                        booleanBuilder.or(order.orderCode.contains(keyword));
+                        break;
+                    case "m":
+                        booleanBuilder.or(order.materialName.contains(keyword));
+                        break;
+                    case "w":
+                        booleanBuilder.or(order.employeeName.contains(keyword));
+                        break;
+
+                }
+
+            }//end for
+
+            query.where(booleanBuilder);
+
+        }//end if
+
+        // 상태 조건 -----------------
+
+        BooleanBuilder booleanBuilder2 = new BooleanBuilder(); // (
+
+        for(String state : states) {
+
+            switch(state){
+
+                case "검수완료":
+                    booleanBuilder2.or(order.orderState.contains("검수완료"));
+                    break;
+                case "입고검수진행중":
+                    booleanBuilder2.or(order.orderState.contains("입고검수진행중"));
+                    break;
+                case "반품진행중":
+                    booleanBuilder2.or(order.orderState.contains("반품진행중"));
+                    break;
+                case "자재입고완료":
+                    booleanBuilder2.or(order.orderState.contains("자재입고완료"));
+                    break;
+
+            }
+
+        }//end for
+
+        query.where(booleanBuilder2);
+
+        //------------------------
+
+        query.orderBy(order.orderNo.desc());
+
+        //paging
+        this.getQuerydsl().applyPagination(pageable, query);
+
+        List<Order> list = query.fetch();
+
+        long count = query.fetchCount();
+
+        return new PageImpl<>(list, pageable, count);
     }
 
 }
