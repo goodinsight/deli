@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900');
+
 /*
     Template: Admin Board
     Author: Saiful
@@ -70,6 +71,43 @@
 /*    Brand color
 ----------------------*/
 /*----------------font-------------------*/
+
+*,:after,:before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box
+}
+
+@media (prefers-reduced-motion:no-preference) {
+  :root {
+    scroll-behavior: smooth
+  }
+}
+
+
+@font-face {
+  font-family: 'SpoqaHanSansNeo-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  unicode-range: U+AC00-D7A3;
+  }
+
+
+body {
+  margin: 0;
+  font-family: 'SpoqaHanSansNeo-Regular', 'Roboto' !important;
+}
+.body-login{
+  background-color: #0a53be;
+}
+
+
+
+
+.img{
+  align-content: center;
+}
+
 .icon-name {
   color: #000;
 }
@@ -94,6 +132,7 @@
   font-weight: 400;
   font-size: 18px;
   margin: 0;
+
 }
 .card-title h4 {
   display: inline-block;
@@ -1300,7 +1339,7 @@ a.dt-button.active:not(.disabled) {
 }
 .invoicelist-body .newRow {
   margin: .5rem 0;
-  float: left;
+  float: left;employee
 }
 .invoicelist-body .removeRow {
   display: none;
@@ -2732,7 +2771,7 @@ tbody tr td:last-child {
   border-top: 0;
 }
 .table {
-  margin-bottom: 0;
+  margin-bottom: 20px;
 }
 .table .badge {
   text-transform: uppercase;
@@ -3952,8 +3991,9 @@ h6.h1 {
   }
 }
 .row {
-  margin-left: -7.5px;
-  margin-right: -7.5px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
 }
 .col-lg-1,
 .col-lg-10,
