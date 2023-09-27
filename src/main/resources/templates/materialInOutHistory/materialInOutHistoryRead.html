@@ -15,7 +15,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    입/출고 상세
+                    자재 재고 입/출고 기록 상세
                 </div>
                 <div class="card-body mt-3">
                     <div class="input-group mb-3 d-none">
@@ -50,7 +50,7 @@
 
                     <div class="my-4" >
                         <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}">
-                            <a th:href="|@{/materialInventory/materialInOutHistoryList}?${link}|" class="text-decoration-none">
+                            <a th:href="|@{/materialInOutHistory/materialInOutHistoryList}?${link}|" class="text-decoration-none">
                                 <button type="button" class="btn btn-primary">출고목록</button>
                             </a>
                         </div>

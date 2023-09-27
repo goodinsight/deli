@@ -16,7 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/materialInventory")
+@RequestMapping("/materialInOutHistory")
 @Log4j2
 @RequiredArgsConstructor
 public class MaterialInOutHistoryController {
