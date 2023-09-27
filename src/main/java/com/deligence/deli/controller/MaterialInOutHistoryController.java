@@ -49,51 +49,51 @@ public class MaterialInOutHistoryController {
 
     }
 
-    @GetMapping("/materialOutRegister") //register 시 자재 & 사원정보 검색 또는 선택용
-    public void materialOutGET(@AuthenticationPrincipal EmployeeSecurityDTO employeeSecurityDTO, Model model) {
-
-        log.info(employeeSecurityDTO);
-
-        model.addAttribute("user", employeeSecurityDTO);
-
-    }
-
-    @PostMapping("/materialOutRegister") //register 시 자재 & 사원정보 검색 또는 선택용
-    public String materialOutPOST(@Valid MaterialsDTO materialsDTO,
-                                  MaterialInventoryDTO materialInventoryDTO,
-                                  EmployeeSecurityDTO employeeSecurityDTO,
-                                  BindingResult bindingResult,
-                                  RedirectAttributes redirectAttributes){
-
-        log.info("productInOutHistory pust Register....");
-
-        log.info(materialsDTO.getMaterialCode(), materialsDTO.getFileNames(),
-                materialInventoryDTO.getMaterialStock());
-
-        if(bindingResult.hasErrors()) {
-
-            log.info("productInOutHistory Register error");
-
-            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
-
-            return "redirect:/materialInventory/materialOutRegister";
-        }
-
-        String materialCode = materialsDTO.getMaterialCode();
-
-        String materialName = materialsDTO.getMaterialName();
-
-        int materialStock = materialInventoryDTO.getMaterialStock();
-
-        redirectAttributes.addFlashAttribute("materialCode", materialCode);
-
-        redirectAttributes.addFlashAttribute("materialName",materialCode);
-
-        redirectAttributes.addFlashAttribute("materialStock", materialStock);
-
-
-        return "redirect:/materialInventory/materialOutList";
-    }
+//    @GetMapping("/materialOutRegister") //register 시 자재 & 사원정보 검색 또는 선택용
+//    public void materialOutGET(@AuthenticationPrincipal EmployeeSecurityDTO employeeSecurityDTO, Model model) {
+//
+//        log.info(employeeSecurityDTO);
+//
+//        model.addAttribute("user", employeeSecurityDTO);
+//
+//    }
+//
+//    @PostMapping("/materialOutRegister") //register 시 자재 & 사원정보 검색 또는 선택용
+//    public String materialOutPOST(@Valid MaterialsDTO materialsDTO,
+//                                  MaterialInventoryDTO materialInventoryDTO,
+//                                  EmployeeSecurityDTO employeeSecurityDTO,
+//                                  BindingResult bindingResult,
+//                                  RedirectAttributes redirectAttributes){
+//
+//        log.info("productInOutHistory pust Register....");
+//
+//        log.info(materialsDTO.getMaterialCode(), materialsDTO.getFileNames(),
+//                materialInventoryDTO.getMaterialStock());
+//
+//        if(bindingResult.hasErrors()) {
+//
+//            log.info("productInOutHistory Register error");
+//
+//            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
+//
+//            return "redirect:/materialInventory/materialOutRegister";
+//        }
+//
+//        String materialCode = materialsDTO.getMaterialCode();
+//
+//        String materialName = materialsDTO.getMaterialName();
+//
+//        int materialStock = materialInventoryDTO.getMaterialStock();
+//
+//        redirectAttributes.addFlashAttribute("materialCode", materialCode);
+//
+//        redirectAttributes.addFlashAttribute("materialName",materialCode);
+//
+//        redirectAttributes.addFlashAttribute("materialStock", materialStock);
+//
+//
+//        return "redirect:/materialInventory/materialOutList";
+//    }
 
 
 }
