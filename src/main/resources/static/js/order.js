@@ -47,3 +47,17 @@ async function completeOrder({orderNo, materialProcurementPlanNo}){
     await axios.post(`/order/completeOrder/`, data)
 
 }
+
+async function changeState({orderNo, state}){
+
+    console.log("js - orderNo : " + orderNo)
+    console.log("js - state : " + state)
+
+    data = {
+        orderNo : orderNo,
+        state : state
+    }
+
+    return await axios.post(`/materialInventory/changeOrderState/`, data)
+
+}

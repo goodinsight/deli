@@ -133,6 +133,28 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
+    public OrderPageResponseDTO<OrderDTO> listIncoming(OrderPageRequestDTO orderPageRequestDTO, String[] states) {
+
+        String[] types = orderPageRequestDTO.getTypes();
+        String keyword = orderPageRequestDTO.getKeyword();
+        Pageable pageable = orderPageRequestDTO.getPageable();
+
+        Page<Order> result = orderRepository.searchIncoming(types, keyword, states, pageable);
+
+        List<OrderDTO> dtoList = result.getContent().stream()
+                .map(order -> entityToDto(order))
+                .collect(Collectors.toList());
+
+
+        return OrderPageResponseDTO.<OrderDTO>withAll()
+                .orderPageRequestDTO(orderPageRequestDTO)
+                .dtoList(dtoList)
+                .total((int)result.getTotalElements())
+                .build();
+    }
+
+
+    @Override
     public int getCodeCount(String code) {
 
         int num = orderRepository.getCodeCount(code);
