@@ -1,6 +1,7 @@
 package com.deligence.deli.controller;
 
 import com.deligence.deli.dto.*;
+import com.deligence.deli.service.MaterialInventoryService;
 import com.deligence.deli.service.MaterialsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -29,6 +30,8 @@ public class MaterialsController {
     private String uploadPath;
 
     private final MaterialsService materialsService;
+
+    private final MaterialInventoryService materialInventoryService;
 
     @GetMapping("/list")//자재 전체목록
     public void list(PageRequestDTO pageRequestDTO, Model model) {
@@ -68,6 +71,24 @@ public class MaterialsController {
         log.info(materialsDTO);
 
         int materialNo = materialsService.register(materialsDTO);
+
+        //----자재 재고 등록---------
+
+        MaterialInventoryDTO materialInventoryDTO = MaterialInventoryDTO.builder()
+                .materialCode(materialsDTO.getMaterialCode())
+                .materialName(materialsDTO.getMaterialName())
+                .materialType(materialsDTO.getMaterialType())
+                .materialSupplyPrice(materialsDTO.getMaterialSupplyPrice())
+                .materialIncomingQuantity(0)
+                .materialOutgoingQuantity(0)
+                .materialStock(0)
+                .materialNo(materialNo)
+                .materialTotalInventoryPayments(0L)
+                .build();
+
+        materialInventoryService.registerInventory(materialInventoryDTO);
+
+        //-----------
 
         redirectAttributes.addFlashAttribute("result", materialNo);
 
