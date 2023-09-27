@@ -220,7 +220,7 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
 
     //조달계획 상세(연관 발주 목록)
     @Override
-    public Page<Order> orderList(int materialProcurementPlanNo, Pageable pageable) {
+    public List<Order> orderList(int materialProcurementPlanNo) {
 
         QOrder order = QOrder.order;
 
@@ -228,13 +228,11 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
                 .selectFrom(order)
                 .where(order.materialProcurementPlanning.materialProcurementPlanNo.eq(materialProcurementPlanNo));
 
-        this.getQuerydsl().applyPagination(pageable, query);
-
         List<Order> list = query.fetch();
 
         long count = query.fetchCount();
 
-        return new PageImpl<>(list, pageable, count);
+        return list;
 
 
     }

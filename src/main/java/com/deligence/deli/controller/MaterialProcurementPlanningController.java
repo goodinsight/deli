@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/materialProcurementPlanning")
@@ -224,12 +225,12 @@ public class MaterialProcurementPlanningController {
     @GetMapping("/orderList" )
     public void orderList(int materialProcurementPlanNo, PageRequestDTO pageRequestDTO, Model model) {
 
-        PageResponseDTO<OrderDTO> responseDTO =
+        List<OrderDTO> dtoList =
                 materialProcurementPlanningService.orderList(materialProcurementPlanNo, pageRequestDTO);
 
-        log.info(responseDTO);
+        log.info(dtoList);
 
-        model.addAttribute("responseDTO", responseDTO);
+        model.addAttribute("dtoList", dtoList);
     }
 
 }

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -23,6 +24,9 @@ public class MaterialInOutHistoryDetailDTO {
     private String inOutSeparator;  //입출고 구분자
 
     private int materialInOutQuantity;  //입고 또는 출고 수량
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate historyDate;  //입/출고 날짜
 
     private int materialNo; //자재일련번호 : FK
 

@@ -26,9 +26,6 @@
 
                 </div>
 
-
-
-
                 <div class="card-body">
 
                     <table class="table table-striped table-bordered">
@@ -44,8 +41,8 @@
                         </tr>
                         </thead>
 
-                        <tbody th:with="link = ${pageRequestDTO.getLink()}">
-                        <tr th:each="dto:${responseDTO.dtoList}">
+                        <tbody>
+                        <tr th:each="dto:${dtoList}">
                             <td>[[${dto.orderNo}]]</td>
                             <td>[[${dto.orderCode}]]</td>
                             <td>[[${dto.employeeName}]]</td>
@@ -58,29 +55,6 @@
 
                         </tbody>
                     </table>
-
-                    <div class="float-end">
-                        <ul class="pagination flex-wrap">
-
-                            <li class="page-item" th:if="${responseDTO.prev}">
-                                <a class="page-link" th:data-num="${responseDTO.start -1}">Previous</a>
-                            </li>
-
-                            <th:block th:each="i: ${#numbers.sequence(responseDTO.start, responseDTO.end)}">
-
-                                <li th:class="${responseDTO.page == i}?'page-item active' : 'page-item'">
-                                    <a class="page-link" th:data-num="${i}">[[${i}]]</a>
-                                </li>
-
-                            </th:block>
-
-                            <li class="page-item" th:if="${responseDTO.next}">
-                                <a class="page-link" th:data-num="${responseDTO.end + 1}">NEXT</a>
-                            </li>
-                        </ul>
-                    </div>
-
-
 
                 </div><!--end card body-->
             </div><!--end card-->
@@ -115,31 +89,8 @@
     console.log("조달계획상세-연관발주목록 페이지")
 
     $(document).ready(function () {
-        console.log([[${pageRequestDTO}]])
-        console.log([[${pageRequestDTO.link}]])
-        console.log([[${responseDTO}]])
+        console.log([[${dtoList}]])
     })
-
-    document.querySelector(".pagination").addEventListener("click", function (e){
-
-        e.preventDefault()
-        e.stopPropagation()
-
-        const target = e.target
-
-        if (target.tagName !== 'A') {
-            return
-        }
-
-        const num = target.getAttribute("data-num")
-
-        const formObj = document.querySelector("form")
-
-        formObj.innerHTML += `<input type = "hidden" name="page" value="${num}">`
-
-        formObj.submit();
-
-    }, false)
 
     document.querySelector(".listBtn").addEventListener("click", function (e){
         e.preventDefault()

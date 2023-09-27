@@ -26,6 +26,10 @@ public class QMaterialInOutHistory extends EntityPathBase<MaterialInOutHistory> 
 
     public final QEmployee employee;
 
+    public final StringPath employeeName = createString("employeeName");
+
+    public final DatePath<java.time.LocalDate> historyDate = createDate("historyDate", java.time.LocalDate.class);
+
     public final StringPath inOutSeparator = createString("inOutSeparator");
 
     public final NumberPath<Integer> materialHistoryNo = createNumber("materialHistoryNo", Integer.class);

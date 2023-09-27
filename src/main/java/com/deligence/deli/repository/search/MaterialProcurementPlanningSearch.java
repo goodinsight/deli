@@ -7,6 +7,8 @@ import com.deligence.deli.dto.OrderDetailDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 //조달계획목록 페이지 -> 검색처리
 public interface MaterialProcurementPlanningSearch {
 
@@ -22,7 +24,7 @@ public interface MaterialProcurementPlanningSearch {
 
     //조달계획 상세(연관 발주 목록)
 //    OrderDetailDTO readOrder(int orderNo);
-    Page<Order> orderList(int materialProcurementPlanNo, Pageable pageable);
+    List<Order> orderList(int materialProcurementPlanNo);
 
 
 }

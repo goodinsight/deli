@@ -3,13 +3,14 @@ package com.deligence.deli.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Getter
 @Entity
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@ToString(exclude = "employee")
 public class MaterialInOutHistory extends BaseEntity {
 
     @Id
@@ -22,11 +23,15 @@ public class MaterialInOutHistory extends BaseEntity {
     @Column(length = 500, nullable = false)
     private int quantity; // 입/출고 수량
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    private LocalDate historyDate;  //입/출고 날짜
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private MaterialInventory materialInventory; // 자재재고 일련번호
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Employee employee; // 담당자(사원일련번호)
+
+    private String employeeName;    //담당자
 
 
 

@@ -29,13 +29,13 @@ public class MaterialProcurementPlanning extends BaseEntity {
 
     private String materialProcurementState;  //자재조달상태
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL)
     private ProductionPlanning productionPlanning;  //생산계획 일련번호 (생산계획 FK)
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Materials materials;            //자재일련번호(material_no) (자재 FK)
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.ALL)
     private Employee employee;    //사원일련번호 (employee_no)(사원 FK)
 
     private String employeeName;    //담당자

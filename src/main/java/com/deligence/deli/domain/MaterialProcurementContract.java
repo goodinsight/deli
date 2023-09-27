@@ -30,15 +30,10 @@ public class MaterialProcurementContract extends BaseEntity {
 
     private String materialProcurementContractEtc;  //조건상세(기타사항)
 
-    //9.25 추가사항 (자재정보, 소요량 가져옴)
-    @ManyToOne(fetch = FetchType.LAZY)
-    private MaterialProcurementPlanning materialProcurementPlanning;    //조달계획(일련번호
+    @ManyToOne(cascade = CascadeType.ALL)
+    private MaterialProcurementPlanning materialProcurementPlanning;    //조달계획(일련번호)
 
     private String materialProcurementPlanCode;   //조달계획코드(검색용)
-
-    //실질적으로 필요 없을 부분(9.25 수정) -> 조달계획에서 자재 정보 가져옴.
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    private Materials materials;    //자재일련번호 FK
 
     private String materialCode;   //자재코드 (검색용)
 
@@ -50,8 +45,6 @@ public class MaterialProcurementContract extends BaseEntity {
 
     private int materialRequirementsCount;  //삭제예정 (오류때문에 일시적 삭제 불가)
 
-
-    //    @ManyToOne(fetch = FetchType.LAZY)
     @ManyToOne(cascade = CascadeType.ALL)
     private CooperatorSupplier cooperatorSupplier;  //자재조달협력회사 일련번호 FK
 
