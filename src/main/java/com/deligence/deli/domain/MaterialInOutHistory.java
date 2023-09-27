@@ -25,10 +25,10 @@ public class MaterialInOutHistory extends BaseEntity {
 
     private LocalDate historyDate;  //입/출고 날짜
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private MaterialInventory materialInventory; // 자재재고 일련번호
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Employee employee; // 담당자(사원일련번호)
 
     private String employeeName;    //담당자

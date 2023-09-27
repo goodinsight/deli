@@ -73,20 +73,24 @@ public class MaterialsController {
         int materialNo = materialsService.register(materialsDTO);
 
         //----자재 재고 등록---------
-
-        MaterialInventoryDTO materialInventoryDTO = MaterialInventoryDTO.builder()
-                .materialCode(materialsDTO.getMaterialCode())
-                .materialName(materialsDTO.getMaterialName())
-                .materialType(materialsDTO.getMaterialType())
-                .materialSupplyPrice(materialsDTO.getMaterialSupplyPrice())
-                .materialIncomingQuantity(0)
-                .materialOutgoingQuantity(0)
-                .materialStock(0)
-                .materialNo(materialNo)
-                .materialTotalInventoryPayments(0L)
-                .build();
-
-        materialInventoryService.registerInventory(materialInventoryDTO);
+//
+//        log.info("material NO =" + materialNo);
+//
+//        MaterialInventoryDTO materialInventoryDTO = MaterialInventoryDTO.builder()
+//                .materialCode(materialsDTO.getMaterialCode())
+//                .materialName(materialsDTO.getMaterialName())
+//                .materialType(materialsDTO.getMaterialType())
+//                .materialSupplyPrice(materialsDTO.getMaterialSupplyPrice())
+//                .materialIncomingQuantity(0)
+//                .materialOutgoingQuantity(0)
+//                .materialStock(0)
+//                .materialNo(materialNo)
+//                .materialTotalInventoryPayments(0L)
+//                .build();
+//
+//        log.info("matDTO"+materialInventoryDTO);
+//
+//        materialInventoryService.registerInventory(materialInventoryDTO);
 
         //-----------
 

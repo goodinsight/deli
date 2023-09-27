@@ -1,8 +1,11 @@
 package com.deligence.deli.service;
 
 import com.deligence.deli.domain.Board;
+import com.deligence.deli.domain.MaterialInOutHistory;
+import com.deligence.deli.domain.MaterialInventory;
 import com.deligence.deli.domain.Materials;
 import com.deligence.deli.dto.*;
+import com.deligence.deli.repository.MaterialInventoryRepository;
 import com.deligence.deli.repository.MaterialsRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -33,6 +36,8 @@ public class MaterialsServiceImpl implements MaterialsService {
 //        Materials materials = modelMapper.map(materialsDTO, Materials.class);
 
         Materials materials = dtoToEntity(materialsDTO);
+
+        log.info("service materials =" + materials);
 
         int materialNo = materialsRepository.save(materials).getMaterialNo();
 
