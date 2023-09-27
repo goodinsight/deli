@@ -11,7 +11,7 @@
 <div layout:fragment="content">
 
     <div class="row mt-12 m-l-15">
-        <form class="col-lg-10" action="/materialInventory/materialOutList" method="get">
+        <form class="col-lg-10" action="/materialInOutHistory/materialInOutHistoryList" method="get">
             <div class="form-group">
                 <p class="text-muted m-b-15 f-s-12">
                     "검색하고 싶은
@@ -42,7 +42,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    자재 입/출고 리스트
+                    자재 재고 입/출고 기록
                 </div>
                 <div class="card-body">
 
@@ -61,11 +61,11 @@
                         <tbody th:with="link = ${pageRequestDTO.getLink()}">
                         <tr th:each="dto:${responseDTO.dtoList}">
                             <td> <!-- 임시로 일련번호, 코드 둘 다 선택 되게 해놨음 나중에 목록 많아지면 꼭 수정하기 -->
-                                <a th:href="|@{/materialInventory/materialOutRead(materialHistoryNo = ${dto.materialHistoryNo})}&${link}|" class="text-decoration-none">
+                                <a th:href="|@{/materialInOutHistory/materialInOutHistoryRead(materialHistoryNo = ${dto.materialHistoryNo})}&${link}|" class="text-decoration-none">
                                 [[${dto.materialHistoryNo}]] </a>
                             </td>
                             <td>
-                                <a th:href="|@{/materialInventory/materialOutRead(materialHistoryNo = ${dto.materialHistoryNo})}&${link}|" class="text-decoration-none">[[${dto.materialCode}]]</a>
+                                <a th:href="|@{/materialInOutHistory/materialInOutHistoryRead(materialHistoryNo = ${dto.materialHistoryNo})}&${link}|" class="text-decoration-none">[[${dto.materialCode}]]</a>
                             </td>
                             <td>[[${dto.materialName}]]</td>
                             <td>[[${dto.materialInOutQuantity}]]</td>
