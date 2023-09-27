@@ -2,6 +2,7 @@ package com.deligence.deli.repository.search;
 
 import com.deligence.deli.domain.MaterialInventory;
 import com.deligence.deli.domain.Order;
+import com.deligence.deli.dto.MaterialInventoryDTO;
 import com.deligence.deli.dto.MaterialInventoryDetailDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,5 +20,7 @@ public interface MaterialInventorySearch {
     //자재 재고 상세
     MaterialInventoryDetailDTO readInventory(int materialInventoryNo);
 
+
+    MaterialInventory readByCode(String materialCode);
 
 }

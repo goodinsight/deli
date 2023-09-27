@@ -18,7 +18,9 @@ public class MaterialInOutHistoryDTO {
 
     private int materialHistoryNo;
 
-    private MaterialInventory materialInventory;
+//    private MaterialInventory materialInventory;
+
+    private int materialInventoryNo;
 
     private String inOutSeparator;
 

@@ -48,6 +48,23 @@ public class MaterialInOutHistoryServiceImpl implements MaterialInOutHistoryServ
     }
 
     @Override
+    public int register2(MaterialInOutHistoryDTO materialInOutHistoryDTO) {
+
+        log.info(materialInOutHistoryDTO);
+
+        //dto -> entity
+        MaterialInOutHistory materialInOutHistory = dtoToEntity2(materialInOutHistoryDTO);
+
+        log.info(materialInOutHistory);
+
+        int materialHistoryNo = materialInOutHistoryRepository.save(materialInOutHistory).getMaterialHistoryNo();
+
+        log.info(materialHistoryNo);
+
+        return materialHistoryNo;
+    }
+
+    @Override
     public MaterialInOutHistoryDetailDTO readOne(int materialHistoryNo) {   //자재 재고 입고,출고 조회작업처리
 
         Optional<MaterialInOutHistory> result = materialInOutHistoryRepository.findById(materialHistoryNo);

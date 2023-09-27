@@ -1,6 +1,7 @@
 package com.deligence.deli.controller;
 
 import com.deligence.deli.dto.*;
+import com.deligence.deli.service.MaterialInOutHistoryService;
 import com.deligence.deli.service.MaterialInventoryService;
 import com.deligence.deli.service.MaterialsService;
 import com.deligence.deli.service.OrderService;
@@ -16,7 +17,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/materialInventory")
@@ -29,6 +32,7 @@ public class MaterialInventoryController {
     private final MaterialInventoryService materialInventoryService;
 
     private final OrderService orderService;
+    private final MaterialInOutHistoryService materialInOutHistoryService;
     private final MaterialsService materialsService;
 
     //자재재고 list
@@ -119,7 +123,6 @@ public class MaterialInventoryController {
         return "redirect:/materialInventory/readInventory";
     }
 
-
     @GetMapping("/listIncoming")
     public void listIncoming(OrderPageRequestDTO orderPageRequestDTO, Model model) {
 
@@ -149,6 +152,55 @@ public class MaterialInventoryController {
         model.addAttribute("pageRequestDTO", orderPageRequestDTO);
 
     }
+
+
+    @PostMapping("/completeIncoming")
+    public String completeIncoming(OrderPageRequestDTO orderPageRequestDTO,
+                                   @Valid OrderDetailDTO orderDetailDTO,
+                                   BindingResult bindingResult,
+                                   RedirectAttributes redirectAttributes){
+
+        log.info("order modify : " + orderDetailDTO);
+
+        String materialCode = orderDetailDTO.getMaterialCode();
+        int materialIncomingQuantity = orderDetailDTO.getOrderQuantity();
+        int employeeNo = orderDetailDTO.getEmployeeNo();
+        String employeeName = orderDetailDTO.getEmployeeName();
+
+        //해당 재고 탐색
+        MaterialInventoryDTO materialInventoryDTO = materialInventoryService.readByMaterialCode(materialCode);
+
+        log.info(materialInventoryDTO);
+
+        //재고 상승
+        materialInventoryDTO.setMaterialIncomingQuantity(materialInventoryDTO.getMaterialIncomingQuantity()+materialIncomingQuantity); // 입고 수량 +
+        materialInventoryDTO.setMaterialStock(materialInventoryDTO.getMaterialStock()+materialIncomingQuantity); // 재고 수량 +
+        materialInventoryDTO.setMaterialTotalInventoryPayments(materialInventoryDTO.getMaterialTotalInventoryPayments() + materialInventoryDTO.getMaterialSupplyPrice()*materialIncomingQuantity);
+
+        log.info(materialInventoryDTO);
+
+        materialInventoryService.modifyInventory(materialInventoryDTO);
+
+
+        //재고 입고 기록 등록
+        MaterialInOutHistoryDTO materialInOutHistoryDTO = MaterialInOutHistoryDTO.builder()
+                .materialInventoryNo(materialInventoryDTO.getMaterialInventoryNo())
+                .inOutSeparator("입고")
+                .quantity(materialIncomingQuantity)
+                .historyDate(LocalDate.now())
+                .employeeNo(employeeNo)
+                .employeeName(employeeName)
+                .build();
+
+        log.info(materialInOutHistoryDTO);
+
+        materialInOutHistoryService.register2(materialInOutHistoryDTO);
+
+
+        return "redirect:/materialInventory/listIncoming";
+
+    }
+
 
     @ResponseBody
     @PostMapping(value = "/changeOrderState", consumes = MediaType.APPLICATION_JSON_VALUE)
