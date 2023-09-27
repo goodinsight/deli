@@ -19,6 +19,8 @@ public interface MaterialInventoryService {
     //자재재고 삭제
     void removeInventory(int materialInventoryNo);
 
+    MaterialInventoryDTO readByMaterialCode(String materialCode);
+
     //자재재고 목록
     PageResponseDTO<MaterialInventoryDTO> listInventory(PageRequestDTO pageRequestDTO);
 

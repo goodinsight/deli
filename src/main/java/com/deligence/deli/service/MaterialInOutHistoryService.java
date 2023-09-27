@@ -7,6 +7,8 @@ public interface MaterialInOutHistoryService {
 
     int register(MaterialInOutHistoryDetailDTO materialInOutHistoryDetailDTO); //자재 재고 입고,출고 등록
 
+    int register2(MaterialInOutHistoryDTO materialInOutHistoryDTO);
+
     MaterialInOutHistoryDetailDTO readOne(int materialHistoryNo);  //자재 재고 입고,출고 조회작업처리
 
     PageResponseDTO<MaterialInOutHistoryDetailDTO> list(PageRequestDTO pageRequestDTO);
@@ -21,6 +23,20 @@ public interface MaterialInOutHistoryService {
                 .quantity(materialInOutHistoryDetailDTO.getMaterialInOutQuantity())
                 .materialInventory(MaterialInventory.builder().materialInventoryNo(materialInOutHistoryDetailDTO.getMaterialInventoryNo()).build())
                 .employee(Employee.builder().employeeNo(materialInOutHistoryDetailDTO.getEmployeeNo()).build())
+                .build();
+
+        return materialInOutHistory;
+    }
+
+    default MaterialInOutHistory dtoToEntity2(MaterialInOutHistoryDTO materialInOutHistoryDTO) {
+
+        MaterialInOutHistory materialInOutHistory = MaterialInOutHistory.builder()
+                .inOutSeparator(materialInOutHistoryDTO.getInOutSeparator())
+                .quantity(materialInOutHistoryDTO.getQuantity())
+                .historyDate(materialInOutHistoryDTO.getHistoryDate())
+                .materialInventory(MaterialInventory.builder().materialInventoryNo(materialInOutHistoryDTO.getMaterialInventoryNo()).build())
+                .employee(Employee.builder().employeeNo(materialInOutHistoryDTO.getEmployeeNo()).build())
+                .employeeName(materialInOutHistoryDTO.getEmployeeName())
                 .build();
 
         return materialInOutHistory;

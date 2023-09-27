@@ -17,46 +17,51 @@
                     자재 입고 상세
                 </div>
                 <div class="card-body mt-3">
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">자재 코드</span>
-                        <input type="text" name="materialCode" class="form-control materialCode" th:value="${dto.materialCode}" readonly>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">자재명</span>
-                        <input type="text" class="form-control" th:value="${dto.materialName}" readonly>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">공급 단가</span>
-                        <input type="text" class="form-control" th:value="${dto.materialSupplyPrice}" readonly>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">입고 수량</span>
-                        <input type="text" class="form-control" th:value="${dto.orderQuantity}" readonly>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">담당자</span>
-                        <input type="text" class="form-control" th:value="${dto.employeeName}" readonly>
-                    </div>
-
-                    <div class="my-4">
-                        <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}">
-                            <button type="button" class="btn btn-outline-default afterComp">입고 완료됨</button>
-                            <button type="button" class="btn btn-primary startCheck">검수 진행</button>
-                            <button type="button" class="btn btn-info startReturn">반품 진행</button>
-                            <button type="button" class="btn btn-warning cancelReturn">반품 취소</button>
-                            <button type="button" class="btn btn-success compReturn">반품 완료</button>
-                            <button type="button" class="btn btn-primary compIncoming">자재 입고 완료</button>
-                            <a th:href="|@{/materialInventory/listIncoming}?${link}|" class="text-decoration-none">
-                                <button type="button" class="btn btn-default">목록 페이지</button>
-                            </a>
+                    <form id="incomingForm">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">자재 코드</span>
+                            <input type="text" name="materialCode" class="form-control materialCode" th:value="${dto.materialCode}" readonly>
                         </div>
-                    </div>
 
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">자재명</span>
+                            <input type="text" name="materialName" class="form-control" th:value="${dto.materialName}" readonly>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">공급 단가</span>
+                            <input type="text" name="materialSupplyPrice" class="form-control" th:value="${dto.materialSupplyPrice}" readonly>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">입고 수량</span>
+                            <input type="text" name="orderQuantity" class="form-control" th:value="${dto.orderQuantity}" readonly>
+                        </div>
+
+                        <div class="d-none input-group mb-3">
+                            <span class="input-group-text">담당자 일련번호</span>
+                            <input type="text" name="employeeNo" class="form-control" th:value="${dto.employeeNo}" readonly>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">담당자</span>
+                            <input type="text" name="employeeName" class="form-control" th:value="${dto.employeeName}" readonly>
+                        </div>
+
+                        <div class="my-4">
+                            <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}">
+                                <button type="button" class="btn btn-outline-default afterComp">입고 완료됨</button>
+                                <button type="button" class="btn btn-primary startCheck">검수 진행</button>
+                                <button type="button" class="btn btn-info startReturn">반품 진행</button>
+                                <button type="button" class="btn btn-warning cancelReturn">반품 취소</button>
+                                <button type="button" class="btn btn-success compReturn">반품 완료</button>
+                                <button type="button" class="btn btn-primary compIncoming">자재 입고 완료</button>
+                                <a th:href="|@{/materialInventory/listIncoming}?${link}|" class="text-decoration-none">
+                                    <button type="button" class="btn btn-default">목록 페이지</button>
+                                </a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
 
             </div>
@@ -151,6 +156,9 @@
 
     }, false)
 
+    const link = [[${pageRequestDTO.getLink()}]]
+    const formObj = document.querySelector("#incomingForm")
+
 
     //자재입고완료
     compIncoming.addEventListener("click", function(e) {
@@ -166,7 +174,13 @@
             printButton()
         })
 
+
+        formObj.action = `/materialInventory/completeIncoming?${link}`
+        formObj.method = 'post'
+        formObj.submit()
+
     }, false)
+
 
 
     function printButton(){
@@ -186,6 +200,14 @@
                 startReturn.style.display = 'none'
                 cancelReturn.style.display = 'inline'
                 compReturn.style.display = 'inline'
+                compIncoming.style.display = 'none'
+                break
+            case "자재입고완료" :
+                afterComp.style.display = 'inline'
+                startCheck.style.display = 'none'
+                startReturn.style.display = 'none'
+                cancelReturn.style.display = 'none'
+                compReturn.style.display = 'none'
                 compIncoming.style.display = 'none'
                 break
             default :

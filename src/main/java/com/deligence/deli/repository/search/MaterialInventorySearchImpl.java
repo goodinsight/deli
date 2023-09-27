@@ -1,6 +1,7 @@
 package com.deligence.deli.repository.search;
 
 import com.deligence.deli.domain.*;
+import com.deligence.deli.dto.MaterialInventoryDTO;
 import com.deligence.deli.dto.MaterialInventoryDetailDTO;
 import com.deligence.deli.dto.OrderDTO;
 import com.querydsl.core.BooleanBuilder;
@@ -120,6 +121,19 @@ public class MaterialInventorySearchImpl extends QuerydslRepositorySupport imple
                 .build();
 
         return dto;
+    }
+
+    @Override
+    public MaterialInventory readByCode(String materialCode) {
+
+        QMaterialInventory materialInventory = QMaterialInventory.materialInventory;
+
+        JPQLQuery<MaterialInventory> query = new JPAQueryFactory(em).selectFrom(materialInventory)
+                .where(materialInventory.materialCode.eq(materialCode));
+
+        MaterialInventory result = query.fetchOne();
+
+        return result;
     }
 
 

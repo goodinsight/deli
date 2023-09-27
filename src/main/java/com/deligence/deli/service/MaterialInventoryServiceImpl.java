@@ -82,6 +82,14 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
         materialInventoryRepository.deleteById(materialInventoryNo);
     }
 
+    @Override
+    public MaterialInventoryDTO readByMaterialCode(String materialCode) {
+
+        MaterialInventoryDTO materialInventoryDTO = entityToDtoInventory(materialInventoryRepository.readByCode(materialCode));
+
+        return materialInventoryDTO;
+    }
+
 
     //자재재고 list
     @Override
