@@ -55,6 +55,15 @@ public class MaterialInventoryController {
 
         log.info(responseDTO);
 
+        for (int i = 0; i < responseDTO.getDtoList().size(); i++) {
+            log.info(responseDTO.getDtoList().get(i).getOrderCode());
+            log.info(responseDTO);
+            log.info(responseDTO);
+            log.info(responseDTO);
+            log.info(responseDTO);
+
+        }
+
         model.addAttribute("responseDTO", responseDTO);
     }
 

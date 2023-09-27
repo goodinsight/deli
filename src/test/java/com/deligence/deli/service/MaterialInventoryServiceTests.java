@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Optional;
+
 
 @SpringBootTest
 @Log4j2
@@ -50,7 +52,7 @@ public class MaterialInventoryServiceTests {
                 .build();
 
 
-        materialInventoryService.stockRegister(materialInventoryDTO);
+        materialInventoryService.modifyInventory(materialInventoryDTO);
 
         log.info("success");
 
@@ -60,13 +62,14 @@ public class MaterialInventoryServiceTests {
     @Test //테스트확인
     public void testStockRead() {
 
-        int materialInventoryNo = 1;
+        int materialInventoryNo = 10;
 
-        MaterialInventoryDetailDTO materialInventoryDetailDTO = materialInventoryService.stockRead(materialInventoryNo);
+        MaterialInventoryDetailDTO materialInventoryDetailDTO = materialInventoryService.readInventory(materialInventoryNo);
 
         log.info(materialInventoryDetailDTO);
 
     }
+
 
     @Test   //나중에 테스트 다시 해볼 것
     public void testStockModify() {
@@ -91,7 +94,7 @@ public class MaterialInventoryServiceTests {
 //                .documentFileNo(1)
                 .build();
 
-        materialInventoryService.stockModify(materialInventoryDTO);
+        materialInventoryService.modifyInventory(materialInventoryDTO);
 
         log.info(materialInventoryDTO);
     }
@@ -106,7 +109,7 @@ public class MaterialInventoryServiceTests {
                 .size(10)
                 .build();
 
-        PageResponseDTO<MaterialInventoryDTO> responseDTO = materialInventoryService.stockList(pageRequestDTO);
+        PageResponseDTO<MaterialInventoryDTO> responseDTO = materialInventoryService.listInventory(pageRequestDTO);
 
         log.info(responseDTO);
 
