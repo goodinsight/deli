@@ -17,8 +17,6 @@ public class MaterialInventoryDetailDTO {
 
     private int materialInventoryNo;        // 자재재고 일련번호 (-> 자재재고 목록)
 
-    private int materialIncomingNo;         // 입고관리 일련번호 (-> 재고 > 입고관리)
-
     private int materialNo;                 // 자재 일련번호 FK (-> 자재타입, 자재코드, 자재이름, 공급단가 (-> 자재재고 목록/상세 - 자재설명)
 
     private int materialIncomingQuantity;   // 입고 수량 (-> 자재재고 목록)
@@ -35,7 +33,7 @@ public class MaterialInventoryDetailDTO {
 
     private String materialCode;            // 자재코드 (-> 자재재고 목록, 검색용)
 
-    private String materialName;            // 자재이름 (-> 자재재고 목록 / 재고 > 입고관리, 검색용)
+    private String materialName;            // 자재이름 (-> 자재재고 목록, 검색용)
 
     private String materialExplaination;    // 자재설명 (-> 자재재고 상세)
 
