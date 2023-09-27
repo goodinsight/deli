@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>자재조달상세-연관발주목록</title>
+<!--    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>-->
+</head>
+
+<div layout:fragment="content">
+
+    <div class="row mt-3">
+
+
+
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    조달계획상세-연관발주목록
+
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary listBtn" type="button">Procurement List</button>
+                    </div>
+
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th scope="col">NO</th>
+                            <th scope="col">발주 코드</th>
+                            <th scope="col">담당자</th>
+                            <th scope="col">발주 수량</th>
+                            <th scope="col">발주일</th>
+                            <th scope="col">납기일</th>
+                            <th scope="col">상태</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr th:each="dto:${dtoList}">
+                            <td>[[${dto.orderNo}]]</td>
+                            <td>[[${dto.orderCode}]]</td>
+                            <td>[[${dto.employeeName}]]</td>
+                            <td>[[${dto.orderQuantity}]]</td>
+                            <td>[[${dto.orderDate}]]</td>
+                            <td>[[${dto.orderDeliveryDate}]]</td>
+                            <td>[[${dto.orderState}]]</td>
+
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div><!--end card body-->
+            </div><!--end card-->
+        </div><!--end col-->
+    </div><!--end row-->
+
+    <div class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" >Save changes</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+<script layout:fragment="script" th:inline="javascript">
+
+    console.log("조달계획상세-연관발주목록 페이지")
+
+    $(document).ready(function () {
+        console.log([[${dtoList}]])
+    })
+
+    document.querySelector(".listBtn").addEventListener("click", function (e){
+        e.preventDefault()
+        e.stopPropagation()
+
+        self.location = '/materialProcurementPlanning/list'
+    }, false)
+
+    //show modal
+    const result = [[${result}]]
+
+    const modal = new bootstrap.Modal(document.querySelector(".modal"))
+
+    if(result){
+        modal.show()
+    }
+
+</script>
+
+</html>

@@ -45,7 +45,21 @@ public class ProductionPlanningServiceImpl implements ProductionPlanningService{
     @Override
     public ProductionPlanningDetailDTO read(int productionPlanNo) {
 
+        log.info("productionPlanNo : " + productionPlanNo);
+
+//        Optional<ProductionPlanning> result = productionPlanningRepository.findById(productionPlanNo);
+
+//        ProductionPlanning productionPlanning = result.orElseThrow();
+
+//        ProductionPlanningDetailDTO productionPlanningDetailDTO = ProductionPlanningDetailDTO.builder()
+//                .productionPlanNo(productionPlanning.getProductionPlanNo())
+//                .productCode(productionPlanning.getProductCode())
+//                .productName(productionPlanning.getproduct)
+//                .build();
+
         ProductionPlanningDetailDTO result = productionPlanningRepository.read(productionPlanNo);
+
+        log.info("result : " + result);
 
         return result;
     }
@@ -79,9 +93,13 @@ public class ProductionPlanningServiceImpl implements ProductionPlanningService{
 
         Page<ProductionPlanning> result = productionPlanningRepository.search(types, keyword, pageable);
 
+        log.info("result : " + result);
+
         List<ProductionPlanningDTO> dtoList = result.getContent().stream()
                 .map(productionPlanning -> entityToDto(productionPlanning))
                 .collect(Collectors.toList());
+
+        log.info("dtoList : " +dtoList);
 
         return PageResponseDTO.<ProductionPlanningDTO>withAll()
                 .pageRequestDTO(pageRequestDTO)
