@@ -45,24 +45,6 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
         return materialInventoryNo;
     }
 
-    //재고>입고관리 register
-//    @Override
-//    public int registerIncoming(MaterialInventoryDTO materialInventoryDTO) {
-//
-//        log.info(materialInventoryDTO);
-//
-//        //dto -> entity
-//        MaterialInventory materialInventory = dtoToEntityIncoming(materialInventoryDTO);
-//
-//        log.info(materialInventory);
-//
-////        int materialInventoryNo = materialInventoryRepository.save(materialInventory).getMaterialInventoryNo();
-//        int orderNo = materialInventoryRepository.save(materialInventory).getOrder().getOrderNo();
-//
-//        log.info(orderNo);
-//
-//        return orderNo;
-//    }
 
     //자재재고 read
     @Override
@@ -73,14 +55,6 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
         return result;
     }
 
-    //재고>입고관리 read
-//    @Override
-//    public MaterialInventoryDetailDTO readIncoming(int orderNo) {
-//
-//        MaterialInventoryDetailDTO result = materialInventoryRepository.readIncoming(orderNo);
-//
-//        return result;
-//    }
 
     //자재재고 modify
     @Override
@@ -96,19 +70,6 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
 
     }
 
-    //재고>입고관리 modify
-//    @Override
-//    public void modifyIncoming(MaterialInventoryDTO materialInventoryDTO) {
-//
-//        Optional<MaterialInventory> result = materialInventoryRepository.findById(materialInventoryDTO.getOrderNo());
-//
-//        MaterialInventory materialInventory = result.orElseThrow();
-//
-//        materialInventory.change(materialInventoryDTO);
-//
-//        materialInventoryRepository.save(materialInventory);
-//
-//    }
 
     //자재재고 remove
     @Override
@@ -117,12 +78,6 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
         materialInventoryRepository.deleteById(materialInventoryNo);
     }
 
-    //재고>입고관리 remove
-//    @Override
-//    public void removeIncoming(int orderNo) {
-//
-//        materialInventoryRepository.deleteById(orderNo);
-//    }
 
     //자재재고 list
     @Override
@@ -145,27 +100,7 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
                 .build();
     }
 
-    //재고>입고관리 list
-//    @Override
-//    public OrderPageResponseDTO<MaterialInventoryDTO> listIncoming(OrderPageRequestDTO orderPageRequestDTO) {
-//
-//        String[] types = orderPageRequestDTO.getTypes();
-//        String keyword = orderPageRequestDTO.getKeyword();
-//        String state = orderPageRequestDTO.getState();
-//        Pageable pageable = orderPageRequestDTO.getPageable();//속성 집어넣으면 오류 발생함.
-//
-//        Page<MaterialInventory> result = materialInventoryRepository.searchIncoming(types, keyword, state, pageable);
-//
-//        List<MaterialInventoryDTO> dtoList = result.getContent().stream()
-//                .map(materialInventory -> entityToDtoIncoming(materialInventory))
-//                .collect(Collectors.toList());
-//
-//        return OrderPageResponseDTO.<MaterialInventoryDTO>withAll()
-//                .orderPageRequestDTO(orderPageRequestDTO)
-//                .dtoList(dtoList)
-//                .total((int)result.getTotalElements())
-//                .build();
-//    }
+
 
 }
 

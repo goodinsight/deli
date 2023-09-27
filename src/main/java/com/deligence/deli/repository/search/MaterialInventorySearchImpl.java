@@ -73,57 +73,6 @@ public class MaterialInventorySearchImpl extends QuerydslRepositorySupport imple
         return new PageImpl<>(list, pageable, count);
     }
 
-    //재고 > 입고관리 목록 search (+상태검색) -> 삭제
-//    @Override
-//    public Page<MaterialInventory> searchIncoming(String[] types, String keyword, String state, Pageable pageable) {
-//
-//        QMaterialInventory materialInventory = QMaterialInventory.materialInventory;
-//
-//        JPQLQuery<MaterialInventory> query = new JPAQueryFactory(em).selectFrom(materialInventory);
-//
-//        if ( (types != null && types.length > 0) && keyword != null) {   //검색조건과 키워드가 있다면
-//
-//            BooleanBuilder booleanBuilder = new BooleanBuilder();   // (
-//
-//            for (String type : types) {
-//
-//                switch (type) {
-//                    // a:발주코드 b:자재이름 c:담당자 d:(발주)상태
-//
-//                    case "a":
-//                        booleanBuilder.or(materialInventory.orderCode.contains(keyword));
-//                        break;
-//                    case "b":
-//                        booleanBuilder.or(materialInventory.materialName.contains(keyword));
-//                        break;
-//                    case "c":
-//                        booleanBuilder.or(materialInventory.employeeName.contains(keyword));
-//                        break;
-////                    case "d":
-////                        booleanBuilder.or(materialInventory.orderState.contains(keyword));
-//
-//                }
-//
-//            }//end for
-//
-//            query.where(booleanBuilder);
-//
-//            query.where(materialInventory.orderState.contains(state));  //발주 상태 검색
-//
-//        }//end if
-//
-//        query.orderBy(materialInventory.order.orderNo.desc());  //재고 > 입고관리 목록의 NO는 발주 일련번호
-//
-//        //paging
-//        this.getQuerydsl().applyPagination(pageable, query);
-//
-//        List<MaterialInventory> list = query.fetch();
-//
-//        long count = query.fetchCount();
-//
-//        return new PageImpl<>(list, pageable, count);
-//    }
-
 
 
     //자재 재고 상세/목록
@@ -158,9 +107,6 @@ public class MaterialInventorySearchImpl extends QuerydslRepositorySupport imple
                 .materialCode(resultMaterials.getMaterialCode())                    // 자재코드
                 .materialName(resultMaterials.getMaterialName())                    // 자재이름
                 .materialExplaination(resultMaterials.getMaterialExplaination())    // 자재설명
-//                .materialImageNo(resultMi.getMaterialImgNo())                       // 자재이미지 일련번호
-//                .materialImgName(resultMi.getMaterialImgName())                     // 자재이미지명
-//                .materialUuid(resultMi.getMaterialUuid())                           // 자재이미지 uuid
                 .materialIncomingQuantity(resultMaterialInventory.getMaterialIncomingQuantity())                //입고수량
                 .materialOutgoingQuantity(resultMaterialInventory.getMaterialOutgoingQuantity())                //출고수량
                 .materialSupplyPrice(resultMaterials.getMaterialSupplyPrice())                                   //공급단가
@@ -171,65 +117,10 @@ public class MaterialInventorySearchImpl extends QuerydslRepositorySupport imple
                 .quantity(resultMioh.getQuantity())                                 // 입/출고 수량
                 .historyDate(resultMioh.getHistoryDate())                           // 입/출고 날짜
                 .employeeNo(resultMioh.getEmployee().getEmployeeNo())               // 담당자 일련번호
-//                .employeeName(resultMaterialInventory.getEmployeeName())            // 기록담당자
                 .build();
 
         return dto;
     }
 
-
-//    //재고 > 입고관리 상세/목록
-//    //  -> 발주정보(자재코드, 자재이름),자재분류, 공급단가, 입고?발주수량, 담당자
-//    @Override
-//    public MaterialInventoryDetailDTO readIncoming(int materialInventoryNo) {
-//
-//        QMaterialInventory materialInventory = QMaterialInventory.materialInventory;
-//        QOrder order = QOrder.order;
-//
-//        JPQLQuery<Tuple> query = new JPAQueryFactory(em)
-//                .select(materialInventory, order)
-//                .from(materialInventory)
-//                .join(materialInventory.order, order).on(materialInventory.order.eq(order))
-//                .where(materialInventory.materialInventoryNo.eq(materialInventoryNo));
-//
-//        List<Tuple> targetDtoList = query.fetch();
-//
-//        Tuple target = targetDtoList.get(0);
-//
-//        MaterialInventory resultMaterialInventory = (MaterialInventory) target.get(materialInventory);
-//        Order resultOrder = (Order) target.get(order);
-//
-//        MaterialInventoryDetailDTO dto = MaterialInventoryDetailDTO.builder()
-//                .orderNo(resultOrder.getOrderNo())                          //발주일련번호
-//                .orderCode(resultOrder.getOrderCode())                      //발주코드
-//                .materialCode(resultOrder.getMaterialProcurementContract().getMaterialCode())       //자재코드
-//                .materialType(resultMaterialInventory.getMaterialType())                            //자재분류
-//                .materialName(resultOrder.getMaterialName())                                        //자재이름
-//                .materialSupplyPrice(resultMaterialInventory.getMaterialSupplyPrice())              //공급단가
-//                .materialIncomingQuantity(resultMaterialInventory.getMaterialIncomingQuantity())    //입고수량
-//                .orderDate(resultOrder.getOrderDate())                      //발주일
-//                .orderDeliveryDate(resultOrder.getOrderDeliveryDate())      //납기일
-//                .employeeName(resultOrder.getEmployeeName())                //(발주)담당자
-//                .orderState(resultOrder.getOrderState())                    //(발주)상태
-//                .build();
-//
-//        return dto;
-//    }
-
-    //발주수량 -> 입고수량 증가
-//    @Override
-//    public int sumOfIncomingQuantity(int orderNo) {
-//
-//        QMaterialInventory materialInventory = QMaterialInventory.materialInventory;
-//
-//        JPQLQuery<Integer> query = new JPAQueryFactory(em)
-//                .select(materialInventory.materialIncomingQuantity.sum())
-//                .from(materialInventory)
-//                .where(materialInventory.order.orderNo.eq(orderNo).and(materialInventory.order.orderState.eq("입고완료")));
-//
-//        int result = query.fetchOne();
-//
-//        return result;
-//    }
 
 }

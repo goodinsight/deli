@@ -38,19 +38,6 @@ public class MaterialInventory {
 
     private String materialName;                    // 자재이름 (자재재고 목록 검색용)
 
-//    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//    private MaterialImage materialImage;            //자재이미지 FK (-> 자재 재고 상세)
-    //materiaListAllDTO에서 이미지 가져올수 있음
-
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    private Order order;                            // 발주 일련번호 (재고 > 입고관리) -> 발주코드, (발주)자재이름, 입고수량, 발주일, 납기일, 담당자, (발주)상태
-
-//    private String orderCode;                       //발주코드 (재고 > 입고관리 검색용)
-//
-//    private String employeeName;                    //(발주)담당자 (재고 > 입고관리 검색용)
-//
-//    private String orderState;                      //발주상태 (재고 > 입고관리 검색용)
-
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private MaterialInOutHistory materialInOutHistory;    //입출고 기록 (->일련번호, 입출고구분자, 수량, 날짜, 담당자)
 
@@ -65,9 +52,6 @@ public class MaterialInventory {
         this.materialStock = materialInventoryDTO.getMaterialStock();
         this.materialSupplyPrice = materialInventoryDTO.getMaterialSupplyPrice();
         this.materialTotalInventoryPayments = materialInventoryDTO.getMaterialTotalInventoryPayments();
-//        this.materialName = materialInventoryDTO.getMaterialName();
-//        this.materialType = materialInventoryDTO.getMaterialType();
-//        this.materialCode = materialInventoryDTO.getMaterialCode();
 
     }
 

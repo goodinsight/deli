@@ -44,30 +44,7 @@ public class MaterialInventoryController {
         model.addAttribute("responseDTO", responseDTO);
     }
 
-    //재고>입고관리 list
-//    @GetMapping("/listIncoming")
-//    public void listIncoming(OrderPageRequestDTO orderPageRequestDTO, Model model) {
-//
-//        log.info(orderPageRequestDTO);
-//
-//        OrderPageResponseDTO<MaterialInventoryDTO> responseDTO =
-//                materialInventoryService.listIncoming(orderPageRequestDTO);
-//
-//        log.info(responseDTO);
-//
-//        for (int i = 0; i < responseDTO.getDtoList().size(); i++) {
-//            log.info(responseDTO.getDtoList().get(i).getOrderCode());
-//            log.info(responseDTO);
-//            log.info(responseDTO);
-//            log.info(responseDTO);
-//            log.info(responseDTO);
-//
-//        }
-//
-//        model.addAttribute("responseDTO", responseDTO);
-//    }
-
-
+    
     //자재재고/재고>입고관리 registerGET
 //    @GetMapping({"/registerInventory", "/registerIncoming"})
     @GetMapping({"/registerInventory"})
@@ -105,34 +82,6 @@ public class MaterialInventoryController {
         return "redirect:/materialInventory/listInventory";
     }
 
-    //재고>입고관리 registerPOST
-//    @PostMapping("/registerIncoming")
-//    public String registerIncomingPOST(@Valid MaterialInventoryDTO materialInventoryDTO,
-//                                        BindingResult bindingResult,
-//                                        RedirectAttributes redirectAttributes){
-//
-//        log.info("incoming post register----------------");
-//
-//        log.info(materialInventoryDTO);
-//
-//        if(bindingResult.hasErrors()) {
-//
-//            log.info("incoming register error");
-//
-//            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
-//
-//            return "redirect:/materialInventory/registerIncoming";
-//        }
-//
-////        int orderNo = materialInventoryService.registerInventory(materialInventoryDTO);
-//        int materialInventoryNo = materialInventoryService.registerIncoming(materialInventoryDTO);
-//
-////        redirectAttributes.addFlashAttribute("result", orderNo);
-//        redirectAttributes.addFlashAttribute("result", materialInventoryNo);
-//
-//        return "redirect:/materialInventory/listIncoming";
-//    }
-
     //자재재고 read
     @GetMapping({"/readInventory", "/modifyInventory"})
     public void readInventory(int materialInventoryNo, PageRequestDTO pageRequestDTO, Model model) {
@@ -147,22 +96,6 @@ public class MaterialInventoryController {
 
         model.addAttribute("pageRequestDTO", pageRequestDTO);
     }
-
-    //재고>입고관리 read
-//    @GetMapping({"/readIncoming", "/modifyIncoming"})
-//    public void readIncoming(int orderNo, OrderPageRequestDTO orderPageResponseDTO, Model model) {
-//
-//        log.info("search : orderNo = " + orderNo);
-//
-//        MaterialInventoryDetailDTO materialInventoryDetailDTO = materialInventoryService.readIncoming(orderNo);
-//
-//        log.info(materialInventoryDetailDTO);
-//
-//        model.addAttribute("dto", materialInventoryDetailDTO);
-//
-//        model.addAttribute("orderPageRequestDTO", orderPageResponseDTO);
-//    }
-
 
     //자재재고 modify
     @PostMapping("/modifyInventory")
@@ -185,28 +118,5 @@ public class MaterialInventoryController {
 
         return "redirect:/materialInventory/readInventory";
     }
-
-    //재고>입고관리 modify
-//    @PostMapping("/modifyIncoming")
-//    public String modifyIncoming(PageRequestDTO pageRequestDTO,
-//                                  @Valid MaterialInventoryDTO materialInventoryDTO,
-//                                  BindingResult bindingResult,
-//                                  RedirectAttributes redirectAttributes){
-//
-//        log.info("incoming modify : " + materialInventoryDTO);
-//
-//        //에러 처리----
-//
-//        //-----------
-//
-//        materialInventoryService.modifyIncoming(materialInventoryDTO);
-//
-//        redirectAttributes.addFlashAttribute("result", "modified");
-//
-////        redirectAttributes.addAttribute("materialInventoryNo", materialInventoryDTO.getMaterialInventoryNo());
-//        redirectAttributes.addAttribute("orderNo", materialInventoryDTO.getOrderNo());
-//
-//        return "redirect:/materialIncoming/readIncoming";
-//    }
 
 }

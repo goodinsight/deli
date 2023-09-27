@@ -16,18 +16,8 @@ public interface MaterialInventorySearch {
     //자재 재고 목록 search
     Page<MaterialInventory> searchInventory(String[] types, String keyword, Pageable pageable);
 
-    //재고> 입고관리 목록 (발주)
-//    List<MaterialInventory> incoming(int orderNo);
-
     //자재 재고 상세
     MaterialInventoryDetailDTO readInventory(int materialInventoryNo);
-
-    //재고 > 입고관리 상세
-//    MaterialInventoryDetailDTO readIncoming(int orderNo);
-
-
-    //발주수량 -> 입고수량 증가
-//    int sumOfIncomingQuantity(int orderNo);
 
 
 }

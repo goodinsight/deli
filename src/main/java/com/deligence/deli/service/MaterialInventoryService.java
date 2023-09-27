@@ -10,32 +10,17 @@ public interface MaterialInventoryService {
     //자재재고 등록
     int registerInventory(MaterialInventoryDTO materialInventoryDTO);
 
-    //재고>입고관리 등록
-//    int registerIncoming(MaterialInventoryDTO materialInventoryDTO);
-
     //자재재고 상세
     MaterialInventoryDetailDTO readInventory(int materialInventoryNo);
-
-    //재고>입고관리 상세
-//    MaterialInventoryDetailDTO readIncoming(int orderNo);
 
     //자재재고 수정
     void modifyInventory(MaterialInventoryDTO materialInventoryDTO);
 
-    //재고>입고관리 수정
-//    void modifyIncoming(MaterialInventoryDTO materialInventoryDTO);
-
     //자재재고 삭제
     void removeInventory(int materialInventoryNo);
 
-    //재고>입고관리 삭제
-//    void removeIncoming(int orderNo);
-
     //자재재고 목록
     PageResponseDTO<MaterialInventoryDTO> listInventory(PageRequestDTO pageRequestDTO);
-
-    //재고>입고관리 목록
-//    OrderPageResponseDTO<MaterialInventoryDTO> listIncoming(OrderPageRequestDTO orderPageRequestDTO);
 
 
     //자재재고 관련 dtoToEntity, entityToDto
@@ -77,31 +62,5 @@ public interface MaterialInventoryService {
         return materialInventoryDTO;
     }
 
-    //재고>입고관리 관련 dtoToEntity, entityToDto
-    default MaterialInventory dtoToEntityIncoming(MaterialInventoryDTO materialInventoryDTO) {
-
-        MaterialInventory materialInventory = MaterialInventory.builder()
-                .materialInventoryNo(materialInventoryDTO.getMaterialInventoryNo())
-                .materialName(materialInventoryDTO.getMaterialName())
-                .materialCode(materialInventoryDTO.getMaterialCode())
-                .materialType(materialInventoryDTO.getMaterialType())
-                .materialSupplyPrice(materialInventoryDTO.getMaterialSupplyPrice())
-                .materialIncomingQuantity(materialInventoryDTO.getMaterialIncomingQuantity())   //입고수량?발주수량?
-                .build();
-
-        return materialInventory;
-    }
-
-    default MaterialInventoryDTO entityToDtoIncoming(MaterialInventory materialInventory) {
-
-        MaterialInventoryDTO materialInventoryDTO = MaterialInventoryDTO.builder()
-                .materialInventoryNo(materialInventory.getMaterialInventoryNo())
-                .materialIncomingQuantity(materialInventory.getMaterialIncomingQuantity())
-                .materialType(materialInventory.getMaterialType())
-                .materialIncomingQuantity(materialInventory.getMaterialIncomingQuantity())
-                .build();
-
-        return materialInventoryDTO;
-    }
 
 }
