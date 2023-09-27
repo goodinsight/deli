@@ -95,5 +95,4 @@ public class MaterialInOutHistoryController {
 //        return "redirect:/materialInventory/materialOutList";
 //    }
 
-
 }

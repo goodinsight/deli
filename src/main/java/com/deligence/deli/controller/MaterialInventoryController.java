@@ -1,6 +1,7 @@
 package com.deligence.deli.controller;
 
 import com.deligence.deli.dto.*;
+import com.deligence.deli.service.MaterialInOutHistoryService;
 import com.deligence.deli.service.MaterialInventoryService;
 import com.deligence.deli.service.MaterialsService;
 import com.deligence.deli.service.OrderService;
@@ -90,7 +91,7 @@ public class MaterialInventoryController {
     @PostMapping("/registerInventory")
     public String registerInventoryPOST(@Valid MaterialInventoryDTO materialInventoryDTO,
                                         BindingResult bindingResult,
-                                        RedirectAttributes redirectAttributes){
+                                        RedirectAttributes redirectAttributes, Model model){
 
         log.info("material inventory post register----------------");
 

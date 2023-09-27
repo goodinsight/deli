@@ -36,11 +36,11 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
         //dto -> entity
         MaterialInventory materialInventory = dtoToEntityInventory(materialInventoryDTO);
 
-        log.info(materialInventory);
+        log.info("materialInventory : " + materialInventory);
 
         int materialInventoryNo = materialInventoryRepository.save(materialInventory).getMaterialInventoryNo();
 
-        log.info(materialInventoryNo);
+        log.info("materialInventoryNo : " + materialInventoryNo);
 
         return materialInventoryNo;
     }
