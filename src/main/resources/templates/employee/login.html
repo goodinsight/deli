@@ -22,7 +22,7 @@
 
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Deligence.com - Login</title>
+    <title>Deligence - Login</title>
 
     <!-- Styles -->
     <link th:href="@{/css/lib/font-awesome.min.css}" rel="stylesheet">
@@ -30,54 +30,68 @@
     <link th:href="@{/css/lib/bootstrap.min.css}" rel="stylesheet">
     <link th:href="@{/css/lib/helper.css}" rel="stylesheet">
     <link th:href="@{/css/style.css}" rel="stylesheet" />
-</head>
-<body class="bg-primary">
+    <link th:href="@{/css/style.min.css}" rel="stylesheet" />
 
-<div class="unix-login">
+</head>
+<body class="body-login">
     <div class="container-fluid">
+      <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-lg-6">
-                <div class="login-content">
-                    <div class="login-logo">
-                        <a th:href="@{/board/list}"><span>Deligence.com</span></a>
+                <div class="card-body">
+                    <div class="card-badge" id="login-logo">
+                        <img src="/images/logo-250.png" style="width: 100%">
                     </div>
+
                     <div class="login-form">
-                        <h4>Login Page</h4>
-
-
                         <th:block th:if="${param.logout != null}">
                             <h1>Logout..............</h1>
                         </th:block>
+                        <form class="form-horizontal" id="registerForm" action="/employee/login" method="post" th:if="${param.logout == null}"> <!-- 권한에 따라 action 페이지 달리해야함 -->
 
+                            <!-- 폼 속성
+                            form-group has-success
+                            form-group has-warning
+                            form-group has-error
 
+                            form-group has-success has-feedback
+                            form-group has-error has-feedback
+                            form-group has-warning has-feedback
+                            -->
 
-                        <form id="registerForm" action="/employee/login" method="post" th:if="${param.logout == null}"> <!-- 권한에 따라 action 페이지 달리해야함 -->
                             <div class="form-group">
-                                <label>아이디</label>
-                                <input type="text" name="username" class="form-control" placeholder="USER-ID">
+                                <div class="input_row">
+                                    <label><i class="ti-user"></i><strong> 아이디</strong></label>
+                                <input type="text" name="username" class="form-control" placeholder="ID">
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label>패스워드</label>
+                                <div class="input_row">
+                                <label><i class="ti-lock"></i><strong> 비밀번호</strong></label>
                                 <input type="password" name="password" class="form-control" placeholder="PASSWORD">
+                                </div>
                             </div>
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"> 자동로그인
+                                    <input type="checkbox"> 로그인 상태 유지
                                 </label>
                                 <label class="pull-right">
-                                    <a href="#">Forgotten Password?</a>
+
+                                    <!--비밀 번호 찾기 /링크 없음-->
+                                    <a href="#">비밀번호를 잊으셨나요?</a>
                                 </label>
 
                             </div>
-                            <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30 submitBtn">Sign in</button>
-                            <div class="social-login-content">
+                            <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30 submitBtn">로그인</button>
+
+                            <!--<div class="social-login-content">
                                 <div class="social-button">
                                     <button type="button" class="btn btn-primary bg-facebook btn-flat btn-addon m-b-10"><i class="ti-facebook"></i>Sign in with facebook</button>
                                     <button type="button" class="btn btn-primary bg-twitter btn-flat btn-addon m-t-10"><i class="ti-twitter"></i>Sign in with twitter</button>
                                 </div>
-                            </div>
-                            <div class="register-link m-t-15 text-center">
-                                <p>Don't have account ? <a href="/employee/join"> Sign Up Here</a></p>
+                            </div>-->
+                            <div class="register-link m-t-auto text-center">
+                                <span>계정이 아직 없나요?<a href="/employee/join">  회원가입 하기</a></span>
                             </div>
                         </form>
                     </div>
