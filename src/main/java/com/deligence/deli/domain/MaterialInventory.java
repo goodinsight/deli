@@ -39,9 +39,6 @@ public class MaterialInventory {
     @ManyToOne(fetch = FetchType.LAZY)
     private DocumentFile documentFile; // 파일 일련번호
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Order order; // 오더 일련번호
-
     @Column(length = 500, nullable = false)
     private String materialName; // 자재명 검색
 
