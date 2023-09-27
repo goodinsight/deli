@@ -119,4 +119,35 @@ public class MaterialInventoryController {
         return "redirect:/materialInventory/readInventory";
     }
 
+
+    @GetMapping("/listIncoming")
+    public void listIncoming(OrderPageRequestDTO orderPageRequestDTO, Model model) {
+
+        log.info(orderPageRequestDTO);
+
+        String[] states = {"검수완료", "입고검수진행중", "반품진행중", "자재입고완료"};
+
+        OrderPageResponseDTO<OrderDTO> responseDTO =
+                orderService.listIncoming(orderPageRequestDTO, states);
+
+        log.info(responseDTO);
+
+        model.addAttribute("responseDTO", responseDTO);
+    }
+
+    @GetMapping("/readIncoming")
+    public void readIncoming(int orderNo, OrderPageRequestDTO orderPageRequestDTO, Model model){
+
+        log.info("search : orderNo = " + orderNo);
+
+        OrderDetailDTO orderDetailDTO = orderService.read(orderNo);
+
+        log.info(orderDetailDTO);
+
+        model.addAttribute("dto", orderDetailDTO);
+
+        model.addAttribute("pageRequestDTO", orderPageRequestDTO);
+
+    }
+
 }
