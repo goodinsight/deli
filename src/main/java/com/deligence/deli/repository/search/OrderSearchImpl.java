@@ -101,13 +101,20 @@ public class OrderSearchImpl extends QuerydslRepositorySupport implements OrderS
 
                 }
 
+
             }//end for
 
             query.where(booleanBuilder);
 
-        }//end if
 
-        query.where(order.orderState.contains(state));//발주 상태 검색
+
+
+
+        }//end if
+        
+        if(state != null){
+            query.where(order.orderState.contains(state));//발주 상태 검색
+        }
 
         query.orderBy(order.orderNo.desc());
 
