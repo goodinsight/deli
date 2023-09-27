@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Optional;
+
 
 @SpringBootTest
 @Log4j2
@@ -22,7 +24,7 @@ public class MaterialInventoryServiceTests {
     private MaterialInOutHistoryService materialInOutHistoryService;
 
     @Test   //테스트 다시 해볼 것
-    public void testRegisterInventory() {
+    public void testStockRegister() {
 
         OrderDTO orderDTO = OrderDTO.builder().orderNo(45).employeeNo(5).employeeName("김재고").build();
         orderService.register(orderDTO);
@@ -50,7 +52,7 @@ public class MaterialInventoryServiceTests {
                 .build();
 
 
-        materialInventoryService.registerInventory(materialInventoryDTO);
+        materialInventoryService.modifyInventory(materialInventoryDTO);
 
         log.info("success");
 
@@ -58,9 +60,9 @@ public class MaterialInventoryServiceTests {
     }
 
     @Test //테스트확인
-    public void testReadInventory() {
+    public void testStockRead() {
 
-        int materialInventoryNo = 1;
+        int materialInventoryNo = 10;
 
         MaterialInventoryDetailDTO materialInventoryDetailDTO = materialInventoryService.readInventory(materialInventoryNo);
 
@@ -68,8 +70,9 @@ public class MaterialInventoryServiceTests {
 
     }
 
+
     @Test   //나중에 테스트 다시 해볼 것
-    public void testModifyInventory() {
+    public void testStockModify() {
 
         MaterialInventoryDTO materialInventoryDTO = MaterialInventoryDTO.builder()
                 .materialHistoryNo(1)
@@ -85,9 +88,9 @@ public class MaterialInventoryServiceTests {
                 .materialType("materialType")
                 .materialCode("materialCode")
                 .employeeName("김재고")
-//                .orderNo(45)
-//                .orderCode("ORDER-20230926-")
-//                .orderState("입고완료")
+                .orderNo(45)
+                .orderCode("ORDER-20230926-")
+                .orderState("입고완료")
 //                .documentFileNo(1)
                 .build();
 
@@ -97,7 +100,7 @@ public class MaterialInventoryServiceTests {
     }
 
     @Test
-    public void testListInventory() {
+    public void testStockList() {
 
         PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
                 .type("t")

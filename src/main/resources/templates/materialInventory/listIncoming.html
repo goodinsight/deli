@@ -79,9 +79,9 @@
                             <td>
                                 <a th:href="|@{/materialInventory/readInventory(orderNo = ${dto.orderNo})}&${link}|" class="text-decoration-none">[[${dto.materialName}]]</a>
                             </td>
-                            <td>[[${dto.orderQuantity}]]</td>
-                            <td>[[${dto.orderDate}]]</td>
-                            <td>[[${dto.orderDeliveryDate}]]</td>
+                            <td>[[dto.orderQuantity]]</td>
+                            <td>[[dto.orderDate]]</td>
+                            <td>[[dto.orderDeliveryDate]]</td>
                             <td>[[${dto.employeeName}]]</td>
                             <td>[[${dto.orderState}]]</td>
                         </tr>
