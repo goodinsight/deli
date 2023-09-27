@@ -88,7 +88,7 @@ public class BoardController {
         model.addAttribute("dto", boardDTO);
 
     }
-    @PreAuthorize("principal.username == #boardDTO.writer")
+    @PreAuthorize("principal.username == #boardDTO.writer or isAuthenticated()")
     @PostMapping("/modify")
     public String modify(PageRequestDTO pageRequestDTO,
                          @Valid BoardDTO boardDTO,
@@ -119,7 +119,7 @@ public class BoardController {
 
     }
 
-    @PreAuthorize("principal.username == #boardDTO.writer")
+    @PreAuthorize("principal.username == #boardDTO.writer or isAuthenticated()")
     @PostMapping("/remove")
     public String remove(BoardDTO boardDTO, RedirectAttributes redirectAttributes) {
 

@@ -49,6 +49,10 @@
                                     th:href="|@{/board/modify(bno=${dto.bno})}&${link}|" class="text-decoration-none">
                                 <button type="button" class="btn btn-secondary">Modify</button>
                             </a>
+                            <a sec:authorize="hasRole('ADMIN')"
+                               th:href="|@{/board/modify(bno=${dto.bno})}&${link}|" class="text-decoration-none">
+                                <button type="button" class="btn btn-secondary">Modify</button>
+                            </a>
                         </div>
                     </div>
                 </div> <!-- end card-body -->
