@@ -11,9 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -146,21 +144,17 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
     //조달계획상세(연관발주목록)
 
     @Override
-    public PageResponseDTO<OrderDTO> orderList(int materialProcurementPlanNo, PageRequestDTO pageRequestDTO) {
+    public List<OrderDTO> orderList(int materialProcurementPlanNo, PageRequestDTO pageRequestDTO) {
 
-        Pageable pageable = pageRequestDTO.getPageable();
+        List<Order> result = materialProcurementPlanningRepository.orderList(materialProcurementPlanNo);
 
-        Page<Order> result = materialProcurementPlanningRepository.orderList(materialProcurementPlanNo, pageable);
-
-        List<OrderDTO> dtoList = result.getContent().stream()
-                .map(order -> entityToDto2(order))
+        List<OrderDTO> dtoList = result.stream()
+                .map(this::entityToDto2)
                 .collect(Collectors.toList());
 
-        return PageResponseDTO.<OrderDTO>withAll()
-                .pageRequestDTO(pageRequestDTO)
-                .dtoList(dtoList)
-                .total((int) result.getTotalElements())
-                .build();
+        log.info("dtoList : " + dtoList);
+
+        return dtoList;
 
     }
 

@@ -22,7 +22,7 @@ public class MaterialInventoryServiceTests {
     private MaterialInOutHistoryService materialInOutHistoryService;
 
     @Test   //테스트 다시 해볼 것
-    public void testStockRegister() {
+    public void testRegisterInventory() {
 
         OrderDTO orderDTO = OrderDTO.builder().orderNo(45).employeeNo(5).employeeName("김재고").build();
         orderService.register(orderDTO);
@@ -50,7 +50,7 @@ public class MaterialInventoryServiceTests {
                 .build();
 
 
-        materialInventoryService.stockRegister(materialInventoryDTO);
+        materialInventoryService.registerInventory(materialInventoryDTO);
 
         log.info("success");
 
@@ -58,18 +58,18 @@ public class MaterialInventoryServiceTests {
     }
 
     @Test //테스트확인
-    public void testStockRead() {
+    public void testReadInventory() {
 
         int materialInventoryNo = 1;
 
-        MaterialInventoryDetailDTO materialInventoryDetailDTO = materialInventoryService.stockRead(materialInventoryNo);
+        MaterialInventoryDetailDTO materialInventoryDetailDTO = materialInventoryService.readInventory(materialInventoryNo);
 
         log.info(materialInventoryDetailDTO);
 
     }
 
     @Test   //나중에 테스트 다시 해볼 것
-    public void testStockModify() {
+    public void testModifyInventory() {
 
         MaterialInventoryDTO materialInventoryDTO = MaterialInventoryDTO.builder()
                 .materialHistoryNo(1)
@@ -85,19 +85,19 @@ public class MaterialInventoryServiceTests {
                 .materialType("materialType")
                 .materialCode("materialCode")
                 .employeeName("김재고")
-                .orderNo(45)
-                .orderCode("ORDER-20230926-")
-                .orderState("입고완료")
+//                .orderNo(45)
+//                .orderCode("ORDER-20230926-")
+//                .orderState("입고완료")
 //                .documentFileNo(1)
                 .build();
 
-        materialInventoryService.stockModify(materialInventoryDTO);
+        materialInventoryService.modifyInventory(materialInventoryDTO);
 
         log.info(materialInventoryDTO);
     }
 
     @Test
-    public void testStockList() {
+    public void testListInventory() {
 
         PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
                 .type("t")
@@ -106,7 +106,7 @@ public class MaterialInventoryServiceTests {
                 .size(10)
                 .build();
 
-        PageResponseDTO<MaterialInventoryDTO> responseDTO = materialInventoryService.stockList(pageRequestDTO);
+        PageResponseDTO<MaterialInventoryDTO> responseDTO = materialInventoryService.listInventory(pageRequestDTO);
 
         log.info(responseDTO);
 

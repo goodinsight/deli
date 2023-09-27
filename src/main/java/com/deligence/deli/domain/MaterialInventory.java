@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = {"materials", "materialImage", "order", "materialInOutHistory", "documentFile"})
+@ToString(exclude = {"materials", "materialImage", "materialInOutHistory", "documentFile"})
 public class MaterialInventory {
 
     @Id

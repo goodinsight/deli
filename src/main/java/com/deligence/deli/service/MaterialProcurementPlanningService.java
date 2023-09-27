@@ -4,6 +4,8 @@ import com.deligence.deli.domain.*;
 import com.deligence.deli.dto.*;
 import com.querydsl.jpa.JPQLQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import lombok.extern.java.Log;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -79,7 +81,7 @@ public interface MaterialProcurementPlanningService {
     }
 
     //조달 계획 상세(연관 발주 목록)
-    PageResponseDTO<OrderDTO> orderList(int materialProcurementPlanNo, PageRequestDTO pageRequestDTO);
+    List<OrderDTO> orderList(int materialProcurementPlanNo, PageRequestDTO pageRequestDTO);
 
     default OrderDTO entityToDto2(Order order) {
 
