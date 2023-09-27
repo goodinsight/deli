@@ -38,7 +38,11 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
 
         log.info("materialInventory : " + materialInventory);
 
-        int materialInventoryNo = materialInventoryRepository.save(materialInventory).getMaterialInventoryNo();
+        log.info("check");
+
+//        materialInventoryRepository.save(materialInventory);
+
+        int materialInventoryNo = materialInventoryRepository.save(materialInventory).getMaterialInventoryNo();//<- 어째서인지 material_in_out_history 테이블로 접근함.
 
         log.info("materialInventoryNo : " + materialInventoryNo);
 
