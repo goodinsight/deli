@@ -181,9 +181,9 @@ public class MaterialProcurementPlanningRepositoryTests {
 
         Pageable pageable = PageRequest.of(0,10);
 
-        Page<Order> result = materialProcurementPlanningRepository.orderList(10, pageable);
+        List<Order> result = materialProcurementPlanningRepository.orderList(10);
 
-        log.info(result.getTotalElements());
+        log.info(result);
 
 
     }
