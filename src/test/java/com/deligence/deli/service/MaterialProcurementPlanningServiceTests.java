@@ -116,15 +116,13 @@ public class MaterialProcurementPlanningServiceTests {
 //
 //        log.info(order.getTotalElements());
 
-        PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
-                .page(1)
-                .size(10)
-                .build();
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder().build();
 
-//        PageResponseDTO<OrderDTO> responseDTO =
-//                materialProcurementPlanningService.orderList(10, pageRequestDTO);
-//
-//        log.info(responseDTO);
+
+        List<OrderDTO> responseDTO =
+                materialProcurementPlanningService.orderList(10, pageRequestDTO);
+
+        log.info(responseDTO);
     }
 
 }

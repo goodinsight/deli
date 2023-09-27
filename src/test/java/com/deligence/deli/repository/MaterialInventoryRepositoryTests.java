@@ -57,8 +57,6 @@ public class MaterialInventoryRepositoryTests {
                     .materialStock(10)
                     .materialSupplyPrice(10000L)
                     .materialTotalInventoryPayments(100000L)
-                    .employeeName("윈터")
-                    .orderState("검수중")
                     .build();
 
             log.info(materialInventory);
@@ -142,8 +140,6 @@ public class MaterialInventoryRepositoryTests {
                 .materialStock(100)
                 .materialSupplyPrice(10000L)
                 .materialTotalInventoryPayments((1000000L))
-                .employeeName("윈터")
-                .orderState("검수중")
                 .build());
 
         materialInventoryRepository.save(materialInventory);

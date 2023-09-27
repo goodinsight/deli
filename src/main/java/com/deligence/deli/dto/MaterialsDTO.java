@@ -28,7 +28,7 @@ public class MaterialsDTO {
 
     private String materialExplaination; //자재설명
 
-    private Long materialSupplyPrice; //자재공급단가
+    private Long materialSupplyPrice; //자재공급단가 -> 자재는 회사별로 가격이 다르기 때문에 필요한건지 모르겠음.
 
     private LocalDateTime regDate; //등록일
 
