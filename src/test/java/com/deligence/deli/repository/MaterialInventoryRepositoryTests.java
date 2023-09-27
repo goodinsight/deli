@@ -27,6 +27,10 @@ public class MaterialInventoryRepositoryTests {
     private OrderRepository orderRepository;
     @Autowired
     private MaterialProcurementPlanningRepository materialProcurementPlanningRepository;
+
+    @Autowired
+    private MaterialInOutHistoryRepository materialInOutHistoryRepository;
+
     @Autowired
     private MaterialsRepository materialsRepository;
 
@@ -63,6 +67,41 @@ public class MaterialInventoryRepositoryTests {
         });
 
     }
+
+    @Test
+    public void testInsertUpdate() {
+
+        int materialInventoryNo = 10;
+        int num = 10;
+
+        Optional<MaterialInventory> result = materialInventoryRepository.findById(materialInventoryNo);
+
+        MaterialInventory materialInventory = result.orElseThrow();
+
+        materialInventory.change(MaterialInventoryDTO.builder()
+                .materialOutgoingQuantity(num)
+                .materialStock(materialInventory.getMaterialStock() - num)
+                .build());
+
+        log.info(materialInventory);
+
+        materialInventoryRepository.save(materialInventory);
+
+        MaterialInOutHistory materialInOutHistory = MaterialInOutHistory.builder()
+                .inOutSeparator("출고")
+                .quantity(num)
+                .employeeName("김자재")
+                .build();
+
+        log.info(materialInOutHistory);
+
+        materialInOutHistoryRepository.save(materialInOutHistory);
+
+
+    }
+
+
+
 
     @Test
     public void testInventorySelect() {

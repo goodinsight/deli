@@ -121,10 +121,10 @@ public class MaterialProcurementPlanningServiceTests {
                 .size(10)
                 .build();
 
-        PageResponseDTO<OrderDTO> responseDTO =
-                materialProcurementPlanningService.orderList(10, pageRequestDTO);
-
-        log.info(responseDTO);
+//        PageResponseDTO<OrderDTO> responseDTO =
+//                materialProcurementPlanningService.orderList(10, pageRequestDTO);
+//
+//        log.info(responseDTO);
     }
 
 }

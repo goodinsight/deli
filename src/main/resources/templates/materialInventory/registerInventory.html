@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout.html}">
+<head>
+  <meta charset="UTF-8">
+  <title>자재 출고 등록</title>
+</head>
+
+<div layout:fragment="content">
+
+  <div class="row mt-3">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          자재 출고 등록
+        </div>
+        <div class="card-body mt-3">
+          <form action="/materialInventory/materialOutRegister" method="post">
+
+
+            <div class="input-group mb-3 d-none">
+              <span class="input-group-text">자재 일련번호</span>
+              <input type="text" name="materialNo" class="form-control materialNo"  readonly>
+            </div>
+            <div class="input-group mb-3">
+              <span class="input-group-text">자재 코드</span>
+              <input type="text" name="materialCode" class="form-control materialCode" id="selectMaterial" readonly>
+            </div>
+
+            <div class="input-group mb-3 pl-5">
+              <span class="input-group-text">자재 이름</span>
+              <input type="text" name="materialName" class="form-control materialName" readonly>
+            </div>
+
+            <div class="input-group mb-3 pl-5">
+              <span class="input-group-text">재고 수량</span>
+              <input type="text" name="materialStock"  class="form-control materialStock" id="selectMaterialStockModal" readonly>
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">출고수량</span>
+              <input type="number" name="productOutgoingQuantity" class="form-control productOutgoingQuantity" placeholder="출고 수량" >
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">담당자 이름</span>
+              <input type="text" name="employeeName" class="form-control employeeName" th:value="${user.employeeName}" readonly>
+            </div>
+
+            <div class="my-4">
+              <div class="float-end">
+                <!-- 제품 계약 만들면 list, read, modify만들기
+                <a th:href="@{/materialProcurementPlanning/list}" class="text-decoration-none">
+                  <button type="button" class="btn btn-outline-dark">List</button>
+                </a>
+                !-->
+                <button type="submit" class="btn btn-primary submitBtn">Submit</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+              </div>
+            </div>
+
+          </form>
+
+        </div><!--end card body-->
+      </div><!--end card-->
+    </div><!--end col-->
+  </div><!--end row-->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</div>
+
+
+
+<script layout:fragment="script" th:inline="javascript">
+
+
+  const auth = [[${#authentication}]]
+
+  console.log(auth)
+
+  // 등록시 에러 처리 ----------------------------------------------------------------
+
+  const errors = [[${errors}]]
+  console.log(errors)
+
+  let errorMsg = ''
+
+  if (errors) {
+    for (let i = 0; i < errors.length; i++) {
+      errorMsg += `${errors[i].field}은(는) ${errors[i].code} \n`
+    }
+    alert(errorMsg)
+  }
+
+  </script>
+
+
+</html>
