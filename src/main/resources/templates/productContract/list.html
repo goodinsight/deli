@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>제품 계약 리스트</title>
+</head>
+
+<div layout:fragment="content">
+
+    <div class="row mt-12 m-l-15">
+        <form class="col-lg-10" action="/productContract/list" method="get">
+            <div class="form-group">
+                <p class="text-muted m-b-15 f-s-12">
+                    "검색하고 싶은
+                    <code>카테고리를 선택하고 키워드</code>
+                    를 입력한 뒤 search버튼을 누르세요"
+                </p>
+                <input type="hidden" name="size" th:value="${orderPageRequestDTO.size}">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <select class="form-select" name="state">
+                            <option value="">제품 계약 상태</option>
+                            <option value="자재검토중" th:selected="${orderPageRequestDTO.state == '자재검토중'}">자재검토중</option>
+                            <option value="자재조달중" th:selected="${orderPageRequestDTO.state == '자재조달중'}">자재조달중</option>
+                            <option value="자재입고중" th:selected="${orderPageRequestDTO.state == '자재입고중'}">자재입고중</option>
+                            <option value="제품생산중" th:selected="${orderPageRequestDTO.state == '제품생산중'}">제품생산중</option>
+                            <option value="제품출고완료" th:selected="${orderPageRequestDTO.state == '제품출고완료'}">제품출고완료</option>
+                        </select>
+                    </div>
+                    <div class="input-group-prepend">
+                        <select class="form-select" name="type">
+                            <option value="">---</option>
+                            <option value="a" th:selected="${orderPageRequestDTO.type == 'a'}">계약 코드</option>
+                            <option value="b" th:selected="${orderPageRequestDTO.type == 'b'}">제품 코드</option>
+                            <option value="c" th:selected="${orderPageRequestDTO.type == 'c'}">클라이언트 회사명</option>
+                            <option value="d" th:selected="${orderPageRequestDTO.type == 'd'}">계약일</option>
+                        </select>
+                    </div>
+
+                    <input type="text" class="form-control input-focus" name="keyword"
+                           th:value="${orderPageRequestDTO.keyword}" placeholder="INPUT KEYWORD">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-success searchBtn" type="submit">
+                            <i class="ti-search"></i> Search</button>
+                        <button class="btn btn-outline-danger clearBtn" type="button">Clear</button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="row mt-3">
+
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    제품 계약 리스트
+                </div>
+                <div class="my-4">
+                    <div class="float-left">
+                        <a th:href="@{/productContract/register}" class="text-decoration-none">
+                            <button type="button" class="btn btn-primary">Register</button>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table table-responsive-lg table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">no</th>
+                            <th scope="col">계약 코드</th>
+                            <th scope="col">제품 코드</th>
+                            <th scope="col">계약 수량</th>
+                            <th scope="col">클라이언트 회사명</th>
+                            <th scope="col">계약일</th>
+                            <th scope="col">납기일</th>
+                            <th scope="col">담당자</th>
+                            <th scope="col">계약 진행 상태</th>
+                        </tr>
+                        </thead>
+                        <tbody th:with="link = ${orderPageRequestDTO.getLink()}">
+                        <tr th:each="dto:${responseDTO.dtoList}">
+                            <td>[[${dto.productContractNo}]]</td>
+                            <td>
+                                <a th:href="|@{/productContract/read(productContractNo = ${dto.productContractNo})}&${link}|" class="text-decoration-none">[[${dto.productContractCode}]]</a>
+                            </td>
+                            <td>[[${dto.productCode}]]</td>
+                            <td>[[${dto.productQuantity}]]</td>
+                            <td>[[${dto.clientName}]]</td>
+                            <td>[[${dto.productContractDate}]]</td>
+                            <td>[[${dto.productDeliveryDate}]]</td>
+                            <td>[[${dto.employeeName}]]</td>
+                            <td>[[${dto.productContractState}]]</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="float-end">
+                        <ul class="pagination flex-wrap">
+
+                            <li class="page-item" th:if="${responseDTO.prev}">
+                                <a class="page-link" th:data-num="${responseDTO.start -1}">Previous</a>
+                            </li>
+
+                            <th:block th:each="i: ${#numbers.sequence(responseDTO.start, responseDTO.end)}">
+
+                                <li th:class="${responseDTO.page == i}?'page-item active':'page-item'">
+                                    <a class="page-link" th:data-num="${i}">[[${i}]]</a>
+                                </li>
+
+                            </th:block>
+
+                            <li class="page-item" th:if="${responseDTO.next}">
+                                <a class="page-link" th:data-num="${responseDTO.end + 1}">Next</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div><!-- end card -->
+
+        </div><!-- end col -->
+    </div><!-- end row -->
+
+    <!--modal-->
+    <div class="modal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" >Save changes</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script layout:fragment="script" th:inline="javascript">
+
+    console.log("제품 계약 리스트 페이지")
+
+    $(document).ready(function () {
+        console.log([[${orderPageRequestDTO}]])
+        console.log([[${orderPageRequestDTO.link}]])
+        console.log([[${responseDTO}]])
+    })
+
+    document.querySelector(".pagination").addEventListener("click", function(e){
+        e.preventDefault()
+        e.stopPropagation()
+
+        var target = e.target
+
+        if(target.tagName !== 'A'){
+            return
+        }
+
+        var num = target.getAttribute("data-num")
+
+        var formObj = document.querySelector("form")
+
+        formObj.innerHTML += `<input type="hidden" name="page" value="${num}">`
+
+        formObj.submit()
+
+    }, false)
+
+    document.querySelector(".clearBtn").addEventListener("click", function (e){
+        e.preventDefault()
+        e.stopPropagation()
+
+        self.location = '/productContract/list'
+    }, false)
+
+    //show modal
+    const result = [[${result}]]
+
+    const modal = new bootstrap.Modal(document.querySelector(".modal"))
+
+    if(result){
+        modal.show()
+    }
+
+
+
+</script>
+
+</html>
