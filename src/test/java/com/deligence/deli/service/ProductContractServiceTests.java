@@ -70,7 +70,7 @@ public class ProductContractServiceTests {
     public void testList() {
 
         PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
-                .type("a")  //a:제품계약코드 b:제품코드 c:회사명 d:계약일 +계약상태별도
+                .type("a")  //a:제품계약코드 b:제품코드 c:회사명 d:계약일 e:클라이언트계약상태 +계약진행상태별도
                 .keyword("code")
                 .page(1)
                 .size(10)

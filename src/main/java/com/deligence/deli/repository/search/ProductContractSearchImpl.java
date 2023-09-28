@@ -92,7 +92,7 @@ public class ProductContractSearchImpl  extends QuerydslRepositorySupport implem
             for(String type : types) {
 
                 switch(type){
-                    //a:제품계약코드 b:제품코드 c:회사명 d:계약일(보류) +계약상태별도
+                    //a:제품계약코드 b:제품코드 c:회사명 d:계약일(보류) e:클라이언트계약상태 +계약진행상태별도
                     case "a":
                         booleanBuilder.or(productContract.productContractCode.contains(keyword));
                         break;
@@ -103,8 +103,11 @@ public class ProductContractSearchImpl  extends QuerydslRepositorySupport implem
                         booleanBuilder.or(productContract.clientName.contains(keyword));
                         break;
                     case "d":
-                    booleanBuilder.or(productContract.productContractDate.stringValue().contains(keyword));
-                    break;
+                        booleanBuilder.or(productContract.productContractDate.stringValue().contains(keyword));
+                        break;
+                    case "e":
+                        booleanBuilder.or(productContract.clientStatus.contains(keyword));
+                        break;
 
                 }
 
@@ -181,6 +184,7 @@ public class ProductContractSearchImpl  extends QuerydslRepositorySupport implem
                 .productContractState(resultProductContract.getProductContractState())
                 .clientNo(resultClient.getClientNo())
                 .clientName(resultClient.getClientName())
+//                .clientStatus(resultProductContract.getClientStatus())
                 .clientStatus(resultClient.getClientStatus())
                 .clientCeo(resultClient.getClientCeo())
                 .clientPhone(resultClient.getClientPhone())

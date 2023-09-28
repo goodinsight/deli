@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>제품 계약 등록</title>
+</head>
+
+<div layout:fragment="content">
+
+    <div class="row mt-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    제품 계약 등록
+                </div>
+                <div class="card-body mt-3">
+                    <form action="/productContract/register" method="post">
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">제품 계약 코드</span>
+                            <input type="text" name="productContractCode" class="form-control" id="productContractCode" placeholder="클릭해주세요" readonly>
+                        </div>
+
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">제품 일련번호</span>
+                            <input type="text" name="productNo" class="form-control productNo" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">제품 코드</span>
+                            <input type="text" name="productCode" class="form-control" id="selectProduct" placeholder="클릭해주세요" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">제품이름</span>
+                            <input type="text" name="productName" class="form-control productName" readonly>
+                            <span class="input-group-text">제품타입</span>
+                            <input type="text" name="productType" class="form-control productType" readonly>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">제품 계약 수량</span>
+                            <input type="text" name="productQuantity" class="form-control productQuantity" placeholder="제품 계약 수량">
+                        </div>
+
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">클라이언트 일련번호</span>
+                            <input type="text" name="clientNo" class="form-control clientNo" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">클라이언트 회사명</span>
+                            <input type="text" name="clientName" class="form-control" id="selectClient" placeholder="클릭해주세요" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">대표명</span>
+                            <input type="text" name="clientCeo" class="form-control clientCeo" readonly>
+                            <span class="input-group-text">연락처</span>
+                            <input type="text" name="clientPhone" class="form-control clientPhone" readonly>
+                        </div>
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">클라이언트 주소</span>
+                            <input type="text" name="clientAddress" class="form-control clientAddress" readonly>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">계약일</span>
+                            <input type="date" name="productContractDate" class="form-control productContractDate">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">제품 납기일</span>
+                            <input type="date" name="productDeliveryDate" class="form-control productDeliveryDate">
+                        </div>
+                        <div class="input-group mb-3" >
+                            <span class="input-group-text">상세 내용</span>
+                            <textarea name="productQuotation" rows="5" cols="50" class="form-control h-25" placeholder="견적 내용"></textarea>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">계약 진행 상태</span>
+                            <input type="text" name="productContractState" class="form-control" placeholder="계약진행상태 - 추후 숨길 부분" th:value="자재검토중" readonly>
+                        </div>
+
+                        <div class="d-none input-group mb-3">
+                            <span class="input-group-text">담당자 일련번호</span>
+                            <input type="text" name="employeeNo" class="form-control" th:value="${user.employeeNo}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">담당자 이름</span>
+                            <input type="text" name="employeeName" class="form-control" th:value="${user.employeeName}" readonly>
+                        </div>
+                        <div class="my-4">
+                            <div class="float-end">
+                                <button type="submit" class="btn btn-primary submitBtn">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                </div><!-- end card body -->
+            </div><!-- end card -->
+        </div><!-- end col -->
+    </div><!-- end row -->
+
+    <!-- 제품 선택을 위한 모달창 -->
+    <div class="modal selectProductModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">제품 검색</h5>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">NO</th>
+                                            <th scope="col">제품코드</th>
+                                            <th scope="col">제품이름</th>
+                                            <th scope="col">제품타입</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody class="productList">
+
+                                        </tbody>
+                                    </table>
+
+                                    <div class="float-end">
+                                        <ul class="pagination flex-wrap productPaging">
+                                        </ul>
+                                    </div>
+                                </div><!--end card body-->
+                            </div><!--end card-->
+                        </div><!--end col-->
+                    </div><!--end row-->
+
+
+                </div><!-- modal body end -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark closeProductBtn">Close</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- end 제품 모달창 -->
+
+
+    <!-- 클라이언트 선택을 위한 모달창 -->
+    <div class="modal selectClientModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">클라이언트 검색</h5>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">NO</th>
+                                            <th scope="col">회사명</th>
+                                            <th scope="col">대표명</th>
+                                            <th scope="col">주소명</th>
+                                            <th scope="col">연락처</th>
+                                            <th scope="col">계약상태</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody class="clientList">
+
+                                        </tbody>
+                                    </table>
+
+                                    <div class="float-end">
+                                        <ul class="pagination flex-wrap clientPaging">
+                                        </ul>
+                                    </div>
+                                </div><!--end card body-->
+                            </div><!--end card-->
+                        </div><!--end col-->
+                    </div><!--end row-->
+
+
+                </div><!-- modal body end -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark closeClientBtn">Close</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- end 클라이언트 모달창 -->
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="/js/productContract.js"></script>
+
+</div>
+
+
+<script layout:fragment="script" th:inline="javascript">
+
+    const auth = [[${#authentication}]]
+
+    console.log(auth)
+
+    //등록시 에러 처리-----------------------------------
+
+    const errors = [[${errors}]]
+    console.log(errors)
+
+    let errorMsg = ''
+
+    if(errors){
+        for(let i = 0; i < errors.length; i++){
+            errorMsg += `${errors[i].field} : ${errors[i].code} \n`
+        }
+        alert(errorMsg)
+    }
+
+
+    // 제품 선택 ------------------------------------------------
+
+    const productModal = new bootstrap.Modal(document.querySelector(".selectProductModal"))
+
+    const productList = document.querySelector(".productList")          //제품 목록 DOM
+    const productPaging = document.querySelector(".productPaging")      //제품 페이지 선택 목록 DOM
+
+    const closeProductBtn = document.querySelector(".closeProductBtn")
+
+    let productPage = 1
+    let productPageSize = 5
+
+    document.querySelector("#selectProduct").addEventListener("click", function (e) {
+        printProducts(1, 5)
+        productModal.show()
+    }, false)
+
+    closeProductBtn.addEventListener("click", function (e) {
+        productModal.hide()
+    })
+
+    function printProductList(dtoList){     //제품 목록
+
+        console.log("print product list")
+
+        let str = ''
+
+        if(dtoList && dtoList.length > 0){
+
+            for( const dto of dtoList) {
+
+                console.log(dto)
+
+                str += `<tr>
+                            <td data-productsNo="${dto.productNo}">${dto.productNo}</td>
+                            <td data-productsNo="${dto.productNo}">${dto.productCode}</td>
+                            <td data-productsNo="${dto.productNo}">${dto.productName}</td>
+                            <td data-productsNo="${dto.productNo}">${dto.productType}</td>
+                        </tr>`
+
+            }
+
+        }
+
+        productList.innerHTML = str
+
+    }
+
+    function printProductPages(data){      //제품 목록 페이징 처리
+
+        let pageStr = '';
+
+        if(data.prev) {
+            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.start-1}">PREV</a></li>`
+        }
+        for(let i = data.start; i <= data.end; i++){
+            pageStr += `<li class="page-item ${ i == data.page ? "active" : ""}"><a class="page-link" data-page="${i}">${i}</a></li>`
+        }
+        if(data.next) {
+            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end+1}">NEXT</a></li>`
+        }
+        productPaging.innerHTML = pageStr
+
+        productPage = data.page
+
+    }
+
+    function printProducts(page, size) {
+
+        getProductList({page, size}).then(
+            data => {
+                printProductList(data.dtoList)
+                printProductPages(data)
+            }
+        ).catch(e => {
+            console.log("print products error")
+            console.error(e)
+        })
+    }
+
+    //제품 목록 페이징
+    productPaging.addEventListener("click", function(e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        const target = e.target
+
+        if(!target || target.tagName != 'A'){
+            return
+        }
+
+        const pageNum = target.getAttribute("data-page")
+        productPage = pageNum
+        printProducts(productPage, productPageSize)
+
+    }, false)
+
+    const productNo = document.querySelector(".productNo")
+    const inputProductCode = document.querySelector("#selectProduct")
+    const productName = document.querySelector(".productName")
+    const productType = document.querySelector(".productType")
+
+
+    //제품 항목 클릭시 input 에 반영
+    productList.addEventListener("click", function (e){
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        console.log("product click")
+
+        const target = e.target
+
+        if(!target || target.tagName != 'TD'){
+            return
+        }
+
+        const productsNo = target.getAttribute("data-productsNo")
+
+        if(!productsNo){
+            return
+        }
+
+        getProduct(productsNo).then(product => {
+
+            console.log(product)
+
+            productNo.value = product.productNo
+            //조달 계획 정보를 가져와서 화면에 반영해야할 항목들은 여기에-----------------------------------------------------
+            inputProductCode.value = product.productCode
+            productName.value = product.productName
+            productType.value = product.productType
+            //-----------------------------------------------------------------------------------------------------------
+
+            productModal.hide()
+
+        }).catch(e => alert('error'))
+
+    }, false)
+
+
+    // 클라이언트 선택 -----------------------------------------------------------------------
+
+    const clientModal = new bootstrap.Modal(document.querySelector(".selectClientModal"))
+
+    const clientList = document.querySelector(".clientList")            //클라이언트 목록 DOM
+    const clientPaging = document.querySelector(".clientPaging")    //클라이언트 페이지 선택 목록 DOM
+
+    const closeClientBtn = document.querySelector(".closeClientBtn")
+
+    let clientPage = 1
+    let clientPageSize = 5
+
+    document.querySelector("#selectClient").addEventListener("click", function (e) {
+
+        if(materialCode.value.length > 0){
+            printContracts(1, 5)
+            contractModal.show()
+        }else {
+            alert("제품을 먼저 선택해주세요.")
+        }
+
+    }, false)
+
+    closeClientBtn.addEventListener("click", function (e) {
+        clientModal.hide()
+    })
+
+    function printClientList(dtoList){    //클라이언트 목록
+
+        let str = ''
+
+        if(dtoList && dtoList.length > 0){
+
+            for( const dto of dtoList) {
+
+                console.log(dto)
+
+                str += `<tr>
+                            <td data-clientsNo="${dto.clientNo}">${dto.clientNo}</td>
+                            <td data-clientsNo="${dto.clientNo}">${dto.clientName}</td>
+                            <td data-clientsNo="${dto.clientNo}">${dto.clientCeo}</td>
+                            <td data-clientsNo="${dto.clientNo}">${dto.clientAddress}</td>
+                            <td data-clientsNo="${dto.clientNo}">${dto.clientPhone}</td>
+                            <td data-clientsNo="${dto.clientNo}">${dto.clientStatus}</td>
+                        </tr>`
+
+            }
+
+        }
+
+        clientList.innerHTML = str
+
+    }
+
+
+    function printClientPages(data){    //클라이언트 목록 페이징 처리
+
+        let pageStr = '';
+
+        if(data.prev) {
+            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.start-1}">PREV</a></li>`
+        }
+        for(let i = data.start; i <= data.end; i++){
+            pageStr += `<li class="page-item ${ i == data.page ? "active" : ""}"><a class="page-link" data-page="${i}">${i}</a></li>`
+        }
+        if(data.next) {
+            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end+1}">NEXT</a></li>`
+        }
+        clientPaging.innerHTML = pageStr
+
+        clientPage = data.page
+
+    }
+
+    function printClients(page, size) {
+
+        const type = "b"
+        const keyword = clientStatus.value
+
+        getClientList({page, size, type, keyword}).then(
+            data => {
+                printClientList(data.dtoList)
+                printClientPages(data)
+            }
+        ).catch(e => {
+            console.error(e)
+        })
+    }
+
+    //계약 목록 페이징
+    clientPaging.addEventListener("click", function(e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        const target = e.target
+
+        if(!target || target.tagName != 'A'){
+            return
+        }
+
+        const pageNum = target.getAttribute("data-page")
+        clientPage = pageNum
+        printClients(clientPage, clientPageSize)
+
+    }, false)
+
+
+    const clientNo = document.querySelector(".clientNo")
+    const inputClientName = document.querySelector("#selectClient")
+    const clientCeo = document.querySelector(".clientCeo")
+    const clientAddress = document.querySelector(".clientAddress")
+    const clientPhone = document.querySelector(".clientPhone")
+    const clientStatus = document.querySelector(".clientStatus")
+
+    //클라이언트 항목 클릭시 input 에 반영
+    clientList.addEventListener("click", function (e){
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        console.log("client click")
+
+        const target = e.target
+
+        if(!target || target.tagName != 'TD'){
+            return
+        }
+
+        const clientsNo = target.getAttribute("data-clientsNo")
+
+        if(!clientsNo){
+            return
+        }
+
+        getClient(clientsNo).then(client => {
+
+            console.log(client)
+            clientNo.value = client.clientNo
+            //계약 정보를 가져와서 화면에 반영해야할 항목들은 여기에------------------------------------------------------------
+            inputClientName.value = client.clientName
+            clientCeo.value = client.clientCeo
+            clientAddress.value = client.clientAddress
+            clientPhone.value = client.clientPhone
+            clientStatus.value = client.clientStatus
+            //-----------------------------------------------------------------------------------------------------------
+
+            clientModal.hide()
+
+        }).catch(e => alert('error'))
+
+    }, false)
+
+
+    //제품계약 코드 생성 -------------------------------------------------------------------------------------------------------------
+
+    const productContractCode = document.querySelector("#productContractCode")
+
+    productContractCode.addEventListener("click", function(e) {
+
+        let str = 'PD-CONTRACT-'
+
+        str += new Date().toISOString().split('T')[0].replaceAll('-','')
+        str += '-'
+
+        getCodeCount(str).then( result => {
+
+            str += result.data
+
+            productContractCode.value = str
+
+        }).catch(e => alert('error'))
+
+
+    }, false)
+
+
+</script>
+
+
+
+
+
+</html>

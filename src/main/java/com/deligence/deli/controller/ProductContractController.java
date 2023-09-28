@@ -1,19 +1,20 @@
 package com.deligence.deli.controller;
 
-import com.deligence.deli.domain.CooperatorClient;
-import com.deligence.deli.domain.Products;
-import com.deligence.deli.dto.OrderDTO;
-import com.deligence.deli.dto.OrderPageRequestDTO;
-import com.deligence.deli.dto.OrderPageResponseDTO;
-import com.deligence.deli.dto.ProductContractDTO;
+import com.deligence.deli.dto.*;
 import com.deligence.deli.service.ProductContractService;
 import com.deligence.deli.service.ProductsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.MediaType;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/productContract")
@@ -37,6 +38,101 @@ public class ProductContractController {
         log.info(responseDTO);
 
         model.addAttribute("responseDTO", responseDTO);
+
+    }
+
+    @GetMapping("/register")
+    public void registerGET(@AuthenticationPrincipal EmployeeSecurityDTO employeeSecurityDTO, Model model){
+
+        log.info(employeeSecurityDTO);
+
+        model.addAttribute("user", employeeSecurityDTO);
+
+    }
+
+    @PostMapping("/register")
+    public String registerPOST(@Valid ProductContractDTO productContractDTO,
+                               BindingResult bindingResult,
+                               RedirectAttributes redirectAttributes){
+
+        log.info("productContract post register----------------");
+
+        log.info(productContractDTO);
+
+        if(bindingResult.hasErrors()) {
+
+            log.info("productContract register error");
+
+            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
+
+            return "redirect:/productContract/register";
+        }
+
+
+        int productContractNo = productContractService.register(productContractDTO);
+
+        redirectAttributes.addFlashAttribute("result", productContractNo);
+
+        return "redirect:/productContract/list";
+
+    }
+
+
+    // 비동기 처리 -------------------------------------------------------
+
+    @ResponseBody
+    @GetMapping("/register/selectProduct")
+    public PageResponseDTO<ProductsDTO> getProductList(PageRequestDTO pageRequestDTO){
+
+        log.info("getProductList");
+
+//        //클라이언트 계약 상태 : 계약중(e)  검색
+//        pageRequestDTO.setType("e");
+//        pageRequestDTO.setKeyword("계약중");
+
+        PageResponseDTO<ProductsDTO> responseDTO = productsService.list(pageRequestDTO);
+
+        return responseDTO;
+    }
+
+    @ResponseBody
+    @GetMapping("/register/getProduct/{productsNo}")
+    public ProductsDTO getProductDTO(@PathVariable("productsNo") int productsNo) {
+
+        log.info("getProductDTO : " + productsNo);
+
+        ProductsDTO productsDTO = productsService.readOne(productsNo);
+
+        log.info(productsDTO);
+
+        return productsDTO;
+
+    }
+
+    //cooperatorClientService만들면 비동기처리 추가
+
+    @ResponseBody
+    @GetMapping("/register/getCodeCount/{productContractCode}")
+    public int getCodeCount(@PathVariable("productContractCode") String productContractCode){
+
+        log.info("getCodeCount : " + productContractCode);
+
+        int num = productContractService.getCodeCount(productContractCode);
+
+        log.info("num : " + num);
+
+        return num;
+
+    }
+
+    @ResponseBody
+    @PostMapping(value = "/changeProductContractState", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void changeProductContractState(@RequestBody Map<String, Object> map){
+
+        int productContractNo = Integer.parseInt(map.get("productContractNo").toString());
+        String state = map.get("state").toString();
+
+        productContractService.changeState(productContractNo, state);
 
     }
 
