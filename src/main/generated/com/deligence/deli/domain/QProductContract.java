@@ -43,6 +43,8 @@ public class QProductContract extends EntityPathBase<ProductContract> {
 
     public final NumberPath<Integer> productContractNo = createNumber("productContractNo", Integer.class);
 
+    public final StringPath productContractState = createString("productContractState");
+
     public final DatePath<java.time.LocalDate> productDeliveryDate = createDate("productDeliveryDate", java.time.LocalDate.class);
 
     public final NumberPath<Integer> productQuantity = createNumber("productQuantity", Integer.class);
