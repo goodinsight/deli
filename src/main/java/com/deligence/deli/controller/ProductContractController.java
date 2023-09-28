@@ -1,5 +1,6 @@
 package com.deligence.deli.controller;
 
+import com.deligence.deli.domain.CooperatorClient;
 import com.deligence.deli.dto.*;
 import com.deligence.deli.service.ProductContractService;
 import com.deligence.deli.service.ProductsService;
@@ -77,6 +78,66 @@ public class ProductContractController {
 
     }
 
+    @GetMapping({"/read", "/modify"})
+    public void read(int productContractNo, OrderPageRequestDTO orderPageRequestDTO, Model model) {
+
+        log.info("search : productContractNo = " + productContractNo);
+
+        ProductContractDetailDTO productContractDetailDTO = productContractService.read(productContractNo);
+
+        log.info(productContractDetailDTO);
+
+        model.addAttribute("dto", productContractDetailDTO);
+
+        model.addAttribute("pageRequestDTO", orderPageRequestDTO);
+
+    }
+
+    @PostMapping("/modify")
+    public String modify(OrderPageRequestDTO orderPageRequestDTO,
+                         @Valid ProductContractDTO productContractDTO,
+                         BindingResult bindingResult,
+                         RedirectAttributes redirectAttributes){
+
+        log.info("productContract modify : " + productContractDTO);
+
+        //에러 처리------------------------------------------------------------------------
+        if (bindingResult.hasErrors()) {
+            log.info("has errors.....");
+
+            String link = orderPageRequestDTO.getLink();
+
+            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors() );
+
+            redirectAttributes.addAttribute("productContractNo",
+                    productContractDTO.getProductContractNo());
+
+            return "redirect:/productContract/modify?"+link;
+        }
+        //-----------------------------------------------------------------------------------
+
+        productContractService.modify(productContractDTO);
+
+        redirectAttributes.addFlashAttribute("result", "modified");
+
+        redirectAttributes.addAttribute("productContractNo", productContractDTO.getProductContractNo());
+
+        return "redirect:/productContract/read";
+    }
+
+    @PostMapping("/remove")
+    public String remove(int productContractNo, RedirectAttributes redirectAttributes) {
+
+        log.info("remove post...." + productContractNo);
+
+        productContractService.remove(productContractNo);
+
+        redirectAttributes.addFlashAttribute("result", "removed");
+
+        return "redirect:/productContract/list";
+
+    }
+
 
     // 비동기 처리 -------------------------------------------------------
 
@@ -109,7 +170,11 @@ public class ProductContractController {
 
     }
 
-    //cooperatorClientService만들면 비동기처리 추가
+    //cooperatorClientService만들면 비동기처리  --------------------------------
+
+
+
+    //--------------------------------------------------------------------------
 
     @ResponseBody
     @GetMapping("/register/getCodeCount/{productContractCode}")

@@ -190,7 +190,7 @@ public class ProductContractSearchImpl  extends QuerydslRepositorySupport implem
                 .clientPhone(resultClient.getClientPhone())
                 .clientAddress(resultClient.getClientAddress())
                 .employeeNo(resultProductContract.getEmployee().getEmployeeNo())
-                .employeeName(resultProductContract.getClientName())
+                .employeeName(resultProductContract.getEmployeeName())
 //                .documentFileNo(resultProductContract.getDocumentFile().getDocumentFileNo())
                 .regDate(resultProductContract.getRegDate())
                 .modDate(resultProductContract.getModDate())
