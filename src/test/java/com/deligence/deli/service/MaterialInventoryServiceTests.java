@@ -24,7 +24,7 @@ public class MaterialInventoryServiceTests {
     private MaterialInOutHistoryService materialInOutHistoryService;
 
     @Test   //테스트 다시 해볼 것
-    public void testStockRegister() {
+    public void testInventoryRegister() {
 
         OrderDTO orderDTO = OrderDTO.builder().orderNo(45).employeeNo(5).employeeName("김재고").build();
         orderService.register(orderDTO);
@@ -39,15 +39,10 @@ public class MaterialInventoryServiceTests {
                 .materialStock(50)
                 .materialSupplyPrice(1000L)
                 .materialTotalInventoryPayments(50000L)
-                .materialImageNo(50)
                 .materialHistoryNo(5)
                 .materialName("materialName")
                 .materialType("materialType")
                 .materialCode("materialCode")
-                .employeeName("김재고")
-                .orderNo(45)
-                .orderCode("ORDER-20230926-")
-                .orderState("입고완료")
 //                .documentFileNo(1)
                 .build();
 
@@ -82,15 +77,10 @@ public class MaterialInventoryServiceTests {
                 .materialStock(50)
                 .materialSupplyPrice(1000L)
                 .materialTotalInventoryPayments(50000L)
-                .materialImageNo(50)
                 .materialHistoryNo(5)
                 .materialName("materialName")
                 .materialType("materialType")
                 .materialCode("materialCode")
-                .employeeName("김재고")
-                .orderNo(45)
-                .orderCode("ORDER-20230926-")
-                .orderState("입고완료")
 //                .documentFileNo(1)
                 .build();
 

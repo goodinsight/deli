@@ -59,7 +59,7 @@ public class ProductContract extends BaseEntity{
         this.productQuantity = productContractDTO.getProductQuantity();
         this.productDeliveryDate = productContractDTO.getProductDeliveryDate();
         this.productQuotation = productContractDTO.getProductQuotation();
-        this.productContractState = productContractDTO.getProductContractCode();
+        this.productContractState = productContractDTO.getProductContractState();
 
         //사원명
 
