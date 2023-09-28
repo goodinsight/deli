@@ -31,22 +31,28 @@ public class ProductContractRepositoryTests {
 
         int employeeNo = 28;
 
-        IntStream.rangeClosed(1,10).forEach(i -> {
+        IntStream.rangeClosed(1,5).forEach(i -> {
 
-            Employee employee = Employee.builder().employeeNo(28).build();
-            Products products = Products.builder().productNo(1).build();
-            CooperatorClient cooperatorClient = CooperatorClient.builder().clientNo(1).build();
-            DocumentFile documentFile = DocumentFile.builder().documentFileNo(1).build();
+//            Employee employee = Employee.builder().employeeNo(28).build();
+//            Products products = Products.builder().productNo(1).build();
+//            CooperatorClient cooperatorClient = CooperatorClient.builder().clientNo(1).build();
+//            DocumentFile documentFile = DocumentFile.builder().documentFileNo(1).build();
 
             ProductContract productContract = ProductContract.builder()
                     .productContractCode("tmpCode..."+i)
+                    .products(Products.builder().productNo(1).build())
                     .productCode("productCode"+i)
                     .productQuantity(i)
+                    .productContractDate(LocalDate.now())
                     .productDeliveryDate(LocalDate.of(2023,10,12))
                     .productQuotation("quotation"+i)
                     .productContractState("진행중")
+                    .cooperatorClient(CooperatorClient.builder().clientNo(1).build())
                     .clientName("clientName1")
                     .clientStatus("계약중")
+                    .employee(Employee.builder().employeeNo(28).build())
+                    .employeeName("윈터")
+                    .documentFile(DocumentFile.builder().documentFileNo(1).build())
                     .build();
 
             log.info(productContract);
@@ -122,7 +128,7 @@ public class ProductContractRepositoryTests {
     @Test
     public void testSearch() {
 
-        String[] types = {"a"}; //a:제품계약코드 b:제품코드 c:회사명 +계약상태별도
+        String[] types = {"a"}; //a:제품계약코드 b:제품코드 c:회사명 d:계약일 +계약상태별도
 
         String keyword = "code";
 

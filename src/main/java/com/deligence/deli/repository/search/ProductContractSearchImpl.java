@@ -40,7 +40,7 @@ public class ProductContractSearchImpl  extends QuerydslRepositorySupport implem
             for(String type : types) {
 
                 switch(type){
-                    //a:제품계약코드 b:제품코드 c:회사명 +계약상태별도
+                    //a:제품계약코드 b:제품코드 c:회사명 d:계약일(보류) +계약상태별도
                     case "a":
                         booleanBuilder.or(productContract.productContractCode.contains(keyword));
                         break;
@@ -49,6 +49,9 @@ public class ProductContractSearchImpl  extends QuerydslRepositorySupport implem
                         break;
                     case "c":
                         booleanBuilder.or(productContract.clientName.contains(keyword));
+                        break;
+                    case "d":
+                        booleanBuilder.or(productContract.productContractDate.stringValue().contains(keyword));
                         break;
 
                 }
@@ -89,7 +92,7 @@ public class ProductContractSearchImpl  extends QuerydslRepositorySupport implem
             for(String type : types) {
 
                 switch(type){
-                    //a:제품계약코드 b:제품코드 c:회사명 +계약상태별도
+                    //a:제품계약코드 b:제품코드 c:회사명 d:계약일(보류) +계약상태별도
                     case "a":
                         booleanBuilder.or(productContract.productContractCode.contains(keyword));
                         break;
@@ -99,6 +102,9 @@ public class ProductContractSearchImpl  extends QuerydslRepositorySupport implem
                     case "c":
                         booleanBuilder.or(productContract.clientName.contains(keyword));
                         break;
+                    case "d":
+                    booleanBuilder.or(productContract.productContractDate.stringValue().contains(keyword));
+                    break;
 
                 }
 
@@ -169,6 +175,7 @@ public class ProductContractSearchImpl  extends QuerydslRepositorySupport implem
                 .productName(resultProducts.getProductName())
                 .productType(resultProducts.getProductType())
                 .productQuantity(resultProductContract.getProductQuantity())
+                .productContractDate(resultProductContract.getProductContractDate())
                 .productDeliveryDate(resultProductContract.getProductDeliveryDate())
                 .productQuotation(resultProductContract.getProductQuotation())
                 .productContractState(resultProductContract.getProductContractState())

@@ -31,6 +31,8 @@ public class ProductContract extends BaseEntity{
 
     private int productQuantity;                //제품수량 (-> 목록 / 상세 / 등록 / 수정)
 
+    private LocalDate productContractDate;      //계약일 (-> 상세 / 등록)
+
     private LocalDate productDeliveryDate;      //납기일 (-> 목록 / 상세 / 등록 / 수정)
 
     private String productQuotation;            //견적내용(상세내용) (-> 상세)
@@ -47,6 +49,8 @@ public class ProductContract extends BaseEntity{
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Employee employee;                  //사원일련번호-담당자 (FK) (-> 상세 - 계약담당자)
+
+    private String  employeeName;               //담당자
 
     @ManyToOne(fetch = FetchType.LAZY)
     private DocumentFile documentFile;          //문서파일일련번호(FK)

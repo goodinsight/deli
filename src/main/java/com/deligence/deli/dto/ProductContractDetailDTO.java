@@ -30,6 +30,9 @@ public class ProductContractDetailDTO {
     private int productQuantity;                //제품수량 (-> 목록 / 상세 / 등록 / 수정)
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate productContractDate;      //계약일 (-> 상세 / 등록)
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate productDeliveryDate;      //납기일 (-> 목록 / 상세 / 등록 / 수정)
 
     private String productQuotation;            //견적내용(상세내용) (-> 상세 / 등록 / 수정)
@@ -51,7 +54,7 @@ public class ProductContractDetailDTO {
 
     private int employeeNo;                     //사원일련번호(FK)-담당자 (FK) (-> 상세 - 계약담당자)
 
-    private String employeeName;                //사원명 (-> 상세)
+    private String employeeName;                //사원명(담당자) (-> 상세)
 
     private int documentFileNo;                 //문서파일일련번호(FK)
 
