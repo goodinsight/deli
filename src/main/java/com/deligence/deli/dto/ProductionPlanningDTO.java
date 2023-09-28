@@ -1,11 +1,16 @@
 package com.deligence.deli.dto;
 
+import com.deligence.deli.domain.Employee;
+import com.deligence.deli.domain.MaterialRequirementsList;
+import com.deligence.deli.domain.ProductContract;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -15,37 +20,43 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class ProductionPlanningDTO {
 
-    private int productionPlanNo;   //생산계획 일련번호
+    private int productionPlanNo;                   //생산계획일련번호 (-> 목록) ---------------------------
 
-    private String productionPlanCode;  //생산계획 코드
+    private String productionPlanCode;              //생산계획코드(-> 목록, 상세)
 
-    private int productionQuantity; //생산수량
+    private int productionQuantity;                 //생산수량
 
-    private int productionRequirementsDate; //생산소요기간
+    private int productionRequirementsDate;         //생산소요기간
 
     private String productionRequirementsProcess;   //생산소요공정
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate productionDeliveryDate;   //납기일
+    private LocalDate productionDeliveryDate;       //생산 납기일
 
-    private String detailExplaination;  //상세내용
+    private String detailExplaination;              //상세내용
 
-    private int productContractNo;  //제품계약일련번호 (FK)
+    //----------------------------------------------------------------------------------------------------
 
-//    private int productNo;  //제품일련번호(FK)
+    private int productContractNo;                  //제품계약(일련번호) FK
 
-    private String productCode; //제품코드 (검색용)
+    private String productCode;                     //제품코드 (-> 목록-검색용 / 상세) <- 제품계약에서 가져옴
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate productDeliveryDate;  //제품 납기일
+    private String clientName;                      //구매협력회사명 (검색용) <- 제품계약에서 가져옴
 
-//    private int clientNo;   //구매협력회사일련번호(FK)
+    private LocalDate productDeliveryDate;          //제품 납기일 (-> 목록-검색용?)   <- 제품계약에서 가져옴
 
-    private String clientName;  //구매협력회사명 (검색용)
+    private String clientStatus;                    //계약상태 (검색용)    <- 제품계약에서 가져옴
 
-    private String clientStatus;    //구매협력회사 계약상태 (검색용)
+    //-------------------------------------------------------------------------------------------------------
+
+    private int materialRequirementsListNo;         //제품별필요자재항목 FK
+    //필요자재코드 -> 자재명, 자재분류, 필요수량 ==> 추가로 클릭할 수 있음.
+
+    private int employeeNo;      //사원일련번호 FK
+
+    private String employeeName;    //담당자
 
     private LocalDateTime regDate;  //등록일
 
     private LocalDateTime modDate;  //수정일
+
 }

@@ -30,6 +30,12 @@ public class QProductionPlanning extends EntityPathBase<ProductionPlanning> {
 
     public final StringPath detailExplaination = createString("detailExplaination");
 
+    public final QEmployee employee;
+
+    public final StringPath employeeName = createString("employeeName");
+
+    public final QMaterialRequirementsList materialRequirementsList;
+
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modDate = _super.modDate;
 
@@ -72,6 +78,8 @@ public class QProductionPlanning extends EntityPathBase<ProductionPlanning> {
 
     public QProductionPlanning(Class<? extends ProductionPlanning> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
+        this.employee = inits.isInitialized("employee") ? new QEmployee(forProperty("employee"), inits.get("employee")) : null;
+        this.materialRequirementsList = inits.isInitialized("materialRequirementsList") ? new QMaterialRequirementsList(forProperty("materialRequirementsList"), inits.get("materialRequirementsList")) : null;
         this.productContract = inits.isInitialized("productContract") ? new QProductContract(forProperty("productContract"), inits.get("productContract")) : null;
     }
 

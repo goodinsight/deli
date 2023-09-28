@@ -25,7 +25,7 @@ public class ProductContract extends BaseEntity{
     private String productContractCode;         //제품계약코드(-> 목록 / 상세 / 등록)
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private Products products;                  //제품일련번호 (FK)
+    private Products products;                  //제품일련번호 (FK) ---------------------------------------------
 
     private String productCode;                 //제품코드 (-> 목록 - 검색용 / 상세 - 모달창으로 검색-제품명,제품타입)
 
