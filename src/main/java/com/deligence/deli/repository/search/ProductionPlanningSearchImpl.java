@@ -40,7 +40,7 @@ public class ProductionPlanningSearchImpl extends QuerydslRepositorySupport impl
             for (String type : types) {
 
                 switch (type) {
-                    //a:생산계획코드 b:제품코드 c:클라이언트 회사명 d:납기일 e:클라이언트계약상태 + 계약진행상태 별도
+                    //a:생산계획코드 b:제품코드 c:클라이언트 회사명 d:제품납기일 e:클라이언트계약상태 f:계약담당자 + 계약진행상태 별도
                     case "a":
                         booleanBuilder.or(productionPlanning.productionPlanCode.contains(keyword));
                         break;
@@ -50,11 +50,15 @@ public class ProductionPlanningSearchImpl extends QuerydslRepositorySupport impl
                     case "c":
                         booleanBuilder.or(productionPlanning.clientName.contains(keyword));
                         break;
-                    case "d":   //생산납기일
-                        booleanBuilder.or(productionPlanning.productionDeliveryDate.stringValue().contains(keyword));
+                    case "d":   //제품 계약 납기일
+                        booleanBuilder.or(productionPlanning.productDeliveryDate.stringValue().contains(keyword));
                         break;
                     case "e":
                         booleanBuilder.or(productionPlanning.clientStatus.contains(keyword));   //계약상태
+                        break;
+                    case "f":
+                        booleanBuilder.or(productionPlanning.employeeName.contains(keyword));
+                        break;
 
                 }
 
@@ -94,7 +98,7 @@ public class ProductionPlanningSearchImpl extends QuerydslRepositorySupport impl
             for (String type : types) {
 
                 switch (type) {
-                    //a:생산계획코드 b:제품코드 c:클라이언트 회사명 d:납기일 e:클라이언트계약상태 f:계약담당자 + 생산진행상태 별도
+                    //a:생산계획코드 b:제품코드 c:클라이언트 회사명 d:제품납기일 e:클라이언트계약상태 f:계약담당자 + 생산진행상태 별도
                     case "a":
                         booleanBuilder.or(productionPlanning.productionPlanCode.contains(keyword));
                         break;
@@ -104,14 +108,15 @@ public class ProductionPlanningSearchImpl extends QuerydslRepositorySupport impl
                     case "c":
                         booleanBuilder.or(productionPlanning.clientName.contains(keyword));
                         break;
-                    case "d":   //생산납기일
-                        booleanBuilder.or(productionPlanning.productionDeliveryDate.stringValue().contains(keyword));
+                    case "d":   //제품 계약 납기일
+                        booleanBuilder.or(productionPlanning.productDeliveryDate.stringValue().contains(keyword));
                         break;
                     case "e":
                         booleanBuilder.or(productionPlanning.clientStatus.contains(keyword));
                         break;
                     case "f":
                         booleanBuilder.or(productionPlanning.employeeName.contains(keyword));
+                        break;
 
                 }
 
@@ -244,7 +249,7 @@ public class ProductionPlanningSearchImpl extends QuerydslRepositorySupport impl
             for (String type : types) {
 
                 switch (type) {
-                    //a:생산계획코드 b:제품코드 c:클라이언트 회사명 d:납기일 e:클라이언트계약상태 f:계약담당자 + 생산진행상태 별도
+                    //a:생산계획코드 b:제품코드 c:클라이언트 회사명 d:제품납기일 e:클라이언트계약상태 f:계약담당자 + 생산진행상태 별도
                     case "a":
                         booleanBuilder.or(productionPlanning.productionPlanCode.contains(keyword));
                         break;
@@ -254,14 +259,15 @@ public class ProductionPlanningSearchImpl extends QuerydslRepositorySupport impl
                     case "c":
                         booleanBuilder.or(productionPlanning.clientName.contains(keyword));
                         break;
-                    case "d":   //생산납기일
-                        booleanBuilder.or(productionPlanning.productionDeliveryDate.stringValue().contains(keyword));
+                    case "d":   //제품 계약 납기일
+                        booleanBuilder.or(productionPlanning.productDeliveryDate.stringValue().contains(keyword));
                         break;
                     case "e":
                         booleanBuilder.or(productionPlanning.clientStatus.contains(keyword));
                         break;
                     case "f":
                         booleanBuilder.or(productionPlanning.employeeName.contains(keyword));
+                        break;
 
                 }
 

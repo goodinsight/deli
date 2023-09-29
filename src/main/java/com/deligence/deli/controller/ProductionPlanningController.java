@@ -1,6 +1,8 @@
 package com.deligence.deli.controller;
 
+import com.deligence.deli.domain.MaterialRequirementsList;
 import com.deligence.deli.dto.*;
+import com.deligence.deli.service.ProductContractService;
 import com.deligence.deli.service.ProductionPlanningService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -21,16 +23,24 @@ public class ProductionPlanningController {
 
     private final ProductionPlanningService productionPlanningService;
 
-    @GetMapping("/list")    //목록
-    public void list(PageRequestDTO pageRequestDTO, Model model) {
+    private final ProductContractService productContractService;        //제품계약 Service
+    //제품별필요자재항목 Service 구현 후 주석 풀기
+//    private final MaterialRequirementsListService materialRequirementsListService;  //제품별필요자재항목 Service
 
-        PageResponseDTO<ProductionPlanningDTO> responseDTO =
-                productionPlanningService.list(pageRequestDTO);
+    //상태 검색 추가 -> list 수정함
+    @GetMapping("/list")    //목록
+    public void list(OrderPageRequestDTO orderPageRequestDTO, Model model) {
+
+        log.info(orderPageRequestDTO);
+
+        OrderPageResponseDTO<ProductionPlanningDTO> responseDTO = productionPlanningService.listWithState(orderPageRequestDTO);
 
         log.info(responseDTO);
 
         model.addAttribute("responseDTO", responseDTO);
     }
+
+
 
     //등록GET
     @GetMapping("/register")

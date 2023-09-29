@@ -5,7 +5,7 @@
       layout:decorate="~{/layout/layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>제품생산계획 리스트</title>
+    <title>제품 생산 계획 리스트</title>
 </head>
 
 <div layout:fragment="content">
@@ -18,22 +18,33 @@
                     <code>카테고리를 선택하고 키워드</code>
                     를 입력한 뒤 search버튼을 누르세요"
                 </p>
-                <input type="hidden" name="size" th:value="${pageRequestDTO.size}">
+                <input type="hidden" name="size" th:value="${orderPageRequestDTO.size}">
                 <div class="input-group">
                     <div class="input-group-prepend">
+                        <select class="form-select" name="state">
+                            <option value="">생산계획 진행상태</option>
+                            <option value="자재조달단계" th:selected="${orderPageRequestDTO.state == '자재조달단계'}">자재조달단계</option>
+                            <option value="자재입고단계" th:selected="${orderPageRequestDTO.state == '자재입고단계'}">자재입고단계</option>
+                            <option value="제품생산단계" th:selected="${orderPageRequestDTO.state == '제품생산단계'}">제품생산단계</option>
+                            <option value="제품검수단계" th:selected="${orderPageRequestDTO.state == '제품검수단계'}">제품검수단계</option>
+                            <option value="제품입고완료" th:selected="${orderPageRequestDTO.state == '제품입고완료'}">제품입고완료</option>
+                        </select>
+                    </div>
+                    <div class="input-group-prepend">
+
                         <select class="form-select" name="type">
                             <option value="">---</option>
-                            <!--a:조달계획코드 b:자재코드 c:자재이름 d:납기일 e:소요량 f:조달상태-->
-                            <option value="a" th:selected="${pageRequestDTO.type == 'a'}">제품생산계획코드</option>
-                            <option value="b" th:selected="${pageRequestDTO.type == 'b'}">제품 코드</option>
-                            <option value="c" th:selected="${pageRequestDTO.type == 'c'}">제품 이름</option>
-                            <option value="d" th:selected="${pageRequestDTO.type == 'd'}">납기일</option>
-                            <option value="e" th:selected="${pageRequestDTO.type == 'e'}">제품 소요량</option>
-                            <option value="f" th:selected="${pageRequestDTO.type == 'f'}">생산상태</option>
+                            <!--a:생산계획코드 b:제품코드 c:클라이언트 회사명 d:납기일 e:클라이언트계약상태 f:계약담당자-->
+                            <option value="a" th:selected="${orderPageRequestDTO.type == 'a'}">제품생산계획코드</option>
+                            <option value="b" th:selected="${orderPageRequestDTO.type == 'b'}">제품 코드</option>
+                            <option value="c" th:selected="${orderPageRequestDTO.type == 'c'}">클라이언트 회사명</option>
+                            <option value="d" th:selected="${orderPageRequestDTO.type == 'd'}">제품 납기일</option>
+                            <option value="e" th:selected="${orderPageRequestDTO.type == 'e'}">클라이언트계약상태</option>
+                            <option value="f" th:selected="${orderPageRequestDTO.type == 'f'}">계약 담당자</option>
                         </select>
                     </div>
                     <input type="text" class="form-control input-focus" name="keyword"
-                           th:value="${pageRequestDTO.keyword}" placeholder="INPUT KEYWORD">
+                           th:value="${orderPageRequestDTO.keyword}" placeholder="INPUT KEYWORD">
                     <div class="input-group-append">
                         <button class="btn btn-outline-success searchBtn" type="submit">
                             <i class="ti-search"></i> Search</button>
@@ -52,7 +63,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    제품 생산계획 리스트
+                    제품 생산 계획 리스트
                 </div>
                 <div class="my-4">
                     <div class="float-left">
@@ -64,19 +75,21 @@
 
                 <div class="card-body">
 
-                    <table class="table table-striped table-bordered">
+                    <table class="table table-responsive-lg table-bordered table-hover">
                         <thead>
                         <tr>
                             <th scope="col">NO</th>
-                            <th scope="col">생산계획 코드</th>
+                            <th scope="col">제품 생산 계획 코드</th>
                             <th scope="col">제품 코드</th>
-                            <th scope="col">회사명</th>
-                            <th scope="col">납기일</th>
-                            <th scope="col">제품 계약 상태</th>
+                            <th scope="col">클라이언트 회사명</th>
+                            <th scope="col">제품 납기일</th>
+                            <th scope="col">클라이언트 계약 상태</th>
+                            <th scope="col">계약 담당자</th>
+                            <th scope="col">생산 계획 진행 상태</th>
                         </tr>
                         </thead>
 
-                        <tbody th:with="link = ${pageRequestDTO.getLink()}">
+                        <tbody th:with="link = ${orderPageRequestDTO.getLink()}">
                         <tr th:each="dto:${responseDTO.dtoList}">
                             <td>[[${dto.productionPlanNo}]]</td>
                             <td>
@@ -87,6 +100,8 @@
                             <td>[[${dto.clientName}]]</td>
                             <td>[[${dto.productDeliveryDate}]]</td>
                             <td>[[${dto.clientStatus}]]</td>
+                            <td>[[${dto.employeeName}]]</td>
+                            <td>[[${dto.productionState}]]</td>
                         </tr>
 
                         </tbody>
@@ -143,11 +158,11 @@
 
 <script layout:fragment="script" th:inline="javascript">
 
-    console.log("제품생산계획 리스트 페이지")
+    console.log("제품 생산 계획 리스트 페이지")
 
     $(document).ready(function () {
-        console.log([[${pageRequestDTO}]])
-        console.log([[${pageRequestDTO.link}]])
+        console.log([[${orderPageRequestDTO}]])
+        console.log([[${orderPageRequestDTO.link}]])
         console.log([[${responseDTO}]])
     })
 
