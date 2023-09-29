@@ -4,6 +4,7 @@ import com.deligence.deli.domain.MaterialProcurementPlanning;
 import com.deligence.deli.domain.MaterialRequirementsList;
 import com.deligence.deli.domain.ProductContract;
 import com.deligence.deli.dto.*;
+import com.deligence.deli.service.MaterialRequirementsListService;
 import com.deligence.deli.service.ProductContractService;
 import com.deligence.deli.service.ProductionPlanningService;
 import lombok.RequiredArgsConstructor;
@@ -29,8 +30,7 @@ public class ProductionPlanningController {
     private final ProductionPlanningService productionPlanningService;
 
     private final ProductContractService productContractService;        //제품계약 Service
-    //제품별필요자재항목 Service 구현 후 주석 풀기
-//    private final MaterialRequirementsListService materialRequirementsListService;  //제품별필요자재항목 Service
+    private final MaterialRequirementsListService materialRequirementsListService;  //제품별필요자재항목 Service
 
     //상태 검색 추가 -> list 수정함
     @GetMapping("/list")    //목록
@@ -179,31 +179,30 @@ public class ProductionPlanningController {
 
     }
 
-    //materialRequirementsListService 구현 한 후에 주석 풀기.
 
-//    @ResponseBody
-//    @GetMapping("/register/selectMrl")
-//    public PageResponseDTO<MaterialRequirementsListDTO> getMrlList(PageRequestDTO pageRequestDTO) {
-//
-//        log.info("getMrlList");
-//
-//        PageResponseDTO<MaterialRequirementsListDTO> responseDTO = MaterialRequirementsListService.list(pageRequestDTO);
-//
-//        return responseDTO;
-//
-//    }
-//    @ResponseBody
-//    @GetMapping("/register/getMrl/{mrlNo}")
-//    public MaterialRequirementsListDTO getMrlDTO(@PathVariable("mrlNo") int mrlNo) {
-//
-//        log.info("getMrlDTO : " + mrlNo);
-//
-//        MaterialRequirementsListDTO materialRequirementsListDTO = MaterialRequirementsListService.read(mrlNo);
-//
-//        log.info(materialRequirementsListDTO);
-//
-//        return materialRequirementsListDTO;
-//    }
+    @ResponseBody
+    @GetMapping("/register/selectMrl")
+    public PageResponseDTO<MaterialRequirementsListDTO> getMrlList(PageRequestDTO pageRequestDTO) {
+
+        log.info("getMrlList");
+
+        PageResponseDTO<MaterialRequirementsListDTO> responseDTO = materialRequirementsListService.list(pageRequestDTO);
+
+        return responseDTO;
+
+    }
+    @ResponseBody
+    @GetMapping("/register/getMrl/{mrlNo}")
+    public MaterialRequirementsListDTO getMrlDTO(@PathVariable("mrlNo") int mrlNo) {
+
+        log.info("getMrlDTO : " + mrlNo);
+
+        MaterialRequirementsListDTO materialRequirementsListDTO = materialRequirementsListService.read(mrlNo);
+
+        log.info(materialRequirementsListDTO);
+
+        return materialRequirementsListDTO;
+    }
 
 
     @ResponseBody

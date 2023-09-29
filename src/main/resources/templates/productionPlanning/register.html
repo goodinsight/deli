@@ -428,10 +428,10 @@
     let mrlPage = 1
     let mrlPageSize = 5
 
-    document.querySelector(".selectMrl").addEventListener("click", function (e) {
+    document.querySelector("#selectMrl").addEventListener("click", function (e) {
         console.log("select material modal show")
 
-        if(materialCode.value.length > 0){
+        if(productContractCode.value.length > 0){
             printContracts(1, 5)
             mrlModal.show()
         }else {
@@ -455,7 +455,7 @@
                 console.log(dto)
 
                     str += `<tr>
-                              <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.materialNo}</td>
+                              <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.materialRequirementsListNo}</td>
                               <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.productCode}</td>
                               <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.productName}</td>
                               <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.materialCode}</td>
@@ -490,8 +490,8 @@
 
     function printMrls(page, size) {
 
-        const type = "c"
-        const keyword = materialCode.value
+        const type = "a"
+        const keyword = productionPlanCode.value
 
         getMrlList({page, size, type, keyword}).then(
                 data => {
@@ -521,7 +521,7 @@
 
     }, false)
 
-    const materialNo = document.querySelector(".materialNo")
+    const materialRequirementsListNo = document.querySelector(".materialRequirementsListNo")
     const inputMaterialCode = document.querySelector("#selectMrl")
     const materialName = document.querySelector(".materialName")
     const materialType = document.querySelector(".materialType")
@@ -551,7 +551,7 @@
 
             console.log(mrl)
             console.log("check0")
-            materialNo.value = mrl.materialNo
+            materialRequirementsListNo.value = mrl.materialRequirementsListNo
             //자재 정보를 가져와서 화면에 반영해야 할 항목들은 여기에 --------------------------------------------------------
             console.log("check1")
             inputMaterialCode.value = mrl.materialCode

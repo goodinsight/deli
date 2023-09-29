@@ -22,9 +22,19 @@ public class QMaterialRequirementsList extends EntityPathBase<MaterialRequiremen
 
     public static final QMaterialRequirementsList materialRequirementsList = new QMaterialRequirementsList("materialRequirementsList");
 
+    public final StringPath materialCode = createString("materialCode");
+
+    public final StringPath materialName = createString("materialName");
+
     public final NumberPath<Integer> materialRequirementsListNo = createNumber("materialRequirementsListNo", Integer.class);
 
     public final QMaterials materials;
+
+    public final StringPath materialType = createString("materialType");
+
+    public final StringPath productCode = createString("productCode");
+
+    public final StringPath productName = createString("productName");
 
     public final QProducts products;
 
