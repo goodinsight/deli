@@ -50,6 +50,7 @@ public class ProductionPlanningDTO {
 
     private String clientStatus;                    //계약상태 (검색용)    <- 제품계약에서 가져옴
 
+    private String employeeName;                    //제품계약담당자
     //-------------------------------------------------------------------------------------------------------
 
     private int materialRequirementsListNo;         //제품별필요자재항목 FK
@@ -57,7 +58,7 @@ public class ProductionPlanningDTO {
 
     private int employeeNo;      //사원일련번호 FK
 
-    private String employeeName;    //담당자
+    private String employeeName2;   //생산계획담당자
 
     private LocalDateTime regDate;  //등록일
 

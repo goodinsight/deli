@@ -34,6 +34,8 @@ public class QProductionPlanning extends EntityPathBase<ProductionPlanning> {
 
     public final StringPath employeeName = createString("employeeName");
 
+    public final StringPath employeeName2 = createString("employeeName2");
+
     public final QMaterialRequirementsList materialRequirementsList;
 
     //inherited

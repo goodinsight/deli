@@ -1,5 +1,6 @@
 package com.deligence.deli.service;
 
+import com.deligence.deli.domain.MaterialProcurementPlanning;
 import com.deligence.deli.domain.Order;
 import com.deligence.deli.domain.ProductionPlanning;
 import com.deligence.deli.dto.*;
@@ -116,4 +117,93 @@ public class ProductionPlanningServiceImpl implements ProductionPlanningService{
         return num;
 
     }
+
+    @Override
+    public OrderPageResponseDTO<ProductionPlanningDTO> listWithState(OrderPageRequestDTO orderPageRequestDTO) {
+
+        String[] types = orderPageRequestDTO.getTypes();
+        String keyword = orderPageRequestDTO.getKeyword();
+        String state = orderPageRequestDTO.getState();
+        Pageable pageable = orderPageRequestDTO.getPageable();//속성 집어넣으면 오류 발생함.
+
+        Page<ProductionPlanning> result = productionPlanningRepository.searchWithState(types, keyword, state, pageable);
+
+        List<ProductionPlanningDTO> dtoList = result.getContent().stream()
+                .map(productionPlanning -> entityToDto(productionPlanning))
+                .collect(Collectors.toList());
+
+        return OrderPageResponseDTO.<ProductionPlanningDTO>withAll()
+                .orderPageRequestDTO(orderPageRequestDTO)
+                .dtoList(dtoList)
+                .total((int)result.getTotalElements())
+                .build();
+
+    }
+
+    @Override
+    public OrderPageResponseDTO<ProductionPlanningDTO> listProduction(OrderPageRequestDTO orderPageRequestDTO, String[] states) {
+
+        String[] types = orderPageRequestDTO.getTypes();
+        String keyword = orderPageRequestDTO.getKeyword();
+        Pageable pageable = orderPageRequestDTO.getPageable();
+
+        Page<ProductionPlanning> result = productionPlanningRepository.searchProduction(types, keyword, states, pageable);
+
+        List<ProductionPlanningDTO> dtoList = result.getContent().stream()
+                .map(productionPlanning -> entityToDto(productionPlanning))
+                .collect(Collectors.toList());
+
+
+        return OrderPageResponseDTO.<ProductionPlanningDTO>withAll()
+                .orderPageRequestDTO(orderPageRequestDTO)
+                .dtoList(dtoList)
+                .total((int)result.getTotalElements())
+                .build();
+    }
+
+    @Override
+    public void changeState(int productionPlanNo, String state) {
+
+
+        Optional<ProductionPlanning> result = productionPlanningRepository.findById(productionPlanNo);
+
+        ProductionPlanning productionPlanning = result.orElseThrow();
+
+        productionPlanning.changeState(state);
+
+        productionPlanningRepository.save(productionPlanning);
+
+    }
+
+    //생산계획상세(연관조달계획목록)
+    @Override
+    public List<MaterialProcurementPlanningDTO> procurementPlanList(int productionPlanNo, PageRequestDTO pageRequestDTO) {
+
+        List<MaterialProcurementPlanning> result = productionPlanningRepository.procurementPlanList(productionPlanNo);
+
+        List<MaterialProcurementPlanningDTO> dtoList = result.stream()
+                .map(this::entityToDto2)
+                .collect(Collectors.toList());
+
+        log.info("dtoList : " + dtoList);
+
+        return dtoList;
+
+    }
+
+    @Override
+    public void completePlan(int productionPlanNo) {
+
+        Optional<ProductionPlanning> result =
+                productionPlanningRepository.findById(productionPlanNo);
+
+        ProductionPlanning productionPlanning = result.orElseThrow();
+
+        productionPlanning.changeState("제품생산완료");
+
+        productionPlanningRepository.save(productionPlanning);
+
+    }
+
+
 }

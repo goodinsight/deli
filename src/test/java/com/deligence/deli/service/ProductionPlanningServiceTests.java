@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @SpringBootTest
 @Log4j2
@@ -25,11 +26,16 @@ public class ProductionPlanningServiceTests {
                 .productionRequirementsProcess("process...")
                 .productionDeliveryDate(LocalDate.of(2023,9,27))
                 .detailExplaination("explaination...")
-                .productContractNo(3)
-                .productCode("productCode")
+                .productionState("제품생산단계")
+                .productContractNo(50)
+                .productCode("PD-CONTRACT-regTest")
+                .clientName("ClientName")
                 .productDeliveryDate(LocalDate.of(2023,11,15))
-                .clientName("client")
                 .clientStatus("계약중")
+                .employeeName("윈터")
+                .materialRequirementsListNo(1)
+                .employeeNo(28)
+                .employeeName2("카리나")
                 .build();
 
         productionPlanningService.register(productionPlanningDTO);
@@ -41,7 +47,7 @@ public class ProductionPlanningServiceTests {
     @Test
     public void testRead() {
 
-        int productionPlanNo = 1;
+        int productionPlanNo = 216;
 
         ProductionPlanningDetailDTO productionPlanningDetailDTO = productionPlanningService.read(productionPlanNo);
 
@@ -53,18 +59,14 @@ public class ProductionPlanningServiceTests {
     public void testModify() {
 
         ProductionPlanningDTO productionPlanningDTO = ProductionPlanningDTO.builder()
-                .productionPlanNo(1)
-                .productionPlanCode("PD-PLANNING-20230926-")
+                .productionPlanNo(215)
+                .productionPlanCode("PD-PLANNING-modTest-")
                 .productionQuantity(200)
                 .productionRequirementsDate(5)
                 .productionRequirementsProcess("modifyProcess...")
-                .productionDeliveryDate(LocalDate.of(2023,9,27))
+                .productionDeliveryDate(LocalDate.of(2023,10,27))
                 .detailExplaination("modifyExplaination...")
-                .productContractNo(3)
-                .productCode("modifyProductCode")
-                .productDeliveryDate(LocalDate.of(2023,11,15))
-                .clientName("client")
-                .clientStatus("계약중")
+                .productionState("제품입고완료")
                 .build();
 
         productionPlanningService.modify(productionPlanningDTO);
@@ -93,5 +95,18 @@ public class ProductionPlanningServiceTests {
         int num = productionPlanningService.getCodeCount("PD-PLANNING-20230926-");
 
         log.info( "cc :" + num);
+    }
+
+
+    //생산계획상세 (연관 조달계획 목록) 테스트
+    @Test
+    public void procurementPlanList() {
+
+        PageRequestDTO pageRequestDTO = PageRequestDTO.builder().build();
+
+        List<MaterialProcurementPlanningDTO> responseDTO =
+                productionPlanningService.procurementPlanList(3, pageRequestDTO);
+
+        log.info(responseDTO);
     }
 }

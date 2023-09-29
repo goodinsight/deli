@@ -47,6 +47,8 @@ public class ProductionPlanning extends BaseEntity {   //제품생산계획테�
 
     private String clientStatus;                        //계약상태 (검색용)    <- 제품계약에서 가져옴
 
+    private String employeeName;    //담당자
+
     //-------------------------------------------------------------------------------------------------------
     @ManyToOne(fetch = FetchType.LAZY)
     private MaterialRequirementsList materialRequirementsList;      //제품별필요자재항목 FK
@@ -55,7 +57,8 @@ public class ProductionPlanning extends BaseEntity {   //제품생산계획테�
     @ManyToOne(fetch = FetchType.LAZY)
     private Employee employee;      //사원일련번호 FK
 
-    private String employeeName;    //담당자
+    private String employeeName2;   //생산계획담당자
+
 
     public void change(ProductionPlanningDTO productionPlanningDTO){
 
