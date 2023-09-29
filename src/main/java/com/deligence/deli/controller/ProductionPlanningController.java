@@ -222,15 +222,26 @@ public class ProductionPlanningController {
 
     //생산계획상세 (연관 조달 계획 목록)
     @GetMapping("/procurementPlanList")
-    public void procurementPlanList(int productionPlanNO, PageRequestDTO pageRequestDTO, Model model) {
+    public void procurementPlanList(int productionPlanNo, PageRequestDTO pageRequestDTO, Model model) {
 
         List<MaterialProcurementPlanningDTO> dtoList =
-                productionPlanningService.procurementPlanList(productionPlanNO, pageRequestDTO);
+                productionPlanningService.procurementPlanList(productionPlanNo, pageRequestDTO);
 
         log.info(dtoList);
 
         model.addAttribute("dtoList", dtoList);
     }
+
+//    @GetMapping("/procurementPlanList")
+//    public void planList(int productionPlanNo, PageRequestDTO pageRequestDTO, Model model) {
+//
+//        List<MaterialProcurementPlanningDetailDTO> dtoList =
+//                productionPlanningService.planList(productionPlanNo, pageRequestDTO);
+//
+//        log.info(dtoList);
+//
+//        model.addAttribute("dtoList", dtoList);
+//    }
 
 
     //생산계획진행상태 변경 -> 제품계약에서 제품계약진행상태 변경됨

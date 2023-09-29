@@ -212,6 +212,10 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
                 .employeeName(resultMaterialProcurementPlanning.getEmployeeName())
                 .regDate(resultMaterialProcurementPlanning.getRegDate())
                 .modDate(resultMaterialProcurementPlanning.getModDate())
+                .productionRequirementsProcess(resultPp.getProductionRequirementsProcess())
+                .productionRequirementsDate(resultPp.getProductionRequirementsDate())
+                .productionDeliveryDate(resultPp.getProductionDeliveryDate())
+                .productionState(resultPp.getProductionState())
                 .build();
 
         return dto;

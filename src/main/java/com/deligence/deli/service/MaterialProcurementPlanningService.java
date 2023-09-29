@@ -55,6 +55,10 @@ public interface MaterialProcurementPlanningService {
                 .employeeName(materialProcurementPlanningDTO.getEmployeeName())
                 .materialCode(materialProcurementPlanningDTO.getMaterialCode())
                 .materialName(materialProcurementPlanningDTO.getMaterialName())
+                .productionRequirementsDate(materialProcurementPlanningDTO.getProductionRequirementsDate())         //생산소요기간
+                .productionRequirementsProcess(materialProcurementPlanningDTO.getProductionRequirementsProcess())   //생산소요공정
+                .productionDeliveryDate(materialProcurementPlanningDTO.getProductionDeliveryDate()) //생산납기일
+                .productionState(materialProcurementPlanningDTO.getProductionState())   //생산 진행 상태
                 .build();
 
         return materialProcurementPlanning;
@@ -74,6 +78,10 @@ public interface MaterialProcurementPlanningService {
                 .employeeName(materialProcurementPlanning.getEmployeeName())
                 .materialCode(materialProcurementPlanning.getMaterials().getMaterialCode())
                 .materialName(materialProcurementPlanning.getMaterials().getMaterialName())
+                .productionRequirementsDate(materialProcurementPlanning.getProductionPlanning().getProductionRequirementsDate())
+                .productionRequirementsProcess(materialProcurementPlanning.getProductionPlanning().getProductionRequirementsProcess())
+                .procurementDeliveryDate(materialProcurementPlanning.getProductionPlanning().getProductDeliveryDate())
+                .productionState(materialProcurementPlanning.getProductionPlanning().getProductionState())
                 .build();
 
         return materialProcurementPlanningDTO;

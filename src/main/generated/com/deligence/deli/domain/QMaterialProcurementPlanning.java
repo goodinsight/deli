@@ -47,7 +47,15 @@ public class QMaterialProcurementPlanning extends EntityPathBase<MaterialProcure
 
     public final DatePath<java.time.LocalDate> procurementDeliveryDate = createDate("procurementDeliveryDate", java.time.LocalDate.class);
 
+    public final DatePath<java.time.LocalDate> productionDeliveryDate = createDate("productionDeliveryDate", java.time.LocalDate.class);
+
     public final QProductionPlanning productionPlanning;
+
+    public final NumberPath<Integer> productionRequirementsDate = createNumber("productionRequirementsDate", Integer.class);
+
+    public final StringPath productionRequirementsProcess = createString("productionRequirementsProcess");
+
+    public final StringPath productionState = createString("productionState");
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> regDate = _super.regDate;

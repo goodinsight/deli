@@ -81,12 +81,10 @@
                         <span class="input-group-text">자재 협력회사명</span>
                         <input type="text" name="supplierName" class="form-control supplierName" th:value="${dto.supplierName}" readonly>
                     </div>
-                    <div class="input-group mb-3 pl-5">
-                        <span class="input-group-text">대표명</span>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" style="margin-left: 50px">대표명</span>
                         <input type="text" name="supplierCeo" class="form-control supplierCeo" th:value="${dto.supplierCeo}" readonly>
-                    </div>
-                    <div class="input-group mb-3 pl-5">
-                        <span class="input-group-text">연락처</span>
+                        <span class="input-group-text" style="margin-left: 20px">연락처</span>
                         <input type="text" name="supplierPhone" class="form-control supplierPhone" th:value="${dto.supplierPhone}" readonly>
                     </div>
                     <div class="input-group mb-3 pl-5">
@@ -111,6 +109,15 @@
                     <div class="input-group mb-3">
                         <span class="input-group-text">담당자 이름</span>
                         <input type="text" name="employeeName" class="form-control" th:value="${dto.employeeName}" readonly>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">계약 정보 등록일</span>
+                        <input type="text" name="regDate" class="form-control"
+                               th:value="${#temporals.format(dto.regDate, 'yyyy-MM-dd')}" readonly>
+                        <span class="input-group-text" style="margin-left: 20px">계약 정보 수정일</span>
+                        <input type="text" name="modDate" class="form-control"
+                               th:value="${#temporals.format(dto.modDate, 'yyyy-MM-dd')}" readonly>
                     </div>
 
                     <div class="my-4" >

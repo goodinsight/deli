@@ -35,10 +35,10 @@
                             <span class="input-group-text">제품 코드</span>
                             <input type="text" name="productCode" class="form-control" id="selectProduct" th:value="${dto.productCode}" readonly>
                         </div>
-                        <div class="input-group mb-3 pl-5">
-                            <span class="input-group-text">제품이름</span>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="margin-left: 50px">제품이름</span>
                             <input type="text" name="productName" class="form-control productName" th:value="${dto.productName}" readonly>
-                            <span class="input-group-text">제품타입</span>
+                            <span class="input-group-text" style="margin-left: 20px">제품타입</span>
                             <input type="text" name="productType" class="form-control productType" th:value="${dto.productType}" readonly>
                         </div>
 
@@ -55,10 +55,10 @@
                             <span class="input-group-text">클라이언트 회사명</span>
                             <input type="text" name="clientName" class="form-control" id="selectClient" th:value="${dto.clientName}" readonly>
                         </div>
-                        <div class="input-group mb-3 pl-5">
-                            <span class="input-group-text">대표명</span>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="margin-left: 50px">대표명</span>
                             <input type="text" name="clientCeo" class="form-control clientCeo" th:value="${dto.clientCeo}" readonly>
-                            <span class="input-group-text">연락처</span>
+                            <span class="input-group-text" style="margin-left: 20px">연락처</span>
                             <input type="text" name="clientPhone" class="form-control clientPhone" th:value="${dto.clientPhone}" readonly>
                         </div>
                         <div class="input-group mb-3 d-none">
@@ -99,7 +99,7 @@
                         <div class="my-4">
                             <div class="float-end">
                                 <button type="button" class="btn btn-primary modBtn">Modify</button>
-                                <button type="button" class="btn btn-primary listBtn">List</button>
+                                <button type="button" class="btn btn-secondary listBtn">List</button>
                                 <button type="button" class="btn btn-secondary readBtn">GoBack</button>
                                 <button type="button" class="btn btn-danger removeBtn">Remove</button>
                             </div>

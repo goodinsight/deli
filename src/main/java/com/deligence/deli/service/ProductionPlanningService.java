@@ -69,7 +69,7 @@ public interface ProductionPlanningService {
                 .clientStatus(productionPlanning.getProductContract().getClientStatus())
                 .employeeName(productionPlanning.getProductContract().getEmployeeName())    //제품계약담당자
                 .employeeNo(productionPlanning.getEmployee().getEmployeeNo())
-                .employeeName2(productionPlanning.getEmployeeName())                         //생산계획담당자
+                .employeeName2(productionPlanning.getEmployeeName2())                        //생산계획담당자
                 .materialRequirementsListNo(productionPlanning.getMaterialRequirementsList().getMaterialRequirementsListNo())
                 .regDate(productionPlanning.getRegDate())
                 .modDate(productionPlanning.getModDate())
@@ -80,6 +80,7 @@ public interface ProductionPlanningService {
 
     //생산 계획 상세(연관 조달계획 목록)
     List<MaterialProcurementPlanningDTO> procurementPlanList(int productionPlanNo, PageRequestDTO pageRequestDTO);
+    List<MaterialProcurementPlanningDetailDTO> planList(int productionPlanNo, PageRequestDTO pageRequestDTO);
 
     default MaterialProcurementPlanningDTO entityToDto2(MaterialProcurementPlanning materialProcurementPlanning) {
 
@@ -87,13 +88,38 @@ public interface ProductionPlanningService {
                 .materialProcurementPlanNo(materialProcurementPlanning.getMaterialProcurementPlanNo())
                 .materialCode(materialProcurementPlanning.getMaterialCode())
                 .materialName(materialProcurementPlanning.getMaterialName())
-                //소요공정, 소요기간
+                .productionRequirementsProcess(materialProcurementPlanning.getProductionPlanning().getProductionRequirementsProcess())  //소요공정
+                .productionRequirementsDate(materialProcurementPlanning.getProductionPlanning().getProductionRequirementsDate())
                 .materialRequirementsCount(materialProcurementPlanning.getMaterialRequirementsCount())  //소요량
-                .procurementDeliveryDate(materialProcurementPlanning.getProcurementDeliveryDate())      //납기일
-                .materialProcurementState(materialProcurementPlanning.getMaterialProcurementState())    //조달상태
+                .procurementDeliveryDate(materialProcurementPlanning.getProcurementDeliveryDate())      //자재 조달 납기일
+                .productionDeliveryDate(materialProcurementPlanning.getProductionPlanning().getProductionDeliveryDate())    //생산납기일
+                .materialProcurementState(materialProcurementPlanning.getMaterialProcurementState())    //자재 조달 상태
+                .productionState(materialProcurementPlanning.getProductionPlanning().getProductionState())  //생산 진행 상태
                 .build();
 
         return materialProcurementPlanningDTO;
+    }
+
+    //사용불가
+    default MaterialProcurementPlanningDetailDTO entityToDto3(MaterialProcurementPlanning materialProcurementPlanning) {
+
+        MaterialProcurementPlanningDetailDTO materialProcurementPlanningDetailDTO = MaterialProcurementPlanningDetailDTO.builder()
+                .materialProcurementPlanNo(materialProcurementPlanning.getMaterialProcurementPlanNo())
+                .materialCode(materialProcurementPlanning.getMaterialCode())        //자재 코드
+                .materialName(materialProcurementPlanning.getMaterialName())        //자재 이름
+                //생산 소요 공정
+                .productionRequirementsProcess(materialProcurementPlanning.getProductionPlanning().getProductionRequirementsProcess())
+                //생산 소요 기간
+                .productionRequirementsDate(materialProcurementPlanning.getProductionPlanning().getProductionRequirementsDate())
+                .materialRequirementsCount(materialProcurementPlanning.getMaterialRequirementsCount())      //소요량
+                .procurementDeliveryDate(materialProcurementPlanning.getProcurementDeliveryDate())          //조달납기일
+                //생산 납기일
+                .productionDeliveryDate(materialProcurementPlanning.getProductionPlanning().getProductionDeliveryDate())
+                .materialProcurementState(materialProcurementPlanning.getMaterialProcurementState())        //조달상태
+                .productionState(materialProcurementPlanning.getProductionPlanning().getProductionState())  //생산진행상태
+                .build();
+
+        return materialProcurementPlanningDetailDTO;
     }
 
     //생산계획완료

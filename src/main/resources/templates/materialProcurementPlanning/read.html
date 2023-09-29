@@ -82,13 +82,10 @@
                     </div>
 
                     <div class="input-group mb-3">
-                        <span class="input-group-text">등록일</span>
+                        <span class="input-group-text">조달 계획 등록일</span>
                         <input type="text" name="regDate" class="form-control"
                                th:value="${#temporals.format(dto.regDate, 'yyyy-MM-dd')}" readonly>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">수정일</span>
+                        <span class="input-group-text" style="margin-left: 20px">조달 계획 수정일</span>
                         <input type="text" name="modDate" class="form-control"
                                th:value="${#temporals.format(dto.modDate, 'yyyy-MM-dd')}" readonly>
                     </div>

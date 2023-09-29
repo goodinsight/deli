@@ -36,6 +36,8 @@ public class QProductionPlanning extends EntityPathBase<ProductionPlanning> {
 
     public final StringPath employeeName2 = createString("employeeName2");
 
+    public final QMaterialProcurementPlanning materialProcurementPlanning;
+
     public final QMaterialRequirementsList materialRequirementsList;
 
     //inherited
@@ -83,6 +85,7 @@ public class QProductionPlanning extends EntityPathBase<ProductionPlanning> {
     public QProductionPlanning(Class<? extends ProductionPlanning> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.employee = inits.isInitialized("employee") ? new QEmployee(forProperty("employee"), inits.get("employee")) : null;
+        this.materialProcurementPlanning = inits.isInitialized("materialProcurementPlanning") ? new QMaterialProcurementPlanning(forProperty("materialProcurementPlanning"), inits.get("materialProcurementPlanning")) : null;
         this.materialRequirementsList = inits.isInitialized("materialRequirementsList") ? new QMaterialRequirementsList(forProperty("materialRequirementsList"), inits.get("materialRequirementsList")) : null;
         this.productContract = inits.isInitialized("productContract") ? new QProductContract(forProperty("productContract"), inits.get("productContract")) : null;
     }

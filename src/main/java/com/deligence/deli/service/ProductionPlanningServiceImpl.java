@@ -190,6 +190,19 @@ public class ProductionPlanningServiceImpl implements ProductionPlanningService{
         return dtoList;
 
     }
+    //생산계획상세(연관조달계획목록) -> 조인필요 test
+    @Override
+    public List<MaterialProcurementPlanningDetailDTO> planList(int productionPlanNo, PageRequestDTO pageRequestDTO) {
+
+        log.info("productionPlanNo : " + productionPlanNo);
+
+        List<MaterialProcurementPlanningDetailDTO> dtoList = productionPlanningRepository.planList(productionPlanNo);
+
+        log.info("dtoList : " + dtoList);
+
+        return dtoList;
+
+    }
 
     //생산계획완료
     @Override

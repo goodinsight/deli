@@ -1,11 +1,14 @@
 package com.deligence.deli.repository.search;
 
 import com.deligence.deli.domain.*;
+import com.deligence.deli.dto.MaterialProcurementPlanningDetailDTO;
 import com.deligence.deli.dto.OrderDetailDTO;
+import com.deligence.deli.dto.ProductionPlanningDTO;
 import com.deligence.deli.dto.ProductionPlanningDetailDTO;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.Tuple;
 import com.querydsl.jpa.JPQLQuery;
+import com.querydsl.jpa.JPQLQueryFactory;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -189,6 +192,7 @@ public class ProductionPlanningSearchImpl extends QuerydslRepositorySupport impl
                 .detailExplaination(resultProductionPlanning.getDetailExplaination())
                 .productionState(resultProductionPlanning.getProductionState())             //생산진행상태
                 .productContractNo(resultPc.getProductContractNo())
+                .productContractCode(resultPc.getProductContractCode())                     //제품계약코드
                 .employeeNo(resultPc.getEmployee().getEmployeeNo())
                 .employeeName(resultPc.getEmployee().getEmployeeName())                     //제품계약담당자
                 .productNo(resultPc.getProducts().getProductNo())                           //계약제품일련번호 -> 필요자재항목
@@ -210,7 +214,7 @@ public class ProductionPlanningSearchImpl extends QuerydslRepositorySupport impl
                 .materialType(resultMrl.getMaterials().getMaterialType())                   //자재타입
                 .quantity(resultMrl.getQuantity())                                          //필요수량
                 .employeeNo(resultProductionPlanning.getEmployee().getEmployeeNo())         //생산계획 담당자
-                .employeeName2(resultProductionPlanning.getEmployeeName())                  //생산계획 담당자
+                .employeeName2(resultProductionPlanning.getEmployeeName2())                  //생산계획 담당자
                 .regDate(resultProductionPlanning.getRegDate())
                 .modDate(resultProductionPlanning.getModDate())
                 .build();
@@ -232,6 +236,42 @@ public class ProductionPlanningSearchImpl extends QuerydslRepositorySupport impl
         long count = query.fetchCount();
 
         return list;
+
+    }
+
+    //생산계획상세 - 연관 조달계획 목록 (조인 필요) test
+    @Override
+    public List<MaterialProcurementPlanningDetailDTO> planList(int productionPlanNO) {
+
+        QMaterialProcurementPlanning mpp = QMaterialProcurementPlanning.materialProcurementPlanning;
+        QProductionPlanning pp = QProductionPlanning.productionPlanning;
+
+        JPQLQuery<Tuple> query = new JPAQueryFactory(em)
+                .select(mpp, pp)
+                .from(mpp)
+                .join(mpp.productionPlanning, pp).on(mpp.productionPlanning.eq(pp))
+                .where(mpp.productionPlanning.productionPlanNo.eq(productionPlanNO));
+
+        List<Tuple> targetDtoList = query.fetch();
+
+        Tuple target = targetDtoList.get(0);
+
+        MaterialProcurementPlanning resultMpp = (MaterialProcurementPlanning) target.get(mpp);
+        ProductionPlanning resultPp = (ProductionPlanning) target.get(pp);
+
+        MaterialProcurementPlanningDetailDTO materialProcurementPlanningDetailDTO = MaterialProcurementPlanningDetailDTO.builder()
+                .materialProcurementPlanNo(resultMpp.getMaterialProcurementPlanNo())
+                .materialCode(resultMpp.getMaterialCode())
+                .productionRequirementsProcess(resultPp.getProductionRequirementsProcess())     //생산 소요공정
+                .productionRequirementsDate(resultPp.getProductionRequirementsDate())           //생산 소요기간
+                .materialRequirementsCount(resultMpp.getMaterialRequirementsCount())            //자재 소요량
+                .procurementDeliveryDate(resultMpp.getProcurementDeliveryDate())                //자재조달 납기일
+                .productionDeliveryDate(resultPp.getProductionDeliveryDate())                   //생산 납기일
+                .materialProcurementState(resultMpp.getMaterialProcurementState())              //자재조달상태
+                .productionState(resultPp.getProductionState())                                 //생산진행상태
+                .build();
+
+        return null;
     }
 
 

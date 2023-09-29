@@ -34,10 +34,10 @@
                         <span class="input-group-text">제품 코드</span>
                         <input type="text" name="productCode" class="form-control" id="selectProduct" th:value="${dto.productCode}" readonly>
                     </div>
-                    <div class="input-group mb-3 pl-5">
-                        <span class="input-group-text">제품이름</span>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" style="margin-left: 50px">제품이름</span>
                         <input type="text" name="productName" class="form-control productName" th:value="${dto.productName}" readonly>
-                        <span class="input-group-text">제품타입</span>
+                        <span class="input-group-text" style="margin-left: 20px">제품타입</span>
                         <input type="text" name="productType" class="form-control productType" th:value="${dto.productType}" readonly>
                     </div>
 
@@ -54,10 +54,10 @@
                         <span class="input-group-text">클라이언트 회사명</span>
                         <input type="text" name="clientName" class="form-control" id="selectClient" th:value="${dto.clientName}" readonly>
                     </div>
-                    <div class="input-group mb-3 pl-5">
-                        <span class="input-group-text">대표명</span>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" style="margin-left: 50px">대표명</span>
                         <input type="text" name="clientCeo" class="form-control clientCeo" th:value="${dto.clientCeo}" readonly>
-                        <span class="input-group-text">연락처</span>
+                        <span class="input-group-text" style="margin-left: 20px">연락처</span>
                         <input type="text" name="clientPhone" class="form-control clientPhone" th:value="${dto.clientPhone}" readonly>
                     </div>
                     <div class="input-group mb-3 d-none">
@@ -93,6 +93,15 @@
                     <div class="input-group mb-3">
                         <span class="input-group-text">담당자 이름</span>
                         <input type="text" name="employeeName" class="form-control" th:value="${dto.employeeName}" readonly>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">계약 정보 등록일</span>
+                        <input type="text" class="form-control"
+                               th:value="${#temporals.format(dto.regDate, 'yyyy-MM-dd')}" readonly>
+                        <span class="input-group-text" style="margin-left: 20px">계약 정보 수정일</span>
+                        <input type="text" class="form-control"
+                               th:value="${#temporals.format(dto.modDate, 'yyyy-MM-dd')}" readonly>
                     </div>
 
 

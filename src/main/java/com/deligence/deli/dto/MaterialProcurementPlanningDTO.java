@@ -54,6 +54,16 @@ public class MaterialProcurementPlanningDTO {
 
     private LocalDateTime modDate;  //수정일
 
+    //추가 -> 생산계획 정보
+    private int productionRequirementsDate;         //생산소요기간
+
+    private String productionRequirementsProcess;   //생산소요공정
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate productionDeliveryDate;       //생산 납기일
+
+    private String productionState;                 //생산 진행 상태
+
 }
 
 

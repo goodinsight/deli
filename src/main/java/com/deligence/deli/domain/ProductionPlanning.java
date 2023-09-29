@@ -59,6 +59,9 @@ public class ProductionPlanning extends BaseEntity {   //제품생산계획테�
 
     private String employeeName2;   //생산계획담당자
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private MaterialProcurementPlanning materialProcurementPlanning;
+
 
     public void change(ProductionPlanningDTO productionPlanningDTO){
 

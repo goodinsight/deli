@@ -6,7 +6,7 @@
       layout:decorate="~{/layout/layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>제품생산계획 상세</title>
+    <title>제품 생산 계획 상세</title>
 </head>
 
 <div layout:fragment="content">
@@ -15,80 +15,120 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    제품생산계획 상세
+                    제품 생산 계획 상세
                 </div>
                 <div class="card-body mt-3">
                     <div class="input-group mb-3 d-none">
                         <span class="input-group-text">제품생산계획 일련번호</span>
                         <input type="text" name="productionPlanNo" class="form-control" th:value="${dto.productionPlanNo}" readonly>
                     </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">제품생산계획 코드</span>
-                        <input type="text" name="productionPlanCode" class="form-control materialProcurementPlanCode" th:value="${dto.materialProcurementPlanCode}" readonly>
-                    </div>
-
                     <div class="input-group mb-3 d-none">
-                        <span class="input-group-text">생산계획 일련번호</span>
-                        <input type="text" name="productionPlan" class="form-control productionPlan" th:value="${dto.productionPlanNo}" readonly>
+                        <span class="input-group-text">제품계약 일련번호</span>
+                        <input type="text" name="productContractNo" class="form-control productContractNo" th:value="${dto.productContractNo}" readonly>
                     </div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text">생산계획 코드</span>
-                        <input type="text" name="productionPlanCode" class="form-control selectPlan" th:value="${dto.productionPlanCode}" readonly>
+                        <span class="input-group-text">제품 계약 코드</span>
+                        <input type="text" name="productContractCode" class="form-control selectContract" id="selectContract" th:value="${dto.productContractCode}" readonly>
                     </div>
-
                     <div class="input-group mb-3">
-                        <span class="input-group-text">자재코드</span>
-                        <input type="text" name="materialCode" class="form-control" th:value="${dto.materialCode}" readonly>
+                        <span class="input-group-text">제품 코드</span>
+                        <input type="text" name="productCode" class="form-control productCode" th:value="${dto.productCode}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" style="margin-left: 50px">제품 이름</span>
+                        <input type="text" name="productName" class="form-control productName" th:value="${dto.productName}" readonly>
+                        <span class="input-group-text" style="margin-left: 20px">제품 타입</span>
+                        <input type="text" name="productType" class="form-control productType" th:value="${dto.productType}" readonly>
                     </div>
                     <div class="input-group mb-3 pl-5">
-                        <span class="input-group-text">자재타입</span>
-                        <input type="text" name="materialType" class="form-control" th:value="${dto.materialType}" readonly>
+                        <span class="input-group-text">계약 수량</span>
+                        <input type="text" name="productQuantity" class="form-control productQuantity" th:value="${dto.productQuantity}" readonly>
                     </div>
-                    <div class="input-group mb-3 pl-5">
-                        <span class="input-group-text">자재이름</span>
-                        <input type="text" name="materialName" class="form-control" th:value="${dto.materialName}" readonly>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">생산 수량</span>
+                        <input type="text" name="productionQuantity" class="form-control productionQuantity" th:value="${dto.productionQuantity}" readonly>
                     </div>
-                    <div class="input-group mb-3 pl-5">
-                        <span class="input-group-text">자재 공급단가</span>
-                        <input type="text" name="materialSupplyPrice" class="form-control" th:value="${dto.materialSupplyPrice}" readonly>
+                    <div class="input-group mb-3 d-none">
+                        <span class="input-group-text">클라이언트 회사명</span>
+                        <input type="text" name="clientName" class="form-control clientName" th:value="${dto.clientName}" readonly>
                     </div>
+                    <div class="input-group mb-3 d-none">
+                        <span class="input-group-text">클라이언트 계약상태</span>
+                        <input type="text" name="clientStatus" class="form-control clientStatus" th:value="${dto.clientStatus}" readonly>
+                    </div>
+                    <div class="input-group mb-3 d-none">
+                        <span class="input-group-text">제품 계약 납기일</span>
+                        <input type="date" name="productDeliveryDate" class="form-control productDeliveryDate" th:value="${dto.productDeliveryDate}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">계약 담당자</span>
+                        <input type="text" name="employeeName" class="form-control employeeName" th:value="${dto.employeeName}" readonly>
+                    </div>
+                    <hr>
+
+                    <div class="mrl" id="divBtn">
+
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">제품별 필요 자재 항목 일련번호</span>
+                            <input type="text" name="materialRequirementsListNo" class="form-control materialRequirementsListNo" th:value="${dto.materialRequirementsListNo}"  readonly>
+                        </div>
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">제품 일련번호</span>
+                            <input type="text" name="productNo" class="form-control productNo" th:value="${dto.productNo}" readonly>
+                        </div>
+
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">필요 자재 코드</span>
+                            <input type="text" name="materialCode" class="form-control selectMrl" id="selectMrl" th:value="${dto.materialCode}"  readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="margin-left: 100px">자재 이름</span>
+                            <input type="text" name="materialName" class="form-control materialName" th:value="${dto.materialName}"  readonly>
+                            <span class="input-group-text" style="margin-left: 20px">자재 타입</span>
+                            <input type="text" name="materialType" class="form-control materialType" th:value="${dto.materialType}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="margin-left: 100px">필요 수량</span>
+                            <input type="text" name="quantity" class="form-control quantity" th:value="${dto.quantity}" readonly>
+                        </div>
+                    </div>
+                    <hr>
 
                     <div class="input-group mb-3">
-                        <span class="input-group-text">자재 소요량</span>
-                        <input type="number" name="materialRequirementsCount" class="form-control" th:value="${dto.materialRequirementsCount}" readonly>
+                        <span class="input-group-text">제품 생산 계획 코드</span>
+                        <input type="text" name="productionPlanCode" class="form-control productionPlanCode" id="productionPlanCode" th:value="${dto.productionPlanCode}"  readonly>
                     </div>
-
                     <div class="input-group mb-3">
-                        <span class="input-group-text">납기일</span>
-                        <input type="text" name="procurementDeliveryDate" class="form-control" th:value="${dto.procurementDeliveryDate}" readonly>
-                        <!--<input type="text" class="form-control"
-                           th:value="${#temporals.format(dto.procurementDeliveryDate, 'yyyy-MM-dd')}" readonly>-->
+                        <span class="input-group-text">생산 소요 공정</span>
+                        <input type="text" name="productionRequirementsProcess" class="form-control productionRequirementsProcess" th:value="${dto.productionRequirementsProcess}" readonly>
                     </div>
-
                     <div class="input-group mb-3">
-                        <span class="input-group-text">자재조달 상태</span>
-                        <input type="text" name="materialProcurementState" class="form-control" th:value="${dto.materialProcurementState}" readonly>
+                        <span class="input-group-text">생산 소요 기간</span>
+                        <input type="text" name="productionRequirementsDate" class="form-control productionRequirementsDate" th:value="${dto.productionRequirementsDate}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">생산 납기일</span>
+                        <input type="date" name="productionDeliveryDate" class="form-control productionDeliveryDate" th:value="${dto.productionDeliveryDate}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">상세 내용</span>
+                        <textarea name="detailExplaination" rows="5" cols="50" class="form-control h-25" readonly>[[${dto.detailExplaination}]]</textarea>
                     </div>
 
                     <div class="input-group mb-3 d-none">
                         <span class="input-group-text">담당자 일련번호</span>
                         <input type="text" name="employeeNo" class="form-control" th:value="${dto.employeeNo}" readonly>
                     </div>
-
-
                     <div class="input-group mb-3">
-                        <span class="input-group-text">담당자</span>
-                        <input type="text" name="employeeName" class="form-control employeeName" th:value="${dto.employeeName}" readonly>
+                        <span class="input-group-text">계획 담당자</span>
+                        <input type="text" name="employeeName2" class="form-control employeeName2" th:value="${dto.employeeName2}" readonly>
                     </div>
 
                     <div class="input-group mb-3">
-                        <span class="input-group-text">등록일</span>
+                        <span class="input-group-text">생산 계획 등록일</span>
                         <input type="text" name="regDate" class="form-control"
                                th:value="${#temporals.format(dto.regDate, 'yyyy-MM-dd')}" readonly>
-                    </div>
-
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">수정일</span>
+                        <span class="input-group-text" style="margin-left: 20px">생산 계획 수정일</span>
                         <input type="text" name="modDate" class="form-control"
                                th:value="${#temporals.format(dto.modDate, 'yyyy-MM-dd')}" readonly>
                     </div>
@@ -96,16 +136,16 @@
 
                     <div class="my-4" th:with="user=${#authentication.principal}">
                         <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}" >
-                            <a th:href="|@{/materialProcurementPlanning/list}?${link}|" class="text-decoration-none">
+                            <a th:href="|@{/productionPlanning/list}?${link}|" class="text-decoration-none">
                                 <button type="button" class="btn btn-primary">List</button>
                             </a>
-                            <a   th:href="|@{/materialProcurementPlanning/modify(materialProcurementPlanNo=
-                            ${dto.materialProcurementPlanNo})}&${link}|" class="text-decoration-none">
+                            <a   th:href="|@{/productionPlanning/modify(productionPlanNo=
+                            ${dto.productionPlanNo})}&${link}|" class="text-decoration-none">
                                 <button type="button" class="btn btn-secondary">Modify</button>
                             </a>
-                            <a   th:href="|@{/materialProcurementPlanning/orderList(materialProcurementPlanNo=
-                            ${dto.materialProcurementPlanNo})}&${link}|" class="text-decoration-none">
-                                <button type="button" class="btn btn-secondary">OrderList</button>
+                            <a   th:href="|@{/productionPlanning/procurementPlanList(productionPlanNo=
+                            ${dto.productionPlanNo})}&${link}|" class="text-decoration-none">
+                                <button type="button" class="btn btn-secondary">ProcurementPlanList</button>
                             </a>
                         </div>
                     </div>

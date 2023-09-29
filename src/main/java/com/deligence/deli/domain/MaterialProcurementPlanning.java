@@ -2,6 +2,7 @@ package com.deligence.deli.domain;
 
 import com.deligence.deli.dto.MaterialProcurementPlanningDTO;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -43,6 +44,16 @@ public class MaterialProcurementPlanning extends BaseEntity {
     private String materialCode;   //자재코드 (검색용)
 
     private String materialName;   //자재이름 (검색용)
+
+    //추가 -> 생산계획 정보
+    private int productionRequirementsDate;         //생산소요기간
+
+    private String productionRequirementsProcess;   //생산소요공정
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate productionDeliveryDate;       //생산 납기일
+
+    private String productionState;                 //생산 진행 상태
 
 
     //수정가능한 속성 지정 (일단 납기일,자재소요랑,자재조달상태 지정)

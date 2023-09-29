@@ -25,6 +25,7 @@ public class ProductionPlanningDetailDTO {
 
     private String productionRequirementsProcess;   //생산소요공정
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate productionDeliveryDate;       //생산 납기일
 
     private String detailExplaination;              //상세내용
@@ -47,6 +48,7 @@ public class ProductionPlanningDetailDTO {
 
     private String clientName;                      //구매협력회사명 (-> 목록-검색용) <- 제품계약에서 가져옴
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate productDeliveryDate;          //제품 납기일 (-> 목록-검색용?)   <- 제품계약에서 가져옴
 
 //    private String productContractState;            //계약진행상태
