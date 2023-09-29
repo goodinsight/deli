@@ -162,4 +162,17 @@ public class ProductionPlanningRepositoryTests {
         log.info("num : " + result);
 
     }
+
+    //생산계획상세(연관조달계획목록)테스트 (-> 현재 3번만 사용함. 조달계획에서 다른 번호도 넣은 후 테스트 해 볼것.)
+    @Test
+    public void procurementPlanList() {
+
+        Pageable pageable = PageRequest.of(0,10);
+
+        List<MaterialProcurementPlanning> result = productionPlanningRepository.procurementPlanList(3);
+
+        log.info(result);
+
+
+    }
 }
