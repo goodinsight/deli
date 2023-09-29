@@ -32,6 +32,8 @@ public class ProductionPlanning extends BaseEntity {   //제품생산계획테�
 
     private String detailExplaination;              //상세내용
 
+    private String productionState;                 //생산계획진행상태
+
     @ManyToOne(fetch = FetchType.LAZY)
     private ProductContract productContract;    //제품계약(일련번호) FK --------------------------------------
 
@@ -40,6 +42,8 @@ public class ProductionPlanning extends BaseEntity {   //제품생산계획테�
     private String clientName;                          //구매협력회사명 (검색용) <- 제품계약에서 가져옴
 
     private LocalDate productDeliveryDate;              //제품 납기일 (-> 목록-검색용?)   <- 제품계약에서 가져옴
+
+//    private String productContractState;                //제품 계약 진행 상태
 
     private String clientStatus;                        //계약상태 (검색용)    <- 제품계약에서 가져옴
 
@@ -61,6 +65,13 @@ public class ProductionPlanning extends BaseEntity {   //제품생산계획테�
         this.productionRequirementsProcess = productionPlanningDTO.getProductionRequirementsProcess();  //생산소요공정
         this.productionDeliveryDate = productionPlanningDTO.getProductionDeliveryDate();                //생산납기일
         this.detailExplaination = productionPlanningDTO.getDetailExplaination();                        //상세내용
+        this.productionState = productionPlanningDTO.getProductionState();                              //생산진행상태
+
+    }
+
+    //생산 진행 상태 변경 (자재조달계획 -> 자재조달중 / 조달계획완료 -> 발주진행중)
+    public void changeState(String state){
+        this.productionState = state;
 
     }
 

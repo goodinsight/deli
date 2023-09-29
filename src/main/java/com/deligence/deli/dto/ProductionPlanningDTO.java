@@ -34,6 +34,8 @@ public class ProductionPlanningDTO {
 
     private String detailExplaination;              //상세내용
 
+    private String productionState;                 //생산계획진행상태
+
     //----------------------------------------------------------------------------------------------------
 
     private int productContractNo;                  //제품계약(일련번호) FK
@@ -43,6 +45,8 @@ public class ProductionPlanningDTO {
     private String clientName;                      //구매협력회사명 (검색용) <- 제품계약에서 가져옴
 
     private LocalDate productDeliveryDate;          //제품 납기일 (-> 목록-검색용?)   <- 제품계약에서 가져옴
+
+//    private String productContractState;            //제품 계약 진행 상태
 
     private String clientStatus;                    //계약상태 (검색용)    <- 제품계약에서 가져옴
 

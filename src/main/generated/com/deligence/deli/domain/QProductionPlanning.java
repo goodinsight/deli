@@ -57,6 +57,8 @@ public class QProductionPlanning extends EntityPathBase<ProductionPlanning> {
 
     public final StringPath productionRequirementsProcess = createString("productionRequirementsProcess");
 
+    public final StringPath productionState = createString("productionState");
+
     //inherited
     public final DateTimePath<java.time.LocalDateTime> regDate = _super.regDate;
 

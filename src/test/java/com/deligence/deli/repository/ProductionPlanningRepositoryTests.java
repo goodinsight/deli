@@ -28,23 +28,27 @@ public class ProductionPlanningRepositoryTests {
     @Test
     public void testInsert() {
 
-        int productContractNo = 1;
-
-        IntStream.rangeClosed(1,10).forEach(i -> {
-
-            ProductContract productContract = ProductContract.builder().productContractNo(1).build();
+        IntStream.rangeClosed(1,5).forEach(i -> {
 
             ProductionPlanning productionPlanning = ProductionPlanning.builder()
-                    .productionPlanCode("PD-PLANNING")
-                    .productionQuantity(10)
-                    .productionRequirementsDate(10)
-                    .productionRequirementsProcess("process...")
-                    .productionDeliveryDate(LocalDate.of(2023,9,27))
-                    .detailExplaination("explaination...")
-                    .productCode("productCode"+i)
-                    .productDeliveryDate(LocalDate.of(2023,11,15))
-                    .clientName("client"+i)
+                    .productionPlanCode("PD-PLANNING-"+i)
+                    .productionQuantity(i*100)
+                    .productionRequirementsDate(i*10)
+                    .productionRequirementsProcess("process..."+i)
+                    .productionDeliveryDate(LocalDate.of(2023,10,27))
+                    .detailExplaination("explaination..."+i)
+                    .productionState("자재조달단계")
+                    .productContract(ProductContract.builder().productContractNo(50).build())
+                    .productCode("PD-CONTRACT-20230928-50")
+//                    .clientName(ProductContract.builder().productContractNo(50).build().getClientName())   //클라이언트회사명
+                    .clientName("clientName...")   //클라이언트회사명
+//                    .productDeliveryDate(ProductContract.builder().productContractNo(50).build().getProductContractDate())
+                    .productDeliveryDate(LocalDate.of(2023,11,10))
+//                    .clientStatus(ProductContract.builder().productContractNo(50).build().getClientStatus())
                     .clientStatus("계약중")
+                    .materialRequirementsList(MaterialRequirementsList.builder().materialRequirementsListNo(1).build())
+                    .employee(Employee.builder().employeeNo(28).build())
+                    .employeeName("제품계약:윈터, 생산계획:카리나")    //계약담당자
                     .build();
 
             ProductionPlanning result = productionPlanningRepository.save(productionPlanning);
@@ -57,7 +61,7 @@ public class ProductionPlanningRepositoryTests {
     @Test
     public void testSelect() {
 
-        int productionPlanNo = 20;
+        int productionPlanNo = 215;
 
         Optional<ProductionPlanning> result = productionPlanningRepository.findById(productionPlanNo);
 
@@ -70,24 +74,20 @@ public class ProductionPlanningRepositoryTests {
     @Test
     public void testUpdate() {
 
-        int productionPlanNo = 20;
+        int productionPlanNo = 215;
 
         Optional<ProductionPlanning> result = productionPlanningRepository.findById(productionPlanNo);
 
         ProductionPlanning productionPlanning = result.orElseThrow();
 
         productionPlanning.change(ProductionPlanningDTO.builder()
-                .productionPlanCode("PD-PLANNING")
-                .productionQuantity(123)
-                .productionRequirementsDate(7)
+                .productionPlanCode("PD-PLANNING-Mod")
+                .productionQuantity(1000)
+                .productionRequirementsDate(10)
                 .productionRequirementsProcess("modifyProcess...")
-                .productionDeliveryDate(LocalDate.of(2023,9,26))
+                .productionDeliveryDate(LocalDate.of(2023,10,5))
                 .detailExplaination("modifyExplaination...")
-                .productContractNo(3)
-                .productCode("modifyProductCode")
-                .productDeliveryDate(LocalDate.of(2023,11,1))
-                .clientName("modifyClient")
-                .clientStatus("계약중")
+                .productionState("제품생산단계")
                 .build());
 
         productionPlanningRepository.save(productionPlanning);
@@ -97,7 +97,7 @@ public class ProductionPlanningRepositoryTests {
     @Test
     public void testDelete(){
 
-        int productionPlanNo = 43;
+        int productionPlanNo = 18;
 
         productionPlanningRepository.deleteById(productionPlanNo);
 
@@ -125,7 +125,7 @@ public class ProductionPlanningRepositoryTests {
 
     @Test
     public void testSearch() {
-        //a:생산계획코드 b:제품코드 c:클라이언트 회사명 d:납기일 e:계약상태
+        //a:생산계획코드 b:제품코드 c:클라이언트 회사명 d:납기일 e:클라이언트계약상태 f:계약담당자
         String[] types = {"a"};
 
         String keyword = "code";

@@ -33,14 +33,14 @@ public class ProductionPlanningSearchImpl extends QuerydslRepositorySupport impl
         JPQLQuery<ProductionPlanning> query = new JPAQueryFactory(em)
                 .selectFrom(productionPlanning);
 
-        if( (types != null && types.length > 0) && keyword != null ) { //검색조건과 키워드가 있다면
+        if ((types != null && types.length > 0) && keyword != null) { //검색조건과 키워드가 있다면
 
             BooleanBuilder booleanBuilder = new BooleanBuilder(); // (
 
-            for(String type : types) {
+            for (String type : types) {
 
-                switch(type){
-                //a:생산계획코드 b:제품코드 c:클라이언트 회사명 d:납기일 e:계약상태
+                switch (type) {
+                    //a:생산계획코드 b:제품코드 c:클라이언트 회사명 d:납기일 e:클라이언트계약상태 + 계약진행상태 별도
                     case "a":
                         booleanBuilder.or(productionPlanning.productionPlanCode.contains(keyword));
                         break;
@@ -56,7 +56,62 @@ public class ProductionPlanningSearchImpl extends QuerydslRepositorySupport impl
                     case "e":
                         booleanBuilder.or(productionPlanning.clientStatus.contains(keyword));   //계약상태
 
+                }
 
+            }//end for
+
+            query.where(booleanBuilder);
+
+        }//end if
+
+        query.orderBy(productionPlanning.productionPlanNo.desc());
+
+        //paging
+        this.getQuerydsl().applyPagination(pageable, query);// 오류 발생 부분. pageable에 sort를 담아 실행하면 오류가 발생한다.
+
+        //https://www.inflearn.com/questions/153250/spring-sort%EB%A5%BC-querydsl-%EB%B3%80%ED%99%98-%EC%A0%81%EC%9A%A9%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95-%EB%AC%B8%EC%9D%98
+
+
+        List<ProductionPlanning> list = query.fetch();
+
+        long count = query.fetchCount();
+
+        return new PageImpl<>(list, pageable, count);
+    }
+
+    @Override
+    public Page<ProductionPlanning> searchWithState(String[] types, String keyword, String state, Pageable pageable) {
+
+        QProductionPlanning productionPlanning = QProductionPlanning.productionPlanning;
+
+        JPQLQuery<ProductionPlanning> query = new JPAQueryFactory(em)
+                .selectFrom(productionPlanning);
+
+        if ((types != null && types.length > 0) && keyword != null) { //검색조건과 키워드가 있다면
+
+            BooleanBuilder booleanBuilder = new BooleanBuilder(); // (
+
+            for (String type : types) {
+
+                switch (type) {
+                    //a:생산계획코드 b:제품코드 c:클라이언트 회사명 d:납기일 e:클라이언트계약상태 f:계약담당자 + 생산진행상태 별도
+                    case "a":
+                        booleanBuilder.or(productionPlanning.productionPlanCode.contains(keyword));
+                        break;
+                    case "b":
+                        booleanBuilder.or(productionPlanning.productCode.contains(keyword));
+                        break;
+                    case "c":
+                        booleanBuilder.or(productionPlanning.clientName.contains(keyword));
+                        break;
+                    case "d":   //생산납기일
+                        booleanBuilder.or(productionPlanning.productionDeliveryDate.stringValue().contains(keyword));
+                        break;
+                    case "e":
+                        booleanBuilder.or(productionPlanning.clientStatus.contains(keyword));
+                        break;
+                    case "f":
+                        booleanBuilder.or(productionPlanning.employeeName.contains(keyword));
 
                 }
 
@@ -66,15 +121,14 @@ public class ProductionPlanningSearchImpl extends QuerydslRepositorySupport impl
 
         }//end if
 
-        //query.where(order.orderNo.gt(0));
+        if (state != null) {
+            query.where(productionPlanning.productionState.contains(state));   //생산 진행 상태 검색
+        }
 
         query.orderBy(productionPlanning.productionPlanNo.desc());
 
         //paging
-        this.getQuerydsl().applyPagination(pageable, query);// 오류 발생 부분. pageable에 sort를 담아 실행하면 오류가 발생한다.
-
-        //https://www.inflearn.com/questions/153250/spring-sort%EB%A5%BC-querydsl-%EB%B3%80%ED%99%98-%EC%A0%81%EC%9A%A9%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95-%EB%AC%B8%EC%9D%98
-
+        this.getQuerydsl().applyPagination(pageable, query);
 
         List<ProductionPlanning> list = query.fetch();
 
@@ -100,13 +154,16 @@ public class ProductionPlanningSearchImpl extends QuerydslRepositorySupport impl
     public ProductionPlanningDetailDTO read(int productionPlanNo) {
 
         QProductionPlanning productionPlanning = QProductionPlanning.productionPlanning;
-        //제품계약->제품코드,제품수량,구매협력회사명,계약상태,사원이름(담당자),납기일
+        //제품계약->제품코드,제품수량,구매협력회사명,납기일,계약상태,사원이름(담당자),제품명,제품타입
         QProductContract pc = QProductContract.productContract;
+        //필요자재코드 ->제품코드,자재명,자재분류,필요수량 (제품코드에 따른 필요 자재 목록 출력)
+        QMaterialRequirementsList mrl = QMaterialRequirementsList.materialRequirementsList;
 
         JPQLQuery<Tuple> query = new JPAQueryFactory(em)
-                .select(productionPlanning, pc)
+                .select(productionPlanning, pc, mrl)
                 .from(productionPlanning)
                 .join(productionPlanning.productContract, pc).on(productionPlanning.productContract.eq(pc))
+                .join(productionPlanning.materialRequirementsList, mrl).on(productionPlanning.materialRequirementsList.eq(mrl))
                 .where(productionPlanning.productionPlanNo.eq(productionPlanNo));
 
         List<Tuple> targetDtoList = query.fetch();
@@ -115,6 +172,7 @@ public class ProductionPlanningSearchImpl extends QuerydslRepositorySupport impl
 
         ProductionPlanning resultProductionPlanning = (ProductionPlanning) target.get(productionPlanning);
         ProductContract resultPc = (ProductContract) target.get(pc);
+        MaterialRequirementsList resultMrl = (MaterialRequirementsList) target.get(mrl);
 
         ProductionPlanningDetailDTO dto = ProductionPlanningDetailDTO.builder()
                 .productionPlanNo(resultProductionPlanning.getProductionPlanNo())
@@ -124,20 +182,136 @@ public class ProductionPlanningSearchImpl extends QuerydslRepositorySupport impl
                 .productionRequirementsProcess(resultProductionPlanning.getProductionRequirementsProcess())
                 .productionDeliveryDate(resultProductionPlanning.getProductionDeliveryDate())
                 .detailExplaination(resultProductionPlanning.getDetailExplaination())
+                .productionState(resultProductionPlanning.getProductionState())             //생산진행상태
                 .productContractNo(resultPc.getProductContractNo())
                 .employeeNo(resultPc.getEmployee().getEmployeeNo())
-                .employeeName(resultPc.getEmployee().getEmployeeName())
-                .productNo(resultPc.getProducts().getProductNo())
+                .employeeName(resultPc.getEmployee().getEmployeeName())                     //제품계약담당자
+                .productNo(resultPc.getProducts().getProductNo())                           //계약제품일련번호 -> 필요자재항목
                 .productCode(resultPc.getProducts().getProductCode())
                 .productName(resultPc.getProducts().getProductName())
                 .productType(resultPc.getProducts().getProductType())
-                .productDeliveryDate(resultPc.getProductDeliveryDate())
-                .clientName(resultPc.getCooperatorClient().getClientName())
-                .clientStatus(resultPc.getCooperatorClient().getClientStatus())
+                .productQuantity(resultPc.getProductQuantity())                             //제품계약수량
+                .clientName(resultPc.getCooperatorClient().getClientName())                 //클라이언트회사명
+                .productDeliveryDate(resultPc.getProductDeliveryDate())                     //제품납기일
+                .clientStatus(resultPc.getCooperatorClient().getClientStatus())             //클라이언트계약상태
+                .materialRequirementsListNo(resultMrl.getMaterialRequirementsListNo())      //제품별필요자재항목No
+                .productNo(resultMrl.getProducts().getProductNo())                          //제품No
+                .productCode(resultMrl.getProducts().getProductCode())                      //제품Code
+                .materialNo(resultMrl.getMaterials().getMaterialNo())                       //자재No
+                .materialCode(resultMrl.getMaterials().getMaterialCode())                   //자재코드
+                .materialName(resultMrl.getMaterials().getMaterialName())                   //자재이름
+                .materialType(resultMrl.getMaterials().getMaterialType())                   //자재타입
+                .quantity(resultMrl.getQuantity())                                          //필요수량
+                .employeeNo(resultProductionPlanning.getEmployee().getEmployeeNo())         //생산계획 담당자
+                .employeeName(resultProductionPlanning.getEmployeeName())                   //생산계획 담당자
                 .regDate(resultProductionPlanning.getRegDate())
                 .modDate(resultProductionPlanning.getModDate())
                 .build();
 
         return dto;
+    }
+
+    @Override
+    public List<MaterialProcurementPlanning> procurementPlanList(int ProductionPlanNo) {
+
+        QMaterialProcurementPlanning materialProcurementPlanning = QMaterialProcurementPlanning.materialProcurementPlanning;
+
+        JPQLQuery<MaterialProcurementPlanning> query = new JPAQueryFactory(em)
+                .selectFrom(materialProcurementPlanning)
+                .where(materialProcurementPlanning.productionPlanning.productionPlanNo.eq(ProductionPlanNo));
+
+        List<MaterialProcurementPlanning> list = query.fetch();
+
+        long count = query.fetchCount();
+
+        return list;
+    }
+
+
+    @Override
+    public Page<ProductionPlanning> searchProduction(String[] types, String keyword, String[] states, Pageable pageable) {
+
+        QProductionPlanning productionPlanning = QProductionPlanning.productionPlanning;
+
+        JPQLQuery<ProductionPlanning> query = new JPAQueryFactory(em)
+                .selectFrom(productionPlanning);
+
+        if ((types != null && types.length > 0) && keyword != null) { //검색조건과 키워드가 있다면
+
+            BooleanBuilder booleanBuilder = new BooleanBuilder(); // (
+
+            for (String type : types) {
+
+                switch (type) {
+                    //a:생산계획코드 b:제품코드 c:클라이언트 회사명 d:납기일 e:클라이언트계약상태 f:계약담당자 + 생산진행상태 별도
+                    case "a":
+                        booleanBuilder.or(productionPlanning.productionPlanCode.contains(keyword));
+                        break;
+                    case "b":
+                        booleanBuilder.or(productionPlanning.productCode.contains(keyword));
+                        break;
+                    case "c":
+                        booleanBuilder.or(productionPlanning.clientName.contains(keyword));
+                        break;
+                    case "d":   //생산납기일
+                        booleanBuilder.or(productionPlanning.productionDeliveryDate.stringValue().contains(keyword));
+                        break;
+                    case "e":
+                        booleanBuilder.or(productionPlanning.clientStatus.contains(keyword));
+                        break;
+                    case "f":
+                        booleanBuilder.or(productionPlanning.employeeName.contains(keyword));
+
+                }
+
+            }//end for
+
+            query.where(booleanBuilder);
+
+        }//end if
+
+        //상태 조건 -------------------------------------
+
+        BooleanBuilder booleanBuilder2 = new BooleanBuilder(); // (
+
+        for(String state : states) {
+
+            switch (state) {
+
+                case "자재조달단계":
+                    booleanBuilder2.or(productionPlanning.productionState.contains("자재조달단계"));
+                    break;
+                case "자재입고단계":
+                    booleanBuilder2.or(productionPlanning.productionState.contains("자재입고단계"));
+                    break;
+                case "제품생산단계":
+                    booleanBuilder2.or(productionPlanning.productionState.contains("제품생산단계"));
+                    break;
+                case "제품검수단계":
+                    booleanBuilder2.or(productionPlanning.productionState.contains("제품검수단계"));
+                    break;
+                case "제품입고완료":
+                    booleanBuilder2.or(productionPlanning.productionState.contains("제품입고완료"));
+                    break;
+
+            }
+
+        }//end for
+
+        query.where(booleanBuilder2);
+
+        //-----------------------------
+
+        query.orderBy(productionPlanning.productionPlanNo.desc());
+
+        //paging
+        this.getQuerydsl().applyPagination(pageable, query);
+
+        List<ProductionPlanning> list = query.fetch();
+
+        long count = query.fetchCount();
+
+        return new PageImpl<>(list, pageable, count);
+
     }
 }
