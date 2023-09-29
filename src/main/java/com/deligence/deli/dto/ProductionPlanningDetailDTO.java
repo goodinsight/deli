@@ -76,7 +76,7 @@ public class ProductionPlanningDetailDTO {
 
     private int employeeNo;                         //사원일련번호 FK
 
-    private String employeeName2;   //생산계획담당자
+    private String employeeName2;                   //생산계획담당자
 
     private LocalDateTime regDate;                  //등록일
 

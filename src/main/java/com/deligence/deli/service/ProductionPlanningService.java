@@ -96,5 +96,6 @@ public interface ProductionPlanningService {
         return materialProcurementPlanningDTO;
     }
 
+    //생산계획완료
     void completePlan(int productionPlanNo);
 }

@@ -191,6 +191,7 @@ public class ProductionPlanningServiceImpl implements ProductionPlanningService{
 
     }
 
+    //생산계획완료
     @Override
     public void completePlan(int productionPlanNo) {
 

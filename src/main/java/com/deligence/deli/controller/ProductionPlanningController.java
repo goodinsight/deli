@@ -1,11 +1,14 @@
 package com.deligence.deli.controller;
 
+import com.deligence.deli.domain.MaterialProcurementPlanning;
 import com.deligence.deli.domain.MaterialRequirementsList;
+import com.deligence.deli.domain.ProductContract;
 import com.deligence.deli.dto.*;
 import com.deligence.deli.service.ProductContractService;
 import com.deligence.deli.service.ProductionPlanningService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/productionPlanning")
@@ -41,7 +46,6 @@ public class ProductionPlanningController {
     }
 
 
-
     //등록GET
     @GetMapping("/register")
     public void registerGET(@AuthenticationPrincipal EmployeeSecurityDTO employeeSecurityDTO, Model model) {
@@ -67,16 +71,16 @@ public class ProductionPlanningController {
 
             log.info("ProductionPlanning register has errors........");
 
-            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors() );
+            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
 
             return "redirect:/productionPlanning/register";
         }
         //-------------------------------------------------------------------------------
 
-        int materialProcurementPlanNo =
+        int productionPlanNo =
                 productionPlanningService.register(productionPlanningDTO);
 
-        redirectAttributes.addFlashAttribute("result", materialProcurementPlanNo);
+        redirectAttributes.addFlashAttribute("result", productionPlanNo);
 
         return "redirect:/productionPlanning/list";
     }
@@ -84,28 +88,26 @@ public class ProductionPlanningController {
     //조회, 수정
 //    @PreAuthorize("isAuthenticated()")
     @GetMapping({"/read", "/modify"})
-    public void read(int productionPlanNo, PageRequestDTO pageRequestDTO, Model model) {
+    public void read(int productionPlanNo, OrderPageRequestDTO orderPageRequestDTO, Model model) {
 
-        ProductionPlanningDetailDTO productionPlanningDetailDTO =
-                productionPlanningService.read(productionPlanNo);
+        log.info("search : productionPlanNo = " + productionPlanNo);
+
+        ProductionPlanningDetailDTO productionPlanningDetailDTO = productionPlanningService.read(productionPlanNo);
 
         log.info(productionPlanningDetailDTO);
 
-
         model.addAttribute("dto", productionPlanningDetailDTO);
 
-        log.info(pageRequestDTO);
-
-        model.addAttribute("pageRequestDTO", pageRequestDTO);
+        model.addAttribute("pageRequestDTO", orderPageRequestDTO);
 
     }
 
     //수정POST
     @PostMapping("/modify")
-    public String modify( PageRequestDTO pageRequestDTO,
-                          @Valid ProductionPlanningDTO productionPlanningDTO,
-                          BindingResult bindingResult,
-                          RedirectAttributes redirectAttributes) {
+    public String modify(OrderPageRequestDTO orderPageRequestDTO,
+                         @Valid ProductionPlanningDTO productionPlanningDTO,
+                         BindingResult bindingResult,
+                         RedirectAttributes redirectAttributes){
 
         log.info("productionPlanning modify post.........." + productionPlanningDTO);
 
@@ -113,14 +115,14 @@ public class ProductionPlanningController {
         if (bindingResult.hasErrors()) {
             log.info("has errors.....");
 
-            String link = pageRequestDTO.getLink();
+            String link = orderPageRequestDTO.getLink();
 
-            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors() );
+            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
 
             redirectAttributes.addAttribute("productionPlanNo",
                     productionPlanningDTO.getProductionPlanNo());
 
-            return "redirect:/productionPlanning/modify?"+link;
+            return "redirect:/productionPlanning/modify?" + link;
         }
         // -------------------------------------------------------------------------------------------------
 
@@ -150,82 +152,127 @@ public class ProductionPlanningController {
 
     // 비동기 처리 ----------------------------------------------------------------------------------------
 
-    //productionPlanningService 구현 한 후에 주석 풀기.
-
+    //제품계약 ProductContract
     @ResponseBody
-    @GetMapping("/register/selectPlan")
-    public PageResponseDTO<ProductionPlanningDTO> getPlanList(PageRequestDTO pageRequestDTO) {
+    @GetMapping("/register/selectContract")
+    public PageResponseDTO<ProductContractDTO> getContractList(PageRequestDTO pageRequestDTO) {
 
-        log.info("getPlanList");
+        log.info("getContractList");
 
-        PageResponseDTO<ProductionPlanningDTO> responseDTO = productionPlanningService.list(pageRequestDTO);
+        PageResponseDTO<ProductContractDTO> responseDTO = productContractService.list(pageRequestDTO);
 
         return responseDTO;
 
     }
 
     @ResponseBody
-    @GetMapping("/register/getPlan/{planNo}")
-    public ProductionPlanningDetailDTO getPlanDTO(@PathVariable("planNo") int planNo) {
+    @GetMapping("/register/getContract/{contractNo}")
+    public ProductContractDetailDTO getContractDTO(@PathVariable("contractNo") int contractNo) {
 
-        log.info("getPlanDTO : " + planNo);
+        log.info("getContractDTO : " + contractNo);
 
-        ProductionPlanningDetailDTO productionPlanningDetailDTO = productionPlanningService.read(planNo);
+        ProductContractDetailDTO productContractDetailDTO = productContractService.read(contractNo);
 
-        log.info(productionPlanningDetailDTO);
+        log.info(productContractDetailDTO);
 
-        return productionPlanningDetailDTO;
+        return productContractDetailDTO;
+
     }
 
+    //materialRequirementsListService 구현 한 후에 주석 풀기.
+
 //    @ResponseBody
-//    @GetMapping("/register/selectMaterial")
-//    public PageResponseDTO<ProductionPlanningDTO> getMaterialList(PageRequestDTO pageRequestDTO) {
+//    @GetMapping("/register/selectMrl")
+//    public PageResponseDTO<MaterialRequirementsListDTO> getMrlList(PageRequestDTO pageRequestDTO) {
 //
-//        log.info("getproductionPlanningList");
+//        log.info("getMrlList");
 //
-//        PageResponseDTO<ProductionPlanningDTO> responseDTO = productionPlanningService.list(pageRequestDTO);
+//        PageResponseDTO<MaterialRequirementsListDTO> responseDTO = MaterialRequirementsListService.list(pageRequestDTO);
 //
 //        return responseDTO;
 //
 //    }
-//
 //    @ResponseBody
-//    @GetMapping("/register/getMaterial/{materialsNo}")
-//    public MaterialsDTO getMaterialsDTO(@PathVariable("materialsNo") int materialsNo) {
+//    @GetMapping("/register/getMrl/{mrlNo}")
+//    public MaterialRequirementsListDTO getMrlDTO(@PathVariable("mrlNo") int mrlNo) {
 //
-//        log.info("getMaterialsDTO : " + materialsNo);
+//        log.info("getMrlDTO : " + mrlNo);
 //
-//        MaterialsDTO materialsDTO = materialsService.readOne(materialsNo);
+//        MaterialRequirementsListDTO materialRequirementsListDTO = MaterialRequirementsListService.read(mrlNo);
 //
-//        log.info(materialsDTO);
+//        log.info(materialRequirementsListDTO);
 //
-//        return materialsDTO;
+//        return materialRequirementsListDTO;
 //    }
-//
-//    @ResponseBody
-//    @GetMapping("/register/getCodeCount/{materialProcurementPlanCode}")
-//    public int getCodeCount(@PathVariable("materialProcurementPlanCode") String materialProcurementPlanCode){
-//
-//        log.info("getCodeCount : " + materialProcurementPlanCode);
-//
-//        int num = materialProcurementPlanningService.getCodeCount(materialProcurementPlanCode);
-//
-//        log.info("num : " + num);
-//
-//        return num;
-//
-//    }
-//
-//    //조달계획상세 (연관 발주 목록)
-//    @GetMapping("/orderList" )
-//    public void orderList(int materialProcurementPlanNo, PageRequestDTO pageRequestDTO, Model model) {
-//
-//        List<OrderDTO> dtoList =
-//                materialProcurementPlanningService.orderList(materialProcurementPlanNo, pageRequestDTO);
-//
-//        log.info(dtoList);
-//
-//        model.addAttribute("dtoList", dtoList);
-//    }
+
+
+    @ResponseBody
+    @GetMapping("/register/getCodeCount/{ProductionPlanCode}")
+    public int getCodeCount(@PathVariable("ProductionPlanCode") String productionPlanCode) {
+
+        log.info("getCodeCount : " + productionPlanCode);
+
+        int num = productionPlanningService.getCodeCount(productionPlanCode);
+
+        log.info("num : " + num);
+
+        return num;
+
+    }
+
+    //생산계획상세 (연관 조달 계획 목록)
+    @GetMapping("/procurementPlanList")
+    public void procurementPlanList(int productionPlanNO, PageRequestDTO pageRequestDTO, Model model) {
+
+        List<MaterialProcurementPlanningDTO> dtoList =
+                productionPlanningService.procurementPlanList(productionPlanNO, pageRequestDTO);
+
+        log.info(dtoList);
+
+        model.addAttribute("dtoList", dtoList);
+    }
+
+
+    //생산계획진행상태 변경 -> 제품계약에서 제품계약진행상태 변경됨
+    @ResponseBody
+    @PostMapping(value = "/changeProductionState", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void changeProductionState(@RequestBody Map<String, Object> map){
+
+        int productionPlanNo = Integer.parseInt(map.get("productionPlanNo").toString());
+        String state = map.get("state").toString();
+
+        productionPlanningService.changeState(productionPlanNo, state);
+
+    }
+
+    //생산계획완료
+    @ResponseBody
+    @PostMapping(value = "/completePlan", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void completePlan(@RequestBody Map<String, Object> map) {
+
+        //흐름을 어떻게 가지고 갈 지 생각해보기
+
+        int productionPlanNo = Integer.parseInt(map.get("productionPlanNo").toString());
+        int productContractNo = Integer.parseInt(map.get("productContractNo").toString());
+
+        //해당 제품입고 완료
+        productionPlanningService.changeState(productionPlanNo, "제품입고완료");
+
+        //제품계약 수량 확인
+        int productQuantity = productContractService.read(productContractNo).getProductQuantity();
+        log.info("제품 계약 수량 : " + productQuantity);
+
+        //연관 조달 계획중 입고 완료된 수량 확인 -> 입고 완료된 제품 수량 확인
+//        int sumOfOrderQuantity = orderService.sumOfOrderQuantity(materialProcurementPlanNo);
+//        log.info("발주 완료 수량 : " + sumOfOrderQuantity);
+
+        //비교
+//        if(materialRequirementsCount <= sumOfOrderQuantity){
+//            log.info("조달 완료 프로세스 시작");
+//            //조달 계획 완료
+//            materialProcurementPlanningService.completePlan(materialProcurementPlanNo);
+//        }
+    }
+
 
 }

@@ -203,6 +203,7 @@ public class ProductionPlanningSearchImpl extends QuerydslRepositorySupport impl
                 .materialRequirementsListNo(resultMrl.getMaterialRequirementsListNo())      //제품별필요자재항목No
                 .productNo(resultMrl.getProducts().getProductNo())                          //제품No
                 .productCode(resultMrl.getProducts().getProductCode())                      //제품Code
+//                .productName(resultMrl.getProducts().getProductName())                      //제품이름
                 .materialNo(resultMrl.getMaterials().getMaterialNo())                       //자재No
                 .materialCode(resultMrl.getMaterials().getMaterialCode())                   //자재코드
                 .materialName(resultMrl.getMaterials().getMaterialName())                   //자재이름

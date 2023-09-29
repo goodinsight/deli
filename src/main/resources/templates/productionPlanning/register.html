@@ -5,211 +5,242 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{/layout/layout.html}">
 <head>
-  <meta charset="UTF-8">
-  <title>자재조달계획 등록</title>
+    <meta charset="UTF-8">
+    <title>자재조달계획 등록</title>
 </head>
 
 <div layout:fragment="content">
 
-  <div class="row mt-3">
-    <div class="col">
-      <div class="card">
-        <div class="card-header">
-          자재조달계획 등록
-        </div>
-        <div class="card-body mt-3">
-          <form action="/materialProcurementPlanning/register" method="post">
+    <div class="row mt-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                  생산 계획 등록
+                </div>
+                <div class="card-body mt-3">
+                    <form action="/productionPlanning/register" method="post">
 
-            <div class="input-group mb-3">
-              <span class="input-group-text">자재조달계획 코드</span>
-              <input type="text" name="materialProcurementPlanCode" class="form-control" id="materialProcurementPlanCode" placeholder="클릭해주세요" readonly>
-            </div>
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">제품계약 일련번호</span>
+                            <input type="text" name="productContractNo" class="form-control productContractNo" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">제품 계약 코드</span>
+                            <input type="text" name="productContractCode" class="form-control selectContract" id="selectContract" placeholder="클릭해주세요" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">제품 코드</span>
+                            <input type="text" name="productCode" class="form-control productCode" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="margin-left: 50px">제품 이름</span>
+                            <input type="text" name="productName" class="form-control productName" readonly>
+                            <span class="input-group-text" style="margin-left: 20px">제품 타입</span>
+                            <input type="text" name="productType" class="form-control productType" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">계약 수량</span>
+                            <input type="text" name="productQuantity" class="form-control productQuantity" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">생산 수량</span>
+                            <input type="text" name="productionQuantity" class="form-control productionQuantity">
+                        </div>
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">클라이언트 회사명</span>
+                            <input type="text" name="clientName" class="form-control clientName" readonly>
+                        </div>
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">클라이언트 계약상태</span>
+                            <input type="text" name="clientStatus" class="form-control clientStatus" readonly>
+                        </div>
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">제품 계약 납기일</span>
+                            <input type="text" name="productDeliveryDate" class="form-control productDeliveryDate" readonly>
+                        </div>
+                        <hr>
 
-            <div class="input-group mb-3 d-none">
-              <span class="input-group-text">생산계획 일련번호</span>
-              <input type="text" name="productionPlanNo" class="form-control productionPlanNo" readonly>
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text">생산계획 코드</span>
-              <input type="text" name="productionPlanCode" class="form-control" id="selectPlan" placeholder="클릭해주세요" readonly>
-            </div>
-            <div class="input-group mb-3 pl-5">
-              <span class="input-group-text">제품 코드</span>
-              <input type="text" name="productCode" class="form-control productCode" readonly>
-            </div>
-            <div class="input-group mb-3 pl-5">
-              <span class="input-group-text">클라이언트 회사명</span>
-              <input type="text" name="clientName" class="form-control clientName" readonly>
-            </div>
-            <div class="input-group mb-3 pl-5">
-              <span class="input-group-text">제품 납기일</span>
-              <input type="text" name="productDeliveryDate" class="form-control productDeliveryDate" readonly>
-            </div>
-            <div class="input-group mb-3 pl-5">
-              <span class="input-group-text">계약 상태</span>
-              <input type="text" name="clientStatus" class="form-control clientStatus" readonly>
-            </div>
+                        <div class="mrl" id="divBtn">
+                            <div class="input-group mb-3">
+                                <span>
+                                  <input class="btn btn-default btn-sm" type="button" value="필요 자재 추가">
+                                </span>
+                            </div>
+                            <div class="input-group mb-3 d-none">
+                                <span class="input-group-text">제품별 필요 자재 항목 일련번호</span>
+                                <input type="text" name="materialRequirementsListNo" class="form-control materialRequirementsListNo" readonly>
+                            </div>
+                            <div class="input-group mb-3 d-none">
+                                <span class="input-group-text">제품 일련번호</span>
+                                <input type="text" name="productNo" class="form-control productNo" readonly>
+                            </div>
 
-            <div class="d-none input-group mb-3">
-              <span class="input-group-text">자재 일련번호</span>
-              <input type="text" name="materialNo" class="form-control materialNo" readonly>
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text">자재 코드</span>
-              <input type="text" name="materialCode" class="form-control" id="selectMaterial" placeholder="클릭해주세요" readonly>
-            </div>
-            <div class="input-group mb-3 pl-5">
-              <span class="input-group-text">자재 타입</span>
-              <input type="text" name="materialType" class="form-control materialType" readonly>
-            </div>
-            <div class="input-group mb-3 pl-5">
-              <span class="input-group-text">자재 이름</span>
-              <input type="text" name="materialName" class="form-control materialName" readonly>
-            </div>
-            <div class="input-group mb-3 pl-5">
-              <span class="input-group-text">자재 공급단가</span>
-              <input type="text" name="materialSupplyPrice" class="form-control materialSupplyPrice" readonly>
-            </div>
+                            <div class="input-group mb-3 pl-5">
+                                <span class="input-group-text">필요 자재 코드</span>
+                                <input type="text" name="materialCode" class="form-control selectMrl" id="selectMrl" placeholder="클릭해주세요" readonly>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" style="margin-left: 100px">자재 이름</span>
+                                <input type="text" name="materialName" class="form-control materialName" readonly>
+                                <span class="input-group-text" style="margin-left: 20px">자재 타입</span>
+                                <input type="text" name="materialType" class="form-control materialType" readonly>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" style="margin-left: 100px">필요 수량</span>
+                                <input type="text" name="quantity" class="form-control quantity" readonly>
+                            </div>
+                        </div>
+                        <hr>
 
-            <div class="input-group mb-3">
-              <span class="input-group-text">자재 소요량</span>
-              <input type="number" name="materialRequirementsCount" class="form-control materialRequirementsCount" placeholder="자재 소요량">
-            </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">제품 생산 계획 코드</span>
+                            <input type="text" name="productionPlanCode" class="form-control productionPlanCode" id="productionPlanCode" placeholder="클릭해주세요" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">생산 소요 공정</span>
+                            <input type="text" name="productionRequirementsProcess" class="form-control productionRequirementsProcess" >
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">생산 소요 기간</span>
+                            <input type="text" name="productionRequirementsDate" class="form-control productionRequirementsDate" >
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">생산 납기일</span>
+                            <input type="text" name="productionDeliveryDate" class="form-control productionDeliveryDate" >
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">상세 내용</span>
+                            <input type="text" name="detailExplaination" class="form-control detailExplaination" >
+                        </div>
 
-            <div class="input-group mb-3">
-              <span class="input-group-text">조달 납기일</span>
-              <input type="date" name="procurementDeliveryDate" class="form-control procurementDeliveryDate" placeholder="납기일">
-            </div>
-
-              <div class="input-group mb-3">
-                <span class="input-group-text">자재조달상태</span>
-                <input type="text" name="materialProcurementState" class="form-control" placeholder="자재조달상태 - 추후 숨길 부분" th:value="진행중" readonly>
-              </div>
-
-            <div class="input-group mb-3 d-none">
-              <span class="input-group-text">담당자 일련번호</span>
-              <input type="text" name="employeeNo" class="form-control" th:value="${user.employeeNo}" readonly>
-            </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text">담당자</span>
-              <input type="text" name="employeeName" class="form-control" th:value="${user.employeeName}" readonly>
-            </div>
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">담당자 일련번호</span>
+                            <input type="text" name="employeeNo" class="form-control" th:value="${user.employeeNo}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">계획 담당자</span>
+                            <input type="text" name="employeeName2" class="form-control" th:value="${user.employeeName}" readonly>
+                        </div>
 
 
-            <div class="my-4">
-              <div class="float-end">
-                <a th:href="@{/materialProcurementPlanning/list}" class="text-decoration-none">
-                  <button type="button" class="btn btn-outline-dark">List</button>
-                </a>
-                <button type="submit" class="btn btn-primary submitBtn">Submit</button>
-                <button type="reset" class="btn btn-secondary">Reset</button>
-              </div>
-            </div>
+                        <div class="my-4">
+                            <div class="float-end">
+                                <a th:href="@{/productionPlanning/list}" class="text-decoration-none">
+                                  <button type="button" class="btn btn-outline-dark">List</button>
+                                </a>
+                                <button type="submit" class="btn btn-primary submitBtn">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                        </div>
 
-          </form>
+                    </form>
 
-        </div><!--end card body-->
-      </div><!--end card-->
-    </div><!--end col-->
-  </div><!--end row-->
-
-  <!--생산 계획 선택을 위한 모달창-->
-  <div class="modal selectPlanModal" tabindex="-1">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">생산 계획 검색</h5>
-        </div>
-        <div class="modal-body">
-
-
-          <div class="row mt-3">
-            <div class="col">
-              <div class="card">
-                <div class="card-body">
-                  <table class="table table-striped table-bordered">
-                    <thead>
-                    <tr>
-                      <th scope="col">NO</th>
-                      <th scope="col">생산계획 코드</th>
-                      <th scope="col">제품코드</th>
-                      <th scope="col">클라이언트 회사명</th>
-                      <th scope="col">납기일</th>
-                      <th scope="col">계약상태</th>
-                    </tr>
-                    </thead>
-
-                    <tbody class="planList">
-
-                    </tbody>
-                  </table>
-
-                  <div class="float-end">
-                    <ul class="pagination flex-wrap planPaging"></ul>
-                  </div>
                 </div><!--end card body-->
-              </div><!--end card-->
-            </div><!--end col-->
-          </div><!--end row-->
+            </div><!--end card-->
+        </div><!--end col-->
+    </div><!--end row-->
 
-        </div><!--end modal body-->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark closePlanBtn">Close</button>
+
+  <!-- 제품 계약 선택을 위한 모달창 -->
+    <div class="modal selectContractModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">제품 계약 검색</h5>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">NO</th>
+                                            <th scope="col">제품코드</th>
+                                            <th scope="col">계약수량</th>
+                                            <th scope="col">클라이언트 업체명</th>
+                                            <th scope="col">제품 납기일</th>
+                                            <th scope="col">계약상태</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody class="contractList">
+
+                                        </tbody>
+                                    </table>
+
+                                        <div class="float-end">
+                                            <ul class="pagination flex-wrap contractPaging">
+                                            </ul>
+                                        </div>
+                                </div><!--end card body-->
+                            </div><!--end card-->
+                        </div><!--end col-->
+                    </div><!--end row-->
+
+
+                </div><!-- modal body end -->
+                <div class="modal-footer">
+                   <button type="button" class="btn btn-outline-dark closeContractBtn">Close</button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div><!--end 생산 계획 모달창-->
+    </div><!-- end 계약 모달창 -->
 
 
-  <!--자재 선택을 위한 모달창-->
-  <div class="modal selectMaterialModal" tabindex="-1">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">자재 검색</h5>
+    <!--제품별 필요 자재 선택을 위한 모달창-->
+    <div class="modal selectMrlModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                   <h5 class="modal-title">필요 자재 검색</h5>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">NO</th>
+                                                <th scope="col">제품 코드</th>
+                                                <th scope="col">제품 이름</th>
+                                                <th scope="col">자재 코드</th>
+                                                <th scope="col">자재 이름</th>
+                                                <th scope="col">자재 분류</th>
+                                                <th scope="col">자재 수량</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody class="mrlList">
+
+                                        </tbody>
+                                    </table>
+
+                                    <div class="float-end">
+                                         <ul class="pagination flex-wrap mrlPaging"></ul>
+                                    </div>
+                                </div><!--end card body-->
+                            </div><!--end card-->
+                        </div><!--end col-->
+                    </div><!--end row-->
+
+                </div><!--end modal body-->
+                <div class="modal-footer">
+                   <button type="button" class="btn btn-outline-dark closeMrlBtn">Close</button>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-
-
-          <div class="row mt-3">
-            <div class="col">
-              <div class="card">
-                <div class="card-body">
-                  <table class="table table-striped table-bordered">
-                    <thead>
-                    <tr>
-                      <th scope="col">NO</th>
-                      <th scope="col">자재 코드</th>
-                      <th scope="col">자재 이름</th>
-                      <th scope="col">자재 분류</th>
-                      <th scope="col">공급 단가</th>
-                    </tr>
-                    </thead>
-
-                    <tbody class="materialList">
-
-                    </tbody>
-                  </table>
-
-                  <div class="float-end">
-                    <ul class="pagination flex-wrap materialPaging"></ul>
-                  </div>
-                </div><!--end card body-->
-              </div><!--end card-->
-            </div><!--end col-->
-          </div><!--end row-->
-
-        </div><!--end modal body-->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark closeMaterialBtn">Close</button>
-        </div>
-      </div>
-    </div>
-  </div><!--end 자재 모달창-->
+    </div><!--end 자재 모달창-->
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-  <script src="/js/materialProcurementPlanning.js"></script>
+  <script src="/js/productionPlanning.js"></script>
 
 </div>
 
@@ -218,337 +249,346 @@
 <script layout:fragment="script" th:inline="javascript">
 
 
-  const auth = [[${#authentication}]]
+    const auth = [[${#authentication}]]
 
-  console.log(auth)
+    console.log(auth)
 
-  // 등록시 에러 처리 ----------------------------------------------------------------
+    // 등록시 에러 처리 ----------------------------------------------------------------
 
-  const errors = [[${errors}]]
-  console.log(errors)
+    const errors = [[${errors}]]
+    console.log(errors)
 
-  let errorMsg = ''
+    let errorMsg = ''
 
-  if (errors) {
-    for (let i = 0; i < errors.length; i++) {
-      errorMsg += `${errors[i].field}은(는) ${errors[i].code} \n`
-    }
-    alert(errorMsg)
-  }
-
-
-  //생산 계획 선택 --------------------------------------------------------------------
-
-  const planModal = new bootstrap.Modal(document.querySelector(".selectPlanModal"))
-
-  const planList = document.querySelector(".planList")  //생산 계획 목록 DOM
-  const planPaging = document.querySelector(".planPaging")  //생산 계획 페이지 선택 목록 DOM
-
-  const closePlanBtn = document.querySelector(".closePlanBtn")
-
-  let planPage = 1
-  let planPageSize = 5
-
-  document.querySelector("#selectPlan").addEventListener("click", function (e) {
-    console.log("select plan click")
-    printPlans(1, 5)
-    planModal.show()
-
-  }, false)
-
-  closePlanBtn.addEventListener("click", function (e) {
-    planModal.hide()
-  })
-
-  function printPlanList(dtoList) { //생산 계획 목록
-
-    console.log("print production plan list")
-
-    let str = ''
-
-    if (dtoList && dtoList.length > 0) {
-
-      for ( const dto of dtoList) {
-
-        console.log(dto)
-
-        str += `<tr>
-                <td data-planNo="${dto.productionPlanNo}">${dto.productionPlanNo}</td>
-                <td data-planNo="${dto.productionPlanNo}">${dto.productionPlanCode}</td>
-                <td data-planNo="${dto.productionPlanNo}">${dto.productCode}</td>
-                <td data-planNo="${dto.productionPlanNo}">${dto.clientName}</td>
-                <td data-planNo="${dto.productionPlanNo}">${dto.productDeliveryDate}</td>
-                <td data-planNo="${dto.productionPlanNo}">${dto.clientStatus}</td>
-            </tr>`
+    if (errors) {
+      for (let i = 0; i < errors.length; i++) {
+        errorMsg += `${errors[i].field}은(는) ${errors[i].code} \n`
       }
+      alert(errorMsg)
     }
 
-    planList.innerHTML = str
 
-  }
+  // 계약 선택 -----------------------------------------------------------------------
 
-  //생산 계획 목록 페이징 처리
-  function printPlanPages(data) {
+    const contractModal = new bootstrap.Modal(document.querySelector(".selectContractModal"))
 
-    let pageStr = '';
+    const contractList = document.querySelector(".contractList")      //제품 계약 목록 DOM
+    const contractPaging = document.querySelector(".contractPaging")  //제품 계약 페이지 선택 목록 DOM
 
-    if (data.prev) {
-      pageStr += `<li class="page-item"><a class="page-link" data-page="${data.start - 1}">PREV</a></li>`
-    }
-    for (let i = data.start; i <= data.end; i++) {
-      pageStr += `<li class="page-item ${i == data.page ? "active" : ""}"><a class="page-link" data-page="${i}">${i}</a></li>`
-    }
-    if (data.next) {
-      pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end + 1}">NEXT</a></li>`
-    }
-    planPaging.innerHTML = pageStr
+    const closeContractBtn = document.querySelector(".closeContractBtn")
 
-    planPage = data.page
+    let contractPage = 1
+    let contractPageSize = 5
 
-  }
+    document.querySelector(".selectContract").addEventListener("click", function (e) {
 
-  function printPlans(page, size) {
+        printContracts(1, 5)
+        contractModal.show()
 
-    getPlanList({page, size}).then(
-            data => {
-              printPlanList(data.dtoList)
-              printPlanPages(data)
-            }
-    ).catch(e => {
-      console.log("print production plans error")
-      console.error(e)
+    }, false)
+
+    closeContractBtn.addEventListener("click", function (e) {
+      contractModal.hide()
     })
-  }
 
-  //생산계획 목록 페이징
-  planPaging.addEventListener("click", function (e) {
+    function printContractList(dtoList){    //제품 계약 목록
 
-    e.preventDefault()
-    e.stopPropagation()
+        let str = ''
 
-    const target = e.target
+        if(dtoList && dtoList.length > 0){
 
-    if (!target || target.tagName != 'A') {
-      return
-    }
+            for( const dto of dtoList) {
 
-    const pageNum = target.getAttribute("data-page")
-    planPage = pageNum
-    printPlans(planPage, planPageSize)
+                console.log(dto)
 
-  }, false)
+                str += `<tr>
+                                    <td data-contractNo="${dto.productContractNo}">${dto.productContractNo}</td>
+                                    <td data-contractNo="${dto.productContractNo}">${dto.productCode}</td>
+                                    <td data-contractNo="${dto.productContractNo}">${dto.productQuantity}</td>
+                                    <td data-contractNo="${dto.productContractNo}">${dto.clientName}</td>
+                                    <td data-contractNo="${dto.productContractNo}">${dto.productDeliveryDate}</td>
+                                    <td data-contractNo="${dto.productContractNo}">${dto.clientStatus}</td>
+                                </tr>`
 
-  const productionPlanNo = document.querySelector(".productionPlanNo")
-  const inputPlanCode = document.querySelector("#selectPlan")
-  const productCode = document.querySelector(".productCode")  //제품코드
-  const clientName = document.querySelector(".clientName")  //클라이언트회사명
-  const productDeliveryDate = document.querySelector(".productDeliveryDate")  //제품납기일
-  const clientStatus = document.querySelector(".clientStatus")  //계약상태
-
-
-  //생산 계획 항목 클릭시 input에 반영
-  planList.addEventListener("click", function (e) {
-
-    e.preventDefault()
-    e.stopPropagation()
-
-    console.log("production plan click")
-
-    const target = e.target
-
-    if (!target || target.tagName != 'TD') {
-      return
-    }
-
-    const planNo = target.getAttribute("data-planNo")
-
-    if (!planNo) {
-      return
-    }
-
-    getPlan(planNo).then(plan => {
-
-      console.log(plan)
-      productionPlanNo.value = plan.productionPlanNo
-      //생산 계획 정보를 가져와서 화면에 반영해야 할 항복들은 여기에 --------------------------------------------------------
-      inputPlanCode.value = plan.productionPlanCode
-      productCode.value = plan.productCode
-      clientName.value = plan.clientName
-      productDeliveryDate.value = new Date(plan.productDeliveryDate).toISOString().split('T')[0]
-      clientStatus.value = plan.clientStatus
-      //----------------------------------------------------------------------------------------------------------
-
-      planModal.hide()
-
-    }).catch(e => alert('error'))
-
-  }, false)
-
-
-  //자재 선택 --------------------------------------------------------------------------------------------------
-
-  const materialModal = new bootstrap.Modal(document.querySelector(".selectMaterialModal"))
-
-  const materialList = document.querySelector(".materialList")  //자재 목록 DOM
-  const materialPaging = document.querySelector(".materialPaging")  //자재 페이지 선택 목록 DOM
-
-  const closeMaterialBtn = document.querySelector(".closeMaterialBtn")
-
-  let materialPage = 1
-  let materialPageSize = 5
-
-  document.querySelector("#selectMaterial").addEventListener("click", function (e) {
-    console.log("select material modal show")
-    printMaterials(1, 5)
-    materialModal.show()
-  }, false)
-
-  closeMaterialBtn.addEventListener("click", function (e) {
-    materialModal.hide()
-  })
-
-  function printMaterialList(dtoList) { //자재 목록
-
-    let str = ''
-
-    if (dtoList && dtoList.length > 0) {
-
-      for ( const dto of dtoList) {
-
-        console.log(dto)
-
-        str += `<tr>
-                  <td data-materialsNo = "${dto.materialNo}">${dto.materialNo}</td>
-                  <td data-materialsNo = "${dto.materialNo}">${dto.materialCode}</td>
-                  <td data-materialsNo = "${dto.materialNo}">${dto.materialType}</td>
-                  <td data-materialsNo = "${dto.materialNo}">${dto.materialName}</td>
-                  <td data-materialsNo = "${dto.materialNo}">${dto.materialSupplyPrice}</td>
-              </tr>`
-      }
-    }
-
-    materialList.innerHTML = str
-  }
-
-  function printMaterialPages(data) { //자재 목록 페이징 처리
-
-    let pageStr = '';
-
-    if (data.prev) {
-      pageStr += `<li class="page-item"><a class="page-link" data-page="${data.start - 1}">PREV</a></li>`
-    }
-    for (let i = data.start; i <= data.end; i++) {
-      pageStr += `<li class="page-item ${i == data.page ? "active" : ""}"><a class="page-link" data-page="${i}">${i}</a></li>`
-    }
-    if (data.next) {
-      pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end + 1}">NEXT</a></li>`
-    }
-    materialPaging.innerHTML = pageStr
-
-    materialPage = data.page
-
-  }
-
-  function printMaterials(page, size) {
-
-    getMaterialList({page, size}).then(
-            data => {
-              printMaterialList(data.dtoList)
-              printMaterialPages(data)
             }
-    ).catch(e => {
-      console.error(e)
+
+        }
+
+      contractList.innerHTML = str
+
+    }
+
+
+    function printContractPages(data){  //제품 계약 목록 페이징 처리
+
+        let pageStr = '';
+
+        if(data.prev) {
+          pageStr += `<li class="page-item"><a class="page-link" data-page="${data.start-1}">PREV</a></li>`
+        }
+        for(let i = data.start; i <= data.end; i++){
+          pageStr += `<li class="page-item ${ i == data.page ? "active" : ""}"><a class="page-link" data-page="${i}">${i}</a></li>`
+        }
+        if(data.next) {
+          pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end+1}">NEXT</a></li>`
+        }
+        contractPaging.innerHTML = pageStr
+
+        contractPage = data.page
+
+    }
+
+    function printContracts(page, size) {
+
+        getContractList({page, size}).then(
+                data => {
+                  printContractList(data.dtoList)
+                  printContractPages(data)
+                }
+        ).catch(e => {
+            console.log("print contracts error")
+            console.error(e)
+        })
+    }
+
+    //계약 목록 페이징
+    contractPaging.addEventListener("click", function(e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        const target = e.target
+
+        if(!target || target.tagName != 'A'){
+           return
+        }
+
+        const pageNum = target.getAttribute("data-page")
+        contractPage = pageNum
+        printContracts(contractPage, contractPageSize)
+
+    }, false)
+
+
+    const productContractNo = document.querySelector(".productContractNo")    //제품계약일련번호
+    const inputContractCode = document.querySelector(".selectContract")       //제품계약코드
+    const productCode = document.querySelector(".productCode")                //제품코드
+    const productName = document.querySelector(".productName")                //제품이름
+    const productType = document.querySelector(".productType")                //제품타입
+    const productQuantity = document.querySelector(".productQuantity")        //수량
+
+    //계약 항목 클릭시 input 에 반영
+    contractList.addEventListener("click", function (e){
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        console.log("contract click")
+
+        const target = e.target
+
+        if(!target || target.tagName != 'TD'){
+            return
+        }
+
+        const contractNo = target.getAttribute("data-contractNo")
+
+        if(!contractNo){
+            return
+        }
+
+        getContract(contractNo).then(contract => {
+
+            console.log(contract)
+            productContractNo.value = contract.productContractNo
+            //계약 정보를 가져와서 화면에 반영해야할 항목들은 여기에------------------------------------------------------------
+            inputContractCode.value = contract.productContractCode
+            productCode.value = contract.productCode
+            productName.value = contract.productName
+            productType.value = contract.productType
+            productQuantity.value = contract.productQuantity
+            //-----------------------------------------------------------------------------------------------------------
+            contractModal.hide()
+
+        }).catch(e => alert('error'))
+
+    }, false)
+
+
+
+    //제품별 필요 자재 선택 --------------------------------------------------------------------------------------------------
+
+    const mrlModal = new bootstrap.Modal(document.querySelector(".selectMrlModal"))
+
+    const mrlList = document.querySelector(".mrlList")  //자재 목록 DOM
+    const mrlPaging = document.querySelector(".mrlPaging")  //자재 페이지 선택 목록 DOM
+
+    const closeMrlBtn = document.querySelector(".closeMrlBtn")
+
+    let mrlPage = 1
+    let mrlPageSize = 5
+
+    document.querySelector(".selectMrl").addEventListener("click", function (e) {
+        console.log("select material modal show")
+
+        if(materialCode.value.length > 0){
+            printContracts(1, 5)
+            mrlModal.show()
+        }else {
+            alert("계획을 먼저 선택해주세요.")
+        }
+
+    }, false)
+
+    closeMrlBtn.addEventListener("click", function (e) {
+        mrlModal.hide()
     })
-  }
 
-  //자재 목록 페이징
-  materialPaging.addEventListener("click", function (e) {
+    function printMrlList(dtoList) { //자재 목록
 
-    e.preventDefault()
-    e.stopPropagation()
+        let str = ''
 
-    const target = e.target
+        if (dtoList && dtoList.length > 0) {
 
-    if (!target || target.tagName != 'A') {
-      return
+            for ( const dto of dtoList) {
+
+                console.log(dto)
+
+                    str += `<tr>
+                              <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.materialNo}</td>
+                              <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.productCode}</td>
+                              <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.productName}</td>
+                              <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.materialCode}</td>
+                              <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.materialName}</td>
+                              <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.materialType}</td>
+                              <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.quantity}</td>
+                          </tr>`
+            }
+        }
+
+      mrlList.innerHTML = str
     }
 
-    const pageNum = target.getAttribute("data-page")
-    materialPage = pageNum
-    printMaterials(materialPage, materialPageSize)
+    function printMrlPages(data) { //자재 목록 페이징 처리
 
-  }, false)
+        let pageStr = '';
 
-  const materialNo = document.querySelector(".materialNo")
-  const inputMaterialCode = document.querySelector("#selectMaterial")
-  const materialType = document.querySelector(".materialType")
-  const materialName = document.querySelector(".materialName")
-  const materialSupplyPrice = document.querySelector(".materialSupplyPrice")
+        if (data.prev) {
+            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.start - 1}">PREV</a></li>`
+        }
+        for (let i = data.start; i <= data.end; i++) {
+            pageStr += `<li class="page-item ${i == data.page ? "active" : ""}"><a class="page-link" data-page="${i}">${i}</a></li>`
+        }
+        if (data.next) {
+            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end + 1}">NEXT</a></li>`
+        }
+        mrlPaging.innerHTML = pageStr
 
-  //자재 항목 클릭시 input에 반영
-  materialList.addEventListener("click", function (e) {
+        mrlPage = data.page
 
-    e.preventDefault()
-    e.stopPropagation()
-
-    console.log("material click")
-
-    const target = e.target
-
-    if (!target || target.tagName != 'TD') {
-      return
     }
 
-    const materialsNo = target.getAttribute("data-materialsNo")
+    function printMrls(page, size) {
 
-    if (!materialsNo) {
-      return;
+        const type = "c"
+        const keyword = materialCode.value
+
+        getMrlList({page, size, type, keyword}).then(
+                data => {
+                  printMrlList(data.dtoList)
+                  printMrlPages(data)
+                }
+        ).catch(e => {
+          console.error(e)
+        })
     }
 
-    getMaterial(materialsNo).then(material => {
+    //자재 목록 페이징
+    mrlPaging.addEventListener("click", function (e) {
 
-      console.log(material)
-      console.log("check0")
-      materialNo.value = material.materialNo
-      //자재 정보를 가져와서 화면에 반영해야 할 항목들은 여기에 --------------------------------------------------------
-      console.log("check1")
-      inputMaterialCode.value = material.materialCode
-      materialType.value = material.materialType
-      console.log("check2")
-      materialName.value = material.materialName
-      //------------------------------------------------------------------------------------------------------
-      materialSupplyPrice.value = material.materialSupplyPrice
-      console.log("성공")
-      materialModal.hide()
+        e.preventDefault()
+        e.stopPropagation()
 
-    }).catch(e => alert('error'))
+        const target = e.target
 
-  }, false)
+        if (!target || target.tagName != 'A') {
+            return
+        }
 
-  //조달계획 코드 생성 -------------------------------------------------------------------------------------------------------------
+        const pageNum = target.getAttribute("data-page")
+        mrlPage = pageNum
+        printMrls(mrlPage, mrlPageSize)
 
-  const materialProcurementPlanCode = document.querySelector("#materialProcurementPlanCode")
+    }, false)
 
-  materialProcurementPlanCode.addEventListener("click", function(e) {
+    const materialNo = document.querySelector(".materialNo")
+    const inputMaterialCode = document.querySelector("#selectMrl")
+    const materialName = document.querySelector(".materialName")
+    const materialType = document.querySelector(".materialType")
+    const quantity = document.querySelector(".quantity")
 
-    let str = 'MP-PLANNING-'
+    //자재 항목 클릭시 input에 반영
+    mrlList.addEventListener("click", function (e) {
 
-    str += new Date().toISOString().split('T')[0].replaceAll('-','')
-    str += '-'
+        e.preventDefault()
+        e.stopPropagation()
 
-    getCodeCount(str).then( result => {
+        console.log("material click")
 
-      str += result.data
+        const target = e.target
 
-      materialProcurementPlanCode.value = str
+        if (!target || target.tagName != 'TD') {
+            return
+        }
 
-    }).catch(e => alert('error'))
+        const mrlNo = target.getAttribute("data-mrlNo")
+
+        if (!mrlNo) {
+            return;
+        }
+
+        getMrl(mrlNo).then(mrl => {
+
+            console.log(mrl)
+            console.log("check0")
+            materialNo.value = mrl.materialNo
+            //자재 정보를 가져와서 화면에 반영해야 할 항목들은 여기에 --------------------------------------------------------
+            console.log("check1")
+            inputMaterialCode.value = mrl.materialCode
+            materialName.value = mrl.materialName
+            console.log("check2")
+            materialType.value = mrl.materialType
+            quantity.value = mrl.quantity
+            //------------------------------------------------------------------------------------------------------
+            console.log("성공")
+
+            mrlModal.hide()
+
+        }).catch(e => alert('error'))
+
+    }, false)
+
+    //생산 계획 코드 생성 -------------------------------------------------------------------------------------------------------------
+
+    const productionPlanCode = document.querySelector(".productionPlanCode")
+
+    productionPlanCode.addEventListener("click", function(e) {
+
+        let str = 'PD-PLANNING-'
+
+        str += new Date().toISOString().split('T')[0].replaceAll('-','')
+        str += '-'
+
+        getCodeCount(str).then( result => {
+
+            str += result.data
+
+            productionPlanCode.value = str
+
+        }).catch(e => alert('error'))
 
 
-  }, false)
-
-
-
+    }, false)
 
 </script>
 
