@@ -44,6 +44,8 @@ public class MaterialInventory {
     @ManyToOne(fetch = FetchType.LAZY)
     private DocumentFile documentFile;              // 파일 일련번호
 
+//    private int orderQuantity; //발주 수량
+
     public void change(MaterialInventoryDTO materialInventoryDTO ) {
         //입고수량, 출고수량, 재고수량, 공급단가, 총재고금액
 
@@ -52,6 +54,7 @@ public class MaterialInventory {
         this.materialStock = materialInventoryDTO.getMaterialStock();
         this.materialSupplyPrice = materialInventoryDTO.getMaterialSupplyPrice();
         this.materialTotalInventoryPayments = materialInventoryDTO.getMaterialTotalInventoryPayments();
+//        this.orderQuantity = materialInventoryDTO.getOrderQuantity();
 
     }
 
