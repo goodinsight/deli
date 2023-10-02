@@ -29,23 +29,25 @@ public class MaterialProcurementPlanningRepositoryTests {
     @Test //insert 테스트
     public void testInsert() {
 
-        int productionPlanNo = 1;
-        int materialNo = 1;
-        int employeeNo = 2;
+        int productionPlanNo = 252; //252부터 있음.
 
         IntStream.rangeClosed(1,10).forEach(i -> {
 
-            ProductionPlanning productionPlanning = ProductionPlanning.builder().productionPlanNo(1).build();
-            Materials materials = Materials.builder().materialNo(1).build();
-            Employee employee = Employee.builder().employeeNo(1).build();
-
-            MaterialProcurementPlanning materialProcurementPlanning =
-                    MaterialProcurementPlanning.builder()
+            MaterialProcurementPlanning materialProcurementPlanning = MaterialProcurementPlanning.builder()
+                    .materialProcurementPlanCode("MP-PLANNING-20230927-"+i)
                     .procurementDeliveryDate(LocalDate.of(2023, 11,15))
-                    .materialRequirementsCount(i)
-                    .materialProcurementState("procurementState..."+i)
+                    .materialRequirementsCount(i*10)
+                    .materialProcurementState("조달진행중")    //조달진행중, 계약파기, 조달완료
+//                    .productionPlanning(ProductionPlanning.builder().productionPlanNo(252).build())
+//                    .materials(Materials.builder().materialNo(1).build())
+//                    .employee(Employee.builder().employeeNo(1).build()) //자재조달계획담당 : 1, 아이유
+                    .employeeName("아이유")
                     .materialCode("materialCode.."+i)
                     .materialName("materialName.."+i)
+                    .productionRequirementsDate(i*7)    //생산소요기간
+                    .productionRequirementsProcess("Process"+i) //생산소요공정
+                    .productionDeliveryDate(LocalDate.of(2023,10,22))   //생산납기일
+                    .productionState("자재조달단계")  //생산진행단계
                     .build();
 
             MaterialProcurementPlanning result =

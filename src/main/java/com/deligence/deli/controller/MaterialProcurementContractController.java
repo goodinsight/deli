@@ -1,6 +1,7 @@
 package com.deligence.deli.controller;
 
 import com.deligence.deli.dto.*;
+import com.deligence.deli.service.CooperatorSupplierService;
 import com.deligence.deli.service.MaterialProcurementContractService;
 import com.deligence.deli.service.MaterialProcurementPlanningService;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +27,7 @@ public class MaterialProcurementContractController {
     private final MaterialProcurementPlanningService materialProcurementPlanningService;
 
     //자재협력회사정보(협력회사일련번호->협력회사명,대표명, 연락처) 조회 구현
-//    private final CooperatorSupplierService cooperatorSupplierService;
+    private final CooperatorSupplierService cooperatorSupplierService;
 
     @GetMapping("/list")
     public void list(PageRequestDTO pageRequestDTO, Model model) {
@@ -168,9 +169,7 @@ public class MaterialProcurementContractController {
 
     }
 
-
-    //자재조달협력회사 Service만들면 주석 풀기
-    /*
+    //자재조달 협력회사 비동기처리
     @ResponseBody
     @GetMapping("/register/selectSupplier")
     public PageResponseDTO<CooperatorSupplierDTO> getSupplierList(PageRequestDTO pageRequestDTO){
@@ -185,18 +184,18 @@ public class MaterialProcurementContractController {
 
     @ResponseBody
     @GetMapping("/register/getSupplier/{suppliersNo}")
-    public CooperatorSupplier(Detail)DTO getSupplierDTO(@PathVariable("suppliersNo") int suppliersNo){
+    public CooperatorSupplierDTO getSupplierDTO(@PathVariable("suppliersNo") int suppliersNo){
 
         log.info("getSupplierDTO : " + suppliersNo);
 
-        CooperatorSupplier(Detail)DTO cooperatorSupplier(Detail)DTO = cooperatorSupplierService.read(suppliersNo);
+        CooperatorSupplierDTO cooperatorSupplierDTO = cooperatorSupplierService.read(suppliersNo);
 
-        log.info(cooperatorSupplier(Detail)DTO);
+        log.info(cooperatorSupplierDTO);
 
-        return cooperatorSupplier(Detail)DTO;
+        return cooperatorSupplierDTO;
 
     }
-*/
+
 
     @ResponseBody
     @GetMapping("/register/getCodeCount/{materialProcurementContractCode}")

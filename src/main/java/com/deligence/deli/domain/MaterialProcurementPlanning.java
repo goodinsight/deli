@@ -28,7 +28,7 @@ public class MaterialProcurementPlanning extends BaseEntity {
 
     private int materialRequirementsCount;    //자재소요량
 
-    private String materialProcurementState;  //자재조달상태
+    private String materialProcurementState;  //자재조달상태 -> 조달진행중, 계약파기, 조달완료
 
     @ManyToOne(cascade = CascadeType.ALL)
     private ProductionPlanning productionPlanning;  //생산계획 일련번호 (생산계획 FK)
@@ -54,6 +54,7 @@ public class MaterialProcurementPlanning extends BaseEntity {
     private LocalDate productionDeliveryDate;       //생산 납기일
 
     private String productionState;                 //생산 진행 상태
+    // -자재조달단계, 자재입고단계, 제품생산단계, 제품검수단계, 제품입고완료
 
 
     //수정가능한 속성 지정 (일단 납기일,자재소요랑,자재조달상태 지정)
