@@ -132,15 +132,12 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .collect(Collectors.toList());
 
         for(int i = 0; i < dtoList.size(); i++){
-            log.info(dtoList.get(i).getEmployeeId());
             Optional<Employee> result1 = employeeRepository.getWithRoles(dtoList.get(i).getEmployeeId());
 
             Employee employee = result1.orElseThrow();
 
-            log.info(employee);
-            log.info(employee.getRoleSet());
-
-            employee.getRoleSet().forEach(employeeRole -> log.info(employeeRole.name()));
+//            employee.getRoleSet().forEach(employeeRole -> log.info(employeeRole.name()));
+            dtoList.get(i).setRole(employee.getRoleSet().toString());
         }
 
         return PageResponseDTO.<EmployeeAuthorityDTO>withAll()
