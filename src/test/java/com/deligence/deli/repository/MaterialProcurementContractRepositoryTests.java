@@ -32,25 +32,28 @@ public class MaterialProcurementContractRepositoryTests {
         int supplierNo = 1;
         int employeeNo = 2;
 
-        IntStream.rangeClosed(1,10).forEach(i -> {
+        IntStream.rangeClosed(1,100).forEach(i -> {
 
-            MaterialProcurementPlanning materialProcurementPlanning = MaterialProcurementPlanning.builder().materialProcurementPlanNo(10).build();
             CooperatorSupplier cooperatorSupplier = CooperatorSupplier.builder().supplierNo(1).build();
             Employee employee = Employee.builder().employeeNo(2).build();
 
             MaterialProcurementContract materialProcurementContract = MaterialProcurementContract.builder()
                     .materialProcurementContractCode("contractCode..."+i)
                     .materialProcurementContractDate(LocalDate.of(2023, 9,27))
-                    .materialProcurementContractState("READY")
+                    .materialProcurementContractState("조달진행중")        //조달진행중, 계약파기, 조달완료
                     .materialProcurementContractEtc("Etc"+i)
-                    .materialProcurementPlanCode("planCode"+i)
-                    .materialCode("materialCode"+i)
+//                    .materialProcurementPlanning(MaterialProcurementPlanning.builder().materialProcurementPlanNo(10).build())
+                    .materialProcurementPlanCode("MP-PLANNING-20230927-"+i)
+                    .materialCode("MATERIAL-20231002-"+i)
                     .materialName("materialName"+i)
-                    .materialSupplyPrice(1L)
-                    .procurementQuantity(100)
+                    .materialSupplyPrice(10000L)
+                    .procurementQuantity(i*10)
+//                    .cooperatorSupplier(CooperatorSupplier.builder().corporateRegistrationNo(2).build())
                     .supplierName("supplierName"+i)
-                    .supplierStatus("READY")
-                    .employeeName("담당자")
+                    .supplierStatus("계약중")  //계약중, 계약파기, 계약완료
+//                    .employee(Employee.builder().employeeNo(2).build()) //자재조달계약담당 : 2번, 혜인
+                    .employeeName("혜인")
+                    .documentFile(DocumentFile.builder().documentFileNo(2).build())
                     .build();
 
             log.info(materialProcurementContract);

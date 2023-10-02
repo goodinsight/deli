@@ -37,7 +37,7 @@ public class ProductContractDetailDTO {
 
     private String productQuotation;            //견적내용(상세내용) (-> 상세 / 등록 / 수정)
 
-    private String productContractState;        //계약진행상태 (-> 상세 / 등록 / 수정) - '자재검토중', '생산중', '자재조달중', '파기', '완료'
+    private String productContractState;        //계약진행상태 (-> 상세 / 등록 / 수정) - '자재검토중', '자재조달중', '제품생산중', 제품입고완료'
     //-> 이렇게까지 복잡할 필요가 있는지 모르겠지만 일단 추가함. - 등록시 기본값은 '자재검토중'
 
     private int clientNo;                       //구매협력회사일련번호(FK) (목록 - 회사명, 계약상태 / 상세 - 모달창으로 검색 - 대표명, 연락처)

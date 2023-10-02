@@ -63,36 +63,25 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
 
             for (String type : types) {
 
-                switch (type) { //a:조달계획코드, b:자재코드, c:자재이름, d:공급단가, e:납품업체명, f:자재조달계약상태
+                switch (type) { //a:조달계획코드, b:자재코드, c:자재이름, d:공급단가, e:납품업체명, f:자재조달계약상태 (별도로 처리 추가)
 
                     case "a":
-                        booleanBuilder.or(materialProcurementContract
-                                .materialProcurementPlanCode.contains(keyword));    //조달계획코드
+                        booleanBuilder.or(materialProcurementContract.materialProcurementPlanCode.contains(keyword));    //조달계획코드
                         break;
-
                     case "b":
-                        booleanBuilder.or(materialProcurementContract
-                                .materialCode.contains(keyword));   //자재코드
+                        booleanBuilder.or(materialProcurementContract.materialCode.contains(keyword));   //자재코드
                         break;
-
                     case "c":
-                        booleanBuilder.or(materialProcurementContract
-                                .materialName.contains(keyword));   //자재이름
+                        booleanBuilder.or(materialProcurementContract.materialName.contains(keyword));   //자재이름
                         break;
-
                     case "d":
-                        booleanBuilder.or(materialProcurementContract
-                                .materialSupplyPrice.stringValue().contains(keyword));  //공급단가
+                        booleanBuilder.or(materialProcurementContract.materialSupplyPrice.stringValue().contains(keyword));  //공급단가
                         break;
-
                     case "e":
-                        booleanBuilder.or(materialProcurementContract
-                                .supplierName.contains(keyword));   //자재협력회사명
+                        booleanBuilder.or(materialProcurementContract.supplierName.contains(keyword));   //자재협력회사명
                         break;
-
                     case "f":
-                        booleanBuilder.or(materialProcurementContract
-                                .materialProcurementContractState.contains(keyword));   //자재조달계약상태
+                        booleanBuilder.or(materialProcurementContract.materialProcurementContractState.contains(keyword));   //자재조달계약상태
                         break;
                 }
             }//end for
@@ -118,21 +107,61 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
     }
 
     //상태 검색
+//    @Override
+//    public Page<MaterialProcurementContract> searchByState(String[] keywords, Pageable pageable) {
+//        QMaterialProcurementContract materialProcurementContract = QMaterialProcurementContract.materialProcurementContract;
+//        JPQLQuery<MaterialProcurementContract> query = new JPAQueryFactory(em)
+//                .selectFrom(materialProcurementContract);
+//        if( keywords != null && keywords.length > 0) { //검색조건과 키워드가 있다면
+//            BooleanBuilder booleanBuilder = new BooleanBuilder(); // (
+//            for(String keyword : keywords) {
+//                booleanBuilder.or(materialProcurementContract.materialProcurementContractState.contains(keyword));
+//            }//end for
+//            query.where(booleanBuilder);
+//        }//end if
+//        //paging
+//        this.getQuerydsl().applyPagination(pageable, query);// 오류 발생 부분. pageable에 sort를 담아 실행하면 오류가 발생한다.
+//        List<MaterialProcurementContract> list = query.fetch();
+//        long count = query.fetchCount();
+//        return new PageImpl<>(list, pageable, count);
+//    }
+
+
     @Override
-    public Page<MaterialProcurementContract> searchByState(String[] keywords, Pageable pageable) {
+    public Page<MaterialProcurementContract> searchWithState(String[] types, String keyword, String state, Pageable pageable) {
 
         QMaterialProcurementContract materialProcurementContract = QMaterialProcurementContract.materialProcurementContract;
 
         JPQLQuery<MaterialProcurementContract> query = new JPAQueryFactory(em)
                 .selectFrom(materialProcurementContract);
 
-        if( keywords != null && keywords.length > 0) { //검색조건과 키워드가 있다면
+        if( (types != null && types.length > 0) && keyword != null ) { //검색조건과 키워드가 있다면
 
             BooleanBuilder booleanBuilder = new BooleanBuilder(); // (
 
-            for(String keyword : keywords) {
+            for(String type : types) {
 
-                booleanBuilder.or(materialProcurementContract.materialProcurementContractState.contains(keyword));
+                switch (type) {
+
+                    case "a":
+                        booleanBuilder.or(materialProcurementContract.materialProcurementPlanCode.contains(keyword));    //조달계획코드
+                        break;
+                    case "b":
+                        booleanBuilder.or(materialProcurementContract.materialCode.contains(keyword));   //자재코드
+                        break;
+                    case "c":
+                        booleanBuilder.or(materialProcurementContract.materialName.contains(keyword));   //자재이름
+                        break;
+                    case "d":
+                        booleanBuilder.or(materialProcurementContract.materialSupplyPrice.stringValue().contains(keyword));  //공급단가
+                        break;
+                    case "e":
+                        booleanBuilder.or(materialProcurementContract.supplierName.contains(keyword));   //자재협력회사명
+                        break;
+                    case "f":
+                        booleanBuilder.or(materialProcurementContract.materialProcurementContractState.contains(keyword));   //자재조달계약상태
+                        break;
+                }
 
             }//end for
 
@@ -140,15 +169,20 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
 
         }//end if
 
+        if(state != null){
+            query.where(materialProcurementContract.materialProcurementContractState.contains(state));//자재조달 상태 검색
+        }
+
+        query.orderBy(materialProcurementContract.materialProcurementContractNo.desc());
+
         //paging
-        this.getQuerydsl().applyPagination(pageable, query);// 오류 발생 부분. pageable에 sort를 담아 실행하면 오류가 발생한다.
+        this.getQuerydsl().applyPagination(pageable, query);
 
         List<MaterialProcurementContract> list = query.fetch();
 
         long count = query.fetchCount();
 
         return new PageImpl<>(list, pageable, count);
-
     }
 
     @Override
@@ -167,8 +201,7 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
 
     public MaterialProcurementContractDetailDTO read(int materialProcurementContractNo) {
 
-        QMaterialProcurementContract materialProcurementContract =
-                QMaterialProcurementContract.materialProcurementContract;
+        QMaterialProcurementContract materialProcurementContract = QMaterialProcurementContract.materialProcurementContract;
 
         //조달계획->자재(자재코드,자재분류,자재이름,공급단가) / 협력회사->협력회사명, 대표명, 연락처
         QMaterialProcurementPlanning mpp = QMaterialProcurementPlanning.materialProcurementPlanning;
@@ -185,8 +218,7 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
 
         Tuple target = targetDtoList.get(0);
 
-        MaterialProcurementContract resultMaterialProcurementContract =
-                (MaterialProcurementContract) target.get(materialProcurementContract);
+        MaterialProcurementContract resultMaterialProcurementContract = (MaterialProcurementContract) target.get(materialProcurementContract);
         MaterialProcurementPlanning resultMpp = (MaterialProcurementPlanning) target.get(mpp);
         CooperatorSupplier resultCs = (CooperatorSupplier) target.get(cs);
 

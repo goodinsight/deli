@@ -2,6 +2,7 @@ package com.deligence.deli.domain;
 
 //자재협력회사정보테이블 -> 우선순위x entity만
 
+import com.deligence.deli.dto.CooperatorSupplierDTO;
 import lombok.*;
 
 import javax.persistence.*;
@@ -38,5 +39,24 @@ public class CooperatorSupplier {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private DocumentFile documentFile;    //문서파일 일련번호 FK
+
+    public void change(CooperatorSupplierDTO cooperatorSupplierDTO) {
+
+        this.supplierCeo = cooperatorSupplierDTO.getSupplierCeo();
+        this.supplierEmail = cooperatorSupplierDTO.getSupplierEmail();
+        this.supplierName = cooperatorSupplierDTO.getSupplierName();
+        this.supplierPhone = cooperatorSupplierDTO.getSupplierPhone();
+        this.supplierAddress = cooperatorSupplierDTO.getSupplierAddress();
+        this.supplierStatus = cooperatorSupplierDTO.getSupplierStatus();
+        this.supplierEtc = cooperatorSupplierDTO.getSupplierEtc();
+
+    }
+
+    //상태 변경
+    public void changeState(String supplierStatus){
+
+        this.supplierStatus = supplierStatus;
+
+    }
 
 }

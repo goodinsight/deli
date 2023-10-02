@@ -1,10 +1,7 @@
 package com.deligence.deli.service;
 
 import com.deligence.deli.domain.MaterialProcurementContract;
-import com.deligence.deli.dto.MaterialProcurementContractDTO;
-import com.deligence.deli.dto.MaterialProcurementContractDetailDTO;
-import com.deligence.deli.dto.PageRequestDTO;
-import com.deligence.deli.dto.PageResponseDTO;
+import com.deligence.deli.dto.*;
 import com.deligence.deli.repository.MaterialProcurementContractRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -114,17 +111,22 @@ public class MaterialProcurementContractServiceImpl implements MaterialProcureme
     }
 
     @Override
-    public PageResponseDTO<MaterialProcurementContractDTO> listByState(String[] keywords, PageRequestDTO pageRequestDTO) {
+    public OrderPageResponseDTO<MaterialProcurementContractDTO> listWithState(OrderPageRequestDTO orderPageRequestDTO) {
+
+        String[] types = orderPageRequestDTO.getTypes();
+        String keyword = orderPageRequestDTO.getKeyword();
+        String state = orderPageRequestDTO.getState();
+        Pageable pageable = orderPageRequestDTO.getPageable();//속성 집어넣으면 오류 발생함.
 
         Page<MaterialProcurementContract> result =
-                materialProcurementContractRepository.searchByState(keywords, pageRequestDTO.getPageable());
+                materialProcurementContractRepository.searchWithState(types, keyword, state, pageable);
 
         List<MaterialProcurementContractDTO> dtoList = result.getContent().stream()
                 .map(materialProcurementContract -> entityToDto(materialProcurementContract))
                 .collect(Collectors.toList());
 
-        return PageResponseDTO.<MaterialProcurementContractDTO>withAll()
-                .pageRequestDTO(pageRequestDTO)
+        return OrderPageResponseDTO.<MaterialProcurementContractDTO>withAll()
+                .orderPageRequestDTO(orderPageRequestDTO)
                 .dtoList(dtoList)
                 .total((int)result.getTotalElements())
                 .build();

@@ -41,12 +41,23 @@ public class MaterialRequirementsListServiceImpl implements MaterialRequirements
         return materialRequirementsListNo;
     }
 
+//    @Override
+//    public MaterialRequirementsListDTO read(int materialRequirementsListNo) {
+//
+//        MaterialRequirementsListDTO result = materialRequirementsListRepository.read(materialRequirementsListNo);
+//
+//        return result;
+//    }
     @Override
     public MaterialRequirementsListDTO read(int materialRequirementsListNo) {
 
-        MaterialRequirementsListDTO result = materialRequirementsListRepository.read(materialRequirementsListNo);
+        Optional<MaterialRequirementsList> result = materialRequirementsListRepository.findById(materialRequirementsListNo);
 
-        return result;
+        MaterialRequirementsList materialRequirementsList = result.orElseThrow();
+
+        MaterialRequirementsListDTO materialRequirementsListDTO = entityToDto(materialRequirementsList);
+
+        return materialRequirementsListDTO;
     }
 
     @Override
