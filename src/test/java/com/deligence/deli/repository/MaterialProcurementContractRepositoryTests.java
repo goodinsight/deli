@@ -32,7 +32,7 @@ public class MaterialProcurementContractRepositoryTests {
         int supplierNo = 1;
         int employeeNo = 2;
 
-        IntStream.rangeClosed(1,100).forEach(i -> {
+        IntStream.rangeClosed(1,10).forEach(i -> {
 
             CooperatorSupplier cooperatorSupplier = CooperatorSupplier.builder().supplierNo(1).build();
             Employee employee = Employee.builder().employeeNo(2).build();
@@ -82,26 +82,19 @@ public class MaterialProcurementContractRepositoryTests {
     @Test
     public void testUpdate() {
 
-        int materialProcurementContractNo = 208;
+        int materialProcurementContractNo = 10;
 
         Optional<MaterialProcurementContract> result =
                 materialProcurementContractRepository.findById(materialProcurementContractNo);
 
         MaterialProcurementContract materialProcurementContract = result.orElseThrow();
 
-        //수정내역: 계약일,계약상태,조건상세
         materialProcurementContract.change(MaterialProcurementContractDTO.builder()
-                .materialProcurementContractCode("contractCode2")
+                .materialProcurementContractCode("MP-CONTRACT-20231002-update")
                 .materialProcurementContractDate(LocalDate.of(2023, 9,22))
                 .materialProcurementContractState("NOTYET")
                 .materialProcurementContractEtc("Etc2")
-                .materialCode("materialCode2")
-                .materialName("materialName2")
-                .materialSupplyPrice(20000L)
-                .procurementQuantity(1000)
-                .supplierName("supplierName2")
-                .supplierStatus("DELETE")
-                .employeeName("담당자")
+                .procurementQuantity(100)
                 .build());
 
         materialProcurementContractRepository.save(materialProcurementContract);

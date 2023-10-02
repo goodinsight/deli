@@ -6,6 +6,7 @@ import com.deligence.deli.service.MaterialProcurementContractService;
 import com.deligence.deli.service.MaterialProcurementPlanningService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.awt.*;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/materialProcurementContract")
@@ -30,10 +33,12 @@ public class MaterialProcurementContractController {
     private final CooperatorSupplierService cooperatorSupplierService;
 
     @GetMapping("/list")
-    public void list(PageRequestDTO pageRequestDTO, Model model) {
+    public void list(OrderPageRequestDTO orderPageRequestDTO, Model model) {
 
-        PageResponseDTO<MaterialProcurementContractDTO> responseDTO =
-                materialProcurementContractService.list(pageRequestDTO);
+        log.info(orderPageRequestDTO);
+
+        OrderPageResponseDTO<MaterialProcurementContractDTO> responseDTO =
+                materialProcurementContractService.listWithState(orderPageRequestDTO);
 
         log.info(responseDTO);
 
@@ -77,7 +82,7 @@ public class MaterialProcurementContractController {
     }
 
     @GetMapping({"/read", "/modify"})
-    public void read(int materialProcurementContractNo, PageRequestDTO pageRequestDTO, Model model) {
+    public void read(int materialProcurementContractNo, OrderPageRequestDTO orderPageRequestDTO, Model model) {
 
         log.info("search : materialProcurementContractNo = " + materialProcurementContractNo);
 
@@ -88,12 +93,12 @@ public class MaterialProcurementContractController {
 
         model.addAttribute("dto", materialProcurementContractDetailDTO);
 
-        model.addAttribute("pageRequestDTO", pageRequestDTO);
+        model.addAttribute("pageRequestDTO", orderPageRequestDTO);
 
     }
 
     @PostMapping("/modify")
-    public String modify(PageRequestDTO pageRequestDTO,
+    public String modify(OrderPageRequestDTO orderPageRequestDTO,
                          @Valid MaterialProcurementContractDTO materialProcurementContractDTO,
                          BindingResult bindingResult,
                          RedirectAttributes redirectAttributes) {
@@ -104,7 +109,7 @@ public class MaterialProcurementContractController {
         if (bindingResult.hasErrors()) {
             log.info("has errors.....");
 
-            String link = pageRequestDTO.getLink();
+            String link = orderPageRequestDTO.getLink();
 
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors() );
 
@@ -149,6 +154,10 @@ public class MaterialProcurementContractController {
     public PageResponseDTO<MaterialProcurementPlanningDTO> getPlanList(PageRequestDTO pageRequestDTO){
 
         log.info("getPlanList");
+
+        //조달 계획 상태 : 진행중 검색
+        pageRequestDTO.setType("f");
+        pageRequestDTO.setKeyword("진행중");
 
         PageResponseDTO<MaterialProcurementPlanningDTO> responseDTO = materialProcurementPlanningService.list(pageRequestDTO);
 
@@ -208,6 +217,18 @@ public class MaterialProcurementContractController {
         log.info("num : " + num);
 
         return num;
+
+    }
+
+    //상태변경
+    @ResponseBody
+    @PostMapping(value = "/changeMaterialProcurementContractState", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void changeMaterialProcurementContractState(@RequestBody Map<String, Object> map){
+
+        int materialProcurementContractNo = Integer.parseInt(map.get("materialProcurementContractNo").toString());
+        String state = map.get("state").toString();
+
+        materialProcurementContractService.changeState(materialProcurementContractNo, state);
 
     }
 }

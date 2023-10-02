@@ -22,18 +22,20 @@ public class MaterialProcurementContractServiceTests {
     public void testRegister() {
 
         MaterialProcurementContractDTO materialProcurementContractDTO = MaterialProcurementContractDTO.builder()
-                        .materialProcurementContractCode("registerContractCode...")
+                        .materialProcurementContractCode("MP-CONTRACT-20231002-register")
                         .materialProcurementContractDate(LocalDate.of(2023, 9, 25))
-                        .materialProcurementContractState("진행중")
+                        .materialProcurementContractState("조달진행중")  //조달진행중, 조달계약파기, 조달완료
                         .materialProcurementContractEtc("등록테스트")
                         .materialProcurementPlanNo(100)
-                        .materialProcurementPlanCode("planCode")
-                        .materialCode("materialCode")
-                        .materialName("materialName")
+                        .MaterialProcurementContractNo(1)
+                        .materialProcurementPlanCode("MP-PLANNING-20230928-test")
+                        .materialCode("MATERIAL-20230928-0")
+                        .materialName("materialName1")
                         .materialSupplyPrice(10000L)
                         .procurementQuantity(100)
-                        .supplierName("supplierName")
-                        .supplierStatus("DELETE")
+                        .supplierNo(2)
+                        .supplierName("supplierName2")
+                        .supplierStatus("계약중")
                         .employeeNo(2)
                         .employeeName("혜인")
                         .documentFileNo(2)
@@ -47,7 +49,7 @@ public class MaterialProcurementContractServiceTests {
     @Test
     public void testRead() {
 
-        int materialProcurementContractNo = 208;
+        int materialProcurementContractNo = 3;
 
         MaterialProcurementContractDetailDTO materialProcurementContractDetailDTO =
                 materialProcurementContractService.read(materialProcurementContractNo);
@@ -61,20 +63,12 @@ public class MaterialProcurementContractServiceTests {
 
         MaterialProcurementContractDTO materialProcurementContractDTO =
                 MaterialProcurementContractDTO.builder()
-                        .MaterialProcurementContractNo(207) //1,2번 없음
-                        .materialProcurementContractCode("modifyContractCode..")
+                        .MaterialProcurementContractNo(3) //1,2번 없음
+                        .materialProcurementContractCode("MP-CONTRACT-20231002-modify")
                         .materialProcurementContractDate(LocalDate.of(2023,9,22))
-                        .materialProcurementContractState("진행중")
+                        .materialProcurementContractState("조달계약파기")
                         .materialProcurementContractEtc("modifyContractEtc..")
-                        .materialProcurementPlanNo(100)
-                        .materialProcurementPlanCode("modifyPlanCode")
-                        .materialCode("modifyMaterialCode")
-                        .materialName("modifyMaterialName")
-                        .materialSupplyPrice(1000L)
-                        .procurementQuantity(200)
-                        .supplierName("modifySupplierName")
-                        .supplierStatus("컬럼존재이유를모르겠음")
-                        .employeeName("혜인")
+                        .procurementQuantity(50)
                         .build();
 
         materialProcurementContractService.modify(materialProcurementContractDTO);

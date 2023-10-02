@@ -15,8 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySupport
-        implements MaterialProcurementContractSearch{
+public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySupport implements MaterialProcurementContractSearch{
 
     public MaterialProcurementContractSearchImpl() {
         super(MaterialProcurementContract.class);
@@ -106,25 +105,25 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
         return new PageImpl<>(list, pageable, count);
     }
 
-    //상태 검색
-//    @Override
-//    public Page<MaterialProcurementContract> searchByState(String[] keywords, Pageable pageable) {
-//        QMaterialProcurementContract materialProcurementContract = QMaterialProcurementContract.materialProcurementContract;
-//        JPQLQuery<MaterialProcurementContract> query = new JPAQueryFactory(em)
-//                .selectFrom(materialProcurementContract);
-//        if( keywords != null && keywords.length > 0) { //검색조건과 키워드가 있다면
-//            BooleanBuilder booleanBuilder = new BooleanBuilder(); // (
-//            for(String keyword : keywords) {
-//                booleanBuilder.or(materialProcurementContract.materialProcurementContractState.contains(keyword));
-//            }//end for
-//            query.where(booleanBuilder);
-//        }//end if
-//        //paging
-//        this.getQuerydsl().applyPagination(pageable, query);// 오류 발생 부분. pageable에 sort를 담아 실행하면 오류가 발생한다.
-//        List<MaterialProcurementContract> list = query.fetch();
-//        long count = query.fetchCount();
-//        return new PageImpl<>(list, pageable, count);
-//    }
+    //상태 검색 -> searchWithState로 수정함
+    @Override
+    public Page<MaterialProcurementContract> searchByState(String[] keywords, Pageable pageable) {
+        QMaterialProcurementContract materialProcurementContract = QMaterialProcurementContract.materialProcurementContract;
+        JPQLQuery<MaterialProcurementContract> query = new JPAQueryFactory(em)
+                .selectFrom(materialProcurementContract);
+        if( keywords != null && keywords.length > 0) { //검색조건과 키워드가 있다면
+            BooleanBuilder booleanBuilder = new BooleanBuilder(); // (
+            for(String keyword : keywords) {
+                booleanBuilder.or(materialProcurementContract.materialProcurementContractState.contains(keyword));
+            }//end for
+            query.where(booleanBuilder);
+        }//end if
+        //paging
+        this.getQuerydsl().applyPagination(pageable, query);// 오류 발생 부분. pageable에 sort를 담아 실행하면 오류가 발생한다.
+        List<MaterialProcurementContract> list = query.fetch();
+        long count = query.fetchCount();
+        return new PageImpl<>(list, pageable, count);
+    }
 
 
     @Override
@@ -132,8 +131,7 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
 
         QMaterialProcurementContract materialProcurementContract = QMaterialProcurementContract.materialProcurementContract;
 
-        JPQLQuery<MaterialProcurementContract> query = new JPAQueryFactory(em)
-                .selectFrom(materialProcurementContract);
+        JPQLQuery<MaterialProcurementContract> query = new JPAQueryFactory(em).selectFrom(materialProcurementContract);
 
         if( (types != null && types.length > 0) && keyword != null ) { //검색조건과 키워드가 있다면
 
