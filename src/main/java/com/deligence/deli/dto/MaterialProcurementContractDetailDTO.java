@@ -29,6 +29,10 @@ public class MaterialProcurementContractDetailDTO {
 
     private String materialProcurementContractEtc;  //조건상세(기타사항)
 
+    private int procurementQuantity;  //자재 조달 수량
+
+    //--------------------------------------------------------------------------------------
+
     private int materialProcurementPlanNo;  //자재조달계획 일련번호 FK
 
     private String materialProcurementPlanCode; //자재조달코드
@@ -43,7 +47,7 @@ public class MaterialProcurementContractDetailDTO {
 
     private Long materialSupplyPrice;   //자재 공급단가 (검색용)
 
-    private int procurementQuantity;  //자재 조달 수량
+    //--------------------------------------------------------------------------------------
 
     private int supplierNo; //자재협력회사 일련번호 (FK)
 
@@ -54,6 +58,8 @@ public class MaterialProcurementContractDetailDTO {
     private String supplierPhone;   //자재협력회사 연락처
 
     private String supplierStatus;  //자재협력회사계약상태 (검색용)
+
+    //--------------------------------------------------------------------------------------
 
     private int employeeNo; //사원 일련번호 (FK)
 
