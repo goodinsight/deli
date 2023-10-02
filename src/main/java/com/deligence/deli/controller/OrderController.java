@@ -3,6 +3,7 @@ package com.deligence.deli.controller;
 import com.deligence.deli.dto.*;
 import com.deligence.deli.service.MaterialProcurementContractService;
 import com.deligence.deli.service.MaterialProcurementPlanningService;
+import com.deligence.deli.service.MaterialsService;
 import com.deligence.deli.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -28,6 +29,7 @@ public class OrderController {
 
     private final MaterialProcurementPlanningService materialProcurementPlanningService;
     private final MaterialProcurementContractService materialProcurementContractService;
+    private final MaterialsService materialsService;
 
     @GetMapping("/list")
     public void list(OrderPageRequestDTO orderPageRequestDTO, Model model){
@@ -115,10 +117,16 @@ public class OrderController {
         return "redirect:/order/read";
     }
 
+
+    @GetMapping("/chart")
+    public void chart(){
+
+    }
+
     // 비동기 처리 -------------------------------------------------------
 
     @ResponseBody
-    @GetMapping("/register/selectPlan")
+    @GetMapping("/register/planList")
     public PageResponseDTO<MaterialProcurementPlanningDTO> getPlanList(PageRequestDTO pageRequestDTO){
 
         log.info("getPlanList");
@@ -147,7 +155,7 @@ public class OrderController {
     }
 
     @ResponseBody
-    @GetMapping("/register/selectContract")
+    @GetMapping("/register/contractList")
     public PageResponseDTO<MaterialProcurementContractDTO> getContractList(PageRequestDTO pageRequestDTO){
 
         log.info("getContractList");
@@ -228,6 +236,32 @@ public class OrderController {
         String state = map.get("state").toString();
 
         orderService.changeState(orderNo, state);
+
+    }
+
+
+    @ResponseBody
+    @GetMapping("/chart/materialList")
+    public PageResponseDTO<MaterialsDTO> getMaterialList(PageRequestDTO pageRequestDTO){
+
+        log.info("getMaterialsList");
+
+        PageResponseDTO<MaterialsDTO> responseDTO = materialsService.list(pageRequestDTO);
+
+        return responseDTO;
+    }
+
+    @ResponseBody
+    @GetMapping("/chart/getMaterial/{materialNo}")
+    public MaterialsDTO getMaterialDTO(@PathVariable("materialNo") int materialNo) {
+
+        log.info("getPlanDTO : " + materialNo);
+
+        MaterialsDTO materialsDTO = materialsService.readOne(materialNo);
+
+        log.info(materialsDTO);
+
+        return materialsDTO;
 
     }
 
