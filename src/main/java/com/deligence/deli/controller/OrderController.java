@@ -265,6 +265,20 @@ public class OrderController {
 
     }
 
+    @ResponseBody
+    @PostMapping(value = "/chart/getChartByMaterialName", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void getOrderChartByMaterialName(@RequestBody Map<String, Object> map){
+
+        String materialName = map.get("materialName").toString();
+        String year = map.get("year").toString();
+        String state = map.get("state").toString();
+
+        log.info(materialName);
+        log.info(year);
+        log.info(state);
+
+    }
+
     // 검수 페이지 매핑 ------------------------------------------------------------------------------------
 
     @GetMapping("/progressInspection")

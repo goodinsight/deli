@@ -34,7 +34,7 @@
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">연도</span>
-                            <input type="text" name="orderDeliveryDate" id="orderDeliveryDate" class="date-own form-control">
+                            <input type="text" name="year" id="year" class="form-control">
                         </div>
                         <div class="d-none input-group mb-3">
                             <span class="input-group-text">발주 상태</span>
@@ -110,7 +110,7 @@
 
     <script type="text/javascript">
 
-        $('#orderDeliveryDate').datepicker({
+        $('#year').datepicker({
             format: "yyyy",
             viewMode: "years",
             minViewMode: "years"
@@ -272,10 +272,8 @@
 
             console.log(material)
             materialNo.value = material.materialNo
-            //조달 계획 정보를 가져와서 화면에 반영해야할 항목들은 여기에-----------------------------------------------------
             materialCode.value = material.materialCode
             materialName.value = material.materialName
-            //-----------------------------------------------------------------------------------------------------------
 
             materialModal.hide()
 
@@ -283,6 +281,26 @@
 
     }, false)
 
+
+    // 차트 ----------------------------------------------------------------------------
+
+    document.querySelector(".submitBtn").addEventListener("click", function (e){
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        const mn = materialName.value
+        const year = document.querySelector('#year').value
+
+        // 입력폼 채우지 않으면 알림-------------
+        
+        //-----------------------------------
+
+        getOrderChartByMaterialName({mn, year}).then(
+            console.log("success")
+        ).catch(e => alert('error'))
+
+    })
 
 
 

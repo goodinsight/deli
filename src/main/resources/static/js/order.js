@@ -76,3 +76,15 @@ async function getMaterial(materialNo) {
 
     return result.data
 }
+
+async function getOrderChartByMaterialName({materialName, year}){
+
+    data = {
+        materialName : materialName,
+        year : year,
+        state : "발주완료"
+    }
+
+    return await axios.post(`/order/chart/getChartByMaterialName`, data)
+
+}
