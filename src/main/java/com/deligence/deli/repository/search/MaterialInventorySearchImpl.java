@@ -90,7 +90,6 @@ public class MaterialInventorySearchImpl extends QuerydslRepositorySupport imple
                 .select(materialInventory, materials, mioh)
                 .from(materialInventory)
                 .join(materialInventory.materials, materials).on(materialInventory.materials.eq(materials))
-                .join(materialInventory.materialInOutHistory, mioh).on(materialInventory.materialInOutHistory.eq(mioh))
                 .where(materialInventory.materialInventoryNo.eq(materialInventoryNo));
 
         List<Tuple> targetDtoList = query.fetch();
@@ -113,11 +112,6 @@ public class MaterialInventorySearchImpl extends QuerydslRepositorySupport imple
                 .materialSupplyPrice(resultMaterials.getMaterialSupplyPrice())                                   //공급단가
                 .materialTotalInventoryPayments(resultMaterialInventory.getMaterialTotalInventoryPayments())    //총재고금액
                 .materialStock(resultMaterialInventory.getMaterialStock())          // 재고수량
-                .materialHistoryNo(resultMioh.getMaterialHistoryNo())               // 입출고기록 일련번호
-                .inOutSeparator(resultMioh.getInOutSeparator())                     // 입/출고 구분자
-                .quantity(resultMioh.getQuantity())                                 // 입/출고 수량
-                .historyDate(resultMioh.getHistoryDate())                           // 입/출고 날짜
-                .employeeNo(resultMioh.getEmployee().getEmployeeNo())               // 담당자 일련번호
                 .build();
 
         return dto;

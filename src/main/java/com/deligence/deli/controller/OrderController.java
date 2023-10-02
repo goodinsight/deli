@@ -210,6 +210,11 @@ public class OrderController {
             log.info("조달 완료 프로세스 시작");
             //조달 계획 완료
             materialProcurementPlanningService.completePlan(materialProcurementPlanNo);
+
+            //생산계획 관련 비교 및 완료 작업 -----------------------------------------------
+
+            //--------------------------------------------------------------------------
+
         }
 
 

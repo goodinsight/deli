@@ -39,7 +39,6 @@ public interface MaterialInventoryService {
                 .materialType(materialInventoryDTO.getMaterialType())
                 .materialCode(materialInventoryDTO.getMaterialCode())
                 .materialName(materialInventoryDTO.getMaterialName())
-                .materialInOutHistory(MaterialInOutHistory.builder().materialHistoryNo(materialInventoryDTO.getMaterialHistoryNo()).build())
                 .build();
 
         return materialInventory;
@@ -58,7 +57,6 @@ public interface MaterialInventoryService {
                 .materialType(materialInventory.getMaterials().getMaterialType())
                 .materialName(materialInventory.getMaterials().getMaterialName())
                 .materialCode(materialInventory.getMaterials().getMaterialCode())
-                .materialHistoryNo(materialInventory.getMaterialInOutHistory().getMaterialHistoryNo())
                 .build();
 
         return materialInventoryDTO;

@@ -28,8 +28,6 @@ public class QMaterialInventory extends EntityPathBase<MaterialInventory> {
 
     public final NumberPath<Integer> materialIncomingQuantity = createNumber("materialIncomingQuantity", Integer.class);
 
-    public final QMaterialInOutHistory materialInOutHistory;
-
     public final NumberPath<Integer> materialInventoryNo = createNumber("materialInventoryNo", Integer.class);
 
     public final StringPath materialName = createString("materialName");
@@ -65,7 +63,6 @@ public class QMaterialInventory extends EntityPathBase<MaterialInventory> {
     public QMaterialInventory(Class<? extends MaterialInventory> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.documentFile = inits.isInitialized("documentFile") ? new QDocumentFile(forProperty("documentFile")) : null;
-        this.materialInOutHistory = inits.isInitialized("materialInOutHistory") ? new QMaterialInOutHistory(forProperty("materialInOutHistory"), inits.get("materialInOutHistory")) : null;
         this.materials = inits.isInitialized("materials") ? new QMaterials(forProperty("materials"), inits.get("materials")) : null;
     }
 

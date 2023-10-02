@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = {"materials", "materialInOutHistory", "documentFile"})
+@ToString(exclude = {"materials", "documentFile"})
 public class MaterialInventory {
 
     @Id
@@ -37,9 +37,6 @@ public class MaterialInventory {
     private String materialCode;                    // 자재코드 (자재재고 목록 검색용)
 
     private String materialName;                    // 자재이름 (자재재고 목록 검색용)
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    private MaterialInOutHistory materialInOutHistory;    //입출고 기록 (->일련번호, 입출고구분자, 수량, 날짜, 담당자)
 
     @ManyToOne(fetch = FetchType.LAZY)
     private DocumentFile documentFile;              // 파일 일련번호
