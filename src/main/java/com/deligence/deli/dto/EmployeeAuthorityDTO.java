@@ -2,6 +2,8 @@ package com.deligence.deli.dto;
 
 import com.deligence.deli.domain.Position;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -31,6 +33,11 @@ public class EmployeeAuthorityDTO{
     private boolean social;
 
     private String role;
+
+    public EmployeeAuthorityDTO() {}
+
+    public EmployeeAuthorityDTO(int employeeNo, String employeeId, String employeePw, String employeeEmail, String employeeName, String employeePhone, LocalDate employeeEntranceDate, boolean del, boolean social, String role) {
+    }
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> authorities = new ArrayList<>();

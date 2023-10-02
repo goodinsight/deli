@@ -38,4 +38,5 @@ public interface EmployeeRepository extends JpaRepository<Employee, String>, Emp
 //    public List<Integer> findEmployeeRoleByEmployeeNo(int employeeNo) {
 //
 //    }
+
 }

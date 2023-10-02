@@ -131,39 +131,23 @@ public class EmployeeServiceImpl implements EmployeeService {
                 .map(employee -> modelMapper.map(employee, EmployeeAuthorityDTO.class))
                 .collect(Collectors.toList());
 
+        for(int i = 0; i < dtoList.size(); i++){
+            log.info(dtoList.get(i).getEmployeeId());
+            Optional<Employee> result1 = employeeRepository.getWithRoles(dtoList.get(i).getEmployeeId());
+
+            Employee employee = result1.orElseThrow();
+
+            log.info(employee);
+            log.info(employee.getRoleSet());
+
+            employee.getRoleSet().forEach(employeeRole -> log.info(employeeRole.name()));
+        }
 
         return PageResponseDTO.<EmployeeAuthorityDTO>withAll()
-                .pageRequestDTO(pageRequestDTO)
-                .dtoList(dtoList)
-                .total((int)result.getTotalElements())
-                .build();
-
-
-//        List<Employee> employeeList = employeeRepository.getListWithRoles();
-//
-//        List<EmployeeSecurityDTO> employeeSecurityDTOList= new ArrayList<EmployeeSecurityDTO>();
-//        for(int i=0; i<employeeList.size(); i++) {
-//            EmployeeSecurityDTO employeeSecurityDTO = new EmployeeSecurityDTO(
-//                    employeeList.get(i).getEmployeeNo(),
-//                    employeeList.get(i).getEmployeeId(),
-//                    employeeList.get(i).getEmployeePw(),
-//                    employeeList.get(i).getEmployeeEmail(),
-//                    employeeList.get(i).getEmployeeName(),
-//                    employeeList.get(i).getEmployeePhone(),
-//                    employeeList.get(i).getEmployeeEntranceDate(),
-//                    employeeList.get(i).isDel(),
-//                    false,
-//                    employeeList.get(i).getRoleSet().stream().map(employeeRole -> new SimpleGrantedAuthority("ROLE_" + employeeRole.name())).collect(Collectors.toList())
-//            );
-//
-//            employeeSecurityDTOList.add(employeeSecurityDTO);
-//
-//        }
-//
-//        log.info("employeeSecurityDTOList");
-//        log.info(employeeSecurityDTOList);
-//
-//        return employeeSecurityDTOList;
+            .pageRequestDTO(pageRequestDTO)
+            .dtoList(dtoList)
+            .total((int)result.getTotalElements())
+            .build();
 
 
 

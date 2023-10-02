@@ -1339,7 +1339,7 @@ a.dt-button.active:not(.disabled) {
 }
 .invoicelist-body .newRow {
   margin: .5rem 0;
-  float: left;employee
+  float: left;
 }
 .invoicelist-body .removeRow {
   display: none;
@@ -2842,7 +2842,7 @@ tbody tr td:last-child {
   height: 75px;
 }
 .login-content {
-  margin: 100px 0;
+  margin: auto 0;
 }
 .login-form {
   background: #ffffff;
@@ -3994,6 +3994,8 @@ h6.h1 {
   margin-left: 0px;
   margin-right: 0px;
   margin-top: 0px;
+  display: flex !important;
+  flex-direction: row !important;
 }
 .col-lg-1,
 .col-lg-10,

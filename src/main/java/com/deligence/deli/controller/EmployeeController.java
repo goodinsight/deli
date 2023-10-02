@@ -216,6 +216,7 @@ public class EmployeeController {
 
     @GetMapping("/employee/authority")
     public void authorityGET(Model model, PageRequestDTO pageRequestDTO) {
+
         PageResponseDTO<EmployeeAuthorityDTO> responseDTO = employeeService.listForAuthority(pageRequestDTO);
 
         log.info(responseDTO);

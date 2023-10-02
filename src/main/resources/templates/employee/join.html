@@ -2,107 +2,129 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Employee Join Page</title>
+    <title>Employee Join Page</title>
 
-  <!-- ================= Favicon ================== -->
-  <!-- Standard -->
-  <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
-  <!-- Retina iPad Touch Icon-->
-  <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
-  <!-- Retina iPhone Touch Icon-->
-  <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
-  <!-- Standard iPad Touch Icon-->
-  <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
-  <!-- Standard iPhone Touch Icon-->
-  <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+    <!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
 
-  <!-- Styles -->
-  <link th:href="@{/css/lib/font-awesome.min.css}" rel="stylesheet">
-  <link th:href="@{/css/lib/themify-icons.css}" rel="stylesheet">
-  <link th:href="@{/css/lib/bootstrap.min.css}" rel="stylesheet">
-  <link th:href="@{/css/lib/helper.css}" rel="stylesheet">
-  <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <!-- Styles -->
+    <link th:href="@{/css/lib/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/css/lib/themify-icons.css}" rel="stylesheet">
+    <link th:href="@{/css/lib/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/lib/helper.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link th:href="@{/css/styles.min.css}" rel="stylesheet"/>
 
 </head>
 
-<body class="bg-primary">
-  <div class="unix-login">
+<body class="body-login">
+<div class="container-fluid">
     <div class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-lg-6">
-          <div class="login-content">
-            <div class="login-logo">
-              <a th:href="@{/}"><span>Deligence.com</span></a>
-            </div>
-            <div class="login-form">
-              <h4>Register to User</h4>
-              <form id="registerForm" action="/employee/join" method="post">
-                <div class="form-group">
-                  <span class="input-group-text">EMPLOYEE_ID</span>
-                  <input type="text" name="employeeId" class="form-control" placeholder="id">
-                </div>
-                <div class="form-group">
-                  <span class="input-group-text">EMPLOYEE_PW</span>
-                  <input type="password" name="employeePw" class="form-control" placeholder="pw">
-                </div>
-                <div class="form-group">
-                  <span class="input-group-text">EMPLOYEE_Name</span>
-                  <input type="text" name="employeeName" class="form-control" placeholder="name">
-                </div>
-                <div class="form-group">
-                  <span class="input-group-text">EMPLOYEE_Phone</span>
-                  <input type="tel" name="employeePhone" class="form-control" placeholder="phone">
-                </div>
-                <div class="form-group">
-                  <span class="input-group-text">EMPLOYEE_Email</span>
-                  <input type="email" name="employeeEmail" class="form-control" placeholder="email">
-                </div>
-                <div class="form-group">
-                  <span class="input-group-text">EMPLOYEE_EntranceDate</span>
-                  <input type="date" name="employeeEntranceDate" class="form-control" placeholder="entrancedate">
-                </div>
-                <div class="form-group">
-                  <span class="input-group-text">EMPLOYEE_Position</span>
-                  <input type="option" name="position" class="form-control" placeholder="position">
-                </div>
-                <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> Agree the terms and policy
-                    </label>
-                </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
 
-                <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30 submitBtn">Submit</button>
-                <button type="reset" class="btn btn-secondary btn-flat m-b-30 m-t-30">Reset</button>
+                <div class="card">
+                    <!-- 타이틀 -->
+                    <div class="card-title">
+                        <div class="card-badge">
+                            <img src="/images/color_logo_250_60.png" style="width: 250px">
+                            <h4><strong>회원가입</strong>(직원 정보입력)</h4>
+                        </div>
+                    </div>
+                    <!-- 회원 가입 폼 -->
+                    <div class="card-body">
+                        <div class="login-content">
+                            <div class="login-form">
+                                <form class="form-horizontal" id="registerForm" action="/employee/join" method="post">
+                                    <hr>
+                                    <div class="row">
+                                        <label class="col-sm-3 control-label"><strong>아이디</strong></label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="employeeId" class="form-control" placeholder="아이디를 입력 해주세요">
+                                        </div>
 
-                <div class="social-login-content">
-                  <div class="social-button">
-                    <button type="button" class="btn btn-primary bg-facebook btn-flat btn-addon m-b-10"><i class="ti-facebook"></i>Register with facebook</button>
-                    <button type="button" class="btn btn-primary bg-twitter btn-flat btn-addon m-t-10"><i class="ti-twitter"></i>Register with twitter</button>
-                  </div>
+                                        <label class="col-sm-3 control-label"><strong>비밀번호</strong></label>
+                                        <div class="col-sm-9">
+                                            <input type="password" name="employeePw" class="form-control" placeholder="비밀번호를 입력 해주세요">
+
+                                        </div>
+
+                                        <label class="col-sm-3 control-label"><strong>이름</strong></label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="employeeName" class="form-control" placeholder="이름을 입력 해주세요">
+                                        </div>
+
+                                        <label class="col-sm-3 control-label"><strong>이메일</strong></label>
+                                        <div class="col-sm-9">
+                                            <input type="email" name="employeeEmail" class="form-control" placeholder="이메일을 입력 해주세요">
+                                        </div>
+
+                                        <label class="col-sm-3 control-label"><strong>연락처</strong></label>
+                                        <div class="col-sm-9">
+                                            <input type="tel" name="employeePhone" class="form-control" placeholder="대표 연락처를 입력 해주세요 '-'제외">
+                                        </div>
+
+                                    </div> <!--개인정보 영역 끝-->
+                                    <hr>
+
+
+                                    <div class="row">
+                                        <label class="col-sm-3 control-label"><strong>고용일</strong></label>
+                                        <div class="col-sm-9">
+                                            <input type="date" class="form-control"
+                                                   name="employeeEntranceDate">
+                                        </div>
+
+                                        <label class="col-sm-3 control-label"><strong>직책</strong></label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="position" class="form-control" placeholder="직책을 입력해주세요">
+                                        </div>
+
+                                    </div> <!-- 사원정보 끝-->
+
+                                    <br>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> 개인정보 이용 약관을 정독하였으며 이에 동의합니다.
+                                        </label>
+                                    </div>
+                                    <br>
+                                    <button type="submit" class="btn btn-primary btn-flat submitBtn">
+                                        등록하기
+                                    </button>
+                                    <button type="reset" class="btn btn-secondary btn-flat m-b-30 m-t-30">초기화</button>
+
+
+                                </form>
+                            </div> <!-- end card body -->
+                        </div> <!-- end card -->
+                    </div>
                 </div>
+            </div> <!-- end col -->
+        </div>
+    </div> <!-- end row -->
+</div>
 
-                <div class="register-link m-t-15 text-center">
-                  <p>Already have account ? <a href="/employee/login"> Sign in</a></p>
-                </div>
-
-              </form>
-            </div> <!-- end card body -->
-          </div> <!-- end card -->
-        </div> <!-- end col -->
-      </div> <!-- end row -->
-    </div>
-  </div>
 </body>
 <script layout:fragment="script" th:inline="javascript">
 
-  const error = [[${error}]]
+    const error = [[${error}]]
 
-  if(error %% error === 'employee_id'){
-    alert("동일한 MID를 가진 계정이 존재합니다.")
-  }
+    if (error % % error === 'employee_id') {
+        alert("동일한 MID를 가진 계정이 존재합니다.")
+    }
 
 </script>
