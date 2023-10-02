@@ -46,7 +46,8 @@ public class ProductContractRepositoryTests {
                     .productContractDate(LocalDate.now())
                     .productDeliveryDate(LocalDate.of(2023,10,12))
                     .productQuotation("quotation"+i)
-                    .productContractState("진행중")
+                    .productContractState("제품입고완료")
+                    //'자재검토중', '자재조달중', '제품생산중', 제품입고완료'
                     .cooperatorClient(CooperatorClient.builder().clientNo(1).build())
                     .clientName("clientName1")
                     .clientStatus("계약중")

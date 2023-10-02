@@ -28,7 +28,7 @@ public class ProductionPlanningRepositoryTests {
     @Test
     public void testInsert() {
 
-        IntStream.rangeClosed(1,5).forEach(i -> {
+        IntStream.rangeClosed(1,10).forEach(i -> {
 
             ProductionPlanning productionPlanning = ProductionPlanning.builder()
                     .productionPlanCode("PD-PLANNING-"+i)
@@ -37,8 +37,9 @@ public class ProductionPlanningRepositoryTests {
                     .productionRequirementsProcess("process..."+i)
                     .productionDeliveryDate(LocalDate.of(2023,10,27))
                     .detailExplaination("explaination..."+i)
-                    .productionState("자재조달단계")
-                    .productContract(ProductContract.builder().productContractNo(50).build())
+                    .productionState("제품입고완료")
+                    //-자재조달단계, 자재입고단계, 제품생산단계, 제품검수단계, 제품입고완료
+                    .productContract(ProductContract.builder().productContractNo(10).build())
                     .productCode("PD-CONTRACT-20230928-50")
 //                    .clientName(ProductContract.builder().productContractNo(50).build().getClientName())   //클라이언트회사명
                     .clientName("clientName...")   //클라이언트회사명
@@ -48,7 +49,8 @@ public class ProductionPlanningRepositoryTests {
                     .clientStatus("계약중")
                     .materialRequirementsList(MaterialRequirementsList.builder().materialRequirementsListNo(1).build())
                     .employee(Employee.builder().employeeNo(28).build())
-                    .employeeName("제품계약:윈터, 생산계획:카리나")    //계약담당자
+                    .employeeName("윈터")    //계약담당자
+                    .employeeName2("카리나")    //생산계획담당자
                     .build();
 
             ProductionPlanning result = productionPlanningRepository.save(productionPlanning);
