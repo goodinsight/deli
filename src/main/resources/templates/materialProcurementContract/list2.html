@@ -9,55 +9,73 @@
 </head>
 
 <div layout:fragment="content">
-
-    <div class="row mt-12 m-l-15">
-        <form class="col-lg-10" action="/materialProcurementContract/list" method="get">
-            <div class="form-group">
-                <p class="text-muted m-b-15 f-s-12">
-                    "검색하고 싶은
-                    <code>카테고리를 선택하고 키워드</code>
-                    를 입력한 뒤 search버튼을 누르세요"
-                </p>
-                <input type="hidden" name="size" th:value="${orderPageRequestDTO.size}">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <select class="form-select" name="state">
-                            <option value="">조달 계약 상태</option>
-                            <option value="조달계약진행중" th:selected="${orderPageRequestDTO.state == '조달계약진행중'}">조달계약진행중</option>
-                            <option value="발주진행중" th:selected="${orderPageRequestDTO.state == '발주진행중'}">발주진행중(계약완료)</option>
-                            <option value="조달완료" th:selected="${orderPageRequestDTO.state == '조달완료'}">조달완료(자재입고완료)</option>
-                            <option value="계약파기" th:selected="${orderPageRequestDTO.state == '계약파기'}">계약파기</option>
-                        </select>
-                    </div>
-
-                    <div class="input-group-prepend">
-                        <select class="form-select" name="type">
-                            <!--a:조달계획코드, b:자재코드, c:자재이름, d:공급단가, e:납품업체명, f:자재조달계약상태-->
-                            <option value="">---</option>
-                            <option value="a" th:selected="${orderPageRequestDTO.type == 'a'}">조달 계획 코드</option>
-                            <option value="b" th:selected="${orderPageRequestDTO.type == 'b'}">자재 코드</option>
-                            <option value="c" th:selected="${orderPageRequestDTO.type == 'c'}">자재 이름</option>
-                            <option value="d" th:selected="${orderPageRequestDTO.type == 'd'}">공급 단가</option>
-                            <option value="e" th:selected="${orderPageRequestDTO.type == 'e'}">납품 업체명</option>
-                        </select>
-                    </div>
-                    <input type="text" class="form-control input-focus" name="keyword"
-                           th:value="${orderPageRequestDTO.keyword}" placeholder="INPUT KEYWORD">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-success searchBtn" type="submit">
-                            <i class="ti-search"></i> Search</button>
-                        <button class="btn btn-outline-danger clearBtn" type="button">Clear</button>
-                    </div>
-                </div>
-            </div>
-        </form>
-
-
-    </div>
-
-    <div class="row">
+    <div class="row mt-3">
         <div class="col">
             <div class="card">
+                <div class="card-title">
+                    <strong>자재조달계약 목록</strong>
+                    <hr>
+                </div>
+                <br>
+
+                <!-- 상단 검색 도구 -->
+                <div class="row">
+                    <label class="col-sm-1 control-label"><strong>상태 선택</strong></label>
+                    <div class="col-sm-3">
+
+                        <select class="form-control" name="type" placeholder="상태 선택">
+                            <optgroup label="조달 계약 상태">
+                                <option value="f" th:selected="${orderPageRequestDTO.type == 'f'}">조달계약진행중</option>
+                                <option value="f" th:selected="${orderPageRequestDTO.type == 'f'}">발주진행중</option>
+                                <option value="f" th:selected="${orderPageRequestDTO.type == 'f'}">조달완료</option>
+                                <option value="f" th:selected="${orderPageRequestDTO.type == 'f'}">계약파기</option>
+                            </optgroup>
+
+                        </select>
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label class="col-sm-1 control-label"><strong>검색</strong></label>
+                    <form class="col-lg-10" action="/materialProcurementContract/list" method="get">
+
+                        <div class="form-group">
+                            <input type="hidden" name="size" th:value="${orderPageRequestDTO.size}">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <select class="form-select" name="type">
+                                        <!--a:조달계획코드, b:자재코드, c:자재이름, d:공급단가, e:납품업체명, f:자재조달계약상태-->
+                                        <option value="">---</option>
+                                        <option value="a" th:selected="${orderPageRequestDTO.type == 'a'}">조달 계획 코드</option>
+                                        <option value="b" th:selected="${orderPageRequestDTO.type == 'b'}">자재 코드</option>
+                                        <option value="c" th:selected="${orderPageRequestDTO.type == 'c'}">자재 이름</option>
+                                        <option value="d" th:selected="${orderPageRequestDTO.type == 'd'}">공급 단가</option>
+                                        <option value="e" th:selected="${orderPageRequestDTO.type == 'e'}">납품 업체명
+                                        </option>
+
+                                    </select>
+                                </div>
+                                <input type="text" class="form-control input-focus" name="keyword"
+                                       th:value="${orderPageRequestDTO.keyword}" placeholder="INPUT KEYWORD">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-success searchBtn" type="submit"><i
+                                            class="ti-search"></i>
+                                        Search
+                                    </button>
+                                    <button class="btn btn-outline-danger clearBtn" type="button">Clear</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 검색 도구 설명 -->
+                        <p class="text-muted m-b-15 f-s-12">
+                            "검색하고 싶은
+                            <code>카테고리를 선택하고 키워드</code>
+                            를 입력한 뒤 search버튼을 누르세요"
+                        </p>
+                    </form>
+                </div>
 
                 <!-- 리스트 테이블 -->
                 <div class="card-body">
@@ -156,9 +174,11 @@
 
 </div>
 
+
+
 <script layout:fragment="script" th:inline="javascript">
 
-    console.log("자재조달계약 목록 페이지")
+    console.log("자재조달계약 리스트 페이지")
 
     $(document).ready(function () {
         console.log([[${orderPageRequestDTO}]])

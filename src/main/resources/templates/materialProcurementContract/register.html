@@ -36,7 +36,7 @@
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">조달계획 코드</span>
-                            <input type="text" name="materialProcurementPlanCode" class="form-control selectPlan" placeholder="클릭해주세요" readonly>
+                            <input type="text" name="materialProcurementPlanCode" class="form-control selectPlan" id="materialProcurementPlanCode" placeholder="클릭해주세요" readonly>
                         </div>
                         <div class="input-group mb-3 pl-5">
                             <span class="input-group-text">자재 코드</span>
@@ -69,8 +69,8 @@
                             <input type="text" name="supplierNo" class="form-control supplierNo" readonly>
                         </div>
                         <div class="input-group mb-3">
-                            <span class="input-group-text">자재 협력회사명</span>
-                            <input type="text" name="supplierName" class="form-control selectSupplier" placeholder="클릭해주세요" readonly>
+                            <span class="input-group-text">자재조달 협력회사명</span>
+                            <input type="text" name="supplierName" class="form-control selectSupplier" id="selectSupplier" placeholder="클릭해주세요" readonly>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" style="margin-left: 50px">대표명</span>
@@ -78,14 +78,14 @@
                             <span class="input-group-text" style="margin-left: 20px">연락처</span>
                             <input type="text" name="supplierPhone" class="form-control supplierPhone" readonly>
                         </div>
-                        <div class="input-group mb-3 pl-5">
+                        <div class="input-group mb-3 pl-5 d-none">
                             <span class="input-group-text">계약상태</span>
                             <input type="text" name="supplierStatus" class="form-control supplierStatus" placeholder="계약 상태 - 추후 숨길 부분" th:value="계약중" readonly>
                         </div>
 
                         <div class="input-group mb-3">
                             <span class="input-group-text">조달상태</span>
-                            <input type="text" name="materialProcurementContractState" class="form-control" placeholder="조달 상태 - 추후 숨길 부분" th:value="진행중" readonly>
+                            <input type="text" name="materialProcurementContractState" class="form-control" placeholder="조달 상태 - 추후 숨길 부분" th:value="조달계약진행중" readonly>
                         </div>
 
                         <div class="input-group mb-3" >
@@ -377,6 +377,7 @@
         getPlan(planNo).then(plan => {
 
             console.log(plan)
+
             materialProcurementPlanNo.value = plan.materialProcurementPlanNo
             //조달 계획 정보를 가져와서 화면에 반영해야할 항목들은 여기에-----------------------------------------------------
             inputPlanCode.value = plan.materialProcurementPlanCode
@@ -407,8 +408,16 @@
     let supplierPageSize = 5
 
     document.querySelector(".selectSupplier").addEventListener("click", function (e) {
-        printSuppliers(1, 5)
-        supplierModal.show()
+
+        if (materialProcurementPlanCode.value.length > 0) {
+
+            printSuppliers(1, 5);
+            supplierModal.show();
+
+        } else {
+            alert("조달계획 코드를 먼저 선택해주세요.")
+        }
+
     }, false)
 
     closeSupplierBtn.addEventListener("click", function (e) {
@@ -416,6 +425,8 @@
     })
 
     function printSupplierList(dtoList){//협력 회사 목록
+
+        console.log("print supplier list")
 
         let str = ''
 
@@ -427,10 +438,10 @@
 
                 str += `<tr>
                             <td data-suppliersNo="${dto.supplierNo}">${dto.supplierNo}</td>
-                            <td data-suppliersNo="${dto.supplierName}">${dto.supplierName}</td>
-                            <td data-suppliersNo="${dto.supplierCeo}">${dto.supplierCeo}</td>
-                            <td data-suppliersNo="${dto.supplierPhone}">${dto.supplierPhone}</td>
-                            <td data-suppliersNo="${dto.supplierStatus}">${dto.supplierStatus}</td>
+                            <td data-suppliersNo="${dto.supplierNo}">${dto.supplierName}</td>
+                            <td data-suppliersNo="${dto.supplierNo}">${dto.supplierCeo}</td>
+                            <td data-suppliersNo="${dto.supplierNo}">${dto.supplierPhone}</td>
+                            <td data-suppliersNo="${dto.supplierNo}">${dto.supplierStatus}</td>
                         </tr>`
 
             }
@@ -463,7 +474,10 @@
 
     function printSuppliers(page, size) {
 
-        getSupplierList({page, size}).then(
+        const type = "a"
+        const keyword = materialProcurementPlanCode.value
+
+        getSupplierList({page, size, type, keyword}).then(
             data => {
                 printSupplierList(data.dtoList)
                 printSupplierPages(data)
@@ -521,6 +535,7 @@
         getSupplier(suppliersNo).then(supplier => {
 
             console.log(supplier)
+
             supplierNo.value = supplier.supplierNo
             //계약 정보를 가져와서 화면에 반영해야할 항목들은 여기에------------------------------------------------------------
             inputSupplierName.value = supplier.supplierName

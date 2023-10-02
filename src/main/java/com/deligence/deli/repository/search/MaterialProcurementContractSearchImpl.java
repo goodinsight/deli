@@ -249,6 +249,7 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
 
     }
 
+    //사용X
     @Override
     public Page<MaterialProcurementContract> searchWithState2(String[] types, String keyword, String[] states, Pageable pageable) {
 
