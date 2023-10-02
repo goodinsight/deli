@@ -23,19 +23,19 @@ public class Materials extends BaseEntity{
     @Column(length = 100, nullable = false)
     private int materialNo; //자재일련번호
 
-    @Column(length = 100, nullable = true)
+    @Column(length = 100, nullable = false)
     private String materialCode; // 자재코드
 
-    @Column(length = 50, nullable = true)
+    @Column(length = 50, nullable = false)
     private String materialName; //자재명
 
-    @Column(length = 50, nullable = true)
+    @Column(length = 50, nullable = false)
     private String materialType; //자재분류
 
-    @Column(length = 1000, nullable = true)
+    @Column(length = 1000, nullable = false)
     private String materialExplaination; //자재설명
 
-    @Column(length = 50, nullable = true)
+    @Column(length = 50, nullable = false)
     private Long materialSupplyPrice; //자재공급단가
 
     @ManyToOne(fetch = FetchType.LAZY)
