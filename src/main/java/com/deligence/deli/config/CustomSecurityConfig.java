@@ -67,7 +67,7 @@ public class CustomSecurityConfig {
         //http.formLogin().loginPage("/employee/login");
         http.authorizeHttpRequests()
                 .antMatchers("/", "/employee/login", "/employee/join").permitAll()    // 비로그인시에도 접근
-                .antMatchers("/employee/remove","/employee/authority","/board/modify","/board/remove").hasRole("ADMIN")    //   /employee/ 수정, 삭제 url은 ROLE_ADMIN 롤을 가진 사람만 접근
+                .antMatchers("/employee/remove","/employee/authority","employee/authorityread", "employee/authoritymodify","/board/modify","/board/remove").hasRole("ADMIN")    //   /employee/ 수정, 삭제 url은 ROLE_ADMIN 롤을 가진 사람만 접근
                 .antMatchers("/employee/list","/employee/read","/employee/modify").hasAnyRole("ADMIN","MATERIAL", "ORDER", "PROCUREMENT", "PRODUCT", "COOPERATOR", "PARTNER") // 담당자들은 employee list를 볼 수 있음
                 .antMatchers("/board/list", "/board/read").hasAnyRole("USER", "ADMIN","MATERIAL", "ORDER", "PROCUREMENT", "PRODUCT", "COOPERATOR", "PARTNER")   //일반회원은 보드만 접근 가능
                 .antMatchers("/material/**", "/materialInventory/**").hasAnyRole("MATERIAL", "ADMIN")   //자재 담당자와 admin만 접근

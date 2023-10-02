@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{/layout/layout.html}">
+<head>
+    <title>Employee Modify</title>
+</head>
+
+<div layout:fragment="content">
+    <div class="row mt-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    Employee Modify
+                </div>
+
+                <div class="card-body">
+                    <form th:action="@{/employee/authoritymodify}" method="post" id="f1">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">EmployeeNo</span>
+                            <input type="text" class="form-control" name="employeeNo" th:value="${dto.employeeNo}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">EmployeeID</span>
+                            <input type="text" class="form-control" name="employeeId" th:value="${dto.employeeId}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">EmployeeName</span>
+                            <input type="text" class="form-control" name="employeeName" th:value="${dto.employeeName}" >
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">EmployeePhone</span>
+                            <input type="text" class="form-control" name="employeePhone" th:value="${dto.employeePhone}" >
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">EmployeeEmail</span>
+                            <input type="text" class="form-control" name="employeeEmail" th:value="${dto.employeeEmail}" >
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">EmployeeEntranceDate</span>
+                            <input type="text" class="form-control" name="employeeEntranceDate" th:value="${dto.employeeEntranceDate}">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">EmployeePosition</span>
+                            <input type="text" class="form-control" name="position" th:value="${dto.position.getPositionName()}" >
+                        </div>
+                        <div class="my-4">
+                            <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}">
+                                <a th:href="|@{/employee/authority}?${link}|" class="text-decoration-none">
+                                    <button type="button" class="btn btn-primary listBtn">List</button>
+                                </a>
+                                <button type="button" class="btn btn-secondary modBtn">Modify</button>
+                                <th:block  sec:authorize="hasRole('ROLE_ADMIN')">   <!-- ADMIN만 삭제 가능 -->
+                                    <button type="button" class="btn btn-danger removeBtn">Remove</button>
+                                </th:block>
+                            </div>
+                        </div>
+                    </form>
+                </div> <!-- end card-body -->
+
+
+            </div> <!-- end card -->
+        </div> <!-- end col -->
+    </div> <!-- end row -->
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="/js/reply.js"></script>
+
+
+</div><!-- end layout fragment -->
+
+<script layout:fragment="script" th:inline="javascript">
+    const errors = [[${errors}]]
+    console.log(errors)
+
+    let errorMsg = ''
+
+    if(errors){
+        for(let i = 0; i<errors.length; i++) {
+            errorMsg += `${errors[i].field}은(는) ${errors[i].code} \n`
+        }
+        history.replaceState({}, null, null)
+        alert(errorMsg)
+    }
+
+    const link = [[${pageRequestDTO.getLink()}]]
+    const formObj = document.querySelector("#f1")
+
+    document.querySelector(".modBtn").addEventListener("click", function (e){
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        formObj.action = `/employee/authoritymodify?${link}`
+        formObj.method = 'post'
+        formObj.submit()
+
+
+    }, false);
+
+    document.querySelector(".removeBtn").addEventListener("click", function (e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        formObj.action = '/employee/remove'
+        formObj.method = 'post'
+        formObj.submit()
+
+    }, false);
+
+    document.querySelector(".listBtn").addEventListener("click", function (e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        formObj.reset()
+        self.location = `/employee/authority?${link}`
+
+    }, false);
+</script>

@@ -153,6 +153,7 @@ public class EmployeeController {
 
     }
 
+
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/employee/modify")
     public void modify(int employeeNo, PageRequestDTO pageRequestDTO, Model model){
@@ -209,7 +210,7 @@ public class EmployeeController {
 
         redirectAttributes.addFlashAttribute("result", "removed");
 
-        return "redirect:/employee/list";
+        return "redirect:/employee/authority";
 
     }
 
@@ -220,6 +221,64 @@ public class EmployeeController {
         log.info(responseDTO);
 
         model.addAttribute("responseDTO", responseDTO);
+    }
+
+
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/employee/authorityread")
+    public void authorityread(int employeeNo, PageRequestDTO pageRequestDTO, Model model){
+
+        EmployeeAuthorityDTO employeeAuthorityDTO = employeeService.readOneForAuthority(employeeNo);
+
+        log.info(employeeAuthorityDTO);
+        log.info(pageRequestDTO);
+
+        model.addAttribute("dto", employeeAuthorityDTO);
+
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @GetMapping("/employee/authoritymodify")
+    public void authoritymodify(int employeeNo, PageRequestDTO pageRequestDTO, Model model){
+
+        EmployeeAuthorityDTO employeeAuthorityDTO1 = employeeService.readOneForAuthority(employeeNo);
+
+        log.info(employeeAuthorityDTO1);
+        log.info(pageRequestDTO);
+
+        model.addAttribute("dto", employeeAuthorityDTO1);
+
+    }
+    @PreAuthorize("isAuthenticated()")  // 권한 부여는 운영자만 가능
+    @PostMapping("/employee/authoritymodify")
+    public String authorityPOST(PageRequestDTO pageRequestDTO,
+                         @Valid EmployeeAuthorityDTO employeeAuthorityDTO,
+                         BindingResult bindingResult,
+                         RedirectAttributes redirectAttributes) {
+
+        log.info("employee authority post................." + employeeAuthorityDTO);
+
+        if (bindingResult.hasErrors()) {
+            log.info("has errors..............");
+
+            String link = pageRequestDTO.getLink();
+
+            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
+
+            redirectAttributes.addAttribute("employeeNo", employeeAuthorityDTO.getEmployeeNo());
+
+            return "redirect:/employee/authoritymodify?" + link;
+        }
+
+        employeeService.modify(employeeAuthorityDTO);
+
+        redirectAttributes.addFlashAttribute("result", "modified");
+
+        redirectAttributes.addAttribute("employeeNo", employeeAuthorityDTO.getEmployeeNo());
+
+        return "redirect:/employee/authorityread";
+
     }
 
 

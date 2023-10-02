@@ -58,7 +58,7 @@
                         <tr th:each="dto:${responseDTO.dtoList}">
                             <th scope="row">[[${dto.employeeNo}]]</th>
                             <td>
-                                <a th:href="|@{/employee/read(employeeNo =${dto.employeeNo})}&${link}|" class="text-decoration-none">[[${dto.employeeId}]]</a>
+                                <a th:href="|@{/employee/authorityread(employeeNo =${dto.employeeNo})}&${link}|" class="text-decoration-none">[[${dto.employeeId}]]</a>
                             </td>
                             <td>[[${dto.employeeName}]]</td>
                             <td>[[${#temporals.format(dto.employeeEntranceDate, 'yyyy-MM-dd')}]]</td>
@@ -147,7 +147,7 @@
         e.preventDefault()
         e.stopPropagation()
 
-        self.location = '/employee/list'
+        self.location = '/employee/authority'
 
     },false);
 

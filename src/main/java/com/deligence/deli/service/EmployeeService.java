@@ -25,4 +25,8 @@ public interface EmployeeService {
     EmployeeJoinDTO findEmployee(String employeeId);
 
     PageResponseDTO<EmployeeAuthorityDTO> listForAuthority(PageRequestDTO pageRequestDTO);
+
+    EmployeeAuthorityDTO readOneForAuthority(int employeeNo);
+
+    void modify(EmployeeAuthorityDTO employeeAuthorityDTO);
 }

@@ -168,4 +168,29 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
     }
+
+    @Override
+    public EmployeeAuthorityDTO readOneForAuthority(int employeeNo) {
+        Optional<Employee> result = employeeRepository.findByEmployeeNo(employeeNo);
+
+        Employee employee = result.orElseThrow();
+
+        EmployeeAuthorityDTO employeeAuthorityDTO = modelMapper.map(employee, EmployeeAuthorityDTO.class);
+
+        return employeeAuthorityDTO;
+    }
+
+    @Override
+    public void modify(EmployeeAuthorityDTO employeeAuthorityDTO) {
+        Optional<Employee> result = employeeRepository.findByEmployeeId(employeeAuthorityDTO.getEmployeeId());
+
+        Employee employee = result.orElseThrow();
+
+        employee.changeEmail(employeeAuthorityDTO.getEmployeeEmail());
+        employee.changeName(employeeAuthorityDTO.getEmployeeName());
+        employee.changePhone(employeeAuthorityDTO.getEmployeePhone());
+        employee.changePosition(employeeAuthorityDTO.getPosition());
+
+        employeeRepository.save(employee);
+    }
 }
