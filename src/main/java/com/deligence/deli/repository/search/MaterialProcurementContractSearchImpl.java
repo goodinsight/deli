@@ -89,9 +89,6 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
 
         }//end if
 
-        //materialProcurementContractNo > 0
-//        query.where(materialProcurementContract.materialProcurementContractNo.gt(0));
-
         query.orderBy(materialProcurementContract.materialProcurementContractNo.desc());
 
         //paging
@@ -251,4 +248,92 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
         return dto;
 
     }
+
+    @Override
+    public Page<MaterialProcurementContract> searchWithState2(String[] types, String keyword, String[] states, Pageable pageable) {
+
+        QMaterialProcurementContract materialProcurementContract = QMaterialProcurementContract.materialProcurementContract;
+
+        JPQLQuery<MaterialProcurementContract> query = new JPAQueryFactory(em)
+                .selectFrom(materialProcurementContract);
+
+        if( (types != null && types.length > 0) && keyword != null ) { //검색조건과 키워드가 있다면
+
+            BooleanBuilder booleanBuilder = new BooleanBuilder(); // (
+
+            for(String type : types) {
+
+                    switch (type) {
+
+                        case "a":
+                            booleanBuilder.or(materialProcurementContract.materialProcurementPlanCode.contains(keyword));    //조달계획코드
+                            break;
+                        case "b":
+                            booleanBuilder.or(materialProcurementContract.materialCode.contains(keyword));   //자재코드
+                            break;
+                        case "c":
+                            booleanBuilder.or(materialProcurementContract.materialName.contains(keyword));   //자재이름
+                            break;
+                        case "d":
+                            booleanBuilder.or(materialProcurementContract.materialSupplyPrice.stringValue().contains(keyword));  //공급단가
+                            break;
+                        case "e":
+                            booleanBuilder.or(materialProcurementContract.supplierName.contains(keyword));   //자재협력회사명
+                            break;
+                        case "f":
+                            booleanBuilder.or(materialProcurementContract.materialProcurementContractState.contains(keyword));   //자재조달계약상태
+                            break;
+                    }
+
+                }//end for
+
+                query.where(booleanBuilder);
+
+            }//end if
+
+            // 상태 조건 -----------------
+
+            if ((states != null && states.length > 0)) {
+
+                BooleanBuilder booleanBuilder2 = new BooleanBuilder(); // (
+
+                for(String state : states) {
+
+                    switch(state){
+
+                        case "조달계약진행중":
+                            booleanBuilder2.or(materialProcurementContract.materialProcurementContractState.contains("조달계약진행중"));
+                            break;
+                        case "발주진행중":
+                            booleanBuilder2.or(materialProcurementContract.materialProcurementContractState.contains("발주진행중"));
+                            break;
+                        case "조달완료":
+                            booleanBuilder2.or(materialProcurementContract.materialProcurementContractState.contains("조달완료"));
+                            break;
+                        case "계약파기":
+                            booleanBuilder2.or(materialProcurementContract.materialProcurementContractState.contains("계약파기"));
+                            break;
+
+                    }
+
+                }//end for
+
+            query.where(booleanBuilder2);
+
+            //------------------------
+
+            }//end states if
+
+        query.orderBy(materialProcurementContract.materialProcurementContractNo.desc());
+
+        //paging
+        this.getQuerydsl().applyPagination(pageable, query);
+
+        List<MaterialProcurementContract> list = query.fetch();
+
+        long count = query.fetchCount();
+
+        return new PageImpl<>(list, pageable, count);
+    }
+
 }

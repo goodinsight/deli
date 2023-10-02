@@ -17,17 +17,20 @@
                 <div class="row">
                     <label class="col-sm-1 control-label"><strong>상태 선택</strong></label>
                     <div class="col-sm-3">
-                        <select class="form-control" placeholder="상태 선택">
+
+                        <select class="form-control" name="type" placeholder="상태 선택">
                             <optgroup label="조달 계약 상태">
-                                <option value="조달계약진행중" th:selected="${orderPageRequestDTO.state == '조달계약진행중'}">조달계약진행중</option>
-                                <option value="발주진행중" th:selected="${orderPageRequestDTO.state == '발주진행중'}">발주진행중(계약완료)</option>
-                                <option value="조달완료" th:selected="${orderPageRequestDTO.state == '조달완료'}">조달완료(발주완료)</option>
-                                <option value="계약파기" th:selected="${orderPageRequestDTO.state == '계약파기'}">계약파기</option>
+                                <option value="f" th:selected="${orderPageRequestDTO.type == 'f'}">조달계약진행중</option>
+                                <option value="f" th:selected="${orderPageRequestDTO.type == 'f'}">발주진행중</option>
+                                <option value="f" th:selected="${orderPageRequestDTO.type == 'f'}">조달완료</option>
+                                <option value="f" th:selected="${orderPageRequestDTO.type == 'f'}">계약파기</option>
                             </optgroup>
 
                         </select>
+
                     </div>
                 </div>
+
                 <div class="row">
                     <label class="col-sm-1 control-label"><strong>검색</strong></label>
                     <form class="col-lg-10" action="/materialProcurementContract/list" method="get">
@@ -82,6 +85,7 @@
                             <th scope="col" id="materialSupplyPrice">공급 단가</th>
                             <th scope="col" id="supplierName">납품 업체명</th>
                             <th scope="col" id="materialProcurementContractState">조달 계약 상태</th>
+                            <th scope="col" id="regDate">등록일</th>
 
                         </tr>
                         </thead>

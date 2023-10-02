@@ -39,7 +39,6 @@ public class MaterialInventoryServiceTests {
                 .materialStock(50)
                 .materialSupplyPrice(1000L)
                 .materialTotalInventoryPayments(50000L)
-                .materialHistoryNo(5)
                 .materialName("materialName")
                 .materialType("materialType")
                 .materialCode("materialCode")
@@ -70,14 +69,12 @@ public class MaterialInventoryServiceTests {
     public void testStockModify() {
 
         MaterialInventoryDTO materialInventoryDTO = MaterialInventoryDTO.builder()
-                .materialHistoryNo(1)
                 .materialNo(1111)
                 .materialIncomingQuantity(100)
                 .materialOutgoingQuantity(50)
                 .materialStock(50)
                 .materialSupplyPrice(1000L)
                 .materialTotalInventoryPayments(50000L)
-                .materialHistoryNo(5)
                 .materialName("materialName")
                 .materialType("materialType")
                 .materialCode("materialCode")

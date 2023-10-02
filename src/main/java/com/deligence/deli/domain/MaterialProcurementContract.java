@@ -26,7 +26,7 @@ public class MaterialProcurementContract extends BaseEntity {
 
     private LocalDate materialProcurementContractDate;          //조달계약일
 
-    private String materialProcurementContractState;            //조달계약상태 -> 조달계약진행중, 계약파기, 발주진행중(조달계약완료), 조달완료(발주완료)
+    private String materialProcurementContractState;            //조달계약상태 -> 조달계약진행중, 계약파기, 발주진행중(조달계약완료), 조달완료(자재입고완료)
 
     private String materialProcurementContractEtc;              //조건상세(기타사항)
 

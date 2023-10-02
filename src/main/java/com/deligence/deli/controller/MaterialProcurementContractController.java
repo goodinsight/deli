@@ -43,8 +43,22 @@ public class MaterialProcurementContractController {
         log.info(responseDTO);
 
         model.addAttribute("responseDTO", responseDTO);
-
     }
+
+
+
+//    @GetMapping("/list")
+//    public void list(OrderPageRequestDTO orderPageRequestDTO, String[] states, Model model) {
+//
+//        log.info(orderPageRequestDTO);
+//
+//        OrderPageResponseDTO<MaterialProcurementContractDTO> responseDTO =
+//                materialProcurementContractService.listWithState2(orderPageRequestDTO, states);
+//
+//        log.info(responseDTO);
+//
+//        model.addAttribute("responseDTO", responseDTO);
+//    }
 
     @GetMapping("/register")    //자재조달계약 employee2
     public void registerGET(@AuthenticationPrincipal EmployeeSecurityDTO employeeSecurityDTO, Model model) {

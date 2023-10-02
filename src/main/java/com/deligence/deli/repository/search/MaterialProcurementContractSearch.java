@@ -18,6 +18,8 @@ public interface MaterialProcurementContractSearch {
     //상태 검색
     Page<MaterialProcurementContract> searchWithState(String[] types, String keyword, String state, Pageable pageable);
 
+    Page<MaterialProcurementContract> searchWithState2(String[] types, String keyword, String[] states, Pageable pageable);
+
     int getCodeCount(String materialProcurementContractCode);
 
     MaterialProcurementContractDetailDTO read(int materialProcurementContractNo);

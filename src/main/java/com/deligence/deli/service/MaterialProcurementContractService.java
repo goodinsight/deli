@@ -21,6 +21,8 @@ public interface MaterialProcurementContractService {
 
     void changeState(int materialProcurementContractNo, String state);
 
+    OrderPageResponseDTO<MaterialProcurementContractDTO> listWithState2(OrderPageRequestDTO orderPageRequestDTO, String[] states);
+
     //DTO To Entity
     default MaterialProcurementContract dtoToEntity(MaterialProcurementContractDTO materialProcurementContractDTO) {
 
