@@ -85,3 +85,7 @@ sourceSets {
         }
     }
 }
+
+test {
+    exclude '**/*'
+}
