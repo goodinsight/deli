@@ -35,4 +35,6 @@ public class MaterialInventoryDTO {
     private int materialHistoryNo;          // 입출고기록 일련번호 FK -> 일련번호, 입출고구분자, 수량, 날짜, 담당자
 
     private int documentFileNo;             // 문서파일 일련번호 FK
+
+//    private int orderQuantity; //발주수량
 }

@@ -72,8 +72,8 @@ public class MaterialsController {
 
         int materialNo = materialsService.register(materialsDTO);
 
-        //----자재 재고 등록---------
-//
+//        ----자재 재고 등록---------
+
 //        log.info("material NO =" + materialNo);
 //
 //        MaterialInventoryDTO materialInventoryDTO = MaterialInventoryDTO.builder()
@@ -86,13 +86,15 @@ public class MaterialsController {
 //                .materialStock(0)
 //                .materialNo(materialNo)
 //                .materialTotalInventoryPayments(0L)
+//                .orderQuantity(0)
+//                .materialNo(materialsDTO.getMaterialNo())
 //                .build();
 //
 //        log.info("matDTO"+materialInventoryDTO);
-//
+
 //        materialInventoryService.registerInventory(materialInventoryDTO);
 
-        //-----------
+//        -----------
 
         redirectAttributes.addFlashAttribute("result", materialNo);
 
