@@ -44,11 +44,11 @@ public interface MaterialRequirementsListService {
                 .productNo(materialRequirementsList.getProducts().getProductNo())
                 .materialNo(materialRequirementsList.getMaterials().getMaterialNo())
                 .quantity(materialRequirementsList.getQuantity())
-                .productCode(materialRequirementsList.getProducts().getProductCode())
-                .productName(materialRequirementsList.getProducts().getProductName())
-                .materialCode(materialRequirementsList.getMaterials().getMaterialCode())
-                .materialName(materialRequirementsList.getMaterials().getMaterialName())
-                .materialType(materialRequirementsList.getMaterials().getMaterialType())
+                .productCode(materialRequirementsList.getProductCode())
+                .productName(materialRequirementsList.getProductName())
+                .materialCode(materialRequirementsList.getMaterialCode())
+                .materialName(materialRequirementsList.getMaterialName())
+                .materialType(materialRequirementsList.getMaterialType())
                 .build();
 
         return materialRequirementsListDTO;

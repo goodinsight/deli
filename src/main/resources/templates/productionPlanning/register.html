@@ -74,6 +74,14 @@
                                 <span class="input-group-text">제품 일련번호</span>
                                 <input type="text" name="productNo" class="form-control productNo" readonly>
                             </div>
+                            <div class="input-group mb-3 d-none">
+                                <span class="input-group-text">제품 코드</span>
+                                <input type="text" name="productCode2" class="form-control productCode2" readonly>
+                            </div>
+                            <div class="input-group mb-3 d-none">
+                                <span class="input-group-text">제품 이름</span>
+                                <input type="text" name="productName2" class="form-control productName2" readonly>
+                            </div>
 
                             <div class="input-group mb-3 pl-5">
                                 <span class="input-group-text">필요 자재 코드</span>
@@ -428,14 +436,14 @@
     let mrlPage = 1
     let mrlPageSize = 5
 
-    document.querySelector("#selectMrl").addEventListener("click", function (e) {
+    document.querySelector(".selectMrl").addEventListener("click", function (e) {
         console.log("select material modal show")
 
-        if(productContractCode.value.length > 0){
+        if(productCode.value.length > 0){
             printContracts(1, 5)
             mrlModal.show()
         }else {
-            alert("계획을 먼저 선택해주세요.")
+            alert("제품 계약 코드를 먼저 선택해주세요.")
         }
 
     }, false)
@@ -491,7 +499,7 @@
     function printMrls(page, size) {
 
         const type = "a"
-        const keyword = productionPlanCode.value
+        const keyword = productCode.value
 
         getMrlList({page, size, type, keyword}).then(
                 data => {
@@ -522,7 +530,9 @@
     }, false)
 
     const materialRequirementsListNo = document.querySelector(".materialRequirementsListNo")
-    const inputMaterialCode = document.querySelector("#selectMrl")
+    let productCode2 = document.querySelector(".productCode")
+    let productName2 = document.querySelector(".productName")
+    const inputMaterialCode = document.querySelector(".selectMrl")
     const materialName = document.querySelector(".materialName")
     const materialType = document.querySelector(".materialType")
     const quantity = document.querySelector(".quantity")
@@ -552,6 +562,8 @@
             console.log(mrl)
             console.log("check0")
             materialRequirementsListNo.value = mrl.materialRequirementsListNo
+            productCode2 = mrl.productCode
+            productName2 = mrl.productName
             //자재 정보를 가져와서 화면에 반영해야 할 항목들은 여기에 --------------------------------------------------------
             console.log("check1")
             inputMaterialCode.value = mrl.materialCode

@@ -1,9 +1,7 @@
 package com.deligence.deli.service;
 
 import com.deligence.deli.domain.MaterialRequirementsList;
-import com.deligence.deli.domain.Order;
 import com.deligence.deli.dto.MaterialRequirementsListDTO;
-import com.deligence.deli.dto.OrderDTO;
 import com.deligence.deli.dto.PageRequestDTO;
 import com.deligence.deli.dto.PageResponseDTO;
 import com.deligence.deli.repository.MaterialRequirementsListRepository;
