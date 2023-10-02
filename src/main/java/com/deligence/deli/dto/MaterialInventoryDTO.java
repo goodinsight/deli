@@ -31,8 +31,5 @@ public class MaterialInventoryDTO {
 
     private String materialName;            // 자재이름 (자재재고 목록 검색용)
 
-
-    private int materialHistoryNo;          // 입출고기록 일련번호 FK -> 일련번호, 입출고구분자, 수량, 날짜, 담당자
-
     private int documentFileNo;             // 문서파일 일련번호 FK
 }

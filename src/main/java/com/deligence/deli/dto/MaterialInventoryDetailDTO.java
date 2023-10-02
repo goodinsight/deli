@@ -43,34 +43,6 @@ public class MaterialInventoryDetailDTO {
 
     private String materialUuid;            // 자재이미지 범용식별자 (-> 자재재고 상세)
 
-    //Order -> 발주일련번호, 발주코드, 자재이름, 발주일, 납품일, 담당자, 상태 가져오기
-    private int orderNo;                    // 발주 일련번호 (재고 > 입고관리) -> 발주코드, (발주)자재이름, 입고수량, 발주일, 납기일, 담당자, (발주)상태
-
-    private String orderCode;               // 발주코드 (재고 > 입고관리, 검색용)
-
-    private int orderQuantity;              // 발주수량 (재고 > 입고관리) -> 발주수량을 쓸지 입고수량을 쓸지
-
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate orderDate;            // 발주일 (재고 > 입고관리)
-
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate orderDeliveryDate;    // 납기일 (재고 > 입고관리)
-
-    private int employeeNo;                 // 사원 일련번호
-
-    private String employeeName;            // 사원명 (재고 > 입고관리 - (발주)담당자 / 입/출고 기록관리 - (기록)담당자)
-
-    private String orderState;              // (발주)상태 (재고 > 입고관리, 검색용)
-
-    private int materialHistoryNo;          // 입출고기록 일련번호 -> 입출고구분자, 수량, 날짜, 담당자
-
-    private String inOutSeparator;          // 입/출고 구분자 (입고:"IN" 출고:"OUT")
-
-    private int quantity;                   // (입/출고) 수량
-
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate historyDate;          // (입/출고) 날짜
-
     private LocalDateTime regDate;          // 등록일
 
     private LocalDateTime modDate;          // 수정일
