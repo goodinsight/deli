@@ -32,9 +32,9 @@ public class CooperatorClient {
 
     private String clientStatus;    //계약상태
 
+    private String clientEtc;   //비고
+
     @ManyToOne(fetch = FetchType.LAZY)
     private DocumentFile documentFile;  //문서파일일련번호(FK)
-
-    private String clientEtc;   //비고
 
 }
