@@ -122,6 +122,9 @@
 
                     <div class="my-4" >
                         <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}">
+                            <button type="button" class="btn btn-default btn-outline afterComp">계약 완료</button>
+                            <button type="button" class="btn btn-warning completeButton" onclick="compProcurementContract()">조달 완료</button>
+
                             <a th:href="|@{/materialProcurementContract/list}?${link}|" class="text-decoration-none">
                                 <button type="button" class="btn btn-primary">List</button>
                             </a>
@@ -142,6 +145,54 @@
 <script layout:fragment="script" th:inline="javascript">
 
     console.log([[${dto}]])
+
+    //조달 계약 상태 변경 (발주 완료 시 조달 계약 완료)
+    let state = [[${dto.materialProcurementContractState}]]
+
+    const materialProcurementContractNo = [[${dto.materialProcurementContractNo}]]
+    const orderNo = [[${dto.orderNo}]]
+    const link = [[${pageRequestDTO.getLink()}]]
+
+
+    const afterCompButton = document.querySelector('.afterComp')
+    const completeButton = document.querySelector('.completeButton')
+    const modifyButton = document.querySelector('.modifyButton')
+
+    function printButton(state){
+
+        console.log(state)
+
+        switch (state){
+
+            case '발주진행중':
+                afterCompButton.style.display = 'none'
+                completeButton.style.display = 'inline'
+                modifyButton.style.display = 'none'
+                break;
+            case '조달완료' :
+                afterCompButton.style.display = 'inline'
+                completeButton.style.display = 'none'
+                modifyButton.style.display = 'none'
+                break;
+            default :
+                afterCompButton.style.display = 'none'
+                completeButton.style.display = 'none'
+                modifyButton.style.display = 'inline'
+
+        }
+
+    }
+
+    printButton(state)
+    function compProcurementContract(){
+
+        completeProcurementContract({materialProcurementContractNo, orderNo}).then(
+            location.href="/materialProcurementContract/read?materialProcurementContractNo="+materialProcurementContractNo+"&"+link
+        ).catch( e =>{
+            console.log(e)
+        })
+
+    }
 
 
 </script>

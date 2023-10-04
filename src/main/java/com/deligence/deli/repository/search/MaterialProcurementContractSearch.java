@@ -12,10 +12,13 @@ public interface MaterialProcurementContractSearch {
 
     Page<MaterialProcurementContract> searchAll(String[] types, String keyword, Pageable pageable);
 
-//    Page<MaterialProcurementContract> searchByState(String[] keywords, Pageable pageable);
+    //사용 X
+    Page<MaterialProcurementContract> searchByState(String[] keywords, Pageable pageable);
 
     //상태 검색
     Page<MaterialProcurementContract> searchWithState(String[] types, String keyword, String state, Pageable pageable);
+
+    Page<MaterialProcurementContract> searchWithState2(String[] types, String keyword, String[] states, Pageable pageable);
 
     int getCodeCount(String materialProcurementContractCode);
 

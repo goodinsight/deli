@@ -32,3 +32,34 @@ async function getCodeCount(materialProcurementContractCode){
 
     return result
 }
+
+async function completeProcurementContract({materialProcurementContractNo, orderNo}){
+/*발주 완료 / 자재 입고 완료 시 -> 조달 완료(계약 완료)*/
+    data = {
+        materialProcurementContractNo : materialProcurementContractNo,
+        orderNo : orderNo
+    }
+
+    console.log(data.materialProcurementContractNo)
+    console.log(data.orderNo)
+
+    await axios.post(`/materialProcurementContract/completeMaterialProcurementContract/`, data)
+
+}
+
+
+async function changeState({materialProcurementContractNo, state}){
+
+    console.log("js - materialProcurementContractNo : " + materialProcurementContractNo)
+    console.log("js - state : " + state)
+
+    data = {
+        materialProcurementContractNo : materialProcurementContractNo,
+        state : state
+    }
+
+    return await axios.post(`/cooperatorSupplier/changeMaterialProcurementContractState/`, data)
+/*자재조달계약상태를 사용하는 테이블에서 상태 변경*/
+
+}
+

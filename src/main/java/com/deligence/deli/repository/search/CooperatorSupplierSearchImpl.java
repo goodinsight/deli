@@ -4,7 +4,9 @@ import com.deligence.deli.domain.CooperatorSupplier;
 import com.deligence.deli.domain.QCooperatorSupplier;
 import com.deligence.deli.dto.CooperatorSupplierDTO;
 import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.Tuple;
 import com.querydsl.jpa.JPQLQuery;
+import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -118,5 +120,36 @@ public class CooperatorSupplierSearchImpl extends QuerydslRepositorySupport impl
         return new PageImpl<>(list, pageable, count);
     }
 
-
+//    @Override
+//    public CooperatorSupplierDTO read(int supplierNo) {
+//
+//        QCooperatorSupplier cooperatorSupplier = QCooperatorSupplier.cooperatorSupplier;
+//
+//        JPAQuery<CooperatorSupplier> query = new JPAQueryFactory(em)
+//                .select(cooperatorSupplier)
+//                .from(cooperatorSupplier)
+//                .where(cooperatorSupplier.supplierNo.eq(supplierNo));
+//
+//        List<CooperatorSupplier> targetDtoList = query.fetch();
+//
+//        Tuple target = (Tuple) targetDtoList.get(0);
+//
+//        CooperatorSupplier resultCooperatorSupplier = (CooperatorSupplier) target.get(cooperatorSupplier);
+//
+//        CooperatorSupplierDTO dto = CooperatorSupplierDTO.builder()
+//                .supplierNo(resultCooperatorSupplier.getSupplierNo())
+//                .corporateRegistrationNo(resultCooperatorSupplier.getCorporateRegistrationNo())
+//                .supplierCeo(resultCooperatorSupplier.getSupplierCeo())
+//                .supplierEmail(resultCooperatorSupplier.getSupplierEmail())
+//                .supplierName(resultCooperatorSupplier.getSupplierName())
+//                .supplierPhone(resultCooperatorSupplier.getSupplierPhone())
+//                .supplierAddress(resultCooperatorSupplier.getSupplierAddress())
+//                .supplierStatus(resultCooperatorSupplier.getSupplierStatus())
+//                .supplierEtc(resultCooperatorSupplier.getSupplierEtc())
+//                .documentFileNo(resultCooperatorSupplier.getDocumentFile().getDocumentFileNo())
+//                .build();
+//
+//
+//        return dto;
+//    }
 }

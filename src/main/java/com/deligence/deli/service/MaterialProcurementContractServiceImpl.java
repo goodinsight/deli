@@ -1,6 +1,7 @@
 package com.deligence.deli.service;
 
 import com.deligence.deli.domain.MaterialProcurementContract;
+import com.deligence.deli.domain.Order;
 import com.deligence.deli.dto.*;
 import com.deligence.deli.repository.MaterialProcurementContractRepository;
 import lombok.RequiredArgsConstructor;
@@ -124,6 +125,27 @@ public class MaterialProcurementContractServiceImpl implements MaterialProcureme
         List<MaterialProcurementContractDTO> dtoList = result.getContent().stream()
                 .map(materialProcurementContract -> entityToDto(materialProcurementContract))
                 .collect(Collectors.toList());
+
+        return OrderPageResponseDTO.<MaterialProcurementContractDTO>withAll()
+                .orderPageRequestDTO(orderPageRequestDTO)
+                .dtoList(dtoList)
+                .total((int)result.getTotalElements())
+                .build();
+    }
+
+    @Override
+    public OrderPageResponseDTO<MaterialProcurementContractDTO> listWithState2(OrderPageRequestDTO orderPageRequestDTO, String[] states) {
+
+        String[] types = orderPageRequestDTO.getTypes();
+        String keyword = orderPageRequestDTO.getKeyword();
+        Pageable pageable = orderPageRequestDTO.getPageable();
+
+        Page<MaterialProcurementContract> result = materialProcurementContractRepository.searchWithState2(types, keyword, states, pageable);
+
+        List<MaterialProcurementContractDTO> dtoList = result.getContent().stream()
+                .map(materialProcurementContract -> entityToDto(materialProcurementContract))
+                .collect(Collectors.toList());
+
 
         return OrderPageResponseDTO.<MaterialProcurementContractDTO>withAll()
                 .orderPageRequestDTO(orderPageRequestDTO)

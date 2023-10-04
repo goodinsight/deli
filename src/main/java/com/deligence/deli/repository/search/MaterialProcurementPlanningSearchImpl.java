@@ -74,8 +74,7 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
                 switch (type) {
 
                     case "a":
-                        booleanBuilder.or(materialProcurementPlanning
-                                .materialProcurementPlanCode.stringValue().contains(keyword));    //조달계획코드
+                        booleanBuilder.or(materialProcurementPlanning.materialProcurementPlanCode.contains(keyword));    //조달계획코드
 
                     case "b":
                         booleanBuilder.or(materialProcurementPlanning
@@ -209,7 +208,8 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
                 .materialName(resultMr.getMaterialName())
                 .materialSupplyPrice(resultMr.getMaterialSupplyPrice())
                 .employeeNo(resultMaterialProcurementPlanning.getEmployee().getEmployeeNo())
-                .employeeName(resultMaterialProcurementPlanning.getEmployeeName())
+                .employeeName(resultMaterialProcurementPlanning.getEmployee().getEmployeeName())
+//                .employeeName(resultMaterialProcurementPlanning.getEmployeeName())
                 .regDate(resultMaterialProcurementPlanning.getRegDate())
                 .modDate(resultMaterialProcurementPlanning.getModDate())
                 .productionRequirementsProcess(resultPp.getProductionRequirementsProcess())

@@ -26,11 +26,11 @@ public class MaterialProcurementContract extends BaseEntity {
 
     private LocalDate materialProcurementContractDate;          //조달계약일
 
-    private String materialProcurementContractState;            //조달계약상태    //진행중, 계약파기, 조달완료
+    private String materialProcurementContractState;            //계약상태 -> 조달 계약 협상중, 발주 진행중(계약 진행), 조달 완료(계약 완료), 계약 파기
 
     private String materialProcurementContractEtc;              //조건상세(기타사항)
 
-    private int procurementQuantity;                                    //자재 조달 수량 (한 협력회사에서 실직적으로 조달할 양)
+    private int procurementQuantity;                            //자재 조달 수량 (한 협력회사에서 실직적으로 조달할 양)
 
     //-----------------------------------------------------------------------------------------------------
 
@@ -45,7 +45,8 @@ public class MaterialProcurementContract extends BaseEntity {
 
     private Long materialSupplyPrice;                                   //공급단가 (검색용)
 
-    private int materialRequirementsCount;     //삭제예정 (오류때문에 일시적 삭제 불가)
+    //entity, dto에서 삭제예정 (오류때문에 일시적 삭제 불가)
+    private int materialRequirementsCount;
 
     //--------------------------------------------------------------------------------------------------------
 
@@ -54,7 +55,7 @@ public class MaterialProcurementContract extends BaseEntity {
 
     private String supplierName;                                //자재협력회사명 (검색용)
 
-    private String supplierStatus;                              //계약상태 (검색용) -> 계약중, 계약파기, 계약완료
+    private String supplierStatus;                              //계약이력여부 (검색용) -> 계약중, 계약파기, 계약만료
 
     //---------------------------------------------------------------------------------------------------------
 
