@@ -33,15 +33,15 @@ async function getCodeCount(materialProcurementContractCode){
     return result
 }
 
-async function completeMaterialProcurementContract({materialProcurementContractNo, productionPlanNo}){
-/*발주진행중 -> 자재조달단계 , 조달완료(발주완료) -> 자재입고단계*/
+async function completeProcurementContract({materialProcurementContractNo, orderNo}){
+/*발주 완료 / 자재 입고 완료 시 -> 조달 완료(계약 완료)*/
     data = {
         materialProcurementContractNo : materialProcurementContractNo,
-        productionPlanNo : productionPlanNo
+        orderNo : orderNo
     }
 
     console.log(data.materialProcurementContractNo)
-    console.log(data.productionPlanNo)
+    console.log(data.orderNo)
 
     await axios.post(`/materialProcurementContract/completeMaterialProcurementContract/`, data)
 

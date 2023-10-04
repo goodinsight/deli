@@ -20,14 +20,14 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class MaterialProcurementContractDTO {
 
-    private int MaterialProcurementContractNo;              //조달계약일련번호
+    private int materialProcurementContractNo;              //조달계약일련번호
 
     private String materialProcurementContractCode;         //자재조달계약코드
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate materialProcurementContractDate;      //계약일
 
-    private String materialProcurementContractState;        //계약상태 -> 조달계약진행중, 계약파기, 발주진행중(조달계약완료), 조달완료(자재입고완료)
+    private String materialProcurementContractState;        //계약상태 -> 조달 계약 협상중, 발주 진행중(계약 진행), 조달 완료(계약 완료), 계약 파기
 
     private String materialProcurementContractEtc;          //조건상세(기타사항)
 

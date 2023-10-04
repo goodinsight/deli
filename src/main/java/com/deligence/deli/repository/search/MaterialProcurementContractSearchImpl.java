@@ -218,7 +218,7 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
         CooperatorSupplier resultCs = (CooperatorSupplier) target.get(cs);
 
         MaterialProcurementContractDetailDTO dto = MaterialProcurementContractDetailDTO.builder()
-                .MaterialProcurementContractNo(resultMaterialProcurementContract.getMaterialProcurementContractNo())
+                .materialProcurementContractNo(resultMaterialProcurementContract.getMaterialProcurementContractNo())
                 .materialProcurementContractCode(resultMaterialProcurementContract.getMaterialProcurementContractCode())
                 .materialProcurementContractDate(resultMaterialProcurementContract.getMaterialProcurementContractDate())
                 .materialProcurementContractState(resultMaterialProcurementContract.getMaterialProcurementContractState())

@@ -56,7 +56,7 @@ public interface MaterialProcurementContractService {
     default MaterialProcurementContractDTO entityToDto(MaterialProcurementContract materialProcurementContract) {
 
         MaterialProcurementContractDTO materialProcurementContractDTO = MaterialProcurementContractDTO.builder()
-                .MaterialProcurementContractNo(materialProcurementContract.getMaterialProcurementContractNo())
+                .materialProcurementContractNo(materialProcurementContract.getMaterialProcurementContractNo())
                 .materialProcurementContractCode(materialProcurementContract.getMaterialProcurementContractCode())
                 .materialProcurementContractDate(materialProcurementContract.getMaterialProcurementContractDate())
                 .materialProcurementContractState(materialProcurementContract.getMaterialProcurementContractState())
