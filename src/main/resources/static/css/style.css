@@ -1339,7 +1339,7 @@ a.dt-button.active:not(.disabled) {
 }
 .invoicelist-body .newRow {
   margin: .5rem 0;
-  float: left;
+  float: left;employee
 }
 .invoicelist-body .removeRow {
   display: none;
