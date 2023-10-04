@@ -19,74 +19,49 @@
                 </div>
                 <div class="card-body mt-3">
                     <div class="input-group mb-3 d-none">
-                        <span class="input-group-text">발주 일련번호</span>
-                        <input type="text" name="orderNo" class="form-control materialProcurementContractNo" th:value="${dto.orderNo}" readonly>
+                        <span class="input-group-text">구매협력회사 일련번호</span>
+                        <input type="text" name="clientNo" class="form-control clientNo" th:value="${dto.clientNo}" readonly>
                     </div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text">계획 일련번호</span>
-                        <input type="text" name="materialProcurementPlanNo" class="form-control selectPlan" th:value="${dto.materialProcurementPlanNo}" readonly>
-                    </div>
-                    <div class="input-group mb-3 pl-5">
-                        <span class="input-group-text">자재 코드</span>
-                        <input type="text" name="materialCode" class="form-control materialCode" th:value="${dto.materialCode}" readonly>
-                    </div>
-                    <div class="input-group mb-3 pl-5">
-                        <span class="input-group-text">자재 명</span>
-                        <input type="text" name="materialName" class="form-control materialName" th:value="${dto.materialName}" readonly>
-                    </div>
-                    <div class="input-group mb-3 pl-5">
-                        <span class="input-group-text">소요량</span>
-                        <input type="text" name="materialRequirementsCount" class="form-control materialRequirementsCount" th:value="${dto.materialRequirementsCount}" readonly>
-                    </div>
-                    <div class="input-group mb-3 pl-5">
-                        <span class="input-group-text">계획 납기일</span>
-                        <input type="text" name="procurementDeliveryDate" class="form-control procurementDeliveryDate" th:value="${dto.procurementDeliveryDate}" readonly>
-                    </div>
-                    <div class="input-group mb-3 d-none">
-                        <span class="input-group-text">계약 일련번호</span>
-                        <input type="text" name="materialProcurementContractNo" class="form-control materialProcurementContractNo" th:value="${dto.materialProcurementContractNo}" readonly>
+                        <span class="input-group-text">사업자등록번호</span>
+                        <input type="text" name="corporateRegistrationNo" class="form-control corporateRegistrationNo" th:value="${dto.corporateRegistrationNo}" readonly>
                     </div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text">계약 코드</span>
-                        <input type="text" name="materialProcurementContractCode" class="form-control selectContract" th:value="${dto.materialProcurementContractCode}" readonly>
-                    </div>
-                    <div class="input-group mb-3 pl-5">
-                        <span class="input-group-text">계약일</span>
-                        <input type="text" name="materialProcurementContractDate" class="form-control materialProcurementContractDate" th:value="${dto.materialProcurementContractDate}" readonly>
-                    </div>
-                    <div class="input-group mb-3 pl-5">
-                        <span class="input-group-text">자재공급단가</span>
-                        <input type="text" name="materialSupplyPrice" class="form-control materialSupplyPrice" th:value="${dto.materialSupplyPrice}" readonly>
-                    </div>
-                    <div class="input-group mb-3 pl-5">
-                        <span class="input-group-text">자재협력회사명</span>
-                        <input type="text" name="supplierName" class="form-control supplierName" th:value="${dto.supplierName}" readonly>
+                        <span class="input-group-text">회사 명</span>
+                        <input type="text" name="clientName" class="form-control clientName" th:value="${dto.clientName}" readonly>
                     </div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text">발주 코드</span>
-                        <input type="text" name="orderCode" class="form-control orderCode" th:value="${dto.orderCode}" readonly>
-                    </div>
-                    <div class="input-group mb-3 d-none">
-                        <span class="input-group-text">담당자 일련번호</span>
-                        <input type="text" name="employeeNo" class="form-control" th:value="${dto.employeeNo}" readonly>
+                        <span class="input-group-text">대표자 명</span>
+                        <input type="text" name="clientCeo" class="form-control clientCeo" th:value="${dto.clientCeo}" readonly>
                     </div>
                     <div class="input-group mb-3">
+                        <span class="input-group-text">주소</span>
+                        <input type="text" name="clientAddress" class="form-control clientAddress" th:value="${dto.clientAddress}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">연락처</span>
+                        <input type="text" name="clientPhone" class="form-control clientPhone" th:value="${dto.clientPhone}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">이메일</span>
+                        <input type="text" name="clientEmail" class="form-control clientEmail" th:value="${dto.clientEmail}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">계약상태</span>
+                        <input type="text" name="clientStatus" class="form-control clientStatus" th:value="${dto.clientStatus}" readonly>
+                    </div>
+                    <div class="input-group mb-3 ">
                         <span class="input-group-text">비고</span>
-                        <textarea name="orderEtc" rows="5" cols="50" class="form-control h-25" readonly>[[${dto.orderEtc}]]</textarea>
+                        <textarea name="clientEtc" rows="5" cols="50" class="form-control h-25" readonly>[[${dto.clientEtc}]]</textarea>
                     </div>
 
-                    <div class="my-4" >
-                        <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}">
-                            <button type="button" class="btn btn-default btn-outline afterComp">발주 완료됨</button>
-                            <button type="button" class="btn btn-warning completeButton" onclick="compOrder()">발주 완료</button>
-                            <a th:href="|@{/order/modify(orderNo=${dto.orderNo})}&${link}|" class="text-decoration-none" >
-                                <button type="button" class="btn btn-primary modifyButton">수정</button>
+                    <div class="my-4">
+                        <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}" >
+                            <a th:href="|@{/CooperatorClient/list}?${link}|" class="text-decoration-none">
+                                <button type="button" class="btn btn-primary">구매협력회사 목록</button>
                             </a>
-                            <a th:href="|@{/order/progressInspection(orderNo=${dto.orderNo})}&${link}|" class="text-decoration-none" >
-                                <button type="button" class="btn btn-success">검수 관리</button>
-                            </a>
-                            <a th:href="|@{/order/list}?${link}|" class="text-decoration-none">
-                                <button type="button" class="btn btn-default">목록 페이지</button>
+                            <a th:href="|@{/CooperatorClient/modify(clientNo=${dto.clientNo})}&${link}|" class="text-decoration-none">
+                                <button type="button" class="btn btn-secondary">수정</button>
                             </a>
                         </div>
                     </div>
@@ -96,11 +71,7 @@
         </div><!-- end col -->
     </div><!-- end row -->
 
-
-
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-    <script src="/js/order.js"></script>
 
 </div>
 
@@ -111,54 +82,6 @@
 
     console.log([[${dto}]])
 
-    let state = [[${dto.orderState}]]
-
-    const orderNo = [[${dto.orderNo}]]
-    const materialProcurementPlanNo = [[${dto.materialProcurementPlanNo}]]
-    const link = [[${pageRequestDTO.getLink()}]]
-
-
-    const afterCompButton = document.querySelector('.afterComp')
-    const completeButton = document.querySelector('.completeButton')
-    const modifyButton = document.querySelector('.modifyButton')
-
-    function printButton(state){
-
-        console.log(state)
-
-        switch (state){
-
-            case '자재입고완료':
-                afterCompButton.style.display = 'none'
-                completeButton.style.display = 'inline'
-                modifyButton.style.display = 'none'
-                break;
-            case '발주완료' :
-                afterCompButton.style.display = 'inline'
-                completeButton.style.display = 'none'
-                modifyButton.style.display = 'none'
-                break;
-            default :
-                afterCompButton.style.display = 'none'
-                completeButton.style.display = 'none'
-                modifyButton.style.display = 'inline'
-
-        }
-
-    }
-
-    printButton(state)
-
-
-    function compOrder(){
-
-        completeOrder({orderNo, materialProcurementPlanNo}).then(
-            location.href="/order/read?orderNo="+orderNo+"&"+link
-        ).catch( e =>{
-            console.log(e)
-        })
-
-    }
 
 </script>
 
