@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>발주 차트</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js" integrity="sha512-7U4rRB8aGAHGVad3u2jiC7GA5/1YhQcQjxKeaVms/bT66i3LVBMRcBI9KwABNWnxOSwulkuSXxZLGuyfvo7V1A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<div layout:fragment="content">
+
+    <div class="row mt-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    발주 차트
+                </div>
+                <div class="card-body mt-3">
+                    <form action="/order/register" method="post">
+                        <div class="d-none input-group mb-3">
+                            <span class="input-group-text">자재 일련번호</span>
+                            <input type="text" name="materialNo" id="materialNo" class="form-control materialNo" readonly>
+                        </div>
+                        <div class="d-none input-group mb-3">
+                            <span class="input-group-text">자재 코드</span>
+                            <input type="text" name="materialCode" id="materialCode" class="form-control materialCode" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">자재 명</span>
+                            <input type="text" name="materialName" id="materialName" class="form-control selectMaterial" placeholder="클릭해주세요" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">연도</span>
+                            <input type="text" name="year" id="year" class="form-control">
+                        </div>
+                        <div class="d-none input-group mb-3">
+                            <span class="input-group-text">발주 상태</span>
+                            <input type="text" name="orderState" id="orderState" class="form-control" th:value="발주완료" readonly>
+                        </div>
+                        <div class="my-4">
+                            <div class="float-end">
+                                <button type="submit" class="btn btn-primary submitBtn">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div>
+                        <canvas id="orderChart"></canvas>
+                    </div>
+
+                </div><!-- end card body -->
+            </div><!-- end card -->
+        </div><!-- end col -->
+    </div><!-- end row -->
+
+    <!-- 자재 선택을 위한 모달창 -->
+    <div class="modal selectMaterialModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">자재 검색</h5>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">NO</th>
+                                            <th scope="col">자재코드</th>
+                                            <th scope="col">자재명</th>
+                                            <th scope="col">카테고리</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody class="materialList">
+
+                                        </tbody>
+                                    </table>
+
+                                    <div class="float-end">
+                                        <ul class="pagination flex-wrap materialPaging">
+                                        </ul>
+                                    </div>
+                                </div><!--end card body-->
+                            </div><!--end card-->
+                        </div><!--end col-->
+                    </div><!--end row-->
+
+
+                </div><!-- modal body end -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark closeMaterialBtn">Close</button>
+                </div>
+            </div>
+        </div>
+    </div><!-- end 계획 모달창 -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="/js/order.js"></script>
+
+    <script type="text/javascript">
+
+        $('#year').datepicker({
+            format: "yyyy",
+            viewMode: "years",
+            minViewMode: "years"
+        });
+
+    </script>
+
+</div>
+
+
+
+
+<script layout:fragment="script" th:inline="javascript">
+
+    const auth = [[${#authentication}]]
+
+    console.log(auth)
+
+    //등록시 에러 처리-----------------------------------
+
+    const errors = [[${errors}]]
+    console.log(errors)
+
+    let errorMsg = ''
+
+    if(errors){
+        for(let i = 0; i < errors.length; i++){
+            errorMsg += `${errors[i].field} : ${errors[i].code} \n`
+        }
+        alert(errorMsg)
+    }
+
+    // 자재 선택 ------------------------------------------------
+
+    const materialModal = new bootstrap.Modal(document.querySelector(".selectMaterialModal"))
+
+    const materialList = document.querySelector(".materialList")//자재 목록 DOM
+    const materialPaging = document.querySelector(".materialPaging")//자재 페이지 선택 목록 DOM
+
+    const closeMaterialBtn = document.querySelector(".closeMaterialBtn")
+
+    let materialPage = 1
+    let materialPageSize = 5
+
+    document.querySelector(".selectMaterial").addEventListener("click", function (e) {
+        printMaterials(1, 5)
+        materialModal.show()
+    }, false)
+
+    closeMaterialBtn.addEventListener("click", function (e) {
+        materialModal.hide()
+    })
+
+    function printMaterialList(dtoList){//자재 목록
+
+        console.log("print material list")
+
+        let str = ''
+
+        if(dtoList && dtoList.length > 0){
+
+            for( const dto of dtoList) {
+
+                str += `<tr>
+                            <td data-materialNo="${dto.materialNo}">${dto.materialNo}</td>
+                            <td data-materialNo="${dto.materialNo}">${dto.materialCode}</td>
+                            <td data-materialNo="${dto.materialNo}">${dto.materialName}</td>
+                            <td data-materialNo="${dto.materialNo}">${dto.materialType}</td>
+                        </tr>`
+
+            }
+
+        }
+
+        materialList.innerHTML = str
+
+    }
+
+    function printMaterialPages(data){//조달 계획 목록 페이징 처리
+
+        let pageStr = '';
+
+        if(data.prev) {
+            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.start-1}">PREV</a></li>`
+        }
+        for(let i = data.start; i <= data.end; i++){
+            pageStr += `<li class="page-item ${ i == data.page ? "active" : ""}"><a class="page-link" data-page="${i}">${i}</a></li>`
+        }
+        if(data.next) {
+            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end+1}">NEXT</a></li>`
+        }
+        materialPaging.innerHTML = pageStr
+
+        materialPage = data.page
+
+    }
+
+    function printMaterials(page, size) {
+
+        getMaterialList({page, size}).then(
+            data => {
+                printMaterialList(data.dtoList)
+                printMaterialPages(data)
+            }
+        ).catch(e => {
+            console.log("print materials error")
+            console.error(e)
+        })
+    }
+
+    //계획 목록 페이징
+    materialPaging.addEventListener("click", function(e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        const target = e.target
+
+        if(!target || target.tagName != 'A'){
+            return
+        }
+
+        const pageNum = target.getAttribute("data-page")
+        materialPage = pageNum
+        printMaterials(materialPage, materialPageSize)
+
+    }, false)
+
+    const materialNo = document.querySelector("#materialNo")
+    const materialCode = document.querySelector("#materialCode")
+    const materialName = document.querySelector("#materialName")
+
+
+    //계획 항목 클릭시 input 에 반영
+    materialList.addEventListener("click", function (e){
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        console.log("material click")
+
+        const target = e.target
+
+        if(!target || target.tagName != 'TD'){
+            return
+        }
+
+        const materialNo = target.getAttribute("data-materialNo")
+
+        console.log("material No : " + materialNo)
+
+        if(!materialNo){
+            return
+        }
+
+        getMaterial(materialNo).then(material => {
+
+            console.log(material)
+            materialNo.value = material.materialNo
+            materialCode.value = material.materialCode
+            materialName.value = material.materialName
+
+            materialModal.hide()
+
+        }).catch(e => alert('error'))
+
+    }, false)
+
+
+    // 차트 ----------------------------------------------------------------------------
+
+    document.querySelector(".submitBtn").addEventListener("click", function (e){
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        const mn = materialName.value
+        const year = document.querySelector('#year').value
+
+        // 입력폼 채우지 않으면 알림-------------
+        if(mn.length <= 0){
+            alert("제품을 선택해주세요")
+            return
+        }
+
+        if(year.length <= 0){
+            alert("연도를 선택해주세요")
+            return
+        }
+
+        //-----------------------------------
+
+        getOrderChartByMaterialName({mn, year}).then(
+            data => {
+                console.log("success")
+                console.log(data)
+            }
+        ).catch(e => alert('error'))
+
+    })
+
+
+
+
+
+
+</script>
+
+
+
+</html>

@@ -1,6 +1,6 @@
 async function getPlanList({page, size}){
 
-    const result = await axios.get(`/order/register/selectPlan`, {params: {page, size}})
+    const result = await axios.get(`/order/register/planList`, {params: {page, size}})
 
     return result.data
 }
@@ -15,7 +15,7 @@ async function getPlan(planNo) {
 
 async function getContractList({page, size, type, keyword}){
 
-    const result = await axios.get(`/order/register/selectContract`, {params: {page, size, type, keyword}})
+    const result = await axios.get(`/order/register/contractList`, {params: {page, size, type, keyword}})
 
     return result.data
 }
@@ -60,4 +60,34 @@ async function changeState({orderNo, state}){
 
     return await axios.post(`/materialInventory/changeOrderState/`, data)
 
+}
+
+
+async function getMaterialList({page, size}){
+
+    const result = await axios.get(`/order/chart/materialList`, {params: {page, size}})
+
+    return result.data
+}
+
+async function getMaterial(materialNo) {
+
+    const result = await axios.get(`/order/chart/getMaterial/${materialNo}`)
+
+    return result.data
+}
+
+async function getOrderChartByMaterialName({mn, year}){
+
+    data = {
+        materialName : mn,
+        year : year,
+        state : "발주완료"
+    }
+
+    console.log(data)
+
+    const result = axios.post(`/order/chart/getChartByMaterialName`, data)
+
+    return result.data
 }

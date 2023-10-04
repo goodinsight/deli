@@ -6,6 +6,8 @@ import com.deligence.deli.domain.MaterialProcurementPlanning;
 import com.deligence.deli.domain.Order;
 import com.deligence.deli.dto.*;
 
+import java.util.Map;
+
 public interface OrderService {
 
     int register(OrderDTO orderDTO);
@@ -26,6 +28,9 @@ public interface OrderService {
     void changeState(int orderNo, String state);
 
     int sumOfOrderQuantity(int materialProcurementPlanningNo);
+
+    Map<String, Integer> orderChart(String materialName, String year, String state);
+
 
     default Order dtoToEntity(OrderDTO orderDTO){
 

@@ -13,7 +13,9 @@ import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class OrderSearchImpl extends QuerydslRepositorySupport implements OrderSearch {
 
@@ -205,6 +207,7 @@ public class OrderSearchImpl extends QuerydslRepositorySupport implements OrderS
     }
 
 
+
     @Override
     public Page<Order> searchIncoming(String[] types, String keyword, String[] states, Pageable pageable) {
 
@@ -278,6 +281,31 @@ public class OrderSearchImpl extends QuerydslRepositorySupport implements OrderS
         long count = query.fetchCount();
 
         return new PageImpl<>(list, pageable, count);
+    }
+
+
+
+    @Override
+    public Map<String, Integer> orderChart(String materialName, String year, String state) {
+
+        QOrder order = QOrder.order;
+
+        Map<String, Integer> map = new HashMap<>();
+
+        List<Tuple> result = new JPAQueryFactory(em)
+                .select(order.orderQuantity.sum(), order.orderDeliveryDate.month())
+                .from(order)
+                .where(order.materialName.eq(materialName).and(order.orderState.eq(state)).and(order.orderDeliveryDate.year().eq(Integer.parseInt(year))))
+                .groupBy(order.orderDeliveryDate.month())
+                .fetch();
+
+        for (Tuple tuple : result){
+
+            map.put(tuple.get(order.orderDeliveryDate.month()).toString(), tuple.get(order.orderQuantity.sum()));
+
+        }
+
+        return map;
     }
 
 }

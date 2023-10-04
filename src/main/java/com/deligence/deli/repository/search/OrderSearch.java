@@ -6,6 +6,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+import java.util.Map;
+
 public interface OrderSearch {
 
     Page<Order> search(String[] types, String keyword, Pageable pageable);
@@ -19,5 +22,7 @@ public interface OrderSearch {
     Page<Order> searchIncoming(String[] types, String keyword, String[] states, Pageable pageable);
 
     int sumOfOrderQuantity(int materialProcurementPlanningNo);
+
+    Map<String, Integer> orderChart(String materialName, String year, String state);
 
 }
