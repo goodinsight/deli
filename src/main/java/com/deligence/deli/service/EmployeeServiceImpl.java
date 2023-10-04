@@ -158,6 +158,12 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         EmployeeAuthorityDTO employeeAuthorityDTO = modelMapper.map(employee, EmployeeAuthorityDTO.class);
 
+        Optional<Employee> result1 = employeeRepository.getWithRoles(employeeAuthorityDTO.getEmployeeId());
+
+        Employee employee1 = result1.orElseThrow();
+
+        employeeAuthorityDTO.setRole(employee.getRoleSet().toString());
+
         return employeeAuthorityDTO;
     }
 
@@ -171,6 +177,28 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.changeName(employeeAuthorityDTO.getEmployeeName());
         employee.changePhone(employeeAuthorityDTO.getEmployeePhone());
         employee.changePosition(employeeAuthorityDTO.getPosition());
+
+        employee.clearRoles();
+
+        if (employeeAuthorityDTO.getRole().equals("[USER]")){
+            employee.addRole(EmployeeRole.USER);
+        } else if (employeeAuthorityDTO.getRole().equals("[ADMIN]")) {
+            employee.addRole(EmployeeRole.ADMIN);
+        } else if (employeeAuthorityDTO.getRole().equals("[MATERIAL]")) {
+            employee.addRole(EmployeeRole.MATERIAL);
+        } else if (employeeAuthorityDTO.getRole().equals("[ORDER]")) {
+            employee.addRole(EmployeeRole.ORDER);
+        } else if (employeeAuthorityDTO.getRole().equals("[PROCUREMENT]")) {
+            employee.addRole(EmployeeRole.PROCUREMENT);
+        } else if (employeeAuthorityDTO.getRole().equals("[PRODUCT]")) {
+            employee.addRole(EmployeeRole.PRODUCT);
+        } else if (employeeAuthorityDTO.getRole().equals("[CLIENT]")) {
+            employee.addRole(EmployeeRole.CLIENT);
+        } else if (employeeAuthorityDTO.getRole().equals("[SUPPLIER]")) {
+            employee.addRole(EmployeeRole.SUPPLIER);
+        } else if (employeeAuthorityDTO.getRole().equals("[PRODUCTION]")) {
+            employee.addRole(EmployeeRole.PRODUCTION);
+        }
 
         employeeRepository.save(employee);
     }
