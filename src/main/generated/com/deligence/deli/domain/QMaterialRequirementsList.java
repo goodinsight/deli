@@ -38,6 +38,8 @@ public class QMaterialRequirementsList extends EntityPathBase<MaterialRequiremen
 
     public final QProducts products;
 
+    public final StringPath productType = createString("productType");
+
     public final NumberPath<Integer> quantity = createNumber("quantity", Integer.class);
 
     public QMaterialRequirementsList(String variable) {
