@@ -1,5 +1,6 @@
 package com.deligence.deli.controller;
 
+import com.deligence.deli.domain.MaterialProcurementPlanning;
 import com.deligence.deli.domain.Order;
 import com.deligence.deli.dto.*;
 import com.deligence.deli.service.MaterialProcurementPlanningService;
@@ -10,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.MediaType;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/materialProcurementPlanning")
@@ -30,15 +33,17 @@ public class MaterialProcurementPlanningController {
 
     //생산계획정보(생산계획일련번호) 조회 구현
     private final ProductionPlanningService productionPlanningService;
-
     //자재정보(자재일련번호 -> 자재코드, 카테고리, 자재이름) 조회 구현
     private final MaterialsService materialsService;
 
-    @GetMapping("/list")    //목록
-    public void list(PageRequestDTO pageRequestDTO, Model model) {
 
-        PageResponseDTO<MaterialProcurementPlanningDTO> responseDTO =
-                materialProcurementPlanningService.list(pageRequestDTO);
+    @GetMapping("/list")    //목록
+    public void list(OrderPageRequestDTO orderPageRequestDTO, Model model) {
+
+        log.info(orderPageRequestDTO);
+
+        OrderPageResponseDTO<MaterialProcurementPlanningDTO> responseDTO =
+                materialProcurementPlanningService.listWithState(orderPageRequestDTO);
 
         log.info(responseDTO);
 
@@ -76,8 +81,7 @@ public class MaterialProcurementPlanningController {
         }
         //-------------------------------------------------------------------------------
 
-        int materialProcurementPlanNo =
-                materialProcurementPlanningService.register(materialProcurementPlanningDTO);
+        int materialProcurementPlanNo = materialProcurementPlanningService.register(materialProcurementPlanningDTO);
 
         redirectAttributes.addFlashAttribute("result", materialProcurementPlanNo);
 
@@ -232,5 +236,18 @@ public class MaterialProcurementPlanningController {
 
         model.addAttribute("dtoList", dtoList);
     }
+
+  //상태 변경
+  @ResponseBody
+  @PostMapping(value = "/changeMaterialProcurementState", consumes = MediaType.APPLICATION_JSON_VALUE)
+  public void changeMaterialProcurementState(@RequestBody Map<String, Object> map){
+
+      int materialProcurementPlanNo = Integer.parseInt(map.get("materialProcurementPlanNo").toString());
+      String state = map.get("state").toString();
+
+      materialProcurementPlanningService.changeState(materialProcurementPlanNo, state);
+
+  }
+
 
 }

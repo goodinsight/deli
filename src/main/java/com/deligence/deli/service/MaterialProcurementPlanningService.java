@@ -2,16 +2,8 @@ package com.deligence.deli.service;
 
 import com.deligence.deli.domain.*;
 import com.deligence.deli.dto.*;
-import com.querydsl.jpa.JPQLQuery;
-import com.querydsl.jpa.impl.JPAQueryFactory;
-import lombok.extern.java.Log;
-import lombok.extern.log4j.Log4j2;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public interface MaterialProcurementPlanningService {
 
@@ -30,9 +22,13 @@ public interface MaterialProcurementPlanningService {
     //목록,검색
     PageResponseDTO<MaterialProcurementPlanningDTO> list(PageRequestDTO pageRequestDTO);
 
+    //상태 조건 검색
+    OrderPageResponseDTO<MaterialProcurementPlanningDTO> listWithState(OrderPageRequestDTO orderPageRequestDTO);
+
     //코드생성
     int getCodeCount(String materialProcurementPlanCode);
 
+    //상태 변경
     void changeState(int materialProcurementPlanNo, String state);
 
     PageResponseDTO<MaterialProcurementPlanningDTO> listByState(String[] keywords, PageRequestDTO pageRequestDTO);
@@ -50,15 +46,15 @@ public interface MaterialProcurementPlanningService {
                 .materialRequirementsCount(materialProcurementPlanningDTO.getMaterialRequirementsCount())
                 .materialProcurementState(materialProcurementPlanningDTO.getMaterialProcurementState())
                 .productionPlanning(ProductionPlanning.builder().productionPlanNo(materialProcurementPlanningDTO.getProductionPlanNo()).build())
-                .materials(Materials.builder().materialNo(materialProcurementPlanningDTO.getMaterialNo()).build())
-                .employee(Employee.builder().employeeNo(materialProcurementPlanningDTO.getEmployeeNo()).build())
-                .employeeName(materialProcurementPlanningDTO.getEmployeeName())
-                .materialCode(materialProcurementPlanningDTO.getMaterialCode())
-                .materialName(materialProcurementPlanningDTO.getMaterialName())
                 .productionRequirementsDate(materialProcurementPlanningDTO.getProductionRequirementsDate())         //생산소요기간
                 .productionRequirementsProcess(materialProcurementPlanningDTO.getProductionRequirementsProcess())   //생산소요공정
                 .productionDeliveryDate(materialProcurementPlanningDTO.getProductionDeliveryDate()) //생산납기일
                 .productionState(materialProcurementPlanningDTO.getProductionState())   //생산 진행 상태
+                .materials(Materials.builder().materialNo(materialProcurementPlanningDTO.getMaterialNo()).build())
+                .materialCode(materialProcurementPlanningDTO.getMaterialCode())
+                .materialName(materialProcurementPlanningDTO.getMaterialName())
+                .employee(Employee.builder().employeeNo(materialProcurementPlanningDTO.getEmployeeNo()).build())
+                .employeeName(materialProcurementPlanningDTO.getEmployeeName())
                 .build();
 
         return materialProcurementPlanning;
@@ -73,16 +69,15 @@ public interface MaterialProcurementPlanningService {
                 .materialRequirementsCount(materialProcurementPlanning.getMaterialRequirementsCount())
                 .materialProcurementState(materialProcurementPlanning.getMaterialProcurementState())
                 .productionPlanNo(materialProcurementPlanning.getProductionPlanning().getProductionPlanNo())
-                .materialNo(materialProcurementPlanning.getMaterials().getMaterialNo())
-//                .employeeNo(materialProcurementPlanning.getEmployee().getEmployeeNo())
-                .employeeName(materialProcurementPlanning.getEmployeeName())
-                .employeeName(materialProcurementPlanning.getEmployee().getEmployeeName())
-                .materialCode(materialProcurementPlanning.getMaterials().getMaterialCode())
-                .materialName(materialProcurementPlanning.getMaterials().getMaterialName())
                 .productionRequirementsDate(materialProcurementPlanning.getProductionPlanning().getProductionRequirementsDate())
                 .productionRequirementsProcess(materialProcurementPlanning.getProductionPlanning().getProductionRequirementsProcess())
-                .procurementDeliveryDate(materialProcurementPlanning.getProductionPlanning().getProductDeliveryDate())
                 .productionState(materialProcurementPlanning.getProductionPlanning().getProductionState())
+                .materialNo(materialProcurementPlanning.getMaterials().getMaterialNo())
+                .materialCode(materialProcurementPlanning.getMaterials().getMaterialCode())
+                .materialName(materialProcurementPlanning.getMaterials().getMaterialName())
+                .employeeNo(materialProcurementPlanning.getEmployee().getEmployeeNo())
+                .employeeName(materialProcurementPlanning.getEmployeeName())
+//                .employeeName(materialProcurementPlanning.getEmployee().getEmployeeName())
                 .build();
 
         return materialProcurementPlanningDTO;

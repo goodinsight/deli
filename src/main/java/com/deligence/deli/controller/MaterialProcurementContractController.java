@@ -87,8 +87,7 @@ public class MaterialProcurementContractController {
             return "redirect:/materialProcurementContract/register";
         }
 
-        int materialProcurementContractNo =
-                materialProcurementContractService.register(materialProcurementContractDTO);
+        int materialProcurementContractNo = materialProcurementContractService.register(materialProcurementContractDTO);
 
         redirectAttributes.addFlashAttribute("result", materialProcurementContractNo);
 

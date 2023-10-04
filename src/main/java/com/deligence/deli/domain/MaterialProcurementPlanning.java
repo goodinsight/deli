@@ -19,8 +19,8 @@ public class MaterialProcurementPlanning extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private int materialProcurementPlanNo;                  //조달계획일련번호
+    private Integer materialProcurementPlanNo;                  //조달계획일련번호
+    //JPA에 사용할 경우 Entity에서 id는 모두 Integer이어야 함.
 
     private String materialProcurementPlanCode;             //조달계획코드
 

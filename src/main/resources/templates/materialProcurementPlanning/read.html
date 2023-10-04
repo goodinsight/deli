@@ -93,8 +93,8 @@
 
                     <div class="my-4" th:with="user=${#authentication.principal}">
                         <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}" >
-                            <button type="button" class="btn btn-default btn-outline afterComp">계획 완료됨</button>
-                            <button type="button" class="btn btn-warning completeButton" onclick="compProcurementPlanning()">조달 완료</button>
+                            <button type="button" class="btn btn-default btn-outline afterComp">조달 완료됨</button>
+                            <button type="button" class="btn btn-warning completeButton" onclick="compProcurementPlanning()">조달 계획 완료</button>
 
                             <a th:href="|@{/materialProcurementPlanning/list}?${link}|" class="text-decoration-none">
                                 <button type="button" class="btn btn-primary">List</button>
@@ -121,11 +121,11 @@
 
     console.log([[${dto}]])
 
-    //조달 계약 상태 변경 (발주 완료 시 조달 계약 완료)
-    let state = [[${dto.materialProcurementContractState}]]
+    //조달 계획 상태 변경 (조달 계약 완료 시 조달 계획 완료)
+    let state = [[${dto.materialProcurementState}]]
 
+    const materialProcurementPlanNo = [[${dto.materialProcurementPlanNo}]]
     const materialProcurementContractNo = [[${dto.materialProcurementContractNo}]]
-    const orderNo = [[${dto.orderNo}]]
     const link = [[${pageRequestDTO.getLink()}]]
 
 
@@ -139,12 +139,12 @@
 
         switch (state){
 
-            case '발주진행중':
+            case '조달완료(계약완료)':
                 afterCompButton.style.display = 'none'
                 completeButton.style.display = 'inline'
                 modifyButton.style.display = 'none'
                 break;
-            case '조달완료' :
+            case '조달계획완료' :
                 afterCompButton.style.display = 'inline'
                 completeButton.style.display = 'none'
                 modifyButton.style.display = 'none'
@@ -161,10 +161,10 @@
     printButton(state)
 
 
-    function compProcurementContract(){
+    function compProcurementPlanning(){
 
-        completeProcurementContract({materialProcurementContractNo, orderNo}).then(
-            location.href="/materialProcurementContract/read?materialProcurementContractNo="+materialProcurementContractNo+"&"+link
+        completeProcurementPlanning({materialProcurementPlanNo, materialProcurementPlanNo}).then(
+            location.href="/materialProcurementPlanning/read?materialProcurementPlanNo="+materialProcurementPlanNo+"&"+link
         ).catch( e =>{
             console.log(e)
         })

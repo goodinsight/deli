@@ -69,35 +69,26 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
             BooleanBuilder booleanBuilder = new BooleanBuilder();   //(
 
             for (String type : types) {
-
-                //키워드 a:조달계획코드 b:자재코드 c:자재이름 d:납기일 e:자재소요량 f:조달계약상태
+                //키워드 a:조달계획코드 b:자재코드 c:자재이름 d:납기일 e:자재소요량 f:조달계약상태 (상태별도)
                 switch (type) {
 
                     case "a":
                         booleanBuilder.or(materialProcurementPlanning.materialProcurementPlanCode.contains(keyword));    //조달계획코드
-
+                        break;
                     case "b":
-                        booleanBuilder.or(materialProcurementPlanning
-                                .materialCode.contains(keyword));  //자재코드
+                        booleanBuilder.or(materialProcurementPlanning.materialCode.contains(keyword));  //자재코드
                         break;
-
                     case "c":
-                        booleanBuilder.or(materialProcurementPlanning
-                                .materialName.contains(keyword));  //자재이름
-
+                        booleanBuilder.or(materialProcurementPlanning.materialName.contains(keyword));  //자재이름
+                        break;
                     case "d":
-                        booleanBuilder.or(materialProcurementPlanning
-                                .procurementDeliveryDate.stringValue().contains(keyword));    //납기일 검색
+                        booleanBuilder.or(materialProcurementPlanning.procurementDeliveryDate.stringValue().contains(keyword));    //납기일 검색
                         break;
-
                     case "e":
-                        booleanBuilder.or(materialProcurementPlanning
-                                .materialRequirementsCount.stringValue().contains(keyword));  //자재소요량 검색
+                        booleanBuilder.or(materialProcurementPlanning.materialRequirementsCount.stringValue().contains(keyword));  //자재소요량 검색
                         break;
-
                     case "f":
-                        booleanBuilder.or(materialProcurementPlanning
-                                .materialProcurementState.contains(keyword)); //자재조달상태 검색
+                        booleanBuilder.or(materialProcurementPlanning.materialProcurementState.contains(keyword)); //자재조달상태 검색
                         break;
                 }
             }//end for
@@ -149,6 +140,66 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
         long count = query.fetchCount();
 
         return new PageImpl<>(list, pageable, count);
+    }
+
+    @Override
+    public Page<MaterialProcurementPlanning> searchWithState(String[] types, String keyword, String state, Pageable pageable) {
+
+        QMaterialProcurementPlanning materialProcurementPlanning = QMaterialProcurementPlanning.materialProcurementPlanning;
+
+        JPQLQuery<MaterialProcurementPlanning> query = new JPAQueryFactory(em)
+                .selectFrom(materialProcurementPlanning);
+
+        if( (types != null && types.length > 0) && keyword != null ) { //검색조건과 키워드가 있다면
+
+            BooleanBuilder booleanBuilder = new BooleanBuilder(); // (
+
+            for(String type : types) {
+                //키워드 a:조달계획코드 b:자재코드 c:자재이름 d:납기일 e:자재소요량 f:조달계약상태 (상태별도)
+                switch (type) {
+
+                    case "a":
+                        booleanBuilder.or(materialProcurementPlanning.materialProcurementPlanCode.contains(keyword));    //조달계획코드
+                        break;
+                    case "b":
+                        booleanBuilder.or(materialProcurementPlanning.materialCode.contains(keyword));  //자재코드
+                        break;
+                    case "c":
+                        booleanBuilder.or(materialProcurementPlanning.materialName.contains(keyword));  //자재이름
+                        break;
+                    case "d":
+                        booleanBuilder.or(materialProcurementPlanning.procurementDeliveryDate.stringValue().contains(keyword));    //납기일 검색
+                        break;
+                    case "e":
+                        booleanBuilder.or(materialProcurementPlanning.materialRequirementsCount.stringValue().contains(keyword));  //자재소요량 검색
+                        break;
+                    case "f":
+                        booleanBuilder.or(materialProcurementPlanning.materialProcurementState.contains(keyword)); //자재조달상태 검색
+                        break;
+
+                }
+
+            }//end for
+
+            query.where(booleanBuilder);
+
+        }//end if
+
+        if(state != null){
+            query.where(materialProcurementPlanning.materialProcurementState.contains(state));//자재조달 상태 검색 -> 진행중, 조달중단, 조달완료
+        }
+
+        query.orderBy(materialProcurementPlanning.materialProcurementPlanNo.desc());
+
+        //paging
+        this.getQuerydsl().applyPagination(pageable, query);
+
+        List<MaterialProcurementPlanning> list = query.fetch();
+
+        long count = query.fetchCount();
+
+        return new PageImpl<>(list, pageable, count);
+
     }
 
     @Override
