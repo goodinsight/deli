@@ -87,7 +87,6 @@ async function getOrderChartByMaterialName({mn, year}){
 
     console.log(data)
 
-    const result = axios.post(`/order/chart/getChartByMaterialName`, data)
+    return axios.post(`/order/chart/getChartByMaterialName`, data)
 
-    return result.data
 }

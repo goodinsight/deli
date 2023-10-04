@@ -8,7 +8,6 @@
     <meta charset="UTF-8">
     <title>발주 차트</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js" integrity="sha512-7U4rRB8aGAHGVad3u2jiC7GA5/1YhQcQjxKeaVms/bT66i3LVBMRcBI9KwABNWnxOSwulkuSXxZLGuyfvo7V1A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <div layout:fragment="content">
@@ -107,6 +106,7 @@
 
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -136,6 +136,22 @@
     const auth = [[${#authentication}]]
 
     console.log(auth)
+
+    const orderChart = document.querySelector('#orderChart')
+
+    let chartVar = new Chart(orderChart, {
+        type: 'line',
+        data: {
+            labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+            datasets: [{
+                label: 'none',
+                data: [],
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        }
+    });
 
     //등록시 에러 처리-----------------------------------
 
@@ -290,6 +306,7 @@
 
     // 차트 ----------------------------------------------------------------------------
 
+
     document.querySelector(".submitBtn").addEventListener("click", function (e){
 
         e.preventDefault()
@@ -311,16 +328,36 @@
 
         //-----------------------------------
 
+        chartVar.destroy()//차트 리셋
+
         getOrderChartByMaterialName({mn, year}).then(
-            data => {
+            result => {
                 console.log("success")
-                console.log(data)
+                console.log(result.data)
+
+                const labels = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];
+
+                const chartData = {
+                    labels: labels,
+                    datasets: [{
+                        label: mn + " / " + year + "년",
+                        data: result.data,
+                        fill: false,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1
+                    }]
+                };
+
+                const config = {
+                    type: 'line',
+                    data: chartData
+                };
+
+                chartVar = new Chart(orderChart, config)
             }
         ).catch(e => alert('error'))
 
     })
-
-
 
 
 
