@@ -46,7 +46,7 @@ public interface MaterialProcurementContractService {
                 .supplierStatus(materialProcurementContractDTO.getSupplierStatus())
                 .employee(Employee.builder().employeeNo(materialProcurementContractDTO.getEmployeeNo()).build())
                 .employeeName(materialProcurementContractDTO.getEmployeeName())
-                .documentFile(DocumentFile.builder().documentFileNo(materialProcurementContractDTO.getDocumentFileNo()).build())
+//                .documentFile(DocumentFile.builder().documentFileNo(materialProcurementContractDTO.getDocumentFileNo()).build())
                 .build();
 
         return materialProcurementContract;
@@ -79,7 +79,7 @@ public interface MaterialProcurementContractService {
 //                .supplierStatus(materialProcurementContract.getSupplierStatus())
                 .employeeNo(materialProcurementContract.getEmployee().getEmployeeNo())
                 .employeeName(materialProcurementContract.getEmployeeName())
-                .documentFileNo(materialProcurementContract.getDocumentFile().getDocumentFileNo())
+//                .documentFileNo(materialProcurementContract.getDocumentFile().getDocumentFileNo())
                 .build();
 
         return materialProcurementContractDTO;

@@ -34,7 +34,7 @@ public class MaterialProcurementContract extends BaseEntity {
 
     //-----------------------------------------------------------------------------------------------------
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private MaterialProcurementPlanning materialProcurementPlanning;    //조달계획(일련번호)
 
     private String materialProcurementPlanCode;                         //조달계획코드(검색용)
@@ -50,7 +50,7 @@ public class MaterialProcurementContract extends BaseEntity {
 
     //--------------------------------------------------------------------------------------------------------
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private CooperatorSupplier cooperatorSupplier;              //자재조달협력회사 일련번호 FK
 
     private String supplierName;                                //자재협력회사명 (검색용)
