@@ -33,5 +33,4 @@ public class MaterialInventoryDTO {
 
     private int documentFileNo;             // 문서파일 일련번호 FK
 
-//    private int orderQuantity; //발주수량
 }
