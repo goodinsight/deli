@@ -439,12 +439,12 @@
     document.querySelector(".selectMrl").addEventListener("click", function (e) {
         console.log("select material modal show")
 
-        if(productCode.value.length > 0){
+        // if(productCode.value.length > 0){
             printContracts(1, 5)
             mrlModal.show()
-        }else {
-            alert("제품 계약 코드를 먼저 선택해주세요.")
-        }
+        // }else {
+        //     alert("제품 계약 코드를 먼저 선택해주세요.")
+        // }
 
     }, false)
 
@@ -498,10 +498,11 @@
 
     function printMrls(page, size) {
 
-        const type = "a"
-        const keyword = productCode.value
+        // const type = "a"
+        // const keyword = productCode.value
 
-        getMrlList({page, size, type, keyword}).then(
+        // getMrlList({page, size, type, keyword}).then(
+        getMrlList({page, size}).then(
                 data => {
                   printMrlList(data.dtoList)
                   printMrlPages(data)

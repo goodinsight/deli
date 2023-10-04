@@ -17,11 +17,12 @@ import java.util.stream.Collectors;
 @Service
 @Log4j2
 @RequiredArgsConstructor
-@Transactional
+//@Transactional
 public class MaterialProcurementPlanningServiceImpl implements MaterialProcurementPlanningService{
 
     private final MaterialProcurementPlanningRepository materialProcurementPlanningRepository;
 
+    @Transactional
     @Override  //등록
     public int register(MaterialProcurementPlanningDTO materialProcurementPlanningDTO) {
 

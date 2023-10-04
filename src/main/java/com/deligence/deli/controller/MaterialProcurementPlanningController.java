@@ -91,7 +91,7 @@ public class MaterialProcurementPlanningController {
     //조회, 수정
 //    @PreAuthorize("isAuthenticated()")
     @GetMapping({"/read", "/modify"})
-    public void read(int materialProcurementPlanNo, PageRequestDTO pageRequestDTO, Model model) {
+    public void read(int materialProcurementPlanNo, OrderPageRequestDTO orderPageRequestDTO, Model model) {
 
         log.info("search : materialProcurementPlanNo = " + materialProcurementPlanNo);
 
@@ -103,15 +103,15 @@ public class MaterialProcurementPlanningController {
 
         model.addAttribute("dto", materialProcurementPlanningDetailDTO);
 
-        log.info(pageRequestDTO);
+        log.info(orderPageRequestDTO);
 
-        model.addAttribute("pageRequestDTO", pageRequestDTO);
+        model.addAttribute("pageRequestDTO", orderPageRequestDTO);
 
     }
 
     //수정POST
     @PostMapping("/modify")
-    public String modify( PageRequestDTO pageRequestDTO,
+    public String modify( OrderPageRequestDTO orderPageRequestDTO,
                           @Valid MaterialProcurementPlanningDTO materialProcurementPlanningDTO,
                           BindingResult bindingResult,
                           RedirectAttributes redirectAttributes) {
@@ -122,7 +122,7 @@ public class MaterialProcurementPlanningController {
         if (bindingResult.hasErrors()) {
             log.info("has errors.....");
 
-            String link = pageRequestDTO.getLink();
+            String link = orderPageRequestDTO.getLink();
 
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors() );
 

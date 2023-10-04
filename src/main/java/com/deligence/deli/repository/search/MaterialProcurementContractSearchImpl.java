@@ -242,7 +242,7 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
                 .employeeNo(resultMaterialProcurementContract.getEmployee().getEmployeeNo())
                 .employeeName(resultMaterialProcurementContract.getEmployeeName())
 //                .employeeName(resultMaterialProcurementContract.getEmployee().getEmployeeName())
-                .documentFileNo(resultMaterialProcurementContract.getDocumentFile().getDocumentFileNo())
+//                .documentFileNo(resultMaterialProcurementContract.getDocumentFile().getDocumentFileNo())
                 .regDate(resultMaterialProcurementContract.getRegDate())
                 .modDate(resultMaterialProcurementContract.getModDate())
                 .build();

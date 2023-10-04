@@ -46,13 +46,16 @@ public interface MaterialProcurementPlanningService {
                 .materialRequirementsCount(materialProcurementPlanningDTO.getMaterialRequirementsCount())
                 .materialProcurementState(materialProcurementPlanningDTO.getMaterialProcurementState())
                 .productionPlanning(ProductionPlanning.builder().productionPlanNo(materialProcurementPlanningDTO.getProductionPlanNo()).build())
+                .productionPlanCode(materialProcurementPlanningDTO.getProductionPlanCode()) //생산계획코드
                 .productionRequirementsDate(materialProcurementPlanningDTO.getProductionRequirementsDate())         //생산소요기간
                 .productionRequirementsProcess(materialProcurementPlanningDTO.getProductionRequirementsProcess())   //생산소요공정
                 .productionDeliveryDate(materialProcurementPlanningDTO.getProductionDeliveryDate()) //생산납기일
                 .productionState(materialProcurementPlanningDTO.getProductionState())   //생산 진행 상태
                 .materials(Materials.builder().materialNo(materialProcurementPlanningDTO.getMaterialNo()).build())
                 .materialCode(materialProcurementPlanningDTO.getMaterialCode())
+                .materialType(materialProcurementPlanningDTO.getMaterialType())
                 .materialName(materialProcurementPlanningDTO.getMaterialName())
+                .materialSupplyPrice(materialProcurementPlanningDTO.getMaterialSupplyPrice())
                 .employee(Employee.builder().employeeNo(materialProcurementPlanningDTO.getEmployeeNo()).build())
                 .employeeName(materialProcurementPlanningDTO.getEmployeeName())
                 .build();
@@ -69,14 +72,17 @@ public interface MaterialProcurementPlanningService {
                 .materialRequirementsCount(materialProcurementPlanning.getMaterialRequirementsCount())
                 .materialProcurementState(materialProcurementPlanning.getMaterialProcurementState())
                 .productionPlanNo(materialProcurementPlanning.getProductionPlanning().getProductionPlanNo())
+                .productionPlanCode(materialProcurementPlanning.getProductionPlanning().getProductionPlanCode())
                 .productionRequirementsDate(materialProcurementPlanning.getProductionPlanning().getProductionRequirementsDate())
                 .productionRequirementsProcess(materialProcurementPlanning.getProductionPlanning().getProductionRequirementsProcess())
                 .productionState(materialProcurementPlanning.getProductionPlanning().getProductionState())
                 .materialNo(materialProcurementPlanning.getMaterials().getMaterialNo())
                 .materialCode(materialProcurementPlanning.getMaterialCode())
 //                .materialCode(materialProcurementPlanning.getMaterials().getMaterialCode())
+                .materialType(materialProcurementPlanning.getMaterialType())
                 .materialName(materialProcurementPlanning.getMaterialName())
 //                .materialName(materialProcurementPlanning.getMaterials().getMaterialName())
+                .materialSupplyPrice(materialProcurementPlanning.getMaterialSupplyPrice())
                 .employeeNo(materialProcurementPlanning.getEmployee().getEmployeeNo())
                 .employeeName(materialProcurementPlanning.getEmployeeName())
 //                .employeeName(materialProcurementPlanning.getEmployee().getEmployeeName())

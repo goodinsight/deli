@@ -54,11 +54,11 @@ async function completeProcurementPlanning({materialProcurementPlanNo, materialP
 //조달 계약 완료 -> 조달 계획 완료
     data = {
         materialProcurementPlanNo : materialProcurementPlanNo,
-        materialProcurementContractNo : materialProcurementContractNo
+        // materialProcurementContractNo : materialProcurementContractNo
     }
 
     console.log(data.materialProcurementPlanNo)
-    console.log(data.materialProcurementContractNo)
+    // console.log(data.materialProcurementContractNo)
 
     await axios.post(`/materialProcurementPlanning/completeProcurementPlanning/`, data)
 

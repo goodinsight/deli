@@ -36,6 +36,8 @@ public class MaterialProcurementPlanningDTO {
 
     private int productionPlanNo;                           //생산계획 일련번호 FK
 
+    private String productionPlanCode;                      //생산계획 코드
+
     //추가 -> 생산계획 정보
     private int productionRequirementsDate;                 //생산소요기간
 
@@ -53,7 +55,11 @@ public class MaterialProcurementPlanningDTO {
 
     private String materialCode;                    //자재코드 (검색용)
 
+    private String materialType;                    //자재타입
+
     private String materialName;                    //자재이름 (검색용)
+
+    private Long materialSupplyPrice;                       //자재 공급단가
 
     //----------------------------------------------------------------------------------------------------
 
