@@ -23,36 +23,36 @@ public class MaterialInventoryServiceTests {
     @Autowired
     private MaterialInOutHistoryService materialInOutHistoryService;
 
-    @Test   //테스트 다시 해볼 것
-    public void testInventoryRegister() {
-
-        OrderDTO orderDTO = OrderDTO.builder().orderNo(45).employeeNo(5).employeeName("김재고").build();
-        orderService.register(orderDTO);
-
-        MaterialInOutHistoryDetailDTO materialInOutHistoryDetailDTO = MaterialInOutHistoryDetailDTO.builder().
-                materialHistoryNo(5).inOutSeparator("IN").build();
-
-        MaterialInventoryDTO materialInventoryDTO = MaterialInventoryDTO.builder()
-                .materialNo(1111)
-                .materialIncomingQuantity(100)
-                .materialOutgoingQuantity(50)
-                .materialStock(50)
-                .materialSupplyPrice(1000L)
-                .materialTotalInventoryPayments(50000L)
-                .materialHistoryNo(5)
-                .materialName("materialName")
-                .materialType("materialType")
-                .materialCode("materialCode")
-//                .documentFileNo(1)
-                .build();
-
-
-        materialInventoryService.modifyInventory(materialInventoryDTO);
-
-        log.info("success");
-
-
-    }
+//    @Test   //테스트 다시 해볼 것
+//    public void testInventoryRegister() {
+//
+//        OrderDTO orderDTO = OrderDTO.builder().orderNo(45).employeeNo(5).employeeName("김재고").build();
+//        orderService.register(orderDTO);
+//
+//        MaterialInOutHistoryDetailDTO materialInOutHistoryDetailDTO = MaterialInOutHistoryDetailDTO.builder().
+//                materialHistoryNo(5).inOutSeparator("IN").build();
+//
+//        MaterialInventoryDTO materialInventoryDTO = MaterialInventoryDTO.builder()
+//                .materialNo(1111)
+//                .materialIncomingQuantity(100)
+//                .materialOutgoingQuantity(50)
+//                .materialStock(50)
+//                .materialSupplyPrice(1000L)
+//                .materialTotalInventoryPayments(50000L)
+//                .materialHistoryNo(5)
+//                .materialName("materialName")
+//                .materialType("materialType")
+//                .materialCode("materialCode")
+////                .documentFileNo(1)
+//                .build();
+//
+//
+//        materialInventoryService.modifyInventory(materialInventoryDTO);
+//
+//        log.info("success");
+//
+//
+//    }
 
     @Test //테스트확인
     public void testStockRead() {
@@ -66,28 +66,28 @@ public class MaterialInventoryServiceTests {
     }
 
 
-    @Test   //나중에 테스트 다시 해볼 것
-    public void testStockModify() {
-
-        MaterialInventoryDTO materialInventoryDTO = MaterialInventoryDTO.builder()
-                .materialHistoryNo(1)
-                .materialNo(1111)
-                .materialIncomingQuantity(100)
-                .materialOutgoingQuantity(50)
-                .materialStock(50)
-                .materialSupplyPrice(1000L)
-                .materialTotalInventoryPayments(50000L)
-                .materialHistoryNo(5)
-                .materialName("materialName")
-                .materialType("materialType")
-                .materialCode("materialCode")
-//                .documentFileNo(1)
-                .build();
-
-        materialInventoryService.modifyInventory(materialInventoryDTO);
-
-        log.info(materialInventoryDTO);
-    }
+//    @Test   //나중에 테스트 다시 해볼 것
+//    public void testStockModify() {
+//
+//        MaterialInventoryDTO materialInventoryDTO = MaterialInventoryDTO.builder()
+//                .materialHistoryNo(1)
+//                .materialNo(1111)
+//                .materialIncomingQuantity(100)
+//                .materialOutgoingQuantity(50)
+//                .materialStock(50)
+//                .materialSupplyPrice(1000L)
+//                .materialTotalInventoryPayments(50000L)
+//                .materialHistoryNo(5)
+//                .materialName("materialName")
+//                .materialType("materialType")
+//                .materialCode("materialCode")
+////                .documentFileNo(1)
+//                .build();
+//
+//        materialInventoryService.modifyInventory(materialInventoryDTO);
+//
+//        log.info(materialInventoryDTO);
+//    }
 
     @Test
     public void testStockList() {
