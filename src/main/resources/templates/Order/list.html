@@ -123,6 +123,12 @@
 
                         </ul>
                     </div>
+
+                    <div class="float-right">
+                        <a th:href="@{/order/register}" class="text-decoration-none">
+                            <button type="button" class="btn btn-primary">발주 등록</button>
+                        </a>
+                    </div>
                 </div>
             </div><!-- end card -->
 
@@ -133,8 +139,6 @@
 
 
 <script layout:fragment="script" th:inline="javascript">
-
-    console.log("발주 리스트 페이지")
 
     $(document).ready(function () {
         console.log([[${orderPageRequestDTO}]])
