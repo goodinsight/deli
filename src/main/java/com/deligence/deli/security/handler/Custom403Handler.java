@@ -29,7 +29,15 @@ public class Custom403Handler implements AccessDeniedHandler {
         try {
             if (accessDeniedException instanceof AccessDeniedException) {
                 Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-                if (authentication != null && ((User) authentication.getPrincipal()).getAuthorities().contains(new SimpleGrantedAuthority("ROLE_USER"))) {
+                if (authentication != null && ((User) authentication.getPrincipal()).getAuthorities().contains(new SimpleGrantedAuthority("ROLE_USER")) ||
+                        authentication != null && ((User) authentication.getPrincipal()).getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ADMIN")) ||
+                        authentication != null && ((User) authentication.getPrincipal()).getAuthorities().contains(new SimpleGrantedAuthority("ROLE_MATERIAL")) ||
+                        authentication != null && ((User) authentication.getPrincipal()).getAuthorities().contains(new SimpleGrantedAuthority("ROLE_ORDER")) ||
+                        authentication != null && ((User) authentication.getPrincipal()).getAuthorities().contains(new SimpleGrantedAuthority("ROLE_PROCUREMENT")) ||
+                        authentication != null && ((User) authentication.getPrincipal()).getAuthorities().contains(new SimpleGrantedAuthority("ROLE_PRODUCT")) ||
+                        authentication != null && ((User) authentication.getPrincipal()).getAuthorities().contains(new SimpleGrantedAuthority("ROLE_CLIENT")) ||
+                        authentication != null && ((User) authentication.getPrincipal()).getAuthorities().contains(new SimpleGrantedAuthority("ROLE_SUPPLIER")) ||
+                        authentication != null && ((User) authentication.getPrincipal()).getAuthorities().contains(new SimpleGrantedAuthority("ROLE_PRODUCTION"))) {
                     request.setAttribute("msg", "접근권한 없는 사용자입니다."); //접근 권한이 없는(=인가되지 않은) 사용자
                     request.setAttribute("nextPage", "/");  //    "/" 페이지로 redirect
                 } else {

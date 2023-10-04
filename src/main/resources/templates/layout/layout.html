@@ -55,7 +55,7 @@
                 </li>
 
                 <li class="label">물류관리</li>
-                <li><a href="#" class="sidebar-sub-toggle"><i class="ti-hummer"></i> 자재관리 <span
+                <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-hummer"></i> 자재관리 <span
                         class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
                         <li><a th:href="@{/material/list}"><i class="ti-layout-list-thumb"></i>자재 리스트</a></li>
@@ -63,7 +63,7 @@
                     </ul>
                 </li>
 
-                <li><a href="#" class="sidebar-sub-toggle"><i class="ti-calendar"></i> 계약관리 <span
+                <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-calendar"></i> 계약관리 <span
                         class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
                         <li><a th:href="@{/productContract/list}"><i class="ti-layout-list-thumb"></i>제품계약 리스트</a></li>
@@ -76,7 +76,7 @@
                     </ul>
                 </li>
 
-                <li><a href="#" class="sidebar-sub-toggle"><i class="ti-shopping-cart"></i> 계획관리 <span
+                <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-shopping-cart"></i> 계획관리 <span
                     class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
                         <li><a th:href="@{/productionPlanning/list}"><i class="ti-layout-list-thumb"></i>생산계획 리스트</a></li>
@@ -87,21 +87,21 @@
                         <li><a th:href="@{/materialProcurementPlanning/register}"><i class="ti-zoom-in"></i>자재조달계획 등록</a></li>
                     </ul>
                 </li>
-                <li><a href="#" class="sidebar-sub-toggle"><i class="ti-stamp"></i> 발주관리 <span
+                <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-stamp"></i> 발주관리 <span
                     class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
                         <li><a th:href="@{/order/list}"><i class="ti-layout-list-thumb"></i>발주 리스트</a></li>
                         <li><a th:href="@{/order/register}"><i class="ti-zoom-in"></i>발주 등록 </a></li>
                     </ul>
                 </li>
-                <li><a href="#" class="sidebar-sub-toggle"><i class="ti-package"></i> 저장관리  <span
+                <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-package"></i> 저장관리  <span
                     class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
                         <li><a th:href="@{/materialInventory/listInventory}"><i class="ti-layout-list-thumb"></i>자재 재고</a></li>
                         <li><a th:href="@{/materialInOutHistory/materialInOutHistoryList}"><i class="ti-layout-list-thumb"></i>자재 입출고 정보</a></li>
                     </ul>
                 </li>
-                <li><a href="#" class="sidebar-sub-toggle"><i class="ti-desktop"></i> 제품관리 <span
+                <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-desktop"></i> 제품관리 <span
                         class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
                         <li><a th:href="@{/product/list}"><i class="ti-layout-list-thumb"></i>제품 리스트</a></li>
@@ -118,7 +118,7 @@
                     </ul>
                 </li>
                 <li class="label">파트너관리</li>
-                <li><a href="#" class="sidebar-sub-toggle"><i class="ti-user"></i> 파트너 <span
+                <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-user"></i> 파트너 <span
                         class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
                         <li><a href="#">협력사 메뉴1</a></li>
@@ -127,7 +127,7 @@
                         <li><a href="#">협력사 메뉴4</a></li>
                     </ul>
                 </li>
-                <li><a href="#" class="sidebar-sub-toggle"><i class="ti-heart"></i> 클라이언트 <span
+                <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-heart"></i> 클라이언트 <span
                         class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
                         <li><a href="#">클라이언트 메뉴1</a></li>
