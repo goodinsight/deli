@@ -135,8 +135,6 @@
 
     const auth = [[${#authentication}]]
 
-    console.log(auth)
-
     const orderChart = document.querySelector('#orderChart')
 
     let chartVar = new Chart(orderChart, {
@@ -190,7 +188,6 @@
 
     function printMaterialList(dtoList){//자재 목록
 
-        console.log("print material list")
 
         let str = ''
 
@@ -274,8 +271,6 @@
         e.preventDefault()
         e.stopPropagation()
 
-        console.log("material click")
-
         const target = e.target
 
         if(!target || target.tagName != 'TD'){
@@ -283,8 +278,6 @@
         }
 
         const materialNo = target.getAttribute("data-materialNo")
-
-        console.log("material No : " + materialNo)
 
         if(!materialNo){
             return
@@ -332,8 +325,6 @@
 
         getOrderChartByMaterialName({mn, year}).then(
             result => {
-                console.log("success")
-                console.log(result.data)
 
                 const labels = ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"];
 

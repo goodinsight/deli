@@ -140,12 +140,6 @@
 
 <script layout:fragment="script" th:inline="javascript">
 
-    $(document).ready(function () {
-        console.log([[${orderPageRequestDTO}]])
-        console.log([[${orderPageRequestDTO.link}]])
-        console.log([[${responseDTO}]])
-    })
-
     document.querySelector(".pagination").addEventListener("click", function(e){
         e.preventDefault()
         e.stopPropagation()

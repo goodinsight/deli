@@ -131,7 +131,6 @@
 
 <script layout:fragment="script" th:inline="javascript">
 
-    console.log([[${dto}]])
 
     let state = [[${dto.orderState}]]
 
@@ -147,8 +146,6 @@
     const modifyButton = document.querySelector('.modifyButton')
 
     function printButton(state){
-
-        console.log(state)
 
         switch (state){
 

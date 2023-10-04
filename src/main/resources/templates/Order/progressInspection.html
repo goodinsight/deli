@@ -179,8 +179,6 @@
 
             for ( const dto of dtoList ) {
 
-                console.log(dto);
-
                 str += `
                 <div class="card">
                     <div class="card-body">
@@ -284,8 +282,6 @@
 
     function printProgressInspections(page, size, goLast) {
 
-        console.log("prints PI start")
-
         getOrderState();
 
         if(orderState == '검수완료'){
@@ -297,10 +293,8 @@
                 printList(data.dtoList) // 목록처리
                 printPages(data) //페이지 처리
                 printButton(state)//버튼 출력
-                console.log("maxTimes : " + maxTimes)
             }
         ).catch(e => {
-            console.log("getList failed")
             console.error(e)
         })
 
@@ -330,9 +324,7 @@
     // 발주 상태 -----------------------
 
     function getOrderState(){
-        console.log("start getOrderState")
         getOS(orderNo).then(result => {
-            console.log("get order State! : " + result)
             orderState = result
             if(orderState != '진행중'){//
                 state = 2
@@ -366,7 +358,6 @@
 
     openRegisterBtn.addEventListener("click", function (e) {
         registerProgressInspectionTimes.value = maxTimes + 1;
-        console.log("차수 : " + registerProgressInspectionTimes.value)
         registerModal.show()
     }, false)
 
@@ -386,8 +377,6 @@
             employeeNo : registerEmployeeNo.value,
             employeeName : registerEmployeeName.value
         }
-
-        console.log(piObj)
 
         addProgressInspection(piObj).then(result => {
             alert("등록되었습니다.")
@@ -427,7 +416,6 @@
     function openModifyModal(piNo) {
 
         if(!piNo){
-            console.log("piNo is null!")
             return
         }else{
             console.log("piNo = " + piNo)
@@ -437,7 +425,6 @@
 
         getProgressInspection(piNo).then(pi => {
 
-            console.log(pi)
 
             let date = pi.progressInspectionDate[0] + '-'
 
@@ -450,8 +437,6 @@
                 date += 0
             }
             date += pi.progressInspectionDate[2]
-
-            console.log(date)
 
             modifyProgressInspectionNo.value = pi.progressInspectionNo
             modifyProgressInspectionDate.value = date
@@ -519,7 +504,6 @@
 
     modifyRateOfProgress.addEventListener("mouseup", function(e) {
         modifyRateOfProgress.removeEventListener("mousemove", function(){
-            console.log("remove mousemove")
         })
     })
 
@@ -547,9 +531,6 @@
     //버튼 출력
     function printButton(state){
 
-        console.log("state : " + state)
-        console.log("orderState : " + orderState)
-
         const afterComp = document.querySelector('.afterComp')
 
         switch (state){
@@ -573,8 +554,6 @@
 
     //검수 완료
     function completeProgressInspection(){
-
-        console.log("click 검수완료")
 
         completePI(orderNo).then(result => {
             state = 2

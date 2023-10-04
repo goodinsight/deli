@@ -41,17 +41,11 @@ async function completeOrder({orderNo, materialProcurementPlanNo}){
         materialProcurementPlanNo : materialProcurementPlanNo
     }
 
-    console.log(data.orderNo)
-    console.log(data.materialProcurementPlanNo)
-
     await axios.post(`/order/completeOrder/`, data)
 
 }
 
 async function changeState({orderNo, state}){
-
-    console.log("js - orderNo : " + orderNo)
-    console.log("js - state : " + state)
 
     data = {
         orderNo : orderNo,
@@ -84,8 +78,6 @@ async function getOrderChartByMaterialName({mn, year}){
         year : year,
         state : "발주완료"
     }
-
-    console.log(data)
 
     return axios.post(`/order/chart/getChartByMaterialName`, data)
 

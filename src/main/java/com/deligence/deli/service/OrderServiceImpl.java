@@ -26,16 +26,10 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public int register(OrderDTO orderDTO) {
 
-        log.info(orderDTO);
-
         //dto -> entity
         Order order = dtoToEntity(orderDTO);
 
-        log.info(order);
-
         int orderNo = orderRepository.save(order).getOrderNo();
-
-        log.info(orderNo);
 
         return orderNo;
 

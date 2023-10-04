@@ -215,12 +215,9 @@
 
     const auth = [[${#authentication}]]
 
-    console.log(auth)
-
     //등록시 에러 처리-----------------------------------
 
     const errors = [[${errors}]]
-    console.log(errors)
 
     let errorMsg = ''
 
@@ -254,15 +251,11 @@
 
     function printPlanList(dtoList){//조달 계획 목록
 
-        console.log("print plan list")
-
         let str = ''
 
         if(dtoList && dtoList.length > 0){
 
             for( const dto of dtoList) {
-
-                console.log(dto)
 
                 str += `<tr>
                             <td data-planNo="${dto.materialProcurementPlanNo}">${dto.materialProcurementPlanNo}</td>
@@ -308,7 +301,6 @@
                 printPlanPages(data)
             }
         ).catch(e => {
-            console.log("print plans error")
             console.error(e)
         })
     }
@@ -344,8 +336,6 @@
         e.preventDefault()
         e.stopPropagation()
 
-        console.log("plan click")
-
         const target = e.target
 
         if(!target || target.tagName != 'TD'){
@@ -360,7 +350,6 @@
 
         getPlan(planNo).then(plan => {
 
-            console.log(plan)
             inputPlanNo.value = plan.materialProcurementPlanNo
             //조달 계획 정보를 가져와서 화면에 반영해야할 항목들은 여기에-----------------------------------------------------
             materialCode.value = plan.materialCode
@@ -410,8 +399,6 @@
         if(dtoList && dtoList.length > 0){
 
             for( const dto of dtoList) {
-
-                console.log(dto)
 
                 str += `<tr>
                             <td data-contractNo="${dto.materialProcurementContractNo}">${dto.materialProcurementContractNo}</td>
@@ -496,8 +483,6 @@
         e.preventDefault()
         e.stopPropagation()
 
-        console.log("plan click")
-
         const target = e.target
 
         if(!target || target.tagName != 'TD'){
@@ -512,14 +497,11 @@
 
         getContract(contractNo).then(contract => {
 
-            console.log(contract)
             materialProcurementContractNo.value = contract.materialProcurementContractNo
-            //계약 정보를 가져와서 화면에 반영해야할 항목들은 여기에------------------------------------------------------------
             inputContractCode.value = contract.materialProcurementContractCode
             materialProcurementContractDate.value = new Date(contract.materialProcurementContractDate).toISOString().split('T')[0]
             materialSupplyPrice.value = contract.materialSupplyPrice
             supplierName.value = contract.supplierName
-            //-----------------------------------------------------------------------------------------------------------
             contractModal.hide()
 
         }).catch(e => alert('error'))
