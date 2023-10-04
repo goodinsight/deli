@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -81,6 +82,14 @@ public class OrderServiceImpl implements OrderService{
         int result = orderRepository.sumOfOrderQuantity(materialProcurementPlanningNo);
 
         return result;
+    }
+
+    @Override
+    public Map<String, Integer> orderChart(String materialName, String year, String state) {
+
+        Map<String, Integer> map = orderRepository.orderChart(materialName, year, state);
+
+        return map;
     }
 
 
@@ -161,6 +170,8 @@ public class OrderServiceImpl implements OrderService{
 
         return num;
     }
+
+
 
 
 }

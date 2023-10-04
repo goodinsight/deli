@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <title>발주 차트</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.js" integrity="sha512-7U4rRB8aGAHGVad3u2jiC7GA5/1YhQcQjxKeaVms/bT66i3LVBMRcBI9KwABNWnxOSwulkuSXxZLGuyfvo7V1A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <div layout:fragment="content">
@@ -47,6 +48,11 @@
                             </div>
                         </div>
                     </form>
+
+                    <div>
+                        <canvas id="orderChart"></canvas>
+                    </div>
+
                 </div><!-- end card body -->
             </div><!-- end card -->
         </div><!-- end col -->
@@ -100,6 +106,8 @@
     </div><!-- end 계획 모달창 -->
 
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js"></script>
@@ -173,8 +181,6 @@
         if(dtoList && dtoList.length > 0){
 
             for( const dto of dtoList) {
-
-                console.log(dto)
 
                 str += `<tr>
                             <td data-materialNo="${dto.materialNo}">${dto.materialNo}</td>
@@ -293,14 +299,29 @@
         const year = document.querySelector('#year').value
 
         // 입력폼 채우지 않으면 알림-------------
-        
+        if(mn.length <= 0){
+            alert("제품을 선택해주세요")
+            return
+        }
+
+        if(year.length <= 0){
+            alert("연도를 선택해주세요")
+            return
+        }
+
         //-----------------------------------
 
         getOrderChartByMaterialName({mn, year}).then(
-            console.log("success")
+            data => {
+                console.log("success")
+                console.log(data)
+            }
         ).catch(e => alert('error'))
 
     })
+
+
+
 
 
 

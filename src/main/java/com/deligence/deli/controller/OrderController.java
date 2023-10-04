@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -267,7 +269,7 @@ public class OrderController {
 
     @ResponseBody
     @PostMapping(value = "/chart/getChartByMaterialName", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void getOrderChartByMaterialName(@RequestBody Map<String, Object> map){
+    public List<Integer> getOrderChartByMaterialName(@RequestBody Map<String, Object> map){
 
         String materialName = map.get("materialName").toString();
         String year = map.get("year").toString();
@@ -276,6 +278,23 @@ public class OrderController {
         log.info(materialName);
         log.info(year);
         log.info(state);
+
+        Map<String, Integer> result = orderService.orderChart(materialName, year, state);
+
+        log.info(result.keySet());
+        log.info(result.values());
+
+        List<Integer> chartData = new ArrayList<>();
+
+        for(int i = 1; i <= 12; i++){
+
+            chartData.add(result.getOrDefault(String.valueOf(i),0));
+
+        }
+
+        log.info(chartData);
+
+        return chartData;
 
     }
 
