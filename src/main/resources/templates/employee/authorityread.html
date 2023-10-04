@@ -41,6 +41,10 @@
                         <input type="text" class="form-control" th:value="${dto.employeeEntranceDate}" readonly>
                     </div>
                     <div class="input-group mb-3">
+                        <span class="input-group-text">EmployeeDel</span>
+                        <input type="text" class="form-control" th:value="${dto.del}" readonly>
+                    </div>
+                    <div class="input-group mb-3">
                         <span class="input-group-text">EmployeePosition</span>
                         <input type="text" class="form-control" th:value="${dto.position.getPositionName()}" readonly>
                     </div>

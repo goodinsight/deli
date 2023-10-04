@@ -39,7 +39,14 @@
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">EmployeeEntranceDate</span>
-                            <input type="text" class="form-control" name="employeeEntranceDate" th:value="${dto.employeeEntranceDate}">
+                            <input type="text" class="form-control" name="employeeEntranceDate" th:value="${dto.employeeEntranceDate}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">EmployeeDel</span>
+                            <select class="form-control" name="del" th:value="${dto.del}">
+                                <option value="false"> 재직 </option>
+                                <option value="true"> 퇴사 </option>
+                            </select>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">EmployeePosition</span>

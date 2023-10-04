@@ -177,6 +177,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.changeName(employeeAuthorityDTO.getEmployeeName());
         employee.changePhone(employeeAuthorityDTO.getEmployeePhone());
         employee.changePosition(employeeAuthorityDTO.getPosition());
+        employee.changeDel(employeeAuthorityDTO.isDel());
 
         employee.clearRoles();
 
