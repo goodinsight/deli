@@ -407,16 +407,16 @@
     let supplierPage = 1
     let supplierPageSize = 5
 
-    document.querySelector(".selectSupplier").addEventListener("click", function (e) {
+    document.querySelector("#selectSupplier").addEventListener("click", function (e) {
 
-        if (materialProcurementPlanCode.value.length > 0) {
+        // if (materialProcurementPlanCode.value.length > 0) {
 
             printSuppliers(1, 5);
             supplierModal.show();
 
-        } else {
-            alert("조달계획 코드를 먼저 선택해주세요.")
-        }
+        // } else {
+        //     alert("조달계획 코드를 먼저 선택해주세요.")
+        // }
 
     }, false)
 
@@ -474,10 +474,10 @@
 
     function printSuppliers(page, size) {
 
-        const type = "a"
-        const keyword = materialProcurementPlanCode.value
+        // const type = "a"
+        // const keyword = materialProcurementPlanCode.value
 
-        getSupplierList({page, size, type, keyword}).then(
+        getSupplierList({page, size}).then(
             data => {
                 printSupplierList(data.dtoList)
                 printSupplierPages(data)
@@ -507,7 +507,7 @@
 
 
     const supplierNo = document.querySelector(".supplierNo")
-    const inputSupplierName = document.querySelector(".selectSupplier")
+    const inputSupplierName = document.querySelector("#selectSupplier")
     const supplierCeo = document.querySelector(".supplierCeo")
     const supplierPhone = document.querySelector(".supplierPhone")
     const supplierStatus = document.querySelector(".supplierStatus")

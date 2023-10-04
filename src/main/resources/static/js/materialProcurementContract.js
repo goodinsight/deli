@@ -12,9 +12,9 @@ async function getPlan(planNo) {
     return result.data
 }
 
-async function getSupplierList({page, size, type, keyword}){
+async function getSupplierList({page, size}){
 
-    const result = await axios.get(`/materialProcurementContract/register/selectSupplier`, {params: {page, size, type, keyword}})
+    const result = await axios.get(`/materialProcurementContract/register/selectSupplier`, {params: {page, size}})
 
     return result.data
 }
