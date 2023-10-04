@@ -26,7 +26,7 @@ public class CooperatorClientRepositoryTests {
 
     @Test
     public void testInsert(){ //추가
-        IntStream.rangeClosed(1,10).forEach(i -> {
+        IntStream.rangeClosed(2,10).forEach(i -> {
             CooperatorClient cooperatorClient = CooperatorClient.builder()
                     .corporateRegistrationNo(1234567891)
                     .clientCeo("대표명")

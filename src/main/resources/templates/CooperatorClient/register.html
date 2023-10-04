@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>구매협력회사 등록</title>
+</head>
+
+<div layout:fragment="content">
+
+    <div class="row mt-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    구매협력회사 등록
+                </div>
+                <div class="card-body mt-3">
+                    <form action="/CooperatorClient/register" method="post">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">사업자등록번호</span>
+                            <input type="text" name="corporateRegistrationNo" class="form-control" placeholder="사업자등록번호">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">회사명</span>
+                            <input type="text" name="clientName" class="form-control" placeholder="회사명">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">대표자명</span>
+                            <input type="text" name="clientCeo" class="form-control" placeholder="대표자명">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">이메일</span>
+                            <input type="text" name="clientEmail" class="form-control" placeholder="이메일">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">연락처</span>
+                            <input type="text" name="clientPhone" class="form-control" placeholder="연락처">
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">주소</span>
+                            <input type="text" name="clientAddress" class="form-control" placeholder="주소">
+                        </div>
+                        <div class="input-group mb-3" >
+                            <span class="input-group-text">비고</span>
+                            <textarea name="clientEtc" rows="5" cols="50" class="form-control h-25"></textarea>
+                        </div>
+                        <div class="my-4">
+                            <div class="float-end">
+                                <button type="submit" class="btn btn-primary submitBtn">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                </div><!-- end card body -->
+            </div><!-- end card -->
+        </div><!-- end col -->
+    </div><!-- end row -->
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</div>
+
+<script layout:fragment="script" th:inline="javascript">
+
+    const auth = [[${#authentication}]]
+
+    console.log(auth)
+
+    //등록시 에러 처리-----------------------------------
+
+    const errors = [[${errors}]]
+    console.log(errors)
+
+    let errorMsg = ''
+
+    if(errors){
+        for(let i = 0; i < errors.length; i++){
+            errorMsg += `${errors[i].field} : ${errors[i].code} \n`
+        }
+        alert(errorMsg)
+    }
+
+</script>
+
+
+
+</html>
