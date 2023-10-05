@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout.html}">
 <head>
@@ -12,92 +11,179 @@
 <div layout:fragment="content">
 
     <div class="row mt-3">
-        <div class="col">
+        <div class="col-lg-12">
             <div class="card">
-                <div class="card-header">
-                    발주 등록
+                <div class="card-title">
+                    <strong>발주 등록</strong>
+                    <hr>
                 </div>
                 <div class="card-body mt-3">
-                    <form action="/order/register" method="post">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">계획 일련번호</span>
-                            <input type="text" name="materialProcurementPlanNo" class="form-control selectPlan" placeholder="클릭해주세요" readonly>
+                    <form class="form-horizontal" action="/order/register" method="post">
+
+                        <div class="row">
+                            <label class="col-sm-3 control-label"><strong>계획 일련번호</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="materialProcurementPlanNo" class="form-control selectPlan"
+                                       placeholder="클릭해서 불러오기">
+                            </div>
+
+                            <label class="col-sm-3 control-label"><strong>계약 코드</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="materialProcurementContractCode"
+                                       class="form-control selectContract" placeholder="클릭하여 불러오기">
+                            </div>
+
+                            <label class="col-sm-3 control-label"><strong>자재 코드</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="materialCode" class="form-control materialCode">
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>자재 명</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="materialName" class="form-control materialName">
+                            </div>
+
+                            <label class="col-sm-3 control-label"><strong>카테고리1</strong></label>
+                            <div class="col-sm-3">
+                                <select class="form-control" placeholder="분류 선택">
+                                    <optgroup label="분류">
+                                        <option value="type1">타입1</option>
+                                        <option value="type2">타입2</option>
+                                        <option value="type3">타입3</option>
+                                    </optgroup>
+                                    <optgroup label="분류2">
+                                        <option value="type1">타입1</option>
+                                        <option value="type2">타입2</option>
+                                        <option value="type3">타입3</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+
+                            <label class="col-sm-3 control-label"><strong>카테고리2</strong></label>
+                            <div class="col-sm-3">
+                                <select class="form-control" placeholder="분류 선택">
+                                    <optgroup label="분류">
+                                        <option value="type1">타입1</option>
+                                        <option value="type2">타입2</option>
+                                        <option value="type3">타입3</option>
+                                    </optgroup>
+                                    <optgroup label="분류2">
+                                        <option value="type1">타입1</option>
+                                        <option value="type2">타입2</option>
+                                        <option value="type3">타입3</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+
+
+                            <label class="col-sm-3 control-label"><strong>소요량</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="materialRequirementsCount"
+                                       class="form-control materialRequirementsCount">
+                            </div>
+                            <hr>
+                            <label class="col-sm-3 control-label"><strong>자재 공급단가</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="materialSupplyPrice" class="form-control materialSupplyPrice"
+                                       readonly>
+                            </div>
                         </div>
-                        <div class="input-group mb-3 pl-5">
-                            <span class="input-group-text">자재 코드</span>
-                            <input type="text" name="materialCode" class="form-control materialCode"  readonly>
+                        <hr>
+
+                        <div class="row">
+                            <label class="col-sm-3 control-label"><strong>자재 협력사명</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="supplierName" class="form-control supplierName" readonly>
+                            </div>
+
+                            <label class="col-sm-3 control-label"><strong>협력사 대표자</strong></label>
+                            <div class="col-sm-3">
+                                <input type="text" name="supplierCeoName" class="form-control supplierCeoName" readonly>
+                            </div>
+
+                            <label class="col-sm-3 control-label"><strong>대표 연락처</strong></label>
+                            <div class="col-sm-3">
+                                <input type="text" name="supplierTel" class="form-control supplierTel" readonly>
+                            </div>
                         </div>
-                        <div class="input-group mb-3 pl-5">
-                            <span class="input-group-text">자재 명</span>
-                            <input type="text" name="materialName" class="form-control materialName" readonly>
+                        <hr>
+                        <div class="row">
+                            <label class="col-sm-3 control-label"><strong>발주 코드</strong></label>
+                            <div class="col-sm-3">
+                                <input type="text" name="orderCode" class="form-control orderCode" placeholder="클릭해주세요"
+                                       readonly>
+                            </div>
+
+                            <label class="col-sm-3 control-label"><strong>담당자 이름</strong></label>
+                            <div class="col-sm-3">
+                                <input type="text" name="employeeName" class="form-control"
+                                       th:value="${user.employeeName}" readonly>
+                            </div>
+
+                            <span class="col-sm-3 control-label"><strong>발주 수량</strong></span>
+                            <div class="col-sm-3">
+                                <input type="text" name="orderQuantity" class="form-control" placeholder="ex_)">
+                            </div>
                         </div>
-                        <div class="input-group mb-3 pl-5">
-                            <span class="input-group-text">소요량</span>
-                            <input type="text" name="materialRequirementsCount" class="form-control materialRequirementsCount" readonly>
+                        <hr>
+                        <div class="row">
+                            <label class="col-sm-3 control-label"><strong>납기일</strong></label>
+                            <div class="col-sm-3">
+                                <input type="text" name="procurementDeliveryDate"
+                                       class="form-control procurementDeliveryDate" readonly>
+                            </div>
+                            <div class="d-none input-group mb-3">
+                                <span class="input-group-text">계약 일련번호</span>
+                                <input type="text" name="materialProcurementContractNo"
+                                       class="form-control materialProcurementContractNo" placeholder="계약 일련번호"
+                                       readonly>
+                            </div>
+
+                            <label class="col-sm-3 control-label"><strong>계약일</strong></label>
+                            <div class="col-sm-3">
+                                <input type="text" name="materialProcurementContractDate"
+                                       class="form-control materialProcurementContractDate" readonly>
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>발주 코드</strong></label>
+                            <div class="col-sm-3">
+                                <input type="text" name="orderCode" class="form-control orderCode" placeholder="클릭해주세요"
+                                       readonly>
+                            </div>
+
+                            <span class="col-sm-3 control-label"><strong>발주일</strong></span>
+                            <div class="col-sm-3">
+                                <input type="date" name="orderDate" class="form-control" placeholder="발주일">
+                            </div>
+                            <div class="d-none input-group mb-3">
+                                <span class="input-group-text">담당자 일련번호</span>
+                                <input type="text" name="employeeNo" class="form-control" th:value="${user.employeeNo}"
+                                       readonly>
+                            </div>
                         </div>
-                        <div class="input-group mb-3 pl-5">
-                            <span class="input-group-text">납기일</span>
-                            <input type="text" name="procurementDeliveryDate" class="form-control procurementDeliveryDate" readonly>
-                        </div>
-                        <div class="d-none input-group mb-3">
-                            <span class="input-group-text">계약 일련번호</span>
-                            <input type="text" name="materialProcurementContractNo" class="form-control materialProcurementContractNo" placeholder="계약 일련번호" readonly>
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">계약 코드</span>
-                            <input type="text" name="materialProcurementContractCode" class="form-control selectContract" placeholder="클릭해주세요" readonly>
-                        </div>
-                        <div class="input-group mb-3 pl-5">
-                            <span class="input-group-text">계약일</span>
-                            <input type="text" name="materialProcurementContractDate" class="form-control materialProcurementContractDate"  readonly>
-                        </div>
-                        <div class="input-group mb-3 pl-5">
-                            <span class="input-group-text">자재공급단가</span>
-                            <input type="text" name="materialSupplyPrice" class="form-control materialSupplyPrice"  readonly>
-                        </div>
-                        <div class="input-group mb-3 pl-5">
-                            <span class="input-group-text">자재협력회사명</span>
-                            <input type="text" name="supplierName" class="form-control supplierName"  readonly>
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">발주 코드</span>
-                            <input type="text" name="orderCode" class="form-control orderCode" placeholder="클릭해주세요" readonly>
-                        </div>
-                        <div class="d-none input-group mb-3">
-                            <span class="input-group-text">담당자 일련번호</span>
-                            <input type="text" name="employeeNo" class="form-control" th:value="${user.employeeNo}" readonly>
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">담당자 이름</span>
-                            <input type="text" name="employeeName" class="form-control" th:value="${user.employeeName}" readonly>
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">발주 수량</span>
-                            <input type="text" name="orderQuantity" class="form-control" placeholder="발주 수량">
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">발주일</span>
-                            <input type="date" name="orderDate" class="form-control" placeholder="발주일">
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">납기일</span>
-                            <input type="date" name="orderDeliveryDate" class="form-control" placeholder="납기일">
-                        </div>
-                        <div class="d-none input-group mb-3">
-                            <span class="input-group-text">발주 상태</span>
-                            <input type="text" name="orderState" class="form-control" th:value="진행중" readonly>
-                        </div>
-                        <div class="input-group mb-3" >
-                            <span class="input-group-text">비고</span>
-                            <textarea name="orderEtc" rows="5" cols="50" class="form-control h-25"></textarea>
-                        </div>
+                        <hr>
+                        <div class="row">
+
+                            <div class="d-none input-group mb-3">
+                                <span class="input-group-text">납기일</span>
+                                <input type="date" name="orderDeliveryDate" class="form-control" placeholder="납기일">
+                            </div>
+                            <div class="d-none input-group mb-3">
+                                <span class="input-group-text">발주 상태</span>
+                                <input type="text" name="orderState" class="form-control" placeholder="발주 상태 - 추후 숨길 부분"
+                                       th:value="진행중" readonly>
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>비고</strong></label>
+                            <div class="col-sm-9">
+                                <textarea name="orderEtc" rows="5" cols="50"  style="width: 100% !important;" class="textarea"></textarea>
+                            </div>
+                        </div><!--end row-->
                         <div class="my-4">
-                            <div class="float-end">
+                            <div class="float-right">
                                 <button type="submit" class="btn btn-primary submitBtn">등록</button>
                                 <button type="reset" class="btn btn-secondary">초기화</button>
                             </div>
                         </div>
                     </form>
+
                 </div><!-- end card body -->
             </div><!-- end card -->
         </div><!-- end col -->
@@ -209,20 +295,21 @@
 </div>
 
 
-
-
 <script layout:fragment="script" th:inline="javascript">
 
     const auth = [[${#authentication}]]
 
+    console.log(auth)
+
     //등록시 에러 처리-----------------------------------
 
     const errors = [[${errors}]]
+    console.log(errors)
 
     let errorMsg = ''
 
-    if(errors){
-        for(let i = 0; i < errors.length; i++){
+    if (errors) {
+        for (let i = 0; i < errors.length; i++) {
             errorMsg += `${errors[i].field} : ${errors[i].code} \n`
         }
         alert(errorMsg)
@@ -249,13 +336,17 @@
         planModal.hide()
     })
 
-    function printPlanList(dtoList){//조달 계획 목록
+    function printPlanList(dtoList) {//조달 계획 목록
+
+        console.log("print plan list")
 
         let str = ''
 
-        if(dtoList && dtoList.length > 0){
+        if (dtoList && dtoList.length > 0) {
 
-            for( const dto of dtoList) {
+            for (const dto of dtoList) {
+
+                console.log(dto)
 
                 str += `<tr>
                             <td data-planNo="${dto.materialProcurementPlanNo}">${dto.materialProcurementPlanNo}</td>
@@ -274,18 +365,18 @@
 
     }
 
-    function printPlanPages(data){//조달 계획 목록 페이징 처리
+    function printPlanPages(data) {//조달 계획 목록 페이징 처리
 
         let pageStr = '';
 
-        if(data.prev) {
-            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.start-1}">PREV</a></li>`
+        if (data.prev) {
+            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.start - 1}">PREV</a></li>`
         }
-        for(let i = data.start; i <= data.end; i++){
-            pageStr += `<li class="page-item ${ i == data.page ? "active" : ""}"><a class="page-link" data-page="${i}">${i}</a></li>`
+        for (let i = data.start; i <= data.end; i++) {
+            pageStr += `<li class="page-item ${i == data.page ? "active" : ""}"><a class="page-link" data-page="${i}">${i}</a></li>`
         }
-        if(data.next) {
-            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end+1}">NEXT</a></li>`
+        if (data.next) {
+            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end + 1}">NEXT</a></li>`
         }
         planPaging.innerHTML = pageStr
 
@@ -301,19 +392,20 @@
                 printPlanPages(data)
             }
         ).catch(e => {
+            console.log("print plans error")
             console.error(e)
         })
     }
 
     //계획 목록 페이징
-    planPaging.addEventListener("click", function(e) {
+    planPaging.addEventListener("click", function (e) {
 
         e.preventDefault()
         e.stopPropagation()
 
         const target = e.target
 
-        if(!target || target.tagName != 'A'){
+        if (!target || target.tagName != 'A') {
             return
         }
 
@@ -331,25 +423,28 @@
 
 
     //계획 항목 클릭시 input 에 반영
-    planList.addEventListener("click", function (e){
+    planList.addEventListener("click", function (e) {
 
         e.preventDefault()
         e.stopPropagation()
 
+        console.log("plan click")
+
         const target = e.target
 
-        if(!target || target.tagName != 'TD'){
+        if (!target || target.tagName != 'TD') {
             return
         }
 
         const planNo = target.getAttribute("data-planNo")
 
-        if(!planNo){
+        if (!planNo) {
             return
         }
 
         getPlan(planNo).then(plan => {
 
+            console.log(plan)
             inputPlanNo.value = plan.materialProcurementPlanNo
             //조달 계획 정보를 가져와서 화면에 반영해야할 항목들은 여기에-----------------------------------------------------
             materialCode.value = plan.materialCode
@@ -379,10 +474,10 @@
 
     document.querySelector(".selectContract").addEventListener("click", function (e) {
 
-        if(materialCode.value.length > 0){
+        if (materialCode.value.length > 0) {
             printContracts(1, 5)
             contractModal.show()
-        }else {
+        } else {
             alert("계획을 먼저 선택해주세요.")
         }
 
@@ -392,13 +487,15 @@
         contractModal.hide()
     })
 
-    function printContractList(dtoList){//조달 계약 목록
+    function printContractList(dtoList) {//조달 계약 목록
 
         let str = ''
 
-        if(dtoList && dtoList.length > 0){
+        if (dtoList && dtoList.length > 0) {
 
-            for( const dto of dtoList) {
+            for (const dto of dtoList) {
+
+                console.log(dto)
 
                 str += `<tr>
                             <td data-contractNo="${dto.materialProcurementContractNo}">${dto.materialProcurementContractNo}</td>
@@ -418,18 +515,18 @@
     }
 
 
-    function printContractPages(data){//조달 계약 목록 페이징 처리
+    function printContractPages(data) {//조달 계약 목록 페이징 처리
 
         let pageStr = '';
 
-        if(data.prev) {
-            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.start-1}">PREV</a></li>`
+        if (data.prev) {
+            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.start - 1}">PREV</a></li>`
         }
-        for(let i = data.start; i <= data.end; i++){
-            pageStr += `<li class="page-item ${ i == data.page ? "active" : ""}"><a class="page-link" data-page="${i}">${i}</a></li>`
+        for (let i = data.start; i <= data.end; i++) {
+            pageStr += `<li class="page-item ${i == data.page ? "active" : ""}"><a class="page-link" data-page="${i}">${i}</a></li>`
         }
-        if(data.next) {
-            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end+1}">NEXT</a></li>`
+        if (data.next) {
+            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end + 1}">NEXT</a></li>`
         }
         contractPaging.innerHTML = pageStr
 
@@ -453,14 +550,14 @@
     }
 
     //계약 목록 페이징
-    contractPaging.addEventListener("click", function(e) {
+    contractPaging.addEventListener("click", function (e) {
 
         e.preventDefault()
         e.stopPropagation()
 
         const target = e.target
 
-        if(!target || target.tagName != 'A'){
+        if (!target || target.tagName != 'A') {
             return
         }
 
@@ -478,30 +575,35 @@
     const supplierName = document.querySelector(".supplierName")
 
     //계획 항목 클릭시 input 에 반영
-    contractList.addEventListener("click", function (e){
+    contractList.addEventListener("click", function (e) {
 
         e.preventDefault()
         e.stopPropagation()
 
+        console.log("plan click")
+
         const target = e.target
 
-        if(!target || target.tagName != 'TD'){
+        if (!target || target.tagName != 'TD') {
             return
         }
 
         const contractNo = target.getAttribute("data-contractNo")
 
-        if(!contractNo){
+        if (!contractNo) {
             return
         }
 
         getContract(contractNo).then(contract => {
 
+            console.log(contract)
             materialProcurementContractNo.value = contract.materialProcurementContractNo
+            //계약 정보를 가져와서 화면에 반영해야할 항목들은 여기에------------------------------------------------------------
             inputContractCode.value = contract.materialProcurementContractCode
             materialProcurementContractDate.value = new Date(contract.materialProcurementContractDate).toISOString().split('T')[0]
             materialSupplyPrice.value = contract.materialSupplyPrice
             supplierName.value = contract.supplierName
+            //-----------------------------------------------------------------------------------------------------------
             contractModal.hide()
 
         }).catch(e => alert('error'))
@@ -513,14 +615,14 @@
 
     const orderCode = document.querySelector(".orderCode")
 
-    orderCode.addEventListener("click", function(e) {
+    orderCode.addEventListener("click", function (e) {
 
         let str = 'ORDER-'
 
-        str += new Date().toISOString().split('T')[0].replaceAll('-','')
+        str += new Date().toISOString().split('T')[0].replaceAll('-', '')
         str += '-'
 
-        getCodeCount(str).then( result => {
+        getCodeCount(str).then(result => {
 
             str += result.data
 
@@ -532,9 +634,7 @@
     }, false)
 
 
-
 </script>
-
 
 
 </html>
