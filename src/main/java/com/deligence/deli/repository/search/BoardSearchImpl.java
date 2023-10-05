@@ -211,12 +211,6 @@ public class BoardSearchImpl extends QuerydslRepositorySupport implements BoardS
 
         long totalCount = boardJPQLQuery.fetchCount();
 
-//        boardList.forEach(board1 -> {
-//            System.out.println(board1.getBno());
-//            System.out.println(board1.getImageSet());
-//            System.out.println("----------------");
-//        });
-
         return new PageImpl<>(dtoList, pageable, totalCount);
     }
 

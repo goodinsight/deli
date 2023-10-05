@@ -25,10 +25,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private PasswordEncoder passwordEncoder;
 
-//    public CustomUserDetailsService() {
-//        this.passwordEncoder = new BCryptPasswordEncoder();
-//    }
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
@@ -59,11 +55,5 @@ public class CustomUserDetailsService implements UserDetailsService {
         log.info(employeeSecurityDTO);
 
         return employeeSecurityDTO;
-//        UserDetails userDetals = User.builder()
-//                .username("user11")
-//                .password(passwordEncoder.encode("1111"))
-//                .authorities("ROLE_USER")
-//                .build();
-//        return userDetals;
     }
 }

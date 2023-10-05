@@ -167,7 +167,6 @@ public class EmployeeController {
 
     }
 
-    //@PreAuthorize("principal.username == #employeeJoinDTO.employeeId")    //해당 사용자가 일치하는 경우 수정 권한
     @PreAuthorize("isAuthenticated() and principal.username.equals(#employeeJoinDTO.employeeId)")  // 인가받은 사용자(운영자)와 본인 정보만 접근가능
     @PostMapping("/employee/modify")
     public String modify(PageRequestDTO pageRequestDTO,

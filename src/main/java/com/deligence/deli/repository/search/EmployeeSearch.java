@@ -11,5 +11,4 @@ public interface EmployeeSearch {
 
     Page<Employee> searchAll(String[] types, String keyword, Pageable pageable);
 
-//    Page<EmployeeSecurityDTO> searchWithAll(String[] types, String keyword, Pageable pageable);
 }
