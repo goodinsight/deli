@@ -72,7 +72,6 @@
                             <th scope="col" id="materialSupplyPrice">공급 단가</th>
                             <th scope="col" id="supplierName">납품 업체명</th>
                             <th scope="col" id="materialProcurementContractState">조달 계약 상태</th>
-                            <th scope="col" id="regDate">등록일</th>
 
                         </tr>
                         </thead>
@@ -88,7 +87,6 @@
                             <td>[[${dto.materialSupplyPrice}]]</td>
                             <td>[[${dto.supplierName}]]</td>
                             <td>[[${dto.materialProcurementContractState}]]</td>
-                            <td>[[${#temporals.format(dto.regDate, 'yyyy-MM-dd')}]]</td><!-- format에서 createDate로 수정 -->
                         </tr>
                         </tbody>
                     </table>
@@ -135,24 +133,7 @@
     </div> <!--end row -->
 
 
-    <div class="modal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Modal body text goes here.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
 
-        </div>
-    </div>
 
 </div>
 
@@ -160,11 +141,7 @@
 
     console.log("자재조달계약 목록 페이지")
 
-    $(document).ready(function () {
-        console.log([[${orderPageRequestDTO}]])
-        console.log([[${orderPageRequestDTO.link}]])
-        console.log([[${responseDTO}]])
-    })
+
 
     document.querySelector(".pagination").addEventListener("click", function(e){
 
@@ -194,15 +171,6 @@
         self.location = '/materialProcurementContract/list'
 
     }, false)
-
-    //show modal
-    const result = [[${result}]]
-
-    const modal = new bootstrap.Modal(document.querySelector(".modal"))
-
-    if(result){
-        modal.show()
-    }
 
 
 </script>
