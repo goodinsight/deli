@@ -178,7 +178,7 @@
         const str = `<div class="card col-4">
                         <div class="card-header d-flex justify-content-center">
                             ${materialImgName}
-                            <button class="btn-sm btn-danger" onclick="javascript:removeFile('${materialUuid}', '${materialImgName}', this)" >X</button>
+                            <button class="btn-sm btn-danger" type="button" onclick="javascript:removeFile('${materialUuid}', '${materialImgName}', this)" >X</button>
                         </div>
                         <div class="card-body">
                             <img src="/viewMaterial/${link}" data-src="${materialUuid+"_"+materialImgName}" >
