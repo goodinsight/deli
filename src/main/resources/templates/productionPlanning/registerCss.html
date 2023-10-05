@@ -6,7 +6,7 @@
       layout:decorate="~{/layout/layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>제품 생산 계획 등록</title>
+    <title>자재조달계획 등록</title>
 </head>
 
 <div layout:fragment="content">
@@ -20,7 +20,6 @@
                 </div>
                 <div class="card-body mt-3">
                     <form class="form-horizontal" action="/productionPlanning/register" method="post">
-
                         <div class="row">
                             <label class="col-sm-3 control-label"><strong>제품계약 일련번호</strong></label>
                             <div class="col-sm-9">
@@ -56,67 +55,65 @@
                                 <input type="text" name="productionQuantity" class="form-control productionQuantity">
                             </div>
                         </div>
+                    </form>
+                    <div class="input-group mb-3 d-none">
+                        <span class="input-group-text">클라이언트 회사명</span>
+                        <input type="text" name="clientName" class="form-control clientName" readonly>
+                    </div>
+                    <div class="input-group mb-3 d-none">
+                        <span class="input-group-text">클라이언트 계약상태</span>
+                        <input type="text" name="clientStatus" class="form-control clientStatus" readonly>
+                    </div>
+                    <div class="input-group mb-3 d-none">
+                        <span class="input-group-text">제품 계약 납기일</span>
+                        <input type="date" name="productDeliveryDate" class="form-control productDeliveryDate"
+                               readonly>
+                    </div>
+                    <hr>
 
-                        <div class="input-group mb-3 d-none">
-                            <span class="input-group-text">클라이언트 회사명</span>
-                            <input type="text" name="clientName" class="form-control clientName" readonly>
-                        </div>
-                        <div class="input-group mb-3 d-none">
-                            <span class="input-group-text">클라이언트 계약상태</span>
-                            <input type="text" name="clientStatus" class="form-control clientStatus" readonly>
-                        </div>
-                        <div class="input-group mb-3 d-none">
-                            <span class="input-group-text">제품 계약 납기일</span>
-                            <input type="date" name="productDeliveryDate" class="form-control productDeliveryDate"
-                                   readonly>
-                        </div>
-                        <hr>
+                    <button class="btn btn-default btn-sm" id="btnMaterial" onclick=addMaterial()>필요 자재 추가</button>
 
-                        <div class="mrl" id="divBtn">
 
-                            <div class="input-group mb-3">
-                                <span>
-                                  <input class="btn btn-default btn-sm" type="button" value="필요 자재 추가">
-                                </span>
-                            </div>
-                        </div>
+                    <div class="smackdown">
+                        <!--자재 추가 영역-->
+                    </div>
 
-                        <div class="input-group mb-3 d-none">
-                            <span class="input-group-text">제품별 필요 자재 항목 일련번호</span>
-                            <input type="text" name="materialRequirementsListNo"
-                                   class="form-control materialRequirementsListNo" readonly>
+                    <div class="input-group mb-3 d-none">
+                        <span class="input-group-text">제품별 필요 자재 항목 일련번호</span>
+                        <input type="text" name="materialRequirementsListNo"
+                               class="form-control materialRequirementsListNo">
+                    </div>
+                    <div class="input-group mb-3 d-none">
+                        <span class="input-group-text">제품 일련번호</span>
+                        <input type="text" name="productNo" class="form-control productNo">
+                    </div>
+                    <div class="input-group mb-3 d-none">
+                        <span class="input-group-text">제품 코드</span>
+                        <input type="text" name="productCode2" class="form-control productCode2" >
+                    </div>
+                    <div class="input-group mb-3 d-none">
+                        <span class="input-group-text">제품 이름</span>
+                        <input type="text" name="productName2" class="form-control productName2" readonly>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-3 control-label selectMrl"><strong>필요 자재 코드</strong></label>
+                        <div class="col-sm-3">
+                            <input type="text" name="materialCode" class="form-control selectMrl" id="selectMrl"
+                                   placeholder="클릭해주세요" readonly>
                         </div>
-                        <div class="input-group mb-3 d-none">
-                            <span class="input-group-text">제품 일련번호</span>
-                            <input type="text" name="productNo" class="form-control productNo" readonly>
+                        <label class="col-sm-3 control-label materialName"><strong>자재 이름</strong></label>
+                        <div class="col-sm-3">
+                            <input type="text" name="materialName" class="form-control materialName" readonly>
                         </div>
-                        <div class="input-group mb-3 d-none">
-                            <span class="input-group-text">제품 코드</span>
-                            <input type="text" name="productCode2" class="form-control productCode2" readonly>
+                        <label class="col-sm-3 control-label materialType"><strong>자재 타입</strong></label>
+                        <div class="col-sm-3">
+                            <input type="text" name="materialType" class="form-control materialType" readonly>
                         </div>
-                        <div class="input-group mb-3 d-none">
-                            <span class="input-group-text">제품 이름</span>
-                            <input type="text" name="productName2" class="form-control productName2" readonly>
+                        <label class="col-sm-3 control-label quantity" ><strong>필요 수량</strong></label>
+                        <div class="col-sm-3">
+                            <input type="text" name="quantity" class="form-control quantity" >
                         </div>
-                        <div class="row">
-                            <label class="col-sm-3 control-label"><strong>필요 자재 코드</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="materialCode" class="form-control selectMrl" id="selectMrl"
-                                       placeholder="클릭해주세요" readonly>
-                            </div>
-                            <label class="col-sm-3 control-label"><strong>자재 이름</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="materialName" class="form-control materialName" readonly>
-                            </div>
-                            <label class="col-sm-3 control-label"><strong>자재 타입</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="materialType" class="form-control materialType" readonly>
-                            </div>
-                            <label class="col-sm-3 control-label"><strong>필요 수량</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="quantity" class="form-control quantity" readonly>
-                            </div>
-                        </div>
+                    </div>
                 </div>
                 <hr>
                 <div class="row">
@@ -149,7 +146,8 @@
                     </div>
                     <label class="col-sm-3 control-label"><strong>상세 내용</strong></label>
                     <div class="col-sm-9">
-                        <textarea name="detailExplaination" rows="5" cols="50" style="width: 100% !important;" class="textarea"></textarea>
+                        <textarea name="detailExplaination" rows="5" cols="50" style="width: 100% !important;"
+                                  class="textarea"></textarea>
                     </div>
 
                     <div class="input-group mb-3 d-none">
@@ -283,6 +281,12 @@
 
 
 <script layout:fragment="script" th:inline="javascript">
+
+
+    // 추가버튼
+    function addMaterial(){
+        $(".smackdown").append('<div class="row"><label class="col-sm-3 control-label"><strong>필요 자재 코드</strong></label><div class="col-sm-3"><input type="text" name="materialCode" class="form-control selectMrl" id="selectMrl" placeholder="클릭해주세요" readOnly></div><label class="col-sm-3 control-label"><strong>자재 이름</strong></label> <div class="col-sm-3"><input type="text" name="materialName" class="form-control materialName" readOnly></div><label class="col-sm-3 control-label"><strong>자재 타입</strong></label><div class="col-sm-3"><input type="text" name="materialType" class="form-control materialType" readOnly></div><label class="col-sm-3 control-label"><strong>필요 수량</strong></label><div class="col-sm-3"><input type="text" name="quantity" class="form-control quantity"></div></div><hr>');
+    }
 
 
     const auth = [[${#authentication}]]

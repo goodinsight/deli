@@ -114,6 +114,7 @@
                     <ul>
                         <li><a th:href="@{/materialInventory/listInventory}"><i class="ti-layout-list-thumb"></i>자재 재고</a></li>
                         <li><a th:href="@{/materialInOutHistory/materialInOutHistoryList}"><i class="ti-layout-list-thumb"></i>자재 입출고 정보</a></li>
+                        <li><a th:href="@{/materialInventory/listIncoming}"><i class="ti-layout-list-thumb"></i>자재 입고 관리</a></li>
                     </ul>
                 </li>
 
@@ -130,10 +131,12 @@
                 <li class="label">파트너관리</li>
                 <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-user"></i> 파트너 <span
                         class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <!--
                     <ul>
                         <li><a href="/cooperatorSupplier/list">협력사 목록</a></li>
                         <li><a href="/cooperatorSupplier/register">협력사 등록</a></li>
                     </ul>
+                    -->
                 </li>
                 <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-heart"></i> 클라이언트 <span
                         class="sidebar-collapse-icon ti-angle-down"></span></a>
