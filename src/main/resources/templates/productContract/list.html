@@ -36,7 +36,7 @@
                             <option value="a" th:selected="${orderPageRequestDTO.type == 'a'}">계약 코드</option>
                             <option value="b" th:selected="${orderPageRequestDTO.type == 'b'}">제품 코드</option>
                             <option value="c" th:selected="${orderPageRequestDTO.type == 'c'}">클라이언트 회사명</option>
-                            <option value="d" th:selected="${orderPageRequestDTO.type == 'd'}">계약일</option>
+                            <option value="d" th:selected="${orderPageRequestDTO.type == 'd'}">제품 계약일</option>
                         </select>
                     </div>
 
@@ -78,9 +78,9 @@
                             <th scope="col">제품 코드</th>
                             <th scope="col">계약 수량</th>
                             <th scope="col">클라이언트 회사명</th>
-                            <th scope="col">계약일</th>
-                            <th scope="col">납기일</th>
-                            <th scope="col">담당자</th>
+                            <th scope="col">제품 계약일</th>
+                            <th scope="col">제품 납기일</th>
+                            <th scope="col">계약 담당자</th>
                             <th scope="col">클라이언트 계약상태</th>
                             <th scope="col">계약 진행 상태</th>
                         </tr>
@@ -89,7 +89,8 @@
                         <tr th:each="dto:${responseDTO.dtoList}">
                             <td>[[${dto.productContractNo}]]</td>
                             <td>
-                                <a th:href="|@{/productContract/read(productContractNo = ${dto.productContractNo})}&${link}|" class="text-decoration-none">[[${dto.productContractCode}]]</a>
+                                <a th:href="|@{/productContract/read(productContractNo = ${dto.productContractNo})}&${link}|" class="text-decoration-none">
+                                    [[${dto.productContractCode}]]</a>
                             </td>
                             <td>[[${dto.productCode}]]</td>
                             <td>[[${dto.productQuantity}]]</td>

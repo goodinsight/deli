@@ -33,7 +33,7 @@ public class ProductContract extends BaseEntity{
 
     private LocalDate productContractDate;      //계약일 (-> 상세 / 등록)
 
-    private LocalDate productDeliveryDate;      //납기일 (-> 목록 / 상세 / 등록 / 수정)
+    private LocalDate productDeliveryDate;      //제품 납기일 (-> 목록 / 상세 / 등록 / 수정)
 
     private String productQuotation;            //견적내용(상세내용) (-> 상세)
 

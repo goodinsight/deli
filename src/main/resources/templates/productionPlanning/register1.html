@@ -42,11 +42,6 @@
                             <span class="input-group-text">계약 수량</span>
                             <input type="text" name="productQuantity" class="form-control productQuantity" readonly>
                         </div>
-                        <div class="input-group mb-3 pl-5">
-                            <span class="input-group-text">제품 납기일</span>
-                            <input type="text" name="productDeliveryDate" class="form-control productDeliveryDate" readonly>
-                        </div>
-
                         <div class="input-group mb-3">
                             <span class="input-group-text">생산 수량</span>
                             <input type="text" name="productionQuantity" class="form-control productionQuantity">
@@ -59,11 +54,10 @@
                             <span class="input-group-text">클라이언트 계약상태</span>
                             <input type="text" name="clientStatus" class="form-control clientStatus" readonly>
                         </div>
-                        <!--<div class="input-group mb-3 d-none">
-                            <span class="input-group-text">제품 계약 납기일</span>
-                            <input type="text" class="form-control productDeliveryDate"
-                                   th:value="${#temporals.format(dto.productDeliveryDate, 'yyyy-MM-dd')}" readonly>
-                        </div>-->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">제품 납기일</span>
+                            <input type="date" name="productDeliveryDate" class="form-control productDeliveryDate" readonly>
+                        </div>
                         <hr>
 
                         <div class="mrl" id="divBtn">
@@ -72,41 +66,26 @@
                                   <input class="btn btn-default btn-sm" type="button" value="필요 자재 추가">
                                 </span>
                             </div>
-                            <div class="input-group mb-3 d-none">
-                                <span class="input-group-text">제품별 필요 자재 항목 일련번호</span>
-                                <input type="text" name="materialRequirementsListNo" class="form-control materialRequirementsListNo" readonly>
-                            </div>
 
-                            <div class="input-group mb-3 d-none">
-                                <span class="input-group-text">제품 일련번호</span>
-                                <input type="text" name="productNo" class="form-control productNo" readonly>
-                            </div>
-                            <div class="input-group mb-3 d-none">
-                                <span class="input-group-text">제품 코드</span>
-                                <input type="text" name="productCode2" class="form-control productCode2" readonly>
-                            </div>
-                            <div class="input-group mb-3 d-none">
-                                <span class="input-group-text">제품 이름</span>
-                                <input type="text" name="productName2" class="form-control productName2" readonly>
-                            </div>
-                            <div class="input-group mb-3 d-none">
-                                <span class="input-group-text">제품 타입</span>
-                                <input type="text" name="productType2" class="form-control productType2" readonly>
-                            </div>
-                            <div class="input-group mb-3 pl-5">
-                                <span class="input-group-text">필요 자재 코드</span>
-                                <input type="text" name="materialCode" class="form-control selectMrl" id="selectMrl" placeholder="클릭해주세요" readonly>
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" style="margin-left: 100px">자재 이름</span>
-                                <input type="text" name="materialName" class="form-control materialName" readonly>
-                                <span class="input-group-text" style="margin-left: 20px">자재 타입</span>
-                                <input type="text" name="materialType" class="form-control materialType" readonly>
-                            </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" style="margin-left: 100px">필요 수량</span>
-                                <input type="text" name="quantity" class="form-control quantity" readonly>
-                            </div>
+                                <div class="input-group mb-3 d-none">
+                                    <span class="input-group-text">제품별 필요 자재 항목 일련번호</span>
+                                    <input type="hidden" name="materialRequirementsListNo" class="form-control materialRequirementsListNo" id="materialRequirementsListNo" readonly>
+                                </div>
+
+                                <div class="input-group mb-3 pl-5">
+                                    <span class="input-group-text">필요 자재 코드</span>
+                                    <input type="text" name="materialCode" class="form-control materialCode" id="materialCode" value="클릭해주세요"  onclick="new_window();"  readonly>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" style="margin-left: 100px">자재 이름</span>
+                                    <input type="text" name="materialName" class="form-control materialName" id="materialName" readonly>
+                                    <span class="input-group-text" style="margin-left: 20px">자재 타입</span>
+                                    <input type="text" name="materialType" class="form-control materialType" id="materialType" readonly>
+                                </div>
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" style="margin-left: 100px">필요 수량</span>
+                                    <input type="text" name="quantity" class="form-control quantity" id="quantity" readonly>
+                                </div>
                         </div>
                         <hr>
 
@@ -398,7 +377,8 @@
     const productCode = document.querySelector(".productCode")                //제품코드
     const productName = document.querySelector(".productName")                //제품이름
     const productType = document.querySelector(".productType")                //제품타입
-    const productQuantity = document.querySelector(".productQuantity")        //수량
+    const productQuantity = document.querySelector(".productQuantity")        //계약수량
+    const productDeliveryDate = document.querySelector(".productDeliveryDate")        //제품납기일
 
     //계약 항목 클릭시 input 에 반영
     contractList.addEventListener("click", function (e){
@@ -430,6 +410,7 @@
             productName.value = contract.productName
             productType.value = contract.productType
             productQuantity.value = contract.productQuantity
+            productDeliveryDate.value = new Date(contract.productDeliveryDate).toISOString().split('T')[0]
             //-----------------------------------------------------------------------------------------------------------
             contractModal.hide()
 
@@ -438,166 +419,6 @@
     }, false)
 
 
-
-    //제품별 필요 자재 선택 --------------------------------------------------------------------------------------------------
-
-    const mrlModal = new bootstrap.Modal(document.querySelector(".selectMrlModal"))
-
-    const mrlList = document.querySelector(".mrlList")  //자재 목록 DOM
-    const mrlPaging = document.querySelector(".mrlPaging")  //자재 페이지 선택 목록 DOM
-
-    const closeMrlBtn = document.querySelector(".closeMrlBtn")
-
-    let mrlPage = 1
-    let mrlPageSize = 5
-
-    document.querySelector(".selectMrl").addEventListener("click", function (e) {
-        console.log("select material modal show")
-
-        // if(productCode.value.length > 0){
-            printMrls(1, 5)
-            mrlModal.show()
-        // }else {
-        //     alert("제품 계약 코드를 먼저 선택해주세요.")
-        // }
-
-    }, false)
-
-    closeMrlBtn.addEventListener("click", function (e) {
-        mrlModal.hide()
-    })
-
-    function printMrlList(dtoList) { //자재 목록
-
-        let str = ''
-
-        if (dtoList && dtoList.length > 0) {
-
-            for ( const dto of dtoList) {
-
-                console.log(dto)
-
-                    str += `<tr>
-                              <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.materialRequirementsListNo}</td>
-                              <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.productCode}</td>
-                              <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.productName}</td>
-                              <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.productType}</td>
-                              <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.materialCode}</td>
-                              <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.materialName}</td>
-                              <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.materialType}</td>
-                              <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.quantity}</td>
-                          </tr>`
-            }
-        }
-
-      mrlList.innerHTML = str
-    }
-
-    function printMrlPages(data) { //자재 목록 페이징 처리
-
-        let pageStr = '';
-
-        if (data.prev) {
-            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.start - 1}">PREV</a></li>`
-        }
-        for (let i = data.start; i <= data.end; i++) {
-            pageStr += `<li class="page-item ${i == data.page ? "active" : ""}"><a class="page-link" data-page="${i}">${i}</a></li>`
-        }
-        if (data.next) {
-            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end + 1}">NEXT</a></li>`
-        }
-        mrlPaging.innerHTML = pageStr
-
-        mrlPage = data.page
-
-    }
-
-    function printMrls(page, size) {
-
-        // const type = "a"
-        // const keyword = productCode.value
-
-        // getMrlList({page, size, type, keyword}).then(
-        getMrlList({page, size}).then(
-                data => {
-                  printMrlList(data.dtoList)
-                  printMrlPages(data)
-                }
-        ).catch(e => {
-          console.error(e)
-        })
-    }
-
-    //자재 목록 페이징
-    mrlPaging.addEventListener("click", function (e) {
-
-        e.preventDefault()
-        e.stopPropagation()
-
-        const target = e.target
-
-        if (!target || target.tagName != 'A') {
-            return
-        }
-
-        const pageNum = target.getAttribute("data-page")
-        mrlPage = pageNum
-        printMrls(mrlPage, mrlPageSize)
-
-    }, false)
-
-    const materialRequirementsListNo = document.querySelector(".materialRequirementsListNo")
-    const productCode2 = document.querySelector(".productCode2")
-    const productName2 = document.querySelector(".productName2")
-    const productType2 = document.querySelector(".productType2")
-    const inputMaterialCode = document.querySelector(".selectMrl")
-    const materialName = document.querySelector(".materialName")
-    const materialType = document.querySelector(".materialType")
-    const quantity = document.querySelector(".quantity")
-
-    //자재 항목 클릭시 input에 반영
-    mrlList.addEventListener("click", function (e) {
-
-        e.preventDefault()
-        e.stopPropagation()
-
-        console.log("material click")
-
-        const target = e.target
-
-        if (!target || target.tagName != 'TD') {
-            return
-        }
-
-        const mrlNo = target.getAttribute("data-mrlNo")
-
-        if (!mrlNo) {
-            return;
-        }
-
-        getMrl(mrlNo).then(mrl => {
-
-            console.log(mrl)
-            console.log("check0")
-            materialRequirementsListNo.value = mrl.materialRequirementsListNo
-            productCode2.value = mrl.productCode
-            productName2.value = mrl.productName
-            productType2.value = mrl.productType
-            //자재 정보를 가져와서 화면에 반영해야 할 항목들은 여기에 --------------------------------------------------------
-            console.log("check1")
-            inputMaterialCode.value = mrl.materialCode
-            materialName.value = mrl.materialName
-            console.log("check2")
-            materialType.value = mrl.materialType
-            quantity.value = mrl.quantity
-            //------------------------------------------------------------------------------------------------------
-            console.log("성공")
-
-            mrlModal.hide()
-
-        }).catch(e => alert('error'))
-
-    }, false)
 
     //생산 계획 코드 생성 -------------------------------------------------------------------------------------------------------------
 
@@ -621,6 +442,21 @@
 
     }, false)
 
+
+    //자재 등록 새창 - 자재 등록 클릭시 '제품 별 자재 항목' 리스트 나옴
+
+    var new_window_width = 900;
+    var new_window_height = 800;
+    var positionX = ( window.screen.width / 2 ) - ( new_window_width / 2 );
+    var positionY = ( window.screen.height / 2 ) - ( new_window_height / 2 );
+    function new_window() {
+        window.open(
+            "/materialRequirementsList/list2",
+            "제품별 필요 자재 항목",
+            "width=" + new_window_width + ", height=" + new_window_height + ", top=" + positionY + ", left=" + positionX
+            // "width=900, height=800, top=100, left=300"    // 창 특성
+        );
+    }
 
 
 </script>

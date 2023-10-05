@@ -34,6 +34,10 @@
               <input type="text" name="productionPlanCode" class="form-control selectPlan" id="selectPlan" placeholder="클릭해주세요" readonly>
             </div>
             <div class="input-group mb-3 pl-5">
+              <span class="input-group-text">생산 납기일</span>
+              <input type="date" name="productionDeliveryDate" class="form-control productionDeliveryDate" readonly>
+            </div>
+            <div class="input-group mb-3 pl-5">
               <span class="input-group-text">제품 코드</span>
               <input type="text" name="productCode" class="form-control productCode" readonly>
             </div>
@@ -49,6 +53,7 @@
               <span class="input-group-text">계약 상태</span>
               <input type="text" name="clientStatus" class="form-control clientStatus" readonly>
             </div>
+            <hr>
 
             <div class="d-none input-group mb-3">
               <span class="input-group-text">자재 일련번호</span>
@@ -275,6 +280,7 @@
         str += `<tr>
                 <td data-planNo="${dto.productionPlanNo}">${dto.productionPlanNo}</td>
                 <td data-planNo="${dto.productionPlanNo}">${dto.productionPlanCode}</td>
+                <td data-planNo="${dto.productionPlanNo}">${dto.productionDeliveryDate}</td>
                 <td data-planNo="${dto.productionPlanNo}">${dto.productCode}</td>
                 <td data-planNo="${dto.productionPlanNo}">${dto.clientName}</td>
                 <td data-planNo="${dto.productionPlanNo}">${dto.productDeliveryDate}</td>
@@ -340,6 +346,7 @@
 
   const productionPlanNo = document.querySelector(".productionPlanNo")
   const inputPlanCode = document.querySelector("#selectPlan")
+  const productionDeliveryDate = document.querySelector(".productionDeliveryDate")
   const productCode = document.querySelector(".productCode")  //제품코드
   const clientName = document.querySelector(".clientName")  //클라이언트회사명
   const productDeliveryDate = document.querySelector(".productDeliveryDate")  //제품납기일
@@ -372,6 +379,7 @@
       productionPlanNo.value = plan.productionPlanNo
       //생산 계획 정보를 가져와서 화면에 반영해야 할 항복들은 여기에 --------------------------------------------------------
       inputPlanCode.value = plan.productionPlanCode
+      productionDeliveryDate.value = new Date(plan.productionDeliveryDate).toISOString().split('T')[0]
       productCode.value = plan.productCode
       clientName.value = plan.clientName
       productDeliveryDate.value = new Date(plan.productDeliveryDate).toISOString().split('T')[0]

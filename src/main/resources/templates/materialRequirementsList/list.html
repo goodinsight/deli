@@ -135,12 +135,7 @@
 <script layout:fragment="script" th:inline="javascript">
 
     console.log("제품 별 자재 항목 리스트 페이지")
-
-    $(document).ready(function () {
-        console.log([[${pageRequestDTO}]])
-        console.log([[${pageRequestDTO.link}]])
-        console.log([[${responseDTO}]])
-    })
+    
 
     document.querySelector(".pagination").addEventListener("click", function (e){
 

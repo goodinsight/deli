@@ -40,6 +40,8 @@
                         <span class="input-group-text" style="margin-left: 20px">제품 타입</span>
                         <input type="text" name="productType" class="form-control productType" th:value="${dto.productType}" readonly>
                     </div>
+
+
                     <div class="input-group mb-3 pl-5">
                         <span class="input-group-text">계약 수량</span>
                         <input type="text" name="productQuantity" class="form-control productQuantity" th:value="${dto.productQuantity}" readonly>
@@ -48,6 +50,7 @@
                         <span class="input-group-text">생산 수량</span>
                         <input type="text" name="productionQuantity" class="form-control productionQuantity" th:value="${dto.productionQuantity}" readonly>
                     </div>
+
                     <div class="input-group mb-3 d-none">
                         <span class="input-group-text">클라이언트 회사명</span>
                         <input type="text" name="clientName" class="form-control clientName" th:value="${dto.clientName}" readonly>
@@ -56,9 +59,10 @@
                         <span class="input-group-text">클라이언트 계약상태</span>
                         <input type="text" name="clientStatus" class="form-control clientStatus" th:value="${dto.clientStatus}" readonly>
                     </div>
-                    <div class="input-group mb-3 d-none">
-                        <span class="input-group-text">제품 계약 납기일</span>
-                        <input type="date" name="productDeliveryDate" class="form-control productDeliveryDate" th:value="${dto.productDeliveryDate}" readonly>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">제품 납기일</span>
+                        <input type="text" name="productDeliveryDate" class="form-control productDeliveryDate" th:value="${dto.productDeliveryDate}" readonly>
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">계약 담당자</span>

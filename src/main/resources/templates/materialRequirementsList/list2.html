@@ -85,7 +85,8 @@
                                 [[${dto.productCode}]]</td>
                             <td>[[${dto.productName}]]</td>
                             <td>[[${dto.productType}]]</td>
-                            <td  th:data-materialCode="${dto.materialCode}" th:data-materialName="${dto.materialName}" th:data-materialType="${dto.materialType}" th:data-quantity="${dto.quantity}" value="Send Value" onclick="sendValue(this.getAttribute('data-materialCode'), this.getAttribute('data-materialName'), this.getAttribute('data-materialType'), this.getAttribute('data-quantity') )">
+                            <td th:data-materialCode="${dto.materialCode}" th:data-materialName="${dto.materialName}" th:data-materialType="${dto.materialType}" th:data-quantity="${dto.quantity}"
+                                    value="Send Value" onclick="sendValue( this.getAttribute('data-materialCode'), this.getAttribute('data-materialName'), this.getAttribute('data-materialType'), this.getAttribute('data-quantity') )">
                                 [[${dto.materialCode}]]</td>
                             <td>[[${dto.materialName}]]</td>
                             <td>[[${dto.materialType}]]</td>
