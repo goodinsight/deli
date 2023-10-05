@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layout/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>제품별 필요 자재 항목 등록</title>
+</head>
+
+<div layout:fragment="content">
+
+    <div class="row mt-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    제품별 필요자재 항목 등록
+                </div>
+                <div class="card-body mt-3">
+                    <form action="/materialRequirementsList/register" method="post">
+
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">필요 자재 항목 일련 번호</span>
+                            <input type="text" name="materialRequirementsListNo" class="form-control materialRequirementsListNo" readonly>
+                        </div>
+
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">제품 일련번호</span>
+                            <input type="text" name="productNo" class="form-control productNo" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">제품 코드</span>
+                            <input type="text" name="productCode" class="form-control selectProduct" placeholder="클릭해주세요" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">제품 이름</span>
+                            <input type="text" name="productName" class="form-control productName" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">제품 타입</span>
+                            <input type="text" name="productType" class="form-control productType" readonly>
+                        </div>
+
+                        <div class="input-group mb-3">
+                                <span>
+                                  <input class="btn btn-default btn-sm" type="button" value="필요 자재 추가">
+                                </span>
+                        </div>
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">자재 일련번호</span>
+                            <input type="text" name="materialNo" class="form-control materialNo" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재 코드</span>
+                            <input type="button" name="materialCode" class="form-control selectMaterial" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재 타입</span>
+                            <input type="text" name="materialType" class="form-control materialType" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재 이름</span>
+                            <input type="text" name="materialName" class="form-control materialName" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">수량</span>
+                            <input type="text" name="quantity" class="form-control quantity">
+                        </div>
+
+
+                        <div class="my-4">
+                            <div class="float-end">
+                                <a th:href="@{/materialRequirementsList/list}" class="text-decoration-none">
+                                    <button type="button" class="btn btn-outline-dark">List</button>
+                                </a>
+                                <button type="submit" class="btn btn-primary submitBtn">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div><!--end card body-->
+            </div><!--end card-->
+        </div><!--end col-->
+    </div><!--end row-->
+
+    <!--자재 선택을 위한 모달창-->
+    <div class="modal selectProductModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">제품 검색</h5>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">NO</th>
+                                            <th scope="col">제품 코드</th>
+                                            <th scope="col">제품 이름</th>
+                                            <th scope="col">제품 타입</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody class="productList">
+
+                                        </tbody>
+                                    </table>
+
+                                    <div class="float-end">
+                                        <ul class="pagination flex-wrap productPaging"></ul>
+                                    </div>
+                                </div><!--end card body-->
+                            </div><!--end card-->
+                        </div><!--end col-->
+                    </div><!--end row-->
+
+                </div><!--end modal body-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark closeProductBtn">Close</button>
+                </div>
+            </div>
+        </div>
+    </div><!--end 제품 모달창-->
+
+
+    <!--자재 선택을 위한 모달창-->
+    <div class="modal selectMaterialModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">자재 검색</h5>
+                </div>
+                <div class="modal-body">
+
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">NO</th>
+                                            <th scope="col">자재 코드</th>
+                                            <th scope="col">자재 이름</th>
+                                            <th scope="col">자재 분류</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody class="materialList">
+
+                                        </tbody>
+                                    </table>
+
+                                    <div class="float-end">
+                                        <ul class="pagination flex-wrap materialPaging"></ul>
+                                    </div>
+                                </div><!--end card body-->
+                            </div><!--end card-->
+                        </div><!--end col-->
+                    </div><!--end row-->
+
+                </div><!--end modal body-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark closeMaterialBtn">Close</button>
+                </div>
+            </div>
+        </div>
+    </div><!--end 자재 모달창-->
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="/js/materialRequirementsList.js"></script>
+
+</div>
+
+<script layout:fragment="script" th:inline="javascript">
+
+
+    const auth = [[${#authentication}]]
+
+    console.log(auth)
+
+    // 등록시 에러 처리 ----------------------------------------------------------------
+
+    const errors = [[${errors}]]
+    console.log(errors)
+
+    let errorMsg = ''
+
+    if (errors) {
+        for (let i = 0; i < errors.length; i++) {
+            errorMsg += `${errors[i].field}은(는) ${errors[i].code} \n`
+        }
+        alert(errorMsg)
+    }
+
+
+    //제품 선택 --------------------------------------------------------------------------------------------------
+
+    const productModal = new bootstrap.Modal(document.querySelector(".selectProductModal"))
+
+    const productList = document.querySelector(".productList")  //제품 목록 DOM
+    const productPaging = document.querySelector(".productPaging")  //제품 페이지 선택 목록 DOM
+
+    const closeProductBtn = document.querySelector(".closeProductBtn")
+
+    let productPage = 1
+    let productPageSize = 5
+
+    document.querySelector(".selectProduct").addEventListener("click", function (e) {
+        console.log("select product modal show")
+        printProducts(1, 5)
+        productModal.show()
+    }, false)
+
+    closeProductBtn.addEventListener("click", function (e) {
+        productModal.hide()
+    })
+
+    function printProductList(dtoList) { //자재 목록
+
+        let str = ''
+
+        if (dtoList && dtoList.length > 0) {
+
+            for ( const dto of dtoList) {
+
+                console.log(dto)
+
+                str += `<tr>
+                  <td data-productsNo = "${dto.productNo}">${dto.productNo}</td>
+                  <td data-productsNo = "${dto.productNo}">${dto.productCode}</td>
+                  <td data-productsNo = "${dto.productNo}">${dto.productName}</td>
+                  <td data-productsNo = "${dto.productNo}">${dto.productType}</td>
+              </tr>`
+            }
+        }
+
+        productList.innerHTML = str
+    }
+
+    function printProductPages(data) { //자재 목록 페이징 처리
+
+        let pageStr = '';
+
+        if (data.prev) {
+            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.start - 1}">PREV</a></li>`
+        }
+        for (let i = data.start; i <= data.end; i++) {
+            pageStr += `<li class="page-item ${i == data.page ? "active" : ""}"><a class="page-link" data-page="${i}">${i}</a></li>`
+        }
+        if (data.next) {
+            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end + 1}">NEXT</a></li>`
+        }
+        productPaging.innerHTML = pageStr
+
+        productPage = data.page
+
+    }
+
+    function printProducts(page, size) {
+
+        getProductList({page, size}).then(
+            data => {
+                printProductList(data.dtoList)
+                printProductPages(data)
+            }
+        ).catch(e => {
+            console.error(e)
+        })
+    }
+
+    //제품 목록 페이징
+    productPaging.addEventListener("click", function (e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        const target = e.target
+
+        if (!target || target.tagName != 'A') {
+            return
+        }
+
+        const pageNum = target.getAttribute("data-page")
+        productPage = pageNum
+        printProducts(productPage, productPageSize)
+
+    }, false)
+
+    const productNo = document.querySelector(".productNo")
+    const inputProductCode = document.querySelector(".selectProduct")
+    const productName = document.querySelector(".productName")
+    const productType = document.querySelector(".productType")
+
+    //제품 항목 클릭시 input에 반영
+    productList.addEventListener("click", function (e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        console.log("product click")
+
+        const target = e.target
+
+        if (!target || target.tagName != 'TD') {
+            return
+        }
+
+        const productsNo = target.getAttribute("data-productsNo")
+
+        if (!productsNo) {
+            return;
+        }
+
+        getProduct(productsNo).then(product => {
+
+            console.log(product)
+            console.log("check0")
+            productNo.value = product.productNo
+            //자재 정보를 가져와서 화면에 반영해야 할 항목들은 여기에 --------------------------------------------------------
+            console.log("check1")
+            inputProductCode.value = product.productCode
+            productName.value = product.productName
+            console.log("check2")
+            productType.value = product.productType
+            //------------------------------------------------------------------------------------------------------
+            console.log("성공")
+            productModal.hide()
+
+        }).catch(e => alert('error'))
+
+    }, false)
+
+
+    //자재 선택 --------------------------------------------------------------------------------------------------
+
+    const materialModal = new bootstrap.Modal(document.querySelector(".selectMaterialModal"))
+
+    const materialList = document.querySelector(".materialList")  //자재 목록 DOM
+    const materialPaging = document.querySelector(".materialPaging")  //자재 페이지 선택 목록 DOM
+
+    const closeMaterialBtn = document.querySelector(".closeMaterialBtn")
+
+    let materialPage = 1
+    let materialPageSize = 5
+
+    document.querySelector(".selectMaterial").addEventListener("click", function (e) {
+        console.log("select material modal show")
+        printMaterials(1, 5)
+        materialModal.show()
+    }, false)
+
+    closeMaterialBtn.addEventListener("click", function (e) {
+        materialModal.hide()
+    })
+
+    function printMaterialList(dtoList) { //자재 목록
+
+        let str = ''
+
+        if (dtoList && dtoList.length > 0) {
+
+            for ( const dto of dtoList) {
+
+                console.log(dto)
+
+                str += `<tr>
+                  <td data-materialsNo = "${dto.materialNo}">${dto.materialNo}</td>
+                  <td data-materialsNo = "${dto.materialNo}">${dto.materialCode}</td>
+                  <td data-materialsNo = "${dto.materialNo}">${dto.materialName}</td>
+                  <td data-materialsNo = "${dto.materialNo}">${dto.materialType}</td>
+              </tr>`
+            }
+        }
+
+        materialList.innerHTML = str
+    }
+
+    function printMaterialPages(data) { //자재 목록 페이징 처리
+
+        let pageStr = '';
+
+        if (data.prev) {
+            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.start - 1}">PREV</a></li>`
+        }
+        for (let i = data.start; i <= data.end; i++) {
+            pageStr += `<li class="page-item ${i == data.page ? "active" : ""}"><a class="page-link" data-page="${i}">${i}</a></li>`
+        }
+        if (data.next) {
+            pageStr += `<li class="page-item"><a class="page-link" data-page="${data.end + 1}">NEXT</a></li>`
+        }
+        materialPaging.innerHTML = pageStr
+
+        materialPage = data.page
+
+    }
+
+    function printMaterials(page, size) {
+
+        getMaterialList({page, size}).then(
+            data => {
+                printMaterialList(data.dtoList)
+                printMaterialPages(data)
+            }
+        ).catch(e => {
+            console.error(e)
+        })
+    }
+
+    //자재 목록 페이징
+    materialPaging.addEventListener("click", function (e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        const target = e.target
+
+        if (!target || target.tagName != 'A') {
+            return
+        }
+
+        const pageNum = target.getAttribute("data-page")
+        materialPage = pageNum
+        printMaterials(materialPage, materialPageSize)
+
+    }, false)
+
+    const materialNo = document.querySelector(".materialNo")
+    const inputMaterialCode = document.querySelector(".selectMaterial")
+    const materialType = document.querySelector(".materialType")
+    const materialName = document.querySelector(".materialName")
+
+    //자재 항목 클릭시 input에 반영
+    materialList.addEventListener("click", function (e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        console.log("material click")
+
+        const target = e.target
+
+        if (!target || target.tagName != 'TD') {
+            return
+        }
+
+        const materialsNo = target.getAttribute("data-materialsNo")
+
+        if (!materialsNo) {
+            return;
+        }
+
+        getMaterial(materialsNo).then(material => {
+
+            console.log(material)
+            console.log("check0")
+            materialNo.value = material.materialNo
+            //자재 정보를 가져와서 화면에 반영해야 할 항목들은 여기에 --------------------------------------------------------
+            console.log("check1")
+            inputMaterialCode.value = material.materialCode
+            materialName.value = material.materialName
+            console.log("check2")
+            materialType.value = material.materialType
+            //------------------------------------------------------------------------------------------------------
+            console.log("성공")
+            materialModal.hide()
+
+        }).catch(e => alert('error'))
+
+    }, false)
+
+</script>
+
+</html>

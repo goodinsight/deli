@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html lang="ko"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/layout/layout.html}">
+<!doctype html>
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>제품별 자재 항목 리스트</title>
+    <meta charset="utf-8">
+    <title>제품별 필요 자재 항목</title>
+    <style>
+        * {
+            font-family: Consolas, sans-serif;
+        }
+    </style>
 </head>
 
-<div layout:fragment="content">
 
     <div class="row mt-12 m-l-15">
         <form class="col-lg-10" action="/materialRequirementsList/list" method="get">
@@ -84,6 +85,13 @@
 
 
                         <tbody th:with="link = ${pageRequestDTO.getLink()}">
+
+                        <h1>제품별 필요 자재 항목</h1>
+                        <p>
+                            <input type="text" id="materialList">
+                            <input type="button" value="Send Value" onclick="sendValue();">
+                        </p>
+
                         <tr th:each="dto:${responseDTO.dtoList}">
                             <td>[[${dto.materialRequirementsListNo}]]</td>
                             <td>
@@ -98,6 +106,7 @@
                             <td>[[${dto.materialType}]]</td>
 
                         </tr>
+
 
                         </tbody>
                     </table>
@@ -196,6 +205,11 @@
         modal.show()
     }
 
+
+    function sendValue() {
+    window.opener.document.getElementById( "materialList" ).value = document.getElementById( "materialList" ).value;
+    window.close();
+    }
 </script>
 
 
