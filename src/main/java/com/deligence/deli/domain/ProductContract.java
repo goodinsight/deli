@@ -37,7 +37,7 @@ public class ProductContract extends BaseEntity{
 
     private String productQuotation;            //견적내용(상세내용) (-> 상세)
 
-    private String productContractState;        //계약진행상태 (-> 상세 / 등록 / 수정) - '생산중', '자재조달중', '파기', '완료'
+    private String productContractState;        //계약진행상태 (-> 상세 / 등록 / 수정) - '제품생산중', '자재조달중', '파기', '완료'
     //-> 이렇게까지 복잡할 필요가 있는지 모르겠지만 일단 추가함.
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -45,7 +45,7 @@ public class ProductContract extends BaseEntity{
 
     private String clientName;                  //구매협력회사명 (-> 목록 - 검색용)
 
-    private String clientStatus;                //계약상태 (-> 목록 - 검색용) - 계약을 등록하면 자동으로 '계약중', '계약완료', '계약파기'
+    private String clientStatus;                //계약상태 (-> 목록 - 검색용) - '계약전', '계약중', '계약종료', '계약파기'
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Employee employee;                  //사원일련번호-담당자 (FK) (-> 상세 - 계약담당자)
