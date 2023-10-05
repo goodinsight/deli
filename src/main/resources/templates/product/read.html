@@ -5,55 +5,69 @@
 
     <head>
         <title>Products Read</title>
+
+        <!-- Styles -->
+        <link th:href="@{/css/lib/font-awesome.min.css}" rel="stylesheet">
+        <link th:href="@{/css/lib/themify-icons.css}" rel="stylesheet">
+        <link th:href="@{/css/lib/bootstrap.min.css}" rel="stylesheet">
+        <link th:href="@{/css/lib/helper.css}" rel="stylesheet">
+        <link th:href="@{/css/style.css}" rel="stylesheet"/>
+        <link th:href="@{/css/styles.min.css}" rel="stylesheet"/>
     </head>
 
     <div layout:fragment="content">
-        <div class="row mt-3">
-            <div class="col">
+        <div class="row justify-content-between">
+            <div class="col-lg-12">
                 <div class="card">
                     <div class="card" th:if="${dto.fileNames != null && dto.fileNames.size() > 0}" >
                         <img class="card-img-top" style="width: 250px;" th:each="fileName: ${dto.fileNames}" th:src="|/viewProduct/${fileName}|">
                     </div>
-                    <div class="card-header">
-                        제품 조회
+                    <div class="card-title">
+                        <strong>제품 조회</strong>
+                        <hr>
                     </div>
                     <div class="card-body">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">제품 일련번호</span>
-                            <input type="text" class="form-control" th:value="${dto.productNo}" readonly>
+                        <div class="row">
+
+                            <label class="col-sm-3 control-label"><strong>제품 일련번호</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" th:value="${dto.productNo}" readonly>
+                            </div>
+
+                            <label class="col-sm-3 control-label"><strong>제품코드</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" th:value="${dto.productCode}" readonly>
+                            </div>
+
+                            <label class="col-sm-3 control-label"><strong>제품명</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" th:value="${dto.productName}" readonly>
+                            </div>
+
+                            <label class="col-sm-3 control-label"><strong>제품타입</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" th:value="${dto.productType}" readonly>
+                            </div>
                         </div>
+                        <hr>
 
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">제품코드</span>
-                            <input type="text" class="form-control" th:value="${dto.productCode}" readonly>
-                        </div>
+                        <div class="row">
 
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">제품명</span>
-                            <input type="text" class="form-control" th:value="${dto.productName}" readonly>
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">제품타입</span>
-                            <input type="text" class="form-control" th:value="${dto.productType}" readonly>
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">제품설명</span>
-                            <input class="form-control" th:value="${dto.productContent}" readonly>
-                        </div>
-
-
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">등록일</span>
-                            <input type="text" class="form-control"
+                            <label class="col-sm-3 control-label"><strong>제품설명</strong></label>
+                            <div class="col-sm-9">
+                                <input class="form-control" th:value="${dto.productContent}" readonly>
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>등록일</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control"
                                    th:value="${#temporals.format(dto.regDate, 'yyyy-MM-dd')}" readonly>
-                        </div>
+                            </div>
 
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">수정일</span>
-                            <input type="text" class="form-control"
-                                   th:value="${#temporals.format(dto.modDate, 'yyyy-MM-dd')}" readonly>
+                            <label class="col-sm-3 control-label"><strong>수정일</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control"
+                                       th:value="${#temporals.format(dto.modDate, 'yyyy-MM-dd')}" readonly>
+                            </div>
                         </div>
 
                         <div class="my-4">
