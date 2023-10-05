@@ -22,36 +22,26 @@
                 <form class="col-lg-10" action="/materialInventory/listIncoming" method="get">
                     <input type="hidden" name="size" th:value="${orderPageRequestDTO.size}">
 
-                    <div class="d-none row">
-                        <label class="col-sm-1 control-label"><strong>상태</strong></label>
-                        <div class="input-group-prepend">
-                            <select class="form-select" name="state">
-                                <option value="">발주 상태</option>
-                                <option value="진행중" th:selected="${orderPageRequestDTO.state == '진행중'}">진행중</option>
-                                <option value="검수완료" th:selected="${orderPageRequestDTO.state == '검수완료'}">검수완료</option>
-                                <option value="자재입고완료" th:selected="${orderPageRequestDTO.state == '자재입고완료'}">자재입고완료</option>
-                                <option value="발주완료" th:selected="${orderPageRequestDTO.state == '발주완료'}">발주완료</option>
-                            </select>
-                        </div>
-                    </div>
-
                     <div class="row">
                         <label class="col-sm-1 control-label"><strong>검색</strong></label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <select class="form-select" name="type">
-                                    <option value="">---</option>
-                                    <option value="c" th:selected="${orderPageRequestDTO.type == 'c'}">발주 코드</option>
-                                    <option value="m" th:selected="${orderPageRequestDTO.type == 'm'}">자재 이름</option>
-                                    <option value="w" th:selected="${orderPageRequestDTO.type == 'w'}">담당자</option>
-                                </select>
+                        <div class="col-lg-10">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <select class="form-select" name="type">
+                                            <option value="">---</option>
+                                            <option value="c" th:selected="${orderPageRequestDTO.type == 'c'}">발주 코드</option>
+                                            <option value="m" th:selected="${orderPageRequestDTO.type == 'm'}">자재 이름</option>
+                                            <option value="w" th:selected="${orderPageRequestDTO.type == 'w'}">담당자</option>
+                                        </select>
+                                    </div>
+                                    <input type="text" class="form-control" name="keyword" th:value="${orderPageRequestDTO.keyword}">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary searchBtn" type="submit">Search</button>
+                                        <button class="btn btn-outline-secondary clearBtn">Clear</button>
+                                    </div>
+                                </div>
                             </div>
-                            <input type="text" class="form-control" name="keyword" th:value="${orderPageRequestDTO.keyword}">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary searchBtn" type="submit">Search</button>
-                                <button class="btn btn-outline-secondary clearBtn">Clear</button>
-                            </div>
-
                         </div>
 
                         <p class="text-muted m-b-15 f-s-12">
@@ -117,10 +107,6 @@
                     </div>
                 </div>
             </div><!--end card-->
-
-            <div class="float-right">
-                <a th:href="@{/materialInventory/registerIncoming}"><button class="btn btn-primary registerBtn" type="button">입고 등록</button></a>
-            </div>
 
         </div><!--end col-->
     </div><!--end row-->
