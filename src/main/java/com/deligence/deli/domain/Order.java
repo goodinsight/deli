@@ -46,8 +46,6 @@ public class Order {
     private String employeeName; //사원명
 
 
-
-
     public void change(OrderDTO orderDTO){
 
         this.orderCode = orderDTO.getOrderCode();
@@ -56,10 +54,6 @@ public class Order {
         this.orderDate = orderDTO.getOrderDate();
         this.orderState = orderDTO.getOrderState();
         this.orderEtc = orderDTO.getOrderEtc();
-
-
-        //자재 이름
-        //사원명
 
     }
 

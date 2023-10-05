@@ -10,47 +10,67 @@
 
 <div layout:fragment="content">
 
-    <div class="row mt-3">
-
-        <form action="/order/list" method="get">
-            <div class="col">
-                <input type="hidden" name="size" th:value="${orderPageRequestDTO.size}">
-                <div class="input-group ">
-                    <div class="input-group-prepend">
-                        <select class="form-select" name="state">
-                            <option value="">발주 상태</option>
-                            <option value="진행중" th:selected="${orderPageRequestDTO.state == '진행중'}">진행중</option>
-                            <option value="검수완료" th:selected="${orderPageRequestDTO.state == '검수완료'}">검수완료</option>
-                            <option value="자재입고완료" th:selected="${orderPageRequestDTO.state == '자재입고완료'}">자재입고완료</option>
-                            <option value="발주완료" th:selected="${orderPageRequestDTO.state == '발주완료'}">발주완료</option>
-                        </select>
-                    </div>
-                    <div class="input-group-prepend">
-                        <select class="form-select" name="type">
-                            <option value="">---</option>
-                            <option value="c" th:selected="${orderPageRequestDTO.type == 'c'}">발주 코드</option>
-                            <option value="m" th:selected="${orderPageRequestDTO.type == 'm'}">자재 이름</option>
-                            <option value="w" th:selected="${orderPageRequestDTO.type == 'w'}">담당자</option>
-                        </select>
-                    </div>
-
-                    <input type="text" class="form-control" name="keyword" th:value="${orderPageRequestDTO.keyword}">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary searchBtn" type="submit">Search</button>
-                    </div>
-
-                </div>
-            </div>
-        </form>
-
-    </div>
-
     <div class="row">
         <div class="col">
             <div class="card">
-                <div class="card-header">
-                    발주 리스트
+                <div class="card-title">
+                    <strong>발주 리스트</strong>
+                    <hr>
                 </div>
+                <br>
+
+
+                <form action="/order/list" method="get">
+                    <input type="hidden" name="size" th:value="${orderPageRequestDTO.size}">
+
+                    <div class="row">
+                        <label class="col-sm-1 control-label"><strong>상태</strong></label>
+                        <div class="col-sm-3">
+                            <select class="form-control" placeholder="분류 선택" name="state">
+                                <option value="">발주 상태</option>
+                                <option value="진행중" th:selected="${orderPageRequestDTO.state == '진행중'}">진행중</option>
+                                <option value="검수완료" th:selected="${orderPageRequestDTO.state == '검수완료'}">검수완료</option>
+                                <option value="자재입고완료" th:selected="${orderPageRequestDTO.state == '자재입고완료'}">자재입고완료</option>
+                                <option value="발주완료" th:selected="${orderPageRequestDTO.state == '발주완료'}">발주완료</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-1 control-label"><strong>검색</strong></label>
+                        <div class="col-lg-10">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <select class="form-select" name="type">
+                                            <option value="">---</option>
+                                            <option value="c" th:selected="${orderPageRequestDTO.type == 'c'}">발주 코드</option>
+                                            <option value="m" th:selected="${orderPageRequestDTO.type == 'm'}">자재 이름</option>
+                                            <option value="w" th:selected="${orderPageRequestDTO.type == 'w'}">담당자</option>
+                                        </select>
+                                    </div>
+                                    <input type="text" class="form-control input-focus" name="keyword"
+                                           th:value="${orderPageRequestDTO.keyword}" placeholder="INPUT KEYWORD">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-success searchBtn" type="submit"><i
+                                                class="ti-search"></i>
+                                            Search
+                                        </button>
+                                        <button class="btn btn-outline-danger clearBtn" type="reset">Clear</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 검색 도구 설명 -->
+                        <p class="text-muted m-b-15 f-s-12">
+                            "검색하고 싶은
+                            <code>카테고리를 선택하고 키워드</code>
+                            를 입력한 뒤 search버튼을 누르세요"
+                        </p>
+                    </div>
+
+                </form>
+
+
                 <div class="card-body">
 
                     <table class="table table-responsive-lg table-bordered table-hover">
@@ -103,6 +123,12 @@
 
                         </ul>
                     </div>
+
+                    <div class="float-right">
+                        <a th:href="@{/order/register}" class="text-decoration-none">
+                            <button type="button" class="btn btn-primary">발주 등록</button>
+                        </a>
+                    </div>
                 </div>
             </div><!-- end card -->
 
@@ -113,14 +139,6 @@
 
 
 <script layout:fragment="script" th:inline="javascript">
-
-    console.log("발주 리스트 페이지")
-
-    $(document).ready(function () {
-        console.log([[${orderPageRequestDTO}]])
-        console.log([[${orderPageRequestDTO.link}]])
-        console.log([[${responseDTO}]])
-    })
 
     document.querySelector(".pagination").addEventListener("click", function(e){
         e.preventDefault()

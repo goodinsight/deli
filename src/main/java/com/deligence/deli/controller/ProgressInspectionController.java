@@ -48,12 +48,7 @@ public class ProgressInspectionController {
     public PageResponseDTO<ProgressInspectionDTO> getList(@PathVariable("orderNo") int orderNo,
                                                           PageRequestDTO pageRequestDTO){
 
-        log.info("start get list : orderNo = " + orderNo);
-        log.info("pageRequestDTO = " + pageRequestDTO);
-
         PageResponseDTO<ProgressInspectionDTO> responseDTO = progressInspectionService.list(orderNo, pageRequestDTO);
-
-        log.info("getList result : " + responseDTO);
 
         return responseDTO;
     }
@@ -61,11 +56,7 @@ public class ProgressInspectionController {
     @GetMapping(value = "/{progressInspectionNo}")
     public ProgressInspectionDTO getProgressInspectionDTO(@PathVariable("progressInspectionNo") int piNo){
 
-        log.info(piNo);
-
         ProgressInspectionDTO progressInspectionDTO = progressInspectionService.read(piNo);
-
-        log.info(progressInspectionDTO);
 
         return progressInspectionDTO;
     }
@@ -73,8 +64,6 @@ public class ProgressInspectionController {
     @PutMapping(value = "/{progressInspectionNo}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public Map<String, Integer> modify(@PathVariable("progressInspectionNo") int progressInspectionNo,
                                        @RequestBody ProgressInspectionDTO progressInspectionDTO){
-
-        log.info(progressInspectionDTO);
 
         progressInspectionService.modify(progressInspectionDTO);
 

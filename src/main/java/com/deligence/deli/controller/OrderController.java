@@ -36,11 +36,7 @@ public class OrderController {
     @GetMapping("/list")
     public void list(OrderPageRequestDTO orderPageRequestDTO, Model model){
 
-        log.info(orderPageRequestDTO);
-
         OrderPageResponseDTO<OrderDTO> responseDTO = orderService.listWithState(orderPageRequestDTO);
-
-        log.info(responseDTO);
 
         model.addAttribute("responseDTO", responseDTO);
 
@@ -48,8 +44,6 @@ public class OrderController {
 
     @GetMapping("/register")
     public void registerGET(@AuthenticationPrincipal EmployeeSecurityDTO employeeSecurityDTO, Model model){
-
-        log.info(employeeSecurityDTO);
 
         model.addAttribute("user", employeeSecurityDTO);
 
@@ -60,13 +54,7 @@ public class OrderController {
                              BindingResult bindingResult,
                              RedirectAttributes redirectAttributes){
 
-        log.info("order post register----------------");
-
-        log.info(orderDTO);
-
         if(bindingResult.hasErrors()) {
-
-            log.info("order register error");
 
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
 
@@ -85,11 +73,7 @@ public class OrderController {
     @GetMapping({"/read", "/modify"})
     public void read(int orderNo, OrderPageRequestDTO orderPageRequestDTO, Model model) {
 
-        log.info("search : orderNo = " + orderNo);
-
         OrderDetailDTO orderDetailDTO = orderService.read(orderNo);
-
-        log.info(orderDetailDTO);
 
         model.addAttribute("dto", orderDetailDTO);
 
@@ -103,12 +87,6 @@ public class OrderController {
                          @Valid OrderDTO orderDTO,
                          BindingResult bindingResult,
                          RedirectAttributes redirectAttributes){
-
-        log.info("order modify : " + orderDTO);
-
-        //에러 처리----
-
-        //-----------
 
         orderService.modify(orderDTO);
 
@@ -131,8 +109,6 @@ public class OrderController {
     @GetMapping("/register/planList")
     public PageResponseDTO<MaterialProcurementPlanningDTO> getPlanList(PageRequestDTO pageRequestDTO){
 
-        log.info("getPlanList");
-
         //조달 계획 상태 : 진행중  검색
         pageRequestDTO.setType("f");
         pageRequestDTO.setKeyword("진행중");
@@ -146,11 +122,7 @@ public class OrderController {
     @GetMapping("/register/getPlan/{planNo}")
     public MaterialProcurementPlanningDetailDTO getPlanDTO(@PathVariable("planNo") int planNo) {
 
-        log.info("getPlanDTO : " + planNo);
-
         MaterialProcurementPlanningDetailDTO materialProcurementPlanningDetailDTO = materialProcurementPlanningService.read(planNo);
-
-        log.info(materialProcurementPlanningDetailDTO);
 
         return materialProcurementPlanningDetailDTO;
 
@@ -159,8 +131,6 @@ public class OrderController {
     @ResponseBody
     @GetMapping("/register/contractList")
     public PageResponseDTO<MaterialProcurementContractDTO> getContractList(PageRequestDTO pageRequestDTO){
-
-        log.info("getContractList");
 
         PageResponseDTO<MaterialProcurementContractDTO> responseDTO = materialProcurementContractService.list(pageRequestDTO);
 
@@ -172,11 +142,7 @@ public class OrderController {
     @GetMapping("/register/getContract/{contractNo}")
     public MaterialProcurementContractDetailDTO getContractDTO(@PathVariable("contractNo") int contractNo){
 
-        log.info("getContractDTO : " + contractNo);
-
         MaterialProcurementContractDetailDTO materialProcurementContractDetailDTO = materialProcurementContractService.read(contractNo);
-
-        log.info(materialProcurementContractDetailDTO);
 
         return materialProcurementContractDetailDTO;
 
@@ -186,11 +152,7 @@ public class OrderController {
     @GetMapping("/register/getCodeCount/{orderCode}")
     public int getCodeCount(@PathVariable("orderCode") String orderCode){
 
-        log.info("getCodeCount : " + orderCode);
-
         int num = orderService.getCodeCount(orderCode);
-
-        log.info("num : " + num);
 
         return num;
 
@@ -209,15 +171,12 @@ public class OrderController {
 
         //조달 계획 소요량 확인
         int materialRequirementsCount = materialProcurementPlanningService.read(materialProcurementPlanNo).getMaterialRequirementsCount();
-        log.info("조달 계획 : " + materialRequirementsCount);
 
         //연관 계획중 발주 완료된 수량 확인
         int sumOfOrderQuantity = orderService.sumOfOrderQuantity(materialProcurementPlanNo);
-        log.info("발주 완료 수량 : " + sumOfOrderQuantity);
 
         //비교
         if(materialRequirementsCount <= sumOfOrderQuantity){
-            log.info("조달 완료 프로세스 시작");
             //조달 계획 완료
             materialProcurementPlanningService.completePlan(materialProcurementPlanNo);
 
@@ -246,8 +205,6 @@ public class OrderController {
     @GetMapping("/chart/materialList")
     public PageResponseDTO<MaterialsDTO> getMaterialList(PageRequestDTO pageRequestDTO){
 
-        log.info("getMaterialsList");
-
         PageResponseDTO<MaterialsDTO> responseDTO = materialsService.list(pageRequestDTO);
 
         return responseDTO;
@@ -257,11 +214,7 @@ public class OrderController {
     @GetMapping("/chart/getMaterial/{materialNo}")
     public MaterialsDTO getMaterialDTO(@PathVariable("materialNo") int materialNo) {
 
-        log.info("getPlanDTO : " + materialNo);
-
         MaterialsDTO materialsDTO = materialsService.readOne(materialNo);
-
-        log.info(materialsDTO);
 
         return materialsDTO;
 
@@ -275,14 +228,7 @@ public class OrderController {
         String year = map.get("year").toString();
         String state = map.get("state").toString();
 
-        log.info(materialName);
-        log.info(year);
-        log.info(state);
-
         Map<String, Integer> result = orderService.orderChart(materialName, year, state);
-
-        log.info(result.keySet());
-        log.info(result.values());
 
         List<Integer> chartData = new ArrayList<>();
 
@@ -291,8 +237,6 @@ public class OrderController {
             chartData.add(result.getOrDefault(String.valueOf(i),0));
 
         }
-
-        log.info(chartData);
 
         return chartData;
 

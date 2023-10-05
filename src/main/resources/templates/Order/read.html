@@ -97,8 +97,10 @@
 
                     <div class="my-4" >
                         <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}">
+                            <button type="button" class="btn btn-danger btn-outline afterCancel">발주 파기됨</button>
                             <button type="button" class="btn btn-default btn-outline afterComp">발주 완료됨</button>
                             <button type="button" class="btn btn-warning completeButton" onclick="compOrder()">발주 완료</button>
+                            <button type="button" class="btn btn-danger cancelButton" onclick="cancelOrder()">발주 파기</button>
                             <a th:href="|@{/order/modify(orderNo=${dto.orderNo})}&${link}|" class="text-decoration-none" >
                                 <button type="button" class="btn btn-primary modifyButton">수정</button>
                             </a>
@@ -129,7 +131,6 @@
 
 <script layout:fragment="script" th:inline="javascript">
 
-    console.log([[${dto}]])
 
     let state = [[${dto.orderState}]]
 
@@ -139,28 +140,41 @@
 
 
     const afterCompButton = document.querySelector('.afterComp')
+    const afterCancelButton = document.querySelector('.afterCancel')
     const completeButton = document.querySelector('.completeButton')
+    const cancelButton = document.querySelector('.cancelButton')
     const modifyButton = document.querySelector('.modifyButton')
 
     function printButton(state){
-
-        console.log(state)
 
         switch (state){
 
             case '자재입고완료':
                 afterCompButton.style.display = 'none'
+                afterCancelButton.style.display = 'none'
                 completeButton.style.display = 'inline'
+                cancelButton.style.display = 'none'
                 modifyButton.style.display = 'none'
                 break;
             case '발주완료' :
                 afterCompButton.style.display = 'inline'
+                afterCancelButton.style.display = 'none'
                 completeButton.style.display = 'none'
+                cancelButton.style.display = 'none'
+                modifyButton.style.display = 'none'
+                break;
+            case '발주파기' :
+                afterCompButton.style.display = 'none'
+                afterCancelButton.style.display = 'inline'
+                completeButton.style.display = 'none'
+                cancelButton.style.display = 'none'
                 modifyButton.style.display = 'none'
                 break;
             default :
                 afterCompButton.style.display = 'none'
+                afterCancelButton.style.display = 'none'
                 completeButton.style.display = 'none'
+                cancelButton.style.display = 'inline'
                 modifyButton.style.display = 'inline'
 
         }
@@ -173,12 +187,28 @@
     function compOrder(){
 
         completeOrder({orderNo, materialProcurementPlanNo}).then(
-            location.href="/order/read?orderNo="+orderNo+"&"+link
+            function(){
+                self.location = `/order/read?orderNo=${orderNo}&${link}`
+            }
         ).catch( e =>{
             console.log(e)
         })
 
     }
+
+    function cancelOrder(){
+
+        changeState({orderNo, state}).then(
+            function(){
+                self.location = `/order/read?orderNo=${orderNo}&${link}`
+            }
+        ).catch( e=>{
+            console.log(e)
+        })
+
+
+    }
+
 
 </script>
 
