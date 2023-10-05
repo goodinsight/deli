@@ -10,7 +10,7 @@
 
 <div layout:fragment="content">
 
-    <div class="row">
+    <div class="row mt-3">
         <div class="col">
             <div class="card">
                 <div class="card-title">
@@ -55,7 +55,7 @@
                                                 class="ti-search"></i>
                                             Search
                                         </button>
-                                        <button class="btn btn-outline-danger clearBtn" type="reset">Clear</button>
+                                        <button class="btn btn-outline-danger clearBtn">Clear</button>
                                     </div>
                                 </div>
                             </div>
@@ -157,6 +157,14 @@
         formObj.innerHTML += `<input type="hidden" name="page" value="${num}">`
 
         formObj.submit()
+
+    }, false)
+
+    document.querySelector(".clearBtn").addEventListener("click", function(e) {
+        e.preventDefault()
+        e.stopPropagation()
+
+        self.location = '/order/list'
 
     }, false)
 
