@@ -52,7 +52,7 @@ public class MaterialsServiceTests {
 //            materialsService.dtoToEntity(materialImageDTO);
 //        });
         MaterialsDTO materialsDTO = MaterialsDTO.builder()
-                .materialNo(1385)
+                .materialNo(1314)
                 .materialName("update.............1385")
                 .materialExplaination("update.............1385")
                 .materialType("update.............1385")
@@ -69,7 +69,7 @@ public class MaterialsServiceTests {
 
     @Test
     public void testDelete() { // 게시물 삭제 test
-        int materialNo = 1360;
+        int materialNo = 1314;
 
         materialsService.delete(materialNo);
     }

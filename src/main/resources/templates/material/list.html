@@ -60,12 +60,12 @@
                         <tbody th:with="link = ${pageRequestDTO.getLink()}">
                         <tr th:each="dto:${responseDTO.dtoList}">
                             <th scope="row">[[${dto.materialNo}]]</th>
-                            <td> [[${dto.materialCode}]] </td>
                             <td>
                                 <a th:href="|@{/material/read(materialNo = ${dto.materialNo})}&${link}|" class="text-decoration-none">
-                                [[${dto.materialName}]]
+                                [[${dto.materialCode}]]
                                 </a>
                             </td>
+                            <td> [[${dto.materialName}]] </td>
                             <td> [[${dto.materialType}]] </td>
                         </tr>
                         </tbody>
