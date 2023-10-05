@@ -1,10 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>조달 협력 회사 등록</title>
 </head>
-<body>
 
-</body>
+<div layout:fragment="content">
+
+    <div class="row mt-3">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-title">
+                    <strong>협력 회사 등록</strong>
+                    <hr>
+                </div>
+                <div class="card-body mt-3">
+                    <form class="form-horizontal" action="/cooperatorSupplier/register" method="post">
+
+                        <div class="row">
+
+                            <label class="col-sm-3 control-label"><strong>사업자 등록 번호</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="corporateRegistrationNo" class="form-control corporateRegistrationNo" placeholder="숫자만 입력하세요.">
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>협력 회사명</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="supplierName" class="form-control supplierName">
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>협력 회사 대표명</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="supplierCeo" class="form-control supplierCeo">
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>협력 회사 주소</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="supplierAddress" class="form-control supplierAddress">
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>이메일</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="supplierEmail" class="form-control supplierEmail">
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>연락처</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="supplierPhone" class="form-control supplierPhone">
+                            </div>
+
+                            <label class="col-sm-3 control-label"><strong>계약 이력</strong></label>
+                            <div class="col-sm-9">
+                                <select name="supplierStatus">
+                                    <option value="계약전" selected>계약전</option>
+                                    <option value="계약중">계약중</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="row">
+
+
+                            <label class="col-sm-3 control-label"><strong>비고</strong></label>
+                            <div class="col-sm-9">
+                                <textarea name="supplierEtc" rows="5" cols="50"  style="width: 100% !important;" class="textarea"></textarea>
+                            </div>
+                        </div><!--end row-->
+                        <div class="my-4">
+                            <div class="float-right">
+                                <button type="submit" class="btn btn-primary submitBtn">등록</button>
+                                <button type="reset" class="btn btn-secondary">초기화</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div><!-- end card body -->
+            </div><!-- end card -->
+        </div><!-- end col -->
+    </div><!-- end row -->
+
+</div>
+
+<script layout:fragment="script" th:inline="javascript">
+
+    const auth = [[${#authentication}]]
+
+    console.log(auth)
+
+    //등록시 에러 처리-----------------------------------
+
+    const errors = [[${errors}]]
+    console.log(errors)
+
+    let errorMsg = ''
+
+    if (errors) {
+        for (let i = 0; i < errors.length; i++) {
+            errorMsg += `${errors[i].field} : ${errors[i].code} \n`
+        }
+        alert(errorMsg)
+    }
+
+</script>
+
 </html>

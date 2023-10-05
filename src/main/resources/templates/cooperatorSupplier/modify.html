@@ -1,10 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>조달 협력 회사 수정</title>
 </head>
-<body>
 
-</body>
+<div layout:fragment="content">
+
+    <div class="row mt-3">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-title">
+                    <strong>협력 회사 수정</strong>
+                    <hr>
+                </div>
+                <div class="card-body mt-3">
+                    <form class="form-horizontal" action="/cooperatorSupplier/modify" id="modifyForm" method="post">
+
+                        <div class="row">
+
+                            <label class="col-sm-3 control-label"><strong>협력회사 일련번호</strong></label>
+                            <div class="col-sm-9">
+                                <input type="hidden" name="supplierNo" class="form-control supplierNo" th:value="${dto.supplierNo}" readonly>
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>사업자 등록 번호</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="corporateRegistrationNo" class="form-control corporateRegistrationNo" th:value="${dto.corporateRegistrationNo}" readonly>
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>협력 회사명</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="supplierName" class="form-control supplierName" th:value="${dto.supplierName}">
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>협력 회사 대표명</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="supplierCeo" class="form-control supplierCeo" th:value="${dto.supplierCeo}">
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>협력 회사 주소</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="supplierAddress" class="form-control supplierAddress" th:value="${dto.supplierAddress}">
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>이메일</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="supplierEmail" class="form-control supplierEmail" th:value="${dto.supplierEmail}">
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>연락처</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="supplierPhone" class="form-control supplierPhone" th:value="${dto.supplierPhone}">
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>계약 이력</strong></label>
+                            <div class="col-sm-9">
+                                <select name="supplierStatus">
+                                    <option value="계약중" selected>계약중</option>
+                                    <option value="계약종료">계약 종료</option>
+                                    <option value="계약파기">계약 파기</option>
+                                </select>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="row">
+                            <label class="col-sm-3 control-label"><strong>비고</strong></label>
+                            <div class="col-sm-9">
+                                <textarea name="supplierEtc" rows="5" cols="50"  style="width: 100% !important;" class="textarea">[[${dto.supplierEtc}]]</textarea>
+                            </div>
+                        </div><!--end row-->
+
+                        <div class="my-4">
+                            <div class="float-right">
+                                <button type="button" class="btn btn-secondary listBtn">목록</button>
+                                <button type="button" class="btn btn-primary modBtn">수정</button>
+                                <button type="button" class="btn btn-danger removeBtn">삭제</button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div><!-- end card body -->
+            </div><!-- end card -->
+        </div><!-- end col -->
+    </div><!-- end row -->
+
+</div>
+
+
+<script layout:fragment="script" th:inline="javascript">
+
+    console.log([[${dto}]])
+
+    // 에러 처리 ------------------------------------------------------------------------------
+
+    const errors = [[${errors}]]
+    console.log(errors)
+
+    let errorMsg = ''
+
+    if(errors){
+        for(let i = 0; i<errors.length; i++) {
+            errorMsg += `${errors[i].field}은(는) ${errors[i].code} \n`
+        }
+        history.replaceState({}, null, null)
+        alert(errorMsg)
+    }
+
+    // 수정 처리 ------------------------------------------------------
+
+    const link = [[${pageRequestDTO.getLink()}]]
+    const formObj = document.querySelector("#modifyForm")
+
+    document.querySelector(".modBtn").addEventListener("click", function (e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        formObj.action = `/cooperatorSupplier/modify?${link}`
+        formObj.method = 'post'
+        formObj.submit()
+
+    }, false)
+
+    // 목록 페이지로 이동 ---------------------------------------------------------
+
+    document.querySelector(".listBtn").addEventListener("click", function (e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        formObj.reset()
+        self.location = `/cooperatorSupplier/list?${link}`
+
+    }, false)
+
+    // 삭제 처리 (임시) -----------------------------------------------------------
+
+    document.querySelector(".removeBtn").addEventListener("click", function (e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        formObj.action = '/cooperatorSupplier/remove'
+        formObj.method = 'post'
+        formObj.submit()
+
+    }, false);
+
+
+
+</script>
+
 </html>
