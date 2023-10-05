@@ -86,8 +86,8 @@
 
                     <div class="my-4" th:with="user=${#authentication.principal}">
                         <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}" >
-                            <button type="button" class="btn btn-default btn-outline afterComp">조달 완료됨</button>
-                            <button type="button" class="btn btn-warning completeButton" onclick="compProcurementPlanning()">조달 계획 완료</button>
+                           <!-- <button type="button" class="btn btn-default btn-outline afterComp">조달 완료됨</button>
+                            <button type="button" class="btn btn-warning completeButton" onclick="compProcurementPlanning()">조달 계획 완료</button>-->
 
                             <a th:href="|@{/materialProcurementPlanning/list}?${link}|" class="text-decoration-none">
                                 <button type="button" class="btn btn-primary">List</button>

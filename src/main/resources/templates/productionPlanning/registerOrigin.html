@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{/layout/layout.html}">
 <head>
@@ -11,51 +12,40 @@
 <div layout:fragment="content">
 
     <div class="row mt-3">
-        <div class="col-lg-12">
+        <div class="col">
             <div class="card">
-                <div class="card-title">
-                    <strong>생산 계획 등록</strong>
-                    <hr>
+                <div class="card-header">
+                  생산 계획 등록
                 </div>
                 <div class="card-body mt-3">
-                    <form class="form-horizontal" action="/productionPlanning/register" method="post">
+                    <form action="/productionPlanning/register" method="post">
 
-                        <div class="row">
-                            <label class="col-sm-3 control-label"><strong>제품계약 일련번호</strong></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="productContractNo" class="form-control productContractNo"
-                                       readonly>
-                            </div>
-                            <label class="col-sm-3 control-label"><strong>제품 계약 코드</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="productContractCode" class="form-control selectContract"
-                                       id="selectContract" placeholder="클릭해주세요" readonly>
-                            </div>
-                            <label class="col-sm-3 control-label"><strong>제품 코드</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="productCode" class="form-control productCode" readonly>
-                            </div>
-
-                            <label class="col-sm-3 control-label"><strong>제품 이름</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="productName" class="form-control productName" readonly>
-                            </div>
-                            <label class="col-sm-3 control-label"><strong>제품 타입</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="productType" class="form-control productType" readonly>
-                            </div>
-
-                            <label class="col-sm-3 control-label"><strong>계약 수량</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="productQuantity" class="form-control productQuantity" readonly>
-                            </div>
-
-                            <label class="col-sm-3 control-label"><strong>생산 수량</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="productionQuantity" class="form-control productionQuantity">
-                            </div>
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">제품계약 일련번호</span>
+                            <input type="text" name="productContractNo" class="form-control productContractNo" readonly>
                         </div>
-
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">제품 계약 코드</span>
+                            <input type="text" name="productContractCode" class="form-control selectContract" id="selectContract" placeholder="클릭해주세요" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">제품 코드</span>
+                            <input type="text" name="productCode" class="form-control productCode" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="margin-left: 50px">제품 이름</span>
+                            <input type="text" name="productName" class="form-control productName" readonly>
+                            <span class="input-group-text" style="margin-left: 20px">제품 타입</span>
+                            <input type="text" name="productType" class="form-control productType" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">계약 수량</span>
+                            <input type="text" name="productQuantity" class="form-control productQuantity" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">생산 수량</span>
+                            <input type="text" name="productionQuantity" class="form-control productionQuantity">
+                        </div>
                         <div class="input-group mb-3 d-none">
                             <span class="input-group-text">클라이언트 회사명</span>
                             <input type="text" name="clientName" class="form-control clientName" readonly>
@@ -66,224 +56,203 @@
                         </div>
                         <div class="input-group mb-3 d-none">
                             <span class="input-group-text">제품 계약 납기일</span>
-                            <input type="date" name="productDeliveryDate" class="form-control productDeliveryDate"
-                                   readonly>
+                            <input type="date" name="productDeliveryDate" class="form-control productDeliveryDate" readonly>
                         </div>
                         <hr>
 
-
                         <div class="mrl" id="divBtn">
-
                             <div class="input-group mb-3">
                                 <span>
                                   <input class="btn btn-default btn-sm" type="button" value="필요 자재 추가">
                                 </span>
                             </div>
-                        </div>
-
-                        <div class="input-group mb-3 d-none">
-                            <span class="input-group-text">제품별 필요 자재 항목 일련번호</span>
-                            <input type="text" name="materialRequirementsListNo"
-                                   class="form-control materialRequirementsListNo" readonly>
-                        </div>
-
-                        <div class="input-group mb-3 d-none">
-                            <span class="input-group-text">제품 일련번호</span>
-                            <input type="text" name="productNo" class="form-control productNo" readonly>
-                        </div>
-                        <div class="input-group mb-3 d-none">
-                            <span class="input-group-text">제품 코드</span>
-                            <input type="text" name="productCode2" class="form-control productCode2" readonly>
-                        </div>
-                        <div class="input-group mb-3 d-none">
-                            <span class="input-group-text">제품 이름</span>
-                            <input type="text" name="productName2" class="form-control productName2" readonly>
-                        </div>
-                        <div class="input-group mb-3 d-none">
-                            <span class="input-group-text">제품 타입</span>
-                            <input type="text" name="productType2" class="form-control productType2" readonly>
-                        </div>
-
-                        <div class="row">
-                            <label class="col-sm-3 control-label"><strong>필요 자재 코드</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="materialCode" class="form-control selectMrl" id="selectMrl"
-                                       placeholder="클릭해주세요" readonly>
+                            <div class="input-group mb-3 d-none">
+                                <span class="input-group-text">제품별 필요 자재 항목 일련번호</span>
+                                <input type="text" name="materialRequirementsListNo" class="form-control materialRequirementsListNo" readonly>
                             </div>
-                            <label class="col-sm-3 control-label"><strong>자재 이름</strong></label>
-                            <div class="col-sm-3">
+
+                            <div class="input-group mb-3 d-none">
+                                <span class="input-group-text">제품 일련번호</span>
+                                <input type="text" name="productNo" class="form-control productNo" readonly>
+                            </div>
+                            <div class="input-group mb-3 d-none">
+                                <span class="input-group-text">제품 코드</span>
+                                <input type="text" name="productCode2" class="form-control productCode2" readonly>
+                            </div>
+                            <div class="input-group mb-3 d-none">
+                                <span class="input-group-text">제품 이름</span>
+                                <input type="text" name="productName2" class="form-control productName2" readonly>
+                            </div>
+                            <div class="input-group mb-3 d-none">
+                                <span class="input-group-text">제품 타입</span>
+                                <input type="text" name="productType2" class="form-control productType2" readonly>
+                            </div>
+                            <div class="input-group mb-3 pl-5">
+                                <span class="input-group-text">필요 자재 코드</span>
+                                <input type="text" name="materialCode" class="form-control selectMrl" id="selectMrl" placeholder="클릭해주세요" readonly>
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" style="margin-left: 100px">자재 이름</span>
                                 <input type="text" name="materialName" class="form-control materialName" readonly>
-                            </div>
-                            <label class="col-sm-3 control-label"><strong>자재 타입</strong></label>
-                            <div class="col-sm-3">
+                                <span class="input-group-text" style="margin-left: 20px">자재 타입</span>
                                 <input type="text" name="materialType" class="form-control materialType" readonly>
                             </div>
-                            <label class="col-sm-3 control-label"><strong>필요 수량</strong></label>
-                            <div class="col-sm-3">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" style="margin-left: 100px">필요 수량</span>
                                 <input type="text" name="quantity" class="form-control quantity" readonly>
                             </div>
                         </div>
-                    </div>
-                     <hr>
+                        <hr>
 
-                    <div class="row">
-                    <label class="col-sm-3 control-label"><strong>제품 생산 계획 코드</strong></label>
-                    <div class="col-sm-3">
-                        <input type="text" name="productionPlanCode" class="form-control productionPlanCode"
-                               id="productionPlanCode" placeholder="클릭해주세요" readonly>
-                    </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">제품 생산 계획 코드</span>
+                            <input type="text" name="productionPlanCode" class="form-control productionPlanCode" id="productionPlanCode" placeholder="클릭해주세요" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">생산 소요 공정</span>
+                            <input type="text" name="productionRequirementsProcess" class="form-control productionRequirementsProcess" >
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">생산 소요 기간</span>
+                            <input type="text" name="productionRequirementsDate" class="form-control productionRequirementsDate" >
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">생산 납기일</span>
+                            <input type="date" name="productionDeliveryDate" class="form-control productionDeliveryDate" >
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">상세 내용</span>
+                            <textarea name="detailExplaination" rows="5" cols="50" class="form-control h-25"></textarea>
+                        </div>
 
-                    <label class="col-sm-3 control-label"><strong>계획 담당자</strong></label>
-                    <div class="col-sm-3">
-                        <input type="text" name="employeeName2" class="form-control" th:value="${user.employeeName}"
-                               readonly>
-                    </div>
-                    <label class="col-sm-3 control-label"><strong>생산 소요 공정</strong></label>
-                    <div class="col-sm-9">
-                        <input type="text" name="productionRequirementsProcess"
-                               class="form-control productionRequirementsProcess">
-                    </div>
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">담당자 일련번호</span>
+                            <input type="text" name="employeeNo" class="form-control" th:value="${user.employeeNo}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">계획 담당자</span>
+                            <input type="text" name="employeeName2" class="form-control" th:value="${user.employeeName}" readonly>
+                        </div>
 
-                    <label class="col-sm-3 control-label"><strong>생산 소요 기간</strong></label>
-                    <div class="col-sm-3">
-                        <input type="text" name="productionRequirementsDate"
-                               class="form-control productionRequirementsDate">
-                    </div>
-                    <span class="col-sm-3 control-label"><strong>생산 납기일</strong></span>
-                    <div class="col-sm-3">
-                        <input type="date" name="productionDeliveryDate"
-                               class="form-control productionDeliveryDate">
-                    </div>
-                    <label class="col-sm-3 control-label"><strong>상세 내용</strong></label>
-                    <div class="col-sm-9">
-                        <textarea name="detailExplaination" rows="5" cols="50" style="width: 100% !important;" class="textarea"></textarea>
-                    </div>
 
-                    <div class="input-group mb-3 d-none">
-                        <span class="input-group-text">담당자 일련번호</span>
-                        <input type="text" name="employeeNo" class="form-control" th:value="${user.employeeNo}"
-                               readonly>
-                    </div>
+                        <div class="my-4">
+                            <div class="float-end">
+                                <a th:href="@{/productionPlanning/list}" class="text-decoration-none">
+                                  <button type="button" class="btn btn-outline-dark">List</button>
+                                </a>
+                                <button type="submit" class="btn btn-primary submitBtn">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                            </div>
+                        </div>
 
-                </div>
+                    </form>
 
-                <div class="my-4">
-                    <div class="float-right">
-                        <a th:href="@{/productionPlanning/list}" class="text-decoration-none">
-                            <button type="button" class="btn btn-outline-dark">목록으로</button>
-                        </a>
-                        <button type="submit" class="btn btn-primary submitBtn">등록</button>
-                        <button type="reset" class="btn btn-secondary">초기화</button>
-                    </div>
-                </div>
-
-                </form>
-
+                </div><!--end card body-->
             </div><!--end card-->
-        </div><!--end col -->
-    </div><!--end row mt 3-->
-</div><!--end layout-->
-
-<!-- 제품 계약 선택을 위한 모달창 -->
-<div class="modal selectContractModal" tabindex="-1">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">제품 계약 검색</h5>
-            </div>
-
-            <div class="modal-body">
-
-                <div class="row mt-3">
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <table class="table table-striped table-bordered">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">NO</th>
-                                        <th scope="col">제품코드</th>
-                                        <th scope="col">계약수량</th>
-                                        <th scope="col">클라이언트 업체명</th>
-                                        <th scope="col">제품 납기일</th>
-                                        <th scope="col">계약상태</th>
-                                    </tr>
-                                    </thead>
-
-                                    <tbody class="contractList">
-
-                                    </tbody>
-                                </table>
-
-                                    <div class="float-end">
-                                        <ul class="pagination flex-wrap contractPaging">
-                                        </ul>
-                                    </div>
-                            </div><!--end card body-->
-                        </div><!--end card-->
-                    </div><!--end col-->
-                </div><!--end row-->
+        </div><!--end col-->
+    </div><!--end row-->
 
 
-            </div><!-- modal body end -->
-            <div class="modal-footer">
-               <button type="button" class="btn btn-outline-dark closeContractBtn">Close</button>
-            </div>
-        </div>
-    </div>
-</div><!-- end 계약 모달창 -->
+  <!-- 제품 계약 선택을 위한 모달창 -->
+    <div class="modal selectContractModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">제품 계약 검색</h5>
+                </div>
 
+                <div class="modal-body">
 
-<!--제품별 필요 자재 선택을 위한 모달창-->
-<div class="modal selectMrlModal" tabindex="-1">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-               <h5 class="modal-title">필요 자재 검색</h5>
-            </div>
-            <div class="modal-body">
-
-                <div class="row mt-3">
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <table class="table table-striped table-bordered">
-                                    <thead>
+                    <div class="row mt-3">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
                                         <tr>
                                             <th scope="col">NO</th>
-                                            <th scope="col">제품 코드</th>
-                                            <th scope="col">제품 이름</th>
-                                            <th scope="col">자재 코드</th>
-                                            <th scope="col">자재 이름</th>
-                                            <th scope="col">자재 분류</th>
-                                            <th scope="col">자재 수량</th>
+                                            <th scope="col">제품코드</th>
+                                            <th scope="col">계약수량</th>
+                                            <th scope="col">클라이언트 업체명</th>
+                                            <th scope="col">제품 납기일</th>
+                                            <th scope="col">계약상태</th>
                                         </tr>
-                                    </thead>
+                                        </thead>
 
-                                    <tbody class="mrlList">
+                                        <tbody class="contractList">
 
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
 
-                                <div class="float-end">
-                                     <ul class="pagination flex-wrap mrlPaging"></ul>
-                                </div>
-                            </div><!--end card body-->
-                        </div><!--end card-->
-                    </div><!--end col-->
-                </div><!--end row-->
+                                        <div class="float-end">
+                                            <ul class="pagination flex-wrap contractPaging">
+                                            </ul>
+                                        </div>
+                                </div><!--end card body-->
+                            </div><!--end card-->
+                        </div><!--end col-->
+                    </div><!--end row-->
 
-            </div><!--end modal body-->
-            <div class="modal-footer">
-               <button type="button" class="btn btn-outline-dark closeMrlBtn">Close</button>
+
+                </div><!-- modal body end -->
+                <div class="modal-footer">
+                   <button type="button" class="btn btn-outline-dark closeContractBtn">Close</button>
+                </div>
             </div>
         </div>
-    </div>
-</div><!--end 자재 모달창-->
+    </div><!-- end 계약 모달창 -->
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-<script src="/js/productionPlanning.js"></script>
+    <!--제품별 필요 자재 선택을 위한 모달창-->
+    <div class="modal selectMrlModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                   <h5 class="modal-title">필요 자재 검색</h5>
+                </div>
+                <div class="modal-body">
+
+                    <div class="row mt-3">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table table-striped table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">NO</th>
+                                                <th scope="col">제품 코드</th>
+                                                <th scope="col">제품 이름</th>
+                                                <th scope="col">자재 코드</th>
+                                                <th scope="col">자재 이름</th>
+                                                <th scope="col">자재 분류</th>
+                                                <th scope="col">자재 수량</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody class="mrlList">
+
+                                        </tbody>
+                                    </table>
+
+                                    <div class="float-end">
+                                         <ul class="pagination flex-wrap mrlPaging"></ul>
+                                    </div>
+                                </div><!--end card body-->
+                            </div><!--end card-->
+                        </div><!--end col-->
+                    </div><!--end row-->
+
+                </div><!--end modal body-->
+                <div class="modal-footer">
+                   <button type="button" class="btn btn-outline-dark closeMrlBtn">Close</button>
+                </div>
+            </div>
+        </div>
+    </div><!--end 자재 모달창-->
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script src="/js/productionPlanning.js"></script>
 
 </div>
 

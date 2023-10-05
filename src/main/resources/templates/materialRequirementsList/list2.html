@@ -56,13 +56,7 @@
                 <div class="card-header">
                     제품별 자재 항목 리스트
                 </div>
-                <div class="my-4">
-                    <div class="float-left">
-                        <a th:href="@{/materialRequirementsList/register}" class="text-decoration-none">
-                            <button type="button" class="btn btn-primary">Register</button>
-                        </a>
-                    </div>
-                </div>
+
 
                 <div class="card-body">
 
@@ -87,17 +81,14 @@
                         <tbody th:with="link = ${pageRequestDTO.getLink()}">
                         <tr th:each="dto:${responseDTO.dtoList}">
                             <td>[[${dto.materialRequirementsListNo}]]</td>
-                            <td>
-                                <a th:href="|@{/materialRequirementsList/read(materialRequirementsListNo =
-                                 ${dto.materialRequirementsListNo})}&${link}|" class="text-decoration-none">
-                                    [[${dto.productCode}]]</a></td>
-                            <td>[[${dto.productName}]]</td>
-                            <td>[[${dto.productType}]]</td>
-
-                            <td>[[${dto.materialCode}]]</td>
-                            <td>[[${dto.materialName}]]</td>
-                            <td>[[${dto.materialType}]]</td>
-                            <td>[[${dto.quantity}]]</td>
+                            <td th:data-materialCode="${dto.materialCode}" th:data-materialName="${dto.materialName}" th:data-materialType="${dto.materialType}"value="Send Value" onclick="sendValue(this.getAttribute('data-materialCode'), this.getAttribute('data-materialName'), this.getAttribute('data-materialType') )">[[${dto.productCode}]]</td>
+                            <th scope="row">[[${dto.productCode}]]</th>
+                            <th scope="row">[[${dto.productName}]]</th>
+                            <th scope="row">[[${dto.productType}]]</th>
+                            <th scope="row">[[${dto.materialCode}]]</th>
+                            <th scope="row">[[${dto.materialName}]]</th>
+                            <th scope="row">[[${dto.materialType}]]</th>
+                            <th scope="row">[[${dto.quantity}]]</th>
 
                         </tr>
 
@@ -130,36 +121,12 @@
         </div><!--end col-->
     </div><!--end row-->
 
-    <div class="modal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Modal body text goes here.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" >Save changes</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
 
 </div>
 
 <script layout:fragment="script" th:inline="javascript">
 
     console.log("제품 별 자재 항목 리스트 페이지")
-
-    $(document).ready(function () {
-        console.log([[${pageRequestDTO}]])
-        console.log([[${pageRequestDTO.link}]])
-        console.log([[${responseDTO}]])
-    })
 
     document.querySelector(".pagination").addEventListener("click", function (e){
 
@@ -189,13 +156,27 @@
         self.location = '/materialRequirementsList/list'
     }, false)
 
-    //show modal
-    const result = [[${result}]]
 
-    const modal = new bootstrap.Modal(document.querySelector(".modal"))
 
-    if(result){
-        modal.show()
+    // 생산계획 등록 -> 제품 별 자재 항목 코드를 클릭시 자재코드, 자재이름, 자재타입, 수량 같이 옴
+    function sendValue(materialCode,materialName, materialType, quantity) {
+
+        var data = document.getElementsByClassName(materialCode);
+        var data2 = document.getElementsByClassName(materialName);
+        var data3 = document.getElementsByClassName(materialType);
+        var data4 = document.getElementsByClassName(quantity);
+
+        console.log(data);
+        console.log(data2);
+        console.log(data3);
+        console.log(data4);
+
+        // window.opener.document.getElementById("materialRequirementsListNo").value = materialCode;
+        window.opener.document.getElementById("materialCode").value = materialCode;
+        window.opener.document.getElementById("materialName").value = materialName;
+        window.opener.document.getElementById("materialType").value = materialType;
+        window.opener.document.getElementById("quantity").value = quantity;
+        window.close();
     }
 
 </script>

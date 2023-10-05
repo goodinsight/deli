@@ -36,6 +36,7 @@ public class ProductionPlanningDTO {
     private String detailExplaination;              //상세내용
 
     private String productionState;                 //생산계획진행상태
+    //자재조달단계, 자재입고단계, 제품생산단계, 제품검수단계, 제품입고단계
 
     //----------------------------------------------------------------------------------------------------
 
