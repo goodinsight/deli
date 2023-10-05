@@ -128,7 +128,7 @@ public class MaterialInventoryController {
 
         log.info(orderPageRequestDTO);
 
-        String[] states = {"검수완료", "입고검수진행중", "반품진행중", "자재입고완료"};
+        String[] states = {"검수완료", "입고검수진행중", "반품진행중", "자재입고완료", "발주완료"};
 
         OrderPageResponseDTO<OrderDTO> responseDTO =
                 orderService.listIncoming(orderPageRequestDTO, states);

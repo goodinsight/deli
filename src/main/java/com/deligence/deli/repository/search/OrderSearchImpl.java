@@ -262,6 +262,9 @@ public class OrderSearchImpl extends QuerydslRepositorySupport implements OrderS
                 case "자재입고완료":
                     booleanBuilder2.or(order.orderState.contains("자재입고완료"));
                     break;
+                case "발주완료":
+                    booleanBuilder2.or(order.orderState.contains("발주완료"));
+                    break;
 
             }
 
