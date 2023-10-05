@@ -24,62 +24,41 @@
                             <label class="col-sm-3 control-label"><strong>계획 일련번호</strong></label>
                             <div class="col-sm-9">
                                 <input type="text" name="materialProcurementPlanNo" class="form-control selectPlan"
-                                       placeholder="클릭해서 불러오기">
+                                       placeholder="클릭해서 불러오기" readonly>
                             </div>
 
                             <label class="col-sm-3 control-label"><strong>계약 코드</strong></label>
                             <div class="col-sm-9">
                                 <input type="text" name="materialProcurementContractCode"
-                                       class="form-control selectContract" placeholder="클릭하여 불러오기">
+                                       class="form-control selectContract" placeholder="클릭하여 불러오기" readonly>
                             </div>
 
                             <label class="col-sm-3 control-label"><strong>자재 코드</strong></label>
                             <div class="col-sm-9">
-                                <input type="text" name="materialCode" class="form-control materialCode">
+                                <input type="text" name="materialCode" class="form-control materialCode" readonly>
                             </div>
                             <label class="col-sm-3 control-label"><strong>자재 명</strong></label>
                             <div class="col-sm-9">
-                                <input type="text" name="materialName" class="form-control materialName">
+                                <input type="text" name="materialName" class="form-control materialName" readonly>
                             </div>
 
-                            <label class="col-sm-3 control-label"><strong>카테고리1</strong></label>
-                            <div class="col-sm-3">
-                                <select class="form-control" placeholder="분류 선택">
-                                    <optgroup label="분류">
-                                        <option value="type1">타입1</option>
-                                        <option value="type2">타입2</option>
-                                        <option value="type3">타입3</option>
-                                    </optgroup>
-                                    <optgroup label="분류2">
-                                        <option value="type1">타입1</option>
-                                        <option value="type2">타입2</option>
-                                        <option value="type3">타입3</option>
-                                    </optgroup>
-                                </select>
+                            <label class="col-sm-3 control-label"><strong>자재 분류</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="materialType" class="form-control materialType" readonly>
                             </div>
 
-                            <label class="col-sm-3 control-label"><strong>카테고리2</strong></label>
-                            <div class="col-sm-3">
-                                <select class="form-control" placeholder="분류 선택">
-                                    <optgroup label="분류">
-                                        <option value="type1">타입1</option>
-                                        <option value="type2">타입2</option>
-                                        <option value="type3">타입3</option>
-                                    </optgroup>
-                                    <optgroup label="분류2">
-                                        <option value="type1">타입1</option>
-                                        <option value="type2">타입2</option>
-                                        <option value="type3">타입3</option>
-                                    </optgroup>
-                                </select>
-                            </div>
-
-
-                            <label class="col-sm-3 control-label"><strong>소요량</strong></label>
+                            <label class="col-sm-3 control-label"><strong>필요량</strong></label>
                             <div class="col-sm-9">
                                 <input type="text" name="materialRequirementsCount"
-                                       class="form-control materialRequirementsCount">
+                                       class="form-control materialRequirementsCount" readonly>
                             </div>
+
+                            <label class="col-sm-3 control-label"><strong>계획 납기일</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="procurementDeliveryDate"
+                                       class="form-control procurementDeliveryDate" readonly>
+                            </div>
+
                             <hr>
                             <label class="col-sm-3 control-label"><strong>자재 공급단가</strong></label>
                             <div class="col-sm-9">
@@ -104,6 +83,13 @@
                             <div class="col-sm-3">
                                 <input type="text" name="supplierTel" class="form-control supplierTel" readonly>
                             </div>
+
+                            <label class="col-sm-3 control-label"><strong>계약일</strong></label>
+                            <div class="col-sm-3">
+                                <input type="text" name="materialProcurementContractDate"
+                                       class="form-control materialProcurementContractDate" readonly>
+                            </div>
+
                         </div>
                         <hr>
                         <div class="row">
@@ -113,24 +99,11 @@
                                        readonly>
                             </div>
 
-                            <label class="col-sm-3 control-label"><strong>담당자 이름</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="employeeName" class="form-control"
-                                       th:value="${user.employeeName}" readonly>
-                            </div>
-
                             <span class="col-sm-3 control-label"><strong>발주 수량</strong></span>
                             <div class="col-sm-3">
-                                <input type="text" name="orderQuantity" class="form-control" placeholder="ex_)">
+                                <input type="text" name="orderQuantity" class="form-control">
                             </div>
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <label class="col-sm-3 control-label"><strong>납기일</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="procurementDeliveryDate"
-                                       class="form-control procurementDeliveryDate" readonly>
-                            </div>
+
                             <div class="d-none input-group mb-3">
                                 <span class="input-group-text">계약 일련번호</span>
                                 <input type="text" name="materialProcurementContractNo"
@@ -138,39 +111,44 @@
                                        readonly>
                             </div>
 
-                            <label class="col-sm-3 control-label"><strong>계약일</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="materialProcurementContractDate"
-                                       class="form-control materialProcurementContractDate" readonly>
-                            </div>
-                            <label class="col-sm-3 control-label"><strong>발주 코드</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="orderCode" class="form-control orderCode" placeholder="클릭해주세요"
-                                       readonly>
-                            </div>
-
                             <span class="col-sm-3 control-label"><strong>발주일</strong></span>
                             <div class="col-sm-3">
                                 <input type="date" name="orderDate" class="form-control" placeholder="발주일">
                             </div>
+
+                            <label class="col-sm-3 control-label"><strong>납기일</strong></label>
+                            <div class="col-sm-3">
+                                <input type="date" name="orderDeliveryDate"
+                                       class="form-control orderDeliveryDate">
+                            </div>
+
+                        </div>
+                        <hr>
+                        <div class="row">
+
+                            <label class="col-sm-3 control-label"><strong>담당자 이름</strong></label>
+                            <div class="col-sm-3">
+                                <input type="text" name="employeeName" class="form-control"
+                                       th:value="${user.employeeName}" readonly>
+                            </div>
+
                             <div class="d-none input-group mb-3">
                                 <span class="input-group-text">담당자 일련번호</span>
                                 <input type="text" name="employeeNo" class="form-control" th:value="${user.employeeNo}"
                                        readonly>
                             </div>
-                        </div>
-                        <hr>
-                        <div class="row">
 
-                            <div class="d-none input-group mb-3">
-                                <span class="input-group-text">납기일</span>
-                                <input type="date" name="orderDeliveryDate" class="form-control" placeholder="납기일">
-                            </div>
                             <div class="d-none input-group mb-3">
                                 <span class="input-group-text">발주 상태</span>
                                 <input type="text" name="orderState" class="form-control" placeholder="발주 상태 - 추후 숨길 부분"
                                        th:value="진행중" readonly>
                             </div>
+
+                        </div>
+                        <hr>
+                        <div class="row">
+
+
                             <label class="col-sm-3 control-label"><strong>비고</strong></label>
                             <div class="col-sm-9">
                                 <textarea name="orderEtc" rows="5" cols="50"  style="width: 100% !important;" class="textarea"></textarea>
@@ -418,6 +396,7 @@
     const inputPlanNo = document.querySelector(".selectPlan")
     const materialCode = document.querySelector(".materialCode")
     const materialName = document.querySelector(".materialName")
+    const materialType = document.querySelector(".materialType")
     const materialRequirementsCount = document.querySelector(".materialRequirementsCount")
     const procurementDeliveryDate = document.querySelector(".procurementDeliveryDate")
 
@@ -449,6 +428,7 @@
             //조달 계획 정보를 가져와서 화면에 반영해야할 항목들은 여기에-----------------------------------------------------
             materialCode.value = plan.materialCode
             materialName.value = plan.materialName
+            materialType.value = plan.materialType
             materialRequirementsCount.value = plan.materialRequirementsCount
             procurementDeliveryDate.value = new Date(plan.procurementDeliveryDate).toISOString().split('T')[0]
             //-----------------------------------------------------------------------------------------------------------
@@ -573,6 +553,9 @@
     const materialProcurementContractDate = document.querySelector(".materialProcurementContractDate")
     const materialSupplyPrice = document.querySelector(".materialSupplyPrice")
     const supplierName = document.querySelector(".supplierName")
+    const supplierCeoName = document.querySelector(".supplierCeoName")
+    const supplierTel = document.querySelector(".supplierTel")
+
 
     //계획 항목 클릭시 input 에 반영
     contractList.addEventListener("click", function (e) {
@@ -603,6 +586,8 @@
             materialProcurementContractDate.value = new Date(contract.materialProcurementContractDate).toISOString().split('T')[0]
             materialSupplyPrice.value = contract.materialSupplyPrice
             supplierName.value = contract.supplierName
+            supplierCeoName.value = contract.supplierCeoName
+            supplierTel.value = contract.supplierTel
             //-----------------------------------------------------------------------------------------------------------
             contractModal.hide()
 
