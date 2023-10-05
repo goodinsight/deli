@@ -51,7 +51,7 @@
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">클라이언트 회사명</span>
-                            <input type="text" name="clientName" class="form-control" id="selectClient" placeholder="클릭해주세요" readonly>
+                            <input type="text" name="clientName" class="form-control selectClient" id="selectClient" placeholder="클릭해주세요" readonly>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" style="margin-left: 50px">대표명</span>
@@ -82,7 +82,7 @@
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">계약 진행 상태</span>
-                            <input type="text" name="productContractState" class="form-control" placeholder="계약진행상태 - 추후 숨길 부분" th:value="자재검토중" readonly>
+                            <input type="text" name="productContractState" class="form-control productContractState" placeholder="계약진행상태 - 추후 숨길 부분" th:value="자재검토중" readonly>
                         </div>
 
                         <div class="d-none input-group mb-3">
@@ -384,7 +384,7 @@
     let clientPage = 1
     let clientPageSize = 5
 
-    document.querySelector("#selectClient").addEventListener("click", function (e) {
+    document.querySelector(".selectClient").addEventListener("click", function (e) {
 
         // if(materialCode.value.length > 0){
             printClients(1, 5)
@@ -483,7 +483,7 @@
 
 
     const clientNo = document.querySelector(".clientNo")
-    const inputClientName = document.querySelector("#selectClient")
+    const inputClientName = document.querySelector(".selectClient")
     const clientCeo = document.querySelector(".clientCeo")
     const clientAddress = document.querySelector(".clientAddress")
     const clientPhone = document.querySelector(".clientPhone")

@@ -75,7 +75,7 @@ public class MaterialRequirementsListController {
 
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
 
-            return "redirect:/materialReqirementsList/register";
+            return "redirect:/materialRequirementsList/register";
         }
 
 

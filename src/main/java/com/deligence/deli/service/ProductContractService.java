@@ -39,7 +39,7 @@ public interface ProductContractService {
                 .clientStatus(productContractDTO.getClientStatus())
                 .employee(Employee.builder().employeeNo(productContractDTO.getEmployeeNo()).build())
                 .employeeName(productContractDTO.getEmployeeName())
-                .documentFile(DocumentFile.builder().documentFileNo(productContractDTO.getDocumentFileNo()).build())
+//                .documentFile(DocumentFile.builder().documentFileNo(productContractDTO.getDocumentFileNo()).build())
                 .build();
 
         return productContract;
@@ -65,7 +65,7 @@ public interface ProductContractService {
 //                .clientStatus(productContract.getClientStatus())
                 .employeeNo(productContract.getEmployee().getEmployeeNo())
                 .employeeName(productContract.getEmployeeName())
-                .documentFileNo(productContract.getDocumentFile().getDocumentFileNo())
+//                .documentFileNo(productContract.getDocumentFile().getDocumentFileNo())
                 .build();
 
         return productContractDTO;
