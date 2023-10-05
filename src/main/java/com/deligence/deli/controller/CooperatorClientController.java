@@ -1,11 +1,13 @@
 package com.deligence.deli.controller;
 
 import com.deligence.deli.dto.CooperatorClientDTO;
+import com.deligence.deli.dto.EmployeeSecurityDTO;
 import com.deligence.deli.dto.PageRequestDTO;
 import com.deligence.deli.dto.PageResponseDTO;
 import com.deligence.deli.service.CooperatorClientService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,8 +37,12 @@ public class CooperatorClientController {
 
     }
 
-    @GetMapping("/register") //등록(추가)
-    public void registerGET(){
+    @GetMapping("/register")
+    public void registerGET(@AuthenticationPrincipal EmployeeSecurityDTO employeeSecurityDTO, Model model){
+
+        log.info(employeeSecurityDTO);
+
+        model.addAttribute("user", employeeSecurityDTO);
 
     }
 

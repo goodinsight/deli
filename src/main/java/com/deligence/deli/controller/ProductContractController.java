@@ -2,6 +2,7 @@ package com.deligence.deli.controller;
 
 import com.deligence.deli.domain.CooperatorClient;
 import com.deligence.deli.dto.*;
+import com.deligence.deli.service.CooperatorClientService;
 import com.deligence.deli.service.ProductContractService;
 import com.deligence.deli.service.ProductsService;
 import lombok.RequiredArgsConstructor;
@@ -27,7 +28,7 @@ public class ProductContractController {
 
     //비동기처리 -> Products, CooperatorClient
     private final ProductsService productsService;
-//    private final CooperatorClientService cooperatorClientService; -> 구현 후 주석 풀 것
+    private final CooperatorClientService cooperatorClientService;
 
     @GetMapping("/list")
     public void list(OrderPageRequestDTO orderPageRequestDTO, Model model){
@@ -171,6 +172,30 @@ public class ProductContractController {
     }
 
     //cooperatorClientService만들면 비동기처리  --------------------------------
+    @ResponseBody
+    @GetMapping("/register/selectClient")
+    public PageResponseDTO<CooperatorClientDTO> getClientList(PageRequestDTO pageRequestDTO){
+
+        log.info("getClientList");
+
+        PageResponseDTO<CooperatorClientDTO> responseDTO = cooperatorClientService.list(pageRequestDTO);
+
+        return responseDTO;
+    }
+
+    @ResponseBody
+    @GetMapping("/register/getClient/{clientsNo}")
+    public CooperatorClientDTO getClientDTO(@PathVariable("clientsNo") int clientsNo) {
+
+        log.info("getClientDTO : " + clientsNo);
+
+        CooperatorClientDTO cooperatorClientDTO = cooperatorClientService.read(clientsNo);
+
+        log.info(cooperatorClientDTO);
+
+        return cooperatorClientDTO;
+
+    }
 
 
 

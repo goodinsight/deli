@@ -33,5 +33,4 @@ public class CooperatorClientDTO {
 
     private String clientEtc;   //비고
 
-    private int documentFile;  //문서파일일련번호(FK)
 }

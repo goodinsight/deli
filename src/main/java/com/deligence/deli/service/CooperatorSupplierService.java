@@ -33,7 +33,7 @@ public interface CooperatorSupplierService {
                 .supplierAddress(cooperatorSupplierDTO.getSupplierAddress())
                 .supplierStatus(cooperatorSupplierDTO.getSupplierStatus())
                 .supplierEtc(cooperatorSupplierDTO.getSupplierEtc())
-                .documentFile(DocumentFile.builder().documentFileNo(cooperatorSupplierDTO.getDocumentFileNo()).build())
+//                .documentFile(DocumentFile.builder().documentFileNo(cooperatorSupplierDTO.getDocumentFileNo()).build())
                 .build();
 
         return cooperatorSupplier;
@@ -51,7 +51,7 @@ public interface CooperatorSupplierService {
                 .supplierAddress(cooperatorSupplier.getSupplierAddress())
                 .supplierStatus(cooperatorSupplier.getSupplierStatus())
                 .supplierEtc(cooperatorSupplier.getSupplierEtc())
-                .documentFileNo(cooperatorSupplier.getDocumentFile().getDocumentFileNo())
+//                .documentFileNo(cooperatorSupplier.getDocumentFile().getDocumentFileNo())
                 .build();
 
         return cooperatorSupplierDTO;

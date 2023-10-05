@@ -51,7 +51,7 @@
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">클라이언트 회사명</span>
-                            <input type="text" name="clientName" class="form-control" id="selectClient" placeholder="클릭해주세요" readonly>
+                            <input type="text" name="clientName" class="form-control selectClient" id="selectClient" placeholder="클릭해주세요" readonly>
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text" style="margin-left: 50px">대표명</span>
@@ -65,7 +65,7 @@
                         </div>
                         <div class="input-group mb-3 pl-5">
                             <span class="input-group-text">클라이언트 계약 상태</span>
-                            <input type="text" name="clientStatus" class="form-control" placeholder="클라이언트 계약상태 - 추후 숨길 부분" th:value="계약중" readonly>
+                            <input type="text" name="clientStatus" class="form-control clientStatus" th:value="계약중" readonly>
                         </div>
 
                         <div class="input-group mb-3">
@@ -82,7 +82,7 @@
                         </div>
                         <div class="input-group mb-3">
                             <span class="input-group-text">계약 진행 상태</span>
-                            <input type="text" name="productContractState" class="form-control" placeholder="계약진행상태 - 추후 숨길 부분" th:value="자재검토중" readonly>
+                            <input type="text" name="productContractState" class="form-control productContractState" placeholder="계약진행상태 - 추후 숨길 부분" th:value="자재검토중" readonly>
                         </div>
 
                         <div class="d-none input-group mb-3">
@@ -384,14 +384,14 @@
     let clientPage = 1
     let clientPageSize = 5
 
-    document.querySelector("#selectClient").addEventListener("click", function (e) {
+    document.querySelector(".selectClient").addEventListener("click", function (e) {
 
-        if(materialCode.value.length > 0){
-            printContracts(1, 5)
-            contractModal.show()
-        }else {
-            alert("제품을 먼저 선택해주세요.")
-        }
+        // if(materialCode.value.length > 0){
+            printClients(1, 5)
+            clientModal.show()
+        // }else {
+        //     alert("제품을 먼저 선택해주세요.")
+        // }
 
     }, false)
 
@@ -403,7 +403,7 @@
 
         let str = ''
 
-        if(dtoList && dtoList.length > 0){
+        if( dtoList && dtoList.length > 0){
 
             for( const dto of dtoList) {
 
@@ -448,18 +448,20 @@
 
     function printClients(page, size) {
 
-        const type = "b"
-        const keyword = clientStatus.value
+        // const type = "b"
+        // const keyword = clientStatus.value
 
-        getClientList({page, size, type, keyword}).then(
+        getClientList({page, size}).then(
             data => {
                 printClientList(data.dtoList)
                 printClientPages(data)
             }
         ).catch(e => {
+            console.log("print clients error")
             console.error(e)
         })
     }
+
 
     //계약 목록 페이징
     clientPaging.addEventListener("click", function(e) {
@@ -481,7 +483,7 @@
 
 
     const clientNo = document.querySelector(".clientNo")
-    const inputClientName = document.querySelector("#selectClient")
+    const inputClientName = document.querySelector(".selectClient")
     const clientCeo = document.querySelector(".clientCeo")
     const clientAddress = document.querySelector(".clientAddress")
     const clientPhone = document.querySelector(".clientPhone")

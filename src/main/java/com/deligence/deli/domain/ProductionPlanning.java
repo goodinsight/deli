@@ -33,6 +33,7 @@ public class ProductionPlanning extends BaseEntity {   //제품생산계획테�
     private String detailExplaination;              //상세내용
 
     private String productionState;                 //생산계획진행상태
+    //자재조달단계, 자재입고단계, 제품생산단계, 제품검수단계, 제품입고단계
 
     @ManyToOne(fetch = FetchType.LAZY)
     private ProductContract productContract;    //제품계약(일련번호) FK --------------------------------------

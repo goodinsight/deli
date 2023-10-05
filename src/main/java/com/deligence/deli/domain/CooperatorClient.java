@@ -35,8 +35,6 @@ public class CooperatorClient {
 
     private String clientEtc;   //비고
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private DocumentFile documentFile;  //문서파일일련번호(FK)
 
     public void change(CooperatorClientDTO cooperatorClientDTO){
         this.corporateRegistrationNo = cooperatorClientDTO.getCorporateRegistrationNo(); //사업자 등록번호

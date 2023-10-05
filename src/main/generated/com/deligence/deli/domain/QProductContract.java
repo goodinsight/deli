@@ -78,7 +78,7 @@ public class QProductContract extends EntityPathBase<ProductContract> {
 
     public QProductContract(Class<? extends ProductContract> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
-        this.cooperatorClient = inits.isInitialized("cooperatorClient") ? new QCooperatorClient(forProperty("cooperatorClient"), inits.get("cooperatorClient")) : null;
+        this.cooperatorClient = inits.isInitialized("cooperatorClient") ? new QCooperatorClient(forProperty("cooperatorClient")) : null;
         this.documentFile = inits.isInitialized("documentFile") ? new QDocumentFile(forProperty("documentFile")) : null;
         this.employee = inits.isInitialized("employee") ? new QEmployee(forProperty("employee"), inits.get("employee")) : null;
         this.products = inits.isInitialized("products") ? new QProducts(forProperty("products")) : null;

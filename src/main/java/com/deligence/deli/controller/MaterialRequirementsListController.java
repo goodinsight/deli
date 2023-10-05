@@ -38,6 +38,19 @@ public class MaterialRequirementsListController {
 
     }
 
+    @GetMapping("/list2")
+    public void list2(PageRequestDTO pageRequestDTO, Model model){
+
+        log.info(pageRequestDTO);
+
+        PageResponseDTO<MaterialRequirementsListDTO> responseDTO = materialRequirementsListService.list(pageRequestDTO);
+
+        log.info(responseDTO);
+
+        model.addAttribute("responseDTO", responseDTO);
+
+    }
+
     @GetMapping("/register")
     public void registerGET(@AuthenticationPrincipal EmployeeSecurityDTO employeeSecurityDTO, Model model){
 
@@ -62,7 +75,7 @@ public class MaterialRequirementsListController {
 
             redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
 
-            return "redirect:/materialReqirementsList/register";
+            return "redirect:/materialRequirementsList/register";
         }
 
 

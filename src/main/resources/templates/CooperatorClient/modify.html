@@ -18,7 +18,7 @@
                     구매협력회사 수정
                 </div>
                 <div class="card-body mt-3">
-                    <form th:action="@{/CooperatorClient/modify}" method="post" id="modifyForm">
+                    <form th:action="@{CooperatorClient}" method="post" id="modifyForm">
                         <div class="input-group mb-3 d-none">
                             <span class="input-group-text">구매협력회사 일련번호</span>
                             <input type="text" name="clientNo" class="form-control clientNo" th:value="${dto.clientNo}" readonly>

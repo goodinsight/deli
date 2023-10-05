@@ -114,6 +114,11 @@
                         <span class="input-group-text">상세 내용</span>
                         <textarea name="detailExplaination" rows="5" cols="50" class="form-control h-25" readonly>[[${dto.detailExplaination}]]</textarea>
                     </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">생산 계획 진행 상태</span>
+                        <input type="text" name="productionState" class="form-control productionState" th:value="${dto.productionState}" readonly>
+                    </div>
+                    <!--자재조달단계, 자재입고단계, 제품생산단계, 제품검수단계, 제품입고단계-->
 
                     <div class="input-group mb-3 d-none">
                         <span class="input-group-text">담당자 일련번호</span>
