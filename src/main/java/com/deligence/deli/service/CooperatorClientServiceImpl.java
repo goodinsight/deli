@@ -35,12 +35,14 @@ public class CooperatorClientServiceImpl implements CooperatorClientService {
 
         int clientNo = cooperatorClientRepository.save(cooperatorClient).getClientNo();
 
+        log.info("clientNo : "+clientNo);
+
         return clientNo;
     }
 
     @Override
     public CooperatorClientDTO read(int clientNo) { //조회
-
+        log.info("clientNo : "+clientNo);
         Optional<CooperatorClient> result = cooperatorClientRepository.findById(clientNo);
 
         CooperatorClient cooperatorClient = result.orElseThrow();
@@ -54,7 +56,7 @@ public class CooperatorClientServiceImpl implements CooperatorClientService {
     public void modify(CooperatorClientDTO cooperatorClientDTO) { //수정
 
         Optional<CooperatorClient> result = cooperatorClientRepository.findById(cooperatorClientDTO.getClientNo());
-
+        log.info("clientNo : "+cooperatorClientDTO.getClientNo());
         CooperatorClient cooperatorClient = result.orElseThrow();
 
         cooperatorClient.change(cooperatorClientDTO);
@@ -65,7 +67,7 @@ public class CooperatorClientServiceImpl implements CooperatorClientService {
 
     @Override
     public void delete(int clientNo) { //삭제
-
+        log.info("clientNo : "+clientNo);
         cooperatorClientRepository.deleteById(clientNo);
 
     }

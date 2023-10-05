@@ -41,10 +41,12 @@ public class CooperatorClientController {
     }
 
     @PostMapping("/register") //등록(추가)
-    public String registerPost(@Valid CooperatorClientDTO cooperatorClientDTO, BindingResult bindingResult,
-                             RedirectAttributes redirectAttributes){
+    public String registerPost(@Valid CooperatorClientDTO cooperatorClientDTO,
+                               BindingResult bindingResult,
+                               RedirectAttributes redirectAttributes){
 
         log.info("CooperatorClient POST register...");
+        log.info(cooperatorClientDTO);
 
         if (bindingResult.hasErrors()) {
             log.info("has errors...");
@@ -52,7 +54,6 @@ public class CooperatorClientController {
             return "redirect:/CooperatorClient/register";
         }
 
-        log.info(cooperatorClientDTO);
 
         int clientNo = cooperatorClientService.register(cooperatorClientDTO);
 
@@ -62,15 +63,59 @@ public class CooperatorClientController {
 
     }
 
-    @GetMapping("/read")
+    @GetMapping({"/read", "/modify"}) //상세조회 + 수정
     public void read(int clientNo, PageRequestDTO pageRequestDTO, Model model){
+
+        log.info("clientNo : "+clientNo);
 
         CooperatorClientDTO cooperatorClientDTO = cooperatorClientService.read(clientNo);
 
         log.info(cooperatorClientDTO);
 
         model.addAttribute("dto", cooperatorClientDTO);
+
+        model.addAttribute("pageRequestDTO", pageRequestDTO);
+
     }
 
+    @PostMapping("/modify") // 수정
+    public String modify(PageRequestDTO pageRequestDTO,
+                         @Valid CooperatorClientDTO cooperatorClientDTO,
+                         BindingResult bindingResult,
+                         RedirectAttributes redirectAttributes) {
 
+        log.info("client modify post....." + cooperatorClientDTO);
+
+        if (bindingResult.hasErrors()) {
+            log.info("has errors.....");
+
+            String link = pageRequestDTO.getLink();
+
+            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
+
+            redirectAttributes.addAttribute("clientNo", cooperatorClientDTO.getClientNo());
+
+            return "redirect:/CooperatorClient/modify?"+link;
+        }
+
+        cooperatorClientService.modify(cooperatorClientDTO);
+
+        redirectAttributes.addFlashAttribute("result", "modified");
+
+        redirectAttributes.addAttribute("clientNo", cooperatorClientDTO.getClientNo());
+
+        return "redirect:/CooperatorClient/read";
+    }
+
+    @PostMapping("/delete")
+    public String delete(int clientNo, RedirectAttributes redirectAttributes){
+
+        log.info("delete post.." + clientNo);
+
+        cooperatorClientService.delete(clientNo);
+
+        redirectAttributes.addFlashAttribute("result", "delete");
+
+        return "redirect:/CooperatorClient/list";
+    }
 }
