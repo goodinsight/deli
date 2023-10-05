@@ -5,45 +5,67 @@
       layout:decorate="~{/layout/layout.html}">
 <head>
     <title>Employee Modify</title>
+
+    <!-- Styles -->
+    <link th:href="@{/css/lib/font-awesome.min.css}" rel="stylesheet">
+    <link th:href="@{/css/lib/themify-icons.css}" rel="stylesheet">
+    <link th:href="@{/css/lib/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/lib/helper.css}" rel="stylesheet">
+    <link th:href="@{/css/style.css}" rel="stylesheet"/>
+    <link th:href="@{/css/styles.min.css}" rel="stylesheet"/>
 </head>
 
 <div layout:fragment="content">
-    <div class="row mt-3">
-        <div class="col">
+    <div class="row justify-content-between">
+        <div class="col-lg-12">
             <div class="card">
-                <div class="card-header">
-                    Employee Modify
+                <div class="card-title">
+                    <strong>Employee Modify</strong>
+                    <hr>
                 </div>
 
                 <div class="card-body">
-                    <form th:action="@{/employee/modify}" method="post" id="f1">
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">EmployeeNo</span>
-                            <input type="text" class="form-control" name="employeeNo" th:value="${dto.employeeNo}" readonly>
+
+                    <form class="form-horizontal" th:action="@{/employee/modify}" method="post" id="f1">
+
+                        <div class="row">
+
+                            <label class="col-sm-3 control-label"><strong>EmployeeNo</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="employeeNo" th:value="${dto.employeeNo}" readonly>
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>EmployeeID</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="employeeId" th:value="${dto.employeeId}" readonly>
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>EmployeeName</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="employeeName" th:value="${dto.employeeName}" >
+                            </div>
                         </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">EmployeeID</span>
-                            <input type="text" class="form-control" name="employeeId" th:value="${dto.employeeId}" readonly>
+                        <hr>
+
+                        <div class="row">
+                            <label class="col-sm-3 control-label"><strong>EmployeePhone</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="employeePhone" th:value="${dto.employeePhone}" >
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>EmployeeEmail</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="employeeEmail" th:value="${dto.employeeEmail}" >
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>EmployeeEntranceDate</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="employeeEntranceDate" th:value="${dto.employeeEntranceDate}" readonly>
+                            </div>
                         </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">EmployeeName</span>
-                            <input type="text" class="form-control" name="employeeName" th:value="${dto.employeeName}" >
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">EmployeePhone</span>
-                            <input type="text" class="form-control" name="employeePhone" th:value="${dto.employeePhone}" >
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">EmployeeEmail</span>
-                            <input type="text" class="form-control" name="employeeEmail" th:value="${dto.employeeEmail}" >
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">EmployeeEntranceDate</span>
-                            <input type="text" class="form-control" name="employeeEntranceDate" th:value="${dto.employeeEntranceDate}" readonly>
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">EmployeePosition</span>
-                            <input type="text" class="form-control" name="position" th:value="${dto.position.getPositionName()}" >
+                        <hr>
+
+                        <div class="row">
+                            <label class="col-sm-3 control-label"><strong>EmployeePosition</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" name="position" th:value="${dto.position.getPositionName()}" >
+                            </div>
                         </div>
                         <div class="my-4">
                             <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}">
