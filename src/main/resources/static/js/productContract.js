@@ -13,9 +13,9 @@ async function getProduct(productsNo) {
 }
 
 
-async function getClientList({page, size, type, keyword}){
+async function getClientList({page, size}){
 
-    const result = await axios.get(`/productContract/register/selectClient`, {params: {page, size, type, keyword}})
+    const result = await axios.get(`/productContract/register/selectClient`, {params: {page, size}})
 
     return result.data
 }
