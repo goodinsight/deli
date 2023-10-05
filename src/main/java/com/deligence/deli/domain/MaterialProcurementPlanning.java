@@ -19,8 +19,8 @@ public class MaterialProcurementPlanning extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private int materialProcurementPlanNo;                  //조달계획일련번호
+    //JPA에 사용할 경우 Entity에서 id는 모두 Integer이어야 함.
 
     private String materialProcurementPlanCode;             //조달계획코드
 
@@ -32,8 +32,10 @@ public class MaterialProcurementPlanning extends BaseEntity {
 
     //-------------------------------------------------------------------------------------------------
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private ProductionPlanning productionPlanning;          //생산계획 일련번호 (생산계획 FK)
+
+    private String productionPlanCode;                      //생산계획 코드
 
     //추가 -> 생산계획 정보
     private int productionRequirementsDate;                 //생산소요기간
@@ -48,16 +50,20 @@ public class MaterialProcurementPlanning extends BaseEntity {
 
     //--------------------------------------------------------------------------------------------------
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Materials materials;                            //자재일련번호(material_no) (자재 FK)
 
     private String materialCode;                            //자재코드 (검색용)
 
+    private String materialType;                            //자재타입
+
     private String materialName;                            //자재이름 (검색용)
+
+    private Long materialSupplyPrice;                       //자재 공급단가
 
     //----------------------------------------------------------------------------------------------------
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Employee employee;                              //사원일련번호 (employee_no)(사원 FK)
 
     private String employeeName;                            //담당자

@@ -12,9 +12,9 @@ async function getContract(contractNo) {
     return result.data
 }
 
-async function getMrlList({page, size, type, keyword}){
+async function getMrlList({page, size}){
 
-    const result = await axios.get(`/productionPlanning/register/selectMrl`, {params: {page, size,  type, keyword}})
+    const result = await axios.get(`/productionPlanning/register/selectMrl`, {params: {page, size}})
 
     return result.data
 }

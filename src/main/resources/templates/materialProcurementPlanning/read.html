@@ -27,10 +27,6 @@
                         <input type="text" name="materialProcurementPlanCode" class="form-control materialProcurementPlanCode" th:value="${dto.materialProcurementPlanCode}" readonly>
                     </div>
 
-                    <div class="input-group mb-3 d-none">
-                        <span class="input-group-text">생산계획 일련번호</span>
-                        <input type="text" name="productionPlan" class="form-control productionPlan" th:value="${dto.productionPlanNo}" readonly>
-                    </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text">생산계획 코드</span>
                         <input type="text" name="productionPlanCode" class="form-control selectPlan" th:value="${dto.productionPlanCode}" readonly>
@@ -61,8 +57,6 @@
                     <div class="input-group mb-3">
                         <span class="input-group-text">납기일</span>
                         <input type="text" name="procurementDeliveryDate" class="form-control" th:value="${dto.procurementDeliveryDate}" readonly>
-                        <!--<input type="text" class="form-control"
-                           th:value="${#temporals.format(dto.procurementDeliveryDate, 'yyyy-MM-dd')}" readonly>-->
                     </div>
 
                     <div class="input-group mb-3">
@@ -74,7 +68,6 @@
                         <span class="input-group-text">담당자 일련번호</span>
                         <input type="text" name="employeeNo" class="form-control" th:value="${dto.employeeNo}" readonly>
                     </div>
-
 
                     <div class="input-group mb-3">
                         <span class="input-group-text">담당자</span>
@@ -93,8 +86,8 @@
 
                     <div class="my-4" th:with="user=${#authentication.principal}">
                         <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}" >
-                            <button type="button" class="btn btn-default btn-outline afterComp">계획 완료됨</button>
-                            <button type="button" class="btn btn-warning completeButton" onclick="compProcurementPlanning()">조달 완료</button>
+                            <button type="button" class="btn btn-default btn-outline afterComp">조달 완료됨</button>
+                            <button type="button" class="btn btn-warning completeButton" onclick="compProcurementPlanning()">조달 계획 완료</button>
 
                             <a th:href="|@{/materialProcurementPlanning/list}?${link}|" class="text-decoration-none">
                                 <button type="button" class="btn btn-primary">List</button>
@@ -120,56 +113,56 @@
 <script layout:fragment="script" th:inline="javascript">
 
     console.log([[${dto}]])
+    //
+    // //조달 계획 상태 변경 (조달 계약 완료 시 조달 계획 완료)
+    // let state = [[${dto.materialProcurementState}]]
+    //
+    // const materialProcurementPlanNo = [[${dto.materialProcurementPlanNo}]]
+    // // const materialProcurementContractNo = [[${dto.materialProcurementContractNo}]]
+    // const link = [[${pageRequestDTO.getLink()}]]
 
-    //조달 계약 상태 변경 (발주 완료 시 조달 계약 완료)
-    let state = [[${dto.materialProcurementContractState}]]
+    //
+    // const afterCompButton = document.querySelector('.afterComp')
+    // const completeButton = document.querySelector('.completeButton')
+    // const modifyButton = document.querySelector('.modifyButton')
+    //
+    // function printButton(state){
+    //
+    //     console.log(state)
+    //
+    //     switch (state){
+    //
+    //         case '조달완료(계약완료)':
+    //             afterCompButton.style.display = 'none'
+    //             completeButton.style.display = 'inline'
+    //             modifyButton.style.display = 'none'
+    //             break;
+    //         case '조달계획완료' :
+    //             afterCompButton.style.display = 'inline'
+    //             completeButton.style.display = 'none'
+    //             modifyButton.style.display = 'none'
+    //             break;
+    //         default :
+    //             afterCompButton.style.display = 'none'
+    //             completeButton.style.display = 'none'
+    //             modifyButton.style.display = 'inline'
+    //
+    //     }
+    //
+    // }
 
-    const materialProcurementContractNo = [[${dto.materialProcurementContractNo}]]
-    const orderNo = [[${dto.orderNo}]]
-    const link = [[${pageRequestDTO.getLink()}]]
-
-
-    const afterCompButton = document.querySelector('.afterComp')
-    const completeButton = document.querySelector('.completeButton')
-    const modifyButton = document.querySelector('.modifyButton')
-
-    function printButton(state){
-
-        console.log(state)
-
-        switch (state){
-
-            case '발주진행중':
-                afterCompButton.style.display = 'none'
-                completeButton.style.display = 'inline'
-                modifyButton.style.display = 'none'
-                break;
-            case '조달완료' :
-                afterCompButton.style.display = 'inline'
-                completeButton.style.display = 'none'
-                modifyButton.style.display = 'none'
-                break;
-            default :
-                afterCompButton.style.display = 'none'
-                completeButton.style.display = 'none'
-                modifyButton.style.display = 'inline'
-
-        }
-
-    }
-
-    printButton(state)
-
-
-    function compProcurementContract(){
-
-        completeProcurementContract({materialProcurementContractNo, orderNo}).then(
-            location.href="/materialProcurementContract/read?materialProcurementContractNo="+materialProcurementContractNo+"&"+link
-        ).catch( e =>{
-            console.log(e)
-        })
-
-    }
+    // printButton(state)
+    //
+    //
+    // function compProcurementPlanning(){
+    //
+    //     completeProcurementPlanning({materialProcurementPlanNo, materialProcurementPlanNo}).then(
+    //         location.href="/materialProcurementPlanning/read?materialProcurementPlanNo="+materialProcurementPlanNo+"&"+link
+    //     ).catch( e =>{
+    //         console.log(e)
+    //     })
+    //
+    // }
 
 </script>
 

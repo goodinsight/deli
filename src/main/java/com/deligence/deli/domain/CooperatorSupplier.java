@@ -1,7 +1,5 @@
 package com.deligence.deli.domain;
 
-//자재협력회사정보테이블 -> 우선순위x entity만
-
 import com.deligence.deli.dto.CooperatorSupplierDTO;
 import lombok.*;
 
@@ -19,7 +17,7 @@ public class CooperatorSupplier {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int supplierNo;    //자재협력회사 일련번호
+    private Integer supplierNo;    //자재협력회사 일련번호
 
     private int corporateRegistrationNo;  //사업자등록번호
 

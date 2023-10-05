@@ -35,8 +35,8 @@ public class MaterialProcurementContractServiceImpl implements MaterialProcureme
 
         log.info(materialProcurementContract);
 
-        int materialProcurementContractNo = materialProcurementContractRepository
-                .save(materialProcurementContract).getMaterialProcurementContractNo();
+        int materialProcurementContractNo =
+                materialProcurementContractRepository.save(materialProcurementContract).getMaterialProcurementContractNo();
 
         log.info(materialProcurementContractNo);
 

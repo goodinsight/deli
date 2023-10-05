@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>제품별 자재항목 수정</title>
+</head>
+
+<div layout:fragment="content">
+
+    <div class="row mt-3">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    제품별 자재 항목 수정
+                </div>
+                <div class="card-body mt-3">
+                    <form th:action="@{/materialRequirementsList/modify}" method="post" id="modifyForm">
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">필요 자재 항목 일련번호</span>
+                            <input type="text" name="materialRequirementsListNo" class="form-control materialRequirementsListNo" th:value="${dto.materialRequirementsListNo}" readonly>
+                        </div>
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">제품 일련번호</span>
+                            <input type="text" name="productNo" class="form-control productNo" th:value="${dto.productNo}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">제품 코드</span>
+                            <input type="text" name="productCode" class="form-control selectProduct" th:value="${dto.productCode}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">제품 이름</span>
+                            <input type="text" name="productName" class="form-control productName" th:value="${dto.productName}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">제품 타입</span>
+                            <input type="text" name="productType" class="form-control productType" th:value="${dto.productType}" readonly>
+                        </div>
+
+                        <div class="input-group mb-3 d-none">
+                            <span class="input-group-text">자재 일련번호</span>
+                            <input type="text" name="materialNo" class="form-control materialNo" th:value="${dto.materialNo}" readonly>
+                        </div>
+
+                        <!--제품별 해당 자재는 다 나오게-->
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재코드</span>
+                            <input type="text" name="materialCode" class="form-control materialCode" th:value="${dto.materialCode}" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재이름</span>
+                            <input type="text" name="materialName" class="form-control materialName" th:value="${dto.materialName}" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재타입</span>
+                            <input type="text" name="materialType" class="form-control materialType" th:value="${dto.materialType}" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">수량</span>
+                            <input type="text" name="quantity" class="form-control quantity" th:value="${dto.quantity}" >
+                        </div>
+
+                        <div class="my-4">
+                            <div class="float-end">
+                                <button type="button" class="btn btn-primary modBtn">MODIFY</button>
+                                <button type="button" class="btn btn-secondary readBtn">GO BACK</button>
+                                <button type="button" class="btn btn-danger removeBtn">REMOVE</button>
+                            </div>
+                        </div>
+                    </form>
+                </div><!-- end card body -->
+            </div><!-- end card -->
+        </div><!-- end col -->
+    </div><!-- end row -->
+
+
+    <script layout:fragment="script" th:inline="javascript">
+
+        console.log([[${dto}]])
+
+        // 에러 처리 ---------------------------------------------------
+
+        const errors = [[${errors}]]
+        console.log(errors)
+
+        let errorMsg = ''
+
+        if (errors) {
+            for(let i = 0; i < errors.length; i++) {
+                errorMsg += `${errors[i].field}은(는) ${errors[i].code} \n`
+            }
+            history.replaceState({}, null, null)
+            alert(errorMsg)
+        }
+
+        // 수정 처리 ------------------------------------------------------
+
+        const link = [[${pageRequestDTO.getLink()}]]
+        const formObj = document.querySelector("#modifyForm")
+        const materialRequirementsListNo = [[${dto.materialRequirementsListNo}]]
+
+        document.querySelector(".modBtn").addEventListener("click", function (e) {
+            e.preventDefault()
+            e.stopPropagation()
+
+
+            formObj.action = `/materialRequirementsList/modify?${link}`
+            formObj.method = 'post'
+            formObj.submit()
+
+        }, false)
+
+        // 상세 페이지로 이동 ---------------------------------------------------------
+
+        document.querySelector(".readBtn").addEventListener("click", function (e) {
+
+            e.preventDefault()
+            e.stopPropagation()
+
+            formObj.reset()
+            self.location = `/materialRequirementsList/read?materialRequirementsListNo=${materialRequirementsListNo}&${link}`
+
+        }, false)
+
+    </script>
+
+
+
+</div>
+
+
+
+
+</html>

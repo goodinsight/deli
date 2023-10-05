@@ -194,6 +194,7 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
 
     }
 
+    @Override
     public MaterialProcurementContractDetailDTO read(int materialProcurementContractNo) {
 
         QMaterialProcurementContract materialProcurementContract = QMaterialProcurementContract.materialProcurementContract;
@@ -240,7 +241,8 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
                 .supplierStatus(resultCs.getSupplierStatus())
                 .employeeNo(resultMaterialProcurementContract.getEmployee().getEmployeeNo())
                 .employeeName(resultMaterialProcurementContract.getEmployeeName())
-                .documentFileNo(resultMaterialProcurementContract.getDocumentFile().getDocumentFileNo())
+//                .employeeName(resultMaterialProcurementContract.getEmployee().getEmployeeName())
+//                .documentFileNo(resultMaterialProcurementContract.getDocumentFile().getDocumentFileNo())
                 .regDate(resultMaterialProcurementContract.getRegDate())
                 .modDate(resultMaterialProcurementContract.getModDate())
                 .build();

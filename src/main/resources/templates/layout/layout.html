@@ -62,6 +62,15 @@
                         <li><a th:href="@{/material/register}"><i class="ti-zoom-in"></i>자재 등록</a></li>
                     </ul>
                 </li>
+                <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-hummer"></i> 제품관리 <span
+                        class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a th:href="@{/product/list}"><i class="ti-layout-list-thumb"></i>제품 리스트</a></li>
+                        <li><a th:href="@{/product/register}"><i class="ti-zoom-in"></i>제품 등록</a></li>
+                        <li><a th:href="@{/materialRequirementsList/list}"><i class="ti-zoom-in"></i>제품 별 자재 항목</a></li>
+                    </ul>
+                </li>
+
 
                 <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-calendar"></i> 계약관리 <span
                         class="sidebar-collapse-icon ti-angle-down"></span></a>
@@ -122,8 +131,8 @@
                 <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-user"></i> 파트너 <span
                         class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
-                        <li><a href="#">협력사 메뉴1</a></li>
-                        <li><a href="#">협력사 메뉴2</a></li>
+                        <li><a href="/cooperatorSupplier/list">협력사 목록</a></li>
+                        <li><a href="/cooperatorSupplier/register">협력사 등록</a></li>
                         <li><a href="#">협력사 메뉴3</a></li>
                         <li><a href="#">협력사 메뉴4</a></li>
                     </ul>

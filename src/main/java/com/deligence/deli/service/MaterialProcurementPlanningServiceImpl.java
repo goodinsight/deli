@@ -2,15 +2,10 @@ package com.deligence.deli.service;
 
 import com.deligence.deli.domain.MaterialProcurementPlanning;
 import com.deligence.deli.domain.Order;
-import com.deligence.deli.domain.QOrder;
 import com.deligence.deli.dto.*;
 import com.deligence.deli.repository.MaterialProcurementPlanningRepository;
-import com.querydsl.jpa.JPQLQuery;
-import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,11 +17,12 @@ import java.util.stream.Collectors;
 @Service
 @Log4j2
 @RequiredArgsConstructor
-@Transactional
+//@Transactional
 public class MaterialProcurementPlanningServiceImpl implements MaterialProcurementPlanningService{
 
     private final MaterialProcurementPlanningRepository materialProcurementPlanningRepository;
 
+    @Transactional
     @Override  //등록
     public int register(MaterialProcurementPlanningDTO materialProcurementPlanningDTO) {
 
@@ -39,8 +35,7 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
 
         log.info(materialProcurementPlanning);
 
-        int materialProcurementPlanNo = materialProcurementPlanningRepository
-                .save(materialProcurementPlanning).getMaterialProcurementPlanNo();
+        int materialProcurementPlanNo = materialProcurementPlanningRepository.save(materialProcurementPlanning).getMaterialProcurementPlanNo();
 
         log.info(materialProcurementPlanNo);
 
@@ -51,8 +46,7 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
     @Override //조회
     public MaterialProcurementPlanningDetailDTO read(int materialProcurementPlanNo) {
 
-        MaterialProcurementPlanningDetailDTO result =
-                materialProcurementPlanningRepository.read(materialProcurementPlanNo);
+        MaterialProcurementPlanningDetailDTO result = materialProcurementPlanningRepository.read(materialProcurementPlanNo);
 
         return result;
 
@@ -101,8 +95,7 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
 //        Pageable pageable = pageRequestDTO.getPageable("materialProcurementPlanNo");
         //속성 넣으면 SearchImpl의 searchAll() paging 부분 오류남.
 
-        Page<MaterialProcurementPlanning> result =
-                materialProcurementPlanningRepository.searchAll(types, keyword, pageable);
+        Page<MaterialProcurementPlanning> result = materialProcurementPlanningRepository.searchAll(types, keyword, pageable);
 
         List<MaterialProcurementPlanningDTO> dtoList = result.getContent().stream()
                 .map(materialProcurementPlanning -> entityToDto(materialProcurementPlanning))
@@ -130,6 +123,28 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
                 .dtoList(dtoList)
                 .total((int)result.getTotalElements())
                 .build();
+    }
+
+    @Override
+    public OrderPageResponseDTO<MaterialProcurementPlanningDTO> listWithState(OrderPageRequestDTO orderPageRequestDTO) {
+
+        String[] types = orderPageRequestDTO.getTypes();
+        String keyword = orderPageRequestDTO.getKeyword();
+        String state = orderPageRequestDTO.getState();
+        Pageable pageable = orderPageRequestDTO.getPageable();//속성 집어넣으면 오류 발생함.
+
+        Page<MaterialProcurementPlanning> result = materialProcurementPlanningRepository.searchWithState(types, keyword, state, pageable);
+
+        List<MaterialProcurementPlanningDTO> dtoList = result.getContent().stream()
+                .map(materialProcurementPlanning -> entityToDto(materialProcurementPlanning))
+                .collect(Collectors.toList());
+
+        return OrderPageResponseDTO.<MaterialProcurementPlanningDTO>withAll()
+                .orderPageRequestDTO(orderPageRequestDTO)
+                .dtoList(dtoList)
+                .total((int)result.getTotalElements())
+                .build();
+
     }
 
     @Override

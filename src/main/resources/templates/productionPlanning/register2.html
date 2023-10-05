@@ -70,7 +70,7 @@
                                 <span class="input-group-text">제품별 필요 자재 항목 일련번호</span>
                                 <input type="text" name="materialRequirementsListNo" class="form-control materialRequirementsListNo" readonly>
                             </div>
-
+                            <!--
                             <div class="input-group mb-3 d-none">
                                 <span class="input-group-text">제품 일련번호</span>
                                 <input type="text" name="productNo" class="form-control productNo" readonly>
@@ -83,10 +83,14 @@
                                 <span class="input-group-text">제품 이름</span>
                                 <input type="text" name="productName2" class="form-control productName2" readonly>
                             </div>
-                            <div class="input-group mb-3 d-none">
-                                <span class="input-group-text">제품 타입</span>
-                                <input type="text" name="productType2" class="form-control productType2" readonly>
-                            </div>
+                            -->
+
+                            <p>
+                                <input type="text" id="materialList" readonly>
+                                <input type="button" value="자재 등록" onclick="new_window();">
+                            </p>
+
+
                             <div class="input-group mb-3 pl-5">
                                 <span class="input-group-text">필요 자재 코드</span>
                                 <input type="text" name="materialCode" class="form-control selectMrl" id="selectMrl" placeholder="클릭해주세요" readonly>
@@ -444,7 +448,7 @@
         console.log("select material modal show")
 
         // if(productCode.value.length > 0){
-            printMrls(1, 5)
+            printContracts(1, 5)
             mrlModal.show()
         // }else {
         //     alert("제품 계약 코드를 먼저 선택해주세요.")
@@ -470,7 +474,6 @@
                               <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.materialRequirementsListNo}</td>
                               <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.productCode}</td>
                               <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.productName}</td>
-                              <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.productType}</td>
                               <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.materialCode}</td>
                               <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.materialName}</td>
                               <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.materialType}</td>
@@ -536,9 +539,8 @@
     }, false)
 
     const materialRequirementsListNo = document.querySelector(".materialRequirementsListNo")
-    const productCode2 = document.querySelector(".productCode2")
-    const productName2 = document.querySelector(".productName2")
-    const productType2 = document.querySelector(".productType2")
+    // let productCode2 = document.querySelector(".productCode")
+    // let productName2 = document.querySelector(".productName")
     const inputMaterialCode = document.querySelector(".selectMrl")
     const materialName = document.querySelector(".materialName")
     const materialType = document.querySelector(".materialType")
@@ -569,9 +571,8 @@
             console.log(mrl)
             console.log("check0")
             materialRequirementsListNo.value = mrl.materialRequirementsListNo
-            productCode2.value = mrl.productCode
-            productName2.value = mrl.productName
-            productType2.value = mrl.productType
+            // productCode2 = mrl.productCode
+            // productName2 = mrl.productName
             //자재 정보를 가져와서 화면에 반영해야 할 항목들은 여기에 --------------------------------------------------------
             console.log("check1")
             inputMaterialCode.value = mrl.materialCode
@@ -611,6 +612,20 @@
     }, false)
 
 
+    //자재 등록 새창
+    var new_window_width = 800;
+    var new_window_height = 600;
+    var positionX = ( window.screen.width / 2 ) - ( new_window_width / 2 );
+    var positionY = ( window.screen.height / 2 ) - ( new_window_height / 2 );
+    function new_window() {
+        window.open(
+            "/materialRequirementsList/list",
+            "제품별 필요 자재 항목",
+            "width=" + new_window_width + ", height=" + new_window_height + ", top=" + positionY + ", left=" + positionX
+        );
+
+
+    }
 
 </script>
 

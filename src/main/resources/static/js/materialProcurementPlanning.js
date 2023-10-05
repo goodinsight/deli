@@ -35,3 +35,31 @@ async function getCodeCount(materialProcurementPlanCode){
 
     return result
 }
+
+async function changeState({materialProcurementPlanNo, state}){
+
+    console.log("js - materialProcurementPlanNo : " + materialProcurementPlanNo)
+    console.log("js - state : " + state)
+
+    data = {
+        materialProcurementPlanNo : materialProcurementPlanNo,
+        state : state
+    }
+
+    return await axios.post(`/#/changeMaterialProcurementState/`, data)
+
+}
+
+async function completeProcurementPlanning({materialProcurementPlanNo, materialProcurementContractNo}){
+//조달 계약 완료 -> 조달 계획 완료
+    data = {
+        materialProcurementPlanNo : materialProcurementPlanNo,
+        // materialProcurementContractNo : materialProcurementContractNo
+    }
+
+    console.log(data.materialProcurementPlanNo)
+    // console.log(data.materialProcurementContractNo)
+
+    await axios.post(`/materialProcurementPlanning/completeProcurementPlanning/`, data)
+
+}

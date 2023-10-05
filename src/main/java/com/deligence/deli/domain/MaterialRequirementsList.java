@@ -34,6 +34,8 @@ public class MaterialRequirementsList {
 
     private String productName;             //제품 이름
 
+    private String productType;             //제품 타입
+
     private String materialCode;            //자재 코드
 
     private String materialName;            //자재 이름

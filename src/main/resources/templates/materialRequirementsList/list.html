@@ -5,43 +5,37 @@
       layout:decorate="~{/layout/layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>자재조달계획 리스트</title>
+    <title>제품별 자재 항목 리스트</title>
 </head>
 
 <div layout:fragment="content">
 
     <div class="row mt-12 m-l-15">
-        <form class="col-lg-10" action="/materialProcurementPlanning/list" method="get">
+        <form class="col-lg-10" action="/materialRequirementsList/list" method="get">
             <div class="form-group">
                 <p class="text-muted m-b-15 f-s-12">
                     "검색하고 싶은
                     <code>카테고리를 선택하고 키워드</code>
                     를 입력한 뒤 search버튼을 누르세요"
                 </p>
-                <input type="hidden" name="size" th:value="${orderPageRequestDTO.size}">
+                <input type="hidden" name="size" th:value="${pageRequestDTO.size}">
                 <div class="input-group">
-                    <div class="input-group-prepend">
-                        <select class="form-select" name="state">
-                            <option value="">조달 계획 상태</option>
-                            <option value="진행중" th:selected="${orderPageRequestDTO.state == '진행중'}">진행중</option>
-                            <option value="조달완료" th:selected="${orderPageRequestDTO.state == '조달완료'}">조달완료</option>
-                            <option value="조달중단" th:selected="${orderPageRequestDTO.state == '조달중단'}">조달중단</option>
-                        </select>
-                    </div>
                     <div class="input-group-prepend">
                         <select class="form-select" name="type">
                             <option value="">---</option>
-                            <!--a:조달계획코드 b:자재코드 c:자재이름 d:납기일 e:소요량 f:조달상태-->
-                            <option value="a" th:selected="${orderPageRequestDTO.type == 'a'}">조달계획코드</option>
-                            <option value="b" th:selected="${orderPageRequestDTO.type == 'b'}">자재 코드</option>
-                            <option value="c" th:selected="${orderPageRequestDTO.type == 'c'}">자재 이름</option>
-                            <option value="d" th:selected="${orderPageRequestDTO.type == 'd'}">납기일</option>
-                            <option value="e" th:selected="${orderPageRequestDTO.type == 'e'}">자재 소요량</option>
-<!--                            <option value="f" th:selected="${orderPageRequestDTO.type == 'f'}">조달상태</option>-->
+                            <!--a:제품코드 b:제품이름 c:제품타입 d:자재코드 e:자재이름 f:자재타입-->
+                            <option value="a" th:selected="${pageRequestDTO.type == 'a'}">제품 코드</option>
+                            <option value="b" th:selected="${pageRequestDTO.type == 'b'}">제품 이름</option>
+                            <option value="c" th:selected="${pageRequestDTO.type == 'c'}">제품 타입</option>
+                            <!--목록에는 제품만 나오게 하고 read에서 자재 항목 나오게??-->
+                            <option value="d" th:selected="${pageRequestDTO.type == 'd'}">자재 코드</option>
+                            <option value="e" th:selected="${pageRequestDTO.type == 'e'}">자재 이름</option>
+                            <option value="f" th:selected="${pageRequestDTO.type == 'f'}">자재 타입</option>
+
                         </select>
                     </div>
                     <input type="text" class="form-control input-focus" name="keyword"
-                           th:value="${orderPageRequestDTO.keyword}" placeholder="INPUT KEYWORD">
+                           th:value="${pageRequestDTO.keyword}" placeholder="INPUT KEYWORD">
                     <div class="input-group-append">
                         <button class="btn btn-outline-success searchBtn" type="submit">
                             <i class="ti-search"></i> Search</button>
@@ -60,11 +54,11 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    자재조달계획 리스트
+                    제품별 자재 항목 리스트
                 </div>
                 <div class="my-4">
                     <div class="float-left">
-                        <a th:href="@{/materialProcurementPlanning/register}" class="text-decoration-none">
+                        <a th:href="@{/materialRequirementsList/register}" class="text-decoration-none">
                             <button type="button" class="btn btn-primary">Register</button>
                         </a>
                     </div>
@@ -76,27 +70,33 @@
                         <thead>
                         <tr>
                             <th scope="col">NO</th>
-                            <th scope="col">조달 계획 코드</th>
+                            <th scope="col">제품 코드</th>
+                            <th scope="col">제품 이름</th>
+                            <th scope="col">제품 타입</th>
+                            <!--목록에는 제품만 나오게 하고 read에서 자재 항목 나오게??-->
+
                             <th scope="col">자재 코드</th>
                             <th scope="col">자재 이름</th>
-                            <th scope="col">자재 소요량</th>
-                            <th scope="col">납기일</th>
-                            <th scope="col">자재 조달 상태</th>
+                            <th scope="col">자재 타입</th>
+
                         </tr>
                         </thead>
 
-                        <tbody th:with="link = ${orderPageRequestDTO.getLink()}">
+
+                        <tbody th:with="link = ${pageRequestDTO.getLink()}">
                         <tr th:each="dto:${responseDTO.dtoList}">
-                            <td>[[${dto.materialProcurementPlanNo}]]</td>
+                            <td>[[${dto.materialRequirementsListNo}]]</td>
                             <td>
-                                <a th:href="|@{/materialProcurementPlanning/read(materialProcurementPlanNo =
-                                 ${dto.materialProcurementPlanNo})}&${link}|" class="text-decoration-none">
-                                    [[${dto.materialProcurementPlanCode}]]</a></td>
+                                <a th:href="|@{/materialRequirementsList/read(materialRequirementsListNo =
+                                 ${dto.materialRequirementsListNo})}&${link}|" class="text-decoration-none">
+                                    [[${dto.productCode}]]</a></td>
+                            <td>[[${dto.productName}]]</td>
+                            <td>[[${dto.productType}]]</td>
+
                             <td>[[${dto.materialCode}]]</td>
                             <td>[[${dto.materialName}]]</td>
-                            <td>[[${dto.materialRequirementsCount}]]</td>
-                            <td>[[${dto.procurementDeliveryDate}]]</td>
-                            <td>[[${dto.materialProcurementState}]]</td>
+                            <td>[[${dto.materialType}]]</td>
+
                         </tr>
 
                         </tbody>
@@ -149,11 +149,9 @@
 
 </div>
 
-
-
 <script layout:fragment="script" th:inline="javascript">
 
-    console.log("자재 조달 계획 리스트 페이지")
+    console.log("제품 별 자재 항목 리스트 페이지")
 
     $(document).ready(function () {
         console.log([[${pageRequestDTO}]])
@@ -186,7 +184,7 @@
         e.preventDefault()
         e.stopPropagation()
 
-        self.location = '/materialProcurementPlanning/list'
+        self.location = '/materialRequirementsList/list'
     }, false)
 
     //show modal
@@ -199,5 +197,7 @@
     }
 
 </script>
+
+
 
 </html>

@@ -62,6 +62,12 @@ public class ProductionPlanningDetailDTO {
 
     private int productNo;                          //제품별필요자재항목의 productsFK -> 해당 제품을 클릭하면,,,
 
+    private String productCode2;                     //제품코드 (-> 목록-검색용 / 상세) <- 제품계약에서 가져옴
+
+    private String productName2;                     //제품이름 (-> 상세)
+
+    private String productType2;                     //제품타입 (-> 상세)
+
     private int materialNo;                         //제품별필요자재항목의 materialsFK -> 제품에 필요한 자재들 나열...?
 
     private String materialCode;                    //필요자재코드 (-> 클릭시 검색)

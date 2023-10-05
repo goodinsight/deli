@@ -39,7 +39,7 @@ public class MaterialRequirementsListSearchImpl extends QuerydslRepositorySuppor
             for(String type : types) {
 
                 switch(type){
-                    //a:제품코드 b:제품이름 c:자재코드 d:자재이름 e:자재타입
+                    //a:제품코드 b:제품이름 c:제품타입 d:자재코드 e:자재이름 f:자재타입
                     case "a":
                         booleanBuilder.or(materialRequirementsList.productCode.contains(keyword));
                         break;
@@ -47,12 +47,15 @@ public class MaterialRequirementsListSearchImpl extends QuerydslRepositorySuppor
                         booleanBuilder.or(materialRequirementsList.productName.contains(keyword));
                         break;
                     case "c":
-                        booleanBuilder.or(materialRequirementsList.materialCode.contains(keyword));
+                        booleanBuilder.or(materialRequirementsList.productType.contains(keyword));
                         break;
                     case "d":
-                        booleanBuilder.or(materialRequirementsList.materialName.contains(keyword));
+                        booleanBuilder.or(materialRequirementsList.materialCode.contains(keyword));
                         break;
                     case "e":
+                        booleanBuilder.or(materialRequirementsList.materialName.contains(keyword));
+                        break;
+                    case "f":
                         booleanBuilder.or(materialRequirementsList.materialType.contains(keyword));
                         break;
                 }
@@ -108,6 +111,7 @@ public class MaterialRequirementsListSearchImpl extends QuerydslRepositorySuppor
                 .quantity(resultMrl.getQuantity())
                 .productCode(resultPd.getProductCode())
                 .productName(resultPd.getProductName())
+                .productType(resultPd.getProductType())
                 .materialCode(resultMr.getMaterialCode())
                 .materialName(resultMr.getMaterialName())
                 .materialType(resultMr.getMaterialType())
