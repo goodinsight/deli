@@ -74,16 +74,6 @@
                                 <input type="text" name="supplierName" class="form-control supplierName" readonly>
                             </div>
 
-                            <label class="col-sm-3 control-label"><strong>협력사 대표자</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="supplierCeoName" class="form-control supplierCeoName" readonly>
-                            </div>
-
-                            <label class="col-sm-3 control-label"><strong>대표 연락처</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="supplierTel" class="form-control supplierTel" readonly>
-                            </div>
-
                             <label class="col-sm-3 control-label"><strong>계약일</strong></label>
                             <div class="col-sm-3">
                                 <input type="text" name="materialProcurementContractDate"
@@ -553,8 +543,6 @@
     const materialProcurementContractDate = document.querySelector(".materialProcurementContractDate")
     const materialSupplyPrice = document.querySelector(".materialSupplyPrice")
     const supplierName = document.querySelector(".supplierName")
-    const supplierCeoName = document.querySelector(".supplierCeoName")
-    const supplierTel = document.querySelector(".supplierTel")
 
 
     //계획 항목 클릭시 input 에 반영
@@ -586,8 +574,6 @@
             materialProcurementContractDate.value = new Date(contract.materialProcurementContractDate).toISOString().split('T')[0]
             materialSupplyPrice.value = contract.materialSupplyPrice
             supplierName.value = contract.supplierName
-            supplierCeoName.value = contract.supplierCeoName
-            supplierTel.value = contract.supplierTel
             //-----------------------------------------------------------------------------------------------------------
             contractModal.hide()
 
