@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface MaterialInOutHistorySearch {
 
-    Page<MaterialInOutHistory> searchAll(String[] types, String keyword, Pageable pageable);
+    Page<MaterialInOutHistoryDetailDTO> searchAll(String[] types, String keyword, Pageable pageable);
 
     MaterialInOutHistoryDetailDTO read(int materialNo);
 

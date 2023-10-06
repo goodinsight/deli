@@ -149,6 +149,18 @@
 
     }, false)
 
+    // 제거 처리 ------------------------------------------------------
+
+    document.querySelector(".removeBtn").addEventListener("click", function (e) {
+        e.preventDefault()
+        e.stopPropagation()
+
+        formObj.action = `/order/remove?orderNo=${orderNo}`
+        formObj.method = 'post'
+        formObj.submit()
+
+    }, false)
+
     // 상세 페이지로 이동 ---------------------------------------------------------
 
     document.querySelector(".readBtn").addEventListener("click", function (e) {

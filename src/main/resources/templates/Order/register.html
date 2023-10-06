@@ -18,7 +18,7 @@
                     <hr>
                 </div>
                 <div class="card-body mt-3">
-                    <form class="form-horizontal" action="/order/register" method="post">
+                    <form class="form-horizontal needs-validation" action="/order/register" method="post">
 
                         <div class="row">
                             <label class="col-sm-3 control-label"><strong>계획 일련번호</strong></label>
@@ -35,7 +35,7 @@
 
                             <label class="col-sm-3 control-label"><strong>자재 코드</strong></label>
                             <div class="col-sm-9">
-                                <input type="text" name="materialCode" class="form-control materialCode" readonly>
+                                <input type="text" name="materialCode" class="form-control materialCode" readonly required>
                             </div>
                             <label class="col-sm-3 control-label"><strong>자재 명</strong></label>
                             <div class="col-sm-9">

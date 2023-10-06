@@ -198,6 +198,8 @@
 
     function cancelOrder(){
 
+        const state = "발주파기"
+
         changeState({orderNo, state}).then(
             function(){
                 self.location = `/order/read?orderNo=${orderNo}&${link}`

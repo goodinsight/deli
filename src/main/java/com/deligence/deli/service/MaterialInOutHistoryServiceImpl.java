@@ -67,17 +67,11 @@ public class MaterialInOutHistoryServiceImpl implements MaterialInOutHistoryServ
     @Override
     public MaterialInOutHistoryDetailDTO readOne(int materialHistoryNo) {   //자재 재고 입고,출고 조회작업처리
 
-        Optional<MaterialInOutHistory> result = materialInOutHistoryRepository.findById(materialHistoryNo);
+        MaterialInOutHistoryDetailDTO result = materialInOutHistoryRepository.read(materialHistoryNo);
 
-        MaterialInOutHistory materialInOutHistory = result.orElseThrow();
+        log.info(result);
 
-        log.info(materialInOutHistory);
-
-        MaterialInOutHistoryDetailDTO materialInOutHistoryDetailDTO = modelMapper.map(materialInOutHistory, MaterialInOutHistoryDetailDTO.class);
-
-        log.info("materialInOutHistoryDetailDTO : " + materialInOutHistoryDetailDTO);
-
-        return materialInOutHistoryDetailDTO;
+        return result;
 
     }
 
@@ -88,7 +82,7 @@ public class MaterialInOutHistoryServiceImpl implements MaterialInOutHistoryServ
         String keyword = pageRequestDTO.getKeyword();
         Pageable pageable = pageRequestDTO.getPageable("materialHistoryNo");
 
-        Page<MaterialInOutHistory> result = materialInOutHistoryRepository.searchAll(types, keyword, pageable);
+        Page<MaterialInOutHistoryDetailDTO> result = materialInOutHistoryRepository.searchAll(types, keyword, pageable);
 
         List<MaterialInOutHistoryDetailDTO> dtoList = result.getContent().stream()
                 .map(materialInOutHistoryDetailDTO -> modelMapper.map(materialInOutHistoryDetailDTO, MaterialInOutHistoryDetailDTO.class)).collect(Collectors.toList());

@@ -97,6 +97,14 @@ public class OrderController {
         return "redirect:/order/read";
     }
 
+    @PostMapping("/remove")
+    public String remove(int orderNo){
+
+        orderService.remove(orderNo);
+
+        return "redirect:/order/list";
+    }
+
 
     @GetMapping("/chart")
     public void chart(){
