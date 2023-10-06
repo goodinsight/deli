@@ -11,7 +11,7 @@
 <div layout:fragment="content">
 
     <div class="row mt-12 m-l-15">
-        <form class="col-lg-10" action="/materialRequirementsList/list" method="get">
+        <form class="col-lg-10" action="/materialRequirementsList/list2" method="get">
             <div class="form-group">
                 <p class="text-muted m-b-15 f-s-12">
                     "검색하고 싶은
@@ -54,7 +54,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    제품별 자재 항목 리스트
+                    자재 코드를 클릭하세요.
                 </div>
 
 
@@ -81,14 +81,16 @@
                         <tbody th:with="link = ${pageRequestDTO.getLink()}">
                         <tr th:each="dto:${responseDTO.dtoList}">
                             <td>[[${dto.materialRequirementsListNo}]]</td>
-                            <td th:data-materialCode="${dto.materialCode}" th:data-materialName="${dto.materialName}" th:data-materialType="${dto.materialType}"value="Send Value" onclick="sendValue(this.getAttribute('data-materialCode'), this.getAttribute('data-materialName'), this.getAttribute('data-materialType') )">[[${dto.productCode}]]</td>
-                            <th scope="row">[[${dto.productCode}]]</th>
-                            <th scope="row">[[${dto.productName}]]</th>
-                            <th scope="row">[[${dto.productType}]]</th>
-                            <th scope="row">[[${dto.materialCode}]]</th>
-                            <th scope="row">[[${dto.materialName}]]</th>
-                            <th scope="row">[[${dto.materialType}]]</th>
-                            <th scope="row">[[${dto.quantity}]]</th>
+                            <td>
+                                [[${dto.productCode}]]</td>
+                            <td>[[${dto.productName}]]</td>
+                            <td>[[${dto.productType}]]</td>
+                            <td th:data-materialCode="${dto.materialCode}" th:data-materialName="${dto.materialName}" th:data-materialType="${dto.materialType}" th:data-quantity="${dto.quantity}"
+                                    value="Send Value" onclick="sendValue( this.getAttribute('data-materialCode'), this.getAttribute('data-materialName'), this.getAttribute('data-materialType'), this.getAttribute('data-quantity') )">
+                                [[${dto.materialCode}]]</td>
+                            <td>[[${dto.materialName}]]</td>
+                            <td>[[${dto.materialType}]]</td>
+                            <td>[[${dto.quantity}]]</td>
 
                         </tr>
 
@@ -153,7 +155,7 @@
         e.preventDefault()
         e.stopPropagation()
 
-        self.location = '/materialRequirementsList/list'
+        self.location = '/materialRequirementsList/list2'
     }, false)
 
 

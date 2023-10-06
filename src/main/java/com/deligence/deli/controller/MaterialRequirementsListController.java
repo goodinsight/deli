@@ -111,7 +111,18 @@ public class MaterialRequirementsListController {
         log.info("materialRequirementsList modify : " + materialRequirementsListDTO);
 
         //에러 처리----
+        if (bindingResult.hasErrors()) {
+            log.info("has errors.....");
 
+            String link = pageRequestDTO.getLink();
+
+            redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors() );
+
+            redirectAttributes.addAttribute("materialRequirementsListNo",
+                    materialRequirementsListDTO.getMaterialRequirementsListNo());
+
+            return "redirect:/materialRequirementsList/modify?"+link;
+        }
         //-----------
 
         materialRequirementsListService.modify(materialRequirementsListDTO);
@@ -121,6 +132,19 @@ public class MaterialRequirementsListController {
         redirectAttributes.addAttribute("materialRequirementsListNo", materialRequirementsListDTO.getMaterialRequirementsListNo());
 
         return "redirect:/materialRequirementsList/read";
+    }
+
+    @PostMapping("/remove")
+    public String remove(int materialRequirementsListNo, RedirectAttributes redirectAttributes) {
+
+        log.info("remove post...." + materialRequirementsListNo);
+
+        materialRequirementsListService.remove(materialRequirementsListNo);
+
+        redirectAttributes.addFlashAttribute("result", "removed");
+
+        return "redirect:/materialRequirementsList/list";
+
     }
 
     //비동기처리 --------------------------------------

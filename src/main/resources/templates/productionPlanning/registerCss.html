@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
@@ -6,7 +5,7 @@
       layout:decorate="~{/layout/layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>자재조달계획 등록</title>
+    <title>제품 생산 계획 등록</title>
 </head>
 
 <div layout:fragment="content">
@@ -18,18 +17,20 @@
                     <strong>생산 계획 등록</strong>
                     <hr>
                 </div>
+
                 <div class="card-body mt-3">
                     <form class="form-horizontal" action="/productionPlanning/register" method="post">
+
                         <div class="row">
-                            <label class="col-sm-3 control-label"><strong>제품계약 일련번호</strong></label>
+                            <label class="col-sm-3 control-label"><strong>제품 계약 일련번호</strong></label>
                             <div class="col-sm-9">
-                                <input type="text" name="productContractNo" class="form-control productContractNo"
-                                       readonly>
+                                <input type="text" name="productContractNo" class="form-control selectContract"
+                                       placeholder="클릭해주세요" readonly>
                             </div>
+
                             <label class="col-sm-3 control-label"><strong>제품 계약 코드</strong></label>
                             <div class="col-sm-3">
-                                <input type="text" name="productContractCode" class="form-control selectContract"
-                                       id="selectContract" placeholder="클릭해주세요" readonly>
+                                <input type="text" name="productContractCode" class="form-control productContractCode" readonly>
                             </div>
                             <label class="col-sm-3 control-label"><strong>제품 코드</strong></label>
                             <div class="col-sm-3">
@@ -54,21 +55,24 @@
                             <div class="col-sm-3">
                                 <input type="text" name="productionQuantity" class="form-control productionQuantity">
                             </div>
+
+                            <label class="col-sm-3 control-label"><strong>제품 납기일</strong></label>
+                            <div class="col-sm-3">
+                                <input type="date" name="productDeliveryDate" class="form-control productDeliveryDate" readonly>
+                            </div>
                         </div>
                     </form>
+
                     <div class="input-group mb-3 d-none">
                         <span class="input-group-text">클라이언트 회사명</span>
                         <input type="text" name="clientName" class="form-control clientName" readonly>
                     </div>
+                    <!--
                     <div class="input-group mb-3 d-none">
                         <span class="input-group-text">클라이언트 계약상태</span>
                         <input type="text" name="clientStatus" class="form-control clientStatus" readonly>
                     </div>
-                    <div class="input-group mb-3 d-none">
-                        <span class="input-group-text">제품 계약 납기일</span>
-                        <input type="date" name="productDeliveryDate" class="form-control productDeliveryDate"
-                               readonly>
-                    </div>
+                    -->
                     <hr>
 
                     <button class="btn btn-default btn-sm" id="btnMaterial" onclick=addMaterial()>필요 자재 추가</button>
@@ -95,8 +99,13 @@
                         <span class="input-group-text">제품 이름</span>
                         <input type="text" name="productName2" class="form-control productName2" readonly>
                     </div>
+                    <div class="input-group mb-3 d-none">
+                        <span class="input-group-text">제품 타입</span>
+                        <input type="text" name="productType2" class="form-control productType2" readonly>
+                    </div>
+
                     <div class="row">
-                        <label class="col-sm-3 control-label selectMrl"><strong>필요 자재 코드</strong></label>
+                        <label class="col-sm-3 control-label"><strong>필요 자재 코드</strong></label>
                         <div class="col-sm-3">
                             <input type="text" name="materialCode" class="form-control selectMrl" id="selectMrl"
                                    placeholder="클릭해주세요" readonly>
@@ -109,13 +118,15 @@
                         <div class="col-sm-3">
                             <input type="text" name="materialType" class="form-control materialType" readonly>
                         </div>
+
                         <label class="col-sm-3 control-label quantity" ><strong>필요 수량</strong></label>
                         <div class="col-sm-3">
-                            <input type="text" name="quantity" class="form-control quantity" >
+                            <input type="text" name="quantity" class="form-control quantity">
                         </div>
                     </div>
                 </div>
                 <hr>
+
                 <div class="row">
                     <label class="col-sm-3 control-label"><strong>제품 생산 계획 코드</strong></label>
                     <div class="col-sm-3">
@@ -194,11 +205,10 @@
                                     <thead>
                                     <tr>
                                         <th scope="col">NO</th>
-                                        <th scope="col">제품코드</th>
-                                        <th scope="col">계약수량</th>
+                                        <th scope="col">제품 코드</th>
+                                        <th scope="col">계약 수량</th>
                                         <th scope="col">클라이언트 업체명</th>
                                         <th scope="col">제품 납기일</th>
-                                        <th scope="col">계약상태</th>
                                     </tr>
                                     </thead>
 
@@ -245,9 +255,10 @@
                                         <th scope="col">NO</th>
                                         <th scope="col">제품 코드</th>
                                         <th scope="col">제품 이름</th>
+                                        <th scope="col">제품 타입</th>
                                         <th scope="col">자재 코드</th>
                                         <th scope="col">자재 이름</th>
-                                        <th scope="col">자재 분류</th>
+                                        <th scope="col">자재 타입</th>
                                         <th scope="col">자재 수량</th>
                                     </tr>
                                     </thead>
@@ -347,7 +358,6 @@
                                     <td data-contractNo="${dto.productContractNo}">${dto.productQuantity}</td>
                                     <td data-contractNo="${dto.productContractNo}">${dto.clientName}</td>
                                     <td data-contractNo="${dto.productContractNo}">${dto.productDeliveryDate}</td>
-                                    <td data-contractNo="${dto.productContractNo}">${dto.clientStatus}</td>
                                 </tr>`
 
             }
@@ -410,12 +420,13 @@
     }, false)
 
 
-    const productContractNo = document.querySelector(".productContractNo")    //제품계약일련번호
-    const inputContractCode = document.querySelector(".selectContract")       //제품계약코드
-    const productCode = document.querySelector(".productCode")                //제품코드
-    const productName = document.querySelector(".productName")                //제품이름
-    const productType = document.querySelector(".productType")                //제품타입
-    const productQuantity = document.querySelector(".productQuantity")        //수량
+    const inputProductContractNo = document.querySelector(".selectContract")          //제품계약일련번호
+    const productContractCode = document.querySelector(".productContractCode")             //제품계약코드
+    const productCode = document.querySelector(".productCode")                      //제품코드
+    const productName = document.querySelector(".productName")                      //제품이름
+    const productType = document.querySelector(".productType")                      //제품타입
+    const productQuantity = document.querySelector(".productQuantity")              //수량
+    const productDeliveryDate = document.querySelector(".productDeliveryDate")      //납기일
 
     //계약 항목 클릭시 input 에 반영
     contractList.addEventListener("click", function (e) {
@@ -440,13 +451,14 @@
         getContract(contractNo).then(contract => {
 
             console.log(contract)
-            productContractNo.value = contract.productContractNo
+            inputProductContractNo.value = contract.productContractNo
             //계약 정보를 가져와서 화면에 반영해야할 항목들은 여기에------------------------------------------------------------
-            inputContractCode.value = contract.productContractCode
+            productContractCode.value = contract.productContractCode
             productCode.value = contract.productCode
             productName.value = contract.productName
             productType.value = contract.productType
             productQuantity.value = contract.productQuantity
+            productDeliveryDate.value = new Date(contract.productDeliveryDate).toISOString().split('T')[0]
             //-----------------------------------------------------------------------------------------------------------
             contractModal.hide()
 
@@ -470,12 +482,8 @@
     document.querySelector(".selectMrl").addEventListener("click", function (e) {
         console.log("select material modal show")
 
-        if (productCode.value.length > 0) {
-            printContracts(1, 5)
+            printMrls(1, 5)
             mrlModal.show()
-        } else {
-            alert("제품 계약 코드를 먼저 선택해주세요.")
-        }
 
     }, false)
 
@@ -497,6 +505,7 @@
                               <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.materialRequirementsListNo}</td>
                               <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.productCode}</td>
                               <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.productName}</td>
+                              <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.productType}</td>
                               <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.materialCode}</td>
                               <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.materialName}</td>
                               <td data-mrlNo = "${dto.materialRequirementsListNo}">${dto.materialType}</td>
@@ -529,10 +538,7 @@
 
     function printMrls(page, size) {
 
-        const type = "a"
-        const keyword = productCode.value
-
-        getMrlList({page, size, type, keyword}).then(
+        getMrlList({page, size}).then(
             data => {
                 printMrlList(data.dtoList)
                 printMrlPages(data)
@@ -561,8 +567,9 @@
     }, false)
 
     const materialRequirementsListNo = document.querySelector(".materialRequirementsListNo")
-    let productCode2 = document.querySelector(".productCode")
-    let productName2 = document.querySelector(".productName")
+    const productCode2 = document.querySelector(".productCode2")
+    const productName2 = document.querySelector(".productName2")
+    const productType2 = document.querySelector(".productType2")
     const inputMaterialCode = document.querySelector(".selectMrl")
     const materialName = document.querySelector(".materialName")
     const materialType = document.querySelector(".materialType")
@@ -593,8 +600,9 @@
             console.log(mrl)
             console.log("check0")
             materialRequirementsListNo.value = mrl.materialRequirementsListNo
-            productCode2 = mrl.productCode
-            productName2 = mrl.productName
+            productCode2.value = mrl.productCode
+            productName2.value = mrl.productName
+            productType2.value = mrl.productType
             //자재 정보를 가져와서 화면에 반영해야 할 항목들은 여기에 --------------------------------------------------------
             console.log("check1")
             inputMaterialCode.value = mrl.materialCode

@@ -98,6 +98,8 @@ public class ProductionPlanningController {
 
         model.addAttribute("dto", productionPlanningDetailDTO);
 
+        log.info(productionPlanningDetailDTO);
+
         model.addAttribute("pageRequestDTO", orderPageRequestDTO);
 
     }
