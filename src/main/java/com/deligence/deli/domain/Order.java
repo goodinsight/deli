@@ -5,6 +5,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -45,7 +47,12 @@ public class Order {
 
     private String employeeName; //사원명
 
-
+    @OneToMany(mappedBy = "order",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    @Builder.Default
+    private List<ProgressInspection> piList = new ArrayList<>();
+    
     public void change(OrderDTO orderDTO){
 
         this.orderCode = orderDTO.getOrderCode();

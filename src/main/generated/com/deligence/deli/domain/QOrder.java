@@ -46,6 +46,8 @@ public class QOrder extends EntityPathBase<Order> {
 
     public final StringPath orderState = createString("orderState");
 
+    public final ListPath<ProgressInspection, QProgressInspection> piList = this.<ProgressInspection, QProgressInspection>createList("piList", ProgressInspection.class, QProgressInspection.class, PathInits.DIRECT2);
+
     public QOrder(String variable) {
         this(Order.class, forVariable(variable), INITS);
     }
