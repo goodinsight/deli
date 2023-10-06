@@ -52,7 +52,7 @@ public class Order {
             orphanRemoval = true)
     @Builder.Default
     private List<ProgressInspection> piList = new ArrayList<>();
-    
+
     public void change(OrderDTO orderDTO){
 
         this.orderCode = orderDTO.getOrderCode();

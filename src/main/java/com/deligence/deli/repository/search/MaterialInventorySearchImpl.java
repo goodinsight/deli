@@ -84,10 +84,9 @@ public class MaterialInventorySearchImpl extends QuerydslRepositorySupport imple
 
         QMaterialInventory materialInventory = QMaterialInventory.materialInventory;
         QMaterials materials = QMaterials.materials;
-        QMaterialInOutHistory mioh = QMaterialInOutHistory.materialInOutHistory;
 
         JPQLQuery<Tuple> query = new JPAQueryFactory(em)
-                .select(materialInventory, materials, mioh)
+                .select(materialInventory, materials)
                 .from(materialInventory)
                 .join(materialInventory.materials, materials).on(materialInventory.materials.eq(materials))
                 .where(materialInventory.materialInventoryNo.eq(materialInventoryNo));
@@ -98,7 +97,6 @@ public class MaterialInventorySearchImpl extends QuerydslRepositorySupport imple
 
         MaterialInventory resultMaterialInventory = (MaterialInventory) target.get(materialInventory);
         Materials resultMaterials = (Materials) target.get(materials);
-        MaterialInOutHistory resultMioh = (MaterialInOutHistory) target.get(mioh);
 
         MaterialInventoryDetailDTO dto = MaterialInventoryDetailDTO.builder()
                 .materialInventoryNo(resultMaterialInventory.getMaterialInventoryNo())  //자재재고 일련번호
