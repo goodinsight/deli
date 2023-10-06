@@ -166,6 +166,31 @@
                 </div>
                 <div class="modal-body">
 
+                    <div class="row">
+                        <label class="col-sm-1 control-label"><strong>검색</strong></label>
+                        <div class="col-lg-10">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <select class="form-select planType">
+                                            <option value="">---</option>
+                                            <option value="b">자재코드</option>
+                                            <option value="c">자재이름</option>
+                                        </select>
+                                    </div>
+                                    <input type="text" class="form-control input-focus planKeyword"
+                                           placeholder="INPUT KEYWORD">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-success planSearchBtn"><i
+                                                class="ti-search"></i>
+                                            Search
+                                        </button>
+                                        <button class="btn btn-outline-danger planClearBtn">Clear</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="row mt-3">
                         <div class="col">
@@ -354,7 +379,10 @@
 
     function printPlans(page, size) {
 
-        getPlanList({page, size}).then(
+        const type = document.querySelector('.planType').value
+        const keyword = document.querySelector('.planKeyword').value
+
+        getPlanList({page, size, type, keyword}).then(
             data => {
                 printPlanList(data.dtoList)
                 printPlanPages(data)
@@ -382,6 +410,30 @@
         printPlans(planPage, planPageSize)
 
     }, false)
+
+    //계획 모달 검색 버튼
+    document.querySelector('.planSearchBtn').addEventListener("click", function (e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        printPlans(1, 5)
+
+    })
+
+    //계획 모달 클리어 버튼
+    document.querySelector('.planClearBtn').addEventListener("click", function (e) {
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        document.querySelector('.planType').value = ''
+        document.querySelector('.planKeyword').value = ''
+
+        printPlans(1, 5)
+
+    })
+
 
     const inputPlanNo = document.querySelector(".selectPlan")
     const materialCode = document.querySelector(".materialCode")
