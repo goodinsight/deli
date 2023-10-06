@@ -1,8 +1,11 @@
 package com.deligence.deli;
 
 import com.deligence.deli.domain.Materials;
+import com.deligence.deli.dto.MaterialInventoryDTO;
 import com.deligence.deli.dto.MaterialsDTO;
 import com.deligence.deli.repository.MaterialsRepository;
+import com.deligence.deli.service.MaterialInventoryService;
+import com.deligence.deli.service.MaterialsService;
 import lombok.extern.log4j.Log4j2;
 import net.coobird.thumbnailator.Thumbnailator;
 import org.junit.jupiter.api.Test;
@@ -26,6 +29,9 @@ public class CodeInsertTests {
 
     @Autowired
     private MaterialsRepository materialsRepository;
+
+    @Autowired
+    private MaterialInventoryService materialInventoryService;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -57,7 +63,7 @@ public class CodeInsertTests {
         String[] types = {"cpu", "MAINBOARD", "MEMORY", "SSD", "HDD", "GPU","CASE", "POWER", "COOLER", "SOUNDCARD", "MONITER", "KEYBOARD", "MOUSE"};
 
 
-        for(int j = 1169; j <= 1312; j++) {
+        for(int j = 1; j <= 1312; j++) {
 
             Optional<Materials> result = materialsRepository.findById(j);
 
@@ -99,6 +105,45 @@ public class CodeInsertTests {
                 }
 
             }
+        }
+
+    }
+
+    @Test
+    public void materialInventoryUpdate(){
+
+        for(int j = 1; j <= 1312; j++) {
+
+            Optional<Materials> result = materialsRepository.findById(j);
+
+            Materials materials = result.orElseThrow();
+
+            MaterialsDTO materialsDTO = modelMapper.map(materials, MaterialsDTO.class);
+            int materialNo = materialsDTO.getMaterialNo();
+
+            log.info("matDTO : " + materialsDTO);
+
+//        ----자재 재고 등록---------
+
+            log.info("material NO =" + materialNo);
+
+            MaterialInventoryDTO materialInventoryDTO = MaterialInventoryDTO.builder()
+                    .materialCode(materialsDTO.getMaterialCode())
+                    .materialName(materialsDTO.getMaterialName())
+                    .materialType(materialsDTO.getMaterialType())
+                    .materialSupplyPrice(materialsDTO.getMaterialSupplyPrice())
+                    .materialIncomingQuantity(0)
+                    .materialOutgoingQuantity(0)
+                    .materialStock(0)
+                    .materialNo(materialNo)
+                    .materialTotalInventoryPayments(0L)
+                    .build();
+
+            log.info("matDTO : " + materialInventoryDTO);
+
+            materialInventoryService.registerInventory(materialInventoryDTO);
+
+//        -----------
         }
 
     }
