@@ -188,6 +188,8 @@ public class ProductionPlanningController {
 
         log.info("getMrlList");
 
+        log.info(pageRequestDTO);
+
         PageResponseDTO<MaterialRequirementsListDTO> responseDTO = materialRequirementsListService.list(pageRequestDTO);
 
         return responseDTO;

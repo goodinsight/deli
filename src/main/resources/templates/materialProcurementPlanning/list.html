@@ -24,8 +24,8 @@
                         <select class="form-select" name="state">
                             <option value="">조달 계획 상태</option>
                             <option value="진행중" th:selected="${orderPageRequestDTO.state == '진행중'}">진행중</option>
-                            <option value="조달완료" th:selected="${orderPageRequestDTO.state == '조달완료'}">조달완료</option>
-                            <option value="조달중단" th:selected="${orderPageRequestDTO.state == '조달중단'}">조달중단</option>
+                            <option value="계획완료" th:selected="${orderPageRequestDTO.state == '조달완료'}">계획완료</option>
+                            <option value="계획중단" th:selected="${orderPageRequestDTO.state == '조달중단'}">계획중단</option>
                         </select>
                     </div>
                     <div class="input-group-prepend">
