@@ -115,13 +115,12 @@ public class OrderController {
 
     @ResponseBody
     @GetMapping("/register/planList")
-    public PageResponseDTO<MaterialProcurementPlanningDTO> getPlanList(PageRequestDTO pageRequestDTO){
+    public OrderPageResponseDTO<MaterialProcurementPlanningDTO> getPlanList(OrderPageRequestDTO orderPageRequestDTO){
 
         //조달 계획 상태 : 진행중  검색
-        pageRequestDTO.setType("f");
-        pageRequestDTO.setKeyword("진행중");
+        orderPageRequestDTO.setState("진행중");
 
-        PageResponseDTO<MaterialProcurementPlanningDTO> responseDTO = materialProcurementPlanningService.list(pageRequestDTO);
+        OrderPageResponseDTO<MaterialProcurementPlanningDTO> responseDTO = materialProcurementPlanningService.listWithState(orderPageRequestDTO);
 
         return responseDTO;
     }

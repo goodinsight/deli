@@ -1,6 +1,6 @@
-async function getPlanList({page, size}){
+async function getPlanList({page, size, type, keyword}){
 
-    const result = await axios.get(`/order/register/planList`, {params: {page, size}})
+    const result = await axios.get(`/order/register/planList`, {params: {page, size, type, keyword}})//keyword, type
 
     return result.data
 }
