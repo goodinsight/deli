@@ -36,9 +36,9 @@ public class Products extends BaseEntity{
     private String productContent;  //제품내용
 
     public void change(ProductsDTO productsDTO){
-        this.productName = productName;
-        this.productType = productType;
-        this.productContent = productContent;
+        this.productName = productsDTO.getProductName();
+        this.productType = productsDTO.getProductType();
+        this.productContent = productsDTO.getProductContent();
 
     }
 

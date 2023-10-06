@@ -82,9 +82,16 @@
                             <span class="input-group-text">상세 견적 내용</span>
                             <textarea name="productQuotation" rows="5" cols="50" class="form-control h-25" >[[${dto.productQuotation}]]</textarea>
                         </div>
+
                         <div class="input-group mb-3">
                             <span class="input-group-text">계약 진행 상태</span>
-                            <input type="text" name="productContractState" class="form-control" th:value="${dto.productContractState}" readonly>
+                            <select name="productContractState">
+                                <!--'제품생산중', '자재조달중', '계약파기', '계약완료'-->
+                                <option value="자재조달중" selected>자재조달중</option>
+                                <option value="제품생산중" selected>제품생산중</option>
+                                <option value="계약완료">계약완료</option>
+                                <option value="계약파기">계약파기</option>
+                            </select>
                         </div>
 
                         <div class="d-none input-group mb-3">
