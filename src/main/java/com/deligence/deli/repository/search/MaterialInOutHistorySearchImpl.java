@@ -14,6 +14,7 @@ import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MaterialInOutHistorySearchImpl extends QuerydslRepositorySupport implements MaterialInOutHistorySearch{
@@ -26,10 +27,17 @@ public class MaterialInOutHistorySearchImpl extends QuerydslRepositorySupport im
     EntityManager em;
 
     @Override
-    public Page<MaterialInOutHistory> searchAll(String[] types, String keyword, Pageable pageable) {
+    public Page<MaterialInOutHistoryDetailDTO> searchAll(String[] types, String keyword, Pageable pageable) {
 
         QMaterialInOutHistory materialInOutHistory = QMaterialInOutHistory.materialInOutHistory;
-        JPQLQuery<MaterialInOutHistory> query = from(materialInOutHistory);
+        QMaterialInventory mi = QMaterialInventory.materialInventory;
+        QEmployee employee = QEmployee.employee;
+
+        JPQLQuery<Tuple> query = new JPAQueryFactory(em)
+                .select(materialInOutHistory, mi, employee)
+                .from(materialInOutHistory)
+                .join(materialInOutHistory.materialInventory, mi).on(materialInOutHistory.materialInventory.eq(mi))
+                .join(materialInOutHistory.employee, employee).on(materialInOutHistory.employee.eq(employee));
 
         if( (types != null && types.length >0 ) && keyword != null) {
 
@@ -41,65 +49,84 @@ public class MaterialInOutHistorySearchImpl extends QuerydslRepositorySupport im
                     case "t":
                         booleanBuilder.or(materialInOutHistory.inOutSeparator.contains(keyword));   // 입 출고 구분자로 검색
                         break;
-//                    case "c":
-//                        booleanBuilder.or(materialInOutHistory..contains(keyword));
-//                        break;
-//                    case "w":
-//                        booleanBuilder.or(materialInOutHistory.writer.contains(keyword));
-//                        break;
                 }
             } // end for
             query.where(booleanBuilder);
 
         } // end if
 
-        // bno > 0
-        query.where(materialInOutHistory.materialHistoryNo.gt(0));
+        List<Tuple> targetDtoList = query.fetch();
+
+        List<MaterialInOutHistoryDetailDTO> list = new ArrayList<>();
+
+        for(Tuple target : targetDtoList){
+
+            MaterialInOutHistory resultMaterialInOutHistory = (MaterialInOutHistory) target.get(materialInOutHistory);
+            MaterialInventory resultMi = (MaterialInventory) target.get(mi);
+            Employee resultEmployee = (Employee) target.get(employee);
+
+            MaterialInOutHistoryDetailDTO dto = MaterialInOutHistoryDetailDTO.builder()
+                    .materialHistoryNo(resultMaterialInOutHistory.getMaterialHistoryNo())
+                    .inOutSeparator(resultMaterialInOutHistory.getInOutSeparator())
+                    .materialInOutQuantity(resultMaterialInOutHistory.getQuantity())
+                    .historyDate(resultMaterialInOutHistory.getHistoryDate())
+                    .materialName(resultMi.getMaterialName())
+                    .materialCode(resultMi.getMaterialCode())
+                    .materialType(resultMi.getMaterialType())
+                    .materialSupplyPrice(resultMi.getMaterialSupplyPrice())
+                    .materialInventoryNo(resultMi.getMaterialInventoryNo())
+                    .materialStock(resultMi.getMaterialStock())
+                    .employeeNo(resultEmployee.getEmployeeNo())
+                    .employeeName(resultEmployee.getEmployeeName())
+                    .build();
+
+            list.add(dto);
+        }
+
 
         //paging
         this.getQuerydsl().applyPagination(pageable, query);
 
-        List<MaterialInOutHistory> list = query.fetch();
-
         long count = query.fetchCount();
 
         return new PageImpl<>(list, pageable, count);
+
+
     }
 
     @Override
-    public MaterialInOutHistoryDetailDTO read(int materialNo){
+    public MaterialInOutHistoryDetailDTO read(int materialHistoryNo){
 
-        QMaterials materials = QMaterials.materials;
+        QMaterialInOutHistory materialInOutHistory = QMaterialInOutHistory.materialInOutHistory;
         QMaterialInventory mi = QMaterialInventory.materialInventory;
         QEmployee employee = QEmployee.employee;
 
         JPQLQuery<Tuple> query = new JPAQueryFactory(em)
-                .select(materials, mi, employee)
-                .from(materials)
-                .join(materials.materialInventory, mi).on(materials.materialInventory.eq(mi))
-                .join(materials.employee, employee).on(materials.employee.eq(employee))
-                .where(materials.materialNo.eq(materialNo));
+                .select(materialInOutHistory, mi, employee)
+                .from(materialInOutHistory)
+                .join(materialInOutHistory.materialInventory, mi).on(materialInOutHistory.materialInventory.eq(mi))
+                .join(materialInOutHistory.employee, employee).on(materialInOutHistory.employee.eq(employee))
+                .where(materialInOutHistory.materialHistoryNo.eq(materialHistoryNo));
 
         List<Tuple> targetDtoList = query.fetch();
 
         Tuple target = targetDtoList.get(0);
 
-        Materials resultMaterials = (Materials) target.get(materials);
+        MaterialInOutHistory resultMaterialInOutHistory = (MaterialInOutHistory) target.get(materialInOutHistory);
         MaterialInventory resultMi = (MaterialInventory) target.get(mi);
         Employee resultEmployee = (Employee) target.get(employee);
 
         MaterialInOutHistoryDetailDTO dto = MaterialInOutHistoryDetailDTO.builder()
-                .materialNo(resultMaterials.getMaterialNo())
-                .materialCode(resultMaterials.getMaterialCode())
-                .materialName(resultMaterials.getMaterialName())
-                .materialType(resultMaterials.getMaterialType())
-                .materialSupplyPrice(resultMaterials.getMaterialSupplyPrice())
-
-                .materialInventoryNo(resultMi.getMaterialInventoryNo())
-                .materialCode(resultMi.getMaterialCode())
+                .materialHistoryNo(resultMaterialInOutHistory.getMaterialHistoryNo())
+                .inOutSeparator(resultMaterialInOutHistory.getInOutSeparator())
+                .materialInOutQuantity(resultMaterialInOutHistory.getQuantity())
+                .historyDate(resultMaterialInOutHistory.getHistoryDate())
                 .materialName(resultMi.getMaterialName())
+                .materialCode(resultMi.getMaterialCode())
+                .materialType(resultMi.getMaterialType())
+                .materialSupplyPrice(resultMi.getMaterialSupplyPrice())
+                .materialInventoryNo(resultMi.getMaterialInventoryNo())
                 .materialStock(resultMi.getMaterialStock())
-
                 .employeeNo(resultEmployee.getEmployeeNo())
                 .employeeName(resultEmployee.getEmployeeName())
                 .build();
