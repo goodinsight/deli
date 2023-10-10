@@ -30,12 +30,12 @@
                                        placeholder="클릭해서 불러오기" readonly>
                             </div>
                             <label class="col-sm-3 control-label"><strong>제품 계약 코드</strong></label>
-                            <div class="col-sm-3">
+                            <div class="col-sm-9">
                                 <input type="text" name="productContractCode" class="form-control productContractCode" readonly>
                             </div>
 
                             <label class="col-sm-3 control-label"><strong>제품 코드</strong></label>
-                            <div class="col-sm-3">
+                            <div class="col-sm-9">
                                 <input type="text" name="productCode" class="form-control productCode" readonly>
                             </div>
 
@@ -59,7 +59,7 @@
                             </div>
 
                             <label class="col-sm-3 control-label"><strong>제품 납기일</strong></label>
-                            <div class="col-sm-3">
+                            <div class="col-sm-9">
                                 <input type="date" name="productDeliveryDate" class="form-control productDeliveryDate" readonly>
                             </div>
                         </div><!--end row-->
@@ -75,12 +75,13 @@
 
                         <hr>
 
-                        <!--새로운 css 자재 추가 영역, 버튼 추가시 오류 발생-->
-                        <div class="input-group mb-3">
-                            <span>
-                              <input class="btn btn-default btn-sm" type="button" value="필요 자재 추가">
-                            </span>
+
+                        <button class="btn btn-default btn-sm" type="button" id="btnMaterial" onclick=addMaterial()>필요 자재 추가</button>
+                    <!--
+                        <div class="smackdown">
+                            자재 추가 영역
                         </div>
+                    -->
 
                         <div class="input-group mb-3 d-none">
                             <span class="input-group-text">제품별 필요 자재 항목 일련번호</span>
@@ -106,42 +107,41 @@
 
                         <div class="row">
                             <label class="col-sm-3 control-label"><strong>필요 자재 코드</strong></label>
-                            <div class="col-sm-3">
+                            <div class="col-sm-9">
                                 <input type="text" name="materialCode" class="form-control selectMrl" id="selectMrl"
                                        placeholder="클릭해서 불러오기" readonly>
                             </div>
                             <label class="col-sm-3 control-label"><strong>자재 이름</strong></label>
-                            <div class="col-sm-3">
+                            <div class="col-sm-9">
                                 <input type="text" name="materialName" class="form-control materialName" readonly>
                             </div>
                             <label class="col-sm-3 control-label"><strong>자재 타입</strong></label>
-                            <div class="col-sm-3">
+                            <div class="col-sm-9">
                                 <input type="text" name="materialType" class="form-control materialType" readonly>
                             </div>
 
                             <label class="col-sm-3 control-label" ><strong>필요 수량</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="quantity" class="form-control quantity">
+                            <div class="col-sm-9">
+                                <input type="text" name="quantity" class="form-control quantity" readonly>
                             </div>
                         </div>
-
                         <hr>
 
                         <div class="row">
 
                             <label class="col-sm-3 control-label"><strong>제품 생산 계획 코드</strong></label>
-                            <div class="col-sm-3">
+                            <div class="col-sm-9">
                                 <input type="text" name="productionPlanCode" class="form-control productionPlanCode"
                                        id="productionPlanCode" placeholder="클릭해주세요" readonly>
                             </div>
 
                             <label class="col-sm-3 control-label"><strong>계획 담당자</strong></label>
-                            <div class="col-sm-3">
+                            <div class="col-sm-9">
                                 <input type="text" name="employeeName2" class="form-control" th:value="${user.employeeName}"
                                        readonly>
                             </div>
                             <label class="col-sm-3 control-label"><strong>생산 소요 공정</strong></label>
-                            <div class="col-sm-3">
+                            <div class="col-sm-9">
                                 <input type="text" name="productionRequirementsProcess"
                                        class="form-control productionRequirementsProcess">
                             </div>
@@ -156,9 +156,10 @@
                                        class="form-control productionDeliveryDate">
                             </div>
                             <span class="col-sm-3 control-label"><strong>생산 계획 진행 상태</strong></span>
-                            <div class="col-sm-3">
+                            <div class="col-sm-9">
                                 <input type="text" name="productionState" class="form-control productionState"  th:value="자재조달단계" readonly>
                             </div>
+
                             <label class="col-sm-3 control-label"><strong>상세 내용</strong></label>
                             <div class="col-sm-9">
                         <textarea name="detailExplaination" rows="5" cols="50" style="width: 100% !important;"
@@ -301,6 +302,12 @@
 
 
 <script layout:fragment="script" th:inline="javascript">
+
+    // 추가버튼
+    // function addMaterial(){
+    //     $(".smackdown").append('<div class="row"><label class="col-sm-3 control-label"><strong>필요 자재 코드</strong></label><div class="col-sm-3"><input type="text" name="materialCode" class="form-control selectMrl" id="selectMrl" placeholder="클릭해주세요" readOnly></div><label class="col-sm-3 control-label"><strong>자재 이름</strong></label> <div class="col-sm-3"><input type="text" name="materialName" class="form-control materialName" readOnly></div><label class="col-sm-3 control-label"><strong>자재 타입</strong></label><div class="col-sm-3"><input type="text" name="materialType" class="form-control materialType" readOnly></div><label class="col-sm-3 control-label"><strong>필요 수량</strong></label><div class="col-sm-3"><input type="text" name="quantity" class="form-control quantity"></div></div><hr>');
+    // }
+
 
 
     const auth = [[${#authentication}]]

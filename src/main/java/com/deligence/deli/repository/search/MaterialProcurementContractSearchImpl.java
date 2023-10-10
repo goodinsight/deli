@@ -68,16 +68,16 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
                         booleanBuilder.or(materialProcurementContract.materialProcurementPlanCode.contains(keyword));    //조달계획코드
                         break;
                     case "b":
-                        booleanBuilder.or(materialProcurementContract.materialCode.contains(keyword));   //자재코드
+                        booleanBuilder.or(materialProcurementContract.materialProcurementPlanning.materialCode.contains(keyword));   //자재코드
                         break;
                     case "c":
-                        booleanBuilder.or(materialProcurementContract.materialName.contains(keyword));   //자재이름
+                        booleanBuilder.or(materialProcurementContract.materialProcurementPlanning.materialName.contains(keyword));   //자재이름
                         break;
                     case "d":
-                        booleanBuilder.or(materialProcurementContract.materialSupplyPrice.stringValue().contains(keyword));  //공급단가
+                        booleanBuilder.or(materialProcurementContract.materialProcurementPlanning.materialSupplyPrice.stringValue().contains(keyword));  //공급단가
                         break;
                     case "e":
-                        booleanBuilder.or(materialProcurementContract.supplierName.contains(keyword));   //자재협력회사명
+                        booleanBuilder.or(materialProcurementContract.cooperatorSupplier.supplierName.contains(keyword));   //자재협력회사명
                         break;
                     case "f":
                         booleanBuilder.or(materialProcurementContract.materialProcurementContractState.contains(keyword));   //자재조달계약상태
@@ -142,16 +142,16 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
                         booleanBuilder.or(materialProcurementContract.materialProcurementPlanCode.contains(keyword));    //조달계획코드
                         break;
                     case "b":
-                        booleanBuilder.or(materialProcurementContract.materialCode.contains(keyword));   //자재코드
+                        booleanBuilder.or(materialProcurementContract.materialProcurementPlanning.materialCode.contains(keyword));   //자재코드
                         break;
                     case "c":
-                        booleanBuilder.or(materialProcurementContract.materialName.contains(keyword));   //자재이름
+                        booleanBuilder.or(materialProcurementContract.materialProcurementPlanning.materialName.contains(keyword));   //자재이름
                         break;
                     case "d":
-                        booleanBuilder.or(materialProcurementContract.materialSupplyPrice.stringValue().contains(keyword));  //공급단가
+                        booleanBuilder.or(materialProcurementContract.materialProcurementPlanning.materialSupplyPrice.stringValue().contains(keyword));  //공급단가
                         break;
                     case "e":
-                        booleanBuilder.or(materialProcurementContract.supplierName.contains(keyword));   //자재협력회사명
+                        booleanBuilder.or(materialProcurementContract.cooperatorSupplier.supplierName.contains(keyword));   //자재협력회사명
                         break;
                     case "f":
                         booleanBuilder.or(materialProcurementContract.materialProcurementContractState.contains(keyword));   //자재조달계약상태

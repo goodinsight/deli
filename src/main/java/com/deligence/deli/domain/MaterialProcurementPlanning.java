@@ -48,8 +48,11 @@ public class MaterialProcurementPlanning extends BaseEntity {
     private String productionState;                         //생산 진행 상태
     // -자재조달단계, 자재입고단계, 제품생산단계, 제품검수단계, 제품입고완료
 
+    //productionPlanning의 materialRequirementsList에서 자재 정보 가져 옴.
+
     //--------------------------------------------------------------------------------------------------
 
+    //사용 안해도 됨
     @ManyToOne(fetch = FetchType.LAZY)
     private Materials materials;                            //자재일련번호(material_no) (자재 FK)
 

@@ -49,6 +49,8 @@ public class MaterialProcurementPlanningDTO {
     private String productionState;                         //생산 진행 상태
     // -자재조달단계, 자재입고단계, 제품생산단계, 제품검수단계, 제품입고완료
 
+    //productionPlanning의 materialRequirementsList에서 자재 정보 가져 옴.
+
     //--------------------------------------------------------------------------------------------------
 
     private int materialNo;                         //자재일련번호 FK

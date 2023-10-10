@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/layout.html}">
+      layout:decorate="~{/layout/layout.html}">
 <head>
     <meta charset="UTF-8">
     <title>제품별 필요 자재 항목 등록</title>
@@ -11,97 +12,77 @@
 <div layout:fragment="content">
 
     <div class="row mt-3">
-        <div class="col-lg-12">
+        <div class="col">
             <div class="card">
-                <div class="card-title">
-                    <strong>제품별 필요 자재 항목 등록</strong>
-                    <hr>
+                <div class="card-header">
+                    제품별 필요자재 항목 등록
                 </div>
                 <div class="card-body mt-3">
-                    <form class="form-horizontal needs-validation" action="/materialRequirementsList/register" method="post">
+                    <form action="/materialRequirementsList/register" method="post">
 
 
                         <div class="input-group mb-3 d-none">
                             <span class="input-group-text">제품 일련번호</span>
-                            <input type="hidden" name="productNo" class="form-control productNo" readonly>
+                            <input type="text" name="productNo" class="form-control productNo" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">제품 코드</span>
+                            <input type="text" name="productCode" class="form-control selectProduct" placeholder="클릭해주세요" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">제품 이름</span>
+                            <input type="text" name="productName" class="form-control productName" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">제품 타입</span>
+                            <input type="text" name="productType" class="form-control productType" readonly>
                         </div>
 
-
-                        <div class="row">
-
-                            <label class="col-sm-3 control-label"><strong>제품 코드</strong></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="productCode" class="form-control selectProduct"
-                                       placeholder="클릭해서 불러오기" readonly>
-                            </div>
-
-                            <label class="col-sm-3 control-label"><strong>제품 이름</strong></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="productName" class="form-control productName" readonly required>
-                            </div>
-
-                            <label class="col-sm-3 control-label"><strong>제품 분류</strong></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="productType" class="form-control productType" readonly>
-                            </div>
-
+                        <div class="input-group mb-3">
+                                <span>
+                                  <input class="btn btn-default btn-sm" type="button" value="필요 자재 추가">
+                                </span>
                         </div>
-                        <hr>
-
-                        <span>
-                          <input class="btn btn-default btn-sm" type="button" value="필요 자재 추가">
-                        </span>
-
-
                         <div class="input-group mb-3 d-none">
                             <span class="input-group-text">자재 일련번호</span>
                             <input type="text" name="materialNo" class="form-control materialNo" readonly>
                         </div>
-
-
-                        <div class="row">
-
-                            <label class="col-sm-3 control-label"><strong>자재 코드</strong></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="materialCode" class="form-control selectMaterial" id="selectMaterial" placeholder="클릭하여 불러오기" readonly>
-                            </div>
-
-                            <label class="col-sm-3 control-label"><strong>자재 이름</strong></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="materialName" class="form-control materialName" readonly>
-                            </div>
-
-                            <label class="col-sm-3 control-label"><strong>자재 분류</strong></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="materialType" class="form-control materialType" readonly>
-                            </div>
-
-                            <label class="col-sm-3 control-label"><strong>수량</strong></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="quantity" class="form-control quantity">
-                            </div>
-
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재 코드</span>
+                            <input type="text" name="materialCode" class="form-control selectMaterial" id="selectMaterial" placeholder="클릭해주세요" readonly>
                         </div>
-                        <hr>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재 타입</span>
+                            <input type="text" name="materialType" class="form-control materialType" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재 이름</span>
+                            <input type="text" name="materialName" class="form-control materialName" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">수량</span>
+                            <input type="text" name="quantity" class="form-control quantity">
+                        </div>
+
 
                         <div class="my-4">
-                            <div class="float-right">
+                            <div class="float-end">
                                 <a th:href="@{/materialRequirementsList/list}" class="text-decoration-none">
-                                    <button type="button" class="btn btn-outline-dark">목록으로</button>
+                                    <button type="button" class="btn btn-outline-dark">List</button>
                                 </a>
-                                <button type="submit" class="btn btn-primary submitBtn">등록</button>
-                                <button type="reset" class="btn btn-secondary">초기화</button>
+                                <button type="submit" class="btn btn-primary submitBtn">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
                             </div>
                         </div>
+
                     </form>
 
-                </div><!-- end card body -->
-            </div><!-- end card -->
-        </div><!-- end col -->
-    </div><!-- end row -->
+                </div><!--end card body-->
+            </div><!--end card-->
+        </div><!--end col-->
+    </div><!--end row-->
 
-
-    <!--제품 선택을 위한 모달창-->
+    <!--자재 선택을 위한 모달창-->
     <div class="modal selectProductModal" tabindex="-1">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -109,33 +90,6 @@
                     <h5 class="modal-title">제품 검색</h5>
                 </div>
                 <div class="modal-body">
-
-                    <div class="row">
-                        <label class="col-sm-1 control-label"><strong>검색</strong></label>
-                        <div class="col-lg-10">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <select class="form-select productsType">
-                                            <option value="">---</option>
-                                            <option value="t">제품코드</option>
-                                            <option value="c">제품이름</option>
-                                            <option value="w">제품분류</option>
-                                        </select>
-                                    </div>
-                                    <input type="text" class="form-control input-focus productsKeyword"
-                                           placeholder="INPUT KEYWORD">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-success productsSearchBtn"><i
-                                                class="ti-search"></i>
-                                            Search
-                                        </button>
-                                        <button class="btn btn-outline-danger productsClearBtn">Clear</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
 
                     <div class="row mt-3">
@@ -148,7 +102,7 @@
                                             <th scope="col">NO</th>
                                             <th scope="col">제품 코드</th>
                                             <th scope="col">제품 이름</th>
-                                            <th scope="col">제품 분류</th>
+                                            <th scope="col">제품 타입</th>
                                         </tr>
                                         </thead>
 
@@ -182,33 +136,6 @@
                     <h5 class="modal-title">자재 검색</h5>
                 </div>
                 <div class="modal-body">
-
-                    <div class="row">
-                        <label class="col-sm-1 control-label"><strong>검색</strong></label>
-                        <div class="col-lg-10">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <select class="form-select materialsType">
-                                            <option value="">---</option>
-                                            <option value="t">제품코드</option>
-                                            <option value="c">제품이름</option>
-                                            <option value="w">제품분류</option>
-                                        </select>
-                                    </div>
-                                    <input type="text" class="form-control input-focus materialsKeyword"
-                                           placeholder="INPUT KEYWORD">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-success materialsSearchBtn"><i
-                                                class="ti-search"></i>
-                                            Search
-                                        </button>
-                                        <button class="btn btn-outline-danger materialsClearBtn">Clear</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
 
                     <div class="row mt-3">
@@ -296,8 +223,7 @@
         productModal.hide()
     })
 
-    // 제품 목록
-    function printProductList(dtoList) {
+    function printProductList(dtoList) { //자재 목록
 
         let str = ''
 
@@ -319,8 +245,7 @@
         productList.innerHTML = str
     }
 
-    // 제품 목록 페이징 처리
-    function printProductPages(data) {
+    function printProductPages(data) { //자재 목록 페이징 처리
 
         let pageStr = '';
 
@@ -341,11 +266,7 @@
 
     function printProducts(page, size) {
 
-        const type = document.querySelector('.productsType').value
-        const keyword = document.querySelector('.productsKeyword').value
-
-
-        getProductList({page, size, type, keyword}).then(
+        getProductList({page, size}).then(
             data => {
                 printProductList(data.dtoList)
                 printProductPages(data)
@@ -373,35 +294,10 @@
 
     }, false)
 
-    //제품 모달 검색 버튼
-    document.querySelector('.productsSearchBtn').addEventListener("click", function (e) {
-
-        e.preventDefault()
-        e.stopPropagation()
-
-        printProducts(1, 5)
-
-    })
-
-    //계획 모달 클리어 버튼
-    document.querySelector('.productsClearBtn').addEventListener("click", function (e) {
-
-        e.preventDefault()
-        e.stopPropagation()
-
-        document.querySelector('.productsType').value = ''
-        document.querySelector('.productsKeyword').value = ''
-
-        printProducts(1, 5)
-
-    })
-
-
     const productNo = document.querySelector(".productNo")
     const inputProductCode = document.querySelector(".selectProduct")
     const productName = document.querySelector(".productName")
     const productType = document.querySelector(".productType")
-
 
     //제품 항목 클릭시 input에 반영
     productList.addEventListener("click", function (e) {
@@ -508,11 +404,7 @@
 
     function printMaterials(page, size) {
 
-
-        const type = document.querySelector('.materialsType').value
-        const keyword = document.querySelector('.materialsKeyword').value
-
-        getMaterialList({page, size,  type, keyword}).then(
+        getMaterialList({page, size}).then(
             data => {
                 printMaterialList(data.dtoList)
                 printMaterialPages(data)
@@ -539,31 +431,6 @@
         printMaterials(materialPage, materialPageSize)
 
     }, false)
-
-
-    //자재 모달 검색 버튼
-    document.querySelector('.materialsSearchBtn').addEventListener("click", function (e) {
-
-        e.preventDefault()
-        e.stopPropagation()
-
-        printMaterials(1, 5)
-
-    })
-
-    //자재 모달 클리어 버튼
-    document.querySelector('.materialsClearBtn').addEventListener("click", function (e) {
-
-        e.preventDefault()
-        e.stopPropagation()
-
-        document.querySelector('.materialsType').value = ''
-        document.querySelector('.materialsKeyword').value = ''
-
-        printMaterials(1, 5)
-
-    })
-
 
     const materialNo = document.querySelector(".materialNo")
     const inputMaterialCode = document.querySelector(".selectMaterial")

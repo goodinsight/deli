@@ -58,13 +58,13 @@ public class ProductSearchImpl extends QuerydslRepositorySupport implements Prod
             for (String type : types){
 
                 switch (type){
-                    case "t": //자재코드
+                    case "t": //제품코드
                         booleanBuilder.or(products.productCode.contains(keyword));
                         break;
-                    case "c": //자재명
+                    case "c": //제품명
                         booleanBuilder.or(products.productName.contains(keyword));
                         break;
-                    case "w": //자재분류(카테고리)
+                    case "w": //제품분류(카테고리)
                         booleanBuilder.or(products.productType.contains(keyword));
                         break;
                 }

@@ -15,9 +15,9 @@ async function getPlan(planNo) {
 
 }
 
-async function getMaterialList({page, size}) {
+async function getMaterialList({page, size, type, keyword}) {
 
-    const result = await axios.get(`/materialProcurementPlanning/register/selectMaterial`, {params: {page, size}})
+    const result = await axios.get(`/materialProcurementPlanning/register/selectMaterial`, {params: {page, size, type, keyword}})
 
     return result.data
 }

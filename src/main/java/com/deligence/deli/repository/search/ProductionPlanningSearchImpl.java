@@ -109,16 +109,16 @@ public class ProductionPlanningSearchImpl extends QuerydslRepositorySupport impl
                         booleanBuilder.or(productionPlanning.productCode.contains(keyword));
                         break;
                     case "c":
-                        booleanBuilder.or(productionPlanning.clientName.contains(keyword));
+                        booleanBuilder.or(productionPlanning.productContract.cooperatorClient.clientName.contains(keyword));
                         break;
                     case "d":   //제품 계약 납기일
                         booleanBuilder.or(productionPlanning.productDeliveryDate.stringValue().contains(keyword));
                         break;
                     case "e":
-                        booleanBuilder.or(productionPlanning.clientStatus.contains(keyword));
+                        booleanBuilder.or(productionPlanning.productContract.cooperatorClient.clientStatus.contains(keyword));
                         break;
                     case "f":
-                        booleanBuilder.or(productionPlanning.employeeName.contains(keyword));
+                        booleanBuilder.or(productionPlanning.productContract.employee.employeeName.contains(keyword));
                         break;
 
                 }
@@ -188,7 +188,7 @@ public class ProductionPlanningSearchImpl extends QuerydslRepositorySupport impl
                 .productionQuantity(resultProductionPlanning.getProductionQuantity())
                 .productionRequirementsDate(resultProductionPlanning.getProductionRequirementsDate())
                 .productionRequirementsProcess(resultProductionPlanning.getProductionRequirementsProcess())
-                .productionDeliveryDate(resultProductionPlanning.getProductionDeliveryDate())
+                .productionDeliveryDate(resultProductionPlanning.getProductionDeliveryDate())   //생산 납기일
                 .detailExplaination(resultProductionPlanning.getDetailExplaination())
                 .productionState(resultProductionPlanning.getProductionState())             //생산진행상태
                 .productContractNo(resultPc.getProductContractNo())
@@ -203,7 +203,6 @@ public class ProductionPlanningSearchImpl extends QuerydslRepositorySupport impl
                 .clientName(resultPc.getCooperatorClient().getClientName())                 //클라이언트회사명
                 .productDeliveryDate(resultPc.getProductDeliveryDate())                     //제품납기일
                 .clientStatus(resultPc.getCooperatorClient().getClientStatus())             //클라이언트계약상태
-                .employeeName(resultPc.getEmployeeName())                                  //제품계약담당자
                 .materialRequirementsListNo(resultMrl.getMaterialRequirementsListNo())      //제품별필요자재항목No
                 .productNo(resultMrl.getProducts().getProductNo())                          //제품No
                 .productCode2(resultMrl.getProducts().getProductCode())                      //제품Code
@@ -214,7 +213,7 @@ public class ProductionPlanningSearchImpl extends QuerydslRepositorySupport impl
                 .materialName(resultMrl.getMaterials().getMaterialName())                   //자재이름
                 .materialType(resultMrl.getMaterials().getMaterialType())                   //자재타입
                 .quantity(resultMrl.getQuantity())                                          //필요수량
-                .employeeNo(resultProductionPlanning.getEmployee().getEmployeeNo())         //생산계획 담당자
+//                .employeeNo(resultProductionPlanning.getEmployee().getEmployeeNo())         //생산계획 담당자
                 .employeeName2(resultProductionPlanning.getEmployeeName2())                  //생산계획 담당자
                 .regDate(resultProductionPlanning.getRegDate())
                 .modDate(resultProductionPlanning.getModDate())

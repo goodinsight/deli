@@ -1,118 +1,153 @@
 <!DOCTYPE html>
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>제품 계약 수정</title>
+    <title>제품 계약 상세</title>
 </head>
 
 <div layout:fragment="content">
 
     <div class="row mt-3">
-        <div class="col">
+        <div class="col-lg-12">
             <div class="card">
-                <div class="card-header">
-                    제품 계약 수정
+                <div class="card-title">
+                    <strong>제품 계약 상세</strong>
+                    <hr>
                 </div>
                 <div class="card-body mt-3">
+
                     <form th:action="@{/productContract/modify}" method="post" id="modifyForm">
-                        <div class="input-group mb-3 d-none">
-                            <span class="input-group-text">제품 계약 일련번호</span>
-                            <input type="text" name="productContractNo" class="form-control productContractNo" th:value="${dto.productContractNo}" readonly>
+
+                        <div class="row">
+
+                            <label class="col-sm-3 control-label"><strong>제품 계약 코드</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="productContractCode" class="form-control productContractCode" th:value="${dto.productContractCode}" readonly>
+                            </div>
+
                         </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">제품 계약 코드</span>
-                            <input type="text" name="productContractCode" class="form-control productContractCode" th:value="${dto.productContractCode}" readonly>
-                        </div>
+                        <hr>
+
                         <div class="input-group mb-3 d-none">
                             <span class="input-group-text">제품 일련번호</span>
                             <input type="text" name="productNo" class="form-control productNo" th:value="${dto.productNo}" readonly>
                         </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">제품 코드</span>
-                            <input type="text" name="productCode" class="form-control" id="selectProduct" th:value="${dto.productCode}" readonly>
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" style="margin-left: 50px">제품이름</span>
-                            <input type="text" name="productName" class="form-control productName" th:value="${dto.productName}" readonly>
-                            <span class="input-group-text" style="margin-left: 20px">제품타입</span>
-                            <input type="text" name="productType" class="form-control productType" th:value="${dto.productType}" readonly>
-                        </div>
 
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">제품 계약 수량</span>
-                            <input type="text" name="productQuantity" class="form-control productQuantity" th:value="${dto.productQuantity}">
+                        <div class="row">
+
+                            <label class="col-sm-3 control-label"><strong>제품 코드</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="productCode" class="form-control" id="selectProduct" th:value="${dto.productCode}" readonly>
+                            </div>
+
+                            <label class="col-sm-3 control-label"><strong>제품 이름</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="productName" class="form-control productName" th:value="${dto.productName}" readonly required>
+                            </div>
+
+                            <label class="col-sm-3 control-label"><strong>제품 분류</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="productType" class="form-control productType" th:value="${dto.productType}" readonly>
+                            </div>
+
+                            <label class="col-sm-3 control-label"><strong>제품 계약 수량</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="productQuantity" class="form-control productQuantity" th:value="${dto.productQuantity}" >
+                            </div>
+
+                            <span class="col-sm-3 control-label"><strong>제품 납기일</strong></span>
+                            <div class="col-sm-9">
+                                <input type="date" name="productDeliveryDate" class="form-control productDeliveryDate" th:value="${dto.productDeliveryDate}">
+                            </div>
+
                         </div>
+                        <hr>
 
                         <div class="input-group mb-3 d-none">
                             <span class="input-group-text">클라이언트 일련번호</span>
                             <input type="text" name="clientNo" class="form-control clientNo" th:value="${dto.clientNo}" readonly>
                         </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">클라이언트 회사명</span>
-                            <input type="text" name="clientName" class="form-control" id="selectClient" th:value="${dto.clientName}" readonly>
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text" style="margin-left: 50px">대표명</span>
-                            <input type="text" name="clientCeo" class="form-control clientCeo" th:value="${dto.clientCeo}" readonly>
-                            <span class="input-group-text" style="margin-left: 20px">연락처</span>
-                            <input type="text" name="clientPhone" class="form-control clientPhone" th:value="${dto.clientPhone}" readonly>
-                        </div>
-                        <div class="input-group mb-3 d-none">
-                            <span class="input-group-text">클라이언트 주소</span>
-                            <input type="text" name="clientAddress" class="form-control clientAddress" th:value="${dto.clientAddress}" readonly>
-                        </div>
-                        <div class="input-group mb-3 pl-5">
-                            <span class="input-group-text">클라이언트 계약 상태</span>
-                            <input type="text" name="clientStatus" class="form-control clientStatus" th:value="${dto.clientStatus}" readonly>
-                        </div>
 
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">계약일</span>
-                            <input type="date" name="productContractDate" class="form-control productContractDate" th:value="${dto.productContractDate}" readonly>
-                        </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">제품 납기일</span>
-                            <input type="date" name="productDeliveryDate" class="form-control productDeliveryDate" th:value="${dto.productDeliveryDate}" >
-                        </div>
-                        <div class="input-group mb-3" >
-                            <span class="input-group-text">상세 견적 내용</span>
-                            <textarea name="productQuotation" rows="5" cols="50" class="form-control h-25" >[[${dto.productQuotation}]]</textarea>
-                        </div>
+                        <div class="row">
 
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">계약 진행 상태</span>
-                            <select name="productContractState">
-                                <!--'제품생산중', '자재조달중', '계약파기', '계약완료'-->
-                                <option value="자재조달중" selected>자재조달중</option>
-                                <option value="제품생산중" selected>제품생산중</option>
-                                <option value="계약완료">계약완료</option>
-                                <option value="계약파기">계약파기</option>
-                            </select>
+                            <label class="col-sm-3 control-label"><strong>클라이언트 회사명</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="clientName" class="form-control" id="selectClient" th:value="${dto.clientName}" readonly>
+                            </div>
+
+                            <label class="col-sm-3 control-label"><strong>대표명</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="clientCeo" class="form-control clientCeo" th:value="${dto.clientCeo}" readonly>
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>연락처</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="clientPhone" class="form-control clientPhone" th:value="${dto.clientPhone}" readonly>
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>클라이언트 주소</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="clientAddress" class="form-control clientAddress" th:value="${dto.clientAddress}" readonly>
+                            </div>
+                            <label class="col-sm-3 control-label"><strong>클라이언트 계약 상태</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="clientStatus" class="form-control" th:value="${dto.clientStatus}" readonly>
+                            </div>
+
                         </div>
+                        <hr>
 
                         <div class="d-none input-group mb-3">
                             <span class="input-group-text">담당자 일련번호</span>
                             <input type="text" name="employeeNo" class="form-control" th:value="${dto.employeeNo}" readonly>
                         </div>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">담당자 이름</span>
-                            <input type="text" name="employeeName" class="form-control" th:value="${dto.employeeName}" readonly>
-                        </div>
 
-                        <div class="my-4">
-                            <div class="float-end">
-                                <button type="button" class="btn btn-primary modBtn">Modify</button>
-                                <button type="button" class="btn btn-secondary listBtn">List</button>
-                                <button type="button" class="btn btn-secondary readBtn">GoBack</button>
-                                <button type="button" class="btn btn-danger removeBtn">Remove</button>
+                        <div class="row">
+
+                            <span class="col-sm-3 control-label"><strong>계약일</strong></label></span>
+                            <div class="col-sm-9">
+                                <input type="date" name="productContractDate" class="form-control productContractDate" th:value="${dto.productContractDate}" readonly>
                             </div>
-                        </div>
+
+                            <label class="col-sm-3 control-label"><strong>담당자</strong></label>
+                            <div class="col-sm-9">
+                                <input type="text" name="employeeName" class="form-control" th:value="${dto.employeeName}" readonly>
+                            </div>
+
+                            <span class="col-sm-3 control-label"><strong>계약 진행 상태</strong></span>
+                            <div class="col-sm-9">
+    <!--                            <input type="text" name="productContractState" class="form-control" th:value="${dto.productContractState}">-->
+                                <select name="productContractState">
+                                    <!--'제품생산중', '자재조달중', '계약파기', '계약완료'-->
+                                    <option value="자재조달중" selected>자재조달중</option>
+                                    <option value="제품생산중">제품생산중</option>
+                                    <option value="계약완료">계약완료</option>
+                                    <option value="계약파기">계약파기</option>
+                                </select>
+                            </div>
+
+                            <label class="col-sm-3 control-label"><strong>상세 내용</strong></label>
+                            <div class="col-sm-9">
+                                <textarea name="productQuotation" rows="5" cols="50" style="width: 100% !important;"
+                                          class="textarea" >[[${dto.productQuotation}]]</textarea>
+                            </div>
+
+                            <div class="my-4">
+                                <div class="float-end">
+                                    <button type="button" class="btn btn-outline-dark listBtn">목록으로</button>
+                                    <button type="button" class="btn btn-outline-dark readBtn">상세페이지로</button>
+                                    <button type="button" class="btn btn-primary modBtn">수정</button>
+                                    <button type="button" class="btn btn-danger removeBtn">삭제</button>
+                                </div>
+                            </div>
+
+                        </div><!--end row-->
+
                     </form>
+
                 </div><!-- end card body -->
+
             </div><!-- end card -->
         </div><!-- end col -->
     </div><!-- end row -->

@@ -70,7 +70,7 @@ public class CustomSecurityConfig {
                 .antMatchers("/employee/remove","/employee/authority","employee/authorityread", "employee/authoritymodify","/board/modify","/board/remove").hasRole("ADMIN")    //   /employee/ 수정, 삭제 url은 ROLE_ADMIN 롤을 가진 사람만 접근
                 .antMatchers("/employee/list","/employee/read","/employee/modify").hasAnyRole("ADMIN","MATERIAL", "ORDER", "PROCUREMENT", "PRODUCT", "COOPERATOR", "PARTNER") // 담당자들은 employee list를 볼 수 있음
                 .antMatchers("/board/list", "/board/read", "/board/register").hasAnyRole("USER", "ADMIN","MATERIAL", "ORDER", "PROCUREMENT", "PRODUCT", "CLIENT", "SUPPLIER", "PRODUCTION")   //일반회원은 보드만 접근 가능
-                .antMatchers("/material/**", "/materialInventory/**").hasAnyRole("MATERIAL", "ADMIN")   //자재 담당자와 admin만 접근
+                .antMatchers("/material/**", "/materialInventory/**").hasAnyRole("MATERIAL", "PRODUCTION", "ADMIN")   //자재 담당자와 admin만 접근, 생산관리담당자는 재고확인을 해야하므로 추가
                 .antMatchers("/order/**").hasAnyRole("ORDER", "ADMIN")  // 발주 담당자와 admin만 접근
                 .antMatchers("/product/**").hasAnyRole("CLIENT", "PRODUCTION", "PRODUCT", "ADMIN")  // 제품계약 담당자, 제품담당자, 생산계획담당자와 admin만 접근
                 .antMatchers("/production/**").hasAnyRole("PRODUCTION","MATERIAL", "ADMIN")  // 생산계획 담당자, 자재조달 담당자와 admin만 접근

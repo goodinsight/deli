@@ -1,122 +1,151 @@
 <!DOCTYPE html>
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{/layout/layout.html}">
 <head>
   <meta charset="UTF-8">
-  <title>자재조달계획 등록</title>
+  <title>자재 조달 계획 등록</title>
 </head>
+
 
 <div layout:fragment="content">
 
   <div class="row mt-3">
-    <div class="col">
+    <div class="col-lg-12">
       <div class="card">
-        <div class="card-header">
-          자재조달계획 등록
+        <div class="card-title">
+          <strong>자재 조달 계획 등록</strong>
+          <hr>
         </div>
-        <div class="card-body mt-3">
-          <form action="/materialProcurementPlanning/register" method="post">
 
-            <div class="input-group mb-3">
-              <span class="input-group-text">자재조달계획 코드</span>
-              <input type="text" name="materialProcurementPlanCode" class="form-control materialProcurementPlanCode" id="materialProcurementPlanCode" placeholder="클릭해주세요" readonly>
+        <div class="card-body mt-3">
+          <form class="form-horizontal" action="/materialProcurementPlanning/register" method="post">
+
+            <div class="row">
+
+              <label class="col-sm-3 control-label"><strong>자재 조달 계획 코드</strong></label>
+              <div class="col-sm-9">
+                <input type="text" name="materialProcurementPlanCode" class="form-control materialProcurementPlanCode" id="materialProcurementPlanCode" placeholder="클릭해주세요" readonly>
+              </div>
+
             </div>
+            <hr>
 
             <div class="input-group mb-3 d-none">
               <span class="input-group-text">생산계획 일련번호</span>
               <input type="text" name="productionPlanNo" class="form-control productionPlanNo" readonly>
             </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text">생산계획 코드</span>
-              <input type="text" name="productionPlanCode" class="form-control selectPlan" id="selectPlan" placeholder="클릭해주세요" readonly>
-            </div>
-            <div class="input-group mb-3 pl-5">
-              <span class="input-group-text">생산 납기일</span>
-              <input type="date" name="productionDeliveryDate" class="form-control productionDeliveryDate" readonly>
-            </div>
-            <div class="input-group mb-3 pl-5">
-              <span class="input-group-text">제품 코드</span>
-              <input type="text" name="productCode" class="form-control productCode" readonly>
-            </div>
-            <div class="input-group mb-3 pl-5">
-              <span class="input-group-text">클라이언트 회사명</span>
-              <input type="text" name="clientName" class="form-control clientName" readonly>
-            </div>
-            <div class="input-group mb-3 pl-5">
-              <span class="input-group-text">제품 납기일</span>
-              <input type="text" name="productDeliveryDate" class="form-control productDeliveryDate" readonly>
-            </div>
-            <div class="input-group mb-3 pl-5">
-              <span class="input-group-text">계약 상태</span>
+            <div class="input-group mb-3 d-none">
+              <span class="input-group-text">클라이언트 계약 상태</span>
               <input type="text" name="clientStatus" class="form-control clientStatus" readonly>
+            </div>
+
+            <div class="row">
+
+              <label class="col-sm-3 control-label"><strong>제품 생산 계획 코드</strong></label>
+              <div class="col-sm-9">
+                <input type="text" name="productionPlanCode" class="form-control selectPlan" id="selectPlan" placeholder="클릭하여 불러오기" readonly>
+              </div>
+              <label class="col-sm-3 control-label"><strong>제품 코드</strong></label>
+              <div class="col-sm-3">
+                <input type="text" name="productCode" class="form-control productCode" readonly>
+              </div>
+              <span class="col-sm-3 control-label"><strong>생산 계획 납기일</strong></span>
+              <div class="col-sm-3">
+                <input type="date" name="productionDeliveryDate" class="form-control productionDeliveryDate" readonly>
+              </div>
+
+              <label class="col-sm-3 control-label"><strong>클라이언트 회사명</strong></label>
+              <div class="col-sm-3">
+                <input type="text" name="clientName" class="form-control clientName" readonly>
+              </div>
+              <span class="col-sm-3 control-label"><strong>제품 계약 납기일</strong></span>
+              <div class="col-sm-3">
+                <input type="date" name="productDeliveryDate" class="form-control productDeliveryDate" readonly>
+              </div>
+
             </div>
             <hr>
 
-            <div class="d-none input-group mb-3">
+            <div class="input-group mb-3 d-none">
               <span class="input-group-text">자재 일련번호</span>
               <input type="text" name="materialNo" class="form-control materialNo" readonly>
             </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text">자재 코드</span>
-              <input type="text" name="materialCode" class="form-control" id="selectMaterial" placeholder="클릭해주세요" readonly>
-            </div>
-            <div class="input-group mb-3 pl-5">
-              <span class="input-group-text">자재 타입</span>
-              <input type="text" name="materialType" class="form-control materialType" readonly>
-            </div>
-            <div class="input-group mb-3 pl-5">
-              <span class="input-group-text">자재 이름</span>
-              <input type="text" name="materialName" class="form-control materialName" readonly>
-            </div>
-            <div class="input-group mb-3 pl-5">
-              <span class="input-group-text">자재 공급단가</span>
-              <input type="text" name="materialSupplyPrice" class="form-control materialSupplyPrice" readonly>
-            </div>
 
-            <div class="input-group mb-3">
-              <span class="input-group-text">자재 소요량</span>
-              <input type="number" name="materialRequirementsCount" class="form-control materialRequirementsCount" placeholder="자재 소요량">
-            </div>
+            <div class="row">
 
-            <div class="input-group mb-3">
-              <span class="input-group-text">조달 납기일</span>
-              <input type="date" name="procurementDeliveryDate" class="form-control procurementDeliveryDate" placeholder="납기일">
-            </div>
-
-              <div class="input-group mb-3">
-                <span class="input-group-text">자재조달상태</span>
-                <input type="text" name="materialProcurementState" class="form-control" placeholder="자재조달상태 - 추후 숨길 부분" th:value="진행중" readonly>
+              <label class="col-sm-3 control-label"><strong>자재 코드</strong></label>
+              <div class="col-sm-9">
+                <input type="text" name="materialCode" class="form-control" id="selectMaterial" placeholder="클릭하여 불러오기" readonly>
               </div>
+              <label class="col-sm-3 control-label"><strong>자재 이름</strong></label>
+              <div class="col-sm-9">
+                <input type="text" name="materialName" class="form-control materialName" readonly>
+              </div>
+              <label class="col-sm-3 control-label"><strong>자재 분류</strong></label>
+              <div class="col-sm-9">
+                <input type="text" name="materialType" class="form-control materialType" readonly>
+              </div>
+              <label class="col-sm-3 control-label"><strong>자재 공급 단가</strong></label>
+              <div class="col-sm-9">
+                <input type="text" name="materialSupplyPrice" class="form-control materialSupplyPrice" readonly>
+              </div>
+
+            </div>
+            <hr>
+
+            <div class="row">
+
+              <label class="col-sm-3 control-label"><strong>자재 소요량</strong></label>
+              <div class="col-sm-9">
+                <input type="number" name="materialRequirementsCount" class="form-control materialRequirementsCount" placeholder="자재 소요량">
+              </div>
+
+              <span class="col-sm-3 control-label"><strong>조달 납기일</strong></span>
+              <div class="col-sm-9">
+                <input type="date" name="procurementDeliveryDate" class="form-control procurementDeliveryDate">
+              </div>
+
+              <span class="col-sm-3 control-label"><strong>자재 조달 상태</strong></span>
+              <div class="col-sm-9">
+                <input type="text" name="materialProcurementState" class="form-control" th:value="진행중" readonly>
+              </div>
+
+            </div>
+            <hr>
 
             <div class="input-group mb-3 d-none">
               <span class="input-group-text">담당자 일련번호</span>
               <input type="text" name="employeeNo" class="form-control" th:value="${user.employeeNo}" readonly>
             </div>
-            <div class="input-group mb-3">
-              <span class="input-group-text">담당자</span>
-              <input type="text" name="employeeName" class="form-control" th:value="${user.employeeName}" readonly>
-            </div>
 
-
-            <div class="my-4">
-              <div class="float-end">
-                <a th:href="@{/materialProcurementPlanning/list}" class="text-decoration-none">
-                  <button type="button" class="btn btn-outline-dark">List</button>
-                </a>
-                <button type="submit" class="btn btn-primary submitBtn">Submit</button>
-                <button type="reset" class="btn btn-secondary">Reset</button>
+            <div class="row">
+              <label class="col-sm-3 control-label"><strong>조달 계획 담당자</strong></label>
+              <div class="col-sm-9">
+                <input type="text" name="employeeName" class="form-control" th:value="${user.employeeName}" readonly>
               </div>
-            </div>
+
+              <div class="my-4">
+                <div class="float-right">
+                  <a th:href="@{/materialProcurementPlanning/list}" class="text-decoration-none">
+                    <button type="button" class="btn btn-outline-dark">목록으로</button>
+                  </a>
+                  <button type="submit" class="btn btn-primary submitBtn">등록</button>
+                  <button type="reset" class="btn btn-secondary">초기화</button>
+                </div>
+              </div>
+
+            </div><!--end row-->
 
           </form>
 
-        </div><!--end card body-->
+        </div><!-- end card body -->
       </div><!--end card-->
     </div><!--end col-->
   </div><!--end row-->
+
+
 
   <!--생산 계획 선택을 위한 모달창-->
   <div class="modal selectPlanModal" tabindex="-1">
@@ -137,9 +166,10 @@
                     <tr>
                       <th scope="col">NO</th>
                       <th scope="col">생산계획 코드</th>
+                      <th scope="col">생산 납기일</th>
                       <th scope="col">제품코드</th>
                       <th scope="col">클라이언트 회사명</th>
-                      <th scope="col">납기일</th>
+                      <th scope="col">제품 납기일</th>
                       <th scope="col">계약상태</th>
                     </tr>
                     </thead>
@@ -174,6 +204,33 @@
           <h5 class="modal-title">자재 검색</h5>
         </div>
         <div class="modal-body">
+
+
+          <div class="row">
+            <label class="col-sm-1 control-label"><strong>검색</strong></label>
+            <div class="col-lg-10">
+              <div class="form-group">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <select class="form-select planType">
+                      <option value="">---</option>
+                      <option value="t">자재코드</option>
+                      <option value="c">자재이름</option>
+                    </select>
+                  </div>
+                  <input type="text" class="form-control input-focus planKeyword"
+                         placeholder="INPUT KEYWORD">
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-success planSearchBtn"><i
+                            class="ti-search"></i>
+                      Search
+                    </button>
+                    <button class="btn btn-outline-danger planClearBtn">Clear</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
 
           <div class="row mt-3">
@@ -240,6 +297,16 @@
     }
     alert(errorMsg)
   }
+
+  // function convertTime(date) {
+  //   date = new Date(date);
+  //   let offset = date.getTimezoneOffset() * 60000; //ms단위라 60000곱해줌
+  //   let dateOffset = new Date(date.getTime() - offset);
+  //   return dateOffset.toISOString();
+  // }
+  //
+  // export default convertTime;
+
 
 
   //생산 계획 선택 --------------------------------------------------------------------
@@ -379,6 +446,7 @@
       productionPlanNo.value = plan.productionPlanNo
       //생산 계획 정보를 가져와서 화면에 반영해야 할 항복들은 여기에 --------------------------------------------------------
       inputPlanCode.value = plan.productionPlanCode
+      // productionDeliveryDate.value = convertTime(plan.productionDeliveryDate).toISOString().split('T')[0]
       productionDeliveryDate.value = new Date(plan.productionDeliveryDate).toISOString().split('T')[0]
       productCode.value = plan.productCode
       clientName.value = plan.clientName
@@ -391,6 +459,7 @@
     }).catch(e => alert('error'))
 
   }, false)
+
 
 
   //자재 선택 --------------------------------------------------------------------------------------------------
@@ -407,8 +476,14 @@
 
   document.querySelector("#selectMaterial").addEventListener("click", function (e) {
     console.log("select material modal show")
-    printMaterials(1, 5)
-    materialModal.show()
+
+    // if (productionPlanCode.value > 0) {
+        printMaterials(1, 5)
+        materialModal.show()
+    // }else {
+    //   alert("생산 계획 코드를 먼저 선택해주세요.")
+    // }
+
   }, false)
 
   closeMaterialBtn.addEventListener("click", function (e) {
@@ -428,8 +503,8 @@
         str += `<tr>
                   <td data-materialsNo = "${dto.materialNo}">${dto.materialNo}</td>
                   <td data-materialsNo = "${dto.materialNo}">${dto.materialCode}</td>
-                  <td data-materialsNo = "${dto.materialNo}">${dto.materialType}</td>
                   <td data-materialsNo = "${dto.materialNo}">${dto.materialName}</td>
+                  <td data-materialsNo = "${dto.materialNo}">${dto.materialType}</td>
                   <td data-materialsNo = "${dto.materialNo}">${dto.materialSupplyPrice}</td>
               </tr>`
       }
@@ -459,7 +534,10 @@
 
   function printMaterials(page, size) {
 
-    getMaterialList({page, size}).then(
+    const type = document.querySelector('.planType').value
+    const keyword = document.querySelector('.planKeyword').value
+
+    getMaterialList({page, size, type, keyword}).then(
             data => {
               printMaterialList(data.dtoList)
               printMaterialPages(data)
@@ -487,10 +565,33 @@
 
   }, false)
 
+  //계획 모달 검색 버튼
+  document.querySelector('.planSearchBtn').addEventListener("click", function (e) {
+
+    e.preventDefault()
+    e.stopPropagation()
+
+    printMaterials(1, 5)
+
+  })
+
+  //계획 모달 클리어 버튼
+  document.querySelector('.planClearBtn').addEventListener("click", function (e) {
+
+    e.preventDefault()
+    e.stopPropagation()
+
+    document.querySelector('.planType').value = ''
+    document.querySelector('.planKeyword').value = ''
+
+    printMaterials(1, 5)
+
+  })
+
   const materialNo = document.querySelector(".materialNo")
   const inputMaterialCode = document.querySelector("#selectMaterial")
-  const materialType = document.querySelector(".materialType")
   const materialName = document.querySelector(".materialName")
+  const materialType = document.querySelector(".materialType")
   const materialSupplyPrice = document.querySelector(".materialSupplyPrice")
 
   //자재 항목 클릭시 input에 반영
@@ -521,9 +622,9 @@
       //자재 정보를 가져와서 화면에 반영해야 할 항목들은 여기에 --------------------------------------------------------
       console.log("check1")
       inputMaterialCode.value = material.materialCode
+      materialName.value = material.materialName
       materialType.value = material.materialType
       console.log("check2")
-      materialName.value = material.materialName
       //------------------------------------------------------------------------------------------------------
       materialSupplyPrice.value = material.materialSupplyPrice
       console.log("성공")
@@ -554,6 +655,8 @@
 
 
   }, false)
+
+
 
 
 

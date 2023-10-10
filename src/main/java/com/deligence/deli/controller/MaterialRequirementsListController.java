@@ -153,7 +153,7 @@ public class MaterialRequirementsListController {
     @GetMapping("/register/productList")
     public PageResponseDTO<ProductsDTO> getProductList(PageRequestDTO pageRequestDTO){
 
-        log.info("getProductsList");
+        log.info("getProductList");
 
         PageResponseDTO<ProductsDTO> responseDTO = productsService.list(pageRequestDTO);
 

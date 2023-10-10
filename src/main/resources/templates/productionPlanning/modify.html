@@ -90,7 +90,7 @@
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" style="margin-left: 100px">필요 수량</span>
-                                <input type="text" name="quantity" class="form-control quantity" th:value="${dto.quantity}" readonly>
+                                <input type="text" name="quantity" class="form-control quantity" th:value="${dto.quantity}*${dto.productQuantity}" readonly>
                             </div>
                         </div>
                         <hr>

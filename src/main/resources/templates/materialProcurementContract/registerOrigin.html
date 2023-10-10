@@ -1,147 +1,122 @@
 <!DOCTYPE html>
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/layout/layout.html}">
+      layout:decorate="~{layout/layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>자재 조달 계약 등록</title>
+    <title>자재조달계약 등록</title>
 </head>
-
 
 <div layout:fragment="content">
 
     <div class="row mt-3">
-        <div class="col-lg-12">
+        <div class="col">
             <div class="card">
-                <div class="card-title">
-                    <strong>자재 조달 계약 등록</strong>
-                    <hr>
+                <div class="card-header">
+                    자재조달계약 등록
                 </div>
-
                 <div class="card-body mt-3">
-                    <form class="form-horizontal" action="/materialProcurementContract/register" method="post">
+                    <form action="/materialProcurementContract/register" method="post">
 
-                        <div class="input-group mb-3 pl-5 d-none">
-                            <span class="input-group-text">담당자 일련번호</span>
-                            <input type="text" name="employeeNo" class="form-control" th:value="${user.employeeNo}" readonly>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">계약 코드</span>
+                            <input type="text" name="materialProcurementContractCode" class="form-control" id="materialProcurementContractCode" placeholder="클릭해주세요" readonly>
                         </div>
 
-                        <div class="row">
-
-                            <label class="col-sm-3 control-label"><strong>계약 코드</strong></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="materialProcurementContractCode" class="form-control" id="materialProcurementContractCode" placeholder="클릭해주세요" readonly>
-                            </div>
-
-                            <span class="col-sm-3 control-label"><strong>계약일</strong></span>
-                            <div class="col-sm-9">
-                                <input type="date" name="materialProcurementContractDate" class="form-control" placeholder="계약일">
-                            </div>
-
-                            <label class="col-sm-3 control-label"><strong>조달 계약 담당자</strong></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="employeeName" class="form-control" th:value="${user.employeeName}" readonly>
-                            </div>
-
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">계약일</span>
+                            <input type="date" name="materialProcurementContractDate" class="form-control" placeholder="계약일">
                         </div>
-                        <hr>
-
 
                         <div class="input-group mb-3 d-none">
                             <span class="input-group-text">조달계획 일련번호</span>
                             <input type="text" name="materialProcurementPlanNo" class="form-control materialProcurementPlanNo" readonly>
                         </div>
-
-                        <div class="row">
-
-                            <label class="col-sm-3 control-label" ><strong>조달 계획 코드</strong></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="materialProcurementPlanCode" class="form-control selectPlan" id="materialProcurementPlanCode" placeholder="클릭하여 불러오기" readonly>
-                            </div>
-                            <label class="col-sm-3 control-label" ><strong>자재 코드</strong></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="materialCode" class="form-control materialCode" readonly>
-                            </div>
-                            <label class="col-sm-3 control-label" ><strong>자재 이름</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="materialName" class="form-control materialName" readonly>
-                            </div>
-                            <label class="col-sm-3 control-label" ><strong>자재 분류</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="materialType" class="form-control materialType" readonly>
-                            </div>
-                            <label class="col-sm-3 control-label" ><strong>자재 공급단가</strong></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="materialSupplyPrice" class="form-control materialSupplyPrice" readonly>
-                            </div>
-                            <label class="col-sm-3 control-label" ><strong>자재 소요량</strong></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="materialRequirementsCount" class="form-control materialRequirementsCount" readonly>
-                            </div>
-                            <label class="col-sm-3 control-label" ><strong>조달 수량</strong></label>
-                            <div class="col-sm-9">
-                                <input type="text" name="procurementQuantity" class="form-control procurementQuantity" placeholder="조달 수량">
-                            </div>
-
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">조달계획 코드</span>
+                            <input type="text" name="materialProcurementPlanCode" class="form-control selectPlan" id="materialProcurementPlanCode" placeholder="클릭해주세요" readonly>
                         </div>
-                        <hr>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재 코드</span>
+                            <input type="text" name="materialCode" class="form-control materialCode" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재 타입</span>
+                            <input type="text" name="materialType" class="form-control materialType" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재 이름</span>
+                            <input type="text" name="materialName" class="form-control materialName" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재 공급단가</span>
+                            <input type="text" name="materialSupplyPrice" class="form-control materialSupplyPrice" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5">
+                            <span class="input-group-text">자재 소요량</span>
+                            <input type="text" name="materialRequirementsCount" class="form-control materialRequirementsCount" placeholder="자재 소요량" readonly>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">조달 수량</span>
+                            <input type="text" name="procurementQuantity" class="form-control procurementQuantity" placeholder="조달 수량">
+                        </div>
 
                         <div class="input-group mb-3 d-none">
                             <span class="input-group-text">자재 협력회사 일련번호</span>
                             <input type="text" name="supplierNo" class="form-control supplierNo" readonly>
                         </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">자재조달 협력회사명</span>
+                            <input type="text" name="supplierName" class="form-control" id="selectSupplier" placeholder="클릭해주세요" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" style="margin-left: 50px">대표명</span>
+                            <input type="text" name="supplierCeo" class="form-control supplierCeo" readonly>
+                            <span class="input-group-text" style="margin-left: 20px">연락처</span>
+                            <input type="text" name="supplierPhone" class="form-control supplierPhone" readonly>
+                        </div>
+                        <div class="input-group mb-3 pl-5 d-none">
+                            <span class="input-group-text">계약 상태</span>
+                            <input type="text" name="supplierStatus" class="form-control supplierStatus" placeholder="계약 상태 - 추후 숨길 부분" th:value="계약중" readonly>
+                        </div>
 
-                        <div class="row">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">조달 상태</span>
+                            <input type="text" name="materialProcurementContractState" class="form-control" placeholder="조달 상태 - 추후 숨길 부분" th:value="조달계약협상중" readonly>
+                        </div>
 
-                            <label class="col-sm-3 control-label" ><strong>자재 조달 협력 회사 명</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="supplierName" class="form-control" id="selectSupplier" placeholder="클릭하여 불러오기" readonly>
+                        <div class="input-group mb-3" >
+                            <span class="input-group-text">비고</span>
+                            <textarea name="materialProcurementContractEtc" rows="5" cols="50" class="form-control h-25"></textarea>
+                        </div>
+
+                        <div class="input-group mb-3 pl-5 d-none">
+                            <span class="input-group-text">담당자 일련번호</span>
+                            <input type="text" name="employeeNo" class="form-control" th:value="${user.employeeNo}" readonly>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">담당자</span>
+                            <input type="text" name="employeeName" class="form-control" th:value="${user.employeeName}" readonly>
+                        </div>
+
+
+                        <div class="my-4">
+                            <div class="float-end">
+                                <a th:href="@{/materialProcurementContract/list}" class="text-decoration-none">
+                                    <button type="button" class="btn btn-outline-dark">List</button>
+                                </a>
+                                <button type="submit" class="btn btn-primary submitBtn">Submit</button>
+                                <button type="reset" class="btn btn-secondary">Reset</button>
                             </div>
-                            <span class="col-sm-3 control-label"><strong>계약 상태</strong></span>
-                            <div class="col-sm-3">
-                                <input type="text" name="supplierStatus" class="form-control supplierStatus" th:value="계약중" readonly>
-                            </div>
-                            <label class="col-sm-3 control-label" ><strong>대표명</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="supplierCeo" class="form-control supplierCeo" readonly>
-                            </div>
-                            <label class="col-sm-3 control-label" ><strong>연락처</strong></label>
-                            <div class="col-sm-3">
-                                <input type="text" name="supplierPhone" class="form-control supplierPhone" readonly>
-                            </div>
-
-                            <span class="col-sm-3 control-label"><strong>조달 상태</strong></span>
-                            <div class="col-sm-9">
-                                <input type="text" name="materialProcurementContractState" class="form-control" th:value="조달계약협상중" readonly>
-                            </div>
-
-                            <label class="col-sm-3 control-label"><strong>비고</strong></label>
-                            <div class="col-sm-9">
-                                <textarea name="materialProcurementContractEtc" rows="5" cols="50" style="width: 100% !important;"
-                                  class="textarea"></textarea>
-                            </div>
-
-                            <div class="my-4">
-                                <div class="float-right">
-                                    <a th:href="@{/materialProcurementContract/list}" class="text-decoration-none">
-                                        <button type="button" class="btn btn-outline-dark">목록으로</button>
-                                    </a>
-                                    <button type="submit" class="btn btn-primary submitBtn">등록</button>
-                                    <button type="reset" class="btn btn-secondary">초기화</button>
-                                </div>
-
-                            </div>
-
-                        </div><!--end row-->
-
+                        </div>
                     </form>
-
                 </div><!-- end card body -->
-            </div><!--end card-->
-        </div><!--end col-->
-    </div><!--end row-->
-
+            </div><!-- end card -->
+        </div><!-- end col -->
+    </div><!-- end row -->
 
     <!-- 조달 계획 선택을 위한 모달창 -->
     <div class="modal selectPlanModal" tabindex="-1">

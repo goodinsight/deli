@@ -5,72 +5,68 @@
       layout:decorate="~{layout/layout.html}">
 <head>
     <meta charset="UTF-8">
-    <title>제품 계약 목록</title>
+    <title>제품 계약 리스트</title>
 </head>
 
 <div layout:fragment="content">
 
+    <div class="row mt-12 m-l-15">
+        <form class="col-lg-10" action="/productContract/list" method="get">
+            <div class="form-group">
+                <p class="text-muted m-b-15 f-s-12">
+                    "검색하고 싶은
+                    <code>카테고리를 선택하고 키워드</code>
+                    를 입력한 뒤 search버튼을 누르세요"
+                </p>
+                <input type="hidden" name="size" th:value="${orderPageRequestDTO.size}">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <select class="form-select" name="state">
+                            <option value="">제품 계약 상태</option>
+                            <option value="자재검토중" th:selected="${orderPageRequestDTO.state == '자재검토중'}">자재검토중</option>
+                            <option value="자재조달중" th:selected="${orderPageRequestDTO.state == '자재조달중'}">자재조달중</option>
+                            <option value="자재입고중" th:selected="${orderPageRequestDTO.state == '자재입고중'}">자재입고중</option>
+                            <option value="제품생산중" th:selected="${orderPageRequestDTO.state == '제품생산중'}">제품생산중</option>
+                            <option value="제품출고완료" th:selected="${orderPageRequestDTO.state == '제품출고완료'}">제품출고완료</option>
+                        </select>
+                    </div>
+                    <div class="input-group-prepend">
+                        <select class="form-select" name="type">
+                            <option value="">---</option>
+                            <option value="a" th:selected="${orderPageRequestDTO.type == 'a'}">계약 코드</option>
+                            <option value="b" th:selected="${orderPageRequestDTO.type == 'b'}">제품 코드</option>
+                            <option value="c" th:selected="${orderPageRequestDTO.type == 'c'}">클라이언트 회사명</option>
+                            <option value="d" th:selected="${orderPageRequestDTO.type == 'd'}">제품 계약일</option>
+                        </select>
+                    </div>
+
+                    <input type="text" class="form-control input-focus" name="keyword"
+                           th:value="${orderPageRequestDTO.keyword}" placeholder="INPUT KEYWORD">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-success searchBtn" type="submit">
+                            <i class="ti-search"></i> Search</button>
+                        <button class="btn btn-outline-danger clearBtn" type="button">Clear</button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
+    </div>
     <div class="row mt-3">
+
         <div class="col">
             <div class="card">
-                <div class="card-title">
-                    <strong>제품 계약 목록</strong>
-                    <hr>
+                <div class="card-header">
+                    제품 계약 리스트
                 </div>
-                <br>
-
-                <form action="/productContract/list" method="get">
-                    <input type="hidden" name="size" th:value="${orderPageRequestDTO.size}">
-
-                    <div class="row">
-                        <label class="col-sm-1 control-label"><strong>상태</strong></label>
-                        <div class="col-sm-3">
-                            <select class="form-control" placeholder="분류 선택" name="state">
-                                <option value="">제품 계약 상태</option>
-                                <option value="자재검토중" th:selected="${orderPageRequestDTO.state == '자재검토중'}">자재검토중</option>
-                                <option value="자재조달중" th:selected="${orderPageRequestDTO.state == '자재조달중'}">자재조달중</option>
-                                <option value="자재입고중" th:selected="${orderPageRequestDTO.state == '자재입고중'}">자재입고중</option>
-                                <option value="제품생산중" th:selected="${orderPageRequestDTO.state == '제품생산중'}">제품생산중</option>
-                                <option value="제품출고완료" th:selected="${orderPageRequestDTO.state == '제품출고완료'}">제품출고완료</option>
-                            </select>
-                        </div>
+                <div class="my-4">
+                    <div class="float-left">
+                        <a th:href="@{/productContract/register}" class="text-decoration-none">
+                            <button type="button" class="btn btn-primary">Register</button>
+                        </a>
                     </div>
-
-                    <div class="row">
-                        <label class="col-sm-1 control-label"><strong>검색</strong></label>
-                        <div class="col-lg-10">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <select class="form-select" name="type">
-                                            <option value="">---</option>
-                                            <option value="a" th:selected="${orderPageRequestDTO.type == 'a'}">계약 코드</option>
-                                            <option value="b" th:selected="${orderPageRequestDTO.type == 'b'}">제품 코드</option>
-                                            <option value="c" th:selected="${orderPageRequestDTO.type == 'c'}">클라이언트 회사명</option>
-                                            <option value="d" th:selected="${orderPageRequestDTO.type == 'd'}">제품 계약일</option>
-                                        </select>
-                                    </div>
-                                    <input type="text" class="form-control input-focus" name="keyword"
-                                           th:value="${orderPageRequestDTO.keyword}" placeholder="INPUT KEYWORD">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-success searchBtn" type="submit"><i
-                                                class="ti-search"></i>
-                                            Search
-                                        </button>
-                                        <button class="btn btn-outline-danger clearBtn">Clear</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 검색 도구 설명 -->
-                        <p class="text-muted m-b-15 f-s-12">
-                            "검색하고 싶은
-                            <code>카테고리를 선택하고 키워드</code>
-                            를 입력한 뒤 search버튼을 누르세요"
-                        </p>
-                    </div>
-
-                </form>
+                </div>
 
                 <div class="card-body">
 
@@ -129,20 +125,15 @@
 
                         </ul>
                     </div>
-
-                    <div class="float-right">
-                        <a th:href="@{/productContract/register}" class="text-decoration-none">
-                            <button type="button" class="btn btn-primary">계약 등록</button>
-                        </a>
-                    </div>
                 </div>
             </div><!-- end card -->
 
         </div><!-- end col -->
     </div><!-- end row -->
 
-</div>
 
+
+</div>
 
 <script layout:fragment="script" th:inline="javascript">
 

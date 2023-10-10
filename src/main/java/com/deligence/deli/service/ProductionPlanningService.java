@@ -55,7 +55,7 @@ public interface ProductionPlanningService {
 
         ProductionPlanningDTO productionPlanningDTO = ProductionPlanningDTO.builder()
                 .productionPlanNo(productionPlanning.getProductionPlanNo())
-                .productionPlanCode(productionPlanning.getProductCode())
+                .productionPlanCode(productionPlanning.getProductionPlanCode())
                 .productionQuantity(productionPlanning.getProductionQuantity())
                 .productionRequirementsDate(productionPlanning.getProductionRequirementsDate())
                 .productionRequirementsProcess(productionPlanning.getProductionRequirementsProcess())
@@ -63,11 +63,16 @@ public interface ProductionPlanningService {
                 .detailExplaination(productionPlanning.getDetailExplaination())
                 .productionState(productionPlanning.getProductionState())
                 .productContractNo(productionPlanning.getProductContract().getProductContractNo())
-                .productCode(productionPlanning.getProductContract().getProductCode())
-                .clientName(productionPlanning.getProductContract().getClientName())
-                .productDeliveryDate(productionPlanning.getProductContract().getProductDeliveryDate())
-                .clientStatus(productionPlanning.getProductContract().getClientStatus())
-                .employeeName(productionPlanning.getProductContract().getEmployeeName())    //제품계약담당자
+                .productCode(productionPlanning.getProductCode())   //검색용
+//                .productCode(productionPlanning.getProductContract().getProductCode())
+//                .clientName(productionPlanning.getClientName()) //검색용
+                .clientName(productionPlanning.getProductContract().getCooperatorClient().getClientName())
+                .productDeliveryDate(productionPlanning.getProductDeliveryDate())   //검색용
+//                .productDeliveryDate(productionPlanning.getProductContract().getProductDeliveryDate())
+//                .clientStatus(productionPlanning.getClientStatus()) //검색용
+                .clientStatus(productionPlanning.getProductContract().getCooperatorClient().getClientStatus())
+//                .employeeName(productionPlanning.getEmployeeName())    //제품계약담당자
+                .employeeName(productionPlanning.getProductContract().getEmployee().getEmployeeName())    //제품계약담당자
                 .employeeNo(productionPlanning.getEmployee().getEmployeeNo())
                 .employeeName2(productionPlanning.getEmployeeName2())                        //생산계획담당자
                 .materialRequirementsListNo(productionPlanning.getMaterialRequirementsList().getMaterialRequirementsListNo())

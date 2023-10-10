@@ -220,13 +220,13 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
 
         QMaterialProcurementPlanning materialProcurementPlanning = QMaterialProcurementPlanning.materialProcurementPlanning;
         QProductionPlanning pp = QProductionPlanning.productionPlanning;
-        QMaterials mr = QMaterials.materials;
+        //productionPlanning의 materialRequirementsList에서 자재 정보 가져 옴.
 
         JPQLQuery<Tuple> query = new JPAQueryFactory(em)
-                .select(materialProcurementPlanning, pp, mr)
+                .select(materialProcurementPlanning, pp)
                 .from(materialProcurementPlanning)
                 .join(materialProcurementPlanning.productionPlanning, pp).on(materialProcurementPlanning.productionPlanning.eq(pp))
-                .join(materialProcurementPlanning.materials, mr).on(materialProcurementPlanning.materials.eq(mr))
+                //productionPlanning의 materialRequirementsList에서 자재 정보 가져 옴.
                 .where(materialProcurementPlanning.materialProcurementPlanNo.eq(materialProcurementPlanNo));
 
         List<Tuple> targetDtoList = query.fetch();
@@ -236,7 +236,6 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
         MaterialProcurementPlanning resultMaterialProcurementPlanning =
                 (MaterialProcurementPlanning) target.get(materialProcurementPlanning);
         ProductionPlanning resultPp = (ProductionPlanning) target.get(pp);
-        Materials resultMr = (Materials) target.get(mr);
 
         MaterialProcurementPlanningDetailDTO dto = MaterialProcurementPlanningDetailDTO.builder()
                 .materialProcurementPlanNo(resultMaterialProcurementPlanning.getMaterialProcurementPlanNo())
@@ -251,31 +250,88 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
                 .productCode(resultPp.getProductCode())
 //                .productCode(resultPp.getProductContract().getProductCode())
                 .productDeliveryDate(resultPp.getProductDeliveryDate())
-                .clientName(resultPp.getClientName())
-                .clientStatus(resultPp.getClientStatus())
-                .materialNo(resultMaterialProcurementPlanning.getMaterials().getMaterialNo())
-//                .materialNo(resultMr.getMaterialNo())
-                .materialCode(resultMaterialProcurementPlanning.getMaterialCode())
-//                .materialCode(resultMr.getMaterialCode())
-                .materialType(resultMaterialProcurementPlanning.getMaterialType())
-//                .materialType(resultMr.getMaterialType())
-                .materialName(resultMaterialProcurementPlanning.getMaterialName())
-//                .materialName(resultMr.getMaterialName())
+                .clientName(resultPp.getProductContract().getClientName())
+                .clientStatus(resultPp.getProductContract().getClientStatus())
+                .materialNo(resultPp.getMaterialRequirementsList().getMaterials().getMaterialNo())
+                .materialCode(resultPp.getMaterialRequirementsList().getMaterials().getMaterialCode())
+                .materialType(resultPp.getMaterialRequirementsList().getMaterials().getMaterialType())
+                .materialName(resultPp.getMaterialRequirementsList().getMaterials().getMaterialName())
                 .materialSupplyPrice(resultMaterialProcurementPlanning.getMaterialSupplyPrice())
-//                .materialSupplyPrice(resultMr.getMaterialSupplyPrice())
                 .employeeNo(resultMaterialProcurementPlanning.getEmployee().getEmployeeNo())
-//                .employeeName(resultMaterialProcurementPlanning.getEmployee().getEmployeeName())
                 .employeeName(resultMaterialProcurementPlanning.getEmployeeName())
                 .regDate(resultMaterialProcurementPlanning.getRegDate())
                 .modDate(resultMaterialProcurementPlanning.getModDate())
                 .productionRequirementsProcess(resultPp.getProductionRequirementsProcess())
-                .productionRequirementsDate(resultPp.getProductionRequirementsDate())
+                .productionRequirementsDate(resultPp.getProductionRequirementsDate())   //생산 납기일
                 .productionDeliveryDate(resultPp.getProductionDeliveryDate())
                 .productionState(resultPp.getProductionState())
                 .build();
 
         return dto;
     }
+
+//    @Override
+//    public MaterialProcurementPlanningDetailDTO read(int materialProcurementPlanNo) {
+//
+//        QMaterialProcurementPlanning materialProcurementPlanning = QMaterialProcurementPlanning.materialProcurementPlanning;
+//        QProductionPlanning pp = QProductionPlanning.productionPlanning;
+//        QMaterials mr = QMaterials.materials;
+//
+//        JPQLQuery<Tuple> query = new JPAQueryFactory(em)
+//                .select(materialProcurementPlanning, pp, mr)
+//                .from(materialProcurementPlanning)
+//                .join(materialProcurementPlanning.productionPlanning, pp).on(materialProcurementPlanning.productionPlanning.eq(pp))
+//                .join(materialProcurementPlanning.materials, mr).on(materialProcurementPlanning.materials.eq(mr))
+//                //productionPlanning의 materialRequirementsList에서 자재 정보 가져 옴.
+//                .where(materialProcurementPlanning.materialProcurementPlanNo.eq(materialProcurementPlanNo));
+//
+//        List<Tuple> targetDtoList = query.fetch();
+//
+//        Tuple target = targetDtoList.get(0);
+//
+//        MaterialProcurementPlanning resultMaterialProcurementPlanning =
+//                (MaterialProcurementPlanning) target.get(materialProcurementPlanning);
+//        ProductionPlanning resultPp = (ProductionPlanning) target.get(pp);
+//        Materials resultMr = (Materials) target.get(mr);
+//
+//        MaterialProcurementPlanningDetailDTO dto = MaterialProcurementPlanningDetailDTO.builder()
+//                .materialProcurementPlanNo(resultMaterialProcurementPlanning.getMaterialProcurementPlanNo())
+//                .materialProcurementPlanCode(resultMaterialProcurementPlanning.getMaterialProcurementPlanCode())
+//                .procurementDeliveryDate(resultMaterialProcurementPlanning.getProcurementDeliveryDate())
+//                .materialRequirementsCount(resultMaterialProcurementPlanning.getMaterialRequirementsCount())
+//                .materialProcurementState(resultMaterialProcurementPlanning.getMaterialProcurementState())
+//                .productionPlanNo(resultPp.getProductionPlanNo())
+////                .productionPlanNo(resultMaterialProcurementPlanning.getProductionPlanning().getProductionPlanNo())
+//                .productionPlanCode(resultPp.getProductionPlanCode())
+////                .productionPlanCode(resultMaterialProcurementPlanning.getProductionPlanCode())
+//                .productCode(resultPp.getProductCode())
+////                .productCode(resultPp.getProductContract().getProductCode())
+//                .productDeliveryDate(resultPp.getProductDeliveryDate())
+//                .clientName(resultPp.getClientName())
+//                .clientStatus(resultPp.getClientStatus())
+//                .materialNo(resultMaterialProcurementPlanning.getMaterials().getMaterialNo())
+////                .materialNo(resultMr.getMaterialNo())
+//                .materialCode(resultMaterialProcurementPlanning.getMaterialCode())
+////                .materialCode(resultMr.getMaterialCode())
+//                .materialType(resultMaterialProcurementPlanning.getMaterialType())
+////                .materialType(resultMr.getMaterialType())
+//                .materialName(resultMaterialProcurementPlanning.getMaterialName())
+////                .materialName(resultMr.getMaterialName())
+//                .materialSupplyPrice(resultMaterialProcurementPlanning.getMaterialSupplyPrice())
+////                .materialSupplyPrice(resultMr.getMaterialSupplyPrice())
+//                .employeeNo(resultMaterialProcurementPlanning.getEmployee().getEmployeeNo())
+////                .employeeName(resultMaterialProcurementPlanning.getEmployee().getEmployeeName())
+//                .employeeName(resultMaterialProcurementPlanning.getEmployeeName())
+//                .regDate(resultMaterialProcurementPlanning.getRegDate())
+//                .modDate(resultMaterialProcurementPlanning.getModDate())
+//                .productionRequirementsProcess(resultPp.getProductionRequirementsProcess())
+//                .productionRequirementsDate(resultPp.getProductionRequirementsDate())
+//                .productionDeliveryDate(resultPp.getProductionDeliveryDate())
+//                .productionState(resultPp.getProductionState())
+//                .build();
+//
+//        return dto;
+//    }
 
 
     //조달계획 상세(연관 발주 목록)

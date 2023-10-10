@@ -56,6 +56,8 @@ public class MaterialProcurementPlanningDetailDTO {
 
     private String clientStatus;                            //클라이언트 계약 상태
 
+    //productionPlanning의 materialRequirementsList에서 자재 정보 가져 옴.
+
     //--------------------------------------------------------------------------------------------------
 
     private int materialNo;                                 //자재 일련번호 FK

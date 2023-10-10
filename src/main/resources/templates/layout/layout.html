@@ -56,13 +56,6 @@
 
                 <li class="label">물류관리</li>
 
-                    <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-hummer"></i> 자재관리 <span
-                            class="sidebar-collapse-icon ti-angle-down"></span></a>
-                        <ul>
-                            <li><a th:href="@{/material/list}"><i class="ti-layout-list-thumb"></i>자재 리스트</a></li>
-                            <li><a th:href="@{/material/register}"><i class="ti-zoom-in"></i>자재 등록</a></li>
-                        </ul>
-                    </li>
 
                     <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-desktop"></i> 제품관리 <span
                             class="sidebar-collapse-icon ti-angle-down"></span></a>
@@ -72,6 +65,14 @@
                             <li><a th:href="@{/materialRequirementsList/list}"><i class="ti-zoom-in"></i>제품 별 자재 항목</a></li>
                         </ul>
                     </li>
+
+                <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-hummer"></i> 자재관리 <span
+                        class="sidebar-collapse-icon ti-angle-down"></span></a>
+                    <ul>
+                        <li><a th:href="@{/material/list}"><i class="ti-layout-list-thumb"></i>자재 리스트</a></li>
+                        <li><a th:href="@{/material/register}"><i class="ti-zoom-in"></i>자재 등록</a></li>
+                    </ul>
+                </li>
 
                 <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-calendar"></i> 제품계약관리 <span
                         class="sidebar-collapse-icon ti-angle-down"></span></a>

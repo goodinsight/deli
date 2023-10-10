@@ -20,22 +20,16 @@ public class Materials extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(length = 100, nullable = false)
     private int materialNo; //자재일련번호
 
-    @Column(length = 100, nullable = false)
     private String materialCode; // 자재코드
 
-    @Column(length = 50, nullable = false)
     private String materialName; //자재명
 
-    @Column(length = 50, nullable = false)
     private String materialType; //자재분류
 
-    @Column(length = 1000, nullable = false)
     private String materialExplaination; //자재설명
 
-    @Column(length = 50, nullable = false)
     private Long materialSupplyPrice; //자재공급단가
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -45,10 +39,10 @@ public class Materials extends BaseEntity{
     private Employee employee;
 
     public void change(MaterialsDTO materialsDTO){
-        this.materialName = materialName;
-        this.materialType = materialType;
-        this.materialExplaination = materialExplaination;
-        this.materialSupplyPrice = materialSupplyPrice;
+        this.materialName = materialsDTO.getMaterialName();
+        this.materialType = materialsDTO.getMaterialType();;
+        this.materialExplaination = materialsDTO.getMaterialExplaination();
+        this.materialSupplyPrice = materialsDTO.getMaterialSupplyPrice();
     }
 //    public void change(String materialName, String materialType, String materialExplaination, Long materialSupplyPrice){
 //        this.materialName = materialName;
