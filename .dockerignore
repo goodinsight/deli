@@ -1,0 +1,9 @@
+.git
+.gradle
+.idea
+.vscode
+build
+src/main/generated
+*.iml
+*.log
+.env
