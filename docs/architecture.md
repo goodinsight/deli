@@ -103,11 +103,11 @@
 
 ## 7. 인증과 권한
 
-역할 값은 `USER(0), ADMIN(1), MATERIAL(2), ORDER(3), PROCUREMENT(4), PRODUCT(5), CLIENT(6), SUPPLIER(7), PRODUCTION(8)`이다.
+역할 값은 `USER(0), ADMIN(1), MATERIAL(2), ORDER(3), PROCUREMENT(4), PRODUCT(5), CLIENT(6), SUPPLIER(7), PRODUCTION(8), COOPERATOR(9), PARTNER(10)`이다. 마지막 두 역할은 각각 향후 협력사·클라이언트 서비스에 사용하도록 예약했다. 기존 역할 번호는 변경하지 않았다.
 
 `CustomSecurityConfig`의 주요 보호 범위는 다음과 같다.
 
-- `/board/**`: 전체 역할
+- `/board/**`: 전체 역할(예약된 COOPERATOR, PARTNER 포함)
 - `/material/**`, `/materialInventory/**`, `/materialInOutHistory/**`: MATERIAL, ADMIN
 - `/order/**`, `/progressInspection/**`: ORDER, ADMIN
 - `/product/**`: CLIENT, PRODUCTION, PRODUCT, ADMIN

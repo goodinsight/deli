@@ -199,6 +199,10 @@ public class EmployeeServiceImpl implements EmployeeService {
             employee.addRole(EmployeeRole.SUPPLIER);
         } else if (employeeAuthorityDTO.getRole().equals("[PRODUCTION]")) {
             employee.addRole(EmployeeRole.PRODUCTION);
+        } else if (employeeAuthorityDTO.getRole().equals("[COOPERATOR]")) {
+            employee.addRole(EmployeeRole.COOPERATOR);
+        } else if (employeeAuthorityDTO.getRole().equals("[PARTNER]")) {
+            employee.addRole(EmployeeRole.PARTNER);
         }
 
         employeeRepository.save(employee);

@@ -69,7 +69,7 @@ public class CustomSecurityConfig {
                 .antMatchers("/", "/employee/login", "/employee/join").permitAll()    // 비로그인시에도 접근
                 .antMatchers("/employee/remove", "/employee/authority", "/employee/authorityread", "/employee/authoritymodify", "/board/modify", "/board/remove").hasRole("ADMIN")
                 .antMatchers("/employee/list", "/employee/read", "/employee/modify").hasAnyRole("ADMIN", "MATERIAL", "ORDER", "PROCUREMENT", "PRODUCT", "CLIENT", "SUPPLIER", "PRODUCTION")
-                .antMatchers("/board/**", "/replies/**", "/upload", "/view/**", "/remove/**").hasAnyRole("USER", "ADMIN", "MATERIAL", "ORDER", "PROCUREMENT", "PRODUCT", "CLIENT", "SUPPLIER", "PRODUCTION")
+                .antMatchers("/board/**", "/replies/**", "/upload", "/view/**", "/remove/**").hasAnyRole("USER", "ADMIN", "MATERIAL", "ORDER", "PROCUREMENT", "PRODUCT", "CLIENT", "SUPPLIER", "PRODUCTION", "COOPERATOR", "PARTNER")
                 .antMatchers("/material/**", "/materialInventory/**", "/materialInOutHistory/**", "/uploadMaterial/**", "/viewMaterial/**", "/removeMaterial/**").hasAnyRole("MATERIAL", "ADMIN")
                 .antMatchers("/order/**", "/progressInspection/**").hasAnyRole("ORDER", "ADMIN")
                 .antMatchers("/product/**").hasAnyRole("CLIENT", "PRODUCTION", "PRODUCT", "ADMIN")

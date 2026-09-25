@@ -91,10 +91,11 @@ test {
     exclude '**/*'
 }
 
-// 기존 운영 DB 의존 테스트와 분리한 인메모리 연관 삭제 회귀 테스트.
+// 기존 운영 DB 의존 테스트와 분리한 회귀 테스트.
 tasks.register('cascadeTest', Test) {
     testClassesDirs = sourceSets.test.output.classesDirs
     classpath = sourceSets.test.runtimeClasspath
     useJUnitPlatform()
     include '**/CascadePersistenceTests.class'
+    include '**/EmployeeRoleCompatibilityTests.class'
 }

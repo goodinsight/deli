@@ -37,7 +37,9 @@ public class Custom403Handler implements AccessDeniedHandler {
                         authentication != null && ((User) authentication.getPrincipal()).getAuthorities().contains(new SimpleGrantedAuthority("ROLE_PRODUCT")) ||
                         authentication != null && ((User) authentication.getPrincipal()).getAuthorities().contains(new SimpleGrantedAuthority("ROLE_CLIENT")) ||
                         authentication != null && ((User) authentication.getPrincipal()).getAuthorities().contains(new SimpleGrantedAuthority("ROLE_SUPPLIER")) ||
-                        authentication != null && ((User) authentication.getPrincipal()).getAuthorities().contains(new SimpleGrantedAuthority("ROLE_PRODUCTION"))) {
+                        authentication != null && ((User) authentication.getPrincipal()).getAuthorities().contains(new SimpleGrantedAuthority("ROLE_PRODUCTION")) ||
+                        authentication != null && ((User) authentication.getPrincipal()).getAuthorities().contains(new SimpleGrantedAuthority("ROLE_COOPERATOR")) ||
+                        authentication != null && ((User) authentication.getPrincipal()).getAuthorities().contains(new SimpleGrantedAuthority("ROLE_PARTNER"))) {
                     request.setAttribute("msg", "접근권한 없는 사용자입니다."); //접근 권한이 없는(=인가되지 않은) 사용자
                     request.setAttribute("nextPage", "/");  //    "/" 페이지로 redirect
                 } else {
