@@ -27,7 +27,7 @@ public class MaterialProcurementContractServiceTests {
                         .materialProcurementContractState("조달진행중")  //조달진행중, 조달계약파기, 조달완료
                         .materialProcurementContractEtc("등록테스트")
                         .materialProcurementPlanNo(100)
-                        .MaterialProcurementContractNo(1)
+                        .materialProcurementContractNo(1)
                         .materialProcurementPlanCode("MP-PLANNING-20230928-test")
                         .materialCode("MATERIAL-20230928-0")
                         .materialName("materialName1")
@@ -63,7 +63,7 @@ public class MaterialProcurementContractServiceTests {
 
         MaterialProcurementContractDTO materialProcurementContractDTO =
                 MaterialProcurementContractDTO.builder()
-                        .MaterialProcurementContractNo(3) //1,2번 없음
+                        .materialProcurementContractNo(3) //1,2번 없음
                         .materialProcurementContractCode("MP-CONTRACT-20231002-modify")
                         .materialProcurementContractDate(LocalDate.of(2023,9,22))
                         .materialProcurementContractState("조달계약파기")

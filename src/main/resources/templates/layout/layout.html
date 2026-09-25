@@ -56,7 +56,7 @@
 
                 <li class="label">물류관리</li>
 
-                    <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-hummer"></i> 자재관리 <span
+                    <li sec:authorize="hasAnyRole('MATERIAL','ADMIN')"><a href="#" class="sidebar-sub-toggle"><i class="ti-hummer"></i> 자재관리 <span
                             class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
                             <li><a th:href="@{/material/list}"><i class="ti-layout-list-thumb"></i>자재 리스트</a></li>
@@ -64,16 +64,16 @@
                         </ul>
                     </li>
 
-                    <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-desktop"></i> 제품관리 <span
+                    <li sec:authorize="hasAnyRole('PRODUCT','CLIENT','PRODUCTION','ADMIN')"><a href="#" class="sidebar-sub-toggle"><i class="ti-desktop"></i> 제품관리 <span
                             class="sidebar-collapse-icon ti-angle-down"></span></a>
                         <ul>
                             <li><a th:href="@{/product/list}"><i class="ti-layout-list-thumb"></i>제품 리스트</a></li>
                             <li><a th:href="@{/product/register}"><i class="ti-zoom-in"></i>제품 등록</a></li>
-                            <li><a th:href="@{/materialRequirementsList/list}"><i class="ti-zoom-in"></i>제품 별 자재 항목</a></li>
+                            <li sec:authorize="hasAnyRole('PRODUCT','PRODUCTION','ADMIN')"><a th:href="@{/materialRequirementsList/list}"><i class="ti-zoom-in"></i>제품 별 자재 항목</a></li>
                         </ul>
                     </li>
 
-                <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-calendar"></i> 제품계약관리 <span
+                <li sec:authorize="hasAnyRole('CLIENT','ADMIN')"><a href="#" class="sidebar-sub-toggle"><i class="ti-calendar"></i> 제품계약관리 <span
                         class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
                         <li><a th:href="@{/productContract/list}"><i class="ti-layout-list-thumb"></i>제품계약 목록</a></li>
@@ -81,14 +81,14 @@
                         <!--<li><a href="#"><i class="ti-zoom-in"></i>제품계약 상새</a></li>-->
                     </ul>
                 </li>
-                <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-shopping-cart"></i> 생산관리 <span
+                <li sec:authorize="hasAnyRole('PRODUCTION','MATERIAL','ADMIN')"><a href="#" class="sidebar-sub-toggle"><i class="ti-shopping-cart"></i> 생산관리 <span
                         class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
                         <li><a th:href="@{/productionPlanning/list}"><i class="ti-layout-list-thumb"></i>생산계획 목록</a></li>
                         <li><a th:href="@{/productionPlanning/register}"><i class="ti-zoom-in"></i>생산계획 등록</a></li>
                     </ul>
                 </li>
-                <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-calendar"></i> 자재조달관리 <span
+                <li sec:authorize="hasAnyRole('PROCUREMENT','ADMIN')"><a href="#" class="sidebar-sub-toggle"><i class="ti-calendar"></i> 자재조달관리 <span
                         class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
                         <li><a th:href="@{/materialProcurementPlanning/list}"><i class="ti-layout-list-thumb"></i>조달계획 목록</a></li>
@@ -99,7 +99,7 @@
                         <li><a th:href="@{/materialProcurementContract/register}"><i class="ti-zoom-in"></i>조달계약 등록</a></li>
                     </ul>
                 </li>
-                <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-stamp"></i> 발주관리 <span
+                <li sec:authorize="hasAnyRole('ORDER','ADMIN')"><a href="#" class="sidebar-sub-toggle"><i class="ti-stamp"></i> 발주관리 <span
                     class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
                         <li><a th:href="@{/order/list}"><i class="ti-layout-list-thumb"></i>발주 목록</a></li>
@@ -107,7 +107,7 @@
                         <li><a th:href="@{/order/chart}"><i class="ti-bar-chart"></i>발주 차트 </a></li>
                     </ul>
                 </li>
-                <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-package"></i> 저장관리  <span
+                <li sec:authorize="hasAnyRole('MATERIAL','ADMIN')"><a href="#" class="sidebar-sub-toggle"><i class="ti-package"></i> 저장관리  <span
                     class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
                         <li><a th:href="@{/materialInventory/listInventory}"><i class="ti-layout-list-thumb"></i>자재 재고</a></li>
@@ -118,16 +118,16 @@
 
 
                 <li class="label">직원관리</li>
-                <li><a href="/employee/list" class="sidebar-sub-toggle"><i class="ti-user"></i> EMPLOYEE <span
+                <li sec:authorize="hasAnyRole('ADMIN','MATERIAL','ORDER','PROCUREMENT','PRODUCT','CLIENT','SUPPLIER','PRODUCTION')"><a href="/employee/list" class="sidebar-sub-toggle"><i class="ti-user"></i> EMPLOYEE <span
                         class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
                         <li><a href="/employee/list">직원 목록</a></li>
-                        <li><a sec:authorize="isAuthenticated()" th:href="@{/employee/authority}">직원 권한 부여</a></li> <!--권한 잇는 운영자만 보임 -->
+                        <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/employee/authority}">직원 권한 부여</a></li>
                     </ul>
                 </li>
 
                 <li class="label">파트너관리</li>
-                <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-user"></i> 파트너 <span
+                <li sec:authorize="hasAnyRole('SUPPLIER','PROCUREMENT','ADMIN')"><a href="#" class="sidebar-sub-toggle"><i class="ti-user"></i> 파트너 <span
                         class="sidebar-collapse-icon ti-angle-down"></span></a>
 
                     <ul>
@@ -136,7 +136,7 @@
                     </ul>
 
                 </li>
-                <li><a sec:authorize="isAuthenticated()" href="#" class="sidebar-sub-toggle"><i class="ti-heart"></i> 클라이언트 <span
+                <li sec:authorize="hasAnyRole('CLIENT','ADMIN')"><a href="#" class="sidebar-sub-toggle"><i class="ti-heart"></i> 클라이언트 <span
                         class="sidebar-collapse-icon ti-angle-down"></span></a>
                     <ul>
                         <li><a th:href="@{/CooperatorClient/list}"><i class="ti-layout-list-thumb"></i>클라이언트 목록</a></li>

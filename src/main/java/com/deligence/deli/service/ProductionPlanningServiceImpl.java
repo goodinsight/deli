@@ -213,7 +213,7 @@ public class ProductionPlanningServiceImpl implements ProductionPlanningService{
 
         ProductionPlanning productionPlanning = result.orElseThrow();
 
-        productionPlanning.changeState("제품생산완료");
+        productionPlanning.changeState("제품입고완료");
 
         productionPlanningRepository.save(productionPlanning);
 

@@ -29,6 +29,8 @@
                             <select class="form-control" placeholder="분류 선택" name="state">
                                 <option value="">발주 상태</option>
                                 <option value="진행중" th:selected="${orderPageRequestDTO.state == '진행중'}">진행중</option>
+                                <option value="입고검수진행중" th:selected="${orderPageRequestDTO.state == '입고검수진행중'}">입고검수진행중</option>
+                                <option value="반품진행중" th:selected="${orderPageRequestDTO.state == '반품진행중'}">반품진행중</option>
                                 <option value="검수완료" th:selected="${orderPageRequestDTO.state == '검수완료'}">검수완료</option>
                                 <option value="자재입고완료" th:selected="${orderPageRequestDTO.state == '자재입고완료'}">자재입고완료</option>
                                 <option value="발주완료" th:selected="${orderPageRequestDTO.state == '발주완료'}">발주완료</option>

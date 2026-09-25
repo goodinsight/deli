@@ -304,8 +304,8 @@ public class MaterialProcurementContractSearchImpl extends QuerydslRepositorySup
 
                     switch(state){
 
-                        case "조달계약진행중":
-                            booleanBuilder2.or(materialProcurementContract.materialProcurementContractState.contains("조달계약진행중"));
+                        case "조달계약협상중":
+                            booleanBuilder2.or(materialProcurementContract.materialProcurementContractState.contains("조달계약협상중"));
                             break;
                         case "발주진행중":
                             booleanBuilder2.or(materialProcurementContract.materialProcurementContractState.contains("발주진행중"));

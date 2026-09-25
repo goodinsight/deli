@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.deligence.deli.domain.Board;
 import com.deligence.deli.dto.*;
 import com.deligence.deli.repository.BoardRepository;
+import com.deligence.deli.repository.ReplyRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -24,6 +25,7 @@ public class BoardServiceImpl implements BoardService{
     private final ModelMapper modelMapper;
 
     private final BoardRepository boardRepository;
+    private final ReplyRepository replyRepository;
 
     @Override
     public Long register(BoardDTO boardDTO) {
@@ -75,6 +77,9 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public void remove(Long bno) {
+        // 댓글은 게시글에 종속된다. FK를 해제한 뒤 이미지와 게시글을 함께 삭제한다.
+        replyRepository.deleteByBoard_Bno(bno);
+        replyRepository.flush();
         boardRepository.deleteById(bno);
     }
 

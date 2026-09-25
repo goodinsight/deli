@@ -36,6 +36,7 @@ dependencies {
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'com.h2database:h2'
 
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
@@ -88,4 +89,12 @@ sourceSets {
 
 test {
     exclude '**/*'
+}
+
+// 기존 운영 DB 의존 테스트와 분리한 인메모리 연관 삭제 회귀 테스트.
+tasks.register('cascadeTest', Test) {
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+    useJUnitPlatform()
+    include '**/CascadePersistenceTests.class'
 }

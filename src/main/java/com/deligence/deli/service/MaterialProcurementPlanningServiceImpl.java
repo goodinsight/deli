@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Service
 @Log4j2
 @RequiredArgsConstructor
-//@Transactional
+@Transactional
 public class MaterialProcurementPlanningServiceImpl implements MaterialProcurementPlanningService{
 
     private final MaterialProcurementPlanningRepository materialProcurementPlanningRepository;

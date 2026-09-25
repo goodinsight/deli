@@ -86,11 +86,12 @@
                         <div class="input-group mb-3">
                             <span class="input-group-text">계약 진행 상태</span>
                             <select name="productContractState">
-                                <!--'제품생산중', '자재조달중', '계약파기', '계약완료'-->
-                                <option value="자재조달중" selected>자재조달중</option>
-                                <option value="제품생산중" selected>제품생산중</option>
-                                <option value="계약완료">계약완료</option>
-                                <option value="계약파기">계약파기</option>
+                                <option value="자재검토중" th:selected="${dto.productContractState == '자재검토중'}">자재검토중</option>
+                                <option value="자재조달중" th:selected="${dto.productContractState == '자재조달중'}">자재조달중</option>
+                                <option value="자재입고중" th:selected="${dto.productContractState == '자재입고중'}">자재입고중</option>
+                                <option value="제품생산중" th:selected="${dto.productContractState == '제품생산중'}">제품생산중</option>
+                                <option value="제품출고완료" th:selected="${dto.productContractState == '제품출고완료'}">제품출고완료</option>
+                                <option value="계약파기" th:selected="${dto.productContractState == '계약파기'}">계약파기</option>
                             </select>
                         </div>
 
