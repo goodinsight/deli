@@ -246,7 +246,7 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
                 .materialProcurementState(resultMaterialProcurementPlanning.getMaterialProcurementState())
                 .productionPlanNo(resultPp.getProductionPlanNo())
 //                .productionPlanNo(resultMaterialProcurementPlanning.getProductionPlanning().getProductionPlanNo())
-                .productionPlanCode(resultPp.getProductionPlanCode())
+                .productionPlanCode(resultMaterialProcurementPlanning.getProductionPlanCode())
 //                .productionPlanCode(resultMaterialProcurementPlanning.getProductionPlanCode())
                 .productCode(resultPp.getProductCode())
 //                .productCode(resultPp.getProductContract().getProductCode())
@@ -268,9 +268,9 @@ public class MaterialProcurementPlanningSearchImpl extends QuerydslRepositorySup
                 .employeeName(resultMaterialProcurementPlanning.getEmployeeName())
                 .regDate(resultMaterialProcurementPlanning.getRegDate())
                 .modDate(resultMaterialProcurementPlanning.getModDate())
-                .productionRequirementsProcess(resultPp.getProductionRequirementsProcess())
-                .productionRequirementsDate(resultPp.getProductionRequirementsDate())
-                .productionDeliveryDate(resultPp.getProductionDeliveryDate())
+                .productionRequirementsProcess(resultMaterialProcurementPlanning.getProductionRequirementsProcess())
+                .productionRequirementsDate(resultMaterialProcurementPlanning.getProductionRequirementsDate())
+                .productionDeliveryDate(resultMaterialProcurementPlanning.getProductionDeliveryDate())
                 .productionState(resultPp.getProductionState())
                 .build();
 

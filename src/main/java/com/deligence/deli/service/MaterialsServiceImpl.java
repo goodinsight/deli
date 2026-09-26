@@ -28,10 +28,13 @@ public class MaterialsServiceImpl implements MaterialsService {
     private final ModelMapper modelMapper;
 
     private final MaterialsRepository materialsRepository;
+    private final FileCleanupService fileCleanup;
+    private final BusinessRecordService records;
 
 
     @Override
-    public int register(MaterialsDTO materialsDTO) { //등록 작업처리
+    public int register(MaterialsDTO materialsDTO) {
+        if (materialsDTO.getMaterialNo() != 0) throw new IllegalArgumentException("등록 요청으로 기존 데이터를 덮어쓸 수 없습니다."); //등록 작업처리
 
 //        Materials materials = modelMapper.map(materialsDTO, Materials.class);
 
@@ -74,29 +77,37 @@ public class MaterialsServiceImpl implements MaterialsService {
     @Override
     public void modify(MaterialsDTO materialsDTO) { // 수정 작업처리
 
-        Optional<Materials> result = materialsRepository.findById(materialsDTO.getMaterialNo());
-
-        Materials materials = result.orElseThrow();
+        Materials materials = records.lock(Materials.class, materialsDTO.getMaterialNo());
 
 //        materials.change(materialsDTO.getMaterialName(), materialsDTO.getMaterialType(), materialsDTO.getMaterialExplaination(), materialsDTO.getMaterialSupplyPrice());
 
         materials.change(materialsDTO);
+        records.syncMaterial(materials);
 
         //첨부파일 처리
-        materials.clearImages();
-
-        if(materialsDTO.getFileNames() != null){
-            for (String fileName : materialsDTO.getFileNames()) {
-                String[] arr = fileName.split("_");
-                materials.addImage(arr[0],arr[1]);
-
+        List<String> previousFiles = materials.getImageSet().stream()
+                .map(i -> i.getMaterialUuid() + "_" + i.getMaterialImgName()).collect(Collectors.toList());
+        fileCleanup.enqueueRemoved(previousFiles, materialsDTO.getFileNames());
+        java.util.Set<String> retained = materialsDTO.getFileNames() == null ? java.util.Collections.emptySet() : new java.util.HashSet<>(materialsDTO.getFileNames());
+        materials.getImageSet().removeIf(i -> !retained.contains(i.getMaterialUuid() + "_" + i.getMaterialImgName()));
+        java.util.Set<String> existing = materials.getImageSet().stream()
+                .map(i -> i.getMaterialUuid() + "_" + i.getMaterialImgName()).collect(Collectors.toSet());
+        for (String fileName : retained) {
+            if (!existing.contains(fileName)) {
+                String[] parts = fileName.split("_", 2);
+                if (parts.length != 2) throw new IllegalArgumentException("올바르지 않은 첨부파일명입니다.");
+                materials.addImage(parts[0], parts[1]);
             }
         }
+
         materialsRepository.save(materials);
     }
 
     @Override
-    public void delete(int materialNo) { //삭제 작업처리
+    public void delete(int materialNo) {
+        Materials entity = materialsRepository.findById(materialNo).orElseThrow();
+        fileCleanup.enqueueRemoved(entity.getImageSet().stream().map(i -> i.getMaterialUuid() + "_" + i.getMaterialImgName()).collect(Collectors.toList()), java.util.Collections.emptyList());
+ //삭제 작업처리
 
         materialsRepository.deleteById(materialNo);
     }

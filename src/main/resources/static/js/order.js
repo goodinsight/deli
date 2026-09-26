@@ -52,7 +52,8 @@ async function changeState({orderNo, state}){
         state : state
     }
 
-    return await axios.post(`/materialInventory/changeOrderState/`, data)
+    const endpoint = location.pathname.startsWith("/materialInventory/") ? "/materialInventory/changeOrderState" : "/order/changeOrderState"
+    return await axios.post(endpoint, data)
 
 }
 

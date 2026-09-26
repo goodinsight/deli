@@ -26,10 +26,13 @@ public class ProductsServiceImpl implements ProductsService {
     private final ModelMapper modelMapper;
 
     private final ProductsRepository productsRepository;
+    private final FileCleanupService fileCleanup;
+    private final BusinessRecordService records;
 
 
     @Override
-    public int register(ProductsDTO productsDTO) { //등록 작업처리
+    public int register(ProductsDTO productsDTO) {
+        if (productsDTO.getProductNo() != 0) throw new IllegalArgumentException("등록 요청으로 기존 데이터를 덮어쓸 수 없습니다."); //등록 작업처리
 
 //        Products products = modelMapper.map(productsDTO, Products.class);
 
@@ -70,29 +73,37 @@ public class ProductsServiceImpl implements ProductsService {
     @Override
     public void modify(ProductsDTO productsDTO) { // 수정 작업처리
 
-        Optional<Products> result = productsRepository.findById(productsDTO.getProductNo());
-
-        Products products = result.orElseThrow();
+        Products products = records.lock(Products.class, productsDTO.getProductNo());
 
 //        products.change(productsDTO.getProductName(), productsDTO.getProductType(), productsDTO.getProductContent());
 
         products.change(productsDTO);
+        records.syncProduct(products);
 
         //첨부파일 처리
-        products.clearImages();
-
-        if(productsDTO.getFileNames() != null){
-            for (String fileName : productsDTO.getFileNames()) {
-                String[] arr = fileName.split("_");
-                products.addImage(arr[0],arr[1]);
-
+        List<String> previousFiles = products.getImageSet().stream()
+                .map(i -> i.getProductImgUuid() + "_" + i.getProductImgName()).collect(Collectors.toList());
+        fileCleanup.enqueueRemoved(previousFiles, productsDTO.getFileNames());
+        java.util.Set<String> retained = productsDTO.getFileNames() == null ? java.util.Collections.emptySet() : new java.util.HashSet<>(productsDTO.getFileNames());
+        products.getImageSet().removeIf(i -> !retained.contains(i.getProductImgUuid() + "_" + i.getProductImgName()));
+        java.util.Set<String> existing = products.getImageSet().stream()
+                .map(i -> i.getProductImgUuid() + "_" + i.getProductImgName()).collect(Collectors.toSet());
+        for (String fileName : retained) {
+            if (!existing.contains(fileName)) {
+                String[] parts = fileName.split("_", 2);
+                if (parts.length != 2) throw new IllegalArgumentException("올바르지 않은 첨부파일명입니다.");
+                products.addImage(parts[0], parts[1]);
             }
         }
+
         productsRepository.save(products);
     }
 
     @Override
-    public void delete(int productNo) { //삭제 작업처리
+    public void delete(int productNo) {
+        Products entity = productsRepository.findById(productNo).orElseThrow();
+        fileCleanup.enqueueRemoved(entity.getImageSet().stream().map(i -> i.getProductImgUuid() + "_" + i.getProductImgName()).collect(Collectors.toList()), java.util.Collections.emptyList());
+ //삭제 작업처리
 
         productsRepository.deleteById(productNo);
     }

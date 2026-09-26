@@ -18,6 +18,11 @@ import java.util.NoSuchElementException;
 @RestControllerAdvice
 @Log4j2
 public class CustomRestAdvice {
+    @ExceptionHandler({IllegalStateException.class, IllegalArgumentException.class})
+    public ResponseEntity<Map<String, String>> handleBusinessConflict(RuntimeException e) {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(Map.of("msg", e.getMessage()));
+    }
+
 
     @ExceptionHandler(BindException.class)
     @ResponseStatus(HttpStatus.EXPECTATION_FAILED)

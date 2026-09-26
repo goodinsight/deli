@@ -28,6 +28,7 @@ import java.util.Objects;
 public class OrderController {
 
     private final OrderService orderService;
+    private final com.deligence.deli.service.OrderWorkflowService workflow;
 
     private final MaterialProcurementPlanningService materialProcurementPlanningService;
     private final MaterialProcurementContractService materialProcurementContractService;
@@ -168,32 +169,7 @@ public class OrderController {
     @ResponseBody
     @PostMapping(value = "/completeOrder", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void completeOrder(@RequestBody Map<String, Object> map){
-
-        int orderNo = Integer.parseInt(map.get("orderNo").toString());
-        int materialProcurementPlanNo = Integer.parseInt(map.get("materialProcurementPlanNo").toString());
-
-
-        //해당 발주 완료
-        orderService.changeState(orderNo, "발주완료");
-
-        //조달 계획 소요량 확인
-        int materialRequirementsCount = materialProcurementPlanningService.read(materialProcurementPlanNo).getMaterialRequirementsCount();
-
-        //연관 계획중 발주 완료된 수량 확인
-        int sumOfOrderQuantity = orderService.sumOfOrderQuantity(materialProcurementPlanNo);
-
-        //비교
-        if(materialRequirementsCount <= sumOfOrderQuantity){
-            //조달 계획 완료
-            materialProcurementPlanningService.completePlan(materialProcurementPlanNo);
-
-            //생산계획 관련 비교 및 완료 작업 -----------------------------------------------
-
-            //--------------------------------------------------------------------------
-
-        }
-
-
+        workflow.complete(Integer.parseInt(map.get("orderNo").toString()));
     }
 
     @ResponseBody

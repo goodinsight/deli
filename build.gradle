@@ -98,4 +98,6 @@ tasks.register('cascadeTest', Test) {
     useJUnitPlatform()
     include '**/CascadePersistenceTests.class'
     include '**/EmployeeRoleCompatibilityTests.class'
+    include '**/WorkflowPersistenceTests.class'
+    include '**/FileCleanupPersistenceTests.class'
 }

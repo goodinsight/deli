@@ -24,14 +24,17 @@ import java.util.stream.Collectors;
 public class MaterialProcurementContractServiceImpl implements MaterialProcurementContractService{
 
     private final MaterialProcurementContractRepository materialProcurementContractRepository;
+    private final BusinessRecordService records;
 
     @Override
     public int register(MaterialProcurementContractDTO materialProcurementContractDTO) {
+        if (materialProcurementContractDTO.getMaterialProcurementContractNo() != 0) throw new IllegalArgumentException("등록 요청으로 기존 데이터를 덮어쓸 수 없습니다.");
 
         log.info(materialProcurementContractDTO);
 
         //dto -> entity
         MaterialProcurementContract materialProcurementContract = dtoToEntity(materialProcurementContractDTO);
+        records.snapshot(materialProcurementContract);
 
         log.info(materialProcurementContract);
 
@@ -55,12 +58,11 @@ public class MaterialProcurementContractServiceImpl implements MaterialProcureme
 
     @Override
     public void modify(MaterialProcurementContractDTO materialProcurementContractDTO) {
+        if (materialProcurementContractDTO.getProcurementQuantity() <= 0) throw new IllegalArgumentException("수량은 양수여야 합니다.");
 
-        Optional<MaterialProcurementContract> result = materialProcurementContractRepository
-                        .findById(materialProcurementContractDTO.getMaterialProcurementContractNo());
+        MaterialProcurementContract materialProcurementContract = records.editable(MaterialProcurementContract.class, materialProcurementContractDTO.getMaterialProcurementContractNo());
 
-        MaterialProcurementContract materialProcurementContract = result.orElseThrow();
-
+        records.changeState(MaterialProcurementContract.class, materialProcurementContractDTO.getMaterialProcurementContractNo(), materialProcurementContractDTO.getMaterialProcurementContractState());
         materialProcurementContract.change(materialProcurementContractDTO);
 
         log.info(materialProcurementContractDTO);
@@ -71,20 +73,13 @@ public class MaterialProcurementContractServiceImpl implements MaterialProcureme
 
     @Override
     public void changeState(int materialProcurementContractNo, String state) {
-
-        Optional<MaterialProcurementContract> result = materialProcurementContractRepository.findById(materialProcurementContractNo);
-
-        MaterialProcurementContract materialProcurementContract = result.orElseThrow();
-
-        materialProcurementContract.changeState(state);
-
-        materialProcurementContractRepository.save(materialProcurementContract);
+        records.changeState(MaterialProcurementContract.class, materialProcurementContractNo, state);
     }
 
     @Override
     public void remove(int materialProcurementContractNo) {
 
-        materialProcurementContractRepository.deleteById(materialProcurementContractNo);
+        records.cancel(MaterialProcurementContract.class, materialProcurementContractNo);
 
     }
 

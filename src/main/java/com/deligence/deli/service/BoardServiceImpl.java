@@ -25,10 +25,12 @@ public class BoardServiceImpl implements BoardService{
     private final ModelMapper modelMapper;
 
     private final BoardRepository boardRepository;
+    private final FileCleanupService fileCleanup;
     private final ReplyRepository replyRepository;
 
     @Override
     public Long register(BoardDTO boardDTO) {
+        if (boardDTO.getBno() != null) throw new IllegalArgumentException("등록 요청으로 기존 데이터를 덮어쓸 수 없습니다.");
 
 //        Board board = modelMapper.map(boardDTO, Board.class);
 
@@ -62,13 +64,18 @@ public class BoardServiceImpl implements BoardService{
         board.change(boardDTO.getTitle(), boardDTO.getContent());
 
         //첨부파일의 처리
-        board.clearImages();
-
-        if(boardDTO.getFileNames() != null){
-            for(String fileName : boardDTO.getFileNames()) {
-                String[] arr = fileName.split("_");
-                board.addImage(arr[0], arr[1]);
-
+        List<String> previousFiles = board.getImageSet().stream()
+                .map(i -> i.getUuid() + "_" + i.getFileName()).collect(Collectors.toList());
+        fileCleanup.enqueueRemoved(previousFiles, boardDTO.getFileNames());
+        java.util.Set<String> retained = boardDTO.getFileNames() == null ? java.util.Collections.emptySet() : new java.util.HashSet<>(boardDTO.getFileNames());
+        board.getImageSet().removeIf(i -> !retained.contains(i.getUuid() + "_" + i.getFileName()));
+        java.util.Set<String> existing = board.getImageSet().stream()
+                .map(i -> i.getUuid() + "_" + i.getFileName()).collect(Collectors.toSet());
+        for (String fileName : retained) {
+            if (!existing.contains(fileName)) {
+                String[] parts = fileName.split("_", 2);
+                if (parts.length != 2) throw new IllegalArgumentException("올바르지 않은 첨부파일명입니다.");
+                board.addImage(parts[0], parts[1]);
             }
         }
 
@@ -77,6 +84,9 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     public void remove(Long bno) {
+        Board entity = boardRepository.findById(bno).orElseThrow();
+        fileCleanup.enqueueRemoved(entity.getImageSet().stream().map(i -> i.getUuid() + "_" + i.getFileName()).collect(Collectors.toList()), java.util.Collections.emptyList());
+
         // 댓글은 게시글에 종속된다. FK를 해제한 뒤 이미지와 게시글을 함께 삭제한다.
         replyRepository.deleteByBoard_Bno(bno);
         replyRepository.flush();

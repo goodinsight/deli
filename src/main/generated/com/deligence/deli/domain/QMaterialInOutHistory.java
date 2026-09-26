@@ -24,6 +24,8 @@ public class QMaterialInOutHistory extends EntityPathBase<MaterialInOutHistory> 
 
     public final QBaseEntity _super = new QBaseEntity(this);
 
+    public final NumberPath<Long> amount = createNumber("amount", Long.class);
+
     public final QEmployee employee;
 
     public final StringPath employeeName = createString("employeeName");
@@ -38,6 +40,8 @@ public class QMaterialInOutHistory extends EntityPathBase<MaterialInOutHistory> 
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> modDate = _super.modDate;
+
+    public final QOrder order;
 
     public final NumberPath<Integer> quantity = createNumber("quantity", Integer.class);
 
@@ -64,6 +68,7 @@ public class QMaterialInOutHistory extends EntityPathBase<MaterialInOutHistory> 
         super(type, metadata, inits);
         this.employee = inits.isInitialized("employee") ? new QEmployee(forProperty("employee"), inits.get("employee")) : null;
         this.materialInventory = inits.isInitialized("materialInventory") ? new QMaterialInventory(forProperty("materialInventory"), inits.get("materialInventory")) : null;
+        this.order = inits.isInitialized("order") ? new QOrder(forProperty("order"), inits.get("order")) : null;
     }
 
 }

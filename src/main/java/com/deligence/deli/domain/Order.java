@@ -48,8 +48,7 @@ public class Order {
     private String employeeName; //사원명
 
     @OneToMany(mappedBy = "order",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @Builder.Default
     private List<ProgressInspection> piList = new ArrayList<>();
 

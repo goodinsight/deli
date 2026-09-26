@@ -55,7 +55,7 @@ public interface ProductionPlanningService {
 
         ProductionPlanningDTO productionPlanningDTO = ProductionPlanningDTO.builder()
                 .productionPlanNo(productionPlanning.getProductionPlanNo())
-                .productionPlanCode(productionPlanning.getProductCode())
+                .productionPlanCode(productionPlanning.getProductionPlanCode())
                 .productionQuantity(productionPlanning.getProductionQuantity())
                 .productionRequirementsDate(productionPlanning.getProductionRequirementsDate())
                 .productionRequirementsProcess(productionPlanning.getProductionRequirementsProcess())
@@ -63,11 +63,11 @@ public interface ProductionPlanningService {
                 .detailExplaination(productionPlanning.getDetailExplaination())
                 .productionState(productionPlanning.getProductionState())
                 .productContractNo(productionPlanning.getProductContract().getProductContractNo())
-                .productCode(productionPlanning.getProductContract().getProductCode())
-                .clientName(productionPlanning.getProductContract().getClientName())
-                .productDeliveryDate(productionPlanning.getProductContract().getProductDeliveryDate())
-                .clientStatus(productionPlanning.getProductContract().getClientStatus())
-                .employeeName(productionPlanning.getProductContract().getEmployeeName())    //제품계약담당자
+                .productCode(productionPlanning.getProductCode())
+                .clientName(productionPlanning.getClientName())
+                .productDeliveryDate(productionPlanning.getProductDeliveryDate())
+                .clientStatus(productionPlanning.getClientStatus())
+                .employeeName(productionPlanning.getEmployeeName())    //제품계약담당자
                 .employeeNo(productionPlanning.getEmployee().getEmployeeNo())
                 .employeeName2(productionPlanning.getEmployeeName2())                        //생산계획담당자
                 .materialRequirementsListNo(productionPlanning.getMaterialRequirementsList().getMaterialRequirementsListNo())

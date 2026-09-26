@@ -22,12 +22,15 @@ import java.util.stream.Collectors;
 public class OrderServiceImpl implements OrderService{
 
     private final OrderRepository orderRepository;
+    private final OrderWorkflowService workflow;
 
     @Override
     public int register(OrderDTO orderDTO) {
+        if (orderDTO.getOrderNo() != 0) throw new IllegalArgumentException("등록 요청으로 기존 데이터를 덮어쓸 수 없습니다.");
 
         //dto -> entity
         Order order = dtoToEntity(orderDTO);
+        workflow.validateNewOrder(order);
 
         int orderNo = orderRepository.save(order).getOrderNo();
 
@@ -45,29 +48,12 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public void modify(OrderDTO orderDTO) {
-
-        Optional<Order> result = orderRepository.findById(orderDTO.getOrderNo());
-
-        Order order = result.orElseThrow();
-
-        order.change(orderDTO);
-
-
-        orderRepository.save(order);
-
+        workflow.modify(orderDTO);
     }
 
     @Override
     public void changeState(int orderNo, String state) {
-
-        Optional<Order> result = orderRepository.findById(orderNo);
-
-        Order order = result.orElseThrow();
-
-        order.changeState(state);
-
-        orderRepository.save(order);
-
+        workflow.changeState(orderNo, state);
     }
 
     @Override
@@ -90,7 +76,7 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public void remove(int orderNo) {
 
-        orderRepository.deleteById(orderNo);
+        workflow.cancel(orderNo, workflow.currentEmployeeNo());
 
     }
 

@@ -32,10 +32,18 @@ public class ProgressInspectionServiceImpl implements ProgressInspectionService{
     private final ModelMapper modelMapper;
 
     private final ProgressInspectionRepository progressInspectionRepository;
+    private final OrderWorkflowService workflow;
+
+    private void assertEditable(Order order) {
+        if (!java.util.Set.of("진행중", "발주완료").contains(order.getOrderState()))
+            throw new IllegalStateException("검수가 종료된 발주의 검수 이력은 변경할 수 없습니다.");
+    }
 
     @Override
     public int register(ProgressInspectionDTO progressInspectionDTO) {
+        if (progressInspectionDTO.getProgressInspectionNo() != 0) throw new IllegalArgumentException("등록 요청으로 기존 검수 이력을 덮어쓸 수 없습니다.");
 
+        assertEditable(workflow.lock(progressInspectionDTO.getOrderNo()));
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
 
         ProgressInspection progressInspection = modelMapper.map(progressInspectionDTO, ProgressInspection.class);
@@ -74,6 +82,7 @@ public class ProgressInspectionServiceImpl implements ProgressInspectionService{
 
         ProgressInspection progressInspection = target.orElseThrow();
 
+        assertEditable(workflow.lock(progressInspection.getOrder().getOrderNo()));
         progressInspection.change(progressInspectionDTO);
 
         progressInspectionRepository.save(progressInspection);
@@ -83,7 +92,9 @@ public class ProgressInspectionServiceImpl implements ProgressInspectionService{
     @Override
     public void remove(int progressInspectionNo) {
 
-        progressInspectionRepository.deleteById(progressInspectionNo);
+        ProgressInspection inspection = progressInspectionRepository.findById(progressInspectionNo).orElseThrow();
+        assertEditable(workflow.lock(inspection.getOrder().getOrderNo()));
+        progressInspectionRepository.delete(inspection);
 
     }
 
@@ -115,4 +126,3 @@ public class ProgressInspectionServiceImpl implements ProgressInspectionService{
     }
 
 }
-

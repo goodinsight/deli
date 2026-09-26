@@ -198,11 +198,11 @@ public class OrderSearchImpl extends QuerydslRepositorySupport implements OrderS
         JPQLQuery<Integer> query = new JPAQueryFactory(em)
                 .select(order.orderQuantity.sum())
                 .from(order)
-                .where(order.materialProcurementPlanning.materialProcurementPlanNo.eq(materialProcurementPlanningNo).and(order.orderState.eq("발주완료")));
+                .where(order.materialProcurementPlanning.materialProcurementPlanNo.eq(materialProcurementPlanningNo).and(order.orderState.in("발주완료", "검수완료", "입고검수진행중", "반품진행중", "자재입고완료")));
 
-        int result = query.fetchOne();
+        Integer result = query.fetchOne();
 
-        return result;
+        return result == null ? 0 : result;
 
     }
 

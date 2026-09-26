@@ -107,7 +107,7 @@ public class MaterialInventorySearchImpl extends QuerydslRepositorySupport imple
                 .materialExplaination(resultMaterials.getMaterialExplaination())    // 자재설명
                 .materialIncomingQuantity(resultMaterialInventory.getMaterialIncomingQuantity())                //입고수량
                 .materialOutgoingQuantity(resultMaterialInventory.getMaterialOutgoingQuantity())                //출고수량
-                .materialSupplyPrice(resultMaterials.getMaterialSupplyPrice())                                   //공급단가
+                .materialSupplyPrice(resultMaterialInventory.getMaterialSupplyPrice())                                   //공급단가
                 .materialTotalInventoryPayments(resultMaterialInventory.getMaterialTotalInventoryPayments())    //총재고금액
                 .materialStock(resultMaterialInventory.getMaterialStock())          // 재고수량
                 .build();

@@ -22,14 +22,17 @@ import java.util.stream.Collectors;
 public class ProductContractServiceImpl implements ProductContractService{
 
     private final ProductContractRepository productContractRepository;
+    private final BusinessRecordService records;
 
     @Override
     public int register(ProductContractDTO productContractDTO) {
+        if (productContractDTO.getProductContractNo() != 0) throw new IllegalArgumentException("등록 요청으로 기존 데이터를 덮어쓸 수 없습니다.");
 
         log.info(productContractDTO);
 
         //dto -> entity
         ProductContract productContract = dtoToEntity(productContractDTO);
+        records.snapshot(productContract);
 
         log.info(productContract);
 
@@ -51,11 +54,11 @@ public class ProductContractServiceImpl implements ProductContractService{
 
     @Override
     public void modify(ProductContractDTO productContractDTO) {
+        if (productContractDTO.getProductQuantity() <= 0) throw new IllegalArgumentException("수량은 양수여야 합니다.");
 
-        Optional<ProductContract> result = productContractRepository.findById(productContractDTO.getProductContractNo());
+        ProductContract productContract = records.editable(ProductContract.class, productContractDTO.getProductContractNo());
 
-        ProductContract productContract = result.orElseThrow();
-
+        records.changeState(ProductContract.class, productContractDTO.getProductContractNo(), productContractDTO.getProductContractState());
         productContract.change(productContractDTO);
 
         productContractRepository.save(productContract);
@@ -65,7 +68,7 @@ public class ProductContractServiceImpl implements ProductContractService{
     @Override
     public void remove(int productContractNo) {
 
-        productContractRepository.deleteById(productContractNo);
+        records.cancel(ProductContract.class, productContractNo);
 
     }
 
@@ -124,15 +127,7 @@ public class ProductContractServiceImpl implements ProductContractService{
     //상태(검색조건)변경
     @Override
     public void changeState(int productContractNo, String state) {
-
-        Optional<ProductContract> result = productContractRepository.findById(productContractNo);
-
-        ProductContract productContract = result.orElseThrow();
-
-        productContract.changeState(state);
-
-        productContractRepository.save(productContract);
-
+        records.changeState(ProductContract.class, productContractNo, state);
     }
 
 }

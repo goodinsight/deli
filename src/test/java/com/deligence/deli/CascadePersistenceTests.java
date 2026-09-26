@@ -34,7 +34,7 @@ class CascadePersistenceTests {
         Reply retainedReply = replies.saveAndFlush(Reply.builder()
                 .board(retained).replyText("keep").replyer("tester").build());
 
-        new BoardServiceImpl(new ModelMapper(), boards, replies).remove(target.getBno());
+        new BoardServiceImpl(new ModelMapper(), boards, org.mockito.Mockito.mock(com.deligence.deli.service.FileCleanupService.class), replies).remove(target.getBno());
         entityManager.flush();
         entityManager.clear();
 

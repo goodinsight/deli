@@ -151,45 +151,12 @@ public class MaterialsController {
 
         materialsService.delete(materialNo);
 
-        //게시물이 데이터베이스상에서 삭제되었다면 첨부파일 삭제
-        log.info(materialsDTO.getFileNames());
-        List<String> fileNames = materialsDTO.getFileNames();
-        if(fileNames != null && fileNames.size() > 0 ){
-            removeFiles(fileNames);
-        }
-
         redirectAttributes.addFlashAttribute("result", "removed");
 
         return "redirect:/material/list";
     }
 
-    private void removeFiles(List<String> files) {
 
-        for(String materialImgName : files) {
-
-            Resource resource = new FileSystemResource(uploadPath + File.separator + materialImgName);
-
-            String resourceName = resource.getFilename();
-
-            try {
-                String contentType = Files.probeContentType(resource.getFile().toPath());
-
-                resource.getFile().delete();
-
-                // 섬네일이 존재한다면
-                if(contentType.startsWith("image")) {
-
-                    File thumbnailFile = new File(uploadPath + File.separator + "s_" + materialImgName);
-
-                    thumbnailFile.delete();
-                }
-
-            } catch(Exception e) {
-                log.error(e.getMessage());
-            }
-        } // end for
-
-    }
 
     @ResponseBody
     @GetMapping("/register/getCodeCount/{materialCode}") //자재코드생성

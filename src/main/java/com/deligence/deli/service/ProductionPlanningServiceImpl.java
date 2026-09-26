@@ -23,14 +23,17 @@ import java.util.stream.Collectors;
 public class ProductionPlanningServiceImpl implements ProductionPlanningService{
 
     private final ProductionPlanningRepository productionPlanningRepository;
+    private final BusinessRecordService records;
 
     @Override
     public int register(ProductionPlanningDTO productionPlanningDTO) {
+        if (productionPlanningDTO.getProductionPlanNo() != 0) throw new IllegalArgumentException("등록 요청으로 기존 데이터를 덮어쓸 수 없습니다.");
 
         log.info(productionPlanningDTO);
 
         //dto -> entity
         ProductionPlanning productionPlanning = dtoToEntity(productionPlanningDTO);
+        records.snapshot(productionPlanning);
 
         log.info(productionPlanning);
 
@@ -67,11 +70,11 @@ public class ProductionPlanningServiceImpl implements ProductionPlanningService{
 
     @Override
     public void modify(ProductionPlanningDTO productionPlanningDTO) {
+        if (productionPlanningDTO.getProductionQuantity() <= 0) throw new IllegalArgumentException("수량은 양수여야 합니다.");
 
-        Optional<ProductionPlanning> result = productionPlanningRepository.findById(productionPlanningDTO.getProductionPlanNo());
+        ProductionPlanning productionPlanning = records.editable(ProductionPlanning.class, productionPlanningDTO.getProductionPlanNo());
 
-        ProductionPlanning productionPlanning = result.orElseThrow();
-
+        records.changeState(ProductionPlanning.class, productionPlanningDTO.getProductionPlanNo(), productionPlanningDTO.getProductionState());
         productionPlanning.change(productionPlanningDTO);
 
         productionPlanningRepository.save(productionPlanning);
@@ -81,7 +84,7 @@ public class ProductionPlanningServiceImpl implements ProductionPlanningService{
     @Override
     public void remove(int productionPlanNo) {
 
-        productionPlanningRepository.deleteById(productionPlanNo);
+        records.cancel(ProductionPlanning.class, productionPlanNo);
 
     }
 
@@ -163,16 +166,7 @@ public class ProductionPlanningServiceImpl implements ProductionPlanningService{
 
     @Override
     public void changeState(int productionPlanNo, String state) {
-
-
-        Optional<ProductionPlanning> result = productionPlanningRepository.findById(productionPlanNo);
-
-        ProductionPlanning productionPlanning = result.orElseThrow();
-
-        productionPlanning.changeState(state);
-
-        productionPlanningRepository.save(productionPlanning);
-
+        records.changeState(ProductionPlanning.class, productionPlanNo, state);
     }
 
     //생산계획상세(연관조달계획목록)
@@ -207,16 +201,7 @@ public class ProductionPlanningServiceImpl implements ProductionPlanningService{
     //생산계획완료
     @Override
     public void completePlan(int productionPlanNo) {
-
-        Optional<ProductionPlanning> result =
-                productionPlanningRepository.findById(productionPlanNo);
-
-        ProductionPlanning productionPlanning = result.orElseThrow();
-
-        productionPlanning.changeState("제품입고완료");
-
-        productionPlanningRepository.save(productionPlanning);
-
+        records.changeState(ProductionPlanning.class, productionPlanNo, "제품입고완료");
     }
 
 

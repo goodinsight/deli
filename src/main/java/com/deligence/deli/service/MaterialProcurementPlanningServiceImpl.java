@@ -21,10 +21,12 @@ import java.util.stream.Collectors;
 public class MaterialProcurementPlanningServiceImpl implements MaterialProcurementPlanningService{
 
     private final MaterialProcurementPlanningRepository materialProcurementPlanningRepository;
+    private final BusinessRecordService records;
 
     @Transactional
     @Override  //등록
     public int register(MaterialProcurementPlanningDTO materialProcurementPlanningDTO) {
+        if (materialProcurementPlanningDTO.getMaterialProcurementPlanNo() != 0) throw new IllegalArgumentException("등록 요청으로 기존 데이터를 덮어쓸 수 없습니다.");
 
 //        log.info("register start");
 
@@ -32,6 +34,7 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
 
         //dto -> entity
         MaterialProcurementPlanning materialProcurementPlanning = dtoToEntity(materialProcurementPlanningDTO);
+        records.snapshot(materialProcurementPlanning);
 
         log.info(materialProcurementPlanning);
 
@@ -54,13 +57,11 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
 
     @Override //수정
     public void modify(MaterialProcurementPlanningDTO materialProcurementPlanningDTO) {
+        if (materialProcurementPlanningDTO.getMaterialRequirementsCount() <= 0) throw new IllegalArgumentException("수량은 양수여야 합니다.");
 
-        Optional<MaterialProcurementPlanning> result =
-                materialProcurementPlanningRepository.findById(
-                        materialProcurementPlanningDTO.getMaterialProcurementPlanNo());
+        MaterialProcurementPlanning materialProcurementPlanning = records.editable(MaterialProcurementPlanning.class, materialProcurementPlanningDTO.getMaterialProcurementPlanNo());
 
-        MaterialProcurementPlanning materialProcurementPlanning = result.orElseThrow();
-
+        records.changeState(MaterialProcurementPlanning.class, materialProcurementPlanningDTO.getMaterialProcurementPlanNo(), materialProcurementPlanningDTO.getMaterialProcurementState());
         materialProcurementPlanning.change(materialProcurementPlanningDTO);
 
 
@@ -70,20 +71,13 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
 
     @Override
     public void changeState(int materialProcurementPlanNo, String state) {
-
-        Optional<MaterialProcurementPlanning> result = materialProcurementPlanningRepository.findById(materialProcurementPlanNo);
-
-        MaterialProcurementPlanning materialProcurementPlanning = result.orElseThrow();
-
-        materialProcurementPlanning.changeState(state);
-
-        materialProcurementPlanningRepository.save(materialProcurementPlanning);
+        records.changeState(MaterialProcurementPlanning.class, materialProcurementPlanNo, state);
     }
 
     @Override   //삭제
     public void remove(int materialProcurementPlanNo) {
 
-        materialProcurementPlanningRepository.deleteById(materialProcurementPlanNo);
+        records.cancel(MaterialProcurementPlanning.class, materialProcurementPlanNo);
     }
 
     @Override   //목록, 검색
@@ -175,16 +169,7 @@ public class MaterialProcurementPlanningServiceImpl implements MaterialProcureme
 
     @Override
     public void completePlan(int materialProcurementPlanNo) {
-
-        Optional<MaterialProcurementPlanning> result =
-                materialProcurementPlanningRepository.findById(materialProcurementPlanNo);
-
-        MaterialProcurementPlanning materialProcurementPlanning = result.orElseThrow();
-
-        materialProcurementPlanning.changeState("계획완료");
-
-        materialProcurementPlanningRepository.save(materialProcurementPlanning);
-
+        throw new IllegalStateException("조달계획 완료는 발주 완료 기능으로 처리하세요.");
     }
 
 

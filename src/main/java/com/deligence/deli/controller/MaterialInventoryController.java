@@ -32,6 +32,7 @@ public class MaterialInventoryController {
     private final MaterialInventoryService materialInventoryService;
 
     private final OrderService orderService;
+    private final com.deligence.deli.service.OrderWorkflowService workflow;
     private final MaterialInOutHistoryService materialInOutHistoryService;
     private final MaterialsService materialsService;
 
@@ -155,50 +156,17 @@ public class MaterialInventoryController {
 
 
     @PostMapping("/completeIncoming")
-    public String completeIncoming(OrderPageRequestDTO orderPageRequestDTO,
-                                   @Valid OrderDetailDTO orderDetailDTO,
-                                   BindingResult bindingResult,
-                                   RedirectAttributes redirectAttributes){
-
-        log.info("order modify : " + orderDetailDTO);
-
-        String materialCode = orderDetailDTO.getMaterialCode();
-        int materialIncomingQuantity = orderDetailDTO.getOrderQuantity();
-        int employeeNo = orderDetailDTO.getEmployeeNo();
-        String employeeName = orderDetailDTO.getEmployeeName();
-
-        //해당 재고 탐색
-        MaterialInventoryDTO materialInventoryDTO = materialInventoryService.readByMaterialCode(materialCode);
-
-        log.info(materialInventoryDTO);
-
-        //재고 상승
-        materialInventoryDTO.setMaterialIncomingQuantity(materialInventoryDTO.getMaterialIncomingQuantity()+materialIncomingQuantity); // 입고 수량 +
-        materialInventoryDTO.setMaterialStock(materialInventoryDTO.getMaterialStock()+materialIncomingQuantity); // 재고 수량 +
-        materialInventoryDTO.setMaterialTotalInventoryPayments(materialInventoryDTO.getMaterialTotalInventoryPayments() + materialInventoryDTO.getMaterialSupplyPrice()*materialIncomingQuantity);
-
-        log.info(materialInventoryDTO);
-
-        materialInventoryService.modifyInventory(materialInventoryDTO);
-
-
-        //재고 입고 기록 등록
-        MaterialInOutHistoryDTO materialInOutHistoryDTO = MaterialInOutHistoryDTO.builder()
-                .materialInventoryNo(materialInventoryDTO.getMaterialInventoryNo())
-                .inOutSeparator("입고")
-                .quantity(materialIncomingQuantity)
-                .historyDate(LocalDate.now())
-                .employeeNo(employeeNo)
-                .employeeName(employeeName)
-                .build();
-
-        log.info(materialInOutHistoryDTO);
-
-        materialInOutHistoryService.register2(materialInOutHistoryDTO);
-
-
+    public String completeIncoming(@RequestParam int orderNo,
+            @AuthenticationPrincipal EmployeeSecurityDTO user) {
+        workflow.receive(orderNo, user.getEmployeeNo());
         return "redirect:/materialInventory/listIncoming";
+    }
 
+    @PostMapping("/cancelIncoming")
+    public String cancelIncoming(@RequestParam int orderNo,
+            @AuthenticationPrincipal EmployeeSecurityDTO user) {
+        workflow.cancel(orderNo, user.getEmployeeNo());
+        return "redirect:/materialInventory/listIncoming";
     }
 
 

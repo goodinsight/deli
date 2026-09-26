@@ -52,7 +52,7 @@ public interface MaterialInventoryService {
                 .materialIncomingQuantity(materialInventory.getMaterialIncomingQuantity())
                 .materialOutgoingQuantity(materialInventory.getMaterialOutgoingQuantity())
                 .materialStock(materialInventory.getMaterialStock())
-                .materialSupplyPrice(materialInventory.getMaterials().getMaterialSupplyPrice())
+                .materialSupplyPrice(materialInventory.getMaterialSupplyPrice())
                 .materialTotalInventoryPayments(materialInventory.getMaterialTotalInventoryPayments())
                 .materialType(materialInventory.getMaterials().getMaterialType())
                 .materialName(materialInventory.getMaterials().getMaterialName())

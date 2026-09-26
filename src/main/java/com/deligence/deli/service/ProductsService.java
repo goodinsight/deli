@@ -37,7 +37,7 @@ public interface ProductsService {
         if(productsDTO.getFileNames() != null) {
             productsDTO.getFileNames().forEach(fileName -> {
 
-                String[] arr = fileName.split("_");
+                String[] arr = fileName.split("_", 2);
                 products.addImage(arr[0], arr[1]);
             });
 //            String tmp = productsDTO.getFileNames();

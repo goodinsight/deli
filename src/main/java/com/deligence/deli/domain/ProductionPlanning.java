@@ -60,8 +60,6 @@ public class ProductionPlanning extends BaseEntity {   //제품생산계획테�
 
     private String employeeName2;   //생산계획담당자
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private MaterialProcurementPlanning materialProcurementPlanning;
 
 
     public void change(ProductionPlanningDTO productionPlanningDTO){
@@ -80,6 +78,16 @@ public class ProductionPlanning extends BaseEntity {   //제품생산계획테�
     public void changeState(String state){
         this.productionState = state;
 
+    }
+
+    public void captureSnapshot(ProductContract contract, Employee employee) {
+        this.productCode = contract.getProductCode();
+        this.clientName = contract.getClientName();
+        this.clientStatus = contract.getClientStatus();
+        this.productDeliveryDate = contract.getProductDeliveryDate();
+        this.employeeName = contract.getEmployeeName();
+        this.employeeName2 = employee.getEmployeeName();
+        this.productionState = "자재조달단계";
     }
 
 

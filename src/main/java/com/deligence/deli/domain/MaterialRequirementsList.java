@@ -49,4 +49,9 @@ public class MaterialRequirementsList {
 
     }
 
+    public void captureSnapshot(Products product, Materials material) {
+        productCode = product.getProductCode(); productName = product.getProductName(); productType = product.getProductType();
+        materialCode = material.getMaterialCode(); materialName = material.getMaterialName(); materialType = material.getMaterialType();
+    }
+
 }

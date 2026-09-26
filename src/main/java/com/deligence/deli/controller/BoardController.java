@@ -124,43 +124,12 @@ public class BoardController {
 
         boardService.remove(bno);
 
-        //게시물이 데이터베이스상에서 삭제되었다면 첨부파일 삭제
-        log.info(boardDTO.getFileNames());
-        List<String> fileNames = boardDTO.getFileNames();
-        if(fileNames != null && fileNames.size() > 0 ){
-            removeFiles(fileNames);
-        }
-
         redirectAttributes.addFlashAttribute("result", "removed");
 
         return "redirect:/board/list";
 
     }
 
-    private void removeFiles(List<String> files) {
 
-        for(String fileName : files) {
-
-            Resource resource = new FileSystemResource(uploadPath + File.separator + fileName);
-
-            String resourceName = resource.getFilename();
-
-            try {
-                String contentType = Files.probeContentType(resource.getFile().toPath());
-
-                resource.getFile().delete();
-
-                // 섬네일이 존재한다면
-                if(contentType.startsWith("image")) {
-                    File thumbnailFile = new File(uploadPath + File.separator + "s_" + fileName);
-                    thumbnailFile.delete();
-                }
-
-            } catch(Exception e) {
-                log.error(e.getMessage());
-            }
-        } // end for
-
-    }
 
 }

@@ -38,7 +38,7 @@ public interface MaterialsService {
         if(materialsDTO.getFileNames() != null) {
             materialsDTO.getFileNames().forEach(fileName -> {
 
-                String[] arr = fileName.split("_");
+                String[] arr = fileName.split("_", 2);
                 materials.addImage(arr[0], arr[1]);
             });
 //            String tmp = materialsDTO.getFileNames();

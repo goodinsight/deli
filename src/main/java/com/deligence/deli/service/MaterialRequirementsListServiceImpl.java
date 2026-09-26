@@ -23,14 +23,17 @@ import java.util.stream.Collectors;
 public class MaterialRequirementsListServiceImpl implements MaterialRequirementsListService{
 
     private final MaterialRequirementsListRepository materialRequirementsListRepository;
+    private final BusinessRecordService records;
 
     @Override
     public int register(MaterialRequirementsListDTO materialRequirementsListDTO) {
+        if (materialRequirementsListDTO.getMaterialRequirementsListNo() != 0) throw new IllegalArgumentException("등록 요청으로 기존 데이터를 덮어쓸 수 없습니다.");
 
         log.info(materialRequirementsListDTO);
 
         //dto -> entity
         MaterialRequirementsList materialRequirementsList = dtoToEntity(materialRequirementsListDTO);
+        records.snapshot(materialRequirementsList);
 
         log.info(materialRequirementsList);
 
@@ -62,10 +65,11 @@ public class MaterialRequirementsListServiceImpl implements MaterialRequirements
 
     @Override
     public void modify(MaterialRequirementsListDTO materialRequirementsListDTO) {
+        if (materialRequirementsListDTO.getQuantity() <= 0) throw new IllegalArgumentException("소요 수량은 양수여야 합니다.");
 
         Optional<MaterialRequirementsList> result = materialRequirementsListRepository.findById(materialRequirementsListDTO.getMaterialRequirementsListNo());
 
-        MaterialRequirementsList materialRequirementsList = result.orElseThrow();
+        MaterialRequirementsList materialRequirementsList = records.editable(MaterialRequirementsList.class, materialRequirementsListDTO.getMaterialRequirementsListNo());
 
         materialRequirementsList.change(materialRequirementsListDTO);
 

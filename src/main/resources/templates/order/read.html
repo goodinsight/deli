@@ -191,12 +191,13 @@
                 self.location = `/order/read?orderNo=${orderNo}&${link}`
             }
         ).catch( e =>{
-            console.log(e)
+            alert(e.response?.data?.msg || '요청 처리에 실패했습니다.')
         })
 
     }
 
     function cancelOrder(){
+        if (!confirm('발주를 취소하시겠습니까? 입고된 발주는 재고 역분개 조건을 확인합니다.')) return;
 
         const state = "발주파기"
 
@@ -205,7 +206,7 @@
                 self.location = `/order/read?orderNo=${orderNo}&${link}`
             }
         ).catch( e=>{
-            console.log(e)
+            alert(e.response?.data?.msg || '요청 처리에 실패했습니다.')
         })
 
 

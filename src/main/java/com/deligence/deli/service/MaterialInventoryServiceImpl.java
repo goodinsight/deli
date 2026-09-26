@@ -26,27 +26,12 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
     //자재재고 관련 페이지는 Inventory / 재고>입고관리 관련 페이지는 Incoming을 붙임.
 
     private final MaterialInventoryRepository materialInventoryRepository;
+    private final InventoryMaintenanceService maintenance;
 
     //자재재고 register
     @Override
     public int registerInventory(MaterialInventoryDTO materialInventoryDTO) {
-
-        log.info(materialInventoryDTO);
-
-        //dto -> entity
-        MaterialInventory materialInventory = dtoToEntityInventory(materialInventoryDTO);
-
-        log.info("materialInventory : " + materialInventory);
-
-        log.info("check");
-
-//        materialInventoryRepository.save(materialInventory);
-
-        int materialInventoryNo = materialInventoryRepository.save(materialInventory).getMaterialInventoryNo();//<- 어째서인지 material_in_out_history 테이블로 접근함.
-
-        log.info("materialInventoryNo : " + materialInventoryNo);
-
-        return materialInventoryNo;
+        return maintenance.register(materialInventoryDTO);
     }
 
 
@@ -63,15 +48,7 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
     //자재재고 modify
     @Override
     public void modifyInventory(MaterialInventoryDTO materialInventoryDTO) {
-
-        Optional<MaterialInventory> result = materialInventoryRepository.findById(materialInventoryDTO.getMaterialInventoryNo());
-
-        MaterialInventory materialInventory = result.orElseThrow();
-
-        materialInventory.change(materialInventoryDTO);
-
-        materialInventoryRepository.save(materialInventory);
-
+        maintenance.modify(materialInventoryDTO);
     }
 
 
@@ -79,7 +56,7 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
     @Override
     public void removeInventory(int materialInventoryNo) {
 
-        materialInventoryRepository.deleteById(materialInventoryNo);
+        maintenance.remove(materialInventoryNo);
     }
 
     @Override
@@ -115,7 +92,6 @@ public class MaterialInventoryServiceImpl implements MaterialInventoryService {
 
 
 }
-
 
 
 

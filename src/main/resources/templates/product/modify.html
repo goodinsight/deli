@@ -97,7 +97,7 @@
         <div class="col">
             <div class="container-fluid d-flex uploadResult" style="flex-wrap: wrap;">
                 <th:block th:each="fileName:${dto.fileNames}">
-                    <div class="card col-4" th:with = "arr = ${fileName.split('_')}">
+                    <div class="card col-4" th:with = "arr = ${fileName.split('_', 2)}">
                         <div class="card-header d-flex justify-content-center">
                             [[${arr[1]}]]
                             <button class="btn-sm btn-danger" th:onclick="removeFile([[${arr[0]}]], [[${arr[1]}]], this)" >X</button>
@@ -278,7 +278,6 @@
         appendFileData()
 
         //삭제대상 파일들을 삭제
-        callRemoveFiles()
 
         formObj.method ='post'
         formObj.submit()

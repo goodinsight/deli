@@ -22,7 +22,9 @@ import java.util.*;
 
 @RestController
 @Log4j2
+@lombok.RequiredArgsConstructor
 public class UpDownProductController {
+    private final com.deligence.deli.service.FileCleanupService fileCleanup;
 
     @Value("${com.deligence.upload.path}") // import 시에 springframework으로 시작하는 Value
     private String uploadPath;
@@ -103,32 +105,7 @@ public class UpDownProductController {
     @ApiOperation(value = "remove 파일", notes = "DELETE 방식으로 파일 삭제")
     @DeleteMapping(value = "/removeProduct/{productImgName}")
     public Map<String, Boolean> removeFile(@PathVariable String productImgName) {
-
-        Resource resource = new FileSystemResource(uploadPath + File.separator + productImgName);
-
-        String resourceName = resource.getFilename();
-
-        Map<String, Boolean> resultMap = new HashMap<>();
-        boolean removed = false;
-
-        try {
-            String contentType = Files.probeContentType(resource.getFile().toPath());
-            removed = resource.getFile().delete();
-
-            // 섬네일이 존재한다면
-            if(contentType.startsWith("image")) {
-                File thumbnailFile = new File(uploadPath+File.separator+"s_" + productImgName);
-                thumbnailFile.delete();
-            }
-
-        }catch (Exception e) {
-            log.error(e.getMessage());
-        }
-
-        resultMap.put("result", removed);
-
-        return resultMap;
-
+        return Map.of("result", fileCleanup.requestRemoval(productImgName));
     }
 
 

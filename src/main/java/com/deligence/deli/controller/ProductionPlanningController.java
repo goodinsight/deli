@@ -263,29 +263,7 @@ public class ProductionPlanningController {
     @ResponseBody
     @PostMapping(value = "/completePlan", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void completePlan(@RequestBody Map<String, Object> map) {
-
-        //흐름을 어떻게 가지고 갈 지 생각해보기
-
-        int productionPlanNo = Integer.parseInt(map.get("productionPlanNo").toString());
-        int productContractNo = Integer.parseInt(map.get("productContractNo").toString());
-
-        //해당 제품입고 완료
-        productionPlanningService.changeState(productionPlanNo, "제품입고완료");
-
-        //제품계약 수량 확인
-        int productQuantity = productContractService.read(productContractNo).getProductQuantity();
-        log.info("제품 계약 수량 : " + productQuantity);
-
-        //연관 조달 계획중 입고 완료된 수량 확인 -> 입고 완료된 제품 수량 확인
-//        int sumOfOrderQuantity = orderService.sumOfOrderQuantity(materialProcurementPlanNo);
-//        log.info("발주 완료 수량 : " + sumOfOrderQuantity);
-
-        //비교
-//        if(materialRequirementsCount <= sumOfOrderQuantity){
-//            log.info("조달 완료 프로세스 시작");
-//            //조달 계획 완료
-//            materialProcurementPlanningService.completePlan(materialProcurementPlanNo);
-//        }
+        productionPlanningService.completePlan(Integer.parseInt(map.get("productionPlanNo").toString()));
     }
 
 

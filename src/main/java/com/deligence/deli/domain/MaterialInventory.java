@@ -9,6 +9,7 @@ import javax.persistence.*;
 
 @Getter
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(name = "uk_inventory_material", columnNames = "materials_material_no"))
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -51,6 +52,23 @@ public class MaterialInventory {
         this.materialSupplyPrice = materialInventoryDTO.getMaterialSupplyPrice();
         this.materialTotalInventoryPayments = materialInventoryDTO.getMaterialTotalInventoryPayments();
 
+    }
+
+    public void receive(int quantity, long amount) {
+        this.materialIncomingQuantity = Math.addExact(materialIncomingQuantity, quantity);
+        this.materialStock = Math.addExact(materialStock, quantity);
+        this.materialTotalInventoryPayments = Math.addExact(
+                materialTotalInventoryPayments == null ? 0L : materialTotalInventoryPayments, amount);
+    }
+
+    public void reverseReceipt(int quantity, long amount) {
+        if (quantity > materialStock || quantity > materialIncomingQuantity ||
+                materialTotalInventoryPayments == null || amount > materialTotalInventoryPayments) {
+            throw new IllegalStateException("출고되었거나 재고가 변경되어 입고를 취소할 수 없습니다.");
+        }
+        materialIncomingQuantity -= quantity;
+        materialStock -= quantity;
+        materialTotalInventoryPayments -= amount;
     }
 
 

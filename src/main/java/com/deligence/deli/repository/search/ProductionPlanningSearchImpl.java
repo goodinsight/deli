@@ -194,16 +194,16 @@ public class ProductionPlanningSearchImpl extends QuerydslRepositorySupport impl
                 .productContractNo(resultPc.getProductContractNo())
                 .productContractCode(resultPc.getProductContractCode())                     //제품계약코드
                 .employeeNo(resultPc.getEmployee().getEmployeeNo())
-                .employeeName(resultPc.getEmployee().getEmployeeName())                     //제품계약담당자
+                .employeeName(resultProductionPlanning.getEmployeeName())                     //제품계약담당자
                 .productNo(resultPc.getProducts().getProductNo())                           //계약제품일련번호 -> 필요자재항목
-                .productCode(resultPc.getProducts().getProductCode())
+                .productCode(resultProductionPlanning.getProductCode())
                 .productName(resultPc.getProducts().getProductName())
                 .productType(resultPc.getProducts().getProductType())
                 .productQuantity(resultPc.getProductQuantity())                             //제품계약수량
-                .clientName(resultPc.getCooperatorClient().getClientName())                 //클라이언트회사명
+                .clientName(resultProductionPlanning.getClientName())                 //클라이언트회사명
                 .productDeliveryDate(resultPc.getProductDeliveryDate())                     //제품납기일
-                .clientStatus(resultPc.getCooperatorClient().getClientStatus())             //클라이언트계약상태
-                .employeeName(resultPc.getEmployeeName())                                  //제품계약담당자
+                .clientStatus(resultProductionPlanning.getClientStatus())             //클라이언트계약상태
+                .employeeName(resultProductionPlanning.getEmployeeName())                                  //제품계약담당자
                 .materialRequirementsListNo(resultMrl.getMaterialRequirementsListNo())      //제품별필요자재항목No
                 .productNo(resultMrl.getProducts().getProductNo())                          //제품No
                 .productCode2(resultMrl.getProducts().getProductCode())                      //제품Code

@@ -33,6 +33,11 @@ public class MaterialInOutHistory extends BaseEntity {
 
     private String employeeName;    //담당자
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Order order; // 신규 입고·입고취소 증빙. 기존 이력은 null을 유지한다.
+
+    private Long amount; // 해당 거래 금액(취소 이력은 음수)
+
 
 
 

@@ -88,7 +88,9 @@
 6. 조달계획과 공급사 `CooperatorSupplier`를 선택해 `MaterialProcurementContract`를 만든다.
 7. 진행 중인 조달계획과 조달계약을 선택해 `Order`를 등록한다.
 8. 발주 상세에서 `ProgressInspection`을 기록하고 검수 완료 처리한다.
-9. 입고관리에서 검수된 발주 수량을 `MaterialInventory`에 더하고 `MaterialInOutHistory`에 입고 이력을 남긴다.
+9. 입고관리에서 발주·계획·자재·재고를 잠그고 재고, 발주별 `OrderReceipt`, `MaterialInOutHistory`, 상태를 한 트랜잭션으로 처리한다. 재전송은 추가 입고하지 않는다. 신규 입고 취소는 증빙 기반 역분개로 이력을 보존한다.
+
+CRUD 연계·스냅샷·취소·파일 정리 및 운영 스키마 변경 정책은 [CRUD 연관 데이터 점검 및 보완](crud-cascade-audit.md)을 따른다. 업무 기록은 물리 삭제 대신 취소하며, 이미지 물리 파일은 DB 커밋 후 `FileDeletionTask` 큐로 정리한다.
 10. 발주 완료 수량이 조달계획 필요량을 충족하면 조달계획을 `계획완료`로 변경한다.
 
 ## 6. 주요 상태 흐름
