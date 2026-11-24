@@ -1,0 +1,270 @@
+import { p as Y } from "./printSvgDocument-DHC1JJCG.js";
+import { p as Q, d as z, e as h, b as H, c as X, w as T, q, T as O, g as K, D as V } from "./printDocChrome-BMZLbM8A.js";
+import { b as J } from "./GovSupportPage-C2JuYXPM.js";
+import "../js.d/main-Cm9wS5wt.js";
+import "./react-CjxcGQav.js";
+import "./stylis-DdLD6a3t.js";
+import "./PercentOutlined-XX2JPqvz.js";
+import "./EventRepeatOutlined-BzT6rPrF.js";
+import "./ScheduleOutlined-C_7j7r9e.js";
+import "./HomeWorkOutlined-BC4KmII5.js";
+import "./homeSx-C09ESIq-.js";
+import "./publicPageSx-9Lwcd6Z3.js";
+import "./featurePageParts-Deueehn5.js";
+import "./emphasize-CAl3kWp2.js";
+import "./Reveal-C3c42DZa.js";
+import "./useSectionScroll-DomJbwFc.js";
+import "./PricingCalculator-B_H7Reed.js";
+import "./companyInfo-Btqdi-Wt.js";
+const d = 595.28,
+  E = 841.89,
+  l = 48,
+  $ = d - 48,
+  S = E - 36,
+  P = 52,
+  Z = E - 24,
+  A = 28,
+  N = 78,
+  W = 12,
+  w = 16,
+  I = 10,
+  v = 16,
+  _ = 14,
+  tt = 12,
+  D = 10.5,
+  B = 128,
+  g = [{
+    label: "기능명",
+    x: l,
+    anchor: "start",
+    width: B - l - 12
+  }, {
+    label: "기능 설명",
+    x: B,
+    anchor: "start",
+    width: 274
+  }, {
+    label: "수량",
+    x: 452,
+    anchor: "end"
+  }, {
+    label: "단가",
+    x: 498,
+    anchor: "end"
+  }, {
+    label: "월 금액",
+    x: $,
+    anchor: "end"
+  }];
+function y(s) {
+  const t = Math.abs(Math.round(s)).toLocaleString("ko-KR");
+  return s < 0 ? `−${t}` : t;
+}
+function st(s) {
+  const t = [];
+  let e = null;
+  for (const n of s) n.wide ? (t.push([n]), e = null) : e ? (e.push(n), e = null) : (e = [n], t.push(e));
+  return t;
+}
+function j(s, t) {
+  const e = [],
+    n = [`<line x1="${l}" y1="${t}" x2="${$}" y2="${t}" class="ft-line"/>`],
+    c = [];
+  let o = t;
+  for (const a of st(s)) {
+    const r = ($ - l) / (a.length === 1 ? 1 : 2),
+      u = a.map(i => {
+        const m = r - N - 20 - (i.suffix ? q(` ${i.suffix}`, W) : 0),
+          b = T(i.value || "-", m, W);
+        return b.length > 0 ? b : ["-"];
+      }),
+      p = Math.max(...u.map(i => i.length)),
+      x = Math.max(A, A - w + p * w);
+    a.forEach((i, m) => {
+      const b = l + r * m;
+      e.push(`<rect x="${b}" y="${o}" width="${N}" height="${x}" class="ft-label-bg"/>`), c.push(`<text x="${b + 10}" y="${o + x / 2}" class="ft-label">${h(i.label)}</text>`);
+      const L = u[m],
+        U = o + x / 2 - (L.length - 1) * w / 2;
+      L.forEach((R, F) => {
+        const k = F === L.length - 1 && i.suffix ? `<tspan dx="6" class="q-seal">${h(i.suffix)}</tspan>` : "";
+        c.push(`<text x="${b + N + 10}" y="${U + F * w}" class="ft-value">${h(R)}${k}</text>`);
+      });
+    }), o += x, n.push(`<line x1="${l}" y1="${o}" x2="${$}" y2="${o}" class="ft-line"/>`);
+  }
+  return {
+    svg: [...e, ...n, ...c].join(""),
+    bottom: o
+  };
+}
+function G(s) {
+  const t = T(s.name, g[0].width ?? 0, tt),
+    e = T(s.desc, g[1].width ?? 0, D);
+  return {
+    name: t,
+    desc: e
+  };
+}
+function C(s) {
+  const {
+    name: t,
+    desc: e
+  } = G(s);
+  return I * 2 + Math.max(v, t.length * v, e.length * _);
+}
+function et(s, t) {
+  const e = C(s),
+    {
+      name: n,
+      desc: c
+    } = G(s),
+    o = [],
+    a = t + I + v / 2;
+  n.forEach((u, p) => {
+    o.push(`<text x="${g[0].x}" y="${a + p * v}" class="lt-main lt-strong start">${h(u)}</text>`);
+  });
+  const r = t + I + _ / 2 + (v - _) / 2;
+  return c.forEach((u, p) => {
+    o.push(`<text x="${g[1].x}" y="${r + p * _}" class="lt-sub start">${h(u)}</text>`);
+  }), o.push(`<text x="${g[2].x}" y="${a}" class="lt-main end">${h(s.qty)}</text>`), o.push(`<text x="${g[3].x}" y="${a}" class="lt-main end">${s.unitPrice == null ? "" : h(y(s.unitPrice))}</text>`), o.push(`<text x="${g[4].x}" y="${a}" class="${s.discount ? "lt-main q-discount" : "lt-main lt-strong"} end">${h(y(s.amount))}</text>`), o.push(`<line x1="${l}" y1="${t + e}" x2="${$}" y2="${t + e}" class="lt-row-line"/>`), o.join("");
+}
+const f = 24,
+  M = 14;
+function nt(s, t) {
+  const e = [["월 합계(부가세 포함)", `${y(s.monthly.total)}원`, !1], ["약정 기간", `${s.months}개월`, !1], ["약정 총액 공급가액", `${y(s.contract.supply)}원`, !1], ["약정 총액 부가세", `${y(s.contract.vat)}원`, !1], ["약정 총액 합계", `${y(s.contract.total)}원`, !0]],
+    n = ($ - l) / e.length,
+    c = [`<rect x="${l}" y="${t}" width="${$ - l}" height="${f}" class="ft-label-bg"/>`, `<line x1="${l}" y1="${t}" x2="${$}" y2="${t}" class="ft-line"/>`, `<line x1="${l}" y1="${t + f}" x2="${$}" y2="${t + f}" class="ft-line"/>`, `<line x1="${l}" y1="${t + f * 2}" x2="${$}" y2="${t + f * 2}" class="ft-line"/>`];
+  return e.forEach(([o, a, r], u) => {
+    const x = l + n * u + n - 10;
+    c.push(`<text x="${x}" y="${t + f / 2}" class="ft-label end">${h(o)}</text>`), c.push(`<text x="${x}" y="${t + f * 1.5}" class="${r ? "ft-value q-strong" : "ft-value"} end">${h(a)}</text>`);
+  }), {
+    svg: c.join(""),
+    bottom: t + f * 2
+  };
+}
+function ot(s) {
+  return s.map((t, e) => T(`${e + 1}. ${t}`, $ - l, D));
+}
+function lt(s) {
+  return 22 + s.reduce((t, e) => t + e.length * M, 0);
+}
+function at(s, t) {
+  const e = [H(l, t + 10, "비고")];
+  let n = t + 22;
+  for (const c of s) c.forEach((o, a) => {
+    const r = a === 0 ? l : l + q("1. ", D);
+    e.push(`<text x="${r}" y="${n + M / 2}" class="lt-sub start">${h(o)}</text>`), n += M;
+  });
+  return e.join("");
+}
+function ct(s) {
+  const {
+      input: t,
+      supplier: e
+    } = s,
+    n = [];
+  n.push(`<text x="${l}" y="72" class="doc-type start">견 적 서</text>`), n.push(z(l + 14, 84)), [["견적번호", s.quoteNo], ["견적일", s.issueDate], ["유효기간", `${s.validUntil}까지`]].forEach(([p, x], i) => {
+    n.push(`<text x="${$}" y="${52 + i * 16}" class="dh-meta end"><tspan>${h(p)} </tspan><tspan class="dh-meta-value">${h(x)}</tspan></text>`);
+  });
+  let o = 108;
+  n.push(H(l, o, "받는 곳"));
+  const a = [t.phone.trim(), t.email.trim()].filter(Boolean).join(" · "),
+    r = j([{
+      label: "회사(기관)명",
+      value: t.company.trim()
+    }, {
+      label: "담당자",
+      value: t.manager.trim()
+    }, {
+      label: "사업자번호",
+      value: t.bizNo.trim()
+    }, {
+      label: "연락처",
+      value: a
+    }], o + 8);
+  n.push(r.svg), o = r.bottom + 20, n.push(H(l, o, "공급자"));
+  const u = j([{
+    label: "상호",
+    value: e.legalName
+  }, {
+    label: "대표",
+    value: e.ceo,
+    suffix: "(인)"
+  }, {
+    label: "사업자번호",
+    value: e.businessNumber
+  }, {
+    label: "전화 · 이메일",
+    value: [e.tel, e.email].filter(Boolean).join(" · ")
+  }, {
+    label: "주소",
+    value: e.address,
+    wide: !0
+  }], o + 8);
+  return n.push(u.svg), {
+    svg: n.join(""),
+    bottom: u.bottom + 14
+  };
+}
+function it(s) {
+  const t = [];
+  let e = {
+    body: []
+  };
+  t.push(e);
+  const n = () => {
+      e = {
+        body: []
+      }, t.push(e);
+    },
+    c = ct(s);
+  e.body.push(c.svg);
+  const o = i => {
+    const m = X(g, l, $, i);
+    return e.body.push(m.svg), m.bottom;
+  };
+  let a = o(c.bottom);
+  for (const i of s.lines) {
+    const m = C(i);
+    a + m > S && (n(), a = o(P)), e.body.push(et(i, a)), a += m;
+  }
+  const r = ot(s.notes),
+    u = 14 + f * 2 + 12 + lt(r);
+  let p = a + 14;
+  a + u > S && (n(), p = P);
+  const x = nt(s, p);
+  return e.body.push(x.svg), e.body.push(at(r, x.bottom + 12)), t;
+}
+function rt() {
+  return `<style>
+        .page { fill: #ffffff; }
+        .center { text-anchor: middle; }
+        .page-count { font-size: 10px; font-weight: 300; }
+        .q-seal { fill: ${O.muted}; }
+        .start { text-anchor: start; }
+        .q-strong { font-weight: 700; }
+        .q-discount { fill: ${O.danger}; }
+${K}
+    </style>`;
+}
+async function ut(s) {
+  await Q([s.input.company, s.input.manager, s.supplier.address, ...s.lines.map(c => `${c.name} ${c.desc}`), ...s.notes].join(" "));
+  const t = rt(),
+    e = it(s),
+    n = 1.6;
+  return e.map((c, o) => `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${Math.round(d * n)}" height="${Math.round(E * n)}" viewBox="0 0 ${d} ${E}">
+            ${t}
+            <rect x="0" y="0" width="${d}" height="${E}" class="page"/>
+            ${c.body.join("")}
+            ${e.length > 1 ? `<text x="${d / 2}" y="${Z}" class="page-count center">${o + 1} / ${e.length}</text>` : ""}
+        </svg>`);
+}
+async function Mt(s) {
+  const t = J(s),
+    e = await ut(t);
+  await Y(e, {
+    pageWidth: d,
+    pageHeight: E,
+    fontFamily: V
+  });
+}
+export { Mt as printQuote };

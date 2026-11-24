@@ -1,0 +1,48 @@
+import { j as i } from "./react-CjxcGQav.js";
+import r from "./CareerPage-DJ4LM1Ab.js";
+import "../js.d/main-Cm9wS5wt.js";
+import "./stylis-DdLD6a3t.js";
+import "./compactColumns-B2uraD04.js";
+import "./useFormModified-cVB1R-yN.js";
+import "./useFileViewer-B-2ewnr3.js";
+import "./documentViewerStore-BlSjH3BG.js";
+import "./employeeApi-CdGzOYcj.js";
+import "./types-CVhETUvu.js";
+import "./i18nLabels-BNTLL7cu.js";
+import "./trainingApi-DT4unjOR.js";
+import "./training-Bx0zycZu.js";
+import "./LogoutOutlined-DeC1rT68.js";
+import "./WorkOutlineOutlined-D5AzVFs6.js";
+import "./useThemeProps-CIcPyl2F.js";
+import "./SplitDockSlot-B6Q4iP8T.js";
+import "./ListViewModeToggle-NcYQu7vy.js";
+import "./HorizontalSplitOutlined-MKxJhLKp.js";
+import "./OptionToggleGroup-Cvm2wRyq.js";
+import "./listViewMode-iTl-2ucA.js";
+import "./profileApi-Btafs-pM.js";
+import "./selectedRow-CBnSZEGB.js";
+import "./EdgeTabs-Ccbggjn6.js";
+import "./mobileSearchOverlay-DYWcMOOb.js";
+import "./career-DNUE6AFa.js";
+import "./EmployeePickField-CDJRGgup.js";
+import "./EmployeeRecordsDialog-Cu-T1ysd.js";
+import "./propertySections-Bwsl7OH-.js";
+import "./FormValue-CAMilU-0.js";
+import "./RepeatRowCard-CW6Yl_Xr.js";
+import "./CategoryOutlined-DcAqxAdD.js";
+import "./EventBusyOutlined-DqcCaRMs.js";
+import "./LocalLibraryOutlined-DXLWZCv4.js";
+import "./PaidOutlined-Cy1uVjW3.js";
+import "./ToggleOnOutlined-5BVdqdOm.js";
+import "./PropertyFields-TuJTG5XK.js";
+import "./MobileCardListLayout-D5_p2Xer.js";
+import "./tableScrollbars-C9bhlJjO.js";
+import "./useColumnWidths-DSAca5rC.js";
+import "./useClientSort-CdwrAOWp.js";
+import "./orgTree-Dh5HFjBo.js";
+function S() {
+  return i.jsx(r, {
+    variant: "qualification"
+  });
+}
+export { S as default };

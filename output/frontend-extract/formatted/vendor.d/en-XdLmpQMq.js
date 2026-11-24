@@ -1,0 +1,11 @@
+const o = "Go home",
+  e = "Couldn't load this screen.",
+  a = "Couldn't load this screen even after reloading.",
+  d = "Reload",
+  l = {
+    goHome: o,
+    loadFailed: e,
+    loadFailedAfterReload: a,
+    reload: d
+  };
+export { l as default, o as goHome, e as loadFailed, a as loadFailedAfterReload, d as reload };

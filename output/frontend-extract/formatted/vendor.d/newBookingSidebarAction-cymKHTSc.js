@@ -1,0 +1,47 @@
+import { r as o, j as R } from "./react-CjxcGQav.js";
+import { bv as B, D as d, fL as C, cz as E, nR as S, bO as x, bT as O } from "../js.d/main-Cm9wS5wt.js";
+import { u as T } from "./sidebarAction-Z0aCDENX.js";
+import { b as h } from "./bookingApi-DC6gLfSO.js";
+import { D } from "./types-CVXtrYKe.js";
+import { u as F, B as M } from "./BookingFormDialog-EC3RsN2H.js";
+function q({
+  onChanged: t
+}) {
+  const b = B(),
+    m = d(),
+    s = C("booking").canWrite,
+    n = E()?.seq ?? 0,
+    [i, k] = o.useState([]),
+    a = o.useRef(D),
+    u = o.useRef([]);
+  u.current = i;
+  const c = o.useRef(t);
+  c.current = t, o.useEffect(() => {
+    if (!n || !s) return;
+    let g = !0;
+    const l = (r = !1) => {
+      h.meta().then(e => {
+        g && (a.current = e.settings, k(e.resources));
+      }).catch(e => !r && x(e instanceof Error ? e.message : O("booking.errLoadMeta")));
+    };
+    l();
+    const p = S(r => l(r));
+    return () => {
+      g = !1, p();
+    };
+  }, [n, s]);
+  const f = F({
+    getSettings: () => a.current,
+    getResources: () => u.current,
+    onChanged: () => c.current?.()
+  });
+  return T(!m && s ? {
+    label: b("booking.newBooking"),
+    fab: !1,
+    onClick: () => f.openCreate()
+  } : null), s ? R.jsx(M, {
+    controller: f,
+    resources: i
+  }) : null;
+}
+export { q as N };

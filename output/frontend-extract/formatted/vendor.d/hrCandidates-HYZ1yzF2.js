@@ -1,0 +1,42 @@
+import { c2 as a } from "../js.d/main-Cm9wS5wt.js";
+import { e as n } from "./employeeApi-CdGzOYcj.js";
+import { h as p } from "./hrCodeApi-BRtc5fIX.js";
+const u = {
+  employees: [],
+  units: [],
+  positions: [],
+  jobTitles: [],
+  loadingEmployees: !1
+};
+function c({
+  orgSeq: s,
+  withPlacement: o,
+  onLoaded: t
+}) {
+  let l = !0;
+  return t({
+    loadingEmployees: !0
+  }), n.list({
+    limit: 200
+  }).then(e => {
+    l && t({
+      employees: e.items
+    });
+  }).catch(() => {}).finally(() => {
+    l && t({
+      loadingEmployees: !1
+    });
+  }), o && (s && a.getTree(s).then(e => {
+    l && t({
+      units: e.units ?? []
+    });
+  }).catch(() => {}), p.list().then(e => {
+    l && t({
+      positions: e.position.filter(i => i.enabled).map(i => i.name),
+      jobTitles: e.job_title.filter(i => i.enabled).map(i => i.name)
+    });
+  }).catch(() => {})), () => {
+    l = !1;
+  };
+}
+export { u as E, c as l };

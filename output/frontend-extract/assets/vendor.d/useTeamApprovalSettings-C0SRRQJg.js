@@ -1,0 +1,1 @@
+import{n5 as r,n6 as s}from"../js.d/main-Cm9wS5wt.js";function o(){const t=r(),e=t?.settings??{};return{teamSeq:t?.seq??0,settings:e,canManage:t?.role==="owner",patchApproval:n=>{t&&s(t.seq,{...e,approval:n})}}}export{o as u};

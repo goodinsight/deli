@@ -1,0 +1,2595 @@
+import { c as yt, c8 as K, k7 as ze, bT as l, bO as w, by as j, k8 as He, os as Je, e as re, ak as We, of as Ye, k4 as vt, bv as Xe, cz as Vt, dC as wt, B as ce, dN as Ct, bM as O, jD as Ce, bx as B, mF as Be, rf as Me, rg as Le, ly as Q, rh as de, ri as Bt, rj as le, km as At, rk as Ft, rl as St, mE as qt, rm as Et, rn as ie, ro as Rt, rp as Ve, rq as It, oa as Mt, rr as Lt, g3 as Y, f1 as Ot, eY as Oe, rs as De, rt as Ne, ko as Pe, kp as je, ru as Dt, bH as fe, K as Nt, bI as Pt } from "../js.d/main-Cm9wS5wt.js";
+import { j as S, u as jt, r as T } from "./react-CjxcGQav.js";
+import { n as Gt } from "./CalendarSidebarPanel-DlQr_b8l.js";
+import { z as $t } from "./bootstrapController-BMV_i07c.js";
+import { r as Ae, s as Ut, e as xt, c as Fe, f as ae, g as zt, m as Ht, h as Jt, i as Wt, j as Yt, k as Ke, l as Xt, n as Qe, o as Z, q as Kt, t as Qt, v as Zt, w as es, x as ts, y as ss, z as as, A as os, B as ns, C as Ze, D as et, p as pe, F as rs, G as is, H as cs, I as ls, J as tt, K as us, L as ds, M as ps, N as ms, O as ks, P as fs, Q as gs, R as st, S as _s, T as Ts, U as bs, V as at, W as hs, b as ys, X as vs } from "./taskboxApi-BuYlRWHe.js";
+import { u as Vs, c as ws, d as Cs } from "./FeedProfileAvatar-B6gqXpYU.js";
+import { t as I, g as G, s as Bs, a as As, b as Fs, c as Ss, d as ge, e as qs } from "./useCalendarTasks-Cl5o2Ebi.js";
+import { j as Es } from "./taskboxProviderConfig-DZSmb5uq.js";
+import { videoMeetingApi as Rs, conflictMeetingCode as Is } from "./videoMeetingApi-BCL1yHsp.js";
+import { s as Ms } from "./videoLink-BfLN3LRj.js";
+import { V as Ls } from "./ChatCallButtons-TGIgJ8cF.js";
+import { m as Os } from "./ApprovalDetailDialog-v7PUkzWr.js";
+import { u as Ds } from "./EmployeeSelectDialog-Cdnxeoz9.js";
+import { M as Ns } from "./MicNoneOutlined-CCn21vm0.js";
+import { f as Ps } from "./MeetingRecordingPlayer-vear-u6W.js";
+const js = yt(S.jsx("path", {
+    d: "M8 6h8c1.1 0 2 .9 2 2v8c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2"
+  })),
+  Gs = ["none", "due", "status", "manager", "tab"],
+  $s = ["feed", "list", "card", "kanban", "sprint", "calendar", "month", "timeline", "monthly"];
+function ot(e) {
+  return Gs.includes(e) ? e : null;
+}
+function nt(e) {
+  return $s.includes(e) ? e : null;
+}
+function Us(e) {
+  if (!e || typeof e != "object") return null;
+  const t = {};
+  for (const [s, a] of Object.entries(e)) {
+    const o = nt(a);
+    s && o && (t[s] = o);
+  }
+  return t;
+}
+function xs(e) {
+  if (!e || typeof e != "object") return null;
+  const t = {};
+  for (const [s, a] of Object.entries(e)) {
+    const o = ot(a);
+    s && o && (t[s] = o);
+  }
+  return t;
+}
+function Ge(e) {
+  return {
+    hide_completed: e.hideCompleted,
+    group_by: e.groupBy,
+    group_by_by_tab: e.groupByByTab,
+    view_mode_by_tab: e.viewModeByTab,
+    last_view_mode: e.lastViewMode
+  };
+}
+const we = "task-create-office-picks",
+  ue = /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}/;
+function rt(e, t) {
+  return `${e.slice(0, 10)} ${He(Je(e) + t)}`;
+}
+function it(e) {
+  if (e.is_event) {
+    const o = String(e.due_date ?? "").slice(0, 10),
+      r = String(e.event_time ?? "");
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(o) || !/^\d{2}:\d{2}$/.test(r)) return null;
+    const n = `${o} ${r}`,
+      c = rt(n, 60);
+    return c > n ? {
+      start: n,
+      end: c
+    } : null;
+  }
+  const t = String(e.start_date ?? ""),
+    s = String(e.due_date ?? "");
+  if (!ue.test(t) || !ue.test(s)) return null;
+  const a = {
+    start: t.slice(0, 16),
+    end: s.slice(0, 16)
+  };
+  return a.end > a.start ? a : null;
+}
+function zs(e) {
+  const t = vt(),
+    s = String(e.due_date ?? "").slice(0, 10).match(/^\d{4}-\d{2}-\d{2}$/)?.[0] ?? t.slice(0, 10),
+    a = s === t.slice(0, 10) ? Math.min(Math.ceil(Je(t) / 30) * 30, 1320) : 600,
+    o = `${s} ${He(a)}`;
+  return {
+    start: o,
+    end: rt(o, 60)
+  };
+}
+function qn(e) {
+  return `${e.resource_name} · ${Ye(e.start_at, e.end_at)}`;
+}
+function En(e, t, s, a) {
+  const [o, r] = T.useState({
+    busy: new Map(),
+    loading: !1,
+    error: ""
+  });
+  return T.useEffect(() => {
+    if (!a || !ue.test(t) || !ue.test(s) || s <= t) {
+      r({
+        busy: new Map(),
+        loading: !1,
+        error: ""
+      });
+      return;
+    }
+    let n = !0;
+    r(i => ({
+      ...i,
+      loading: !0
+    }));
+    const c = window.setTimeout(() => {
+      ze.reservations({
+        from: t,
+        to: s,
+        kind: e
+      }).then(i => {
+        if (!n) return;
+        const d = new Map();
+        for (const u of i) ["hold", "confirmed", "in_use"].includes(u.status) && u.start_at < s && u.end_at > t && !d.has(u.resource_seq) && d.set(u.resource_seq, u);
+        r({
+          busy: d,
+          loading: !1,
+          error: ""
+        });
+      }).catch(i => {
+        n && r({
+          busy: new Map(),
+          loading: !1,
+          error: i instanceof Error ? i.message : l("office.reservationLoadFailed")
+        });
+      });
+    }, 250);
+    return () => {
+      n = !1, window.clearTimeout(c);
+    };
+  }, [e, t, s, a]), o;
+}
+function Rn(e, t = l) {
+  const s = e.user_name || e.booker_name,
+    a = Ye(e.start_at, e.end_at);
+  return [s, t(e.status === "hold" ? "office.busyHold" : "office.busyReserved", {
+    range: a
+  })].filter(Boolean).join(" · ");
+}
+function In(e) {
+  const t = T.useRef(e);
+  t.current = e;
+  const s = K({
+      stateId: we,
+      initialValues: {
+        room: null,
+        vehicle: null
+      }
+    }),
+    a = K({
+      stateId: `${we}-ui`,
+      initialValues: {
+        derived: null,
+        approval: !1
+      }
+    }),
+    o = {
+      pick: re({
+        modalId: "task-create-office-pick"
+      })
+    },
+    r = We({
+      formId: "task-create-office-pick",
+      initialValues: {
+        kind: "room",
+        resource_seq: 0,
+        start_at: "",
+        end_at: ""
+      },
+      onValidate: u => !u.start_at || !u.end_at ? (w(l("office.timeRequired")), !1) : u.end_at <= u.start_at ? (w(l("office.endAfterStart")), !1) : u.resource_seq ? !0 : (w(u.kind === "vehicle" ? l("office.pickVehicle") : l("office.pickRoom")), !1),
+      onSubmit: async u => {
+        const f = n.current.find(b => b.seq === u.resource_seq),
+          g = a.getValue("derived"),
+          E = {
+            kind: u.kind,
+            resource_seq: u.resource_seq,
+            resource_name: f?.name ?? "",
+            start_at: u.start_at,
+            end_at: u.end_at,
+            follow: !!(g && g.start === u.start_at && g.end === u.end_at),
+            approval: !!a.getValue("approval")
+          };
+        return s.setValue(u.kind, E), o.pick.close(), !0;
+      }
+    }),
+    n = T.useRef([]);
+  return {
+    picks: s,
+    ui: a,
+    form: r,
+    modals: o,
+    openPick: (u, f, g) => {
+      n.current = f;
+      const E = t.current.getTaskValues(),
+        b = it(E),
+        v = s.getValue(u),
+        q = v && !v.follow ? {
+          start: v.start_at,
+          end: v.end_at
+        } : b ?? zs(E);
+      a.setValue("derived", b), a.setValue("approval", g), r.setFormValues({
+        kind: u,
+        resource_seq: v?.resource_seq ?? 0,
+        start_at: q.start,
+        end_at: q.end
+      }), o.pick.open();
+    },
+    clearPick: u => {
+      s.setValue(u, null), o.pick.close();
+    },
+    reset: () => {
+      s.setValue("room", null), s.setValue("vehicle", null);
+    },
+    resourcesRef: n
+  };
+}
+const Hs = "/dashboard/approval/create";
+function Js() {
+  const e = jt(),
+    t = K({
+      stateId: we,
+      initialValues: {
+        room: null,
+        vehicle: null
+      }
+    });
+  return async (s, a) => {
+    const o = [t.getValue("room"), t.getValue("vehicle")].filter(Boolean);
+    if (t.setValue("room", null), t.setValue("vehicle", null), !s || o.length === 0) return null;
+    const r = it(a),
+      n = String(a.title ?? "").trim(),
+      c = [];
+    let i = null;
+    for (const d of o) {
+      const u = d.follow && r ? r : {
+        start: d.start_at,
+        end: d.end_at
+      };
+      if (d.kind === "vehicle" && d.approval) {
+        i = () => e(Hs, {
+          state: {
+            initialType: "vehicle",
+            initialFormData: {
+              vehicle_seq: d.resource_seq,
+              vehicle: d.resource_name,
+              start_time: u.start,
+              end_time: u.end,
+              task_seq: s,
+              ...(n ? {
+                title: n
+              } : {})
+            }
+          }
+        });
+        continue;
+      }
+      try {
+        await ze.createReservation({
+          resource_seq: d.resource_seq,
+          start_at: u.start,
+          end_at: u.end,
+          title: n,
+          task_seq: s
+        });
+      } catch (f) {
+        c.push(f instanceof Error && f.message ? f.message : l("office.resourceReserveFailed", {
+          name: d.resource_name
+        }));
+      }
+    }
+    return c.length > 0 && w(l("office.taskCreatedReserveFailed", {
+      reasons: c.join(" / ")
+    })), i && j(l("office.taskCreatedVehicleNeedsApproval")), i;
+  };
+}
+function $e({
+  children: e
+}) {
+  return S.jsx(ce, {
+    component: "span",
+    sx: {
+      color: "#9a9a97"
+    },
+    children: e
+  });
+}
+const ct = "task-create-video-meeting";
+function Mn({
+  open: e,
+  disabled: t,
+  form: s
+}) {
+  const a = Xe(),
+    o = Vt(),
+    r = !!(o && wt(o, Ls)),
+    n = K({
+      stateId: ct,
+      initialValues: {
+        on: !1
+      }
+    }),
+    c = n.useValue("on"),
+    i = !!s.useFormValue("is_event"),
+    d = e && !t && r && i,
+    u = T.useRef(!1);
+  T.useEffect(() => {
+    e && !u.current && n.setValue("on", !1), u.current = e;
+  }, [e]);
+  const f = [];
+  return d && f.push({
+    key: "video-meeting",
+    icon: S.jsx(Ct, {
+      sx: {
+        fontSize: 17,
+        ...(c ? {
+          color: "#2f80ed"
+        } : {})
+      }
+    }),
+    label: a("videoMeeting.videoMeeting"),
+    value: c ? S.jsxs(ce, {
+      component: "span",
+      children: [a("videoMeeting.on"), S.jsxs($e, {
+        children: [" · ", a("videoMeeting.linkOnSaveHelp")]
+      })]
+    }) : S.jsx($e, {
+      children: a("videoMeeting.offTapToCreate")
+    }),
+    filled: c,
+    onClick: () => n.setValue("on", !c)
+  }), {
+    extraRows: f
+  };
+}
+function Ws() {
+  const e = K({
+    stateId: ct,
+    initialValues: {
+      on: !1
+    }
+  });
+  return async (t, s) => {
+    const a = !!e.getValue("on");
+    if (e.setValue("on", !1), !(!a || !t || !s.is_event)) try {
+      const o = Ms(String(s.due_date ?? ""), String(s.event_time ?? ""));
+      await Rs.create({
+        mode: "meeting",
+        source: "calendar",
+        source_seq: t,
+        title: String(s.title ?? "").trim() || void 0,
+        video: !0,
+        ...(o ? {
+          scheduled_time: o
+        } : {})
+      }), j(l("videoMeeting.eventLinkCreated"));
+    } catch (o) {
+      if (Is(o)) {
+        j(l("videoMeeting.eventLinkExists"));
+        return;
+      }
+      w(l("videoMeeting.eventLinkFailed", {
+        reason: o instanceof Error && o.message ? o.message : l("videoMeeting.eventLinkRetryLater")
+      }));
+    }
+  };
+}
+function lt(e) {
+  const t = String(e.status ?? "");
+  return {
+    seq: Number(e.seq) || 0,
+    group_seq: Number(e.group_seq) || 0,
+    name: e.name ?? "",
+    goal: e.goal ?? "",
+    start_date: e.start_date ?? "",
+    end_date: e.end_date ?? "",
+    status: t === "active" || t === "closed" ? t : "planning",
+    sort_no: Number(e.sort_no) || 0
+  };
+}
+async function Ys(e) {
+  const s = (await O.http.post("/v1/taskbox/sprint", e, !0, Ce()))?.data?.item;
+  return s ? lt(s) : null;
+}
+async function Xs(e, t) {
+  await O.http.patch(`/v1/taskbox/sprint/${e}`, t, !0, Ce());
+}
+async function Ks(e) {
+  await O.http.delete(`/v1/taskbox/sprint/${e}`, void 0, !0, Ce());
+}
+const Qs = new Set();
+function ut(e) {
+  !Number.isInteger(e.seq) || e.seq <= 0 || Qs.forEach(t => t(e));
+}
+async function Se() {
+  const e = await O.http.post("/v1/taskbox/content-template/list", {}, !0);
+  return e?.data?.items ?? e?.items ?? [];
+}
+async function Zs(e, t) {
+  const s = await O.http.post("/v1/taskbox/content-template", {
+    name: e,
+    content: t
+  }, !0);
+  return s?.data?.item ?? s?.item ?? null;
+}
+async function ea(e) {
+  await O.http.delete(`/v1/taskbox/content-template/${e}`, void 0, !0);
+}
+async function qe() {
+  const e = await O.http.post("/v1/taskbox/task-template/list", {}, !0);
+  return e?.data?.items ?? e?.items ?? [];
+}
+async function ta(e) {
+  const t = await O.http.post("/v1/taskbox/task-template", e, !0);
+  return t?.data?.item ?? t?.item ?? null;
+}
+async function sa(e, t) {
+  const s = await O.http.patch(`/v1/taskbox/task-template/${e}`, t, !0);
+  return s?.data?.item ?? s?.item ?? null;
+}
+async function aa(e) {
+  await O.http.delete(`/v1/taskbox/task-template/${e}`, void 0, !0);
+}
+const oa = ["task_assigned", "task_referenced", "task_manager_changed", "task_reply_requested", "task_acked", "task_commented", "task_comment_liked", "task_comment_acked", "task_updated", "task_completed", "task_returned", "task_due_reminder", "task_notice", "task_notice_acked", "task_bug_reported", "task_claimed", "task_bug_fixed", "task_bug_verified", "task_bug_reopened", "task_doc_requested", "task_doc_submitted", "task_mentioned"];
+function na() {
+  const e = new Date(),
+    t = s => String(s).padStart(2, "0");
+  return `${e.getFullYear()}-${t(e.getMonth() + 1)}-${t(e.getDate())} ${t(e.getHours())}:${t(e.getMinutes())}`;
+}
+const k = e => t => {
+  t instanceof DOMException && t.name === "AbortError" || w(t instanceof Error ? t.message : e);
+};
+function V(e, t) {
+  pe(e, t).catch(k(l("taskbox.taskSaveFailed")));
+}
+function y(e, t) {
+  return e.getValue(`tasksById.${t}`);
+}
+function R(e, t) {
+  e.setValue(`tasksById.${t.seq}`, t);
+}
+function J(e, t) {
+  const s = e.getValue("tasksById");
+  if (!(t in s)) return;
+  const a = {
+    ...s
+  };
+  delete a[t], e.setValue("tasksById", a);
+}
+function M(e, t, s) {
+  const a = e.getValue(t);
+  a.includes(s) && e.setValue(t, a.filter(o => o !== s));
+}
+function me(e, t) {
+  const s = e.getValue("tasksById");
+  let a = !1;
+  const o = {};
+  for (const r of Object.keys(s)) {
+    const n = s[r],
+      c = t(n);
+    o[r] = c, c !== n && (a = !0);
+  }
+  a && e.setValue("tasksById", o);
+}
+function ra(e, t) {
+  const s = e.getValue("tasksById");
+  for (const a of Object.keys(s)) {
+    const o = s[a];
+    if (!o.linked_only && (o.checklist ?? []).some(r => Number(r.task_seq ?? 0) === t)) return !0;
+  }
+  return !1;
+}
+function m(e, t, s) {
+  const a = y(e, t);
+  a && R(e, typeof s == "function" ? s(a) : {
+    ...a,
+    ...s
+  });
+}
+const ia = () => (e, t) => {
+    e.setValue("activeTab", t);
+  },
+  ca = () => (e, t) => {
+    e.setValue("viewModeOverride", null), e.setValue("lastViewMode", t);
+  },
+  la = () => (e, t) => {
+    e.setValue("viewModeOverride", t);
+  },
+  ua = () => e => {
+    e.getValue("viewModeOverride") !== null && e.setValue("viewModeOverride", null);
+  };
+function Ue(e, t, s, a, o = !0) {
+  const {
+    tasks: r,
+    groups: n,
+    statuses: c,
+    sprints: i,
+    readTaskSeqs: d,
+    calendarFeed: u,
+    calendarImports: f,
+    gcalLink: g,
+    uploadMaxMb: E,
+    prefs: b,
+    contentTemplates: v,
+    taskTemplates: q
+  } = t;
+  e.setValue("serverPrefs", b), v && e.setValue("contentTemplates", v), q && e.setValue("taskTemplates", q), e.setValue("calendarFeed", u), e.setValue("calendarImports", f), e.setValue("gcalLink", g), e.setValue("uploadMaxMb", E), o && g.linked && g.import_enabled && Z().then(_ => e.setValue("googleEvents", _)).catch(() => {});
+  const D = r.map(_ => I(_, s)),
+    A = {},
+    L = e.getValue("tasksById"),
+    ke = new Set(d),
+    P = [];
+  for (const _ of D) {
+    const C = L[_.seq];
+    if (_.locked && C && !C.locked && le("task", _.seq)) {
+      A[_.seq] = C;
+      continue;
+    }
+    const x = !!C && typeof C.content == "string" && Array.isArray(C.comments) && (_.content === void 0 || !Array.isArray(_.comments)),
+      z = {
+        ..._,
+        ...(x ? {
+          content: C.content,
+          comments: C.comments
+        } : {}),
+        is_read: ke.has(_.seq)
+      },
+      te = C && JSON.stringify(C) === JSON.stringify(z);
+    A[_.seq] = te ? C : z, x && !te && P.push(_.seq);
+  }
+  for (const _ of P.slice(0, 5)) ae(_).then(C => {
+    C && m(e, _, {
+      content: C.content ?? "",
+      comments: C.comments ?? []
+    });
+  }).catch(() => {});
+  for (const _ of e.getValue("pagedSeqs")) !(_ in A) && L[_] && (A[_] = L[_]);
+  e.setValue("tasksById", A), e.setValue("taskSeqs", D.map(_ => _.seq)), e.setValue("readTaskSeqs", d), e.setValue("customTabs", n.map(Fs)), e.setValue("sprints", i.map(lt));
+  const ne = e.getValue("statusOptions"),
+    $ = c.map(Ss),
+    U = ne.filter(_ => !_.key.startsWith("custom-status-"));
+  e.setValue("statusOptions", [...U, ...$]), e.setValue("isLoaded", !0), e.setValue("loadedTeamVersion", a);
+}
+let _e = !1;
+const Ee = () => async (e, t, s = !1, a = !1) => {
+  if (e.getValue("loadingList") || _e || !s && e.getValue("isLoaded")) return;
+  a && (_e = !0);
+  const o = Ve(),
+    r = ie(!!e.getValue("viewAllTasks")),
+    n = a ? null : Rt(r);
+  a || (n ? Ue(e, n, t, o) : e.setValue("loadingList", !0));
+  try {
+    const c = await ys(!!e.getValue("viewAllTasks"));
+    if (Ve() !== o) return;
+    const i = !!(n?.gcalLink?.linked && n.gcalLink.import_enabled);
+    Ue(e, c, t, o, !i), It(r, c), c.contentTemplates || Se().then(d => e.setValue("contentTemplates", d)).catch(() => {}), c.taskTemplates || qe().then(d => e.setValue("taskTemplates", d)).catch(() => {});
+  } catch (c) {
+    !n && !a && k(l("taskbox.taskboxLoadFailed"))(c);
+  } finally {
+    a ? _e = !1 : e.setValue("loadingList", !1);
+  }
+};
+let xe = "",
+  Te = null,
+  X = null;
+const Re = () => async (e, t, s, a, o) => {
+  if (e.getValue("pagedLoading")) {
+    a && (Te = {
+      tab: t,
+      myAccountSeq: s,
+      kind: o
+    });
+    return;
+  }
+  const r = e.getValue("filters"),
+    n = Q() ? 0 : de(),
+    c = a ? 1 : (e.getValue("pagedPage") || 0) + 1;
+  e.setValue("pagedLoading", !0);
+  const i = JSON.stringify([t, o ?? "", r.searchText.trim(), r.sortBy, r.sortDirection, r.fromDate ?? "", r.toDate ?? "", !!e.getValue("viewAllTasks"), n, s]);
+  if (a && X?.key === i && e.getValue("pagedSeqs").length === 0) {
+    const u = {
+      ...e.getValue("tasksById")
+    };
+    for (const f of X.items) u[f.seq] || (u[f.seq] = f);
+    e.setValue("tasksById", u), e.setValue("pagedSeqs", X.items.map(f => f.seq)), e.setValue("pagedTotal", X.total), e.setValue("pagedPage", X.page);
+  }
+  const d = a && i === xe && e.getValue("pagedSeqs").length > 0;
+  xe = i, a && !d && (e.setValue("pagedSeqs", []), e.setValue("pagedTotal", 0), e.setValue("pagedPage", 0));
+  try {
+    const u = await at({
+        tab: t,
+        search: r.searchText.trim(),
+        orderBy: r.sortBy || (t === "trash" ? "deleted_time" : "completed_time"),
+        orderDir: r.sortDirection,
+        page: c,
+        allTasks: !!e.getValue("viewAllTasks"),
+        fromDate: r.fromDate,
+        toDate: r.toDate,
+        ...(t === "archive" && o ? {
+          kind: o
+        } : {}),
+        workspaceSeq: n
+      }),
+      f = u.items.map(v => I(v, s)),
+      g = {
+        ...e.getValue("tasksById")
+      };
+    for (const v of f) g[v.seq] = v;
+    e.setValue("tasksById", g);
+    const E = a ? [] : e.getValue("pagedSeqs"),
+      b = new Set(E);
+    e.setValue("pagedSeqs", [...E, ...f.map(v => v.seq).filter(v => !b.has(v))]), e.setValue("pagedTotal", u.total), e.setValue("pagedPage", u.page), a && (X = {
+      key: i,
+      items: f,
+      total: u.total,
+      page: u.page
+    });
+  } catch (u) {
+    k(l("taskbox.taskListLoadFailed"))(u);
+  } finally {
+    e.setValue("pagedLoading", !1);
+    const u = Te;
+    Te = null, u && Re()(e, u.tab, u.myAccountSeq, !0, u.kind);
+  }
+};
+let be = 0;
+const da = () => async (e, t, s) => {
+    const a = ++be,
+      o = t.trim();
+    if (!o || s <= 0) {
+      e.setValue("archiveSearchSeqs", []), e.setValue("archiveSearchTotal", 0);
+      return;
+    }
+    try {
+      const r = await at({
+        tab: "archive",
+        search: o,
+        orderBy: "completed_time",
+        orderDir: "desc",
+        page: 1,
+        allTasks: !!e.getValue("viewAllTasks"),
+        workspaceSeq: Q() ? 0 : de()
+      });
+      if (a !== be) return;
+      const n = r.items.map(i => I(i, s)).filter(i => i.archived),
+        c = {
+          ...e.getValue("tasksById")
+        };
+      for (const i of n) c[i.seq] = i;
+      e.setValue("tasksById", c), e.setValue("archiveSearchSeqs", n.map(i => i.seq)), e.setValue("archiveSearchTotal", r.total);
+    } catch {
+      if (a !== be) return;
+      e.setValue("archiveSearchSeqs", []), e.setValue("archiveSearchTotal", 0);
+    }
+  },
+  pa = () => (e, t, s, a = 0) => {
+    const o = t.seq;
+    if (!o) return;
+    if (t.action === "delete" || !t.item) {
+      M(e, "taskSeqs", o), M(e, "pagedSeqs", o), J(e, o), pt(e, o);
+      return;
+    }
+    const r = I(t.item, s);
+    if (r.locked && le("task", o) && y(e, o)) {
+      ae(o).then(f => {
+        if (f && !f.locked && le("task", o)) {
+          const g = y(e, o);
+          R(e, {
+            ...I(f, s),
+            ...(g?.is_read ? {
+              is_read: !0
+            } : {})
+          });
+        }
+      }).catch(() => {});
+      return;
+    }
+    const n = !!e.getValue("viewAllTasks") || Et(r, s, a),
+      c = !n && ra(e, o);
+    c && (r.linked_only = !0);
+    const i = n || c,
+      d = e.getValue("taskSeqs").includes(o),
+      u = e.getValue("pagedSeqs").includes(o);
+    if (!i) {
+      M(e, "taskSeqs", o), M(e, "pagedSeqs", o), J(e, o);
+      return;
+    }
+    if (r.archived) {
+      M(e, "taskSeqs", o), u ? R(e, r) : J(e, o);
+      return;
+    }
+    R(e, r), d || e.setValue("taskSeqs", [o, ...e.getValue("taskSeqs")]);
+  },
+  ma = () => (e, t) => {
+    e.setValue("hideCompleted", t);
+  },
+  ka = () => (e, t) => {
+    const s = String(e.getValue("activeTab") ?? "my");
+    e.setValue(`groupByByTab.${s}`, t), e.setValue("groupBy", t), e.setValue("collapsedGroupKeys", []);
+  },
+  fa = () => (e, t) => {
+    const s = e.getValue("collapsedGroupKeys");
+    e.setValue("collapsedGroupKeys", s.includes(t) ? s.filter(a => a !== t) : [...s, t]);
+  },
+  ga = () => async (e, t, s) => {
+    try {
+      const a = await bs(t.trim(), s);
+      if (!a) return "";
+      const o = As(a),
+        r = e.getValue("customTabs");
+      return e.setValue("customTabs", [...r, {
+        key: o,
+        label: t.trim(),
+        icon: s,
+        archived: !1,
+        useSprints: !1
+      }]), o;
+    } catch (a) {
+      return k(l("taskbox.projectCreateFailed"))(a), "";
+    }
+  },
+  _a = () => (e, t, s) => {
+    const a = e.getValue("customTabs");
+    e.setValue("customTabs", a.map(o => o.key === t ? {
+      ...o,
+      archived: s
+    } : o)), st(G(t), {
+      archived: s
+    }).catch(k(l("taskbox.projectSaveFailed")));
+  },
+  Ta = () => (e, t) => {
+    const s = e.getValue("filters");
+    e.setValue("filters", {
+      ...s,
+      ...t
+    });
+  },
+  ba = () => async (e, t) => {
+    await Ee()(e, t, !0), e.setValue("teamEpoch", (Number(e.getValue("teamEpoch")) || 0) + 1);
+  },
+  ha = () => async (e, t, s) => {
+    if (!!e.getValue("viewAllTasks") === t) return;
+    e.setValue("viewAllTasks", t), await Ee()(e, s, !0);
+    const a = String(e.getValue("activeTab") ?? "");
+    (a === "done" || a === "archive") && (await Re()(e, a, s, !0));
+  },
+  ya = () => async (e, t) => {
+    const s = !!t.is_notice;
+    if (!(!s && !(t.manager_account_seq ?? 0) && (t.receiver_account_seqs ?? []).length === 0)) try {
+      const a = await xt(t.seq);
+      a && m(e, t.seq, {
+        status: a.status ?? "waiting",
+        acks: a.acks ?? []
+      });
+      const o = s ? t.target_names ?? [] : [t.manager_name, ...t.receiver_names],
+        r = [...new Set(o.map(c => String(c ?? "").trim()).filter(Boolean))],
+        n = r.length > 1 ? l("taskbox.nameAndOthers", {
+          name: r[0],
+          count: r.length - 1
+        }) : r[0];
+      j(n ? l(s ? "taskbox.noticeConfirmRequested" : "taskbox.taskConfirmRequested", {
+        name: n
+      }) : l("taskbox.noticeConfirmRequestedAll"));
+    } catch (a) {
+      k(l("taskbox.confirmRequestFailed"))(a);
+    }
+  },
+  va = (e = {}) => async (t, s) => {
+    try {
+      const a = await Ze(s);
+      if (!a) return;
+      const o = {
+        acks: a.acks ?? []
+      };
+      a.status && (o.status = a.status), m(t, s, o), e.onConfirmed?.();
+    } catch (a) {
+      k(l("taskbox.taskConfirmFailed"))(a);
+    }
+  },
+  Va = () => async (e, t, s) => {
+    try {
+      const a = await ns(t, s);
+      if (!a) return;
+      m(e, t, {
+        completed: !1,
+        completed_by: "",
+        completed_by_account: 0,
+        completed_time: "",
+        review_pending: void 0,
+        status: a.status || "in_progress",
+        comments: a.comments ?? []
+      });
+    } catch (a) {
+      k(l("taskbox.undoDoneFailed"))(a);
+    }
+  },
+  wa = () => async (e, t) => {
+    try {
+      if (!(await os(t))) return;
+      m(e, t, {
+        review_pending: void 0
+      });
+    } catch (s) {
+      k(l("taskbox.reviewDoneFailed"))(s);
+    }
+  },
+  Ca = () => async e => {
+    try {
+      const t = await ts();
+      e.setValue("calendarFeed", t);
+    } catch (t) {
+      k(l("taskbox.calendarSubscribeFailed"))(t);
+    }
+  },
+  Ba = () => (e, t) => {
+    const s = e.getValue("calendarFeed");
+    s?.subscribed && (e.setValue("calendarFeed", {
+      ...s,
+      enabled: t
+    }), es(t).catch(a => {
+      e.setValue("calendarFeed", s), k(l("taskbox.calendarSettingFailed"))(a);
+    }));
+  },
+  Aa = () => async (e, t) => {
+    try {
+      const {
+        imports: s,
+        name: a
+      } = await Zt(t);
+      e.setValue("calendarImports", s);
+      const o = await Z().catch(() => []);
+      return e.setValue("googleEvents", o), B(l("taskbox.calendarConnected", {
+        name: a
+      })), !0;
+    } catch (s) {
+      return k(l("taskbox.googleCalendarAddFailed"))(s), !1;
+    }
+  },
+  Fa = () => (e, t) => {
+    const s = e.getValue("gcalLink");
+    s?.linked && (e.setValue("gcalLink", {
+      ...s,
+      import_enabled: t
+    }), t || e.setValue("googleEvents", []), Qe({
+      import_enabled: t
+    }).then(() => {
+      if (t) return Z().then(a => e.setValue("googleEvents", a));
+    }).catch(a => {
+      e.setValue("gcalLink", s), k(l("taskbox.importSettingFailed"))(a);
+    }));
+  },
+  Sa = () => async (e, t) => {
+    try {
+      const s = await Qt(t);
+      e.setValue("calendarImports", s);
+      const a = s.some(o => o.enabled) ? await Z().catch(() => []) : [];
+      e.setValue("googleEvents", a);
+    } catch (s) {
+      k(l("taskbox.importRemoveFailed"))(s);
+    }
+  },
+  qa = () => (e, t, s, a) => {
+    m(e, t, {
+      [s]: a
+    }), V(t, {
+      [s]: a
+    });
+  },
+  Ea = () => (e, t, s) => {
+    Object.keys(s).length !== 0 && (m(e, t, s), V(t, s));
+  },
+  Ra = () => (e, t, s) => {
+    m(e, t, {
+      reminders: s
+    }), V(t, {
+      reminders: s
+    });
+  };
+function Ia(e) {
+  const t = e.deadline_date ? `${e.deadline_date} ${e.deadline_time || "23:59"}` : "";
+  return {
+    kind: e.kind,
+    description: e.description.trim(),
+    options: e.options.map(s => s.trim()).filter(Boolean),
+    deadline: t,
+    multiple: e.multiple,
+    anonymous: e.anonymous,
+    allow_add: e.allow_add,
+    result_private: e.result_private,
+    reveal: e.reveal
+  };
+}
+function Ma(e) {
+  const t = {};
+  for (const [s, a] of Object.entries(e ?? {})) {
+    const o = String(a ?? "").trim();
+    o && (t[s] = o);
+  }
+  return Object.keys(t).length > 0 ? {
+    custom_values: t
+  } : {};
+}
+function La(e) {
+  const t = e.round_plan_ids ?? [];
+  if (t.length === 0) return {};
+  const s = e.round_plan_keys ?? {
+      period: "",
+      amount: ""
+    },
+    a = e.custom_values ?? {},
+    o = s.amount === "amount" ? e.amount : s.amount ? a[s.amount] : "",
+    r = {
+      period: s.period ? String(a[s.period] ?? "") : "",
+      month: e.period_month ?? "",
+      amount: o ?? ""
+    },
+    n = t.map(c => e.round_plans?.[c] ?? {
+      period: "",
+      month: "",
+      amount: ""
+    });
+  return {
+    rounds: {
+      schedule: [r, ...n],
+      period_key: s.period,
+      amount_key: s.amount
+    }
+  };
+}
+const Oa = () => (e, t, s) => {
+    if (t.length === 0) return;
+    const a = t.map(n => I(n, s));
+    for (const n of a) R(e, n);
+    const o = a.map(n => n.seq),
+      r = e.getValue("taskSeqs");
+    e.setValue("taskSeqs", [...o, ...r.filter(n => !o.includes(n))]);
+  },
+  Da = () => (e, t, s) => {
+    const a = [];
+    for (const n of t) y(e, n.seq) || (R(e, {
+      ...I(n, s),
+      linked_only: !0
+    }), a.push(n.seq));
+    if (a.length === 0) return;
+    const o = e.getValue("taskSeqs"),
+      r = new Set(o);
+    e.setValue("taskSeqs", [...o, ...a.filter(n => !r.has(n))]);
+  },
+  Na = () => async (e, t, s) => {
+    const a = String(e.getValue("activeTab") ?? ""),
+      o = Number(t.workspace_seq ?? 0) > 0,
+      r = t.tab_key.trim() || (Be(a) && !o ? a : "");
+    try {
+      const n = !!(t.is_post && t.is_talk),
+        c = await Fe({
+          title: n ? "" : t.title.trim(),
+          note: t.note.trim(),
+          content: t.content,
+          icon: t.icon,
+          icon_color: t.icon_color,
+          workspace_seq: Number(t.workspace_seq ?? 0) || de(),
+          group_seq: G(r),
+          manager_account_seq: t.manager_account_seq || 0,
+          manager_name: t.manager_name.trim(),
+          receiver_names: t.receiver_names,
+          receiver_account_seqs: t.receiver_account_seqs,
+          is_notice: t.is_notice,
+          is_event: t.is_event,
+          ...(t.is_post ? {
+            is_post: !0
+          } : {}),
+          ...(t.is_post && t.is_talk ? {
+            is_talk: !0
+          } : {}),
+          ...(t.is_post && t.post_password && !Q() ? {
+            post_password: t.post_password
+          } : {}),
+          ...(t.is_poll && t.poll ? {
+            is_poll: !0,
+            poll: Ia(t.poll)
+          } : {}),
+          ...(t.period_month ? {
+            period_month: t.period_month
+          } : {}),
+          ...(t.subject_name?.trim() ? {
+            subject_name: t.subject_name.trim()
+          } : {}),
+          ...(Number(t.amount) ? {
+            amount: Number(t.amount)
+          } : {}),
+          ...Ma(t.custom_values),
+          ...La(t),
+          is_bug: t.is_bug,
+          visibility: t.visibility,
+          visibility_group_seq: t.visibility_group_seq,
+          repeat_rule: t.repeat_rule,
+          repeat_until: t.repeat_until,
+          bug_repro: t.bug_repro,
+          bug_device: t.bug_device,
+          bug_where: t.bug_where.trim(),
+          bug_version: t.bug_version.trim(),
+          event_time: t.event_time,
+          event_place: t.event_place,
+          event_address: t.event_address,
+          target_names: t.target_names,
+          target_account_seqs: t.target_account_seqs,
+          start_date: t.start_date,
+          due_date: t.due_date,
+          reminders: t.reminders,
+          priority: t.priority,
+          label_keys: t.label_keys,
+          sprint_seq: t.sprint_seq || 0,
+          story_points: t.story_points || 0,
+          checklist: t.checklist,
+          ...(Le() > 0 ? {
+            consult_seq: Le()
+          } : {}),
+          ...((Number(t.customer_seq) || Me()?.seq || 0) > 0 ? {
+            customer_seq: Number(t.customer_seq) || Me()?.seq || 0
+          } : {})
+        });
+      if (!c.item) throw new Error(l("taskbox.createEmptyResponse"));
+      const i = c.items.map(g => I(g, s));
+      for (const g of i) R(e, g);
+      const d = i.map(g => g.seq),
+        u = e.getValue("taskSeqs");
+      e.setValue("taskSeqs", [...d, ...u.filter(g => !d.includes(g))]);
+      const f = i[0];
+      return n || B({
+        message: t.is_notice ? l("taskbox.noticeCreated") : t.is_post ? l("taskbox.postCreated") : t.is_poll ? l("taskbox.pollCreated") : t.is_bug ? l("taskbox.bugCreated") : t.is_event ? l("taskbox.eventCreated") : l("taskbox.taskCreated"),
+        delay: 500
+      }), Bt(Number(f.seq) || 0), f.seq;
+    } catch (n) {
+      return k(l("taskbox.taskCreateFailed"))(n), null;
+    }
+  },
+  Pa = () => (e, t, s, a) => {
+    const o = new Map(a.map((r, n) => [r, n + 1]));
+    me(e, r => {
+      const n = o.get(r.seq);
+      return r.seq === t ? {
+        ...r,
+        due_date: s,
+        sort_no: n ?? 1
+      } : n ? {
+        ...r,
+        sort_no: n
+      } : r;
+    }), Ae(a.map((r, n) => ({
+      seq: r,
+      sort_no: n + 1,
+      ...(r === t ? {
+        due_date: s
+      } : {})
+    }))).catch(k(l("taskbox.sortSaveFailed")));
+  },
+  ja = () => (e, t) => {
+    const s = e.getValue("customTabs"),
+      a = new Map(s.map(r => [r.key, r])),
+      o = t.map(r => a.get(r)).filter(r => !!r);
+    for (const r of s) t.includes(r.key) || o.push(r);
+    e.setValue("customTabs", o), Ts(o.map(r => G(r.key)).filter(r => r > 0)).catch(k(l("taskbox.projectSortFailed")));
+  },
+  Ga = () => (e, t, s, a, o) => {
+    const r = e.getValue("customTabs");
+    e.setValue("customTabs", r.map(n => n.key === t ? {
+      ...n,
+      label: s.trim(),
+      icon: a,
+      ...(o === void 0 ? {} : {
+        useSprints: o
+      })
+    } : n)), st(G(t), {
+      name: s.trim(),
+      icon: a,
+      ...(o === void 0 ? {} : {
+        use_sprints: o
+      })
+    }).catch(k(l("taskbox.projectSaveFailed")));
+  },
+  $a = () => (e, t) => {
+    const s = e.getValue("customTabs");
+    e.setValue("customTabs", s.filter(a => a.key !== t)), me(e, a => a.tab_key === t ? {
+      ...a,
+      tab_key: ""
+    } : a), _s(G(t)).catch(k(l("taskbox.projectDeleteFailed")));
+  },
+  Ua = () => (e, t, s) => {
+    m(e, t, {
+      title: s.trim()
+    }), V(t, {
+      title: s.trim()
+    });
+  },
+  xa = () => (e, t, s) => {
+    m(e, t, {
+      priority: s
+    }), V(t, {
+      priority: s
+    });
+  },
+  za = () => (e, t, s) => {
+    m(e, t, {
+      event_time: s.trim()
+    }), V(t, {
+      event_time: s.trim()
+    });
+  },
+  Ha = () => (e, t, s) => {
+    m(e, t, {
+      event_place: s.trim()
+    }), V(t, {
+      event_place: s.trim()
+    });
+  },
+  Ja = () => (e, t, s) => {
+    m(e, t, {
+      event_address: s.trim()
+    }), V(t, {
+      event_address: s.trim()
+    });
+  };
+function ee(e, t, s) {
+  const a = y(e, t);
+  if (!a) return;
+  const o = s(a);
+  m(e, t, {
+    checklist: o
+  }), V(t, {
+    checklist: o
+  });
+}
+const Wa = () => (e, t, s) => {
+    const a = s.trim();
+    a && ee(e, t, o => [...(o.checklist ?? []), {
+      label: a,
+      checked: !1
+    }]);
+  },
+  Ya = () => (e, t, s, a) => {
+    if (!(s > 0)) return;
+    const o = y(e, s),
+      r = (a || o?.title || "").trim();
+    !r || (y(e, t)?.checklist ?? []).some(c => Number(c.task_seq ?? 0) === s) || (m(e, t, c => ({
+      ...c,
+      checklist: [...(c.checklist ?? []), {
+        label: r,
+        checked: !!o?.completed,
+        task_seq: s
+      }]
+    })), Xa(e, t));
+  },
+  he = new Map();
+function Xa(e, t) {
+  const s = he.get(t);
+  s && clearTimeout(s), he.set(t, setTimeout(() => {
+    he.delete(t);
+    const a = y(e, t);
+    a && V(t, {
+      checklist: a.checklist ?? []
+    });
+  }, 0));
+}
+const Ka = () => (e, t, s, a, o = 0) => {
+    const r = Number(y(e, t)?.checklist?.[s]?.task_seq ?? 0);
+    if (r > 0) {
+      const n = y(e, r);
+      if (n && o > 0 && !St(n, o)) {
+        j(l("taskbox.linkedCompleteOnly"));
+        return;
+      }
+      m(e, t, {
+        checklist: (y(e, t)?.checklist ?? []).map((c, i) => i === s ? {
+          ...c,
+          checked: a
+        } : c)
+      }), kt()(e, r, a);
+      return;
+    }
+    ee(e, t, n => (n.checklist ?? []).map((c, i) => i === s ? {
+      ...c,
+      checked: a
+    } : c));
+  },
+  Qa = () => async (e, t, s, a, o) => {
+    const r = a.trim();
+    if (!r) return;
+    const n = y(e, t);
+    if (!n) return;
+    const c = n.checklist?.[s];
+    if (!(!c || Number(c.task_seq ?? 0) > 0)) try {
+      const i = await Fe({
+        title: r,
+        workspace_seq: n.workspace_seq || de(),
+        group_seq: G(n.tab_key ?? ""),
+        due_date: n.due_date,
+        priority: n.priority,
+        manager_account_seq: 0,
+        manager_name: "",
+        receiver_names: [],
+        receiver_account_seqs: []
+      });
+      if (!i.item) throw new Error(l("taskbox.createEmptyResponse"));
+      const d = I(i.item, o);
+      return R(e, d), e.setValue("taskSeqs", [d.seq, ...e.getValue("taskSeqs").filter(u => u !== d.seq)]), ee(e, t, u => (u.checklist ?? []).map((f, g) => g === s ? {
+        ...f,
+        task_seq: d.seq
+      } : f)), B({
+        message: l("taskbox.todoToTaskDone"),
+        delay: 500
+      }), d.seq;
+    } catch (i) {
+      return k(l("taskbox.todoToTaskFailed"))(i), 0;
+    }
+  },
+  Za = () => async (e, t, s, a) => {
+    if (!(t > 0) || !(s > 0) || t === s) return;
+    const o = y(e, t)?.relations ?? [];
+    if (o.some(n => n.task_seq === s && n.type === a)) return;
+    const r = a === "duplicate_of" ? o.filter(n => n.type !== "duplicate_of") : o;
+    m(e, t, {
+      relations: [...r, {
+        task_seq: s,
+        type: a
+      }]
+    });
+    try {
+      await et(t, s, a);
+    } catch (n) {
+      m(e, t, {
+        relations: o
+      }), k(l("taskbox.linkFailed"))(n);
+    }
+  },
+  eo = () => async (e, t, s, a) => {
+    if (!(t > 0) || !(s > 0)) return;
+    const o = y(e, t)?.relations ?? [],
+      r = o.filter(n => !(n.task_seq === s && n.type === a));
+    if (r.length !== o.length) {
+      m(e, t, {
+        relations: r
+      });
+      try {
+        await hs(t, s, a);
+      } catch (n) {
+        m(e, t, {
+          relations: o
+        }), k(l("taskbox.unlinkFailed"))(n);
+      }
+    }
+  },
+  to = () => (e, t, s, a) => {
+    const o = a.trim();
+    o && ee(e, t, r => (r.checklist ?? []).map((n, c) => c === s ? {
+      ...n,
+      label: o
+    } : n));
+  },
+  so = () => (e, t, s) => {
+    ee(e, t, () => s ?? []);
+  },
+  ao = () => (e, t, s) => {
+    ee(e, t, a => (a.checklist ?? []).filter((o, r) => r !== s));
+  };
+function dt(e, t, s) {
+  const a = y(e, t);
+  if (!a) return;
+  const o = s(a);
+  m(e, t, {
+    attachments: o
+  }), V(t, {
+    attachments: o
+  });
+}
+function oo(e, t) {
+  return y(e, t)?.attachments ?? [];
+}
+const no = e => async (t, s, a, o) => {
+    const r = Ft(a, Number(t.getValue("uploadMaxMb")) || 50);
+    r.message && j(r.message);
+    const n = r.accepted;
+    if (n.length === 0) return;
+    const c = n.map(d => ({
+        name: d.name,
+        size: d.size
+      })),
+      i = [];
+    for (let d = 0; d < n.length; d += 1) {
+      const u = n[d];
+      e.setValue("attachmentUpload", {
+        taskSeq: s,
+        name: u.name,
+        size: u.size,
+        progress: 0,
+        index: d + 1,
+        total: n.length,
+        queue: c
+      });
+      try {
+        const f = await is(s, u, g => {
+          e.setValue("attachmentUpload.progress", g);
+        });
+        f && m(t, s, {
+          attachments: f.attachments ?? []
+        });
+      } catch {
+        i.push(u.name);
+      }
+    }
+    if (e.setValue("attachmentUpload", null), i.length > 0) {
+      w(l("taskbox.uploadFailedNames", {
+        names: i.join(", ")
+      }));
+      return;
+    }
+    o?.silent || B({
+      message: n.length > 1 ? l("taskbox.filesAttached", {
+        count: n.length
+      }) : l("taskbox.attached"),
+      position: "center"
+    });
+  },
+  ro = () => async (e, t, s) => {
+    const a = oo(e, t)[s];
+    if (a) {
+      if (a.uuid) {
+        try {
+          const o = await rs(t, a.uuid);
+          o && m(e, t, {
+            attachments: o.attachments ?? []
+          });
+        } catch (o) {
+          k(l("taskbox.attachDeleteFailed"))(o);
+        }
+        return;
+      }
+      dt(e, t, o => (o.attachments ?? []).filter((r, n) => n !== s));
+    }
+  },
+  io = () => (e, t, s, a) => {
+    dt(e, t, o => {
+      const r = [...(o.attachments ?? [])],
+        [n] = r.splice(s, 1);
+      return n ? (r.splice(a, 0, n), r) : o.attachments ?? [];
+    });
+  },
+  co = () => async (e, t, s, a) => {
+    try {
+      const o = [],
+        r = [];
+      for (const c of a ?? []) try {
+        const i = await tt(t, c);
+        i ? o.push(i) : r.push(c.name);
+      } catch {
+        r.push(c.name);
+      }
+      if (r.length > 0 && w(l("taskbox.uploadFailedNames", {
+        names: r.join(", ")
+      })), !s.trim() && o.length === 0) return;
+      const n = await ds(t, s, o.length > 0 ? o : void 0);
+      if (!n) return;
+      m(e, t, {
+        comments: n.comments ?? [],
+        status: n.status || "not_started"
+      });
+    } catch (o) {
+      k(l("taskbox.commentCreateFailed"))(o);
+    }
+  },
+  lo = () => async (e, t, s, a, o) => {
+    let r;
+    if (o) {
+      const n = [...o.attachments],
+        c = [];
+      for (const i of o.files) try {
+        const d = await tt(t, i);
+        d ? n.push(d) : c.push(i.name);
+      } catch {
+        c.push(i.name);
+      }
+      c.length > 0 && w(l("taskbox.uploadFailedNames", {
+        names: c.join(", ")
+      })), r = n;
+    }
+    m(e, t, n => ({
+      ...n,
+      comments: (n.comments ?? []).map((c, i) => i === s ? {
+        ...c,
+        text: a.trim(),
+        ...(r ? {
+          attachments: r
+        } : {})
+      } : c)
+    })), us(t, s, a.trim(), r).catch(k(l("taskbox.commentEditFailed")));
+  },
+  uo = () => (e, t, s) => {
+    m(e, t, a => ({
+      ...a,
+      comments: (a.comments ?? []).filter((o, r) => r !== s)
+    })), ls(t, s).catch(k(l("taskbox.commentDeleteFailed")));
+  },
+  po = () => async (e, t, s, a, o, r) => {
+    const n = a === "like" ? "likes" : "acks";
+    m(e, t, c => ({
+      ...c,
+      comments: (c.comments ?? []).map((i, d) => {
+        if (d !== s) return i;
+        const u = i[n] ?? [],
+          f = u.some(g => g.account_seq === o);
+        return {
+          ...i,
+          [n]: f ? u.filter(g => g.account_seq !== o) : [...u, {
+            account_seq: o,
+            name: r,
+            time: na()
+          }]
+        };
+      })
+    }));
+    try {
+      const c = await cs(t, s, a);
+      c && m(e, t, {
+        comments: c.comments ?? []
+      });
+    } catch (c) {
+      k(l("taskbox.commentReactionFailed"))(c);
+    }
+  },
+  mo = () => async (e, t, s) => {
+    try {
+      const a = await ps(t.trim(), s);
+      if (!a) return;
+      const o = e.getValue("statusOptions");
+      e.setValue("statusOptions", [...o, {
+        key: Bs(a),
+        name: t.trim(),
+        ...qt(s)
+      }]);
+    } catch (a) {
+      k(l("taskbox.statusCreateFailed"))(a);
+    }
+  },
+  ko = () => (e, t, s) => {
+    const a = y(e, t),
+      r = (s === "in_progress" || s === "bug_in_progress") && a && !String(a.start_date ?? "").trim() ? mt() : void 0;
+    m(e, t, {
+      status: s,
+      ...(r ? {
+        start_date: r
+      } : {})
+    }), V(t, {
+      status: s
+    });
+  },
+  fo = () => (e, t, s, a) => {
+    m(e, t, {
+      [s]: a
+    }), V(t, {
+      [s]: a
+    });
+  },
+  go = () => (e, t, s) => {
+    m(e, t, {
+      resolution: s
+    }), V(t, {
+      resolution: s
+    });
+  },
+  _o = (e = {}) => async (t, s) => {
+    try {
+      const a = await as(s);
+      if (!a) return;
+      m(t, s, {
+        manager_name: a.manager_name,
+        manager_account_seq: a.manager_account_seq || void 0,
+        status: a.status,
+        receiver_names: a.receiver_names ?? [],
+        receiver_account_seqs: a.receiver_account_seqs ?? [],
+        acks: a.acks ?? []
+      }), B(l("taskbox.takenOver")), e.onClaimed?.();
+    } catch (a) {
+      k(l("taskbox.takeOverFailed"))(a);
+    }
+  },
+  To = () => async (e, t, s, a = "") => {
+    try {
+      const o = await ss(t, s, a);
+      if (!o) return;
+      m(e, t, {
+        status: o.status,
+        completed: !!o.completed,
+        completed_by: o.completed_by || void 0,
+        completed_time: o.completed_time || void 0,
+        resolution: o.resolution ?? "",
+        resolution_note: o.resolution_note ?? "",
+        reopen_count: o.reopen_count || 0,
+        acks: o.acks ?? []
+      }), B(s ? l("taskbox.verifiedClosed") : l("taskbox.reopened"));
+    } catch (o) {
+      k(l("taskbox.verifyFailed"))(o);
+    }
+  },
+  bo = () => (e, t, s) => {
+    m(e, t, {
+      label_keys: s
+    }), V(t, {
+      label_keys: s
+    });
+  },
+  ho = () => (e, t, s, a) => {
+    const o = {
+        manager_name: s,
+        manager_account_seq: a
+      },
+      r = y(e, t);
+    if (r && a > 0 && (r.receiver_account_seqs ?? []).includes(a)) {
+      const n = r.receiver_names ?? [],
+        c = (r.receiver_account_seqs ?? []).map((i, d) => ({
+          seq: i,
+          name: n[d] ?? ""
+        })).filter(i => i.seq !== a);
+      o.receiver_account_seqs = c.map(i => i.seq), o.receiver_names = c.map(i => i.name);
+    }
+    m(e, t, o), pe(t, o).then(n => {
+      n && m(e, t, {
+        receiver_names: n.receiver_names ?? [],
+        receiver_account_seqs: n.receiver_account_seqs ?? []
+      });
+    }).catch(k(l("taskbox.taskSaveFailed")));
+  },
+  yo = () => (e, t, s, a) => {
+    m(e, t, {
+      receiver_names: s,
+      receiver_account_seqs: a
+    }), V(t, {
+      receiver_names: s,
+      receiver_account_seqs: a
+    });
+  },
+  vo = () => (e, t, s, a) => {
+    m(e, t, {
+      target_names: s,
+      target_account_seqs: a
+    }), V(t, {
+      target_names: s,
+      target_account_seqs: a
+    });
+  },
+  Vo = () => async (e, t) => {
+    try {
+      const s = await Ze(t);
+      if (!s) return;
+      m(e, t, {
+        acks: s.acks ?? []
+      });
+    } catch (s) {
+      k(l("taskbox.noticeConfirmFailed"))(s);
+    }
+  },
+  wo = () => (e, t) => {
+    Os(oa, t, Q()?.seq ?? 0);
+    const s = e.getValue("readTaskSeqs");
+    s.includes(t) || (e.setValue("readTaskSeqs", [...s, t]), m(e, t, {
+      is_read: !0
+    }), Ht(t).catch(() => {}));
+  },
+  Co = () => async (e, t) => {
+    if (!e.getValue("taskAudits")[t]) {
+      e.setValue("auditLoadingTaskSeq", t);
+      try {
+        const a = await zt(t),
+          o = e.getValue("taskAudits");
+        e.setValue("taskAudits", {
+          ...o,
+          [t]: a
+        });
+      } catch (a) {
+        k(l("taskbox.activityLoadFailed"))(a);
+      } finally {
+        e.setValue("auditLoadingTaskSeq", 0);
+      }
+    }
+  },
+  ye = new Set(),
+  Bo = () => async (e, t) => {
+    if (!(t > 0) || ye.has(t)) return;
+    const s = y(e, t);
+    if (!(s && typeof s.content == "string" && Array.isArray(s.comments))) {
+      ye.add(t), e.setValue("detailLoadingTaskSeq", t);
+      try {
+        const a = await ae(t);
+        a && m(e, t, {
+          content: a.content ?? "",
+          comments: a.comments ?? []
+        });
+      } catch (a) {
+        k(l("taskbox.contentLoadFailed"))(a);
+      } finally {
+        ye.delete(t), e.getValue("detailLoadingTaskSeq") === t && e.setValue("detailLoadingTaskSeq", 0);
+      }
+    }
+  },
+  Ao = () => (e, t, s) => {
+    if (!(t?.seq > 0)) return;
+    const a = y(e, t.seq);
+    R(e, {
+      ...I(t, s),
+      ...(a?.is_read ? {
+        is_read: !0
+      } : {}),
+      ...(a?.linked_only ? {
+        linked_only: !0
+      } : {})
+    });
+  },
+  Fo = () => (e, t) => {
+    le("task", t) && (At("task", t), m(e, t, {
+      locked: !0,
+      content: "",
+      note: "",
+      comments: [],
+      comment_count: 0,
+      attachments: [],
+      checklist: [],
+      likes: []
+    }));
+  },
+  ve = new Set(),
+  So = () => async (e, t, s) => {
+    const a = y(e, t);
+    if (!a) return;
+    const o = new Set((a.relations ?? []).map(u => Number(u.task_seq ?? 0))),
+      r = [...new Set([...(a.checklist ?? []).map(u => Number(u.task_seq ?? 0)), ...o])].filter(u => u > 0 && u !== t && !y(e, u) && !ve.has(u));
+    if (r.length === 0) return;
+    for (const u of r) ve.add(u);
+    await Promise.all(r.map(async u => {
+      try {
+        const f = await ae(u);
+        f && !y(e, u) && R(e, {
+          ...I(f, s),
+          linked_only: !0
+        });
+      } catch {} finally {
+        ve.delete(u);
+      }
+    }));
+    const n = e.getValue("taskSeqs"),
+      c = new Set(n),
+      i = [...o].filter(u => u > 0 && !c.has(u) && y(e, u));
+    i.length > 0 && e.setValue("taskSeqs", [...n, ...i]);
+    const d = y(e, t);
+    d && R(e, {
+      ...d
+    });
+  },
+  qo = () => (e, t) => {
+    const s = e.getValue("readTaskSeqs");
+    s.includes(t) || (e.setValue("readTaskSeqs", [...s, t]), m(e, t, {
+      is_read: !0
+    }));
+  },
+  Eo = () => (e, t, s) => {
+    const a = y(e, t);
+    a && String(a.content ?? "") === s || (m(e, t, {
+      content: s
+    }), V(t, {
+      content: s
+    }));
+  },
+  Ro = () => async (e, t, s) => {
+    try {
+      const a = await ms(t);
+      if (!a) return;
+      const o = I(a, s);
+      R(e, o);
+      const r = e.getValue("taskSeqs"),
+        n = r.indexOf(t);
+      e.setValue("taskSeqs", n === -1 ? [o.seq, ...r] : [...r.slice(0, n + 1), o.seq, ...r.slice(n + 1)]), B(l("taskbox.duplicated"));
+    } catch (a) {
+      k(l("taskbox.duplicateFailed"))(a);
+    }
+  },
+  Io = () => (e, t, s = "one") => {
+    M(e, "taskSeqs", t), M(e, "pagedSeqs", t), J(e, t), pt(e, t), gs(t, s).then(a => {
+      for (const o of a) o !== t && (M(e, "taskSeqs", o), M(e, "pagedSeqs", o), J(e, o));
+      B(s === "series" && a.length > 1 ? l("taskbox.repeatDeleted", {
+        count: a.length
+      }) : l("taskbox.movedToTrash"));
+    }).catch(k(l("taskbox.deleteFailed")));
+  };
+function pt(e, t) {
+  const s = e.getValue("tasksById");
+  for (const a of Object.values(s)) (a.checklist ?? []).some(o => Number(o.task_seq ?? 0) === t) && m(e, a.seq, {
+    checklist: [...(a.checklist ?? [])]
+  });
+}
+const Mo = () => (e, t) => {
+    M(e, "pagedSeqs", t), fs(t).then(() => B(l("taskbox.restored"))).catch(k(l("taskbox.restoreFailed")));
+  },
+  Lo = () => (e, t) => {
+    M(e, "pagedSeqs", t), J(e, t), ks(t).then(() => B(l("taskbox.deletedForever"))).catch(k(l("taskbox.deleteForeverFailed")));
+  },
+  Oo = () => (e, t, s) => {
+    m(e, t, {
+      note: s.trim()
+    }), V(t, {
+      note: s.trim()
+    });
+  },
+  Do = () => (e, t, s) => {
+    s !== "" && !Be(s) || (m(e, t, {
+      tab_key: s,
+      group_sort_no: 0
+    }), V(t, {
+      group_seq: G(s),
+      group_sort_no: 0
+    }));
+  },
+  No = () => (e, t, s, a) => {
+    if (s !== "" && !Be(s)) return;
+    const r = (y(e, t)?.tab_key ?? "") !== s,
+      n = new Map(a.map((c, i) => [c, i + 1]));
+    if (me(e, c => {
+      const i = n.get(c.seq);
+      return c.seq === t ? {
+        ...c,
+        tab_key: s,
+        group_sort_no: i ?? 1
+      } : i ? {
+        ...c,
+        group_sort_no: i
+      } : c;
+    }), Ae(a.map((c, i) => ({
+      seq: c,
+      group_sort_no: i + 1,
+      ...(c === t ? {
+        group_seq: G(s)
+      } : {})
+    }))).catch(k(l("taskbox.sortSaveFailed"))), r) {
+      const c = e.getValue("customTabs"),
+        i = s === "" ? l("taskbox.noProject") : c.find(d => d.key === s)?.label ?? "";
+      B({
+        message: l("taskbox.movedToTab", {
+          name: i
+        })
+      });
+    }
+  },
+  Po = () => (e, t, s) => {
+    m(e, t, {
+      icon: s
+    }), V(t, {
+      icon: s
+    });
+  },
+  jo = () => (e, t, s) => {
+    m(e, t, {
+      icon_color: s
+    }), V(t, {
+      icon_color: s
+    });
+  },
+  Go = () => (e, t) => {
+    const s = new Map(t.map((a, o) => [a, o + 1]));
+    me(e, a => {
+      const o = s.get(a.seq);
+      return o ? {
+        ...a,
+        timeline_sort_no: o
+      } : a;
+    }), Ae(t.map((a, o) => ({
+      seq: a,
+      timeline_sort_no: o + 1
+    }))).catch(k(l("taskbox.sortSaveFailed")));
+  };
+function mt() {
+  const e = new Date(),
+    t = s => String(s).padStart(2, "0");
+  return `${e.getFullYear()}-${t(e.getMonth() + 1)}-${t(e.getDate())} ${t(e.getHours())}:${t(e.getMinutes())}`;
+}
+const kt = () => (e, t, s, a = "") => {
+    const o = y(e, t),
+      r = o?.is_notice ? s ? "notice_closed" : "notice_active" : void 0,
+      n = s ? mt() : "",
+      c = s && o && !String(o.due_date ?? "").trim() ? n.slice(0, 16) : void 0;
+    m(e, t, {
+      completed: s,
+      completed_by: s ? a.trim() || "이름없음" : void 0,
+      completed_time: s ? n : void 0,
+      ...(c ? {
+        due_date: c
+      } : {}),
+      ...(r ? {
+        status: r
+      } : {})
+    }), V(t, {
+      completed: s
+    }), ut({
+      seq: t,
+      completed: s
+    }), s && j({
+      message: l("taskbox.autoArchiveHint")
+    });
+  },
+  $o = () => async (e, t, s, a, o) => {
+    try {
+      const {
+        items: r,
+        deletedSeqs: n
+      } = await Ut(t, s, a);
+      for (const u of n) M(e, "taskSeqs", u), M(e, "pagedSeqs", u), J(e, u);
+      const c = r.map(u => I(u, o));
+      for (const u of c) R(e, u);
+      const i = c.map(u => u.seq),
+        d = e.getValue("taskSeqs");
+      e.setValue("taskSeqs", [...i.filter(u => !d.includes(u)), ...d]), B(s ? l("taskbox.repeatSet", {
+        count: c.length
+      }) : l("taskbox.repeatCleared"));
+    } catch (r) {
+      k(l("taskbox.repeatFailed"))(r);
+    }
+  },
+  Uo = () => (e, t, s) => {
+    m(e, t, {
+      archived: s
+    }), V(t, {
+      archived: s
+    }), ut({
+      seq: t,
+      archived: s
+    }), B(s ? l("taskbox.archivedMoved") : l("taskbox.unarchived"));
+  },
+  xo = () => async e => {
+    try {
+      e.setValue("contentTemplates", await Se());
+    } catch {}
+  },
+  zo = () => async (e, t, s) => {
+    try {
+      await Zs(t, s), e.setValue("contentTemplates", await Se()), B({
+        message: l("taskbox.formSaved"),
+        delay: 500
+      });
+    } catch (a) {
+      w(a instanceof Error ? a.message : l("taskbox.formSaveFailed"));
+    }
+  },
+  Ho = () => async (e, t) => {
+    try {
+      await ea(t), e.setValue("contentTemplates", e.getValue("contentTemplates").filter(s => s.seq !== t));
+    } catch (s) {
+      w(s instanceof Error ? s.message : l("taskbox.formDeleteFailed"));
+    }
+  },
+  Jo = () => async e => {
+    try {
+      e.setValue("taskTemplates", await qe());
+    } catch {}
+  },
+  Wo = () => async (e, t, s) => {
+    try {
+      return t > 0 ? await sa(t, s) : await ta(s), e.setValue("taskTemplates", await qe()), B({
+        message: t > 0 ? l("taskbox.templateUpdated") : l("taskbox.templateAdded"),
+        delay: 500
+      }), !0;
+    } catch (a) {
+      return w(a instanceof Error ? a.message : l("taskbox.templateSaveFailed")), !1;
+    }
+  },
+  Yo = () => async (e, t) => {
+    try {
+      await aa(t), e.setValue("taskTemplates", e.getValue("taskTemplates").filter(s => s.seq !== t));
+    } catch (s) {
+      w(s instanceof Error ? s.message : l("taskbox.templateDeleteFailed"));
+    }
+  },
+  Xo = () => async (e, t, s) => {
+    let a = 0,
+      o = 0;
+    const r = [];
+    for (const n of t) try {
+      const c = await Fe({
+        title: n.title,
+        content: n.content,
+        group_seq: n.group_seq,
+        start_date: n.start_date,
+        due_date: n.due_date,
+        priority: n.priority,
+        label_keys: n.label_keys,
+        manager_account_seq: n.manager_account_seq,
+        manager_name: n.manager_name,
+        receiver_names: [],
+        receiver_account_seqs: [],
+        checklist: n.checklist,
+        ...(n.note ? {
+          note: n.note
+        } : {}),
+        ...(n.visibility ? {
+          visibility: n.visibility,
+          visibility_group_seq: n.visibility_group_seq ?? 0
+        } : {})
+      });
+      if (!c.item) throw new Error(l("taskbox.createEmptyResponse"));
+      const i = I(c.item, s);
+      R(e, i), e.setValue("taskSeqs", [i.seq, ...(e.getValue("taskSeqs") ?? []).filter(d => d !== i.seq)]), r.push(i.seq), a += 1;
+    } catch {
+      o += 1;
+    }
+    if (r.length > 1) {
+      const [n, ...c] = r,
+        i = [];
+      for (const d of c) try {
+        await et(n, d, "related"), i.push({
+          task_seq: d,
+          type: "related"
+        });
+      } catch {}
+      if (i.length > 0) {
+        const d = y(e, n)?.relations ?? [];
+        m(e, n, {
+          relations: [...d, ...i]
+        });
+      }
+    }
+    return o > 0 ? w(l("taskbox.bulkPartial", {
+      created: a,
+      failed: o
+    })) : B({
+      message: l("taskbox.bulkCreated", {
+        count: a
+      }),
+      delay: 500
+    }), a;
+  },
+  Ko = () => async e => {
+    try {
+      const t = await Ke();
+      if (e.setValue("gcalLink", t), t.linked && t.import_enabled) {
+        const s = await Z().catch(() => null);
+        s && e.setValue("googleEvents", s);
+      }
+    } catch {}
+  },
+  Qo = () => async (e, t, s) => {
+    e.setValue("gcalBusy", !0);
+    try {
+      const a = await Kt(t, s);
+      if (!a) throw new Error(l("taskbox.consentUrlMissing"));
+      window.location.href = a;
+    } catch (a) {
+      k(l("taskbox.googleStartFailed"))(a);
+    } finally {
+      e.setValue("gcalBusy", !1);
+    }
+  },
+  Zo = () => async (e, t) => {
+    const s = e.getValue("gcalLink");
+    e.setValue("gcalLink", {
+      ...s,
+      ...t
+    }), e.setValue("gcalBusy", !0);
+    try {
+      const a = await Qe(t);
+      if (e.setValue("gcalLink", a), "import_enabled" in t) {
+        const o = await Z().catch(() => []);
+        e.setValue("googleEvents", o);
+      }
+    } catch (a) {
+      e.setValue("gcalLink", s), k(l("taskbox.googleSyncSaveFailed"))(a);
+    } finally {
+      e.setValue("gcalBusy", !1);
+    }
+  },
+  en = () => async e => {
+    e.setValue("gcalBusy", !0);
+    try {
+      const t = await Xt();
+      e.setValue("gcalLink", t), e.setValue("googleEvents", []), B(l("taskbox.googleDisconnected"));
+    } catch (t) {
+      k(l("taskbox.googleDisconnectFailed"))(t);
+    } finally {
+      e.setValue("gcalBusy", !1);
+    }
+  },
+  tn = () => async (e, t, s) => {
+    e.setValue("gcalBusy", !0);
+    try {
+      const a = await Wt(t, s),
+        o = e.getValue("googleEvents");
+      return e.setValue("googleEvents", a ? o.map(r => r.event_id === t ? a : r) : o.filter(r => r.event_id !== t)), B(l("taskbox.googleEventUpdated")), !0;
+    } catch (a) {
+      return k(l("taskbox.googleEventUpdateFailed"))(a), !1;
+    } finally {
+      e.setValue("gcalBusy", !1);
+    }
+  },
+  sn = () => async (e, t) => {
+    e.setValue("gcalBusy", !0);
+    try {
+      await Jt(t);
+      const s = e.getValue("googleEvents");
+      return e.setValue("googleEvents", s.filter(a => a.event_id !== t)), B(l("taskbox.googleEventDeleted")), !0;
+    } catch (s) {
+      return k(l("taskbox.googleEventDeleteFailed"))(s), !1;
+    } finally {
+      e.setValue("gcalBusy", !1);
+    }
+  },
+  an = () => async e => {
+    e.setValue("gcalBusy", !0);
+    try {
+      const t = await Yt();
+      B(l("taskbox.reexported", {
+        count: t
+      }));
+      const s = await Ke().catch(() => null);
+      s && e.setValue("gcalLink", s);
+    } catch (t) {
+      k(l("taskbox.reexportFailed"))(t);
+    } finally {
+      e.setValue("gcalBusy", !1);
+    }
+  },
+  oe = e => t => {
+    t instanceof DOMException && t.name === "AbortError" || w(t instanceof Error ? t.message : e);
+  },
+  on = () => (e, t) => {
+    e.setValue("sprintFilterSeq", t);
+  },
+  nn = () => async (e, t) => {
+    try {
+      const s = await Ys(t);
+      if (!s) throw new Error(l("taskbox.sprintCreateEmpty"));
+      const a = e.getValue("sprints");
+      return e.setValue("sprints", [s, ...a]), e.setValue("sprintFilterSeq", s.seq), !0;
+    } catch (s) {
+      return oe(l("taskbox.sprintCreateFailed"))(s), !1;
+    }
+  },
+  rn = () => async (e, t, s) => {
+    const a = e.getValue("sprints");
+    e.setValue("sprints", a.map(o => o.seq === t ? {
+      ...o,
+      ...s
+    } : o));
+    try {
+      await Xs(t, s);
+    } catch (o) {
+      oe(l("taskbox.sprintSaveFailed"))(o);
+    }
+  },
+  cn = () => async (e, t) => {
+    try {
+      await Ks(t);
+      const s = e.getValue("sprints");
+      e.setValue("sprints", s.filter(n => n.seq !== t));
+      const a = e.getValue("tasksById"),
+        o = {};
+      let r = !1;
+      for (const n of Object.keys(a)) {
+        const c = a[n];
+        o[n] = c.sprint_seq === t ? {
+          ...c,
+          sprint_seq: 0
+        } : c, o[n] !== c && (r = !0);
+      }
+      r && e.setValue("tasksById", o), e.getValue("sprintFilterSeq") === t && e.setValue("sprintFilterSeq", 0);
+    } catch (s) {
+      oe(l("taskbox.sprintDeleteFailed"))(s);
+    }
+  },
+  ln = () => (e, t, s) => {
+    const a = e.getValue(`tasksById.${t}`);
+    a && e.setValue(`tasksById.${t}`, {
+      ...a,
+      sprint_seq: s
+    }), pe(t, {
+      sprint_seq: s
+    }).catch(oe(l("taskbox.sprintAssignFailed")));
+  },
+  un = () => (e, t, s) => {
+    const a = Number.isFinite(s) && s > 0 ? s : 0,
+      o = e.getValue(`tasksById.${t}`);
+    o && e.setValue(`tasksById.${t}`, {
+      ...o,
+      story_points: a
+    }), pe(t, {
+      story_points: a
+    }).catch(oe(l("taskbox.storyPointsFailed")));
+  };
+function Ln() {
+  Gt();
+  const t = Ds().useValue("account"),
+    s = Mt(Number(t?.seq ?? 0)),
+    {
+      state: a
+    } = $t(),
+    o = a.useValue("data.employee"),
+    r = Number((o ?? []).find(p => Number(p.login_account_seq ?? 0) === s)?.group_seq ?? 0),
+    n = T.useCallback(() => {
+      const p = Number(a.getValue("data.taskbox_badge_counts.unconfirmed") ?? 0);
+      a.setValue("data.taskbox_badge_counts.unconfirmed", Math.max(0, p - 1));
+    }, []),
+    c = Lt(),
+    i = K({
+      stateId: "taskBoxState",
+      initialValues: ge,
+      actions: {
+        setActiveTab: ia(),
+        setViewMode: ca(),
+        setViewModeOverride: la(),
+        clearViewModeOverride: ua(),
+        loadTaskBox: Ee(),
+        reloadForTeamChange: ba(),
+        convertChecklistItemToTask: Qa(),
+        linkTaskRelation: Za(),
+        unlinkTaskRelation: eo(),
+        loadPagedTasks: Re(),
+        searchArchive: da(),
+        applyRealtimeTask: pa(),
+        setGroupBy: ka(),
+        setHideCompleted: ma(),
+        toggleGroupCollapsed: fa(),
+        addCustomTab: ga(),
+        reorderCustomTabs: ja(),
+        renameCustomTab: Ga(),
+        removeCustomTab: $a(),
+        setProjectArchived: _a(),
+        moveBoardTask: No(),
+        setTaskProject: Do(),
+        updateTaskNote: Oo(),
+        updateTaskContent: Eo(),
+        removeTask: Io(),
+        restoreTask: Mo(),
+        purgeTask: Lo(),
+        duplicateTask: Ro(),
+        updateTaskStatus: ko(),
+        updateTaskLabels: bo(),
+        addStatusOption: mo(),
+        updateTaskTitle: Ua(),
+        updateTaskIcon: Po(),
+        updateTaskIconColor: jo(),
+        updateTaskPriority: xa(),
+        updateTaskEventTime: za(),
+        updateTaskEventPlace: Ha(),
+        updateTaskEventAddress: Ja(),
+        addTaskComment: co(),
+        updateTaskComment: lo(),
+        removeTaskComment: uo(),
+        toggleTaskCommentReaction: po(),
+        addTaskChecklistItem: Wa(),
+        linkChecklistTask: Ya(),
+        toggleTaskChecklistItem: Ka(),
+        updateTaskChecklistItem: to(),
+        reorderTaskChecklist: so(),
+        removeTaskChecklistItem: ao(),
+        uploadTaskAttachments: no(c),
+        removeTaskAttachment: ro(),
+        reorderTaskAttachments: io(),
+        setTaskManager: ho(),
+        loadContentTemplates: xo(),
+        saveContentTemplate: zo(),
+        removeContentTemplate: Ho(),
+        loadTaskTemplates: Jo(),
+        saveTaskTemplate: Wo(),
+        removeTaskTemplate: Yo(),
+        runTaskTemplate: Xo(),
+        setTaskReceivers: yo(),
+        setTaskNoticeTargets: vo(),
+        ackNoticeTask: Vo(),
+        confirmTask: va({
+          onConfirmed: n
+        }),
+        returnTask: Va(),
+        reviewDoneTask: wa(),
+        claimTask: _o(),
+        verifyBugTask: To(),
+        updateTaskBugField: fo(),
+        updateTaskResolution: go(),
+        subscribeCalendarFeed: Ca(),
+        setCalendarFeedEnabled: Ba(),
+        registerCalendarImport: Aa(),
+        setCalendarImportEnabled: Fa(),
+        removeCalendarImport: Sa(),
+        refreshGcalLink: Ko(),
+        connectGcal: Qo(),
+        setGcalLinkToggles: Zo(),
+        disconnectGcal: en(),
+        resyncGcal: an(),
+        updateGoogleEvent: tn(),
+        deleteGoogleEvent: sn(),
+        setFilters: Ta(),
+        setViewAllTasks: ha(),
+        updateTaskFields: Ea(),
+        markTaskRead: wo(),
+        loadTaskAudit: Co(),
+        ensureTaskDetail: Bo(),
+        ensureLinkedTasks: So(),
+        applyServerTask: Ao(),
+        relockTask: Fo(),
+        applyRealtimeTaskRead: qo(),
+        addTask: Na(),
+        putCreatedTasks: Oa(),
+        putLinkedTasks: Da(),
+        updateTaskDate: qa(),
+        updateTaskReminder: Ra(),
+        requestConfirm: ya(),
+        setTaskCompleted: kt(),
+        setTaskArchived: Uo(),
+        changeTaskRepeat: $o(),
+        moveCalendarTask: Pa(),
+        setSprintFilter: on(),
+        createSprint: nn(),
+        updateSprint: rn(),
+        removeSprint: cn(),
+        assignTaskSprint: ln(),
+        updateTaskStoryPoints: un(),
+        reorderTimelineTasks: Go()
+      }
+    });
+  Es(i._store);
+  const {
+      value: d,
+      setValue: u
+    } = Y("taskbox.hideCompleted", !1),
+    {
+      value: f,
+      setValue: g
+    } = Y("taskbox.viewAllTasks", !1),
+    {
+      value: E,
+      setValue: b
+    } = Y("taskbox.groupBy", ge.groupBy),
+    {
+      value: v,
+      setValue: q
+    } = Y("taskbox.groupByByTab", {}),
+    {
+      value: D,
+      setValue: A
+    } = Y("taskbox.viewModeByTab", {}),
+    {
+      value: L,
+      setValue: ke
+    } = Y("taskbox.lastViewMode", ge.lastViewMode);
+  T.useEffect(() => {
+    i.setValue("hideCompleted", !!d), i.setValue("viewAllTasks", !!f), E && i.setValue("groupBy", E), v && typeof v == "object" && i.setValue("groupByByTab", v), D && typeof D == "object" && i.setValue("viewModeByTab", D), L && i.setValue("lastViewMode", L);
+  }, []), T.useEffect(() => {
+    if (s <= 0) return;
+    const p = !!i.getValue("isLoaded"),
+      h = p && Number(i.getValue("loadedTeamVersion") ?? 0) !== Ve();
+    i.actions.loadTaskBox(s, p, p && !h);
+  }, [s]), T.useEffect(() => {
+    if (!(s <= 0)) return Ot(() => {
+      i.getValue("isLoaded") && i.actions.loadTaskBox(s, !0, !0);
+    });
+  }, [s]), T.useEffect(() => {
+    if (s <= 0) return;
+    const p = h => {
+      h.detail?.team_context && i.actions.reloadForTeamChange(s);
+    };
+    return window.addEventListener(Oe, p), () => window.removeEventListener(Oe, p);
+  }, [s]);
+  const P = i.useValue("hideCompleted"),
+    ne = i.useValue("viewAllTasks"),
+    $ = i.useValue("groupBy"),
+    U = i.useValue("groupByByTab"),
+    _ = i.useValue("viewModeByTab"),
+    C = i.useValue("lastViewMode");
+  T.useEffect(() => {
+    u(P);
+  }, [P]), T.useEffect(() => {
+    g(ne);
+  }, [ne]), T.useEffect(() => {
+    b($);
+  }, [$]), T.useEffect(() => {
+    q(U);
+  }, [U]), T.useEffect(() => {
+    A(_);
+  }, [_]), T.useEffect(() => {
+    ke(C);
+  }, [C]);
+  const N = i.useValue("serverPrefs"),
+    x = T.useRef(null),
+    z = T.useRef(!1);
+  T.useEffect(() => {
+    if (!N || z.current) return;
+    const p = typeof N.hide_completed == "boolean" ? N.hide_completed : P,
+      h = ot(N.group_by) ?? $,
+      F = xs(N.group_by_by_tab) ?? U,
+      se = Us(N.view_mode_by_tab) ?? _,
+      W = nt(N.last_view_mode) ?? C;
+    i.setValue("hideCompleted", p), i.setValue("groupBy", h), i.setValue("groupByByTab", F), i.setValue("viewModeByTab", se), i.setValue("lastViewMode", W), x.current = JSON.stringify(Ge({
+      hideCompleted: p,
+      groupBy: h,
+      groupByByTab: F,
+      viewModeByTab: se,
+      lastViewMode: W
+    }));
+  }, [N]);
+  const te = i.useValue("isLoaded");
+  T.useEffect(() => {
+    if (!te) return;
+    const p = Ge({
+        hideCompleted: P,
+        groupBy: $,
+        groupByByTab: U,
+        viewModeByTab: _,
+        lastViewMode: C
+      }),
+      h = JSON.stringify(p);
+    if (x.current === h) return;
+    z.current = !0;
+    const F = window.setTimeout(() => {
+      x.current = h, vs(p).then(() => {
+        z.current = !1;
+      }).catch(() => {
+        x.current = null, z.current = !1;
+      });
+    }, 800);
+    return () => window.clearTimeout(F);
+  }, [te, P, $, U, _, C]);
+  const ft = T.useCallback(p => {
+    if (Q() || s <= 0) return;
+    i.actions.applyRealtimeTask(p, s, r);
+    const h = ie(!!i.getValue("viewAllTasks"));
+    p.action === "delete" || !p.item ? De(h, p.seq) : Ne(h, p.item);
+  }, [s, r]);
+  Vs(ft, s > 0);
+  const gt = T.useCallback(async p => {
+    const h = Q();
+    if (!h || h.seq !== p.external_seq || s <= 0) return;
+    if (p.action === "delete") {
+      i.actions.applyRealtimeTask({
+        action: "delete",
+        seq: p.seq,
+        actor_account_seq: p.actor_account_seq
+      }, s, r), De(ie(!!i.getValue("viewAllTasks")), p.seq);
+      return;
+    }
+    const F = await ae(p.seq).catch(() => null);
+    F && (i.actions.applyRealtimeTask({
+      action: "upsert",
+      seq: p.seq,
+      actor_account_seq: p.actor_account_seq,
+      item: F
+    }, s, r), Ne(ie(!!i.getValue("viewAllTasks")), F));
+  }, [s, r]);
+  ws(gt, s > 0);
+  const _t = T.useCallback(p => {
+    s > 0 && p.reader_account_seq === s && i.actions.applyRealtimeTaskRead(p.seq);
+  }, [s]);
+  Cs(_t, s > 0);
+  const H = {
+      form: re({
+        modalId: "taskbox-form-dialog"
+      }),
+      mobileCalendar: re({
+        modalId: "taskbox-mobile-calendar"
+      }),
+      postComposer: re({
+        modalId: "taskbox-post-composer"
+      })
+    },
+    Tt = Js(),
+    bt = Ws(),
+    ht = We({
+      formId: "taskBoxForm",
+      initialValues: qs,
+      onValidate: p => {
+        if (p.is_post && p.is_talk) {
+          const h = /<img\b/i.test(p.content) || p.content.replace(/<[^>]+>/g, "").replace(/&nbsp;/g, " ").trim().length > 0,
+            F = (c.getValue("createAttachmentFiles") ?? []).length > 0;
+          return !h && !F ? (w(l("taskbox.talkRequired")), !1) : !0;
+        }
+        if (p.is_post) {
+          if (!p.title.trim()) return w(l("taskbox.postTitleRequired")), !1;
+          const h = String(p.post_password ?? "");
+          return h && (h.length < Pe || h.length > je) ? (w(l("taskbox.postPasswordLength", {
+            min: Pe,
+            max: je
+          })), !1) : !0;
+        }
+        if (p.is_poll) {
+          if (!p.title.trim()) return w(l("taskbox.pollTitleRequired")), !1;
+          const h = (p.poll?.options ?? []).map(F => F.trim()).filter(Boolean);
+          return new Set(h).size < 2 ? (w(l("taskbox.pollOptionsMin")), !1) : !0;
+        }
+        return Dt(p);
+      },
+      onSubmit: async p => {
+        if (!c.getValue("createSubmitting")) {
+          c.setValue("createSubmitting", !0);
+          try {
+            const h = await i.actions.addTask(p, s);
+            if (!h) return;
+            const F = Number(i.getValue("followUpOriginSeq") ?? 0);
+            F > 0 && (await i.actions.linkTaskRelation(F, h, "follow_up"), i.setValue("followUpOriginSeq", 0));
+            const se = c.getValue("createAttachmentFiles") ?? [];
+            se.length > 0 && (await i.actions.uploadTaskAttachments(h, se, {
+              silent: !0
+            })), c.setValue("createAttachmentFiles", []);
+            const W = p.is_post || p.is_poll ? null : await Tt(h, p);
+            !p.is_post && !p.is_poll && (await bt(h, p));
+            const Ie = window.history.state?.modalOpen;
+            if (W && (Ie === H.form.modalId || Ie === H.postComposer.modalId)) {
+              window.addEventListener("popstate", () => W(), {
+                once: !0
+              }), H.form.close(), H.postComposer.close();
+              return;
+            }
+            H.form.close(), H.postComposer.close(), W?.();
+          } finally {
+            c.setValue("createSubmitting", !1);
+          }
+        }
+      }
+    });
+  return {
+    state: i,
+    form: ht,
+    modals: H
+  };
+}
+const dn = 300;
+function pn() {
+  return [{
+    mimeType: "audio/webm;codecs=opus",
+    ext: "webm"
+  }, {
+    mimeType: "audio/webm",
+    ext: "webm"
+  }, {
+    mimeType: "audio/mp4",
+    ext: "m4a"
+  }, {
+    mimeType: "audio/ogg;codecs=opus",
+    ext: "ogg"
+  }].find(t => typeof MediaRecorder < "u" && MediaRecorder.isTypeSupported(t.mimeType)) ?? {
+    mimeType: "",
+    ext: "webm"
+  };
+}
+async function mn(e, t) {
+  const s = new FormData();
+  s.append("file", new File([e], `voice.${t}`, {
+    type: e.type || "audio/webm"
+  }));
+  const a = await O.requestForm("POST", "/v1/taskbox/dictate", s, !0);
+  if (!a || a.ok === !1) throw new Error(a?.message || l("taskbox.dictateFailed"));
+  return String(a.data?.text ?? "");
+}
+function kn(e) {
+  const t = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return e.split(/\r?\n/).map(s => s.trim()).filter(Boolean).map(s => `<p>${t(s)}</p>`).join("");
+}
+function On(e, t) {
+  const s = kn(t);
+  return s ? !e.replace(/<[^>]*>/g, "").trim() ? s : `${e}${s}` : e;
+}
+function Dn({
+  onText: e,
+  disabled: t
+}) {
+  const s = Xe(),
+    [a, o] = T.useState("idle"),
+    [r, n] = T.useState(0),
+    c = T.useRef(null),
+    i = T.useRef(null),
+    d = T.useRef(null),
+    u = T.useRef(e);
+  u.current = e;
+  const f = () => {
+    d.current && window.clearInterval(d.current), d.current = null, i.current?.getTracks().forEach(b => b.stop()), i.current = null;
+  };
+  T.useEffect(() => () => {
+    const b = c.current;
+    b && b.state !== "inactive" && (b.ondataavailable = null, b.onstop = null, b.stop()), f();
+  }, []);
+  const g = async () => {
+      if (!navigator.mediaDevices?.getUserMedia || typeof MediaRecorder > "u") {
+        w(s("taskbox.browserNoRecord"));
+        return;
+      }
+      let b;
+      try {
+        b = await navigator.mediaDevices.getUserMedia({
+          audio: !0
+        });
+      } catch {
+        w(s("taskbox.micDenied"));
+        return;
+      }
+      const v = pn(),
+        q = new MediaRecorder(b, v.mimeType ? {
+          mimeType: v.mimeType
+        } : void 0),
+        D = [];
+      q.ondataavailable = A => {
+        A.data.size > 0 && D.push(A.data);
+      }, q.onstop = () => {
+        f();
+        const A = new Blob(D, {
+          type: q.mimeType || v.mimeType || "audio/webm"
+        });
+        if (!A.size) {
+          o("idle");
+          return;
+        }
+        o("sending"), mn(A, v.ext).then(L => {
+          L.trim() ? u.current(L) : j(s("taskbox.speechNotRecognized"));
+        }).catch(L => w(L instanceof Error ? L.message : s("taskbox.dictateFailed"))).finally(() => o("idle"));
+      }, c.current = q, i.current = b, q.start(), n(0), o("recording"), d.current = window.setInterval(() => {
+        n(A => (A + 1 >= dn && q.state !== "inactive" && q.stop(), A + 1));
+      }, 1e3);
+    },
+    E = () => {
+      const b = c.current;
+      b && b.state !== "inactive" && b.stop();
+    };
+  return a === "sending" ? S.jsx(fe, {
+    title: s("taskbox.dictating"),
+    arrow: !0,
+    children: S.jsx(ce, {
+      component: "span",
+      sx: {
+        display: "inline-flex",
+        alignItems: "center",
+        px: .75
+      },
+      children: S.jsx(Nt, {
+        size: 18
+      })
+    })
+  }) : a === "recording" ? S.jsx(fe, {
+    title: s("taskbox.stopAndDictate"),
+    arrow: !0,
+    children: S.jsxs(ce, {
+      component: "button",
+      type: "button",
+      "aria-label": s("taskbox.stopRecordAndDictate"),
+      onMouseDown: b => b.preventDefault(),
+      onClick: E,
+      sx: {
+        display: "inline-flex",
+        alignItems: "center",
+        gap: .5,
+        border: 0,
+        borderRadius: 999,
+        px: 1,
+        py: .25,
+        bgcolor: "error.main",
+        color: "#fff",
+        fontSize: 13,
+        fontVariantNumeric: "tabular-nums",
+        cursor: "pointer",
+        flexShrink: 0
+      },
+      children: [S.jsx(js, {
+        sx: {
+          fontSize: 18
+        }
+      }), Ps(r)]
+    })
+  }) : S.jsx(fe, {
+    title: s("taskbox.dictateTooltip"),
+    arrow: !0,
+    children: S.jsx("span", {
+      children: S.jsx(Pt, {
+        size: "small",
+        "aria-label": s("taskbox.voiceInput"),
+        disabled: t,
+        onMouseDown: b => b.preventDefault(),
+        onClick: () => {
+          g();
+        },
+        sx: {
+          color: "text.secondary"
+        },
+        children: S.jsx(Ns, {
+          sx: {
+            fontSize: 20
+          }
+        })
+      })
+    })
+  });
+}
+export { Dn as D, oa as T, On as a, En as b, Rn as c, In as d, Mn as e, qn as p, Ln as u };

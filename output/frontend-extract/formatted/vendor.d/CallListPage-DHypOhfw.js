@@ -1,0 +1,1295 @@
+import { j as e, r as _, u as Ce, l as be } from "./react-CjxcGQav.js";
+import { c as X, e as Se, c8 as ve, bO as D, bT as M, g2 as W, kM as qe, bv as G, D as he, fL as fe, cC as Te, fC as w, B as d, dq as Ie, dh as Re, av as Pe, L as T, K as Ee, cI as Oe, bQ as F, d8 as we, s as N, T as De, cz as Me, bM as ne, as as oe, bI as re, y as We, jx as Le, db as Ve, lr as ze } from "../js.d/main-Cm9wS5wt.js";
+import { S as Ae, P as le } from "./SectionCreateButton-DLuyExHb.js";
+import { O as Be } from "./OptionToggleGroup-Cvm2wRyq.js";
+import { u as Fe } from "./useColumnWidths-DSAca5rC.js";
+import { T as Ne } from "./tableScrollbars-C9bhlJjO.js";
+import { M as ge } from "./MeetingRecordingPlayer-vear-u6W.js";
+import { M as Ge } from "./MobileListTitleBar-tZ34p2gY.js";
+import { u as He, a as $e, b as Ke } from "./MobileCardListLayout-D5_p2Xer.js";
+import { c as b, u as Ue } from "./customerMetaStore-Bj9KdRyn.js";
+import { u as Ye, T as Xe } from "./useTranscriptController-BdNi4rMO.js";
+import { f as Qe } from "./taskboxApi-BuYlRWHe.js";
+import { u as Ze, P as Je } from "./PropertyContentEditor-DIsouMXi.js";
+import { C as et } from "./CustomerPickMenu-D2UYfJ2O.js";
+import { A as tt } from "./AddTaskOutlined-CgupI6Z3.js";
+import { o as st } from "./taskDetailHost-C45bt_tL.js";
+import { P as nt } from "./PhoneOutlined-Bjc_e42S.js";
+import { H as ot } from "./HeadsetMicOutlined-vh6_uK4I.js";
+import { I as rt } from "./PropertyFields-TuJTG5XK.js";
+import { P as lt } from "./propertySections-Bwsl7OH-.js";
+import { D as at, f as it } from "./deal-B3IQ_ej7.js";
+import { k as Y, l as B } from "./types-B1OAKh4b.js";
+import { o as ct } from "./customerDialogActions-CaaeVzAY.js";
+import { S as ut } from "./selectedRow-CBnSZEGB.js";
+import "./stylis-DdLD6a3t.js";
+import "./profileApi-Btafs-pM.js";
+import "./meetingsApi-CCkjq69B.js";
+import "./nativeRecordingSync-CMpETFg9.js";
+import "./pendingRecordings-DpKJ8Y2R.js";
+import "./mobileSearchOverlay-DYWcMOOb.js";
+import "./PlayArrowRounded-emG8NLik.js";
+import "./EmployeeSelectDialog-Cdnxeoz9.js";
+import "./utils-B6Q5_urv.js";
+import "./teamMembers-0yRsmqL6.js";
+import "./policyContent-DPfknNhV.js";
+import "./companyInfo-Btqdi-Wt.js";
+const mt = X([e.jsx("path", {
+    d: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2M12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8"
+  }, "0"), e.jsx("path", {
+    d: "M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"
+  }, "1")]),
+  dt = X(e.jsx("path", {
+    d: "M20 5.41 18.59 4 7 15.59V9H5v10h10v-2H8.41z"
+  })),
+  pt = X(e.jsx("path", {
+    d: "M12 19c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2M6 1c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m12-8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2m-6 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2m0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2"
+  }));
+function xt(t = {}) {
+  const o = Se({
+      modalId: "customer-call-detail"
+    }),
+    m = ve({
+      stateId: "customer-call-detail-ui",
+      initialValues: {
+        call: null,
+        detail: null,
+        loading: !1,
+        taskPeople: {}
+      }
+    }),
+    x = _.useRef(0),
+    h = c => {
+      const n = m.getValue("taskPeople") ?? {},
+        i = [...new Set(Object.values(c))].filter(r => !(r in n));
+      i.length && Promise.all(i.map(r => Qe(r).catch(() => null))).then(r => {
+        const f = {
+          ...(m.getValue("taskPeople") ?? {})
+        };
+        i.forEach((S, k) => f[S] = r[k] && (r[k].manager_name || r[k].author_name) || ""), m.setValue("taskPeople", f);
+      });
+    },
+    l = c => {
+      const n = ++x.current;
+      m.setValues({
+        call: c,
+        detail: null,
+        loading: !0
+      }), P.reset(), o.open(), b.callDetail(c.seq).then(i => {
+        n === x.current && (m.setValues({
+          detail: i,
+          loading: !1
+        }), h(i.task_links));
+      }).catch(i => {
+        n === x.current && (m.setValue("loading", !1), D(i instanceof Error ? i.message : M("customer.loadCallFailed")));
+      });
+    },
+    I = c => {
+      const n = m.getValue("call");
+      if (!o.isOpen || !n || n.seq !== c) return;
+      const i = x.current;
+      b.callDetail(c).then(r => {
+        i === x.current && (m.setValues({
+          call: r,
+          detail: r
+        }), h(r.task_links));
+      }).catch(() => {});
+    },
+    j = c => {
+      const n = m.getValue("detail");
+      if (!n) return;
+      const i = n.customer_name || W(n.remote_number) || n.remote_number;
+      qe({
+        title: c.title,
+        content: `${i} 통화(${n.started_at.slice(0, 16)})에서 나온 일입니다.${n.summary_text ? `
+
+${n.summary_text}` : ""}`,
+        ...(n.customer_seq ? {
+          customer: {
+            seq: n.customer_seq,
+            name: n.customer_name ?? ""
+          }
+        } : {}),
+        ...(n.consult_seq ? {
+          consultSeq: n.consult_seq
+        } : {}),
+        ...(c.due ? {
+          dueDate: c.due
+        } : {}),
+        onCreated: r => {
+          p(n.seq, c.title, r);
+        }
+      });
+    },
+    p = async (c, n, i) => {
+      try {
+        const r = await b.setCallTaskLink(c, n, i),
+          f = m.getValue("detail");
+        f && f.seq === c && m.setValue("detail", {
+          ...f,
+          task_links: r
+        }), h(r);
+      } catch (r) {
+        D(r instanceof Error ? r.message : M("customer.linkTaskFailed"));
+      }
+    },
+    P = Ye({
+      id: "customer-call",
+      getNames: () => m.getValue("detail")?.speaker_names ?? {},
+      save: async (c, n) => {
+        const i = m.getValue("detail");
+        if (!i) return c;
+        const r = await b.setCallSpeakers(i.seq, c, n);
+        return m.setValue("detail", {
+          ...i,
+          speaker_names: r
+        }), r;
+      }
+    });
+  return {
+    modal: o,
+    ui: m,
+    open: l,
+    remove: async () => {
+      const c = m.getValue("call");
+      if (c) try {
+        await b.removeCall(c.seq), o.close(), t.onRemoved?.(c.seq);
+      } catch (n) {
+        D(n instanceof Error ? n.message : M("customer.deleteCallFailed"));
+      }
+    },
+    refreshIfOpen: I,
+    promoteTask: j,
+    saveSummary: async (c, n) => {
+      const i = m.getValue("detail");
+      if (!(!i || i[c] === n)) try {
+        await b.setCallSummary(i.seq, {
+          [c]: n
+        });
+        const r = m.getValue("detail");
+        r && r.seq === i.seq && m.setValue("detail", {
+          ...r,
+          [c]: n
+        });
+      } catch (r) {
+        D(r instanceof Error ? r.message : M("customer.saveSummaryFailed"));
+      }
+    },
+    saveMemo: async (c, n) => {
+      const i = m.getValue("detail");
+      if (!(i && i.seq === c && i.memo === n)) try {
+        await b.setCallMemo(c, n);
+        const r = m.getValue("detail");
+        r && r.seq === c && m.setValue("detail", {
+          ...r,
+          memo: n
+        });
+      } catch (r) {
+        D(r instanceof Error ? r.message : M("customer.saveMemoFailed"));
+      }
+    },
+    setCustomer: async c => {
+      const n = m.getValue("detail");
+      if (!(!n || n.customer_seq === (c?.seq ?? 0))) try {
+        const i = await b.setCallCustomer(n.seq, c?.seq ?? 0),
+          r = m.getValue("detail");
+        if (r && r.seq === n.seq) {
+          const f = {
+            ...r,
+            customer_seq: i.customer_seq,
+            customer_name: i.customer_name
+          };
+          m.setValues({
+            call: f,
+            detail: f
+          });
+        }
+      } catch (i) {
+        D(i instanceof Error ? i.message : M("customer.changeCustomerFailed"));
+      }
+    },
+    transcript: P
+  };
+}
+const ae = {
+    pending: "customer.sttPending",
+    skipped: "customer.sttSkipped",
+    failed: "customer.sttFailed"
+  },
+  ie = {
+    consult_plus_off: "customer.sttSkippedNoConsultPlus",
+    call_stt_limit: "customer.sttSkippedCallLimit",
+    call_no_lines: "customer.sttSkippedNoLines"
+  },
+  ht = [{
+    field: "summary_text",
+    titleKey: "customer.summary"
+  }, {
+    field: "summary_request",
+    titleKey: "customer.customerRequest"
+  }, {
+    field: "summary_action",
+    titleKey: "customer.actionTaken"
+  }, {
+    field: "summary_follow_up",
+    titleKey: "customer.followUp"
+  }],
+  ce = {
+    appearance: "none",
+    border: "none",
+    background: "none",
+    p: 0,
+    font: "inherit",
+    color: "primary.main",
+    cursor: "pointer",
+    textAlign: "left",
+    "@media (hover: hover)": {
+      "&:hover": {
+        textDecoration: "underline"
+      }
+    }
+  };
+function ue({
+  controller: t
+}) {
+  const o = G(),
+    m = he(),
+    x = fe("customer").canWrite,
+    h = Ce(),
+    {
+      modal: l,
+      ui: I
+    } = t,
+    j = I.useValue("call"),
+    p = I.useValue("detail"),
+    P = !!I.useValue("loading"),
+    a = p ?? j,
+    R = Ue().can_manage,
+    E = Ze(),
+    [L, c] = _.useState(null),
+    n = t.transcript.ui.useValue("seekRequest"),
+    i = a ? W(a.remote_number) || a.remote_number : "",
+    r = a ? `${a.customer_name || i || o("customer.call")} · ${a.started_at.slice(5, 16)}` : o("customer.call"),
+    f = v => ct(v, h),
+    S = () => {
+      a && f({
+        kind: "consult",
+        customer: a.customer_seq ? {
+          seq: a.customer_seq,
+          name: a.customer_name ?? ""
+        } : null,
+        callRef: {
+          callLogSeq: a.seq
+        },
+        prefill: {
+          consulted_at: a.started_at.slice(0, 16),
+          channel: a.direction === "out" ? "call_out" : "call_in"
+        }
+      });
+    },
+    k = [],
+    V = v => e.jsx(d, {
+      sx: {
+        userSelect: "text"
+      },
+      children: v
+    });
+  if (a) {
+    k.push({
+      id: "call-info",
+      title: o("customer.callInfo"),
+      children: V(e.jsxs(Te, {
+        children: [e.jsx(w, {
+          icon: e.jsx(mt, {}),
+          label: o("customer.dateTime"),
+          children: a.started_at.slice(0, 16)
+        }), e.jsx(w, {
+          icon: e.jsx(dt, {}),
+          label: o("customer.callType"),
+          children: e.jsx(d, {
+            component: "span",
+            sx: a.result === "missed" || a.result === "rejected" ? {
+              color: "warning.dark",
+              fontWeight: 600
+            } : void 0,
+            children: Y(a)
+          })
+        }), e.jsx(w, {
+          icon: e.jsx(Re, {}),
+          label: o("customer.kindCustomer"),
+          onClick: p && x ? y => c(y) : void 0,
+          children: e.jsxs(d, {
+            sx: {
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+              width: "100%",
+              minWidth: 0
+            },
+            children: [e.jsx(d, {
+              sx: {
+                flex: 1,
+                minWidth: 0,
+                display: "flex",
+                alignItems: "baseline",
+                gap: 1,
+                flexWrap: "wrap"
+              },
+              children: a.customer_seq ? e.jsx(d, {
+                component: "button",
+                type: "button",
+                onClick: y => {
+                  y.stopPropagation(), f({
+                    kind: "customer",
+                    seq: a.customer_seq
+                  });
+                },
+                sx: ce,
+                children: a.customer_name || o("customer.kindCustomer")
+              }) : e.jsxs(e.Fragment, {
+                children: [e.jsx(d, {
+                  component: "span",
+                  sx: {
+                    color: "text.secondary"
+                  },
+                  children: o("customer.unregistered")
+                }), e.jsx(d, {
+                  component: "button",
+                  type: "button",
+                  onClick: y => {
+                    y.stopPropagation(), f({
+                      kind: "new",
+                      phone: a.remote_number
+                    });
+                  },
+                  sx: ce,
+                  children: o("customer.registerCustomer")
+                })]
+              })
+            }), p ? e.jsx(Ie, {
+              "aria-label": o("customer.findCustomer"),
+              sx: {
+                flexShrink: 0,
+                fontSize: 18,
+                color: "text.secondary"
+              }
+            }) : null]
+          })
+        }), e.jsx(w, {
+          icon: e.jsx(nt, {}),
+          label: o("customer.remoteNumber"),
+          children: i
+        }), e.jsx(w, {
+          icon: e.jsx(Pe, {}),
+          label: o("customer.callDuration"),
+          children: B(a.duration_sec) || "-"
+        }), e.jsx(w, {
+          icon: e.jsx(ot, {}),
+          label: o("customer.agent"),
+          children: a.handler_name || e.jsx(d, {
+            component: "span",
+            sx: {
+              color: "text.secondary"
+            },
+            children: o("customer.agentHint")
+          })
+        }), e.jsx(w, {
+          icon: e.jsx(pt, {}),
+          label: o("customer.receivedNumber"),
+          children: W(a.redirect_number || a.local_number) || a.redirect_number || a.local_number || "-"
+        })]
+      }))
+    }), k.push({
+      id: "call-recording",
+      title: o("customer.recording"),
+      children: a.recording_token ? e.jsx(ge, {
+        src: b.callRecordingUrl(a.recording_token),
+        name: o("customer.callRecording"),
+        seconds: a.duration_sec,
+        seekRequest: n,
+        onPlaybackChange: t.transcript.setPlayback
+      }) : e.jsx(T, {
+        sx: {
+          fontSize: "0.875rem",
+          color: "text.secondary"
+        },
+        children: o("customer.noRecording")
+      })
+    });
+    const v = p && !p.summary_text ? a.recording_token ? a.stt_status === "skipped" && ie[p.stt_error] ? o(ie[p.stt_error]) : ae[a.stt_status] ? o(ae[a.stt_status]) : "" : o("customer.sttWaitingRecording") : "";
+    if (ht.forEach(({
+      field: y,
+      titleKey: O
+    }, C) => {
+      const z = o(O);
+      C > 0 && !(p?.[y] ?? "") || k.push({
+        id: `call-${y}`,
+        title: z,
+        children: P && !p ? e.jsx(d, {
+          sx: {
+            display: "flex",
+            justifyContent: "center",
+            py: 2
+          },
+          children: e.jsx(Ee, {
+            size: 24
+          })
+        }) : p ? e.jsxs(d, {
+          sx: {
+            display: "flex",
+            flexDirection: "column",
+            gap: 1
+          },
+          children: [C === 0 && v ? e.jsx(T, {
+            sx: {
+              fontSize: "0.875rem",
+              color: "text.secondary"
+            },
+            children: v
+          }) : null, e.jsx(rt, {
+            value: p[y],
+            multiline: !0,
+            bordered: !0,
+            maxLength: 5e3,
+            onCommit: A => {
+              t.saveSummary(y, A);
+            }
+          }, `${p.seq}-${y}`)]
+        }) : null
+      });
+    }), p) {
+      const y = p.seq;
+      k.push({
+        id: "call-memo",
+        title: o("customer.tabMemo"),
+        endIcon: x ? E.doneButton : void 0,
+        children: e.jsx(Je, {
+          syncKey: y,
+          value: p.memo,
+          editing: E.editing,
+          onEditingChange: x ? E.setEditing : () => {},
+          onSave: C => t.saveMemo(y, C)
+        })
+      });
+      const O = p.consults.length + p.deals.length;
+      k.push({
+        id: "call-links",
+        title: o("customer.consultAndDeals"),
+        endIcon: O > 0 && x ? e.jsx(Ae, {
+          label: o("customer.writeConsult"),
+          onClick: S
+        }) : void 0,
+        children: e.jsx(ft, {
+          detail: p,
+          onOpenConsult: C => f({
+            kind: "consultSeq",
+            seq: C
+          }),
+          onOpenDeal: C => f({
+            kind: "dealSeq",
+            seq: C
+          }),
+          onCreateConsult: x ? S : void 0
+        })
+      });
+    }
+    p && p.task_candidates.length > 0 && k.push({
+      id: "call-tasks",
+      title: o("customer.taskCandidates"),
+      children: V(e.jsx(gt, {
+        controller: t,
+        detail: p
+      }))
+    }), p?.transcript && k.push({
+      id: "call-transcript",
+      title: o("customer.transcript"),
+      children: V(e.jsx(Xe, {
+        controller: t.transcript,
+        transcript: p.transcript,
+        speakerNames: p.speaker_names,
+        canPlay: !!p.recording_token
+      }))
+    });
+  }
+  return e.jsxs(e.Fragment, {
+    children: [e.jsx(Oe, {
+      readOnly: !x,
+      open: l.isOpen,
+      onClose: l.close,
+      title: r,
+      sideDrawer: !m,
+      fullScreen: m,
+      mobilePresentation: m ? "slide" : "dialog",
+      titleIcons: {
+        print: {
+          visible: !1
+        },
+        share: {
+          visible: !1
+        },
+        delete: {
+          visible: !!a && R && x,
+          confirmConfig: {
+            title: o("customer.deleteCallRecord"),
+            message: o("customer.deleteCallRecordMessage"),
+            confirmText: o("customer.delete"),
+            cancelText: o("customer.cancel")
+          }
+        }
+      },
+      onDelete: () => {
+        t.remove();
+      },
+      sx: {
+        DialogContent: {
+          ...lt
+        }
+      },
+      tabs: {
+        visible: !1
+      },
+      scrollPastLastSection: !1,
+      actions: {
+        visible: !1
+      },
+      sections: k
+    }), p ? e.jsx(et, {
+      anchorEl: L,
+      currentSeq: p.customer_seq,
+      onClose: () => c(null),
+      onPick: v => {
+        t.setCustomer(v);
+      }
+    }) : null]
+  });
+}
+function me({
+  onOpen: t,
+  meta: o,
+  title: m,
+  amount: x
+}) {
+  return e.jsxs(d, {
+    role: "button",
+    tabIndex: 0,
+    onClick: t,
+    onKeyDown: h => {
+      (h.key === "Enter" || h.key === " ") && (h.preventDefault(), t());
+    },
+    sx: {
+      px: 2,
+      py: 1.5,
+      cursor: "pointer",
+      border: 1,
+      borderColor: "divider",
+      borderRadius: 1.5,
+      display: "flex",
+      flexDirection: "column",
+      gap: .5,
+      "&:hover": {
+        bgcolor: N[50]
+      }
+    },
+    children: [e.jsx(d, {
+      sx: {
+        display: "flex",
+        flexWrap: "wrap",
+        columnGap: 1.25,
+        fontSize: "0.875rem",
+        color: "text.secondary"
+      },
+      children: o
+    }), e.jsxs(d, {
+      sx: {
+        display: "flex",
+        alignItems: "baseline",
+        gap: 1.5,
+        minWidth: 0
+      },
+      children: [e.jsx(T, {
+        sx: {
+          flex: 1,
+          minWidth: 0,
+          fontSize: "0.9375rem",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap"
+        },
+        children: m
+      }), x ? e.jsx(T, {
+        sx: {
+          flexShrink: 0,
+          fontSize: "0.9375rem",
+          fontWeight: 600,
+          fontVariantNumeric: "tabular-nums"
+        },
+        children: x
+      }) : null]
+    })]
+  });
+}
+function ft({
+  detail: t,
+  onOpenConsult: o,
+  onOpenDeal: m,
+  onCreateConsult: x
+}) {
+  const h = G();
+  return t.consults.length === 0 && t.deals.length === 0 ? e.jsxs(d, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 1.5
+    },
+    children: [x ? e.jsx(d, {
+      children: e.jsx(F, {
+        variant: "outlined",
+        startIcon: e.jsx(we, {}),
+        onClick: x,
+        children: h("customer.writeConsult")
+      })
+    }) : null, e.jsx(T, {
+      sx: {
+        color: N[500],
+        fontSize: "0.875rem"
+      },
+      children: h("customer.noCallLinks")
+    })]
+  }) : e.jsxs(d, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 1
+    },
+    children: [t.consults.map(l => e.jsx(me, {
+      onOpen: () => o(l.seq),
+      title: l.title || h("customer.kindConsult"),
+      meta: e.jsxs(e.Fragment, {
+        children: [e.jsx(d, {
+          component: "span",
+          sx: {
+            color: "text.primary",
+            fontWeight: 600
+          },
+          children: h("customer.kindConsult")
+        }), e.jsx("span", {
+          children: l.consulted_at
+        }), l.handler_name ? e.jsx("span", {
+          children: l.handler_name
+        }) : null, l.status === "open" ? e.jsx(d, {
+          component: "span",
+          sx: {
+            color: "warning.dark",
+            fontWeight: 600
+          },
+          children: h("customer.consultStatusOpen")
+        }) : null]
+      })
+    }, `consult-${l.seq}`)), t.deals.map(l => e.jsx(me, {
+      onOpen: () => m(l.seq),
+      title: l.title || l.deal_no || h("customer.quoteContract"),
+      amount: h("customer.wonAmount", {
+        amount: it(l.total_amount)
+      }),
+      meta: e.jsxs(e.Fragment, {
+        children: [e.jsx(d, {
+          component: "span",
+          sx: l.stage === "contract" ? {
+            color: "primary.main",
+            fontWeight: 600
+          } : {
+            color: "text.primary",
+            fontWeight: 600
+          },
+          children: at[l.stage] ?? l.stage
+        }), l.deal_date ? e.jsx("span", {
+          children: l.deal_date
+        }) : null, l.deal_no ? e.jsx("span", {
+          children: l.deal_no
+        }) : null]
+      })
+    }, `deal-${l.seq}`))]
+  });
+}
+function gt({
+  controller: t,
+  detail: o
+}) {
+  const m = G(),
+    x = fe("customer").canWrite,
+    h = t.ui.useValue("taskPeople") ?? {};
+  return e.jsx(d, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      gap: .5
+    },
+    children: o.task_candidates.map((l, I) => {
+      const j = o.task_links[l.title] ?? 0,
+        p = j ? h[j] ?? "" : "";
+      return e.jsxs(d, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: 1,
+          minHeight: 40,
+          pl: 1.5,
+          pr: .5,
+          border: "1px solid #e5e7eb",
+          borderRadius: 1
+        },
+        children: [e.jsxs(T, {
+          sx: {
+            flex: 1,
+            minWidth: 0,
+            fontSize: 15,
+            wordBreak: "keep-all",
+            overflowWrap: "anywhere",
+            py: .75
+          },
+          children: [l.title, l.due && !j ? e.jsxs(d, {
+            component: "span",
+            sx: {
+              ml: 1,
+              fontSize: 14,
+              color: "text.secondary"
+            },
+            children: ["~", l.due.slice(5).replace("-", "/")]
+          }) : null, p ? e.jsx(d, {
+            component: "span",
+            sx: {
+              ml: 1,
+              fontSize: 14,
+              color: "text.secondary"
+            },
+            children: p
+          }) : null]
+        }), j ? e.jsx(F, {
+          size: "small",
+          startIcon: e.jsx(De, {}),
+          onClick: () => st(j),
+          sx: {
+            flexShrink: 0,
+            fontSize: 14,
+            color: "text.secondary"
+          },
+          children: m("customer.viewTask")
+        }) : x ? e.jsx(F, {
+          size: "small",
+          startIcon: e.jsx(tt, {}),
+          onClick: () => t.promoteTask(l),
+          sx: {
+            flexShrink: 0,
+            fontSize: 14
+          },
+          children: m("customer.toTask")
+        }) : null]
+      }, `${I}-${l.title}`);
+    })
+  });
+}
+const _t = 50,
+  jt = 40,
+  de = new Set(["missed", "rejected"]),
+  pe = "call.changed",
+  yt = t => [{
+    value: "",
+    label: t("customer.all")
+  }, {
+    value: "in",
+    label: t("customer.filterIncoming")
+  }, {
+    value: "out",
+    label: t("customer.filterOutgoing")
+  }, {
+    value: "missed",
+    label: t("customer.callMissed")
+  }],
+  kt = "#f8f8f7",
+  xe = t => t ? t.slice(5, 16) : "";
+function os() {
+  const t = G(),
+    o = he(),
+    m = Me(),
+    x = Number(m?.seq) || 0,
+    h = Fe("customer.calls"),
+    l = xt({
+      onRemoved: s => {
+        E(g => g.filter(u => u.seq !== s)), c(g => Math.max(0, g - 1));
+      }
+    }),
+    I = l.ui.useValue("call")?.seq ?? 0,
+    [j, p] = _.useState(""),
+    [P, a] = _.useState(""),
+    [R, E] = _.useState([]),
+    [L, c] = _.useState(0),
+    [n, i] = _.useState(!1),
+    r = _.useRef(1),
+    f = _.useRef(0),
+    [S, k] = _.useState(null),
+    [V, v] = _.useState(!1),
+    y = P.replace(/\D/g, ""),
+    O = y.length >= 4 ? y : "",
+    C = _.useCallback(async s => {
+      if (!x) return;
+      const g = ++f.current;
+      i(!0);
+      try {
+        const u = await b.listCalls({
+          page: s,
+          limit: _t,
+          direction: j === "in" || j === "out" ? j : "",
+          result: j === "missed" ? "missed" : "",
+          q: O,
+          withCustomer: !0
+        });
+        if (g !== f.current) return;
+        r.current = s, E(q => s === 1 ? u.items : [...q, ...u.items]), c(u.total);
+      } catch (u) {
+        g === f.current && D(u instanceof Error ? u.message : M("customer.loadCallsFailed"));
+      } finally {
+        g === f.current && i(!1);
+      }
+    }, [x, j, O]);
+  _.useEffect(() => {
+    C(1);
+  }, [C]);
+  const z = _.useRef(R);
+  z.current = R;
+  const A = _.useRef(C);
+  A.current = C;
+  const Q = _.useRef(l.refreshIfOpen);
+  Q.current = l.refreshIfOpen, _.useEffect(() => {
+    const s = g => {
+      const u = Number(g.data?.seq) || 0;
+      if (u) {
+        if (Q.current(u), !z.current.some(q => q.seq === u)) return void A.current(1);
+        b.callDetail(u).then(q => E(ke => ke.map(U => U.seq === u ? {
+          ...U,
+          ...q
+        } : U))).catch(() => {});
+      }
+    };
+    return ne.addRealtimeEventListener(pe, s), () => ne.removeRealtimeEventListener(pe, s);
+  }, []);
+  const [_e, Z] = be(),
+    H = _e.get("call") ?? "",
+    J = _.useRef(l.open);
+  J.current = l.open, _.useEffect(() => {
+    !H || !x || (Z(s => {
+      const g = new URLSearchParams(s);
+      return g.delete("call"), g;
+    }, {
+      replace: !0
+    }), b.listCalls({
+      callSequence: H,
+      limit: 1,
+      withCustomer: !0
+    }).then(s => {
+      s.items[0] && J.current(s.items[0]);
+    }).catch(() => {}));
+  }, [H, x, Z]);
+  const ee = () => {
+      !n && R.length < L && C(r.current + 1);
+    },
+    $ = s => l.open(s),
+    je = [{
+      id: "started_at",
+      text: t("customer.dateTime"),
+      width: 120,
+      align: "center",
+      mobile: "sub",
+      render: s => xe(s.started_at)
+    }, {
+      id: "customer_name",
+      text: t("customer.kindCustomer"),
+      width: 150,
+      mobile: "title",
+      render: s => s.customer_name ? e.jsx(d, {
+        component: "span",
+        sx: {
+          fontWeight: 600
+        },
+        children: s.customer_name
+      }) : e.jsx(d, {
+        component: "span",
+        sx: {
+          color: "text.secondary"
+        },
+        children: t("customer.unregistered")
+      })
+    }, {
+      id: "remote_number",
+      text: t("customer.number"),
+      width: 140,
+      render: s => W(s.remote_number) || s.remote_number
+    }, {
+      id: "result",
+      text: t("customer.callType"),
+      width: 110,
+      align: "center",
+      mobile: "badge",
+      render: s => e.jsx(d, {
+        component: "span",
+        sx: de.has(s.result) ? {
+          color: "warning.dark",
+          fontWeight: 600
+        } : void 0,
+        children: Y(s)
+      })
+    }, {
+      id: "duration_sec",
+      text: t("customer.callDuration"),
+      width: 90,
+      align: "center",
+      render: s => B(s.duration_sec)
+    }, {
+      id: "summary_text",
+      text: t("customer.summary"),
+      render: s => s.summary_text ? e.jsx(d, {
+        component: "span",
+        sx: {
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+          display: "block"
+        },
+        children: s.summary_text
+      }) : s.stt_status === "pending" ? e.jsx(d, {
+        component: "span",
+        sx: {
+          color: "primary.main",
+          fontWeight: 600
+        },
+        children: t("customer.summarizing")
+      }) : null
+    }, {
+      id: "handler_name",
+      text: t("customer.agent"),
+      width: 130,
+      render: s => s.handler_name ?? ""
+    }, {
+      id: "consult_title",
+      text: t("customer.kindConsult"),
+      width: 170,
+      mobile: "sub",
+      render: s => s.consult_seq ? e.jsx(d, {
+        component: "span",
+        title: s.consult_title,
+        sx: {
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+          display: "block"
+        },
+        children: s.consult_title || t("customer.kindConsult")
+      }) : null
+    }, {
+      id: "deal_no",
+      text: t("customer.quoteContract"),
+      width: 170,
+      mobile: "badge",
+      render: s => s.deal_seq ? e.jsxs(d, {
+        component: "span",
+        title: [s.deal_no, s.deal_title].filter(Boolean).join(" · "),
+        sx: {
+          display: "inline-flex",
+          alignItems: "center",
+          gap: .75,
+          minWidth: 0,
+          maxWidth: "100%"
+        },
+        children: [e.jsx(d, {
+          component: "span",
+          sx: {
+            flexShrink: 0,
+            px: .75,
+            borderRadius: 1,
+            fontSize: "0.875rem",
+            fontWeight: 600,
+            bgcolor: s.deal_stage === "contract" ? oe.emerald50 : N[100],
+            color: s.deal_stage === "contract" ? oe.emerald700 : N[600]
+          },
+          children: s.deal_stage === "contract" ? t("customer.kindDeal") : t("customer.quote")
+        }), e.jsx(d, {
+          component: "span",
+          sx: {
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap"
+          },
+          children: s.deal_no
+        })]
+      }) : null
+    }, {
+      id: "recording",
+      text: t("customer.recording"),
+      width: 64,
+      align: "center",
+      render: s => s.recording_token ? e.jsx(re, {
+        size: "small",
+        "aria-label": t("customer.playRecording"),
+        onClick: g => {
+          g.stopPropagation(), k({
+            anchor: g.currentTarget,
+            call: s
+          }), v(!0);
+        },
+        sx: {
+          my: -.5,
+          color: "primary.main"
+        },
+        children: e.jsx(le, {})
+      }) : null
+    }],
+    te = e.jsx(We, {
+      open: V && !!S,
+      onClose: () => v(!1),
+      anchorReference: "none",
+      slots: {
+        transition: Le
+      },
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+      },
+      slotProps: {
+        paper: {
+          sx: {
+            position: "static",
+            p: 1.5,
+            width: o ? "calc(100vw - 24px)" : 420
+          }
+        },
+        transition: {
+          onExited: () => k(null)
+        }
+      },
+      children: S ? e.jsx(ge, {
+        src: b.callRecordingUrl(S.call.recording_token),
+        name: t("customer.callRecordingOf", {
+          name: S.call.customer_name || W(S.call.remote_number) || S.call.remote_number
+        }),
+        seconds: S.call.duration_sec
+      }) : null
+    }),
+    se = e.jsx(Be, {
+      size: "medium",
+      value: j,
+      onChange: s => p(s ?? ""),
+      options: yt(t),
+      sx: o ? {
+        width: "100%",
+        flexWrap: "nowrap",
+        "& .MuiToggleButtonGroup-grouped": {
+          flex: 1,
+          minWidth: 0,
+          px: .5,
+          whiteSpace: "nowrap"
+        },
+        ...Ve
+      } : {
+        flexWrap: "nowrap",
+        flexShrink: 0,
+        height: jt,
+        "& .MuiToggleButtonGroup-grouped": {
+          minWidth: 64,
+          px: 1.5
+        }
+      }
+    }),
+    K = He(n);
+  if (o) {
+    const s = u => u.recording_token ? e.jsx(re, {
+        size: "small",
+        "aria-label": t("customer.playRecording"),
+        onClick: q => {
+          q.stopPropagation(), k({
+            anchor: q.currentTarget,
+            call: u
+          }), v(!0);
+        },
+        sx: {
+          my: -.5,
+          color: "primary.main"
+        },
+        children: e.jsx(le, {})
+      }) : null,
+      g = [e.jsx(Ge, {
+        searchValue: P,
+        onSearchChange: a,
+        searchPlaceholder: t("customer.searchPhone"),
+        below: se
+      }, "title"), ...R.map(u => e.jsxs(d, {
+        role: "button",
+        tabIndex: 0,
+        onClick: () => $(u),
+        onKeyDown: q => {
+          (q.key === "Enter" || q.key === " ") && (q.preventDefault(), $(u));
+        },
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: .5,
+          px: 2,
+          py: 1.5,
+          cursor: "pointer",
+          userSelect: "none",
+          "&:active": {
+            bgcolor: kt
+          }
+        },
+        children: [e.jsxs(d, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+            minWidth: 0
+          },
+          children: [e.jsx(T, {
+            noWrap: !0,
+            sx: {
+              flex: 1,
+              minWidth: 0,
+              fontSize: 15,
+              fontWeight: u.customer_name ? 600 : 400
+            },
+            children: u.customer_name || W(u.remote_number) || u.remote_number
+          }), e.jsx(d, {
+            component: "span",
+            sx: {
+              fontSize: "0.875rem",
+              whiteSpace: "nowrap",
+              ...(de.has(u.result) ? {
+                color: "warning.dark",
+                fontWeight: 600
+              } : {
+                color: "text.secondary"
+              })
+            },
+            children: Y(u)
+          }), s(u)]
+        }), e.jsxs(d, {
+          sx: {
+            display: "flex",
+            gap: 1.25,
+            fontSize: "0.875rem",
+            color: "text.secondary",
+            flexWrap: "wrap"
+          },
+          children: [e.jsx("span", {
+            children: xe(u.started_at)
+          }), u.customer_name ? e.jsx("span", {
+            children: W(u.remote_number) || u.remote_number
+          }) : e.jsx("span", {
+            children: t("customer.unregistered")
+          }), B(u.duration_sec) ? e.jsx("span", {
+            children: B(u.duration_sec)
+          }) : null, u.handler_name ? e.jsx("span", {
+            children: t("customer.agentWithName", {
+              name: u.handler_name
+            })
+          }) : null]
+        }), u.summary_text ? e.jsx(T, {
+          sx: {
+            fontSize: "0.875rem"
+          },
+          children: u.summary_text
+        }) : u.stt_status === "pending" ? e.jsx(T, {
+          sx: {
+            fontSize: "0.875rem",
+            color: "primary.main",
+            fontWeight: 600
+          },
+          children: t("customer.summarizing")
+        }) : null]
+      }, u.seq))];
+    return K && R.length === 0 && g.push(e.jsx(T, {
+      sx: {
+        p: 2,
+        fontSize: "0.875rem",
+        color: "text.secondary"
+      },
+      children: t(O || j ? "customer.noMatchingCalls" : "customer.noCallsYet")
+    }, "empty")), K || g.push(e.jsx($e, {}, "loading")), K && R.length < L && g.push(e.jsx(d, {
+      sx: {
+        p: 1,
+        display: "flex",
+        justifyContent: "center"
+      },
+      children: e.jsx(F, {
+        onClick: ee,
+        disabled: n,
+        children: t("customer.loadMore")
+      })
+    }, "more")), e.jsxs(e.Fragment, {
+      children: [e.jsx(Ke, {
+        attachHead: !0,
+        children: g
+      }), te, e.jsx(ue, {
+        controller: l
+      })]
+    });
+  }
+  const ye = {
+    filter: {
+      stateId: "call-filters",
+      showChips: !1,
+      groups: [{
+        filters: [{
+          type: "custom",
+          name: "call-filters",
+          node: se
+        }]
+      }]
+    },
+    showSearch: !0,
+    searchValue: P,
+    searchPlaceholder: t("customer.searchPhone"),
+    onSearchChange: a,
+    searchLoading: n,
+    collapsible: !1,
+    showCollapseButton: !1,
+    showClearIcon: !1
+  };
+  return e.jsxs(e.Fragment, {
+    children: [e.jsx(d, {
+      sx: {
+        position: "relative",
+        height: "100%",
+        minHeight: 0,
+        display: "flex",
+        flexDirection: "column"
+      },
+      children: e.jsx(ze, {
+        header: ye,
+        tableProps: {
+          ...h,
+          scrollbars: Ne,
+          mobile: !0,
+          variant: "notion",
+          columns: je,
+          data: R,
+          totalCount: L,
+          getRowId: s => String(s.seq),
+          onRowClick: $,
+          selectedRowId: l.modal.isOpen && I ? String(I) : null,
+          selectedRowSx: ut,
+          onLoadMore: ee,
+          loading: n,
+          emptyMessage: e.jsx(T, {
+            sx: {
+              fontSize: "0.875rem",
+              color: "text.secondary"
+            },
+            children: t(O || j ? "customer.noMatchingCalls" : "customer.noCallsYet")
+          })
+        }
+      })
+    }), te, e.jsx(ue, {
+      controller: l
+    })]
+  });
+}
+export { os as default };

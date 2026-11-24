@@ -1,0 +1,9 @@
+const e = "Effective date: {{date}}",
+  c = "Privacy Policy",
+  t = "Terms of Service",
+  i = {
+    effectiveDate: e,
+    privacyPolicy: c,
+    termsOfService: t
+  };
+export { i as default, e as effectiveDate, c as privacyPolicy, t as termsOfService };

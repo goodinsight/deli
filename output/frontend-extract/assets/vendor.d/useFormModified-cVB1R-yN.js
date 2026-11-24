@@ -1,0 +1,1 @@
+import{r as s}from"./react-CjxcGQav.js";function t(o){const e="_store"in o?o._store:o;return s.useSyncExternalStore(s.useCallback(r=>e.subscribeGlobal(r),[e]),s.useCallback(()=>e.isModified(),[e]),s.useCallback(()=>e.isModified(),[e]))}export{t as u};

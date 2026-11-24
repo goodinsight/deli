@@ -1,0 +1,798 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/BoardPostDetail-CniIF2a7.js",
+  "path": "assets/vendor.d/BoardPostDetail-CniIF2a7.js",
+  "name": "BoardPostDetail",
+  "kind": "ui",
+  "bytes": 38650,
+  "sha256": "c73ad61602fd55696f9a3a54ee9247b055dede895718dd569764d307c351e82f",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/BoardPostDetail-CniIF2a7.js",
+  "imports": [
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "U",
+          "imported": "c"
+        },
+        {
+          "local": "u",
+          "imported": "bT"
+        },
+        {
+          "local": "it",
+          "imported": "kk"
+        },
+        {
+          "local": "Te",
+          "imported": "kl"
+        },
+        {
+          "local": "rt",
+          "imported": "fV"
+        },
+        {
+          "local": "at",
+          "imported": "fW"
+        },
+        {
+          "local": "lt",
+          "imported": "fX"
+        },
+        {
+          "local": "ct",
+          "imported": "i"
+        },
+        {
+          "local": "dt",
+          "imported": "c8"
+        },
+        {
+          "local": "ut",
+          "imported": "e"
+        },
+        {
+          "local": "mt",
+          "imported": "hH"
+        },
+        {
+          "local": "ie",
+          "imported": "ak"
+        },
+        {
+          "local": "pt",
+          "imported": "dv"
+        },
+        {
+          "local": "ft",
+          "imported": "fA"
+        },
+        {
+          "local": "V",
+          "imported": "ds"
+        },
+        {
+          "local": "ht",
+          "imported": "h0"
+        },
+        {
+          "local": "k",
+          "imported": "hI"
+        },
+        {
+          "local": "T",
+          "imported": "bO"
+        },
+        {
+          "local": "_e",
+          "imported": "z"
+        },
+        {
+          "local": "ee",
+          "imported": "km"
+        },
+        {
+          "local": "bt",
+          "imported": "fT"
+        },
+        {
+          "local": "qe",
+          "imported": "hK"
+        },
+        {
+          "local": "W",
+          "imported": "kn"
+        },
+        {
+          "local": "we",
+          "imported": "ko"
+        },
+        {
+          "local": "ve",
+          "imported": "kp"
+        },
+        {
+          "local": "gt",
+          "imported": "g2"
+        },
+        {
+          "local": "m",
+          "imported": "B"
+        },
+        {
+          "local": "xt",
+          "imported": "f"
+        },
+        {
+          "local": "Ae",
+          "imported": "kq"
+        },
+        {
+          "local": "ze",
+          "imported": "jv"
+        },
+        {
+          "local": "Ve",
+          "imported": "kr"
+        },
+        {
+          "local": "De",
+          "imported": "ks"
+        },
+        {
+          "local": "te",
+          "imported": "bB"
+        },
+        {
+          "local": "yt",
+          "imported": "bj"
+        },
+        {
+          "local": "G",
+          "imported": "bv"
+        },
+        {
+          "local": "he",
+          "imported": "kt"
+        },
+        {
+          "local": "_t",
+          "imported": "cI"
+        },
+        {
+          "local": "Be",
+          "imported": "bh"
+        },
+        {
+          "local": "wt",
+          "imported": "K"
+        },
+        {
+          "local": "q",
+          "imported": "c4"
+        },
+        {
+          "local": "K",
+          "imported": "bH"
+        },
+        {
+          "local": "N",
+          "imported": "L"
+        },
+        {
+          "local": "vt",
+          "imported": "a_"
+        },
+        {
+          "local": "St",
+          "imported": "a1"
+        },
+        {
+          "local": "Oe",
+          "imported": "cc"
+        },
+        {
+          "local": "kt",
+          "imported": "fj"
+        },
+        {
+          "local": "H",
+          "imported": "bQ"
+        },
+        {
+          "local": "jt",
+          "imported": "jy"
+        },
+        {
+          "local": "Ct",
+          "imported": "ku"
+        },
+        {
+          "local": "Le",
+          "imported": "jN"
+        },
+        {
+          "local": "Pt",
+          "imported": "cX"
+        },
+        {
+          "local": "ne",
+          "imported": "bI"
+        },
+        {
+          "local": "oe",
+          "imported": "kv"
+        },
+        {
+          "local": "Ft",
+          "imported": "bP"
+        },
+        {
+          "local": "Et",
+          "imported": "cb"
+        },
+        {
+          "local": "Se",
+          "imported": "bR"
+        },
+        {
+          "local": "It",
+          "imported": "kw"
+        },
+        {
+          "local": "Tt",
+          "imported": "D"
+        },
+        {
+          "local": "qt",
+          "imported": "cP"
+        },
+        {
+          "local": "At",
+          "imported": "kx"
+        },
+        {
+          "local": "zt",
+          "imported": "ky"
+        },
+        {
+          "local": "Vt",
+          "imported": "al"
+        },
+        {
+          "local": "Dt",
+          "imported": "kz"
+        },
+        {
+          "local": "ke",
+          "imported": "fQ"
+        },
+        {
+          "local": "Bt",
+          "imported": "go"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "n",
+          "imported": "j"
+        },
+        {
+          "local": "I",
+          "imported": "r"
+        },
+        {
+          "local": "Ot",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "./biometricController-CswvQnMD.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Lt",
+          "imported": "u"
+        },
+        {
+          "local": "Nt",
+          "imported": "c"
+        }
+      ],
+      "resolved": "assets/vendor.d/biometricController-CswvQnMD.js"
+    },
+    {
+      "specifier": "./attendanceBio-C-9dHF9O.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Rt",
+          "imported": "s"
+        }
+      ],
+      "resolved": "assets/vendor.d/attendanceBio-C-9dHF9O.js"
+    },
+    {
+      "specifier": "./ThumbUp-CuLuUDoD.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Mt",
+          "imported": "e"
+        }
+      ],
+      "resolved": "assets/vendor.d/ThumbUp-CuLuUDoD.js"
+    },
+    {
+      "specifier": "./PictureAsPdfOutlined-ChIt6cmZ.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Kt",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/PictureAsPdfOutlined-ChIt6cmZ.js"
+    },
+    {
+      "specifier": "./FolderZipOutlined-BdWYvuz4.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Wt",
+          "imported": "F"
+        }
+      ],
+      "resolved": "assets/vendor.d/FolderZipOutlined-BdWYvuz4.js"
+    },
+    {
+      "specifier": "./InsertDriveFileOutlined-DcD-Yh-v.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ht",
+          "imported": "I"
+        }
+      ],
+      "resolved": "assets/vendor.d/InsertDriveFileOutlined-DcD-Yh-v.js"
+    },
+    {
+      "specifier": "./FavoriteBorder-BkFztsJe.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "$t",
+          "imported": "F"
+        }
+      ],
+      "resolved": "assets/vendor.d/FavoriteBorder-BkFztsJe.js"
+    },
+    {
+      "specifier": "./formatFileSize-Cwk2MLba.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "be",
+          "imported": "f"
+        }
+      ],
+      "resolved": "assets/vendor.d/formatFileSize-Cwk2MLba.js"
+    },
+    {
+      "specifier": "./taskboxProviderConfig-DZSmb5uq.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ut",
+          "imported": "C"
+        }
+      ],
+      "resolved": "assets/vendor.d/taskboxProviderConfig-DZSmb5uq.js"
+    },
+    {
+      "specifier": "./useFileViewer-B-2ewnr3.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ne",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/useFileViewer-B-2ewnr3.js"
+    },
+    {
+      "specifier": "./html-d5LenlcH.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Gt",
+          "imported": "s"
+        }
+      ],
+      "resolved": "assets/vendor.d/html-d5LenlcH.js"
+    },
+    {
+      "specifier": "./date_utils-CYURFdnX.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Re",
+          "imported": "b"
+        }
+      ],
+      "resolved": "assets/vendor.d/date_utils-CYURFdnX.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "Xt",
+      "exported": "A"
+    },
+    {
+      "local": "yo",
+      "exported": "B"
+    },
+    {
+      "local": "Xn",
+      "exported": "C"
+    },
+    {
+      "local": "en",
+      "exported": "D"
+    },
+    {
+      "local": "ae",
+      "exported": "E"
+    },
+    {
+      "local": "Qt",
+      "exported": "F"
+    },
+    {
+      "local": "Jn",
+      "exported": "G"
+    },
+    {
+      "local": "Fe",
+      "exported": "H"
+    },
+    {
+      "local": "$n",
+      "exported": "I"
+    },
+    {
+      "local": "lo",
+      "exported": "J"
+    },
+    {
+      "local": "Wn",
+      "exported": "K"
+    },
+    {
+      "local": "re",
+      "exported": "L"
+    },
+    {
+      "local": "We",
+      "exported": "M"
+    },
+    {
+      "local": "Un",
+      "exported": "N"
+    },
+    {
+      "local": "ao",
+      "exported": "O"
+    },
+    {
+      "local": "un",
+      "exported": "P"
+    },
+    {
+      "local": "oo",
+      "exported": "Q"
+    },
+    {
+      "local": "so",
+      "exported": "R"
+    },
+    {
+      "local": "le",
+      "exported": "S"
+    },
+    {
+      "local": "Gn",
+      "exported": "T"
+    },
+    {
+      "local": "co",
+      "exported": "U"
+    },
+    {
+      "local": "uo",
+      "exported": "V"
+    },
+    {
+      "local": "po",
+      "exported": "W"
+    },
+    {
+      "local": "pn",
+      "exported": "X"
+    },
+    {
+      "local": "Xe",
+      "exported": "Y"
+    },
+    {
+      "local": "mn",
+      "exported": "Z"
+    },
+    {
+      "local": "on",
+      "exported": "a"
+    },
+    {
+      "local": "Qn",
+      "exported": "b"
+    },
+    {
+      "local": "Yn",
+      "exported": "c"
+    },
+    {
+      "local": "mo",
+      "exported": "d"
+    },
+    {
+      "local": "Zn",
+      "exported": "e"
+    },
+    {
+      "local": "Ke",
+      "exported": "f"
+    },
+    {
+      "local": "eo",
+      "exported": "g"
+    },
+    {
+      "local": "Hn",
+      "exported": "h"
+    },
+    {
+      "local": "He",
+      "exported": "i"
+    },
+    {
+      "local": "ln",
+      "exported": "j"
+    },
+    {
+      "local": "an",
+      "exported": "k"
+    },
+    {
+      "local": "fo",
+      "exported": "l"
+    },
+    {
+      "local": "to",
+      "exported": "m"
+    },
+    {
+      "local": "ro",
+      "exported": "n"
+    },
+    {
+      "local": "xo",
+      "exported": "o"
+    },
+    {
+      "local": "w",
+      "exported": "p"
+    },
+    {
+      "local": "Me",
+      "exported": "q"
+    },
+    {
+      "local": "cn",
+      "exported": "r"
+    },
+    {
+      "local": "nn",
+      "exported": "s"
+    },
+    {
+      "local": "gn",
+      "exported": "t"
+    },
+    {
+      "local": "io",
+      "exported": "u"
+    },
+    {
+      "local": "bo",
+      "exported": "v"
+    },
+    {
+      "local": "ho",
+      "exported": "w"
+    },
+    {
+      "local": "no",
+      "exported": "x"
+    },
+    {
+      "local": "go",
+      "exported": "y"
+    },
+    {
+      "local": "Yt",
+      "exported": "z"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "vn",
+      "keys": [
+        "name",
+        "mime"
+      ]
+    },
+    {
+      "function": "bo",
+      "keys": [
+        "row"
+      ]
+    },
+    {
+      "function": "go",
+      "keys": [
+        "count"
+      ]
+    },
+    {
+      "function": "Ee",
+      "keys": [
+        "icon",
+        "count"
+      ]
+    },
+    {
+      "function": "xo",
+      "keys": [
+        "rows",
+        "selectedSeq",
+        "keyword",
+        "mobile",
+        "onOpen",
+        "dateText",
+        "footer",
+        "dragProps"
+      ]
+    },
+    {
+      "function": "jn",
+      "keys": [
+        "files",
+        "onRemove"
+      ]
+    },
+    {
+      "function": "Cn",
+      "keys": [
+        "controller",
+        "postSeq",
+        "comment",
+        "editable",
+        "rowRef"
+      ]
+    },
+    {
+      "function": "Pn",
+      "keys": [
+        "controller",
+        "myAccountSeq",
+        "isAdmin"
+      ]
+    },
+    {
+      "function": "Fn",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "En",
+      "keys": [
+        "controller",
+        "postSeq",
+        "boardKey",
+        "rows"
+      ]
+    },
+    {
+      "function": "yo",
+      "keys": [
+        "controller",
+        "myAccountSeq",
+        "isAdmin",
+        "presentation"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "BoardListPage",
+    "BoardTrashPage",
+    "CalendarSidebarPanel",
+    "Layout",
+    "MobileDashboardLayout",
+    "PostComposerHost",
+    "PostLockDialogs",
+    "StackedTaskDetailSlot",
+    "TaskBoxCreateDrawer",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskMonthlyFields",
+    "TaskPostComposerDialog",
+    "TaskTransferDialog"
+  ],
+  "service": "게시판",
+  "purpose": "게시글 상세",
+  "reuseGrade": "C",
+  "integration": "게시물 API·댓글·권한·에디터 연결",
+  "exportedParameters": [
+    {
+      "export": "B",
+      "compiledLocal": "yo",
+      "keys": [
+        "controller",
+        "myAccountSeq",
+        "isAdmin",
+        "presentation"
+      ]
+    },
+    {
+      "export": "o",
+      "compiledLocal": "xo",
+      "keys": [
+        "rows",
+        "selectedSeq",
+        "keyword",
+        "mobile",
+        "onOpen",
+        "dateText",
+        "footer",
+        "dragProps"
+      ]
+    },
+    {
+      "export": "v",
+      "compiledLocal": "bo",
+      "keys": [
+        "row"
+      ]
+    },
+    {
+      "export": "y",
+      "compiledLocal": "go",
+      "keys": [
+        "count"
+      ]
+    }
+  ]
+}

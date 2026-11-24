@@ -1,0 +1,244 @@
+import { r as p, j as e } from "./react-CjxcGQav.js";
+import { s as f, a as b, b as h, R as m, G as g } from "./sampleSei-CurnXhyw.js";
+import { c8 as u, B as o, b as l, as as S, f as i, d as r, s as n, l as j } from "../js.d/main-Cm9wS5wt.js";
+import "./stylis-DdLD6a3t.js";
+const k = {
+    list: async () => f
+  },
+  y = () => async s => {
+    const a = await k.list();
+    s.setValue("data", a);
+  },
+  z = () => (s, a) => {
+    s.setValue("tab", a);
+  },
+  w = {
+    tab: "local",
+    data: {
+      local: [],
+      univ: [],
+      bi: [],
+      ac: []
+    }
+  };
+function T() {
+  const s = u({
+    stateId: "seiState",
+    initialValues: w,
+    actions: {
+      loadSeiData: y(),
+      setTab: z()
+    }
+  });
+  return p.useEffect(() => {
+    s.getValue("data.local").length === 0 && s.actions.loadSeiData();
+  }, []), {
+    state: s
+  };
+}
+const d = {
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap"
+};
+function v() {
+  const {
+      state: s
+    } = T(),
+    c = s.useValue("tab") ?? "local",
+    x = s.useValue(`data.${c}`) ?? [];
+  return e.jsxs(o, {
+    children: [e.jsxs(o, {
+      component: "section",
+      sx: {
+        bgcolor: l[900],
+        px: 2,
+        py: 2.5,
+        color: "#fff"
+      },
+      children: [e.jsx(o, {
+        component: "p",
+        sx: {
+          fontSize: "0.875rem",
+          fontWeight: i.bold,
+          letterSpacing: "0.1em",
+          color: S.blue300
+        },
+        children: "STARTUP ECOSYSTEM INDEX"
+      }), e.jsx(o, {
+        component: "h1",
+        sx: {
+          mt: .5,
+          fontSize: r.xl,
+          lineHeight: 1.4,
+          fontWeight: i.black
+        },
+        children: "2026 대한민국 창업생태계 지수"
+      })]
+    }), e.jsx(o, {
+      sx: {
+        position: "sticky",
+        top: 0,
+        zIndex: 30,
+        display: "flex",
+        gap: 1.5,
+        overflowX: "auto",
+        borderBottom: `1px solid ${n[100]}`,
+        bgcolor: "#fff",
+        px: 2,
+        py: 1.25,
+        scrollbarWidth: "none",
+        "&::-webkit-scrollbar": {
+          display: "none"
+        }
+      },
+      children: b.map(t => e.jsx(o, {
+        component: "button",
+        onClick: () => s.actions.setTab(t.key),
+        sx: {
+          flexShrink: 0,
+          borderRadius: "9999px",
+          px: 2,
+          py: 1,
+          fontSize: r.base,
+          lineHeight: 1.5,
+          fontWeight: i.bold,
+          transition: "color 150ms cubic-bezier(0.4, 0, 0.2, 1), background-color 150ms cubic-bezier(0.4, 0, 0.2, 1), border-color 150ms cubic-bezier(0.4, 0, 0.2, 1)",
+          ...(c === t.key ? {
+            bgcolor: l[900],
+            color: "#fff"
+          } : {
+            border: `1px solid ${n[300]}`,
+            color: n[600]
+          })
+        },
+        children: t.label
+      }, t.key))
+    }), e.jsxs(o, {
+      sx: {
+        px: 2,
+        py: 2
+      },
+      children: [e.jsxs(o, {
+        sx: {
+          borderRadius: "8px",
+          bgcolor: n[50],
+          p: 1.5,
+          fontSize: "0.9375rem",
+          lineHeight: j.relaxed,
+          color: n[600]
+        },
+        children: [e.jsxs(o, {
+          component: "span",
+          sx: {
+            fontWeight: i.bold,
+            color: n[800]
+          },
+          children: ["평가지표 ·", " "]
+        }), h[c].join(" · ")]
+      }), e.jsx(o, {
+        component: "ol",
+        sx: {
+          listStyle: "none",
+          mt: 1.5,
+          borderRadius: "12px",
+          border: `1px solid ${n[200]}`,
+          "& > * + *": {
+            borderTop: `1px solid ${n[100]}`
+          }
+        },
+        children: x.map(t => e.jsxs(o, {
+          component: "li",
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: 1.25,
+            px: 1.75,
+            py: 1.5,
+            ...(t.rank <= 3 && {
+              bgcolor: `color-mix(in oklab, ${l[50]} 40%, transparent)`
+            })
+          },
+          children: [e.jsx(o, {
+            component: "span",
+            sx: {
+              display: "inline-flex",
+              width: 28,
+              height: 28,
+              flexShrink: 0,
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: "9999px",
+              fontSize: "1rem",
+              fontWeight: i.black,
+              ...(t.rank <= 3 ? {
+                bgcolor: l[900],
+                color: "#fff"
+              } : {
+                color: n[700]
+              })
+            },
+            children: t.rank
+          }), e.jsx(m, {
+            entry: t
+          }), e.jsxs(o, {
+            sx: {
+              minWidth: 0,
+              flex: "1 1 0%"
+            },
+            children: [e.jsxs(o, {
+              component: "p",
+              sx: {
+                ...d,
+                fontSize: r.base,
+                lineHeight: 1.5,
+                fontWeight: i.bold
+              },
+              children: [t.name, t.region && e.jsx(o, {
+                component: "span",
+                sx: {
+                  ml: .75,
+                  fontSize: "0.9375rem",
+                  fontWeight: i.normal,
+                  color: n[400]
+                },
+                children: t.region
+              })]
+            }), e.jsx(o, {
+              component: "p",
+              sx: {
+                ...d,
+                fontSize: "0.9375rem",
+                color: n[500]
+              },
+              children: t.highlight
+            })]
+          }), e.jsx(g, {
+            grade: t.grade
+          }), e.jsx(o, {
+            component: "span",
+            sx: {
+              width: 40,
+              flexShrink: 0,
+              textAlign: "right",
+              fontSize: r.base,
+              lineHeight: 1.5,
+              fontWeight: i.black,
+              fontVariantNumeric: "tabular-nums"
+            },
+            children: t.score.toFixed(1)
+          })]
+        }, t.rank))
+      }), e.jsx(o, {
+        component: "p",
+        sx: {
+          mt: 1.5,
+          fontSize: "0.9375rem",
+          color: n[400]
+        },
+        children: "※ 본 순위는 데모용 샘플 데이터입니다. 정식 SEI 평가는 공개 검증 가능한 지표 체계와 원자료를 기반으로 산출됩니다."
+      })]
+    })]
+  });
+}
+export { v as default };

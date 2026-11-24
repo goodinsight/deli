@@ -1,0 +1,1280 @@
+import { j as e, r as a, u as so, i as ao } from "./react-CjxcGQav.js";
+import { c as Ne, bv as z, D as K, pi as de, B as j, bQ as L, L as N, cI as ue, pj as me, al as ro, d1 as no, bH as ie, bI as ce, hf as fe, ha as lo, c4 as io, as as pe, aq as co, K as po, e as Ae, c8 as uo, pk as mo, bO as M, bT as I, ak as fo, pl as ho, pm as xo, pn as go, po as vo, pp as bo, pq as Oe, fL as yo, pr as Pe, ps as Co, pt as Fo, pu as So, pv as jo, pw as qo, bM as wo, bx as Re, ds as Vo, d6 as ko, d7 as Ee, fo as Io, w as ae, fp as re, bh as Do, d5 as ne, hj as Mo, fj as Ao, cW as Oo, F as Po, d8 as Ro } from "../js.d/main-Cm9wS5wt.js";
+import { r as Eo, A as To, a as _o, b as Lo } from "./ApprovalTypeSelect-C3LZlstk.js";
+import { u as No, a as zo } from "./EdgeTabs-Ccbggjn6.js";
+import { o as Bo } from "./approvalDetailHost-CFvt90Au.js";
+import { O as Wo } from "./OptionToggleGroup-Cvm2wRyq.js";
+import { c as Te, A as Go } from "./periodRange-CKwTiAVI.js";
+import { u as Ho, a as Ko, b as $o, i as Uo, A as Xo } from "./ApprovalMobileList-BRKomjgP.js";
+import { b as Yo, w as Qo, x as Jo } from "./ReferenceList-mhfbKusm.js";
+import { A as Zo } from "./ApprovalDetailDialog-v7PUkzWr.js";
+import { A as et } from "./AddRounded-DeRMyh-W.js";
+import { C as ot } from "./CheckRounded-q96oOTwH.js";
+import { F as tt } from "./FolderOffOutlined-B0Ny3dYE.js";
+import { D as st } from "./DeleteOutlineOutlined-5H75k_7z.js";
+import { u as at } from "./FileUploadBox-crZW1mG0.js";
+import { z as rt } from "./bootstrapController-BMV_i07c.js";
+import { d as nt, e as lt, f as it } from "./MobileCardListLayout-D5_p2Xer.js";
+import { u as ct } from "./mobileSearchOverlay-DYWcMOOb.js";
+import { u as pt } from "./notificationIntent-BMq5F2BF.js";
+import { u as dt } from "./useAppBasePath-BVB_xO8H.js";
+import "./stylis-DdLD6a3t.js";
+import "./tableScrollbars-C9bhlJjO.js";
+import "./formPermission-dS9nHLBQ.js";
+import "./useTeamApprovalSettings-C0SRRQJg.js";
+import "./printDocChrome-BMZLbM8A.js";
+import "./index.esm-BLbQfyP0.js";
+import "./FileViewer-D5PyYcLh.js";
+import "./RotateRight-DbtMfjGZ.js";
+import "./tiny-invariant-CopsF_GD.js";
+import "./Snackbar-DxIDGM8-.js";
+import "./Refresh-xoMt5L00.js";
+import "./date_utils-CYURFdnX.js";
+import "./resolveAssetPreviewSrc-CLlbOCzq.js";
+import "./ReservationDialog-DnyeBFBI.js";
+import "./ToneChip-BFljqlNi.js";
+import "./VehicleLogDialog-BPXUMXE7.js";
+import "./Send-yl2RzZF4.js";
+import "./ZoomIn-B3VGPGla.js";
+import "./printSvgDocument-DHC1JJCG.js";
+import "./Image-BpXScS6T.js";
+import "./documentViewerStore-BlSjH3BG.js";
+import "./useFileViewer-B-2ewnr3.js";
+import "./AccountAvatar-DtrhoS_d.js";
+import "./Person-DnoEHesw.js";
+import "./uploadGuard-BK1B6cyC.js";
+import "./profileEcho-q2FaD_03.js";
+import "./teamMembers-0yRsmqL6.js";
+import "./pendingRecordings-DpKJ8Y2R.js";
+import "./meetingsApi-CCkjq69B.js";
+import "./orgTree-Dh5HFjBo.js";
+import "./mxApi-R6g9QtQq.js";
+import "./aliasStore-DiN6Kp-5.js";
+import "./profileApi-Btafs-pM.js";
+const ut = Ne(e.jsx("path", {
+    d: "M20 6h-8l-1.41-1.41C10.21 4.21 9.7 4 9.17 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2m-2 8h-2v2c0 .55-.45 1-1 1s-1-.45-1-1v-2h-2c-.55 0-1-.45-1-1s.45-1 1-1h2v-2c0-.55.45-1 1-1s1 .45 1 1v2h2c.55 0 1 .45 1 1s-.45 1-1 1"
+  })),
+  mt = Ne(e.jsx("path", {
+    d: "M3 17.46v3.04c0 .28.22.5.5.5h3.04c.13 0 .26-.05.35-.15L17.81 9.94l-3.75-3.75L3.15 17.1q-.15.15-.15.36M20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
+  })),
+  ft = [pe.blue500, "#0ea5e9", "#06b6d4", "#14b8a6", "#22c55e", "#84cc16", "#eab308", "#f59e0b", "#f97316", "#ef4444", "#ec4899", "#a855f7", "#6366f1"];
+function ht({
+  folder: r,
+  depth: d,
+  onAddChild: i,
+  onEdit: C
+}) {
+  const h = z();
+  return e.jsxs(j, {
+    sx: {
+      display: "flex",
+      alignItems: "center",
+      gap: 1,
+      minHeight: 40,
+      px: 1,
+      pl: 1 + d * 2.5,
+      borderRadius: 1,
+      "&:hover": {
+        backgroundColor: "action.hover"
+      },
+      "&:hover .folder-row-actions": {
+        opacity: 1
+      }
+    },
+    children: [e.jsx(fe, {
+      icon: r.icon,
+      color: r.color || void 0,
+      fontSize: 20,
+      sx: {
+        flexShrink: 0
+      }
+    }), e.jsx(N, {
+      sx: {
+        flex: 1,
+        minWidth: 0,
+        fontSize: 14,
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap"
+      },
+      children: r.name
+    }), r.doc_count > 0 && e.jsx(N, {
+      sx: {
+        fontSize: 12,
+        color: "text.secondary",
+        flexShrink: 0
+      },
+      children: r.doc_count
+    }), e.jsxs(j, {
+      className: "folder-row-actions",
+      sx: {
+        display: "flex",
+        gap: .5,
+        flexShrink: 0,
+        opacity: {
+          xs: 1,
+          md: 0
+        },
+        transition: "opacity .15s"
+      },
+      children: [e.jsx(ie, {
+        title: h("approval.addSubfolder"),
+        arrow: !0,
+        disableInteractive: !0,
+        children: e.jsx(ce, {
+          size: "small",
+          onClick: () => i(r.seq),
+          children: e.jsx(et, {
+            fontSize: "small"
+          })
+        })
+      }), e.jsx(ie, {
+        title: h("approval.rename"),
+        arrow: !0,
+        disableInteractive: !0,
+        children: e.jsx(ce, {
+          size: "small",
+          onClick: () => C(r),
+          children: e.jsx(mt, {
+            fontSize: "small"
+          })
+        })
+      })]
+    })]
+  });
+}
+function xt({
+  controller: r
+}) {
+  const {
+      modals: d,
+      state: i,
+      reload: C,
+      openCreate: h,
+      openEdit: l
+    } = r,
+    m = z(),
+    S = K(),
+    o = i.useValue("items"),
+    v = i.useValue("loading");
+  a.useEffect(() => {
+    d.manager.isOpen && C();
+  }, [d.manager.isOpen, C]);
+  const w = a.useMemo(() => de(o ?? []), [o]),
+    D = [{
+      id: "approval-folder-tree",
+      showTitle: !1,
+      children: e.jsxs(j, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          minHeight: 0
+        },
+        children: [e.jsx(j, {
+          sx: {
+            display: "flex",
+            justifyContent: "flex-end",
+            mb: 1
+          },
+          children: e.jsx(L, {
+            size: "small",
+            variant: "outlined",
+            startIcon: e.jsx(ut, {}),
+            onClick: () => h(0),
+            children: m("approval.newFolder")
+          })
+        }), e.jsx(j, {
+          sx: {
+            minHeight: 220,
+            maxHeight: "min(50vh, 420px)",
+            overflowY: "auto"
+          },
+          children: w.length === 0 ? e.jsx(j, {
+            sx: {
+              py: 5,
+              textAlign: "center",
+              color: "text.secondary"
+            },
+            children: e.jsx(N, {
+              sx: {
+                fontSize: 14
+              },
+              children: m(v ? "approval.loading" : "approval.noFoldersCreateHint")
+            })
+          }) : w.map(({
+            folder: s,
+            depth: f
+          }) => e.jsx(ht, {
+            folder: s,
+            depth: f,
+            onAddChild: h,
+            onEdit: l
+          }, s.seq))
+        })]
+      })
+    }];
+  return e.jsx(ue, {
+    fontScaleKey: "ApprovalFolderManagerDialog",
+    open: d.manager.isOpen,
+    onClose: d.manager.close,
+    title: m("approval.manageFolders"),
+    tabs: {
+      visible: !1
+    },
+    sections: D,
+    scrollPastLastSection: !1,
+    maxWidth: "sm",
+    fullScreen: S,
+    mobilePresentation: S ? "slide" : "dialog",
+    backdropClick: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !1,
+      right: e.jsx(L, {
+        variant: "contained",
+        onClick: d.manager.close,
+        children: m("approval.ok")
+      })
+    }
+  });
+}
+function gt({
+  controller: r
+}) {
+  const {
+      modals: d,
+      form: i,
+      state: C,
+      removeFolder: h
+    } = r,
+    l = z(),
+    m = K(),
+    S = C.useValue("items"),
+    o = Number(i.useFormValue("seq") ?? 0),
+    v = String(i.useFormValue("icon") ?? ""),
+    w = String(i.useFormValue("color") ?? ""),
+    [D, s] = a.useState(null),
+    f = () => {
+      (async () => (await i.submit()) && d.form.close())();
+    },
+    x = u => {
+      u.key === "Enter" && (u.nativeEvent.isComposing || (u.preventDefault(), f()));
+    },
+    F = a.useMemo(() => {
+      const u = o > 0 ? me(S ?? [], o) : new Set(),
+        V = [{
+          value: 0,
+          label: l("approval.topLevelFolder")
+        }];
+      for (const {
+        folder: b,
+        depth: k
+      } of de(S ?? [])) u.has(b.seq) || V.push({
+        value: b.seq,
+        label: `${" ".repeat(k * 4)}${b.name}`
+      });
+      return V;
+    }, [S, o, l]),
+    q = [{
+      id: "approval-folder-form",
+      showTitle: !1,
+      children: e.jsxs(j, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: 2.5
+        },
+        children: [e.jsx(ro, {
+          name: "name",
+          form: i,
+          label: l("approval.folderName"),
+          fullWidth: !0,
+          autoFocus: !0,
+          onKeyDown: x,
+          slotProps: {
+            input: {
+              startAdornment: e.jsx(no, {
+                position: "start",
+                children: e.jsx(ie, {
+                  title: l("approval.chooseIconColor"),
+                  children: e.jsx(ce, {
+                    size: "small",
+                    edge: "start",
+                    onClick: u => s(u.currentTarget),
+                    "aria-label": l("approval.chooseIcon"),
+                    children: e.jsx(fe, {
+                      icon: v,
+                      color: w || void 0,
+                      fontSize: 24
+                    })
+                  })
+                })
+              })
+            }
+          }
+        }), e.jsx(lo, {
+          anchorEl: D,
+          value: v,
+          color: w,
+          onSelect: u => i.setFormValue("icon", u),
+          onSelectColor: u => i.setFormValue("color", u),
+          onClose: () => s(null)
+        }), e.jsx(io, {
+          direction: "row",
+          spacing: .75,
+          flexWrap: "wrap",
+          useFlexGap: !0,
+          children: ft.map(u => {
+            const V = (w || pe.blue500) === u;
+            return e.jsx(j, {
+              component: "button",
+              type: "button",
+              "aria-label": u,
+              onClick: () => i.setFormValue("color", u === pe.blue500 ? "" : u),
+              sx: {
+                width: 24,
+                height: 24,
+                borderRadius: "50%",
+                bgcolor: u,
+                border: "none",
+                boxShadow: V ? `0 0 0 2px #fff inset, 0 0 0 2px ${u}` : "none",
+                cursor: "pointer",
+                p: 0
+              }
+            }, u);
+          })
+        }), e.jsx(co, {
+          name: "parent_seq",
+          form: i,
+          label: l("approval.parentFolder"),
+          options: F,
+          showEmptyOption: !1,
+          fullWidth: !0
+        })]
+      })
+    }];
+  return e.jsx(ue, {
+    fontScaleKey: "ApprovalFolderFormDialog",
+    open: d.form.isOpen,
+    onClose: d.form.close,
+    title: o > 0 ? l("approval.editFolder") : l("approval.newFolder"),
+    tabs: {
+      visible: !1
+    },
+    sections: q,
+    scrollPastLastSection: !1,
+    sectionsPaddingTop: 0,
+    maxWidth: "xs",
+    fullScreen: m,
+    mobilePresentation: m ? "slide" : "dialog",
+    backdropClick: !1,
+    titleIcons: {
+      delete: {
+        visible: o > 0,
+        confirmConfig: {
+          title: l("approval.deleteFolder"),
+          message: l("approval.deleteFolderMessage"),
+          confirmText: l("approval.delete"),
+          cancelText: l("approval.cancel")
+        }
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    onDelete: o > 0 ? async () => {
+      await h(o), d.form.close();
+    } : void 0,
+    actions: {
+      visible: !0,
+      right: e.jsx(L, {
+        variant: "contained",
+        onClick: f,
+        children: l("approval.save")
+      })
+    }
+  });
+}
+function _e({
+  label: r,
+  depth: d,
+  selected: i,
+  icon: C,
+  onClick: h,
+  disabled: l
+}) {
+  return e.jsxs(j, {
+    component: "button",
+    type: "button",
+    disabled: l,
+    onClick: h,
+    sx: {
+      display: "flex",
+      alignItems: "center",
+      gap: 1,
+      width: "100%",
+      minHeight: 44,
+      px: 1.5,
+      pl: 1.5 + d * 2.5,
+      border: "none",
+      borderRadius: 1,
+      textAlign: "left",
+      cursor: l ? "default" : "pointer",
+      backgroundColor: i ? "action.selected" : "transparent",
+      "&:hover": {
+        backgroundColor: i ? "action.selected" : "action.hover"
+      }
+    },
+    children: [C, e.jsx(N, {
+      sx: {
+        flex: 1,
+        minWidth: 0,
+        fontSize: 14,
+        fontWeight: i ? 600 : 400,
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap"
+      },
+      children: r
+    }), i && e.jsx(ot, {
+      fontSize: "small",
+      color: "primary"
+    })]
+  });
+}
+function vt({
+  open: r,
+  onClose: d,
+  controller: i,
+  docSeq: C,
+  currentFolderSeq: h,
+  onSaved: l
+}) {
+  const m = z(),
+    S = K(),
+    {
+      state: o,
+      reload: v,
+      putDocument: w,
+      modals: D
+    } = i,
+    s = o.useValue("items"),
+    f = o.useValue("loading"),
+    [x, F] = a.useState(!1);
+  a.useEffect(() => {
+    r && v();
+  }, [r, v]);
+  const q = a.useMemo(() => de(s ?? []), [s]),
+    u = async b => {
+      if (x || b === h) {
+        b === h && d();
+        return;
+      }
+      F(!0);
+      try {
+        (await w(C, b)) && (l?.(b), d());
+      } finally {
+        F(!1);
+      }
+    },
+    V = [{
+      id: "approval-folder-pick",
+      showTitle: !1,
+      children: e.jsxs(j, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          minHeight: 0
+        },
+        children: [e.jsxs(j, {
+          sx: {
+            minHeight: 200,
+            maxHeight: "min(50vh, 420px)",
+            overflowY: "auto"
+          },
+          children: [e.jsx(_e, {
+            label: m("approval.myDocuments"),
+            depth: 0,
+            selected: h === 0,
+            disabled: x,
+            icon: e.jsx(tt, {
+              fontSize: "small",
+              sx: {
+                color: "text.secondary"
+              }
+            }),
+            onClick: () => {
+              u(0);
+            }
+          }), q.map(({
+            folder: b,
+            depth: k
+          }) => e.jsx(_e, {
+            label: b.name,
+            depth: k + 1,
+            selected: h === b.seq,
+            disabled: x,
+            icon: e.jsx(fe, {
+              icon: b.icon,
+              color: b.color || void 0,
+              fontSize: 20
+            }),
+            onClick: () => {
+              u(b.seq);
+            }
+          }, b.seq)), q.length === 0 && e.jsxs(j, {
+            sx: {
+              py: 3,
+              textAlign: "center",
+              color: "text.secondary"
+            },
+            children: [e.jsx(N, {
+              sx: {
+                fontSize: 14,
+                mb: 1.5
+              },
+              children: m(f ? "approval.loading" : "approval.noFolders")
+            }), !f && e.jsx(L, {
+              size: "small",
+              variant: "outlined",
+              onClick: D.manager.open,
+              children: m("approval.createFolder")
+            })]
+          })]
+        }), x && e.jsx(j, {
+          sx: {
+            display: "flex",
+            justifyContent: "center",
+            pt: 1.5
+          },
+          children: e.jsx(po, {
+            size: 20
+          })
+        })]
+      })
+    }];
+  return e.jsx(ue, {
+    fontScaleKey: "ApprovalFolderPickDialog",
+    open: r,
+    onClose: d,
+    title: m("approval.addToFolder"),
+    tabs: {
+      visible: !1
+    },
+    sections: V,
+    scrollPastLastSection: !1,
+    sectionsPaddingTop: 0,
+    maxWidth: "xs",
+    fullScreen: S,
+    mobilePresentation: S ? "slide" : "dialog",
+    backdropClick: !1,
+    titleIcons: {
+      delete: {
+        visible: !1
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    actions: {
+      visible: !0,
+      showCancelButton: !1,
+      right: e.jsx(L, {
+        variant: "text",
+        onClick: d,
+        disabled: x,
+        children: m("approval.close")
+      })
+    }
+  });
+}
+const bt = {
+    items: [],
+    loading: !1,
+    selectedSeq: 0,
+    docFolders: new Map()
+  },
+  Le = {
+    seq: 0,
+    parent_seq: 0,
+    name: "",
+    icon: "",
+    color: ""
+  };
+function yt(r = {}) {
+  const d = {
+      manager: Ae({
+        modalId: "approval-folder-manager"
+      }),
+      form: Ae({
+        modalId: "approval-folder-form"
+      })
+    },
+    i = uo({
+      stateId: "approval-folder-state",
+      initialValues: bt,
+      autoCleanup: !1
+    }),
+    C = a.useCallback(async () => {
+      i.setValue("loading", !0);
+      try {
+        const {
+          items: s,
+          docFolders: f
+        } = await mo();
+        i.setValue("items", s), i.setValue("docFolders", f);
+      } catch (s) {
+        i.setValue("items", []), i.setValue("docFolders", new Map()), M({
+          message: s instanceof Error && s.message ? s.message : I("approval.folderLoadFailed")
+        });
+      } finally {
+        i.setValue("loading", !1);
+      }
+    }, [i]),
+    h = a.useCallback(s => s ? i.getValue("docFolders")?.get(s) ?? 0 : 0, [i]),
+    l = a.useCallback(async () => {
+      await C(), r.onChanged?.();
+    }, [r, C]),
+    m = fo({
+      formId: "approval-folder-form",
+      initialValues: Le,
+      onValidate: s => {
+        if (!String(s.name ?? "").trim()) return M({
+          message: I("approval.enterFolderName")
+        }), !1;
+        const x = i.getValue("items") ?? [],
+          F = Number(s.parent_seq ?? 0),
+          q = Number(s.seq ?? 0);
+        return q > 0 && F > 0 && (q === F || me(x, q).has(F)) ? (M({
+          message: I("approval.folderMoveIntoSelf")
+        }), !1) : F > 0 && bo(x, F) >= Oe ? (M({
+          message: I("approval.folderDepthMax", {
+            max: Oe
+          })
+        }), !1) : !0;
+      },
+      onSubmit: async s => {
+        const f = String(s.name ?? "").trim(),
+          x = Number(s.seq ?? 0),
+          F = Number(s.parent_seq ?? 0),
+          q = String(s.icon ?? ""),
+          u = String(s.color ?? "");
+        try {
+          return x > 0 ? await go(x, {
+            name: f,
+            parent_seq: F,
+            icon: q,
+            color: u
+          }) : await vo(f, F, {
+            icon: q,
+            color: u
+          }), await l(), !0;
+        } catch (V) {
+          return M({
+            message: V instanceof Error && V.message ? V.message : I("approval.folderSaveFailed")
+          }), !1;
+        }
+      }
+    }),
+    S = a.useCallback((s = 0) => {
+      m.setFormValues({
+        ...Le,
+        parent_seq: s
+      }), d.form.open();
+    }, [m, d.form]),
+    o = a.useCallback(s => {
+      m.setFormValues({
+        seq: s.seq,
+        parent_seq: s.parent_seq,
+        name: s.name,
+        icon: s.icon,
+        color: s.color
+      }), d.form.open();
+    }, [m, d.form]),
+    v = a.useCallback(async s => {
+      if (!(s <= 0)) try {
+        await ho(s), Number(i.getValue("selectedSeq")) === s && i.setValue("selectedSeq", 0), await l();
+      } catch (f) {
+        M({
+          message: f instanceof Error && f.message ? f.message : I("approval.folderDeleteFailed")
+        });
+      }
+    }, [l, i]),
+    w = a.useCallback(async (s, f) => {
+      try {
+        return await xo(s, f), await l(), !0;
+      } catch (x) {
+        return M({
+          message: x instanceof Error && x.message ? x.message : I("approval.addToFolderFailed")
+        }), !1;
+      }
+    }, [l]),
+    D = a.useCallback(s => i.setValue("selectedSeq", s), [i]);
+  return {
+    state: i,
+    form: m,
+    modals: d,
+    reload: C,
+    openCreate: S,
+    openEdit: o,
+    removeFolder: v,
+    putDocument: w,
+    selectFolder: D,
+    folderOf: h
+  };
+}
+function Ct(r) {
+  return r === "mine" || r === "reference" ? r : "all";
+}
+function le(r) {
+  return r === "reference" ? {
+    source: "box",
+    boxScope: "reference",
+    withReference: !1
+  } : {
+    source: void 0,
+    boxScope: void 0,
+    withReference: r === "all"
+  };
+}
+function Ft(r) {
+  return r?.source === "box" ? "reference" : r?.withReference ? "all" : "mine";
+}
+function Ss() {
+  const r = z(),
+    d = so(),
+    i = yo("approval"),
+    C = dt(),
+    h = a.useRef(!0),
+    l = K(),
+    m = ct(),
+    S = m.useValue("open");
+  a.useEffect(() => {
+    if (l) return m.setValue("active", !0), () => {
+      m.setValue("active", !1), m.setValue("open", !1);
+    };
+  }, [l, m]);
+  const {
+      state: o,
+      modals: v,
+      loading: w,
+      decisions: D
+    } = Yo({
+      stateId: "approval-my-requests-state",
+      modalId: "approval-my-requests-detail-dialog"
+    }),
+    s = yt({
+      onChanged: () => {
+        Pe();
+      }
+    }),
+    [f, x] = a.useState(!1),
+    F = s.reload;
+  a.useEffect(() => {
+    F(), Pe();
+  }, [F]);
+  const q = s.modals.manager.open;
+  a.useEffect(() => Co(() => q()), [q]);
+  const u = s.openCreate;
+  a.useEffect(() => Fo(t => u(t)), [u]);
+  const V = s.putDocument,
+    b = s.state;
+  a.useEffect(() => So((t, n) => {
+    const p = Number(o.getValue("filters")?.folder ?? 0) || 0,
+      O = b.getValue("items") ?? [],
+      Ie = p > 0 && !me(O, p).has(n),
+      De = o.getValue("items") ?? [];
+    if (Ie) {
+      o.setValue("items", De.filter(to => Number(to.seq ?? 0) !== t));
+      const Me = Number(o.getValue("total") ?? De.length) || 0;
+      Me > 0 && o.setValue("total", Me - 1);
+    }
+    (async () => {
+      if (await V(t, n)) {
+        Re({
+          message: n > 0 ? I("approval.addedToFolder") : I("approval.removedFromFolder"),
+          delay: 500
+        });
+        return;
+      }
+      Ie && o.actions.loadItems(o.getValue("filters"));
+    })();
+  }), [V, b, o]);
+  const [k, P] = a.useState(null);
+  a.useEffect(() => jo(t => P(t)), []);
+  const B = Number(k?.seq ?? 0) > 0,
+    [W, $] = a.useState(null),
+    U = ao(),
+    R = Number(new URLSearchParams(U.search).get("folder") ?? 0) || 0,
+    he = a.useRef(R);
+  he.current = R;
+  const E = Ct(new URLSearchParams(U.search).get("view")),
+    xe = a.useRef(E);
+  xe.current = E, a.useEffect(() => {
+    if (h.current || Ft(o.getValue("filters")) === E) return;
+    const n = {
+      ...o.getValue("filters"),
+      ...le(E)
+    };
+    o.setValue("filters", n), o.actions.loadItems(n);
+  }, [E, o]), a.useEffect(() => {
+    if ((Number(o.getValue("filters")?.folder ?? 0) || 0) === R) return;
+    const n = {
+      ...o.getValue("filters"),
+      folder: R
+    };
+    o.setValue("filters", n), o.actions.loadItems(n);
+  }, [R, o]);
+  const {
+      account: g
+    } = at(),
+    y = o.useValue("selectedDocument"),
+    T = o.useValue("items") || [],
+    X = o.useValue("total") ?? T.length,
+    ge = !!o.useValue("loadingMore"),
+    Y = !!o.useValue("listLoading"),
+    Q = !!o.useValue("listLoaded"),
+    c = o.useValue("filters"),
+    [J, _] = a.useState(c.keyword || ""),
+    [ve, ze] = a.useState("1y"),
+    [be] = a.useState(!1),
+    ye = a.useCallback(() => {
+      o.getValue("filters").source === "box" ? o.actions.loadMoreBox() : o.actions.loadMoreMyDocuments();
+    }, [o]);
+  No(l ? J : "", t => l && Se(t), 2), a.useEffect(() => {
+    l && !S && _("");
+  }, [l, S]);
+  const G = c.source === "box" ? "reference" : "mine",
+    Z = a.useCallback(t => {
+      const n = {
+        ...c,
+        account_seq: g?.seq,
+        ...le(t === "reference" ? "reference" : "mine")
+      };
+      o.setValue("filters", n), o.actions.loadItems(n);
+    }, [o, c, g?.seq]),
+    Be = a.useCallback(() => {
+      const t = o.getValue("filters");
+      o.actions.loadItems(t);
+    }, [o]);
+  Qo({
+    currentAccountSeq: Number(g?.seq ?? 0),
+    onRefresh: Be
+  }), a.useEffect(() => {
+    _(c.keyword || "");
+  }, [c.keyword]);
+  const We = a.useCallback(t => {
+      const n = {
+        ...c,
+        dateRange: t.start || t.end ? t : null,
+        account_seq: g?.seq
+      };
+      o.setValue("filters", n), o.actions.loadItems(n);
+    }, [o, c, g?.seq]),
+    ee = Ho(c.dateRange, We, !1, !0),
+    {
+      state: Ge
+    } = rt(),
+    oe = Ko(),
+    te = Ge.useValue("data.approval_counts"),
+    se = te?.myInProgressByType,
+    He = Number(te?.myInProgress ?? 0);
+  a.useEffect(() => {
+    if (!h.current || !g?.seq) return;
+    h.current = !1;
+    const t = {
+      type: "",
+      status: [],
+      importance: "",
+      account_seq: g.seq,
+      keyword: "",
+      dateRange: Te("1y"),
+      folder: he.current,
+      ...le(Eo(U.state) === "reference" ? "reference" : xe.current)
+    };
+    o.setValue("filters", t), _(""), o.actions.loadItems(t);
+  }, [o, g?.seq]);
+  const Ce = a.useCallback(t => {
+      ze(t);
+      const n = {
+        ...c,
+        dateRange: Te(t),
+        account_seq: g?.seq
+      };
+      o.setValue("filters", n), o.actions.loadItems(n);
+    }, [o, c, g?.seq]),
+    Fe = a.useMemo(() => {
+      const t = e.jsx(j, {
+        sx: {
+          maxWidth: "100%",
+          overflowX: "auto",
+          "&::-webkit-scrollbar": {
+            display: "none"
+          },
+          scrollbarWidth: "none",
+          "& .MuiToggleButtonGroup-root": {
+            height: 40,
+            flexWrap: "nowrap",
+            width: "max-content"
+          },
+          "& .MuiToggleButtonGroup-grouped": {
+            whiteSpace: "nowrap"
+          }
+        },
+        children: e.jsx(Wo, {
+          size: "medium",
+          value: ve,
+          onChange: n => n && Ce(n),
+          options: Go,
+          sx: {
+            "& .MuiToggleButtonGroup-grouped": {
+              minWidth: 56,
+              px: 1.5
+            }
+          }
+        })
+      });
+      return ee.map((n, p) => p === ee.length - 1 ? {
+        ...n,
+        filters: [...n.filters, {
+          type: "custom",
+          name: "approval-period",
+          node: t
+        }]
+      } : n);
+    }, [ee, ve, Ce, r]),
+    Ke = a.useCallback(t => {
+      _(t);
+    }, []),
+    Se = a.useCallback(t => {
+      const n = {
+        ...c,
+        keyword: t,
+        account_seq: g?.seq
+      };
+      o.setValue("filters", n), o.actions.loadItems(n);
+    }, [o, c, g?.seq]),
+    $e = a.useCallback(t => {
+      const n = {
+        ...c,
+        status: l ? t.status || [] : c.status ?? [],
+        type: c.type ?? [],
+        importance: l ? t.importance || [] : c.importance ?? [],
+        dateRange: t.dateRange || null,
+        account_seq: g?.seq
+      };
+      o.setValue("filters", n), o.actions.loadItems(n);
+    }, [o, c, g?.seq, l]),
+    Ue = a.useMemo(() => {
+      const t = Array.isArray(c.type) ? c.type : c.type ? [c.type] : [];
+      return t.length === 1 ? String(t[0]) : null;
+    }, [c.type]),
+    Xe = a.useCallback(t => {
+      const n = {
+        ...c,
+        type: t ? [t] : [],
+        account_seq: g?.seq
+      };
+      o.setValue("filters", n), o.actions.loadItems(n);
+    }, [o, c, g?.seq]),
+    Ye = c.sortDir || "desc",
+    Qe = a.useCallback((t, n) => {
+      if (t !== "created_time") return;
+      const p = {
+        ...c,
+        sortDir: n,
+        account_seq: g?.seq
+      };
+      o.setValue("filters", p), o.actions.loadItems(p);
+    }, [o, c, g?.seq]),
+    je = s.state.useValue("items"),
+    qe = s.state.useValue("docFolders"),
+    we = a.useCallback(t => {
+      const n = qe?.get(Number(t.seq ?? 0)) ?? 0;
+      if (!n) return null;
+      const p = (je ?? []).find(O => O.seq === n);
+      return p ? {
+        name: p.name,
+        color: p.color
+      } : null;
+    }, [qe, je]),
+    Ve = a.useMemo(() => {
+      if (l) return;
+      const t = p => Array.isArray(p) ? p.map(String) : p ? [String(p)] : [],
+        n = p => {
+          const O = {
+            ...c,
+            ...p,
+            account_seq: g?.seq
+          };
+          o.setValue("filters", O), o.actions.loadItems(O);
+        };
+      return {
+        type: {
+          options: oe.map(p => ({
+            ...p,
+            count: se?.[p.value] || void 0
+          })),
+          values: t(c.type),
+          onChange: p => n({
+            type: p
+          })
+        },
+        importance: {
+          options: Uo(r),
+          values: t(c.importance),
+          onChange: p => n({
+            importance: p
+          })
+        },
+        status: {
+          options: $o(r),
+          values: t(c.status),
+          onChange: p => n({
+            status: p
+          })
+        }
+      };
+    }, [l, c, o, r, se, g?.seq, oe]),
+    Je = a.useMemo(() => qo(X, we, Ve), [X, we, Ve, r]),
+    H = a.useCallback(t => {
+      o.setValue("selectedDocument", t), v.detail.open();
+    }, [o, v.detail]);
+  pt(["approval_result", "approval_commented_mine", "approval_reference_shared"], t => {
+    const n = T.find(p => Number(p.seq) === t.seq);
+    return n ? (H(n), !0) : !Q || Y ? !1 : (t.typeId === "approval_reference_shared" && G !== "reference" && Z("reference"), Bo(t.seq), !0);
+  }, [T, H, Q, Y, G, Z]);
+  const Ze = a.useCallback(async () => {
+      !y?.seq || !(await D.cancel({
+        seq: y.seq,
+        title: y.title
+      })) || (v.detail.close(), o.setValue("selectedDocument", null));
+    }, [y, D, v.detail, o]),
+    A = y?.status === "cancelled" || y?.status === "rejected",
+    eo = a.useCallback(async () => {
+      !y?.seq || !A || be || d(`${C}/approval/create`, {
+        state: {
+          loadDraftSeq: y.seq
+        }
+      });
+    }, [y, A, be, d]),
+    oo = a.useCallback(async () => {
+      if (!(!y?.seq || !A)) try {
+        await wo.delete("approval_doc", y.seq), Re({
+          message: I("approval.deletedNotice"),
+          delay: 500
+        }), v.detail.close(), o.setValue("selectedDocument", null), await o.actions.loadItems(), Jo();
+      } catch (t) {
+        Vo({
+          message: t instanceof Error ? t.message : I("approval.deleteFailed")
+        });
+      }
+    }, [y, A, v.detail, o]),
+    ke = {
+      showSearch: !0,
+      collapsible: !1,
+      showClearIcon: !1,
+      showCollapseButton: !1,
+      searchValue: J,
+      searchPlaceholder: r("approval.enterSearchTerm"),
+      searchWidth: l ? it : void 0,
+      onSearchChange: Ke,
+      onSearch: Se,
+      searchMinLength: 2,
+      searchLoading: w.list,
+      right: void 0,
+      filter: {
+        stateId: "approval-my-requests-filters-v2",
+        groups: l ? nt(Fe, "approval-my-requests") : Fe,
+        onChange: $e,
+        showChips: !1
+      }
+    };
+  return e.jsxs(e.Fragment, {
+    children: [l ? e.jsxs(lt, {
+      header: ke,
+      searchOverlayOpen: !1,
+      storageKey: "approval-my-requests-mobile-list",
+      children: [e.jsx(To, {
+        active: G,
+        pendingCount: Number(te?.pendingMyTurn ?? 0),
+        onSamePage: t => Z(t === "reference" ? "reference" : "mine"),
+        above: e.jsx(zo, {
+          open: S,
+          value: J,
+          onChange: _,
+          placeholder: r("approval.searchTitleDocNo")
+        })
+      }), e.jsx(e.Fragment, {
+        children: e.jsx(j, {
+          sx: {
+            mx: `-${Ee}px`,
+            mt: `-${Ee}px`,
+            mb: ko,
+            p: 2,
+            bgcolor: "#fff",
+            "& .MuiSelect-select.MuiOutlinedInput-input": {
+              paddingTop: "13px",
+              paddingBottom: "13px"
+            }
+          },
+          children: e.jsx(_o, {
+            options: oe,
+            selected: Ue,
+            onSelect: Xe,
+            counts: se,
+            totalCount: He
+          })
+        })
+      }), e.jsx(Xo, {
+        items: T,
+        loading: Y || !Q,
+        loadingMore: ge,
+        onRowClick: H,
+        onLoadMore: ye,
+        emptyText: r(G === "reference" ? "approval.noReferencedDocuments" : "approval.noMyDocuments")
+      })]
+    }) : e.jsx(Lo, {
+      header: ke,
+      columns: Je,
+      items: T,
+      total: X,
+      loading: w.list || ge,
+      onRowClick: H,
+      onLoadMore: ye,
+      onSort: Qe,
+      sortBy: "created_time",
+      sortDirection: Ye
+    }), e.jsx(xt, {
+      controller: s
+    }), e.jsx(gt, {
+      controller: s
+    }), e.jsxs(Io, {
+      open: !!k,
+      onClose: () => P(null),
+      anchorReference: "anchorPosition",
+      anchorPosition: k ? {
+        top: k.y,
+        left: k.x
+      } : void 0,
+      transitionDuration: 0,
+      transformOrigin: {
+        vertical: "top",
+        horizontal: "left"
+      },
+      slotProps: {
+        list: {
+          sx: {
+            "& .MuiListItemText-primary": {
+              fontSize: 15
+            }
+          }
+        },
+        paper: {
+          sx: {
+            minWidth: 180,
+            "& .MuiMenuItem-root": {
+              pr: 3
+            }
+          }
+        }
+      },
+      children: [B && e.jsxs(ae, {
+        onClick: () => {
+          const t = k;
+          if (P(null), !t) return;
+          const n = s.state.getValue("items")?.find(p => p.seq === t.seq);
+          n && s.openEdit(n);
+        },
+        children: [e.jsx(re, {
+          children: e.jsx(Do, {
+            fontSize: "small"
+          })
+        }), e.jsx(ne, {
+          primary: r("approval.modify")
+        })]
+      }), e.jsxs(ae, {
+        onClick: () => {
+          const t = k;
+          P(null), t && s.openCreate(t.seq);
+        },
+        children: [e.jsx(re, {
+          children: e.jsx(Mo, {
+            fontSize: "small"
+          })
+        }), e.jsx(ne, {
+          primary: r(B ? "approval.addSubfolder" : "approval.addTopLevelFolder")
+        })]
+      }), B && e.jsx(Ao, {}), B && e.jsxs(ae, {
+        sx: {
+          color: "error.main"
+        },
+        onClick: () => {
+          const t = k;
+          P(null), t && $(t);
+        },
+        children: [e.jsx(re, {
+          sx: {
+            color: "inherit"
+          },
+          children: e.jsx(st, {
+            fontSize: "small"
+          })
+        }), e.jsx(ne, {
+          primary: r("approval.delete")
+        })]
+      })]
+    }), e.jsx(Oo, {
+      open: !!W,
+      anchorEl: W?.anchor ?? null,
+      placement: "right-start",
+      title: r("approval.deleteFolderWithSubfoldersConfirm", {
+        name: W?.name ?? ""
+      }),
+      content: r("approval.folderDocumentsKept"),
+      confirmText: r("approval.delete"),
+      cancelText: r("approval.cancel"),
+      minWidth: 260,
+      onCancel: () => $(null),
+      onConfirm: () => {
+        const t = W;
+        $(null), t && s.removeFolder(t.seq);
+      }
+    }), e.jsx(vt, {
+      open: f,
+      onClose: () => x(!1),
+      controller: s,
+      docSeq: Number(y?.seq ?? 0),
+      currentFolderSeq: s.folderOf(Number(y?.seq ?? 0))
+    }), e.jsx(Zo, {
+      open: v.detail.isOpen,
+      onClose: v.detail.close,
+      document: y,
+      onCancel: y?.seq ? Ze : void 0,
+      onEdit: A ? () => {
+        eo();
+      } : void 0,
+      onDelete: A ? oo : void 0,
+      onPickFolder: y?.seq ? () => x(!0) : void 0,
+      inFolder: s.folderOf(Number(y?.seq ?? 0)) > 0
+    }), l && i.canWrite ? e.jsx(Po, {
+      color: "primary",
+      "aria-label": r("approval.requestApproval"),
+      onClick: () => d(`${C}/approval/create`),
+      sx: {
+        position: "fixed",
+        right: 24,
+        bottom: "calc(24px + var(--taskbox-fab-lift, 0px))",
+        zIndex: 40
+      },
+      children: e.jsx(Ro, {})
+    }) : null]
+  });
+}
+export { Ss as default };

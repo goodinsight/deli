@@ -1,0 +1,276 @@
+import { r, j as x } from "./react-CjxcGQav.js";
+import { h8 as y, sb as M, oa as B, fw as D, q0 as O, q1 as R, q2 as d, pZ as A, qX as P, rx as V } from "../js.d/main-Cm9wS5wt.js";
+import { u as j } from "./EmployeeSelectDialog-Cdnxeoz9.js";
+import { z as G } from "./bootstrapController-BMV_i07c.js";
+import { t as h } from "./pickerEmployees-s9FYphgr.js";
+import { b as H } from "./employeeAvatars-DaG0jIhW.js";
+import { u as N } from "./DictationButton-9kid6hUO.js";
+import { T as K } from "./TaskBoxCreateDrawer-DKt1HWkq.js";
+import "./stylis-DdLD6a3t.js";
+import "./utils-B6Q5_urv.js";
+import "./profileEcho-q2FaD_03.js";
+import "./teamMembers-0yRsmqL6.js";
+import "./pendingRecordings-DpKJ8Y2R.js";
+import "./meetingsApi-CCkjq69B.js";
+import "./orgTree-Dh5HFjBo.js";
+import "./mxApi-R6g9QtQq.js";
+import "./aliasStore-DiN6Kp-5.js";
+import "./profileApi-Btafs-pM.js";
+import "./resolveAssetPreviewSrc-CLlbOCzq.js";
+import "./CalendarSidebarPanel-DlQr_b8l.js";
+import "./InlineErrorAlert-D9ICJPt7.js";
+import "./customerMetaStore-Bj9KdRyn.js";
+import "./types-B1OAKh4b.js";
+import "./DealFormDialog-Dw6MXJZk.js";
+import "./dealApi-CnzQt6qM.js";
+import "./partnerApi-Dqdgl0Fn.js";
+import "./deal-B3IQ_ej7.js";
+import "./FormValue-CAMilU-0.js";
+import "./PropertyContentEditor-DIsouMXi.js";
+import "./Title-WCY0exuZ.js";
+import "./EventBusyOutlined-DqcCaRMs.js";
+import "./TagOutlined-Cfq6rbok.js";
+import "./Notes-i9IHZW02.js";
+import "./PropertyFields-TuJTG5XK.js";
+import "./CategoryOutlined-DcAqxAdD.js";
+import "./PhoneOutlined-Bjc_e42S.js";
+import "./PhoneAndroidOutlined-DafU-b-9.js";
+import "./ChecklistOutlined-PwlgFlaS.js";
+import "./GroupOutlined-CA-gNtcg.js";
+import "./ItemLineFields-DmS0gZQx.js";
+import "./propertySections-Bwsl7OH-.js";
+import "./BoardPostDetail-CniIF2a7.js";
+import "./biometricController-CswvQnMD.js";
+import "./attendanceBio-C-9dHF9O.js";
+import "./ThumbUp-CuLuUDoD.js";
+import "./PictureAsPdfOutlined-ChIt6cmZ.js";
+import "./FolderZipOutlined-BdWYvuz4.js";
+import "./InsertDriveFileOutlined-DcD-Yh-v.js";
+import "./FavoriteBorder-BkFztsJe.js";
+import "./formatFileSize-Cwk2MLba.js";
+import "./taskboxProviderConfig-DZSmb5uq.js";
+import "./MobileCardListLayout-D5_p2Xer.js";
+import "./mobileSearchOverlay-DYWcMOOb.js";
+import "./taskboxApi-BuYlRWHe.js";
+import "./FeedProfileAvatar-B6gqXpYU.js";
+import "./CallOutlined-B2W58-Kt.js";
+import "./AccountAvatar-DtrhoS_d.js";
+import "./Person-DnoEHesw.js";
+import "./squircle-CQM8EvXm.js";
+import "./chatRoomHost-ImRyH_Na.js";
+import "./callStore-DH1_RYeP.js";
+import "./videoMeetingApi-BCL1yHsp.js";
+import "./useFileViewer-B-2ewnr3.js";
+import "./documentViewerStore-BlSjH3BG.js";
+import "./EmojiPanel-DTZZq0Nb.js";
+import "./html-d5LenlcH.js";
+import "./date_utils-CYURFdnX.js";
+import "./mobileBandDialog-C3M4tWPv.js";
+import "./BusinessCenterOutlined-gZ8sR_r3.js";
+import "./OrgChartPage-DPIPUrhu.js";
+import "./EmployeeFormDialog-BHKK47Dg.js";
+import "./employeeApi-CdGzOYcj.js";
+import "./types-CVhETUvu.js";
+import "./i18nLabels-BNTLL7cu.js";
+import "./birthdayCalendar-CWu_jG3x.js";
+import "./trainingCalendar-BpMTSUwd.js";
+import "./trainingApi-DT4unjOR.js";
+import "./training-Bx0zycZu.js";
+import "./ContactPhoneOutlined-DpFEzROB.js";
+import "./Trans-CU1vl0TZ.js";
+import "./employeeAccountApi-p-ORLvrh.js";
+import "./WomanOutlined-CzlFMUkT.js";
+import "./tableScrollbars-C9bhlJjO.js";
+import "./AccountBoxOutlined-BxNEw8I0.js";
+import "./AssignmentIndOutlined-DynSb23A.js";
+import "./PaidOutlined-Cy1uVjW3.js";
+import "./PercentOutlined-XX2JPqvz.js";
+import "./ScheduleOutlined-C_7j7r9e.js";
+import "./ToggleOnOutlined-5BVdqdOm.js";
+import "./WorkOutlineOutlined-D5AzVFs6.js";
+import "./hrCodeApi-BRtc5fIX.js";
+import "./index.esm-gjRImBGa.js";
+import "./PersonRemoveOutlined-CyeIj2nP.js";
+import "./GroupAddOutlined-DigKoBGv.js";
+import "./mobileTitlePicker-u2JmU445.js";
+import "./lastBoard-DXeRnS9N.js";
+import "./PhoneMissedOutlined-Cf-_1h4d.js";
+import "./TableChartOutlined-CH8ZYsPl.js";
+import "./customerDialogActions-CaaeVzAY.js";
+import "./ConsultHistoryPanel-X3hMdgAl.js";
+import "./taskDetailHost-C45bt_tL.js";
+import "./AltRouteOutlined-BY5W7vtA.js";
+import "./RecordVoiceOverOutlined-C838alHh.js";
+import "./ForwardOutlined-L-S9T4to.js";
+import "./CustomerFormDialog-pXADTEX2.js";
+import "./bookingApi-DC6gLfSO.js";
+import "./types-CVXtrYKe.js";
+import "./SectionCreateButton-DLuyExHb.js";
+import "./StopCircleOutlined-vWHA8Xrv.js";
+import "./MeetingRecordingPlayer-vear-u6W.js";
+import "./nativeRecordingSync-CMpETFg9.js";
+import "./AttendanceParts-mHb1cK0h.js";
+import "./attendanceMgmt-B_e3bPBn.js";
+import "./browser-FfRve9p6.js";
+import "./LanguageOutlined-dNJSO7u2.js";
+import "./OptionToggleGroup-Cvm2wRyq.js";
+import "./supportCenterApi-KQJIqJUd.js";
+import "./FileUploadBox-crZW1mG0.js";
+import "./FileViewer-D5PyYcLh.js";
+import "./RotateRight-DbtMfjGZ.js";
+import "./tiny-invariant-CopsF_GD.js";
+import "./Snackbar-DxIDGM8-.js";
+import "./uploadGuard-BK1B6cyC.js";
+import "./ReferenceList-mhfbKusm.js";
+import "./printDocChrome-BMZLbM8A.js";
+import "./index.esm-BLbQfyP0.js";
+import "./Refresh-xoMt5L00.js";
+import "./approvalDetailHost-CFvt90Au.js";
+import "./ApprovalDetailDialog-v7PUkzWr.js";
+import "./ReservationDialog-DnyeBFBI.js";
+import "./ToneChip-BFljqlNi.js";
+import "./VehicleLogDialog-BPXUMXE7.js";
+import "./Send-yl2RzZF4.js";
+import "./ZoomIn-B3VGPGla.js";
+import "./printSvgDocument-DHC1JJCG.js";
+import "./Image-BpXScS6T.js";
+import "./LinkOff-BeDdBoha.js";
+import "./DynamicFeedOutlined-CALXdaS2.js";
+import "./ViewWeekOutlined-Dme8hz7e.js";
+import "./ViewTimelineOutlined-CVOcikTc.js";
+import "./WorkspacesOutlined-DwFzV-9Z.js";
+import "./EventRepeatOutlined-BzT6rPrF.js";
+import "./EditCalendarOutlined-k4e0HIS9.js";
+import "./Link-CVsHTXRQ.js";
+import "./ChatCallButtons-TGIgJ8cF.js";
+import "./MeetingRecordScreen-XaBBkFFb.js";
+import "./ForwardMessageDialog-CaXjV13U.js";
+import "./AddTaskOutlined-CgupI6Z3.js";
+import "./videoLink-BfLN3LRj.js";
+import "./ArrowBackOutlined-BhSdaUts.js";
+import "./useCalendarTasks-Cl5o2Ebi.js";
+import "./useTranscriptController-BdNi4rMO.js";
+import "./PlayArrowRounded-emG8NLik.js";
+import "./policyContent-DPfknNhV.js";
+import "./companyInfo-Btqdi-Wt.js";
+import "./safeMarkdown-sAzUuXkU.js";
+import "./shellOwnScroll-BIIV4RF2.js";
+import "./SaveOutlined-DgCkQRT8.js";
+import "./useFormModified-cVB1R-yN.js";
+import "./meetingCalendar-_jcQJ1qd.js";
+import "./boardPostHost-qkMGoKtn.js";
+import "./ChatMemberPanel-DmXFJG7n.js";
+import "./chatPrefs-Be7HCbgk.js";
+import "./PhotoLibraryOutlined-7mbJKs9u.js";
+import "./Logout-B1FcT8mE.js";
+import "./largeFile-DlThjw63.js";
+import "./ChatRoomView-DTjnT2W1.js";
+import "./FileDropOverlay-Bw4w8zRu.js";
+import "./CheckRounded-q96oOTwH.js";
+import "./PickMenuDialog-BtpyEh4Z.js";
+import "./useLongPress-C-MDKVjl.js";
+import "./MeetRoomUI-B9KJeSBQ.js";
+import "./DrawOutlined-Ciurzwfe.js";
+import "./shareArticle-Cy4lemZ5.js";
+import "./TuneOutlined-91VtWDYC.js";
+import "./notificationsRealtime-BoFKeECQ.js";
+import "./attendanceMgmtApi-CC4DR0XR.js";
+import "./notificationIntent-BMq5F2BF.js";
+import "./EmployeeRecordsDialog-Cu-T1ysd.js";
+import "./RepeatRowCard-CW6Yl_Xr.js";
+import "./LocalLibraryOutlined-DXLWZCv4.js";
+import "./socialLinkApi-BmpcVziz.js";
+import "./SocialProviderIcon-CfLZ-VWP.js";
+import "./WithdrawDialog-BzZqPW3a.js";
+import "./GridViewOutlined-C38fbc__.js";
+import "./BookmarkBorder-D_zgRRjF.js";
+import "./PageSlideDialog-D4MWDBvN.js";
+import "./LoginPage-xO8sELhl.js";
+import "./BiometricLoginButton-saWv6dRk.js";
+import "./SocialLoginButtons-BfzUwflP.js";
+import "./TaskhamLogoIcon-D-7jf3TJ.js";
+import "./TaskhamWordmark-C6fF9fOj.js";
+import "./AuthLanguageButton-cBZSK8_3.js";
+import "./SignupPage-d9HBBRMK.js";
+import "./SignupConsents-CHsJ0gen.js";
+import "./oauthSignup-BvADUlBj.js";
+import "./PolicyDocument-DN4sQ1C8.js";
+import "./SignupEmailVerify-DuMbXunG.js";
+import "./PricingPage-HO2Ywdf6.js";
+import "./Reveal-C3c42DZa.js";
+import "./AlternateEmailOutlined-ChAd88mi.js";
+import "./MailOutlineOutlined-CwnGWzzM.js";
+import "./publicPageSx-9Lwcd6Z3.js";
+import "./SubscribePage-BAavvAts.js";
+import "./AddRounded-DeRMyh-W.js";
+import "./homeSx-C09ESIq-.js";
+import "./PricingCalculator-B_H7Reed.js";
+import "./calendarKinds-BI5RuiF8.js";
+import "./useHolidayNames-CGgpEQbF.js";
+import "./CalendarMemoPanel-D3bG3c90.js";
+import "./MicNoneOutlined-CCn21vm0.js";
+import "./workspaceCandidates-BzY4iDjW.js";
+function Wi() {
+  const o = y(),
+    p = M(),
+    [m, s] = r.useState(!1);
+  return r.useEffect(() => {
+    o !== null && s(!0);
+  }, [o]), p || !m && o === null ? null : x.jsx(W, {});
+}
+function W() {
+  const o = y(),
+    p = N(),
+    {
+      state: m,
+      form: s,
+      modals: a
+    } = p,
+    k = m.useValue("customTabs"),
+    E = m.useValue("sprints") ?? [],
+    T = j().useValue("account"),
+    v = B(Number(T?.seq ?? 0)),
+    {
+      state: S
+    } = G(),
+    e = S.useValue("data.employee"),
+    {
+      current: n
+    } = D(),
+    t = O(n),
+    C = r.useMemo(() => {
+      const l = H(e);
+      if (t) for (const [f, b] of R(t, n?.origin ?? "")) (b.startsWith("data:") || !l.has(f)) && l.set(f, b);
+      return l;
+    }, [e, t, n?.origin]),
+    q = r.useMemo(() => t ? d(t) : h(e), [t, e]),
+    g = r.useMemo(() => t ? d(t) : void 0, [t]);
+  A(a.form.isOpen);
+  const [i, w] = r.useState(null),
+    u = r.useRef(!1);
+  r.useEffect(() => {
+    o !== null && (w(o), u.current = !!o.event, requestAnimationFrame(() => a.form.open()), P());
+  }, [o]);
+  const c = a.form.isOpen;
+  return r.useEffect(() => {
+    !c || !u.current || (u.current = !1, V(s, "event"));
+  }, [c]), x.jsx(K, {
+    controller: p,
+    memberCandidates: g,
+    customTabs: k,
+    sprints: E,
+    avatarSrcByName: C,
+    presetTitle: i?.title ?? "",
+    presetTabKey: i?.tabKey ?? "",
+    presetContent: i?.content ?? "",
+    presetDueDate: i?.dueDate ?? "",
+    presetVisibility: i?.visibility ?? "involved",
+    presetVisibilityGroupSeq: i?.visibilityGroupSeq ?? 0,
+    presetManager: i?.manager ?? null,
+    pickerEmployees: q,
+    myAccountSeq: v,
+    defaultWorkspaceSeq: Number(i?.workspaceSeq ?? 0) || 0,
+    avoidSampleSpace: !0
+  });
+}
+export { Wi as TaskCreateDrawerHost };

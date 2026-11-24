@@ -1,0 +1,250 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CalendarSidebarPanel</title><style>*{box-sizing:border-box}body{margin:0;background:#f3f6fa;color:#142337;font:15px/1.65 "Malgun Gothic",sans-serif}main{max-width:1360px;margin:auto;padding:38px}header{background:#132c4a;color:white;padding:34px;border-radius:18px}h1{font-size:30px;margin:0 0 8px}h2{margin:32px 0 14px;font-size:22px}h3{margin:0 0 12px}a{color:#1767ad}header a{color:#c5e6ff}section,article{background:white;padding:24px;border:1px solid #dfe6ef;border-radius:13px;margin:16px 0}table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:10px;text-align:left;border-bottom:1px solid #dce4ed;vertical-align:top}th{background:#edf3f9}code,pre{font-family:Consolas,monospace}code{word-break:break-all}pre{background:#edf3f9;padding:20px;white-space:pre-wrap;overflow-wrap:anywhere}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.grid article{margin:0}.badge{display:inline-block;padding:3px 10px;border-radius:20px;background:#e8f2fc;color:#164f86;font-size:12px;margin:3px}.muted{color:#617187}.stat{font-size:30px;font-weight:bold}iframe{width:100%;height:760px;border:1px solid #ddd;background:white}details{padding:8px 0}summary{cursor:pointer;font-weight:bold}.small{font-size:13px}nav{margin:20px 0}nav a{margin-right:15px}@media(max-width:850px){.grid{grid-template-columns:1fr}main{padding:16px}table{display:block;overflow:auto}}</style><main><p><a href="../../index.html">← 카탈로그</a></p><header><h1>CalendarSidebarPanel</h1><p>일정 · 달력 사이드바 · 재사용 등급 B</p></header><section><h2>확보한 코드</h2><p><a href="../../assets/vendor.d/CalendarSidebarPanel-DlQr_b8l.js">원본 배포 JS</a> · <a href="../../formatted/vendor.d/CalendarSidebarPanel-DlQr_b8l.js">읽기용 정리 JS</a> · <a href="manifest.json">컴포넌트 manifest</a></p><p>달력 상태와 선택 이벤트를 새 앱 상태에 연결</p><p class="muted">원본 TSX와 변수명은 복원되지 않았습니다. 정리본은 실행용 독립 패키지가 아닙니다. 컴포넌트 이름은 청크 파일명이며 청크에 여러 함수가 함께 들어 있을 수 있습니다.</p><h3>배포 export 별칭</h3><pre>[
+  {
+    &quot;local&quot;: &quot;Yw&quot;,
+    &quot;exported&quot;: &quot;$&quot;
+  },
+  {
+    &quot;local&quot;: &quot;oC&quot;,
+    &quot;exported&quot;: &quot;A&quot;
+  },
+  {
+    &quot;local&quot;: &quot;Ms&quot;,
+    &quot;exported&quot;: &quot;B&quot;
+  },
+  {
+    &quot;local&quot;: &quot;KC&quot;,
+    &quot;exported&quot;: &quot;C&quot;
+  },
+  {
+    &quot;local&quot;: &quot;fC&quot;,
+    &quot;exported&quot;: &quot;D&quot;
+  },
+  {
+    &quot;local&quot;: &quot;mC&quot;,
+    &quot;exported&quot;: &quot;E&quot;
+  },
+  {
+    &quot;local&quot;: &quot;Z1&quot;,
+    &quot;exported&quot;: &quot;F&quot;
+  },
+  {
+    &quot;local&quot;: &quot;eC&quot;,
+    &quot;exported&quot;: &quot;G&quot;
+  },
+  {
+    &quot;local&quot;: &quot;yC&quot;,
+    &quot;exported&quot;: &quot;H&quot;
+  },
+  {
+    &quot;local&quot;: &quot;Q1&quot;,
+    &quot;exported&quot;: &quot;I&quot;
+  },
+  {
+    &quot;local&quot;: &quot;tC&quot;,
+    &quot;exported&quot;: &quot;J&quot;
+  },
+  {
+    &quot;local&quot;: &quot;gC&quot;,
+    &quot;exported&quot;: &quot;K&quot;
+  },
+  {
+    &quot;local&quot;: &quot;hC&quot;,
+    &quot;exported&quot;: &quot;L&quot;
+  },
+  {
+    &quot;local&quot;: &quot;lC&quot;,
+    &quot;exported&quot;: &quot;M&quot;
+  },
+  {
+    &quot;local&quot;: &quot;PC&quot;,
+    &quot;exported&quot;: &quot;N&quot;
+  },
+  {
+    &quot;local&quot;: &quot;VC&quot;,
+    &quot;exported&quot;: &quot;O&quot;
+  },
+  {
+    &quot;local&quot;: &quot;RC&quot;,
+    &quot;exported&quot;: &quot;P&quot;
+  },
+  {
+    &quot;local&quot;: &quot;X1&quot;,
+    &quot;exported&quot;: &quot;Q&quot;
+  },
+  {
+    &quot;local&quot;: &quot;bC&quot;,
+    &quot;exported&quot;: &quot;R&quot;
+  },
+  {
+    &quot;local&quot;: &quot;$C&quot;,
+    &quot;exported&quot;: &quot;S&quot;
+  },
+  {
+    &quot;local&quot;: &quot;iC&quot;,
+    &quot;exported&quot;: &quot;T&quot;
+  },
+  {
+    &quot;local&quot;: &quot;OC&quot;,
+    &quot;exported&quot;: &quot;U&quot;
+  },
+  {
+    &quot;local&quot;: &quot;pC&quot;,
+    &quot;exported&quot;: &quot;V&quot;
+  },
+  {
+    &quot;local&quot;: &quot;WC&quot;,
+    &quot;exported&quot;: &quot;W&quot;
+  },
+  {
+    &quot;local&quot;: &quot;jC&quot;,
+    &quot;exported&quot;: &quot;X&quot;
+  },
+  {
+    &quot;local&quot;: &quot;Xc&quot;,
+    &quot;exported&quot;: &quot;Y&quot;
+  },
+  {
+    &quot;local&quot;: &quot;Oo&quot;,
+    &quot;exported&quot;: &quot;Z&quot;
+  },
+  {
+    &quot;local&quot;: &quot;mn&quot;,
+    &quot;exported&quot;: &quot;_&quot;
+  },
+  {
+    &quot;local&quot;: &quot;SS&quot;,
+    &quot;exported&quot;: &quot;a&quot;
+  },
+  {
+    &quot;local&quot;: &quot;FC&quot;,
+    &quot;exported&quot;: &quot;a0&quot;
+  },
+  {
+    &quot;local&quot;: &quot;LC&quot;,
+    &quot;exported&quot;: &quot;a1&quot;
+  },
+  {
+    &quot;local&quot;: &quot;MC&quot;,
+    &quot;exported&quot;: &quot;a2&quot;
+  },
+  {
+    &quot;local&quot;: &quot;NC&quot;,
+    &quot;exported&quot;: &quot;a3&quot;
+  },
+  {
+    &quot;local&quot;: &quot;$u&quot;,
+    &quot;exported&quot;: &quot;a4&quot;
+  },
+  {
+    &quot;local&quot;: &quot;sC&quot;,
+    &quot;exported&quot;: &quot;a5&quot;
+  },
+  {
+    &quot;local&quot;: &quot;Ey&quot;,
+    &quot;exported&quot;: &quot;a6&quot;
+  },
+  {
+    &quot;local&quot;: &quot;rC&quot;,
+    &quot;exported&quot;: &quot;a7&quot;
+  },
+  {
+    &quot;local&quot;: &quot;TC&quot;,
+    &quot;exported&quot;: &quot;b&quot;
+  },
+  {
+    &quot;local&quot;: &quot;jS&quot;,
+    &quot;exported&quot;: &quot;c&quot;
+  },
+  {
+    &quot;local&quot;: &quot;AC&quot;,
+    &quot;exported&quot;: &quot;d&quot;
+  },
+  {
+    &quot;local&quot;: &quot;vC&quot;,
+    &quot;exported&quot;: &quot;e&quot;
+  },
+  {
+    &quot;local&quot;: &quot;xC&quot;,
+    &quot;exported&quot;: &quot;f&quot;
+  },
+  {
+    &quot;local&quot;: &quot;sS&quot;,
+    &quot;exported&quot;: &quot;g&quot;
+  },
+  {
+    &quot;local&quot;: &quot;zC&quot;,
+    &quot;exported&quot;: &quot;h&quot;
+  },
+  {
+    &quot;local&quot;: &quot;qC&quot;,
+    &quot;exported&quot;: &quot;i&quot;
+  },
+  {
+    &quot;local&quot;: &quot;BC&quot;,
+    &quot;exported&quot;: &quot;j&quot;
+  },
+  {
+    &quot;local&quot;: &quot;DC&quot;,
+    &quot;exported&quot;: &quot;k&quot;
+  },
+  {
+    &quot;local&quot;: &quot;Z_&quot;,
+    &quot;exported&quot;: &quot;l&quot;
+  },
+  {
+    &quot;local&quot;: &quot;nC&quot;,
+    &quot;exported&quot;: &quot;m&quot;
+  },
+  {
+    &quot;local&quot;: &quot;cC&quot;,
+    &quot;exported&quot;: &quot;n&quot;
+  },
+  {
+    &quot;local&quot;: &quot;SC&quot;,
+    &quot;exported&quot;: &quot;o&quot;
+  },
+  {
+    &quot;local&quot;: &quot;J1&quot;,
+    &quot;exported&quot;: &quot;p&quot;
+  },
+  {
+    &quot;local&quot;: &quot;IC&quot;,
+    &quot;exported&quot;: &quot;q&quot;
+  },
+  {
+    &quot;local&quot;: &quot;EC&quot;,
+    &quot;exported&quot;: &quot;r&quot;
+  },
+  {
+    &quot;local&quot;: &quot;CC&quot;,
+    &quot;exported&quot;: &quot;s&quot;
+  },
+  {
+    &quot;local&quot;: &quot;_C&quot;,
+    &quot;exported&quot;: &quot;t&quot;
+  },
+  {
+    &quot;local&quot;: &quot;tk&quot;,
+    &quot;exported&quot;: &quot;u&quot;
+  },
+  {
+    &quot;local&quot;: &quot;wC&quot;,
+    &quot;exported&quot;: &quot;v&quot;
+  },
+  {
+    &quot;local&quot;: &quot;kC&quot;,
+    &quot;exported&quot;: &quot;w&quot;
+  },
+  {
+    &quot;local&quot;: &quot;aC&quot;,
+    &quot;exported&quot;: &quot;x&quot;
+  },
+  {
+    &quot;local&quot;: &quot;dC&quot;,
+    &quot;exported&quot;: &quot;y&quot;
+  },
+  {
+    &quot;local&quot;: &quot;uC&quot;,
+    &quot;exported&quot;: &quot;z&quot;
+  }
+]</pre><h3>export 함수의 구조 분해 입력값</h3><ul><li><code>N ← PC</code>: myAccountSeq</li><li><code>P ← RC</code>: controller, onChangePassword</li><li><code>k ← DC</code>: open, onClose</li><li><code>l ← Z_</code>: open, onClose, anchorEl</li></ul><h3>직접 import</h3><ul><li><code>./react-CjxcGQav.js</code> — static</li><li><code>../js.d/main-Cm9wS5wt.js</code> — static</li><li><code>./InlineErrorAlert-D9ICJPt7.js</code> — static</li><li><code>./bootstrapController-BMV_i07c.js</code> — static</li><li><code>./customerMetaStore-Bj9KdRyn.js</code> — static</li><li><code>./types-B1OAKh4b.js</code> — static</li><li><code>./DealFormDialog-Dw6MXJZk.js</code> — static</li><li><code>./BoardPostDetail-CniIF2a7.js</code> — static</li><li><code>./teamMembers-0yRsmqL6.js</code> — static</li><li><code>./mobileBandDialog-C3M4tWPv.js</code> — static</li><li><code>./PhoneMissedOutlined-Cf-_1h4d.js</code> — static</li><li><code>./TableChartOutlined-CH8ZYsPl.js</code> — static</li><li><code>./customerDialogActions-CaaeVzAY.js</code> — static</li><li><code>./ConsultHistoryPanel-X3hMdgAl.js</code> — static</li><li><code>./CustomerFormDialog-pXADTEX2.js</code> — static</li><li><code>./bookingApi-DC6gLfSO.js</code> — static</li><li><code>./types-CVXtrYKe.js</code> — static</li><li><code>./AttendanceParts-mHb1cK0h.js</code> — static</li><li><code>./Trans-CU1vl0TZ.js</code> — static</li><li><code>./browser-FfRve9p6.js</code> — static</li><li><code>./BusinessCenterOutlined-gZ8sR_r3.js</code> — static</li><li><code>./ScheduleOutlined-C_7j7r9e.js</code> — static</li><li><code>./EventBusyOutlined-DqcCaRMs.js</code> — static</li><li><code>./LanguageOutlined-dNJSO7u2.js</code> — static</li><li><code>./types-CVhETUvu.js</code> — static</li><li><code>./resolveAssetPreviewSrc-CLlbOCzq.js</code> — static</li><li><code>./OptionToggleGroup-Cvm2wRyq.js</code> — static</li><li><code>./supportCenterApi-KQJIqJUd.js</code> — static</li><li><code>./FileUploadBox-crZW1mG0.js</code> — static</li><li><code>./ReferenceList-mhfbKusm.js</code> — static</li><li><code>./approvalDetailHost-CFvt90Au.js</code> — static</li><li><code>./ApprovalDetailDialog-v7PUkzWr.js</code> — static</li><li><code>./taskDetailHost-C45bt_tL.js</code> — static</li><li><code>./LinkOff-BeDdBoha.js</code> — static</li><li><code>./index.esm-gjRImBGa.js</code> — static</li><li><code>./DynamicFeedOutlined-CALXdaS2.js</code> — static</li><li><code>./ViewWeekOutlined-Dme8hz7e.js</code> — static</li><li><code>./ViewTimelineOutlined-CVOcikTc.js</code> — static</li><li><code>./WorkspacesOutlined-DwFzV-9Z.js</code> — static</li><li><code>./EventRepeatOutlined-BzT6rPrF.js</code> — static</li><li><code>./EditCalendarOutlined-k4e0HIS9.js</code> — static</li><li><code>./Link-CVsHTXRQ.js</code> — static</li><li><code>./orgTree-Dh5HFjBo.js</code> — static</li><li><code>./ChatCallButtons-TGIgJ8cF.js</code> — static</li><li><code>./EmployeeFormDialog-BHKK47Dg.js</code> — static</li><li><code>./EmployeeSelectDialog-Cdnxeoz9.js</code> — static</li><li><code>./MeetingRecordScreen-XaBBkFFb.js</code> — static</li><li><code>./meetingCalendar-_jcQJ1qd.js</code> — static</li><li><code>./boardPostHost-qkMGoKtn.js</code> — static</li><li><code>./chatRoomHost-ImRyH_Na.js</code> — static</li><li><code>./ChatMemberPanel-DmXFJG7n.js</code> — static</li><li><code>./aliasStore-DiN6Kp-5.js</code> — static</li><li><code>./ChatRoomView-DTjnT2W1.js</code> — static</li><li><code>./callStore-DH1_RYeP.js</code> — static</li><li><code>./MeetRoomUI-B9KJeSBQ.js</code> — static</li><li><code>./PhoneOutlined-Bjc_e42S.js</code> — static</li><li><code>./AccountAvatar-DtrhoS_d.js</code> — static</li><li><code>./squircle-CQM8EvXm.js</code> — static</li><li><code>./ForwardMessageDialog-CaXjV13U.js</code> — static</li><li><code>./videoLink-BfLN3LRj.js</code> — static</li><li><code>./profileApi-Btafs-pM.js</code> — static</li><li><code>./documentViewerStore-BlSjH3BG.js</code> — static</li><li><code>./TuneOutlined-91VtWDYC.js</code> — static</li><li><code>./tableScrollbars-C9bhlJjO.js</code> — static</li><li><code>./useTranscriptController-BdNi4rMO.js</code> — static</li><li><code>./date_utils-CYURFdnX.js</code> — static</li><li><code>./notificationsRealtime-BoFKeECQ.js</code> — static</li><li><code>./PickMenuDialog-BtpyEh4Z.js</code> — static</li><li><code>./notificationIntent-BMq5F2BF.js</code> — static</li><li><code>./taskboxApi-BuYlRWHe.js</code> — static</li><li><code>./attendanceMgmtApi-CC4DR0XR.js</code> — static</li><li><code>./biometricController-CswvQnMD.js</code> — static</li><li><code>./EmployeeRecordsDialog-Cu-T1ysd.js</code> — static</li><li><code>./socialLinkApi-BmpcVziz.js</code> — static</li><li><code>./SocialProviderIcon-CfLZ-VWP.js</code> — static</li><li><code>./ContactPhoneOutlined-DpFEzROB.js</code> — static</li><li><code>./PropertyFields-TuJTG5XK.js</code> — static</li><li><code>./propertySections-Bwsl7OH-.js</code> — static</li><li><code>./AccountBoxOutlined-BxNEw8I0.js</code> — static</li><li><code>./AssignmentIndOutlined-DynSb23A.js</code> — static</li><li><code>./WomanOutlined-CzlFMUkT.js</code> — static</li><li><code>./PaidOutlined-Cy1uVjW3.js</code> — static</li><li><code>./PhoneAndroidOutlined-DafU-b-9.js</code> — static</li><li><code>./WorkOutlineOutlined-D5AzVFs6.js</code> — static</li><li><code>./WithdrawDialog-BzZqPW3a.js</code> — static</li><li><code>./employeeApi-CdGzOYcj.js</code> — static</li><li><code>./GridViewOutlined-C38fbc__.js</code> — static</li><li><code>./BookmarkBorder-D_zgRRjF.js</code> — static</li><li><code>./PageSlideDialog-D4MWDBvN.js</code> — static</li><li><code>./PricingPage-HO2Ywdf6.js</code> — static</li><li><code>./printSvgDocument-DHC1JJCG.js</code> — static</li><li><code>./printDocChrome-BMZLbM8A.js</code> — static</li><li><code>./companyInfo-Btqdi-Wt.js</code> — static</li><li><code>./calendarKinds-BI5RuiF8.js</code> — static</li><li><code>./CalendarMemoPanel-D3bG3c90.js</code> — static</li><li><code>./useHolidayNames-CGgpEQbF.js</code> — static</li><li><code>./TaskCreateDrawerHost-D1Ult5fd.js</code> — dynamic</li><li><code>./TaskDetailDrawerHost-DyqqQ0ys.js</code> — dynamic</li><li><code>./PostComposerHost-BJyRRhgg.js</code> — dynamic</li><li><code>./PostLockDialogs-s1dNQrzB.js</code> — dynamic</li><li><code>./TaskTransferDialog-a5FvD1Rc.js</code> — dynamic</li><li><code>./FileViewer-D5PyYcLh.js</code> — dynamic</li><li><code>./SvgZoomViewer-Duk5JzY7.js</code> — dynamic</li><li><code>./PhotoEditDialog-DJMQ_7Bn.js</code> — dynamic</li></ul><p>SHA-256: <code>99a533f1b1c91b18fe696045af60bce68aa2f5ddbc409f5cada52b05275e9606</code></p><p>출처: <a href="https://work-test.elimsafety.com/vendor.d/CalendarSidebarPanel-DlQr_b8l.js">https://work-test.elimsafety.com/vendor.d/CalendarSidebarPanel-DlQr_b8l.js</a></p></section></main></html>

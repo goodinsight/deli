@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg
+  PUBLIC '-//W3C//DTD SVG 1.0//EN'
+  'http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd'>
+<svg width="960" height="640" preserveAspectRatio="xMinYMin meet" viewBox="0 0 960 640" xmlns="http://www.w3.org/2000/svg" version="1.0" fill-rule="evenodd" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<title>...</title>
+	<desc>...</desc>
+	<clipPath id="clip">
+		<rect x="0" y="0" width="960" height="640"/>
+	</clipPath>
+	<g id="group" transform="scale(1,-1) translate(0,-640)" style="clip-path: url(#clip)">
+		<g transform="">
+			<rect x="20" y="505" width="260" height="115" rx="10" ry="10" style="stroke: rgb(78%,83%,90%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(93%,95%,98%); fill-rule: evenodd;"/>
+			<text x="38" y="588" style="font-family: Malgun Gothic, sans-serif; font-weight: bold; font-size: 20px;fill: rgb(9%,33%,63%); stroke:none;" transform="translate(0,1176) scale(1,-1)">고객·시설물</text>
+			<text x="38" y="560" style="font-family: Malgun Gothic, sans-serif; font-size: 16px;fill: rgb(9%,16%,27%); stroke:none;" transform="translate(0,1120) scale(1,-1)">Party + Contact + Facility</text>
+			<rect x="350" y="505" width="260" height="115" rx="10" ry="10" style="stroke: rgb(78%,83%,90%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(93%,95%,98%); fill-rule: evenodd;"/>
+			<text x="368" y="588" style="font-family: Malgun Gothic, sans-serif; font-weight: bold; font-size: 20px;fill: rgb(9%,33%,63%); stroke:none;" transform="translate(0,1176) scale(1,-1)">상담</text>
+			<text x="368" y="560" style="font-family: Malgun Gothic, sans-serif; font-size: 16px;fill: rgb(9%,16%,27%); stroke:none;" transform="translate(0,1120) scale(1,-1)">담당자·후속 조치</text>
+			<rect x="680" y="505" width="260" height="115" rx="10" ry="10" style="stroke: rgb(78%,83%,90%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(93%,95%,98%); fill-rule: evenodd;"/>
+			<text x="698" y="588" style="font-family: Malgun Gothic, sans-serif; font-weight: bold; font-size: 20px;fill: rgb(9%,33%,63%); stroke:none;" transform="translate(0,1176) scale(1,-1)">견적 버전</text>
+			<text x="698" y="560" style="font-family: Malgun Gothic, sans-serif; font-size: 16px;fill: rgb(9%,16%,27%); stroke:none;" transform="translate(0,1120) scale(1,-1)">품목·금액·유효기간</text>
+			<rect x="680" y="285" width="260" height="115" rx="10" ry="10" style="stroke: rgb(78%,83%,90%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(93%,95%,98%); fill-rule: evenodd;"/>
+			<text x="698" y="368" style="font-family: Malgun Gothic, sans-serif; font-weight: bold; font-size: 20px;fill: rgb(9%,33%,63%); stroke:none;" transform="translate(0,736) scale(1,-1)">계약</text>
+			<text x="698" y="340" style="font-family: Malgun Gothic, sans-serif; font-size: 16px;fill: rgb(9%,16%,27%); stroke:none;" transform="translate(0,680) scale(1,-1)">견적 원본·청구 계획</text>
+			<rect x="350" y="285" width="260" height="115" rx="10" ry="10" style="stroke: rgb(78%,83%,90%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(93%,95%,98%); fill-rule: evenodd;"/>
+			<text x="368" y="368" style="font-family: Malgun Gothic, sans-serif; font-weight: bold; font-size: 20px;fill: rgb(9%,33%,63%); stroke:none;" transform="translate(0,736) scale(1,-1)">프로젝트·업무</text>
+			<text x="368" y="340" style="font-family: Malgun Gothic, sans-serif; font-size: 16px;fill: rgb(9%,16%,27%); stroke:none;" transform="translate(0,680) scale(1,-1)">계약 수행·보고서</text>
+			<rect x="20" y="285" width="260" height="115" rx="10" ry="10" style="stroke: rgb(78%,83%,90%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(93%,95%,98%); fill-rule: evenodd;"/>
+			<text x="38" y="368" style="font-family: Malgun Gothic, sans-serif; font-weight: bold; font-size: 20px;fill: rgb(9%,33%,63%); stroke:none;" transform="translate(0,736) scale(1,-1)">채권·청구</text>
+			<text x="38" y="340" style="font-family: Malgun Gothic, sans-serif; font-size: 16px;fill: rgb(9%,16%,27%); stroke:none;" transform="translate(0,680) scale(1,-1)">기일·잔액</text>
+			<rect x="20" y="65" width="260" height="115" rx="10" ry="10" style="stroke: rgb(78%,83%,90%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(93%,95%,98%); fill-rule: evenodd;"/>
+			<text x="38" y="148" style="font-family: Malgun Gothic, sans-serif; font-weight: bold; font-size: 20px;fill: rgb(9%,33%,63%); stroke:none;" transform="translate(0,296) scale(1,-1)">입금·충당</text>
+			<text x="38" y="120" style="font-family: Malgun Gothic, sans-serif; font-size: 16px;fill: rgb(9%,16%,27%); stroke:none;" transform="translate(0,240) scale(1,-1)">분할 수금·대사</text>
+			<rect x="350" y="65" width="260" height="115" rx="10" ry="10" style="stroke: rgb(78%,83%,90%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(93%,95%,98%); fill-rule: evenodd;"/>
+			<text x="368" y="148" style="font-family: Malgun Gothic, sans-serif; font-weight: bold; font-size: 20px;fill: rgb(9%,33%,63%); stroke:none;" transform="translate(0,296) scale(1,-1)">공통 이력</text>
+			<text x="368" y="120" style="font-family: Malgun Gothic, sans-serif; font-size: 16px;fill: rgb(9%,16%,27%); stroke:none;" transform="translate(0,240) scale(1,-1)">원본 링크·상태·감사</text>
+			<rect x="680" y="65" width="260" height="115" rx="10" ry="10" style="stroke: rgb(78%,83%,90%); stroke-linecap: butt; stroke-width: 1.2; fill: rgb(93%,95%,98%); fill-rule: evenodd;"/>
+			<text x="698" y="148" style="font-family: Malgun Gothic, sans-serif; font-weight: bold; font-size: 20px;fill: rgb(9%,33%,63%); stroke:none;" transform="translate(0,296) scale(1,-1)">운영 보고</text>
+			<text x="698" y="120" style="font-family: Malgun Gothic, sans-serif; font-size: 16px;fill: rgb(9%,16%,27%); stroke:none;" transform="translate(0,240) scale(1,-1)">미수·현금흐름·손익</text>
+			<path d="M 280,562 L 350,562 Z" style="stroke: rgb(34%,41%,48%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="350 562, 340 567, 340 557" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(34%,41%,48%); fill-rule: evenodd;"/>
+			<path d="M 610,562 L 680,562 Z" style="stroke: rgb(34%,41%,48%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="680 562, 670 567, 670 557" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(34%,41%,48%); fill-rule: evenodd;"/>
+			<path d="M 810,505 L 810,400 Z" style="stroke: rgb(34%,41%,48%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="810 400, 815 410, 805 410" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(34%,41%,48%); fill-rule: evenodd;"/>
+			<path d="M 680,343 L 610,343 Z" style="stroke: rgb(34%,41%,48%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="610 343, 620 348, 620 338" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(34%,41%,48%); fill-rule: evenodd;"/>
+			<path d="M 350,343 L 280,343 Z" style="stroke: rgb(34%,41%,48%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="280 343, 290 348, 290 338" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(34%,41%,48%); fill-rule: evenodd;"/>
+			<path d="M 150,285 L 150,180 Z" style="stroke: rgb(34%,41%,48%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="150 180, 155 190, 145 190" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(34%,41%,48%); fill-rule: evenodd;"/>
+			<path d="M 280,123 L 350,123 Z" style="stroke: rgb(34%,41%,48%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="350 123, 340 128, 340 118" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(34%,41%,48%); fill-rule: evenodd;"/>
+			<path d="M 610,123 L 680,123 Z" style="stroke: rgb(34%,41%,48%); stroke-linecap: butt; stroke-width: 2;"/>
+			<polygon points="680 123, 670 128, 670 118" style="stroke: none; stroke-linecap: butt; stroke-width: 1; fill: rgb(34%,41%,48%); fill-rule: evenodd;"/>
+		</g>
+	</g>
+</svg>

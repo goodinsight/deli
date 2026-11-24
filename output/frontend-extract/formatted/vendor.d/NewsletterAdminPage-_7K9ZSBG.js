@@ -1,0 +1,736 @@
+import { r as o, j as s, u as me, N as we } from "./react-CjxcGQav.js";
+import { bv as ee, D as he, bO as N, cI as fe, bQ as x, B as g, L as R, dd as pe, d4 as b, w as J, hb as xe, mh as X, aC as H, mi as q, kR as ge, ne as Z, z as B, K as ve, bx as L, u as je, n7 as be, d8 as Se, lr as Ce } from "../js.d/main-Cm9wS5wt.js";
+import { u as ye } from "./useColumnWidths-DSAca5rC.js";
+import { T as Te } from "./tableScrollbars-C9bhlJjO.js";
+import { r as _e } from "./rowNoColumn-B_tyJFB_.js";
+import { n as u, N as ke } from "./NewsletterPreviewDialog-BqZaVjvI.js";
+import "./stylis-DdLD6a3t.js";
+import "./profileApi-Btafs-pM.js";
+import "./resolveAssetPreviewSrc-CLlbOCzq.js";
+const _ = {
+    title: "",
+    preheader: "",
+    kind: "info",
+    issue_label: "",
+    template_id: "",
+    content_mode: "editor",
+    content: "",
+    audience: "all",
+    custom_emails: ""
+  },
+  Ie = ["all", "org_owners", "paid", "free", "custom"],
+  Ae = l => l.replace(" ", "T"),
+  Ee = l => l.replace("T", " ").slice(0, 16),
+  Re = {
+    ...Z,
+    left: [...(Z.left ?? []).filter(l => !l.includes("undo")), ["bulletList", "numberList"], ["image"]]
+  };
+function te(l, w) {
+  return l.status === "scheduled" ? w("newsletter.statusScheduled", {
+    at: l.send_at
+  }) : w(`newsletter.status_${l.status}`);
+}
+function V(l, w) {
+  return w(`newsletter.audience_${l}`);
+}
+function Fe({
+  target: l,
+  onClose: w,
+  onSaved: r
+}) {
+  const t = ee(),
+    v = he(),
+    P = o.useRef(null),
+    [a, h] = o.useState(_),
+    [n, f] = o.useState(null),
+    [M, S] = o.useState(0),
+    [d, F] = o.useState(""),
+    [D, c] = o.useState([]),
+    [C, $] = o.useState(""),
+    [W, O] = o.useState(null),
+    [y, Y] = o.useState(""),
+    [se, K] = o.useState(null),
+    I = l !== null,
+    m = !!(n && n.status !== "draft" && n.status !== "cancelled");
+  o.useEffect(() => {
+    I && (K(null), Y(""), $(""), S(e => e + 1), l === "new" ? (f(null), h(_)) : l && (f(l), h({
+      ..._,
+      ...l
+    }), u.get(l.seq).then(e => {
+      f(e), h({
+        ..._,
+        ...e
+      }), S(i => i + 1);
+    }).catch(e => N({
+      message: e instanceof Error ? e.message : t("newsletter.loadFailed")
+    }))), u.templates().then(c).catch(() => c([])));
+  }, [l]), o.useEffect(() => {
+    if (!I || !n || n.status !== "preparing" && n.status !== "sending" && n.status !== "scheduled") return;
+    const e = window.setInterval(() => {
+      u.get(n.seq).then(f).catch(() => {});
+    }, 1e4);
+    return () => window.clearInterval(e);
+  }, [I, n]), o.useEffect(() => {
+    if (!I) return;
+    O(null);
+    const e = window.setTimeout(() => {
+      u.audienceCount(a.audience, a.custom_emails).then(O).catch(() => O(null));
+    }, 500);
+    return () => window.clearTimeout(e);
+  }, [I, a.audience, a.custom_emails]);
+  const T = (e, i) => h(p => ({
+      ...p,
+      [e]: i
+    })),
+    A = () => ({
+      ...a,
+      content: a.content_mode === "editor" ? P.current?.getHtml() ?? a.content : a.content
+    }),
+    U = async () => {
+      const e = A(),
+        i = n ? await u.update(n.seq, e) : await u.create(e);
+      return f(i), h({
+        ..._,
+        ...i
+      }), i;
+    },
+    j = async (e, i) => {
+      F(e);
+      try {
+        await i();
+      } catch (p) {
+        N({
+          message: p instanceof Error ? p.message : t("newsletter.saveFailed")
+        });
+      } finally {
+        F("");
+      }
+    },
+    ne = () => j("save", async () => {
+      if (!a.title.trim()) throw new Error(t("newsletter.enterTitle"));
+      await U(), L(t("newsletter.saved")), r();
+    }),
+    le = () => {
+      if (!C) return;
+      const e = () => {
+        j("template", async () => {
+          const p = await u.template(Number(C));
+          h(z => ({
+            ...z,
+            title: p.subject,
+            preheader: p.preheader,
+            kind: p.kind,
+            template_id: String(p.seq),
+            issue_label: z.issue_label || `${new Date().getFullYear()}.${String(new Date().getMonth() + 1).padStart(2, "0")} ${t("newsletter.defaultIssue")}`,
+            content_mode: p.content_mode,
+            content: p.content
+          })), S(z => z + 1);
+        });
+      };
+      if (!(A().content.replace(/<[^>]*>/g, "").trim().length > 0)) return e();
+      B({
+        title: t("newsletter.loadTemplate"),
+        message: t("newsletter.loadTemplateConfirm"),
+        onConfirm: e
+      });
+    },
+    ae = () => j("template", async () => {
+      const e = A();
+      if (!e.title.trim()) throw new Error(t("newsletter.enterTitle"));
+      const i = await u.createTemplate({
+        name: e.title,
+        feature: "",
+        subject: e.title,
+        preheader: e.preheader,
+        kind: e.kind,
+        content_mode: e.content_mode,
+        content: e.content
+      });
+      c(await u.templates()), $(String(i.seq)), L(t("newsletter.templateSaved"));
+    }),
+    re = () => j("preview", async () => {
+      K(await u.preview(A()));
+    }),
+    ie = () => j("test", async () => {
+      if (!a.title.trim()) throw new Error(t("newsletter.enterTitle"));
+      const e = await U(),
+        i = await u.test(e.seq);
+      L(t("newsletter.testSent", {
+        to: i.join(", ")
+      })), r();
+    }),
+    oe = () => {
+      if (!a.title.trim()) return N({
+        message: t("newsletter.enterTitle")
+      });
+      const e = y ? t("newsletter.confirmAt", {
+        at: y
+      }) : t("newsletter.confirmNow");
+      B({
+        title: t("newsletter.send"),
+        message: t("newsletter.sendConfirm", {
+          count: W ?? 0,
+          when: e,
+          audience: V(a.audience, t)
+        }),
+        confirmText: t(y ? "newsletter.schedule" : "newsletter.send"),
+        onConfirm: () => {
+          j("send", async () => {
+            const i = await U();
+            f(await u.send(i.seq, y)), L(t(y ? "newsletter.scheduled" : "newsletter.queued")), r();
+          });
+        }
+      });
+    },
+    de = () => {
+      n && B({
+        title: n.status === "scheduled" ? t("newsletter.cancelSchedule") : t("newsletter.stopSending"),
+        message: n.status === "scheduled" ? t("newsletter.cancelScheduleConfirm") : t("newsletter.stopSendingConfirm"),
+        onConfirm: () => {
+          j("cancel", async () => {
+            const e = await u.cancel(n.seq);
+            f(e), h({
+              ..._,
+              ...e
+            }), r();
+          });
+        }
+      });
+    },
+    ce = () => j("save", async () => {
+      const e = await u.create({
+        ...A(),
+        title: a.title
+      });
+      f(e), h({
+        ..._,
+        ...e
+      }), S(i => i + 1), L(t("newsletter.copied")), r();
+    }),
+    ue = () => {
+      n && B({
+        title: t("newsletter.delete"),
+        message: t("newsletter.deleteConfirm", {
+          title: n.title
+        }),
+        onConfirm: () => {
+          u.remove(n.seq).then(() => {
+            r(), w();
+          }).catch(e => N({
+            message: e instanceof Error ? e.message : t("newsletter.deleteFailed")
+          }));
+        }
+      });
+    },
+    G = o.useMemo(() => {
+      if (!n || n.total_count <= 0) return null;
+      const e = n.sent_count + n.failed_count + n.skipped_count;
+      return {
+        done: e,
+        percent: Math.round(e / n.total_count * 100)
+      };
+    }, [n]),
+    E = s.jsx(ve, {
+      size: 20,
+      color: "inherit"
+    }),
+    Q = !!(n && n.status !== "preparing" && n.status !== "sending");
+  return s.jsxs(s.Fragment, {
+    children: [s.jsx(fe, {
+      open: I,
+      onClose: w,
+      title: t(n ? "newsletter.edit" : "newsletter.new"),
+      fullScreen: v,
+      maxWidth: "md",
+      titleIcons: {
+        delete: {
+          visible: Q
+        }
+      },
+      onDelete: Q ? ue : void 0,
+      tabs: {
+        visible: !1
+      },
+      sections: [{
+        id: "newsletter-form",
+        showTitle: !1,
+        children: s.jsxs(g, {
+          sx: {
+            display: "flex",
+            flexDirection: "column",
+            gap: 2.5
+          },
+          children: [n && n.status !== "draft" ? s.jsxs(g, {
+            sx: {
+              display: "flex",
+              flexDirection: "column",
+              gap: 1,
+              p: 2,
+              borderRadius: 2,
+              bgcolor: "#f8fafc",
+              border: "1px solid #e2e8f0"
+            },
+            children: [s.jsx(R, {
+              sx: {
+                fontSize: 15,
+                fontWeight: 600
+              },
+              children: te(n, t)
+            }), G ? s.jsxs(s.Fragment, {
+              children: [s.jsx(pe, {
+                variant: "determinate",
+                value: G.percent
+              }), s.jsx(R, {
+                sx: {
+                  fontSize: 14,
+                  color: "text.secondary"
+                },
+                children: t("newsletter.progress", {
+                  done: G.done,
+                  total: n.total_count,
+                  sent: n.sent_count,
+                  skipped: n.skipped_count,
+                  failed: n.failed_count
+                })
+              })]
+            }) : null]
+          }) : null, m ? null : s.jsxs(g, {
+            children: [s.jsxs(g, {
+              sx: {
+                display: "flex",
+                gap: 1,
+                alignItems: "stretch"
+              },
+              children: [s.jsx(b, {
+                select: !0,
+                label: t("newsletter.template"),
+                value: C,
+                onChange: e => $(e.target.value),
+                fullWidth: !0,
+                sx: {
+                  flex: 1,
+                  width: 0,
+                  minWidth: 0,
+                  "& .MuiSelect-select": {
+                    overflow: "hidden",
+                    textOverflow: "ellipsis"
+                  }
+                },
+                children: D.map(e => s.jsxs(J, {
+                  value: String(e.seq),
+                  children: [e.feature ? `[${e.feature}] ` : "", e.name]
+                }, e.seq))
+              }), s.jsx(x, {
+                variant: "outlined",
+                onClick: le,
+                disabled: !C || d !== "",
+                sx: {
+                  flexShrink: 0,
+                  whiteSpace: "nowrap"
+                },
+                children: d === "template" ? E : t("newsletter.loadTemplate")
+              })]
+            }), s.jsxs(g, {
+              sx: {
+                display: "flex",
+                alignItems: "flex-start",
+                gap: 1
+              },
+              children: [s.jsx(xe, {
+                sx: {
+                  mx: 1.75,
+                  flex: 1
+                },
+                children: t("newsletter.templateHint")
+              }), s.jsx(x, {
+                size: "small",
+                onClick: () => {
+                  ae();
+                },
+                disabled: d !== "",
+                sx: {
+                  flexShrink: 0,
+                  whiteSpace: "nowrap"
+                },
+                children: t("newsletter.saveAsTemplate")
+              })]
+            })]
+          }), s.jsx(b, {
+            label: t("newsletter.fieldTitle"),
+            value: a.title,
+            onChange: e => T("title", e.target.value),
+            helperText: a.kind === "ad" ? t("newsletter.adTitleHint") : void 0,
+            disabled: m,
+            fullWidth: !0
+          }), s.jsx(b, {
+            label: t("newsletter.fieldPreheader"),
+            value: a.preheader,
+            onChange: e => T("preheader", e.target.value),
+            helperText: t("newsletter.preheaderHint"),
+            disabled: m,
+            fullWidth: !0
+          }), s.jsxs(g, {
+            sx: {
+              display: "grid",
+              gridTemplateColumns: {
+                xs: "1fr",
+                sm: "1fr 1fr"
+              },
+              gap: 2
+            },
+            children: [s.jsxs(g, {
+              children: [s.jsx(R, {
+                sx: {
+                  fontSize: 14,
+                  color: "text.secondary",
+                  mb: .5
+                },
+                children: t("newsletter.fieldKind")
+              }), s.jsxs(X, {
+                row: !0,
+                value: a.kind,
+                onChange: e => T("kind", e.target.value),
+                children: [s.jsx(H, {
+                  value: "info",
+                  control: s.jsx(q, {}),
+                  label: t("newsletter.kindInfo"),
+                  disabled: m
+                }), s.jsx(H, {
+                  value: "ad",
+                  control: s.jsx(q, {}),
+                  label: t("newsletter.kindAd"),
+                  disabled: m
+                })]
+              })]
+            }), s.jsx(b, {
+              label: t("newsletter.fieldIssue"),
+              placeholder: "2026.10 Letter 01",
+              value: a.issue_label,
+              onChange: e => T("issue_label", e.target.value),
+              disabled: m,
+              fullWidth: !0
+            })]
+          }), s.jsxs(g, {
+            children: [s.jsx(R, {
+              sx: {
+                fontSize: 14,
+                color: "text.secondary",
+                mb: .5
+              },
+              children: t("newsletter.fieldContent")
+            }), s.jsxs(X, {
+              row: !0,
+              value: a.content_mode,
+              onChange: e => {
+                h(i => ({
+                  ...A(),
+                  content_mode: e.target.value,
+                  audience: i.audience
+                })), S(i => i + 1);
+              },
+              children: [s.jsx(H, {
+                value: "editor",
+                control: s.jsx(q, {}),
+                label: t("newsletter.modeEditor"),
+                disabled: m
+              }), s.jsx(H, {
+                value: "html",
+                control: s.jsx(q, {}),
+                label: t("newsletter.modeHtml"),
+                disabled: m
+              })]
+            })]
+          }), a.content_mode === "editor" ? s.jsx(ge, {
+            ref: P,
+            defaultValue: a.content || "<p></p>",
+            autoHeight: !0,
+            minHeight: 280,
+            toolbarOptions: Re,
+            placeholder: t("newsletter.contentPlaceholder"),
+            focusBorder: !0,
+            readOnly: m,
+            showToolbar: !m,
+            onImageUpload: async e => u.uploadImage(e)
+          }, `editor-${M}`) : s.jsx(b, {
+            value: a.content,
+            onChange: e => T("content", e.target.value),
+            helperText: t("newsletter.htmlHint"),
+            disabled: m,
+            multiline: !0,
+            minRows: 14,
+            maxRows: 28,
+            fullWidth: !0,
+            slotProps: {
+              htmlInput: {
+                spellCheck: !1,
+                style: {
+                  fontFamily: "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+                  fontSize: 13
+                }
+              }
+            }
+          }, `html-${M}`), s.jsx(b, {
+            select: !0,
+            label: t("newsletter.fieldAudience"),
+            value: a.audience,
+            onChange: e => T("audience", e.target.value),
+            helperText: W === null ? t("newsletter.counting") : t("newsletter.audienceCount", {
+              count: W
+            }),
+            disabled: m,
+            fullWidth: !0,
+            children: Ie.map(e => s.jsx(J, {
+              value: e,
+              children: V(e, t)
+            }, e))
+          }), a.audience === "custom" ? s.jsx(b, {
+            label: t("newsletter.fieldEmails"),
+            value: a.custom_emails,
+            onChange: e => T("custom_emails", e.target.value),
+            helperText: t("newsletter.emailsHint"),
+            disabled: m,
+            multiline: !0,
+            minRows: 3,
+            fullWidth: !0
+          }) : null, m ? null : s.jsx(b, {
+            type: "datetime-local",
+            label: t("newsletter.fieldSendAt"),
+            value: Ae(y),
+            onChange: e => Y(Ee(e.target.value)),
+            helperText: t("newsletter.sendAtHint"),
+            slotProps: {
+              inputLabel: {
+                shrink: !0
+              }
+            },
+            fullWidth: !0
+          }), n?.test_sent_at ? s.jsx(R, {
+            sx: {
+              fontSize: 14,
+              color: "text.secondary"
+            },
+            children: t("newsletter.lastTest", {
+              at: n.test_sent_at
+            })
+          }) : null]
+        })
+      }],
+      actions: {
+        visible: !0,
+        showCancelButton: !v,
+        left: s.jsx(x, {
+          onClick: () => {
+            re();
+          },
+          disabled: d !== "",
+          children: d === "preview" ? E : t("newsletter.preview")
+        }),
+        right: m ? s.jsxs(s.Fragment, {
+          children: [n && (n.status === "scheduled" || n.status === "preparing" || n.status === "sending") ? s.jsx(x, {
+            variant: "outlined",
+            color: "error",
+            onClick: de,
+            disabled: d !== "",
+            children: d === "cancel" ? E : n.status === "scheduled" ? t("newsletter.cancelSchedule") : t("newsletter.stopSending")
+          }) : null, n && (n.status === "sent" || n.status === "cancelled") ? s.jsx(x, {
+            variant: "outlined",
+            onClick: () => {
+              ce();
+            },
+            disabled: d !== "",
+            children: t("newsletter.copyAsNew")
+          }) : null]
+        }) : s.jsxs(s.Fragment, {
+          children: [s.jsx(x, {
+            variant: "outlined",
+            onClick: () => {
+              ie();
+            },
+            disabled: d !== "",
+            children: d === "test" ? E : t(v ? "newsletter.testSendShort" : "newsletter.testSend")
+          }), s.jsx(x, {
+            variant: "outlined",
+            onClick: () => {
+              ne();
+            },
+            disabled: d !== "",
+            children: d === "save" ? E : t("newsletter.save")
+          }), s.jsx(x, {
+            variant: "contained",
+            onClick: oe,
+            disabled: d !== "" || W === 0,
+            sx: {
+              minWidth: 80
+            },
+            children: d === "send" ? E : t(y ? "newsletter.schedule" : "newsletter.send")
+          })]
+        })
+      }
+    }), s.jsx(ke, {
+      preview: se,
+      onClose: () => K(null)
+    })]
+  });
+}
+function k({
+  text: l,
+  muted: w = !1
+}) {
+  return s.jsx(R, {
+    sx: {
+      fontSize: 14,
+      color: w ? "text.secondary" : "text.primary"
+    },
+    children: l || "-"
+  });
+}
+function Le(l, w) {
+  return [_e(), {
+    id: "title",
+    text: l("newsletter.colTitle", {
+      count: w
+    }),
+    width: 340,
+    render: r => s.jsx(k, {
+      text: r.title
+    })
+  }, {
+    id: "kind",
+    text: l("newsletter.colKind"),
+    width: 90,
+    align: "center",
+    render: r => s.jsx(k, {
+      text: r.kind === "ad" ? l("newsletter.kindAdShort") : l("newsletter.kindInfoShort"),
+      muted: !0
+    })
+  }, {
+    id: "audience",
+    text: l("newsletter.colAudience"),
+    width: 150,
+    render: r => s.jsx(k, {
+      text: V(r.audience, l)
+    })
+  }, {
+    id: "status",
+    text: l("newsletter.colStatus"),
+    width: 200,
+    render: r => s.jsx(k, {
+      text: te(r, l)
+    })
+  }, {
+    id: "sent",
+    text: l("newsletter.colSent"),
+    width: 120,
+    align: "center",
+    render: r => s.jsx(k, {
+      text: r.total_count > 0 ? `${r.sent_count} / ${r.total_count}` : "",
+      muted: !0
+    })
+  }, {
+    id: "author",
+    text: l("newsletter.colAuthor"),
+    width: 110,
+    render: r => s.jsx(k, {
+      text: r.author_name,
+      muted: !0
+    })
+  }, {
+    id: "updated",
+    text: l("newsletter.colUpdated"),
+    width: 160,
+    render: r => s.jsx(k, {
+      text: r.updated_time.slice(0, 16),
+      muted: !0
+    })
+  }];
+}
+function $e() {
+  const l = ee(),
+    w = me(),
+    r = je().useValue("account"),
+    t = !r || be(r),
+    [v, P] = o.useState([]),
+    [a, h] = o.useState(!1),
+    [n, f] = o.useState(null),
+    M = ye("newsletters.admin"),
+    S = o.useMemo(() => Le(l, v.length), [l, v.length]),
+    d = o.useCallback(async (c = !1) => {
+      c || h(!0);
+      try {
+        P(await u.list());
+      } catch (C) {
+        c || N({
+          message: C instanceof Error ? C.message : l("newsletter.loadFailed")
+        });
+      } finally {
+        c || h(!1);
+      }
+    }, [l]);
+  o.useEffect(() => {
+    t && d();
+  }, [t, d]);
+  const F = v.some(c => c.status === "scheduled" || c.status === "preparing" || c.status === "sending");
+  o.useEffect(() => {
+    if (!t || !F) return;
+    const c = window.setInterval(() => {
+      d(!0);
+    }, 1e4);
+    return () => window.clearInterval(c);
+  }, [t, F, d]);
+  const D = {
+    show: !0,
+    left: s.jsxs(g, {
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        gap: 2
+      },
+      children: [s.jsx(x, {
+        variant: "contained",
+        startIcon: s.jsx(Se, {}),
+        onClick: () => f("new"),
+        children: l("newsletter.new")
+      }), s.jsx(x, {
+        variant: "outlined",
+        onClick: () => w("/dashboard/newsletters/templates"),
+        children: l("newsletter.manageTemplates")
+      })]
+    }),
+    showSearch: !1
+  };
+  return t ? s.jsxs(g, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      flexGrow: 1,
+      height: 0,
+      minHeight: 520
+    },
+    children: [s.jsx(Ce, {
+      header: D,
+      tableProps: {
+        ...M,
+        scrollbars: Te,
+        mobile: !0,
+        variant: "notion",
+        data: v,
+        totalCount: v.length,
+        loading: a,
+        columns: S,
+        getRowId: c => c.seq,
+        emptyMessage: l("newsletter.empty"),
+        onRowClick: c => f(c)
+      }
+    }), s.jsx(Fe, {
+      target: n,
+      onClose: () => f(null),
+      onSaved: () => {
+        d(!0);
+      }
+    })]
+  }) : s.jsx(we, {
+    to: "/dashboard",
+    replace: !0
+  });
+}
+export { $e as default };

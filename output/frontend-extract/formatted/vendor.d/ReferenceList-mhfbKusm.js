@@ -1,0 +1,2904 @@
+import { c as Ke, bM as I, eY as on, bT as y, ds as F, bx as ie, jQ as ne, jR as an, e as sn, c8 as ln, jS as cn, ak as un, jT as dn, jU as pn, jV as mn, jW as Et, jX as fn, bv as se, ce as hn, cf as gn, B as x, L as M, D as $e, bH as fe, bI as oe, I as xn, d4 as yn, jY as st, jZ as bn, j_ as vn, j$ as Sn, ca as we, k0 as _e, cO as De, d8 as wn, fi as _n, b5 as Tn, fo as lt, w as Te, fp as ct, d5 as Fe, k1 as An, k2 as jn, cJ as En, c4 as ut, al as Nn, bQ as dt, iH as Cn, fm as Mn, go as In } from "../js.d/main-Cm9wS5wt.js";
+import { j as l, r as L } from "./react-CjxcGQav.js";
+import { u as $n } from "./FileUploadBox-crZW1mG0.js";
+import { z as Pn } from "./bootstrapController-BMV_i07c.js";
+import { e as ye, T as z, h as Rn, a as kn, i as Ln, j as Dn, k as Fn, l as On, n as Vn, g as Bn } from "./printDocChrome-BMZLbM8A.js";
+import { EhfuseEditor as zn } from "./index.esm-BLbQfyP0.js";
+import { R as Hn } from "./Refresh-xoMt5L00.js";
+import { b as Nt } from "./date_utils-CYURFdnX.js";
+import { O as Wn } from "./OptionToggleGroup-Cvm2wRyq.js";
+import { r as qn } from "./resolveAssetPreviewSrc-CLlbOCzq.js";
+const Gn = Ke(l.jsx("path", {
+    d: "M21 7h-2v2h-2V7h-2V5h2V3h2v2h2zm-2 14-7-3-7 3V5c0-1.1.9-2 2-2h7c-.63.84-1 1.87-1 3 0 2.76 2.24 5 5 5 .34 0 .68-.03 1-.1z"
+  })),
+  Yn = Ke(l.jsx("path", {
+    d: "M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z"
+  })),
+  Ct = Ke(l.jsx("path", {
+    d: "M20 6h-8l-2-2H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2m0 12H4V8h16z"
+  })),
+  Bo = async e => (await I.http.get(`/v1/approval/documents/${e}`)).data ?? null,
+  pt = "/dashboard/approval/my-requests",
+  Un = "/dashboard/approval/box";
+let We = {
+  pending: 0,
+  mine: 0,
+  loaded: !1
+};
+const qe = new Set();
+let le = null;
+function Xn(e) {
+  We = e, qe.forEach(t => t());
+}
+function Ge() {
+  return le || (le = Promise.all([I.http.get("/v1/approval/pending?lean=1"), I.http.get("/v1/approval/my-documents?page=1&limit=1&lean=1")]).then(([e, t]) => {
+    const n = Array.isArray(e?.data?.items) ? e.data.items.length : 0,
+      r = Number(t?.data?.total ?? t?.data?.items?.length ?? 0) || 0;
+    Xn({
+      pending: n,
+      mine: r,
+      loaded: !0
+    });
+  }).catch(() => {}).finally(() => {
+    le = null;
+  }), le);
+}
+function zo(e) {
+  return e.loaded && (e.pending > 0 || e.mine === 0) ? Un : pt;
+}
+function Ho(e, t) {
+  const n = L.useSyncExternalStore(r => (qe.add(r), () => qe.delete(r)), () => We, () => We);
+  return L.useEffect(() => {
+    if (!e) return;
+    Ge();
+    const r = () => {
+      document.visibilityState === "visible" && Ge();
+    };
+    return document.addEventListener("visibilitychange", r), () => document.removeEventListener("visibilitychange", r);
+  }, [e, t]), n;
+}
+const Mt = "approval.notification",
+  Kn = 180;
+let ce = 0;
+const Ne = new Set(),
+  Ye = new Set();
+let It = 0,
+  K = null,
+  de = null,
+  pe = null;
+async function Zn() {
+  await I.connectRealtime?.();
+}
+function X(e) {
+  return String(e ?? "").trim();
+}
+function Oe(e) {
+  const t = Number(e ?? 0);
+  return Number.isInteger(t) && t > 0 ? t : 0;
+}
+function Qn(e) {
+  if (!e || typeof e != "object" || Array.isArray(e)) return null;
+  const t = e,
+    n = X(t.kind);
+  if (n !== "request" && n !== "approved" && n !== "rejected" && n !== "sync") return null;
+  const r = Oe(t.approval_doc_seq);
+  return r <= 0 ? null : {
+    kind: n,
+    approval_doc_seq: r,
+    target_account_seq: Oe(t.target_account_seq),
+    title: X(t.title) || y("approval.approvalDocument"),
+    doc_no: X(t.doc_no) || void 0,
+    actor_account_seq: Oe(t.actor_account_seq),
+    actor_name: X(t.actor_name) || y("approval.userFallback"),
+    target_page: X(t.target_page) || "/dashboard/approval/my-requests",
+    message: X(t.message) || y("approval.newApprovalNotification"),
+    changed_time: X(t.changed_time)
+  };
+}
+function Pe() {
+  Ne.forEach(e => {
+    try {
+      e();
+    } catch {}
+  });
+}
+function be() {
+  Pe();
+}
+typeof window < "u" && window.addEventListener(on, e => {
+  e.detail?.current_org_seq !== void 0 && Pe();
+});
+function Jn(e) {
+  const t = Qn(e.data);
+  if (!t) return;
+  const n = Number(t.target_account_seq ?? 0),
+    r = Number(It ?? 0);
+  r > 0 && n > 0 && r !== n || (t.kind !== "sync" && Ye.forEach(o => {
+    try {
+      o(t);
+    } catch {}
+  }), Ne.size !== 0 && (K !== null && clearTimeout(K), K = setTimeout(() => {
+    K = null, Pe();
+  }, Kn)));
+}
+function er(e) {
+  e.status === "open" && (e.previousStatus === "connecting" || e.previousStatus === "closed") && Pe();
+}
+function tr() {
+  de = Jn, pe = er, I.addRealtimeEventListener(Mt, de), I.addRealtimeStatusListener(pe);
+}
+function nr() {
+  K !== null && (clearTimeout(K), K = null), de && (I.removeRealtimeEventListener(Mt, de), de = null), pe && (I.removeRealtimeStatusListener(pe), pe = null);
+}
+function Wo(e = {}) {
+  const {
+      enabled: t = !0,
+      currentAccountSeq: n = 0,
+      onNotification: r,
+      onRefresh: o
+    } = e,
+    a = L.useRef(r),
+    s = L.useRef(o);
+  L.useEffect(() => {
+    a.current = r, s.current = o, n > 0 && (It = n);
+  }, [r, o, n]), L.useEffect(() => {
+    if (!t) return;
+    const i = () => s.current?.(),
+      c = d => a.current?.(d);
+    return Ne.add(i), Ye.add(c), ce === 0 && tr(), ce += 1, Zn().catch(() => {}), () => {
+      Ne.delete(i), Ye.delete(c), ce -= 1, ce <= 0 && (ce = 0, nr());
+    };
+  }, [t]);
+}
+function rr() {
+  return typeof window > "u" ? !1 : window.innerWidth < 1024;
+}
+function or(e, t) {
+  return rr() ? t : e;
+}
+const J = or(50, 20);
+function ve(e) {
+  return e ? e.ok === !0 ? !0 : e.code === ne.SUCCESS : !1;
+}
+function Se(e, t) {
+  return {
+    code: e?.code ?? ne.ERROR_SERVER,
+    message: typeof e?.message == "string" && e.message.trim() || t
+  };
+}
+function he(e) {
+  if (!e || typeof e != "object") return [];
+  const t = e,
+    n = [t.items, t.data?.items, t.data?.data?.items];
+  for (const r of n) if (Array.isArray(r)) return r;
+  return [];
+}
+function ar(e) {
+  return Array.isArray(e.status) ? e.status.map(t => String(t)) : e.status ? [String(e.status)] : [];
+}
+function ir(e, t) {
+  const n = String(t.dateRange?.start ?? "").trim(),
+    r = String(t.dateRange?.end ?? "").trim();
+  if (!n && !r) return !0;
+  const o = String(e.created_time ?? "").trim();
+  if (!o) return !1;
+  const a = new Date(o.replace(" ", "T"));
+  if (Number.isNaN(a.getTime())) return !1;
+  if (n) {
+    const s = new Date(`${n}T00:00:00`);
+    if (!Number.isNaN(s.getTime()) && a < s) return !1;
+  }
+  if (r) {
+    const s = new Date(`${r}T23:59:59`);
+    if (!Number.isNaN(s.getTime()) && a > s) return !1;
+  }
+  return !0;
+}
+function Re(e, t, n) {
+  const r = new URLSearchParams();
+  r.set("page", String(t)), r.set("limit", String(n));
+  const o = g => Array.isArray(g) ? g.map(h => String(h).trim()).filter(Boolean).join(",") : String(g ?? "").trim(),
+    a = o(e.type);
+  a && r.set("type", a);
+  const s = o(e.status);
+  s && r.set("status", s);
+  const i = o(e.importance);
+  i && r.set("importance", i);
+  const c = String(e.keyword ?? "").trim();
+  c && r.set("keyword", c);
+  const d = String(e.dateRange?.start ?? "").trim();
+  d && r.set("start", d);
+  const u = String(e.dateRange?.end ?? "").trim();
+  u && r.set("end", u), String(e.sortDir ?? "").toLowerCase() === "asc" && r.set("order_dir", "ASC");
+  const p = Number(e.folder ?? 0);
+  return Number.isInteger(p) && p > 0 && r.set("folder", String(p)), e.source !== "box" && e.withReference && r.set("with_reference", "1"), e.source === "box" && e.boxScope && r.set("scope", e.boxScope), r.toString();
+}
+async function $t(e, t, n) {
+  const r = Re(e, t, n),
+    o = await I.http.get(`/v1/approval/my-documents?${r}&lean=1`),
+    a = he(o),
+    s = Number(o?.data?.total ?? a.length);
+  return {
+    items: a,
+    total: s
+  };
+}
+function sr(e, t) {
+  const n = Array.isArray(t.type) ? t.type.map(c => String(c)) : t.type ? [String(t.type)] : [];
+  if (n.length > 0 && !n.includes(String(e.type ?? ""))) return !1;
+  const r = ar(t);
+  if (r.length > 0 && !r.includes(String(e.status ?? ""))) return !1;
+  const o = Array.isArray(t.importance) ? t.importance.map(c => String(c)) : t.importance ? [String(t.importance)] : [];
+  if (o.length > 0 && !o.includes(String(e.importance ?? ""))) return !1;
+  const a = Number(t.account_seq ?? 0);
+  if (a > 0 && Number(e.account_seq ?? 0) !== a || !ir(e, t)) return !1;
+  const s = String(t.keyword ?? "").trim().toLowerCase();
+  return s ? [e.title, e.doc_no, e.account_name, e.content].map(c => String(c ?? "").toLowerCase()).filter(Boolean).some(c => c.includes(s)) : !0;
+}
+function re(e, t) {
+  const n = e.getValue("selectedDocument"),
+    r = Number(n?.seq ?? 0);
+  if (!Number.isInteger(r) || r <= 0) return;
+  const o = t.find(a => Number(a.seq ?? 0) === r) ?? null;
+  e.setValue("selectedDocument", o);
+}
+const Pt = () => async (e, t) => {
+    const n = t ?? e.getValue("filters");
+    e.setValue("listLoading", !0);
+    try {
+      if (n.source === "box" || n.source === "all") {
+        const a = n.source === "all" ? "/v1/approval/all" : "/v1/approval/box",
+          s = Re(n, 1, J),
+          i = await I.http.get(`${a}?${s}&lean=1`),
+          c = he(i);
+        e.setValue("items", c), e.setValue("total", Number(i?.data?.total ?? c.length)), e.setValue("page", 1), e.setValue("hasMore", !!i?.data?.hasMore), re(e, c);
+        return;
+      }
+      if (n.account_seq && String(n.account_seq).trim() !== "") {
+        const a = await $t(n, 1, J);
+        e.setValue("items", a.items), e.setValue("total", a.total), e.setValue("page", 1), e.setValue("hasMore", J < a.total), re(e, a.items);
+        return;
+      }
+      e.setValue("hasMore", !1);
+      const r = await I.http.get("/v1/approval/pending?lean=1"),
+        o = he(r).filter(a => sr(a, n));
+      e.setValue("items", o), re(e, o);
+    } catch {
+      e.setValue("items", []), re(e, []);
+    } finally {
+      e.setValue("listLoading", !1), e.setValue("listLoaded", !0);
+    }
+  },
+  lr = () => async e => {
+    if (!e.getValue("hasMore") || e.getValue("loadingMore")) return;
+    const t = e.getValue("filters");
+    if (t.source !== "box") return;
+    const n = Number(e.getValue("page") ?? 1),
+      r = Number.isInteger(n) && n > 0 ? n + 1 : 2;
+    e.setValue("loadingMore", !0);
+    try {
+      const o = Re(t, r, J),
+        a = await I.http.get(`/v1/approval/box?${o}&lean=1`),
+        s = he(a),
+        c = [...(e.getValue("items") ?? []), ...s];
+      e.setValue("items", c), e.setValue("total", Number(a?.data?.total ?? c.length)), e.setValue("page", r), e.setValue("hasMore", !!a?.data?.hasMore);
+    } catch {} finally {
+      e.setValue("loadingMore", !1);
+    }
+  },
+  cr = () => async e => {
+    if (!e.getValue("hasMore") || e.getValue("loadingMore")) return;
+    const t = e.getValue("filters");
+    if (t.source !== "all") return;
+    const n = Number(e.getValue("page") ?? 1),
+      r = Number.isInteger(n) && n > 0 ? n + 1 : 2;
+    e.setValue("loadingMore", !0);
+    try {
+      const o = Re(t, r, J),
+        a = await I.http.get(`/v1/approval/all?${o}&lean=1`),
+        s = he(a),
+        c = [...(e.getValue("items") ?? []), ...s];
+      e.setValue("items", c), e.setValue("total", Number(a?.data?.total ?? c.length)), e.setValue("page", r), e.setValue("hasMore", !!a?.data?.hasMore), re(e, c);
+    } catch {} finally {
+      e.setValue("loadingMore", !1);
+    }
+  },
+  ur = () => async e => {
+    if (!e.getValue("hasMore") || e.getValue("loadingMore")) return;
+    const t = e.getValue("filters");
+    if (t.source === "box" || !t.account_seq || String(t.account_seq).trim() === "") return;
+    const n = Number(e.getValue("page") ?? 1),
+      r = Number.isInteger(n) && n > 0 ? n + 1 : 2;
+    e.setValue("loadingMore", !0);
+    try {
+      const {
+          items: o,
+          total: a
+        } = await $t(t, r, J),
+        i = [...(e.getValue("items") ?? []), ...o];
+      e.setValue("items", i), e.setValue("total", a), e.setValue("page", r), e.setValue("hasMore", r * J < a), re(e, i);
+    } catch {} finally {
+      e.setValue("loadingMore", !1);
+    }
+  },
+  dr = () => async e => {
+    const t = {
+      type: "",
+      status: "",
+      importance: "",
+      account_seq: void 0,
+      keyword: "",
+      dateRange: null
+    };
+    e.setValue("filters", t), await Pt()(e, t);
+  },
+  pr = async (e, t, n, r) => {
+    try {
+      const o = await I.http.post("/v1/approval/documents/submit", t);
+      if (!o) throw {
+        code: 500,
+        message: y("approval.unknownError")
+      };
+      if (!ve(o)) throw Se(o, y("approval.saveError"));
+      const a = t.status === "draft";
+      return ie({
+        message: a ? y("approval.draftSavedNotice") : t.seq ? y("approval.updatedNotice") : y("approval.approvalSubmitted"),
+        delay: 500
+      }), r?.(Number(o.data?.seq ?? t.seq ?? 0)), await n(), be(), !0;
+    } catch (o) {
+      let a = y("approval.saveFailed");
+      return o?.code === ne.ERROR_REQUIRED ? a = o.message || y("approval.requiredMissing") : o?.code === ne.ERROR_DUPLICATE ? (o.message || "").includes("doc_no") ? a = y("approval.docNoDuplicate") : a = y("approval.duplicateValue") : o?.code === ne.ERROR_VALIDATION ? a = o.message || y("approval.checkInput") : o?.code === ne.ERROR_DATABASE ? a = y("approval.databaseError") : o instanceof Error && (a = o.message), F({
+        message: a
+      }), !1;
+    }
+  },
+  mr = (e, t) => async n => {
+    const r = n.getValue("seq");
+    if (r) try {
+      await e.trigger(r), ie({
+        message: y("approval.deletedNotice"),
+        delay: 500
+      }), await t();
+    } catch {
+      F({
+        message: y("approval.deleteFailed")
+      });
+    }
+  },
+  fr = e => async (t, n) => {
+    try {
+      const r = await e.trigger(n);
+      r && Object.keys(r).forEach(o => {
+        t.setValue(o, r[o]);
+      });
+    } catch {
+      F({
+        message: y("approval.dataLoadFailed")
+      });
+    }
+  },
+  hr = async (e, t) => {
+    const n = [];
+    for (const r of t) try {
+      const o = await I.fileUpload("approval_comment", r, {
+        refSeq: e
+      });
+      o && o.ok === !1 && n.push(r.name);
+    } catch {
+      n.push(r.name);
+    }
+    return n;
+  },
+  mt = async (e, t, n, r, o, a) => {
+    if (!t.seq) return F({
+      message: y("approval.invalidDocument")
+    }), !1;
+    try {
+      const s = n === "approved" ? `/v1/approval/${t.seq}/approve` : `/v1/approval/${t.seq}/reject`,
+        i = await I.http.post(s, {
+          comment: r.trim()
+        });
+      if (!ve(i)) throw Se(i, y("approval.statusChangeError"));
+      if (n === "rejected" && Array.isArray(a) && a.length > 0) {
+        const c = Number(i.data?.comment_seq ?? 0),
+          d = c > 0 ? await hr(c, a) : a.map(u => u.name);
+        d.length > 0 && F({
+          message: y("approval.rejectAttachmentsFailed", {
+            count: d.length,
+            files: d.join(", ")
+          })
+        });
+      }
+      return await o(), be(), ie({
+        message: y(n === "approved" ? "approval.documentApproved" : "approval.documentRejected", {
+          title: t.title ?? y("approval.approvalDocumentFallback")
+        }),
+        delay: 500
+      }), !0;
+    } catch (s) {
+      const i = s?.message || y("approval.statusChangeFailed");
+      return F({
+        message: i
+      }), !1;
+    }
+  },
+  gr = async (e, t) => {
+    if (!e.seq) return F({
+      message: y("approval.invalidDocument")
+    }), !1;
+    try {
+      const n = await I.http.post(`/v1/approval/${e.seq}/cancel`, {});
+      if (!ve(n)) throw Se(n, y("approval.withdrawError"));
+      return await t(), be(), ie({
+        message: y("approval.documentWithdrawn", {
+          title: e.title ?? y("approval.approvalDocumentFallback")
+        }),
+        delay: 500
+      }), !0;
+    } catch (n) {
+      return F({
+        message: n?.message || y("approval.withdrawFailed")
+      }), !1;
+    }
+  },
+  xr = async (e, t) => {
+    if (!e.seq) return F({
+      message: y("approval.invalidDocument")
+    }), !1;
+    try {
+      const n = await I.http.post(`/v1/approval/${e.seq}/handle`, {});
+      if (!ve(n)) throw Se(n, y("approval.handleError"));
+      return await t(), be(), ie({
+        message: y("approval.documentHandled", {
+          title: e.title ?? y("approval.approvalDocumentFallback")
+        }),
+        delay: 500
+      }), !0;
+    } catch (n) {
+      return F({
+        message: n instanceof Error ? n.message : y("approval.handleError")
+      }), !1;
+    }
+  },
+  yr = async (e, t) => {
+    if (!e.seq) return F({
+      message: y("approval.invalidDocument")
+    }), null;
+    try {
+      const n = await I.http.post(`/v1/approval/${e.seq}/clone-rejected`, {});
+      if (!ve(n)) throw Se(n, y("approval.resubmitCreateFailed"));
+      const r = Number(n.data?.seq ?? 0);
+      if (!r) throw {
+        code: 500,
+        message: y("approval.resubmitNoMissing")
+      };
+      return ie({
+        message: y("approval.documentClonedForResubmit", {
+          title: e.title ?? y("approval.approvalDocumentFallback")
+        }),
+        delay: 500
+      }), t && (await t()), be(), r;
+    } catch (n) {
+      return F({
+        message: n?.message || y("approval.resubmitCreateFailed")
+      }), null;
+    }
+  };
+function Rt() {
+  return Nt(new Date());
+}
+function kt(e, t) {
+  if (t === "영구") return "";
+  const n = Number(t.replace("년", ""));
+  if (!Number.isFinite(n) || n <= 0) return "";
+  const r = new Date(e.replace(" ", "T"));
+  if (Number.isNaN(r.getTime())) return "";
+  const o = new Date(r);
+  return o.setFullYear(o.getFullYear() + n), Nt(o);
+}
+function br(e) {
+  if (typeof e != "string") return;
+  const t = e.trim();
+  if (t !== "") return /^\d{4}-\d{2}-\d{2}$/.test(t) ? `${t} 23:59` : t;
+}
+const Lt = 800,
+  ke = 16,
+  vr = ".ehfuse-editor-content";
+function Sr() {
+  if (typeof document > "u") return 0;
+  const e = document.querySelector(vr);
+  if (!e) return 0;
+  const t = window.getComputedStyle(e),
+    n = (parseFloat(t.paddingLeft) || 0) + (parseFloat(t.paddingRight) || 0),
+    r = Math.round(e.clientWidth - n);
+  return r > 0 ? r : 0;
+}
+function qo(e) {
+  const t = an("approval_doc"),
+    {
+      state: n
+    } = Pn(),
+    r = t,
+    o = {
+      list: r.list.isMutating,
+      submit: r.submit.isMutating,
+      get: r.get.isMutating,
+      delete: r.delete.isMutating,
+      restore: r.restore.isMutating
+    },
+    {
+      state: a
+    } = $n(),
+    s = {
+      detail: sn({
+        modalId: e?.modalId ?? "approval-detail-dialog"
+      })
+    },
+    i = ln({
+      stateId: e?.stateId ?? "approval-state",
+      initialValues: cn,
+      autoCleanup: !1,
+      actions: {
+        loadItems: Pt(),
+        loadMoreBox: lr(),
+        loadMoreAll: cr(),
+        loadMoreMyDocuments: ur(),
+        resetFilters: dr()
+      }
+    }),
+    c = L.useRef(0),
+    d = un({
+      formId: e?.formId ?? "approval-form",
+      initialValues: dn,
+      onSubmit: async p => {
+        try {
+          const g = a.getValue("account"),
+            h = typeof g?.name == "string" && String(g.name).trim() !== "" ? String(g.name).trim() : void 0,
+            E = p._ui?.submitMode === "draft" ? "draft" : "waiting",
+            N = Rt(),
+            P = String(p.retentionPeriod || "5년"),
+            f = p.retention_expiration_time || kt(N, P),
+            b = br(p.deadline_time),
+            T = pn(p);
+          if (!T) return F(y("approval.enterTitle")), !1;
+          const j = new Set(["seq", "type", "title", "content", "status", "importance", "doc_no", "docNo", "amount", "account_seq", "account_name", "created_by", "approved_time", "deadline_time", "reference_notify_at", "retention_expiration_time", "retentionExpirationTime", "retention_period", "retentionPeriod", "deadline", "created_time", "updated_time", "approvers", "references", "attachments", "form_data", "comments", "reject_logs", "_ui"]),
+            A = {};
+          for (const S of Object.keys(p)) j.has(S) || (A[S] = p[S]);
+          const $ = {
+            ...p,
+            title: T,
+            status: E,
+            retention_expiration_time: f,
+            deadline_time: b,
+            retentionExpirationTime: void 0,
+            retention_period: void 0,
+            retentionPeriod: void 0,
+            deadline: void 0,
+            created_by: g?.seq ? String(g.seq) : void 0,
+            account_seq: g?.seq ?? void 0,
+            account_name: h,
+            created_by_role_name: String(g?.role_name ?? "").trim() || void 0,
+            form_data: JSON.stringify(A),
+            form_code: mn(String(p.type ?? "")),
+            body_width: Sr() || void 0,
+            _ui: void 0
+          };
+          return pr(r.submit, $, async () => {}, S => {
+            c.current = S;
+          });
+        } catch (g) {
+          return F(g?.message || y("approval.saveError")), !1;
+        }
+      },
+      actions: {
+        loadItem: fr(r.get),
+        deleteItem: mr(r.delete, () => i.actions.loadItems())
+      }
+    }),
+    u = async () => {
+      await i.actions.loadItems(), Ge();
+      const p = await I.http.get("/v1/approval/counts").then(g => g?.data ?? null).catch(() => null);
+      p && n.setValue("data.approval_counts", p);
+    };
+  return {
+    state: i,
+    form: d,
+    modals: s,
+    loading: o,
+    decisions: {
+      approve: (p, g) => mt(r.submit, p, "approved", g, u),
+      reject: (p, g, h) => mt(r.submit, p, "rejected", g, u, h),
+      cancel: p => gr(p, u),
+      cloneRejected: p => yr(p, u),
+      handle: p => xr(p, u)
+    },
+    lastSavedSeqRef: c
+  };
+}
+const wr = Number.POSITIVE_INFINITY,
+  _r = 16;
+function Tr(e, t, n, r = t) {
+  return Math.max(r, Math.ceil(e + n));
+}
+const Ae = 17;
+function Ar(e, t, n, r, o) {
+  const a = (r ?? []).map(c => String(c ?? "").trim()).filter(Boolean);
+  if (a.length === 0) return {
+    page: t,
+    y: n
+  };
+  let s = t,
+    i = n + 14;
+  o.anchorY != null && e.length === 1 && (i = Math.max(i, o.anchorY)), i + Ae * 3 > o.pageBottom && (s = o.makePage(), e.push(s), i = o.contTop), s.body.push(`<line x1="${o.tableLeft}" y1="${i}" x2="${o.tableRight}" y2="${i}" class="attach-line"/>`), i += 16, s.body.push(`<text x="${o.tableLeft + o.textPadding}" y="${i}" class="attach-head start">첨부</text>`), i += Ae;
+  for (const c of a) i + Ae > o.pageBottom && (s = o.makePage(), e.push(s), i = o.contTop), s.body.push(`<text x="${o.tableLeft + o.textPadding}" y="${i}" class="attach-item start">${ye(c)}</text>`), i += Ae;
+  return {
+    page: s,
+    y: i
+  };
+}
+const jr = `
+        .attach-line { stroke: #cbd5e1; stroke-width: 1; shape-rendering: crispEdges; }
+        .attach-head { font-family: ${z.font}; font-size: 9px; font-weight: 500; fill: #334155; dominant-baseline: middle; }
+        .attach-item { font-family: ${z.font}; font-size: 8.5px; font-weight: 300; fill: #111111; dominant-baseline: middle; }`,
+  Dt = /^(p|div|h[1-6]|li|blockquote|section|article|ul|ol|tr|figure)$/,
+  Er = {
+    h1: 20,
+    h2: 18,
+    h3: 16,
+    h4: 14,
+    h5: 13,
+    h6: 12
+  },
+  Nr = new Set(["transparent", "inherit", "initial", "currentcolor", "unset", "none"]);
+function B(e) {
+  const t = String(e ?? "").trim().toLowerCase();
+  if (!(!t || Nr.has(t)) && (/^#([0-9a-f]{3}|[0-9a-f]{4}|[0-9a-f]{6}|[0-9a-f]{8})$/.test(t) || /^rgba?\(\s*[\d.\s,%/]+\)$/.test(t) || /^hsla?\(\s*[\d.\s,%/deg]+\)$/.test(t) || /^[a-z]{3,20}$/.test(t))) return t;
+}
+function Cr(e) {
+  const n = String(e ?? "").trim().toLowerCase().match(/^([\d.]+)\s*(px|pt)?$/);
+  if (!n) return;
+  const r = parseFloat(n[1]);
+  if (!isFinite(r) || r <= 0) return;
+  const o = n[2] === "pt" ? r * (96 / 72) : r;
+  return Math.min(Math.max(o, 6), 48);
+}
+function Ze(e, t) {
+  const n = {
+      ...t
+    },
+    r = e.tagName.toLowerCase();
+  (r === "b" || r === "strong") && (n.bold = !0), (r === "i" || r === "em") && (n.italic = !0), (r === "u" || r === "ins") && (n.underline = !0), (r === "s" || r === "strike" || r === "del") && (n.strike = !0), /^h[1-6]$/.test(r) && (n.bold === void 0 && (n.bold = !0), n.fontSize === void 0 && (n.fontSize = Er[r]));
+  const o = e.style;
+  if (o) {
+    const a = B(o.color);
+    a && (n.color = a);
+    const s = Cr(o.fontSize);
+    s && (n.fontSize = s);
+    const i = String(o.fontWeight ?? "").toLowerCase();
+    if (i) {
+      const u = parseInt(i, 10);
+      i === "bold" || i === "bolder" || Number.isFinite(u) && u >= 600 ? n.bold = !0 : (i === "normal" || i === "lighter" || Number.isFinite(u) && u > 0 && u < 600) && (n.bold = !1);
+    }
+    const c = String(o.fontStyle ?? "").toLowerCase();
+    c === "italic" || c === "oblique" ? n.italic = !0 : c === "normal" && (n.italic = !1);
+    const d = String(o.textDecoration || o.textDecorationLine || "").toLowerCase();
+    d.includes("line-through") && (n.strike = !0), d.includes("underline") && (n.underline = !0);
+  }
+  return n;
+}
+function Mr(e) {
+  const t = {};
+  return e.bold && (t.bold = !0), e.italic && (t.italic = !0), e.strike && (t.strike = !0), e.underline && (t.underline = !0), e.color && (t.color = e.color), e.fontSize && (t.fontSize = e.fontSize), t;
+}
+function Ft(e) {
+  return e.replace(/[\s ]+/g, " ");
+}
+function Ir(e, t) {
+  return !!e.bold == !!t.bold && !!e.italic == !!t.italic && !!e.strike == !!t.strike && !!e.underline == !!t.underline && e.color === t.color && e.fontSize === t.fontSize;
+}
+function Ue(e) {
+  const t = [];
+  for (const n of e) {
+    const r = t[t.length - 1];
+    r && Ir(r, n) ? r.text += n.text : t.push({
+      ...n
+    });
+  }
+  return t;
+}
+function je(e) {
+  const t = String(e ?? "").trim().toLowerCase().match(/^([\d.]+)\s*(px)?$/);
+  if (!t) return null;
+  const n = parseFloat(t[1]);
+  return isFinite(n) && n > 0 ? n : null;
+}
+function Ot(e, t) {
+  const n = String(e.getAttribute("src") ?? "").trim();
+  if (!n) return null;
+  const r = e.style,
+    o = je(r?.width) ?? je(e.getAttribute("width")) ?? 0,
+    a = je(r?.height) ?? je(e.getAttribute("height")) ?? 0;
+  return {
+    kind: "image",
+    src: n,
+    width: o,
+    height: a,
+    align: t
+  };
+}
+function Qe(e, t, n, r) {
+  for (const o of Array.from(e.childNodes)) if (o.nodeType === 3) {
+    const a = Ft(o.textContent ?? "");
+    a && r.push({
+      kind: "run",
+      run: {
+        text: a,
+        ...Mr(t)
+      }
+    });
+  } else if (o.nodeType === 1) {
+    const a = o,
+      s = a.tagName.toLowerCase();
+    if (s === "br") {
+      r.push({
+        kind: "run",
+        run: {
+          text: `
+`
+        }
+      });
+      continue;
+    }
+    if (s === "img") {
+      const i = Ot(a, n);
+      i && r.push({
+        kind: "image",
+        image: i
+      });
+      continue;
+    }
+    Qe(a, Ze(a, t), n, r);
+  }
+}
+function $r(e, t, n) {
+  const r = [];
+  Qe(e, t, "left", r);
+  for (const o of r) o.kind === "run" && n.push(o.run);
+}
+function ft(e) {
+  const t = [[]];
+  for (const n of e) n.text.split(`
+`).forEach((o, a) => {
+    a > 0 && t.push([]), o !== "" && t[t.length - 1].push({
+      ...n,
+      text: o
+    });
+  });
+  return t;
+}
+function Ve(e, t, n) {
+  const r = [];
+  Qe(e, Ze(e, {}), t, r);
+  const o = e.tagName.toLowerCase() === "li" ? "• " : "";
+  if (!r.some(c => c.kind === "image")) {
+    const c = r.flatMap(d => d.kind === "run" ? [d.run] : []);
+    ft(c).forEach((d, u) => {
+      const m = Ue(d);
+      u === 0 && o && m.unshift({
+        text: o
+      }), n.push({
+        kind: "line",
+        runs: m,
+        align: t
+      });
+    });
+    return;
+  }
+  let a = [],
+    s = !0;
+  const i = () => {
+    a.length !== 0 && (ft(a).forEach(c => {
+      const d = Ue(c);
+      s && o && d.unshift({
+        text: o
+      }), s = !1, n.push({
+        kind: "line",
+        runs: d,
+        align: t
+      });
+    }), a = []);
+  };
+  for (const c of r) {
+    if (c.kind === "run") {
+      a.push(c.run);
+      continue;
+    }
+    i(), n.push(c.image), s = !1;
+  }
+  i();
+}
+function Pr(e, t) {
+  const n = [];
+  $r(e, Ze(e, t), n);
+  const r = Ue(n);
+  return r.length > 0 && (r[0].text = r[0].text.replace(/^[  ]+/, ""), r[r.length - 1].text = r[r.length - 1].text.replace(/[  ]+$/, "")), r.filter(o => o.text !== "");
+}
+function Je(e) {
+  let t = e.style?.width?.trim() || "";
+  if (t || (t = String(e.getAttribute("width") ?? "").trim()), !t) return null;
+  const n = t.match(/^([\d.]+)\s*(px|%)?$/);
+  if (!n) return null;
+  const r = parseFloat(n[1]);
+  return !isFinite(r) || r <= 0 ? null : {
+    num: r,
+    pct: n[2] === "%"
+  };
+}
+function Rr(e, t) {
+  const n = new Array(t).fill(null);
+  let r = !1;
+  const o = Array.from(e.children).find(s => s.tagName.toLowerCase() === "colgroup");
+  if (!o) return {
+    widths: n,
+    anyPct: r
+  };
+  let a = 0;
+  for (const s of Array.from(o.children)) {
+    if (s.tagName.toLowerCase() !== "col") continue;
+    const i = Math.max(1, parseInt(s.getAttribute("span") || "1", 10) || 1),
+      c = Je(s);
+    c?.pct && (r = !0);
+    for (let d = 0; d < i && a < t; d += 1) n[a] = c ? c.num : null, a += 1;
+  }
+  return {
+    widths: n,
+    anyPct: r
+  };
+}
+function kr(e, t, n, r) {
+  const o = [];
+  for (let u = 0; u < n; u += 1) o[u] = e[u] ?? t[u] ?? null;
+  const a = o.filter(u => u != null);
+  if (a.length === 0) return {
+    fractions: new Array(n).fill(1 / n),
+    hasWidths: !1,
+    totalPx: 0
+  };
+  const s = a.reduce((u, m) => u + m, 0) / a.length,
+    i = o.map(u => u ?? s),
+    c = i.reduce((u, m) => u + m, 0) || 1,
+    d = !r && a.length === n ? c : 0;
+  return {
+    fractions: i.map(u => u / c),
+    hasWidths: !0,
+    totalPx: d
+  };
+}
+function Lr(e) {
+  const t = Je(e);
+  return t ? t.pct ? {
+    pct: t.num,
+    px: 0
+  } : {
+    pct: 0,
+    px: t.num
+  } : {
+    pct: 0,
+    px: 0
+  };
+}
+function Dr(e, t) {
+  const n = [],
+    r = P => {
+      for (const f of Array.from(P.children)) {
+        const b = f.tagName.toLowerCase();
+        b === "tr" ? n.push(f) : (b === "thead" || b === "tbody" || b === "tfoot") && r(f);
+      }
+    };
+  r(e);
+  const o = e.style,
+    a = B(o?.borderColor) || B(o?.borderTopColor) || B(o?.borderLeftColor) || B(e.getAttribute("bordercolor")),
+    s = [],
+    i = [],
+    c = (P, f) => {
+      for (; i.length <= P;) i.push([]);
+      i[P][f] = !0;
+    },
+    d = [];
+  let u = !1,
+    m = 0;
+  n.forEach((P, f) => {
+    s[f] = [];
+    let b = 0;
+    const T = Array.from(P.children).filter(j => {
+      const A = j.tagName.toLowerCase();
+      return A === "td" || A === "th";
+    });
+    for (const j of T) {
+      for (; i[f]?.[b];) b += 1;
+      const A = Math.max(1, parseInt(j.getAttribute("colspan") || "1", 10) || 1),
+        $ = Math.max(1, parseInt(j.getAttribute("rowspan") || "1", 10) || 1),
+        S = j.tagName.toLowerCase() === "th",
+        C = j.style,
+        D = C?.textAlign?.trim(),
+        W = D ? Vt(D) : S ? "center" : t,
+        O = B(C?.backgroundColor) || B(j.getAttribute("bgcolor")),
+        U = B(C?.borderColor) || B(C?.borderTopColor) || B(C?.borderBottomColor) || B(C?.borderLeftColor) || B(C?.borderRightColor) || a,
+        q = Pr(j, S ? {
+          bold: !0
+        } : {});
+      if (s[f].push({
+        runs: q,
+        align: W,
+        header: S,
+        background: O,
+        borderColor: U,
+        startRow: f,
+        startCol: b,
+        rowSpan: $,
+        colSpan: A
+      }), A === 1 && d[b] == null) {
+        const v = Je(j);
+        v && (d[b] = v.num, v.pct && (u = !0));
+      }
+      for (let v = f; v < f + $; v += 1) for (let k = b; k < b + A; k += 1) c(v, k);
+      b += A;
+    }
+    m = Math.max(m, b);
+  });
+  const p = Math.max(m, 1),
+    g = Rr(e, p),
+    {
+      fractions: h,
+      hasWidths: w,
+      totalPx: E
+    } = kr(g.widths, d, p, g.anyPct || u),
+    N = Lr(e);
+  return {
+    kind: "table",
+    rows: s,
+    rowCount: n.length,
+    columns: p,
+    columnFractions: h,
+    hasColumnWidths: w,
+    columnWidthPx: E,
+    widthPct: N.pct,
+    widthPx: N.px
+  };
+}
+function Vt(e) {
+  const t = String(e ?? "").toLowerCase();
+  return t.includes("center") ? "center" : t.includes("right") ? "right" : "left";
+}
+function ht(e) {
+  const t = e.tagName.toLowerCase();
+  return t === "table" || Dt.test(t);
+}
+function Bt(e, t, n) {
+  if (!Array.from(e.children).some(ht)) {
+    Ve(e, t, n);
+    return;
+  }
+  let o = [];
+  const a = () => {
+    if (o.length === 0) return;
+    const s = e.ownerDocument.createElement("div");
+    for (const i of o) s.appendChild(i.cloneNode(!0));
+    o = [], String(s.textContent ?? "").trim() !== "" && Ve(s, t, n);
+  };
+  for (const s of Array.from(e.childNodes)) {
+    if (s.nodeType !== 1) {
+      o.push(s);
+      continue;
+    }
+    const i = s,
+      c = i.tagName.toLowerCase();
+    if (c === "img") {
+      a();
+      const p = Ot(i, t);
+      p && n.push(p);
+      continue;
+    }
+    if (!ht(i)) {
+      o.push(s);
+      continue;
+    }
+    if (a(), c === "table") {
+      n.push(Dr(i, t));
+      continue;
+    }
+    const d = i.style?.textAlign?.trim(),
+      u = d ? Vt(d) : t;
+    Array.from(i.children).some(p => {
+      const g = p.tagName.toLowerCase();
+      return g === "table" || Dt.test(g);
+    }) ? Bt(i, u, n) : Ve(i, u, n);
+  }
+  a();
+}
+function Be(e) {
+  return e.kind === "line" && e.runs.every(t => t.text.trim() === "");
+}
+function gt(e) {
+  const t = [];
+  for (const n of e) {
+    if (Be(n)) {
+      const r = t[t.length - 1];
+      if (t.length === 0 || r && Be(r)) continue;
+    }
+    t.push(n);
+  }
+  for (; t.length > 0 && Be(t[t.length - 1]);) t.pop();
+  return t;
+}
+function Fr(e) {
+  return e.replace(/<br\s*\/?>/gi, `
+`).replace(/<[^>]+>/g, "").replace(/&nbsp;/gi, " ").replace(/&amp;/gi, "&").replace(/&lt;/gi, "<").replace(/&gt;/gi, ">").replace(/&quot;/gi, '"').replace(/&#0?39;|&apos;/gi, "'").split(`
+`).map(n => ({
+    kind: "line",
+    runs: [{
+      text: Ft(n).trim()
+    }],
+    align: "left"
+  }));
+}
+function et(e) {
+  const t = String(e ?? "");
+  if (!t.trim()) return [];
+  let n = null;
+  try {
+    n = new DOMParser().parseFromString(t, "text/html").body;
+  } catch {
+    n = null;
+  }
+  if (!n) return gt(Fr(t));
+  const r = [];
+  return Bt(n, "left", r), gt(r);
+}
+function xt(e) {
+  const t = String(e ?? "").trim();
+  if (!t) return "";
+  const n = new Date(t.replace(" ", "T"));
+  if (Number.isNaN(n.getTime())) return "";
+  const r = String(n.getFullYear()).slice(2),
+    o = String(n.getMonth() + 1).padStart(2, "0"),
+    a = String(n.getDate()).padStart(2, "0");
+  return `${r}.${o}.${a}`;
+}
+function tt(e) {
+  const t = String(e ?? "").trim(),
+    n = t ? new Date(t.replace(" ", "T")) : new Date(),
+    r = Number.isNaN(n.getTime()) ? new Date() : n;
+  return [`${r.getFullYear()} 년`, `${r.getMonth() + 1} 월`, `${r.getDate()} 일`];
+}
+function nt(e) {
+  const t = String(e.authorName ?? "").trim(),
+    n = t ? {
+      role_name: String(e.drafterPosition ?? "").trim(),
+      name: t,
+      dateText: xt(e.createdTime),
+      signatureImage: String(e.drafterSignatureImage ?? "").trim(),
+      approved: !0,
+      rejected: !1
+    } : null,
+    r = [...(e.approvers ?? [])].sort((a, s) => Number(a.order ?? 0) - Number(s.order ?? 0)).map(a => {
+      const s = a.status === "approved",
+        i = a.status === "rejected";
+      return {
+        role_name: [String(a.role_name ?? "").trim(), Et(a.role)].filter(Boolean).join("·"),
+        name: `${String(a.name ?? "").trim()}${Number(a.proxied_for_account_seq ?? 0) > 0 ? "(대결)" : ""}`,
+        dateText: s || i ? xt(a.approved_time || a.approvedAt) : "",
+        signatureImage: s ? String(a.signature_image ?? "").trim() : "",
+        approved: s,
+        rejected: i
+      };
+    }),
+    o = n ? r.filter(a => `${a.name}|${a.role_name}` != `${n.name}|${n.role_name}`) : r;
+  return n ? [n, ...o] : r;
+}
+function Go(e) {
+  const t = nt({
+      authorName: e.authorName,
+      createdTime: e.createdTime,
+      drafterPosition: e.drafterPosition,
+      drafterSignatureImage: e.drafterSignatureImage,
+      approvers: e.approvers
+    }),
+    n = String(e.reportType ?? "").trim(),
+    r = String(e.department ?? "").trim(),
+    o = String(e.startDate ?? "").trim(),
+    a = String(e.endDate ?? "").trim();
+  return {
+    documentTypeLabel: String(e.documentTypeLabel ?? "").replace(/\s/g, ""),
+    defaultDocTypeLabel: "보고서",
+    title: String(e.title ?? "").trim(),
+    docNo: String(e.docNo ?? "").trim(),
+    importance: String(e.importance ?? "").trim(),
+    retentionPeriod: String(e.retentionPeriod ?? "").trim() || "5년",
+    metaRows: [[{
+      text: `구분 : ${n || "-"}`,
+      align: "left"
+    }, {
+      text: `시작일 : ${o || "-"}`,
+      align: "right"
+    }], [{
+      text: `부서/팀 : ${r || "-"}`,
+      align: "left"
+    }, {
+      text: `종료일 : ${a || "-"}`,
+      align: "right"
+    }]],
+    guideText: "위와 같이 보고합니다.",
+    bodyBlocks: et(e.contentHtml),
+    bodyHtml: String(e.contentHtml ?? ""),
+    bodyWidth: Number(e.bodyWidth ?? 0) || void 0,
+    authorName: String(e.authorName ?? "").trim(),
+    dateParts: tt(e.createdTime),
+    stampers: t,
+    attachments: (Array.isArray(e.attachments) ? e.attachments : []).map(s => String(s ?? "").trim()).filter(Boolean)
+  };
+}
+const zt = 595.28,
+  ge = 841.89,
+  Or = 24,
+  Ht = 24,
+  H = 48,
+  rt = zt - 48,
+  R = 4,
+  Vr = zt - rt,
+  Wt = 60,
+  Ce = Wt + On + 12,
+  Br = Vn,
+  zr = 18,
+  ot = rt - H - R * 2;
+let te = ot / Lt,
+  Y = ke * te;
+const Hr = 13;
+let Z = Y / 11;
+const at = 1.6;
+let qt = Y * at;
+const ee = 52,
+  Me = ge - Ht - 24,
+  Gt = Me - 8,
+  Wr = ge - Ht - 10,
+  qr = ge - Me;
+let ae = 10.5 * Z,
+  Yt = 15 * Z;
+const xe = 5,
+  ze = 4;
+let Ut = 22 * Z;
+const yt = 8,
+  Gr = z.headFill,
+  bt = 24,
+  Yr = 240,
+  vt = 8,
+  Ur = .6;
+function Q() {
+  return {
+    body: []
+  };
+}
+function V(e) {
+  return String(Math.round(e * 100) / 100);
+}
+const Ie = z.font;
+let ue;
+const Xe = new Map(),
+  St = 100;
+function Xr(e) {
+  if (e === " ") return .3;
+  const t = e.codePointAt(0) ?? 0;
+  return t >= 4352 && t <= 4607 || t >= 12288 && t <= 40959 || t >= 44032 && t <= 55203 || t >= 63744 && t <= 64255 || t >= 65280 && t <= 65519 ? 1 : .55;
+}
+function Kr(e, t) {
+  let n = Xe.get(e);
+  return n == null && (ue === void 0 && (ue = typeof document > "u" ? null : document.createElement("canvas").getContext("2d")), ue && (ue.font = `400 ${St}px ${Ie}`, n = ue.measureText(e).width / St * 1.02), n || (n = Xr(e)), Xe.set(e, n)), t * n;
+}
+async function Zr(e) {
+  if (Xe.clear(), typeof document > "u" || !document.fonts) return;
+  const t = `${e.title} ${String(e.bodyHtml ?? "").replace(/<[^>]*>/g, " ")} ${JSON.stringify(e.bodyBlocks)}`;
+  await Promise.all([400, 700].map(n => document.fonts.load(`${n} 12px ${Ie}`, t).catch(() => {})));
+}
+function me(e, t) {
+  let n = 0;
+  for (const r of e) n += Kr(r, t);
+  return n;
+}
+function Qr(e, t, n) {
+  const r = [];
+  let o = "";
+  for (const a of e) o && me(o + a, n) > t ? (r.push(o), o = a) : o += a;
+  return o && r.push(o), r;
+}
+function Le(e, t) {
+  return e.fontSize ? e.fontSize / ke * t : t;
+}
+function Jr(e, t) {
+  return !!e.bold == !!t.bold && !!e.italic == !!t.italic && !!e.strike == !!t.strike && !!e.underline == !!t.underline && e.color === t.color && e.fontSize === t.fontSize;
+}
+function eo(e) {
+  const t = [];
+  for (const n of e) {
+    const r = t[t.length - 1];
+    r && Jr(r, n) ? r.text += n.text : t.push({
+      ...n
+    });
+  }
+  return t;
+}
+function to(e) {
+  const t = [];
+  for (const n of e) for (const r of n.text.split(/(\s+)/)) r !== "" && (/^\s+$/.test(r) ? t.push({
+    text: " ",
+    run: n,
+    space: !0
+  }) : t.push({
+    text: r,
+    run: n,
+    space: !1
+  }));
+  return t;
+}
+function Xt(e, t, n) {
+  const r = to(e),
+    o = [];
+  let a = [],
+    s = 0;
+  const i = t + .5,
+    c = () => a.some(u => !u.space),
+    d = () => {
+      for (; a.length && a[0].space;) a.shift();
+      for (; a.length && a[a.length - 1].space;) a.pop();
+      o.push(a), a = [], s = 0;
+    };
+  for (const u of r) {
+    const m = Le(u.run, n);
+    if (u.space) {
+      if (!c()) continue;
+      a.push(u), s += me(" ", m);
+      continue;
+    }
+    const p = me(u.text, m);
+    if (s + p > i && c() && d(), p > i) for (const g of Qr(u.text, t, m)) {
+      const h = me(g, m);
+      s + h > i && c() && d(), a.push({
+        text: g,
+        run: u.run,
+        space: !1
+      }), s += h;
+    } else a.push(u), s += p;
+  }
+  return a.length && d(), o.length === 0 && o.push([]), o.map(u => eo(u.map(m => ({
+    ...m.run,
+    text: m.text
+  }))));
+}
+function Kt(e, t, n) {
+  let r = t;
+  for (const o of e) r = Math.max(r, Le(o, t));
+  return Math.max(n, Math.ceil(r * 1.5));
+}
+function Zt(e, t, n, r, o, a) {
+  const s = e.filter(i => i.text !== "").map(i => {
+    const c = [];
+    i.color && c.push(`fill="${i.color}"`), i.bold && c.push('font-weight="700"'), i.italic && c.push('font-style="italic"'), i.fontSize && c.push(`font-size="${V(Le(i, a))}px"`);
+    const d = [i.underline ? "underline" : "", i.strike ? "line-through" : ""].filter(Boolean).join(" ");
+    return d && c.push(`text-decoration="${d}"`), `<tspan${c.length ? ` ${c.join(" ")}` : ""}>${ye(i.text)}</tspan>`;
+  }).join("");
+  return s ? `<text x="${V(t)}" y="${V(n)}" class="${o} ${r}">${s}</text>` : "";
+}
+function no(e) {
+  return e > 0 ? Ce + Br * e : Ce - 8;
+}
+function ro(e) {
+  return no(e) + zr;
+}
+function oo(e) {
+  const t = e.indexOf(" : ");
+  return t < 0 ? {
+    label: "",
+    value: e
+  } : {
+    label: e.slice(0, t).trim(),
+    value: e.slice(t + 3).trim() || "-"
+  };
+}
+function Qt(e) {
+  return e.flat().map(t => oo(t.text));
+}
+function ao(e, t) {
+  return Ln(Qt(e), H + R, t.right - R);
+}
+function io(e, t) {
+  const n = H + R,
+    r = t.right - R;
+  if (e.length === 0) {
+    const o = Ce - 8;
+    return `<line x1="${n}" y1="${o}" x2="${r}" y2="${o}" class="ft-line"/>`;
+  }
+  return kn(Qt(e), n, r, Ce).svg;
+}
+function so(e, t) {
+  return Rn({
+    left: H + R,
+    right: t.right - R,
+    top: Wt,
+    kind: e.documentTypeLabel || e.defaultDocTypeLabel || "문서",
+    title: e.title,
+    docNo: e.docNo,
+    importance: e.importance,
+    retentionPeriod: e.retentionPeriod,
+    stampers: e.stampers
+  }) + io(e.metaRows, t);
+}
+function lo(e, t, n, r) {
+  e.body.push(Fn({
+    left: H + R,
+    right: r.right - R,
+    top: t,
+    guide: n.guideText,
+    dateParts: n.dateParts,
+    authorName: n.authorName
+  }));
+}
+function co(e) {
+  return e.background ? e.background : e.header ? Gr : "#ffffff";
+}
+function uo(e, t, n) {
+  return e.align === "center" ? {
+    x: t + n / 2,
+    anchor: "center"
+  } : e.align === "right" ? {
+    x: t + n - xe,
+    anchor: "end"
+  } : {
+    x: t + xe,
+    anchor: "start"
+  };
+}
+function po(e, t) {
+  let n = 0,
+    r = 0,
+    o = 0;
+  for (const a of e) {
+    const s = Le(a, t);
+    a.text.split(`
+`).forEach((i, c) => {
+      c > 0 && (r = Math.max(r, o), o = 0);
+      for (const d of i.split(/(\s+)/)) {
+        if (d === "") continue;
+        const u = me(d, s);
+        o += u, /^\s+$/.test(d) || (n = Math.max(n, u));
+      }
+    });
+  }
+  return r = Math.max(r, o), {
+    minWord: n,
+    maxLine: r
+  };
+}
+function Jt(e, t) {
+  const n = new Array(t).fill(bt),
+    r = new Array(t).fill(bt);
+  for (let o = 0; o < e.rowCount; o += 1) for (const a of e.rows[o] ?? []) {
+    if (a.colSpan !== 1) continue;
+    const {
+        minWord: s,
+        maxLine: i
+      } = po(a.runs, ae),
+      c = a.startCol;
+    n[c] = Math.max(n[c], s + xe * 2), r[c] = Math.max(r[c], i + xe * 2);
+  }
+  return {
+    min: n,
+    max: r.map((o, a) => Math.min(Math.max(o, n[a]), Math.max(Yr, n[a])))
+  };
+}
+function mo(e) {
+  return Jt(e, Math.max(e.columns, 1)).max.reduce((t, n) => t + n, 0);
+}
+function fo(e, t) {
+  const n = e.reduce((s, i, c) => s + Math.max(0, t[c] - i), 0);
+  if (n <= 0) return e;
+  const r = e.map((s, i) => Math.max(0, s - t[i])),
+    o = r.reduce((s, i) => s + i, 0);
+  if (o <= 0) return e.map((s, i) => Math.max(s, t[i]));
+  const a = Math.min(n, o);
+  return e.map((s, i) => s < t[i] ? t[i] : s - r[i] / o * a);
+}
+function ho(e, t, n, r) {
+  const {
+      min: o,
+      max: a
+    } = Jt(e, t),
+    s = a.reduce((m, p) => m + p, 0);
+  let i;
+  e.widthPct > 0 ? i = r * Math.min(Math.max(e.widthPct / 100, .2), 1) : e.widthPx > 0 ? i = Math.min(e.widthPx * te, r) : e.columnWidthPx > 0 ? i = Math.min(e.columnWidthPx * te, r) : i = Math.min(s, r);
+  const c = e.hasColumnWidths ? e.columnFractions.map(m => m * i) : a.map(m => s > 0 ? m / s * i : i / t),
+    d = fo(c, o),
+    u = [n];
+  for (let m = 0; m < t; m += 1) u.push(u[m] + d[m]);
+  return u;
+}
+function go(e) {
+  const t = H + R;
+  let n = rt;
+  for (const o of e) o.kind === "table" && (n = Math.max(n, t + mo(o)));
+  const r = n + Vr;
+  return {
+    docWidth: r,
+    right: n,
+    bodyTextWidth: n - H - R * 2,
+    centerX: r / 2,
+    frameW: r - Or * 2
+  };
+}
+function xo(e, t, n, r, o, a, s) {
+  let i = t;
+  const c = Math.max(e.columns, 1),
+    d = H + R,
+    u = ho(e, c, d, s.bodyTextWidth),
+    m = f => u[Math.min(f, c)],
+    p = (f, b) => m(f + b) - m(f),
+    g = [],
+    h = new Array(e.rowCount).fill(Ut);
+  for (let f = 0; f < e.rowCount; f += 1) {
+    const b = [];
+    for (const T of e.rows[f] ?? []) {
+      const j = Math.max(p(T.startCol, T.colSpan) - xe * 2, 8),
+        A = Xt(T.runs, j, ae),
+        $ = A.map(C => Kt(C, ae, Yt)),
+        S = $.reduce((C, D) => C + D, 0);
+      b.push({
+        cell: T,
+        vlines: A,
+        heights: $,
+        contentH: S
+      }), T.rowSpan === 1 && (h[f] = Math.max(h[f], S + ze * 2));
+    }
+    g.push(b);
+  }
+  for (let f = 0; f < e.rowCount; f += 1) for (const {
+    cell: b,
+    contentH: T
+  } of g[f]) {
+    if (b.rowSpan <= 1) continue;
+    const j = T + ze * 2,
+      A = Math.min(f + b.rowSpan, e.rowCount) - 1;
+    let $ = 0;
+    for (let S = f; S <= A; S += 1) $ += h[S];
+    $ < j && (h[A] += j - $);
+  }
+  const w = h.reduce((f, b) => f + b, 0);
+  let E = r + yt;
+  if (!a) {
+    const f = o - ee;
+    E + w > o && w <= f && (i = Q(), n.push(i), E = ee);
+  }
+  const N = new Array(e.rowCount).fill(0),
+    P = new Array(e.rowCount).fill(i);
+  for (let f = 0; f < e.rowCount; f += 1) !a && f > 0 && E + h[f] > o && (i = Q(), n.push(i), E = ee), N[f] = E, P[f] = i, E += h[f];
+  for (let f = 0; f < e.rowCount; f += 1) {
+    const b = P[f];
+    for (const {
+      cell: T,
+      vlines: j,
+      heights: A,
+      contentH: $
+    } of g[f]) {
+      const S = m(T.startCol),
+        C = p(T.startCol, T.colSpan),
+        D = Math.min(f + T.rowSpan, e.rowCount) - 1;
+      let W = h[f];
+      if (T.rowSpan > 1) {
+        let k = 0,
+          _ = !0;
+        for (let G = f; G <= D; G += 1) {
+          if (P[G] !== b) {
+            _ = !1;
+            break;
+          }
+          k += h[G];
+        }
+        W = _ ? k : h[f];
+      }
+      const O = N[f],
+        U = T.borderColor ? ` stroke="${ye(T.borderColor)}"` : "";
+      b.body.push(`<rect x="${V(S)}" y="${V(O)}" width="${V(C)}" height="${V(W)}" class="tbl-box" fill="${co(T)}"${U}/>`);
+      const q = T.header ? "tbl-text tbl-text-head" : "tbl-text";
+      let v = O + Math.max((W - $) / 2, ze);
+      j.forEach((k, _) => {
+        const G = A[_],
+          {
+            x: nn,
+            anchor: rn
+          } = uo(T, S, C),
+          it = Zt(k, nn, v + G / 2, rn, q, ae);
+        it && b.body.push(it), v += G;
+      });
+    }
+  }
+  return {
+    page: i,
+    y: E + yt
+  };
+}
+const en = ["font-family:'Pretendard','Pretendard Variable',-apple-system,'Malgun Gothic',sans-serif", `font-size:${ke}px`, `line-height:${at}`, "color:#000000", "width:100%"].join(";");
+async function yo(e, t) {
+  if (typeof document > "u" || !e.trim()) return {
+    width: t,
+    height: 0
+  };
+  const n = document.createElement("div"),
+    r = c => n.setAttribute("style", `position:absolute;left:-99999px;top:0;visibility:hidden;width:${c}px`);
+  r(t);
+  const o = document.createElement("div");
+  o.setAttribute("style", en), o.innerHTML = e, n.appendChild(o), document.body.appendChild(n);
+  try {
+    await document.fonts?.ready;
+  } catch {}
+  let a = t;
+  const s = Math.ceil(o.scrollWidth);
+  s > a && (a = s, r(a));
+  const i = Math.ceil(o.getBoundingClientRect().height);
+  return n.remove(), {
+    width: a,
+    height: i
+  };
+}
+function wt(e) {
+  const t = Number(e.bodyWidth ?? 0);
+  return Number.isFinite(t) && t > 0 ? t : Lt;
+}
+function bo(e) {
+  te = ot / e, Y = Math.max(ke * te, Hr), Z = Y / 11, qt = Y * at, ae = 10.5 * Z, Yt = 15 * Z, Ut = 22 * Z;
+}
+function vo(e, t, n, r, o) {
+  const a = H + R,
+    s = ot / o;
+  return e.body.push(`<g transform="translate(${V(a)} ${V(n)}) scale(${s.toFixed(6)})"><foreignObject x="0" y="0" width="${o}" height="${r}"><div xmlns="http://www.w3.org/1999/xhtml" style="${en}">${t}</div></foreignObject></g>`), n + r * s;
+}
+function So(e, t, n) {
+  let r = e.width > 0 ? e.width * te : t,
+    o = e.height > 0 ? e.height * te : r * Ur;
+  return r > t && (o *= t / r, r = t), n > 0 && o > n && (r *= n / o, o = n), {
+    w: r,
+    h: o
+  };
+}
+function wo(e, t, n, r, o, a, s) {
+  let i = t;
+  const c = a ? 0 : Gt - ee,
+    {
+      w: d,
+      h: u
+    } = So(e, s.bodyTextWidth, c);
+  let m = r + vt;
+  !a && m + u > o && (i = Q(), n.push(i), m = ee);
+  const p = H + R;
+  let g = p;
+  e.align === "center" ? g = p + (s.bodyTextWidth - d) / 2 : e.align === "right" && (g = p + (s.bodyTextWidth - d));
+  const h = ye(e.src);
+  return i.body.push(`<image x="${V(g)}" y="${V(m)}" width="${V(d)}" height="${V(u)}" href="${h}" xlink:href="${h}" preserveAspectRatio="xMidYMid meet"/>`), {
+    page: i,
+    y: m + u + vt
+  };
+}
+function _o(e, t, n, r = {
+  width: 0,
+  height: 0
+}) {
+  const o = t ? wr : Gt,
+    a = ro(ao(e.metaRows, n)),
+    s = [];
+  let i = Q();
+  s.push(i);
+  let c = a;
+  r.height > 0 && e.bodyHtml && (c = vo(i, e.bodyHtml, c, r.height, r.width));
+  for (const m of r.height > 0 && e.bodyHtml ? [] : e.bodyBlocks) {
+    if (m.kind === "table") {
+      const p = xo(m, i, s, c, o, t, n);
+      i = p.page, c = p.y;
+      continue;
+    }
+    if (m.kind === "image") {
+      const p = wo(m, i, s, c, o, t, n);
+      i = p.page, c = p.y;
+      continue;
+    }
+    for (const p of Xt(m.runs, n.bodyTextWidth, Y)) {
+      const g = Kt(p, Y, qt);
+      c + g > o && (i = Q(), s.push(i), c = ee);
+      let h, w;
+      m.align === "center" ? (h = n.centerX, w = "center") : m.align === "right" ? (h = n.right - R, w = "end") : (h = H + R, w = "start");
+      const E = Zt(p, h, c + g / 2, w, "body-text", Y);
+      E && i.body.push(E), c += g;
+    }
+  }
+  const d = Dn;
+  {
+    const m = Ar(s, i, c, e.attachments, {
+      tableLeft: H,
+      tableRight: n.right,
+      textPadding: R,
+      pageBottom: o,
+      contTop: ee,
+      makePage: Q
+    });
+    i = m.page, c = m.y;
+  }
+  let u;
+  return t ? u = c + _r : (u = Me - d, c > u && (i = Q(), s.push(i), u = Me - d)), lo(i, u, e, n), {
+    pages: s,
+    contentBottom: u + d
+  };
+}
+function To(e) {
+  return `<style>
+        ${e}
+        .page { fill: #ffffff; }
+        .doc-frame { fill: none; stroke: #333333; stroke-width: 1.5; }
+        .meta { font-family: ${z.font}; font-size: 11px; font-weight: 300; fill: #555555; }
+        .doc-type { font-family: ${z.font}; font-size: 30px; font-weight: 700; fill: #111111; letter-spacing: 2px; }
+        .doc-title { font-family: ${z.font}; font-size: 15px; font-weight: 300; fill: #111111; }
+        .meta-line { stroke: #cbd5e1; stroke-width: 1; shape-rendering: crispEdges; }
+        .meta-value { font-family: ${z.font}; font-size: 11px; font-weight: 300; fill: #111111; dominant-baseline: middle; }
+        .body-text { font-family: ${Ie}; font-size: ${Y}px; font-weight: 400; fill: #000000; dominant-baseline: middle; }
+        .tbl-box { stroke: #cbd5e1; stroke-width: 1; shape-rendering: crispEdges; }
+        .tbl-text { font-family: ${Ie}; font-size: ${ae}px; font-weight: 400; fill: #111111; dominant-baseline: middle; }
+        .tbl-text-head { font-weight: 500; fill: #0f172a; }
+${jr}
+        .doc-guide { font-family: ${z.font}; font-size: 15px; font-weight: 300; fill: #111111; }
+        .doc-date { font-family: ${z.font}; font-size: 16px; font-weight: 300; fill: #111111; letter-spacing: 1px; }
+        .doc-author { font-family: ${z.font}; font-size: 14px; font-weight: 300; fill: #111111; }
+        .page-count { font-family: ${z.font}; font-size: 10px; font-weight: 300; fill: #888888; }
+        .center { text-anchor: middle; }
+        .start { text-anchor: start; }
+        .end { text-anchor: end; }
+${Bn}
+    </style>`;
+}
+function Ao(e, t) {
+  const r = t.layout.docWidth,
+    o = t.docHeight,
+    a = `${t.pageIndex + 1} / ${t.pageCount}`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${Math.round(r * 1.6)}" height="${Math.round(o * 1.6)}" viewBox="0 0 ${r} ${o}">
+            ${t.style}
+            <rect x="0" y="0" width="${r}" height="${o}" class="page"/>
+            ${t.pageIndex === 0 ? t.firstPageHeader : ""}
+            ${e.body.join("")}
+            ${t.showPageNumber ? `<text x="${t.layout.centerX}" y="${Wr}" class="page-count center">${ye(a)}</text>` : ""}
+        </svg>`;
+}
+async function Yo(e, t = !0, n = !1, r = !1) {
+  bo(wt(e)), await Zr(e);
+  const a = To(""),
+    s = r ? await yo(String(e.bodyHtml ?? ""), wt(e)) : {
+      width: 0,
+      height: 0
+    },
+    i = s.height > 0,
+    c = go(i ? [] : e.bodyBlocks),
+    d = so(e, c),
+    {
+      pages: u,
+      contentBottom: m
+    } = _o(e, n, c, s),
+    p = u.length,
+    g = n ? Tr(m, ge, qr, 0) : ge;
+  return u.map((h, w) => Ao(h, {
+    pageIndex: w,
+    pageCount: p,
+    firstPageHeader: d,
+    style: a,
+    layout: c,
+    docHeight: g,
+    showPageNumber: !n
+  }));
+}
+function Uo(e) {
+  const t = nt({
+      authorName: e.authorName,
+      createdTime: e.createdTime,
+      drafterPosition: e.drafterPosition,
+      drafterSignatureImage: e.drafterSignatureImage,
+      approvers: e.approvers
+    }),
+    n = String(e.department ?? "").trim(),
+    r = String(e.coDrafter ?? "").trim(),
+    o = String(e.collaborator ?? "").trim();
+  return {
+    documentTypeLabel: String(e.documentTypeLabel ?? "").replace(/\s/g, ""),
+    defaultDocTypeLabel: "기안서",
+    title: String(e.title ?? "").trim(),
+    docNo: String(e.docNo ?? "").trim(),
+    importance: String(e.importance ?? "").trim(),
+    retentionPeriod: String(e.retentionPeriod ?? "").trim() || "5년",
+    metaRows: [[{
+      text: `기안부서 : ${n || "-"}`,
+      align: "left"
+    }], [{
+      text: `공동기안자 : ${r || "-"}`,
+      align: "left"
+    }], [{
+      text: `협조자 : ${o || "-"}`,
+      align: "left"
+    }]],
+    guideText: "위와 같이 기안합니다.",
+    bodyBlocks: et(e.contentHtml),
+    bodyHtml: String(e.contentHtml ?? ""),
+    bodyWidth: Number(e.bodyWidth ?? 0) || void 0,
+    authorName: String(e.authorName ?? "").trim(),
+    dateParts: tt(e.createdTime),
+    stampers: t,
+    attachments: (Array.isArray(e.attachments) ? e.attachments : []).map(a => String(a ?? "").trim()).filter(Boolean)
+  };
+}
+function Xo(e) {
+  const t = nt({
+      authorName: e.authorName,
+      createdTime: e.createdTime,
+      drafterPosition: e.drafterPosition,
+      drafterSignatureImage: e.drafterSignatureImage,
+      approvers: e.approvers
+    }),
+    n = String(e.meetingType ?? "").trim(),
+    r = String(e.startTime ?? "").trim(),
+    o = String(e.endTime ?? "").trim(),
+    a = r ? o ? `${r} ~ ${o}` : r : "-",
+    s = String(e.location ?? "").trim(),
+    i = String(e.host ?? "").trim(),
+    c = String(e.attendees ?? "").trim(),
+    d = [`회의유형 : ${n || "-"}`, `장소 : ${s || "-"}`, `일시 : ${a}`],
+    u = fn(c),
+    m = [`주관자 : ${i || "-"}`, ...u.map((h, w) => w === 0 ? `참석자 : ${h}` : h)],
+    p = Math.max(d.length, m.length),
+    g = [];
+  for (let h = 0; h < p; h += 1) {
+    const w = [{
+      text: d[h] ?? "",
+      align: "left"
+    }];
+    h < m.length && w.push({
+      text: m[h],
+      align: "right"
+    }), g.push(w);
+  }
+  return {
+    documentTypeLabel: String(e.documentTypeLabel ?? "").replace(/\s/g, ""),
+    defaultDocTypeLabel: "회의록",
+    title: String(e.title ?? "").trim(),
+    docNo: String(e.docNo ?? "").trim(),
+    importance: String(e.importance ?? "").trim(),
+    retentionPeriod: String(e.retentionPeriod ?? "").trim() || "5년",
+    metaRows: g,
+    guideText: "위와 같이 회의 결과를 보고합니다.",
+    bodyBlocks: et(e.contentHtml),
+    bodyHtml: String(e.contentHtml ?? ""),
+    bodyWidth: Number(e.bodyWidth ?? 0) || void 0,
+    authorName: String(e.authorName ?? "").trim(),
+    dateParts: tt(e.createdTime),
+    stampers: t,
+    attachments: (Array.isArray(e.attachments) ? e.attachments : []).map(h => String(h ?? "").trim()).filter(Boolean)
+  };
+}
+function jo({
+  form: e
+}) {
+  const t = se(),
+    n = String(e.useFormValue("created_time") ?? "").trim(),
+    o = (n ? new Date(n.replace(" ", "T")) : new Date()).toLocaleDateString(hn(gn()), {
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    }),
+    a = String(e.useFormValue("account_name") ?? "").trim();
+  return l.jsxs(x, {
+    className: "approval-author-date",
+    sx: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "baseline",
+      gap: 2,
+      pb: {
+        xs: 2,
+        md: 5
+      }
+    },
+    children: [l.jsx(M, {
+      sx: {
+        fontSize: 14,
+        color: "text.secondary"
+      },
+      children: o
+    }), a && l.jsx(M, {
+      className: "approval-author-name",
+      sx: {
+        fontSize: 14,
+        color: "text.secondary"
+      },
+      children: t("approval.authorWithName", {
+        name: a
+      })
+    })]
+  });
+}
+function Ko({
+  form: e,
+  guide: t,
+  readonly: n = !1
+}) {
+  const r = $e();
+  return l.jsxs(x, {
+    sx: {
+      px: 2
+    },
+    children: [l.jsx(M, {
+      sx: {
+        fontSize: r ? 15 : 16,
+        fontWeight: 500,
+        whiteSpace: "normal",
+        wordBreak: "keep-all",
+        pt: r ? 2 : 3,
+        pb: .5
+      },
+      children: t
+    }), l.jsx(jo, {
+      form: e,
+      readonly: n
+    })]
+  });
+}
+function tn({
+  left: e,
+  title: t,
+  titleStyle: n,
+  children: r,
+  sx: o
+}) {
+  return l.jsxs(x, {
+    sx: {
+      display: "flex",
+      height: 60,
+      borderBottom: "1px solid #cccccc",
+      ...o
+    },
+    children: [e && e, l.jsxs(x, {
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        height: "100%",
+        flex: 1
+      },
+      children: [l.jsx(x, {
+        sx: {
+          fontSize: "16px",
+          fontWeight: 600,
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          gap: 1.5,
+          flex: 1,
+          pl: 2,
+          ...n
+        },
+        children: t
+      }), r && l.jsx(x, {
+        sx: {
+          display: "flex",
+          height: "100%"
+        },
+        children: r
+      })]
+    })]
+  });
+}
+function Zo({
+  children: e,
+  editorPlaceholder: t,
+  onReset: n,
+  onLoadTemplate: r,
+  documentLabel: o,
+  headerCaption: a,
+  editorRef: s,
+  editorDefaultValue: i,
+  editorReadOnly: c = !1,
+  showEditor: d = !0,
+  hideHeader: u = !1,
+  hideDocumentLabel: m = !1,
+  footer: p,
+  headerActions: g
+}) {
+  const h = se(),
+    w = $e(),
+    E = w && c;
+  return l.jsxs(x, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      height: E ? "auto" : "100%"
+    },
+    children: [l.jsxs(x, {
+      sx: {
+        display: "flex",
+        flexDirection: "column",
+        overflow: w ? "visible" : "hidden"
+      },
+      children: [!u && l.jsx(tn, {
+        title: l.jsxs(x, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+            flex: 1,
+            minWidth: 0
+          },
+          children: [!m && l.jsxs(l.Fragment, {
+            children: [l.jsx(Yn, {
+              sx: {
+                fontSize: 20,
+                flexShrink: 0
+              }
+            }), l.jsx(M, {
+              variant: "subtitle1",
+              fontWeight: 600,
+              noWrap: !0,
+              sx: {
+                flexShrink: 0
+              },
+              children: o ?? h("approval.writeContent")
+            })]
+          }), !w && l.jsx(M, {
+            variant: "caption",
+            color: "text.secondary",
+            noWrap: !0,
+            sx: {
+              ml: 1,
+              minWidth: 0
+            },
+            children: a ?? h("approval.docNoAutoHint")
+          })]
+        }),
+        children: (n || r || g) && l.jsxs(x, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: .5,
+            pr: 2
+          },
+          children: [g, n && l.jsx(fe, {
+            title: h("approval.reset"),
+            disableInteractive: !0,
+            arrow: !0,
+            children: l.jsx(oe, {
+              size: "medium",
+              onClick: n,
+              children: l.jsx(Hn, {
+                sx: {
+                  fontSize: 24
+                }
+              })
+            })
+          }), r && l.jsx(fe, {
+            title: h("approval.loadLine"),
+            disableInteractive: !0,
+            arrow: !0,
+            children: l.jsx(oe, {
+              size: "medium",
+              onClick: r,
+              children: l.jsx(Ct, {
+                sx: {
+                  fontSize: 24
+                }
+              })
+            })
+          })]
+        })
+      }), w ? e : l.jsx(xn, {
+        children: e
+      })]
+    }), d && l.jsx(x, {
+      sx: {
+        display: "flex",
+        flexDirection: "column",
+        ...(E ? {
+          flexShrink: 0,
+          width: 760
+        } : w ? {
+          height: 380,
+          flexShrink: 0
+        } : {
+          flex: 1,
+          minHeight: 0
+        }),
+        borderTop: 1,
+        borderColor: "#cccccc",
+        ...(c ? {
+          "& .ehfuse-toolbar": {
+            display: "none"
+          }
+        } : {})
+      },
+      children: l.jsx(zn, {
+        ref: s,
+        autoHeight: E,
+        containerStyle: E ? {
+          flex: 1
+        } : {
+          height: "100%",
+          flex: 1
+        },
+        styles: {
+          borderWidth: 0,
+          toolbarPadding: c ? "0" : "0.5rem"
+        },
+        toolbarOptions: c ? {
+          left: [],
+          right: []
+        } : {
+          left: [["font", "size"], ["bold", "italic", "underline", "strike", "quote"], ["color", "bgcolor"], ["table"], ["align", "lineHeight"], ["bulletList", "numberList"], ["indent", "outdent"], ["link", "image"], ["symbol"], ["clear"]],
+          right: ["fullScreen"]
+        },
+        locale: "ko",
+        placeholder: t ?? h("approval.enterContent"),
+        defaultValue: i,
+        readOnly: c
+      })
+    }), p]
+  });
+}
+function Eo(e) {
+  const t = String(e ?? "").trim();
+  if (!t) return "";
+  const n = new Date(t.replace(" ", "T"));
+  if (Number.isNaN(n.getTime())) return "";
+  const r = String(n.getFullYear()).slice(2),
+    o = String(n.getMonth() + 1).padStart(2, "0"),
+    a = String(n.getDate()).padStart(2, "0");
+  return `${r}.${o}.${a}`;
+}
+function _t({
+  stampers: e
+}) {
+  if (e.length === 0) return null;
+  const t = {
+    borderColor: "divider"
+  };
+  return l.jsx(x, {
+    sx: {
+      display: "inline-flex",
+      border: "1px solid",
+      ...t
+    },
+    children: e.map((n, r) => {
+      const o = n.status === "approved",
+        a = n.status === "rejected",
+        s = n.status === "skipped",
+        i = Et(n.role),
+        c = Number(n.proxied_for_account_seq ?? 0) > 0;
+      return l.jsxs(x, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          minWidth: 72,
+          borderRight: r < e.length - 1 ? "1px solid" : 0,
+          ...t
+        },
+        children: [l.jsx(x, {
+          sx: {
+            textAlign: "center",
+            py: .5,
+            px: 1,
+            borderBottom: "1px solid",
+            bgcolor: "grey.50",
+            ...t
+          },
+          children: l.jsx(M, {
+            sx: {
+              fontSize: 12,
+              fontWeight: 500
+            },
+            children: [n.role_name, i].filter(Boolean).join("·") || "직급"
+          })
+        }), l.jsx(x, {
+          sx: {
+            height: 46,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            px: .5,
+            borderBottom: "1px solid",
+            ...t
+          },
+          children: o ? n.signature_image ? l.jsx(x, {
+            component: "img",
+            src: n.signature_image,
+            alt: n.name,
+            sx: {
+              height: 38,
+              maxWidth: 64,
+              objectFit: "contain"
+            }
+          }) : l.jsx(M, {
+            sx: {
+              fontSize: 13,
+              fontWeight: 500
+            },
+            children: n.name
+          }) : a ? l.jsx(M, {
+            sx: {
+              fontSize: 14,
+              fontWeight: 700,
+              color: "#d32f2f"
+            },
+            children: "반려"
+          }) : s ? l.jsx(M, {
+            sx: {
+              fontSize: 13,
+              fontWeight: 600,
+              color: "#94a3b8"
+            },
+            children: "생략"
+          }) : null
+        }), l.jsx(x, {
+          sx: {
+            textAlign: "center",
+            py: .25,
+            px: 1,
+            borderBottom: "1px solid",
+            ...t
+          },
+          children: l.jsxs(M, {
+            sx: {
+              fontSize: 12
+            },
+            children: [n.name || "이름", c ? "(대결)" : ""]
+          })
+        }), l.jsx(x, {
+          sx: {
+            textAlign: "center",
+            py: .25,
+            px: 1
+          },
+          children: l.jsx(M, {
+            sx: {
+              fontSize: 10,
+              color: "common.black"
+            },
+            children: (o || a ? Eo(n.approved_time || n.approvedAt) : "") || " "
+          })
+        })]
+      }, `${n.account_seq ?? r}-${n.order ?? r}`);
+    })
+  });
+}
+function Tt({
+  form: e,
+  placeholder: t,
+  autoFocusKey: n
+}) {
+  const r = e.useFormValue("title"),
+    o = L.useRef(null),
+    a = se(),
+    s = $e();
+  return L.useEffect(() => {
+    s || o.current?.focus();
+  }, [n, s]), l.jsx(yn, {
+    fullWidth: !0,
+    size: "medium",
+    label: a("approval.title"),
+    placeholder: t ?? a("approval.enterTitlePlaceholder"),
+    value: r ?? "",
+    onChange: i => e.setFormValue("title", i.target.value),
+    inputRef: o
+  });
+}
+const Ee = {
+    낮음: "approval.importanceLow",
+    보통: "approval.importanceNormal",
+    높음: "approval.importanceHigh",
+    긴급: "approval.importanceUrgent"
+  },
+  At = ["낮음", "보통", "높음", "긴급"],
+  jt = ["1년", "3년", "5년", "7년", "10년", "영구"];
+function He(e, t) {
+  if (e === "영구") return t("approval.retentionPermanent");
+  const n = /^(\d+)년$/.exec(e);
+  return n ? t("approval.retentionYears", {
+    count: Number(n[1])
+  }) : e;
+}
+function No({
+  form: e,
+  readonly: t = !1,
+  hideTitle: n = !1,
+  extraField: r
+}) {
+  const o = se(),
+    a = $e(),
+    s = Rt(),
+    i = e.useFormValue("importance") || "",
+    c = String(e.useFormValue("doc_no") ?? e.useFormValue("docNo") ?? "").trim(),
+    d = String(e.useFormValue("type") ?? ""),
+    u = st[d]?.label ?? "",
+    m = bn(o, d),
+    p = n || !!st[d]?.hideTitleField,
+    g = e.useFormValue("approvers") ?? [],
+    h = String(e.useFormValue("account_name") ?? "").trim(),
+    w = Number(e.useFormValue("account_seq") ?? 0),
+    E = String(e.useFormValue("created_by_role_name") ?? "").trim(),
+    N = String(e.useFormValue("created_by_department") ?? "").trim(),
+    P = String(e.useFormValue("author_signature_image") ?? "").trim(),
+    f = String(e.useFormValue("created_time") ?? "").trim(),
+    T = e.useFormValue("retentionPeriod") || "5년",
+    j = kt(s, T);
+  L.useEffect(() => {
+    e.setFormValue("retention_expiration_time", j), e.setFormValue("retentionExpirationTime", j);
+  }, [e, j]);
+  const A = e.useFormValue("deadline_time"),
+    $ = e.useFormValue("status"),
+    S = d !== "cooperation",
+    C = vn(A, $);
+  L.useEffect(() => {
+    if (t) return;
+    const _ = String(A ?? "");
+    _.length > 10 && /^\d{4}-\d{2}-\d{2}/.test(_) && e.setFormValue("deadline_time", _.slice(0, 10));
+  }, [e, t, A]);
+  const D = [...g].sort((_, G) => Number(_.order ?? 0) - Number(G.order ?? 0)).map(_ => ({
+      ..._,
+      role_name: String(_.role_name ?? "")
+    })),
+    O = t && !!h ? {
+      name: h,
+      account_seq: w || void 0,
+      role_name: E,
+      department: N,
+      order: 0,
+      status: "approved",
+      signature_image: P || void 0,
+      approved_time: f || void 0
+    } : null,
+    U = O ? D.filter(_ => w && _.account_seq ? Number(_.account_seq) !== w : `${_.name}|${_.role_name ?? ""}` != `${h}|${E}`) : D,
+    q = O ? [O, ...U] : D,
+    v = t && q.length > 0,
+    k = d === "fund_report";
+  return l.jsxs(x, {
+    sx: {
+      position: "relative",
+      display: "flex",
+      flexDirection: "column",
+      gap: 1,
+      minHeight: !a && v && !k ? 116 : void 0
+    },
+    children: [v && !a && l.jsx(x, {
+      sx: {
+        position: "absolute",
+        top: k ? 0 : "50%",
+        right: 0,
+        transform: k ? "none" : "translateY(-50%)",
+        zIndex: 1
+      },
+      children: l.jsx(_t, {
+        stampers: q
+      })
+    }), t ? l.jsxs(x, {
+      sx: {
+        display: "flex",
+        flexDirection: "row",
+        gap: 2,
+        alignItems: "flex-start"
+      },
+      children: [l.jsxs(x, {
+        sx: {
+          flex: 1,
+          minWidth: 0,
+          display: "flex",
+          flexDirection: "column",
+          gap: .5,
+          color: "text.secondary"
+        },
+        children: [c && l.jsx(M, {
+          sx: {
+            fontSize: 17
+          },
+          children: o("approval.docNoLine", {
+            value: c
+          })
+        }), l.jsxs(x, {
+          sx: {
+            display: "flex",
+            gap: 3,
+            flexWrap: "wrap"
+          },
+          children: [l.jsx(M, {
+            sx: {
+              fontSize: 17
+            },
+            children: o("approval.importanceLine", {
+              value: i ? Ee[i] ? o(Ee[i]) : i : "-"
+            })
+          }), l.jsx(M, {
+            sx: {
+              fontSize: 17
+            },
+            children: o("approval.retentionLine", {
+              value: He(T, o)
+            })
+          }), C && l.jsxs(M, {
+            sx: {
+              fontSize: 17,
+              color: Sn[C.tone]
+            },
+            children: [o("approval.deadlineLine", {
+              value: C.longText
+            }), C.ddayText ? ` (${C.ddayText})` : ""]
+          })]
+        })]
+      }), a && v && l.jsx(x, {
+        sx: {
+          flexShrink: 0
+        },
+        children: l.jsx(_t, {
+          stampers: q
+        })
+      })]
+    }) : r && !a ? l.jsxs(x, {
+      sx: {
+        display: "flex",
+        flexDirection: "column",
+        gap: we
+      },
+      children: [!p && l.jsx(Tt, {
+        form: e,
+        placeholder: m,
+        autoFocusKey: d
+      }), l.jsxs(x, {
+        sx: {
+          display: "grid",
+          gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+          gap: we
+        },
+        children: [l.jsx(_e, {
+          label: o("approval.importance"),
+          name: "importance",
+          form: e,
+          options: At.map(_ => ({
+            value: _,
+            label: o(Ee[_])
+          })),
+          emptyLabel: o("approval.noneSelected")
+        }), l.jsx(_e, {
+          label: o("approval.retentionPeriod"),
+          name: "retentionPeriod",
+          form: e,
+          options: jt.map(_ => ({
+            value: _,
+            label: He(_, o)
+          })),
+          emptyLabel: o("approval.noneSelected")
+        }), S && l.jsx(De, {
+          fullWidth: !0,
+          size: "medium",
+          label: o("approval.approvalDeadline"),
+          name: "deadline_time",
+          form: e
+        }), l.jsx(x, {
+          sx: {
+            minWidth: 0
+          },
+          children: r
+        })]
+      })]
+    }) : l.jsxs(x, {
+      sx: {
+        display: "flex",
+        flexDirection: a ? "column" : "row",
+        gap: we,
+        alignItems: a ? "stretch" : "flex-start",
+        flexWrap: !a && S ? "wrap" : void 0
+      },
+      children: [!p && l.jsx(x, {
+        sx: {
+          flex: !a && S ? "1 1 200px" : 1,
+          minWidth: 0
+        },
+        children: l.jsx(Tt, {
+          form: e,
+          placeholder: m,
+          autoFocusKey: d
+        })
+      }), l.jsxs(x, {
+        sx: {
+          display: "flex",
+          gap: we,
+          flexShrink: 0,
+          ...(p || a ? {
+            width: "100%"
+          } : S ? {
+            flex: "1 1 460px",
+            minWidth: 0
+          } : {
+            width: "calc((100% - 40px) / 3)"
+          })
+        },
+        children: [l.jsx(x, {
+          sx: {
+            flex: 1,
+            minWidth: 0
+          },
+          children: l.jsx(_e, {
+            label: o("approval.importance"),
+            name: "importance",
+            form: e,
+            options: At.map(_ => ({
+              value: _,
+              label: o(Ee[_])
+            })),
+            emptyLabel: o("approval.noneSelected")
+          })
+        }), l.jsx(x, {
+          sx: {
+            flex: 1,
+            minWidth: 0
+          },
+          children: l.jsx(_e, {
+            label: o("approval.retentionPeriod"),
+            name: "retentionPeriod",
+            form: e,
+            options: jt.map(_ => ({
+              value: _,
+              label: He(_, o)
+            })),
+            emptyLabel: o("approval.noneSelected")
+          })
+        }), S && !a && l.jsx(x, {
+          sx: {
+            flex: 1,
+            minWidth: 0
+          },
+          children: l.jsx(De, {
+            fullWidth: !0,
+            size: "medium",
+            label: o("approval.approvalDeadline"),
+            name: "deadline_time",
+            form: e
+          })
+        })]
+      }), S && a && l.jsx(x, {
+        sx: {
+          width: "100%"
+        },
+        children: l.jsx(De, {
+          fullWidth: !0,
+          size: "medium",
+          label: o("approval.approvalDeadline"),
+          name: "deadline_time",
+          form: e
+        })
+      })]
+    }), t && u && d !== "fund_report" && l.jsx(x, {
+      sx: {
+        ...(a ? {
+          mt: 1
+        } : {
+          flex: 1
+        }),
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+      },
+      children: l.jsxs(x, {
+        sx: {
+          textAlign: "center"
+        },
+        children: [l.jsx(M, {
+          sx: {
+            fontSize: 32,
+            fontWeight: 700,
+            color: "#0f172a",
+            lineHeight: 1.3
+          },
+          children: u.replace(/\s+/g, " ").trim()
+        }), l.jsx(x, {
+          sx: {
+            width: 36,
+            height: 3,
+            borderRadius: 2,
+            bgcolor: "#2563eb",
+            mx: "auto",
+            mt: 1
+          }
+        })]
+      })
+    })]
+  });
+}
+function Qo({
+  form: e,
+  readonly: t = !1,
+  hideTitle: n = !1,
+  extraField: r
+}) {
+  return l.jsx(No, {
+    form: e,
+    readonly: t,
+    hideTitle: n,
+    extraField: r
+  });
+}
+function Co(e) {
+  const t = e.trim();
+  return /^\d{4}-\d{2}-\d{2}/.test(t) ? `${t.slice(5, 7)}.${t.slice(8, 10)} ${t.slice(11, 16)}`.trim() : t;
+}
+function Mo({
+  reference: e,
+  index: t,
+  onDelete: n,
+  showReadState: r = !1
+}) {
+  const o = se(),
+    a = String(e.read_time ?? "").trim(),
+    s = r ? a ? o("approval.readAt", {
+      time: Co(a)
+    }) : o("approval.unread") : "";
+  return l.jsxs(x, {
+    sx: {
+      display: "flex",
+      alignItems: "center",
+      py: 1,
+      "&:hover .delete-button": {
+        opacity: 1
+      }
+    },
+    children: [l.jsx(Mn, {
+      src: e.avatar ? qn(String(e.avatar), "sm") : void 0,
+      alt: e.name,
+      sx: {
+        width: 32,
+        height: 32,
+        mr: 1.5,
+        bgcolor: `hsl(${t * 80 + 200}, 50%, 65%)`,
+        fontSize: "0.875rem"
+      },
+      children: e.name[0]
+    }), l.jsxs(x, {
+      sx: {
+        flex: 1,
+        minWidth: 0,
+        lineHeight: 1
+      },
+      children: [l.jsx(M, {
+        variant: "body2",
+        fontWeight: 600,
+        children: e.name
+      }), l.jsxs(M, {
+        variant: "caption",
+        color: "text.secondary",
+        children: [[e.department, e.role_name].filter(Boolean).join(" / "), s ? l.jsx(x, {
+          component: "span",
+          sx: {
+            ml: [e.department, e.role_name].some(Boolean) ? .75 : 0,
+            color: a ? "#16a34a" : "#94a3b8"
+          },
+          children: s
+        }) : null]
+      })]
+    }), n && l.jsx(fe, {
+      title: o("approval.delete"),
+      disableInteractive: !0,
+      arrow: !0,
+      children: l.jsx(oe, {
+        className: "delete-button",
+        size: "small",
+        onClick: () => n(e.id),
+        sx: {
+          opacity: 0,
+          transition: "opacity 0.2s"
+        },
+        children: l.jsx(In, {})
+      })
+    })]
+  });
+}
+function Jo({
+  references: e,
+  templates: t,
+  onAddReference: n,
+  onLoadTemplate: r,
+  onSaveTemplate: o,
+  onDeleteTemplate: a,
+  onDelete: s,
+  hideActions: i = !1,
+  emptyMessage: c,
+  minHeight: d = 128,
+  headerSx: u,
+  headerTitleStyle: m,
+  bodySx: p,
+  hideHeader: g = !1,
+  notifyAt: h,
+  onChangeNotifyAt: w,
+  showReadState: E = !1
+}) {
+  const N = se(),
+    P = c ?? N("approval.addReferencesHint"),
+    [f, b] = L.useState(null),
+    [T, j] = L.useState(null),
+    [A, $] = L.useState(null),
+    [S, C] = L.useState(""),
+    D = () => $(null),
+    W = () => b(null),
+    O = () => {
+      j(null), C("");
+    },
+    U = () => {
+      S.trim() && o && (o(S.trim()), O());
+    },
+    q = v => {
+      r?.(v), W();
+    };
+  return l.jsxs(x, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      width: "100%"
+    },
+    children: [!g && l.jsx(tn, {
+      title: l.jsxs(x, {
+        sx: {
+          display: "inline-flex",
+          alignItems: "center"
+        },
+        children: [l.jsx(Tn, {
+          sx: {
+            fontSize: 20,
+            mr: 1,
+            color: "text.secondary"
+          }
+        }), N("approval.reference"), e.length > 0 && l.jsxs(x, {
+          component: "span",
+          sx: {
+            ml: .5,
+            color: "text.secondary",
+            fontWeight: 400
+          },
+          children: ["(", e.length, ")"]
+        })]
+      }),
+      sx: u,
+      titleStyle: m,
+      children: l.jsxs(x, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          pr: 1,
+          gap: .5
+        },
+        children: [l.jsx(fe, {
+          title: N("approval.addReference"),
+          disableInteractive: !0,
+          arrow: !0,
+          children: l.jsx(oe, {
+            size: "medium",
+            onClick: n,
+            children: l.jsx(wn, {})
+          })
+        }), !i && l.jsx(fe, {
+          title: N("approval.more"),
+          disableInteractive: !0,
+          arrow: !0,
+          children: l.jsx(oe, {
+            size: "medium",
+            onClick: v => $(v.currentTarget),
+            children: l.jsx(_n, {
+              sx: {
+                fontSize: 24
+              }
+            })
+          })
+        })]
+      })
+    }), l.jsxs(lt, {
+      anchorEl: A,
+      open: !!A,
+      onClose: D,
+      anchorOrigin: {
+        vertical: "bottom",
+        horizontal: "right"
+      },
+      transformOrigin: {
+        vertical: "top",
+        horizontal: "right"
+      },
+      children: [l.jsxs(Te, {
+        onClick: () => {
+          D(), j(A);
+        },
+        disabled: e.length === 0,
+        children: [l.jsx(ct, {
+          children: l.jsx(Gn, {
+            fontSize: "small"
+          })
+        }), l.jsx(Fe, {
+          children: N("approval.saveLine")
+        })]
+      }), l.jsxs(Te, {
+        onClick: () => {
+          b(A), D();
+        },
+        children: [l.jsx(ct, {
+          children: l.jsx(Ct, {
+            fontSize: "small"
+          })
+        }), l.jsx(Fe, {
+          children: N("approval.loadLine")
+        })]
+      })]
+    }), l.jsx(An, {
+      open: !!T,
+      anchorEl: T,
+      placement: "bottom-end",
+      sx: {
+        zIndex: 1300
+      },
+      children: l.jsx(jn, {
+        onClickAway: O,
+        children: l.jsx(En, {
+          sx: {
+            p: 2.5,
+            minWidth: 300
+          },
+          children: l.jsxs(ut, {
+            spacing: 2,
+            children: [l.jsx(M, {
+              variant: "subtitle1",
+              fontWeight: 600,
+              children: N("approval.saveReferenceTemplate")
+            }), l.jsx(Nn, {
+              autoFocus: !0,
+              fullWidth: !0,
+              size: "medium",
+              placeholder: N("approval.referenceNamePlaceholder"),
+              value: S,
+              onChange: v => C(v.target.value),
+              onKeyDown: v => {
+                v.key === "Enter" ? U() : v.key === "Escape" && O();
+              }
+            }), l.jsxs(x, {
+              sx: {
+                display: "flex",
+                justifyContent: "flex-end",
+                gap: 1
+              },
+              children: [l.jsx(dt, {
+                color: "inherit",
+                onClick: O,
+                children: N("approval.cancel")
+              }), l.jsx(dt, {
+                variant: "contained",
+                onClick: U,
+                disabled: !S.trim(),
+                children: N("approval.ok")
+              })]
+            })]
+          })
+        })
+      })
+    }), l.jsx(lt, {
+      anchorEl: f,
+      open: !!f,
+      onClose: W,
+      anchorOrigin: {
+        vertical: "bottom",
+        horizontal: "right"
+      },
+      transformOrigin: {
+        vertical: "top",
+        horizontal: "right"
+      },
+      slotProps: {
+        paper: {
+          sx: {
+            minWidth: 220
+          }
+        }
+      },
+      children: !t || t.length === 0 ? l.jsx(Te, {
+        disabled: !0,
+        children: l.jsx(M, {
+          variant: "body2",
+          color: "text.secondary",
+          children: N("approval.noSavedReferenceTemplates")
+        })
+      }) : t.map(v => l.jsxs(Te, {
+        onClick: () => q(v.id),
+        sx: {
+          pr: 1
+        },
+        children: [l.jsx(Fe, {
+          children: v.name
+        }), a && l.jsx(oe, {
+          size: "small",
+          onClick: k => {
+            k.stopPropagation(), a(v.id);
+          },
+          sx: {
+            ml: 1,
+            opacity: .5,
+            "&:hover": {
+              opacity: 1,
+              color: "error.main"
+            }
+          },
+          children: l.jsx(Cn, {
+            fontSize: "small"
+          })
+        })]
+      }, v.id))
+    }), l.jsxs(ut, {
+      spacing: 0,
+      sx: {
+        px: 2,
+        pt: 0,
+        pb: 1,
+        minHeight: d,
+        ...p
+      },
+      children: [h && w ? l.jsxs(x, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: .5,
+          py: 1
+        },
+        children: [l.jsx(M, {
+          variant: "body2",
+          color: "text.secondary",
+          sx: {
+            whiteSpace: "nowrap"
+          },
+          children: N("approval.referenceNotify")
+        }), l.jsx(Wn, {
+          size: "small",
+          value: h,
+          onChange: v => v && w(v),
+          options: [{
+            value: "complete",
+            label: N("approval.notifyAfterComplete")
+          }, {
+            value: "submit",
+            label: N("approval.notifyOnSubmit")
+          }],
+          sx: {
+            width: "100%",
+            "& .MuiToggleButtonGroup-grouped": {
+              flex: 1,
+              whiteSpace: "nowrap",
+              px: 1
+            }
+          }
+        })]
+      }) : null, e.length === 0 ? P ? l.jsx(x, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flex: 1,
+          px: 2,
+          py: 1
+        },
+        children: l.jsx(M, {
+          variant: "body2",
+          color: "text.secondary",
+          children: P
+        })
+      }) : null : e.map((v, k) => l.jsx(Mo, {
+        reference: v,
+        index: k,
+        onDelete: s,
+        showReadState: E
+      }, v.id))]
+    })]
+  });
+}
+export { jr as A, Gn as B, _r as C, Ct as F, ge as P, Jo as R, tn as S, zo as a, qo as b, Ar as c, wr as d, Go as e, Bo as f, Yo as g, et as h, zt as i, Uo as j, nt as k, tt as l, Xo as m, Zo as n, Qo as o, Ko as p, Un as q, Tr as r, Rt as s, Sr as t, Ho as u, Tt as v, Wo as w, be as x };

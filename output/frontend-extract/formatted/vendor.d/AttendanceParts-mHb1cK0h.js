@@ -1,0 +1,536 @@
+import { r as b, j as n } from "./react-CjxcGQav.js";
+import { B as i, fQ as y, L as m, cl as v, bv as T, bI as w, ci as A, cj as B, fR as z, bT as D, dP as C } from "../js.d/main-Cm9wS5wt.js";
+import { D as j, d as W, t as k } from "./attendanceMgmt-B_e3bPBn.js";
+function $(e) {
+  let t = e.parentElement;
+  for (; t;) {
+    const {
+      overflowY: o
+    } = window.getComputedStyle(t);
+    if (o === "auto" || o === "scroll") return t;
+    t = t.parentElement;
+  }
+  return null;
+}
+function E(e = !0, t = !1) {
+  const o = b.useRef(null),
+    r = b.useRef(null);
+  return b.useLayoutEffect(() => {
+    const l = o.current;
+    if (!l) return;
+    if (!e) {
+      l.style.minHeight = "", r.current && (r.current.style.marginBottom = ""), t && (l.style.height = "");
+      return;
+    }
+    const a = $(l);
+    if (!a) return;
+    const c = () => {
+      let s = 0,
+        u = 0,
+        d = l,
+        p = l,
+        x = !1;
+      for (let h = l.parentElement; h && h !== a; h = h.parentElement) {
+        const S = parseFloat(window.getComputedStyle(h).paddingBottom) || 0;
+        S > 0 && !x && (d = p, x = !0), s = Math.max(s, S), u += S, p = h;
+      }
+      d.style.marginBottom = u > s ? `${-(u - s)}px` : "", r.current = d;
+      const R = l.getBoundingClientRect().top - a.getBoundingClientRect().top + a.scrollTop,
+        g = Math.floor(a.clientHeight - R - s);
+      l.style.minHeight = g > 0 ? `${g}px` : "", t && (l.style.height = g > 0 ? `${g}px` : "");
+    };
+    c();
+    const f = new ResizeObserver(c);
+    return f.observe(a), l.parentElement?.parentElement && f.observe(l.parentElement.parentElement), () => {
+      f.disconnect(), r.current && (r.current.style.marginBottom = "");
+    };
+  }, [e, t]), o;
+}
+function F({
+  children: e
+}) {
+  return n.jsx(i, {
+    component: "strong",
+    sx: {
+      color: "text.primary",
+      fontWeight: 600
+    },
+    children: e
+  });
+}
+function I({
+  label: e,
+  tone: t,
+  minWidth: o
+}) {
+  return n.jsx(i, {
+    component: "span",
+    sx: {
+      display: "inline-block",
+      ...(o ? {
+        minWidth: o,
+        textAlign: "center",
+        boxSizing: "border-box"
+      } : {}),
+      px: 1,
+      py: .25,
+      borderRadius: 1,
+      fontSize: 14,
+      fontWeight: 600,
+      lineHeight: 1.5,
+      color: t.color,
+      bgcolor: t.bg,
+      whiteSpace: "nowrap"
+    },
+    children: e
+  });
+}
+const N = new Set(["off", "none", "upcoming"]),
+  P = "#dc2626";
+function _({
+  status: e,
+  late: t,
+  early: o,
+  filled: r,
+  plain: l,
+  quiet: a
+}) {
+  const c = T(),
+    f = {
+      color: "#b45309",
+      bg: "#fef3c7"
+    },
+    s = [...(l && e === "upcoming" ? [] : [{
+      label: j[e],
+      tone: W(e)
+    }]), ...(t ? [{
+      label: c("hr.attSetStatLate"),
+      tone: f
+    }] : []), ...(o ? [{
+      label: c("hr.attSetStatEarly"),
+      tone: f
+    }] : []), ...(r ? [{
+      label: c("hr.myAttHoursFilled"),
+      tone: {
+        color: "#047857",
+        bg: "#d1fae5"
+      }
+    }] : [])];
+  return a && N.has(e) && !t && !o ? n.jsx(i, {
+    component: "span",
+    sx: {
+      fontSize: 14,
+      color: e === "off" ? P : "text.secondary",
+      whiteSpace: "nowrap"
+    },
+    children: j[e]
+  }) : l ? s.length ? n.jsx(i, {
+    component: "span",
+    sx: {
+      fontSize: 14,
+      fontWeight: 400,
+      whiteSpace: "nowrap",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      minWidth: 0
+    },
+    children: s.map((u, d) => n.jsxs(i, {
+      component: "span",
+      sx: {
+        color: u.tone.color
+      },
+      children: [d > 0 ? " · " : "", u.label]
+    }, u.label))
+  }) : null : n.jsx(i, {
+    component: "span",
+    sx: {
+      display: "inline-flex",
+      gap: .5,
+      flexWrap: "wrap"
+    },
+    children: s.map(u => n.jsx(I, {
+      label: u.label,
+      tone: u.tone
+    }, u.label))
+  });
+}
+const K = 1.5,
+  M = {
+    neutral: {
+      bg: "#f1f5f9",
+      label: "#64748b",
+      value: "#0f172a"
+    },
+    work: {
+      bg: "#eff6ff",
+      label: "#3b82f6",
+      value: "#1e3a8a"
+    },
+    extra: {
+      bg: "#f5f3ff",
+      label: "#8b5cf6",
+      value: "#4c1d95"
+    },
+    leave: {
+      bg: "#ecfdf5",
+      label: "#10b981",
+      value: "#064e3b"
+    },
+    used: {
+      bg: "#fff7ed",
+      label: "#f97316",
+      value: "#7c2d12"
+    },
+    remaining: {
+      bg: "#f0f9ff",
+      label: "#0ea5e9",
+      value: "#0c4a6e"
+    },
+    danger: {
+      bg: "#fef2f2",
+      label: "#ef4444",
+      value: "#b91c1c"
+    }
+  };
+function Y({
+  label: e,
+  value: t,
+  danger: o,
+  tone: r = "neutral",
+  dense: l,
+  onClick: a,
+  badge: c
+}) {
+  const f = M[o ? "danger" : r];
+  return n.jsxs(i, {
+    ...(a ? {
+      role: "button",
+      tabIndex: 0,
+      onClick: a,
+      onKeyDown: s => (s.key === "Enter" || s.key === " ") && a()
+    } : {}),
+    sx: {
+      flex: "1 1 120px",
+      minWidth: 0,
+      p: 1.5,
+      px: l ? 1.25 : 1.5,
+      borderRadius: 1.5,
+      bgcolor: f.bg,
+      ...(a ? {
+        cursor: "pointer"
+      } : {})
+    },
+    children: [n.jsxs(i, {
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        minWidth: 0
+      },
+      children: [n.jsx(m, {
+        sx: {
+          fontSize: 14,
+          color: f.label,
+          whiteSpace: "nowrap"
+        },
+        children: e
+      }), c && n.jsx(i, {
+        component: "span",
+        sx: {
+          ml: .75,
+          mr: "auto",
+          px: .75,
+          minWidth: 20,
+          boxSizing: "border-box",
+          textAlign: "center",
+          borderRadius: "10px",
+          bgcolor: "#dc2626",
+          color: "#fff",
+          fontSize: 14,
+          fontWeight: 700,
+          lineHeight: "20px",
+          whiteSpace: "nowrap",
+          flexShrink: 0
+        },
+        children: c
+      }), a && n.jsx(v, {
+        sx: {
+          fontSize: 20,
+          color: f.label,
+          mr: -.5,
+          flexShrink: 0
+        }
+      })]
+    }), n.jsx(m, {
+      sx: {
+        fontSize: l ? 16 : 18,
+        fontWeight: 700,
+        color: f.value,
+        mt: .25,
+        wordBreak: "keep-all"
+      },
+      children: t
+    })]
+  });
+}
+function Q({
+  label: e,
+  onPrev: t,
+  onNext: o,
+  large: r,
+  nextDisabled: l,
+  pick: a
+}) {
+  const c = T(),
+    [f, s] = b.useState(null),
+    u = {
+      fontSize: r ? 19 : {
+        xs: 15,
+        md: 19
+      },
+      fontWeight: 600,
+      minWidth: r ? 120 : {
+        xs: 96,
+        md: 120
+      },
+      textAlign: "center",
+      whiteSpace: "nowrap"
+    },
+    d = p => String(p).padStart(2, "0");
+  return n.jsxs(i, {
+    sx: {
+      display: "flex",
+      alignItems: "center",
+      "& .MuiSvgIcon-root": {
+        fontSize: r ? 30 : {
+          xs: 24,
+          md: 30
+        }
+      }
+    },
+    children: [n.jsx(w, {
+      "aria-label": c("hr.prev"),
+      size: "small",
+      onClick: t,
+      children: n.jsx(A, {})
+    }), a ? n.jsxs(n.Fragment, {
+      children: [n.jsx(B, {
+        onClick: p => s(p.currentTarget),
+        sx: {
+          ...u,
+          borderRadius: 1,
+          px: .5,
+          "&:hover": {
+            bgcolor: "action.hover"
+          }
+        },
+        children: e
+      }), n.jsx(z, {
+        open: !!f,
+        anchorEl: f,
+        onClose: () => s(null),
+        selectedDate: new Date(Number(a.value.slice(0, 4)), Number(a.value.slice(5, 7)) - 1, a.mode === "month" ? 1 : Number(a.value.slice(8, 10))),
+        autoApply: !0,
+        showFooter: !1,
+        ...(a.mode === "month" ? {
+          monthOnly: !0,
+          alwaysEmit: !0,
+          onMonthChange: (p, x) => {
+            a.onPick(`${p}-${d(x)}`), s(null);
+          }
+        } : {
+          onDateChange: p => {
+            a.onPick(`${p.getFullYear()}-${d(p.getMonth() + 1)}-${d(p.getDate())}`), s(null);
+          }
+        })
+      })]
+    }) : n.jsx(m, {
+      sx: u,
+      children: e
+    }), n.jsx(w, {
+      "aria-label": c("hr.next"),
+      size: "small",
+      onClick: o,
+      disabled: l,
+      children: n.jsx(v, {})
+    })]
+  });
+}
+function H(e) {
+  const t = e.split(/\*\*(.+?)\*\*/g);
+  return t.length === 1 ? e : t.map((o, r) => r % 2 === 1 ? n.jsx("b", {
+    children: o
+  }, r) : o);
+}
+function G(e) {
+  const t = e.split(/\*\*(.+?)\*\*/g);
+  return t.length === 1 ? e : t.map((o, r) => r % 2 === 1 ? n.jsx(F, {
+    children: o
+  }, r) : o);
+}
+function Z({
+  items: e,
+  sx: t
+}) {
+  return n.jsx(i, {
+    component: "ul",
+    sx: [{
+      m: 0,
+      p: 1.5,
+      pl: 3.5,
+      borderRadius: 1.5,
+      bgcolor: "#f1f5f9",
+      listStyleType: "disc",
+      display: "grid",
+      gap: .5,
+      fontSize: 14,
+      color: "#334155"
+    }, ...(Array.isArray(t) ? t : [t])],
+    children: e.map((o, r) => n.jsx("li", {
+      children: typeof o == "string" ? H(o) : o
+    }, r))
+  });
+}
+function q({
+  text: e
+}) {
+  return n.jsx(i, {
+    sx: {
+      py: 6,
+      px: 2,
+      textAlign: "center",
+      color: "#9b9a97",
+      fontSize: 15,
+      wordBreak: "keep-all"
+    },
+    children: e
+  });
+}
+function J({
+  title: e,
+  action: t,
+  children: o,
+  column: r,
+  fill: l,
+  flush: a
+}) {
+  const c = E(!!l);
+  return n.jsxs(i, {
+    ref: c,
+    sx: {
+      boxSizing: "border-box",
+      bgcolor: "background.paper",
+      borderRadius: "inherit",
+      p: a ? 0 : {
+        xs: 1.5,
+        md: 2
+      },
+      ...(r ? {
+        display: "flex",
+        flexDirection: "column"
+      } : {})
+    },
+    children: [(e || t) && n.jsxs(i, {
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        gap: 1,
+        mb: 1.5,
+        flexWrap: "wrap"
+      },
+      children: [e && n.jsx(m, {
+        sx: {
+          fontSize: 16,
+          fontWeight: 700,
+          flex: "1 0 auto",
+          whiteSpace: "nowrap"
+        },
+        children: e
+      }), t]
+    }), o]
+  });
+}
+function V(e, t) {
+  const [o, r] = e.split("-").map(Number),
+    l = new Date(Date.UTC(o, r - 1 + t, 1));
+  return `${l.getUTCFullYear()}-${String(l.getUTCMonth() + 1).padStart(2, "0")}`;
+}
+function X(e) {
+  const [t, o] = e.split("-").map(Number);
+  return D("hr.yearMonth", {
+    year: t,
+    month: o
+  });
+}
+const ee = {
+  border: y,
+  borderStrong: y,
+  headerColor: "#787774",
+  hoverBg: "#f8f8f7",
+  headHeight: 40
+};
+function te({
+  children: e
+}) {
+  return n.jsx(i, {
+    sx: {
+      width: 0,
+      minWidth: "100%",
+      "& table": {
+        marginRight: "0 !important"
+      }
+    },
+    children: e
+  });
+}
+function ne({
+  date: e,
+  label: t,
+  holiday: o,
+  opacity: r
+}) {
+  const l = new Date(`${e}T00:00:00Z`).getUTCDay(),
+    a = e === k();
+  return n.jsx(i, {
+    component: "span",
+    sx: {
+      display: "inline-block",
+      whiteSpace: "nowrap",
+      ...(l === 0 || o ? {
+        color: "#dc2626"
+      } : l === 6 ? {
+        color: "#2563eb"
+      } : {}),
+      ...(a ? {
+        bgcolor: "#eff6ff",
+        fontWeight: 700,
+        px: 1,
+        py: .25,
+        borderRadius: 1
+      } : {}),
+      ...(r !== void 0 ? {
+        opacity: r
+      } : {})
+    },
+    children: t
+  });
+}
+function oe({
+  children: e
+}) {
+  C(!0);
+  const t = E(!0);
+  return n.jsx(i, {
+    ref: t,
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      bgcolor: "background.paper",
+      "& > *:not(:last-child)": {
+        borderBottom: `1px solid ${y}`
+      }
+    },
+    children: e
+  });
+}
+export { I as C, _ as D, q as E, oe as F, F as K, Z as N, P as O, J as P, K as S, ne as W, ee as a, Y as b, Q as c, V as d, H as e, te as f, G as k, X as m, E as u };

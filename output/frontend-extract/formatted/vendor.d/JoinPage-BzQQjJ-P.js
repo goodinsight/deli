@@ -1,0 +1,532 @@
+import { u as D, r as E, k as M, j as i, L as N } from "./react-CjxcGQav.js";
+import { c8 as O, a as R, bT as n, ak as B, bU as I, c6 as H, r as G, bv as U, B as d, c9 as q, a_ as J, s as b, L as g, d as x, f as _, bQ as P, ca as C, bP as X, al as $, bR as Y, cb as k, b as z, K } from "../js.d/main-Cm9wS5wt.js";
+import { e as w } from "./employeeAccountApi-p-ORLvrh.js";
+import { S as Q } from "./SignupEmailVerify-DuMbXunG.js";
+import { A as Z } from "./AuthLanguageButton-cBZSK8_3.js";
+import "./stylis-DdLD6a3t.js";
+import "./LanguageOutlined-dNJSO7u2.js";
+const h = {
+    step: "loading",
+    lookup: null,
+    error: "",
+    ticket: "",
+    loginPhone: "",
+    existingEmail: "",
+    codeExpiresAt: 0,
+    sending: !1,
+    verifying: !1,
+    submitting: !1,
+    emailCodeSent: !1,
+    emailCodeExpiresAt: 0,
+    emailSentTo: "",
+    emailSending: !1,
+    emailVerifying: !1
+  },
+  L = {
+    code: "",
+    password: "",
+    passwordConfirm: "",
+    email: "",
+    emailCode: "",
+    emailToken: ""
+  };
+function p(o, l) {
+  return o instanceof Error && o.message ? o.message : l;
+}
+function ee(o) {
+  const l = D(),
+    e = O({
+      stateId: "employee-join-state",
+      initialValues: h
+    }),
+    {
+      login: m
+    } = R();
+  E.useEffect(() => {
+    if (e.setValues({
+      ...h
+    }), r.setFormValues({
+      ...L
+    }), !o) {
+      e.setValues({
+        ...h,
+        step: "invalid",
+        error: n("auth.inviteLinkInvalid")
+      });
+      return;
+    }
+    w.joinLookup(o).then(t => {
+      t.status === "accepted" ? e.setValues({
+        ...h,
+        step: "invalid",
+        lookup: t,
+        error: n("auth.inviteAlreadyUsed")
+      }) : t.status === "expired" ? e.setValues({
+        ...h,
+        step: "invalid",
+        lookup: t,
+        error: n("auth.inviteExpired")
+      }) : e.setValues({
+        ...h,
+        step: "intro",
+        lookup: t
+      });
+    }).catch(t => e.setValues({
+      ...h,
+      step: "invalid",
+      error: p(t, n("auth.inviteCheckFailed"))
+    }));
+  }, [o]);
+  const c = async (t, a) => {
+      try {
+        await m.mutateAsync({
+          email: e.getValue("loginPhone"),
+          password: t
+        });
+      } catch (V) {
+        throw new Error(/invalid|password/i.test(p(V, "")) ? n("auth.passwordIncorrect") : p(V, n("auth.loginFailed")));
+      }
+      a && (await a()), H({
+        team_context: !0
+      }), l(G(), {
+        replace: !0
+      });
+    },
+    r = B({
+      formId: "employee-join-form",
+      initialValues: L,
+      onValidate: t => {
+        const a = e.getValue("step");
+        if (!t.password) return e.setValue("error", n("auth.enterPassword")), !1;
+        if (a === "new") {
+          if (t.password !== t.passwordConfirm) return e.setValue("error", n("auth.passwordConfirmMismatch")), !1;
+          if (t.email.trim() && !t.emailToken) return e.setValue("error", n("auth.joinEmailVerifyOrClear")), !1;
+        }
+        return e.setValue("error", ""), !0;
+      },
+      onSubmit: async t => {
+        const a = e.getValue("step");
+        e.setValue("submitting", !0);
+        try {
+          return a === "new" ? (await w.joinComplete(o, {
+            ticket: e.getValue("ticket"),
+            password: t.password,
+            email: t.emailToken ? t.email.trim().toLowerCase() : "",
+            emailToken: t.emailToken
+          }), await c(t.password)) : await c(t.password, () => w.joinAccept(o, e.getValue("ticket"))), !0;
+        } catch (V) {
+          return e.setValue("error", p(V, n("auth.joinFailed"))), !1;
+        } finally {
+          e.setValue("submitting", !1);
+        }
+      }
+    }),
+    A = async () => {
+      e.setValue("sending", !0), e.setValue("error", "");
+      try {
+        const {
+          expiresIn: t
+        } = await w.joinSendCode(o);
+        e.setValue("codeExpiresAt", Date.now() + t * 1e3), r.setFormValue("code", ""), e.setValue("step", "code");
+      } catch (t) {
+        e.setValue("error", p(t, n("auth.codeSendFailed")));
+      } finally {
+        e.setValue("sending", !1);
+      }
+    },
+    u = async () => {
+      const t = String(r.getFormValue("code") ?? "").trim();
+      if (!t) {
+        e.setValue("error", n("auth.enterSmsCode"));
+        return;
+      }
+      e.setValue("verifying", !0), e.setValue("error", "");
+      try {
+        const a = await w.joinVerify(o, t);
+        e.setValue("ticket", a.ticket), e.setValue("loginPhone", a.login_phone), e.setValue("existingEmail", a.existing_email_masked), r.setFormValue("password", ""), r.setFormValue("passwordConfirm", ""), e.setValue("step", a.existing ? "existing" : "new");
+      } catch (a) {
+        e.setValue("error", p(a, n("auth.codeVerifyFailed")));
+      } finally {
+        e.setValue("verifying", !1);
+      }
+    },
+    f = async () => {
+      const t = String(r.getFormValue("email") ?? "").trim().toLowerCase();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t)) {
+        e.setValue("error", n("auth.emailFormatInvalid"));
+        return;
+      }
+      e.setValue("emailSending", !0);
+      try {
+        const a = await I.sendSignupEmailCode(t);
+        e.setValue("emailSentTo", t), e.setValue("emailCodeSent", !0), e.setValue("emailCodeExpiresAt", Date.now() + a * 1e3), r.setFormValue("emailCode", ""), r.setFormValue("emailToken", ""), e.setValue("error", "");
+      } catch (a) {
+        e.setValue("error", p(a, n("auth.codeEmailSendFailed")));
+      } finally {
+        e.setValue("emailSending", !1);
+      }
+    },
+    S = async () => {
+      const t = String(r.getFormValue("emailCode") ?? "").trim();
+      if (!t) {
+        e.setValue("error", n("auth.enterEmailCode"));
+        return;
+      }
+      e.setValue("emailVerifying", !0);
+      try {
+        r.setFormValue("emailToken", await I.verifySignupEmailCode(e.getValue("emailSentTo"), t)), e.setValue("error", "");
+      } catch (a) {
+        e.setValue("error", p(a, n("auth.codeInvalid")));
+      } finally {
+        e.setValue("emailVerifying", !1);
+      }
+    },
+    y = String(r.useFormValue("email") ?? "").trim().toLowerCase();
+  E.useEffect(() => {
+    y !== e.getValue("emailSentTo") && (r.getFormValue("emailToken") && r.setFormValue("emailToken", ""), e.getValue("emailCodeSent") && e.setValue("emailCodeSent", !1));
+  }, [y]);
+  const j = {
+    codeSent: e.useValue("emailCodeSent") === !0,
+    codeExpiresAt: Number(e.useValue("emailCodeExpiresAt")) || 0,
+    verified: !!r.useFormValue("emailToken"),
+    sending: e.useValue("emailSending") === !0,
+    verifying: e.useValue("emailVerifying") === !0,
+    sendCode: f,
+    verifyCode: S
+  };
+  return {
+    state: e,
+    form: r,
+    sendCode: A,
+    verifyCode: u,
+    emailVerify: j,
+    loginPending: m.isPending
+  };
+}
+function te(o, l) {
+  const [e, m] = E.useState(() => Date.now());
+  E.useEffect(() => {
+    if (!l) return;
+    m(Date.now());
+    const r = window.setInterval(() => m(Date.now()), 1e3);
+    return () => window.clearInterval(r);
+  }, [l, o]);
+  const c = Math.max(0, Math.ceil((o - e) / 1e3));
+  return {
+    text: c === 0 ? n("auth.expired") : `${Math.floor(c / 60)}:${String(c % 60).padStart(2, "0")}`,
+    leftSec: c
+  };
+}
+function v({
+  busy: o,
+  disabled: l,
+  onClick: e,
+  children: m
+}) {
+  return i.jsxs(d, {
+    component: "button",
+    type: "button",
+    onClick: e,
+    disabled: o || l,
+    sx: {
+      position: "relative",
+      width: "100%",
+      cursor: "pointer",
+      borderRadius: 1.5,
+      border: "none",
+      bgcolor: z[600],
+      py: 2,
+      fontSize: x.base,
+      fontWeight: _.bold,
+      color: "#fff",
+      "&:hover": {
+        bgcolor: z[700]
+      },
+      "&:disabled": {
+        opacity: .6,
+        cursor: "default"
+      }
+    },
+    children: [i.jsx(d, {
+      component: "span",
+      sx: {
+        visibility: o ? "hidden" : "visible"
+      },
+      children: m
+    }), o && i.jsx(K, {
+      size: 20,
+      color: "inherit",
+      sx: {
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        mt: "-10px",
+        ml: "-10px"
+      }
+    })]
+  });
+}
+function ue() {
+  const {
+      token: o = ""
+    } = M(),
+    {
+      state: l,
+      form: e,
+      sendCode: m,
+      verifyCode: c,
+      emailVerify: r,
+      loginPending: A
+    } = ee(o),
+    u = l.useValue("step") ?? "loading",
+    f = l.useValue("lookup"),
+    S = String(l.useValue("error") ?? ""),
+    y = l.useValue("sending") === !0,
+    j = l.useValue("verifying") === !0,
+    t = l.useValue("submitting") === !0 || A,
+    a = String(l.useValue("existingEmail") ?? ""),
+    V = Number(l.useValue("codeExpiresAt")) || 0,
+    {
+      text: W,
+      leftSec: T
+    } = te(V, u === "code"),
+    s = U(),
+    F = f?.org_name || s("auth.orgFallback");
+  return i.jsxs(d, {
+    sx: {
+      mx: "auto",
+      display: "flex",
+      maxWidth: q,
+      flexDirection: "column",
+      px: 2,
+      pt: 3,
+      pb: 8
+    },
+    children: [i.jsx(Z, {
+      pullUp: 0
+    }), i.jsx(J, {
+      sx: {
+        mx: "auto",
+        fontSize: 56,
+        color: b[400]
+      }
+    }), u === "loading" ? i.jsx(g, {
+      sx: {
+        mt: 3,
+        textAlign: "center",
+        fontSize: x.base,
+        color: b[500]
+      },
+      children: s("auth.checkingInvite")
+    }) : i.jsxs(i.Fragment, {
+      children: [i.jsx(g, {
+        component: "h1",
+        sx: {
+          mt: 2,
+          textAlign: "center",
+          fontSize: "1.5rem",
+          fontWeight: _.black
+        },
+        children: u === "invalid" ? s("auth.inviteInvalidTitle") : s("auth.invitedBy", {
+          org: F
+        })
+      }), u !== "invalid" && f ? i.jsxs(g, {
+        sx: {
+          mt: 1.5,
+          textAlign: "center",
+          fontSize: x.base,
+          color: b[600],
+          lineHeight: 1.7
+        },
+        children: [f.employee_name ? s("auth.greetName", {
+          name: f.employee_name
+        }) : "", u === "existing" ? s("auth.joinExistingAccount") : u === "new" ? s("auth.joinSetPassword") : s("auth.joinVerifyPhone", {
+          phone: f.phone_masked
+        })]
+      }) : null]
+    }), S ? i.jsx(d, {
+      role: "alert",
+      sx: {
+        mt: 3,
+        borderRadius: 1.5,
+        bgcolor: "#fff1f2",
+        p: 1.5,
+        textAlign: "center",
+        fontSize: x.base,
+        fontWeight: _.semibold,
+        color: "#be123c"
+      },
+      children: S
+    }) : null, u === "invalid" ? i.jsx(d, {
+      sx: {
+        mt: 4
+      },
+      children: i.jsx(P, {
+        component: N,
+        to: "/login",
+        variant: "outlined",
+        fullWidth: !0,
+        size: "large",
+        children: s("auth.backToLogin")
+      })
+    }) : null, u === "intro" ? i.jsx(d, {
+      sx: {
+        mt: 4,
+        display: "grid",
+        gap: C
+      },
+      children: i.jsx(v, {
+        busy: y,
+        disabled: f?.sms_enabled === !1,
+        onClick: () => {
+          m();
+        },
+        children: s("auth.getCode")
+      })
+    }) : null, u === "code" ? i.jsxs(d, {
+      sx: {
+        mt: 4,
+        display: "grid",
+        gap: C
+      },
+      children: [i.jsxs(d, {
+        sx: X,
+        children: [i.jsxs(d, {
+          sx: {
+            position: "relative"
+          },
+          children: [i.jsx($, {
+            form: e,
+            name: "code",
+            label: s("auth.smsCode"),
+            inputMode: "numeric",
+            autoComplete: "one-time-code",
+            clearIcon: !1,
+            disabled: j || T === 0,
+            fullWidth: !0,
+            size: "medium",
+            sx: {
+              "& input": {
+                pr: 8
+              }
+            }
+          }), i.jsx(g, {
+            "aria-live": "off",
+            sx: {
+              position: "absolute",
+              right: 14,
+              top: "50%",
+              transform: "translateY(-50%)",
+              pointerEvents: "none",
+              typography: "body1",
+              fontWeight: 700,
+              fontVariantNumeric: "tabular-nums",
+              color: T <= 30 ? "error.main" : "text.secondary"
+            },
+            children: W
+          })]
+        }), i.jsx(P, {
+          variant: "outlined",
+          onClick: () => {
+            m();
+          },
+          disabled: y,
+          sx: Y,
+          children: s("auth.resendCode")
+        })]
+      }), i.jsx(v, {
+        busy: j,
+        disabled: T === 0,
+        onClick: () => {
+          c();
+        },
+        children: s("common.confirm")
+      })]
+    }) : null, u === "new" ? i.jsxs(d, {
+      component: "form",
+      onSubmit: e.submit,
+      sx: {
+        mt: 4,
+        display: "grid",
+        gap: C
+      },
+      children: [i.jsx(k, {
+        form: e,
+        name: "password",
+        label: s("auth.password"),
+        autoComplete: "new-password",
+        required: !0,
+        fullWidth: !0,
+        size: "medium"
+      }), i.jsx(k, {
+        form: e,
+        name: "passwordConfirm",
+        label: s("auth.passwordConfirm"),
+        autoComplete: "new-password",
+        required: !0,
+        fullWidth: !0,
+        size: "medium"
+      }), i.jsx(Q, {
+        form: e,
+        emailVerify: r,
+        optional: !0
+      }), i.jsx(g, {
+        sx: {
+          fontSize: x.base,
+          color: b[500],
+          lineHeight: 1.6
+        },
+        children: s("auth.joinEmailOptional")
+      }), i.jsx(v, {
+        busy: t,
+        onClick: () => {
+          e.submit();
+        },
+        children: s("auth.joinAndStart")
+      })]
+    }) : null, u === "existing" ? i.jsxs(d, {
+      component: "form",
+      onSubmit: e.submit,
+      sx: {
+        mt: 4,
+        display: "grid",
+        gap: C
+      },
+      children: [i.jsx(g, {
+        sx: {
+          fontSize: x.base,
+          color: b[600],
+          lineHeight: 1.7
+        },
+        children: a ? s("auth.joinExistingHintEmail", {
+          email: a,
+          org: F
+        }) : s("auth.joinExistingHint", {
+          org: F
+        })
+      }), i.jsx(k, {
+        form: e,
+        name: "password",
+        label: s("auth.password"),
+        autoComplete: "current-password",
+        required: !0,
+        fullWidth: !0,
+        size: "medium"
+      }), i.jsx(v, {
+        busy: t,
+        onClick: () => {
+          e.submit();
+        },
+        children: s("auth.loginAndJoin")
+      }), i.jsx(g, {
+        sx: {
+          textAlign: "center",
+          fontSize: x.base,
+          color: b[500]
+        },
+        children: s("auth.forgotPasswordAskAdmin")
+      })]
+    }) : null]
+  });
+}
+export { ue as default };

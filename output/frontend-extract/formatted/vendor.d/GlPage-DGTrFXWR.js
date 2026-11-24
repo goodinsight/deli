@@ -1,0 +1,327 @@
+import { r, j as e } from "./react-CjxcGQav.js";
+import { bv as L, cz as M, dv as q, B as t, cJ as E, L as p, al as N, fN as A, bQ as B, K as F, cc as P, cY as H, bO as l, bT as o, bx as R } from "../js.d/main-Cm9wS5wt.js";
+import { a as y } from "./accountingApi-BfPys7bV.js";
+import { u as J, a as K, l as Q } from "./glStore-Bh_caf5d.js";
+import "./stylis-DdLD6a3t.js";
+const j = 100;
+function Z() {
+  const s = L(),
+    u = M()?.seq ?? 0,
+    v = J(u),
+    [x, b] = r.useState(null),
+    [C, _] = r.useState(""),
+    [h, i] = r.useState(""),
+    [I, w] = r.useState(""),
+    [f, T] = r.useState(0),
+    d = async (a = !1) => {
+      try {
+        const n = await y.catalog(!0);
+        b(n.items), a || (await Q(u, !0));
+      } catch (n) {
+        a || l(n instanceof Error ? n.message : o("accounting.errLoadAccounts"));
+      }
+    };
+  r.useEffect(() => {
+    u && (b(null), d());
+  }, [u]), q(["accounting_tran_item"], () => {
+    d(!0);
+  }, {
+    enabled: u > 0
+  });
+  const S = r.useMemo(() => v.accounts.filter(a => a.account_level !== 1).map(a => ({
+      value: a.code,
+      label: K(a)
+    })), [v.accounts]),
+    g = C.trim(),
+    m = (x ?? []).filter(a => g ? a.name.includes(g) || a.category.includes(g) : a.overridden || a.custom),
+    z = async (a, n) => {
+      i(a.name);
+      try {
+        await y.saveTranItem({
+          name: a.name,
+          category: a.category,
+          ...n
+        }), await d();
+      } catch (c) {
+        l(c instanceof Error ? c.message : o("accounting.errSave"));
+      } finally {
+        i("");
+      }
+    },
+    G = async a => {
+      i(a.name);
+      try {
+        await y.resetTranItem(a.name), await d(), R({
+          message: a.custom ? o("accounting.deleted") : o("accounting.restoredToStandard"),
+          delay: 500
+        });
+      } catch (n) {
+        l(n instanceof Error ? n.message : o("accounting.errRestore"));
+      } finally {
+        i("");
+      }
+    },
+    O = async () => {
+      const a = I.trim();
+      if (!a) return l(o("accounting.enterTranItemName"));
+      if (!f) return l(o("accounting.selectAccount"));
+      if ((x ?? []).some(n => n.name === a)) return l(o("accounting.duplicateTranItem"));
+      i("new");
+      try {
+        await y.saveTranItem({
+          name: a,
+          category: v.accountByCode.get(f)?.account_name ?? "",
+          accounts: [f],
+          active: !0
+        }), w(""), T(0), await d(), R({
+          message: o("accounting.added"),
+          delay: 500
+        });
+      } catch (n) {
+        l(n instanceof Error ? n.message : o("accounting.errAdd"));
+      } finally {
+        i("");
+      }
+    },
+    W = {
+      p: {
+        xs: 2,
+        sm: 3
+      },
+      borderRadius: 2,
+      boxShadow: "0 1px 3px rgba(0,0,0,0.12)"
+    };
+  return e.jsxs(t, {
+    sx: {
+      maxWidth: 960,
+      display: "grid",
+      gap: 2.5
+    },
+    children: [e.jsxs(E, {
+      sx: {
+        ...W,
+        display: "grid",
+        gap: 2
+      },
+      children: [e.jsx(p, {
+        variant: "h6",
+        sx: {
+          fontWeight: 700
+        },
+        children: s("accounting.addCustomTranItem")
+      }), e.jsxs(t, {
+        sx: {
+          display: "grid",
+          gap: 2.5,
+          gridTemplateColumns: {
+            xs: "minmax(0, 1fr)",
+            sm: "minmax(0, 1fr) minmax(0, 1fr) auto"
+          },
+          alignItems: "center"
+        },
+        children: [e.jsx(N, {
+          label: s("accounting.tranItemName"),
+          value: I,
+          onChange: a => w(a.target.value),
+          fullWidth: !0
+        }), e.jsx(A, {
+          label: s("accounting.account"),
+          options: S,
+          value: f || null,
+          onChange: a => T(Number(a) || 0),
+          disablePortal: !1,
+          fullWidth: !0
+        }), e.jsx(B, {
+          variant: "contained",
+          disableElevation: !0,
+          onClick: () => {
+            O();
+          },
+          disabled: h === "new",
+          sx: {
+            height: 56
+          },
+          children: s("accounting.addButton")
+        })]
+      })]
+    }), e.jsxs(E, {
+      sx: {
+        ...W,
+        display: "grid",
+        gap: 1
+      },
+      children: [e.jsxs(t, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: 1.5,
+          flexWrap: "wrap"
+        },
+        children: [e.jsx(p, {
+          variant: "h6",
+          sx: {
+            fontWeight: 700,
+            flex: 1
+          },
+          children: g ? s("accounting.foundTranItems", {
+            count: m.length
+          }) : s("accounting.customizedTranItems", {
+            count: m.length
+          })
+        }), e.jsx(t, {
+          sx: {
+            width: {
+              xs: "100%",
+              sm: 280
+            }
+          },
+          children: e.jsx(N, {
+            label: s("accounting.searchTranItems"),
+            value: C,
+            onChange: a => _(a.target.value),
+            fullWidth: !0
+          })
+        })]
+      }), x === null ? e.jsx(t, {
+        sx: {
+          display: "flex",
+          justifyContent: "center",
+          py: 4
+        },
+        children: e.jsx(F, {
+          size: 28
+        })
+      }) : null, x !== null && m.length === 0 ? e.jsx(t, {
+        sx: {
+          py: 3,
+          color: "text.secondary",
+          fontSize: 15
+        },
+        children: s(g ? "accounting.noFoundTranItems" : "accounting.noCustomizedTranItems")
+      }) : null, m.slice(0, j).map(a => e.jsxs(t, {
+        sx: {
+          display: "grid",
+          gridTemplateColumns: {
+            xs: "minmax(0, 1fr) auto",
+            sm: "minmax(0, 1fr) minmax(0, 1.2fr) auto"
+          },
+          gap: 1.5,
+          alignItems: "center",
+          py: 1.25,
+          borderTop: 1,
+          borderColor: "divider",
+          opacity: a.active ? 1 : .55
+        },
+        children: [e.jsxs(t, {
+          sx: {
+            minWidth: 0
+          },
+          children: [e.jsxs(t, {
+            sx: {
+              display: "flex",
+              alignItems: "center",
+              gap: .75
+            },
+            children: [e.jsx(p, {
+              noWrap: !0,
+              sx: {
+                fontSize: 16,
+                fontWeight: 600
+              },
+              children: a.name
+            }), a.custom ? e.jsx(P, {
+              size: "small",
+              label: s("accounting.ourCompany"),
+              sx: {
+                fontSize: 14,
+                height: 24
+              }
+            }) : null, a.overridden && !a.custom ? e.jsx(P, {
+              size: "small",
+              label: s("accounting.modified"),
+              sx: {
+                fontSize: 14,
+                height: 24
+              }
+            }) : null]
+          }), e.jsx(p, {
+            noWrap: !0,
+            sx: {
+              fontSize: 14,
+              color: "text.secondary"
+            },
+            children: a.category
+          })]
+        }), e.jsx(t, {
+          sx: {
+            gridColumn: {
+              xs: "1 / -1",
+              sm: "auto"
+            },
+            minWidth: 0
+          },
+          children: e.jsx(A, {
+            label: s("accounting.primaryAccount"),
+            size: "small",
+            options: S,
+            value: a.accounts[0] || null,
+            onChange: n => {
+              const c = Number(n) || 0;
+              c && c !== a.accounts[0] && z(a, {
+                accounts: [c, ...a.accounts.filter(k => k !== c)]
+              });
+            },
+            disablePortal: !1,
+            disabled: h === a.name,
+            fullWidth: !0
+          })
+        }), e.jsxs(t, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: .5,
+            gridRow: {
+              xs: 1,
+              sm: "auto"
+            },
+            gridColumn: {
+              xs: 2,
+              sm: "auto"
+            }
+          },
+          children: [e.jsx(H, {
+            checked: a.active,
+            onChange: (n, c) => {
+              z(a, {
+                active: c
+              });
+            },
+            disabled: h === a.name,
+            inputProps: {
+              "aria-label": s("accounting.useItem", {
+                name: a.name
+              })
+            }
+          }), a.overridden || a.custom ? e.jsx(B, {
+            size: "small",
+            onClick: () => {
+              G(a);
+            },
+            disabled: h === a.name,
+            children: a.custom ? s("accounting.remove") : s("accounting.restore")
+          }) : null]
+        })]
+      }, a.name)), m.length > j ? e.jsx(t, {
+        sx: {
+          py: 1.5,
+          fontSize: 15,
+          color: "text.secondary"
+        },
+        children: s("accounting.tooManyResults", {
+          count: j
+        })
+      }) : null]
+    })]
+  });
+}
+export { Z as default };

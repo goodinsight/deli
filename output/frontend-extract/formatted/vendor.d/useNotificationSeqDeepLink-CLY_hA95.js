@@ -1,0 +1,42 @@
+import { l as P, r as e } from "./react-CjxcGQav.js";
+function x(R) {
+  const {
+      resolve: a,
+      open: o,
+      deps: d,
+      delayMs: q = 500
+    } = R,
+    [S, f] = P(),
+    [l, h] = e.useState(null),
+    i = e.useRef(0),
+    r = l?.seq ?? null,
+    u = e.useRef(null),
+    n = e.useRef(null),
+    s = e.useRef(a);
+  s.current = a;
+  const p = e.useRef(o);
+  p.current = o;
+  const c = S.get("seq");
+  e.useEffect(() => {
+    if (!c) return;
+    const t = Number(c);
+    Number.isInteger(t) && t > 0 && (u.current = null, i.current += 1, h({
+      seq: t,
+      id: i.current
+    })), f(E => {
+      const m = new URLSearchParams(E);
+      return m.delete("seq"), m;
+    }, {
+      replace: !0
+    });
+  }, [c, f]), e.useEffect(() => {
+    r == null || u.current === r || n.current || s.current(r) != null && (u.current = r, n.current = setTimeout(() => {
+      n.current = null;
+      const t = s.current(r);
+      t != null && p.current(t);
+    }, q));
+  }, [r, l?.id, ...d]), e.useEffect(() => () => {
+    n.current && clearTimeout(n.current);
+  }, []);
+}
+export { x as u };

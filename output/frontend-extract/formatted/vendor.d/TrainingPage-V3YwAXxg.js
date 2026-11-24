@@ -1,0 +1,611 @@
+import { r as i, j as t } from "./react-CjxcGQav.js";
+import { bv as N, fL as le, D as ce, cz as de, bO as pe, bT as ue, dv as he, B as n, F as me, d8 as V, s as _, b0 as ge, bQ as xe, lr as fe, L as be, bx as Se } from "../js.d/main-Cm9wS5wt.js";
+import { O as _e } from "./OptionToggleGroup-Cvm2wRyq.js";
+import { S as Ce } from "./SplitDockSlot-B6Q4iP8T.js";
+import { L as we } from "./ListViewModeToggle-NcYQu7vy.js";
+import { u as ye } from "./listViewMode-iTl-2ucA.js";
+import { S as je } from "./selectedRow-CBnSZEGB.js";
+import { E as ve, a as Te } from "./EdgeTabs-Ccbggjn6.js";
+import { u as Ee } from "./mobileSearchOverlay-DYWcMOOb.js";
+import { t as Oe } from "./trainingApi-DT4unjOR.js";
+import { u as Re, T as Ie } from "./TrainingEditDialog-CdnpriOe.js";
+import { d as F, a as U } from "./career-DNUE6AFa.js";
+import { T as A, a as m, p as Y, b as Le } from "./training-Bx0zycZu.js";
+import { i as $ } from "./trainingCalendar-BpMTSUwd.js";
+import { u as Ae, a as Ne, b as Me } from "./MobileCardListLayout-D5_p2Xer.js";
+import { T as ze } from "./tableScrollbars-C9bhlJjO.js";
+import { u as We } from "./useColumnWidths-DSAca5rC.js";
+import { u as Be } from "./useClientSort-CdwrAOWp.js";
+import { w as qe } from "./headerCount-4t1ZKu-L.js";
+import "./stylis-DdLD6a3t.js";
+import "./HorizontalSplitOutlined-MKxJhLKp.js";
+import "./profileApi-Btafs-pM.js";
+import "./useFormModified-cVB1R-yN.js";
+import "./employeeApi-CdGzOYcj.js";
+import "./types-CVhETUvu.js";
+import "./i18nLabels-BNTLL7cu.js";
+import "./CategoryOutlined-DcAqxAdD.js";
+import "./EventRepeatOutlined-BzT6rPrF.js";
+import "./Title-WCY0exuZ.js";
+import "./DeleteOutlineOutlined-5H75k_7z.js";
+import "./FileUploadBox-crZW1mG0.js";
+import "./bootstrapController-BMV_i07c.js";
+import "./profileEcho-q2FaD_03.js";
+import "./teamMembers-0yRsmqL6.js";
+import "./pendingRecordings-DpKJ8Y2R.js";
+import "./meetingsApi-CCkjq69B.js";
+import "./orgTree-Dh5HFjBo.js";
+import "./mxApi-R6g9QtQq.js";
+import "./aliasStore-DiN6Kp-5.js";
+import "./AccountAvatar-DtrhoS_d.js";
+import "./Person-DnoEHesw.js";
+import "./resolveAssetPreviewSrc-CLlbOCzq.js";
+import "./date_utils-CYURFdnX.js";
+import "./FileViewer-D5PyYcLh.js";
+import "./RotateRight-DbtMfjGZ.js";
+import "./tiny-invariant-CopsF_GD.js";
+import "./Snackbar-DxIDGM8-.js";
+import "./uploadGuard-BK1B6cyC.js";
+import "./EmployeeSelectDialog-Cdnxeoz9.js";
+import "./utils-B6Q5_urv.js";
+import "./InlineErrorAlert-D9ICJPt7.js";
+import "./PropertyFields-TuJTG5XK.js";
+import "./propertySections-Bwsl7OH-.js";
+const De = 52,
+  ke = "#9b9a97",
+  Ge = 300,
+  Pe = new Set(["no", "name", "category", "period", "attendance"]);
+function K({
+  category: o
+}) {
+  const s = Le[o];
+  return t.jsx(n, {
+    component: "span",
+    sx: {
+      px: 1,
+      py: .25,
+      borderRadius: 1,
+      fontSize: 12,
+      fontWeight: 600,
+      color: s.color,
+      bgcolor: s.bg,
+      whiteSpace: "nowrap"
+    },
+    children: m[o]
+  });
+}
+function Q({
+  filtering: o
+}) {
+  const s = N();
+  return t.jsx(n, {
+    sx: {
+      py: 6,
+      px: 2,
+      textAlign: "center",
+      color: ke,
+      fontSize: 14,
+      wordBreak: "keep-all"
+    },
+    children: s(o ? "hr.trainingNoMatch" : "hr.trainingNone")
+  });
+}
+function X({
+  item: o,
+  fontSize: s = 13
+}) {
+  const g = N();
+  if (o.attendee_count === 0) return t.jsx(n, {
+    component: "span",
+    sx: {
+      color: _[300]
+    },
+    children: "–"
+  });
+  const a = o.completed_count >= o.attendee_count;
+  return t.jsxs(n, {
+    component: "span",
+    sx: {
+      fontSize: s,
+      whiteSpace: "nowrap"
+    },
+    children: [g("hr.trainingAttendeesN", {
+      count: o.attendee_count
+    }), " ", t.jsx(n, {
+      component: "span",
+      sx: {
+        color: a ? "success.main" : "#d97706",
+        fontWeight: 600
+      },
+      children: g("hr.trainingCompletedN", {
+        count: o.completed_count
+      })
+    })]
+  });
+}
+function Ht() {
+  const o = N(),
+    s = le("hr"),
+    g = We("hr.training"),
+    a = ce(),
+    M = de()?.seq ?? 0,
+    [C, J] = ye("training"),
+    w = !a && C === "split",
+    y = !a && C === "split_bottom",
+    j = w || y,
+    [x, z] = i.useState([]),
+    [v, W] = i.useState(!1),
+    [f, T] = i.useState(""),
+    [E, Z] = i.useState(""),
+    [d, O] = i.useState(""),
+    b = i.useRef(0),
+    {
+      rows: S,
+      tableSort: ee
+    } = Be(x, {
+      created_date: e => `${e.created_date} ${String(e.seq).padStart(10, "0")}`,
+      category: e => m[e.category],
+      period: e => e.start_date,
+      attendance: e => e.attendee_count,
+      next_date: e => e.next_date,
+      institution: e => e.institution,
+      hours: e => e.hours
+    }, {
+      by: "created_date",
+      dir: "desc"
+    });
+  i.useEffect(() => {
+    const e = setTimeout(() => Z(f.trim()), Ge);
+    return () => clearTimeout(e);
+  }, [f]);
+  const u = Ee(),
+    R = !!u.useValue("open");
+  i.useEffect(() => {
+    if (a) return u.setValue("active", !0), () => {
+      u.setValue("active", !1), u.setValue("open", !1);
+    };
+  }, [a, u]), i.useEffect(() => {
+    a && !R && T("");
+  }, [a, R]);
+  const h = i.useCallback(async (e = !1) => {
+    if (!M) {
+      z([]);
+      return;
+    }
+    const p = ++b.current;
+    e || W(!0);
+    try {
+      const c = await Oe.list({
+        category: d,
+        search: E
+      });
+      p === b.current && z(c.items);
+    } catch (c) {
+      p === b.current && !e && pe(c instanceof Error ? c.message : ue("hr.errLoadTrainings"));
+    } finally {
+      p === b.current && W(!1);
+    }
+  }, [M, d, E]);
+  i.useEffect(() => {
+    h();
+  }, [h]), he(["hr_training"], () => {
+    h(!0);
+  });
+  const l = Re({
+      modalId: "training-edit",
+      formId: "training-form",
+      onSaved: e => {
+        Se({
+          message: e,
+          delay: 500
+        }), h(), $();
+      },
+      onChanged: () => {
+        h(!0), $();
+      }
+    }),
+    B = () => l.openCreate(),
+    q = e => l.openEdit(e.seq),
+    D = !!(E || d),
+    te = t.jsx(n, {
+      sx: {
+        "& .MuiToggleButtonGroup-root": {
+          height: 40,
+          flexWrap: "nowrap"
+        }
+      },
+      children: t.jsx(_e, {
+        size: "medium",
+        value: d,
+        onChange: e => {
+          e !== null && O(e);
+        },
+        options: [{
+          value: "",
+          label: o("hr.all")
+        }, ...A.map(e => ({
+          value: e,
+          label: m[e]
+        }))],
+        sx: {
+          "& .MuiToggleButtonGroup-grouped": {
+            minWidth: 64,
+            px: 1.5
+          }
+        }
+      })
+    }),
+    oe = e => e.next_date && e.next_days_left !== null ? t.jsxs(n, {
+      sx: {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        lineHeight: 1.25
+      },
+      children: [t.jsx(n, {
+        component: "span",
+        sx: {
+          fontSize: 13
+        },
+        children: e.next_date
+      }), t.jsx(n, {
+        component: "span",
+        sx: {
+          fontSize: 12,
+          fontWeight: 600,
+          color: U(e.next_days_left)
+        },
+        children: F(e.next_days_left)
+      })]
+    }) : t.jsx(n, {
+      component: "span",
+      sx: {
+        color: _[300]
+      },
+      children: "–"
+    }),
+    k = t.jsx(Ie, {
+      controller: l,
+      docked: j
+    }),
+    ne = Number(l.form.useFormValue("seq")) || 0,
+    I = l.modals.form.isOpen ? ne : 0,
+    L = j && l.modals.form.isOpen,
+    re = w && L,
+    ie = e => {
+      if (j && e.seq === I) {
+        l.modals.form.close();
+        return;
+      }
+      q(e);
+    },
+    G = Ae(v);
+  if (a) {
+    const e = r => t.jsxs(n, {
+        role: "button",
+        tabIndex: 0,
+        onClick: () => q(r),
+        sx: {
+          p: 1.5,
+          cursor: "pointer",
+          userSelect: "none",
+          "&:active": {
+            bgcolor: "#f8f8f7"
+          }
+        },
+        children: [t.jsxs(n, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: .75,
+            minWidth: 0
+          },
+          children: [t.jsx(K, {
+            category: r.category
+          }), t.jsx(be, {
+            sx: {
+              fontSize: 15,
+              fontWeight: 600,
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap"
+            },
+            children: r.name
+          })]
+        }), t.jsxs(n, {
+          sx: {
+            display: "flex",
+            gap: 1.25,
+            fontSize: 14,
+            color: "text.secondary",
+            mt: .5,
+            flexWrap: "wrap"
+          },
+          children: [t.jsx("span", {
+            children: Y(r.start_date, r.end_date)
+          }), r.institution ? t.jsx("span", {
+            children: r.institution
+          }) : null, t.jsx(X, {
+            item: r,
+            fontSize: 14
+          }), r.next_date && r.next_days_left !== null ? t.jsx(n, {
+            component: "span",
+            sx: {
+              color: U(r.next_days_left),
+              fontWeight: 600
+            },
+            children: o("hr.trainingNextOn", {
+              date: r.next_date,
+              due: F(r.next_days_left)
+            })
+          }) : null]
+        })]
+      }, r.seq),
+      p = [{
+        value: "",
+        label: o("hr.all")
+      }, ...A.map(r => ({
+        value: r,
+        label: m[r]
+      }))],
+      c = S.map(e);
+    return G && x.length === 0 && c.push(t.jsx(Q, {
+      filtering: D
+    }, "empty")), G || c.push(t.jsx(Ne, {}, "loading")), t.jsxs(t.Fragment, {
+      children: [t.jsx(ve, {
+        value: d,
+        options: p,
+        onChange: O,
+        ariaLabel: o("hr.trainingCategoryAria"),
+        above: t.jsx(Te, {
+          open: R,
+          value: f,
+          onChange: T,
+          placeholder: o("hr.trainingSearch")
+        })
+      }), t.jsx(Me, {
+        attachHead: !0,
+        children: c
+      }), t.jsx(me, {
+        style: s.canWrite ? void 0 : {
+          display: "none"
+        },
+        color: "primary",
+        "aria-label": o("hr.trainingRegister"),
+        onClick: B,
+        sx: {
+          position: "fixed",
+          right: 24,
+          bottom: "calc(24px + var(--taskbox-fab-lift, 0px))",
+          zIndex: 40
+        },
+        children: t.jsx(V, {})
+      }), k]
+    });
+  }
+  const se = new Map(x.map((e, p) => [e.seq, x.length - p])),
+    P = [{
+      id: "no",
+      text: o("hr.employeeColNo"),
+      width: 64,
+      align: "center",
+      render: e => t.jsx(n, {
+        component: "span",
+        sx: {
+          fontSize: 13,
+          color: _[500]
+        },
+        children: se.get(e.seq)
+      })
+    }, {
+      id: "created_date",
+      text: o("hr.trainingCreatedDate"),
+      width: 110,
+      align: "center",
+      sortable: !0,
+      render: e => t.jsx(n, {
+        component: "span",
+        sx: {
+          fontSize: 13
+        },
+        children: e.created_date
+      })
+    }, {
+      id: "name",
+      text: qe(o("hr.recordTrainingName"), S.length),
+      sortable: !0,
+      render: e => t.jsxs(n, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: .75,
+          minWidth: 0
+        },
+        children: [t.jsx(n, {
+          component: "span",
+          sx: {
+            fontSize: 15,
+            fontWeight: 500,
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap"
+          },
+          children: e.name
+        }), e.attachment_count > 0 ? t.jsx(n, {
+          component: "span",
+          title: o("hr.trainingAttachmentsN", {
+            count: e.attachment_count
+          }),
+          sx: {
+            display: "inline-flex",
+            color: _[400]
+          },
+          children: t.jsx(ge, {
+            sx: {
+              fontSize: 16
+            }
+          })
+        }) : null]
+      })
+    }, {
+      id: "category",
+      text: o("hr.attAdminKind"),
+      width: 96,
+      align: "center",
+      sortable: !0,
+      filterOptions: A.map(e => ({
+        value: e,
+        label: m[e]
+      })),
+      filterValues: d ? [d] : [],
+      filterMultiple: !1,
+      onFilterChange: e => O(e[0] ?? ""),
+      render: e => t.jsx(K, {
+        category: e.category
+      })
+    }, {
+      id: "institution",
+      text: o("hr.subsidyAgency"),
+      width: 210,
+      align: "center",
+      sortable: !0,
+      render: e => t.jsx(n, {
+        component: "span",
+        title: e.institution,
+        sx: {
+          display: "block",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap"
+        },
+        children: e.institution
+      })
+    }, {
+      id: "period",
+      text: o("hr.trainingPeriod"),
+      width: 180,
+      align: "center",
+      sortable: !0,
+      render: e => t.jsx(n, {
+        component: "span",
+        sx: {
+          fontSize: 13
+        },
+        children: Y(e.start_date, e.end_date)
+      })
+    }, {
+      id: "hours",
+      text: o("hr.recordHours"),
+      width: 72,
+      align: "center",
+      sortable: !0,
+      render: e => e.hours ? `${e.hours}h` : ""
+    }, {
+      id: "attendance",
+      text: o("hr.trainingAttendance"),
+      width: 150,
+      align: "center",
+      sortable: !0,
+      render: e => t.jsx(X, {
+        item: e
+      })
+    }, {
+      id: "next_date",
+      text: o("hr.trainingNextDate"),
+      width: 112,
+      align: "center",
+      sortable: !0,
+      render: oe
+    }],
+    ae = {
+      right: t.jsx(we, {
+        value: C,
+        onChange: J,
+        withBottom: !0
+      }),
+      left: t.jsx(xe, {
+        style: s.canWrite ? void 0 : {
+          display: "none"
+        },
+        variant: "contained",
+        disableElevation: !0,
+        startIcon: t.jsx(V, {}),
+        onClick: B,
+        children: o("hr.trainingRegister")
+      }),
+      filter: {
+        stateId: "training-filters",
+        showChips: !1,
+        groups: [{
+          filters: [{
+            type: "custom",
+            name: "training-category",
+            node: te
+          }]
+        }]
+      },
+      showSearch: !0,
+      searchValue: f,
+      searchPlaceholder: o("hr.trainingSearch"),
+      onSearchChange: T,
+      searchLoading: v,
+      collapsible: !1,
+      showCollapseButton: !1,
+      showClearIcon: !1
+    },
+    H = t.jsx(Ce, {
+      onEscape: l.modals.form.close
+    });
+  return t.jsxs(t.Fragment, {
+    children: [t.jsx(n, {
+      sx: {
+        position: "relative",
+        height: "100%",
+        minHeight: 0,
+        display: "flex",
+        flexDirection: "column"
+      },
+      children: t.jsx(fe, {
+        storageKey: "training-split",
+        header: ae,
+        resizable: !0,
+        rightPanel: y ? void 0 : H,
+        bottomPanel: y ? H : void 0,
+        bottomConfig: {
+          visible: L,
+          ratio: .55,
+          minHeight: 320
+        },
+        bottomResizable: !0,
+        rightConfig: {
+          visible: w && L,
+          ratio: .5,
+          minWidth: 420
+        },
+        leftConfig: {
+          minWidth: 360
+        },
+        tableProps: {
+          ...g,
+          scrollbars: ze,
+          mobile: !0,
+          variant: "notion",
+          columns: re ? P.filter(e => Pe.has(e.id)) : P,
+          data: S,
+          totalCount: S.length,
+          ...ee,
+          getRowId: e => String(e.seq),
+          rowHeight: De,
+          onRowClick: ie,
+          selectedRowId: I ? String(I) : null,
+          selectedRowSx: je,
+          loading: v,
+          emptyMessage: t.jsx(Q, {
+            filtering: D
+          })
+        }
+      })
+    }), k]
+  });
+}
+export { Ht as default };

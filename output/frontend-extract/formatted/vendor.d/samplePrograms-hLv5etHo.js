@@ -1,0 +1,134 @@
+const t = [{
+  id: "sp-01",
+  title: "예비창업패키지 (하반기)",
+  agency: "창업진흥원",
+  ministry: "중소벤처기업부",
+  target: "예비창업자",
+  amount: "최대 1억원",
+  start_date: "2026-06-26",
+  deadline: "2026-07-24",
+  field: "전 분야",
+  stage: "예비창업"
+}, {
+  id: "sp-02",
+  title: "초기창업패키지",
+  agency: "창업진흥원",
+  ministry: "중소벤처기업부",
+  target: "창업 3년 이내 기업",
+  amount: "최대 1억원",
+  start_date: "2026-07-10",
+  deadline: "2026-07-31",
+  field: "전 분야",
+  stage: "초기(3년 미만)"
+}, {
+  id: "sp-03",
+  title: "초격차 스타트업 1000+ (AI 분야)",
+  agency: "창업진흥원",
+  ministry: "중소벤처기업부",
+  target: "창업 7년 이내 기술기업",
+  amount: "최대 6억원",
+  start_date: "2026-07-21",
+  deadline: "2026-08-14",
+  field: "AI",
+  stage: "도약(3~7년)"
+}, {
+  id: "sp-04",
+  title: "AI 바우처 지원사업 (추경)",
+  agency: "정보통신산업진흥원",
+  ministry: "과학기술정보통신부",
+  target: "AI 도입 희망 중소기업",
+  amount: "최대 2억원",
+  start_date: "2026-06-30",
+  deadline: "2026-07-18",
+  field: "AI",
+  stage: "전체"
+}, {
+  id: "sp-05",
+  title: "콘텐츠 스타트업 사업화 지원",
+  agency: "한국콘텐츠진흥원",
+  ministry: "문화체육관광부",
+  target: "창업 5년 이내 콘텐츠 기업",
+  amount: "최대 8천만원",
+  start_date: "2026-07-17",
+  deadline: "2026-08-07",
+  field: "콘텐츠",
+  stage: "전체"
+}, {
+  id: "sp-06",
+  title: "농식품 벤처육성 지원사업",
+  agency: "농업기술실용화재단",
+  ministry: "농림축산식품부",
+  target: "농식품 분야 예비·초기 창업자",
+  amount: "최대 1억 5천만원",
+  start_date: "2026-07-22",
+  deadline: "2026-08-21",
+  field: "농식품",
+  stage: "초기(3년 미만)"
+}, {
+  id: "sp-07",
+  title: "그린뉴딜 유망기업 100",
+  agency: "한국환경산업기술원",
+  ministry: "기후에너지환경부",
+  target: "녹색산업 분야 중소기업",
+  amount: "최대 3억원",
+  start_date: "2026-08-10",
+  deadline: "2026-09-04",
+  field: "그린·에너지",
+  stage: "도약(3~7년)"
+}, {
+  id: "sp-08",
+  title: "스마트시티 혁신기술 실증 지원",
+  agency: "국토교통과학기술진흥원",
+  ministry: "국토교통부",
+  target: "스마트시티 솔루션 보유 기업",
+  amount: "최대 4억원",
+  start_date: "2026-08-07",
+  deadline: "2026-08-28",
+  field: "스마트시티",
+  stage: "전체"
+}, {
+  id: "sp-09",
+  title: "바이오 스타트업 R&D 바우처",
+  agency: "한국산업기술기획평가원",
+  ministry: "산업통상부",
+  target: "바이오 분야 창업 7년 이내",
+  amount: "최대 5억원",
+  start_date: "2026-08-10",
+  deadline: "2026-09-11",
+  field: "바이오",
+  stage: "도약(3~7년)"
+}, {
+  id: "sp-10",
+  title: "서울시 캠퍼스타운 창업지원",
+  agency: "서울특별시",
+  ministry: "지방자치단체",
+  target: "대학 연계 예비·초기 창업팀",
+  amount: "최대 5천만원",
+  start_date: "2026-07-05",
+  deadline: "2026-07-25",
+  field: "전 분야",
+  stage: "예비창업"
+}, {
+  id: "sp-11",
+  title: "대전 딥테크 스케일업 프로그램",
+  agency: "대전테크노파크",
+  ministry: "지방자치단체",
+  target: "대전 소재 기술창업 기업",
+  amount: "최대 2억원",
+  start_date: "2026-07-17",
+  deadline: "2026-08-08",
+  field: "딥테크",
+  stage: "도약(3~7년)"
+}, {
+  id: "sp-12",
+  title: "광주 AI 스타트업 실증지원",
+  agency: "인공지능산업융합사업단",
+  ministry: "지방자치단체",
+  target: "광주 AI 집적단지 입주(예정) 기업",
+  amount: "최대 3억원",
+  start_date: "2026-07-24",
+  deadline: "2026-08-19",
+  field: "AI",
+  stage: "전체"
+}];
+export { t as s };

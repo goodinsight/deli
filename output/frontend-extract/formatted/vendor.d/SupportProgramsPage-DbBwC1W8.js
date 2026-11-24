@@ -1,0 +1,115 @@
+import { j as n, r as a } from "./react-CjxcGQav.js";
+import { bv as h, bH as C, bI as y, B as R, lr as j, bO as v } from "../js.d/main-Cm9wS5wt.js";
+import { s as L } from "./supportApi-C3cYlGjK.js";
+import { R as B } from "./Refresh-xoMt5L00.js";
+import { s as E, a as $, r as D, b as F } from "./table-BzgWEHo_.js";
+import { u as H } from "./useClientSort-CdwrAOWp.js";
+import { T as I } from "./tableScrollbars-C9bhlJjO.js";
+import { u as T } from "./useColumnWidths-DSAca5rC.js";
+import "./stylis-DdLD6a3t.js";
+import "./samplePrograms-hLv5etHo.js";
+import "./profileApi-Btafs-pM.js";
+function A({
+  programs: r,
+  loading: l,
+  onSearch: s,
+  onFilterChange: i,
+  onReload: e
+}) {
+  const o = h();
+  return {
+    show: !0,
+    right: n.jsx(C, {
+      title: o("supportPrograms.refresh"),
+      children: n.jsx("span", {
+        children: n.jsx(y, {
+          onClick: e,
+          disabled: l,
+          "aria-label": o("supportPrograms.refresh"),
+          children: n.jsx(B, {})
+        })
+      })
+    }),
+    showSearch: !0,
+    searchPlaceholder: o("supportPrograms.searchPlaceholder"),
+    searchDebounce: 200,
+    onSearch: s,
+    filter: E(r, i, o)
+  };
+}
+function M(r, l, s) {
+  const i = l.trim().toLowerCase();
+  return r.filter(e => s.statuses.length > 0 && !s.statuses.includes(F(e)) || s.ministries.length > 0 && !s.ministries.includes(e.ministry) || s.stages.length > 0 && !s.stages.includes(e.stage) ? !1 : i ? `${e.title} ${e.agency} ${e.ministry} ${e.field} ${e.target}`.toLowerCase().includes(i) : !0);
+}
+function Q() {
+  const r = h(),
+    l = T("supportPrograms.list"),
+    [s, i] = a.useState([]),
+    [e, o] = a.useState(!0),
+    [u, g] = a.useState(""),
+    [c, x] = a.useState({
+      statuses: [],
+      ministries: [],
+      stages: []
+    }),
+    m = async () => {
+      o(!0);
+      try {
+        i(await L.list());
+      } catch (t) {
+        v(t instanceof Error ? t.message : r("supportPrograms.loadFailed"));
+      } finally {
+        o(!1);
+      }
+    };
+  a.useEffect(() => {
+    m();
+  }, []);
+  const P = a.useMemo(() => M(s, u, c).slice().sort((t, p) => {
+      const f = (t.start_date || "9999-12-31").localeCompare(p.start_date || "9999-12-31");
+      return f !== 0 ? f : (t.deadline || "9999-12-31").localeCompare(p.deadline || "9999-12-31");
+    }), [s, u, c]),
+    {
+      rows: d,
+      tableSort: S
+    } = H(P, {
+      deadline: t => D(t)
+    }),
+    b = a.useMemo(() => $(r), [r]),
+    w = A({
+      programs: s,
+      loading: e,
+      onSearch: g,
+      onFilterChange: x,
+      onReload: () => {
+        m();
+      }
+    });
+  return n.jsx(R, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      flexGrow: 1,
+      height: 0,
+      minHeight: 520
+    },
+    children: n.jsx(j, {
+      header: w,
+      tableProps: {
+        ...l,
+        scrollbars: I,
+        mobile: !0,
+        data: d,
+        totalCount: d.length,
+        ...S,
+        loading: e,
+        columns: b,
+        getRowId: t => t.id,
+        variant: "notion",
+        rowHeight: 48,
+        emptyMessage: r("supportPrograms.empty")
+      }
+    })
+  });
+}
+export { Q as default };

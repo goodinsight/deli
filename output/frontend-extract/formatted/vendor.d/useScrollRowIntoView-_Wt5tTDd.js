@@ -1,0 +1,31 @@
+import { r as s } from "./react-CjxcGQav.js";
+function a(o) {
+  let t = o.querySelector("tbody");
+  for (; t && t !== o;) {
+    const n = getComputedStyle(t).overflowY;
+    if ((n === "auto" || n === "scroll") && t.scrollHeight > t.clientHeight + 1) return t;
+    t = t.parentElement;
+  }
+  return null;
+}
+function u(o, t, n) {
+  const c = o.querySelector(`tbody tr[data-row-id="${CSS.escape(n)}"]`);
+  if (!c) return !1;
+  const e = c.getBoundingClientRect(),
+    r = t.getBoundingClientRect(),
+    i = o.querySelector("thead")?.getBoundingClientRect().bottom ?? r.top,
+    l = r.top + t.clientHeight;
+  return e.top < i ? t.scrollTop -= i - e.top : e.bottom > l && (t.scrollTop += e.bottom - l), !0;
+}
+function m(o, t, n, c) {
+  s.useEffect(() => {
+    const e = o.current;
+    if (!e || !t || n < 0) return;
+    const r = a(e);
+    if (!r || u(e, r, t)) return;
+    r.scrollTop = n * c;
+    const i = requestAnimationFrame(() => requestAnimationFrame(() => u(e, r, t)));
+    return () => cancelAnimationFrame(i);
+  }, [o, t, n, c]);
+}
+export { m as u };

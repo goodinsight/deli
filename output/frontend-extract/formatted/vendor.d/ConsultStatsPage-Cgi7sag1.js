@@ -1,0 +1,113 @@
+import { r as c, j as M } from "./react-CjxcGQav.js";
+import { bv as P, D as x, cz as A, bO as H, bT as T, ce as j, cf as q } from "../js.d/main-Cm9wS5wt.js";
+import { s as w, S as B, r as i, t as D } from "./StatsView-xYBly2rm.js";
+import { S as I, t as V } from "./StatsChartsView-BLKkLLA_.js";
+import { u as U, c as z } from "./customerMetaStore-Bj9KdRyn.js";
+import { i as C } from "./types-B1OAKh4b.js";
+import "./stylis-DdLD6a3t.js";
+import "./OptionToggleGroup-Cvm2wRyq.js";
+import "./reselect-DokMjEPX.js";
+import "./d3-BkRUnfR7.js";
+import "./useThemeProps-CIcPyl2F.js";
+const n = t => (t ?? 0).toLocaleString(j(q()));
+function et() {
+  const t = P(),
+    h = x(),
+    m = A()?.seq ?? 0,
+    d = U(),
+    [r, y] = c.useState(() => w("month")),
+    [s, _] = c.useState(null),
+    [v, f] = c.useState(!1);
+  c.useEffect(() => {
+    if (!m) return;
+    let e = !0;
+    return f(!0), z.consultStats(r.from, r.to).then(o => e && _(o)).catch(o => e && H(o instanceof Error ? o.message : T("customer.loadConsultStatsFailed"))).finally(() => e && f(!1)), () => {
+      e = !1;
+    };
+  }, [m, r]);
+  const $ = e => d.consult_categories.find(o => String(o.seq) === e)?.name ?? t("customer.noCategory"),
+    E = e => d.members.find(o => String(o.account_seq) === e)?.name ?? t("customer.noStaff"),
+    u = s?.total ?? 0,
+    a = t("customer.unitCases"),
+    p = u - (s?.open ?? 0),
+    L = e => u > 0 ? `${Math.round((e ?? 0) / u * 1e3) / 10}%` : "—",
+    l = s?.by_hour ?? {},
+    b = Object.keys(l).map(Number).filter(e => Number.isInteger(e) && l[String(e).padStart(2, "0")] > 0),
+    g = Math.min(9, ...b),
+    N = Math.max(18, ...b),
+    O = Array.from({
+      length: N - g + 1
+    }, (e, o) => {
+      const S = g + o;
+      return {
+        label: t("customer.hourLabel", {
+          hour: S
+        }),
+        value: l[String(S).padStart(2, "0")] ?? 0
+      };
+    }),
+    k = h ? B : I;
+  return M.jsx(k, {
+    period: r,
+    onPeriodChange: y,
+    loading: v,
+    basis: t("customer.basisConsultedAt"),
+    capped: s?.capped,
+    tiles: [{
+      label: t("customer.kindConsult"),
+      value: `${n(u)}${a}`,
+      note: t("customer.customersCount", {
+        count: n(s?.customers)
+      })
+    }, {
+      label: t("customer.consultStatusOpen"),
+      value: `${n(s?.open)}${a}`,
+      note: t("customer.unfinishedConsults")
+    }, {
+      label: t("customer.consultStatusDone"),
+      value: `${n(p)}${a}`,
+      note: u > 0 ? t("customer.percentOfTotal", {
+        pct: Math.round(p / u * 100)
+      }) : void 0
+    }, {
+      label: t("customer.incomingCalls"),
+      value: `${n(s?.calls_in)}${a}`,
+      note: t("customer.missedCount", {
+        count: n(s?.calls_missed)
+      })
+    }, {
+      label: t("customer.outgoingCalls"),
+      value: `${n(s?.calls_out)}${a}`,
+      note: t("customer.callOutgoing")
+    }, {
+      label: t("customer.dealConversion"),
+      value: L(s?.linked_contract),
+      note: t("customer.dealConversionNote", {
+        contracts: n(s?.linked_contract),
+        deals: n(s?.linked_deal)
+      })
+    }],
+    trend: {
+      title: t("customer.consultsByDay"),
+      points: D(s?.by_day ?? {}, r.from, V(r.to)),
+      unit: a
+    },
+    side: {
+      title: t("customer.consultsByHour"),
+      kind: "column",
+      points: O,
+      unit: a
+    },
+    ranks: [{
+      title: t("customer.byChannel"),
+      items: i(s?.by_channel, e => C[e] ? t(C[e]) : t("customer.channelEtc"))
+    }, {
+      title: t("customer.byCategory"),
+      items: i(s?.by_category, $)
+    }, {
+      title: t("customer.byStaff"),
+      items: i(s?.by_handler, E)
+    }]
+  });
+}
+export { et as default };

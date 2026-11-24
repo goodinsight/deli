@@ -1,0 +1,1 @@
+const a="자막",t="자막 켜기",n="자막 끄기",o="눌러서 원문 보기",s="실시간 번역 자막",c={captions:"자막",turnOnCaptions:t,turnOffCaptions:n,tapForOriginal:o,liveCaptions:s};export{a as captions,c as default,s as liveCaptions,o as tapForOriginal,n as turnOffCaptions,t as turnOnCaptions};

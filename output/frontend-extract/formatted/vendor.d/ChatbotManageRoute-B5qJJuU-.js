@@ -1,0 +1,22 @@
+import { j as r } from "./react-CjxcGQav.js";
+import { A as t, r as o } from "./AppChatbotProvider-cOw4USGY.js";
+import "../js.d/main-Cm9wS5wt.js";
+import "./stylis-DdLD6a3t.js";
+import "./ThumbUp-CuLuUDoD.js";
+import "./ThumbDownOutlined-Kgyo8Yr6.js";
+import "./Send-yl2RzZF4.js";
+import "./index-DC9lEI6V.js";
+import "./Snackbar-DxIDGM8-.js";
+import "./chatPrefs-Be7HCbgk.js";
+import "./profileApi-Btafs-pM.js";
+import "./date_utils-CYURFdnX.js";
+import "./supportCenterApi-KQJIqJUd.js";
+import "./useAppBasePath-BVB_xO8H.js";
+import "./documentViewerStore-BlSjH3BG.js";
+import "./TaskhamLogoIcon-D-7jf3TJ.js";
+function A() {
+  return r.jsx(t, {
+    children: r.jsx(o, {})
+  });
+}
+export { A as default };

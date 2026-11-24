@@ -1,0 +1,721 @@
+import { j as e, r as h } from "./react-CjxcGQav.js";
+import { bv as y, bH as I, bI as H, bQ as S, d8 as G, ce as Y, cf as J, c4 as x, eJ as Q, iH as X, L as j, B as C, nb as K, bO as g, kR as Z, nc as ee, fq as te, fr as se, fs as ae, d4 as w, w as re, aC as oe, dj as ne, fj as R, ft as ie, bx as W, u as de, nd as le, lr as ce, z as ue } from "../js.d/main-Cm9wS5wt.js";
+import { u as he } from "./newsController-BGsu8k2g.js";
+import { t as me, n as P } from "./newsAdminApi-DyrOnwXM.js";
+import { R as be } from "./Refresh-xoMt5L00.js";
+import { N as B, a as ge } from "./constants-Bzad1vkl.js";
+import { r as O } from "./formatFileSize-Cwk2MLba.js";
+import { h as xe } from "./htmlToParagraphs-BRG7WnR0.js";
+import { I as pe } from "./Image-BpXScS6T.js";
+import { u as we } from "./useClientSort-CdwrAOWp.js";
+import { T as fe } from "./tableScrollbars-C9bhlJjO.js";
+import { u as je } from "./useColumnWidths-DSAca5rC.js";
+import "./stylis-DdLD6a3t.js";
+import "./profileApi-Btafs-pM.js";
+function ye(t, o) {
+  return {
+    stateId: "newsAdminFilter",
+    showChips: !0,
+    groups: [{
+      filters: [{
+        name: "categories",
+        title: o("dashboardNews.category"),
+        type: "checkbox",
+        options: B.map(n => ({
+          label: n,
+          value: n
+        }))
+      }, {
+        name: "premium",
+        title: o("dashboardNews.accessType"),
+        type: "checkbox",
+        options: ge.map(n => ({
+          label: n.label,
+          value: n.value
+        }))
+      }]
+    }],
+    onChange: n => {
+      t({
+        categories: (n.categories ?? []).map(l => String(l)),
+        premium: (n.premium ?? []).map(l => String(l))
+      });
+    },
+    onReset: () => t({
+      categories: [],
+      premium: []
+    })
+  };
+}
+function Ne({
+  editable: t,
+  loading: o,
+  onSearch: n,
+  onFilterChange: l,
+  onReload: s,
+  onCreate: d
+}) {
+  const a = y();
+  return {
+    show: !0,
+    left: t ? e.jsx(S, {
+      size: "small",
+      variant: "contained",
+      startIcon: e.jsx(G, {}),
+      onClick: d,
+      children: a("dashboardNews.writeArticle")
+    }) : void 0,
+    right: e.jsx(I, {
+      title: a("dashboardNews.refresh"),
+      children: e.jsx("span", {
+        children: e.jsx(H, {
+          onClick: s,
+          disabled: o,
+          "aria-label": a("dashboardNews.refresh"),
+          children: e.jsx(be, {})
+        })
+      })
+    }),
+    showSearch: !0,
+    searchPlaceholder: a("dashboardNews.searchPlaceholder"),
+    searchDebounce: 200,
+    onSearch: n,
+    filter: ye(l, a)
+  };
+}
+function f({
+  text: t,
+  muted: o = !1
+}) {
+  return e.jsx(j, {
+    sx: {
+      fontSize: 14,
+      color: o ? "text.secondary" : "text.primary",
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap"
+    },
+    children: t || "-"
+  });
+}
+function ve({
+  count: t,
+  editable: o,
+  busySlug: n,
+  onEdit: l,
+  onDelete: s,
+  t: d
+}) {
+  const a = [{
+    id: "title",
+    text: d("dashboardNews.columnTitleCount", {
+      count: t
+    }),
+    width: 360,
+    sortable: !0,
+    render: i => e.jsx(f, {
+      text: i.title
+    })
+  }, {
+    id: "category",
+    text: d("dashboardNews.category"),
+    width: 110,
+    align: "center",
+    sortable: !0,
+    render: i => e.jsx(f, {
+      text: i.category
+    })
+  }, {
+    id: "premium",
+    text: d("dashboardNews.access"),
+    width: 80,
+    align: "center",
+    sortable: !0,
+    render: i => e.jsx(f, {
+      text: i.premium ? d("dashboardNews.paid") : d("dashboardNews.free")
+    })
+  }, {
+    id: "author",
+    text: d("dashboardNews.author"),
+    width: 160,
+    sortable: !0,
+    render: i => e.jsx(f, {
+      text: i.author,
+      muted: !0
+    })
+  }, {
+    id: "date",
+    text: d("dashboardNews.publishDate"),
+    width: 120,
+    align: "center",
+    sortable: !0,
+    render: i => e.jsx(f, {
+      text: i.date,
+      muted: !0
+    })
+  }, {
+    id: "views",
+    text: d("dashboardNews.views"),
+    width: 90,
+    align: "right",
+    sortable: !0,
+    render: i => e.jsx(f, {
+      text: i.views.toLocaleString(Y(J())),
+      muted: !0
+    })
+  }];
+  return o ? [...a, {
+    id: "actions",
+    text: "",
+    width: 100,
+    align: "center",
+    render: i => e.jsxs(x, {
+      direction: "row",
+      spacing: .5,
+      justifyContent: "center",
+      children: [e.jsx(I, {
+        title: d("dashboardNews.edit"),
+        children: e.jsx(H, {
+          size: "small",
+          onClick: m => {
+            m.stopPropagation(), l(i);
+          },
+          children: e.jsx(Q, {
+            fontSize: "small"
+          })
+        })
+      }), e.jsx(I, {
+        title: d("dashboardNews.delete"),
+        children: e.jsx("span", {
+          children: e.jsx(H, {
+            size: "small",
+            disabled: n === i.id,
+            onClick: m => {
+              m.stopPropagation(), s(i);
+            },
+            children: e.jsx(X, {
+              fontSize: "small"
+            })
+          })
+        })
+      })]
+    })
+  }] : a;
+}
+function Se(t) {
+  return t.map(o => ({
+    name: o.name,
+    size: Number(o.size ?? 0),
+    downloadUrl: o.uuid ? `/api/v1/files/${o.uuid}` : void 0
+  }));
+}
+const Ce = h.forwardRef(function ({
+  attachments: o,
+  onRemove: n
+}, l) {
+  const s = y();
+  return e.jsxs(C, {
+    children: [e.jsx(j, {
+      sx: {
+        fontSize: 14,
+        fontWeight: 700,
+        mb: 1
+      },
+      children: s("dashboardNews.attachments")
+    }), e.jsx(K, {
+      ref: l,
+      multiple: !0,
+      height: 96,
+      uploadedFiles: Se(o),
+      dropzoneText: s("dashboardNews.dropzoneText"),
+      onValidationError: d => g(d),
+      onRequestDelete: ({
+        files: d
+      }) => {
+        for (const a of d) {
+          const i = o.findIndex(m => m.name === a.name && Number(m.size ?? 0) === a.size);
+          i >= 0 && n(i);
+        }
+        return !0;
+      }
+    }), e.jsx(j, {
+      sx: {
+        mt: .5,
+        fontSize: 12,
+        color: "text.secondary"
+      },
+      children: s("dashboardNews.attachmentsHelp")
+    })]
+  });
+});
+function Ae({
+  value: t,
+  onChange: o
+}) {
+  const n = y();
+  return e.jsxs(C, {
+    children: [e.jsx(j, {
+      sx: {
+        fontSize: 14,
+        fontWeight: 700,
+        mb: 1
+      },
+      children: n("dashboardNews.body")
+    }), e.jsx(Z, {
+      defaultValue: t,
+      onChange: o,
+      minHeight: 320,
+      maxHeight: 520,
+      resizable: !0,
+      locale: "ko",
+      placeholder: n("dashboardNews.bodyPlaceholder"),
+      toolbarOptions: ee
+    })]
+  });
+}
+const ze = 8 * 1024 * 1024;
+function Te({
+  value: t,
+  previewUrl: o,
+  onChange: n
+}) {
+  const l = y(),
+    s = h.useRef(null),
+    d = t || o,
+    a = async i => {
+      if (i) {
+        if (!i.type.startsWith("image/")) {
+          g(l("dashboardNews.imageOnly"));
+          return;
+        }
+        if (i.size > ze) {
+          g(l("dashboardNews.thumbnailTooLarge"));
+          return;
+        }
+        n(await O(i));
+      }
+    };
+  return e.jsxs(x, {
+    direction: "row",
+    spacing: 2,
+    sx: {
+      alignItems: "flex-start"
+    },
+    children: [e.jsx(C, {
+      sx: {
+        width: 200,
+        height: 112,
+        flexShrink: 0,
+        borderRadius: 2,
+        border: "1px solid",
+        borderColor: "divider",
+        backgroundColor: "grey.100",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden"
+      },
+      children: d ? e.jsx(C, {
+        component: "img",
+        src: d,
+        alt: "",
+        sx: {
+          width: "100%",
+          height: "100%",
+          objectFit: "cover"
+        }
+      }) : e.jsx(pe, {
+        sx: {
+          color: "grey.400",
+          fontSize: 32
+        }
+      })
+    }), e.jsxs(x, {
+      spacing: 1,
+      sx: {
+        pt: .5
+      },
+      children: [e.jsx(j, {
+        sx: {
+          fontSize: 14,
+          fontWeight: 700
+        },
+        children: l("dashboardNews.thumbnail")
+      }), e.jsx(j, {
+        sx: {
+          fontSize: 12,
+          color: "text.secondary"
+        },
+        children: l("dashboardNews.thumbnailHelp")
+      }), e.jsxs(x, {
+        direction: "row",
+        spacing: 1,
+        children: [e.jsx(S, {
+          size: "small",
+          variant: "outlined",
+          onClick: () => s.current?.click(),
+          children: l("dashboardNews.selectImage")
+        }), t && e.jsx(S, {
+          size: "small",
+          color: "inherit",
+          onClick: () => n(""),
+          children: l("dashboardNews.clearSelection")
+        })]
+      }), e.jsx("input", {
+        ref: s,
+        type: "file",
+        accept: "image/*",
+        hidden: !0,
+        onChange: i => {
+          a(i.target.files?.[0]), i.target.value = "";
+        }
+      })]
+    })]
+  });
+}
+function ke() {
+  return new Date().toISOString().slice(0, 10);
+}
+function Re(t) {
+  return t.map(o => `<p>${o}</p>`).join("");
+}
+function L(t) {
+  return t ? {
+    slug: t.id,
+    category: t.category,
+    title: t.title,
+    summary: t.summary,
+    bodyHtml: t.bodyHtml || Re(t.body),
+    author: t.author,
+    date: t.date,
+    premium: t.premium,
+    thumbnail: "",
+    attachments: t.attachments.map(me)
+  } : {
+    slug: "",
+    category: "정책",
+    title: "",
+    summary: "",
+    bodyHtml: "",
+    author: "업무함",
+    date: ke(),
+    premium: !1,
+    thumbnail: "",
+    attachments: []
+  };
+}
+function Ie({
+  open: t,
+  article: o,
+  onClose: n,
+  onSaved: l
+}) {
+  const s = y(),
+    d = !o,
+    [a, i] = h.useState(() => L(o)),
+    [m, N] = h.useState(!1),
+    A = h.useRef(null);
+  h.useEffect(() => {
+    t && i(L(o));
+  }, [t, o]);
+  const c = r => i(u => ({
+      ...u,
+      ...r
+    })),
+    z = async () => {
+      const r = A.current?.getAttachedFiles() ?? [];
+      return Promise.all(r.map(async u => ({
+        name: u.name,
+        size: u.size,
+        data: await O(u)
+      })));
+    },
+    v = async () => {
+      const r = a.slug.trim();
+      if (!r) {
+        g(s("dashboardNews.slugRequired"));
+        return;
+      }
+      if (!/^[a-z0-9-]+$/.test(r)) {
+        g(s("dashboardNews.slugInvalid"));
+        return;
+      }
+      if (!a.title.trim()) {
+        g(s("dashboardNews.titleRequired"));
+        return;
+      }
+      N(!0);
+      try {
+        const u = await z(),
+          p = {
+            slug: r,
+            category: a.category,
+            title: a.title.trim(),
+            summary: a.summary.trim(),
+            body: xe(a.bodyHtml),
+            body_html: a.bodyHtml,
+            thumbnail: a.thumbnail,
+            attachments: [...a.attachments, ...u],
+            author: a.author.trim(),
+            date: a.date,
+            premium: a.premium,
+            status: "published"
+          };
+        await P.upsert(p), W(s(d ? "dashboardNews.articleCreated" : "dashboardNews.articleUpdated")), l();
+      } catch (u) {
+        g(u instanceof Error ? u.message : s("dashboardNews.saveFailed"));
+      } finally {
+        N(!1);
+      }
+    };
+  return e.jsxs(te, {
+    open: t,
+    onClose: (r, u) => {
+      u !== "backdropClick" && n();
+    },
+    fullWidth: !0,
+    maxWidth: "md",
+    children: [e.jsx(se, {
+      sx: {
+        fontWeight: 900
+      },
+      children: s(d ? "dashboardNews.writeArticle" : "dashboardNews.editArticle")
+    }), e.jsx(ae, {
+      dividers: !0,
+      children: e.jsxs(x, {
+        spacing: 2.5,
+        sx: {
+          pt: 1
+        },
+        children: [e.jsxs(x, {
+          direction: {
+            xs: "column",
+            sm: "row"
+          },
+          spacing: 2,
+          children: [e.jsx(w, {
+            label: s("dashboardNews.slugLabel"),
+            value: a.slug,
+            onChange: r => c({
+              slug: r.target.value
+            }),
+            disabled: !d,
+            helperText: s(d ? "dashboardNews.slugHelpNew" : "dashboardNews.slugHelpLocked"),
+            fullWidth: !0
+          }), e.jsx(w, {
+            label: s("dashboardNews.publishDate"),
+            type: "date",
+            value: a.date,
+            onChange: r => c({
+              date: r.target.value
+            }),
+            sx: {
+              minWidth: 180
+            }
+          })]
+        }), e.jsxs(x, {
+          direction: {
+            xs: "column",
+            sm: "row"
+          },
+          spacing: 2,
+          children: [e.jsx(w, {
+            select: !0,
+            label: s("dashboardNews.category"),
+            value: a.category,
+            onChange: r => c({
+              category: r.target.value
+            }),
+            sx: {
+              minWidth: 180
+            },
+            children: B.map(r => e.jsx(re, {
+              value: r,
+              children: r
+            }, r))
+          }), e.jsx(w, {
+            label: s("dashboardNews.author"),
+            value: a.author,
+            onChange: r => c({
+              author: r.target.value
+            }),
+            fullWidth: !0
+          }), e.jsx(oe, {
+            control: e.jsx(ne, {
+              checked: a.premium,
+              onChange: r => c({
+                premium: r.target.checked
+              })
+            }),
+            label: s("dashboardNews.premiumArticle"),
+            sx: {
+              whiteSpace: "nowrap"
+            }
+          })]
+        }), e.jsx(w, {
+          label: s("dashboardNews.title"),
+          value: a.title,
+          onChange: r => c({
+            title: r.target.value
+          }),
+          fullWidth: !0
+        }), e.jsx(w, {
+          label: s("dashboardNews.summary"),
+          value: a.summary,
+          onChange: r => c({
+            summary: r.target.value
+          }),
+          multiline: !0,
+          minRows: 2,
+          fullWidth: !0
+        }), e.jsx(R, {}), e.jsx(Te, {
+          value: a.thumbnail,
+          previewUrl: o?.imageUrl ?? "",
+          onChange: r => c({
+            thumbnail: r
+          })
+        }), e.jsx(R, {}), e.jsx(Ae, {
+          value: a.bodyHtml,
+          onChange: r => c({
+            bodyHtml: r
+          })
+        }), e.jsx(R, {}), e.jsx(Ce, {
+          ref: A,
+          attachments: a.attachments,
+          onRemove: r => c({
+            attachments: a.attachments.filter((u, p) => p !== r)
+          })
+        })]
+      })
+    }), e.jsxs(ie, {
+      children: [e.jsx(S, {
+        onClick: n,
+        disabled: m,
+        children: s("dashboardNews.cancel")
+      }), e.jsx(S, {
+        variant: "contained",
+        onClick: () => {
+          v();
+        },
+        disabled: m,
+        children: s(m ? "dashboardNews.saving" : "dashboardNews.save")
+      })]
+    })]
+  });
+}
+function He(t, o, n) {
+  const l = o.trim().toLowerCase();
+  return t.filter(s => {
+    if (n.categories.length > 0 && !n.categories.includes(s.category)) return !1;
+    if (n.premium.length > 0) {
+      const d = s.premium ? "premium" : "free";
+      if (!n.premium.includes(d)) return !1;
+    }
+    return l ? `${s.title} ${s.author}`.toLowerCase().includes(l) : !0;
+  });
+}
+function Ye() {
+  const t = y(),
+    o = je("news.admin"),
+    {
+      state: n
+    } = he(),
+    s = de().useValue("account"),
+    d = le(s),
+    i = n.useValue("articles") ?? [],
+    N = !(n.useValue("listLoaded") ?? !1),
+    [A, c] = h.useState(!1),
+    [z, v] = h.useState(null),
+    [r, u] = h.useState(""),
+    [p, U] = h.useState(""),
+    [E, _] = h.useState({
+      categories: [],
+      premium: []
+    }),
+    T = () => n.actions.loadArticles(),
+    V = async b => {
+      if (await ue({
+        title: t("dashboardNews.deleteArticle"),
+        message: t("dashboardNews.deleteArticleConfirm", {
+          title: b.title
+        }),
+        confirmText: t("dashboardNews.delete"),
+        cancelText: t("dashboardNews.cancel")
+      })) {
+        u(b.id);
+        try {
+          await P.remove(b.id), await T(), W(t("dashboardNews.deleted"));
+        } catch (D) {
+          g(D instanceof Error ? D.message : t("dashboardNews.deleteFailed"));
+        } finally {
+          u("");
+        }
+      }
+    },
+    k = h.useMemo(() => He(i, p, E), [i, p, E]),
+    {
+      rows: F,
+      tableSort: M
+    } = we(k),
+    $ = h.useMemo(() => ve({
+      count: k.length,
+      editable: d,
+      busySlug: r,
+      onEdit: b => {
+        v(b), c(!0);
+      },
+      onDelete: b => {
+        V(b);
+      },
+      t
+    }), [k.length, d, r, t]),
+    q = Ne({
+      editable: d,
+      loading: N,
+      onSearch: U,
+      onFilterChange: _,
+      onReload: () => {
+        T();
+      },
+      onCreate: () => {
+        v(null), c(!0);
+      }
+    });
+  return e.jsxs(C, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      flexGrow: 1,
+      height: 0,
+      minHeight: 520
+    },
+    children: [e.jsx(ce, {
+      header: q,
+      tableProps: {
+        ...o,
+        scrollbars: fe,
+        mobile: !0,
+        data: F,
+        totalCount: F.length,
+        ...M,
+        loading: N,
+        columns: $,
+        getRowId: b => b.id,
+        variant: "notion",
+        rowHeight: 48,
+        onRowClick: d ? b => {
+          v(b), c(!0);
+        } : void 0,
+        emptyMessage: t("dashboardNews.empty")
+      }
+    }), e.jsx(Ie, {
+      open: A,
+      article: z,
+      onClose: () => c(!1),
+      onSaved: () => {
+        c(!1), T();
+      }
+    })]
+  });
+}
+export { Ye as default };

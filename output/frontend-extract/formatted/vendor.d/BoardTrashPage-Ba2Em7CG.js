@@ -1,0 +1,353 @@
+import { r as i, j as o } from "./react-CjxcGQav.js";
+import { cz as I, hI as C, bO as v, bT as d, dv as D, bx as T, bv as W, D as z, gg as $, hJ as F, aD as A, B as p, bQ as L, bB as H, lr as K, cW as G, L as U } from "../js.d/main-Cm9wS5wt.js";
+import { t as P, T as N } from "./TrashList-DTn1aUwu.js";
+import { T as J } from "./tableScrollbars-C9bhlJjO.js";
+import { BOARD_ROW_HEIGHT as Q } from "./BoardListPage-B3Y6TnA4.js";
+import "./stylis-DdLD6a3t.js";
+import "./selectedRow-CBnSZEGB.js";
+import "./lastBoard-DXeRnS9N.js";
+import "./BoardPostDetail-CniIF2a7.js";
+import "./biometricController-CswvQnMD.js";
+import "./attendanceBio-C-9dHF9O.js";
+import "./ThumbUp-CuLuUDoD.js";
+import "./PictureAsPdfOutlined-ChIt6cmZ.js";
+import "./FolderZipOutlined-BdWYvuz4.js";
+import "./InsertDriveFileOutlined-DcD-Yh-v.js";
+import "./FavoriteBorder-BkFztsJe.js";
+import "./formatFileSize-Cwk2MLba.js";
+import "./taskboxProviderConfig-DZSmb5uq.js";
+import "./MobileCardListLayout-D5_p2Xer.js";
+import "./mobileSearchOverlay-DYWcMOOb.js";
+import "./bootstrapController-BMV_i07c.js";
+import "./profileEcho-q2FaD_03.js";
+import "./teamMembers-0yRsmqL6.js";
+import "./pendingRecordings-DpKJ8Y2R.js";
+import "./meetingsApi-CCkjq69B.js";
+import "./orgTree-Dh5HFjBo.js";
+import "./mxApi-R6g9QtQq.js";
+import "./aliasStore-DiN6Kp-5.js";
+import "./profileApi-Btafs-pM.js";
+import "./taskboxApi-BuYlRWHe.js";
+import "./employeeAvatars-DaG0jIhW.js";
+import "./resolveAssetPreviewSrc-CLlbOCzq.js";
+import "./FeedProfileAvatar-B6gqXpYU.js";
+import "./CallOutlined-B2W58-Kt.js";
+import "./AccountAvatar-DtrhoS_d.js";
+import "./Person-DnoEHesw.js";
+import "./squircle-CQM8EvXm.js";
+import "./chatRoomHost-ImRyH_Na.js";
+import "./callStore-DH1_RYeP.js";
+import "./videoMeetingApi-BCL1yHsp.js";
+import "./EmployeeSelectDialog-Cdnxeoz9.js";
+import "./utils-B6Q5_urv.js";
+import "./useFileViewer-B-2ewnr3.js";
+import "./documentViewerStore-BlSjH3BG.js";
+import "./EmojiPanel-DTZZq0Nb.js";
+import "./html-d5LenlcH.js";
+import "./date_utils-CYURFdnX.js";
+import "./FileDropOverlay-Bw4w8zRu.js";
+import "./OptionToggleGroup-Cvm2wRyq.js";
+import "./ListViewModeToggle-NcYQu7vy.js";
+import "./HorizontalSplitOutlined-MKxJhLKp.js";
+import "./MobileListTitleBar-tZ34p2gY.js";
+import "./mobileTitlePicker-u2JmU445.js";
+import "./periodRange-CKwTiAVI.js";
+import "./taskDetailHost-C45bt_tL.js";
+import "./SplitDockSlot-B6Q4iP8T.js";
+import "./FileUploadBox-crZW1mG0.js";
+import "./FileViewer-D5PyYcLh.js";
+import "./RotateRight-DbtMfjGZ.js";
+import "./tiny-invariant-CopsF_GD.js";
+import "./Snackbar-DxIDGM8-.js";
+import "./uploadGuard-BK1B6cyC.js";
+import "./PickMenuDialog-BtpyEh4Z.js";
+import "./useLongPress-C-MDKVjl.js";
+import "./pickerEmployees-s9FYphgr.js";
+import "./workspaceCandidates-BzY4iDjW.js";
+import "./useColumnWidths-DSAca5rC.js";
+import "./sidebarAction-Z0aCDENX.js";
+function V() {
+  const [r, f] = i.useState([]),
+    [s, w] = i.useState(7),
+    [y, m] = i.useState(!1),
+    [M, x] = i.useState(0),
+    h = I()?.seq ?? 0,
+    u = i.useCallback(async (e = !1) => {
+      try {
+        const t = await C.trashList();
+        f(t.items), w(t.days);
+      } catch (t) {
+        e || v(t instanceof Error ? t.message : d("board.trashLoadFailed"));
+      } finally {
+        m(!0);
+      }
+    }, []);
+  i.useEffect(() => {
+    u();
+  }, [u, h]), D(["board_post"], () => {
+    u(!0);
+  });
+  const g = async (e, t, n) => {
+      x(e.seq);
+      try {
+        await t(), f(l => l.filter(b => b.seq !== e.seq)), T(n);
+      } catch (l) {
+        v(l instanceof Error ? l.message : d("board.restoreFailed"));
+      } finally {
+        x(0);
+      }
+    },
+    c = e => g(e, () => C.trashRestore(e.seq), d("board.trashRestored", {
+      name: e.title
+    })),
+    a = e => g(e, () => C.trashPurge(e.seq), d("board.trashPurged", {
+      name: e.title
+    })),
+    [S, j] = i.useState(!1),
+    B = async (e, t, n) => {
+      if (e.length === 0) return;
+      j(!0);
+      const l = [];
+      let b = "";
+      for (const k of e) try {
+        await t(k.seq), l.push(k.seq);
+      } catch (_) {
+        b || (b = _ instanceof Error ? _.message : d("board.restoreFailed"));
+      }
+      f(k => k.filter(_ => !l.includes(_.seq))), j(!1), l.length > 0 && T(n(l.length)), b && v(b);
+    };
+  return {
+    items: r,
+    days: s,
+    loaded: y,
+    busySeq: M,
+    restore: c,
+    purge: a,
+    bulkBusy: S,
+    restoreMany: e => B(e, t => C.trashRestore(t), t => d("board.trashRestoredMany", {
+      count: t
+    })),
+    purgeMany: e => B(e, t => C.trashPurge(t), t => d("board.trashPurgedMany", {
+      count: t
+    }))
+  };
+}
+const O = {
+    p: 0,
+    "&:hover": {
+      bgcolor: "transparent"
+    }
+  },
+  q = {
+    color: "text.secondary",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+    textOverflow: "ellipsis"
+  };
+function pt() {
+  const r = W(),
+    f = z(),
+    s = V();
+  $();
+  const w = new Map(F().flatMap(e => e.boards.map(t => [t.key, t.label]))),
+    y = e => w.get(e.category_name) ?? r("board.trashUnknownBoard"),
+    [m, M] = i.useState(""),
+    [x, h] = i.useState([]),
+    [u, g] = i.useState(null),
+    c = i.useMemo(() => {
+      const e = m.trim().toLowerCase();
+      return e ? s.items.filter(t => `${t.title} ${y(t)} ${t.author_name}`.toLowerCase().includes(e)) : s.items;
+    }, [s.items, m, w.size]),
+    a = c.filter(e => x.includes(e.seq)),
+    S = c.length > 0 && a.length === c.length,
+    j = e => h(t => t.includes(e) ? t.filter(n => n !== e) : [...t, e]),
+    B = () => h(S ? [] : c.map(e => e.seq)),
+    R = [{
+      id: "check",
+      text: o.jsx(A, {
+        size: "small",
+        checked: S,
+        indeterminate: a.length > 0 && !S,
+        onChange: B,
+        disableRipple: !0,
+        sx: O,
+        inputProps: {
+          "aria-label": r("board.trashSelectAll")
+        }
+      }),
+      width: 52,
+      align: "center",
+      mobile: !1,
+      render: e => o.jsx(A, {
+        size: "small",
+        checked: x.includes(e.seq),
+        onClick: t => t.stopPropagation(),
+        onChange: () => j(e.seq),
+        disableRipple: !0,
+        sx: O
+      })
+    }, {
+      id: "title",
+      text: r("board.title"),
+      minWidth: 240,
+      primary: !0,
+      mobile: "title",
+      render: e => o.jsx(p, {
+        component: "span",
+        sx: {
+          display: "block",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+          fontWeight: 500
+        },
+        children: e.title
+      })
+    }, {
+      id: "category_name",
+      text: r("board.trashColBoard"),
+      width: 140,
+      render: e => o.jsx(p, {
+        component: "span",
+        sx: q,
+        children: y(e)
+      })
+    }, {
+      id: "author_name",
+      text: r("board.author"),
+      width: 120,
+      align: "center",
+      render: e => o.jsx(p, {
+        component: "span",
+        sx: q,
+        children: e.author_name
+      })
+    }, {
+      id: "trashed_time",
+      text: r("board.trashColDeleted"),
+      width: 160,
+      align: "center",
+      render: e => o.jsx(p, {
+        component: "span",
+        sx: q,
+        children: [P(e.trashed_time), e.trashed_by_name].filter(Boolean).join(" · ")
+      })
+    }, {
+      id: "purge_date",
+      text: r("board.trashColPurge"),
+      width: 110,
+      align: "center",
+      render: e => o.jsx(p, {
+        component: "span",
+        sx: q,
+        children: P(e.purge_date ?? "")
+      })
+    }],
+    E = {
+      filter: {
+        groups: [{
+          filters: [{
+            type: "custom",
+            name: "actions",
+            node: o.jsxs(p, {
+              sx: {
+                display: "flex",
+                gap: 2
+              },
+              children: [o.jsxs(L, {
+                variant: "outlined",
+                disabled: a.length === 0 || s.bulkBusy,
+                onClick: () => {
+                  s.restoreMany(a).then(() => h([]));
+                },
+                children: [r("components.restore"), a.length > 0 ? ` ${a.length}` : ""]
+              }), o.jsx(L, {
+                variant: "outlined",
+                color: "error",
+                disabled: a.length === 0 || s.bulkBusy,
+                onClick: e => g(e.currentTarget),
+                children: r("components.deleteNow")
+              })]
+            })
+          }]
+        }]
+      },
+      showClearIcon: !1,
+      showSearch: !0,
+      searchValue: m,
+      searchPlaceholder: r("board.searchPlaceholder"),
+      onSearchChange: M,
+      collapsible: !1
+    };
+  if (f) {
+    const e = new Map(s.items.map(t => [String(t.seq), t]));
+    return o.jsx(N, {
+      description: "",
+      loaded: s.loaded,
+      busyKey: s.busySeq ? String(s.busySeq) : "",
+      items: s.items.map(t => ({
+        key: String(t.seq),
+        icon: o.jsx(H, {}),
+        name: t.title,
+        meta: [y(t), t.author_name, [P(t.trashed_time), t.trashed_by_name].filter(Boolean).join(" ")].filter(Boolean).join(" · "),
+        purgeWarning: `${r("board.trashPurgeWarning")} ${r("components.irreversible")}`
+      })),
+      onRestore: t => {
+        const n = e.get(t);
+        n && s.restore(n);
+      },
+      onPurge: t => {
+        const n = e.get(t);
+        n && s.purge(n);
+      }
+    });
+  }
+  return o.jsxs(o.Fragment, {
+    children: [o.jsx(K, {
+      storageKey: "board-trash",
+      header: E,
+      tableProps: {
+        scrollbars: J,
+        mobile: !0,
+        variant: "notion",
+        columns: R,
+        data: c,
+        totalCount: c.length,
+        getRowId: e => String(e.seq),
+        rowHeight: Q,
+        loading: !s.loaded,
+        emptyMessage: o.jsx(p, {
+          sx: {
+            py: 6,
+            textAlign: "center",
+            color: "text.secondary",
+            fontSize: 14
+          },
+          children: r(m ? "board.noSearchResults" : "components.trashEmpty")
+        })
+      }
+    }), o.jsx(G, {
+      open: !!u,
+      anchorEl: u,
+      title: r("board.trashPurgeManyConfirm", {
+        count: a.length
+      }),
+      content: o.jsxs(U, {
+        sx: {
+          fontSize: 14,
+          color: "text.secondary"
+        },
+        children: [r("board.trashPurgeWarning"), " ", o.jsx("b", {
+          children: r("components.irreversible")
+        })]
+      }),
+      confirmText: r("common.delete"),
+      placement: "bottom-start",
+      onCancel: () => g(null),
+      onConfirm: () => {
+        g(null), s.purgeMany(a).then(() => h([]));
+      }
+    })]
+  });
+}
+export { pt as default };

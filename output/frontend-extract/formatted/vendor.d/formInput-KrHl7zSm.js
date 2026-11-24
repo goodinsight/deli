@@ -1,0 +1,10 @@
+import { bT as a } from "../js.d/main-Cm9wS5wt.js";
+const s = () => a("hr.errPartialDate");
+function o(t) {
+  const r = typeof t == "string" ? t : "";
+  return r !== "" && !/^\d{4}-\d{2}-\d{2}$/.test(r);
+}
+function i(t) {
+  return Number(t) || 0;
+}
+export { o as i, s as p, i as t };

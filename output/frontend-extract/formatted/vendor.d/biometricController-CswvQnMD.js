@@ -1,0 +1,12 @@
+import { r } from "./react-CjxcGQav.js";
+import { ej as t, ek as i } from "../js.d/main-Cm9wS5wt.js";
+function n() {
+  return r.useSyncExternalStore(t, i, () => null);
+}
+function c(e) {
+  return !!(e?.available && e?.registered);
+}
+function s(e) {
+  return !!(e?.available && !e?.registered);
+}
+export { s as a, c, n as u };

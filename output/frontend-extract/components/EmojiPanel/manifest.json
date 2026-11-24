@@ -1,0 +1,141 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/EmojiPanel-DTZZq0Nb.js",
+  "path": "assets/vendor.d/EmojiPanel-DTZZq0Nb.js",
+  "name": "EmojiPanel",
+  "kind": "ui",
+  "bytes": 7513,
+  "sha256": "643da99bd058469a4acf6d77de5061a73da7dfac4c2df336b57b7eb8c68632d0",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/EmojiPanel-DTZZq0Nb.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "c",
+          "imported": "r"
+        },
+        {
+          "local": "i",
+          "imported": "j"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "M",
+          "imported": "bv"
+        },
+        {
+          "local": "m",
+          "imported": "B"
+        },
+        {
+          "local": "N",
+          "imported": "jm"
+        },
+        {
+          "local": "O",
+          "imported": "jn"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "Y",
+      "exported": "C"
+    },
+    {
+      "local": "B",
+      "exported": "E"
+    },
+    {
+      "local": "L",
+      "exported": "Q"
+    },
+    {
+      "local": "J",
+      "exported": "a"
+    },
+    {
+      "local": "b",
+      "exported": "b"
+    },
+    {
+      "local": "P",
+      "exported": "c"
+    },
+    {
+      "local": "y",
+      "exported": "d"
+    },
+    {
+      "local": "F",
+      "exported": "e"
+    },
+    {
+      "local": "W",
+      "exported": "p"
+    },
+    {
+      "local": "w",
+      "exported": "r"
+    },
+    {
+      "local": "H",
+      "exported": "s"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "B",
+      "keys": [
+        "onPick",
+        "height"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "BoardListPage",
+    "BoardTrashPage",
+    "CalendarMonthListPage",
+    "CalendarMonthPage",
+    "ChatPage",
+    "ChatRoomView",
+    "Layout",
+    "MeetPage",
+    "MeetRoomUI",
+    "MobileDashboardLayout",
+    "PostComposerHost",
+    "PostLockDialogs",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog",
+    "taskboxProviderConfig"
+  ],
+  "service": "채팅",
+  "purpose": "이모지 선택",
+  "reuseGrade": "B",
+  "integration": "선택 콜백·언어 리소스 연결",
+  "exportedParameters": [
+    {
+      "export": "E",
+      "compiledLocal": "B",
+      "keys": [
+        "onPick",
+        "height"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/FormValue-CAMilU-0.js",
+  "path": "assets/vendor.d/FormValue-CAMilU-0.js",
+  "name": "FormValue",
+  "kind": "ui",
+  "bytes": 772,
+  "sha256": "c896fcc3e435dbb482de8b425897ece45dabe35f06d8c6c9fd6d83bd68e552ca",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/FormValue-CAMilU-0.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "o",
+          "imported": "r"
+        },
+        {
+          "local": "b",
+          "imported": "j"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "x",
+      "exported": "F"
+    },
+    {
+      "local": "R",
+      "exported": "s"
+    },
+    {
+      "local": "h",
+      "exported": "u"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "x",
+      "keys": [
+        "form",
+        "name",
+        "children"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "CareerPage",
+    "ConsultHistoryPanel",
+    "ConsultListPage",
+    "CustomerDealListPage",
+    "CustomerListPage",
+    "DealFormDialog",
+    "DealListPage",
+    "EmployeeRecordsDialog",
+    "ItemLineFields",
+    "Layout",
+    "MeetingRecordScreen",
+    "MeetingsPage",
+    "MobileDashboardLayout",
+    "PartnerListPage",
+    "PostComposerHost",
+    "PurchaseListPage",
+    "QualificationPage",
+    "SalesListPage",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskMonthlyFields",
+    "TaskTransferDialog"
+  ],
+  "service": "공통",
+  "purpose": "폼 값 구독·렌더링",
+  "reuseGrade": "B",
+  "integration": "form 객체의 구독 인터페이스 확인",
+  "exportedParameters": [
+    {
+      "export": "F",
+      "compiledLocal": "x",
+      "keys": [
+        "form",
+        "name",
+        "children"
+      ]
+    }
+  ]
+}

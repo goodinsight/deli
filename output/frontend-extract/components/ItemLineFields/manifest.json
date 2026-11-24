@@ -1,0 +1,201 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/ItemLineFields-DmS0gZQx.js",
+  "path": "assets/vendor.d/ItemLineFields-DmS0gZQx.js",
+  "name": "ItemLineFields",
+  "kind": "ui",
+  "bytes": 4486,
+  "sha256": "ecfdf100f12ec1f99e9e9caf067395c28cb00cdedcd51e3e91e98a74e05ceea3",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/ItemLineFields-DmS0gZQx.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "e",
+          "imported": "j"
+        },
+        {
+          "local": "z",
+          "imported": "r"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "f",
+          "imported": "bv"
+        },
+        {
+          "local": "l",
+          "imported": "B"
+        },
+        {
+          "local": "m",
+          "imported": "s"
+        },
+        {
+          "local": "A",
+          "imported": "bH"
+        },
+        {
+          "local": "L",
+          "imported": "bI"
+        },
+        {
+          "local": "T",
+          "imported": "cP"
+        },
+        {
+          "local": "S",
+          "imported": "L"
+        },
+        {
+          "local": "x",
+          "imported": "al"
+        },
+        {
+          "local": "h",
+          "imported": "cm"
+        },
+        {
+          "local": "v",
+          "imported": "aq"
+        },
+        {
+          "local": "w",
+          "imported": "ma"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./FormValue-CAMilU-0.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "E",
+          "imported": "u"
+        },
+        {
+          "local": "_",
+          "imported": "s"
+        }
+      ],
+      "resolved": "assets/vendor.d/FormValue-CAMilU-0.js"
+    },
+    {
+      "specifier": "./deal-B3IQ_ej7.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "P",
+          "imported": "d"
+        },
+        {
+          "local": "y",
+          "imported": "l"
+        },
+        {
+          "local": "u",
+          "imported": "w"
+        },
+        {
+          "local": "$",
+          "imported": "f"
+        },
+        {
+          "local": "W",
+          "imported": "a"
+        }
+      ],
+      "resolved": "assets/vendor.d/deal-B3IQ_ej7.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "V",
+      "exported": "I"
+    },
+    {
+      "local": "F",
+      "exported": "T"
+    },
+    {
+      "local": "B",
+      "exported": "a"
+    },
+    {
+      "local": "R",
+      "exported": "b"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "g",
+      "keys": [
+        "form",
+        "id",
+        "unit"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "id",
+        "index",
+        "form",
+        "isMobile",
+        "canRemove",
+        "onRemove"
+      ]
+    },
+    {
+      "function": "F",
+      "keys": [
+        "form",
+        "itemIds",
+        "isMobile"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "CustomerDealListPage",
+    "CustomerListPage",
+    "DealFormDialog",
+    "DealListPage",
+    "Layout",
+    "MobileDashboardLayout",
+    "PostComposerHost",
+    "PurchaseListPage",
+    "SalesListPage",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog",
+    "VoucherListPage"
+  ],
+  "service": "거래처·회계",
+  "purpose": "품목 행 입력",
+  "reuseGrade": "B",
+  "integration": "금액 계산·품목 선택 인터페이스 분리",
+  "exportedParameters": [
+    {
+      "export": "T",
+      "compiledLocal": "F",
+      "keys": [
+        "form",
+        "itemIds",
+        "isMobile"
+      ]
+    }
+  ]
+}

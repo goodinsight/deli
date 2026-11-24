@@ -1,0 +1,2553 @@
+[
+  {
+    "id": "01-01",
+    "service": "업무",
+    "title": "월간 보기",
+    "summary": "업무를 월간 달력으로 조회한다. 전체·내 업무·보낸 업무·공지사항·보관함·파일 탭과 종류·라벨·상태·책임자·프로젝트·중요도 필터가 있다.",
+    "url": "https://work-test.elimsafety.com/dashboard",
+    "fields": [],
+    "image": "screenshots/01-01.jpg",
+    "type": "조회·관리",
+    "pdf_page": 4
+  },
+  {
+    "id": "01-02",
+    "service": "업무",
+    "title": "피드 보기",
+    "summary": "업무 내용을 피드 형태로 모아 본다. 글·대화·업무 등 콘텐츠를 흐름에 따라 확인하는 보기다.",
+    "url": "https://work-test.elimsafety.com/dashboard",
+    "fields": [
+      "댓글을 추가하거나 팀원을 @멘션하세요"
+    ],
+    "image": "screenshots/01-02.jpg",
+    "type": "조회·관리",
+    "pdf_page": 5
+  },
+  {
+    "id": "01-03",
+    "service": "업무",
+    "title": "목록 보기",
+    "summary": "여러 업무를 목록으로 비교하며 검색과 상태·담당자 등 필터로 좁혀 본다.",
+    "url": "https://work-test.elimsafety.com/dashboard",
+    "fields": [
+      "완료",
+      "제목",
+      "상태",
+      "시작일시",
+      "마감예정",
+      "책임자",
+      "참조자",
+      "중요도",
+      "프로젝트",
+      "확인",
+      "비고",
+      "고객 인터뷰 일정 잡기 완료 처리",
+      "홈페이지 개편 기획안 작성 완료 처리",
+      "신규 로고 시안 검토 완료 처리",
+      "상세페이지 카피 초안 완료 처리"
+    ],
+    "image": "screenshots/01-03.jpg",
+    "type": "조회·관리",
+    "pdf_page": 6
+  },
+  {
+    "id": "01-04",
+    "service": "업무",
+    "title": "주간 보기",
+    "summary": "업무를 주간 단위로 배치해 해당 주의 마감과 진행 일정을 확인한다.",
+    "url": "https://work-test.elimsafety.com/dashboard",
+    "fields": [],
+    "image": "screenshots/01-04.jpg",
+    "type": "조회·관리",
+    "pdf_page": 7
+  },
+  {
+    "id": "01-05",
+    "service": "업무",
+    "title": "프로젝트 보기",
+    "summary": "업무를 프로젝트 기준으로 묶어 진행 현황을 확인하는 보기다.",
+    "url": "https://work-test.elimsafety.com/dashboard",
+    "fields": [
+      "고객 인터뷰 일정 잡기 완료 처리",
+      "홈페이지 개편 기획안 작성 완료 처리",
+      "신규 로고 시안 검토 완료 처리",
+      "상세페이지 카피 초안 완료 처리"
+    ],
+    "image": "screenshots/01-05.jpg",
+    "type": "조회·관리",
+    "pdf_page": 8
+  },
+  {
+    "id": "01-06",
+    "service": "업무",
+    "title": "타임라인 보기",
+    "summary": "업무의 시작·종료 구간을 날짜 축에 놓아 기간과 겹치는 일정을 확인한다.",
+    "url": "https://work-test.elimsafety.com/dashboard",
+    "fields": [],
+    "image": "screenshots/01-06.jpg",
+    "type": "조회·관리",
+    "pdf_page": 9
+  },
+  {
+    "id": "01-07",
+    "service": "업무",
+    "title": "파일 탭",
+    "summary": "작업공간 업무에 첨부된 파일을 이름·업무·크기·등록자·등록시각 기준으로 모아 조회한다.",
+    "url": "https://work-test.elimsafety.com/dashboard",
+    "fields": [
+      "제목·비고·파일 이름",
+      "이름",
+      "업무",
+      "크기",
+      "올린 사람",
+      "올린 때"
+    ],
+    "image": "screenshots/01-07.jpg",
+    "type": "조회·관리",
+    "pdf_page": 10
+  },
+  {
+    "id": "01-08",
+    "service": "업무",
+    "title": "보낸 업무",
+    "summary": "자신이 보낸 업무를 별도로 모아 진행 상황을 확인한다.",
+    "url": "https://work-test.elimsafety.com/dashboard",
+    "fields": [],
+    "image": "screenshots/01-08.jpg",
+    "type": "조회·관리",
+    "pdf_page": 11
+  },
+  {
+    "id": "01-09",
+    "service": "업무",
+    "title": "공지사항",
+    "summary": "공지사항을 분리해 조회하는 탭이다.",
+    "url": "https://work-test.elimsafety.com/dashboard",
+    "fields": [
+      "완료",
+      "제목",
+      "상태",
+      "시작일시",
+      "마감예정",
+      "대상자",
+      "중요도",
+      "확인",
+      "비고"
+    ],
+    "image": "screenshots/01-09.jpg",
+    "type": "조회·관리",
+    "pdf_page": 12
+  },
+  {
+    "id": "01-10",
+    "service": "업무",
+    "title": "보관함",
+    "summary": "보관함을 분리해 조회하는 탭이다.",
+    "url": "https://work-test.elimsafety.com/dashboard",
+    "fields": [
+      "완료",
+      "제목",
+      "상태",
+      "시작일시",
+      "마감예정",
+      "책임자",
+      "참조자",
+      "중요도",
+      "프로젝트",
+      "완료일시",
+      "비고"
+    ],
+    "image": "screenshots/01-10.jpg",
+    "type": "조회·관리",
+    "pdf_page": 13
+  },
+  {
+    "id": "01-11",
+    "service": "업무",
+    "title": "나를 언급",
+    "summary": "나를 언급한 글과 댓글을 모아 확인한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/mentions",
+    "fields": [],
+    "image": "screenshots/01-11.jpg",
+    "type": "조회·관리",
+    "pdf_page": 14
+  },
+  {
+    "id": "01-12",
+    "service": "업무",
+    "title": "북마크",
+    "summary": "북마크한 글을 모아 확인한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/bookmarks",
+    "fields": [],
+    "image": "screenshots/01-12.jpg",
+    "type": "조회·관리",
+    "pdf_page": 15
+  },
+  {
+    "id": "01-13",
+    "service": "업무",
+    "title": "드라이브 - 공용 폴더",
+    "summary": "공용 폴더의 파일·하위 폴더를 조회한다. 대표 폴더인 정밀안전점검 보고서 화면을 확인했다.",
+    "url": "https://work-test.elimsafety.com/dashboard/drive/shared/30",
+    "fields": [
+      "파일 이름 검색",
+      "이름",
+      "크기",
+      "올린 사람",
+      "올린 때"
+    ],
+    "image": "screenshots/01-13.jpg",
+    "type": "조회·관리",
+    "pdf_page": 16
+  },
+  {
+    "id": "01-14",
+    "service": "업무",
+    "title": "드라이브 - 첨부 모아 보기",
+    "summary": "서비스에 첨부된 파일을 모아 확인한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/drive/attachments",
+    "fields": [
+      "파일 이름 검색",
+      "번호",
+      "이름",
+      "종류",
+      "붙은 곳",
+      "크기",
+      "올린 사람",
+      "올린 때"
+    ],
+    "image": "screenshots/01-14.jpg",
+    "type": "조회·관리",
+    "pdf_page": 17
+  },
+  {
+    "id": "01-15",
+    "service": "업무",
+    "title": "내 작업공간",
+    "summary": "참여하는 작업공간의 소유자·진행 건수·구성원·최근 활동을 카드로 확인한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/projects",
+    "fields": [],
+    "image": "screenshots/01-15.jpg",
+    "type": "조회·관리",
+    "pdf_page": 18
+  },
+  {
+    "id": "01-16",
+    "service": "업무",
+    "title": "업무 등록",
+    "summary": "업무 제목·라벨·마감예정·중요도·내용 등을 등록한다. 대화·글·업무·일정·투표 유형을 선택할 수 있다.",
+    "url": "https://work-test.elimsafety.com/dashboard",
+    "fields": [
+      "업무 제목을 입력하세요"
+    ],
+    "image": "screenshots/01-16.jpg",
+    "type": "양식·설정",
+    "pdf_page": 19
+  },
+  {
+    "id": "01-17",
+    "service": "업무",
+    "title": "대화 등록",
+    "summary": "작업공간에 대화 유형의 콘텐츠를 작성하는 화면이다. 등록하지 않았다.",
+    "url": "https://work-test.elimsafety.com/dashboard",
+    "fields": [
+      "없음"
+    ],
+    "image": "screenshots/01-17.jpg",
+    "type": "양식·설정",
+    "pdf_page": 20
+  },
+  {
+    "id": "01-18",
+    "service": "업무",
+    "title": "글 등록",
+    "summary": "작업공간에 글 유형의 콘텐츠를 작성하는 화면이다. 등록하지 않았다.",
+    "url": "https://work-test.elimsafety.com/dashboard",
+    "fields": [
+      "제목을 입력하세요",
+      "없음"
+    ],
+    "image": "screenshots/01-18.jpg",
+    "type": "양식·설정",
+    "pdf_page": 21
+  },
+  {
+    "id": "01-19",
+    "service": "업무",
+    "title": "일정 등록",
+    "summary": "일정의 날짜·시간·반복·장소·주소·알림을 지정한다. 회의실·차량·화상회의 관련 항목도 제공한다.",
+    "url": "https://work-test.elimsafety.com/dashboard",
+    "fields": [
+      "일정 제목을 입력하세요",
+      "장소 입력",
+      "주소 입력",
+      "비고 입력"
+    ],
+    "image": "screenshots/01-19.jpg",
+    "type": "양식·설정",
+    "pdf_page": 22
+  },
+  {
+    "id": "01-20",
+    "service": "업무",
+    "title": "투표 등록",
+    "summary": "텍스트 또는 날짜 항목으로 투표를 구성한다. 선택지, 마감과 결과 공개 조건을 지정하는 화면이다.",
+    "url": "https://work-test.elimsafety.com/dashboard",
+    "fields": [
+      "투표 제목을 입력하세요",
+      "항목 1",
+      "항목 2"
+    ],
+    "image": "screenshots/01-20.jpg",
+    "type": "양식·설정",
+    "pdf_page": 23
+  },
+  {
+    "id": "01-21",
+    "service": "업무",
+    "title": "내 업무",
+    "summary": "내가 담당하는 업무를 따로 모아 보고 상태·마감일·중요도 등의 조건으로 확인한다.",
+    "url": "https://work-test.elimsafety.com/dashboard",
+    "fields": [],
+    "image": "screenshots/01-21.jpg",
+    "type": "조회·관리",
+    "pdf_page": 24
+  },
+  {
+    "id": "01-22",
+    "service": "업무",
+    "title": "업무 템플릿 관리",
+    "summary": "반복 업무에 재사용할 템플릿을 관리한다. 현재 등록된 템플릿은 없으며 새 템플릿 버튼이 제공된다.",
+    "url": "https://work-test.elimsafety.com/dashboard",
+    "fields": [],
+    "image": "screenshots/01-22.jpg",
+    "type": "양식·설정",
+    "pdf_page": 25
+  },
+  {
+    "id": "01-23",
+    "service": "업무",
+    "title": "새 작업공간 · 템플릿",
+    "summary": "일반 프로젝트, 단계 관리, 세무·노무 월 마감, 지원금, 정기점검, 온보딩, 콘텐츠, 주간보고, 행사, 고객문의 등 목적별 작업공간 템플릿을 선택한다.",
+    "url": "https://work-test.elimsafety.com/dashboard",
+    "fields": [
+      "공간 이름",
+      "피드 쓰기",
+      "목록 쓰기",
+      "주간 쓰기",
+      "월간 쓰기",
+      "프로젝트 쓰기",
+      "타임라인 쓰기",
+      "내 업무",
+      "보낸 업무",
+      "공지사항",
+      "보관함",
+      "파일",
+      "요청 서류",
+      "회차",
+      "투표"
+    ],
+    "image": "screenshots/01-23.jpg",
+    "type": "양식·설정",
+    "pdf_page": 26
+  },
+  {
+    "id": "01-24",
+    "service": "업무",
+    "title": "새 작업공간 · 보기와 참여자",
+    "summary": "업무 속성, 보기 순서, 업무 탭, 요청 서류·회차·투표 기능, 참여자와 읽기·편집 권한을 구성하는 항목을 제공한다.",
+    "url": "https://work-test.elimsafety.com/dashboard",
+    "fields": [
+      "공간 이름",
+      "피드 쓰기",
+      "목록 쓰기",
+      "주간 쓰기",
+      "월간 쓰기",
+      "프로젝트 쓰기",
+      "타임라인 쓰기",
+      "내 업무",
+      "보낸 업무",
+      "공지사항",
+      "보관함",
+      "파일",
+      "요청 서류",
+      "회차",
+      "투표"
+    ],
+    "image": "screenshots/01-24.jpg",
+    "type": "양식·설정",
+    "pdf_page": 27
+  },
+  {
+    "id": "01-25",
+    "service": "업무",
+    "title": "외부 업무함 연동",
+    "summary": "외부 업무함 주소와 기존 계정으로 다른 시스템의 업무함을 연결하는 설정 화면. 접속 확인이나 연결은 실행하지 않았다.",
+    "url": "https://work-test.elimsafety.com/dashboard",
+    "fields": [
+      "외부 업무함 주소",
+      "이메일",
+      "비밀번호",
+      "표시 이름"
+    ],
+    "image": "screenshots/01-25.jpg",
+    "type": "양식·설정",
+    "pdf_page": 28
+  },
+  {
+    "id": "02-01",
+    "service": "메일",
+    "title": "받은편지함",
+    "summary": "메일 검색과 읽음·답장·전달·라벨·스팸 처리 기능이 있다. 현재 등록된 메일 계정이 없다.",
+    "url": "https://work-test.elimsafety.com/dashboard/mail",
+    "fields": [
+      "제목, 보낸 사람 검색",
+      "전체 선택",
+      "보낸 사람",
+      "제목",
+      "일시"
+    ],
+    "image": "screenshots/02-01.jpg",
+    "type": "조회·관리",
+    "pdf_page": 29
+  },
+  {
+    "id": "02-02",
+    "service": "메일",
+    "title": "보낸편지함",
+    "summary": "메일의 보낸편지함 화면이다. 메일 계정 미등록 상태에서 확인했다.",
+    "url": "https://work-test.elimsafety.com/dashboard/mail/sent",
+    "fields": [
+      "제목, 보낸 사람 검색",
+      "전체 선택",
+      "받는 사람",
+      "제목",
+      "일시"
+    ],
+    "image": "screenshots/02-02.jpg",
+    "type": "조회·관리",
+    "pdf_page": 30
+  },
+  {
+    "id": "02-03",
+    "service": "메일",
+    "title": "중요편지함",
+    "summary": "메일의 중요편지함 화면이다. 메일 계정 미등록 상태에서 확인했다.",
+    "url": "https://work-test.elimsafety.com/dashboard/mail/starred",
+    "fields": [
+      "제목, 보낸 사람 검색",
+      "전체 선택",
+      "보낸 사람",
+      "제목",
+      "일시"
+    ],
+    "image": "screenshots/02-03.jpg",
+    "type": "조회·관리",
+    "pdf_page": 31
+  },
+  {
+    "id": "02-04",
+    "service": "메일",
+    "title": "임시보관함",
+    "summary": "메일의 임시보관함 화면이다. 메일 계정 미등록 상태에서 확인했다.",
+    "url": "https://work-test.elimsafety.com/dashboard/mail/draft",
+    "fields": [
+      "제목, 보낸 사람 검색",
+      "전체 선택",
+      "받는 사람",
+      "제목",
+      "일시"
+    ],
+    "image": "screenshots/02-04.jpg",
+    "type": "조회·관리",
+    "pdf_page": 32
+  },
+  {
+    "id": "02-05",
+    "service": "메일",
+    "title": "예약편지함",
+    "summary": "메일의 예약편지함 화면이다. 메일 계정 미등록 상태에서 확인했다.",
+    "url": "https://work-test.elimsafety.com/dashboard/mail/scheduled",
+    "fields": [
+      "제목, 보낸 사람 검색",
+      "전체 선택",
+      "받는 사람",
+      "제목",
+      "일시"
+    ],
+    "image": "screenshots/02-05.jpg",
+    "type": "조회·관리",
+    "pdf_page": 33
+  },
+  {
+    "id": "02-06",
+    "service": "메일",
+    "title": "스팸함",
+    "summary": "메일의 스팸함 화면이다. 메일 계정 미등록 상태에서 확인했다.",
+    "url": "https://work-test.elimsafety.com/dashboard/mail/spam",
+    "fields": [
+      "제목, 보낸 사람 검색",
+      "전체 선택",
+      "보낸 사람",
+      "제목",
+      "일시"
+    ],
+    "image": "screenshots/02-06.jpg",
+    "type": "조회·관리",
+    "pdf_page": 34
+  },
+  {
+    "id": "02-07",
+    "service": "메일",
+    "title": "휴지통",
+    "summary": "메일의 휴지통 화면이다. 메일 계정 미등록 상태에서 확인했다.",
+    "url": "https://work-test.elimsafety.com/dashboard/mail/trash",
+    "fields": [
+      "제목, 보낸 사람 검색",
+      "전체 선택",
+      "보낸 사람",
+      "제목",
+      "일시"
+    ],
+    "image": "screenshots/02-07.jpg",
+    "type": "조회·관리",
+    "pdf_page": 35
+  },
+  {
+    "id": "02-08",
+    "service": "메일",
+    "title": "주소록",
+    "summary": "메일의 주소록 화면이다. 메일 계정 미등록 상태에서 확인했다.",
+    "url": "https://work-test.elimsafety.com/dashboard/mail/contacts",
+    "fields": [
+      "이름, 메일 검색",
+      "번호",
+      "이름",
+      "구분",
+      "메일 주소",
+      "소속",
+      "전화번호",
+      "메모"
+    ],
+    "image": "screenshots/02-08.jpg",
+    "type": "조회·관리",
+    "pdf_page": 36
+  },
+  {
+    "id": "02-09",
+    "service": "메일",
+    "title": "외부 메일 계정 등록",
+    "summary": "새 메일을 누르면 계정 미등록으로 외부 메일 계정 등록 창이 열린다. 메일 주소·수신 IMAP·발신 SMTP·보안·포트·수신 주기·공용 계정·기본 발신·서명을 설정한다. 계정 등록과 접속 테스트는 실행하지 않았다.",
+    "url": "https://work-test.elimsafety.com/dashboard/mail/contacts",
+    "fields": [
+      "메일 주소 *",
+      "보내는 사람 이름",
+      "공용 계정",
+      "기본 발신 계정",
+      "프로토콜 IMAP (권장 — 서버와 동기화)",
+      "호스트 *",
+      "보안 SSL/TLS",
+      "포트",
+      "아이디",
+      "비밀번호 *",
+      "자동 수신 간격(분)",
+      "수신 폴더 (IMAP)",
+      "수신 서버와 같은 아이디/비밀번호 사용"
+    ],
+    "image": "screenshots/02-09.jpg",
+    "type": "양식·설정",
+    "pdf_page": 37
+  },
+  {
+    "id": "02s-01",
+    "service": "일정",
+    "title": "통합 캘린더 - 월",
+    "summary": "업무·일정·회의·세금신고·서류만료·직원생일·교육·자원예약을 한 달력에서 확인한다. 작업공간·분류·완료여부 필터를 제공한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/calendar",
+    "fields": [
+      "업무",
+      "일정",
+      "회의",
+      "세금 신고",
+      "서류 만료",
+      "직원 생일",
+      "교육",
+      "자원 예약",
+      "작업공간 전체",
+      "일정 검색"
+    ],
+    "image": "screenshots/02s-01.jpg",
+    "type": "조회·관리",
+    "pdf_page": 38
+  },
+  {
+    "id": "02s-02",
+    "service": "일정",
+    "title": "통합 캘린더 - 일",
+    "summary": "통합 일정을 일 단위로 조회하는 보기다.",
+    "url": "https://work-test.elimsafety.com/dashboard/calendar",
+    "fields": [
+      "업무",
+      "일정",
+      "회의",
+      "세금 신고",
+      "서류 만료",
+      "직원 생일",
+      "교육",
+      "자원 예약",
+      "작업공간 전체",
+      "일정 검색"
+    ],
+    "image": "screenshots/02s-02.jpg",
+    "type": "조회·관리",
+    "pdf_page": 39
+  },
+  {
+    "id": "02s-03",
+    "service": "일정",
+    "title": "통합 캘린더 - 주",
+    "summary": "통합 일정을 주 단위로 조회하는 보기다.",
+    "url": "https://work-test.elimsafety.com/dashboard/calendar",
+    "fields": [
+      "업무",
+      "일정",
+      "회의",
+      "세금 신고",
+      "서류 만료",
+      "직원 생일",
+      "교육",
+      "자원 예약",
+      "작업공간 전체",
+      "일정 검색"
+    ],
+    "image": "screenshots/02s-03.jpg",
+    "type": "조회·관리",
+    "pdf_page": 40
+  },
+  {
+    "id": "02s-04",
+    "service": "일정",
+    "title": "통합 캘린더 - 년",
+    "summary": "통합 일정을 년 단위로 조회하는 보기다.",
+    "url": "https://work-test.elimsafety.com/dashboard/calendar",
+    "fields": [
+      "업무",
+      "일정",
+      "회의",
+      "세금 신고",
+      "서류 만료",
+      "직원 생일",
+      "교육",
+      "자원 예약",
+      "작업공간 전체",
+      "일정 검색"
+    ],
+    "image": "screenshots/02s-04.jpg",
+    "type": "조회·관리",
+    "pdf_page": 41
+  },
+  {
+    "id": "02s-05",
+    "service": "일정",
+    "title": "회의실 예약",
+    "summary": "회의실별 수용인원과 시간대 예약 현황을 확인하고 예약 및 회의실 설정으로 진입한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/calendar/rooms",
+    "fields": [
+      "업무",
+      "일정",
+      "회의",
+      "세금 신고",
+      "서류 만료",
+      "직원 생일",
+      "교육",
+      "자원 예약"
+    ],
+    "image": "screenshots/02s-05.jpg",
+    "type": "조회·관리",
+    "pdf_page": 42
+  },
+  {
+    "id": "02s-06",
+    "service": "일정",
+    "title": "차량 예약",
+    "summary": "차량별 시간대 예약을 조회한다. 차량 사용 신청은 전자결재의 차량 사용 신청서로 연결된다.",
+    "url": "https://work-test.elimsafety.com/dashboard/calendar/vehicles",
+    "fields": [
+      "업무",
+      "일정",
+      "회의",
+      "세금 신고",
+      "서류 만료",
+      "직원 생일",
+      "교육",
+      "자원 예약"
+    ],
+    "image": "screenshots/02s-06.jpg",
+    "type": "조회·관리",
+    "pdf_page": 43
+  },
+  {
+    "id": "02s-07",
+    "service": "일정",
+    "title": "차량 운행일지",
+    "summary": "운전자, 운행일, 주행거리, 업무·출퇴근 구분과 비용을 기록하는 차량 운행일지다. 엑셀 기능이 있다.",
+    "url": "https://work-test.elimsafety.com/dashboard/calendar/vehicle-logs",
+    "fields": [
+      "업무",
+      "일정",
+      "회의",
+      "세금 신고",
+      "서류 만료",
+      "직원 생일",
+      "교육",
+      "자원 예약",
+      "차량 전체 차량",
+      "사용일",
+      "차량",
+      "운전자",
+      "주행 전",
+      "주행 후",
+      "주행(km)",
+      "출퇴근",
+      "업무용",
+      "목적지 · 용무"
+    ],
+    "image": "screenshots/02s-07.jpg",
+    "type": "조회·관리",
+    "pdf_page": 44
+  },
+  {
+    "id": "03-01",
+    "service": "인사",
+    "title": "직원목록",
+    "summary": "직원의 이름·부서·직급·재직 상태를 목록으로 확인하고 직원 등록과 인사 세부 화면으로 이동한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/employees",
+    "fields": [
+      "직원 이름 검색",
+      "번호",
+      "이름",
+      "부서",
+      "직급",
+      "직책",
+      "근무형태",
+      "상태",
+      "계정",
+      "입사일",
+      "근속년수",
+      "총경력",
+      "사번",
+      "이메일",
+      "모바일"
+    ],
+    "image": "screenshots/03-01.jpg",
+    "type": "조회·관리",
+    "pdf_page": 45
+  },
+  {
+    "id": "03-02",
+    "service": "인사",
+    "title": "학력·자격증",
+    "summary": "직원별 학력과 자격증을 관리한다. 학교·졸업 정보 및 자격의 취득·만료 정보를 확인한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/qualifications",
+    "fields": [
+      "퇴사자 포함",
+      "번호",
+      "이름",
+      "부서",
+      "직급",
+      "최종학력",
+      "자격증",
+      "자격 만료",
+      "학력",
+      "자격"
+    ],
+    "image": "screenshots/03-02.jpg",
+    "type": "조회·관리",
+    "pdf_page": 46
+  },
+  {
+    "id": "03-03",
+    "service": "인사",
+    "title": "경력관리",
+    "summary": "직원의 경력과 동일 분야 경력을 관리하고 포상·징계 이력을 함께 확인한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/careers",
+    "fields": [
+      "퇴사자 포함",
+      "번호",
+      "이름",
+      "부서",
+      "직급",
+      "담당업무",
+      "총경력",
+      "동종경력",
+      "경력",
+      "포상·징계"
+    ],
+    "image": "screenshots/03-03.jpg",
+    "type": "조회·관리",
+    "pdf_page": 47
+  },
+  {
+    "id": "03-04",
+    "service": "인사",
+    "title": "교육관리",
+    "summary": "법정·직무 등의 교육을 구분해 기관, 교육일, 시간, 수료 및 다음 교육 정보를 관리한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/trainings",
+    "fields": [
+      "교육명 검색",
+      "번호",
+      "등록일",
+      "교육명 (29)",
+      "구분",
+      "기관",
+      "기간",
+      "시간",
+      "참여 · 이수",
+      "다음 교육일"
+    ],
+    "image": "screenshots/03-04.jpg",
+    "type": "조회·관리",
+    "pdf_page": 48
+  },
+  {
+    "id": "03-05",
+    "service": "인사",
+    "title": "발령·이력",
+    "summary": "입사·전보·승진·휴직·복직·퇴사 등의 발령 이력을 직원별로 관리한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/events",
+    "fields": [
+      "직원 이름 검색",
+      "발령일",
+      "종류",
+      "직원 (8)",
+      "변동",
+      "사유·비고"
+    ],
+    "image": "screenshots/03-05.jpg",
+    "type": "조회·관리",
+    "pdf_page": 49
+  },
+  {
+    "id": "03-06",
+    "service": "인사",
+    "title": "증명서 발급",
+    "summary": "재직·경력·퇴직·위촉 증명서 발급과 신청 내역·발급대장을 관리한다. PDF 관련 기능이 표시된다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/certificates",
+    "fields": [
+      "대상 이름 검색",
+      "발급번호",
+      "종류",
+      "대상",
+      "용도",
+      "제출처",
+      "발급자",
+      "요청일시",
+      "발급일시"
+    ],
+    "image": "screenshots/03-06.jpg",
+    "type": "조회·관리",
+    "pdf_page": 50
+  },
+  {
+    "id": "03-07",
+    "service": "인사",
+    "title": "업무 기여도",
+    "summary": "기간과 작업공간을 선택해 직원별 업무 기여도를 비교한다. 완료일 또는 마감일 기준과 월별 기여도 표시를 제공한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/task-contribution",
+    "fields": [
+      "모든 공간",
+      "번호",
+      "이름 (1명)",
+      "종합 기여도",
+      "몫 합계",
+      "맡은 업무",
+      "1월",
+      "2월",
+      "3월",
+      "4월",
+      "5월",
+      "6월",
+      "7월",
+      "8월",
+      "9월",
+      "10월",
+      "11월",
+      "12월"
+    ],
+    "image": "screenshots/03-07.jpg",
+    "type": "조회·관리",
+    "pdf_page": 51
+  },
+  {
+    "id": "03-08",
+    "service": "인사",
+    "title": "급여",
+    "summary": "급여대장의 지급액·공제액·실지급액과 처리 상태를 조회한다. 대장 만들기와 급여 설정 진입점이 있다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/payroll",
+    "fields": [
+      "귀속월 검색",
+      "귀속월",
+      "제목",
+      "지급일",
+      "인원",
+      "지급 총액",
+      "공제 총액",
+      "실지급액",
+      "상태"
+    ],
+    "image": "screenshots/03-08.jpg",
+    "type": "조회·관리",
+    "pdf_page": 52
+  },
+  {
+    "id": "03-09",
+    "service": "인사",
+    "title": "4대보험",
+    "summary": "4대보험 가입 현황과 신고할 일을 나누어 확인한다. 취득·상실·보수 관련 정보를 관리하는 영역이다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/insurance",
+    "fields": [
+      "직원 이름 검색",
+      "번호",
+      "이름 (40)",
+      "부서",
+      "근무형태",
+      "연금",
+      "건강",
+      "고용",
+      "산재",
+      "취득일",
+      "상실일",
+      "보수월액"
+    ],
+    "image": "screenshots/03-09.jpg",
+    "type": "조회·관리",
+    "pdf_page": 53
+  },
+  {
+    "id": "03-10",
+    "service": "인사",
+    "title": "고용지원금",
+    "summary": "지원사업의 기관·대상·상태·기간과 승인액·수령액·다음 조치를 관리한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/subsidies",
+    "fields": [
+      "지원금 이름 검색",
+      "번호",
+      "지원금명 (4)",
+      "기관",
+      "상태",
+      "대상",
+      "지원기간",
+      "승인액",
+      "받은 금액",
+      "다음 할 일"
+    ],
+    "image": "screenshots/03-10.jpg",
+    "type": "조회·관리",
+    "pdf_page": 54
+  },
+  {
+    "id": "03-11",
+    "service": "인사",
+    "title": "근로계약",
+    "summary": "직원별 근로계약의 계약일·형태·기간·급여·첨부와 상태를 관리한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/contracts",
+    "fields": [
+      "직원 이름 검색",
+      "계약일",
+      "직원 (42)",
+      "계약 종류",
+      "계약 기간",
+      "임금",
+      "계약서",
+      "상태"
+    ],
+    "image": "screenshots/03-11.jpg",
+    "type": "조회·관리",
+    "pdf_page": 55
+  },
+  {
+    "id": "03-12",
+    "service": "인사",
+    "title": "직원 등록 - 기본 정보",
+    "summary": "이름·입사일·사번·부서·직급·직책·근무형태·재직 상태·퇴사일을 입력한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/employees",
+    "fields": [
+      "이름",
+      "입사일",
+      "사번",
+      "부서 지정 안 함",
+      "직급",
+      "직책",
+      "근무형태 정규직",
+      "재직 상태 재직",
+      "퇴사일"
+    ],
+    "image": "screenshots/03-12.jpg",
+    "type": "양식·설정",
+    "pdf_page": 56
+  },
+  {
+    "id": "03-13",
+    "service": "인사",
+    "title": "직원 등록 - 근로조건",
+    "summary": "근태 관리 대상, 담당업무, 채용·수습, 계약기간, 근무시간, 급여 형태·금액과 수당을 입력한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/employees",
+    "fields": [
+      "근태 관리 대상",
+      "담당업무",
+      "채용 구분 선택 안 함",
+      "수습 기간 없음",
+      "계약 시작일",
+      "계약 종료일",
+      "근무 방식 선택 안 함",
+      "1일 소정근로시간",
+      "1주 소정근로시간",
+      "월 소정근로시간",
+      "급여 형태 선택 안 함",
+      "계약 금액",
+      "상여금(연)",
+      "식대(월)",
+      "차량보조비(월)",
+      "통신보조비(월)"
+    ],
+    "image": "screenshots/03-13.jpg",
+    "type": "양식·설정",
+    "pdf_page": 57
+  },
+  {
+    "id": "03-14",
+    "service": "인사",
+    "title": "직원 등록 - 인적사항",
+    "summary": "생년월일·국적·성별·병역·혼인 등의 인적사항을 입력하는 구역이다. 실제 정보는 입력하지 않았다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/employees",
+    "fields": [
+      "외국인",
+      "장애인",
+      "주민등록번호",
+      "생년월일",
+      "성별 선택 안 함",
+      "국적",
+      "병역 선택 안 함",
+      "혼인 상태 선택 안 함",
+      "결혼기념일",
+      "자녀 수"
+    ],
+    "image": "screenshots/03-14.jpg",
+    "type": "양식·설정",
+    "pdf_page": 58
+  },
+  {
+    "id": "03-15",
+    "service": "인사",
+    "title": "직원 등록 - 연락처·주소",
+    "summary": "직원의 휴대폰·이메일·주소와 비상연락처를 입력한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/employees",
+    "fields": [
+      "휴대폰 번호",
+      "이메일",
+      "우편번호",
+      "주소",
+      "상세주소",
+      "비상연락처 1 이름",
+      "관계",
+      "전화",
+      "비상연락처 2 이름"
+    ],
+    "image": "screenshots/03-15.jpg",
+    "type": "양식·설정",
+    "pdf_page": 59
+  },
+  {
+    "id": "03-16",
+    "service": "인사",
+    "title": "직원 등록 - 급여계좌·세금",
+    "summary": "급여 지급 계좌와 공제 대상 가족, 원천징수 비율 및 소득세 감면 관련 항목을 입력한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/employees",
+    "fields": [
+      "세대주",
+      "부녀자 공제",
+      "은행 선택 안 함",
+      "계좌번호",
+      "예금주",
+      "공제대상 가족 수(본인 포함)",
+      "8~20세 자녀 수",
+      "원천징수 비율 100%",
+      "소득세 감면율 감면 없음",
+      "소득세 감면 시작일",
+      "소득세 감면 종료일"
+    ],
+    "image": "screenshots/03-16.jpg",
+    "type": "양식·설정",
+    "pdf_page": 60
+  },
+  {
+    "id": "03-17",
+    "service": "인사",
+    "title": "직원 등록 - 차량",
+    "summary": "직원의 차량번호·차종·연료 정보를 입력한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/employees",
+    "fields": [
+      "차량번호",
+      "차종",
+      "연료 선택 안 함"
+    ],
+    "image": "screenshots/03-17.jpg",
+    "type": "양식·설정",
+    "pdf_page": 61
+  },
+  {
+    "id": "03-18",
+    "service": "인사",
+    "title": "직원 등록 - 비고",
+    "summary": "직원 정보에 추가 설명을 남기는 비고 구역이다. 구성원 연결 버튼도 제공한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/employees",
+    "fields": [],
+    "image": "screenshots/03-18.jpg",
+    "type": "양식·설정",
+    "pdf_page": 62
+  },
+  {
+    "id": "04-01",
+    "service": "근태",
+    "title": "내 근태",
+    "summary": "출퇴근 예정·주간 근로시간·연차 잔여·월간 근무 요약을 확인하며 휴가 신청·근무 변경·정정 요청을 시작한다. 현재 기기 미등록 안내가 표시된다.",
+    "url": "https://work-test.elimsafety.com/dashboard/attendance",
+    "fields": [
+      "날짜",
+      "출근",
+      "퇴근",
+      "실근로",
+      "연장",
+      "야간",
+      "상태"
+    ],
+    "image": "screenshots/04-01.jpg",
+    "type": "조회·관리",
+    "pdf_page": 63
+  },
+  {
+    "id": "04-02",
+    "service": "근태",
+    "title": "근태 현황",
+    "summary": "조직의 직원별 출퇴근 및 근무 상태를 확인하는 운영 화면이다. 날짜와 조직 기준으로 확인한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/attendance/status",
+    "fields": [
+      "번호",
+      "이름 (38)",
+      "직급 정렬 · 거르기",
+      "부서",
+      "상태 정렬 · 거르기",
+      "예정",
+      "출근",
+      "퇴근",
+      "근무 시간",
+      "내용"
+    ],
+    "image": "screenshots/04-02.jpg",
+    "type": "조회·관리",
+    "pdf_page": 64
+  },
+  {
+    "id": "04-03",
+    "service": "근태",
+    "title": "휴가·근태 기록",
+    "summary": "직원별 휴가와 근태 기록을 조회하고 기간·유형·상태에 따라 관리한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/attendance",
+    "fields": [
+      "직원 이름 검색",
+      "기간",
+      "종류",
+      "직원",
+      "일수",
+      "사유·비고"
+    ],
+    "image": "screenshots/04-03.jpg",
+    "type": "조회·관리",
+    "pdf_page": 65
+  },
+  {
+    "id": "04-04",
+    "service": "근태",
+    "title": "연차 현황",
+    "summary": "직원별 연차의 부여·사용·잔여를 확인한다. 연차 조정·마감·사용 촉진 관련 진입점이 있다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/attendance/leave",
+    "fields": [
+      "직원 이름 검색",
+      "직원",
+      "입사일",
+      "근속",
+      "연차 기간",
+      "발생",
+      "조정·이월",
+      "사용",
+      "반차",
+      "반반차",
+      "잔여"
+    ],
+    "image": "screenshots/04-04.jpg",
+    "type": "조회·관리",
+    "pdf_page": 66
+  },
+  {
+    "id": "04-05",
+    "service": "근태",
+    "title": "근태 집계",
+    "summary": "월·부서별 실근로, 연장, 승인·미승인, 야간·휴일근로 등을 표로 집계하고 엑셀 기능을 제공한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/attendance/summary",
+    "fields": [
+      "부서 전체 부서",
+      "번호",
+      "직원 (38)",
+      "부서",
+      "근무일",
+      "실근로(h)",
+      "연장(h)",
+      "승인 연장(h)",
+      "무단 연장(h)",
+      "야간(h)",
+      "휴일(h)",
+      "지각",
+      "조퇴",
+      "결근",
+      "퇴근 누락",
+      "휴가(일)",
+      "외근·출장",
+      "주 한도 초과"
+    ],
+    "image": "screenshots/04-05.jpg",
+    "type": "조회·관리",
+    "pdf_page": 67
+  },
+  {
+    "id": "04-06",
+    "service": "근태",
+    "title": "근태 보고서",
+    "summary": "인원·출근율·실근로·연장·지각·결근·휴가·주 한도 초과를 요약한다. 최근 6개월 추이, 부서별 표, 확인이 필요한 직원 목록을 제공한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/attendance/report",
+    "fields": [
+      "번호",
+      "부서 (9)",
+      "인원",
+      "출근율",
+      "실근로",
+      "연장",
+      "지각",
+      "결근",
+      "휴가",
+      "#",
+      "직원",
+      "부서",
+      "값"
+    ],
+    "image": "screenshots/04-06.jpg",
+    "type": "조회·관리",
+    "pdf_page": 68
+  },
+  {
+    "id": "04-07",
+    "service": "근태",
+    "title": "근무 일정",
+    "summary": "직원별 근무 일정을 주간 또는 4주 단위로 편성한다. 이전 일정 복사와 교대 틀을 사용하는 구조다.",
+    "url": "https://work-test.elimsafety.com/dashboard/hr/attendance/schedule",
+    "fields": [
+      "번호",
+      "직원 (38)",
+      "11/9(월)",
+      "11/10(화)",
+      "11/11(수)",
+      "11/12(목)",
+      "11/13(금)",
+      "11/14(토)",
+      "11/15(일)"
+    ],
+    "image": "screenshots/04-07.jpg",
+    "type": "조회·관리",
+    "pdf_page": 69
+  },
+  {
+    "id": "05-01",
+    "service": "게시판",
+    "title": "공지사항",
+    "summary": "사내 공지글을 조회하고 작성한다. 제목·작성자 검색, 기간 필터, 조회수 정보를 제공한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/board/notice",
+    "fields": [
+      "제목·작성자 검색",
+      "번호",
+      "제목",
+      "작성자",
+      "작성일",
+      "조회"
+    ],
+    "image": "screenshots/05-01.jpg",
+    "type": "조회·관리",
+    "pdf_page": 70
+  },
+  {
+    "id": "05-02",
+    "service": "게시판",
+    "title": "보도자료",
+    "summary": "보도자료 게시물을 분리 보관하는 게시판이다. 공통으로 검색·기간 필터·글쓰기 기능을 사용한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/board/press",
+    "fields": [
+      "제목·작성자 검색",
+      "번호",
+      "제목",
+      "작성자",
+      "작성일",
+      "조회"
+    ],
+    "image": "screenshots/05-02.jpg",
+    "type": "조회·관리",
+    "pdf_page": 71
+  },
+  {
+    "id": "05-03",
+    "service": "게시판",
+    "title": "업무서식",
+    "summary": "업무서식 게시물을 분리 보관하는 게시판이다. 공통으로 검색·기간 필터·글쓰기 기능을 사용한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/board/forms",
+    "fields": [
+      "제목·작성자 검색",
+      "번호",
+      "제목",
+      "파일",
+      "용량",
+      "작성자",
+      "등록일시",
+      "다운로드"
+    ],
+    "image": "screenshots/05-03.jpg",
+    "type": "조회·관리",
+    "pdf_page": 72
+  },
+  {
+    "id": "05-04",
+    "service": "게시판",
+    "title": "사업문서",
+    "summary": "사업문서 게시물을 분리 보관하는 게시판이다. 공통으로 검색·기간 필터·글쓰기 기능을 사용한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/board/proposals",
+    "fields": [
+      "제목·작성자 검색",
+      "번호",
+      "제목",
+      "파일",
+      "용량",
+      "작성자",
+      "등록일시",
+      "다운로드"
+    ],
+    "image": "screenshots/05-04.jpg",
+    "type": "조회·관리",
+    "pdf_page": 73
+  },
+  {
+    "id": "05-05",
+    "service": "게시판",
+    "title": "계약서",
+    "summary": "계약서 게시물을 분리 보관하는 게시판이다. 공통으로 검색·기간 필터·글쓰기 기능을 사용한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/board/contracts",
+    "fields": [
+      "제목·작성자 검색",
+      "번호",
+      "제목",
+      "파일",
+      "용량",
+      "작성자",
+      "등록일시",
+      "다운로드"
+    ],
+    "image": "screenshots/05-05.jpg",
+    "type": "조회·관리",
+    "pdf_page": 74
+  },
+  {
+    "id": "05-06",
+    "service": "게시판",
+    "title": "사업자서류",
+    "summary": "사업자서류 게시물을 분리 보관하는 게시판이다. 공통으로 검색·기간 필터·글쓰기 기능을 사용한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/board/corporate",
+    "fields": [
+      "제목·작성자 검색",
+      "번호",
+      "제목",
+      "파일",
+      "용량",
+      "작성자",
+      "등록일시",
+      "다운로드"
+    ],
+    "image": "screenshots/05-06.jpg",
+    "type": "조회·관리",
+    "pdf_page": 75
+  },
+  {
+    "id": "05-07",
+    "service": "게시판",
+    "title": "디자인",
+    "summary": "디자인 게시물을 분리 보관하는 게시판이다. 공통으로 검색·기간 필터·글쓰기 기능을 사용한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/board/design",
+    "fields": [
+      "제목·작성자 검색",
+      "번호",
+      "제목",
+      "파일",
+      "용량",
+      "작성자",
+      "등록일시",
+      "다운로드"
+    ],
+    "image": "screenshots/05-07.jpg",
+    "type": "조회·관리",
+    "pdf_page": 76
+  },
+  {
+    "id": "05-08",
+    "service": "게시판",
+    "title": "일반자료실",
+    "summary": "일반자료실 게시물을 분리 보관하는 게시판이다. 공통으로 검색·기간 필터·글쓰기 기능을 사용한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/board/archive",
+    "fields": [
+      "제목·작성자 검색",
+      "번호",
+      "제목",
+      "파일",
+      "용량",
+      "작성자",
+      "등록일시",
+      "다운로드"
+    ],
+    "image": "screenshots/05-08.jpg",
+    "type": "조회·관리",
+    "pdf_page": 77
+  },
+  {
+    "id": "05-09",
+    "service": "게시판",
+    "title": "자유게시판",
+    "summary": "자유게시판 게시물을 분리 보관하는 게시판이다. 공통으로 검색·기간 필터·글쓰기 기능을 사용한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/board/free",
+    "fields": [
+      "제목·작성자 검색",
+      "번호",
+      "제목",
+      "작성자",
+      "작성일",
+      "조회"
+    ],
+    "image": "screenshots/05-09.jpg",
+    "type": "조회·관리",
+    "pdf_page": 78
+  },
+  {
+    "id": "05-10",
+    "service": "게시판",
+    "title": "건의사항",
+    "summary": "건의사항 게시물을 분리 보관하는 게시판이다. 공통으로 검색·기간 필터·글쓰기 기능을 사용한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/board/suggestion",
+    "fields": [
+      "제목·작성자 검색",
+      "번호",
+      "제목",
+      "작성자",
+      "작성일",
+      "조회"
+    ],
+    "image": "screenshots/05-10.jpg",
+    "type": "조회·관리",
+    "pdf_page": 79
+  },
+  {
+    "id": "05-11",
+    "service": "게시판",
+    "title": "글쓰기",
+    "summary": "게시판·제목·공개범위·비밀번호·서식 있는 본문·첨부를 입력한다. 화면에는 파일당 500MB 안내가 있다. 저장하지 않았다.",
+    "url": "https://work-test.elimsafety.com/dashboard/board/suggestion",
+    "fields": [
+      "게시판 건의사항",
+      "제목",
+      "공개 전체공개",
+      "비밀번호(4~64자)"
+    ],
+    "image": "screenshots/05-11.jpg",
+    "type": "양식·설정",
+    "pdf_page": 80
+  },
+  {
+    "id": "06-01",
+    "service": "회의",
+    "title": "회의록 목록",
+    "summary": "회의일·회의명·폴더·참석자·작성자 기준으로 회의록을 조회하고, 폴더별로 분류한다. 회의록 등록과 화상회의 시작 진입점이 있다.",
+    "url": "https://work-test.elimsafety.com/dashboard/calendar/meetings",
+    "fields": [
+      "회의명·내용 검색",
+      "회의일",
+      "회의명",
+      "폴더",
+      "참석자",
+      "작성자"
+    ],
+    "image": "screenshots/06-01.jpg",
+    "type": "조회·관리",
+    "pdf_page": 81
+  },
+  {
+    "id": "06-02",
+    "service": "회의",
+    "title": "회의록 등록",
+    "summary": "회의명·일시·장소·공개범위·참석자와 이전 회의를 지정한다. 녹음·파일 업로드·AI 정리, 원문·안건·회의 내용·결정 사항·후속 조치·첨부를 지원한다. 저장은 실행하지 않았다.",
+    "url": "https://work-test.elimsafety.com/dashboard/calendar/meetings",
+    "fields": [
+      "예) 10월 주간 회의",
+      "YYYY-MM-DD",
+      "예) 본사 회의실 · 온라인",
+      "HH:MM",
+      "이름 추가",
+      "안건을 적으세요 — 첫 줄이 목록에 보입니다",
+      "예) 담당자 — 10/10 까지 보도자료 초안"
+    ],
+    "image": "screenshots/06-02.jpg",
+    "type": "양식·설정",
+    "pdf_page": 82
+  },
+  {
+    "id": "07-01",
+    "service": "결재",
+    "title": "내 문서",
+    "summary": "작성한 문서·참조 문서를 신청기간으로 조회하며 종류·제목·결재선·중요도·기한·상태를 확인한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/approval/my-requests",
+    "fields": [
+      "신청일시",
+      "종류",
+      "폴더",
+      "결재선",
+      "중요도",
+      "결재기한",
+      "상태"
+    ],
+    "image": "screenshots/07-01.jpg",
+    "type": "조회·관리",
+    "pdf_page": 83
+  },
+  {
+    "id": "07-02",
+    "service": "결재",
+    "title": "결재할 문서",
+    "summary": "현재 사용자가 처리할 결재 대기 문서 목록이다. 신청일·종류·결재선·중요도·기한·상태를 확인한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/approval/box?scope=todo",
+    "fields": [
+      "신청일시",
+      "종류",
+      "결재선",
+      "중요도",
+      "결재기한",
+      "상태"
+    ],
+    "image": "screenshots/07-02.jpg",
+    "type": "조회·관리",
+    "pdf_page": 84
+  },
+  {
+    "id": "07-03",
+    "service": "결재",
+    "title": "결재한 문서",
+    "summary": "자신이 결재한 문서를 기간과 검색어로 조회한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/approval/box?scope=done",
+    "fields": [
+      "신청일시",
+      "종류",
+      "결재선",
+      "중요도",
+      "결재기한",
+      "상태"
+    ],
+    "image": "screenshots/07-03.jpg",
+    "type": "조회·관리",
+    "pdf_page": 85
+  },
+  {
+    "id": "07-04",
+    "service": "결재",
+    "title": "조직 문서",
+    "summary": "조직의 결재 문서를 통합 조회하는 화면이다.",
+    "url": "https://work-test.elimsafety.com/dashboard/approval/all",
+    "fields": [
+      "신청일시",
+      "종류",
+      "결재선",
+      "중요도",
+      "결재기한",
+      "상태"
+    ],
+    "image": "screenshots/07-04.jpg",
+    "type": "조회·관리",
+    "pdf_page": 86
+  },
+  {
+    "id": "07-05",
+    "service": "결재",
+    "title": "결재 신청",
+    "summary": "구매 요청서 양식과 문서 선택 목록이다. 제목·중요도·보존기한·결재기한·본문·결재선·참조·첨부를 지정한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/approval/create",
+    "fields": [
+      "제목",
+      "중요도 보통",
+      "보존기한 5년",
+      "결재기한"
+    ],
+    "image": "screenshots/07-05.jpg",
+    "type": "양식·설정",
+    "pdf_page": 87
+  },
+  {
+    "id": "07-06",
+    "service": "결재",
+    "title": "휴가 신청서",
+    "summary": "휴가 종류·시작/종료일·평일 기준 일수·비상연락처·대체근무자·사유와 결재선을 지정한다. 근태의 휴가 신청에서 연결된다.",
+    "url": "https://work-test.elimsafety.com/dashboard/approval/create",
+    "fields": [
+      "휴가 종류",
+      "비상연락처 1",
+      "비상연락처 2",
+      "대체근무자",
+      "중요도 보통",
+      "보존기한 5년",
+      "결재기한"
+    ],
+    "image": "screenshots/07-06.jpg",
+    "type": "양식·설정",
+    "pdf_page": 88
+  },
+  {
+    "id": "07-07",
+    "service": "결재",
+    "title": "보고서",
+    "summary": "보고서 전용 양식이다. 구분, 부서/팀, 시작일, 종료일 등의 항목을 작성하고 결재선·참조·첨부와 함께 상신하는 구조다.",
+    "url": "https://work-test.elimsafety.com/dashboard/approval/create",
+    "fields": [
+      "제목",
+      "중요도 보통",
+      "보존기한 5년",
+      "결재기한",
+      "구분",
+      "부서/팀",
+      "시작일",
+      "종료일"
+    ],
+    "image": "screenshots/07-07.jpg",
+    "type": "양식·설정",
+    "pdf_page": 89
+  },
+  {
+    "id": "07-08",
+    "service": "결재",
+    "title": "품의서",
+    "summary": "품의서 전용 양식이다. 품의 구분, 신청 부서, 담당자, 예상 비용, 예상 기간, 관련 부서 등의 항목을 작성하고 결재선·참조·첨부와 함께 상신하는 구조다.",
+    "url": "https://work-test.elimsafety.com/dashboard/approval/create",
+    "fields": [
+      "제목",
+      "중요도 보통",
+      "보존기한 5년",
+      "결재기한",
+      "품의 구분",
+      "신청 부서",
+      "담당자",
+      "예상 비용",
+      "예상 기간",
+      "관련 부서"
+    ],
+    "image": "screenshots/07-08.jpg",
+    "type": "양식·설정",
+    "pdf_page": 90
+  },
+  {
+    "id": "07-09",
+    "service": "결재",
+    "title": "출장 신청서",
+    "summary": "출장 신청서 전용 양식이다. 출장지, 담당자, 동행자, 출장 시작일, 출장 종료일, 교통수단, 예상 경비 등의 항목을 작성하고 결재선·참조·첨부와 함께 상신하는 구조다.",
+    "url": "https://work-test.elimsafety.com/dashboard/approval/create",
+    "fields": [
+      "제목",
+      "중요도 보통",
+      "보존기한 5년",
+      "결재기한",
+      "출장지",
+      "담당자",
+      "동행자",
+      "출장 시작일",
+      "출장 종료일",
+      "교통수단",
+      "예상 경비"
+    ],
+    "image": "screenshots/07-09.jpg",
+    "type": "양식·설정",
+    "pdf_page": 91
+  },
+  {
+    "id": "07-10",
+    "service": "결재",
+    "title": "기안서",
+    "summary": "기안서 전용 양식이다. 기안 부서, 공동기안자, 협조자 등의 항목을 작성하고 결재선·참조·첨부와 함께 상신하는 구조다.",
+    "url": "https://work-test.elimsafety.com/dashboard/approval/create",
+    "fields": [
+      "제목",
+      "중요도 보통",
+      "보존기한 5년",
+      "결재기한",
+      "기안 부서",
+      "공동기안자",
+      "협조자"
+    ],
+    "image": "screenshots/07-10.jpg",
+    "type": "양식·설정",
+    "pdf_page": 92
+  },
+  {
+    "id": "07-11",
+    "service": "결재",
+    "title": "업무 협조 요청서",
+    "summary": "업무 협조 요청서 전용 양식이다. 요청 부서, 협조 대상 부서, 협조 유형, 요청 기한 등의 항목을 작성하고 결재선·참조·첨부와 함께 상신하는 구조다.",
+    "url": "https://work-test.elimsafety.com/dashboard/approval/create",
+    "fields": [
+      "제목",
+      "중요도 보통",
+      "보존기한 5년",
+      "요청 부서",
+      "협조 대상 부서",
+      "협조 유형",
+      "요청 기한"
+    ],
+    "image": "screenshots/07-11.jpg",
+    "type": "양식·설정",
+    "pdf_page": 93
+  },
+  {
+    "id": "07-12",
+    "service": "결재",
+    "title": "교육 신청서",
+    "summary": "교육 신청서 전용 양식이다. 교육기관, 교육 시작일, 교육 종료일, 교육 유형, 교육비, 기타경비 등의 항목을 작성하고 결재선·참조·첨부와 함께 상신하는 구조다.",
+    "url": "https://work-test.elimsafety.com/dashboard/approval/create",
+    "fields": [
+      "제목",
+      "중요도 보통",
+      "보존기한 5년",
+      "결재기한",
+      "교육기관",
+      "교육 시작일",
+      "교육 종료일",
+      "교육 유형",
+      "교육비",
+      "기타경비"
+    ],
+    "image": "screenshots/07-12.jpg",
+    "type": "양식·설정",
+    "pdf_page": 94
+  },
+  {
+    "id": "07-13",
+    "service": "결재",
+    "title": "차량 사용 신청서",
+    "summary": "차량 사용 신청서 전용 양식이다. 차량 정보, 사용일시, 반납일시, 운전자, 동승자, 예상경비 등의 항목을 작성하고 결재선·참조·첨부와 함께 상신하는 구조다.",
+    "url": "https://work-test.elimsafety.com/dashboard/approval/create",
+    "fields": [
+      "제목",
+      "중요도 보통",
+      "보존기한 5년",
+      "결재기한",
+      "차량 정보",
+      "사용일시",
+      "반납일시",
+      "운전자",
+      "동승자",
+      "예상경비"
+    ],
+    "image": "screenshots/07-13.jpg",
+    "type": "양식·설정",
+    "pdf_page": 95
+  },
+  {
+    "id": "07-14",
+    "service": "결재",
+    "title": "비품/물품 신청서",
+    "summary": "비품/물품 신청서 전용 양식이다. 물품 분류, 수량, 희망 납품일 등의 항목을 작성하고 결재선·참조·첨부와 함께 상신하는 구조다.",
+    "url": "https://work-test.elimsafety.com/dashboard/approval/create",
+    "fields": [
+      "제목",
+      "중요도 보통",
+      "보존기한 5년",
+      "결재기한",
+      "물품 분류",
+      "수량",
+      "희망 납품일"
+    ],
+    "image": "screenshots/07-14.jpg",
+    "type": "양식·설정",
+    "pdf_page": 96
+  },
+  {
+    "id": "07-15",
+    "service": "결재",
+    "title": "증명서 발급 신청",
+    "summary": "증명서 발급 신청 전용 양식이다. 증명서 종류, 발급용도, 발급 부수, 언어 국문, 수령 방법 직접수령, 필요일자 등의 항목을 작성하고 결재선·참조·첨부와 함께 상신하는 구조다.",
+    "url": "https://work-test.elimsafety.com/dashboard/approval/create",
+    "fields": [
+      "제목",
+      "중요도 보통",
+      "보존기한 5년",
+      "결재기한",
+      "증명서 종류",
+      "발급용도",
+      "발급 부수",
+      "언어 국문",
+      "수령 방법 직접수령",
+      "필요일자"
+    ],
+    "image": "screenshots/07-15.jpg",
+    "type": "양식·설정",
+    "pdf_page": 97
+  },
+  {
+    "id": "07-16",
+    "service": "결재",
+    "title": "연장근로신청서",
+    "summary": "연장근로신청서 전용 양식이다. 근로 구분 평일야근, 근로 일자 등의 항목을 작성하고 결재선·참조·첨부와 함께 상신하는 구조다.",
+    "url": "https://work-test.elimsafety.com/dashboard/approval/create",
+    "fields": [
+      "중요도 보통",
+      "보존기한 5년",
+      "결재기한",
+      "근로 구분 평일야근",
+      "근로 일자"
+    ],
+    "image": "screenshots/07-16.jpg",
+    "type": "양식·설정",
+    "pdf_page": 98
+  },
+  {
+    "id": "07-17",
+    "service": "결재",
+    "title": "회의록",
+    "summary": "회의록 전용 양식이다. 회의 유형, 회의 시작, 회의 종료, 회의 장소, 주관자, 참석자 등의 항목을 작성하고 결재선·참조·첨부와 함께 상신하는 구조다.",
+    "url": "https://work-test.elimsafety.com/dashboard/approval/create",
+    "fields": [
+      "제목",
+      "중요도 보통",
+      "보존기한 5년",
+      "결재기한",
+      "회의 유형",
+      "회의 시작",
+      "회의 종료",
+      "회의 장소",
+      "주관자",
+      "참석자"
+    ],
+    "image": "screenshots/07-17.jpg",
+    "type": "양식·설정",
+    "pdf_page": 99
+  },
+  {
+    "id": "08-01",
+    "service": "고객",
+    "title": "고객 목록",
+    "summary": "고객·시설물을 폴더와 분류로 관리하며 지역·담당직원·시설물 종별·주용도·연면적·최근 점검일·계약·상담 이력을 조회한다. 건축물·시설물 대장 업로드를 통한 AI 입력 진입점이 있다.",
+    "url": "https://work-test.elimsafety.com/dashboard/customer",
+    "fields": [
+      "고객명·전화번호 검색",
+      "번호",
+      "고객명 (45)",
+      "폴더",
+      "분류 거르기",
+      "전화",
+      "지역 정렬 · 거르기",
+      "담당 직원 거르기",
+      "종별 정렬 · 거르기",
+      "주용도 정렬 · 거르기",
+      "연면적(㎡) 정렬 · 거르기",
+      "최근 점검일 정렬 · 거르기",
+      "계약 거르기",
+      "최근 상담",
+      "등록일"
+    ],
+    "image": "screenshots/08-01.jpg",
+    "type": "조회·관리",
+    "pdf_page": 100
+  },
+  {
+    "id": "08-02",
+    "service": "고객",
+    "title": "통화 기록",
+    "summary": "수신·발신·부재중 통화의 시간·길이·담당자·요약을 조회한다. 고객·상담·계약 연계와 녹취 항목이 표시된다.",
+    "url": "https://work-test.elimsafety.com/dashboard/customer/calls",
+    "fields": [
+      "전화번호 검색",
+      "일시",
+      "고객",
+      "번호",
+      "구분",
+      "통화 시간",
+      "요약",
+      "상담원",
+      "상담",
+      "견적·계약",
+      "녹취"
+    ],
+    "image": "screenshots/08-02.jpg",
+    "type": "조회·관리",
+    "pdf_page": 101
+  },
+  {
+    "id": "08-03",
+    "service": "고객",
+    "title": "상담 목록",
+    "summary": "상담 일시·고객·유입 경로·분류·내용·폴더·담당직원·처리상태를 관리한다. 처리 중/완료와 기간 필터를 제공한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/customer/consults",
+    "fields": [
+      "시작일",
+      "종료일",
+      "상담 일시",
+      "고객",
+      "경로",
+      "분류 거르기",
+      "내용",
+      "폴더",
+      "상담 직원 거르기",
+      "상태"
+    ],
+    "image": "screenshots/08-03.jpg",
+    "type": "조회·관리",
+    "pdf_page": 102
+  },
+  {
+    "id": "08-04",
+    "service": "고객",
+    "title": "계약 목록",
+    "summary": "고객의 견적·계약을 단계·번호·건명·고객·날짜·금액·작성자 기준으로 조회한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/customer/deals",
+    "fields": [
+      "건명 검색",
+      "계약번호",
+      "단계",
+      "건명",
+      "고객",
+      "폴더",
+      "일자",
+      "합계",
+      "작성자"
+    ],
+    "image": "screenshots/08-04.jpg",
+    "type": "조회·관리",
+    "pdf_page": 103
+  },
+  {
+    "id": "08-05",
+    "service": "고객",
+    "title": "고객 통계",
+    "summary": "기간별 전체·신규·광고 수신 동의 고객을 집계하며 날짜별·누적·분류별·담당직원별·지역별 고객 분포를 제공한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/customer/stats",
+    "fields": [
+      "Y___-__-__"
+    ],
+    "image": "screenshots/08-05.jpg",
+    "type": "조회·관리",
+    "pdf_page": 104
+  },
+  {
+    "id": "08-06",
+    "service": "고객",
+    "title": "상담 통계",
+    "summary": "상담 처리 중·완료, 수신·발신·부재중 및 계약 연계 현황을 집계한다. 일자·시간·유입경로·분류·담당자별 분석을 제공한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/customer/consults/stats",
+    "fields": [
+      "Y___-__-__"
+    ],
+    "image": "screenshots/08-06.jpg",
+    "type": "조회·관리",
+    "pdf_page": 105
+  },
+  {
+    "id": "08-07",
+    "service": "고객",
+    "title": "고객 등록 - 기본정보",
+    "summary": "고객명·분류·연락처·담당직원·주소·수신동의·폴더를 입력한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/customer",
+    "fields": [
+      "고객명",
+      "분류 지정 안 함",
+      "대표 전화",
+      "추가 전화",
+      "담당 직원 지정 안 함",
+      "이메일",
+      "주소",
+      "상세주소",
+      "생년월일",
+      "광고성 정보 수신 동의",
+      "폴더 폴더 없음",
+      "시설물번호",
+      "종별 지정 안 함",
+      "시설물 종류",
+      "건축물 고유번호",
+      "주용도",
+      "주구조",
+      "층수"
+    ],
+    "image": "screenshots/08-07.jpg",
+    "type": "양식·설정",
+    "pdf_page": 106
+  },
+  {
+    "id": "08-08",
+    "service": "고객",
+    "title": "고객 등록 - 시설물 정보",
+    "summary": "시설물번호·종별·용도·구조·층수·면적·높이·사용승인일·소유자·관리주체·내진설계·최근 점검 정보를 입력한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/customer",
+    "fields": [
+      "고객명",
+      "분류 지정 안 함",
+      "대표 전화",
+      "추가 전화",
+      "담당 직원 지정 안 함",
+      "이메일",
+      "주소",
+      "상세주소",
+      "생년월일",
+      "광고성 정보 수신 동의",
+      "폴더 폴더 없음",
+      "시설물번호",
+      "종별 지정 안 함",
+      "시설물 종류",
+      "건축물 고유번호",
+      "주용도",
+      "주구조",
+      "층수"
+    ],
+    "image": "screenshots/08-08.jpg",
+    "type": "양식·설정",
+    "pdf_page": 107
+  },
+  {
+    "id": "08-09",
+    "service": "고객",
+    "title": "상담 기록 입력",
+    "summary": "고객·일시·경로·분류·상담직원·상태·후속조치 예정일·내용·고객요청·처리결과를 기록한다. 업무로 등록하는 연계 버튼이 있다.",
+    "url": "https://work-test.elimsafety.com/dashboard/customer/consults",
+    "fields": [
+      "고객(필수) — 이름이나 전화번호로 찾기",
+      "YYYY-MM-DD HH:mm",
+      "YYYY-MM-DD",
+      "비어 있음"
+    ],
+    "image": "screenshots/08-09.jpg",
+    "type": "양식·설정",
+    "pdf_page": 108
+  },
+  {
+    "id": "08-10",
+    "service": "고객",
+    "title": "견적 등록",
+    "summary": "고객·건명·견적일·유효기한·비고·본문·품목·수량·단가·부가세를 입력하고 합계를 계산한다. 저장 후 견적서 PDF 버튼이 있다. 저장하지 않았다.",
+    "url": "https://work-test.elimsafety.com/dashboard/customer/deals",
+    "fields": [
+      "고객(필수) — 이름이나 전화번호로 찾기",
+      "○○ 납품 견적",
+      "26.06.01",
+      "결제 조건 · 납기 · 특이사항",
+      "품명",
+      "규격",
+      "비고",
+      "부가세 부가세 별도"
+    ],
+    "image": "screenshots/08-10.jpg",
+    "type": "양식·설정",
+    "pdf_page": 109
+  },
+  {
+    "id": "09-01",
+    "service": "거래처",
+    "title": "거래처 목록",
+    "summary": "매출처·매입처와 협력업체를 폴더로 관리하고 거래 구분·형태·사업자번호·담당자·연락처를 확인한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/partner",
+    "fields": [
+      "거래처명 검색",
+      "번호",
+      "거래처명 (17)",
+      "폴더",
+      "거래 구분",
+      "형태",
+      "사업자번호",
+      "담당자",
+      "전화"
+    ],
+    "image": "screenshots/09-01.jpg",
+    "type": "조회·관리",
+    "pdf_page": 110
+  },
+  {
+    "id": "09-02",
+    "service": "거래처",
+    "title": "견적·계약",
+    "summary": "거래처의 견적·계약을 목록으로 조회한다. 고객 영역과 별도로 거래처 기준의 계약 흐름을 관리한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/partner/deals",
+    "fields": [
+      "건명 검색",
+      "계약번호",
+      "단계",
+      "건명",
+      "거래처",
+      "일자",
+      "합계",
+      "작성자"
+    ],
+    "image": "screenshots/09-02.jpg",
+    "type": "조회·관리",
+    "pdf_page": 111
+  },
+  {
+    "id": "09-03",
+    "service": "거래처",
+    "title": "매출",
+    "summary": "거래일·번호·매출처·적요·합계·남은 금액·결제 예정일·수금 상태를 조회하고 미수금으로 좁혀 본다.",
+    "url": "https://work-test.elimsafety.com/dashboard/partner/sales",
+    "fields": [
+      "적요 검색",
+      "거래일",
+      "번호",
+      "매출처",
+      "적요",
+      "합계",
+      "남은 금액",
+      "결제 예정일",
+      "상태"
+    ],
+    "image": "screenshots/09-03.jpg",
+    "type": "조회·관리",
+    "pdf_page": 112
+  },
+  {
+    "id": "09-04",
+    "service": "거래처",
+    "title": "매입",
+    "summary": "거래일·번호·매입처·적요·합계·남은 금액·결제 예정일·지급 상태를 관리한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/partner/purchases",
+    "fields": [
+      "적요 검색",
+      "거래일",
+      "번호",
+      "매입처",
+      "적요",
+      "합계",
+      "남은 금액",
+      "결제 예정일",
+      "상태"
+    ],
+    "image": "screenshots/09-04.jpg",
+    "type": "조회·관리",
+    "pdf_page": 113
+  },
+  {
+    "id": "09-05",
+    "service": "거래처",
+    "title": "미수·미지급",
+    "summary": "거래처별 미수·미지급 합계와 연체, 미정산 금액·기일을 모아 확인하는 정산 현황이다.",
+    "url": "https://work-test.elimsafety.com/dashboard/partner/balances",
+    "fields": [
+      "거래처 검색",
+      "매출처",
+      "미결 전표",
+      "전표 합계",
+      "수금 누계",
+      "미수금",
+      "연체",
+      "가장 이른 결제 예정일"
+    ],
+    "image": "screenshots/09-05.jpg",
+    "type": "조회·관리",
+    "pdf_page": 114
+  },
+  {
+    "id": "09-06",
+    "service": "거래처",
+    "title": "거래 조건",
+    "summary": "거래에 적용할 결제 조건의 이름·규칙·비고·사용 여부를 관리한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/partner/terms",
+    "fields": [
+      "조건 이름",
+      "규칙",
+      "비고",
+      "사용"
+    ],
+    "image": "screenshots/09-06.jpg",
+    "type": "조회·관리",
+    "pdf_page": 115
+  },
+  {
+    "id": "09-07",
+    "service": "거래처",
+    "title": "거래처 등록",
+    "summary": "거래처 기본정보, 거래 구분·형태, 담당자, 결제 조건과 은행 계좌를 입력하는 화면.",
+    "url": "https://work-test.elimsafety.com/dashboard/partner",
+    "fields": [
+      "거래처명",
+      "사업자등록번호",
+      "거래 구분 매출처",
+      "거래처 형태 법인",
+      "폴더 폴더 없음",
+      "대표자명",
+      "대표 전화",
+      "대표 이메일",
+      "주소",
+      "상세주소",
+      "담당자명",
+      "담당자 연락처",
+      "담당자 이메일",
+      "거래 조건 지정 안 함",
+      "은행",
+      "예금주",
+      "계좌번호"
+    ],
+    "image": "screenshots/09-07.jpg",
+    "type": "양식·설정",
+    "pdf_page": 116
+  },
+  {
+    "id": "10-01",
+    "service": "회계",
+    "title": "매출·지출 장부",
+    "summary": "거래일·매출/지출·거래상대·적요·분류·금액·상태·출처를 조회한다. 기간·미분류 필터와 수기 입력을 제공한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/accounting",
+    "fields": [
+      "적요 검색",
+      "거래일",
+      "구분",
+      "쓴 곳·받은 곳",
+      "적요",
+      "분류",
+      "금액",
+      "상태",
+      "출처"
+    ],
+    "image": "screenshots/10-01.jpg",
+    "type": "조회·관리",
+    "pdf_page": 117
+  },
+  {
+    "id": "10-02",
+    "service": "회계",
+    "title": "카드·통장 불러오기",
+    "summary": "카드 이용내역·은행 거래내역 엑셀을 올려 장부로 가져온다. 가맹점 묶음, 기존 분류 재사용, AI 분류 추천, 중복 방지 안내를 제공한다. 업로드는 실행하지 않았다.",
+    "url": "https://work-test.elimsafety.com/dashboard/accounting/import",
+    "fields": [
+      "카드 카드 끝자리로 알아서 맞추기"
+    ],
+    "image": "screenshots/10-02.jpg",
+    "type": "조회·관리",
+    "pdf_page": 118
+  },
+  {
+    "id": "10-03",
+    "service": "회계",
+    "title": "손익",
+    "summary": "거래일 또는 실제 돈이 오간 날을 기준으로 손익을 조회한다. 매출·원가·매출총이익·판관비·영업이익·영업외손익·순이익을 표시한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/accounting/pnl",
+    "fields": [],
+    "image": "screenshots/10-03.jpg",
+    "type": "조회·관리",
+    "pdf_page": 119
+  },
+  {
+    "id": "10-04",
+    "service": "회계",
+    "title": "통장·카드",
+    "summary": "등록된 통장과 카드, 계좌 잔액과 거래를 관리한다. 통장 추가·이체·대사 관련 기능이 표시된다.",
+    "url": "https://work-test.elimsafety.com/dashboard/accounting/bankbook",
+    "fields": [],
+    "image": "screenshots/10-04.jpg",
+    "type": "조회·관리",
+    "pdf_page": 120
+  },
+  {
+    "id": "10-05",
+    "service": "회계",
+    "title": "계정과목",
+    "summary": "회사의 거래 항목과 회계 계정과목의 연결을 관리한다. 검색과 사용 여부 관리 기능이 있다.",
+    "url": "https://work-test.elimsafety.com/dashboard/accounting/gl",
+    "fields": [
+      "거래항목 이름",
+      "계정과목",
+      "거래항목·카테고리 찾기"
+    ],
+    "image": "screenshots/10-05.jpg",
+    "type": "조회·관리",
+    "pdf_page": 121
+  },
+  {
+    "id": "10-06",
+    "service": "회계",
+    "title": "장부에 적기",
+    "summary": "매출/지출·거래일·금액·부가세·거래상대·적요·거래항목·계정과목·결제수단·통장·상태·메모를 입력한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/accounting",
+    "fields": [
+      "거래일",
+      "금액(부가세 포함)",
+      "그중 부가세",
+      "쓴 곳(가맹점·거래처)",
+      "적요",
+      "거래항목",
+      "계정과목",
+      "결제수단 계좌이체",
+      "통장 통장에 반영하지 않음",
+      "상태 지급"
+    ],
+    "image": "screenshots/10-06.jpg",
+    "type": "양식·설정",
+    "pdf_page": 122
+  },
+  {
+    "id": "11-01",
+    "service": "채팅",
+    "title": "친구 목록",
+    "summary": "부서별 구성원을 찾아 대화를 시작한다. 나와의 채팅도 제공한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/chat",
+    "fields": [],
+    "image": "screenshots/11-01.jpg",
+    "type": "조회·관리",
+    "pdf_page": 123
+  },
+  {
+    "id": "11-02",
+    "service": "채팅",
+    "title": "채팅방 목록",
+    "summary": "대화방별 상대방·최근 메시지·날짜를 표시한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/chat",
+    "fields": [],
+    "image": "screenshots/11-02.jpg",
+    "type": "조회·관리",
+    "pdf_page": 124
+  },
+  {
+    "id": "12-01",
+    "service": "공통",
+    "title": "요금·정산",
+    "summary": "이용 요금·체험 기간·결제수단·저장공간·청구 내역을 확인한다. 결제와 카드 등록은 실행하지 않았다.",
+    "url": "https://work-test.elimsafety.com/dashboard/team-settings",
+    "fields": [],
+    "image": "screenshots/12-01.jpg",
+    "type": "양식·설정",
+    "pdf_page": 125
+  },
+  {
+    "id": "12-02",
+    "service": "공통",
+    "title": "기업 설정",
+    "summary": "서류함과 조직·권한·서비스·업무·화상회의·기업메일·근태·고객·계약·상담·외부 데이터·저장소 설정을 모아 제공한다. 회사 정보와 역량·실적 항목도 있다. 설정은 변경하지 않았다.",
+    "url": "https://work-test.elimsafety.com/dashboard/team-settings",
+    "fields": [],
+    "image": "screenshots/12-02.jpg",
+    "type": "조회·관리",
+    "pdf_page": 126
+  },
+  {
+    "id": "12-03",
+    "service": "공통",
+    "title": "근태 설정 - 직접 찍을 때 확인",
+    "summary": "직접 출퇴근을 기록할 때 GPS·QR·사내 Wi-Fi 확인 방식과 외근 허용 여부를 구성한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/team-settings",
+    "fields": [
+      "외근 허용(외근 출근·외근 중 퇴근)"
+    ],
+    "image": "screenshots/12-03.jpg",
+    "type": "양식·설정",
+    "pdf_page": 127
+  },
+  {
+    "id": "12-04",
+    "service": "공통",
+    "title": "근태 설정 - 자동 출근",
+    "summary": "근무지 도착 시 자동 출근 기록 여부를 설정하는 항목이다. 실제 기기에서의 자동 기록은 시험하지 않았다.",
+    "url": "https://work-test.elimsafety.com/dashboard/team-settings",
+    "fields": [
+      "자동 출근(도착하면 묻지 않고 출근)"
+    ],
+    "image": "screenshots/12-04.jpg",
+    "type": "양식·설정",
+    "pdf_page": 128
+  },
+  {
+    "id": "12-05",
+    "service": "공통",
+    "title": "근태 설정 - 시작일·알림·근로 한도",
+    "summary": "근태 시작일·주간 근로 한도·주 시작요일·연장 인정·점심시간과 알림·자동 처리 정책을 구성한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/team-settings",
+    "fields": [
+      "근태 시작일",
+      "주간 근로 한도",
+      "한 주 시작 요일 월요일",
+      "연장근로 인정 기록대로(자동)",
+      "자동 퇴근 적용 퇴근 시각부터",
+      "출근 30분 전 알림",
+      "출근 10분 전 알림",
+      "출근 시각 알림(출근할 때까지 30분마다)",
+      "퇴근 누락 알림(예정 1시간 뒤)",
+      "직접 누른 출퇴근에 지문 · 얼굴 확인(앱)",
+      "외근 중 이동 동선 기록(앱 위치)"
+    ],
+    "image": "screenshots/12-05.jpg",
+    "type": "양식·설정",
+    "pdf_page": 129
+  },
+  {
+    "id": "12-06",
+    "service": "공통",
+    "title": "근태 설정 - 연차",
+    "summary": "연차 부여 기준, 남은 연차 이월과 사용 촉진 기능을 설정한다. 화면의 정책 안내를 확인한 것으로 법적 적합성을 검증한 것은 아니다.",
+    "url": "https://work-test.elimsafety.com/dashboard/team-settings",
+    "fields": [
+      "부여 기준 입사일 기준",
+      "남은 연차 이월",
+      "연차 사용 촉진(근로기준법 61조)"
+    ],
+    "image": "screenshots/12-06.jpg",
+    "type": "양식·설정",
+    "pdf_page": 130
+  },
+  {
+    "id": "12-07",
+    "service": "공통",
+    "title": "근태 설정 - 근무 수당",
+    "summary": "연장·야간·휴일 수당의 배율과 야간 정액 수당·식사 공제 항목을 구성한다. 급여대장의 근태 반영에 사용된다는 안내가 있다.",
+    "url": "https://work-test.elimsafety.com/dashboard/team-settings",
+    "fields": [
+      "연장 배율",
+      "야간 가산",
+      "휴일 8시간 내",
+      "휴일 8시간 초과",
+      "야간 회당 수당",
+      "야간 시간 수당",
+      "야간 1회 기준",
+      "야간 식사 시간",
+      "야간 식사 시간 자동 빼기"
+    ],
+    "image": "screenshots/12-07.jpg",
+    "type": "양식·설정",
+    "pdf_page": 131
+  },
+  {
+    "id": "12-08",
+    "service": "공통",
+    "title": "근태 설정 - 근태 공제",
+    "summary": "무급휴가·결근·지각·조퇴 및 주휴 관련 공제 여부와 일급 환산 방식을 구성한다. 급여 반영 결과는 실행하지 않았다.",
+    "url": "https://work-test.elimsafety.com/dashboard/team-settings",
+    "fields": [
+      "월급·연봉 직원 하루치 통상시급 × 1일 소정근로시간",
+      "무급휴가 공제",
+      "결근 공제",
+      "지각·조퇴 공제",
+      "결근한 주의 주휴수당도 빼기(시급·일급 직원)"
+    ],
+    "image": "screenshots/12-08.jpg",
+    "type": "양식·설정",
+    "pdf_page": 132
+  },
+  {
+    "id": "12-09",
+    "service": "공통",
+    "title": "근태 설정 - 기본 근무제",
+    "summary": "별도 근무제를 배정하지 않은 직원에게 적용할 기본 근무시간·요일·휴게시간을 확인한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/team-settings",
+    "fields": [],
+    "image": "screenshots/12-09.jpg",
+    "type": "양식·설정",
+    "pdf_page": 133
+  },
+  {
+    "id": "12-10",
+    "service": "공통",
+    "title": "근태 설정 - 근무제",
+    "summary": "기본과 다른 근무시간이 필요한 직원에게 적용할 근무제를 추가·관리하는 구역이다.",
+    "url": "https://work-test.elimsafety.com/dashboard/team-settings",
+    "fields": [],
+    "image": "screenshots/12-10.jpg",
+    "type": "양식·설정",
+    "pdf_page": 134
+  },
+  {
+    "id": "12-11",
+    "service": "공통",
+    "title": "근태 설정 - 직원 근무제 배정",
+    "summary": "대상 직원에게 근무제를 배정하는 구역이다. 개인 근무시간이 있는 직원의 적용 기준 안내가 표시된다.",
+    "url": "https://work-test.elimsafety.com/dashboard/team-settings",
+    "fields": [
+      "바꿀 근무제 기본 근무제"
+    ],
+    "image": "screenshots/12-11.jpg",
+    "type": "양식·설정",
+    "pdf_page": 135
+  },
+  {
+    "id": "12-12",
+    "service": "공통",
+    "title": "근태 설정 - 교대 틀",
+    "summary": "교대근무 시간대를 틀로 정의해 근무 일정에 사용하는 구역이다.",
+    "url": "https://work-test.elimsafety.com/dashboard/team-settings",
+    "fields": [],
+    "image": "screenshots/12-12.jpg",
+    "type": "양식·설정",
+    "pdf_page": 136
+  },
+  {
+    "id": "12-13",
+    "service": "공통",
+    "title": "고객 설정",
+    "summary": "고객 분류와 사용자 정의 항목의 순서·자료형·목록 노출을 구성한다. 시설물 관련 항목이 등록되어 있고 템플릿 불러오기 기능이 있다.",
+    "url": "https://work-test.elimsafety.com/dashboard/team-settings",
+    "fields": [],
+    "image": "screenshots/12-13.jpg",
+    "type": "양식·설정",
+    "pdf_page": 137
+  },
+  {
+    "id": "12-14",
+    "service": "공통",
+    "title": "상담 설정",
+    "summary": "상담 분류를 관리하고 전화 연동 상담원 연결을 설정한다. 화면 안내상 전화 수신 시 고객정보를 표시하고 통화기록·녹취 연동을 지원한다. 연결은 실행하지 않았다.",
+    "url": "https://work-test.elimsafety.com/dashboard/team-settings",
+    "fields": [],
+    "image": "screenshots/12-14.jpg",
+    "type": "양식·설정",
+    "pdf_page": 138
+  },
+  {
+    "id": "12-15",
+    "service": "공통",
+    "title": "계약 설정",
+    "summary": "견적·계약의 입력 항목과 목록 구성을 관리한다.",
+    "url": "https://work-test.elimsafety.com/dashboard/team-settings",
+    "fields": [],
+    "image": "screenshots/12-15.jpg",
+    "type": "양식·설정",
+    "pdf_page": 139
+  },
+  {
+    "id": "12-16",
+    "service": "공통",
+    "title": "업무 설정",
+    "summary": "업무 기여도와 외부 공유 링크, 오류 알림 관련 설정을 확인한다. 정책을 변경하지 않았다.",
+    "url": "https://work-test.elimsafety.com/dashboard/team-settings",
+    "fields": [
+      "업무 기여도 사용",
+      "외부 공유 링크 사용"
+    ],
+    "image": "screenshots/12-16.jpg",
+    "type": "양식·설정",
+    "pdf_page": 140
+  },
+  {
+    "id": "12-17",
+    "service": "공통",
+    "title": "조직도",
+    "summary": "부서별 구성원과 프로필·채팅 진입점을 제공한다. 구성원 관리로 연결된다.",
+    "url": "https://work-test.elimsafety.com/dashboard/team-settings",
+    "fields": [],
+    "image": "screenshots/12-17.jpg",
+    "type": "조회·관리",
+    "pdf_page": 141
+  }
+]

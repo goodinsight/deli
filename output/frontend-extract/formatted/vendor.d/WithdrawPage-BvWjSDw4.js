@@ -1,0 +1,147 @@
+import { u as p, j as e } from "./react-CjxcGQav.js";
+import { u as h, B as o, f as m, d as u, s, K as f, bS as g } from "../js.d/main-Cm9wS5wt.js";
+import { u as j, W as S, a as b } from "./WithdrawDialog-BzZqPW3a.js";
+import { C as y, b as l, a as C } from "./publicPageSx-9Lwcd6Z3.js";
+import "./stylis-DdLD6a3t.js";
+const t = {
+  font: "inherit",
+  cursor: "pointer",
+  "&:disabled": {
+    opacity: .6,
+    cursor: "default"
+  }
+};
+function _() {
+  const n = p(),
+    i = h(),
+    c = i.useValue("sessionChecked") ?? !1,
+    d = i.useValue("logined") ?? !1,
+    r = j(),
+    x = () => {
+      g("/withdraw"), n("/login", {
+        state: {
+          from: "/withdraw"
+        }
+      });
+    };
+  return e.jsxs(o, {
+    sx: {
+      mx: "auto",
+      maxWidth: 768,
+      px: 2,
+      py: 6
+    },
+    children: [e.jsx(o, {
+      component: "h1",
+      sx: {
+        m: 0,
+        fontSize: u["4xl"],
+        lineHeight: 1.1111,
+        fontWeight: m.black
+      },
+      children: "회원 탈퇴"
+    }), e.jsx(o, {
+      component: "p",
+      sx: {
+        mt: 1,
+        fontSize: "1rem",
+        color: s[600]
+      },
+      children: "업무함 계정을 지웁니다. 탈퇴하기 전에 아래 내용을 확인하세요."
+    }), e.jsx(o, {
+      component: "ul",
+      sx: {
+        mt: 3,
+        pl: 2.5,
+        display: "grid",
+        gap: .75,
+        fontSize: "1rem",
+        color: s[800],
+        listStyleType: "disc"
+      },
+      children: S.map(a => e.jsx(o, {
+        component: "li",
+        children: a
+      }, a))
+    }), e.jsx(o, {
+      sx: {
+        ...y,
+        mt: 4,
+        p: 3,
+        display: "flex",
+        flexDirection: "column",
+        gap: 2
+      },
+      children: c ? d ? e.jsxs(e.Fragment, {
+        children: [e.jsx(o, {
+          sx: {
+            fontSize: "1rem",
+            color: s[800]
+          },
+          children: "[탈퇴 진행] 을 누르면 비밀번호를 확인하고, 내가 소유한 조직을 넘길지 함께 지울지 고른 뒤 탈퇴합니다."
+        }), e.jsxs(o, {
+          sx: {
+            display: "flex",
+            gap: 1.5,
+            flexWrap: "wrap"
+          },
+          children: [e.jsx(o, {
+            component: "button",
+            type: "button",
+            onClick: () => {
+              r.openDialog();
+            },
+            sx: {
+              ...l,
+              ...t,
+              border: "none"
+            },
+            children: "탈퇴 진행"
+          }), e.jsx(o, {
+            component: "button",
+            type: "button",
+            onClick: () => n("/dashboard"),
+            sx: {
+              ...C,
+              ...t,
+              bgcolor: "transparent"
+            },
+            children: "계속 쓰기"
+          })]
+        })]
+      }) : e.jsxs(e.Fragment, {
+        children: [e.jsx(o, {
+          sx: {
+            fontSize: "1rem",
+            color: s[800]
+          },
+          children: "탈퇴하려면 먼저 로그인해 주세요. 로그인하면 이 화면으로 돌아옵니다."
+        }), e.jsx(o, {
+          children: e.jsx(o, {
+            component: "button",
+            type: "button",
+            onClick: x,
+            sx: {
+              ...l,
+              ...t,
+              border: "none"
+            },
+            children: "로그인하고 탈퇴하기"
+          })
+        })]
+      }) : e.jsx(o, {
+        sx: {
+          display: "flex",
+          justifyContent: "center",
+          py: 2
+        },
+        children: e.jsx(f, {
+          size: 28
+        })
+      })
+    }), e.jsx(b, {
+      controller: r
+    })]
+  });
+}
+export { _ as default };

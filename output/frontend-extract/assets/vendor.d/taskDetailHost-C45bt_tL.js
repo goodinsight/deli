@@ -1,0 +1,1 @@
+import{r as l}from"./react-CjxcGQav.js";let t=null;const n=new Set;function r(){n.forEach(e=>e())}function u(e){!Number.isInteger(e)||e<=0||(t=e,r())}function s(){t!==null&&(t=null,r())}function o(e){return n.add(e),()=>n.delete(e)}function i(){return l.useSyncExternalStore(o,()=>t)}export{s as c,u as o,i as u};

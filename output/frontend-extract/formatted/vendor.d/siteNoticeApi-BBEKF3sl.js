@@ -1,0 +1,46 @@
+import { bM as i, bT as a } from "../js.d/main-Cm9wS5wt.js";
+import { r } from "./resolveAssetPreviewSrc-CLlbOCzq.js";
+const o = "/v1/site-notices";
+function s(t, e) {
+  if (!t || t.ok === !1 || t.data === void 0) throw new Error(t?.error || t?.message || e);
+  return t.data;
+}
+function w(t) {
+  return t ? r(t, null) : "";
+}
+const m = {
+    listPublic: async t => s(await i.http.get(`${o}/public?place=${t}`), a("siteNotice.loadFailed")).items,
+    getPublic: async t => s(await i.http.get(`${o}/public/${t}`), a("siteNotice.loadFailed")),
+    listAdmin: async () => s(await i.http.get(`${o}/admin`), a("siteNotice.loadFailed")).items,
+    create: async t => s(await i.http.post(`${o}/`, t), a("siteNotice.saveFailed")),
+    update: async (t, e) => s(await i.http.patch(`${o}/${t}`, e), a("siteNotice.saveFailed")),
+    remove: async t => {
+      s(await i.http.delete(`${o}/${t}`, {}), a("siteNotice.deleteFailed"));
+    },
+    uploadImage: async t => {
+      const e = await i.fileUpload("site_notice", t, {
+          isPublic: !0
+        }),
+        c = String(e?.uuid ?? e?.data?.uuid ?? "").trim();
+      if (e?.ok && c) return c;
+      throw new Error(e?.message || a("siteNotice.uploadFailed"));
+    }
+  },
+  n = "site-notice-hidden";
+function l() {
+  try {
+    return new Set(JSON.parse(window.localStorage.getItem(n) ?? "[]"));
+  } catch {
+    return new Set();
+  }
+}
+function d(t) {
+  return `${t.seq}:${t.updated_time}`;
+}
+function h(t) {
+  try {
+    const e = [...l(), d(t)].slice(-200);
+    window.localStorage.setItem(n, JSON.stringify(e));
+  } catch {}
+}
+export { h as a, w as b, l as h, d as p, m as s };

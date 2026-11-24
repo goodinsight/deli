@@ -1,0 +1,1070 @@
+import { r as g, j as a } from "./react-CjxcGQav.js";
+import { bT as m, bM as L, fu as xe, fv as B, eo as D, en as O, np as W, nq as _e, nn as be, no as Ce, nx as je, e as Se, c8 as Ee, ak as we, dv as ie, fA as ve, bO as z, cL as Fe, ds as Te, bx as Oe, j9 as Ve, bv as $, fL as le, D as de, cz as pe, c4 as U, B as x, aB as Z, cm as qe, al as Ae, s as ee, cc as Ie, b0 as me, cn as Le, cI as Re, bQ as Y, K as Ne, ny as Pe, cO as Be, F as De, d8 as te, lr as ke, L as ue, bH as We } from "../js.d/main-Cm9wS5wt.js";
+import { O as ze } from "./OptionToggleGroup-Cvm2wRyq.js";
+import { E as Me, a as $e } from "./EdgeTabs-Ccbggjn6.js";
+import { u as Ue } from "./mobileSearchOverlay-DYWcMOOb.js";
+import { b as Ke, l as Ge } from "./i18nLabels-BNTLL7cu.js";
+import { C as M, E as N } from "./types-CVhETUvu.js";
+import { t as He, i as Ye, p as Xe } from "./formInput-KrHl7zSm.js";
+import { E as Qe, l as Je } from "./hrCandidates-HYZ1yzF2.js";
+import { t as Ze, E as et, e as ae } from "./EmployeePickField-CDJRGgup.js";
+import { d as tt, e as at } from "./insurance-CLCwXZrk.js";
+import { f as rt } from "./subsidy-DNxQquF9.js";
+import { T as nt } from "./ToneChip-BFljqlNi.js";
+import { F as ot } from "./FileUploadBox-crZW1mG0.js";
+import { I as st } from "./InlineErrorAlert-D9ICJPt7.js";
+import { f as ct } from "./training-Bx0zycZu.js";
+import { u as it, a as lt, b as dt } from "./MobileCardListLayout-D5_p2Xer.js";
+import { T as pt } from "./tableScrollbars-C9bhlJjO.js";
+import { u as mt } from "./useColumnWidths-DSAca5rC.js";
+import { w as ut } from "./headerCount-4t1ZKu-L.js";
+import { u as ht } from "./useClientSort-CdwrAOWp.js";
+import "./stylis-DdLD6a3t.js";
+import "./employeeApi-CdGzOYcj.js";
+import "./hrCodeApi-BRtc5fIX.js";
+import "./bootstrapController-BMV_i07c.js";
+import "./profileEcho-q2FaD_03.js";
+import "./teamMembers-0yRsmqL6.js";
+import "./pendingRecordings-DpKJ8Y2R.js";
+import "./meetingsApi-CCkjq69B.js";
+import "./orgTree-Dh5HFjBo.js";
+import "./mxApi-R6g9QtQq.js";
+import "./aliasStore-DiN6Kp-5.js";
+import "./profileApi-Btafs-pM.js";
+import "./AccountAvatar-DtrhoS_d.js";
+import "./Person-DnoEHesw.js";
+import "./resolveAssetPreviewSrc-CLlbOCzq.js";
+import "./date_utils-CYURFdnX.js";
+import "./FileViewer-D5PyYcLh.js";
+import "./RotateRight-DbtMfjGZ.js";
+import "./tiny-invariant-CopsF_GD.js";
+import "./Snackbar-DxIDGM8-.js";
+import "./uploadGuard-BK1B6cyC.js";
+const he = Ge({
+    open: "hr.contractOpenEnded",
+    upcoming: "hr.contractUpcoming",
+    active: "hr.contractActive",
+    expiring: "hr.contractExpiring",
+    expired: "hr.contractExpired",
+    ended: "hr.contractEnded"
+  }),
+  ft = {
+    open: {
+      color: "#047857",
+      bg: "#d1fae5"
+    },
+    upcoming: {
+      color: "#1d4ed8",
+      bg: "#dbeafe"
+    },
+    active: {
+      color: "#047857",
+      bg: "#d1fae5"
+    },
+    expiring: {
+      color: "#b45309",
+      bg: "#fef3c7"
+    },
+    expired: {
+      color: "#b91c1c",
+      bg: "#fee2e2"
+    },
+    ended: {
+      color: "#64748b",
+      bg: "#f1f5f9"
+    }
+  },
+  K = Ke([{
+    value: "",
+    labelKey: "hr.all"
+  }, {
+    value: "valid",
+    labelKey: "hr.contractValid"
+  }, {
+    value: "warning",
+    labelKey: "hr.contractExpiring"
+  }, {
+    value: "ended",
+    labelKey: "hr.contractEnded"
+  }]);
+function yt(t, e) {
+  return e === "" ? !0 : e === "warning" ? t === "expiring" || t === "expired" : e === "ended" ? t === "ended" || t === "expired" : t !== "ended" && t !== "expired";
+}
+function re(t, e) {
+  return !t && !e ? "" : e ? `${t || "?"} ~ ${e}` : m("hr.contractNoEnd", {
+    start: t
+  });
+}
+const R = "/v1/hr/contracts";
+function gt(t) {
+  const e = t ?? {},
+    o = O(e.uuid);
+  return o ? {
+    uuid: o,
+    name: O(e.name) || m("hr.attachmentDefaultName"),
+    size: D(e.size)
+  } : null;
+}
+function xt(t) {
+  const e = t ?? {},
+    o = O(e.contract_type),
+    i = O(e.pay_type),
+    p = e.expiry ?? {},
+    c = O(p.state);
+  return {
+    seq: D(e.seq),
+    employee_seq: D(e.employee_seq),
+    contract_type: o in N ? o : "regular",
+    contract_date: W(e.contract_date),
+    start_date: W(e.start_date),
+    end_date: W(e.end_date),
+    pay_type: i in M ? i : "",
+    pay_amount: D(e.pay_amount),
+    pay_note: O(e.pay_note),
+    attachments: je(e.attachments).map(gt).filter(h => h !== null),
+    memo: O(e.memo),
+    employee: Ce(e.employee),
+    is_latest: be(e.is_latest),
+    expiry: {
+      state: c in he ? c : "active",
+      days_left: _e(p.days_left)
+    }
+  };
+}
+const T = {
+  list: async () => {
+    const t = await L.http.get(R),
+      e = B(t, m("hr.errLoadContracts"));
+    return {
+      today: W(e.today),
+      items: (e.items ?? []).map(xt),
+      uncontracted: (e.uncontracted ?? []).map(o => {
+        const i = o ?? {};
+        return {
+          seq: D(i.seq),
+          name: O(i.name)
+        };
+      })
+    };
+  },
+  create: async t => {
+    const e = await L.http.post(R, t);
+    return D(B(e, m("hr.errCreateContract")).seq);
+  },
+  update: async (t, e) => {
+    const o = await L.http.patch(`${R}/${t}`, e);
+    B(o, m("hr.errUpdateContract"));
+  },
+  remove: async t => {
+    const e = await L.http.delete(`${R}/${t}`);
+    B(e, m("hr.errDeleteContract"));
+  },
+  uploadFile: async (t, e) => {
+    const o = new FormData();
+    o.append("file", e, e.name);
+    const i = await L.requestForm("POST", `${R}/${t}/files`, o, !0);
+    B(i, m("hr.errUploadAttachment", {
+      name: e.name
+    }));
+  },
+  removeFile: async (t, e) => {
+    const o = await L.http.delete(`${R}/${t}/files/${encodeURIComponent(e)}`);
+    B(o, m("hr.errRemoveAttachment"));
+  },
+  downloadFile: async (t, e) => {
+    try {
+      const o = await L.requestBinary("GET", `${R}/${t}/files/${encodeURIComponent(e)}`);
+      return new Blob([o]);
+    } catch (o) {
+      throw new Error(xe(o, m("hr.errDownloadAttachment")));
+    }
+  }
+};
+function G() {
+  return {
+    employee_seq: 0,
+    contract_type: "regular",
+    contract_date: "",
+    start_date: "",
+    end_date: "",
+    pay_type: "",
+    pay_amount: "",
+    pay_note: "",
+    memo: "",
+    attachments: []
+  };
+}
+const _t = {
+    target: null,
+    saving: !1,
+    error: "",
+    openCount: 0,
+    ...Qe
+  },
+  bt = ["contract_date", "start_date", "end_date"];
+function ne(t) {
+  return {
+    employee_seq: t.employee_seq,
+    contract_type: t.contract_type,
+    contract_date: t.contract_date,
+    start_date: t.start_date,
+    end_date: t.end_date,
+    pay_type: t.pay_type,
+    pay_amount: t.pay_amount || "",
+    pay_note: t.pay_note,
+    memo: t.memo,
+    attachments: [...t.attachments]
+  };
+}
+function Ct({
+  onSaved: t
+}) {
+  const e = g.useRef(t);
+  e.current = t;
+  const o = g.useRef([]),
+    i = g.useRef(null),
+    p = {
+      form: Se({
+        modalId: "hr-contract-edit-dialog"
+      })
+    },
+    c = Ee({
+      stateId: "hr-contract-ui",
+      initialValues: _t
+    }),
+    h = we({
+      formId: "hr-contract-form",
+      initialValues: G(),
+      onValidate: n => Number(n.employee_seq) ? n.start_date ? bt.some(s => Ye(n[s])) ? (c.setValue("error", Xe()), !1) : n.end_date && n.end_date < n.start_date ? (c.setValue("error", m("hr.contractErrEnd")), !1) : !0 : (c.setValue("error", m("hr.contractErrStart")), !1) : (c.setValue("error", m("hr.attSetErrPickEmployee")), !1),
+      onSubmit: async n => {
+        const s = c.getValue("target");
+        c.setValues({
+          saving: !0,
+          error: ""
+        });
+        const d = {
+          contract_type: n.contract_type,
+          contract_date: n.contract_date,
+          start_date: n.start_date,
+          end_date: n.end_date,
+          pay_type: n.pay_type,
+          pay_amount: He(n.pay_amount),
+          pay_note: n.pay_note,
+          memo: n.memo
+        };
+        let y = s?.seq ?? 0;
+        try {
+          s ? await T.update(s.seq, d) : y = await T.create({
+            ...d,
+            employee_seq: Number(n.employee_seq) || 0
+          });
+        } catch (u) {
+          return c.setValues({
+            saving: !1,
+            error: u instanceof Error ? u.message : m("hr.contractErrSave")
+          }), !1;
+        }
+        const l = [];
+        for (const u of o.current) try {
+          await T.uploadFile(y, u);
+        } catch {
+          l.push(u.name);
+        }
+        const j = n.attachments ?? [];
+        for (const u of (s?.attachments ?? []).filter(I => !j.some(P => P.uuid === I.uuid))) try {
+          await T.removeFile(y, u.uuid);
+        } catch {
+          l.push(u.name);
+        }
+        return l.length > 0 && Te(m("hr.contractAttachFailed", {
+          files: l.join(`
+`)
+        })), e.current(), p.form.close(), !0;
+      }
+    }),
+    E = (n, s) => {
+      o.current = [], h.setFormValues(n), i.current = n, c.setValues({
+        target: s,
+        saving: !1,
+        error: "",
+        openCount: (Number(c.getValue("openCount")) || 0) + 1
+      }), p.form.isOpen || p.form.open();
+    },
+    v = () => E(G(), null),
+    b = n => E(ne(n), n),
+    f = n => {
+      let s = "";
+      if (n.end_date) {
+        const [d, y, l] = n.end_date.split("-").map(Number);
+        s = new Date(Date.UTC(d, y - 1, l + 1)).toISOString().slice(0, 10);
+      }
+      E({
+        ...G(),
+        employee_seq: n.employee_seq,
+        contract_type: n.contract_type,
+        start_date: s,
+        pay_type: n.pay_type,
+        pay_amount: n.pay_amount || "",
+        pay_note: n.pay_note
+      }, null);
+    },
+    V = n => Je({
+      orgSeq: n,
+      onLoaded: s => c.setValues(s)
+    }),
+    q = n => {
+      const d = (c.getValue("employees") ?? []).find(y => y.seq === n);
+      if (!d) {
+        h.setFormValue("employee_seq", 0);
+        return;
+      }
+      h.setFormValues({
+        employee_seq: d.seq,
+        contract_type: d.employment_type,
+        start_date: d.contract_start_date || d.join_date,
+        end_date: d.contract_end_date,
+        pay_type: d.contract_type,
+        pay_amount: d.base_salary || ""
+      });
+    },
+    F = n => {
+      o.current = n;
+    },
+    C = n => h.setFormValue("attachments", (h.getFormValue("attachments") ?? []).filter(s => s.uuid !== n)),
+    A = async n => {
+      const s = c.getValue("target");
+      if (s) try {
+        await Ve(await T.downloadFile(s.seq, n.uuid), n.name);
+      } catch (d) {
+        z(d instanceof Error ? d.message : m("hr.errDownloadAttachment"));
+      }
+    },
+    w = async () => {
+      const n = c.getValue("target");
+      if (n) {
+        c.setValue("saving", !0);
+        try {
+          await T.remove(n.seq), Oe({
+            message: m("hr.deleted"),
+            delay: 500
+          }), e.current(), p.form.close();
+        } catch (s) {
+          c.setValues({
+            saving: !1,
+            error: s instanceof Error ? s.message : m("hr.errDeleteContract")
+          });
+        }
+      }
+    };
+  return ie(["hr_contract"], n => {
+    const s = c.getValue("target");
+    if (!s || !p.form.isOpen) return;
+    const d = ve(n, "hr_contract", s.seq);
+    if (!(!d && !n.resync)) {
+      if (d?.action === "delete") {
+        p.form.close(), z(m("hr.contractDeletedByOther"));
+        return;
+      }
+      T.list().then(y => {
+        const l = c.getValue("target");
+        if (l?.seq !== s.seq || !p.form.isOpen) return;
+        const j = y.items.find(k => k.seq === s.seq);
+        if (!j) {
+          p.form.close(), z(m("hr.contractDeletedByOther"));
+          return;
+        }
+        const u = h.getFormValues(),
+          {
+            patch: I,
+            baseline: P
+          } = Fe(u, i.current ?? u, ne(j));
+        i.current = P, Object.keys(I).length > 0 && h.setFormValues(I), c.setValue("target", {
+          ...j,
+          attachments: "attachments" in I ? j.attachments : l.attachments
+        });
+      }).catch(() => {});
+    }
+  }, {
+    enabled: p.form.isOpen
+  }), {
+    form: h,
+    modals: p,
+    ui: c,
+    openCreate: v,
+    openEdit: b,
+    openRenew: f,
+    loadCandidates: V,
+    pickEmployee: q,
+    setNewFiles: F,
+    removeAttachment: C,
+    downloadFile: A,
+    remove: w
+  };
+}
+function jt({
+  controller: t
+}) {
+  const e = $(),
+    o = le("hr"),
+    {
+      form: i,
+      modals: p,
+      ui: c
+    } = t,
+    h = p.form.isOpen,
+    E = de(),
+    v = pe()?.seq ?? 0,
+    b = c.useValue("target"),
+    f = !!c.useValue("saving"),
+    V = String(c.useValue("error") ?? ""),
+    q = Number(c.useValue("openCount")) || 0,
+    F = c.useValue("employees") ?? [],
+    C = !!c.useValue("loadingEmployees"),
+    A = Number(i.useFormValue("employee_seq")) || 0,
+    w = i.useFormValue("attachments") ?? [];
+  g.useEffect(() => {
+    if (h) return t.loadCandidates(v);
+  }, [h, v]);
+  const n = g.useMemo(() => F.map(Ze), [F]),
+    s = {
+      display: "grid",
+      gridTemplateColumns: E ? "1fr" : "repeat(2, minmax(0, 1fr))",
+      gap: 2
+    },
+    d = (l, j, u = !1) => a.jsx(Be, {
+      form: i,
+      name: l,
+      label: j,
+      required: u,
+      disabled: f,
+      fullWidth: !0,
+      slotProps: {
+        inputLabel: {
+          shrink: !0
+        }
+      }
+    }),
+    y = [{
+      id: "contract-basic",
+      title: e("hr.contractSection"),
+      children: a.jsxs(U, {
+        spacing: 2,
+        children: [a.jsx(et, {
+          value: A,
+          onPick: t.pickEmployee,
+          employees: n,
+          fixed: b?.employee,
+          loading: C,
+          disabled: f || !!b
+        }), a.jsxs(x, {
+          sx: s,
+          children: [a.jsx(Z, {
+            form: i,
+            name: "contract_type",
+            label: e("hr.contractKind"),
+            options: Object.keys(N).map(l => ({
+              value: l,
+              label: N[l]
+            })),
+            showEmptyOption: !1,
+            disabled: f,
+            fullWidth: !0
+          }), d("contract_date", e("hr.contractSignedDate")), d("start_date", e("hr.employeeContractStart"), !0), d("end_date", e("hr.contractEndHint"))]
+        })]
+      })
+    }, {
+      id: "contract-pay",
+      title: e("hr.contractPay"),
+      children: a.jsxs(U, {
+        spacing: 2,
+        children: [a.jsxs(x, {
+          sx: s,
+          children: [a.jsx(Z, {
+            form: i,
+            name: "pay_type",
+            label: e("hr.contractPayType"),
+            options: Object.keys(M).map(l => ({
+              value: l,
+              label: M[l]
+            })),
+            showEmptyOption: !0,
+            emptyLabel: e("hr.employeeNotSelected"),
+            disabled: f,
+            fullWidth: !0
+          }), a.jsx(qe, {
+            form: i,
+            name: "pay_amount",
+            label: e("hr.contractAmountKrw"),
+            min: 0,
+            decimalLength: 0,
+            textAlign: "left",
+            disabled: f,
+            fullWidth: !0
+          })]
+        }), a.jsx(Ae, {
+          form: i,
+          name: "pay_note",
+          label: e("hr.contractPaySummary"),
+          placeholder: e("hr.contractPaySummaryPlaceholder"),
+          disabled: f,
+          slotProps: {
+            htmlInput: {
+              maxLength: 500
+            }
+          },
+          fullWidth: !0
+        })]
+      })
+    }, {
+      id: "contract-files",
+      title: e("hr.contractFiles"),
+      children: a.jsxs(x, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: 1,
+          minWidth: 0
+        },
+        children: [a.jsx(x, {
+          sx: {
+            px: 1.5,
+            py: 1,
+            borderRadius: 1,
+            bgcolor: ee[100],
+            color: ee[600],
+            fontSize: 13,
+            lineHeight: 1.5
+          },
+          children: e("hr.contractFilesNote")
+        }), w.length > 0 ? a.jsx(x, {
+          sx: {
+            display: "flex",
+            flexWrap: "wrap",
+            gap: 1
+          },
+          children: w.map(l => a.jsx(Ie, {
+            icon: a.jsx(me, {
+              sx: {
+                fontSize: 16
+              }
+            }),
+            label: `${l.name} (${ct(l.size)})`,
+            size: "small",
+            onClick: () => {
+              t.downloadFile(l);
+            },
+            onDelete: f ? void 0 : () => t.removeAttachment(l.uuid),
+            sx: {
+              bgcolor: "#f1f5f9",
+              fontSize: 13,
+              maxWidth: "100%"
+            }
+          }, l.uuid))
+        }) : null, a.jsx(ot, {
+          multiple: !0,
+          height: 64,
+          variant: "box",
+          acceptedFileTypes: [],
+          dropzoneText: e("hr.contractDropzone"),
+          onAttachedFilesChange: t.setNewFiles
+        })]
+      }, q)
+    }, {
+      id: "contract-memo",
+      title: e("hr.note"),
+      children: a.jsxs(U, {
+        spacing: 2,
+        children: [a.jsx(Le, {
+          form: i,
+          name: "memo",
+          minRows: 3,
+          disabled: f,
+          slotProps: {
+            htmlInput: {
+              maxLength: 1e3
+            }
+          },
+          fullWidth: !0
+        }), V && a.jsx(st, {
+          message: V
+        })]
+      })
+    }];
+  return a.jsx(Re, {
+    readOnly: !o.canWrite,
+    open: p.form.isOpen,
+    onClose: p.form.close,
+    title: e(b ? "hr.contractEdit" : "hr.contractCreate"),
+    width: "720px",
+    fullScreen: E,
+    mobilePresentation: E ? "slide" : "dialog",
+    draggable: !0,
+    backdropClick: !1,
+    titleIcons: {
+      delete: {
+        visible: o.canWrite && !!b,
+        confirmConfig: {
+          title: e("hr.contractDelete"),
+          message: e("hr.contractDeleteConfirm"),
+          confirmText: e("hr.delete"),
+          cancelText: e("hr.cancel")
+        }
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    onDelete: t.remove,
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !0,
+      left: b && b.end_date ? a.jsx(Y, {
+        startIcon: a.jsx(Pe, {}),
+        onClick: () => t.openRenew(b),
+        disabled: f,
+        children: e("hr.contractRenew")
+      }) : void 0,
+      right: a.jsx(Y, {
+        style: o.canWrite ? void 0 : {
+          display: "none"
+        },
+        variant: "contained",
+        onClick: () => {
+          i.submit();
+        },
+        disabled: f,
+        sx: {
+          minWidth: 80
+        },
+        children: f ? a.jsx(Ne, {
+          size: 20,
+          color: "inherit"
+        }) : e("hr.save")
+      })
+    },
+    sections: y
+  });
+}
+const St = 48,
+  Et = "#9b9a97",
+  wt = "#dc2626";
+function oe({
+  row: t,
+  fontSize: e = 13
+}) {
+  const {
+      state: o,
+      days_left: i
+    } = t.expiry,
+    p = (o === "expiring" || o === "expired") && i !== null;
+  return a.jsxs(x, {
+    component: "span",
+    sx: {
+      display: "inline-flex",
+      alignItems: "center",
+      gap: .75,
+      whiteSpace: "nowrap"
+    },
+    children: [a.jsx(nt, {
+      label: he[o],
+      tone: ft[o]
+    }), p && a.jsx(x, {
+      component: "span",
+      sx: {
+        fontSize: e,
+        fontWeight: 600,
+        color: at(i < 0 ? -1 : 0)
+      },
+      children: tt(i)
+    })]
+  });
+}
+function H(t) {
+  return [t.pay_type ? M[t.pay_type] : "", rt(t.pay_amount)].filter(Boolean).join(" ");
+}
+function se({
+  names: t,
+  fontSize: e = 13
+}) {
+  const o = $();
+  return t.length === 0 ? null : a.jsx(We, {
+    title: t.join(", "),
+    children: a.jsx(ue, {
+      sx: {
+        fontSize: e,
+        fontWeight: 600,
+        color: wt,
+        whiteSpace: "nowrap"
+      },
+      children: o("hr.contractUncontractedN", {
+        count: t.length
+      })
+    })
+  });
+}
+function ce({
+  searching: t
+}) {
+  const e = $(),
+    o = e(t ? "hr.contractNoneFound" : "hr.contractNone");
+  return a.jsx(x, {
+    sx: {
+      py: 6,
+      px: 2,
+      textAlign: "center",
+      color: Et,
+      fontSize: 14,
+      wordBreak: "keep-all"
+    },
+    children: o
+  });
+}
+function ha() {
+  const t = $(),
+    e = le("hr"),
+    o = mt("hr.contract"),
+    i = de(),
+    c = pe()?.seq ?? 0,
+    [h, E] = g.useState([]),
+    [v, b] = g.useState([]),
+    [f, V] = g.useState(!1),
+    [q, F] = g.useState(""),
+    [C, A] = g.useState(""),
+    [w, n] = g.useState([]),
+    s = Ue(),
+    d = !!s.useValue("open");
+  g.useEffect(() => {
+    if (i) return s.setValue("active", !0), () => {
+      s.setValue("active", !1), s.setValue("open", !1);
+    };
+  }, [i, s]), g.useEffect(() => {
+    i && !d && F("");
+  }, [i, d]);
+  const y = g.useCallback(async (r = !1) => {
+    if (!c) {
+      E([]), b([]);
+      return;
+    }
+    r || V(!0);
+    try {
+      const S = await T.list();
+      E(S.items), b(S.uncontracted.map(_ => _.name));
+    } catch (S) {
+      r || z(S instanceof Error ? S.message : m("hr.errLoadContracts"));
+    } finally {
+      V(!1);
+    }
+  }, [c]);
+  g.useEffect(() => {
+    y();
+  }, [y]), ie(["hr_contract", "employee"], () => {
+    y(!0);
+  });
+  const l = q.trim(),
+    j = g.useMemo(() => h.filter(r => yt(r.expiry.state, C) && (w.length === 0 || w.includes(r.contract_type)) && (!l || r.employee.name.includes(l))), [h, C, w, l]),
+    {
+      rows: u,
+      tableSort: I
+    } = ht(j, {
+      contract_date: r => `${r.contract_date} ${String(r.seq).padStart(10, "0")}`,
+      employee: r => r.employee.name,
+      contract_type: r => N[r.contract_type],
+      period: r => r.start_date,
+      pay: r => r.pay_amount,
+      files: r => r.attachments.length,
+      expiry: r => r.expiry.days_left
+    }, {
+      by: "contract_date",
+      dir: "desc"
+    }),
+    P = Ct({
+      onSaved: () => {
+        y();
+      }
+    }),
+    {
+      openCreate: k,
+      openEdit: X
+    } = P,
+    Q = a.jsx(jt, {
+      controller: P
+    }),
+    fe = a.jsx(x, {
+      sx: {
+        "& .MuiToggleButtonGroup-root": {
+          height: 40,
+          flexWrap: "nowrap"
+        }
+      },
+      children: a.jsx(ze, {
+        size: "medium",
+        value: C,
+        onChange: r => A(r ?? ""),
+        options: K,
+        sx: {
+          "& .MuiToggleButtonGroup-grouped": {
+            minWidth: 64,
+            px: 1.5
+          }
+        }
+      })
+    }),
+    J = it(f);
+  if (i) {
+    const r = _ => a.jsxs(x, {
+        role: "button",
+        tabIndex: 0,
+        onClick: () => X(_),
+        sx: {
+          p: 1.5,
+          cursor: "pointer",
+          userSelect: "none",
+          "&:active": {
+            bgcolor: "#f8f8f7"
+          }
+        },
+        children: [a.jsxs(x, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: .75,
+            minWidth: 0
+          },
+          children: [a.jsx(ue, {
+            sx: {
+              fontSize: 15,
+              fontWeight: 600,
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap"
+            },
+            children: ae(_.employee)
+          }), a.jsx(x, {
+            sx: {
+              ml: "auto",
+              flexShrink: 0
+            },
+            children: a.jsx(oe, {
+              row: _,
+              fontSize: 14
+            })
+          })]
+        }), a.jsxs(x, {
+          sx: {
+            display: "flex",
+            gap: 1.25,
+            fontSize: 14,
+            color: "text.secondary",
+            mt: .5,
+            flexWrap: "wrap"
+          },
+          children: [a.jsx("span", {
+            children: N[_.contract_type]
+          }), a.jsx("span", {
+            children: re(_.start_date, _.end_date)
+          }), H(_) ? a.jsx("span", {
+            children: H(_)
+          }) : null, _.attachments.length > 0 ? a.jsx("span", {
+            children: t("hr.contractFilesN", {
+              count: _.attachments.length
+            })
+          }) : null]
+        })]
+      }, _.seq),
+      S = [];
+    return v.length > 0 && S.push(a.jsx(x, {
+      sx: {
+        display: "flex",
+        p: 1.5
+      },
+      children: a.jsx(se, {
+        names: v,
+        fontSize: 14
+      })
+    }, "head")), S.push(...u.map(r)), J && j.length === 0 && S.push(a.jsx(ce, {
+      searching: !!(l || C)
+    }, "empty")), J || S.push(a.jsx(lt, {}, "loading")), a.jsxs(a.Fragment, {
+      children: [a.jsx(Me, {
+        value: C,
+        options: K,
+        onChange: A,
+        ariaLabel: t("hr.contractView"),
+        above: a.jsx($e, {
+          open: d,
+          value: q,
+          onChange: F,
+          placeholder: t("hr.employeeSearchName")
+        })
+      }), a.jsx(dt, {
+        attachHead: !0,
+        children: S
+      }), a.jsx(De, {
+        style: e.canWrite ? void 0 : {
+          display: "none"
+        },
+        color: "primary",
+        "aria-label": t("hr.contractRegister"),
+        onClick: k,
+        sx: {
+          position: "fixed",
+          right: 24,
+          bottom: "calc(24px + var(--taskbox-fab-lift, 0px))",
+          zIndex: 40
+        },
+        children: a.jsx(te, {})
+      }), Q]
+    });
+  }
+  const ye = [{
+      id: "contract_date",
+      text: t("hr.contractDate"),
+      width: 120,
+      align: "center",
+      sortable: !0,
+      render: r => r.contract_date
+    }, {
+      id: "employee",
+      text: ut(t("hr.employee"), u.length),
+      sortable: !0,
+      style: {
+        fontSize: 15
+      },
+      render: r => ae(r.employee)
+    }, {
+      id: "contract_type",
+      text: t("hr.contractKind"),
+      width: 100,
+      align: "center",
+      sortable: !0,
+      filterOptions: [...new Set(h.map(r => r.contract_type))].map(r => ({
+        value: r,
+        label: N[r]
+      })),
+      filterValues: w,
+      onFilterChange: n,
+      render: r => N[r.contract_type]
+    }, {
+      id: "period",
+      text: t("hr.contractPeriod"),
+      width: 230,
+      align: "center",
+      sortable: !0,
+      render: r => re(r.start_date, r.end_date)
+    }, {
+      id: "pay",
+      text: t("hr.contractPay"),
+      width: 160,
+      align: "right",
+      sortable: !0,
+      render: r => H(r)
+    }, {
+      id: "files",
+      text: t("hr.contractFile"),
+      width: 80,
+      align: "center",
+      sortable: !0,
+      render: r => r.attachments.length > 0 ? a.jsxs(x, {
+        component: "span",
+        sx: {
+          display: "inline-flex",
+          alignItems: "center",
+          color: "text.secondary",
+          fontSize: 13
+        },
+        children: [a.jsx(me, {
+          sx: {
+            fontSize: 16
+          }
+        }), r.attachments.length]
+      }) : null
+    }, {
+      id: "expiry",
+      text: t("hr.myAttColStatus"),
+      width: 190,
+      align: "center",
+      sortable: !0,
+      filterOptions: K.filter(r => r.value !== ""),
+      filterValues: C ? [C] : [],
+      filterMultiple: !1,
+      onFilterChange: r => A(r[0] ?? ""),
+      render: r => a.jsx(oe, {
+        row: r
+      })
+    }],
+    ge = {
+      left: a.jsx(Y, {
+        style: e.canWrite ? void 0 : {
+          display: "none"
+        },
+        variant: "contained",
+        disableElevation: !0,
+        startIcon: a.jsx(te, {}),
+        onClick: k,
+        children: t("hr.contractRegister")
+      }),
+      filter: {
+        stateId: "hr-contract-filters",
+        showChips: !1,
+        groups: [{
+          filters: [{
+            type: "custom",
+            name: "contract-state",
+            node: fe
+          }, {
+            type: "custom",
+            name: "contract-uncontracted",
+            node: a.jsx(se, {
+              names: v
+            })
+          }]
+        }]
+      },
+      showSearch: !0,
+      searchValue: q,
+      searchPlaceholder: t("hr.employeeSearchName"),
+      onSearchChange: F,
+      searchLoading: f,
+      collapsible: !1,
+      showCollapseButton: !1,
+      showClearIcon: !1
+    };
+  return a.jsxs(a.Fragment, {
+    children: [a.jsx(x, {
+      sx: {
+        position: "relative",
+        height: "100%",
+        minHeight: 0,
+        display: "flex",
+        flexDirection: "column"
+      },
+      children: a.jsx(ke, {
+        header: ge,
+        tableProps: {
+          ...o,
+          scrollbars: pt,
+          mobile: !0,
+          variant: "notion",
+          columns: ye,
+          data: u,
+          totalCount: u.length,
+          ...I,
+          getRowId: r => String(r.seq),
+          rowHeight: St,
+          onRowClick: r => X(r),
+          loading: f,
+          emptyMessage: a.jsx(ce, {
+            searching: !!(l || C)
+          })
+        }
+      })
+    }), Q]
+  });
+}
+export { ha as default };

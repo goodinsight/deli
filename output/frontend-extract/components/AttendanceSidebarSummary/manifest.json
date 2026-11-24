@@ -1,0 +1,198 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/AttendanceSidebarSummary-XAf0aevh.js",
+  "path": "assets/vendor.d/AttendanceSidebarSummary-XAf0aevh.js",
+  "name": "AttendanceSidebarSummary",
+  "kind": "ui",
+  "bytes": 5341,
+  "sha256": "c04d4f27609752eee18852ad062bfeef6199d1831c435d88250f4ee5cc7a0afe",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/AttendanceSidebarSummary-XAf0aevh.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "I",
+          "imported": "u"
+        },
+        {
+          "local": "D",
+          "imported": "i"
+        },
+        {
+          "local": "t",
+          "imported": "j"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "L",
+          "imported": "bv"
+        },
+        {
+          "local": "x",
+          "imported": "B"
+        },
+        {
+          "local": "W",
+          "imported": "bQ"
+        },
+        {
+          "local": "$",
+          "imported": "Y"
+        },
+        {
+          "local": "z",
+          "imported": "fj"
+        },
+        {
+          "local": "C",
+          "imported": "cj"
+        },
+        {
+          "local": "j",
+          "imported": "L"
+        },
+        {
+          "local": "S",
+          "imported": "iM"
+        },
+        {
+          "local": "F",
+          "imported": "iL"
+        },
+        {
+          "local": "E",
+          "imported": "eu"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./attendanceMgmt-B_e3bPBn.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "p",
+          "imported": "m"
+        },
+        {
+          "local": "P",
+          "imported": "p"
+        }
+      ],
+      "resolved": "assets/vendor.d/attendanceMgmt-B_e3bPBn.js"
+    },
+    {
+      "specifier": "./sharedMyAttendance-DmyX71sh.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "H",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/sharedMyAttendance-DmyX71sh.js"
+    },
+    {
+      "specifier": "./MyAttendanceCards-R4z2WqwF.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "U",
+          "imported": "u"
+        },
+        {
+          "local": "Y",
+          "imported": "n"
+        },
+        {
+          "local": "w",
+          "imported": "m"
+        },
+        {
+          "local": "K",
+          "imported": "H"
+        }
+      ],
+      "resolved": "assets/vendor.d/MyAttendanceCards-R4z2WqwF.js"
+    },
+    {
+      "specifier": "./stylis-DdLD6a3t.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/stylis-DdLD6a3t.js"
+    },
+    {
+      "specifier": "./i18nLabels-BNTLL7cu.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/i18nLabels-BNTLL7cu.js"
+    },
+    {
+      "specifier": "./Logout-B1FcT8mE.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/Logout-B1FcT8mE.js"
+    },
+    {
+      "specifier": "./FreeBreakfastOutlined-DsHDTKlm.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/FreeBreakfastOutlined-DsHDTKlm.js"
+    },
+    {
+      "specifier": "./attendance-CHHNhWTj.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/attendance-CHHNhWTj.js"
+    },
+    {
+      "specifier": "./AttendanceParts-mHb1cK0h.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/AttendanceParts-mHb1cK0h.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "oe",
+      "exported": "AttendanceSidebarSummary"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "m",
+      "keys": [
+        "label",
+        "value",
+        "children",
+        "danger",
+        "onClick"
+      ]
+    },
+    {
+      "function": "Q",
+      "keys": [
+        "label"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "Layout"
+  ],
+  "service": "근태",
+  "purpose": "근태 요약",
+  "reuseGrade": "C",
+  "integration": "개인 근무 상태·정책·월별 집계 API 연결",
+  "exportedParameters": []
+}

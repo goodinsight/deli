@@ -1,0 +1,1329 @@
+import { j as e, r as x, l as Ke } from "./react-CjxcGQav.js";
+import { c as Xe, e as Qe, c8 as $e, ak as Je, dv as Fe, fA as Ze, bO as M, bT as z, cL as et, bv as A, lJ as Le, fC as y, bd as tt, ax as rt, cG as J, at as nt, dh as at, lK as Te, aR as st, eG as ot, U as it, fI as lt, j as ct, iG as dt, q as pt, b3 as ut, ma as ee, nz as Z, nA as le, D as qe, fL as we, cI as mt, cC as ft, al as _, aq as $, B as h, lP as ht, cn as xt, bQ as Ne, lN as gt, lO as bt, ca as jt, cz as _t, nB as yt, nC as ye, fo as St, w as ae, fj as vt, F as Et, d8 as Pt, nD as Ot, s as H, ce as It, cf as Ct, nE as Rt, nF as Se, lr as Ft, H as Lt, L as se, nG as Tt, z as qt, bx as ve, fi as wt } from "../js.d/main-Cm9wS5wt.js";
+import { O as Nt } from "./OptionToggleGroup-Cvm2wRyq.js";
+import { u as Mt } from "./useCloseOnChange-Cdlg7Hw5.js";
+import { M as Wt } from "./MobileListTitleBar-tZ34p2gY.js";
+import { p as k } from "./partnerApi-Dqdgl0Fn.js";
+import { t as Dt, d as kt } from "./terms-BH45hJsC.js";
+import { g as Ee } from "./partnerCategoryStore-CJusAnEs.js";
+import { P as At } from "./PhoneOutlined-Bjc_e42S.js";
+import { P as Vt } from "./PhoneAndroidOutlined-DafU-b-9.js";
+import { E as Bt } from "./EventRepeatOutlined-BzT6rPrF.js";
+import { A as zt } from "./AccountBoxOutlined-BxNEw8I0.js";
+import { N as Ht } from "./Notes-i9IHZW02.js";
+import { f as Me, a as Gt, I as Yt } from "./PropertyFields-TuJTG5XK.js";
+import { F as G } from "./FormValue-CAMilU-0.js";
+import { u as Ut, P as Kt } from "./PropertyContentEditor-DIsouMXi.js";
+import { P as Xt } from "./propertySections-Bwsl7OH-.js";
+import { u as Qt, a as $t, b as Jt } from "./MobileCardListLayout-D5_p2Xer.js";
+import { u as Zt, a as er, F as tr } from "./FolderDialog-CQcho59p.js";
+import { F as rr } from "./FolderPickRow-Dqfs_lvL.js";
+import { L as nr } from "./ListViewModeToggle-NcYQu7vy.js";
+import { u as ar } from "./listViewMode-iTl-2ucA.js";
+import { S as sr } from "./SplitDockSlot-B6Q4iP8T.js";
+import { S as or } from "./selectedRow-CBnSZEGB.js";
+import { T as ir } from "./tableScrollbars-C9bhlJjO.js";
+import { u as lr } from "./useColumnWidths-DSAca5rC.js";
+import { u as cr } from "./sidebarAction-Z0aCDENX.js";
+import "./stylis-DdLD6a3t.js";
+import "./mobileSearchOverlay-DYWcMOOb.js";
+import "./HorizontalSplitOutlined-MKxJhLKp.js";
+import "./profileApi-Btafs-pM.js";
+const dr = Xe(e.jsx("path", {
+    d: "M6.99 11 3 15l3.99 4v-3H14v-2H6.99zM21 9l-3.99-4v3H10v2h7.01v3z"
+  })),
+  Pe = new Set(),
+  Oe = "/dashboard/partner";
+function pr() {
+  typeof window < "u" && !window.location.pathname.startsWith(Oe) && (window.history.pushState({}, "", Oe), window.dispatchEvent(new PopStateEvent("popstate"))), Pe.size !== 0 && Pe.forEach(t => t());
+}
+const ur = "__manage__",
+  Y = {
+    name: "",
+    trade_type: "sales",
+    entity_type: "corp",
+    category_seq: 0,
+    folder_seq: 0,
+    terms_seq: 0,
+    business_no: "",
+    representative_name: "",
+    phone: "",
+    email: "",
+    address: "",
+    address_detail: "",
+    contact_name: "",
+    contact_phone: "",
+    contact_email: "",
+    bank_name: "",
+    account_no: "",
+    account_holder: "",
+    memo: "",
+    content: "",
+    enabled: !0
+  };
+function oe(t) {
+  const r = {};
+  for (const i of Object.keys(Y)) r[i] = t[i] ?? Y[i];
+  return r.category_seq = Number(t.category_seq) || "", r.terms_seq = Number(t.terms_seq) || "", r.folder_seq = Number(t.folder_seq) || "", r;
+}
+function Ie(t) {
+  const r = {};
+  for (const i of Object.keys(Y)) r[i] = t[i];
+  return r.name = String(t.name ?? "").trim(), r.category_seq = Number(t.category_seq) || 0, r.terms_seq = Number(t.terms_seq) || 0, r.folder_seq = Number(t.folder_seq) || 0, r;
+}
+function mr(t = {}) {
+  const r = x.useRef(t);
+  r.current = t;
+  const i = x.useRef(""),
+    n = x.useRef(null),
+    p = {
+      form: Qe({
+        modalId: "partner-form"
+      })
+    },
+    o = $e({
+      stateId: "partner-form-ui",
+      initialValues: {
+        target: null,
+        termsOptions: []
+      }
+    }),
+    s = Je({
+      formId: "partner-form",
+      initialValues: oe(Y),
+      onValidate: c => String(c.name ?? "").trim() ? !0 : (M(z("partner.partnerNameRequired")), !1),
+      onSubmit: async c => {
+        const u = o.getValue("target"),
+          m = Ie(c);
+        try {
+          return u ? (await k.update(u.seq, m), r.current.onSaved?.(u.seq)) : r.current.onSaved?.(await k.create(m)), p.form.close(), !0;
+        } catch (l) {
+          return M(l instanceof Error ? l.message : z("partner.partnerSaveFailed")), !1;
+        }
+      }
+    }),
+    j = c => {
+      const u = oe(c ?? Y);
+      c || (u.folder_seq = r.current.defaultFolderSeq?.() || ""), i.current = u.category_seq ?? "", s.setFormValues(u), n.current = u, o.setValue("target", c), p.form.open(), Dt.list().then(m => o.setValue("termsOptions", m.map(l => ({
+        value: l.seq,
+        label: `${l.name} (${kt(l)})`
+      })))).catch(() => o.setValue("termsOptions", []));
+    },
+    g = () => j(null),
+    F = c => j(c),
+    L = c => {
+      if (c === ur) {
+        s.setFormValue("category_seq", i.current), pr();
+        return;
+      }
+      const u = Number(c) || 0;
+      i.current = u || "";
+      const m = Ee().items.find(l => l.seq === u);
+      m?.default_trade_type && s.setFormValue("trade_type", m.default_trade_type);
+    },
+    I = async (c, u) => {
+      const m = o.getValue("target");
+      if (!m) return !1;
+      const l = s.getFormValues(),
+        b = {
+          ...c
+        },
+        E = [...u];
+      if ("category_seq" in c) {
+        const O = Ee().items.find(w => w.seq === Number(c.category_seq));
+        O?.default_trade_type && O.default_trade_type !== l.trade_type && (b.trade_type = O.default_trade_type, E.push("trade_type"));
+      }
+      const T = {
+        ...l,
+        ...b
+      };
+      if ("name" in c && !String(T.name ?? "").trim()) return M(z("partner.partnerNameRequired")), !1;
+      s.setFormValues(b);
+      const q = Ie(T),
+        U = Object.fromEntries(E.map(O => [O, q[O]]));
+      try {
+        return await k.update(m.seq, U), o.setValue("target", {
+          ...m,
+          ...U
+        }), n.current && (n.current = {
+          ...n.current,
+          ...b
+        }), r.current.onSaved?.(m.seq), !0;
+      } catch (O) {
+        return s.setFormValues(Object.fromEntries(Object.keys(b).map(w => [w, l[w]]))), M(O instanceof Error ? O.message : z("partner.partnerSaveFailed")), !1;
+      }
+    };
+  return Fe(["partner"], c => {
+    const u = o.getValue("target");
+    if (!u || !p.form.isOpen) return;
+    const m = Ze(c, "partner", u.seq);
+    if (!(!m && !c.resync)) {
+      if (m?.action === "delete") {
+        p.form.close(), M(z("partner.partnerDeletedByOther"));
+        return;
+      }
+      k.detail(u.seq).then(l => {
+        if (o.getValue("target")?.seq !== l.seq || !p.form.isOpen) return;
+        const E = s.getFormValues(),
+          {
+            patch: T,
+            baseline: q
+          } = et(E, n.current ?? E, oe(l));
+        n.current = q, Object.keys(T).length > 0 && s.setFormValues(T), o.setValue("target", l);
+      }).catch(() => {});
+    }
+  }, {
+    enabled: p.form.isOpen
+  }), {
+    form: s,
+    modals: p,
+    ui: o,
+    openCreate: g,
+    openEdit: F,
+    changeCategory: L,
+    saveField: I
+  };
+}
+const fr = ee(Z),
+  hr = ee(le),
+  xr = t => t === "" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(t);
+function v({
+  controller: t,
+  name: r,
+  prepare: i,
+  ...n
+}) {
+  const {
+      form: p,
+      saveField: o
+    } = t,
+    s = String(p.useFormValue(r) ?? "");
+  return e.jsx(Yt, {
+    ...n,
+    value: s,
+    onCommit: j => {
+      const g = i ? i(j) : j;
+      return g === !1 ? !1 : o({
+        [r]: g
+      }, [r]);
+    }
+  });
+}
+const We = t => xr(t) ? t : !1;
+function gr({
+  controller: t
+}) {
+  const r = A(),
+    {
+      form: i,
+      saveField: n
+    } = t,
+    p = Le("partner").folders;
+  return e.jsxs(e.Fragment, {
+    children: [e.jsx(y, {
+      icon: e.jsx(tt, {}),
+      label: r("partner.partnerNameRequiredLabel"),
+      children: e.jsx(v, {
+        controller: t,
+        name: "name",
+        maxLength: 200
+      })
+    }), e.jsx(y, {
+      icon: e.jsx(rt, {}),
+      label: r("partner.businessNo"),
+      children: e.jsx(v, {
+        controller: t,
+        name: "business_no",
+        inputMode: "numeric",
+        maxLength: 20
+      })
+    }), e.jsx(G, {
+      form: i,
+      name: "trade_type",
+      children: o => e.jsx(J, {
+        icon: e.jsx(dr, {}),
+        label: r("partner.tradeType"),
+        value: String(o ?? ""),
+        options: fr,
+        onChange: s => {
+          n({
+            trade_type: s
+          }, ["trade_type"]);
+        }
+      })
+    }), e.jsx(G, {
+      form: i,
+      name: "entity_type",
+      children: o => e.jsx(J, {
+        icon: e.jsx(nt, {}),
+        label: r("partner.entityType"),
+        value: String(o ?? ""),
+        options: hr,
+        onChange: s => {
+          n({
+            entity_type: s
+          }, ["entity_type"]);
+        }
+      })
+    }), e.jsx(y, {
+      icon: e.jsx(at, {}),
+      label: r("partner.ceoName"),
+      children: e.jsx(v, {
+        controller: t,
+        name: "representative_name",
+        maxLength: 50
+      })
+    }), p.length > 0 ? e.jsx(G, {
+      form: i,
+      name: "folder_seq",
+      children: o => e.jsx(J, {
+        icon: e.jsx(st, {}),
+        label: r("partner.folder"),
+        value: Number(o) || "",
+        options: Te(p),
+        emptyLabel: r("partner.noFolder"),
+        onChange: s => {
+          n({
+            folder_seq: s === "" ? "" : Number(s)
+          }, ["folder_seq"]);
+        }
+      })
+    }) : null, e.jsx(y, {
+      icon: e.jsx(At, {}),
+      label: r("partner.mainPhone"),
+      children: e.jsx(v, {
+        controller: t,
+        name: "phone",
+        inputMode: "tel",
+        format: "phone",
+        prepare: Me
+      })
+    }), e.jsx(y, {
+      icon: e.jsx(ot, {}),
+      label: r("partner.mainEmail"),
+      children: e.jsx(v, {
+        controller: t,
+        name: "email",
+        inputMode: "email",
+        prepare: We
+      })
+    }), e.jsx(y, {
+      icon: e.jsx(it, {}),
+      label: r("partner.address"),
+      wide: !0,
+      rowStart: !0,
+      children: e.jsx(G, {
+        form: i,
+        name: "address",
+        children: o => e.jsx(Gt, {
+          value: String(o ?? ""),
+          onCommit: s => n({
+            address: s
+          }, ["address"])
+        })
+      })
+    }), e.jsx(y, {
+      icon: e.jsx(lt, {}),
+      label: r("partner.addressDetail"),
+      wide: !0,
+      children: e.jsx(v, {
+        controller: t,
+        name: "address_detail",
+        maxLength: 200
+      })
+    })]
+  });
+}
+function br({
+  controller: t
+}) {
+  const r = A();
+  return e.jsxs(e.Fragment, {
+    children: [e.jsx(y, {
+      icon: e.jsx(ct, {}),
+      label: r("partner.contactName"),
+      children: e.jsx(v, {
+        controller: t,
+        name: "contact_name",
+        maxLength: 50
+      })
+    }), e.jsx(y, {
+      icon: e.jsx(Vt, {}),
+      label: r("partner.contactPhone"),
+      children: e.jsx(v, {
+        controller: t,
+        name: "contact_phone",
+        inputMode: "tel",
+        format: "phone",
+        prepare: Me
+      })
+    }), e.jsx(y, {
+      icon: e.jsx(dt, {}),
+      label: r("partner.contactEmail"),
+      children: e.jsx(v, {
+        controller: t,
+        name: "contact_email",
+        inputMode: "email",
+        prepare: We
+      })
+    })]
+  });
+}
+function jr({
+  controller: t
+}) {
+  const r = A(),
+    {
+      form: i,
+      ui: n,
+      saveField: p
+    } = t,
+    o = n.useValue("termsOptions") ?? [];
+  return e.jsxs(e.Fragment, {
+    children: [e.jsx(G, {
+      form: i,
+      name: "terms_seq",
+      children: s => e.jsx(J, {
+        icon: e.jsx(Bt, {}),
+        label: r("partner.terms"),
+        value: Number(s) || "",
+        options: o,
+        emptyLabel: o.length > 0 ? r("partner.notSet") : r("partner.termsRegisterFirst"),
+        onChange: j => {
+          p({
+            terms_seq: j === "" ? "" : Number(j)
+          }, ["terms_seq"]);
+        }
+      })
+    }), e.jsx(y, {
+      icon: e.jsx(pt, {}),
+      label: r("partner.bank"),
+      children: e.jsx(v, {
+        controller: t,
+        name: "bank_name",
+        maxLength: 30
+      })
+    }), e.jsx(y, {
+      icon: e.jsx(zt, {}),
+      label: r("partner.accountHolder"),
+      children: e.jsx(v, {
+        controller: t,
+        name: "account_holder",
+        maxLength: 50
+      })
+    }), e.jsx(y, {
+      icon: e.jsx(ut, {}),
+      label: r("partner.accountNo"),
+      children: e.jsx(v, {
+        controller: t,
+        name: "account_no",
+        inputMode: "numeric",
+        maxLength: 50
+      })
+    }), e.jsx(y, {
+      icon: e.jsx(Ht, {}),
+      label: r("partner.note"),
+      alignTop: !0,
+      full: !0,
+      children: e.jsx(v, {
+        controller: t,
+        name: "memo",
+        multiline: !0,
+        maxLength: 200
+      })
+    })]
+  });
+}
+const _r = ee(Z),
+  yr = ee(le);
+function ie({
+  children: t
+}) {
+  return e.jsx(h, {
+    sx: gt,
+    children: e.jsx(h, {
+      sx: bt,
+      children: t
+    })
+  });
+}
+function Sr({
+  controller: t,
+  docked: r,
+  onDelete: i
+}) {
+  const n = A(),
+    p = qe(),
+    o = we("partner").canWrite,
+    {
+      form: s,
+      modals: j
+    } = t,
+    g = t.ui.useValue("target"),
+    F = t.ui.useValue("termsOptions") ?? [],
+    L = s.isSubmitting,
+    I = Le("partner").folders,
+    c = !p && !!g,
+    u = String(s.useFormValue("content") ?? ""),
+    m = Ut(),
+    l = (b, E) => e.jsxs(h, {
+      sx: {
+        display: "flex",
+        gap: jt,
+        flexDirection: p ? "column" : "row",
+        alignItems: p ? "stretch" : "center"
+      },
+      children: [e.jsx(h, {
+        sx: {
+          flex: 1,
+          minWidth: 0
+        },
+        children: b
+      }), e.jsx(h, {
+        sx: {
+          flex: 1,
+          minWidth: 0
+        },
+        children: E
+      })]
+    });
+  return e.jsx(mt, {
+    readOnly: !o,
+    open: j.form.isOpen,
+    onClose: j.form.close,
+    title: g ? c ? g.name : n("partner.partnerEdit") : n("partner.partnerCreate"),
+    maxWidth: "md",
+    backdropClick: !p,
+    scrollPastLastSection: !1,
+    sx: c ? {
+      DialogContent: Xt
+    } : void 0,
+    fullScreen: p,
+    mobilePresentation: p ? "slide" : "dialog",
+    sideDrawer: !p && !r,
+    splitDock: !p && !!r,
+    titleIcons: {
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      },
+      delete: {
+        visible: !!(g && o && i)
+      }
+    },
+    onDelete: g && o && i ? () => {
+      i(g).then(b => b && j.form.close());
+    } : void 0,
+    tabs: {
+      visible: !1
+    },
+    actions: {
+      visible: !c,
+      showCancelButton: !0,
+      right: o ? e.jsx(Ne, {
+        variant: "contained",
+        onClick: () => {
+          s.submit();
+        },
+        disabled: L,
+        children: n(L ? "partner.saving" : "partner.save")
+      }) : void 0
+    },
+    sections: c ? [{
+      id: "partner-properties",
+      showTitle: !1,
+      children: e.jsxs(ft, {
+        sx: o ? void 0 : {
+          pointerEvents: "none"
+        },
+        children: [e.jsx(gr, {
+          controller: t
+        }), e.jsx(br, {
+          controller: t
+        }), e.jsx(jr, {
+          controller: t
+        })]
+      })
+    }, {
+      id: "partner-content",
+      title: n("partner.content"),
+      endIcon: o ? m.doneButton : void 0,
+      children: e.jsx(Kt, {
+        syncKey: g?.seq ?? 0,
+        value: u,
+        editing: m.editing,
+        onEditingChange: o ? m.setEditing : () => {},
+        onSave: b => t.saveField({
+          content: b
+        }, ["content"])
+      })
+    }] : [{
+      id: "partner-basic",
+      title: n("partner.basicInfo"),
+      children: e.jsxs(ie, {
+        children: [l(e.jsx(_, {
+          form: s,
+          name: "name",
+          label: n("partner.partnerName"),
+          fullWidth: !0,
+          required: !0,
+          autoFocus: !p && !r,
+          slotProps: {
+            htmlInput: {
+              maxLength: 100
+            }
+          }
+        }), e.jsx(_, {
+          form: s,
+          name: "business_no",
+          label: n("partner.businessNo"),
+          fullWidth: !0,
+          slotProps: {
+            htmlInput: {
+              maxLength: 20
+            }
+          }
+        })), l(e.jsx($, {
+          form: s,
+          name: "trade_type",
+          label: n("partner.tradeType"),
+          options: _r,
+          showEmptyOption: !1,
+          fullWidth: !0
+        }), e.jsx($, {
+          form: s,
+          name: "entity_type",
+          label: n("partner.entityType"),
+          options: yr,
+          showEmptyOption: !1,
+          fullWidth: !0
+        })), I.length > 0 ? l(e.jsx($, {
+          form: s,
+          name: "folder_seq",
+          label: n("partner.folder"),
+          options: Te(I),
+          emptyLabel: n("partner.noFolder"),
+          fullWidth: !0
+        }), e.jsx(_, {
+          form: s,
+          name: "representative_name",
+          label: n("partner.ceoName"),
+          fullWidth: !0,
+          slotProps: {
+            htmlInput: {
+              maxLength: 50
+            }
+          }
+        })) : e.jsx(_, {
+          form: s,
+          name: "representative_name",
+          label: n("partner.ceoName"),
+          fullWidth: !0,
+          slotProps: {
+            htmlInput: {
+              maxLength: 50
+            }
+          }
+        }), l(e.jsx(_, {
+          form: s,
+          name: "phone",
+          label: n("partner.mainPhone"),
+          fullWidth: !0,
+          slotProps: {
+            htmlInput: {
+              maxLength: 30
+            }
+          }
+        }), e.jsx(_, {
+          form: s,
+          name: "email",
+          label: n("partner.mainEmail"),
+          fullWidth: !0,
+          slotProps: {
+            htmlInput: {
+              maxLength: 100
+            }
+          }
+        })), l(e.jsx(_, {
+          form: s,
+          name: "address",
+          label: n("partner.address"),
+          fullWidth: !0,
+          slotProps: {
+            htmlInput: {
+              maxLength: 200
+            }
+          }
+        }), e.jsx(_, {
+          form: s,
+          name: "address_detail",
+          label: n("partner.addressDetail"),
+          fullWidth: !0,
+          slotProps: {
+            htmlInput: {
+              maxLength: 200
+            }
+          }
+        }))]
+      })
+    }, {
+      id: "partner-contact",
+      title: n("partner.contactSection"),
+      children: e.jsxs(ie, {
+        children: [l(e.jsx(_, {
+          form: s,
+          name: "contact_name",
+          label: n("partner.contactName"),
+          fullWidth: !0,
+          slotProps: {
+            htmlInput: {
+              maxLength: 50
+            }
+          }
+        }), e.jsx(_, {
+          form: s,
+          name: "contact_phone",
+          label: n("partner.contactPhone"),
+          fullWidth: !0,
+          slotProps: {
+            htmlInput: {
+              maxLength: 30
+            }
+          }
+        })), e.jsx(_, {
+          form: s,
+          name: "contact_email",
+          label: n("partner.contactEmail"),
+          fullWidth: !0,
+          slotProps: {
+            htmlInput: {
+              maxLength: 100
+            }
+          }
+        })]
+      })
+    }, {
+      id: "partner-payment",
+      title: n("partner.paymentInfo"),
+      children: e.jsxs(ie, {
+        children: [e.jsx($, {
+          form: s,
+          name: "terms_seq",
+          label: n("partner.terms"),
+          options: F,
+          emptyLabel: F.length > 0 ? n("partner.notSet") : n("partner.termsRegisterFirst"),
+          fullWidth: !0
+        }), l(e.jsx(_, {
+          form: s,
+          name: "bank_name",
+          label: n("partner.bank"),
+          fullWidth: !0,
+          slotProps: {
+            htmlInput: {
+              maxLength: 30
+            }
+          }
+        }), e.jsx(_, {
+          form: s,
+          name: "account_holder",
+          label: n("partner.accountHolder"),
+          fullWidth: !0,
+          slotProps: {
+            htmlInput: {
+              maxLength: 50
+            }
+          }
+        })), e.jsx(_, {
+          form: s,
+          name: "account_no",
+          label: n("partner.accountNo"),
+          fullWidth: !0,
+          slotProps: {
+            htmlInput: {
+              maxLength: 50
+            }
+          }
+        }), e.jsx(h, {
+          sx: ht,
+          children: e.jsx(xt, {
+            form: s,
+            name: "memo",
+            label: n("partner.note"),
+            fullWidth: !0,
+            minRows: 2,
+            slotProps: {
+              htmlInput: {
+                maxLength: 200
+              }
+            }
+          })
+        })]
+      })
+    }]
+  });
+}
+const Ce = 50,
+  vr = 300,
+  Er = 48,
+  Pr = "#9b9a97",
+  Or = "#f8f8f7";
+function Re({
+  searching: t,
+  inFolder: r
+}) {
+  const i = A();
+  return e.jsx(h, {
+    sx: {
+      py: 6,
+      px: 2,
+      textAlign: "center",
+      color: Pr,
+      fontSize: 14,
+      wordBreak: "keep-all"
+    },
+    children: i(t ? "partner.partnerSearchEmpty" : r ? "partner.partnerFolderEmpty" : "partner.partnerListEmpty")
+  });
+}
+function an() {
+  const t = A(),
+    r = we("partner").canWrite,
+    i = lr("partner.list"),
+    n = qe(),
+    o = _t()?.seq ?? 0,
+    [s, j] = ar("partner"),
+    g = !n && s === "split",
+    F = !n && s === "split_bottom",
+    L = g || F,
+    [I, c] = x.useState([]),
+    [u, m] = x.useState(0),
+    [l, b] = x.useState(!1),
+    [E, T] = x.useState(""),
+    [q, U] = x.useState(""),
+    [O, w] = Ke(),
+    V = yt(O.get(ye)),
+    De = x.useCallback((a, f) => {
+      w(d => {
+        const P = new URLSearchParams(d);
+        return f ? P.set(a, f) : P.delete(a), P;
+      }, {
+        replace: !0
+      });
+    }, [w]),
+    ce = a => De(ye, a),
+    [C, W] = x.useState(null),
+    ke = (a, f) => {
+      a.stopPropagation();
+      const d = a.currentTarget.getBoundingClientRect();
+      W({
+        point: {
+          x: d.left,
+          y: d.bottom + 2
+        },
+        row: f
+      });
+    },
+    [B, Ae] = x.useState({
+      col: "name",
+      dir: "asc"
+    }),
+    de = x.useRef(() => {}),
+    S = Zt("partner", {
+      onMoved: () => de.current()
+    }),
+    te = Tt(S.pick);
+  er(S);
+  const R = mr({
+    onSaved: () => Ve(),
+    defaultFolderSeq: () => typeof S.pick == "number" ? S.pick : 0
+  });
+  Mt(te, () => {
+    R.modals.form.isOpen && R.modals.form.close();
+  });
+  const re = x.useRef(1),
+    K = x.useRef(0);
+  x.useEffect(() => {
+    const a = setTimeout(() => U(E.trim()), vr);
+    return () => clearTimeout(a);
+  }, [E]);
+  const N = x.useCallback(async a => {
+    if (!o) {
+      c([]), m(0);
+      return;
+    }
+    const f = ++K.current,
+      d = a === "refresh",
+      P = a === "more" ? re.current + 1 : 1;
+    d || b(!0);
+    try {
+      const D = await k.list({
+        tradeType: V,
+        folder: te,
+        search: q,
+        sort: B.col,
+        dir: B.dir,
+        page: P,
+        limit: d ? Math.max(1, re.current) * Ce : Ce
+      });
+      if (f !== K.current) return;
+      d || (re.current = P), c(Ue => a === "more" ? [...Ue, ...D.items] : D.items), m(D.total);
+    } catch (D) {
+      if (f !== K.current || d) return;
+      M(D instanceof Error ? D.message : t("partner.partnerListLoadFailed"));
+    } finally {
+      f === K.current && b(!1);
+    }
+  }, [o, q, V, te, B]);
+  de.current = () => {
+    N("reload");
+  }, Fe(["partner", "partner_deal", "partner_voucher", "partner_payment"], () => {
+    N("refresh");
+  }), x.useEffect(() => {
+    N("reload");
+  }, [N]);
+  const pe = I.length < u,
+    ue = () => {
+      !l && pe && N("more");
+    },
+    me = () => R.openCreate(),
+    X = a => R.openEdit(a),
+    Ve = () => {
+      ve({
+        message: t("partner.saved"),
+        delay: 500
+      }), N("reload"), S.reload();
+    },
+    fe = async (a, f = !1) => {
+      if (!f && !(await qt({
+        message: t("partner.partnerDeleteConfirm", {
+          name: a.name
+        }),
+        confirmText: t("partner.delete")
+      }))) return !1;
+      try {
+        return await k.remove(a.seq), ve({
+          message: t("partner.deleted"),
+          delay: 500
+        }), N("reload"), S.reload(), !0;
+      } catch (d) {
+        return M(d instanceof Error ? d.message : t("partner.partnerDeleteFailed")), !1;
+      }
+    },
+    he = e.jsx(h, {
+      sx: {
+        "& .MuiToggleButtonGroup-root": {
+          height: 40,
+          flexWrap: "nowrap"
+        }
+      },
+      children: e.jsx(Nt, {
+        size: "medium",
+        value: V,
+        onChange: a => ce(a ?? ""),
+        options: Se,
+        sx: {
+          "& .MuiToggleButtonGroup-grouped": {
+            minWidth: 64,
+            px: 1.5
+          }
+        }
+      })
+    }),
+    xe = e.jsxs(St, {
+      open: !!C,
+      point: C?.point ?? null,
+      onClose: () => W(null),
+      transitionDuration: 0,
+      children: [e.jsx(ae, {
+        onClick: () => {
+          C && X(C.row), W(null);
+        },
+        children: t(r ? "partner.edit" : "partner.open")
+      }), C && C.row.folder_seq > 0 && r ? e.jsx(ae, {
+        onClick: () => {
+          C && S.moveItems([C.row.seq], 0), W(null);
+        },
+        children: t("partner.removeFromFolder")
+      }) : null, r ? e.jsx(vt, {}) : null, r ? e.jsx(ae, {
+        onClick: () => {
+          C && fe(C.row), W(null);
+        },
+        sx: {
+          color: "error.main"
+        },
+        children: t("partner.delete")
+      }) : null]
+    }),
+    ge = e.jsxs(e.Fragment, {
+      children: [e.jsx(Sr, {
+        controller: R,
+        docked: L,
+        onDelete: a => fe(a, !0)
+      }), e.jsx(tr, {
+        controller: S
+      })]
+    }),
+    be = Qt(l),
+    Be = R.ui.useValue("target"),
+    ne = R.modals.form.isOpen ? Be?.seq ?? 0 : 0,
+    Q = L && R.modals.form.isOpen,
+    je = g && Q,
+    ze = a => {
+      if (L && a.seq === ne) {
+        R.modals.form.close();
+        return;
+      }
+      X(a);
+    };
+  if (cr(!n && r ? {
+    label: t("partner.partnerCreate"),
+    onClick: () => me(),
+    fab: !Q
+  } : null), n) {
+    const a = d => e.jsxs(h, {
+        role: "button",
+        tabIndex: 0,
+        onClick: () => X(d),
+        onKeyDown: P => {
+          (P.key === "Enter" || P.key === " ") && (P.preventDefault(), X(d));
+        },
+        sx: {
+          display: "flex",
+          alignItems: "flex-start",
+          gap: 1,
+          px: 2,
+          py: 1.5,
+          cursor: "pointer",
+          userSelect: "none",
+          "&:active": {
+            bgcolor: Or
+          }
+        },
+        children: [e.jsxs(h, {
+          sx: {
+            flex: 1,
+            minWidth: 0,
+            display: "flex",
+            flexDirection: "column",
+            gap: .5
+          },
+          children: [e.jsxs(h, {
+            sx: {
+              display: "flex",
+              alignItems: "center",
+              gap: .75
+            },
+            children: [e.jsx(se, {
+              sx: {
+                fontSize: 15,
+                fontWeight: 600
+              },
+              children: d.name
+            }), e.jsx(se, {
+              sx: {
+                fontSize: 14,
+                color: H[500]
+              },
+              children: Z[d.trade_type]
+            })]
+          }), e.jsxs(h, {
+            sx: {
+              display: "flex",
+              gap: 1.25,
+              fontSize: 14,
+              color: "text.secondary"
+            },
+            children: [d.contact_name ? e.jsx("span", {
+              children: d.contact_name
+            }) : null, d.phone ? e.jsx("span", {
+              children: d.phone
+            }) : null]
+          })]
+        }), e.jsx(h, {
+          component: "button",
+          "aria-label": t("partner.partnerMenu"),
+          onClick: P => {
+            ke(P, d);
+          },
+          sx: {
+            border: 0,
+            bgcolor: "transparent",
+            p: .5,
+            cursor: "pointer",
+            color: H[500],
+            display: "flex"
+          },
+          children: e.jsx(wt, {
+            fontSize: "small"
+          })
+        })]
+      }, d.seq),
+      f = [e.jsx(Wt, {
+        searchValue: E,
+        onSearchChange: T,
+        searchPlaceholder: t("partner.searchPartnerName"),
+        below: e.jsxs(h, {
+          sx: {
+            display: "flex",
+            flexDirection: "column",
+            gap: 2
+          },
+          children: [e.jsx(rr, {
+            controller: S
+          }), he]
+        })
+      }, "title"), ...I.map(a)];
+    return be && I.length === 0 && f.push(e.jsx(Re, {
+      searching: !!q,
+      inFolder: S.pick !== "all"
+    }, "empty")), be || f.push(e.jsx($t, {}, "loading")), pe && f.push(e.jsx(h, {
+      sx: {
+        display: "flex",
+        justifyContent: "center",
+        py: .5
+      },
+      children: e.jsx(Ne, {
+        fullWidth: !0,
+        onClick: ue,
+        disabled: l,
+        children: t("partner.loadMore")
+      })
+    }, "more")), e.jsxs(e.Fragment, {
+      children: [e.jsx(Jt, {
+        attachHead: !0,
+        children: f
+      }), r ? e.jsx(Et, {
+        color: "primary",
+        "aria-label": t("partner.partnerCreate"),
+        onClick: me,
+        sx: {
+          position: "fixed",
+          right: 24,
+          bottom: "calc(24px + var(--taskbox-fab-lift, 0px))",
+          zIndex: 40
+        },
+        children: e.jsx(Pt, {})
+      }) : null, xe, ge]
+    });
+  }
+  const He = new Map(I.map((a, f) => [a.seq, f + 1])),
+    Ge = [{
+      id: "no",
+      text: t("partner.number"),
+      width: 64,
+      align: "center",
+      render: a => e.jsx(h, {
+        component: "span",
+        sx: {
+          color: "text.secondary"
+        },
+        children: He.get(a.seq)
+      })
+    }, {
+      id: "name",
+      text: t("partner.partnerNameWithCount", {
+        count: u.toLocaleString(It(Ct()))
+      }),
+      sortable: !0,
+      style: {
+        fontSize: 15
+      },
+      render: a => e.jsxs(h, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: .75,
+          minWidth: 0
+        },
+        children: [e.jsx(h, {
+          component: "span",
+          draggable: !0,
+          onDragStart: f => f.dataTransfer.setData(Ot.partner, String(a.seq)),
+          sx: {
+            fontWeight: 500,
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap"
+          },
+          children: a.name
+        }), a.enabled ? null : e.jsx(h, {
+          component: "span",
+          sx: {
+            fontSize: 12,
+            color: H[400]
+          },
+          children: t("partner.disabled")
+        })]
+      })
+    }, ...(S.folders.length > 0 && !je ? [{
+      id: "folder_seq",
+      text: t("partner.folder"),
+      width: 160,
+      render: a => e.jsx(h, {
+        component: "span",
+        sx: {
+          color: "text.secondary",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap"
+        },
+        children: Rt(S.folders, a.folder_seq)
+      })
+    }] : []), {
+      id: "trade_type",
+      text: t("partner.tradeType"),
+      sortable: !0,
+      width: 110,
+      align: "center",
+      filterOptions: Se.filter(a => a.value !== ""),
+      filterValues: V ? [V] : [],
+      filterMultiple: !1,
+      onFilterChange: a => ce(a[0] ?? ""),
+      render: a => Z[a.trade_type]
+    }, ...(je ? [] : [{
+      id: "entity_type",
+      text: t("partner.entityTypeShort"),
+      sortable: !0,
+      width: 100,
+      align: "center",
+      render: a => le[a.entity_type]
+    }, {
+      id: "business_no",
+      text: t("partner.businessNoShort"),
+      width: 140,
+      align: "center",
+      sortable: !0
+    }, {
+      id: "contact_name",
+      text: t("partner.contactSection"),
+      width: 110,
+      align: "center",
+      sortable: !0
+    }]), {
+      id: "phone",
+      text: t("partner.phone"),
+      width: 140,
+      align: "center",
+      sortable: !0
+    }],
+    Ye = {
+      right: e.jsx(nr, {
+        value: s,
+        onChange: j,
+        withBottom: !0
+      }),
+      filter: {
+        stateId: "partner-filters",
+        showChips: !1,
+        groups: [{
+          filters: [{
+            type: "custom",
+            name: "partner-trade",
+            node: he
+          }]
+        }]
+      },
+      showSearch: !0,
+      searchValue: E,
+      searchPlaceholder: t("partner.searchPartnerName"),
+      onSearchChange: T,
+      searchLoading: l,
+      collapsible: !1,
+      showCollapseButton: !1,
+      showClearIcon: !1
+    },
+    _e = e.jsx(sr, {
+      onEscape: R.modals.form.close
+    });
+  return e.jsxs(e.Fragment, {
+    children: [e.jsxs(h, {
+      sx: {
+        position: "relative",
+        height: "100%",
+        minHeight: 0,
+        display: "flex",
+        flexDirection: "column"
+      },
+      children: [e.jsx(Ft, {
+        storageKey: "partner-split",
+        header: Ye,
+        resizable: !0,
+        rightPanel: F ? void 0 : _e,
+        bottomPanel: F ? _e : void 0,
+        bottomConfig: {
+          visible: Q,
+          ratio: .55,
+          minHeight: 320
+        },
+        bottomResizable: !0,
+        rightConfig: {
+          visible: g && Q,
+          ratio: .5,
+          minWidth: 420
+        },
+        leftConfig: {
+          minWidth: 360
+        },
+        tableProps: {
+          ...i,
+          scrollbars: ir,
+          mobile: !0,
+          variant: "notion",
+          columns: Ge,
+          data: I,
+          totalCount: u,
+          getRowId: a => String(a.seq),
+          rowHeight: Er,
+          onRowClick: ze,
+          onRowContextMenu: (a, f, d) => {
+            d.preventDefault(), W({
+              point: {
+                x: d.clientX,
+                y: d.clientY
+              },
+              row: a
+            });
+          },
+          selectedRowId: ne ? String(ne) : null,
+          selectedRowSx: or,
+          onLoadMore: ue,
+          sortBy: B.col,
+          sortDirection: B.dir,
+          onSort: (a, f) => Ae({
+            col: a,
+            dir: f
+          }),
+          loading: l,
+          emptyMessage: e.jsx(Re, {
+            searching: !!q,
+            inFolder: S.pick !== "all"
+          })
+        }
+      }), o ? null : e.jsxs(h, {
+        sx: {
+          position: "absolute",
+          inset: 0,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 1,
+          color: H[500],
+          bgcolor: "background.paper",
+          "& .MuiSvgIcon-root": {
+            fontSize: 48,
+            color: H[300]
+          }
+        },
+        children: [e.jsx(Lt, {}), e.jsx(se, {
+          sx: {
+            fontSize: "0.9rem"
+          },
+          children: t("partner.partnerNeedOrg")
+        })]
+      })]
+    }), xe, ge]
+  });
+}
+export { an as default };

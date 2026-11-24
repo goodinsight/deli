@@ -1,0 +1,13 @@
+const t = "Couldn't load initial data.",
+  e = "No suggestion selected to delete.",
+  o = "Couldn't delete the suggestion.",
+  n = 'Removed "{{value}}" from suggestions.',
+  s = "That value isn't in the suggestions.",
+  i = {
+    bootstrapLoadFailed: t,
+    noOptionToDelete: e,
+    optionDeleteFailed: o,
+    optionDeleted: n,
+    optionNotFound: s
+  };
+export { t as bootstrapLoadFailed, i as default, e as noOptionToDelete, o as optionDeleteFailed, n as optionDeleted, s as optionNotFound };

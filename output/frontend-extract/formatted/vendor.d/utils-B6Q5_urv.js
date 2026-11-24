@@ -1,0 +1,143 @@
+import { j as l } from "./react-CjxcGQav.js";
+import { bT as p, B as u } from "../js.d/main-Cm9wS5wt.js";
+function f(e) {
+  return `${e.name}#${e.seq}`;
+}
+function k(e) {
+  return Number(e.slice(e.lastIndexOf("#") + 1)) || 0;
+}
+function x(e, n = {}) {
+  const {
+      disableNoAccount: s = !1,
+      labelFormat: a = "default",
+      dimNoAccount: t = !0
+    } = n,
+    r = p("approval.noDepartment"),
+    i = new Map();
+  for (const c of e) {
+    const o = (c.department ?? "").trim() || r,
+      m = i.get(o) ?? [];
+    m.push(c), i.set(o, m);
+  }
+  return Array.from(i.keys()).sort((c, o) => c === r ? 1 : o === r ? -1 : c.localeCompare(o, "ko")).map(c => ({
+    id: `dept:${c}`,
+    label: c,
+    children: i.get(c).slice().sort((o, m) => o.name.localeCompare(m.name, "ko")).map(o => {
+      const m = !!o.account_seq,
+        _ = a === "nameRoleDept" ? [[o.name, o.role_name].filter(Boolean).join(" "), o.department].filter(Boolean).join(" / ") : `${o.name} ${[o.role_name, o.work_position].filter(Boolean).join(" / ")}`.trim();
+      return {
+        id: `emp:${o.seq}`,
+        label: f(o),
+        disabled: s && !m,
+        renderLabel: l.jsxs(u, {
+          component: "span",
+          sx: {
+            display: "inline-flex",
+            alignItems: "baseline",
+            gap: .75
+          },
+          children: [l.jsx(u, {
+            component: "span",
+            sx: {
+              fontWeight: 400,
+              color: m || !t ? "text.primary" : "text.disabled"
+            },
+            children: _
+          }), !m && s ? l.jsx(u, {
+            component: "span",
+            sx: {
+              fontSize: 14,
+              color: "text.disabled"
+            },
+            children: p("approval.noAccount")
+          }) : null]
+        })
+      };
+    })
+  }));
+}
+function y(e) {
+  const n = Number(e.login_account_seq ?? 0);
+  return {
+    seq: e.seq,
+    account_seq: n > 0 ? n : void 0,
+    name: e.name,
+    department: e.group_name ?? void 0,
+    role_name: e.role_name ?? void 0,
+    work_position: e.work_position ?? void 0,
+    ...(typeof e.org_name == "string" ? {
+      org: e.org_name
+    } : {})
+  };
+}
+function w(e, n) {
+  return {
+    seq: e.account_seq,
+    account_seq: e.account_seq,
+    employee_seq: e.seq,
+    name: e.name,
+    role_name: e.role_name ?? "",
+    work_position: e.work_position,
+    department: e.department ?? "",
+    order: n,
+    status: "waiting",
+    role: "approve"
+  };
+}
+function N(e) {
+  return {
+    id: `ref-${e.seq}-${Date.now()}`,
+    account_seq: e.account_seq,
+    employee_seq: e.seq,
+    name: e.name,
+    role_name: e.role_name ?? "",
+    department: e.department ?? ""
+  };
+}
+function A(e) {
+  return (e ?? []).filter(n => n.employment?.working_status !== "퇴사" && !n.employment?.resign_date).map(y);
+}
+function d(e) {
+  const n = new Map(),
+    s = new Map();
+  for (const a of e) {
+    const t = Number(a.account_seq ?? 0);
+    t > 0 && n.set(t, a);
+    const r = Number(a.seq ?? 0);
+    r > 0 && s.set(r, a);
+  }
+  return {
+    byAccount: n,
+    byEmployee: s
+  };
+}
+function E(e, n) {
+  const {
+    byAccount: s,
+    byEmployee: a
+  } = d(n);
+  return e.map(t => {
+    const r = s.get(Number(t.account_seq ?? 0)) ?? a.get(Number(t.employee_seq ?? 0));
+    return r ? {
+      ...t,
+      role_name: r.role_name ?? "",
+      work_position: r.work_position,
+      department: r.department ?? t.department ?? ""
+    } : t;
+  });
+}
+function v(e, n) {
+  const {
+    byAccount: s,
+    byEmployee: a
+  } = d(n);
+  return e.map(t => {
+    const r = s.get(Number(t.account_seq ?? 0)) ?? a.get(Number(t.employee_seq ?? 0));
+    return r ? {
+      ...t,
+      role_name: r.role_name ?? "",
+      department: r.department ?? t.department ?? ""
+    } : t;
+  });
+}
+export { N as a, x as b, v as c, f as e, w as m, E as r, k as s, A as t };

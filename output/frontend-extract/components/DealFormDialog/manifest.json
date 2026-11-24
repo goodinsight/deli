@@ -1,0 +1,728 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/DealFormDialog-Dw6MXJZk.js",
+  "path": "assets/vendor.d/DealFormDialog-Dw6MXJZk.js",
+  "name": "DealFormDialog",
+  "kind": "ui",
+  "bytes": 26139,
+  "sha256": "ff4348ce4286686dba8ee7fd0e06e420c27f89d03581d86f2ff2b3445298b0b1",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/DealFormDialog-Dw6MXJZk.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "t",
+          "imported": "j"
+        },
+        {
+          "local": "U",
+          "imported": "r"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "he",
+          "imported": "c"
+        },
+        {
+          "local": "Fe",
+          "imported": "aG"
+        },
+        {
+          "local": "Ne",
+          "imported": "k"
+        },
+        {
+          "local": "ke",
+          "imported": "E"
+        },
+        {
+          "local": "Ve",
+          "imported": "jt"
+        },
+        {
+          "local": "De",
+          "imported": "P"
+        },
+        {
+          "local": "Pe",
+          "imported": "aP"
+        },
+        {
+          "local": "Ee",
+          "imported": "fO"
+        },
+        {
+          "local": "P",
+          "imported": "B"
+        },
+        {
+          "local": "D",
+          "imported": "bT"
+        },
+        {
+          "local": "$e",
+          "imported": "dC"
+        },
+        {
+          "local": "we",
+          "imported": "cK"
+        },
+        {
+          "local": "L",
+          "imported": "bO"
+        },
+        {
+          "local": "Te",
+          "imported": "e"
+        },
+        {
+          "local": "Le",
+          "imported": "c8"
+        },
+        {
+          "local": "Re",
+          "imported": "ak"
+        },
+        {
+          "local": "Me",
+          "imported": "dv"
+        },
+        {
+          "local": "Ae",
+          "imported": "fA"
+        },
+        {
+          "local": "Be",
+          "imported": "cL"
+        },
+        {
+          "local": "We",
+          "imported": "j9"
+        },
+        {
+          "local": "Q",
+          "imported": "bv"
+        },
+        {
+          "local": "ge",
+          "imported": "lJ"
+        },
+        {
+          "local": "O",
+          "imported": "fC"
+        },
+        {
+          "local": "Ke",
+          "imported": "j"
+        },
+        {
+          "local": "R",
+          "imported": "cG"
+        },
+        {
+          "local": "Ue",
+          "imported": "fj"
+        },
+        {
+          "local": "Ye",
+          "imported": "w"
+        },
+        {
+          "local": "Ge",
+          "imported": "dE"
+        },
+        {
+          "local": "He",
+          "imported": "S"
+        },
+        {
+          "local": "ze",
+          "imported": "eG"
+        },
+        {
+          "local": "Je",
+          "imported": "fJ"
+        },
+        {
+          "local": "Xe",
+          "imported": "fK"
+        },
+        {
+          "local": "Qe",
+          "imported": "fF"
+        },
+        {
+          "local": "be",
+          "imported": "cD"
+        },
+        {
+          "local": "Ze",
+          "imported": "Z"
+        },
+        {
+          "local": "et",
+          "imported": "U"
+        },
+        {
+          "local": "tt",
+          "imported": "fI"
+        },
+        {
+          "local": "_e",
+          "imported": "lK"
+        },
+        {
+          "local": "je",
+          "imported": "aR"
+        },
+        {
+          "local": "nt",
+          "imported": "lL"
+        },
+        {
+          "local": "rt",
+          "imported": "b7"
+        },
+        {
+          "local": "st",
+          "imported": "dh"
+        },
+        {
+          "local": "at",
+          "imported": "H"
+        },
+        {
+          "local": "ce",
+          "imported": "fB"
+        },
+        {
+          "local": "ot",
+          "imported": "D"
+        },
+        {
+          "local": "ue",
+          "imported": "fL"
+        },
+        {
+          "local": "it",
+          "imported": "cI"
+        },
+        {
+          "local": "lt",
+          "imported": "K"
+        },
+        {
+          "local": "ct",
+          "imported": "fN"
+        },
+        {
+          "local": "ut",
+          "imported": "cC"
+        },
+        {
+          "local": "ee",
+          "imported": "bQ"
+        },
+        {
+          "local": "mt",
+          "imported": "d8"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./dealApi-CnzQt6qM.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "W",
+          "imported": "d"
+        },
+        {
+          "local": "dt",
+          "imported": "a"
+        }
+      ],
+      "resolved": "assets/vendor.d/dealApi-CnzQt6qM.js"
+    },
+    {
+      "specifier": "./partnerApi-Dqdgl0Fn.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "pt",
+          "imported": "p"
+        }
+      ],
+      "resolved": "assets/vendor.d/partnerApi-Dqdgl0Fn.js"
+    },
+    {
+      "specifier": "./customerMetaStore-Bj9KdRyn.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "oe",
+          "imported": "c"
+        },
+        {
+          "local": "ft",
+          "imported": "r"
+        },
+        {
+          "local": "xt",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/customerMetaStore-Bj9KdRyn.js"
+    },
+    {
+      "specifier": "./deal-B3IQ_ej7.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "me",
+          "imported": "t"
+        },
+        {
+          "local": "ht",
+          "imported": "l"
+        },
+        {
+          "local": "de",
+          "imported": "k"
+        },
+        {
+          "local": "ie",
+          "imported": "D"
+        }
+      ],
+      "resolved": "assets/vendor.d/deal-B3IQ_ej7.js"
+    },
+    {
+      "specifier": "./FormValue-CAMilU-0.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "y",
+          "imported": "F"
+        },
+        {
+          "local": "gt",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/FormValue-CAMilU-0.js"
+    },
+    {
+      "specifier": "./PropertyContentEditor-DIsouMXi.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "bt",
+          "imported": "u"
+        },
+        {
+          "local": "_t",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/PropertyContentEditor-DIsouMXi.js"
+    },
+    {
+      "specifier": "./Title-WCY0exuZ.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "jt",
+          "imported": "T"
+        }
+      ],
+      "resolved": "assets/vendor.d/Title-WCY0exuZ.js"
+    },
+    {
+      "specifier": "./EventBusyOutlined-DqcCaRMs.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "vt",
+          "imported": "E"
+        }
+      ],
+      "resolved": "assets/vendor.d/EventBusyOutlined-DqcCaRMs.js"
+    },
+    {
+      "specifier": "./TagOutlined-Cfq6rbok.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ve",
+          "imported": "D"
+        },
+        {
+          "local": "yt",
+          "imported": "T"
+        }
+      ],
+      "resolved": "assets/vendor.d/TagOutlined-Cfq6rbok.js"
+    },
+    {
+      "specifier": "./Notes-i9IHZW02.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ct",
+          "imported": "N"
+        }
+      ],
+      "resolved": "assets/vendor.d/Notes-i9IHZW02.js"
+    },
+    {
+      "specifier": "./PropertyFields-TuJTG5XK.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "N",
+          "imported": "I"
+        },
+        {
+          "local": "It",
+          "imported": "b"
+        },
+        {
+          "local": "qt",
+          "imported": "a"
+        },
+        {
+          "local": "ye",
+          "imported": "f"
+        }
+      ],
+      "resolved": "assets/vendor.d/PropertyFields-TuJTG5XK.js"
+    },
+    {
+      "specifier": "./CategoryOutlined-DcAqxAdD.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "St",
+          "imported": "C"
+        }
+      ],
+      "resolved": "assets/vendor.d/CategoryOutlined-DcAqxAdD.js"
+    },
+    {
+      "specifier": "./PhoneOutlined-Bjc_e42S.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ce",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/PhoneOutlined-Bjc_e42S.js"
+    },
+    {
+      "specifier": "./PhoneAndroidOutlined-DafU-b-9.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ot",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/PhoneAndroidOutlined-DafU-b-9.js"
+    },
+    {
+      "specifier": "./ChecklistOutlined-PwlgFlaS.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ft",
+          "imported": "C"
+        }
+      ],
+      "resolved": "assets/vendor.d/ChecklistOutlined-PwlgFlaS.js"
+    },
+    {
+      "specifier": "./GroupOutlined-CA-gNtcg.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Nt",
+          "imported": "G"
+        }
+      ],
+      "resolved": "assets/vendor.d/GroupOutlined-CA-gNtcg.js"
+    },
+    {
+      "specifier": "./types-B1OAKh4b.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "kt",
+          "imported": "f"
+        },
+        {
+          "local": "Ie",
+          "imported": "e"
+        },
+        {
+          "local": "Vt",
+          "imported": "b"
+        },
+        {
+          "local": "Dt",
+          "imported": "d"
+        }
+      ],
+      "resolved": "assets/vendor.d/types-B1OAKh4b.js"
+    },
+    {
+      "specifier": "./ItemLineFields-DmS0gZQx.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Pt",
+          "imported": "I"
+        },
+        {
+          "local": "Et",
+          "imported": "a"
+        },
+        {
+          "local": "$t",
+          "imported": "T"
+        },
+        {
+          "local": "wt",
+          "imported": "b"
+        }
+      ],
+      "resolved": "assets/vendor.d/ItemLineFields-DmS0gZQx.js"
+    },
+    {
+      "specifier": "./propertySections-Bwsl7OH-.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Tt",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/propertySections-Bwsl7OH-.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "Vn",
+      "exported": "C"
+    },
+    {
+      "local": "Dn",
+      "exported": "D"
+    },
+    {
+      "local": "pe",
+      "exported": "O"
+    },
+    {
+      "local": "Kt",
+      "exported": "a"
+    },
+    {
+      "local": "Cn",
+      "exported": "b"
+    },
+    {
+      "local": "Qt",
+      "exported": "c"
+    },
+    {
+      "local": "qn",
+      "exported": "d"
+    },
+    {
+      "local": "Sn",
+      "exported": "e"
+    },
+    {
+      "local": "On",
+      "exported": "f"
+    },
+    {
+      "local": "Se",
+      "exported": "g"
+    },
+    {
+      "local": "Jt",
+      "exported": "h"
+    },
+    {
+      "local": "te",
+      "exported": "i"
+    },
+    {
+      "local": "zt",
+      "exported": "j"
+    },
+    {
+      "local": "Nn",
+      "exported": "m"
+    },
+    {
+      "local": "kn",
+      "exported": "n"
+    },
+    {
+      "local": "Bt",
+      "exported": "o"
+    },
+    {
+      "local": "Y",
+      "exported": "p"
+    },
+    {
+      "local": "At",
+      "exported": "s"
+    },
+    {
+      "local": "In",
+      "exported": "t"
+    },
+    {
+      "local": "Fn",
+      "exported": "u"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "J",
+      "keys": [
+        "field",
+        "option",
+        "wrap"
+      ]
+    },
+    {
+      "function": "Sn",
+      "keys": [
+        "field",
+        "value",
+        "members"
+      ]
+    },
+    {
+      "function": "Qt",
+      "keys": [
+        "controller",
+        "fields"
+      ]
+    },
+    {
+      "function": "Oe",
+      "keys": [
+        "fields",
+        "form",
+        "onSave"
+      ]
+    },
+    {
+      "function": "Zt",
+      "keys": [
+        "field",
+        "value",
+        "members",
+        "save"
+      ]
+    },
+    {
+      "function": "Vn",
+      "keys": [
+        "controller",
+        "meta",
+        "basicFields"
+      ]
+    },
+    {
+      "function": "en",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "Dn",
+      "keys": [
+        "controller",
+        "presentation"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [
+    "26.06.01"
+  ],
+  "missingDependencies": [],
+  "importedBy": [
+    "CalendarSidebarPanel",
+    "CustomerDealListPage",
+    "CustomerFormDialog",
+    "CustomerListPage",
+    "DealListPage",
+    "Layout",
+    "MobileDashboardLayout",
+    "PostComposerHost",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskMonthlyFields",
+    "TaskTransferDialog"
+  ],
+  "service": "고객·거래처",
+  "purpose": "견적·계약 폼",
+  "reuseGrade": "C",
+  "integration": "계약 상태·품목·고객 및 거래처 API 교체",
+  "exportedParameters": [
+    {
+      "export": "C",
+      "compiledLocal": "Vn",
+      "keys": [
+        "controller",
+        "meta",
+        "basicFields"
+      ]
+    },
+    {
+      "export": "D",
+      "compiledLocal": "Dn",
+      "keys": [
+        "controller",
+        "presentation"
+      ]
+    },
+    {
+      "export": "c",
+      "compiledLocal": "Qt",
+      "keys": [
+        "controller",
+        "fields"
+      ]
+    },
+    {
+      "export": "e",
+      "compiledLocal": "Sn",
+      "keys": [
+        "field",
+        "value",
+        "members"
+      ]
+    }
+  ]
+}

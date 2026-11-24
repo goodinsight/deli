@@ -1,0 +1,9 @@
+import { cg as s, d_ as t } from "../js.d/main-Cm9wS5wt.js";
+const i = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+function f(r) {
+  return i.test(r.trim());
+}
+function u(r, e = "sm") {
+  return r ? /^(blob:|data:|https?:)/.test(r) ? r : f(r) ? e ? `${s}/v1/files/${r}?thumb=${e}` : `${s}/v1/files/${r}` : r.startsWith("/") ? `${t}${r}` : `${t}/${r}` : "";
+}
+export { u as r };

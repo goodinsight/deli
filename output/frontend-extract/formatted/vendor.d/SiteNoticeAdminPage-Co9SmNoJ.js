@@ -1,0 +1,443 @@
+import { r as l, j as t, N as M } from "./react-CjxcGQav.js";
+import { bv as z, D as q, cI as G, bQ as A, K as R, B as u, d4 as y, mh as U, aC as k, mi as E, kR as V, ne as L, jv as K, L as I, z as $, bO as f, bx as Q, dj as Y, u as J, n7 as X, d8 as Z, lr as ee } from "../js.d/main-Cm9wS5wt.js";
+import { u as te } from "./useColumnWidths-DSAca5rC.js";
+import { T as ie } from "./tableScrollbars-C9bhlJjO.js";
+import { r as se } from "./rowNoColumn-B_tyJFB_.js";
+import { b as P, s as g } from "./siteNoticeApi-BBEKF3sl.js";
+import "./stylis-DdLD6a3t.js";
+import "./profileApi-Btafs-pM.js";
+import "./resolveAssetPreviewSrc-CLlbOCzq.js";
+const C = {
+    title: "",
+    kind: "editor",
+    content: "",
+    image_file: "",
+    link_url: "",
+    show_homepage: !0,
+    show_dashboard: !0,
+    popup: !1,
+    start_at: "",
+    end_at: "",
+    enabled: !0
+  },
+  D = e => e.replace(" ", "T"),
+  B = e => e.replace("T", " ").slice(0, 16),
+  oe = {
+    ...L,
+    left: [...(L.left ?? []).filter(e => !e.includes("undo")), ["bulletList", "numberList"], ["image"]]
+  };
+function ae({
+  target: e,
+  onClose: a,
+  onSaved: o
+}) {
+  const s = z(),
+    S = q(),
+    b = l.useRef(null),
+    N = l.useRef(null),
+    [n, h] = l.useState(C),
+    [j, w] = l.useState(!1),
+    [p, v] = l.useState(!1),
+    c = e !== null,
+    r = e && e !== "new" ? e : null;
+  l.useEffect(() => {
+    c && h(r ? {
+      ...C,
+      ...r
+    } : C);
+  }, [e]);
+  const m = (i, d) => h(T => ({
+      ...T,
+      [i]: d
+    })),
+    F = async i => {
+      if (i) {
+        v(!0);
+        try {
+          m("image_file", await g.uploadImage(i));
+        } catch (d) {
+          f({
+            message: d instanceof Error ? d.message : s("siteNotice.uploadFailed")
+          });
+        } finally {
+          v(!1);
+        }
+      }
+    },
+    H = async () => {
+      const i = {
+        ...n,
+        content: n.kind === "editor" ? b.current?.getHtml() ?? n.content : ""
+      };
+      if (!i.title.trim()) return f({
+        message: s("siteNotice.enterTitle")
+      });
+      if (i.kind === "image" && !i.image_file) return f({
+        message: s("siteNotice.chooseImage")
+      });
+      if (!i.show_homepage && !i.show_dashboard) return f({
+        message: s("siteNotice.choosePlace")
+      });
+      if (i.start_at && i.end_at && i.start_at > i.end_at) return f({
+        message: s("siteNotice.endBeforeStart")
+      });
+      w(!0);
+      try {
+        r ? await g.update(r.seq, i) : await g.create(i), Q(s("siteNotice.saved")), o(), a();
+      } catch (d) {
+        f({
+          message: d instanceof Error ? d.message : s("siteNotice.saveFailed")
+        });
+      } finally {
+        w(!1);
+      }
+    },
+    O = () => {
+      r && $({
+        title: s("siteNotice.delete"),
+        message: s("siteNotice.deleteConfirm", {
+          title: r.title
+        }),
+        onConfirm: () => {
+          g.remove(r.seq).then(() => {
+            o(), a();
+          }).catch(i => f({
+            message: i instanceof Error ? i.message : s("siteNotice.deleteFailed")
+          }));
+        }
+      });
+    },
+    _ = (i, d) => t.jsx(k, {
+      control: t.jsx(Y, {
+        checked: n[i],
+        onChange: (T, W) => m(i, W)
+      }),
+      label: d,
+      sx: {
+        mr: 3,
+        "& .MuiFormControlLabel-label": {
+          fontSize: 15
+        }
+      }
+    });
+  return t.jsx(G, {
+    open: c,
+    onClose: a,
+    title: s(r ? "siteNotice.edit" : "siteNotice.new"),
+    fullScreen: S,
+    maxWidth: "md",
+    titleIcons: {
+      delete: {
+        visible: !!r
+      }
+    },
+    onDelete: r ? O : void 0,
+    tabs: {
+      visible: !1
+    },
+    sections: [{
+      id: "site-notice-form",
+      showTitle: !1,
+      children: t.jsxs(u, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: 2.5
+        },
+        children: [t.jsx(y, {
+          label: s("siteNotice.fieldTitle"),
+          value: n.title,
+          onChange: i => m("title", i.target.value),
+          fullWidth: !0,
+          autoFocus: !0
+        }), t.jsxs(U, {
+          row: !0,
+          value: n.kind,
+          onChange: i => m("kind", i.target.value),
+          children: [t.jsx(k, {
+            value: "editor",
+            control: t.jsx(E, {}),
+            label: s("siteNotice.kindEditor")
+          }), t.jsx(k, {
+            value: "image",
+            control: t.jsx(E, {}),
+            label: s("siteNotice.kindImage")
+          })]
+        }), n.kind === "editor" ? t.jsx(V, {
+          ref: b,
+          defaultValue: n.content || "<p></p>",
+          autoHeight: !0,
+          minHeight: 240,
+          toolbarOptions: oe,
+          placeholder: s("siteNotice.contentPlaceholder"),
+          focusBorder: !0,
+          onImageUpload: async i => P(await g.uploadImage(i))
+        }, r?.seq ?? "new") : t.jsxs(u, {
+          sx: {
+            display: "flex",
+            flexDirection: "column",
+            gap: 2
+          },
+          children: [t.jsx(u, {
+            onClick: () => N.current?.click(),
+            sx: {
+              border: "2px dashed #cbd5e1",
+              borderRadius: 2,
+              minHeight: 200,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              overflow: "hidden",
+              bgcolor: "#f8fafc"
+            },
+            children: p ? t.jsx(R, {
+              size: 24
+            }) : n.image_file ? t.jsx(u, {
+              component: "img",
+              src: P(n.image_file),
+              alt: "",
+              sx: {
+                maxWidth: "100%",
+                maxHeight: 420,
+                display: "block"
+              }
+            }) : t.jsxs(u, {
+              sx: {
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: 1,
+                color: "text.secondary"
+              },
+              children: [t.jsx(K, {
+                sx: {
+                  fontSize: 36
+                }
+              }), t.jsx(I, {
+                sx: {
+                  fontSize: 15
+                },
+                children: s("siteNotice.pickImage")
+              })]
+            })
+          }), t.jsx("input", {
+            ref: N,
+            type: "file",
+            accept: "image/*",
+            hidden: !0,
+            onChange: i => {
+              F(i.target.files?.[0]), i.target.value = "";
+            }
+          }), t.jsx(y, {
+            label: s("siteNotice.fieldLink"),
+            placeholder: "https://",
+            value: n.link_url,
+            onChange: i => m("link_url", i.target.value),
+            fullWidth: !0
+          })]
+        }), t.jsxs(u, {
+          children: [t.jsx(I, {
+            sx: {
+              fontSize: 14,
+              color: "text.secondary",
+              mb: .5
+            },
+            children: s("siteNotice.fieldPlace")
+          }), _("show_homepage", s("siteNotice.placeHomepage")), _("show_dashboard", s("siteNotice.placeDashboard")), _("popup", s("siteNotice.popup"))]
+        }), t.jsxs(u, {
+          sx: {
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "1fr 1fr"
+            },
+            gap: 2
+          },
+          children: [t.jsx(y, {
+            type: "datetime-local",
+            label: s("siteNotice.fieldStart"),
+            value: D(n.start_at),
+            onChange: i => m("start_at", B(i.target.value)),
+            helperText: s("siteNotice.startHint"),
+            slotProps: {
+              inputLabel: {
+                shrink: !0
+              }
+            },
+            fullWidth: !0
+          }), t.jsx(y, {
+            type: "datetime-local",
+            label: s("siteNotice.fieldEnd"),
+            value: D(n.end_at),
+            onChange: i => m("end_at", B(i.target.value)),
+            helperText: s("siteNotice.endHint"),
+            slotProps: {
+              inputLabel: {
+                shrink: !0
+              }
+            },
+            fullWidth: !0
+          })]
+        })]
+      })
+    }],
+    actions: {
+      visible: !0,
+      showCancelButton: !0,
+      left: _("enabled", s("siteNotice.enabled")),
+      right: t.jsx(A, {
+        variant: "contained",
+        onClick: () => {
+          H();
+        },
+        disabled: j || p,
+        sx: {
+          minWidth: 80
+        },
+        children: j ? t.jsx(R, {
+          size: 20,
+          color: "inherit"
+        }) : s("siteNotice.save")
+      })
+    }
+  });
+}
+function x({
+  text: e,
+  muted: a = !1
+}) {
+  return t.jsx(I, {
+    sx: {
+      fontSize: 14,
+      color: a ? "text.secondary" : "text.primary"
+    },
+    children: e || "-"
+  });
+}
+function ne(e, a) {
+  const o = new Date(Date.now() + 324e5).toISOString().slice(0, 16).replace("T", " ");
+  return e.enabled ? e.start_at && e.start_at > o ? a("siteNotice.statusScheduled") : e.end_at && e.end_at < o ? a("siteNotice.statusEnded") : a("siteNotice.statusLive") : a("siteNotice.statusOff");
+}
+function le(e, a) {
+  return [se(), {
+    id: "title",
+    text: e("siteNotice.colTitle", {
+      count: a
+    }),
+    width: 320,
+    render: o => t.jsx(x, {
+      text: o.title
+    })
+  }, {
+    id: "place",
+    text: e("siteNotice.colPlace"),
+    width: 170,
+    render: o => t.jsx(x, {
+      text: [o.show_homepage ? e("siteNotice.placeHomepage") : "", o.show_dashboard ? e("siteNotice.placeDashboard") : ""].filter(Boolean).join(" · ")
+    })
+  }, {
+    id: "popup",
+    text: e("siteNotice.popup"),
+    width: 80,
+    align: "center",
+    render: o => t.jsx(x, {
+      text: o.popup ? "✓" : ""
+    })
+  }, {
+    id: "kind",
+    text: e("siteNotice.colKind"),
+    width: 100,
+    align: "center",
+    render: o => t.jsx(x, {
+      text: o.kind === "image" ? e("siteNotice.kindImageShort") : e("siteNotice.kindEditorShort"),
+      muted: !0
+    })
+  }, {
+    id: "period",
+    text: e("siteNotice.colPeriod"),
+    width: 300,
+    render: o => t.jsx(x, {
+      text: `${o.start_at || e("siteNotice.now")} ~ ${o.end_at || e("siteNotice.noEnd")}`,
+      muted: !0
+    })
+  }, {
+    id: "status",
+    text: e("siteNotice.colStatus"),
+    width: 100,
+    align: "center",
+    render: o => t.jsx(x, {
+      text: ne(o, e)
+    })
+  }];
+}
+function ge() {
+  const e = z(),
+    a = J().useValue("account"),
+    o = !a || X(a),
+    [s, S] = l.useState([]),
+    [b, N] = l.useState(!1),
+    [n, h] = l.useState(null),
+    j = te("site-notices.admin"),
+    w = l.useMemo(() => le(e, s.length), [e, s.length]),
+    p = l.useCallback(async () => {
+      N(!0);
+      try {
+        S(await g.listAdmin());
+      } catch (c) {
+        f({
+          message: c instanceof Error ? c.message : e("siteNotice.loadFailed")
+        });
+      } finally {
+        N(!1);
+      }
+    }, [e]);
+  l.useEffect(() => {
+    o && p();
+  }, [o, p]);
+  const v = {
+    show: !0,
+    left: t.jsx(A, {
+      variant: "contained",
+      startIcon: t.jsx(Z, {}),
+      onClick: () => h("new"),
+      children: e("siteNotice.new")
+    }),
+    showSearch: !1
+  };
+  return o ? t.jsxs(u, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      flexGrow: 1,
+      height: 0,
+      minHeight: 520
+    },
+    children: [t.jsx(ee, {
+      header: v,
+      tableProps: {
+        ...j,
+        scrollbars: ie,
+        mobile: !0,
+        variant: "notion",
+        data: s,
+        totalCount: s.length,
+        loading: b,
+        columns: w,
+        getRowId: c => c.seq,
+        emptyMessage: e("siteNotice.emptyAdmin"),
+        onRowClick: c => h(c)
+      }
+    }), t.jsx(ae, {
+      target: n,
+      onClose: () => h(null),
+      onSaved: () => {
+        p();
+      }
+    })]
+  }) : t.jsx(M, {
+    to: "/dashboard",
+    replace: !0
+  });
+}
+export { ge as default };

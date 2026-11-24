@@ -1,0 +1,12 @@
+{
+  "capturedStates": 16,
+  "services": 12,
+  "domFragments": 64,
+  "curatedComponents": 38,
+  "staticAssets": 661,
+  "javascriptModules": 658,
+  "bytes": 16541989,
+  "parseErrors": [],
+  "uncollectedOptionalLocaleModules": 366,
+  "sourceMaps": 0
+}

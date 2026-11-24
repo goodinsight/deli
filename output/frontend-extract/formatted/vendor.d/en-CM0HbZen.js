@@ -1,0 +1,13 @@
+const n = "Captions",
+  t = "Turn on captions",
+  o = "Turn off captions",
+  s = "Tap to see the original",
+  a = "Live translated captions",
+  i = {
+    captions: n,
+    turnOnCaptions: t,
+    turnOffCaptions: o,
+    tapForOriginal: s,
+    liveCaptions: a
+  };
+export { n as captions, i as default, a as liveCaptions, s as tapForOriginal, o as turnOffCaptions, t as turnOnCaptions };

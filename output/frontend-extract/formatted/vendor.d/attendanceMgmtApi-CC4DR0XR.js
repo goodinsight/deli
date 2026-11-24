@@ -1,0 +1,255 @@
+import { i as R, bT as t, bM as S, fu as q, fv as $ } from "../js.d/main-Cm9wS5wt.js";
+import { w as v } from "./attendanceBio-C-9dHF9O.js";
+const y = "taskham.attendance.device";
+let p = "";
+function m() {
+  const e = new Uint8Array(24);
+  return crypto.getRandomValues(e), Array.from(e, r => r.toString(16).padStart(2, "0")).join("");
+}
+function L() {
+  const e = window.__taskhamAppDeviceId;
+  return typeof e == "string" && /^[A-Za-z0-9_-]{20,100}$/.test(e) ? e : "";
+}
+function F() {
+  try {
+    const e = localStorage.getItem(y) ?? "";
+    return /^[A-Za-z0-9_-]{20,100}$/.test(e) ? e : "";
+  } catch {
+    return "";
+  }
+}
+function k() {
+  try {
+    const e = localStorage.getItem(y) ?? "";
+    if (/^[A-Za-z0-9_-]{20,100}$/.test(e)) return e;
+    const r = m();
+    return localStorage.setItem(y, r), r;
+  } catch {
+    return p ||= m(), p;
+  }
+}
+function M() {
+  const e = navigator.userAgent,
+    r = /Android/i.test(e) ? "Android" : /iPhone|iPod/i.test(e) ? "아이폰" : /iPad/i.test(e) ? "아이패드" : /Windows/i.test(e) ? "Windows" : /Mac OS X|Macintosh/i.test(e) ? "Mac" : /Linux/i.test(e) ? "Linux" : "기기",
+    o = /Android/i.test(e) ? (/Android [^;)]+;\s*([^;)]+?)(?:\s+Build\/|[;)])/.exec(e)?.[1] ?? "").replace(/^SAMSUNG\s+/i, "").trim() : "",
+    i = o && o !== "K" && !/^(wv|Mobile|Tablet)$/i.test(o) ? ` ${o.slice(0, 30)}` : "";
+  if (R()) return `${r}${i} 앱`;
+  const x = /Edg\//.test(e) ? "Edge" : /Whale\//.test(e) ? "Whale" : /SamsungBrowser\//.test(e) ? "삼성 인터넷" : /Firefox\//.test(e) ? "Firefox" : /Chrome\//.test(e) ? "Chrome" : /Safari\//.test(e) ? "Safari" : "브라우저",
+    f = window.matchMedia?.("(display-mode: standalone)").matches;
+  return `${r}${i} ${x}${f ? "(설치형)" : ""}`;
+}
+const w = {
+  "SM-S931": "Galaxy S25",
+  "SM-S936": "Galaxy S25+",
+  "SM-S938": "Galaxy S25 Ultra",
+  "SM-S937": "Galaxy S25 Edge",
+  "SM-S731": "Galaxy S25 FE",
+  "SM-S921": "Galaxy S24",
+  "SM-S926": "Galaxy S24+",
+  "SM-S928": "Galaxy S24 Ultra",
+  "SM-S721": "Galaxy S24 FE",
+  "SM-S911": "Galaxy S23",
+  "SM-S916": "Galaxy S23+",
+  "SM-S918": "Galaxy S23 Ultra",
+  "SM-S711": "Galaxy S23 FE",
+  "SM-S901": "Galaxy S22",
+  "SM-S906": "Galaxy S22+",
+  "SM-S908": "Galaxy S22 Ultra",
+  "SM-G991": "Galaxy S21",
+  "SM-G996": "Galaxy S21+",
+  "SM-G998": "Galaxy S21 Ultra",
+  "SM-G990": "Galaxy S21 FE",
+  "SM-G981": "Galaxy S20",
+  "SM-G986": "Galaxy S20+",
+  "SM-G988": "Galaxy S20 Ultra",
+  "SM-G781": "Galaxy S20 FE",
+  "SM-N981": "Galaxy Note20",
+  "SM-N986": "Galaxy Note20 Ultra",
+  "SM-N971": "Galaxy Note10",
+  "SM-N976": "Galaxy Note10+",
+  "SM-F966": "Galaxy Z Fold7",
+  "SM-F956": "Galaxy Z Fold6",
+  "SM-F946": "Galaxy Z Fold5",
+  "SM-F936": "Galaxy Z Fold4",
+  "SM-F926": "Galaxy Z Fold3",
+  "SM-F766": "Galaxy Z Flip7",
+  "SM-F761": "Galaxy Z Flip7 FE",
+  "SM-F741": "Galaxy Z Flip6",
+  "SM-F731": "Galaxy Z Flip5",
+  "SM-F721": "Galaxy Z Flip4",
+  "SM-F711": "Galaxy Z Flip3",
+  "SM-A566": "Galaxy A56",
+  "SM-A556": "Galaxy A55",
+  "SM-A546": "Galaxy A54",
+  "SM-A536": "Galaxy A53",
+  "SM-A366": "Galaxy A36",
+  "SM-A356": "Galaxy A35",
+  "SM-A346": "Galaxy A34",
+  "SM-A256": "Galaxy A25",
+  "SM-A165": "Galaxy A16",
+  "SM-A166": "Galaxy A16",
+  "SM-A155": "Galaxy A15",
+  "SM-A156": "Galaxy A15"
+};
+function E(e) {
+  const r = /\bAndroid\s+(SM-[A-Z]\d{3})([A-Z0-9]*)\b/.exec(e),
+    o = r ? w[r[1]] : "";
+  return !r || !o ? e : e.replace(r[0], o);
+}
+function g() {
+  const e = L();
+  if (!e) return {
+    id: k(),
+    label: M()
+  };
+  const r = F();
+  return {
+    id: e,
+    label: M(),
+    ...(r && r !== e ? {
+      legacy_id: r
+    } : {})
+  };
+}
+function G() {
+  const e = g(),
+    r = e.legacy_id ? `&device_legacy=${encodeURIComponent(e.legacy_id)}` : "";
+  return `device=${encodeURIComponent(e.id)}&device_label=${encodeURIComponent(e.label)}${r}`;
+}
+let A = !1;
+function D(e) {
+  A = e;
+}
+function _() {
+  return A;
+}
+const h = e => ({
+    ...e,
+    device: g()
+  }),
+  s = "/v1/hr/my-attendance",
+  a = "/v1/hr/attendance",
+  n = async (e, r) => $(await S.http.get(e), r),
+  c = async (e, r, o) => $(await S.http.post(e, r), o),
+  d = async (e, r, o) => $(await S.http.put(e, r), o),
+  u = async (e, r, o) => $(await S.http.patch(e, r), o),
+  l = async (e, r) => $(await S.http.delete(e), r),
+  b = {
+    detail: e => n(`${s}?month=${encodeURIComponent(e)}&${G()}`, t("hr.errLoadMyAttendance")),
+    checkIn: e => v(r => c(`${s}/check-in`, h({
+      ...e,
+      ...(r ? {
+        bio: r
+      } : {})
+    }), t("hr.errRecordClockIn")), t("hr.bioReasonClockIn")),
+    checkOut: e => v(r => c(`${s}/check-out`, h({
+      ...e,
+      ...(r ? {
+        bio: r
+      } : {})
+    }), t("hr.errRecordClockOut")), t("hr.bioReasonClockOut")),
+    toggleBreak: e => c(`${s}/break`, h({
+      action: e
+    }), t("hr.errRecordBreak")),
+    registerDevice: (e = "") => c(`${s}/device`, h({
+      reason: e
+    }), t("hr.errRegisterDevice")),
+    cancelDeviceRequest: () => l(`${s}/device/request`, t("hr.errCancelRequest")),
+    shiftRequests: () => n(`${s}/shift-requests`, t("hr.errLoadShiftRequests")),
+    createShiftRequest: e => c(`${s}/shift-requests`, e, t("hr.errSendShiftRequest")),
+    cancelShiftRequest: e => l(`${s}/shift-requests/${e}`, t("hr.errCancelRequest")),
+    geoEvents: e => n(`${s}/geo-events?date=${e}`, t("hr.errLoadGeoEvents")),
+    waiveOvertime: e => c(`${s}/overtime-waive`, e, t("hr.errOvertimeWaive")),
+    lateReason: e => c(`${s}/late-reason`, e, t("hr.errSaveLateReason")),
+    geofence: () => n(`${s}/geofence?${G()}`, t("hr.errLoadGeofence")),
+    geoEvent: e => c(`${s}/geo-event`, e, t("hr.errRecordLocation")),
+    cancelAuto: e => c(`${s}/auto-cancel`, {
+      kind: e
+    }, t("hr.errCancel")),
+    track: e => c(`${s}/track`, e, t("hr.errRecordLocation")),
+    autoPending: (e, r) => c(`${s}/auto-out`, {
+      kind: e,
+      action: r
+    }, t("hr.errProcess")),
+    submitLeavePlan: e => c(`${s}/leave-plan`, {
+      dates: e
+    }, t("hr.errSubmitLeavePlan")),
+    toggleOuting: e => c(`${s}/outing`, h(e), t("hr.errRecordOuting")),
+    createRequest: e => c(`${s}/requests`, e, t("hr.errSendClockRequest")),
+    cancelRequest: e => l(`${s}/requests/${e}`, t("hr.errCancelRequest"))
+  },
+  I = {
+    status: e => n(`${a}/status?date=${e}`, t("hr.errLoadAttendanceStatus")),
+    watches: () => n(`${a}/watches`, t("hr.errLoadWatch")),
+    setWatch: (e, r) => d(`${a}/watches/${e}`, {
+      on: r
+    }, t("hr.errSaveWatch")),
+    putClock: e => d(`${a}/clock`, e, t("hr.errSaveRecord")),
+    removeClock: e => l(`${a}/clock/${e}`, t("hr.errDeleteRecord")),
+    requests: e => n(`${a}/requests${e ? "?status=all" : ""}`, t("hr.errLoadClockRequests")),
+    reviewRequest: (e, r, o = "") => u(`${a}/requests/${e}`, {
+      action: r,
+      reject_reason: o
+    }, t("hr.errProcessRequest")),
+    deviceRequests: () => n(`${a}/devices`, t("hr.errLoadDeviceRequests")),
+    reviewDeviceRequest: (e, r, o = "") => u(`${a}/devices/${e}`, {
+      action: r,
+      reject_reason: o
+    }, t("hr.errProcessRequest")),
+    settings: () => n(`${a}/settings`, t("hr.errLoadAttendanceSettings")),
+    putSettings: e => d(`${a}/settings`, e, t("hr.errSaveAttendanceSettings")),
+    createPolicy: e => c(`${a}/policies`, e, t("hr.errCreatePolicy")),
+    updatePolicy: (e, r) => u(`${a}/policies/${e}`, r, t("hr.errSavePolicy")),
+    removePolicy: e => l(`${a}/policies/${e}`, t("hr.errDeletePolicy")),
+    assign: (e, r) => d(`${a}/assignments`, {
+      policy_seq: e,
+      employee_seqs: r
+    }, t("hr.errAssignPolicy")),
+    createTemplate: e => c(`${a}/templates`, e, t("hr.errCreateTemplate")),
+    updateTemplate: (e, r) => u(`${a}/templates/${e}`, r, t("hr.errSaveTemplate")),
+    removeTemplate: e => l(`${a}/templates/${e}`, t("hr.errDeleteTemplate")),
+    qr: () => n(`${a}/qr`, t("hr.errMakeQr")),
+    schedule: (e, r) => n(`${a}/schedule?from=${e}&days=${r}`, t("hr.errLoadSchedule")),
+    putSchedule: e => d(`${a}/schedule`, {
+      cells: e
+    }, t("hr.errSaveSchedule")),
+    copySchedule: e => c(`${a}/schedule/copy`, e, t("hr.errCopySchedule")),
+    summary: (e, r, o) => n(`${a}/summary?from=${e}&to=${r}&unit_seq=${o}`, t("hr.errLoadAttendanceSummary")),
+    report: e => n(`${a}/report?month=${e}`, t("hr.errLoadAttendanceReport")),
+    shiftRequests: (e = !1) => n(`${a}/shift-requests${e ? "?status=all" : ""}`, t("hr.errLoadShiftRequests")),
+    reviewShiftRequest: (e, r, o = "") => u(`${a}/shift-requests/${e}`, {
+      action: r,
+      reject_reason: o
+    }, t("hr.errProcessRequest")),
+    closes: async () => (await n(`${a}/closes`, t("hr.errLoadCloses"))).items ?? [],
+    closeMonth: e => c(`${a}/closes`, {
+      month: e
+    }, t("hr.errCloseMonth")),
+    reopenMonth: e => l(`${a}/closes/${e}`, t("hr.errReopenMonth")),
+    exportSummary: async (e, r, o) => {
+      try {
+        const i = await S.requestBinary("GET", `${a}/summary/export?from=${e}&to=${r}&unit_seq=${o}`);
+        return new Blob([i], {
+          type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        });
+      } catch (i) {
+        throw new Error(q(i, t("hr.errMakeExcel")));
+      }
+    },
+    leave: () => n(`${a}/leave`, t("hr.errLoadLeave")),
+    createAdjust: e => c(`${a}/leave/adjust`, e, t("hr.errAdjustLeave")),
+    removeAdjust: e => l(`${a}/leave/adjust/${e}`, t("hr.errRemoveAdjust")),
+    geocode: e => n(`${a}/geocode?q=${encodeURIComponent(e)}`, t("hr.errFindAddress")),
+    reverseGeocode: (e, r) => n(`${a}/geocode/reverse?lat=${e}&lng=${r}`, t("hr.errFindAddress")),
+    geoEvents: e => n(`${a}/geo-events?date=${e}`, t("hr.errLoadGeoEvents")),
+    myOutingTrack: e => n(`${s}/outing-track?date=${e}`, t("hr.errLoadOutingTrack")),
+    outingTrack: (e, r) => n(`${a}/outing-track?employee_seq=${e}&date=${r}`, t("hr.errLoadOutingTrack")),
+    leavePromotions: () => n(`${a}/leave-promotions`, t("hr.errLoadLeavePromotions")),
+    runLeavePromotion: () => c(`${a}/leave-promotions/run`, {}, t("hr.errRunLeavePromotion")),
+    designateLeave: (e, r) => d(`${a}/leave-promotions/${e}/designate`, {
+      dates: r
+    }, t("hr.errDesignateDates")),
+    closePeriod: () => c(`${a}/leave/close`, {}, t("hr.errCloseLeavePeriod")),
+    fillPayroll: e => c(`/v1/hr/payroll/runs/${e}/attendance-pay`, {}, t("hr.errApplyAttendancePay"))
+  };
+export { I as a, g as b, E as d, _ as i, b as m, D as s };

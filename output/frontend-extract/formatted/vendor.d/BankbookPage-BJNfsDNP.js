@@ -1,0 +1,1059 @@
+import { r as T, j as n } from "./react-CjxcGQav.js";
+import { e as I, c8 as de, bO as f, bT as u, ak as O, dv as ue, h0 as me, fA as E, cL as ne, bx as ae, bv as ee, cT as P, al as B, B as d, cm as L, cO as M, cY as te, aq as U, fL as ce, D as ge, cI as fe, bQ as N, K as Z, cz as be, cJ as H, d8 as G, L as _, bI as Y, bh as oe, s as xe, go as pe, cW as he } from "../js.d/main-Cm9wS5wt.js";
+import { S as ke } from "./SwapHorizOutlined-DWsqc1am.js";
+import { a as j } from "./accountingApi-BfPys7bV.js";
+import { k as W, w as z } from "./accounting-C0pu0niI.js";
+import "./stylis-DdLD6a3t.js";
+const ye = 100,
+  re = {
+    kind: "bank",
+    name: "",
+    bank_name: "",
+    account_number: "",
+    holder: "",
+    opening_balance: "",
+    opening_date: "",
+    active: !0
+  },
+  se = {
+    name: "",
+    card_company: "",
+    card_number_tail: "",
+    card_type: "credit",
+    payment_day: "",
+    withdrawal_bankbook_seq: "",
+    active: !0
+  };
+function $(r) {
+  return {
+    kind: r.kind,
+    name: r.name,
+    bank_name: r.bank_name,
+    account_number: r.account_number,
+    holder: r.holder,
+    opening_balance: r.opening_balance || "",
+    opening_date: r.opening_date,
+    active: r.active
+  };
+}
+function K(r) {
+  return {
+    name: r.name,
+    card_company: r.card_company,
+    card_number_tail: r.card_number_tail,
+    card_type: r.card_type,
+    payment_day: r.payment_day || "",
+    withdrawal_bankbook_seq: r.withdrawal_bankbook_seq || "",
+    active: r.active
+  };
+}
+function _e() {
+  const r = T.useRef(0),
+    e = {
+      book: I({
+        modalId: "accounting-bankbook-form"
+      }),
+      card: I({
+        modalId: "accounting-card-form"
+      }),
+      transfer: I({
+        modalId: "accounting-transfer-form"
+      }),
+      tx: I({
+        modalId: "accounting-bank-tx-form"
+      })
+    },
+    s = de({
+      stateId: "accounting-bankbook-ui",
+      initialValues: {
+        bankbooks: [],
+        cards: [],
+        loading: !1,
+        selectedSeq: 0,
+        txs: [],
+        txTotal: 0,
+        txLoading: !1,
+        editingBookSeq: 0,
+        editingCardSeq: 0
+      }
+    }),
+    i = T.useCallback(async (a, o = !1) => {
+      const x = ++r.current;
+      s.setValues(o ? {
+        selectedSeq: a
+      } : {
+        selectedSeq: a,
+        txLoading: !0
+      });
+      try {
+        const h = await j.bankTransactions(a, 1, ye);
+        if (x !== r.current) return;
+        s.setValues({
+          txs: h.items,
+          txTotal: h.total
+        });
+      } catch (h) {
+        x === r.current && !o && f(h instanceof Error ? h.message : u("accounting.errLoadBankTx"));
+      } finally {
+        x === r.current && s.setValue("txLoading", !1);
+      }
+    }, []),
+    l = T.useCallback(async (a = !1) => {
+      a || s.setValue("loading", !0);
+      try {
+        const o = await j.books(!0);
+        s.setValues({
+          bankbooks: o.bankbooks,
+          cards: o.cards
+        });
+        const x = Number(s.getValue("selectedSeq")) || 0,
+          h = o.bankbooks.find(q => q.seq === x) ?? o.bankbooks.find(q => q.active);
+        h ? await i(h.seq, a) : s.setValues({
+          selectedSeq: 0,
+          txs: [],
+          txTotal: 0
+        });
+      } catch (o) {
+        a || f(o instanceof Error ? o.message : u("accounting.errLoadBooks"));
+      } finally {
+        a || s.setValue("loading", !1);
+      }
+    }, [i]),
+    c = async (a, o) => {
+      o(), ae({
+        message: a,
+        delay: 500
+      }), await l();
+    },
+    m = O({
+      formId: "accounting-bankbook-form",
+      initialValues: re,
+      onValidate: a => String(a.name ?? "").trim() ? !0 : (f(u("accounting.enterBankbookName")), !1),
+      onSubmit: async a => {
+        try {
+          return await j.saveBankbook(Number(s.getValue("editingBookSeq")) || 0, {
+            kind: a.kind,
+            name: a.name.trim(),
+            bank_name: a.bank_name.trim(),
+            account_number: a.account_number.trim(),
+            holder: a.holder.trim(),
+            opening_balance: Math.round(Number(a.opening_balance) || 0),
+            opening_date: a.opening_date,
+            active: a.active
+          }), await c(u("accounting.saved"), e.book.close), !0;
+        } catch (o) {
+          return f(o instanceof Error ? o.message : u("accounting.errSaveBankbook")), !1;
+        }
+      }
+    }),
+    g = O({
+      formId: "accounting-card-form",
+      initialValues: se,
+      onValidate: a => String(a.name ?? "").trim() ? Number(a.withdrawal_bankbook_seq) ? !0 : (f(u("accounting.selectWithdrawalBankbook")), !1) : (f(u("accounting.enterCardName")), !1),
+      onSubmit: async a => {
+        try {
+          return await j.saveCard(Number(s.getValue("editingCardSeq")) || 0, {
+            name: a.name.trim(),
+            card_company: a.card_company.trim(),
+            card_number_tail: a.card_number_tail.trim(),
+            card_type: a.card_type,
+            payment_day: Number(a.payment_day) || 0,
+            withdrawal_bankbook_seq: Number(a.withdrawal_bankbook_seq) || 0,
+            active: a.active
+          }), await c(u("accounting.saved"), e.card.close), !0;
+        } catch (o) {
+          return f(o instanceof Error ? o.message : u("accounting.errSaveCard")), !1;
+        }
+      }
+    }),
+    b = O({
+      formId: "accounting-transfer-form",
+      initialValues: {
+        from_seq: "",
+        to_seq: "",
+        amount: "",
+        date: "",
+        summary: ""
+      },
+      onValidate: a => !Number(a.from_seq) || !Number(a.to_seq) || a.from_seq === a.to_seq ? (f(u("accounting.selectTransferBankbooks")), !1) : Number(a.amount) > 0 ? !0 : (f(u("accounting.enterAmount")), !1),
+      onSubmit: async a => {
+        try {
+          return await j.transfer({
+            from_seq: Number(a.from_seq),
+            to_seq: Number(a.to_seq),
+            amount: Math.round(Number(a.amount)),
+            transaction_time: `${a.date || W()} 00:00:00`,
+            summary: a.summary.trim()
+          }), await c(u("accounting.transferRecorded"), e.transfer.close), !0;
+        } catch (o) {
+          return f(o instanceof Error ? o.message : u("accounting.errTransfer")), !1;
+        }
+      }
+    }),
+    k = O({
+      formId: "accounting-bank-tx-form",
+      initialValues: {
+        type: "deposit",
+        amount: "",
+        date: "",
+        summary: ""
+      },
+      onValidate: a => Number(a.amount) > 0 ? !0 : (f(u("accounting.enterAmount")), !1),
+      onSubmit: async a => {
+        const o = Number(s.getValue("selectedSeq")) || 0;
+        if (!o) return !1;
+        try {
+          return await j.addBankTransaction(o, {
+            type: a.type,
+            amount: Math.round(Number(a.amount)),
+            transaction_time: `${a.date || W()} 00:00:00`,
+            summary: a.summary.trim()
+          }), await c(u("accounting.recorded"), e.tx.close), !0;
+        } catch (x) {
+          return f(x instanceof Error ? x.message : u("accounting.errAddBankTx")), !1;
+        }
+      }
+    }),
+    p = T.useRef(null),
+    y = T.useRef(null),
+    S = a => {
+      s.setValue("editingBookSeq", a?.seq ?? 0), p.current = a ? $(a) : null, m.setFormValues(a ? $(a) : {
+        ...re,
+        opening_date: W()
+      }), e.book.open();
+    },
+    V = a => {
+      s.setValue("editingCardSeq", a?.seq ?? 0), y.current = a ? K(a) : null, g.setFormValues(a ? K(a) : se), e.card.open();
+    },
+    w = () => {
+      b.setFormValues({
+        from_seq: Number(s.getValue("selectedSeq")) || "",
+        to_seq: "",
+        amount: "",
+        date: W(),
+        summary: ""
+      }), e.transfer.open();
+    },
+    D = () => {
+      k.setFormValues({
+        type: "deposit",
+        amount: "",
+        date: W(),
+        summary: ""
+      }), e.tx.open();
+    },
+    R = async () => {
+      const a = Number(s.getValue("editingBookSeq")) || 0;
+      if (a) try {
+        await j.removeBankbook(a), await c(u("accounting.deleted"), e.book.close);
+      } catch (o) {
+        f(o instanceof Error ? o.message : u("accounting.errDeleteBankbook"));
+      }
+    },
+    t = async () => {
+      const a = Number(s.getValue("editingCardSeq")) || 0;
+      if (a) try {
+        await j.removeCard(a), await c(u("accounting.deleted"), e.card.close);
+      } catch (o) {
+        f(o instanceof Error ? o.message : u("accounting.errDeleteCard"));
+      }
+    },
+    C = async a => {
+      try {
+        await j.cancelBankTransaction(a), ae({
+          message: u("accounting.canceled"),
+          delay: 500
+        }), await l();
+      } catch (o) {
+        f(o instanceof Error ? o.message : u("accounting.errCancel"));
+      }
+    },
+    le = (a, o) => {
+      const x = Number(s.getValue("editingBookSeq")) || 0;
+      if (e.book.isOpen && x && p.current && (E(a, "bankbook", x) || a.resync)) {
+        const q = o.bankbooks.find(v => v.seq === x);
+        if (!q || E(a, "bankbook", x)?.action === "delete") p.current = null, e.book.close(), f(u("accounting.bankbookDeletedByOther"));else {
+          const {
+            patch: v,
+            baseline: A
+          } = ne(m.getFormValues(), p.current, $(q));
+          p.current = A, Object.keys(v).length > 0 && m.setFormValues(v);
+        }
+      }
+      const h = Number(s.getValue("editingCardSeq")) || 0;
+      if (e.card.isOpen && h && y.current && (E(a, "bankbook_card", h) || a.resync)) {
+        const q = o.cards.find(v => v.seq === h);
+        if (!q || E(a, "bankbook_card", h)?.action === "delete") y.current = null, e.card.close(), f(u("accounting.cardDeletedByOther"));else {
+          const {
+            patch: v,
+            baseline: A
+          } = ne(g.getFormValues(), y.current, K(q));
+          y.current = A, Object.keys(v).length > 0 && g.setFormValues(v);
+        }
+      }
+    };
+  return ue(["bankbook", "bankbook_card", "bankbook_transaction"], a => {
+    l(!0), !(!(e.book.isOpen && p.current || e.card.isOpen && y.current) || !me(a, "bankbook", "bankbook_card")) && j.books(!0).then(x => le(a, x)).catch(() => {});
+  }), {
+    ui: s,
+    modals: e,
+    bookForm: m,
+    cardForm: g,
+    transferForm: b,
+    txForm: k,
+    load: l,
+    loadTxs: i,
+    openBook: S,
+    openCard: V,
+    openTransfer: w,
+    openTx: D,
+    removeBook: R,
+    removeCard: t,
+    cancelTx: C
+  };
+}
+function F({
+  open: r,
+  onClose: e,
+  title: s,
+  saving: i,
+  onSave: l,
+  children: c,
+  deleteConfig: m
+}) {
+  const g = ce("accounting"),
+    b = ee(),
+    k = ge(),
+    p = [{
+      id: "main",
+      showTitle: !1,
+      children: n.jsx(d, {
+        sx: {
+          display: "grid",
+          gap: 2.5
+        },
+        children: c
+      })
+    }];
+  return n.jsx(fe, {
+    readOnly: !g.canWrite,
+    open: r,
+    onClose: e,
+    title: s,
+    width: "560px",
+    fullScreen: k,
+    mobilePresentation: k ? "slide" : "dialog",
+    draggable: !0,
+    backdropClick: !1,
+    titleIcons: {
+      delete: {
+        visible: g.canWrite && !!m?.visible,
+        confirmConfig: {
+          title: b("accounting.delete"),
+          message: m?.message ?? "",
+          confirmText: b("accounting.delete"),
+          cancelText: b("accounting.cancel")
+        }
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    onDelete: m?.onDelete,
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !0,
+      right: n.jsx(N, {
+        style: g.canWrite ? void 0 : {
+          display: "none"
+        },
+        variant: "contained",
+        onClick: l,
+        disabled: i,
+        sx: {
+          minWidth: 80
+        },
+        children: i ? n.jsx(Z, {
+          size: 20,
+          color: "inherit"
+        }) : b("accounting.save")
+      })
+    },
+    sections: p
+  });
+}
+const J = r => r.filter(e => e.active).map(e => ({
+  value: e.seq,
+  label: e.name
+}));
+function je({
+  controller: r
+}) {
+  const e = ee(),
+    {
+      ui: s,
+      modals: i,
+      bookForm: l,
+      cardForm: c,
+      transferForm: m,
+      txForm: g
+    } = r,
+    b = s.useValue("bankbooks") ?? [],
+    k = Number(s.useValue("editingBookSeq")) || 0,
+    p = Number(s.useValue("editingCardSeq")) || 0,
+    y = l.useValue("kind"),
+    S = c.useValue("card_type");
+  return n.jsxs(n.Fragment, {
+    children: [n.jsxs(F, {
+      open: i.book.isOpen,
+      onClose: i.book.close,
+      title: e(k ? "accounting.editBankbook" : "accounting.addBankbook"),
+      saving: l.isSubmitting,
+      onSave: () => {
+        l.submit();
+      },
+      deleteConfig: {
+        visible: !!k,
+        message: e("accounting.deleteBankbookMessage"),
+        onDelete: r.removeBook
+      },
+      children: [n.jsx(P, {
+        form: l,
+        name: "kind",
+        options: [{
+          value: "bank",
+          label: e("accounting.bankAccount")
+        }, {
+          value: "cash",
+          label: e("accounting.cashOnHand")
+        }],
+        exclusive: !0,
+        fullWidth: !0
+      }), n.jsx(B, {
+        form: l,
+        name: "name",
+        label: e("accounting.bankbookNameLabel"),
+        fullWidth: !0
+      }), y === "bank" ? n.jsxs(d, {
+        sx: {
+          display: "grid",
+          gap: 2.5,
+          gridTemplateColumns: "repeat(2, minmax(0, 1fr))"
+        },
+        children: [n.jsx(B, {
+          form: l,
+          name: "bank_name",
+          label: e("accounting.bank"),
+          fullWidth: !0
+        }), n.jsx(B, {
+          form: l,
+          name: "holder",
+          label: e("accounting.holder"),
+          fullWidth: !0
+        })]
+      }) : null, y === "bank" ? n.jsx(B, {
+        form: l,
+        name: "account_number",
+        label: e("accounting.accountNumber"),
+        fullWidth: !0
+      }) : null, n.jsxs(d, {
+        sx: {
+          display: "grid",
+          gap: 2.5,
+          gridTemplateColumns: "repeat(2, minmax(0, 1fr))"
+        },
+        children: [n.jsx(L, {
+          form: l,
+          name: "opening_balance",
+          label: e("accounting.openingBalance"),
+          suffix: e("accounting.wonUnit"),
+          fullWidth: !0
+        }), n.jsx(M, {
+          form: l,
+          name: "opening_date",
+          label: e("accounting.openingDate"),
+          fullWidth: !0
+        })]
+      }), k ? n.jsx(te, {
+        form: l,
+        name: "active",
+        label: e("accounting.active")
+      }) : null]
+    }), n.jsxs(F, {
+      open: i.card.isOpen,
+      onClose: i.card.close,
+      title: e(p ? "accounting.editCard" : "accounting.addCard"),
+      saving: c.isSubmitting,
+      onSave: () => {
+        c.submit();
+      },
+      deleteConfig: {
+        visible: !!p,
+        message: e("accounting.deleteCardMessage"),
+        onDelete: r.removeCard
+      },
+      children: [n.jsx(P, {
+        form: c,
+        name: "card_type",
+        options: [{
+          value: "credit",
+          label: e("accounting.creditCard")
+        }, {
+          value: "check",
+          label: e("accounting.checkCard")
+        }],
+        exclusive: !0,
+        fullWidth: !0
+      }), n.jsx(B, {
+        form: c,
+        name: "name",
+        label: e("accounting.cardNameLabel"),
+        fullWidth: !0
+      }), n.jsxs(d, {
+        sx: {
+          display: "grid",
+          gap: 2.5,
+          gridTemplateColumns: "repeat(2, minmax(0, 1fr))"
+        },
+        children: [n.jsx(B, {
+          form: c,
+          name: "card_company",
+          label: e("accounting.cardCompany"),
+          fullWidth: !0
+        }), n.jsx(B, {
+          form: c,
+          name: "card_number_tail",
+          label: e("accounting.cardTail"),
+          fullWidth: !0
+        })]
+      }), n.jsxs(d, {
+        sx: {
+          display: "grid",
+          gap: 2.5,
+          gridTemplateColumns: S === "credit" ? "repeat(2, minmax(0, 1fr))" : "minmax(0, 1fr)"
+        },
+        children: [n.jsx(U, {
+          form: c,
+          name: "withdrawal_bankbook_seq",
+          label: e(S === "credit" ? "accounting.withdrawalBankbook" : "accounting.linkedBankbook"),
+          options: J(b),
+          emptyLabel: e("accounting.select"),
+          fullWidth: !0
+        }), S === "credit" ? n.jsx(L, {
+          form: c,
+          name: "payment_day",
+          label: e("accounting.paymentDayLabel"),
+          suffix: e("accounting.dayUnit"),
+          min: 0,
+          max: 31,
+          fullWidth: !0
+        }) : null]
+      }), p ? n.jsx(te, {
+        form: c,
+        name: "active",
+        label: e("accounting.active")
+      }) : null]
+    }), n.jsxs(F, {
+      open: i.transfer.isOpen,
+      onClose: i.transfer.close,
+      title: e("accounting.transferBetween"),
+      saving: m.isSubmitting,
+      onSave: () => {
+        m.submit();
+      },
+      children: [n.jsxs(d, {
+        sx: {
+          display: "grid",
+          gap: 2.5,
+          gridTemplateColumns: "repeat(2, minmax(0, 1fr))"
+        },
+        children: [n.jsx(U, {
+          form: m,
+          name: "from_seq",
+          label: e("accounting.fromBankbook"),
+          options: J(b),
+          emptyLabel: e("accounting.select"),
+          fullWidth: !0
+        }), n.jsx(U, {
+          form: m,
+          name: "to_seq",
+          label: e("accounting.toBankbook"),
+          options: J(b),
+          emptyLabel: e("accounting.select"),
+          fullWidth: !0
+        })]
+      }), n.jsxs(d, {
+        sx: {
+          display: "grid",
+          gap: 2.5,
+          gridTemplateColumns: "repeat(2, minmax(0, 1fr))"
+        },
+        children: [n.jsx(L, {
+          form: m,
+          name: "amount",
+          label: e("accounting.amount"),
+          suffix: e("accounting.wonUnit"),
+          min: 0,
+          fullWidth: !0
+        }), n.jsx(M, {
+          form: m,
+          name: "date",
+          label: e("accounting.transferDate"),
+          fullWidth: !0
+        })]
+      }), n.jsx(B, {
+        form: m,
+        name: "summary",
+        label: e("accounting.description"),
+        fullWidth: !0
+      })]
+    }), n.jsxs(F, {
+      open: i.tx.isOpen,
+      onClose: i.tx.close,
+      title: e("accounting.adjustBalanceTitle"),
+      saving: g.isSubmitting,
+      onSave: () => {
+        g.submit();
+      },
+      children: [n.jsx(P, {
+        form: g,
+        name: "type",
+        options: [{
+          value: "deposit",
+          label: e("accounting.deposit")
+        }, {
+          value: "withdraw",
+          label: e("accounting.withdraw")
+        }],
+        exclusive: !0,
+        fullWidth: !0
+      }), n.jsxs(d, {
+        sx: {
+          display: "grid",
+          gap: 2.5,
+          gridTemplateColumns: "repeat(2, minmax(0, 1fr))"
+        },
+        children: [n.jsx(L, {
+          form: g,
+          name: "amount",
+          label: e("accounting.amount"),
+          suffix: e("accounting.wonUnit"),
+          min: 0,
+          fullWidth: !0
+        }), n.jsx(M, {
+          form: g,
+          name: "date",
+          label: e("accounting.date"),
+          fullWidth: !0
+        })]
+      }), n.jsx(B, {
+        form: g,
+        name: "summary",
+        label: e("accounting.txSummaryLabel"),
+        fullWidth: !0
+      })]
+    })]
+  });
+}
+const Q = {
+    borderRadius: 2,
+    boxShadow: "0 1px 3px rgba(0,0,0,0.12)",
+    overflow: "hidden"
+  },
+  ie = {
+    ledger: "accounting.txSourceLedger",
+    card_bill: "accounting.txSourceCardBill",
+    transfer: "accounting.txSourceTransfer",
+    manual: "accounting.sourceManual",
+    import: "accounting.txSourceImport"
+  };
+function X({
+  title: r,
+  children: e
+}) {
+  return n.jsxs(d, {
+    sx: {
+      display: "flex",
+      alignItems: "center",
+      gap: 1,
+      px: 2.5,
+      py: 1.5,
+      borderBottom: 1,
+      borderColor: "divider"
+    },
+    children: [n.jsx(_, {
+      variant: "subtitle1",
+      sx: {
+        fontWeight: 700,
+        flex: 1
+      },
+      children: r
+    }), e]
+  });
+}
+function Te() {
+  const r = ce("accounting"),
+    e = ee(),
+    s = be()?.seq ?? 0,
+    i = _e(),
+    {
+      ui: l
+    } = i,
+    c = l.useValue("bankbooks") ?? [],
+    m = l.useValue("cards") ?? [],
+    g = Number(l.useValue("selectedSeq")) || 0,
+    b = l.useValue("txs") ?? [],
+    k = Number(l.useValue("txTotal")) || 0,
+    p = !!l.useValue("loading"),
+    y = !!l.useValue("txLoading"),
+    [S, V] = T.useState(null);
+  T.useEffect(() => {
+    s && i.load();
+  }, [s]);
+  const w = c.find(t => t.seq === g) ?? null,
+    D = c.filter(t => t.active).reduce((t, C) => t + C.balance, 0),
+    R = t => c.find(C => C.seq === t)?.name ?? "";
+  return n.jsxs(d, {
+    sx: {
+      maxWidth: 1200,
+      display: "grid",
+      gap: 2.5,
+      gridTemplateColumns: {
+        xs: "minmax(0, 1fr)",
+        lg: "minmax(0, 5fr) minmax(0, 7fr)"
+      },
+      alignItems: "start"
+    },
+    children: [n.jsxs(d, {
+      sx: {
+        display: "grid",
+        gap: 2.5,
+        minWidth: 0
+      },
+      children: [n.jsxs(H, {
+        sx: Q,
+        children: [n.jsxs(X, {
+          title: e("accounting.bankbooksTotal", {
+            amount: z(D, e)
+          }),
+          children: [p ? n.jsx(Z, {
+            size: 18
+          }) : null, n.jsx(N, {
+            size: "small",
+            startIcon: n.jsx(ke, {}),
+            onClick: i.openTransfer,
+            disabled: c.length < 2,
+            children: e("accounting.transfer")
+          }), n.jsx(N, {
+            style: r.canWrite ? void 0 : {
+              display: "none"
+            },
+            size: "small",
+            startIcon: n.jsx(G, {}),
+            onClick: () => i.openBook(null),
+            children: e("accounting.add")
+          })]
+        }), c.length === 0 ? n.jsx(d, {
+          sx: {
+            px: 2.5,
+            py: 3,
+            color: "text.secondary",
+            fontSize: 15
+          },
+          children: e("accounting.noBankbooks")
+        }) : null, c.map(t => n.jsxs(d, {
+          role: "button",
+          onClick: () => {
+            i.loadTxs(t.seq);
+          },
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: 1.5,
+            px: 2.5,
+            py: 1.5,
+            borderTop: 1,
+            borderColor: "divider",
+            cursor: "pointer",
+            bgcolor: t.seq === g ? "action.selected" : "transparent",
+            opacity: t.active ? 1 : .5,
+            "&:hover": {
+              bgcolor: t.seq === g ? "action.selected" : "action.hover"
+            }
+          },
+          children: [n.jsxs(d, {
+            sx: {
+              flex: 1,
+              minWidth: 0
+            },
+            children: [n.jsxs(_, {
+              noWrap: !0,
+              sx: {
+                fontSize: 16,
+                fontWeight: 600
+              },
+              children: [t.name, t.active ? "" : ` ${e("accounting.inactiveSuffix")}`]
+            }), n.jsx(_, {
+              noWrap: !0,
+              sx: {
+                fontSize: 14,
+                color: "text.secondary"
+              },
+              children: t.kind === "cash" ? e("accounting.methodCash") : [t.bank_name, t.account_number].filter(Boolean).join(" ") || e("accounting.bankAccount")
+            })]
+          }), n.jsx(_, {
+            sx: {
+              fontSize: 16,
+              fontWeight: 700,
+              whiteSpace: "nowrap",
+              color: t.balance < 0 ? "#b91c1c" : void 0
+            },
+            children: z(t.balance, e)
+          }), n.jsx(Y, {
+            size: "small",
+            "aria-label": e("accounting.editBankbook"),
+            onClick: C => {
+              C.stopPropagation(), i.openBook(t);
+            },
+            children: n.jsx(oe, {
+              fontSize: "small"
+            })
+          })]
+        }, t.seq))]
+      }), n.jsxs(H, {
+        sx: Q,
+        children: [n.jsx(X, {
+          title: e("accounting.cards"),
+          children: n.jsx(N, {
+            style: r.canWrite ? void 0 : {
+              display: "none"
+            },
+            size: "small",
+            startIcon: n.jsx(G, {}),
+            onClick: () => i.openCard(null),
+            disabled: c.length === 0,
+            children: e("accounting.add")
+          })
+        }), m.length === 0 ? n.jsx(d, {
+          sx: {
+            px: 2.5,
+            py: 3,
+            color: "text.secondary",
+            fontSize: 15
+          },
+          children: e("accounting.noCards")
+        }) : null, m.map(t => n.jsxs(d, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: 1.5,
+            px: 2.5,
+            py: 1.5,
+            borderTop: 1,
+            borderColor: "divider",
+            opacity: t.active ? 1 : .5
+          },
+          children: [n.jsxs(d, {
+            sx: {
+              flex: 1,
+              minWidth: 0
+            },
+            children: [n.jsxs(_, {
+              noWrap: !0,
+              sx: {
+                fontSize: 16,
+                fontWeight: 600
+              },
+              children: [t.name, t.card_number_tail ? ` (${t.card_number_tail})` : ""]
+            }), n.jsxs(_, {
+              noWrap: !0,
+              sx: {
+                fontSize: 14,
+                color: "text.secondary"
+              },
+              children: [t.card_type === "check" ? e("accounting.checkCard") : t.payment_day ? e("accounting.creditCardPaymentDay", {
+                day: t.payment_day
+              }) : e("accounting.creditCardPaymentLastDay"), " · ", R(t.withdrawal_bankbook_seq) || e("accounting.noLinkedBankbook")]
+            })]
+          }), t.card_type === "credit" && t.pending_amount > 0 ? n.jsxs(d, {
+            sx: {
+              textAlign: "right"
+            },
+            children: [n.jsx(_, {
+              sx: {
+                fontSize: 14,
+                color: "text.secondary"
+              },
+              children: e("accounting.paymentPending")
+            }), n.jsx(_, {
+              sx: {
+                fontSize: 16,
+                fontWeight: 700,
+                whiteSpace: "nowrap"
+              },
+              children: z(t.pending_amount, e)
+            })]
+          }) : null, n.jsx(Y, {
+            size: "small",
+            "aria-label": e("accounting.editCard"),
+            onClick: () => i.openCard(t),
+            children: n.jsx(oe, {
+              fontSize: "small"
+            })
+          })]
+        }, t.seq))]
+      })]
+    }), n.jsxs(H, {
+      sx: {
+        ...Q,
+        minWidth: 0
+      },
+      children: [n.jsxs(X, {
+        title: w ? e("accounting.txHistoryOf", {
+          name: w.name
+        }) : e("accounting.txHistory"),
+        children: [y ? n.jsx(Z, {
+          size: 18
+        }) : null, n.jsx(N, {
+          style: r.canWrite ? void 0 : {
+            display: "none"
+          },
+          size: "small",
+          startIcon: n.jsx(G, {}),
+          onClick: i.openTx,
+          disabled: !w,
+          children: e("accounting.adjustBalance")
+        })]
+      }), w ? null : n.jsx(d, {
+        sx: {
+          px: 2.5,
+          py: 3,
+          color: "text.secondary",
+          fontSize: 15
+        },
+        children: e("accounting.selectBankbookLeft")
+      }), w && b.length === 0 && !y ? n.jsx(d, {
+        sx: {
+          px: 2.5,
+          py: 3,
+          color: "text.secondary",
+          fontSize: 15
+        },
+        children: e("accounting.noTransactions")
+      }) : null, b.map(t => n.jsxs(d, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: 1.5,
+          px: 2.5,
+          py: 1.25,
+          borderTop: 1,
+          borderColor: "divider"
+        },
+        children: [n.jsx(d, {
+          sx: {
+            width: 96,
+            flexShrink: 0,
+            fontSize: 15,
+            color: "text.secondary"
+          },
+          children: t.transaction_time.slice(0, 10)
+        }), n.jsxs(d, {
+          sx: {
+            flex: 1,
+            minWidth: 0
+          },
+          children: [n.jsx(_, {
+            noWrap: !0,
+            sx: {
+              fontSize: 15
+            },
+            children: t.summary || "-"
+          }), n.jsx(_, {
+            noWrap: !0,
+            sx: {
+              fontSize: 14,
+              color: "text.secondary"
+            },
+            children: ie[t.source] ? e(ie[t.source]) : t.source
+          })]
+        }), n.jsxs(d, {
+          sx: {
+            textAlign: "right",
+            whiteSpace: "nowrap"
+          },
+          children: [n.jsxs(_, {
+            sx: {
+              fontSize: 15,
+              fontWeight: 700,
+              color: t.type === "deposit" ? "#1d4ed8" : void 0
+            },
+            children: [t.type === "deposit" ? "+" : "−", z(t.amount, e)]
+          }), n.jsx(_, {
+            sx: {
+              fontSize: 14,
+              color: "text.secondary"
+            },
+            children: e("accounting.balanceAfter", {
+              amount: z(t.balance_after, e)
+            })
+          })]
+        }), t.source === "manual" || t.source === "transfer" ? n.jsx(Y, {
+          size: "small",
+          "aria-label": e("accounting.cancelTx"),
+          onClick: C => V({
+            el: C.currentTarget,
+            seq: t.seq
+          }),
+          sx: {
+            color: xe[400],
+            "&:hover": {
+              color: "error.main"
+            }
+          },
+          children: n.jsx(pe, {
+            fontSize: "small"
+          })
+        }) : n.jsx(d, {
+          sx: {
+            width: 34
+          }
+        })]
+      }, t.seq)), k > b.length ? n.jsx(d, {
+        sx: {
+          px: 2.5,
+          py: 1.5,
+          fontSize: 14,
+          color: "text.secondary",
+          borderTop: 1,
+          borderColor: "divider"
+        },
+        children: e("accounting.recentOnly", {
+          shown: b.length,
+          total: k
+        })
+      }) : null]
+    }), n.jsx(he, {
+      open: !!S,
+      anchorEl: S?.el ?? null,
+      title: e("accounting.cancelTxConfirm"),
+      confirmText: e("accounting.cancelTxConfirmButton"),
+      placement: "bottom-end",
+      onCancel: () => V(null),
+      onConfirm: () => {
+        const t = S?.seq ?? 0;
+        V(null), t && i.cancelTx(t);
+      }
+    }), n.jsx(je, {
+      controller: i
+    })]
+  });
+}
+export { Te as default };

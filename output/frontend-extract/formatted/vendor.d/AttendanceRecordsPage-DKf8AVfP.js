@@ -1,0 +1,33 @@
+import { j as r } from "./react-CjxcGQav.js";
+import { A as o } from "./AttendancePage-DtYzDaz6.js";
+import "../js.d/main-Cm9wS5wt.js";
+import "./stylis-DdLD6a3t.js";
+import "./OptionToggleGroup-Cvm2wRyq.js";
+import "./EdgeTabs-Ccbggjn6.js";
+import "./mobileSearchOverlay-DYWcMOOb.js";
+import "./attendance-CHHNhWTj.js";
+import "./i18nLabels-BNTLL7cu.js";
+import "./formInput-KrHl7zSm.js";
+import "./hrCandidates-HYZ1yzF2.js";
+import "./employeeApi-CdGzOYcj.js";
+import "./types-CVhETUvu.js";
+import "./hrCodeApi-BRtc5fIX.js";
+import "./attendanceMgmtApi-CC4DR0XR.js";
+import "./attendanceBio-C-9dHF9O.js";
+import "./attendanceMgmt-B_e3bPBn.js";
+import "./EmployeePickField-CDJRGgup.js";
+import "./ToneChip-BFljqlNi.js";
+import "./InlineErrorAlert-D9ICJPt7.js";
+import "./AttendanceParts-mHb1cK0h.js";
+import "./LeaveDatesInput-D2CFTlN1.js";
+import "./MobileCardListLayout-D5_p2Xer.js";
+import "./tableScrollbars-C9bhlJjO.js";
+function w({
+  embedded: t
+} = {}) {
+  return r.jsx(o, {
+    embedded: t,
+    mode: "records"
+  });
+}
+export { w as default };

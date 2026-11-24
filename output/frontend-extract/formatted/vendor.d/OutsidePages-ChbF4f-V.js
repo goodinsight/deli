@@ -1,0 +1,617 @@
+import { j as e } from "./react-CjxcGQav.js";
+import { c as s, b1 as O, aO as I, aQ as b, b2 as x, a0 as w, q as g, b3 as T, aF as f, b4 as S, b5 as A, b6 as j, aT as y, P as p, b7 as c, k as u, V as P, aY as C, b8 as E, b9 as R, ba as L, bb as N, aR as m, Z as F, aS as k, bc as v, S as H, m as M, bd as U, be as B, bf as D, ax as G, bg as V, B as o } from "../js.d/main-Cm9wS5wt.js";
+import { C as l } from "./CategoryOutlined-DcAqxAdD.js";
+import { P as z } from "./PictureAsPdfOutlined-ChIt6cmZ.js";
+import { T as _ } from "./TuneOutlined-91VtWDYC.js";
+import { T as X, G as q, S as K, a as Q } from "./TimerOffOutlined-CYzmNDFb.js";
+import { G as Y } from "./GroupOutlined-CA-gNtcg.js";
+import { E as W } from "./EventRepeatOutlined-BzT6rPrF.js";
+import { S as Z } from "./ScheduleOutlined-C_7j7r9e.js";
+import { V as $ } from "./ViewAgendaOutlined-DQGfh6be.js";
+import { V as J } from "./ViewTimelineOutlined-CVOcikTc.js";
+import { P as ee } from "./PhonelinkRingOutlined-XS1Qnvw1.js";
+import { S as te } from "./homeSx-C09ESIq-.js";
+import { F as ie, H as a, L as ne, T as oe, S as se, I as ce, C as le, a as ae } from "./featurePageParts-Deueehn5.js";
+import { P as re } from "./PlatformIllustrations-8f3Kzcc8.js";
+import { H as de, S as pe } from "./screenShots-CYp-Froz.js";
+import { e as r } from "./emphasize-CAl3kWp2.js";
+import "./stylis-DdLD6a3t.js";
+import "./publicPageSx-9Lwcd6Z3.js";
+import "./Reveal-C3c42DZa.js";
+const ue = s(e.jsx("path", {
+    d: "M10 18h4v-2h-4zM3 6v2h18V6zm3 7h12v-2H6z"
+  })),
+  me = s([e.jsx("path", {
+    d: "M6 20V10h12v1c.7 0 1.37.1 2 .29V10c0-1.1-.9-2-2-2h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h6.26c-.42-.6-.75-1.28-.97-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9z"
+  }, "0"), e.jsx("path", {
+    d: "M18 13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5m0 2c.83 0 1.5.67 1.5 1.5S18.83 18 18 18s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5m0 6c-1.03 0-1.94-.52-2.48-1.32.73-.42 1.57-.68 2.48-.68s1.75.26 2.48.68c-.54.8-1.45 1.32-2.48 1.32"
+  }, "1")]),
+  he = s(e.jsx("path", {
+    d: "M20 15.51c-1.24 0-2.45-.2-3.57-.57-.1-.04-.21-.05-.31-.05-.26 0-.51.1-.71.29l-2.2 2.2c-2.83-1.45-5.15-3.76-6.59-6.59l2.2-2.2c.28-.28.36-.67.25-1.02C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.49c0-.55-.45-1-1-1M5.03 5h1.5c.07.89.22 1.76.46 2.59l-1.2 1.2c-.41-1.2-.67-2.47-.76-3.79M19 18.97c-1.32-.09-2.59-.35-3.8-.75l1.19-1.19c.85.24 1.72.39 2.6.45v1.49zM18 9h-2.59l5.02-5.02-1.41-1.41L14 7.59V5h-2v6h6z"
+  })),
+  d = "**정식 출시 전까지 무료**입니다.",
+  Oe = {
+    eyebrow: "PARTNERS",
+    title: e.jsxs(e.Fragment, {
+      children: ["거래처 명부부터", e.jsx("br", {}), "견적·수금까지 이어집니다"]
+    }),
+    lead: "매출처와 매입처를 한 명부에 모으고, 견적·계약과 매출·매입 전표, 미수·미지급을 **같은 곳에서 봅니다**.",
+    art: "partner",
+    screens: {
+      wide: "partner-list",
+      phone: "partner-list-m",
+      wideAlt: "거래처 화면 — 거래처 목록 옆에 연 거래처 상세(매출 · 매입 구분 · 거래 조건 · 계좌)",
+      phoneAlt: "폰의 거래처 목록 — 매출처 · 매입처로 거르는 명부"
+    },
+    sections: [{
+      id: "list",
+      eyebrow: "LIST",
+      title: "매출처와 매입처를 한 명부에",
+      lead: "거래처마다 연락처와 결제 조건을 적어 두면 전표를 쓸 때 **다시 묻지 않습니다**.",
+      points: [{
+        icon: U,
+        art: "list",
+        title: "거래처 명부",
+        desc: "사업자번호·대표자·연락처·담당자·계좌를 거래처마다 적습니다. **이름으로 찾고 거래 구분으로 거릅니다**.",
+        chips: ["매출처", "매입처", "둘 다"]
+      }, {
+        icon: l,
+        art: "chips",
+        title: "조직이 정하는 분류",
+        desc: "분류를 직접 만들고 끌어서 순서를 바꿉니다. 분류에 거래 구분을 붙여 두면 거래처를 **등록할 때 자동으로 채워집니다**."
+      }, {
+        icon: B,
+        art: "terms",
+        title: "거래 조건",
+        desc: '"말일 마감 익월 말 결제" 같은 조건을 등록해 거래처에 지정합니다. 전표의 **결제 예정일이 그 조건대로 채워집니다**.'
+      }]
+    }, {
+      id: "deal",
+      eyebrow: "DEAL",
+      title: "견적과 계약, 전표를 적습니다",
+      lead: "품목만 적으면 금액은 계산되고, 견적서는 PDF 로 나옵니다.",
+      screen: {
+        wide: "partner-deal",
+        phone: "partner-deal-m",
+        alt: "계약 한 건 — 단계 · 계약 기간 · 품목별 수량과 단가, 공급가액",
+        caption: "견적 · 계약 — 품목별 수량 · 단가와 공급가액",
+        more: [{
+          wide: "partner-sales",
+          phone: "partner-sales-m",
+          alt: "매출 전표 — 남은 금액 · 결제 예정일 · 상태",
+          caption: "매출 전표 — 남은 금액 · 결제 예정일 · 상태"
+        }]
+      },
+      points: [{
+        icon: D,
+        art: "doc",
+        title: "견적·계약",
+        desc: "품명·규격·수량·단가를 줄마다 적으면 **공급가액·부가세·합계가 계산됩니다**. 견적은 유효기한을, 계약은 계약 기간을 적습니다."
+      }, {
+        icon: z,
+        art: "pdf",
+        title: "견적서 PDF",
+        desc: "작성한 견적을 **견적서 PDF 로 받습니다**. 저장하면서 바로 받을 수도 있습니다."
+      }, {
+        icon: G,
+        art: "receipt",
+        title: "매출·매입 전표",
+        desc: "거래일·품목·결제 예정일과 함께 **어떤 증빙을 주고받았는지** 적어 둡니다.",
+        chips: ["세금계산서", "계산서", "현금영수증", "카드"]
+      }]
+    }, {
+      id: "balance",
+      eyebrow: "BALANCE",
+      title: "받을 돈과 줄 돈이 보입니다",
+      lead: "전표마다 수금·지급을 적으면 **남은 금액과 연체**가 거래처별로 모입니다.",
+      screen: {
+        wide: "partner-purchases",
+        phone: "partner-balances-m",
+        alt: "매입 전표 목록 — 남은 금액 · 결제 예정일과 지급 완료 · 일부 지급 · 미지급 · 연체 상태",
+        caption: "매입 전표 — 지급 완료 · 일부 지급 · 미지급 · 연체",
+        more: [{
+          wide: "partner-balances",
+          alt: "미수 · 미지급 — 거래처별 잔액 · 연체 · 가장 이른 예정일",
+          caption: "미수 · 미지급 — 거래처별 잔액과 연체"
+        }]
+      },
+      points: [{
+        icon: p,
+        art: "progress",
+        title: "나눠 받는 수금·지급",
+        desc: "전표 한 건에 수금·지급을 **날짜·금액·수단별로 여러 번** 적습니다. 남은 금액은 자동으로 계산됩니다."
+      }, {
+        icon: c,
+        art: "status",
+        title: "전표 상태",
+        desc: "전표마다 지금 어디까지 받았는지 상태로 보이고, **끝나지 않은 전표만 골라** 봅니다.",
+        chips: ["정산", "일부", "미결", "연체"]
+      }, {
+        icon: V,
+        art: "balance",
+        title: "거래처별 미수·미지급",
+        desc: "끝나지 않은 전표를 거래처별로 모아 **잔액·연체액·가장 이른 결제 예정일**을 봅니다."
+      }]
+    }],
+    closingTitle: "거래처와 받을 돈을 업무함에서 챙기세요"
+  },
+  Ie = {
+    eyebrow: "CUSTOMERS",
+    title: e.jsxs(e.Fragment, {
+      children: ["우리 업종에 맞는", e.jsx("br", {}), "고객 명부를 만듭니다"]
+    }),
+    lead: "고객에게 적는 항목과 분류를 **조직이 정하고**, 팀 전체가 같은 명부를 봅니다.",
+    art: "customer",
+    screens: {
+      wide: "cust-split",
+      phone: "cust-detail-m",
+      wideAlt: "고객 화면 — 고객 목록 옆에 연 고객 상세(조직이 만든 항목: 도입 단계 · 사용자 수 · 관심 기능 · 업종)",
+      phoneAlt: "폰의 고객 상세 — 기본 정보 · 추가 정보 · 메모 탭"
+    },
+    sections: [{
+      id: "list",
+      eyebrow: "LIST",
+      title: "적는 항목은 조직이 정합니다",
+      lead: "기본 정보에 우리 업종에 필요한 항목을 더해 명부를 만듭니다.",
+      points: [{
+        icon: u,
+        art: "contact",
+        title: "기본 정보",
+        desc: "이름·전화번호·이메일·주소·생년월일과 담당 직원을 적습니다. 전화번호는 **한 고객에 여러 개** 둘 수 있습니다."
+      }, {
+        icon: _,
+        art: "form",
+        title: "조직이 만드는 항목",
+        desc: "필요한 항목을 직접 만들고, **꼭 적어야 하는 항목과 목록에 보일 항목**을 정합니다.",
+        chips: ["한 줄 글", "여러 줄 글", "숫자", "날짜", "하나 고르기", "여러 개 고르기", "예/아니오", "전화번호"]
+      }, {
+        icon: Q,
+        art: "tabs",
+        title: "탭으로 나눈 입력 창",
+        desc: "항목이 많아지면 **탭을 만들어 나눠 담습니다**. 탭 이름도 조직이 짓습니다."
+      }, {
+        icon: F,
+        art: "bulk",
+        title: "광고성 정보 수신 동의",
+        desc: "수신 동의 여부를 고객마다 적어 두고, **동의한 시각을 함께 남깁니다**."
+      }]
+    }, {
+      id: "organize",
+      eyebrow: "ORGANIZE",
+      title: "쌓인 고객을 정리하고 찾습니다",
+      lead: "분류와 폴더로 묶고, 이름이나 전화번호로 바로 찾습니다.",
+      screen: {
+        wide: "cust-list",
+        phone: "cust-list-m",
+        alt: "고객 목록 — 분류 · 담당 직원 · 도입 단계 · 사용자 수 · 업종으로 보는 명부와 폴더",
+        caption: "고객 목록 — 조직이 만든 항목으로 보는 명부",
+        more: [{
+          wide: "cust-stats",
+          phone: "cust-stats-m",
+          alt: "고객 통계 — 새 고객 · 분류 · 담당 직원 · 지역별",
+          caption: "고객 통계 — 새 고객 · 분류 · 지역별"
+        }]
+      },
+      points: [{
+        icon: l,
+        art: "chips",
+        title: "고객 분류",
+        desc: "**분류를 조직이 정하고, 목록을 분류로 거릅니다**."
+      }, {
+        icon: m,
+        art: "folder",
+        title: "여러 단계 폴더",
+        desc: "폴더를 여러 단계로 만들어 고객을 담습니다. 넓은 화면에서는 고객을 **끌어다 폴더에 놓습니다**."
+      }, {
+        icon: k,
+        art: "search",
+        title: "이름·전화번호 검색",
+        desc: "이름이나 전화번호로 찾습니다. **번호는 일부만 쳐도** 찾습니다."
+      }, {
+        icon: v,
+        art: "split",
+        title: "목록 옆에서 바로 보기",
+        desc: "넓은 화면에서는 **목록 옆에 고객 정보를 펼쳐** 두고 넘겨 봅니다. 폰에서는 카드 목록으로 봅니다."
+      }]
+    }, {
+      id: "linked",
+      eyebrow: "LINKED",
+      title: "상담과 예약이 고객에 이어집니다",
+      lead: "**명부는 한 번만** 만들고, 상담과 예약이 같은 고객을 씁니다.",
+      points: [{
+        icon: H,
+        art: "timeline",
+        title: "상담 이력",
+        desc: "고객 창에서 **지난 상담을 최근 것부터** 보고, 그 자리에서 새 상담을 기록합니다.",
+        link: {
+          to: "/consults",
+          label: "상담 관리 자세히 보기"
+        }
+      }, {
+        icon: M,
+        art: "agenda",
+        title: "예약과 같은 명부",
+        desc: "예약을 받을 때 명부에서 고객을 고릅니다. 처음 온 고객은 **예약하면서 명부에 등록됩니다**.",
+        link: {
+          to: "/booking",
+          label: "예약 관리 자세히 보기"
+        }
+      }, {
+        icon: Y,
+        art: "people",
+        title: "팀이 함께 보는 명부",
+        desc: "고객 서비스를 켠 구성원이 **같은 명부를 보고 적습니다**. 고객 삭제와 항목 설정은 소유자·관리자만 합니다."
+      }]
+    }],
+    closingTitle: "고객 명부를 업무함에서 시작해 보세요",
+    freeText: "**고객 관리는 무료**입니다."
+  },
+  be = {
+    eyebrow: "CONSULTS",
+    title: e.jsxs(e.Fragment, {
+      children: ["누가 언제 무슨 상담을 했는지", e.jsx("br", {}), "고객마다 남습니다"]
+    }),
+    lead: "전화·방문·메일로 받은 상담을 기록하고, **후속 조치와 처리 상태까지** 한 건에 적습니다.",
+    art: "consult",
+    screens: {
+      wide: "consult-list",
+      phone: "consult-detail-m",
+      wideAlt: "상담 화면 — 상담 목록과 한 건의 상담 기록(경로 · 분류 · 처리 상태 · 후속 조치 예정일 · 고객 요청)",
+      phoneAlt: "폰의 상담 기록 — 상담 일시 · 경로 · 분류 · 담당 직원과 상담 내용"
+    },
+    sections: [{
+      id: "record",
+      eyebrow: "RECORD",
+      title: "상담 한 건을 빠짐없이 적습니다",
+      lead: "받은 내용, 고객이 바란 것, 우리가 한 일을 나눠 적습니다.",
+      points: [{
+        icon: P,
+        art: "contact",
+        title: "상담 기록",
+        desc: "고객을 **이름이나 전화번호로 찾아 고르고**, 상담 일시·상담 직원·제목·내용을 적습니다."
+      }, {
+        icon: C,
+        art: "channels",
+        title: "상담 경로",
+        desc: "**어느 경로로 받은 상담인지** 골라 적어 둡니다.",
+        chips: ["전화", "방문", "이메일", "홈페이지", "카카오채널"]
+      }, {
+        icon: E,
+        art: "twoBoxes",
+        title: "고객 요청과 조치",
+        desc: "고객이 요청한 것과 우리가 조치한 것을 **칸을 나눠 적습니다**."
+      }, {
+        icon: W,
+        art: "followUp",
+        title: "후속 조치와 예정일",
+        desc: "**다음에 할 일과 그 날짜**를 상담에 함께 적어 둡니다."
+      }, {
+        icon: c,
+        art: "status",
+        title: "처리 상태",
+        desc: "상담마다 끝났는지를 표시하고, **아직 처리 중인 상담만 모아** 봅니다.",
+        chips: ["처리 중", "완료"]
+      }, {
+        icon: l,
+        art: "chips",
+        title: "상담 분류",
+        desc: "**상담 분류를 조직이 정하고**, 목록을 분류로 거릅니다."
+      }]
+    }, {
+      id: "call",
+      eyebrow: "CALL",
+      title: "전화가 오면 고객 정보가 먼저 뜹니다",
+      lead: "킹콜 인터넷 전화를 연결하면 걸려 온 번호로 고객을 찾아 **받기 전에 보여 줍니다**.",
+      screen: {
+        wide: "call-popup",
+        phone: "call-popup-m",
+        alt: "걸려 온 전화 창 — 고객 이름 · 분류 · 담당 · 주소 · 메모 · 최근 상담과 상담 작성 · 고객 정보 단추",
+        caption: "걸려 온 전화 — 고객 정보와 최근 상담",
+        more: [{
+          wide: "call-list",
+          phone: "call-list-m",
+          alt: "통화 기록 — 수신 · 발신 · 부재중과 통화 시간 · 담당",
+          caption: "통화 기록 — 수신 · 발신 · 부재중"
+        }]
+      },
+      points: [{
+        icon: he,
+        tag: "상담 플러스",
+        title: "걸려 온 번호로 고객 찾기",
+        desc: "등록된 고객 번호로 전화가 오면 업무함 화면 가운데에 **이름 · 분류 · 담당 · 주소 · 메모 · 최근 상담**이 뜹니다."
+      }, {
+        icon: R,
+        title: "받아도 닫히지 않는 창",
+        desc: "전화 오는 중 → 통화 중 → 통화 끝남 · 부재중으로 상태만 바뀝니다. 통화하면서 **상담 작성 · 고객 정보**를 엽니다."
+      }, {
+        icon: L,
+        title: "처음 거는 번호는 바로 고객 등록",
+        desc: "등록되지 않은 번호도 알려 줍니다. 그 번호가 채워진 **새 고객 등록 창**을 엽니다."
+      }, {
+        icon: ee,
+        title: "폰에도 알림",
+        desc: "업무함을 켜 두지 않은 구성원에게도 벨과 앱 알림으로 **상담전화 · 고객 이름 · 번호**가 갑니다."
+      }, {
+        icon: q,
+        title: "통화 기록 · 녹취 · 받아 적기",
+        desc: "통화는 통화 기록에 남고, 녹취를 들으며 **받아 적은 글과 요약**을 봅니다."
+      }, {
+        icon: K,
+        title: "내선마다 받을 사람",
+        desc: "킹콜 상담원(내선)마다 알림 받을 구성원을 정해 둡니다."
+      }]
+    }, {
+      id: "history",
+      eyebrow: "HISTORY",
+      title: "지난 상담을 다시 찾습니다",
+      lead: "고객 한 사람의 이력으로도, 조직 전체의 목록으로도 봅니다.",
+      screen: {
+        wide: "consult-history",
+        phone: "consult-list-m",
+        alt: "고객 상세의 상담 이력 — 한 고객과 나눈 상담이 날짜순으로",
+        caption: "고객별 상담 이력",
+        more: [{
+          wide: "consult-stats",
+          phone: "consult-stats-m",
+          alt: "상담 통계 — 경로 · 분류 · 직원별 상담 수와 날짜별 추이",
+          caption: "상담 통계 — 경로 · 분류 · 직원별"
+        }]
+      },
+      points: [{
+        icon: N,
+        art: "timeline",
+        title: "고객별 이력",
+        desc: "고객 창의 상담 이력에 그 고객의 상담이 최근 것부터 쌓입니다. **담당이 바뀌어도 앞선 상담을 그대로** 봅니다.",
+        link: {
+          to: "/customers",
+          label: "고객 관리 자세히 보기"
+        }
+      }, {
+        icon: ue,
+        art: "list",
+        title: "전체 상담 목록",
+        desc: "조직의 모든 상담을 한 목록에서 보고, **처리 상태·상담 분류·상담 직원으로 거릅니다**."
+      }, {
+        icon: m,
+        art: "folder",
+        title: "상담 폴더",
+        desc: "상담도 **여러 단계 폴더로 정리**합니다. 고객 폴더와는 따로 둡니다."
+      }]
+    }],
+    closingTitle: "오늘 받은 상담부터 업무함에 남겨 보세요",
+    freeText: "**상담 기록은 무료**입니다. 킹콜 전화 연동과 통화 받아 적기 · 요약은 상담 플러스(킹콜 연결 내선 1개당 월 3,300원)로 씁니다."
+  },
+  xe = {
+    eyebrow: "BOOKING",
+    title: e.jsxs(e.Fragment, {
+      children: ["호실·담당·자리마다", e.jsx("br", {}), "겹치지 않게 예약을 받습니다"]
+    }),
+    lead: "예약 대상을 등록하고 날짜 단위나 시간 단위로 예약을 받습니다. 언제 어떤 예약이 있는지는 **달력에서 한눈에** 봅니다.",
+    art: "booking",
+    freeText: "**예약은 무료**입니다.",
+    sections: [{
+      id: "resource",
+      eyebrow: "RESOURCE",
+      title: "무엇을 예약받는지부터 정합니다",
+      lead: "숙소의 호실, 미용실의 담당, 식당의 자리, 수업 — **예약받는 대상을 등록**합니다.",
+      points: [{
+        icon: S,
+        art: "resource",
+        title: "예약 대상",
+        desc: "대상을 등록하고 **묶음으로 나눕니다**. 순서를 바꾸고, 잠시 받지 않을 대상은 꺼 둡니다."
+      }, {
+        icon: A,
+        art: "capacity",
+        title: "동시에 받는 예약 수",
+        desc: "대상마다 같은 시간에 받을 수 있는 예약 수를 정합니다. **그 수를 넘는 예약은 받지 않습니다**."
+      }, {
+        icon: j,
+        art: "price",
+        title: "대상별 요금",
+        desc: "요금과 단위를 정해 두면 **예약한 기간에 맞춰 금액이 계산됩니다**.",
+        chips: ["1건", "1시간", "1일"]
+      }, {
+        icon: Z,
+        art: "daysHours",
+        title: "날짜 단위·시간 단위",
+        desc: "**여러 날에 걸친 예약과 시간 예약을 모두** 받습니다. 날짜 단위 예약의 시작·끝 시각과 기본 예약 길이는 조직이 정합니다."
+      }]
+    }, {
+      id: "calendar",
+      eyebrow: "CALENDAR",
+      title: "예약을 세 가지 달력으로 봅니다",
+      lead: "**빈 자리를 누르면** 그 대상, 그 날짜로 예약 등록이 열립니다.",
+      points: [{
+        icon: $,
+        art: "agenda",
+        title: "아젠다",
+        desc: "날짜마다 **그날의 예약을 차례로** 늘어놓습니다. 폰에서는 이 보기로 먼저 열립니다."
+      }, {
+        icon: J,
+        art: "gantt",
+        title: "날짜별",
+        desc: "대상이 줄이고 날짜가 칸입니다. 여러 날에 걸친 예약이 **막대로 이어져 보입니다**."
+      }, {
+        icon: y,
+        art: "hours",
+        title: "시간별",
+        desc: "하루 시간표에 **대상마다 한 열**입니다. 시간 단위 예약을 볼 때 씁니다."
+      }]
+    }, {
+      id: "deposit",
+      eyebrow: "DEPOSIT",
+      title: "예약금과 고객까지 이어집니다",
+      lead: "입금을 확인해야 확정되는 예약은 **기한을 두고** 관리합니다.",
+      points: [{
+        icon: p,
+        art: "deposit",
+        title: "예약금과 입금 기한",
+        desc: "예약금이 있는 예약은 입금 대기로 두고, **입금을 확인하면 확정합니다**. 기본 예약금과 입금 기한은 조직이 정합니다."
+      }, {
+        icon: X,
+        art: "expire",
+        title: "기한이 지나면 자동 취소",
+        desc: "입금 기한이 지난 예약은 **자동으로 취소되어 그 자리가 다시 열립니다**."
+      }, {
+        icon: c,
+        art: "status",
+        title: "예약 상태",
+        desc: "예약마다 상태를 두고, **다가오는 예약과 지난 예약을 나눠** 봅니다.",
+        chips: ["요청", "입금 대기", "확정", "완료", "취소", "안 옴"]
+      }, {
+        icon: u,
+        art: "contact",
+        title: "고객 명부와 연결",
+        desc: "예약할 때 명부에서 고객을 고릅니다. 처음 온 고객은 **이름과 휴대폰만 적으면** 명부에 등록됩니다.",
+        link: {
+          to: "/customers",
+          label: "고객 관리 자세히 보기"
+        }
+      }]
+    }],
+    closingTitle: "다음 예약부터 업무함으로 받아 보세요"
+  },
+  we = {
+    eyebrow: "ACCOUNTING",
+    title: e.jsxs(e.Fragment, {
+      children: ["카드·통장 내역을 올리면", e.jsx("br", {}), "장부와 손익이 됩니다"]
+    }),
+    lead: "카드사와 은행에서 받은 파일을 올려 장부에 넣고, **분류를 추천받아** 손익과 잔액을 봅니다.",
+    art: "accounting",
+    sections: [{
+      id: "ledger",
+      eyebrow: "LEDGER",
+      title: "장부를 채우는 일을 줄입니다",
+      lead: "하나씩 적어도 되고, **내려받은 내역 파일을 한꺼번에** 올려도 됩니다.",
+      points: [{
+        icon: O,
+        art: "ledger",
+        title: "매출·지출 장부",
+        desc: "거래일·금액·부가세·쓴 곳과 결제수단을 적습니다. 기간과 매출·지출로 거르면 **합계가 위에 나옵니다**."
+      }, {
+        icon: I,
+        art: "upload",
+        title: "카드·통장 파일 불러오기",
+        desc: "카드사 이용내역과 은행 거래내역 파일을 올리면 미리 보여 주고 장부에 넣습니다. **이미 넣은 줄은 빼고** 넣습니다.",
+        chips: ["xls", "xlsx", "csv"]
+      }, {
+        icon: b,
+        art: "sparkle",
+        title: "분류 추천",
+        desc: "전에 고른 분류, 가맹점 규칙, AI 순서로 계정과목을 추천합니다. **확정은 사람이 하고**, 확정한 분류는 다음 추천에 쓰입니다."
+      }, {
+        icon: x,
+        art: "bulk",
+        title: "같은 적요는 한 번에",
+        desc: "적요가 같은 미분류 줄을 **한꺼번에 같은 분류로** 넣습니다. 아직 분류하지 않은 줄만 골라 볼 수 있습니다."
+      }]
+    }, {
+      id: "report",
+      eyebrow: "REPORT",
+      title: "손익과 잔액을 봅니다",
+      lead: "장부가 채워지면 **손익표와 통장·카드 잔액**이 따라옵니다.",
+      points: [{
+        icon: w,
+        art: "chart",
+        title: "손익",
+        desc: "**매출액에서 당기순이익까지** 손익표로 보고, 월별 흐름과 많이 쓴 지출 항목을 함께 봅니다.",
+        chips: ["거래일 기준", "돈이 오간 날 기준"]
+      }, {
+        icon: g,
+        art: "wallet",
+        title: "통장·카드",
+        desc: "통장·현금·카드를 등록해 **입출금 내역과 잔액**을 봅니다. 통장 사이의 이체도 적습니다."
+      }, {
+        icon: T,
+        art: "card",
+        title: "신용카드 대금",
+        desc: "신용카드로 쓴 금액을 모아 **결제일에 연결한 통장의 출금으로** 잡습니다."
+      }, {
+        icon: f,
+        art: "tree",
+        title: "계정과목",
+        desc: "**표준 계정과목과 거래항목이 들어 있어** 바로 씁니다. 우리 회사에만 있는 항목은 더합니다."
+      }, {
+        icon: me,
+        art: "people",
+        title: "회계 담당만",
+        desc: "회계는 **회계 담당으로 지정한 구성원만** 봅니다."
+      }]
+    }],
+    closingTitle: "이번 달 카드 내역부터 올려 보세요"
+  };
+function n({
+  page: t
+}) {
+  return e.jsxs(o, {
+    children: [e.jsx(ie, {
+      eyebrow: t.eyebrow,
+      title: t.title,
+      lead: e.jsxs(e.Fragment, {
+        children: [r(t.lead), e.jsx(ne, {}), r(t.freeText ?? d)]
+      }),
+      children: t.screens ? e.jsx(de, {
+        ...t.screens,
+        sx: a
+      }) : e.jsx(o, {
+        sx: {
+          ...a,
+          maxWidth: 440,
+          mx: "auto"
+        },
+        children: e.jsx(re, {
+          kind: t.art
+        })
+      })
+    }), t.sections.map((i, h) => e.jsx(o, {
+      component: "section",
+      id: i.id,
+      sx: h % 2 === 0 ? oe : {
+        bgcolor: "#fff"
+      },
+      children: e.jsxs(o, {
+        sx: te,
+        children: [e.jsx(se, {
+          eyebrow: i.eyebrow,
+          title: i.title,
+          lead: i.lead
+        }), i.screen && e.jsx(pe, {
+          ...i.screen,
+          sx: ce
+        }), e.jsx(le, {
+          points: i.points,
+          columns: i.points.length === 4 ? 2 : 3
+        })]
+      })
+    }, i.id)), e.jsx(ae, {
+      title: t.closingTitle,
+      lead: `${t.freeText ?? d} 조직의 서비스 설정에서 켜면 바로 씁니다.`
+    })]
+  });
+}
+function De() {
+  return e.jsx(n, {
+    page: Oe
+  });
+}
+function Ge() {
+  return e.jsx(n, {
+    page: Ie
+  });
+}
+function Ve() {
+  return e.jsx(n, {
+    page: be
+  });
+}
+function ze() {
+  return e.jsx(n, {
+    page: xe
+  });
+}
+function _e() {
+  return e.jsx(n, {
+    page: we
+  });
+}
+export { _e as AccountingPage, ze as BookingPage, Ve as ConsultPage, Ge as CustomerPage, De as PartnerPage };

@@ -1,0 +1,150 @@
+import { e as C, r as l } from "./react-CjxcGQav.js";
+var y = function (r, n) {
+    return y = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (e, t) {
+      e.__proto__ = t;
+    } || function (e, t) {
+      for (var o in t) t.hasOwnProperty(o) && (e[o] = t[o]);
+    }, y(r, n);
+  },
+  s = function () {
+    return s = Object.assign || function (r) {
+      for (var n, e = 1, t = arguments.length; e < t; e++) for (var o in n = arguments[e]) Object.prototype.hasOwnProperty.call(n, o) && (r[o] = n[o]);
+      return r;
+    }, s.apply(this, arguments);
+  };
+function b(r, n) {
+  var e = {};
+  for (var t in r) Object.prototype.hasOwnProperty.call(r, t) && n.indexOf(t) < 0 && (e[t] = r[t]);
+  if (r != null && typeof Object.getOwnPropertySymbols == "function") {
+    var o = 0;
+    for (t = Object.getOwnPropertySymbols(r); o < t.length; o++) n.indexOf(t[o]) < 0 && Object.prototype.propertyIsEnumerable.call(r, t[o]) && (e[t[o]] = r[t[o]]);
+  }
+  return e;
+}
+var h,
+  w = "https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js",
+  v = (h = null, function (r) {
+    return r === void 0 && (r = w), h || (h = new Promise(function (n, e) {
+      var t = document.createElement("script");
+      t.src = r, t.onload = function () {
+        var o;
+        if (!((o = window?.daum) === null || o === void 0) && o.Postcode) return n(window.daum.Postcode);
+        e(new Error("Script is loaded successfully, but cannot find Postcode module. Check your scriptURL property."));
+      }, t.onerror = function (o) {
+        return e(o);
+      }, t.id = "daum_postcode_script", document.body.appendChild(t);
+    }));
+  }),
+  P = C.createElement("p", null, "현재 Daum 우편번호 서비스를 이용할 수 없습니다. 잠시 후 다시 시도해주세요."),
+  j = {
+    width: "100%",
+    height: 400
+  },
+  _ = {
+    scriptUrl: w,
+    errorMessage: P,
+    autoClose: !0
+  },
+  R = function (r) {
+    function n() {
+      var e = r !== null && r.apply(this, arguments) || this;
+      return e.mounted = !1, e.wrap = l.createRef(), e.state = {
+        hasError: !1,
+        completed: !1
+      }, e.initiate = function (t) {
+        if (e.wrap.current) {
+          var o = e.props;
+          o.scriptUrl, o.className, o.style;
+          var u = o.defaultQuery,
+            p = o.autoClose;
+          o.errorMessage;
+          var a = o.onComplete,
+            c = o.onClose,
+            i = o.onResize,
+            d = o.onSearch,
+            f = b(o, ["scriptUrl", "className", "style", "defaultQuery", "autoClose", "errorMessage", "onComplete", "onClose", "onResize", "onSearch"]);
+          new t(s(s({}, f), {
+            oncomplete: function (m) {
+              a && a(m), e.setState({
+                completed: !0
+              });
+            },
+            onsearch: d,
+            onresize: i,
+            onclose: c,
+            width: "100%",
+            height: "100%"
+          })).embed(e.wrap.current, {
+            q: u,
+            autoClose: p
+          });
+        }
+      }, e.onError = function (t) {
+        console.error(t), e.setState({
+          hasError: !0
+        });
+      }, e;
+    }
+    return function (e, t) {
+      function o() {
+        this.constructor = e;
+      }
+      y(e, t), e.prototype = t === null ? Object.create(t) : (o.prototype = t.prototype, new o());
+    }(n, r), n.prototype.componentDidMount = function () {
+      var e = this.initiate,
+        t = this.onError,
+        o = this.props.scriptUrl;
+      o && (this.mounted || (v(o).then(e).catch(t), this.mounted = !0));
+    }, n.prototype.render = function () {
+      var e = this.props,
+        t = e.className,
+        o = e.style,
+        u = e.errorMessage,
+        p = e.autoClose,
+        a = this.state,
+        c = a.hasError,
+        i = a.completed;
+      return p === !0 && i === !0 ? null : C.createElement("div", {
+        ref: this.wrap,
+        className: t,
+        style: s(s({}, j), o)
+      }, c && u);
+    }, n.defaultProps = _, n;
+  }(l.Component);
+function z(r) {
+  return r === void 0 && (r = w), l.useEffect(function () {
+    v(r);
+  }, [r]), l.useCallback(function (n) {
+    var e = s({}, n),
+      t = e.defaultQuery,
+      o = e.left,
+      u = e.top,
+      p = e.popupKey,
+      a = e.popupTitle,
+      c = e.autoClose,
+      i = e.onComplete,
+      d = e.onResize,
+      f = e.onClose,
+      m = e.onSearch,
+      O = e.onError,
+      g = b(e, ["defaultQuery", "left", "top", "popupKey", "popupTitle", "autoClose", "onComplete", "onResize", "onClose", "onSearch", "onError"]);
+    return v(r).then(function (E) {
+      new E(s(s({}, g), {
+        oncomplete: i,
+        onsearch: m,
+        onresize: d,
+        onclose: f
+      })).open({
+        q: t,
+        left: o,
+        top: u,
+        popupTitle: a,
+        popupKey: p,
+        autoClose: c
+      });
+    }).catch(O);
+  }, [r]);
+}
+export { R as DaumPostcodeEmbed, R as default, v as loadPostcode, z as useDaumPostcodePopup };

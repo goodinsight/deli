@@ -1,0 +1,1 @@
+const t="홈으로",o="화면을 불러오지 못했습니다.",e="새로고침을 반복해도 화면을 불러오지 못했습니다.",a="새로고침",d={goHome:"홈으로",loadFailed:o,loadFailedAfterReload:e,reload:a};export{d as default,t as goHome,o as loadFailed,e as loadFailedAfterReload,a as reload};

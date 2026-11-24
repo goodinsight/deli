@@ -1,0 +1,303 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/ChatRoomListPanel-Cr-HvA9L.js",
+  "path": "assets/vendor.d/ChatRoomListPanel-Cr-HvA9L.js",
+  "name": "ChatRoomListPanel",
+  "kind": "ui",
+  "bytes": 6371,
+  "sha256": "6143d64e5acd4b97ba0532ca054dc20a105309f06f421e5503518901aa152d0e",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/ChatRoomListPanel-Cr-HvA9L.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "y",
+          "imported": "r"
+        },
+        {
+          "local": "n",
+          "imported": "j"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "./largeFile-DlThjw63.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Z",
+          "imported": "v"
+        }
+      ],
+      "resolved": "assets/vendor.d/largeFile-DlThjw63.js"
+    },
+    {
+      "specifier": "./ChatRoomView-DTjnT2W1.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "$",
+          "imported": "w"
+        }
+      ],
+      "resolved": "assets/vendor.d/ChatRoomView-DTjnT2W1.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Q",
+          "imported": "bv"
+        },
+        {
+          "local": "ee",
+          "imported": "u"
+        },
+        {
+          "local": "te",
+          "imported": "cz"
+        },
+        {
+          "local": "se",
+          "imported": "D"
+        },
+        {
+          "local": "T",
+          "imported": "G"
+        },
+        {
+          "local": "ne",
+          "imported": "eF"
+        },
+        {
+          "local": "A",
+          "imported": "a1"
+        },
+        {
+          "local": "w",
+          "imported": "B"
+        },
+        {
+          "local": "ae",
+          "imported": "K"
+        },
+        {
+          "local": "S",
+          "imported": "L"
+        },
+        {
+          "local": "x",
+          "imported": "s"
+        },
+        {
+          "local": "oe",
+          "imported": "gK"
+        },
+        {
+          "local": "re",
+          "imported": "fo"
+        },
+        {
+          "local": "ie",
+          "imported": "w"
+        },
+        {
+          "local": "ce",
+          "imported": "fp"
+        },
+        {
+          "local": "le",
+          "imported": "d5"
+        },
+        {
+          "local": "E",
+          "imported": "bO"
+        },
+        {
+          "local": "h",
+          "imported": "bT"
+        },
+        {
+          "local": "ue",
+          "imported": "z"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./Logout-B1FcT8mE.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "fe",
+          "imported": "L"
+        }
+      ],
+      "resolved": "assets/vendor.d/Logout-B1FcT8mE.js"
+    },
+    {
+      "specifier": "./ChatMemberPanel-DmXFJG7n.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "me",
+          "imported": "u"
+        },
+        {
+          "local": "de",
+          "imported": "N"
+        },
+        {
+          "local": "pe",
+          "imported": "b"
+        },
+        {
+          "local": "he",
+          "imported": "c"
+        },
+        {
+          "local": "xe",
+          "imported": "R"
+        },
+        {
+          "local": "ge",
+          "imported": "r"
+        }
+      ],
+      "resolved": "assets/vendor.d/ChatMemberPanel-DmXFJG7n.js"
+    },
+    {
+      "specifier": "./PickMenuDialog-BtpyEh4Z.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "we",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/PickMenuDialog-BtpyEh4Z.js"
+    },
+    {
+      "specifier": "./aliasStore-DiN6Kp-5.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Se",
+          "imported": "c"
+        },
+        {
+          "local": "be",
+          "imported": "d"
+        },
+        {
+          "local": "ve",
+          "imported": "W"
+        },
+        {
+          "local": "O",
+          "imported": "o"
+        },
+        {
+          "local": "z",
+          "imported": "m"
+        },
+        {
+          "local": "Re",
+          "imported": "X"
+        },
+        {
+          "local": "ye",
+          "imported": "l"
+        },
+        {
+          "local": "Ie",
+          "imported": "w"
+        }
+      ],
+      "resolved": "assets/vendor.d/aliasStore-DiN6Kp-5.js"
+    },
+    {
+      "specifier": "./ForwardMessageDialog-CaXjV13U.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "je",
+          "imported": "f"
+        },
+        {
+          "local": "R",
+          "imported": "a"
+        }
+      ],
+      "resolved": "assets/vendor.d/ForwardMessageDialog-CaXjV13U.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "Je",
+      "exported": "C"
+    },
+    {
+      "local": "Pe",
+      "exported": "c"
+    },
+    {
+      "local": "Ke",
+      "exported": "m"
+    },
+    {
+      "local": "Xe",
+      "exported": "o"
+    },
+    {
+      "local": "Be",
+      "exported": "r"
+    },
+    {
+      "local": "Ue",
+      "exported": "s"
+    },
+    {
+      "local": "He",
+      "exported": "u"
+    },
+    {
+      "local": "Ge",
+      "exported": "w"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "Je",
+      "keys": [
+        "roomy",
+        "onOpenRoom"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "ChatPage",
+    "Layout"
+  ],
+  "service": "채팅",
+  "purpose": "대화방 목록",
+  "reuseGrade": "C",
+  "integration": "실시간 채널·읽음 상태·사용자 모델 연결",
+  "exportedParameters": [
+    {
+      "export": "C",
+      "compiledLocal": "Je",
+      "keys": [
+        "roomy",
+        "onOpenRoom"
+      ]
+    }
+  ]
+}

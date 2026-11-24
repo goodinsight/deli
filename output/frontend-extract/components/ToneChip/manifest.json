@@ -1,0 +1,86 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/ToneChip-BFljqlNi.js",
+  "path": "assets/vendor.d/ToneChip-BFljqlNi.js",
+  "name": "ToneChip",
+  "kind": "ui",
+  "bytes": 282,
+  "sha256": "2c5c9f6d2e1ae43f32e18b59109c4b8acaca376d615df36a1614602f4ee2f2ba",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/ToneChip-BFljqlNi.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "n",
+          "imported": "j"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "p",
+          "imported": "B"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "i",
+      "exported": "T"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "i",
+      "keys": [
+        "label",
+        "tone"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "AnnualLeavePage",
+    "ApprovalAllDocumentsPage",
+    "ApprovalBoxPage",
+    "ApprovalDraftedPage",
+    "AttendancePage",
+    "AttendanceRecordsPage",
+    "CertificatePage",
+    "ContractPage",
+    "EventPage",
+    "Layout",
+    "MobileDashboardLayout",
+    "OfficeReservationPage",
+    "PostComposerHost",
+    "ReservationDialog",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog"
+  ],
+  "service": "공통",
+  "purpose": "상태 배지",
+  "reuseGrade": "A",
+  "integration": "MUI Box로 직접 이식; portable에 재구성본 제공",
+  "exportedParameters": [
+    {
+      "export": "T",
+      "compiledLocal": "i",
+      "keys": [
+        "label",
+        "tone"
+      ]
+    }
+  ]
+}

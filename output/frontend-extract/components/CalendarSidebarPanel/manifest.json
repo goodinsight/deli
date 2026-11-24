@@ -1,0 +1,4273 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/CalendarSidebarPanel-DlQr_b8l.js",
+  "path": "assets/vendor.d/CalendarSidebarPanel-DlQr_b8l.js",
+  "name": "CalendarSidebarPanel",
+  "kind": "ui",
+  "bytes": 454057,
+  "sha256": "99a533f1b1c91b18fe696045af60bce68aa2f5ddbc409f5cada52b05275e9606",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/CalendarSidebarPanel-DlQr_b8l.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "t",
+          "imported": "j"
+        },
+        {
+          "local": "rt",
+          "imported": "u"
+        },
+        {
+          "local": "f",
+          "imported": "r"
+        },
+        {
+          "local": "Zt",
+          "imported": "i"
+        },
+        {
+          "local": "Ks",
+          "imported": "p"
+        },
+        {
+          "local": "Sd",
+          "imported": "d"
+        },
+        {
+          "local": "ne",
+          "imported": "e"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "$n",
+          "imported": "c"
+        },
+        {
+          "local": "Z",
+          "imported": "bv"
+        },
+        {
+          "local": "je",
+          "imported": "D"
+        },
+        {
+          "local": "Y",
+          "imported": "c4"
+        },
+        {
+          "local": "le",
+          "imported": "ca"
+        },
+        {
+          "local": "D",
+          "imported": "L"
+        },
+        {
+          "local": "Hs",
+          "imported": "f"
+        },
+        {
+          "local": "$",
+          "imported": "bQ"
+        },
+        {
+          "local": "ca",
+          "imported": "dd"
+        },
+        {
+          "local": "v",
+          "imported": "B"
+        },
+        {
+          "local": "Hp",
+          "imported": "c3"
+        },
+        {
+          "local": "Te",
+          "imported": "aq"
+        },
+        {
+          "local": "fi",
+          "imported": "fM"
+        },
+        {
+          "local": "Dn",
+          "imported": "cb"
+        },
+        {
+          "local": "We",
+          "imported": "K"
+        },
+        {
+          "local": "Se",
+          "imported": "cI"
+        },
+        {
+          "local": "Qt",
+          "imported": "ce"
+        },
+        {
+          "local": "Bt",
+          "imported": "cf"
+        },
+        {
+          "local": "_d",
+          "imported": "d3"
+        },
+        {
+          "local": "kd",
+          "imported": "g6"
+        },
+        {
+          "local": "Us",
+          "imported": "cZ"
+        },
+        {
+          "local": "Be",
+          "imported": "cz"
+        },
+        {
+          "local": "ys",
+          "imported": "b$"
+        },
+        {
+          "local": "Cd",
+          "imported": "fL"
+        },
+        {
+          "local": "Ce",
+          "imported": "e"
+        },
+        {
+          "local": "en",
+          "imported": "c8"
+        },
+        {
+          "local": "z",
+          "imported": "bO"
+        },
+        {
+          "local": "C",
+          "imported": "bT"
+        },
+        {
+          "local": "Ed",
+          "imported": "gX"
+        },
+        {
+          "local": "Ne",
+          "imported": "ak"
+        },
+        {
+          "local": "Up",
+          "imported": "gY"
+        },
+        {
+          "local": "Gs",
+          "imported": "eO"
+        },
+        {
+          "local": "wt",
+          "imported": "eP"
+        },
+        {
+          "local": "Ys",
+          "imported": "eR"
+        },
+        {
+          "local": "Td",
+          "imported": "eS"
+        },
+        {
+          "local": "Od",
+          "imported": "eT"
+        },
+        {
+          "local": "Xs",
+          "imported": "eM"
+        },
+        {
+          "local": "Js",
+          "imported": "eN"
+        },
+        {
+          "local": "Zs",
+          "imported": "eU"
+        },
+        {
+          "local": "Qs",
+          "imported": "eV"
+        },
+        {
+          "local": "St",
+          "imported": "d8"
+        },
+        {
+          "local": "da",
+          "imported": "aQ"
+        },
+        {
+          "local": "_t",
+          "imported": "fo"
+        },
+        {
+          "local": "Gp",
+          "imported": "gZ"
+        },
+        {
+          "local": "Id",
+          "imported": "eL"
+        },
+        {
+          "local": "er",
+          "imported": "eW"
+        },
+        {
+          "local": "Yt",
+          "imported": "cj"
+        },
+        {
+          "local": "Kn",
+          "imported": "c_"
+        },
+        {
+          "local": "Hn",
+          "imported": "cN"
+        },
+        {
+          "local": "ke",
+          "imported": "al"
+        },
+        {
+          "local": "Yp",
+          "imported": "cU"
+        },
+        {
+          "local": "ye",
+          "imported": "cY"
+        },
+        {
+          "local": "Ft",
+          "imported": "cP"
+        },
+        {
+          "local": "tr",
+          "imported": "eX"
+        },
+        {
+          "local": "Ro",
+          "imported": "y"
+        },
+        {
+          "local": "be",
+          "imported": "bH"
+        },
+        {
+          "local": "H",
+          "imported": "s"
+        },
+        {
+          "local": "ue",
+          "imported": "bI"
+        },
+        {
+          "local": "wo",
+          "imported": "bh"
+        },
+        {
+          "local": "ua",
+          "imported": "cn"
+        },
+        {
+          "local": "Pd",
+          "imported": "g_"
+        },
+        {
+          "local": "Rd",
+          "imported": "g$"
+        },
+        {
+          "local": "_e",
+          "imported": "bM"
+        },
+        {
+          "local": "So",
+          "imported": "cJ"
+        },
+        {
+          "local": "vs",
+          "imported": "go"
+        },
+        {
+          "local": "za",
+          "imported": "g2"
+        },
+        {
+          "local": "Ad",
+          "imported": "b9"
+        },
+        {
+          "local": "nr",
+          "imported": "dv"
+        },
+        {
+          "local": "Dd",
+          "imported": "h0"
+        },
+        {
+          "local": "Ao",
+          "imported": "cL"
+        },
+        {
+          "local": "ve",
+          "imported": "bx"
+        },
+        {
+          "local": "Fd",
+          "imported": "h1"
+        },
+        {
+          "local": "qa",
+          "imported": "h2"
+        },
+        {
+          "local": "Un",
+          "imported": "ar"
+        },
+        {
+          "local": "Md",
+          "imported": "h3"
+        },
+        {
+          "local": "gn",
+          "imported": "cW"
+        },
+        {
+          "local": "pa",
+          "imported": "du"
+        },
+        {
+          "local": "et",
+          "imported": "cm"
+        },
+        {
+          "local": "Nd",
+          "imported": "cS"
+        },
+        {
+          "local": "or",
+          "imported": "d1"
+        },
+        {
+          "local": "Xp",
+          "imported": "bJ"
+        },
+        {
+          "local": "Jp",
+          "imported": "bd"
+        },
+        {
+          "local": "Zp",
+          "imported": "b4"
+        },
+        {
+          "local": "Qp",
+          "imported": "b6"
+        },
+        {
+          "local": "js",
+          "imported": "q"
+        },
+        {
+          "local": "Ld",
+          "imported": "an"
+        },
+        {
+          "local": "Fn",
+          "imported": "dy"
+        },
+        {
+          "local": "ef",
+          "imported": "m"
+        },
+        {
+          "local": "sr",
+          "imported": "cc"
+        },
+        {
+          "local": "ws",
+          "imported": "cO"
+        },
+        {
+          "local": "Va",
+          "imported": "h4"
+        },
+        {
+          "local": "tf",
+          "imported": "h5"
+        },
+        {
+          "local": "nf",
+          "imported": "db"
+        },
+        {
+          "local": "Wd",
+          "imported": "eH"
+        },
+        {
+          "local": "of",
+          "imported": "h6"
+        },
+        {
+          "local": "sf",
+          "imported": "h7"
+        },
+        {
+          "local": "rf",
+          "imported": "h8"
+        },
+        {
+          "local": "tn",
+          "imported": "_"
+        },
+        {
+          "local": "Mt",
+          "imported": "as"
+        },
+        {
+          "local": "bo",
+          "imported": "h9"
+        },
+        {
+          "local": "go",
+          "imported": "d4"
+        },
+        {
+          "local": "cn",
+          "imported": "gy"
+        },
+        {
+          "local": "fa",
+          "imported": "ha"
+        },
+        {
+          "local": "Ss",
+          "imported": "dC"
+        },
+        {
+          "local": "$a",
+          "imported": "fx"
+        },
+        {
+          "local": "_s",
+          "imported": "c2"
+        },
+        {
+          "local": "ma",
+          "imported": "ba"
+        },
+        {
+          "local": "mi",
+          "imported": "eG"
+        },
+        {
+          "local": "gi",
+          "imported": "fm"
+        },
+        {
+          "local": "ks",
+          "imported": "aR"
+        },
+        {
+          "local": "af",
+          "imported": "bw"
+        },
+        {
+          "local": "_o",
+          "imported": "by"
+        },
+        {
+          "local": "lf",
+          "imported": "hb"
+        },
+        {
+          "local": "Bd",
+          "imported": "aC"
+        },
+        {
+          "local": "zd",
+          "imported": "dj"
+        },
+        {
+          "local": "he",
+          "imported": "w"
+        },
+        {
+          "local": "cf",
+          "imported": "d2"
+        },
+        {
+          "local": "qd",
+          "imported": "d6"
+        },
+        {
+          "local": "Vd",
+          "imported": "d7"
+        },
+        {
+          "local": "$d",
+          "imported": "E"
+        },
+        {
+          "local": "Kd",
+          "imported": "hc"
+        },
+        {
+          "local": "df",
+          "imported": "aT"
+        },
+        {
+          "local": "Hd",
+          "imported": "fH"
+        },
+        {
+          "local": "uf",
+          "imported": "cE"
+        },
+        {
+          "local": "Ud",
+          "imported": "S"
+        },
+        {
+          "local": "yo",
+          "imported": "j"
+        },
+        {
+          "local": "pf",
+          "imported": "hd"
+        },
+        {
+          "local": "ff",
+          "imported": "he"
+        },
+        {
+          "local": "mf",
+          "imported": "bf"
+        },
+        {
+          "local": "Gd",
+          "imported": "cM"
+        },
+        {
+          "local": "ga",
+          "imported": "hf"
+        },
+        {
+          "local": "gf",
+          "imported": "hg"
+        },
+        {
+          "local": "hf",
+          "imported": "hh"
+        },
+        {
+          "local": "we",
+          "imported": "fp"
+        },
+        {
+          "local": "Ke",
+          "imported": "d5"
+        },
+        {
+          "local": "ot",
+          "imported": "fj"
+        },
+        {
+          "local": "xf",
+          "imported": "es"
+        },
+        {
+          "local": "hi",
+          "imported": "hi"
+        },
+        {
+          "local": "Cs",
+          "imported": "hj"
+        },
+        {
+          "local": "bf",
+          "imported": "hk"
+        },
+        {
+          "local": "yf",
+          "imported": "hl"
+        },
+        {
+          "local": "vf",
+          "imported": "dO"
+        },
+        {
+          "local": "Yd",
+          "imported": "hm"
+        },
+        {
+          "local": "ha",
+          "imported": "ez"
+        },
+        {
+          "local": "mt",
+          "imported": "u"
+        },
+        {
+          "local": "jf",
+          "imported": "gJ"
+        },
+        {
+          "local": "us",
+          "imported": "fT"
+        },
+        {
+          "local": "xi",
+          "imported": "ci"
+        },
+        {
+          "local": "Es",
+          "imported": "cl"
+        },
+        {
+          "local": "Ts",
+          "imported": "dN"
+        },
+        {
+          "local": "Ka",
+          "imported": "eq"
+        },
+        {
+          "local": "xa",
+          "imported": "er"
+        },
+        {
+          "local": "wf",
+          "imported": "A"
+        },
+        {
+          "local": "Sf",
+          "imported": "aX"
+        },
+        {
+          "local": "_f",
+          "imported": "$"
+        },
+        {
+          "local": "bi",
+          "imported": "hn"
+        },
+        {
+          "local": "Nt",
+          "imported": "ho"
+        },
+        {
+          "local": "zt",
+          "imported": "hp"
+        },
+        {
+          "local": "pn",
+          "imported": "hq"
+        },
+        {
+          "local": "Ha",
+          "imported": "hr"
+        },
+        {
+          "local": "Lt",
+          "imported": "hs"
+        },
+        {
+          "local": "xn",
+          "imported": "ht"
+        },
+        {
+          "local": "ba",
+          "imported": "hu"
+        },
+        {
+          "local": "ko",
+          "imported": "hv"
+        },
+        {
+          "local": "Os",
+          "imported": "hw"
+        },
+        {
+          "local": "kf",
+          "imported": "hx"
+        },
+        {
+          "local": "Xd",
+          "imported": "hy"
+        },
+        {
+          "local": "Cf",
+          "imported": "hz"
+        },
+        {
+          "local": "ya",
+          "imported": "hA"
+        },
+        {
+          "local": "va",
+          "imported": "hB"
+        },
+        {
+          "local": "rr",
+          "imported": "hC"
+        },
+        {
+          "local": "Jd",
+          "imported": "hD"
+        },
+        {
+          "local": "Ef",
+          "imported": "hE"
+        },
+        {
+          "local": "Tf",
+          "imported": "hF"
+        },
+        {
+          "local": "Of",
+          "imported": "hG"
+        },
+        {
+          "local": "Ua",
+          "imported": "hH"
+        },
+        {
+          "local": "qe",
+          "imported": "hI"
+        },
+        {
+          "local": "Gt",
+          "imported": "f9"
+        },
+        {
+          "local": "At",
+          "imported": "hJ"
+        },
+        {
+          "local": "yr",
+          "imported": "fU"
+        },
+        {
+          "local": "Ga",
+          "imported": "hK"
+        },
+        {
+          "local": "Ya",
+          "imported": "hL"
+        },
+        {
+          "local": "Ue",
+          "imported": "hM"
+        },
+        {
+          "local": "If",
+          "imported": "hN"
+        },
+        {
+          "local": "Pf",
+          "imported": "hO"
+        },
+        {
+          "local": "Rf",
+          "imported": "hP"
+        },
+        {
+          "local": "yi",
+          "imported": "hQ"
+        },
+        {
+          "local": "Af",
+          "imported": "hR"
+        },
+        {
+          "local": "Zd",
+          "imported": "gg"
+        },
+        {
+          "local": "Df",
+          "imported": "hS"
+        },
+        {
+          "local": "Ff",
+          "imported": "hT"
+        },
+        {
+          "local": "dn",
+          "imported": "aB"
+        },
+        {
+          "local": "Mf",
+          "imported": "aY"
+        },
+        {
+          "local": "Qd",
+          "imported": "aF"
+        },
+        {
+          "local": "Nf",
+          "imported": "dh"
+        },
+        {
+          "local": "eu",
+          "imported": "a1"
+        },
+        {
+          "local": "Lf",
+          "imported": "hU"
+        },
+        {
+          "local": "Wf",
+          "imported": "hV"
+        },
+        {
+          "local": "Bf",
+          "imported": "hW"
+        },
+        {
+          "local": "zf",
+          "imported": "hX"
+        },
+        {
+          "local": "qf",
+          "imported": "ey"
+        },
+        {
+          "local": "ir",
+          "imported": "i"
+        },
+        {
+          "local": "Xa",
+          "imported": "gb"
+        },
+        {
+          "local": "Co",
+          "imported": "z"
+        },
+        {
+          "local": "An",
+          "imported": "ds"
+        },
+        {
+          "local": "Vf",
+          "imported": "hY"
+        },
+        {
+          "local": "$f",
+          "imported": "hZ"
+        },
+        {
+          "local": "Kf",
+          "imported": "W"
+        },
+        {
+          "local": "Hf",
+          "imported": "h_"
+        },
+        {
+          "local": "Uf",
+          "imported": "h$"
+        },
+        {
+          "local": "Gf",
+          "imported": "i0"
+        },
+        {
+          "local": "tu",
+          "imported": "G"
+        },
+        {
+          "local": "Yf",
+          "imported": "fN"
+        },
+        {
+          "local": "Xf",
+          "imported": "df"
+        },
+        {
+          "local": "Jf",
+          "imported": "i1"
+        },
+        {
+          "local": "Zf",
+          "imported": "cT"
+        },
+        {
+          "local": "Qf",
+          "imported": "aD"
+        },
+        {
+          "local": "vr",
+          "imported": "cH"
+        },
+        {
+          "local": "em",
+          "imported": "o"
+        },
+        {
+          "local": "nu",
+          "imported": "i2"
+        },
+        {
+          "local": "tm",
+          "imported": "i3"
+        },
+        {
+          "local": "nm",
+          "imported": "bL"
+        },
+        {
+          "local": "om",
+          "imported": "i4"
+        },
+        {
+          "local": "ou",
+          "imported": "c0"
+        },
+        {
+          "local": "jr",
+          "imported": "b_"
+        },
+        {
+          "local": "sm",
+          "imported": "i5"
+        },
+        {
+          "local": "Ye",
+          "imported": "i6"
+        },
+        {
+          "local": "Xe",
+          "imported": "i7"
+        },
+        {
+          "local": "rm",
+          "imported": "ex"
+        },
+        {
+          "local": "im",
+          "imported": "i8"
+        },
+        {
+          "local": "am",
+          "imported": "e5"
+        },
+        {
+          "local": "vi",
+          "imported": "c7"
+        },
+        {
+          "local": "Ja",
+          "imported": "c1"
+        },
+        {
+          "local": "lm",
+          "imported": "i9"
+        },
+        {
+          "local": "cm",
+          "imported": "ej"
+        },
+        {
+          "local": "dm",
+          "imported": "bW"
+        },
+        {
+          "local": "um",
+          "imported": "ek"
+        },
+        {
+          "local": "su",
+          "imported": "fw"
+        },
+        {
+          "local": "pm",
+          "imported": "ia"
+        },
+        {
+          "local": "ru",
+          "imported": "ib"
+        },
+        {
+          "local": "iu",
+          "imported": "gK"
+        },
+        {
+          "local": "ps",
+          "imported": "ic"
+        },
+        {
+          "local": "fm",
+          "imported": "bS"
+        },
+        {
+          "local": "mm",
+          "imported": "id"
+        },
+        {
+          "local": "fs",
+          "imported": "ie"
+        },
+        {
+          "local": "ln",
+          "imported": "ig"
+        },
+        {
+          "local": "Za",
+          "imported": "ih"
+        },
+        {
+          "local": "oo",
+          "imported": "cC"
+        },
+        {
+          "local": "gm",
+          "imported": "fB"
+        },
+        {
+          "local": "ji",
+          "imported": "fC"
+        },
+        {
+          "local": "hm",
+          "imported": "U"
+        },
+        {
+          "local": "xm",
+          "imported": "fI"
+        },
+        {
+          "local": "wr",
+          "imported": "a_"
+        },
+        {
+          "local": "bm",
+          "imported": "ao"
+        },
+        {
+          "local": "ym",
+          "imported": "fF"
+        },
+        {
+          "local": "vm",
+          "imported": "b7"
+        },
+        {
+          "local": "jm",
+          "imported": "fG"
+        },
+        {
+          "local": "wm",
+          "imported": "ii"
+        },
+        {
+          "local": "Sm",
+          "imported": "aG"
+        },
+        {
+          "local": "_m",
+          "imported": "b3"
+        },
+        {
+          "local": "Sr",
+          "imported": "fE"
+        },
+        {
+          "local": "km",
+          "imported": "ij"
+        },
+        {
+          "local": "Cm",
+          "imported": "ik"
+        },
+        {
+          "local": "wi",
+          "imported": "e7"
+        },
+        {
+          "local": "Em",
+          "imported": "aI"
+        },
+        {
+          "local": "Tm",
+          "imported": "il"
+        },
+        {
+          "local": "Om",
+          "imported": "bi"
+        },
+        {
+          "local": "au",
+          "imported": "M"
+        },
+        {
+          "local": "Im",
+          "imported": "e0"
+        },
+        {
+          "local": "Pm",
+          "imported": "fY"
+        },
+        {
+          "local": "Rm",
+          "imported": "e9"
+        },
+        {
+          "local": "Am",
+          "imported": "im"
+        },
+        {
+          "local": "Dm",
+          "imported": "e8"
+        },
+        {
+          "local": "Fm",
+          "imported": "bU"
+        },
+        {
+          "local": "Mm",
+          "imported": "fq"
+        },
+        {
+          "local": "Nm",
+          "imported": "fr"
+        },
+        {
+          "local": "Lm",
+          "imported": "fs"
+        },
+        {
+          "local": "Wm",
+          "imported": "ft"
+        },
+        {
+          "local": "ar",
+          "imported": "gT"
+        },
+        {
+          "local": "Bm",
+          "imported": "io"
+        },
+        {
+          "local": "zm",
+          "imported": "ip"
+        },
+        {
+          "local": "qm",
+          "imported": "gv"
+        },
+        {
+          "local": "so",
+          "imported": "iq"
+        },
+        {
+          "local": "ro",
+          "imported": "ir"
+        },
+        {
+          "local": "io",
+          "imported": "is"
+        },
+        {
+          "local": "_r",
+          "imported": "it"
+        },
+        {
+          "local": "Vm",
+          "imported": "iu"
+        },
+        {
+          "local": "Qa",
+          "imported": "iv"
+        },
+        {
+          "local": "$m",
+          "imported": "iw"
+        },
+        {
+          "local": "el",
+          "imported": "ix"
+        },
+        {
+          "local": "Km",
+          "imported": "iy"
+        },
+        {
+          "local": "Hm",
+          "imported": "e_"
+        },
+        {
+          "local": "tl",
+          "imported": "iz"
+        },
+        {
+          "local": "Um",
+          "imported": "iA"
+        },
+        {
+          "local": "Is",
+          "imported": "eY"
+        },
+        {
+          "local": "Gm",
+          "imported": "g7"
+        },
+        {
+          "local": "Ym",
+          "imported": "iB"
+        },
+        {
+          "local": "nl",
+          "imported": "iC"
+        },
+        {
+          "local": "Xm",
+          "imported": "iD"
+        },
+        {
+          "local": "kr",
+          "imported": "iE"
+        },
+        {
+          "local": "ol",
+          "imported": "iF"
+        },
+        {
+          "local": "Cr",
+          "imported": "iG"
+        },
+        {
+          "local": "sl",
+          "imported": "iH"
+        },
+        {
+          "local": "Jm",
+          "imported": "iI"
+        },
+        {
+          "local": "lu",
+          "imported": "iJ"
+        },
+        {
+          "local": "Zm",
+          "imported": "iK"
+        },
+        {
+          "local": "Si",
+          "imported": "iL"
+        },
+        {
+          "local": "_i",
+          "imported": "iM"
+        },
+        {
+          "local": "Qm",
+          "imported": "gz"
+        },
+        {
+          "local": "eg",
+          "imported": "iN"
+        },
+        {
+          "local": "tg",
+          "imported": "iO"
+        },
+        {
+          "local": "ng",
+          "imported": "iP"
+        },
+        {
+          "local": "og",
+          "imported": "iQ"
+        },
+        {
+          "local": "sg",
+          "imported": "iR"
+        },
+        {
+          "local": "rg",
+          "imported": "fi"
+        },
+        {
+          "local": "ig",
+          "imported": "gB"
+        },
+        {
+          "local": "ag",
+          "imported": "iS"
+        },
+        {
+          "local": "Er",
+          "imported": "ff"
+        },
+        {
+          "local": "lg",
+          "imported": "c6"
+        },
+        {
+          "local": "cg",
+          "imported": "iT"
+        },
+        {
+          "local": "dg",
+          "imported": "iU"
+        },
+        {
+          "local": "ug",
+          "imported": "iV"
+        },
+        {
+          "local": "cu",
+          "imported": "iW"
+        },
+        {
+          "local": "du",
+          "imported": "iX"
+        },
+        {
+          "local": "pg",
+          "imported": "iY"
+        },
+        {
+          "local": "fg",
+          "imported": "iZ"
+        },
+        {
+          "local": "mg",
+          "imported": "gF"
+        },
+        {
+          "local": "gg",
+          "imported": "gI"
+        },
+        {
+          "local": "hg",
+          "imported": "g3"
+        },
+        {
+          "local": "xg",
+          "imported": "ax"
+        },
+        {
+          "local": "bg",
+          "imported": "i_"
+        },
+        {
+          "local": "yg",
+          "imported": "i$"
+        },
+        {
+          "local": "vg",
+          "imported": "j0"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./InlineErrorAlert-D9ICJPt7.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "jg",
+          "imported": "I"
+        }
+      ],
+      "resolved": "assets/vendor.d/InlineErrorAlert-D9ICJPt7.js"
+    },
+    {
+      "specifier": "./bootstrapController-BMV_i07c.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "wg",
+          "imported": "B"
+        },
+        {
+          "local": "rl",
+          "imported": "M"
+        },
+        {
+          "local": "Sg",
+          "imported": "z"
+        },
+        {
+          "local": "ao",
+          "imported": "C"
+        },
+        {
+          "local": "_g",
+          "imported": "D"
+        }
+      ],
+      "resolved": "assets/vendor.d/bootstrapController-BMV_i07c.js"
+    },
+    {
+      "specifier": "./customerMetaStore-Bj9KdRyn.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Fe",
+          "imported": "c"
+        },
+        {
+          "local": "il",
+          "imported": "r"
+        },
+        {
+          "local": "kg",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/customerMetaStore-Bj9KdRyn.js"
+    },
+    {
+      "specifier": "./types-B1OAKh4b.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ki",
+          "imported": "C"
+        },
+        {
+          "local": "Ci",
+          "imported": "a"
+        },
+        {
+          "local": "al",
+          "imported": "c"
+        },
+        {
+          "local": "Ei",
+          "imported": "F"
+        }
+      ],
+      "resolved": "assets/vendor.d/types-B1OAKh4b.js"
+    },
+    {
+      "specifier": "./DealFormDialog-Dw6MXJZk.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ll",
+          "imported": "t"
+        },
+        {
+          "local": "Tr",
+          "imported": "a"
+        },
+        {
+          "local": "Ti",
+          "imported": "i"
+        },
+        {
+          "local": "Cg",
+          "imported": "b"
+        },
+        {
+          "local": "Eg",
+          "imported": "d"
+        },
+        {
+          "local": "Tg",
+          "imported": "s"
+        },
+        {
+          "local": "cl",
+          "imported": "o"
+        },
+        {
+          "local": "Og",
+          "imported": "O"
+        },
+        {
+          "local": "Ig",
+          "imported": "u"
+        },
+        {
+          "local": "Pg",
+          "imported": "D"
+        }
+      ],
+      "resolved": "assets/vendor.d/DealFormDialog-Dw6MXJZk.js"
+    },
+    {
+      "specifier": "./BoardPostDetail-CniIF2a7.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "dl",
+          "imported": "i"
+        },
+        {
+          "local": "Oi",
+          "imported": "S"
+        },
+        {
+          "local": "Rg",
+          "imported": "a"
+        },
+        {
+          "local": "Ii",
+          "imported": "b"
+        },
+        {
+          "local": "ul",
+          "imported": "c"
+        },
+        {
+          "local": "pl",
+          "imported": "C"
+        },
+        {
+          "local": "Ag",
+          "imported": "u"
+        },
+        {
+          "local": "Dg",
+          "imported": "d"
+        },
+        {
+          "local": "Fg",
+          "imported": "D"
+        },
+        {
+          "local": "oe",
+          "imported": "p"
+        },
+        {
+          "local": "Mg",
+          "imported": "e"
+        },
+        {
+          "local": "Pi",
+          "imported": "s"
+        },
+        {
+          "local": "Or",
+          "imported": "M"
+        },
+        {
+          "local": "Ir",
+          "imported": "h"
+        },
+        {
+          "local": "Ng",
+          "imported": "f"
+        },
+        {
+          "local": "fl",
+          "imported": "r"
+        },
+        {
+          "local": "Lg",
+          "imported": "g"
+        },
+        {
+          "local": "Wg",
+          "imported": "j"
+        },
+        {
+          "local": "Bg",
+          "imported": "k"
+        },
+        {
+          "local": "zg",
+          "imported": "l"
+        },
+        {
+          "local": "qg",
+          "imported": "B"
+        },
+        {
+          "local": "Vg",
+          "imported": "F"
+        }
+      ],
+      "resolved": "assets/vendor.d/BoardPostDetail-CniIF2a7.js"
+    },
+    {
+      "specifier": "./teamMembers-0yRsmqL6.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "lr",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/teamMembers-0yRsmqL6.js"
+    },
+    {
+      "specifier": "./mobileBandDialog-C3M4tWPv.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "$g",
+          "imported": "C"
+        },
+        {
+          "local": "ml",
+          "imported": "u"
+        },
+        {
+          "local": "gl",
+          "imported": "L"
+        },
+        {
+          "local": "ja",
+          "imported": "S"
+        },
+        {
+          "local": "Kg",
+          "imported": "j"
+        },
+        {
+          "local": "Ri",
+          "imported": "b"
+        },
+        {
+          "local": "Hg",
+          "imported": "o"
+        },
+        {
+          "local": "Ug",
+          "imported": "l"
+        },
+        {
+          "local": "Gg",
+          "imported": "d"
+        },
+        {
+          "local": "Yg",
+          "imported": "m"
+        },
+        {
+          "local": "Xg",
+          "imported": "D"
+        },
+        {
+          "local": "hl",
+          "imported": "H"
+        },
+        {
+          "local": "Jg",
+          "imported": "n"
+        },
+        {
+          "local": "Zg",
+          "imported": "c"
+        },
+        {
+          "local": "uu",
+          "imported": "g"
+        },
+        {
+          "local": "pu",
+          "imported": "i"
+        }
+      ],
+      "resolved": "assets/vendor.d/mobileBandDialog-C3M4tWPv.js"
+    },
+    {
+      "specifier": "./PhoneMissedOutlined-Cf-_1h4d.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Qg",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/PhoneMissedOutlined-Cf-_1h4d.js"
+    },
+    {
+      "specifier": "./TableChartOutlined-CH8ZYsPl.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "eh",
+          "imported": "C"
+        },
+        {
+          "local": "xl",
+          "imported": "T"
+        },
+        {
+          "local": "th",
+          "imported": "P"
+        },
+        {
+          "local": "nh",
+          "imported": "A"
+        }
+      ],
+      "resolved": "assets/vendor.d/TableChartOutlined-CH8ZYsPl.js"
+    },
+    {
+      "specifier": "./customerDialogActions-CaaeVzAY.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "fu",
+          "imported": "s"
+        },
+        {
+          "local": "oh",
+          "imported": "o"
+        }
+      ],
+      "resolved": "assets/vendor.d/customerDialogActions-CaaeVzAY.js"
+    },
+    {
+      "specifier": "./ConsultHistoryPanel-X3hMdgAl.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "sh",
+          "imported": "u"
+        },
+        {
+          "local": "rh",
+          "imported": "C"
+        }
+      ],
+      "resolved": "assets/vendor.d/ConsultHistoryPanel-X3hMdgAl.js"
+    },
+    {
+      "specifier": "./CustomerFormDialog-pXADTEX2.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ih",
+          "imported": "u"
+        },
+        {
+          "local": "ah",
+          "imported": "C"
+        }
+      ],
+      "resolved": "assets/vendor.d/CustomerFormDialog-pXADTEX2.js"
+    },
+    {
+      "specifier": "./bookingApi-DC6gLfSO.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "vt",
+          "imported": "b"
+        },
+        {
+          "local": "mu",
+          "imported": "u"
+        },
+        {
+          "local": "lh",
+          "imported": "a"
+        }
+      ],
+      "resolved": "assets/vendor.d/bookingApi-DC6gLfSO.js"
+    },
+    {
+      "specifier": "./types-CVXtrYKe.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "gu",
+          "imported": "D"
+        },
+        {
+          "local": "ch",
+          "imported": "a"
+        },
+        {
+          "local": "dh",
+          "imported": "b"
+        },
+        {
+          "local": "uh",
+          "imported": "c"
+        },
+        {
+          "local": "Pr",
+          "imported": "w"
+        },
+        {
+          "local": "ph",
+          "imported": "d"
+        },
+        {
+          "local": "bl",
+          "imported": "B"
+        },
+        {
+          "local": "Rr",
+          "imported": "e"
+        },
+        {
+          "local": "lo",
+          "imported": "f"
+        },
+        {
+          "local": "fh",
+          "imported": "g"
+        },
+        {
+          "local": "mh",
+          "imported": "h"
+        },
+        {
+          "local": "gh",
+          "imported": "i"
+        }
+      ],
+      "resolved": "assets/vendor.d/types-CVXtrYKe.js"
+    },
+    {
+      "specifier": "./AttendanceParts-mHb1cK0h.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "fe",
+          "imported": "K"
+        },
+        {
+          "local": "hh",
+          "imported": "a"
+        }
+      ],
+      "resolved": "assets/vendor.d/AttendanceParts-mHb1cK0h.js"
+    },
+    {
+      "specifier": "./Trans-CU1vl0TZ.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "te",
+          "imported": "T"
+        }
+      ],
+      "resolved": "assets/vendor.d/Trans-CU1vl0TZ.js"
+    },
+    {
+      "specifier": "./browser-FfRve9p6.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "xh",
+          "imported": "Q"
+        }
+      ],
+      "resolved": "assets/vendor.d/browser-FfRve9p6.js"
+    },
+    {
+      "specifier": "./BusinessCenterOutlined-gZ8sR_r3.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "bh",
+          "imported": "A"
+        }
+      ],
+      "resolved": "assets/vendor.d/BusinessCenterOutlined-gZ8sR_r3.js"
+    },
+    {
+      "specifier": "./ScheduleOutlined-C_7j7r9e.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "yh",
+          "imported": "S"
+        }
+      ],
+      "resolved": "assets/vendor.d/ScheduleOutlined-C_7j7r9e.js"
+    },
+    {
+      "specifier": "./EventBusyOutlined-DqcCaRMs.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "vh",
+          "imported": "E"
+        }
+      ],
+      "resolved": "assets/vendor.d/EventBusyOutlined-DqcCaRMs.js"
+    },
+    {
+      "specifier": "./LanguageOutlined-dNJSO7u2.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "jh",
+          "imported": "L"
+        }
+      ],
+      "resolved": "assets/vendor.d/LanguageOutlined-dNJSO7u2.js"
+    },
+    {
+      "specifier": "./types-CVhETUvu.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "vo",
+          "imported": "B"
+        },
+        {
+          "local": "yl",
+          "imported": "E"
+        },
+        {
+          "local": "vl",
+          "imported": "a"
+        },
+        {
+          "local": "Ko",
+          "imported": "G"
+        },
+        {
+          "local": "jl",
+          "imported": "M"
+        },
+        {
+          "local": "wl",
+          "imported": "c"
+        },
+        {
+          "local": "Sl",
+          "imported": "d"
+        }
+      ],
+      "resolved": "assets/vendor.d/types-CVhETUvu.js"
+    },
+    {
+      "specifier": "./resolveAssetPreviewSrc-CLlbOCzq.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "_l",
+          "imported": "r"
+        }
+      ],
+      "resolved": "assets/vendor.d/resolveAssetPreviewSrc-CLlbOCzq.js"
+    },
+    {
+      "specifier": "./OptionToggleGroup-Cvm2wRyq.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "hu",
+          "imported": "O"
+        }
+      ],
+      "resolved": "assets/vendor.d/OptionToggleGroup-Cvm2wRyq.js"
+    },
+    {
+      "specifier": "./supportCenterApi-KQJIqJUd.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "wh",
+          "imported": "s"
+        }
+      ],
+      "resolved": "assets/vendor.d/supportCenterApi-KQJIqJUd.js"
+    },
+    {
+      "specifier": "./FileUploadBox-crZW1mG0.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "xu",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/FileUploadBox-crZW1mG0.js"
+    },
+    {
+      "specifier": "./ReferenceList-mhfbKusm.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Sh",
+          "imported": "b"
+        },
+        {
+          "local": "bu",
+          "imported": "f"
+        }
+      ],
+      "resolved": "assets/vendor.d/ReferenceList-mhfbKusm.js"
+    },
+    {
+      "specifier": "./approvalDetailHost-CFvt90Au.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "yu",
+          "imported": "u"
+        },
+        {
+          "local": "_h",
+          "imported": "c"
+        },
+        {
+          "local": "vu",
+          "imported": "o"
+        }
+      ],
+      "resolved": "assets/vendor.d/approvalDetailHost-CFvt90Au.js"
+    },
+    {
+      "specifier": "./ApprovalDetailDialog-v7PUkzWr.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "kh",
+          "imported": "A"
+        }
+      ],
+      "resolved": "assets/vendor.d/ApprovalDetailDialog-v7PUkzWr.js"
+    },
+    {
+      "specifier": "./taskDetailHost-C45bt_tL.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ju",
+          "imported": "o"
+        },
+        {
+          "local": "Ch",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/taskDetailHost-C45bt_tL.js"
+    },
+    {
+      "specifier": "./LinkOff-BeDdBoha.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Eh",
+          "imported": "L"
+        }
+      ],
+      "resolved": "assets/vendor.d/LinkOff-BeDdBoha.js"
+    },
+    {
+      "specifier": "./index.esm-gjRImBGa.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Th",
+          "imported": "f"
+        }
+      ],
+      "resolved": "assets/vendor.d/index.esm-gjRImBGa.js"
+    },
+    {
+      "specifier": "./DynamicFeedOutlined-CALXdaS2.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Oh",
+          "imported": "D"
+        }
+      ],
+      "resolved": "assets/vendor.d/DynamicFeedOutlined-CALXdaS2.js"
+    },
+    {
+      "specifier": "./ViewWeekOutlined-Dme8hz7e.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "kl",
+          "imported": "V"
+        }
+      ],
+      "resolved": "assets/vendor.d/ViewWeekOutlined-Dme8hz7e.js"
+    },
+    {
+      "specifier": "./ViewTimelineOutlined-CVOcikTc.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ih",
+          "imported": "V"
+        }
+      ],
+      "resolved": "assets/vendor.d/ViewTimelineOutlined-CVOcikTc.js"
+    },
+    {
+      "specifier": "./WorkspacesOutlined-DwFzV-9Z.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ph",
+          "imported": "W"
+        }
+      ],
+      "resolved": "assets/vendor.d/WorkspacesOutlined-DwFzV-9Z.js"
+    },
+    {
+      "specifier": "./EventRepeatOutlined-BzT6rPrF.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Rh",
+          "imported": "E"
+        }
+      ],
+      "resolved": "assets/vendor.d/EventRepeatOutlined-BzT6rPrF.js"
+    },
+    {
+      "specifier": "./EditCalendarOutlined-k4e0HIS9.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ah",
+          "imported": "E"
+        }
+      ],
+      "resolved": "assets/vendor.d/EditCalendarOutlined-k4e0HIS9.js"
+    },
+    {
+      "specifier": "./Link-CVsHTXRQ.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ai",
+          "imported": "L"
+        }
+      ],
+      "resolved": "assets/vendor.d/Link-CVsHTXRQ.js"
+    },
+    {
+      "specifier": "./orgTree-Dh5HFjBo.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Dh",
+          "imported": "u"
+        },
+        {
+          "local": "Fh",
+          "imported": "f"
+        }
+      ],
+      "resolved": "assets/vendor.d/orgTree-Dh5HFjBo.js"
+    },
+    {
+      "specifier": "./ChatCallButtons-TGIgJ8cF.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Mh",
+          "imported": "P"
+        },
+        {
+          "local": "Nh",
+          "imported": "a"
+        }
+      ],
+      "resolved": "assets/vendor.d/ChatCallButtons-TGIgJ8cF.js"
+    },
+    {
+      "specifier": "./EmployeeFormDialog-BHKK47Dg.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Lh",
+          "imported": "a"
+        },
+        {
+          "local": "Wh",
+          "imported": "I"
+        },
+        {
+          "local": "Eo",
+          "imported": "j"
+        },
+        {
+          "local": "Ar",
+          "imported": "P"
+        },
+        {
+          "local": "at",
+          "imported": "T"
+        },
+        {
+          "local": "Bh",
+          "imported": "i"
+        },
+        {
+          "local": "zh",
+          "imported": "g"
+        },
+        {
+          "local": "Cl",
+          "imported": "D"
+        },
+        {
+          "local": "co",
+          "imported": "S"
+        },
+        {
+          "local": "Ho",
+          "imported": "t"
+        },
+        {
+          "local": "Dr",
+          "imported": "N"
+        },
+        {
+          "local": "El",
+          "imported": "h"
+        },
+        {
+          "local": "qh",
+          "imported": "k"
+        },
+        {
+          "local": "Vh",
+          "imported": "L"
+        },
+        {
+          "local": "$h",
+          "imported": "l"
+        }
+      ],
+      "resolved": "assets/vendor.d/EmployeeFormDialog-BHKK47Dg.js"
+    },
+    {
+      "specifier": "./EmployeeSelectDialog-Cdnxeoz9.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "wu",
+          "imported": "u"
+        },
+        {
+          "local": "Kh",
+          "imported": "E"
+        }
+      ],
+      "resolved": "assets/vendor.d/EmployeeSelectDialog-Cdnxeoz9.js"
+    },
+    {
+      "specifier": "./MeetingRecordScreen-XaBBkFFb.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Hh",
+          "imported": "u"
+        },
+        {
+          "local": "Uh",
+          "imported": "M"
+        },
+        {
+          "local": "Gh",
+          "imported": "a"
+        }
+      ],
+      "resolved": "assets/vendor.d/MeetingRecordScreen-XaBBkFFb.js"
+    },
+    {
+      "specifier": "./meetingCalendar-_jcQJ1qd.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Su",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/meetingCalendar-_jcQJ1qd.js"
+    },
+    {
+      "specifier": "./boardPostHost-qkMGoKtn.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "_u",
+          "imported": "u"
+        },
+        {
+          "local": "ku",
+          "imported": "o"
+        }
+      ],
+      "resolved": "assets/vendor.d/boardPostHost-qkMGoKtn.js"
+    },
+    {
+      "specifier": "./chatRoomHost-ImRyH_Na.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Cu",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/chatRoomHost-ImRyH_Na.js"
+    },
+    {
+      "specifier": "./ChatMemberPanel-DmXFJG7n.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Yh",
+          "imported": "a"
+        }
+      ],
+      "resolved": "assets/vendor.d/ChatMemberPanel-DmXFJG7n.js"
+    },
+    {
+      "specifier": "./aliasStore-DiN6Kp-5.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Eu",
+          "imported": "c"
+        },
+        {
+          "local": "Xh",
+          "imported": "d"
+        },
+        {
+          "local": "Jh",
+          "imported": "e"
+        },
+        {
+          "local": "Zh",
+          "imported": "f"
+        },
+        {
+          "local": "Qh",
+          "imported": "g"
+        },
+        {
+          "local": "Di",
+          "imported": "R"
+        },
+        {
+          "local": "ex",
+          "imported": "r"
+        },
+        {
+          "local": "Tl",
+          "imported": "h"
+        },
+        {
+          "local": "tx",
+          "imported": "i"
+        }
+      ],
+      "resolved": "assets/vendor.d/aliasStore-DiN6Kp-5.js"
+    },
+    {
+      "specifier": "./ChatRoomView-DTjnT2W1.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "wa",
+          "imported": "C"
+        },
+        {
+          "local": "Tu",
+          "imported": "r"
+        },
+        {
+          "local": "nx",
+          "imported": "a"
+        },
+        {
+          "local": "ox",
+          "imported": "b"
+        },
+        {
+          "local": "Ol",
+          "imported": "i"
+        }
+      ],
+      "resolved": "assets/vendor.d/ChatRoomView-DTjnT2W1.js"
+    },
+    {
+      "specifier": "./callStore-DH1_RYeP.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ho",
+          "imported": "p"
+        },
+        {
+          "local": "sx",
+          "imported": "u"
+        },
+        {
+          "local": "rx",
+          "imported": "b"
+        },
+        {
+          "local": "Il",
+          "imported": "s"
+        },
+        {
+          "local": "ix",
+          "imported": "d"
+        },
+        {
+          "local": "ax",
+          "imported": "l"
+        },
+        {
+          "local": "lx",
+          "imported": "a"
+        },
+        {
+          "local": "cx",
+          "imported": "c"
+        },
+        {
+          "local": "dx",
+          "imported": "e"
+        },
+        {
+          "local": "ux",
+          "imported": "f"
+        }
+      ],
+      "resolved": "assets/vendor.d/callStore-DH1_RYeP.js"
+    },
+    {
+      "specifier": "./MeetRoomUI-B9KJeSBQ.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ou",
+          "imported": "u"
+        },
+        {
+          "local": "px",
+          "imported": "F"
+        },
+        {
+          "local": "Pl",
+          "imported": "P"
+        },
+        {
+          "local": "fx",
+          "imported": "M"
+        },
+        {
+          "local": "mx",
+          "imported": "V"
+        },
+        {
+          "local": "gx",
+          "imported": "a"
+        },
+        {
+          "local": "hx",
+          "imported": "b"
+        }
+      ],
+      "resolved": "assets/vendor.d/MeetRoomUI-B9KJeSBQ.js"
+    },
+    {
+      "specifier": "./PhoneOutlined-Bjc_e42S.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Bn",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/PhoneOutlined-Bjc_e42S.js"
+    },
+    {
+      "specifier": "./AccountAvatar-DtrhoS_d.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "xx",
+          "imported": "A"
+        }
+      ],
+      "resolved": "assets/vendor.d/AccountAvatar-DtrhoS_d.js"
+    },
+    {
+      "specifier": "./squircle-CQM8EvXm.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ps",
+          "imported": "S"
+        }
+      ],
+      "resolved": "assets/vendor.d/squircle-CQM8EvXm.js"
+    },
+    {
+      "specifier": "./ForwardMessageDialog-CaXjV13U.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "bx",
+          "imported": "a"
+        }
+      ],
+      "resolved": "assets/vendor.d/ForwardMessageDialog-CaXjV13U.js"
+    },
+    {
+      "specifier": "./videoLink-BfLN3LRj.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "yx",
+          "imported": "M"
+        }
+      ],
+      "resolved": "assets/vendor.d/videoLink-BfLN3LRj.js"
+    },
+    {
+      "specifier": "./profileApi-Btafs-pM.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "bn",
+          "imported": "p"
+        }
+      ],
+      "resolved": "assets/vendor.d/profileApi-Btafs-pM.js"
+    },
+    {
+      "specifier": "./documentViewerStore-BlSjH3BG.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "uo",
+          "imported": "f"
+        },
+        {
+          "local": "Uo",
+          "imported": "s"
+        },
+        {
+          "local": "vx",
+          "imported": "F"
+        },
+        {
+          "local": "jx",
+          "imported": "S"
+        }
+      ],
+      "resolved": "assets/vendor.d/documentViewerStore-BlSjH3BG.js"
+    },
+    {
+      "specifier": "./TuneOutlined-91VtWDYC.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "wx",
+          "imported": "T"
+        }
+      ],
+      "resolved": "assets/vendor.d/TuneOutlined-91VtWDYC.js"
+    },
+    {
+      "specifier": "./tableScrollbars-C9bhlJjO.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Sx",
+          "imported": "T"
+        }
+      ],
+      "resolved": "assets/vendor.d/tableScrollbars-C9bhlJjO.js"
+    },
+    {
+      "specifier": "./useTranscriptController-BdNi4rMO.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "_x",
+          "imported": "s"
+        },
+        {
+          "local": "kx",
+          "imported": "f"
+        }
+      ],
+      "resolved": "assets/vendor.d/useTranscriptController-BdNi4rMO.js"
+    },
+    {
+      "specifier": "./date_utils-CYURFdnX.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Rl",
+          "imported": "b"
+        }
+      ],
+      "resolved": "assets/vendor.d/date_utils-CYURFdnX.js"
+    },
+    {
+      "specifier": "./notificationsRealtime-BoFKeECQ.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Cx",
+          "imported": "a"
+        },
+        {
+          "local": "Ex",
+          "imported": "L"
+        },
+        {
+          "local": "Iu",
+          "imported": "b"
+        }
+      ],
+      "resolved": "assets/vendor.d/notificationsRealtime-BoFKeECQ.js"
+    },
+    {
+      "specifier": "./PickMenuDialog-BtpyEh4Z.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Pu",
+          "imported": "P"
+        },
+        {
+          "local": "Tx",
+          "imported": "L"
+        }
+      ],
+      "resolved": "assets/vendor.d/PickMenuDialog-BtpyEh4Z.js"
+    },
+    {
+      "specifier": "./notificationIntent-BMq5F2BF.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ox",
+          "imported": "s"
+        }
+      ],
+      "resolved": "assets/vendor.d/notificationIntent-BMq5F2BF.js"
+    },
+    {
+      "specifier": "./taskboxApi-BuYlRWHe.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ix",
+          "imported": "f"
+        },
+        {
+          "local": "Px",
+          "imported": "p"
+        }
+      ],
+      "resolved": "assets/vendor.d/taskboxApi-BuYlRWHe.js"
+    },
+    {
+      "specifier": "./attendanceMgmtApi-CC4DR0XR.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Al",
+          "imported": "i"
+        }
+      ],
+      "resolved": "assets/vendor.d/attendanceMgmtApi-CC4DR0XR.js"
+    },
+    {
+      "specifier": "./biometricController-CswvQnMD.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Rx",
+          "imported": "u"
+        },
+        {
+          "local": "Ax",
+          "imported": "a"
+        }
+      ],
+      "resolved": "assets/vendor.d/biometricController-CswvQnMD.js"
+    },
+    {
+      "specifier": "./EmployeeRecordsDialog-Cu-T1ysd.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Dx",
+          "imported": "E"
+        }
+      ],
+      "resolved": "assets/vendor.d/EmployeeRecordsDialog-Cu-T1ysd.js"
+    },
+    {
+      "specifier": "./socialLinkApi-BmpcVziz.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Go",
+          "imported": "s"
+        }
+      ],
+      "resolved": "assets/vendor.d/socialLinkApi-BmpcVziz.js"
+    },
+    {
+      "specifier": "./SocialProviderIcon-CfLZ-VWP.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Fr",
+          "imported": "S"
+        },
+        {
+          "local": "Fx",
+          "imported": "a"
+        }
+      ],
+      "resolved": "assets/vendor.d/SocialProviderIcon-CfLZ-VWP.js"
+    },
+    {
+      "specifier": "./ContactPhoneOutlined-DpFEzROB.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Mr",
+          "imported": "C"
+        }
+      ],
+      "resolved": "assets/vendor.d/ContactPhoneOutlined-DpFEzROB.js"
+    },
+    {
+      "specifier": "./PropertyFields-TuJTG5XK.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Mx",
+          "imported": "a"
+        },
+        {
+          "local": "Nx",
+          "imported": "I"
+        }
+      ],
+      "resolved": "assets/vendor.d/PropertyFields-TuJTG5XK.js"
+    },
+    {
+      "specifier": "./propertySections-Bwsl7OH-.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Lx",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/propertySections-Bwsl7OH-.js"
+    },
+    {
+      "specifier": "./AccountBoxOutlined-BxNEw8I0.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Wx",
+          "imported": "A"
+        }
+      ],
+      "resolved": "assets/vendor.d/AccountBoxOutlined-BxNEw8I0.js"
+    },
+    {
+      "specifier": "./AssignmentIndOutlined-DynSb23A.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Bx",
+          "imported": "A"
+        }
+      ],
+      "resolved": "assets/vendor.d/AssignmentIndOutlined-DynSb23A.js"
+    },
+    {
+      "specifier": "./WomanOutlined-CzlFMUkT.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "zx",
+          "imported": "a"
+        },
+        {
+          "local": "qx",
+          "imported": "W"
+        },
+        {
+          "local": "Dl",
+          "imported": "C"
+        },
+        {
+          "local": "Vx",
+          "imported": "b"
+        }
+      ],
+      "resolved": "assets/vendor.d/WomanOutlined-CzlFMUkT.js"
+    },
+    {
+      "specifier": "./PaidOutlined-Cy1uVjW3.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "$x",
+          "imported": "N"
+        },
+        {
+          "local": "Kx",
+          "imported": "M"
+        }
+      ],
+      "resolved": "assets/vendor.d/PaidOutlined-Cy1uVjW3.js"
+    },
+    {
+      "specifier": "./PhoneAndroidOutlined-DafU-b-9.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Hx",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/PhoneAndroidOutlined-DafU-b-9.js"
+    },
+    {
+      "specifier": "./WorkOutlineOutlined-D5AzVFs6.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ux",
+          "imported": "W"
+        }
+      ],
+      "resolved": "assets/vendor.d/WorkOutlineOutlined-D5AzVFs6.js"
+    },
+    {
+      "specifier": "./WithdrawDialog-BzZqPW3a.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Gx",
+          "imported": "u"
+        },
+        {
+          "local": "Yx",
+          "imported": "a"
+        }
+      ],
+      "resolved": "assets/vendor.d/WithdrawDialog-BzZqPW3a.js"
+    },
+    {
+      "specifier": "./employeeApi-CdGzOYcj.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Xx",
+          "imported": "t"
+        },
+        {
+          "local": "Jx",
+          "imported": "a"
+        },
+        {
+          "local": "Zx",
+          "imported": "b"
+        },
+        {
+          "local": "Qx",
+          "imported": "E"
+        }
+      ],
+      "resolved": "assets/vendor.d/employeeApi-CdGzOYcj.js"
+    },
+    {
+      "specifier": "./GridViewOutlined-C38fbc__.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Nr",
+          "imported": "G"
+        }
+      ],
+      "resolved": "assets/vendor.d/GridViewOutlined-C38fbc__.js"
+    },
+    {
+      "specifier": "./BookmarkBorder-D_zgRRjF.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Lr",
+          "imported": "B"
+        }
+      ],
+      "resolved": "assets/vendor.d/BookmarkBorder-D_zgRRjF.js"
+    },
+    {
+      "specifier": "./PageSlideDialog-D4MWDBvN.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "eb",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/PageSlideDialog-D4MWDBvN.js"
+    },
+    {
+      "specifier": "./PricingPage-HO2Ywdf6.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "tb",
+          "imported": "ImportDefaultSpecifier"
+        }
+      ],
+      "resolved": "assets/vendor.d/PricingPage-HO2Ywdf6.js"
+    },
+    {
+      "specifier": "./printSvgDocument-DHC1JJCG.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "nb",
+          "imported": "p"
+        }
+      ],
+      "resolved": "assets/vendor.d/printSvgDocument-DHC1JJCG.js"
+    },
+    {
+      "specifier": "./printDocChrome-BMZLbM8A.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ob",
+          "imported": "D"
+        },
+        {
+          "local": "sb",
+          "imported": "p"
+        },
+        {
+          "local": "rb",
+          "imported": "d"
+        },
+        {
+          "local": "Cn",
+          "imported": "e"
+        },
+        {
+          "local": "Yo",
+          "imported": "b"
+        },
+        {
+          "local": "Fl",
+          "imported": "a"
+        },
+        {
+          "local": "ib",
+          "imported": "c"
+        },
+        {
+          "local": "Ml",
+          "imported": "f"
+        },
+        {
+          "local": "Nl",
+          "imported": "m"
+        },
+        {
+          "local": "ab",
+          "imported": "w"
+        },
+        {
+          "local": "Ll",
+          "imported": "T"
+        },
+        {
+          "local": "lb",
+          "imported": "g"
+        }
+      ],
+      "resolved": "assets/vendor.d/printDocChrome-BMZLbM8A.js"
+    },
+    {
+      "specifier": "./companyInfo-Btqdi-Wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "En",
+          "imported": "c"
+        }
+      ],
+      "resolved": "assets/vendor.d/companyInfo-Btqdi-Wt.js"
+    },
+    {
+      "specifier": "./calendarKinds-BI5RuiF8.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "cb",
+          "imported": "a"
+        },
+        {
+          "local": "db",
+          "imported": "C"
+        },
+        {
+          "local": "ub",
+          "imported": "s"
+        },
+        {
+          "local": "pb",
+          "imported": "u"
+        },
+        {
+          "local": "fb",
+          "imported": "b"
+        }
+      ],
+      "resolved": "assets/vendor.d/calendarKinds-BI5RuiF8.js"
+    },
+    {
+      "specifier": "./CalendarMemoPanel-D3bG3c90.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ru",
+          "imported": "S"
+        },
+        {
+          "local": "mb",
+          "imported": "C"
+        }
+      ],
+      "resolved": "assets/vendor.d/CalendarMemoPanel-D3bG3c90.js"
+    },
+    {
+      "specifier": "./useHolidayNames-CGgpEQbF.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Wr",
+          "imported": "s"
+        },
+        {
+          "local": "gb",
+          "imported": "b"
+        },
+        {
+          "local": "hb",
+          "imported": "u"
+        },
+        {
+          "local": "xb",
+          "imported": "m"
+        },
+        {
+          "local": "bb",
+          "imported": "c"
+        },
+        {
+          "local": "Wl",
+          "imported": "a"
+        },
+        {
+          "local": "yb",
+          "imported": "w"
+        },
+        {
+          "local": "Bl",
+          "imported": "d"
+        },
+        {
+          "local": "zl",
+          "imported": "i"
+        },
+        {
+          "local": "ql",
+          "imported": "t"
+        }
+      ],
+      "resolved": "assets/vendor.d/useHolidayNames-CGgpEQbF.js"
+    },
+    {
+      "specifier": "./TaskCreateDrawerHost-D1Ult5fd.js",
+      "type": "dynamic",
+      "resolved": "assets/vendor.d/TaskCreateDrawerHost-D1Ult5fd.js"
+    },
+    {
+      "specifier": "./TaskDetailDrawerHost-DyqqQ0ys.js",
+      "type": "dynamic",
+      "resolved": "assets/vendor.d/TaskDetailDrawerHost-DyqqQ0ys.js"
+    },
+    {
+      "specifier": "./PostComposerHost-BJyRRhgg.js",
+      "type": "dynamic",
+      "resolved": "assets/vendor.d/PostComposerHost-BJyRRhgg.js"
+    },
+    {
+      "specifier": "./PostLockDialogs-s1dNQrzB.js",
+      "type": "dynamic",
+      "resolved": "assets/vendor.d/PostLockDialogs-s1dNQrzB.js"
+    },
+    {
+      "specifier": "./TaskTransferDialog-a5FvD1Rc.js",
+      "type": "dynamic",
+      "resolved": "assets/vendor.d/TaskTransferDialog-a5FvD1Rc.js"
+    },
+    {
+      "specifier": "./FileViewer-D5PyYcLh.js",
+      "type": "dynamic",
+      "resolved": "assets/vendor.d/FileViewer-D5PyYcLh.js"
+    },
+    {
+      "specifier": "./SvgZoomViewer-Duk5JzY7.js",
+      "type": "dynamic",
+      "resolved": "assets/vendor.d/SvgZoomViewer-Duk5JzY7.js"
+    },
+    {
+      "specifier": "./PhotoEditDialog-DJMQ_7Bn.js",
+      "type": "dynamic",
+      "resolved": "assets/vendor.d/PhotoEditDialog-DJMQ_7Bn.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "Yw",
+      "exported": "$"
+    },
+    {
+      "local": "oC",
+      "exported": "A"
+    },
+    {
+      "local": "Ms",
+      "exported": "B"
+    },
+    {
+      "local": "KC",
+      "exported": "C"
+    },
+    {
+      "local": "fC",
+      "exported": "D"
+    },
+    {
+      "local": "mC",
+      "exported": "E"
+    },
+    {
+      "local": "Z1",
+      "exported": "F"
+    },
+    {
+      "local": "eC",
+      "exported": "G"
+    },
+    {
+      "local": "yC",
+      "exported": "H"
+    },
+    {
+      "local": "Q1",
+      "exported": "I"
+    },
+    {
+      "local": "tC",
+      "exported": "J"
+    },
+    {
+      "local": "gC",
+      "exported": "K"
+    },
+    {
+      "local": "hC",
+      "exported": "L"
+    },
+    {
+      "local": "lC",
+      "exported": "M"
+    },
+    {
+      "local": "PC",
+      "exported": "N"
+    },
+    {
+      "local": "VC",
+      "exported": "O"
+    },
+    {
+      "local": "RC",
+      "exported": "P"
+    },
+    {
+      "local": "X1",
+      "exported": "Q"
+    },
+    {
+      "local": "bC",
+      "exported": "R"
+    },
+    {
+      "local": "$C",
+      "exported": "S"
+    },
+    {
+      "local": "iC",
+      "exported": "T"
+    },
+    {
+      "local": "OC",
+      "exported": "U"
+    },
+    {
+      "local": "pC",
+      "exported": "V"
+    },
+    {
+      "local": "WC",
+      "exported": "W"
+    },
+    {
+      "local": "jC",
+      "exported": "X"
+    },
+    {
+      "local": "Xc",
+      "exported": "Y"
+    },
+    {
+      "local": "Oo",
+      "exported": "Z"
+    },
+    {
+      "local": "mn",
+      "exported": "_"
+    },
+    {
+      "local": "SS",
+      "exported": "a"
+    },
+    {
+      "local": "FC",
+      "exported": "a0"
+    },
+    {
+      "local": "LC",
+      "exported": "a1"
+    },
+    {
+      "local": "MC",
+      "exported": "a2"
+    },
+    {
+      "local": "NC",
+      "exported": "a3"
+    },
+    {
+      "local": "$u",
+      "exported": "a4"
+    },
+    {
+      "local": "sC",
+      "exported": "a5"
+    },
+    {
+      "local": "Ey",
+      "exported": "a6"
+    },
+    {
+      "local": "rC",
+      "exported": "a7"
+    },
+    {
+      "local": "TC",
+      "exported": "b"
+    },
+    {
+      "local": "jS",
+      "exported": "c"
+    },
+    {
+      "local": "AC",
+      "exported": "d"
+    },
+    {
+      "local": "vC",
+      "exported": "e"
+    },
+    {
+      "local": "xC",
+      "exported": "f"
+    },
+    {
+      "local": "sS",
+      "exported": "g"
+    },
+    {
+      "local": "zC",
+      "exported": "h"
+    },
+    {
+      "local": "qC",
+      "exported": "i"
+    },
+    {
+      "local": "BC",
+      "exported": "j"
+    },
+    {
+      "local": "DC",
+      "exported": "k"
+    },
+    {
+      "local": "Z_",
+      "exported": "l"
+    },
+    {
+      "local": "nC",
+      "exported": "m"
+    },
+    {
+      "local": "cC",
+      "exported": "n"
+    },
+    {
+      "local": "SC",
+      "exported": "o"
+    },
+    {
+      "local": "J1",
+      "exported": "p"
+    },
+    {
+      "local": "IC",
+      "exported": "q"
+    },
+    {
+      "local": "EC",
+      "exported": "r"
+    },
+    {
+      "local": "CC",
+      "exported": "s"
+    },
+    {
+      "local": "_C",
+      "exported": "t"
+    },
+    {
+      "local": "tk",
+      "exported": "u"
+    },
+    {
+      "local": "wC",
+      "exported": "v"
+    },
+    {
+      "local": "kC",
+      "exported": "w"
+    },
+    {
+      "local": "aC",
+      "exported": "x"
+    },
+    {
+      "local": "dC",
+      "exported": "y"
+    },
+    {
+      "local": "uC",
+      "exported": "z"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "Pb",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "Lb",
+      "keys": [
+        "label"
+      ]
+    },
+    {
+      "function": "Wb",
+      "keys": [
+        "field",
+        "onChange"
+      ]
+    },
+    {
+      "function": "Bb",
+      "keys": [
+        "field",
+        "open",
+        "onToggle",
+        "onPatch",
+        "onRemove",
+        "mobile",
+        "types",
+        "switches",
+        "typeLocked",
+        "renderExtra",
+        "readOnly",
+        "builtin",
+        "lockName"
+      ]
+    },
+    {
+      "function": "Ni",
+      "keys": [
+        "value",
+        "onChange",
+        "mobile",
+        "monthly",
+        "onPreset",
+        "types",
+        "switches",
+        "typeLocked",
+        "renderExtra",
+        "createField",
+        "maxFields",
+        "readOnly",
+        "isBuiltin",
+        "builtinSwitches",
+        "lockBuiltinName",
+        "presetMenu"
+      ]
+    },
+    {
+      "function": "qb",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "Vb",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "Yb",
+      "keys": [
+        "controller",
+        "ctiController"
+      ]
+    },
+    {
+      "function": "Xb",
+      "keys": [
+        "scope"
+      ]
+    },
+    {
+      "function": "Jb",
+      "keys": [
+        "first"
+      ]
+    },
+    {
+      "function": "oc",
+      "keys": [
+        "status"
+      ]
+    },
+    {
+      "function": "ly",
+      "keys": [
+        "value",
+        "used",
+        "onChange",
+        "size",
+        "width",
+        "disabled"
+      ]
+    },
+    {
+      "function": "gy",
+      "keys": [
+        "seq",
+        "form",
+        "showLabel",
+        "busy",
+        "isMobile",
+        "onSave",
+        "onChangeUnit",
+        "usedOptions",
+        "onInvalidName",
+        "onRemove",
+        "onMove",
+        "isFirst",
+        "isLast"
+      ]
+    },
+    {
+      "function": "hy",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "ac",
+      "keys": [
+        "name",
+        "lines",
+        "src",
+        "disabled",
+        "isMobile",
+        "onPick",
+        "onRemove"
+      ]
+    },
+    {
+      "function": "jy",
+      "keys": [
+        "url",
+        "slug"
+      ]
+    },
+    {
+      "function": "wy",
+      "keys": [
+        "title",
+        "description",
+        "image",
+        "host"
+      ]
+    },
+    {
+      "function": "Sy",
+      "keys": [
+        "controller",
+        "canManage",
+        "resourceCount",
+        "onOpenResources"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "value",
+        "labelKey"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "value",
+        "label"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "value",
+        "labelKey"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "value",
+        "label"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "value",
+        "labelKey"
+      ]
+    },
+    {
+      "function": "Vu",
+      "keys": [
+        "anchorEl",
+        "value",
+        "onPick",
+        "onClose",
+        "defaultColor"
+      ]
+    },
+    {
+      "function": "qy",
+      "keys": [
+        "row",
+        "first",
+        "icon",
+        "onToggle",
+        "onModes",
+        "selectFields",
+        "onGroupBy",
+        "allFields",
+        "onTable"
+      ]
+    },
+    {
+      "function": "Vy",
+      "keys": [
+        "value",
+        "onChange",
+        "icons",
+        "titleSx",
+        "headSx"
+      ]
+    },
+    {
+      "function": "Uy",
+      "keys": [
+        "form",
+        "onChange",
+        "onSuggested",
+        "suggested",
+        "disabled"
+      ]
+    },
+    {
+      "function": "n0",
+      "keys": [
+        "open",
+        "target",
+        "externalTarget",
+        "onExternalSaved",
+        "onClose",
+        "onSave"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "unit"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "unit"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "depth"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "unit"
+      ]
+    },
+    {
+      "function": "s0",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "h0",
+      "keys": [
+        "kind"
+      ]
+    },
+    {
+      "function": "x0",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "children"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "folder",
+        "depth"
+      ]
+    },
+    {
+      "function": "w0",
+      "keys": [
+        "video",
+        "disabled",
+        "onAccept",
+        "onDecline"
+      ]
+    },
+    {
+      "function": "S0",
+      "keys": [
+        "ring",
+        "roomName",
+        "busy",
+        "onAccept",
+        "onDecline"
+      ]
+    },
+    {
+      "function": "_0",
+      "keys": [
+        "session",
+        "avatarOf",
+        "onExpand",
+        "onHangup"
+      ]
+    },
+    {
+      "function": "C0",
+      "keys": [
+        "ask",
+        "onAnswer",
+        "onDismiss"
+      ]
+    },
+    {
+      "function": "yc",
+      "keys": [
+        "title",
+        "startedAt",
+        "onClick"
+      ]
+    },
+    {
+      "function": "I0",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "Jj",
+      "keys": [
+        "controls",
+        "emitEvent",
+        "props",
+        "state",
+        "store"
+      ]
+    },
+    {
+      "function": "ew",
+      "keys": [
+        "emitEvent",
+        "previousState",
+        "props",
+        "state",
+        "step",
+        "store"
+      ]
+    },
+    {
+      "function": "sw",
+      "keys": [
+        "nonce",
+        "step"
+      ]
+    },
+    {
+      "function": "mw",
+      "keys": [
+        "arrowComponent",
+        "arrowRef",
+        "base",
+        "placement",
+        "position",
+        "size",
+        "styles"
+      ]
+    },
+    {
+      "function": "hw",
+      "keys": [
+        "styles"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "rects"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "placement"
+      ]
+    },
+    {
+      "function": "Sw",
+      "keys": [
+        "controls",
+        "mergedProps",
+        "state",
+        "step",
+        "store"
+      ]
+    },
+    {
+      "function": "Ew",
+      "keys": [
+        "index",
+        "size",
+        "isLastStep",
+        "step",
+        "backProps",
+        "primaryProps",
+        "skipProps",
+        "tooltipProps"
+      ]
+    },
+    {
+      "function": "zw",
+      "keys": [
+        "controller",
+        "manage"
+      ]
+    },
+    {
+      "function": "qw",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "$w",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "key"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "key"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "key"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "key"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "key"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "key"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "key"
+      ]
+    },
+    {
+      "function": "Tn",
+      "keys": [
+        "label",
+        "description",
+        "children"
+      ]
+    },
+    {
+      "function": "dS",
+      "keys": [
+        "id",
+        "label",
+        "children"
+      ]
+    },
+    {
+      "function": "kS",
+      "keys": [
+        "label",
+        "description",
+        "children"
+      ]
+    },
+    {
+      "function": "CS",
+      "keys": [
+        "onCopy"
+      ]
+    },
+    {
+      "function": "TS",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "lt",
+      "keys": [
+        "label",
+        "value",
+        "strong"
+      ]
+    },
+    {
+      "function": "$S",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "as",
+      "keys": [
+        "label",
+        "value",
+        "strong"
+      ]
+    },
+    {
+      "function": "JS",
+      "keys": [
+        "open",
+        "onClose",
+        "controller",
+        "summary",
+        "notice",
+        "onRegistered"
+      ]
+    },
+    {
+      "function": "Fp",
+      "keys": [
+        "label",
+        "onPay",
+        "disabled",
+        "sx"
+      ]
+    },
+    {
+      "function": "ZS",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "ft",
+      "keys": [
+        "children"
+      ]
+    },
+    {
+      "function": "Lo",
+      "keys": [
+        "title",
+        "action",
+        "children"
+      ]
+    },
+    {
+      "function": "Ie",
+      "keys": [
+        "label",
+        "value",
+        "strong",
+        "color"
+      ]
+    },
+    {
+      "function": "e_",
+      "keys": [
+        "summary",
+        "onPricing"
+      ]
+    },
+    {
+      "function": "n_",
+      "keys": [
+        "controller",
+        "onRegister"
+      ]
+    },
+    {
+      "function": "o_",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "s_",
+      "keys": [
+        "storage",
+        "subscribed",
+        "onChange"
+      ]
+    },
+    {
+      "function": "i_",
+      "keys": [
+        "invoice",
+        "onPay",
+        "paying"
+      ]
+    },
+    {
+      "function": "a_",
+      "keys": [
+        "invoices",
+        "pay"
+      ]
+    },
+    {
+      "function": "PC",
+      "keys": [
+        "myAccountSeq"
+      ]
+    },
+    {
+      "function": "In",
+      "keys": [
+        "label",
+        "value"
+      ]
+    },
+    {
+      "function": "Pn",
+      "keys": [
+        "icon",
+        "label",
+        "value"
+      ]
+    },
+    {
+      "function": "C_",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "P_",
+      "keys": [
+        "accountSeq"
+      ]
+    },
+    {
+      "function": "RC",
+      "keys": [
+        "controller",
+        "onChangePassword"
+      ]
+    },
+    {
+      "function": "DC",
+      "keys": [
+        "open",
+        "onClose"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "folder"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "folder"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "entry"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "entry",
+        "index"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "seq",
+        "sort_no"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "entry"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "entry",
+        "index"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "seq",
+        "sort_no"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "folder",
+        "spaces"
+      ]
+    },
+    {
+      "function": "Vp",
+      "keys": [
+        "accounts",
+        "indent",
+        "onReorder",
+        "onContextMenu"
+      ]
+    },
+    {
+      "function": "Z_",
+      "keys": [
+        "open",
+        "onClose",
+        "anchorEl"
+      ]
+    },
+    {
+      "function": "Qe",
+      "keys": [
+        "label",
+        "value",
+        "color"
+      ]
+    },
+    {
+      "function": "ok",
+      "keys": [
+        "summary"
+      ]
+    },
+    {
+      "function": "sk",
+      "keys": [
+        "summary"
+      ]
+    },
+    {
+      "function": "ik",
+      "keys": [
+        "collapsed"
+      ]
+    },
+    {
+      "function": "ak",
+      "keys": [
+        "selected",
+        "onSelect"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "DictationButton",
+    "Layout",
+    "MobileDashboardLayout",
+    "PostComposerHost",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog"
+  ],
+  "service": "일정",
+  "purpose": "달력 사이드바",
+  "reuseGrade": "B",
+  "integration": "달력 상태와 선택 이벤트를 새 앱 상태에 연결",
+  "exportedParameters": [
+    {
+      "export": "N",
+      "compiledLocal": "PC",
+      "keys": [
+        "myAccountSeq"
+      ]
+    },
+    {
+      "export": "P",
+      "compiledLocal": "RC",
+      "keys": [
+        "controller",
+        "onChangePassword"
+      ]
+    },
+    {
+      "export": "k",
+      "compiledLocal": "DC",
+      "keys": [
+        "open",
+        "onClose"
+      ]
+    },
+    {
+      "export": "l",
+      "compiledLocal": "Z_",
+      "keys": [
+        "open",
+        "onClose",
+        "anchorEl"
+      ]
+    }
+  ]
+}

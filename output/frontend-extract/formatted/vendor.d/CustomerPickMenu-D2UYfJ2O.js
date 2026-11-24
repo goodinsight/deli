@@ -1,0 +1,115 @@
+import { r as t, j as s } from "./react-CjxcGQav.js";
+import { bv as b, fo as I, B as p, al as M, gZ as u } from "../js.d/main-Cm9wS5wt.js";
+import { c as S } from "./customerMetaStore-Bj9KdRyn.js";
+const P = 250,
+  w = 20;
+function R({
+  anchorEl: m,
+  currentSeq: j,
+  onPick: g,
+  onClose: f
+}) {
+  const i = b(),
+    [n, d] = t.useState(""),
+    [o, q] = t.useState([]),
+    [y, h] = t.useState(!1),
+    [k, x] = t.useState(!1),
+    a = t.useRef(0),
+    r = !!m;
+  t.useEffect(() => {
+    r && d("");
+  }, [r]), t.useEffect(() => {
+    if (!r) return;
+    const e = ++a.current,
+      C = window.setTimeout(async () => {
+        h(!0);
+        try {
+          const E = await S.list({
+            search: n.trim(),
+            limit: w
+          });
+          if (e !== a.current) return;
+          q(E.items.map(l => ({
+            seq: l.seq,
+            name: l.name,
+            phone: l.phone
+          }))), x(!1);
+        } catch {
+          e === a.current && x(!0);
+        } finally {
+          e === a.current && h(!1);
+        }
+      }, n ? P : 0);
+    return () => window.clearTimeout(C);
+  }, [r, n]);
+  const c = e => {
+    g(e), f();
+  };
+  return s.jsxs(I, {
+    open: r,
+    anchorEl: m,
+    onClose: f,
+    autoFocus: !1,
+    disableAutoFocusItem: !0,
+    children: [s.jsx(p, {
+      sx: {
+        px: 1.5,
+        pt: .5,
+        pb: 1,
+        minWidth: 260
+      },
+      onKeyDown: e => {
+        e.key !== "Escape" && (e.stopPropagation(), !(e.key !== "Enter" || e.nativeEvent.isComposing) && (e.preventDefault(), o.length === 1 && c({
+          seq: o[0].seq,
+          name: o[0].name
+        })));
+      },
+      children: s.jsx(M, {
+        size: "small",
+        fullWidth: !0,
+        autoFocus: !0,
+        value: n,
+        onChange: e => d(e.target.value),
+        placeholder: i("taskbox.searchCustomer"),
+        slotProps: {
+          htmlInput: {
+            maxLength: 50
+          }
+        }
+      })
+    }), s.jsx(u, {
+      onClick: () => c(null),
+      children: "고르지 않음"
+    }), k ? s.jsx(u, {
+      disabled: !0,
+      children: "고객 목록을 읽지 못했습니다"
+    }) : !y && o.length === 0 ? s.jsx(u, {
+      disabled: !0,
+      children: n.trim() ? i("taskbox.noCustomerMatch") : i("taskbox.noCustomers")
+    }) : o.map(e => s.jsx(u, {
+      selected: e.seq === j,
+      onClick: () => c({
+        seq: e.seq,
+        name: e.name
+      }),
+      children: s.jsxs(p, {
+        component: "span",
+        sx: {
+          display: "inline-flex",
+          gap: 1,
+          minWidth: 0
+        },
+        children: [s.jsx("span", {
+          children: e.name
+        }), e.phone ? s.jsx(p, {
+          component: "span",
+          sx: {
+            color: "text.secondary"
+          },
+          children: e.phone
+        }) : null]
+      })
+    }, e.seq))]
+  });
+}
+export { R as C };

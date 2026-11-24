@@ -1,0 +1,144 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/PageSlideDialog-D4MWDBvN.js",
+  "path": "assets/vendor.d/PageSlideDialog-D4MWDBvN.js",
+  "name": "PageSlideDialog",
+  "kind": "ui",
+  "bytes": 1448,
+  "sha256": "28c3ed198553e41f85766fbca055417a14aab60a8eecd51016e0bdd4c9e24ad7",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/PageSlideDialog-D4MWDBvN.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "u",
+          "imported": "i"
+        },
+        {
+          "local": "t",
+          "imported": "r"
+        },
+        {
+          "local": "c",
+          "imported": "j"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "d",
+          "imported": "D"
+        },
+        {
+          "local": "b",
+          "imported": "bv"
+        },
+        {
+          "local": "g",
+          "imported": "dQ"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./LoginPage-xO8sELhl.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "p",
+          "imported": "ImportDefaultSpecifier"
+        }
+      ],
+      "resolved": "assets/vendor.d/LoginPage-xO8sELhl.js"
+    },
+    {
+      "specifier": "./SignupPage-d9HBBRMK.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "h",
+          "imported": "ImportDefaultSpecifier"
+        }
+      ],
+      "resolved": "assets/vendor.d/SignupPage-d9HBBRMK.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "j",
+      "exported": "A"
+    },
+    {
+      "local": "w",
+      "exported": "P"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "j",
+      "keys": [
+        "kind",
+        "onClose"
+      ]
+    },
+    {
+      "function": "w",
+      "keys": [
+        "open",
+        "onClose",
+        "title",
+        "children",
+        "maxWidth"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "CalendarSidebarPanel",
+    "HomePage",
+    "Layout",
+    "Layout",
+    "MobileDashboardLayout",
+    "PostComposerHost",
+    "PricingPage",
+    "PricingPage",
+    "SubscribeRoute",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog"
+  ],
+  "service": "공통",
+  "purpose": "페이지형 슬라이드 다이얼로그",
+  "reuseGrade": "B",
+  "integration": "열림 상태·라우터와 페이지 표시 분리",
+  "exportedParameters": [
+    {
+      "export": "A",
+      "compiledLocal": "j",
+      "keys": [
+        "kind",
+        "onClose"
+      ]
+    },
+    {
+      "export": "P",
+      "compiledLocal": "w",
+      "keys": [
+        "open",
+        "onClose",
+        "title",
+        "children",
+        "maxWidth"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1286 @@
+import { r as M, j as o } from "./react-CjxcGQav.js";
+import { bT as W, c8 as $e, bO as oe, nR as Ce, dv as ve, s as $, b as U, as as N, bv as F, B as a, df as je, fL as Te, D as Be, cz as De, lr as Re, d7 as ne, F as Me, d8 as Ae, K as Ie } from "../js.d/main-Cm9wS5wt.js";
+import { O as Le } from "./OptionToggleGroup-Cvm2wRyq.js";
+import { a as D, u as Ne } from "./AttendanceParts-mHb1cK0h.js";
+import { C as Oe } from "./CalendarNav-uLg-DJVR.js";
+import { b as se, u as Ee } from "./bookingApi-DC6gLfSO.js";
+import { w as q, u as He, D as te, r as re, j as P } from "./types-CVXtrYKe.js";
+import { u as Ve, B as Pe } from "./BookingFormDialog-EC3RsN2H.js";
+import { T as We } from "./tableScrollbars-C9bhlJjO.js";
+import { u as qe } from "./sidebarAction-Z0aCDENX.js";
+import "./stylis-DdLD6a3t.js";
+import "./attendanceMgmt-B_e3bPBn.js";
+import "./i18nLabels-BNTLL7cu.js";
+import "./profileApi-Btafs-pM.js";
+const I = 1440 * 60 * 1e3,
+  E = e => String(e).padStart(2, "0");
+function V(e) {
+  const t = /^(\d{4})-(\d{2})-(\d{2})/.exec(e);
+  return t ? Date.UTC(Number(t[1]), Number(t[2]) - 1, Number(t[3])) : NaN;
+}
+function Y(e) {
+  const t = /^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})/.exec(e);
+  return t ? Date.UTC(Number(t[1]), Number(t[2]) - 1, Number(t[3]), Number(t[4]), Number(t[5])) : NaN;
+}
+function pe(e) {
+  const t = new Date(e);
+  return `${t.getUTCFullYear()}-${E(t.getUTCMonth() + 1)}-${E(t.getUTCDate())}`;
+}
+function ie(e) {
+  const t = new Date(e);
+  return `${pe(e)} ${E(t.getUTCHours())}:${E(t.getUTCMinutes())}`;
+}
+function H(e, t) {
+  return pe(V(e) + t * I);
+}
+function R() {
+  const e = new Date();
+  return `${e.getFullYear()}-${E(e.getMonth() + 1)}-${E(e.getDate())}`;
+}
+function ze() {
+  const e = new Date();
+  return Date.UTC(e.getFullYear(), e.getMonth(), e.getDate(), e.getHours(), e.getMinutes());
+}
+function K(e) {
+  return new Date(V(e)).getUTCDay();
+}
+function Fe(e) {
+  return e.status !== "canceled" && e.status !== "no_show";
+}
+function Ge(e, t) {
+  const i = new Set(t.map(g => g.resource_seq)),
+    h = e.filter(g => g.enabled || i.has(g.seq)).map(g => ({
+      seq: g.seq,
+      label: g.name,
+      group: g.group_name,
+      disabled: !g.enabled
+    })),
+    s = new Set(e.map(g => g.seq)),
+    u = t.some(g => !s.has(g.resource_seq));
+  return (h.length === 0 || u) && h.push({
+    seq: 0,
+    label: h.length === 0 ? W("booking.laneBooking") : W("booking.laneUnassigned"),
+    group: "",
+    disabled: !1
+  }), h;
+}
+function he(e) {
+  const t = e.map(s => ({
+      booking: s,
+      startMs: Y(s.start_at),
+      endMs: Y(s.end_at)
+    })).filter(s => Number.isFinite(s.startMs) && Number.isFinite(s.endMs) && s.endMs > s.startMs).sort((s, u) => s.startMs - u.startMs || s.booking.seq - u.booking.seq),
+    i = [];
+  return {
+    placed: t.map(s => {
+      let u = i.findIndex(g => g <= s.startMs);
+      return u < 0 && (u = i.length), i[u] = s.endMs, {
+        ...s,
+        track: u
+      };
+    }),
+    tracks: Math.max(1, i.length)
+  };
+}
+function xe(e, t, i) {
+  return e.filter(h => t.seq === 0 ? !i.has(h.resource_seq) : h.resource_seq === t.seq);
+}
+const X = 14,
+  Ue = 7,
+  G = 30;
+function Ye(e, t, i) {
+  const h = i <= t;
+  return {
+    start_at: `${e} ${t}`,
+    end_at: `${h ? H(e, 1) : e} ${i}`
+  };
+}
+function Ke(e, t, i) {
+  const h = Math.max(0, Math.min(1440 - G, Math.floor(t / G) * G)),
+    s = V(e) + h * 6e4;
+  return {
+    start_at: ie(s),
+    end_at: ie(s + Math.max(G, i) * 6e4)
+  };
+}
+function Xe(e, t, i) {
+  return Array.from({
+    length: t
+  }, (h, s) => {
+    const u = H(e, s),
+      g = V(u),
+      b = g + I,
+      w = [];
+    for (const m of i) {
+      const x = Y(m.start_at),
+        l = Y(m.end_at);
+      if (!Number.isFinite(x) || !Number.isFinite(l) || x >= b || l <= g) continue;
+      const p = x >= g,
+        c = l <= b,
+        y = p && c ? `${m.start_at.slice(11)} ~ ${m.end_at.slice(11)}` : p ? `${m.start_at.slice(11)} ~` : c ? `~ ${m.end_at.slice(11)}` : W("booking.allDay");
+      w.push({
+        booking: m,
+        timeLabel: y,
+        sortMinute: p ? (x - g) / 6e4 : c ? -1 : -2
+      });
+    }
+    return w.sort((m, x) => m.sortMinute - x.sortMinute || m.booking.seq - x.booking.seq), {
+      day: u,
+      entries: w
+    };
+  });
+}
+function Je(e, t) {
+  const i = He;
+  return e === "hours" ? `${i(t)} (${q(K(t))})` : `${i(t)} ~ ${i(H(t, X - 1))}`;
+}
+const be = "taskham.booking.calendarView",
+  Qe = 200,
+  Ze = 5;
+function et(e) {
+  try {
+    const t = window.localStorage.getItem(be);
+    return t === "agenda" || t === "days" || t === "hours" ? t : e;
+  } catch {
+    return e;
+  }
+}
+function tt(e, t = "days") {
+  const i = $e({
+      stateId: "booking-calendar-ui",
+      initialValues: {
+        view: et(t),
+        anchor: R(),
+        rows: [],
+        loading: !1,
+        settings: te,
+        resources: [],
+        canManage: !1
+      }
+    }),
+    h = M.useRef(0),
+    s = () => {
+      const l = i.getValue("view") ?? "days",
+        p = String(i.getValue("anchor") ?? R());
+      return {
+        from: p,
+        to: l === "hours" ? p : H(p, X - 1)
+      };
+    },
+    u = M.useCallback(async (l = !1) => {
+      if (!e) {
+        i.setValues({
+          rows: [],
+          loading: !1
+        });
+        return;
+      }
+      const p = ++h.current,
+        {
+          from: c,
+          to: y
+        } = s();
+      l || i.setValue("loading", !0);
+      try {
+        const d = [];
+        for (let S = 1; S <= Ze; S += 1) {
+          const n = await se.list({
+            overlapFrom: c,
+            to: y,
+            page: S,
+            limit: Qe
+          });
+          if (p !== h.current) return;
+          if (d.push(...n.items), d.length >= n.total || n.items.length === 0) break;
+        }
+        i.setValue("rows", d.filter(Fe));
+      } catch (d) {
+        if (p !== h.current || l) return;
+        oe(d instanceof Error ? d.message : W("booking.errLoadBooking"));
+      } finally {
+        p === h.current && i.setValue("loading", !1);
+      }
+    }, [e]);
+  M.useEffect(() => {
+    if (!e) return;
+    let l = !0;
+    const p = (y = !1) => {
+      se.meta().then(d => {
+        l && i.setValues({
+          settings: d.settings,
+          resources: d.resources,
+          canManage: d.can_manage
+        });
+      }).catch(d => !y && oe(d instanceof Error ? d.message : W("booking.errLoadMeta")));
+    };
+    p(), u();
+    const c = Ce(p);
+    return () => {
+      l = !1, c();
+    };
+  }, [e, u]), ve(["booking"], () => {
+    u(!0);
+  }, {
+    enabled: e > 0
+  });
+  const g = l => {
+      try {
+        window.localStorage.setItem(be, l);
+      } catch {}
+      i.setValue("view", l), u();
+    },
+    b = l => {
+      l !== i.getValue("view") && g(l);
+    },
+    w = l => {
+      i.setValue("anchor", l), u();
+    };
+  return {
+    ui: i,
+    reload: u,
+    changeView: b,
+    move: l => {
+      const p = i.getValue("view") === "hours" ? 1 : Ue;
+      w(H(String(i.getValue("anchor") ?? R()), l * p));
+    },
+    goToday: () => w(R()),
+    openDay: l => {
+      i.setValue("anchor", l), g("hours");
+    },
+    getSettings: () => i.getValue("settings") ?? te,
+    getResources: () => i.getValue("resources") ?? [],
+    setSettings: l => i.setValue("settings", l),
+    setResources: l => i.setValue("resources", l)
+  };
+}
+const Q = "0.875rem",
+  z = $[200],
+  ot = $[50],
+  J = U[50];
+function me(e) {
+  return e ? {
+    line: z,
+    strong: z,
+    headBg: ot,
+    headColor: "text.primary",
+    headWeight: 500,
+    headHeight: 48,
+    frame: {}
+  } : {
+    line: D.border,
+    strong: D.borderStrong,
+    headBg: "#fff",
+    headColor: D.headerColor,
+    headWeight: 500,
+    headHeight: D.headHeight,
+    frame: {
+      border: `1px solid ${D.borderStrong}`,
+      borderRadius: "4px"
+    }
+  };
+}
+const fe = N.rose600,
+  ye = U[600],
+  O = {
+    confirmed: {
+      bg: U[100],
+      bar: U[600]
+    },
+    awaiting_payment: {
+      bg: N.amber100,
+      bar: N.amber500
+    },
+    requested: {
+      bg: N.amber50,
+      bar: N.amber500
+    },
+    done: {
+      bg: $[100],
+      bar: $[500]
+    },
+    canceled: {
+      bg: $[100],
+      bar: $[500]
+    },
+    no_show: {
+      bg: $[100],
+      bar: $[500]
+    }
+  };
+function ke(e) {
+  const t = O[e];
+  return {
+    position: "absolute",
+    boxSizing: "border-box",
+    overflow: "hidden",
+    borderRadius: "4px",
+    borderLeft: `4px solid ${t.bar}`,
+    bgcolor: t.bg,
+    color: "text.primary",
+    fontSize: Q,
+    lineHeight: 1.3,
+    px: .75,
+    cursor: "pointer",
+    userSelect: "none",
+    textAlign: "left",
+    "&:hover": {
+      filter: "brightness(0.96)"
+    }
+  };
+}
+const we = e => ({
+    width: {
+      xs: 6,
+      sm: 8
+    },
+    height: {
+      xs: 6,
+      sm: 8
+    },
+    flexShrink: 0,
+    borderRadius: "50%",
+    bgcolor: e
+  }),
+  nt = 40,
+  ae = "6px 12px",
+  st = "10px 14px 0",
+  rt = 1e5,
+  Z = {
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap"
+  };
+function le({
+  booking: e
+}) {
+  const t = O[e.status];
+  return o.jsxs(a, {
+    sx: {
+      display: "inline-flex",
+      alignItems: "center",
+      gap: .75,
+      verticalAlign: "middle"
+    },
+    children: [o.jsx(a, {
+      "aria-hidden": !0,
+      sx: we(t.bar)
+    }), o.jsx(a, {
+      component: "span",
+      sx: e.status === "requested" || e.status === "awaiting_payment" ? {
+        fontWeight: 600,
+        color: "warning.dark"
+      } : {
+        color: "text.secondary"
+      },
+      children: P[e.status]
+    })]
+  });
+}
+function it({
+  from: e,
+  days: t,
+  bookings: i,
+  resources: h,
+  compact: s,
+  onPickBooking: u,
+  onPickDay: g
+}) {
+  const b = F(),
+    w = R(),
+    m = Ee(),
+    x = M.useMemo(() => Xe(e, t, i).flatMap(({
+      day: p,
+      entries: c
+    }) => c.length === 0 ? [{
+      day: p,
+      booking: null,
+      timeLabel: "",
+      first: !0,
+      last: !0,
+      span: 1
+    }] : c.map(({
+      booking: y,
+      timeLabel: d
+    }, S) => ({
+      day: p,
+      booking: y,
+      timeLabel: d,
+      first: S === 0,
+      last: S === c.length - 1,
+      span: c.length
+    }))), [e, t, i, b]),
+    l = M.useMemo(() => {
+      const p = s ? {
+          cellPadding: ae
+        } : {},
+        c = n => n.last ? {
+          borderBottom: `1px solid ${z}`
+        } : {},
+        y = {
+          id: "day",
+          text: b("booking.colDate"),
+          width: s ? 64 : 88,
+          cellPadding: s ? ae : st,
+          rowSpan: n => n.first ? n.span : 0,
+          onCellClick: n => g(n.day),
+          cellStyle: n => {
+            const r = K(n.day);
+            return {
+              verticalAlign: "top",
+              whiteSpace: "nowrap",
+              borderBottom: `1px solid ${z}`,
+              borderRight: `1px solid ${D.border}`,
+              color: r === 0 ? fe : r === 6 ? ye : void 0,
+              fontWeight: n.day === w ? 700 : 500,
+              ...(n.day === w ? {
+                boxShadow: `inset 3px 0 0 ${O.confirmed.bar}`
+              } : {})
+            };
+          },
+          render: n => {
+            const r = K(n.day);
+            return o.jsxs(a, {
+              component: "span",
+              role: "button",
+              "aria-label": b("booking.viewDaySchedule", {
+                day: n.day
+              }),
+              children: [n.day.slice(8) === "01" || n.day === e ? `${Number(n.day.slice(5, 7))}/${Number(n.day.slice(8))}` : Number(n.day.slice(8)), s ? o.jsx("br", {}) : " ", o.jsx(a, {
+                component: "span",
+                sx: {
+                  fontWeight: 400,
+                  color: r === 0 || r === 6 ? "inherit" : "text.secondary"
+                },
+                children: s ? q(r) : `(${q(r)})`
+              })]
+            });
+          }
+        },
+        d = {
+          id: "time",
+          text: b(s ? "booking.colTimeStatus" : "booking.colTime"),
+          width: s ? 116 : 132,
+          ...p,
+          cellStyle: n => ({
+            whiteSpace: "nowrap",
+            fontVariantNumeric: "tabular-nums",
+            ...c(n)
+          }),
+          render: n => n.booking ? o.jsxs(a, {
+            "data-agenda-today": n.day === w ? "" : void 0,
+            children: [n.timeLabel, s ? o.jsx(a, {
+              sx: {
+                mt: .25
+              },
+              children: o.jsx(le, {
+                booking: n.booking
+              })
+            }) : null]
+          }) : o.jsx(a, {
+            "data-agenda-today": n.day === w ? "" : void 0,
+            sx: {
+              color: $[400]
+            },
+            children: b("booking.noBookings")
+          })
+        },
+        S = {
+          id: "customer",
+          text: s ? `${b("booking.colCustomer")} · ${m.resource}` : b("booking.colCustomer"),
+          ...p,
+          cellStyle: c,
+          render: n => {
+            if (!n.booking) return null;
+            const r = re(h, n.booking.resource_seq);
+            return o.jsxs(a, {
+              role: "button",
+              "aria-label": b("booking.bookingOf", {
+                name: n.booking.customer_name
+              }),
+              sx: {
+                minWidth: 0
+              },
+              children: [o.jsxs(a, {
+                sx: {
+                  fontWeight: 600,
+                  ...Z
+                },
+                children: [n.booking.customer_name, s && n.booking.party_size > 1 ? ` ${b("booking.people", {
+                  count: n.booking.party_size
+                })}` : ""]
+              }), s && r ? o.jsx(a, {
+                sx: {
+                  color: "text.secondary",
+                  ...Z
+                },
+                children: r
+              }) : null]
+            });
+          }
+        };
+      return s ? [y, d, S] : [y, d, S, {
+        id: "party",
+        text: b("booking.colParty"),
+        width: 72,
+        cellStyle: n => ({
+          whiteSpace: "nowrap",
+          fontVariantNumeric: "tabular-nums",
+          ...c(n)
+        }),
+        render: n => n.booking ? b("booking.people", {
+          count: n.booking.party_size
+        }) : null
+      }, {
+        id: "resource",
+        text: m.resource,
+        cellStyle: c,
+        render: n => n.booking ? o.jsx(a, {
+          sx: {
+            color: "text.secondary",
+            ...Z
+          },
+          children: re(h, n.booking.resource_seq)
+        }) : null
+      }, {
+        id: "status",
+        text: b("booking.colStatus"),
+        width: 132,
+        cellStyle: n => ({
+          whiteSpace: "nowrap",
+          ...c(n)
+        }),
+        render: n => n.booking ? o.jsx(le, {
+          booking: n.booking
+        }) : null
+      }];
+    }, [s, e, w, m.resource, h, g, b]);
+  return o.jsx(a, {
+    sx: {
+      flex: 1,
+      minHeight: 0,
+      display: "flex",
+      flexDirection: "column",
+      ...(s ? {} : {
+        border: `1px solid ${D.borderStrong}`,
+        borderRadius: "4px",
+        overflow: "hidden"
+      }),
+      "& tbody tr:has([data-agenda-today]) > td": {
+        bgcolor: J
+      },
+      "& tbody tr:has([data-agenda-today]):hover > td:not([data-vdt-cell-click])": {
+        bgcolor: D.hoverBg
+      },
+      "& tbody td[data-vdt-cell-click]": {
+        bgcolor: "background.paper"
+      }
+    },
+    children: o.jsx(je, {
+      scrollbars: We,
+      variant: "notion",
+      framed: !1,
+      showPaper: !1,
+      columns: l,
+      data: x,
+      totalCount: x.length,
+      getRowId: p => `${p.day}-${p.booking?.seq ?? "empty"}`,
+      rowHeight: nt,
+      rowHeightMode: s ? "auto" : "fixed",
+      viewportBuffer: rt,
+      onRowClick: p => {
+        p.booking && u(p.booking);
+      }
+    })
+  });
+}
+const C = 56,
+  ce = 52,
+  at = 8,
+  lt = Array.from({
+    length: 24
+  }, (e, t) => t);
+function ct({
+  day: e,
+  lanes: t,
+  bookings: i,
+  knownSeqs: h,
+  compact: s,
+  onPickBooking: u,
+  onPickSlot: g
+}) {
+  const b = F(),
+    w = M.useRef(null),
+    m = s ? 120 : 160,
+    x = me(s),
+    l = V(e),
+    p = e === R(),
+    c = p ? (ze() - l) / I * 24 * C : -1;
+  M.useEffect(() => {
+    w.current && (w.current.scrollTop = at * C);
+  }, [e]);
+  const y = `${ce}px repeat(${t.length}, minmax(${m}px, 1fr))`;
+  return o.jsx(a, {
+    ref: w,
+    sx: {
+      flex: 1,
+      minHeight: 0,
+      overflow: "auto",
+      fontSize: Q,
+      ...x.frame
+    },
+    children: o.jsxs(a, {
+      sx: {
+        display: "grid",
+        gridTemplateColumns: y,
+        minWidth: ce + t.length * m
+      },
+      children: [o.jsx(a, {
+        sx: {
+          position: "sticky",
+          top: 0,
+          left: 0,
+          zIndex: 3,
+          height: x.headHeight,
+          bgcolor: x.headBg,
+          borderBottom: `1px solid ${x.strong}`,
+          borderRight: `1px solid ${x.line}`
+        }
+      }), t.map(d => o.jsxs(a, {
+        sx: {
+          position: "sticky",
+          top: 0,
+          zIndex: 2,
+          height: x.headHeight,
+          display: "flex",
+          flexDirection: s ? "column" : "row",
+          gap: s ? 0 : .75,
+          alignItems: "center",
+          justifyContent: "center",
+          px: .5,
+          bgcolor: p ? J : x.headBg,
+          borderBottom: `1px solid ${x.strong}`,
+          borderRight: `1px solid ${x.line}`,
+          color: d.disabled ? "text.secondary" : x.headColor,
+          overflow: "hidden"
+        },
+        children: [o.jsx(a, {
+          component: "span",
+          sx: {
+            maxWidth: "100%",
+            minWidth: 0,
+            fontWeight: s ? 600 : x.headWeight,
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap"
+          },
+          children: d.label
+        }), d.group ? o.jsx(a, {
+          component: "span",
+          sx: {
+            maxWidth: "100%",
+            minWidth: 0,
+            color: "text.secondary",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap"
+          },
+          children: d.group
+        }) : null]
+      }, d.seq)), o.jsx(a, {
+        sx: {
+          position: "sticky",
+          left: 0,
+          zIndex: 1,
+          bgcolor: "background.paper",
+          borderRight: `1px solid ${x.line}`
+        },
+        children: lt.map(d => o.jsx(a, {
+          sx: {
+            height: C,
+            boxSizing: "border-box",
+            pr: .75,
+            pt: .25,
+            textAlign: "right",
+            color: "text.secondary",
+            borderBottom: `1px solid ${x.line}`
+          },
+          children: b("booking.hourMark", {
+            hour: d
+          })
+        }, d))
+      }), t.map(d => {
+        const {
+          placed: S,
+          tracks: n
+        } = he(xe(i, d, h));
+        return o.jsxs(a, {
+          role: "button",
+          "aria-label": b("booking.newBookingFor", {
+            name: d.label
+          }),
+          onClick: r => {
+            if (d.disabled) return;
+            const _ = r.currentTarget.getBoundingClientRect();
+            g(d, (r.clientY - _.top) / C * 60);
+          },
+          sx: {
+            position: "relative",
+            height: 24 * C,
+            borderRight: `1px solid ${x.line}`,
+            cursor: d.disabled ? "default" : "pointer",
+            backgroundImage: `linear-gradient(to bottom, ${x.line} 1px, transparent 1px), linear-gradient(to bottom, ${$[100]} 1px, transparent 1px)`,
+            backgroundSize: `100% ${C}px, 100% ${C / 2}px`,
+            backgroundPosition: `0 ${C - 1}px, 0 ${C / 2 - 1}px`
+          },
+          children: [S.map(({
+            booking: r,
+            startMs: _,
+            endMs: A,
+            track: L
+          }) => {
+            const k = (Math.max(_, l) - l) / I,
+              v = (Math.min(A, l + I) - l) / I;
+            if (v <= 0 || k >= 1) return null;
+            const j = Math.max(22, (v - k) * 24 * C - 2),
+              T = j >= 44;
+            return o.jsxs(a, {
+              role: "button",
+              "aria-label": b("booking.bookingOf", {
+                name: r.customer_name
+              }),
+              title: `${r.customer_name} · ${r.start_at.slice(5)} ~ ${r.end_at.slice(5)}`,
+              onClick: f => {
+                f.stopPropagation(), u(r);
+              },
+              sx: {
+                ...ke(r.status),
+                top: k * 24 * C + 1,
+                height: j,
+                left: `calc(${L / n * 100}% + 2px)`,
+                width: `calc(${100 / n}% - 5px)`,
+                py: .25,
+                ...(T ? {
+                  overflow: "visible"
+                } : {})
+              },
+              children: [o.jsxs(a, {
+                sx: {
+                  fontWeight: 600,
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  ...(T ? {
+                    position: "sticky",
+                    top: x.headHeight + 2
+                  } : {})
+                },
+                children: [r.customer_name, r.party_size > 1 ? ` ${b("booking.people", {
+                  count: r.party_size
+                })}` : ""]
+              }), T ? o.jsxs(a, {
+                sx: {
+                  color: "text.secondary",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap"
+                },
+                children: [r.start_at.slice(0, 10) === e ? r.start_at.slice(11) : r.start_at.slice(5), " ~", " ", r.end_at.slice(0, 10) === e ? r.end_at.slice(11) : r.end_at.slice(5)]
+              }) : null]
+            }, r.seq);
+          }), c >= 0 ? o.jsx(a, {
+            sx: {
+              position: "absolute",
+              left: 0,
+              right: 0,
+              top: c,
+              height: 2,
+              bgcolor: N.rose500,
+              pointerEvents: "none"
+            }
+          }) : null]
+        }, d.seq);
+      })]
+    })
+  });
+}
+const dt = () => [{
+  status: "confirmed",
+  label: P.confirmed
+}, {
+  status: "awaiting_payment",
+  label: `${P.awaiting_payment} · ${P.requested}`
+}, {
+  status: "done",
+  label: P.done
+}];
+function de({
+  dots: e = !1,
+  bare: t = !1
+}) {
+  const i = F();
+  return o.jsx(a, {
+    component: "ul",
+    "aria-label": i("booking.legendLabel"),
+    sx: {
+      m: 0,
+      px: t ? 0 : 1.5,
+      pb: t ? 0 : 1.25,
+      listStyle: "none",
+      display: "flex",
+      flexWrap: "wrap",
+      columnGap: 2,
+      rowGap: .5,
+      fontSize: Q,
+      color: "text.secondary"
+    },
+    children: dt().map(({
+      status: h,
+      label: s
+    }) => o.jsxs(a, {
+      component: "li",
+      sx: {
+        display: "inline-flex",
+        alignItems: "center",
+        gap: .75
+      },
+      children: [e ? o.jsx(a, {
+        "aria-hidden": !0,
+        sx: we(O[h].bar)
+      }) : o.jsx(a, {
+        "aria-hidden": !0,
+        sx: {
+          width: 20,
+          height: 14,
+          boxSizing: "border-box",
+          borderRadius: "4px",
+          borderLeft: `4px solid ${O[h].bar}`,
+          bgcolor: O[h].bg
+        }
+      }), s]
+    }, h))
+  });
+}
+const ee = 28,
+  ue = 4,
+  ge = 6;
+function ut({
+  from: e,
+  days: t,
+  lanes: i,
+  bookings: h,
+  knownSeqs: s,
+  compact: u,
+  onPickBooking: g,
+  onPickCell: b,
+  onPickDay: w
+}) {
+  const m = F(),
+    x = u ? 52 : 64,
+    l = u ? 88 : 148,
+    p = R(),
+    c = me(u),
+    y = V(e),
+    d = t * I,
+    S = Array.from({
+      length: t
+    }, (r, _) => H(e, _)),
+    n = `${l}px repeat(${t}, minmax(${x}px, 1fr))`;
+  return o.jsx(a, {
+    sx: {
+      flex: 1,
+      minHeight: 0,
+      overflow: "auto",
+      fontSize: Q,
+      ...c.frame
+    },
+    children: o.jsxs(a, {
+      sx: {
+        display: "grid",
+        gridTemplateColumns: n,
+        minWidth: l + t * x
+      },
+      children: [o.jsx(a, {
+        sx: {
+          position: "sticky",
+          top: 0,
+          left: 0,
+          zIndex: 3,
+          height: c.headHeight,
+          bgcolor: c.headBg,
+          borderBottom: `1px solid ${c.strong}`,
+          borderRight: `1px solid ${c.line}`
+        }
+      }), S.map(r => {
+        const _ = K(r);
+        return o.jsxs(a, {
+          role: "button",
+          "aria-label": m("booking.viewDaySchedule", {
+            day: r
+          }),
+          onClick: () => w(r),
+          sx: {
+            position: "sticky",
+            top: 0,
+            zIndex: 2,
+            height: c.headHeight,
+            display: "flex",
+            flexDirection: u ? "column" : "row",
+            gap: u ? 0 : .5,
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+            bgcolor: r === p ? J : c.headBg,
+            borderBottom: `1px solid ${c.strong}`,
+            borderRight: `1px solid ${c.line}`,
+            color: _ === 0 ? fe : _ === 6 ? ye : c.headColor,
+            fontWeight: r === p ? 700 : c.headWeight,
+            "&:hover": {
+              bgcolor: $[100]
+            }
+          },
+          children: [o.jsx(a, {
+            component: "span",
+            children: r.slice(8) === "01" || r === e ? `${Number(r.slice(5, 7))}/${Number(r.slice(8))}` : Number(r.slice(8))
+          }), o.jsx(a, {
+            component: "span",
+            sx: {
+              color: _ === 0 || _ === 6 ? "inherit" : "text.secondary"
+            },
+            children: u ? q(_) : `(${q(_)})`
+          })]
+        }, r);
+      }), i.map(r => {
+        const {
+            placed: _,
+            tracks: A
+          } = he(xe(h, r, s)),
+          L = ge * 2 + A * ee + (A - 1) * ue;
+        return o.jsxs(a, {
+          sx: {
+            display: "contents"
+          },
+          children: [o.jsxs(a, {
+            sx: {
+              position: "sticky",
+              left: 0,
+              zIndex: 1,
+              minHeight: L,
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              px: 1,
+              bgcolor: "background.paper",
+              borderBottom: `1px solid ${c.line}`,
+              borderRight: `1px solid ${c.line}`,
+              color: r.disabled ? "text.secondary" : "text.primary",
+              overflow: "hidden"
+            },
+            children: [o.jsx(a, {
+              component: "span",
+              sx: {
+                fontWeight: 600,
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap"
+              },
+              children: r.label
+            }), r.group && !u ? o.jsx(a, {
+              component: "span",
+              sx: {
+                color: "text.secondary",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap"
+              },
+              children: r.group
+            }) : null]
+          }), o.jsxs(a, {
+            sx: {
+              gridColumn: `2 / span ${t}`,
+              position: "relative",
+              minHeight: L,
+              borderBottom: `1px solid ${c.line}`
+            },
+            children: [o.jsx(a, {
+              sx: {
+                position: "absolute",
+                inset: 0,
+                display: "grid",
+                gridTemplateColumns: `repeat(${t}, 1fr)`
+              },
+              children: S.map(k => o.jsx(a, {
+                role: "button",
+                "aria-label": m("booking.newBookingForDay", {
+                  name: r.label,
+                  day: k
+                }),
+                onClick: () => {
+                  r.disabled || b(r, k);
+                },
+                sx: {
+                  borderRight: `1px solid ${c.line}`,
+                  bgcolor: k === p ? J : "transparent",
+                  cursor: r.disabled ? "default" : "pointer",
+                  "&:hover": r.disabled ? {} : {
+                    bgcolor: $[100]
+                  }
+                }
+              }, k))
+            }), _.map(({
+              booking: k,
+              startMs: v,
+              endMs: j,
+              track: T
+            }) => {
+              const f = Math.max(0, (v - y) / d),
+                B = Math.min(1, (j - y) / d);
+              if (B <= 0 || f >= 1) return null;
+              const _e = v < y,
+                Se = j > y + d;
+              return o.jsx(a, {
+                role: "button",
+                "aria-label": m("booking.bookingOf", {
+                  name: k.customer_name
+                }),
+                title: `${k.customer_name} · ${k.start_at.slice(5)} ~ ${k.end_at.slice(5)}`,
+                onClick: () => g(k),
+                sx: {
+                  ...ke(k.status),
+                  top: ge + T * (ee + ue),
+                  height: ee,
+                  left: `calc(${f * 100}% + 1px)`,
+                  width: `calc(${(B - f) * 100}% - 3px)`,
+                  display: "flex",
+                  alignItems: "center",
+                  whiteSpace: "nowrap",
+                  ...(_e ? {
+                    borderTopLeftRadius: 0,
+                    borderBottomLeftRadius: 0
+                  } : {}),
+                  ...(Se ? {
+                    borderTopRightRadius: 0,
+                    borderBottomRightRadius: 0
+                  } : {})
+                },
+                children: o.jsxs(a, {
+                  component: "span",
+                  sx: {
+                    overflow: "hidden",
+                    textOverflow: "ellipsis"
+                  },
+                  children: [k.customer_name, k.party_size > 1 ? ` ${m("booking.people", {
+                    count: k.party_size
+                  })}` : ""]
+                })
+              }, k.seq);
+            })]
+          })]
+        }, r.seq);
+      })]
+    })
+  });
+}
+const gt = [{
+    value: "agenda",
+    labelKey: "booking.viewAgenda"
+  }, {
+    value: "days",
+    labelKey: "booking.viewDays"
+  }, {
+    value: "hours",
+    labelKey: "booking.viewHours"
+  }],
+  pt = 40;
+function Tt() {
+  const e = F(),
+    t = Te("booking").canWrite,
+    i = Be(),
+    h = De()?.seq ?? 0,
+    s = tt(h, i ? "agenda" : "days"),
+    {
+      ui: u
+    } = s,
+    g = u.useValue("view") ?? "days",
+    b = String(u.useValue("anchor") ?? R()),
+    w = u.useValue("rows") ?? [],
+    [m, x] = M.useState(""),
+    l = m.trim().toLowerCase(),
+    p = l.replace(/\D/g, ""),
+    c = l ? w.filter(f => f.customer_name.toLowerCase().includes(l) || p.length >= 3 && f.contact_phone.replace(/\D/g, "").includes(p)) : w,
+    y = u.useValue("resources") ?? [],
+    d = u.useValue("settings") ?? te,
+    S = !!u.useValue("loading"),
+    n = Ve({
+      getSettings: s.getSettings,
+      getResources: s.getResources,
+      onChanged: () => {
+        s.reload();
+      }
+    }),
+    r = Ne(!0, !0),
+    _ = Ge(y, c),
+    A = new Set(y.map(f => f.seq)),
+    L = o.jsx(Le, {
+      size: "small",
+      value: g,
+      onChange: f => s.changeView(f ?? g),
+      options: gt.map(({
+        value: f,
+        labelKey: B
+      }) => ({
+        value: f,
+        label: e(B)
+      })),
+      sx: {
+        flexShrink: 0,
+        height: pt,
+        "& .MuiToggleButtonGroup-grouped": {
+          minWidth: 60,
+          px: 1.25
+        }
+      }
+    }),
+    k = o.jsxs(a, {
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        gap: 1.5
+      },
+      children: [S ? o.jsx(Ie, {
+        size: 18
+      }) : null, L]
+    }),
+    v = g === "agenda" ? o.jsx(it, {
+      from: b,
+      days: X,
+      bookings: c,
+      resources: y,
+      compact: i,
+      onPickBooking: n.openEdit,
+      onPickDay: s.openDay
+    }) : g === "days" ? o.jsx(ut, {
+      from: b,
+      days: X,
+      lanes: _,
+      bookings: c,
+      knownSeqs: A,
+      compact: i,
+      onPickBooking: n.openEdit,
+      onPickCell: (f, B) => t && n.openCreate({
+        ...Ye(B, d.day_start_time, d.day_end_time),
+        resource_seq: f.seq
+      }),
+      onPickDay: s.openDay
+    }) : o.jsx(ct, {
+      day: b,
+      lanes: _,
+      bookings: c,
+      knownSeqs: A,
+      compact: i,
+      onPickBooking: n.openEdit,
+      onPickSlot: (f, B) => t && n.openCreate({
+        ...Ke(b, B, d.default_minutes),
+        resource_seq: f.seq
+      })
+    }),
+    j = o.jsx(Pe, {
+      controller: n,
+      resources: y
+    }),
+    T = f => o.jsx(Oe, {
+      bare: f,
+      title: Je(g, b),
+      onPrev: () => s.move(-1),
+      onNext: () => s.move(1),
+      onToday: s.goToday,
+      showHideCompleted: !1,
+      trailing: f ? void 0 : k
+    });
+  if (qe(!i && t ? {
+    label: e("booking.newBooking"),
+    onClick: () => n.openCreate()
+  } : null), !i) {
+    const f = {
+      filter: {
+        stateId: "booking-calendar-filters",
+        showChips: !1,
+        groups: [{
+          filters: [{
+            type: "custom",
+            name: "booking-calendar-nav",
+            node: T(!0)
+          }]
+        }]
+      },
+      right: k,
+      showSearch: !0,
+      searchValue: m,
+      searchPlaceholder: e("booking.searchCustomer"),
+      onSearchChange: x,
+      collapsible: !1,
+      showCollapseButton: !1,
+      showClearIcon: !1
+    };
+    return o.jsxs(o.Fragment, {
+      children: [o.jsx(a, {
+        sx: {
+          position: "relative",
+          height: "100%",
+          minHeight: 0,
+          display: "flex",
+          flexDirection: "column"
+        },
+        children: o.jsx(Re, {
+          header: f,
+          leftPanel: o.jsxs(a, {
+            ref: r,
+            sx: {
+              minHeight: 0,
+              boxSizing: "border-box",
+              p: 1.5,
+              display: "flex",
+              flexDirection: "column",
+              gap: 1.25
+            },
+            children: [o.jsx(de, {
+              dots: g === "agenda",
+              bare: !0
+            }), v]
+          })
+        })
+      }), j]
+    });
+  }
+  return o.jsxs(a, {
+    ref: r,
+    sx: {
+      position: "relative",
+      minHeight: 0,
+      display: "flex",
+      flexDirection: "column",
+      bgcolor: "background.paper",
+      mx: `-${ne}px`,
+      mt: `-${ne}px`
+    },
+    children: [o.jsxs(a, {
+      sx: {
+        borderBottom: `1px solid ${z}`
+      },
+      children: [T(!1), o.jsx(de, {
+        dots: g === "agenda"
+      })]
+    }), v, t ? o.jsx(Me, {
+      color: "primary",
+      "aria-label": e("booking.newBooking"),
+      onClick: () => n.openCreate(),
+      sx: {
+        position: "fixed",
+        right: 24,
+        bottom: "calc(24px + var(--taskbox-fab-lift, 0px))",
+        zIndex: 40
+      },
+      children: o.jsx(Ae, {})
+    }) : null, j]
+  });
+}
+export { Tt as default };

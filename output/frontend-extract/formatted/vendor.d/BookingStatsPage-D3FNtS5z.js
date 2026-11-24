@@ -1,0 +1,226 @@
+import { r as c, j as s, u as R } from "./react-CjxcGQav.js";
+import { u as T, b as h } from "./bookingApi-DC6gLfSO.js";
+import { N as C } from "./newBookingSidebarAction-cymKHTSc.js";
+import { a as N } from "./accountingApi-BfPys7bV.js";
+import { cz as E, bv as P, bO as L, bT as z, dv as A, ce as U, cf as O, cJ as I, B as S, L as k, bQ as V } from "../js.d/main-Cm9wS5wt.js";
+import { s as $, S as q, r as y, t as w } from "./StatsView-xYBly2rm.js";
+import { l as u, j as D, r as G } from "./types-CVXtrYKe.js";
+import "./profileApi-Btafs-pM.js";
+import "./sidebarAction-Z0aCDENX.js";
+import "./BookingFormDialog-EC3RsN2H.js";
+import "./OptionToggleGroup-Cvm2wRyq.js";
+import "./stylis-DdLD6a3t.js";
+function W({
+  from: i,
+  to: e,
+  orgSeq: l
+}) {
+  const r = P(),
+    a = R(),
+    [m, o] = c.useState(null);
+  if (c.useEffect(() => {
+    if (!l) return;
+    let p = !0;
+    return o(null), N.pnl(i, e, "accrual").then(d => p && o(d)).catch(() => {}), () => {
+      p = !1;
+    };
+  }, [l, i, e]), !m) return null;
+  const g = (p, d) => s.jsxs(S, {
+    children: [s.jsx(k, {
+      sx: {
+        fontSize: "0.875rem",
+        color: "text.secondary"
+      },
+      children: p
+    }), s.jsx(k, {
+      sx: {
+        mt: .5,
+        fontSize: {
+          xs: "1.25rem",
+          sm: "1.5rem"
+        },
+        fontWeight: 700,
+        fontVariantNumeric: "tabular-nums",
+        color: d < 0 ? "error.main" : "text.primary"
+      },
+      children: u(d)
+    })]
+  });
+  return s.jsxs(I, {
+    elevation: 0,
+    sx: {
+      p: {
+        xs: 2,
+        sm: 3
+      },
+      borderRadius: 2,
+      boxShadow: "0 1px 3px rgba(0,0,0,0.12)"
+    },
+    children: [s.jsxs(S, {
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        gap: 2,
+        mb: 2
+      },
+      children: [s.jsx(k, {
+        component: "h2",
+        sx: {
+          fontSize: "1rem",
+          fontWeight: 600
+        },
+        children: r("booking.pnlTitle")
+      }), s.jsx(V, {
+        size: "small",
+        onClick: () => a("/dashboard/accounting/pnl"),
+        sx: {
+          fontSize: "0.875rem"
+        },
+        children: r("booking.pnlView")
+      })]
+    }), s.jsxs(S, {
+      sx: {
+        display: "grid",
+        gap: 2,
+        gridTemplateColumns: {
+          xs: "repeat(2, minmax(0, 1fr))",
+          md: "repeat(4, minmax(0, 1fr))"
+        }
+      },
+      children: [g(r("booking.grossProfit"), m.gross_profit), g(r("booking.operatingProfit"), m.operating_profit), g(r("booking.preTaxProfit"), m.pre_tax_profit), g(r("booking.netProfit"), m.net_profit)]
+    }), s.jsx(k, {
+      sx: {
+        mt: 2,
+        fontSize: "0.875rem",
+        color: "text.secondary",
+        wordBreak: "keep-all"
+      },
+      children: r("booking.pnlNote")
+    })]
+  });
+}
+function nt() {
+  const i = E()?.seq ?? 0,
+    e = P(),
+    l = T(),
+    r = t => t.toLocaleString(U(O())),
+    [a, m] = c.useState(() => $("month")),
+    [o, g] = c.useState(null),
+    [p, d] = c.useState([]),
+    [B, v] = c.useState(!1);
+  c.useEffect(() => {
+    if (!i) return;
+    let t = !0;
+    return h.meta().then(n => t && d(n.resources)).catch(() => {}), () => {
+      t = !1;
+    };
+  }, [i]), c.useEffect(() => {
+    if (!i) return;
+    let t = !0;
+    return v(!0), h.stats(a.from, a.to).then(n => t && g(n)).catch(n => t && L(n instanceof Error ? n.message : z("booking.errLoadStats"))).finally(() => t && v(!1)), () => {
+      t = !1;
+    };
+  }, [i, a]);
+  const j = c.useRef(a);
+  j.current = a, A(["booking"], () => {
+    const t = a;
+    h.stats(t.from, t.to).then(n => j.current === t && g(n)).catch(() => {});
+  }, {
+    enabled: i > 0
+  });
+  const b = t => o?.by_status?.[t] ?? 0,
+    f = o?.total ?? 0,
+    x = b("canceled") + b("no_show"),
+    _ = t => G(p, Number(t)) || e("booking.noResource", {
+      resource: l.resource
+    });
+  return s.jsxs(s.Fragment, {
+    children: [s.jsx(C, {}), s.jsx(q, {
+      period: a,
+      onPeriodChange: m,
+      loading: B,
+      basis: e("booking.statsBasis"),
+      capped: o?.capped,
+      tiles: [{
+        label: e("booking.tileBookings"),
+        value: e("booking.countUnit", {
+          count: f,
+          n: r(f)
+        }),
+        note: e("booking.tileCustomers", {
+          n: r(o?.customers ?? 0)
+        })
+      }, {
+        label: e("booking.tileConfirmedDone"),
+        value: e("booking.countUnit", {
+          count: b("confirmed") + b("done"),
+          n: r(b("confirmed") + b("done"))
+        }),
+        note: e("booking.tileParty", {
+          n: r(o?.party ?? 0)
+        })
+      }, {
+        label: e("booking.tileRevenue"),
+        value: u(o?.amount ?? 0),
+        note: e("booking.tileVatIncluded", {
+          amount: u(o?.vat ?? 0)
+        })
+      }, {
+        label: e("booking.grossProfit"),
+        value: u(o?.gross_profit ?? 0),
+        note: e("booking.tileGrossNote", {
+          amount: u(o?.cost ?? 0)
+        })
+      }, {
+        label: e("booking.tileCanceled"),
+        value: e("booking.countUnit", {
+          count: x,
+          n: r(x)
+        }),
+        note: f > 0 ? e("booking.tileShare", {
+          percent: Math.round(x / f * 100)
+        }) : void 0
+      }],
+      trend: {
+        title: e("booking.trendByDay"),
+        points: w(o?.by_day ?? {}, a.from, a.to),
+        unit: e("booking.trendUnit")
+      },
+      footer: s.jsx(W, {
+        from: a.from,
+        to: a.to,
+        orgSeq: i
+      }),
+      ranks: [{
+        title: e("booking.rankByStatus"),
+        items: y(o?.by_status, t => D[t] ?? t)
+      }, {
+        title: e("booking.rankByResource", {
+          resource: l.resource
+        }),
+        items: y(o?.by_resource, _)
+      }, {
+        title: e("booking.rankProductSales", {
+          product: l.product
+        }),
+        items: Object.entries(o?.by_product ?? {}).sort((t, n) => n[1].amount - t[1].amount).slice(0, 10).map(([t, n]) => ({
+          label: `${t} × ${n.qty}`,
+          value: n.amount,
+          text: `${u(n.amount)} · ${e("booking.marginAmount", {
+            amount: u(n.amount - (n.vat ?? 0) - n.cost)
+          })}`
+        }))
+      }, {
+        title: e("booking.rankResourceSales", {
+          resource: l.resource
+        }),
+        items: y(o?.amount_by_resource, _).map(t => ({
+          ...t,
+          text: u(t.value)
+        }))
+      }]
+    })]
+  });
+}
+export { nt as default };

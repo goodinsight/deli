@@ -1,0 +1,102 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/InlineErrorAlert-D9ICJPt7.js",
+  "path": "assets/vendor.d/InlineErrorAlert-D9ICJPt7.js",
+  "name": "InlineErrorAlert",
+  "kind": "ui",
+  "bytes": 225,
+  "sha256": "76b7b73285575c3c60b1decef38ebf45d8727abbc1d7eb2c4933ad461e9ac59a",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/InlineErrorAlert-D9ICJPt7.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "t",
+          "imported": "j"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "n",
+          "imported": "cH"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "o",
+      "exported": "I"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "o",
+      "keys": [
+        "message"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "AnnualLeavePage",
+    "AttendanceDevicePanels",
+    "AttendanceHost",
+    "AttendancePage",
+    "AttendanceRecordsPage",
+    "AttendanceStatusPage",
+    "CalendarMonthListPage",
+    "CalendarMonthPage",
+    "CalendarSidebarPanel",
+    "CertificatePage",
+    "ChatPage",
+    "ContractPage",
+    "EmployeeFormDialog",
+    "EmployeeListPage",
+    "EventPage",
+    "InsurancePage",
+    "Layout",
+    "LeavePlanDialog",
+    "MobileDashboardLayout",
+    "MyAttendancePage",
+    "OrgChartPage",
+    "OrgMembersPage",
+    "PayrollPage",
+    "PayrollRunPage",
+    "PostComposerHost",
+    "SubsidyPage",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog",
+    "TeamPage",
+    "TrainingEditDialog",
+    "TrainingPage",
+    "WorkSchedulePage",
+    "mobileBandDialog",
+    "notificationsRealtime"
+  ],
+  "service": "공통",
+  "purpose": "오류 메시지",
+  "reuseGrade": "A",
+  "integration": "MUI Alert로 직접 이식; portable에 재구성본 제공",
+  "exportedParameters": [
+    {
+      "export": "I",
+      "compiledLocal": "o",
+      "keys": [
+        "message"
+      ]
+    }
+  ]
+}

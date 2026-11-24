@@ -1,0 +1,179 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/ApprovalTypeSelect-C3LZlstk.js",
+  "path": "assets/vendor.d/ApprovalTypeSelect-C3LZlstk.js",
+  "name": "ApprovalTypeSelect",
+  "kind": "ui",
+  "bytes": 2645,
+  "sha256": "81e7e8c2f8f8e648e97ed6b3ae887926af6e6142dc5454faefc7e062dd928343",
+  "status": "downloaded",
+  "formatted": "formatted/vendor.d/ApprovalTypeSelect-C3LZlstk.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "m",
+          "imported": "r"
+        },
+        {
+          "local": "t",
+          "imported": "j"
+        },
+        {
+          "local": "h",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "g",
+          "imported": "dP"
+        },
+        {
+          "local": "c",
+          "imported": "B"
+        },
+        {
+          "local": "y",
+          "imported": "o2"
+        },
+        {
+          "local": "A",
+          "imported": "cJ"
+        },
+        {
+          "local": "T",
+          "imported": "df"
+        },
+        {
+          "local": "x",
+          "imported": "bv"
+        },
+        {
+          "local": "j",
+          "imported": "aB"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./tableScrollbars-C9bhlJjO.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "B",
+          "imported": "T"
+        }
+      ],
+      "resolved": "assets/vendor.d/tableScrollbars-C9bhlJjO.js"
+    },
+    {
+      "specifier": "./EdgeTabs-Ccbggjn6.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "S",
+          "imported": "E"
+        }
+      ],
+      "resolved": "assets/vendor.d/EdgeTabs-Ccbggjn6.js"
+    },
+    {
+      "specifier": "./useAppBasePath-BVB_xO8H.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "D",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/useAppBasePath-BVB_xO8H.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "q",
+      "exported": "A"
+    },
+    {
+      "local": "$",
+      "exported": "a"
+    },
+    {
+      "local": "P",
+      "exported": "b"
+    },
+    {
+      "local": "R",
+      "exported": "r"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "w",
+      "keys": [
+        "header",
+        "aboveTable",
+        "columns",
+        "items",
+        "total",
+        "loading",
+        "onRowClick",
+        "onLoadMore",
+        "onSort",
+        "sortBy",
+        "sortDirection"
+      ]
+    },
+    {
+      "function": "q",
+      "keys": [
+        "active",
+        "pendingCount",
+        "handleCount",
+        "onSamePage",
+        "above"
+      ]
+    },
+    {
+      "function": "C",
+      "keys": [
+        "options",
+        "selected",
+        "onSelect",
+        "counts",
+        "totalCount"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "ApprovalBoxPage",
+    "ApprovalDraftedPage"
+  ],
+  "service": "결재",
+  "purpose": "문서 유형 선택",
+  "reuseGrade": "B",
+  "integration": "문서 유형 목록과 선택 콜백 연결",
+  "exportedParameters": [
+    {
+      "export": "A",
+      "compiledLocal": "q",
+      "keys": [
+        "active",
+        "pendingCount",
+        "handleCount",
+        "onSamePage",
+        "above"
+      ]
+    }
+  ]
+}

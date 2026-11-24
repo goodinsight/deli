@@ -1,0 +1,105 @@
+import { i as c, l, r as m, j as o } from "./react-CjxcGQav.js";
+import { cz as u } from "../js.d/main-Cm9wS5wt.js";
+import { u as d, O as f, a as g, L as h, b as x } from "./LeavePlanDialog-B4ZZ2WNf.js";
+import { u as j, D } from "./AttendanceDevicePanels-B5hqoF42.js";
+import { p } from "./sharedMyAttendance-DmyX71sh.js";
+import { q as C } from "./mobileBandDialog-C3M4tWPv.js";
+import { L } from "./notificationsRealtime-BoFKeECQ.js";
+import "./stylis-DdLD6a3t.js";
+import "./attendanceMgmtApi-CC4DR0XR.js";
+import "./attendanceBio-C-9dHF9O.js";
+import "./attendanceMgmt-B_e3bPBn.js";
+import "./i18nLabels-BNTLL7cu.js";
+import "./InlineErrorAlert-D9ICJPt7.js";
+import "./AttendanceParts-mHb1cK0h.js";
+import "./LeaveDatesInput-D2CFTlN1.js";
+import "./profileApi-Btafs-pM.js";
+import "./BusinessCenterOutlined-gZ8sR_r3.js";
+import "./resolveAssetPreviewSrc-CLlbOCzq.js";
+import "./OrgChartPage-DPIPUrhu.js";
+import "./EmployeeFormDialog-BHKK47Dg.js";
+import "./useFileViewer-B-2ewnr3.js";
+import "./documentViewerStore-BlSjH3BG.js";
+import "./employeeApi-CdGzOYcj.js";
+import "./types-CVhETUvu.js";
+import "./birthdayCalendar-CWu_jG3x.js";
+import "./trainingCalendar-BpMTSUwd.js";
+import "./trainingApi-DT4unjOR.js";
+import "./training-Bx0zycZu.js";
+import "./ContactPhoneOutlined-DpFEzROB.js";
+import "./EmployeeSelectDialog-Cdnxeoz9.js";
+import "./utils-B6Q5_urv.js";
+import "./bootstrapController-BMV_i07c.js";
+import "./profileEcho-q2FaD_03.js";
+import "./teamMembers-0yRsmqL6.js";
+import "./pendingRecordings-DpKJ8Y2R.js";
+import "./meetingsApi-CCkjq69B.js";
+import "./orgTree-Dh5HFjBo.js";
+import "./mxApi-R6g9QtQq.js";
+import "./aliasStore-DiN6Kp-5.js";
+import "./Trans-CU1vl0TZ.js";
+import "./employeeAccountApi-p-ORLvrh.js";
+import "./WomanOutlined-CzlFMUkT.js";
+import "./tableScrollbars-C9bhlJjO.js";
+import "./AccountBoxOutlined-BxNEw8I0.js";
+import "./AssignmentIndOutlined-DynSb23A.js";
+import "./EventBusyOutlined-DqcCaRMs.js";
+import "./PaidOutlined-Cy1uVjW3.js";
+import "./PercentOutlined-XX2JPqvz.js";
+import "./PhoneAndroidOutlined-DafU-b-9.js";
+import "./PhoneOutlined-Bjc_e42S.js";
+import "./ScheduleOutlined-C_7j7r9e.js";
+import "./ToggleOnOutlined-5BVdqdOm.js";
+import "./WorkOutlineOutlined-D5AzVFs6.js";
+import "./PropertyFields-TuJTG5XK.js";
+import "./hrCodeApi-BRtc5fIX.js";
+import "./propertySections-Bwsl7OH-.js";
+import "./Person-DnoEHesw.js";
+import "./squircle-CQM8EvXm.js";
+import "./index.esm-gjRImBGa.js";
+import "./PersonRemoveOutlined-CyeIj2nP.js";
+import "./GroupAddOutlined-DigKoBGv.js";
+import "./mobileTitlePicker-u2JmU445.js";
+import "./lastBoard-DXeRnS9N.js";
+function St() {
+  const e = u()?.seq ?? 0,
+    {
+      pathname: a
+    } = c(),
+    [s] = l(),
+    n = (s.get("qr") ?? "").trim(),
+    t = d({
+      orgSeq: e,
+      qrCode: n,
+      watchPosition: C(a)
+    }),
+    i = j(t.reload);
+  m.useLayoutEffect(() => p({
+    controller: t,
+    device: i
+  })), m.useLayoutEffect(() => () => p(null), []);
+  const {
+    data: r
+  } = t;
+  return !r || !r.linked ? null : o.jsxs(o.Fragment, {
+    children: [o.jsx(f, {
+      controller: t
+    }), o.jsx(g, {
+      controller: t
+    }), o.jsx(L, {
+      controller: t
+    }), o.jsx(h, {
+      controller: t,
+      plannedEnd: r.today.planned.end,
+      onCheckOutNow: () => {
+        t.checkOut();
+      }
+    }), o.jsx(x, {
+      controller: t
+    }), o.jsx(D, {
+      status: r.device,
+      controller: i
+    })]
+  });
+}
+export { St as default };

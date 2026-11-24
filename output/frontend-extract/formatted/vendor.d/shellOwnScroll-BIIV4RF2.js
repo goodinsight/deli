@@ -1,0 +1,24 @@
+import { r as t } from "./react-CjxcGQav.js";
+const l = 68,
+  r = {
+    position: "left",
+    offset: 24,
+    offsetBottom: "calc(24px + var(--shell-fab-bottom, 0px))",
+    size: 56
+  },
+  a = {
+    enabled: !0,
+    onRefresh: () => (window.location.reload(), new Promise(() => {}))
+  },
+  o = t.createContext(null);
+function c() {
+  const e = t.useContext(o);
+  t.useLayoutEffect(() => {
+    if (e) return e(!0), () => e(!1);
+  }, [e]);
+}
+const n = t.createContext(null);
+function u() {
+  return t.useContext(n) ?? void 0;
+}
+export { l as M, a as P, r as S, n as a, o as b, c, u };

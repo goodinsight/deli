@@ -1,0 +1,94 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/FileDropOverlay-Bw4w8zRu.js",
+  "path": "assets/vendor.d/FileDropOverlay-Bw4w8zRu.js",
+  "name": "FileDropOverlay",
+  "kind": "ui",
+  "bytes": 652,
+  "sha256": "76dc172082c3d1f3ec7ba54ac1a3534971ecee384508d48b565f9445bf050eae",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/FileDropOverlay-Bw4w8zRu.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "r",
+          "imported": "j"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "e",
+          "imported": "B"
+        },
+        {
+          "local": "i",
+          "imported": "K"
+        },
+        {
+          "local": "n",
+          "imported": "aO"
+        },
+        {
+          "local": "p",
+          "imported": "L"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "x",
+      "exported": "F"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "x",
+      "keys": [
+        "label",
+        "busy",
+        "zIndex"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "BoardListPage",
+    "BoardTrashPage",
+    "ChatPage",
+    "ChatRoomView",
+    "Layout",
+    "MeetPage",
+    "MobileDashboardLayout",
+    "PostComposerHost",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog"
+  ],
+  "service": "공통",
+  "purpose": "파일 드래그 안내",
+  "reuseGrade": "B",
+  "integration": "드롭 이벤트를 새 업로드 어댑터에 연결",
+  "exportedParameters": [
+    {
+      "export": "F",
+      "compiledLocal": "x",
+      "keys": [
+        "label",
+        "busy",
+        "zIndex"
+      ]
+    }
+  ]
+}

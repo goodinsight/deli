@@ -1,0 +1,1287 @@
+import { r as y, j as e } from "./react-CjxcGQav.js";
+import { bv as ne, k1 as Xe, k2 as Ue, cJ as Je, L as A, I as ue, B as s, s as ke, cj as me, bH as pe, fQ as N, bF as Ze, u as et, oa as tt, d3 as nt, fw as ot, gw as rt, cz as st, ob as at, oc as it, K as lt, lr as ct, bI as he, bQ as dt, d8 as mt, aB as pt, kM as ht, gB as ft, gz as ut, bO as xt, ci as gt, cl as yt, as as E, od as bt } from "../js.d/main-Cm9wS5wt.js";
+import { V as wt } from "./ViewAgendaOutlined-DQGfh6be.js";
+import { w as U, b as _e, m as fe, d as X, t as z, i as P, e as Se, s as Ct, u as jt, f as kt, a as ve } from "./useHolidayNames-CGgpEQbF.js";
+import { u as St, a as vt, b as W, g as De } from "./calendarKinds-BI5RuiF8.js";
+import { u as Dt } from "./useSwipeNav-B6w6Iias.js";
+import { C as te, n as Mt, u as Et, a as Tt, b as It, m as le, c as B, T as zt, d as _t, D as $t, B as Wt, e as At, o as Rt, O as Bt, M as Me } from "./MeetingCalendarChip--pNqwVZS.js";
+import { u as Ht } from "./useCalendarTasks-Cl5o2Ebi.js";
+import { u as Ot, a as Lt, C as Pt } from "./CalendarNav-uLg-DJVR.js";
+import { o as Ee } from "./taskDetailHost-C45bt_tL.js";
+import { u as qt } from "./birthdayCalendar-CWu_jG3x.js";
+import { u as Nt } from "./trainingCalendar-BpMTSUwd.js";
+import { L as Yt } from "./bootstrapController-BMV_i07c.js";
+import { O as Ft } from "./OptionToggleGroup-Cvm2wRyq.js";
+import { b as Kt, o as ce } from "./meetingCalendar-_jcQJ1qd.js";
+import { t as Te } from "./taskboxProviderConfig-DZSmb5uq.js";
+import "./stylis-DdLD6a3t.js";
+import "./EventBusyOutlined-DqcCaRMs.js";
+import "./TrainingEditDialog-CdnpriOe.js";
+import "./useFormModified-cVB1R-yN.js";
+import "./employeeApi-CdGzOYcj.js";
+import "./types-CVhETUvu.js";
+import "./i18nLabels-BNTLL7cu.js";
+import "./trainingApi-DT4unjOR.js";
+import "./training-Bx0zycZu.js";
+import "./CategoryOutlined-DcAqxAdD.js";
+import "./EventRepeatOutlined-BzT6rPrF.js";
+import "./Title-WCY0exuZ.js";
+import "./DeleteOutlineOutlined-5H75k_7z.js";
+import "./FileUploadBox-crZW1mG0.js";
+import "./AccountAvatar-DtrhoS_d.js";
+import "./Person-DnoEHesw.js";
+import "./resolveAssetPreviewSrc-CLlbOCzq.js";
+import "./date_utils-CYURFdnX.js";
+import "./FileViewer-D5PyYcLh.js";
+import "./RotateRight-DbtMfjGZ.js";
+import "./tiny-invariant-CopsF_GD.js";
+import "./Snackbar-DxIDGM8-.js";
+import "./uploadGuard-BK1B6cyC.js";
+import "./EmployeeSelectDialog-Cdnxeoz9.js";
+import "./utils-B6Q5_urv.js";
+import "./InlineErrorAlert-D9ICJPt7.js";
+import "./PropertyFields-TuJTG5XK.js";
+import "./propertySections-Bwsl7OH-.js";
+import "./taskboxApi-BuYlRWHe.js";
+import "./FeedProfileAvatar-B6gqXpYU.js";
+import "./CallOutlined-B2W58-Kt.js";
+import "./squircle-CQM8EvXm.js";
+import "./aliasStore-DiN6Kp-5.js";
+import "./chatRoomHost-ImRyH_Na.js";
+import "./callStore-DH1_RYeP.js";
+import "./videoMeetingApi-BCL1yHsp.js";
+import "./profileEcho-q2FaD_03.js";
+import "./teamMembers-0yRsmqL6.js";
+import "./pendingRecordings-DpKJ8Y2R.js";
+import "./meetingsApi-CCkjq69B.js";
+import "./orgTree-Dh5HFjBo.js";
+import "./mxApi-R6g9QtQq.js";
+import "./profileApi-Btafs-pM.js";
+import "./MobileCardListLayout-D5_p2Xer.js";
+import "./mobileSearchOverlay-DYWcMOOb.js";
+import "./employeeAvatars-DaG0jIhW.js";
+import "./useFileViewer-B-2ewnr3.js";
+import "./documentViewerStore-BlSjH3BG.js";
+import "./EmojiPanel-DTZZq0Nb.js";
+const de = 50;
+function Gt(o) {
+  const [p, u, j] = o.split("-").map(Number),
+    c = U()[new Date(p, u - 1, j).getDay()];
+  return p === new Date().getFullYear() ? `${u}/${j} (${c})` : `${p}. ${u}/${j} (${c})`;
+}
+function Vt({
+  needle: o,
+  inputPlaceholder: p,
+  items: u,
+  onPick: j
+}) {
+  const c = ne(),
+    [b, k] = y.useState(null),
+    [v, D] = y.useState(!1);
+  y.useEffect(() => {
+    D(!1);
+    const h = document.querySelector(`input[placeholder="${p.replace(/["\\]/g, "\\$&")}"]`);
+    k(h?.closest(".MuiInputBase-root") ?? h ?? null);
+  }, [o, p]), y.useEffect(() => {
+    const h = m => {
+      m.key === "Escape" && D(!0);
+    };
+    return window.addEventListener("keydown", h), () => window.removeEventListener("keydown", h);
+  }, []);
+  const d = !!(o && b && !v),
+    g = u.slice(0, de);
+  return e.jsx(Xe, {
+    open: d,
+    anchorEl: b,
+    placement: "bottom-start",
+    sx: {
+      zIndex: 1300
+    },
+    modifiers: [{
+      name: "offset",
+      options: {
+        offset: [0, 4]
+      }
+    }],
+    children: e.jsx(Ue, {
+      onClickAway: h => {
+        b && b.contains(h.target) || D(!0);
+      },
+      children: e.jsxs(Je, {
+        elevation: 4,
+        sx: {
+          width: Math.max(b?.getBoundingClientRect().width ?? 0, 480),
+          maxWidth: "calc(100vw - 32px)",
+          borderRadius: 1.5,
+          overflow: "hidden"
+        },
+        children: [g.length === 0 ? e.jsx(A, {
+          sx: {
+            px: 2,
+            py: 1.5,
+            fontSize: 14,
+            color: "text.secondary"
+          },
+          children: c("calendar.searchNoMatch")
+        }) : e.jsx(ue, {
+          style: {
+            maxHeight: 420
+          },
+          track: {
+            alignment: "outside"
+          },
+          children: e.jsx(s, {
+            component: "ul",
+            sx: {
+              listStyle: "none",
+              m: 0,
+              p: .5,
+              width: "100%",
+              boxSizing: "border-box"
+            },
+            children: g.map(h => e.jsxs(s, {
+              component: "li",
+              role: "button",
+              tabIndex: 0,
+              onClick: () => {
+                D(!0), j(h);
+              },
+              onKeyDown: m => {
+                m.key === "Enter" && (D(!0), j(h));
+              },
+              sx: {
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+                px: 1.5,
+                py: 1,
+                borderRadius: 1,
+                minWidth: 0,
+                overflow: "hidden",
+                cursor: "pointer",
+                "&:hover, &:focus-visible": {
+                  bgcolor: ke[100],
+                  outline: "none"
+                }
+              },
+              children: [e.jsx(s, {
+                component: "span",
+                sx: {
+                  fontSize: 14,
+                  color: "text.secondary",
+                  flexShrink: 0,
+                  minWidth: 92
+                },
+                children: Gt(h.day)
+              }), e.jsx(s, {
+                component: "span",
+                sx: {
+                  fontSize: 14,
+                  color: "text.secondary",
+                  flexShrink: 0
+                },
+                children: h.kind
+              }), e.jsx(s, {
+                component: "span",
+                ...te,
+                sx: {
+                  fontSize: 15,
+                  minWidth: 0,
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap"
+                },
+                children: h.title
+              })]
+            }, h.key))
+          })
+        }), u.length > de ? e.jsx(A, {
+          sx: {
+            px: 2,
+            py: 1,
+            fontSize: 14,
+            color: "text.secondary",
+            borderTop: 1,
+            borderColor: ke[200]
+          },
+          children: c("calendar.searchMore", {
+            count: u.length - de
+          })
+        }) : null]
+      })
+    })
+  });
+}
+const q = `1px solid ${N}`,
+  L = 48,
+  Qt = 56,
+  Xt = 46,
+  Ut = 8;
+function Jt(o) {
+  const p = Math.ceil(Xt / L * 60),
+    u = d => Math.max(d.end, d.start + p),
+    j = [...o].sort((d, g) => d.start - g.start || u(g) - u(d)),
+    c = [];
+  let b = [],
+    k = [],
+    v = -1;
+  const D = () => {
+    for (const d of b) d.lanes = k.length;
+    c.push(...b), b = [], k = [];
+  };
+  for (const d of j) {
+    d.start >= v && b.length && D();
+    let g = k.findIndex(h => h <= d.start);
+    g < 0 ? (g = k.length, k.push(u(d))) : k[g] = u(d), b.push({
+      item: d,
+      lane: g,
+      lanes: 1
+    }), v = Math.max(v, u(d));
+  }
+  return b.length && D(), c;
+}
+function Zt({
+  days: o,
+  today: p,
+  holidays: u,
+  split: j,
+  ready: c,
+  minHeight: b,
+  onCreate: k,
+  onPickDay: v
+}) {
+  const D = ne(),
+    d = U(),
+    g = o.map(f => c ? j(f) : {
+      allDay: null,
+      timed: []
+    }),
+    h = `${Qt}px repeat(${o.length}, minmax(0, 1fr))`,
+    m = y.useRef(null);
+  return y.useEffect(() => {
+    const f = m.current?.getScrollContainer();
+    f && (f.scrollTop = Ut * L - 8);
+  }, []), e.jsxs(s, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      height: b
+    },
+    children: [e.jsxs(s, {
+      sx: {
+        zIndex: 3,
+        bgcolor: "#fff",
+        flexShrink: 0
+      },
+      children: [e.jsxs(s, {
+        sx: {
+          display: "grid",
+          gridTemplateColumns: h,
+          borderBottom: q,
+          bgcolor: "#fafafa"
+        },
+        children: [e.jsx(s, {}), o.map(f => {
+          const C = P(f, p),
+            i = u.get(z(f));
+          return e.jsxs(me, {
+            disabled: !v,
+            onClick: () => v?.(f),
+            sx: {
+              py: .75,
+              gap: .75,
+              justifyContent: "center",
+              borderLeft: q,
+              fontSize: "0.8125rem",
+              fontWeight: C ? 700 : 500,
+              color: C ? "primary.main" : i ? "error.main" : X(f.getDay())
+            },
+            children: [e.jsxs("span", {
+              children: [f.getMonth() + 1, "/", f.getDate(), " (", d[f.getDay()], ")"]
+            }), i ? e.jsx(s, {
+              component: "span",
+              sx: {
+                color: "error.main",
+                fontWeight: 500
+              },
+              children: i
+            }) : null]
+          }, z(f));
+        })]
+      }), e.jsxs(s, {
+        sx: {
+          display: "grid",
+          gridTemplateColumns: h,
+          borderBottom: q
+        },
+        children: [e.jsx(s, {
+          sx: {
+            fontSize: 12,
+            color: "text.secondary",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-end",
+            pr: 1
+          },
+          children: D("calendar.allDay")
+        }), o.map((f, C) => e.jsx(s, {
+          sx: {
+            minWidth: 0,
+            p: .75,
+            minHeight: 38,
+            boxSizing: "border-box",
+            borderLeft: q,
+            bgcolor: P(f, p) ? "#eff6ff" : "#fff"
+          },
+          children: g[C].allDay
+        }, z(f)))]
+      })]
+    }), e.jsx(ue, {
+      ref: m,
+      style: {
+        flex: 1,
+        minHeight: 0
+      },
+      children: e.jsxs(s, {
+        sx: {
+          display: "grid",
+          gridTemplateColumns: h,
+          position: "relative"
+        },
+        children: [e.jsx(s, {
+          children: Array.from({
+            length: 24
+          }, (f, C) => e.jsx(s, {
+            sx: {
+              height: L,
+              fontSize: 12,
+              lineHeight: "18px",
+              color: "text.secondary",
+              textAlign: "right",
+              pr: 1,
+              transform: "translateY(-9.5px)"
+            },
+            children: C ? `${C}:00` : ""
+          }, C))
+        }), o.map((f, C) => e.jsxs(s, {
+          onDoubleClick: i => {
+            i.target.closest("button, a, [role='button']") || k(f);
+          },
+          sx: {
+            position: "relative",
+            minWidth: 0,
+            borderLeft: q,
+            height: 24 * L,
+            bgcolor: P(f, p) ? "#f8fbff" : "#fff"
+          },
+          children: [Array.from({
+            length: 24
+          }, (i, w) => e.jsx(s, {
+            sx: {
+              height: L,
+              boxSizing: "border-box",
+              borderBottom: q,
+              pointerEvents: "none"
+            }
+          }, w)), Jt(g[C].timed).map(({
+            item: i,
+            lane: w,
+            lanes: T
+          }) => e.jsx(s, {
+            sx: {
+              position: "absolute",
+              top: i.start / 60 * L + 1,
+              left: `calc(${w / T * 100}% + 2px)`,
+              width: `calc(${100 / T}% - 4px)`,
+              zIndex: 1,
+              "& > *": {
+                minHeight: Math.max(22, (i.end - i.start) / 60 * L - 2),
+                boxSizing: "border-box",
+                alignItems: "flex-start",
+                m: 0
+              },
+              "& *": {
+                WebkitLineClamp: "2 !important"
+              }
+            },
+            children: i.node
+          }, i.key))]
+        }, z(f)))]
+      })
+    })]
+  });
+}
+function en({
+  year: o,
+  today: p,
+  holidays: u,
+  hasItems: j,
+  renderChips: c,
+  onPickDay: b,
+  onPickMonth: k
+}) {
+  const v = U();
+  return e.jsx(s, {
+    sx: {
+      display: "grid",
+      gridTemplateColumns: {
+        xs: "repeat(2, minmax(0, 1fr))",
+        md: "repeat(3, minmax(0, 1fr))",
+        lg: "repeat(4, minmax(0, 1fr))"
+      },
+      gap: 3,
+      p: 2
+    },
+    children: Array.from({
+      length: 12
+    }, (D, d) => {
+      const g = new Date(o, d, 1),
+        h = _e(g);
+      return e.jsxs(s, {
+        sx: {
+          minWidth: 0
+        },
+        children: [e.jsx(me, {
+          onClick: () => k(g),
+          sx: {
+            mb: .75,
+            px: .5,
+            borderRadius: 1,
+            "&:hover": {
+              bgcolor: "action.hover"
+            }
+          },
+          children: e.jsx(A, {
+            sx: {
+              fontSize: 15,
+              fontWeight: 700
+            },
+            children: fe(g)
+          })
+        }), e.jsxs(s, {
+          sx: {
+            display: "grid",
+            gridTemplateColumns: "repeat(7, minmax(0, 1fr))",
+            rowGap: .25
+          },
+          children: [v.map((m, f) => e.jsx(s, {
+            sx: {
+              textAlign: "center",
+              fontSize: 12,
+              color: X(f),
+              py: .25
+            },
+            children: m
+          }, m)), h.map(m => {
+            if (!(m.getMonth() === d)) return e.jsx(s, {}, z(m));
+            const C = P(m, p),
+              i = u.get(z(m)),
+              w = j(m),
+              T = e.jsxs(me, {
+                title: w ? void 0 : i,
+                onClick: () => b(m),
+                sx: {
+                  flexDirection: "column",
+                  height: 32,
+                  borderRadius: 1,
+                  "&:hover": {
+                    bgcolor: "action.hover"
+                  }
+                },
+                children: [e.jsx(s, {
+                  component: "span",
+                  sx: {
+                    width: 22,
+                    height: 22,
+                    lineHeight: "22px",
+                    borderRadius: "50%",
+                    textAlign: "center",
+                    fontSize: 13,
+                    fontWeight: C ? 700 : 400,
+                    bgcolor: C ? "primary.main" : "transparent",
+                    color: C ? "#fff" : i ? "error.main" : X(m.getDay())
+                  },
+                  children: m.getDate()
+                }), e.jsx(s, {
+                  component: "span",
+                  sx: {
+                    width: 4,
+                    height: 4,
+                    borderRadius: "50%",
+                    mt: "2px",
+                    bgcolor: w ? "primary.main" : "transparent"
+                  }
+                })]
+              }, z(m));
+            return w ? e.jsx(pe, {
+              placement: "bottom-start",
+              enterDelay: 150,
+              slotProps: {
+                tooltip: {
+                  sx: {
+                    bgcolor: "background.paper",
+                    color: "text.primary",
+                    boxShadow: 3,
+                    border: 1,
+                    borderColor: N,
+                    p: 1,
+                    width: 260,
+                    maxWidth: 260,
+                    maxHeight: 360,
+                    overflowY: "auto"
+                  }
+                }
+              },
+              title: e.jsxs(s, {
+                children: [e.jsxs(A, {
+                  sx: {
+                    fontSize: "0.875rem",
+                    fontWeight: 700,
+                    color: "primary.main",
+                    mb: .75
+                  },
+                  children: [m.getMonth() + 1, "/", m.getDate(), " (", v[m.getDay()], ")", i ? ` · ${i}` : ""]
+                }), c(m)]
+              }),
+              children: T
+            }, z(m)) : T;
+          })]
+        })]
+      }, d);
+    })
+  });
+}
+function ee(o, p, u) {
+  return o === "day" ? Se(p, u) : o === "week" ? Se(p, 7 * u) : o === "year" ? new Date(p.getFullYear() + u, p.getMonth(), 1) : new Date(p.getFullYear(), p.getMonth() + u, 1);
+}
+const tn = "calendar.searchPlaceholder",
+  nn = 96,
+  Ie = "taskham-calendar-agenda-open",
+  ze = "taskham-calendar-view";
+function Q(o) {
+  const p = /(\d{1,2}):(\d{2})/.exec(o.slice(o.indexOf(" ") + 1));
+  return !o.includes(" ") || !p ? null : Number(p[1]) * 60 + Number(p[2]);
+}
+function on({
+  month: o,
+  onPrev: p,
+  onNext: u,
+  days: j,
+  today: c,
+  hasItems: b,
+  renderChips: k,
+  ready: v,
+  alignRef: D
+}) {
+  const d = ne(),
+    g = U(),
+    h = v ? j.filter(b) : [],
+    m = y.useRef(null),
+    [f, C] = y.useState(void 0);
+  return y.useLayoutEffect(() => {
+    const i = D.current,
+      w = () => {
+        const Y = m.current;
+        !Y || !i || C(Math.max(300, Math.floor(i.getBoundingClientRect().bottom - Y.getBoundingClientRect().top)));
+      };
+    w();
+    const T = i ? new ResizeObserver(w) : null;
+    return i && T?.observe(i), window.addEventListener("resize", w), () => {
+      T?.disconnect(), window.removeEventListener("resize", w);
+    };
+  }, [D]), y.useEffect(() => {
+    const i = m.current;
+    if (!i) return;
+    const w = () => {
+      const T = Array.from(document.querySelectorAll(":hover")).pop();
+      T && i.contains(T) && T.dispatchEvent(new MouseEvent("mouseout", {
+        bubbles: !0,
+        relatedTarget: document.body
+      }));
+    };
+    return i.addEventListener("scroll", w, !0), () => i.removeEventListener("scroll", w, !0);
+  }, []), e.jsxs(s, {
+    ref: m,
+    sx: {
+      height: f ?? "100%",
+      minHeight: 0,
+      display: "flex",
+      flexDirection: "column"
+    },
+    children: [e.jsxs(s, {
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: .5,
+        px: 2,
+        pt: 1.5,
+        pb: 1,
+        flexShrink: 0
+      },
+      children: [e.jsx(he, {
+        size: "small",
+        "aria-label": d("calendar.prevMonth"),
+        onClick: p,
+        children: e.jsx(gt, {})
+      }), e.jsxs(A, {
+        sx: {
+          fontSize: "1rem",
+          fontWeight: 700,
+          minWidth: 80,
+          textAlign: "center"
+        },
+        children: [o.getFullYear(), "-", String(o.getMonth() + 1).padStart(2, "0")]
+      }), e.jsx(he, {
+        size: "small",
+        "aria-label": d("calendar.nextMonth"),
+        onClick: u,
+        children: e.jsx(yt, {})
+      })]
+    }), e.jsx(ue, {
+      style: {
+        flex: 1,
+        minHeight: 0
+      },
+      track: {
+        alignment: "outside"
+      },
+      scrollTopFab: {
+        position: "right",
+        offset: 16,
+        offsetBottom: 16,
+        size: 40,
+        threshold: 200
+      },
+      children: e.jsx(s, {
+        sx: {
+          px: 2,
+          pb: 2,
+          display: "flex",
+          flexDirection: "column",
+          gap: 2
+        },
+        children: v ? h.length === 0 ? e.jsx(A, {
+          sx: {
+            fontSize: "0.875rem",
+            color: "text.secondary"
+          },
+          children: d("calendar.agendaEmpty")
+        }) : h.map(i => {
+          const w = P(i, c);
+          return e.jsxs(s, {
+            sx: {
+              display: "flex",
+              flexDirection: "column",
+              gap: .75
+            },
+            children: [e.jsxs(A, {
+              sx: {
+                fontSize: "0.875rem",
+                fontWeight: 700,
+                color: "primary.main"
+              },
+              children: [i.getMonth() + 1, "/", i.getDate(), " (", g[i.getDay()], ")", w ? ` · ${d("calendar.today")}` : ""]
+            }), k(i)]
+          }, z(i));
+        }) : null
+      })
+    })]
+  });
+}
+const rn = 1600;
+function yo() {
+  const o = ne(),
+    p = Ze(`(min-width:${rn}px)`),
+    u = o(tn),
+    j = U(),
+    c = St(),
+    b = y.useMemo(() => Ct(new Date()), []),
+    k = y.useRef(null),
+    [v, D] = y.useState(480);
+  y.useLayoutEffect(() => {
+    const t = x => {
+        for (let l = x.parentElement; l; l = l.parentElement) {
+          const S = getComputedStyle(l).overflowY;
+          if (S === "auto" || S === "scroll") return l;
+        }
+        return null;
+      },
+      r = () => {
+        const x = k.current;
+        if (!x) return;
+        const l = t(x),
+          S = window.innerHeight,
+          V = l ? Math.max(0, S - l.getBoundingClientRect().bottom) : 16,
+          Z = x.getBoundingClientRect().top + (l ? 0 : window.scrollY);
+        D(Math.max(480, Math.floor(S - Z - V - 1)));
+      };
+    D(480);
+    const a = window.requestAnimationFrame(r);
+    return window.addEventListener("resize", r), () => {
+      window.cancelAnimationFrame(a), window.removeEventListener("resize", r);
+    };
+  }, []);
+  const d = t => ht({
+      event: !0,
+      dueDate: z(t)
+    }),
+    g = y.useMemo(() => _e(c), [c]),
+    h = jt(y.useMemo(() => g.map(t => t.getFullYear()), [g])),
+    m = et().useValue("account"),
+    f = tt(Number(m?.seq ?? 0) || 0),
+    {
+      tasks: C,
+      statusOptions: i,
+      loaded: w
+    } = Ht(f),
+    T = Ot(),
+    [Y, $e] = y.useState(""),
+    H = Mt(Y);
+  Et(Y);
+  const [F, We] = y.useState(() => {
+      try {
+        return window.localStorage.getItem(Ie) === "1";
+      } catch {
+        return !1;
+      }
+    }),
+    Ae = () => We(t => {
+      try {
+        window.localStorage.setItem(Ie, t ? "0" : "1");
+      } catch {}
+      return !t;
+    }),
+    [K, xe] = y.useState(0),
+    {
+      items: ge
+    } = nt(),
+    {
+      items: ye,
+      current: be
+    } = ot(),
+    Re = y.useMemo(() => [{
+      value: "all",
+      label: o("calendar.all")
+    }, ...rt(ge.filter(t => !t.is_sample), ye).map(t => ({
+      value: t.id,
+      label: t.kind === "workspace" ? t.workspace.name : t.external.name
+    }))], [ge, ye, o]),
+    Be = be ? `ext-${be.seq}` : K ? `ws-${K}` : "all",
+    He = async t => {
+      try {
+        if (t.startsWith("ext-")) {
+          await ft(Number(t.slice(4)) || 0), xe(0);
+          return;
+        }
+        await ut(), xe(t.startsWith("ws-") && Number(t.slice(3)) || 0);
+      } catch (r) {
+        xt(r instanceof Error ? r.message : o("calendar.workspaceSwitchFailed"));
+      }
+    },
+    Oe = Nt(),
+    Le = qt(),
+    Pe = Tt(y.useMemo(() => g.map(t => t.getFullYear()), [g])),
+    qe = Yt(),
+    oe = Kt(st()?.seq ?? 0),
+    _ = vt(),
+    we = It(_.office),
+    re = y.useMemo(() => {
+      const t = new Map();
+      for (const r of C) {
+        if (T && at(r) || (r.is_event ? !_.event : !_.task) || K && r.workspace_seq !== K || !le(H, B.task(r, Te(r)))) continue;
+        const a = String(r.due_date ?? "").slice(0, 10);
+        if (!a) continue;
+        const x = t.get(a);
+        x ? x.push(r) : t.set(a, [r]);
+      }
+      for (const r of t.values()) r.sort(it);
+      return t;
+    }, [C, T, H, K, _]),
+    [I, Ne] = y.useState(() => {
+      try {
+        const t = window.localStorage.getItem(ze);
+        return t === "day" || t === "week" || t === "year" ? t : "month";
+      } catch {
+        return "month";
+      }
+    }),
+    se = t => {
+      Ne(t);
+      try {
+        window.localStorage.setItem(ze, t);
+      } catch {}
+    },
+    G = y.useMemo(() => kt(c), [c]),
+    Ye = I === "day" ? o("calendar.dayTitle", {
+      month: fe(c),
+      day: c.getDate(),
+      weekday: j[c.getDay()]
+    }) : I === "week" ? `${G[0].getMonth() + 1}/${G[0].getDate()} ~ ${G[6].getMonth() + 1}/${G[6].getDate()}` : I === "year" ? o("calendar.yearTitle", {
+      year: c.getFullYear()
+    }) : fe(c),
+    Fe = Dt(() => W(ee(I, De(), -1)), () => W(ee(I, De(), 1))),
+    Ce = t => {
+      W(t), se("day");
+    },
+    Ke = y.useMemo(() => {
+      if (!H) return [];
+      const t = [];
+      for (const [a, x] of re) for (const l of x) t.push({
+        key: `task-${l.seq}`,
+        day: a,
+        kind: l.is_event ? o("calendar.event") : o("calendar.task"),
+        title: l.title,
+        open: () => Ee(l.seq)
+      });
+      if (_.meeting) for (const [a, x] of oe) for (const l of x) le(H, B.meeting(l)) && t.push({
+        key: `meeting-${l.seq}`,
+        day: a,
+        kind: o("calendar.meeting"),
+        title: l.title,
+        open: () => ce(l.seq)
+      });
+      const r = z(new Date());
+      return t.sort((a, x) => {
+        const l = a.day >= r,
+          S = x.day >= r;
+        return l !== S ? l ? -1 : 1 : l ? a.day.localeCompare(x.day) : x.day.localeCompare(a.day);
+      });
+    }, [H, re, oe, _.meeting, o]),
+    J = (t, r) => {
+      const a = z(t),
+        x = [],
+        l = n => le(H, n),
+        S = (n, M, $, O, R) => {
+          R.length > 0 && x.push({
+            id: n,
+            label: M,
+            bg: $,
+            fg: O,
+            chips: R
+          });
+        };
+      S("tax", o("calendar.groupTax"), E.emerald50, E.emerald700, (_.tax ? Pe.get(a) ?? [] : []).filter(n => l(B.tax(n))).map(n => e.jsx(_t, {
+        entry: n,
+        day: a
+      }, `tax-${n.id}`))), S("doc", o("calendar.groupDoc"), E.rose50, E.rose700, (_.docExpiry ? qe.get(a) ?? [] : []).filter(n => l(B.doc(n))).map(n => e.jsx($t, {
+        entry: n
+      }, `doc-${n.id}`))), S("birthday", o("calendar.birthday"), E.lime50, E.lime700, (_.birthday ? Le(a) : []).filter(n => l(B.birthday(n))).map(n => e.jsx(Wt, {
+        entry: n
+      }, `birthday-${n.employeeSeq}`))), S("training", o("calendar.training"), E.violet50, E.violet700, (_.training ? Oe.get(a) ?? [] : []).filter(n => l(B.training(n))).map(n => e.jsx(At, {
+        entry: n,
+        onOpen: () => Rt(n.trainingSeq)
+      }, `training-${n.kind}-${n.trainingSeq}`))), S("office", o("calendar.groupOffice"), E.sky100, E.sky700, (_.office ? we.get(a) ?? [] : []).filter(n => l(B.office(n))).map(n => e.jsx(Bt, {
+        entry: n
+      }, `office-${n.item.seq}`)).filter((n, M) => {
+        const $ = (we.get(a) ?? []).filter(ie => l(B.office(ie)))[M];
+        if (!r || !$) return !0;
+        const O = $.item.start_at.slice(0, 10) === a ? Q($.item.start_at) : 0,
+          R = $.item.end_at.slice(0, 10) === a ? Q($.item.end_at) : 1440;
+        return O === null || R === null ? !0 : (r.push({
+          key: `office-${$.item.seq}`,
+          start: O,
+          end: Math.max(R, O + 30),
+          node: n
+        }), !1);
+      })), S("meeting", o("calendar.meeting"), E.amber50, E.amber800, (_.meeting ? oe.get(a) ?? [] : []).filter(n => l(B.meeting(n))).filter(n => {
+        const M = r ? Q(`x ${n.time}`) : null;
+        return M === null || !r ? !0 : (r.push({
+          key: `meeting-${n.seq}`,
+          start: M,
+          end: M + 60,
+          node: e.jsx(Me, {
+            entry: n,
+            maxLines: 2,
+            onOpen: () => ce(n.seq)
+          }, `meeting-${n.seq}`)
+        }), !1);
+      }).map(n => e.jsx(Me, {
+        entry: n,
+        onOpen: () => ce(n.seq)
+      }, `meeting-${n.seq}`)));
+      const V = n => e.jsx(bt, {
+          titlePrefix: Te(n),
+          task: n,
+          statusOptions: i,
+          wrapTitle: !0,
+          onOpenDetail: M => Ee(M.seq),
+          isMine: n.manager_account_seq === f
+        }, n.seq),
+        Z = (re.get(a) ?? []).filter(n => {
+          if (!r) return !0;
+          const M = Q(String(n.due_date ?? ""));
+          if (M === null) return !0;
+          const $ = String(n.start_date ?? ""),
+            O = n.is_event && $.slice(0, 10) === a ? Q($) ?? M : M,
+            R = Math.min(O, M),
+            ie = n.is_event && M > R ? M : R + (n.is_event ? 60 : 30);
+          return r.push({
+            key: `task-${n.seq}`,
+            start: R,
+            end: ie,
+            node: V(n)
+          }), !1;
+        });
+      return S("event", o("calendar.event"), E.cyan50, E.cyan700, Z.filter(n => n.is_event).map(V)), S("task", o("calendar.task"), E.blue50, E.blue700, Z.filter(n => !n.is_event).map(V)), x;
+    },
+    ae = t => e.jsx(s, {
+      ...te,
+      sx: {
+        display: "flex",
+        flexDirection: "column",
+        gap: .375
+      },
+      children: J(t).flatMap(r => r.chips)
+    }),
+    je = t => J(t).length > 0,
+    Ge = t => {
+      const r = [],
+        a = J(t, r);
+      return {
+        allDay: a.length ? e.jsx(s, {
+          ...te,
+          sx: {
+            display: "flex",
+            flexDirection: "column",
+            gap: .375
+          },
+          children: a.flatMap(x => x.chips)
+        }) : null,
+        timed: r
+      };
+    },
+    Ve = I === "year" ? e.jsx(en, {
+      year: c.getFullYear(),
+      today: b,
+      holidays: h,
+      hasItems: t => w && je(t),
+      renderChips: ae,
+      onPickDay: Ce,
+      onPickMonth: t => {
+        W(t), se("month");
+      }
+    }) : I === "week" || I === "day" ? e.jsx(Zt, {
+      days: I === "day" ? [c] : G,
+      today: b,
+      holidays: h,
+      split: Ge,
+      ready: w,
+      minHeight: v,
+      onCreate: d,
+      onPickDay: I === "week" ? Ce : void 0
+    }) : null,
+    Qe = t => {
+      const r = J(t);
+      return r.length === 0 ? null : e.jsx(s, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: .375
+        },
+        children: r.map(a => e.jsx(pe, {
+          placement: "bottom-start",
+          enterDelay: 150,
+          slotProps: {
+            tooltip: {
+              sx: {
+                bgcolor: "background.paper",
+                color: "text.primary",
+                boxShadow: 3,
+                border: 1,
+                borderColor: N,
+                p: 1,
+                width: 260,
+                maxWidth: 260,
+                maxHeight: 360,
+                overflowY: "auto"
+              }
+            }
+          },
+          title: e.jsxs(s, {
+            children: [e.jsxs(A, {
+              sx: {
+                fontSize: "0.875rem",
+                fontWeight: 700,
+                color: "primary.main",
+                mb: .75
+              },
+              children: [t.getMonth() + 1, "/", t.getDate(), " (", j[t.getDay()], ") ·", " ", o("calendar.groupCount", {
+                label: a.label,
+                count: a.chips.length
+              })]
+            }), e.jsx(s, {
+              ...te,
+              sx: {
+                display: "flex",
+                flexDirection: "column",
+                gap: .375
+              },
+              children: a.chips
+            })]
+          }),
+          children: e.jsxs(s, {
+            sx: {
+              px: .75,
+              py: .25,
+              borderRadius: 1,
+              bgcolor: a.bg,
+              color: a.fg,
+              fontSize: "0.875rem",
+              fontWeight: 600,
+              lineHeight: 1.5,
+              cursor: "default",
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis"
+            },
+            children: [a.label, " ", a.chips.length]
+          })
+        }, a.id))
+      });
+    };
+  return e.jsxs(s, {
+    sx: {
+      height: "100%",
+      position: "relative"
+    },
+    children: [w ? null : e.jsx(s, {
+      role: "progressbar",
+      "aria-label": o("calendar.loading"),
+      sx: {
+        position: "absolute",
+        inset: 0,
+        zIndex: 5,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        pointerEvents: "none"
+      },
+      children: e.jsx(lt, {
+        size: 36
+      })
+    }), e.jsx(Vt, {
+      needle: H,
+      inputPlaceholder: u,
+      items: Ke,
+      onPick: t => {
+        const [r, a, x] = t.day.split("-").map(Number);
+        W(new Date(r, a - 1, x)), t.open();
+      }
+    }), e.jsx(ct, {
+      rightPanel: F ? e.jsx(on, {
+        month: c,
+        onPrev: () => W(ve(c, -1)),
+        onNext: () => W(ve(c, 1)),
+        days: g.filter(t => t.getMonth() === c.getMonth()),
+        today: b,
+        hasItems: je,
+        renderChips: ae,
+        ready: w,
+        alignRef: k
+      }) : void 0,
+      rightConfig: {
+        ratio: .28,
+        minWidth: 300,
+        selfScroll: !0
+      },
+      storageKey: "calendar-agenda",
+      header: {
+        left: e.jsxs(s, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: 2
+          },
+          children: [e.jsx(dt, {
+            variant: "contained",
+            disableElevation: !0,
+            startIcon: e.jsx(mt, {}),
+            onClick: () => d(c),
+            sx: {
+              flexShrink: 0
+            },
+            children: o("calendar.newEvent")
+          }), e.jsx(pt, {
+            label: o("calendar.workspace"),
+            value: Be,
+            onChange: t => {
+              He(String(t.target.value));
+            },
+            options: Re,
+            showEmptyOption: !1,
+            size: "small",
+            fullWidth: !1,
+            formControlProps: {
+              sx: {
+                width: 200,
+                flexShrink: 0
+              }
+            }
+          })]
+        }),
+        filter: {
+          groups: [{
+            row: p ? 0 : 1,
+            filters: [{
+              type: "custom",
+              name: "calendar-nav",
+              node: e.jsx(Pt, {
+                bare: !0,
+                showHideCompleted: !1,
+                title: Ye,
+                onPrev: () => W(ee(I, c, -1)),
+                onNext: () => W(ee(I, c, 1)),
+                onToday: () => W(new Date()),
+                leading: e.jsx(Ft, {
+                  size: "medium",
+                  value: I,
+                  onChange: t => t && se(t),
+                  options: [{
+                    value: "day",
+                    label: o("calendar.viewDay")
+                  }, {
+                    value: "week",
+                    label: o("calendar.viewWeek")
+                  }, {
+                    value: "month",
+                    label: o("calendar.viewMonth")
+                  }, {
+                    value: "year",
+                    label: o("calendar.viewYear")
+                  }],
+                  sx: {
+                    height: 40,
+                    flexWrap: "nowrap",
+                    mr: 1.5,
+                    "& .MuiToggleButtonGroup-grouped": {
+                      px: 1.75
+                    }
+                  }
+                })
+              })
+            }]
+          }]
+        },
+        right: e.jsxs(e.Fragment, {
+          children: [e.jsx(Lt, {}), e.jsx(pe, {
+            title: o(F ? "calendar.closeAgenda" : "calendar.openAgenda"),
+            disableInteractive: !0,
+            children: e.jsx(he, {
+              "aria-label": o(F ? "calendar.closeAgenda" : "calendar.openAgenda"),
+              onClick: Ae,
+              sx: {
+                color: F ? "primary.main" : "text.secondary"
+              },
+              children: e.jsx(wt, {})
+            })
+          })]
+        }),
+        collapsible: !1,
+        showCollapseButton: !1,
+        showSearch: !0,
+        searchPlaceholder: u,
+        searchDebounce: 200,
+        onSearch: $e
+      },
+      leftPanel: e.jsx(s, {
+        ...Fe,
+        ref: k,
+        sx: {
+          display: "flex",
+          flexDirection: "column"
+        },
+        style: {
+          minHeight: v
+        },
+        children: I !== "month" ? Ve : e.jsxs(e.Fragment, {
+          children: [e.jsx(s, {
+            sx: {
+              position: "sticky",
+              top: 0,
+              zIndex: 2,
+              display: "grid",
+              gridTemplateColumns: "repeat(7, minmax(0, 1fr))",
+              borderBottom: `1px solid ${N}`,
+              bgcolor: "#fafafa",
+              flexShrink: 0
+            },
+            children: j.map((t, r) => e.jsx(s, {
+              sx: {
+                py: .75,
+                textAlign: "center",
+                fontSize: "0.8125rem",
+                fontWeight: 500,
+                color: X(r)
+              },
+              children: t
+            }, r))
+          }), e.jsx(s, {
+            sx: {
+              flex: 1,
+              minHeight: 0,
+              display: "grid",
+              gridTemplateColumns: "repeat(7, minmax(0, 1fr))",
+              gridTemplateRows: `repeat(6, minmax(${nn}px, auto))`,
+              "& > *": {
+                borderRight: `1px solid ${N}`,
+                borderBottom: `1px solid ${N}`
+              },
+              "& > *:nth-of-type(7n)": {
+                borderRight: "none"
+              },
+              "& > *:nth-last-of-type(-n + 7)": {
+                borderBottom: "none"
+              }
+            },
+            children: g.map(t => {
+              const r = P(t, b),
+                a = !r && P(t, c),
+                x = t.getMonth() !== c.getMonth(),
+                l = h.get(z(t));
+              return e.jsxs(s, {
+                onDoubleClick: S => {
+                  S.target.closest("button, a, [role='button']") || d(t);
+                },
+                sx: {
+                  minWidth: 0,
+                  p: .75,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: .5,
+                  bgcolor: r ? "#eff6ff" : x ? "#fafafa" : "#fff",
+                  boxShadow: a ? "inset 0 0 0 2px #93c5fd" : "none"
+                },
+                children: [e.jsxs(s, {
+                  sx: {
+                    display: "flex",
+                    alignItems: "baseline",
+                    gap: .75,
+                    minWidth: 0
+                  },
+                  children: [e.jsx(A, {
+                    sx: {
+                      fontSize: "0.8125rem",
+                      fontWeight: r ? 700 : 500,
+                      color: x ? "text.disabled" : r ? "primary.main" : l ? "error.main" : X(t.getDay())
+                    },
+                    children: t.getDate()
+                  }), l && !x && e.jsx(A, {
+                    title: l,
+                    noWrap: !0,
+                    sx: {
+                      fontSize: "0.8125rem",
+                      color: "error.main",
+                      minWidth: 0
+                    },
+                    children: l
+                  })]
+                }), w ? F ? Qe(t) : ae(t) : null]
+              }, z(t));
+            })
+          })]
+        })
+      })
+    }), e.jsx(zt, {})]
+  });
+}
+export { yo as default };

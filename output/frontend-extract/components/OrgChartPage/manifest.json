@@ -1,0 +1,618 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/OrgChartPage-DPIPUrhu.js",
+  "path": "assets/vendor.d/OrgChartPage-DPIPUrhu.js",
+  "name": "OrgChartPage",
+  "kind": "ui",
+  "bytes": 36028,
+  "sha256": "f545330301290e037088307e52d9424b5b5a5498f1f37a3441a76757dd294722",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/OrgChartPage-DPIPUrhu.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "n",
+          "imported": "j"
+        },
+        {
+          "local": "a",
+          "imported": "r"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "./EmployeeFormDialog-BHKK47Dg.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Hn",
+          "imported": "M"
+        },
+        {
+          "local": "It",
+          "imported": "u"
+        },
+        {
+          "local": "Et",
+          "imported": "a"
+        },
+        {
+          "local": "Tt",
+          "imported": "b"
+        },
+        {
+          "local": "Ot",
+          "imported": "I"
+        },
+        {
+          "local": "Wt",
+          "imported": "c"
+        },
+        {
+          "local": "Pt",
+          "imported": "d"
+        }
+      ],
+      "resolved": "assets/vendor.d/EmployeeFormDialog-BHKK47Dg.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "$n",
+          "imported": "c"
+        },
+        {
+          "local": "z",
+          "imported": "c4"
+        },
+        {
+          "local": "c",
+          "imported": "B"
+        },
+        {
+          "local": "d",
+          "imported": "L"
+        },
+        {
+          "local": "an",
+          "imported": "bv"
+        },
+        {
+          "local": "Yn",
+          "imported": "D"
+        },
+        {
+          "local": "Rt",
+          "imported": "ar"
+        },
+        {
+          "local": "Dt",
+          "imported": "cI"
+        },
+        {
+          "local": "B",
+          "imported": "bQ"
+        },
+        {
+          "local": "Lt",
+          "imported": "K"
+        },
+        {
+          "local": "At",
+          "imported": "e"
+        },
+        {
+          "local": "Bt",
+          "imported": "c8"
+        },
+        {
+          "local": "Ut",
+          "imported": "ak"
+        },
+        {
+          "local": "k",
+          "imported": "c2"
+        },
+        {
+          "local": "ae",
+          "imported": "bT"
+        },
+        {
+          "local": "ie",
+          "imported": "bx"
+        },
+        {
+          "local": "Xn",
+          "imported": "cZ"
+        },
+        {
+          "local": "Kn",
+          "imported": "cz"
+        },
+        {
+          "local": "Gt",
+          "imported": "b$"
+        },
+        {
+          "local": "T",
+          "imported": "bO"
+        },
+        {
+          "local": "Ft",
+          "imported": "u"
+        },
+        {
+          "local": "qn",
+          "imported": "eY"
+        },
+        {
+          "local": "Nt",
+          "imported": "dv"
+        },
+        {
+          "local": "R",
+          "imported": "bI"
+        },
+        {
+          "local": "Ee",
+          "imported": "fi"
+        },
+        {
+          "local": "Mn",
+          "imported": "y"
+        },
+        {
+          "local": "_n",
+          "imported": "d4"
+        },
+        {
+          "local": "kn",
+          "imported": "cJ"
+        },
+        {
+          "local": "D",
+          "imported": "s"
+        },
+        {
+          "local": "Q",
+          "imported": "bH"
+        },
+        {
+          "local": "pe",
+          "imported": "d8"
+        },
+        {
+          "local": "Cn",
+          "imported": "a_"
+        },
+        {
+          "local": "oe",
+          "imported": "fj"
+        },
+        {
+          "local": "I",
+          "imported": "b"
+        },
+        {
+          "local": "Vt",
+          "imported": "fk"
+        },
+        {
+          "local": "Ht",
+          "imported": "fl"
+        },
+        {
+          "local": "$t",
+          "imported": "c_"
+        },
+        {
+          "local": "Yt",
+          "imported": "cc"
+        },
+        {
+          "local": "Xt",
+          "imported": "d1"
+        },
+        {
+          "local": "Kt",
+          "imported": "dq"
+        },
+        {
+          "local": "Qt",
+          "imported": "ba"
+        },
+        {
+          "local": "Jt",
+          "imported": "d7"
+        },
+        {
+          "local": "zn",
+          "imported": "d6"
+        },
+        {
+          "local": "Zt",
+          "imported": "df"
+        },
+        {
+          "local": "es",
+          "imported": "fm"
+        },
+        {
+          "local": "on",
+          "imported": "fn"
+        },
+        {
+          "local": "ns",
+          "imported": "aU"
+        },
+        {
+          "local": "In",
+          "imported": "cP"
+        },
+        {
+          "local": "ts",
+          "imported": "a1"
+        },
+        {
+          "local": "En",
+          "imported": "bK"
+        },
+        {
+          "local": "Tn",
+          "imported": "aR"
+        },
+        {
+          "local": "Je",
+          "imported": "fo"
+        },
+        {
+          "local": "L",
+          "imported": "w"
+        },
+        {
+          "local": "N",
+          "imported": "fp"
+        },
+        {
+          "local": "ss",
+          "imported": "bh"
+        },
+        {
+          "local": "A",
+          "imported": "d5"
+        },
+        {
+          "local": "os",
+          "imported": "dO"
+        },
+        {
+          "local": "rs",
+          "imported": "j"
+        },
+        {
+          "local": "is",
+          "imported": "cW"
+        },
+        {
+          "local": "On",
+          "imported": "fq"
+        },
+        {
+          "local": "Wn",
+          "imported": "fr"
+        },
+        {
+          "local": "Pn",
+          "imported": "fs"
+        },
+        {
+          "local": "as",
+          "imported": "aq"
+        },
+        {
+          "local": "Rn",
+          "imported": "ft"
+        },
+        {
+          "local": "ls",
+          "imported": "dj"
+        },
+        {
+          "local": "Dn",
+          "imported": "z"
+        },
+        {
+          "local": "re",
+          "imported": "c6"
+        },
+        {
+          "local": "cs",
+          "imported": "eG"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./index.esm-gjRImBGa.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Qn",
+          "imported": "f"
+        }
+      ],
+      "resolved": "assets/vendor.d/index.esm-gjRImBGa.js"
+    },
+    {
+      "specifier": "./Person-DnoEHesw.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "us",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/Person-DnoEHesw.js"
+    },
+    {
+      "specifier": "./PersonRemoveOutlined-CyeIj2nP.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ds",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/PersonRemoveOutlined-CyeIj2nP.js"
+    },
+    {
+      "specifier": "./GroupAddOutlined-DigKoBGv.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ps",
+          "imported": "G"
+        }
+      ],
+      "resolved": "assets/vendor.d/GroupAddOutlined-DigKoBGv.js"
+    },
+    {
+      "specifier": "./InlineErrorAlert-D9ICJPt7.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Jn",
+          "imported": "I"
+        }
+      ],
+      "resolved": "assets/vendor.d/InlineErrorAlert-D9ICJPt7.js"
+    },
+    {
+      "specifier": "./mobileTitlePicker-u2JmU445.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ms",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/mobileTitlePicker-u2JmU445.js"
+    },
+    {
+      "specifier": "./mxApi-R6g9QtQq.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ie",
+          "imported": "f"
+        }
+      ],
+      "resolved": "assets/vendor.d/mxApi-R6g9QtQq.js"
+    },
+    {
+      "specifier": "./teamMembers-0yRsmqL6.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "xs",
+          "imported": "u"
+        },
+        {
+          "local": "Ln",
+          "imported": "r"
+        }
+      ],
+      "resolved": "assets/vendor.d/teamMembers-0yRsmqL6.js"
+    },
+    {
+      "specifier": "./bootstrapController-BMV_i07c.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "fs",
+          "imported": "x"
+        },
+        {
+          "local": "hs",
+          "imported": "y"
+        }
+      ],
+      "resolved": "assets/vendor.d/bootstrapController-BMV_i07c.js"
+    },
+    {
+      "specifier": "./orgTree-Dh5HFjBo.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Zn",
+          "imported": "f"
+        },
+        {
+          "local": "gs",
+          "imported": "u"
+        },
+        {
+          "local": "An",
+          "imported": "a"
+        },
+        {
+          "local": "rn",
+          "imported": "b"
+        }
+      ],
+      "resolved": "assets/vendor.d/orgTree-Dh5HFjBo.js"
+    },
+    {
+      "specifier": "./employeeApi-CdGzOYcj.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Bn",
+          "imported": "e"
+        }
+      ],
+      "resolved": "assets/vendor.d/employeeApi-CdGzOYcj.js"
+    },
+    {
+      "specifier": "./types-CVhETUvu.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Un",
+          "imported": "a"
+        }
+      ],
+      "resolved": "assets/vendor.d/types-CVhETUvu.js"
+    },
+    {
+      "specifier": "./tableScrollbars-C9bhlJjO.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "js",
+          "imported": "T"
+        }
+      ],
+      "resolved": "assets/vendor.d/tableScrollbars-C9bhlJjO.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "qs",
+      "exported": "M"
+    },
+    {
+      "local": "Fs",
+      "exported": "O"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "vs",
+      "keys": [
+        "member"
+      ]
+    },
+    {
+      "function": "ys",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "unit",
+        "depth"
+      ]
+    },
+    {
+      "function": "qs",
+      "keys": [
+        "readonlyNotice",
+        "bottomGap",
+        "inline",
+        "showButtons"
+      ]
+    },
+    {
+      "function": "Vn",
+      "keys": [
+        "role",
+        "onClick",
+        "compact"
+      ]
+    },
+    {
+      "function": "tn",
+      "keys": [
+        "label",
+        "depth",
+        "count",
+        "selected",
+        "icon",
+        "onClick",
+        "onMenu",
+        "onContextMenu",
+        "roomy"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "unit",
+        "depth"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "unit"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "unit",
+        "depth"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "AttendanceHost",
+    "Layout",
+    "MobileDashboardLayout",
+    "OrgMembersPage",
+    "PostComposerHost",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog",
+    "TeamPage",
+    "mobileBandDialog"
+  ],
+  "service": "인사",
+  "purpose": "조직도",
+  "reuseGrade": "C",
+  "integration": "부서·직원·권한 모델과 편집 동작 연결",
+  "exportedParameters": [
+    {
+      "export": "M",
+      "compiledLocal": "qs",
+      "keys": [
+        "readonlyNotice",
+        "bottomGap",
+        "inline",
+        "showButtons"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+import { r, j as u } from "./react-CjxcGQav.js";
+import { bv as p, bH as x, bI as E, m9 as R, lM as g } from "../js.d/main-Cm9wS5wt.js";
+function M() {
+  const t = p(),
+    [o, n] = r.useState(!1),
+    c = o ? u.jsx(x, {
+      title: t("components.doneEditingReadMode"),
+      arrow: !0,
+      children: u.jsx(E, {
+        size: "small",
+        "aria-label": t("components.doneEditing"),
+        onMouseDown: i => i.preventDefault(),
+        onClick: () => n(!1),
+        sx: {
+          color: "success.main",
+          p: .5,
+          my: -1
+        },
+        children: u.jsx(R, {
+          sx: {
+            fontSize: 20
+          }
+        })
+      })
+    }) : null;
+  return {
+    editing: o,
+    setEditing: n,
+    doneButton: c
+  };
+}
+const j = 800;
+function T({
+  syncKey: t,
+  value: o,
+  onSave: n,
+  readOnly: c,
+  minHeight: i,
+  editing: d,
+  onEditingChange: m
+}) {
+  const l = r.useRef(null),
+    e = r.useRef(null),
+    a = r.useRef(n);
+  a.current = n;
+  const f = () => {
+    e.current !== null && clearTimeout(e.current), e.current = null;
+    const s = l.current;
+    l.current = null, s !== null && a.current(s);
+  };
+  return r.useEffect(() => f, [t]), u.jsx(g, {
+    syncKey: t,
+    value: o,
+    readOnly: c,
+    viewFirst: !0,
+    minHeight: i,
+    editing: d,
+    onEditingChange: m,
+    onChange: s => {
+      l.current = s, e.current !== null && clearTimeout(e.current), e.current = setTimeout(f, j);
+    }
+  });
+}
+export { T as P, M as u };

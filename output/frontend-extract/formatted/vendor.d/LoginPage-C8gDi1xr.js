@@ -1,0 +1,160 @@
+import { j as o, L as x } from "./react-CjxcGQav.js";
+import { bv as g, B as t, L as s, f as r, d as f, s as a, al as h, cb as b, b as c, K as j } from "../js.d/main-Cm9wS5wt.js";
+import { u as y, B as S } from "./BiometricLoginButton-saWv6dRk.js";
+import { S as z } from "./SocialLoginButtons-BfzUwflP.js";
+import { u as B } from "./mobileBase-CknPHYoV.js";
+import { A as L } from "./AuthLanguageButton-cBZSK8_3.js";
+import "./stylis-DdLD6a3t.js";
+import "./biometricController-CswvQnMD.js";
+import "./SocialProviderIcon-CfLZ-VWP.js";
+import "./LanguageOutlined-dNJSO7u2.js";
+function I() {
+  const m = B(),
+    {
+      state: u,
+      form: n,
+      loading: i,
+      canUseBiometric: p,
+      startBiometricLogin: d
+    } = y(),
+    l = u.useValue("loginError") ?? "",
+    e = g();
+  return o.jsxs(t, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      px: 2,
+      py: 4,
+      userSelect: "none"
+    },
+    children: [o.jsx(L, {
+      pullUp: 3.5
+    }), o.jsx(s, {
+      component: "h1",
+      sx: {
+        textAlign: "center",
+        fontSize: f["2xl"],
+        fontWeight: r.black
+      },
+      children: e("auth.login")
+    }), o.jsx(s, {
+      sx: {
+        mt: .75,
+        textAlign: "center",
+        fontSize: "1rem",
+        color: a[500]
+      },
+      children: e("auth.loginSubtitle")
+    }), l && o.jsx(t, {
+      sx: {
+        mt: 2.5,
+        borderRadius: 1.5,
+        bgcolor: "#fff1f2",
+        p: 1.5,
+        textAlign: "center",
+        fontSize: "1rem",
+        fontWeight: r.semibold,
+        color: "#be123c"
+      },
+      children: l
+    }), o.jsxs(t, {
+      component: "form",
+      onSubmit: n.submit,
+      sx: {
+        mt: 3,
+        display: "grid",
+        gap: 2.5
+      },
+      children: [o.jsx(h, {
+        form: n,
+        name: "email",
+        label: e("auth.emailOrPhone"),
+        placeholder: e("auth.emailOrPhonePlaceholder", {
+          email: "you@example.com"
+        }),
+        autoComplete: "username",
+        required: !0,
+        fullWidth: !0,
+        size: "medium"
+      }), o.jsx(b, {
+        form: n,
+        name: "password",
+        label: e("auth.password"),
+        placeholder: "••••••••",
+        required: !0,
+        fullWidth: !0,
+        size: "medium"
+      }), o.jsxs(t, {
+        component: "button",
+        type: "submit",
+        disabled: i.login,
+        sx: {
+          position: "relative",
+          width: "100%",
+          cursor: "pointer",
+          borderRadius: 1.5,
+          border: "none",
+          bgcolor: c[600],
+          py: 2,
+          fontSize: "1.125rem",
+          fontWeight: r.bold,
+          color: "#fff",
+          "&:disabled": {
+            opacity: .6,
+            cursor: "default"
+          },
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 1
+        },
+        children: [o.jsx(t, {
+          component: "span",
+          sx: {
+            visibility: i.login ? "hidden" : "visible"
+          },
+          children: e("auth.login")
+        }), i.login && o.jsx(j, {
+          size: 20,
+          color: "inherit",
+          "aria-label": e("auth.loggingIn"),
+          sx: {
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            mt: "-10px",
+            ml: "-10px"
+          }
+        })]
+      })]
+    }), p && o.jsx(t, {
+      sx: {
+        mt: 2
+      },
+      children: o.jsx(S, {
+        onClick: d,
+        loading: i.biometric
+      })
+    }), o.jsx(z, {
+      compact: !0
+    }), o.jsxs(s, {
+      sx: {
+        mt: 3,
+        textAlign: "center",
+        fontSize: "1rem",
+        color: a[500]
+      },
+      children: [e("auth.noAccount"), " ", o.jsx(t, {
+        component: x,
+        to: `${m}/signup`,
+        sx: {
+          fontWeight: r.bold,
+          color: c[600],
+          textDecoration: "none"
+        },
+        children: e("auth.signup")
+      })]
+    })]
+  });
+}
+export { I as default };

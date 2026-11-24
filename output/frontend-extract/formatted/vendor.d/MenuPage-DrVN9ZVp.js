@@ -1,0 +1,212 @@
+import { i as g, j as o, L as f } from "./react-CjxcGQav.js";
+import { B as t, s, f as u, l as j, bS as k } from "../js.d/main-Cm9wS5wt.js";
+import { u as w } from "./myPageController-BeB111xQ.js";
+import { r as y } from "./myPagePath-Df1KqjBk.js";
+import { u as L } from "./mobileBase-CknPHYoV.js";
+import "./stylis-DdLD6a3t.js";
+import "./biometricController-CswvQnMD.js";
+const I = [{
+  label: "창업뉴스",
+  to: "/news"
+}, {
+  label: "SEI 창업생태계 순위",
+  to: "/sei"
+}, {
+  label: "창업지원사업",
+  to: "/support"
+}, {
+  label: "창업행사 일정",
+  to: "/events"
+}, {
+  label: "AI 창업 서비스",
+  to: "/ai"
+}, {
+  label: "멤버십 안내",
+  to: "/pricing"
+}];
+function M(n, a) {
+  return [...(n ? [{
+    label: "마이페이지",
+    to: a,
+    absolute: !0
+  }, {
+    label: "로그아웃",
+    to: "/logout",
+    action: "logout"
+  }] : [{
+    label: "로그인",
+    to: "/login"
+  }, {
+    label: "회원가입",
+    to: "/signup"
+  }]), {
+    label: "앱다운-삭제예정",
+    to: "/apk",
+    download: "/apk/changupboguk.apk"
+  }];
+}
+const S = [{
+    label: "회사소개",
+    to: "/about"
+  }, {
+    label: "광고·제휴 문의",
+    to: "/contact"
+  }, {
+    label: "업데이트 히스토리",
+    to: "/updates"
+  }, {
+    label: "개인정보처리방침",
+    to: "/privacy"
+  }, {
+    label: "이용약관",
+    to: "/terms"
+  }],
+  i = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+    px: 2,
+    py: 1.75,
+    textDecoration: "none",
+    color: "inherit"
+  };
+function r({
+  label: n
+}) {
+  return o.jsxs(o.Fragment, {
+    children: [o.jsx(t, {
+      component: "span",
+      sx: {
+        fontSize: "1.125rem",
+        fontWeight: u.semibold
+      },
+      children: n
+    }), o.jsx(t, {
+      component: "svg",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: "2.2",
+      sx: {
+        width: 14,
+        height: 14,
+        color: s[400]
+      },
+      children: o.jsx("path", {
+        d: "M9 5l7 7-7 7",
+        strokeLinecap: "round",
+        strokeLinejoin: "round"
+      })
+    })]
+  });
+}
+function z() {
+  const n = L(),
+    a = g(),
+    c = `${a.pathname}${a.search}`,
+    {
+      state: d,
+      handleLogout: b,
+      loading: p
+    } = w(n || "/"),
+    m = d.useValue("logined") ?? !1;
+  d.useValue("account");
+  const x = [{
+      title: "서비스",
+      items: I
+    }, {
+      title: "계정",
+      items: M(m, y(n))
+    }, {
+      title: "창업보국",
+      items: S
+    }],
+    h = l => () => {
+      l === "/login" && k(c);
+    };
+  return o.jsxs(t, {
+    sx: {
+      px: 2,
+      py: 2
+    },
+    children: [x.map(l => o.jsxs(t, {
+      component: "section",
+      sx: {
+        mb: 2.5
+      },
+      children: [o.jsx(t, {
+        component: "h2",
+        sx: {
+          m: 0,
+          fontSize: "1rem",
+          fontWeight: u.bold,
+          color: s[400]
+        },
+        children: l.title
+      }), o.jsx(t, {
+        component: "ul",
+        sx: {
+          listStyle: "none",
+          m: 0,
+          mt: .75,
+          p: 0,
+          borderRadius: 3,
+          border: `1px solid ${s[200]}`,
+          "& > * + *": {
+            borderTop: `1px solid ${s[100]}`
+          }
+        },
+        children: l.items.map(e => o.jsx(t, {
+          component: "li",
+          children: e.download ? o.jsx(t, {
+            component: "a",
+            href: e.download,
+            download: !0,
+            sx: i,
+            children: o.jsx(r, {
+              label: e.label
+            })
+          }) : e.action === "logout" ? o.jsx(t, {
+            component: "button",
+            onClick: b,
+            disabled: p.logout,
+            sx: {
+              ...i,
+              width: "100%",
+              cursor: "pointer",
+              border: "none",
+              bgcolor: "transparent",
+              textAlign: "left",
+              "&:disabled": {
+                opacity: .6,
+                cursor: "default"
+              }
+            },
+            children: o.jsx(r, {
+              label: p.logout ? "로그아웃 중…" : e.label
+            })
+          }) : o.jsx(t, {
+            component: f,
+            to: e.absolute ? e.to : `${n}${e.to}`,
+            onClick: h(e.to),
+            sx: i,
+            children: o.jsx(r, {
+              label: e.label
+            })
+          })
+        }, e.to))
+      })]
+    }, l.title)), o.jsxs(t, {
+      component: "p",
+      sx: {
+        mt: 1,
+        textAlign: "center",
+        fontSize: "0.9375rem",
+        lineHeight: j.relaxed,
+        color: s[400]
+      },
+      children: ["창업보국(創業報國) — 대한민국 창업 데이터 허브", o.jsx("br", {}), "본 사이트는 데모 버전으로, 표시된 기사·순위·데이터는 모두 샘플입니다."]
+    })]
+  });
+}
+export { z as default };

@@ -1,0 +1,215 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/EmployeeSelectDialog-Cdnxeoz9.js",
+  "path": "assets/vendor.d/EmployeeSelectDialog-Cdnxeoz9.js",
+  "name": "EmployeeSelectDialog",
+  "kind": "ui",
+  "bytes": 4650,
+  "sha256": "bf38fa04c38ec2f41c34f4cc666ed4735098c37da0bba5a58b80848b2e00cbe7",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/EmployeeSelectDialog-Cdnxeoz9.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "a",
+          "imported": "r"
+        },
+        {
+          "local": "s",
+          "imported": "j"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "F",
+          "imported": "c8"
+        },
+        {
+          "local": "_",
+          "imported": "bv"
+        },
+        {
+          "local": "W",
+          "imported": "D"
+        },
+        {
+          "local": "A",
+          "imported": "cz"
+        },
+        {
+          "local": "K",
+          "imported": "fw"
+        },
+        {
+          "local": "V",
+          "imported": "fx"
+        },
+        {
+          "local": "M",
+          "imported": "B"
+        },
+        {
+          "local": "G",
+          "imported": "cI"
+        },
+        {
+          "local": "Q",
+          "imported": "bQ"
+        },
+        {
+          "local": "X",
+          "imported": "L"
+        },
+        {
+          "local": "$",
+          "imported": "fy"
+        },
+        {
+          "local": "J",
+          "imported": "fk"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./utils-B6Q5_urv.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "U",
+          "imported": "t"
+        },
+        {
+          "local": "P",
+          "imported": "b"
+        },
+        {
+          "local": "Y",
+          "imported": "e"
+        },
+        {
+          "local": "Z",
+          "imported": "s"
+        }
+      ],
+      "resolved": "assets/vendor.d/utils-B6Q5_urv.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "ie",
+      "exported": "E"
+    },
+    {
+      "local": "ee",
+      "exported": "u"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "te",
+      "keys": [
+        "employees",
+        "initialSelectedSeqs",
+        "labelFormat",
+        "onSelectionChange",
+        "singleSelect",
+        "dimNoAccount",
+        "disableNoAccount",
+        "orgName",
+        "trailingOrgs"
+      ]
+    },
+    {
+      "function": "ie",
+      "keys": [
+        "open",
+        "title",
+        "hint",
+        "excludeSelf",
+        "excludeAccountSeqs",
+        "initialAccountSeqs",
+        "labelFormat",
+        "singleSelect",
+        "candidates",
+        "requireAccount",
+        "initialSeqs",
+        "orgName",
+        "extraCandidates",
+        "emptyHint",
+        "onClose",
+        "onApply"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "AppMuaProvider",
+    "AttendanceHost",
+    "BoardListPage",
+    "BoardTrashPage",
+    "CalendarMonthListPage",
+    "CalendarMonthPage",
+    "CalendarSidebarPanel",
+    "CallListPage",
+    "ChatPage",
+    "DictationButton",
+    "DrivePage",
+    "EmployeeFormDialog",
+    "EmployeeListPage",
+    "FeedProfileAvatar",
+    "Layout",
+    "MeetingsPage",
+    "MobileDashboardLayout",
+    "OrgMembersPage",
+    "PostComposerHost",
+    "PostLockDialogs",
+    "SubsidyPage",
+    "TaskBoxCreateDrawer",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog",
+    "TeamPage",
+    "TrainingEditDialog",
+    "TrainingPage",
+    "useTranscriptController"
+  ],
+  "service": "인사·공통",
+  "purpose": "직원 선택",
+  "reuseGrade": "B",
+  "integration": "직원 검색·부서 트리 데이터 공급",
+  "exportedParameters": [
+    {
+      "export": "E",
+      "compiledLocal": "ie",
+      "keys": [
+        "open",
+        "title",
+        "hint",
+        "excludeSelf",
+        "excludeAccountSeqs",
+        "initialAccountSeqs",
+        "labelFormat",
+        "singleSelect",
+        "candidates",
+        "requireAccount",
+        "initialSeqs",
+        "orgName",
+        "extraCandidates",
+        "emptyHint",
+        "onClose",
+        "onApply"
+      ]
+    }
+  ]
+}

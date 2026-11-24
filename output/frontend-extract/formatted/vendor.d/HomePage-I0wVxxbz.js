@@ -1,0 +1,527 @@
+import { j as e, L as B, r as a, N as E } from "./react-CjxcGQav.js";
+import { u as P } from "./myPageController-BeB111xQ.js";
+import { B as o, s as n, f as d, l as H, gi as X, n7 as G, cQ as K, ij as Q, as as T } from "../js.d/main-Cm9wS5wt.js";
+import { a as q } from "./accountsApi-C1f6V7yi.js";
+import { u as J } from "./newsController-BGsu8k2g.js";
+import { u as Y } from "./dashboardBase-vwyZVF5L.js";
+import { u as Z } from "./mobileBase-CknPHYoV.js";
+import "./biometricController-CswvQnMD.js";
+import "./stylis-DdLD6a3t.js";
+function S({
+  title: i,
+  articles: r,
+  metric: c,
+  base: x,
+  emptyText: f
+}) {
+  return e.jsxs(o, {
+    component: "section",
+    sx: {
+      mt: 2.5
+    },
+    children: [e.jsx(o, {
+      component: "h2",
+      sx: {
+        m: 0,
+        fontSize: "1rem",
+        fontWeight: d.bold,
+        color: n[400]
+      },
+      children: i
+    }), r.length === 0 ? e.jsx(o, {
+      component: "p",
+      sx: {
+        mt: .75,
+        mb: 0,
+        borderRadius: 3,
+        border: `1px dashed ${n[200]}`,
+        px: 2,
+        py: 3,
+        textAlign: "center",
+        fontSize: "0.9375rem",
+        color: n[400]
+      },
+      children: f
+    }) : e.jsx(o, {
+      component: "ol",
+      sx: {
+        listStyle: "none",
+        m: 0,
+        mt: .75,
+        p: 0,
+        borderRadius: 3,
+        border: `1px solid ${n[200]}`,
+        "& > * + *": {
+          borderTop: `1px solid ${n[100]}`
+        }
+      },
+      children: r.map(p => e.jsx(o, {
+        component: "li",
+        children: e.jsxs(o, {
+          component: B,
+          to: `${x}/news/${p.id}`,
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 1.5,
+            px: 2,
+            py: 1.5,
+            textDecoration: "none",
+            color: "inherit"
+          },
+          children: [e.jsx(o, {
+            component: "span",
+            sx: {
+              minWidth: 0,
+              flex: 1,
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+              fontSize: "1.0625rem",
+              fontWeight: d.semibold
+            },
+            children: p.title
+          }), e.jsx(o, {
+            component: "span",
+            sx: {
+              flexShrink: 0,
+              fontSize: "0.9375rem",
+              color: n[400]
+            },
+            children: c(p)
+          })]
+        })
+      }, p.id))
+    })]
+  });
+}
+function u({
+  to: i,
+  label: r,
+  hint: c
+}) {
+  return e.jsxs(o, {
+    component: B,
+    to: i,
+    sx: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      gap: 1.5,
+      px: 2,
+      py: 1.75,
+      textDecoration: "none",
+      color: "inherit"
+    },
+    children: [e.jsxs(o, {
+      component: "span",
+      sx: {
+        minWidth: 0
+      },
+      children: [e.jsx(o, {
+        component: "span",
+        sx: {
+          display: "block",
+          fontSize: "1.125rem",
+          fontWeight: d.semibold
+        },
+        children: r
+      }), c && e.jsx(o, {
+        component: "span",
+        sx: {
+          mt: .25,
+          display: "block",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+          fontSize: "0.9375rem",
+          color: n[400]
+        },
+        children: c
+      })]
+    }), e.jsx(o, {
+      component: "svg",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: "2.2",
+      sx: {
+        width: 14,
+        height: 14,
+        flexShrink: 0,
+        color: n[400]
+      },
+      children: e.jsx("path", {
+        d: "M9 5l7 7-7 7",
+        strokeLinecap: "round",
+        strokeLinejoin: "round"
+      })
+    })]
+  });
+}
+function m({
+  label: i,
+  value: r,
+  unit: c,
+  caption: x
+}) {
+  const f = typeof r == "number" ? r.toLocaleString("ko-KR") : r;
+  return e.jsxs(o, {
+    sx: {
+      borderRadius: 3,
+      border: `1px solid ${n[200]}`,
+      p: 1.75
+    },
+    children: [e.jsx(o, {
+      component: "p",
+      sx: {
+        m: 0,
+        fontSize: "0.9375rem",
+        color: n[500]
+      },
+      children: i
+    }), e.jsxs(o, {
+      component: "p",
+      sx: {
+        mt: .5,
+        mb: 0,
+        fontSize: "1.5rem",
+        lineHeight: H.tight,
+        fontWeight: d.bold
+      },
+      children: [f, c && e.jsx(o, {
+        component: "span",
+        sx: {
+          ml: .25,
+          fontSize: "1rem",
+          fontWeight: d.semibold,
+          color: n[500]
+        },
+        children: c
+      })]
+    }), x && e.jsx(o, {
+      component: "p",
+      sx: {
+        mt: .5,
+        mb: 0,
+        fontSize: "0.875rem",
+        color: n[400]
+      },
+      children: x
+    })]
+  });
+}
+const v = {
+    mt: 2.5,
+    fontSize: "1rem",
+    fontWeight: d.bold,
+    color: n[400]
+  },
+  k = {
+    listStyle: "none",
+    mt: .75,
+    borderRadius: "12px",
+    border: `1px solid ${n[200]}`,
+    "& > * + *": {
+      borderTop: `1px solid ${n[100]}`
+    }
+  },
+  A = {
+    width: "100%",
+    borderRadius: "12px",
+    border: "1px solid",
+    py: 1.75,
+    fontSize: "1.0625rem",
+    fontWeight: d.semibold,
+    "&:disabled": {
+      opacity: .6
+    }
+  };
+function ee() {
+  return new Date().toLocaleDateString("ko-KR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    weekday: "short"
+  });
+}
+function pe() {
+  const i = Z(),
+    r = Y(),
+    c = i || "/",
+    {
+      state: x,
+      biometricRegistered: f,
+      handleLogout: p,
+      handleBiometricUnregister: O,
+      loading: j
+    } = P(c),
+    {
+      state: $
+    } = J(),
+    h = x.useValue("account") ?? null,
+    U = x.useValue("logined") ?? !1,
+    _ = x.useValue("sessionChecked") ?? !1,
+    L = $.useValue("articles"),
+    s = a.useMemo(() => L ?? [], [L]),
+    z = $.useValue("favoriteSlugs"),
+    g = a.useMemo(() => z ?? [], [z]),
+    y = X(h) === "staff",
+    b = G(h),
+    [C, R] = a.useState(-1);
+  a.useEffect(() => {
+    if (!b) return;
+    let t = !0;
+    return q.list().then(l => {
+      t && R(l.length);
+    }).catch(() => {
+      t && R(-1);
+    }), () => {
+      t = !1;
+    };
+  }, [b]);
+  const w = a.useMemo(() => s.filter(t => g.includes(t.id)), [s, g]),
+    D = a.useMemo(() => [...s].sort((t, l) => l.date.localeCompare(t.date)).slice(0, 5), [s]),
+    F = a.useMemo(() => [...s].sort((t, l) => l.views - t.views).slice(0, 5), [s]),
+    V = a.useMemo(() => [...w].sort((t, l) => l.date.localeCompare(t.date)).slice(0, 5), [w]),
+    I = a.useMemo(() => [...s].filter(t => !g.includes(t.id)).sort((t, l) => l.date.localeCompare(t.date)).slice(0, 5), [s, g]);
+  if (!_) return e.jsx(K, {});
+  if (!U) return e.jsx(E, {
+    to: `${i}/login`,
+    replace: !0
+  });
+  const M = s.filter(t => t.premium).length,
+    W = s.reduce((t, l) => t + l.views, 0),
+    N = w.filter(t => t.premium).length;
+  return e.jsxs(o, {
+    sx: {
+      px: 2,
+      py: 2
+    },
+    children: [e.jsxs(o, {
+      component: "section",
+      sx: {
+        borderRadius: "12px",
+        border: `1px solid ${n[200]}`,
+        p: 2
+      },
+      children: [e.jsxs(o, {
+        sx: {
+          display: "flex",
+          alignItems: "flex-start",
+          justifyContent: "space-between",
+          gap: 1.5
+        },
+        children: [e.jsxs(o, {
+          sx: {
+            minWidth: 0
+          },
+          children: [e.jsxs(o, {
+            component: "p",
+            sx: {
+              fontSize: "1.375rem",
+              fontWeight: d.bold,
+              wordBreak: "keep-all"
+            },
+            children: [h?.name || h?.email, "님, 반갑습니다"]
+          }), e.jsx(o, {
+            component: "p",
+            sx: {
+              mt: .5,
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+              fontSize: "1rem",
+              color: n[500]
+            },
+            children: h?.email
+          })]
+        }), e.jsx(o, {
+          component: "span",
+          sx: {
+            flexShrink: 0,
+            borderRadius: "4px",
+            bgcolor: n[100],
+            px: 1,
+            py: .25,
+            fontSize: "0.875rem",
+            fontWeight: d.bold,
+            color: n[600]
+          },
+          children: Q(h?.rbac_role)
+        })]
+      }), e.jsx(o, {
+        component: "p",
+        sx: {
+          mt: 1.5,
+          fontSize: "0.875rem",
+          color: n[400]
+        },
+        children: ee()
+      })]
+    }), e.jsx(o, {
+      sx: {
+        mt: 2,
+        display: "grid",
+        gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+        gap: 1.5
+      },
+      children: y ? e.jsxs(e.Fragment, {
+        children: [e.jsx(m, {
+          label: "등록 기사",
+          value: s.length,
+          unit: "건"
+        }), e.jsx(m, {
+          label: "유료 기사",
+          value: M,
+          unit: "건",
+          caption: s.length > 0 ? `전체의 ${Math.round(M / s.length * 100)}%` : void 0
+        }), e.jsx(m, {
+          label: "누적 조회수",
+          value: W,
+          caption: s.length > 0 ? `평균 ${Math.round(W / s.length).toLocaleString()}회` : void 0
+        }), b && e.jsx(m, {
+          label: "가입 계정",
+          value: C >= 0 ? C : "—",
+          unit: C >= 0 ? "명" : void 0
+        })]
+      }) : e.jsxs(e.Fragment, {
+        children: [e.jsx(m, {
+          label: "담아둔 기사",
+          value: w.length,
+          unit: "건"
+        }), e.jsx(m, {
+          label: "담아둔 유료 기사",
+          value: N,
+          unit: "건"
+        }), e.jsx(m, {
+          label: "전체 기사",
+          value: s.length,
+          unit: "건"
+        })]
+      })
+    }), y && e.jsxs(e.Fragment, {
+      children: [e.jsx(o, {
+        component: "h2",
+        sx: v,
+        children: "운영 관리"
+      }), e.jsxs(o, {
+        component: "ul",
+        sx: k,
+        children: [e.jsx("li", {
+          children: e.jsx(u, {
+            to: `${r}/news`,
+            label: "뉴스 관리",
+            hint: "등록된 기사 확인"
+          })
+        }), b && e.jsx("li", {
+          children: e.jsx(u, {
+            to: `${r}/accounts`,
+            label: "회원관리",
+            hint: "회원·관리자 목록"
+          })
+        })]
+      }), e.jsx(o, {
+        component: "h2",
+        sx: v,
+        children: "조직 관리"
+      }), e.jsx(o, {
+        component: "ul",
+        sx: k,
+        children: r !== "/app/dashboard" && e.jsx("li", {
+          children: e.jsx(u, {
+            to: `${r}/taskbox`,
+            label: "업무함",
+            hint: "내 업무 확인"
+          })
+        })
+      })]
+    }), e.jsx(o, {
+      component: "h2",
+      sx: v,
+      children: "내 활동"
+    }), e.jsxs(o, {
+      component: "ul",
+      sx: k,
+      children: [e.jsx("li", {
+        children: e.jsx(u, {
+          to: `${r}/favorites`,
+          label: "즐겨찾기",
+          hint: "담아둔 기사 모아보기"
+        })
+      }), e.jsx("li", {
+        children: e.jsx(u, {
+          to: `${i}/news`,
+          label: "창업뉴스",
+          hint: "공개 사이트에서 보기"
+        })
+      }), e.jsx("li", {
+        children: e.jsx(u, {
+          to: `${i}/updates`,
+          label: "업데이트 히스토리"
+        })
+      })]
+    }), y ? e.jsxs(e.Fragment, {
+      children: [e.jsx(S, {
+        title: "최근 게재 기사",
+        articles: D,
+        metric: t => t.date,
+        base: i,
+        emptyText: "등록된 기사가 없습니다."
+      }), e.jsx(S, {
+        title: "조회수 상위 기사",
+        articles: F,
+        metric: t => `${t.views.toLocaleString()}회`,
+        base: i,
+        emptyText: "등록된 기사가 없습니다."
+      })]
+    }) : e.jsxs(e.Fragment, {
+      children: [e.jsx(S, {
+        title: "최근 담아둔 기사",
+        articles: V,
+        metric: t => t.date,
+        base: i,
+        emptyText: "아직 담아둔 기사가 없습니다."
+      }), e.jsx(S, {
+        title: "이런 기사는 어떠세요",
+        articles: I,
+        metric: t => t.date,
+        base: i,
+        emptyText: "새로 볼 기사가 없습니다."
+      })]
+    }), e.jsx(o, {
+      component: "h2",
+      sx: v,
+      children: "계정"
+    }), e.jsxs(o, {
+      sx: {
+        mt: .75,
+        display: "grid",
+        gap: 1.5
+      },
+      children: [f && e.jsx(o, {
+        component: "button",
+        onClick: O,
+        disabled: j.biometricUnregister,
+        sx: {
+          ...A,
+          borderColor: n[300],
+          color: n[700]
+        },
+        children: j.biometricUnregister ? "해제 중…" : "이 기기 생체 인증 로그인 해제"
+      }), e.jsx(o, {
+        component: "button",
+        onClick: p,
+        disabled: j.logout,
+        sx: {
+          ...A,
+          borderColor: T.rose200,
+          color: T.rose600
+        },
+        children: j.logout ? "로그아웃 중…" : "로그아웃"
+      })]
+    })]
+  });
+}
+export { pe as default };

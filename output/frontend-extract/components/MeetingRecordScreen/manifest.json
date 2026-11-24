@@ -1,0 +1,1148 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/MeetingRecordScreen-XaBBkFFb.js",
+  "path": "assets/vendor.d/MeetingRecordScreen-XaBBkFFb.js",
+  "name": "MeetingRecordScreen",
+  "kind": "ui",
+  "bytes": 89345,
+  "sha256": "6cf9c57e591879c066e32e2bd38d99d1735e08d0322d308d4708f2a068ae7745",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/MeetingRecordScreen-XaBBkFFb.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "n",
+          "imported": "j"
+        },
+        {
+          "local": "o",
+          "imported": "r"
+        },
+        {
+          "local": "zr",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ht",
+          "imported": "c"
+        },
+        {
+          "local": "l",
+          "imported": "bT"
+        },
+        {
+          "local": "ze",
+          "imported": "e"
+        },
+        {
+          "local": "k",
+          "imported": "bO"
+        },
+        {
+          "local": "dt",
+          "imported": "ak"
+        },
+        {
+          "local": "K",
+          "imported": "bx"
+        },
+        {
+          "local": "xt",
+          "imported": "dv"
+        },
+        {
+          "local": "oe",
+          "imported": "z"
+        },
+        {
+          "local": "Is",
+          "imported": "u"
+        },
+        {
+          "local": "Ir",
+          "imported": "kA"
+        },
+        {
+          "local": "Or",
+          "imported": "kB"
+        },
+        {
+          "local": "tn",
+          "imported": "c8"
+        },
+        {
+          "local": "Pr",
+          "imported": "hH"
+        },
+        {
+          "local": "Vr",
+          "imported": "fA"
+        },
+        {
+          "local": "Er",
+          "imported": "cL"
+        },
+        {
+          "local": "at",
+          "imported": "kC"
+        },
+        {
+          "local": "Nr",
+          "imported": "kD"
+        },
+        {
+          "local": "We",
+          "imported": "kE"
+        },
+        {
+          "local": "rs",
+          "imported": "j9"
+        },
+        {
+          "local": "Ke",
+          "imported": "kF"
+        },
+        {
+          "local": "os",
+          "imported": "kG"
+        },
+        {
+          "local": "Wt",
+          "imported": "_"
+        },
+        {
+          "local": "Ar",
+          "imported": "kH"
+        },
+        {
+          "local": "Lr",
+          "imported": "kI"
+        },
+        {
+          "local": "Br",
+          "imported": "kJ"
+        },
+        {
+          "local": "Os",
+          "imported": "kK"
+        },
+        {
+          "local": "Xe",
+          "imported": "kL"
+        },
+        {
+          "local": "Dr",
+          "imported": "kM"
+        },
+        {
+          "local": "as",
+          "imported": "kN"
+        },
+        {
+          "local": "X",
+          "imported": "bv"
+        },
+        {
+          "local": "y",
+          "imported": "B"
+        },
+        {
+          "local": "O",
+          "imported": "L"
+        },
+        {
+          "local": "$",
+          "imported": "bQ"
+        },
+        {
+          "local": "Wr",
+          "imported": "T"
+        },
+        {
+          "local": "ft",
+          "imported": "dN"
+        },
+        {
+          "local": "Je",
+          "imported": "bH"
+        },
+        {
+          "local": "Ie",
+          "imported": "bI"
+        },
+        {
+          "local": "vt",
+          "imported": "bw"
+        },
+        {
+          "local": "$r",
+          "imported": "cz"
+        },
+        {
+          "local": "Ur",
+          "imported": "dC"
+        },
+        {
+          "local": "Hr",
+          "imported": "cD"
+        },
+        {
+          "local": "ue",
+          "imported": "fC"
+        },
+        {
+          "local": "Xt",
+          "imported": "cG"
+        },
+        {
+          "local": "Gr",
+          "imported": "m"
+        },
+        {
+          "local": "xe",
+          "imported": "kO"
+        },
+        {
+          "local": "Kr",
+          "imported": "fJ"
+        },
+        {
+          "local": "Yr",
+          "imported": "fK"
+        },
+        {
+          "local": "Xr",
+          "imported": "fB"
+        },
+        {
+          "local": "Jr",
+          "imported": "U"
+        },
+        {
+          "local": "ls",
+          "imported": "kP"
+        },
+        {
+          "local": "Jt",
+          "imported": "a1"
+        },
+        {
+          "local": "Qr",
+          "imported": "kQ"
+        },
+        {
+          "local": "Oe",
+          "imported": "D"
+        },
+        {
+          "local": "Zr",
+          "imported": "kR"
+        },
+        {
+          "local": "eo",
+          "imported": "kS"
+        },
+        {
+          "local": "ve",
+          "imported": "cc"
+        },
+        {
+          "local": "nn",
+          "imported": "fo"
+        },
+        {
+          "local": "me",
+          "imported": "w"
+        },
+        {
+          "local": "Ye",
+          "imported": "fp"
+        },
+        {
+          "local": "to",
+          "imported": "d8"
+        },
+        {
+          "local": "no",
+          "imported": "fj"
+        },
+        {
+          "local": "so",
+          "imported": "kT"
+        },
+        {
+          "local": "pt",
+          "imported": "kU"
+        },
+        {
+          "local": "Ps",
+          "imported": "cB"
+        },
+        {
+          "local": "io",
+          "imported": "kV"
+        },
+        {
+          "local": "sn",
+          "imported": "bM"
+        },
+        {
+          "local": "rn",
+          "imported": "fv"
+        },
+        {
+          "local": "ro",
+          "imported": "i2"
+        },
+        {
+          "local": "oo",
+          "imported": "c_"
+        },
+        {
+          "local": "we",
+          "imported": "K"
+        },
+        {
+          "local": "Vs",
+          "imported": "fq"
+        },
+        {
+          "local": "ao",
+          "imported": "fr"
+        },
+        {
+          "local": "lo",
+          "imported": "fs"
+        },
+        {
+          "local": "co",
+          "imported": "ft"
+        },
+        {
+          "local": "Es",
+          "imported": "kW"
+        },
+        {
+          "local": "Ns",
+          "imported": "kX"
+        },
+        {
+          "local": "uo",
+          "imported": "y"
+        },
+        {
+          "local": "mo",
+          "imported": "aQ"
+        },
+        {
+          "local": "go",
+          "imported": "bL"
+        },
+        {
+          "local": "fo",
+          "imported": "kY"
+        },
+        {
+          "local": "ut",
+          "imported": "dd"
+        },
+        {
+          "local": "As",
+          "imported": "kZ"
+        },
+        {
+          "local": "on",
+          "imported": "cI"
+        },
+        {
+          "local": "cs",
+          "imported": "ca"
+        },
+        {
+          "local": "po",
+          "imported": "cO"
+        },
+        {
+          "local": "ho",
+          "imported": "al"
+        },
+        {
+          "local": "ds",
+          "imported": "cY"
+        },
+        {
+          "local": "xo",
+          "imported": "cH"
+        },
+        {
+          "local": "vo",
+          "imported": "df"
+        },
+        {
+          "local": "Ls",
+          "imported": "eG"
+        },
+        {
+          "local": "yo",
+          "imported": "g3"
+        },
+        {
+          "local": "us",
+          "imported": "cC"
+        },
+        {
+          "local": "wo",
+          "imported": "k_"
+        },
+        {
+          "local": "ko",
+          "imported": "b0"
+        },
+        {
+          "local": "So",
+          "imported": "aY"
+        },
+        {
+          "local": "bo",
+          "imported": "aU"
+        },
+        {
+          "local": "ms",
+          "imported": "i"
+        },
+        {
+          "local": "jo",
+          "imported": "kh"
+        },
+        {
+          "local": "_o",
+          "imported": "k$"
+        },
+        {
+          "local": "Fo",
+          "imported": "ks"
+        },
+        {
+          "local": "qo",
+          "imported": "cP"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./FileUploadBox-crZW1mG0.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Co",
+          "imported": "F"
+        }
+      ],
+      "resolved": "assets/vendor.d/FileUploadBox-crZW1mG0.js"
+    },
+    {
+      "specifier": "./propertySections-Bwsl7OH-.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "To",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/propertySections-Bwsl7OH-.js"
+    },
+    {
+      "specifier": "./ForwardMessageDialog-CaXjV13U.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ro",
+          "imported": "F"
+        }
+      ],
+      "resolved": "assets/vendor.d/ForwardMessageDialog-CaXjV13U.js"
+    },
+    {
+      "specifier": "./AddTaskOutlined-CgupI6Z3.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Mo",
+          "imported": "A"
+        }
+      ],
+      "resolved": "assets/vendor.d/AddTaskOutlined-CgupI6Z3.js"
+    },
+    {
+      "specifier": "./taskDetailHost-C45bt_tL.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "zo",
+          "imported": "o"
+        }
+      ],
+      "resolved": "assets/vendor.d/taskDetailHost-C45bt_tL.js"
+    },
+    {
+      "specifier": "./ChatCallButtons-TGIgJ8cF.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Io",
+          "imported": "V"
+        },
+        {
+          "local": "Oo",
+          "imported": "P"
+        },
+        {
+          "local": "Po",
+          "imported": "a"
+        }
+      ],
+      "resolved": "assets/vendor.d/ChatCallButtons-TGIgJ8cF.js"
+    },
+    {
+      "specifier": "./videoMeetingApi-BCL1yHsp.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Vo",
+          "imported": "videoMeetingApi"
+        }
+      ],
+      "resolved": "assets/vendor.d/videoMeetingApi-BCL1yHsp.js"
+    },
+    {
+      "specifier": "./videoLink-BfLN3LRj.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Bs",
+          "imported": "m"
+        },
+        {
+          "local": "Ds",
+          "imported": "c"
+        },
+        {
+          "local": "Qt",
+          "imported": "M"
+        },
+        {
+          "local": "Eo",
+          "imported": "V"
+        }
+      ],
+      "resolved": "assets/vendor.d/videoLink-BfLN3LRj.js"
+    },
+    {
+      "specifier": "./Title-WCY0exuZ.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "No",
+          "imported": "T"
+        }
+      ],
+      "resolved": "assets/vendor.d/Title-WCY0exuZ.js"
+    },
+    {
+      "specifier": "./ScheduleOutlined-C_7j7r9e.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ao",
+          "imported": "S"
+        }
+      ],
+      "resolved": "assets/vendor.d/ScheduleOutlined-C_7j7r9e.js"
+    },
+    {
+      "specifier": "./RecordVoiceOverOutlined-C838alHh.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Lo",
+          "imported": "R"
+        }
+      ],
+      "resolved": "assets/vendor.d/RecordVoiceOverOutlined-C838alHh.js"
+    },
+    {
+      "specifier": "./GroupOutlined-CA-gNtcg.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Bo",
+          "imported": "G"
+        }
+      ],
+      "resolved": "assets/vendor.d/GroupOutlined-CA-gNtcg.js"
+    },
+    {
+      "specifier": "./GroupAddOutlined-DigKoBGv.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Do",
+          "imported": "G"
+        }
+      ],
+      "resolved": "assets/vendor.d/GroupAddOutlined-DigKoBGv.js"
+    },
+    {
+      "specifier": "./ArrowBackOutlined-BhSdaUts.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Wo",
+          "imported": "A"
+        }
+      ],
+      "resolved": "assets/vendor.d/ArrowBackOutlined-BhSdaUts.js"
+    },
+    {
+      "specifier": "./PropertyFields-TuJTG5XK.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "$t",
+          "imported": "I"
+        },
+        {
+          "local": "$o",
+          "imported": "b"
+        },
+        {
+          "local": "Ws",
+          "imported": "E"
+        }
+      ],
+      "resolved": "assets/vendor.d/PropertyFields-TuJTG5XK.js"
+    },
+    {
+      "specifier": "./FormValue-CAMilU-0.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Re",
+          "imported": "F"
+        }
+      ],
+      "resolved": "assets/vendor.d/FormValue-CAMilU-0.js"
+    },
+    {
+      "specifier": "./useCalendarTasks-Cl5o2Ebi.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Uo",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/useCalendarTasks-Cl5o2Ebi.js"
+    },
+    {
+      "specifier": "./meetingsApi-CCkjq69B.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "q",
+          "imported": "m"
+        }
+      ],
+      "resolved": "assets/vendor.d/meetingsApi-CCkjq69B.js"
+    },
+    {
+      "specifier": "./MeetingRecordingPlayer-vear-u6W.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ho",
+          "imported": "u"
+        },
+        {
+          "local": "Go",
+          "imported": "s"
+        },
+        {
+          "local": "Ko",
+          "imported": "M"
+        },
+        {
+          "local": "Zt",
+          "imported": "f"
+        },
+        {
+          "local": "gs",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/MeetingRecordingPlayer-vear-u6W.js"
+    },
+    {
+      "specifier": "./useTranscriptController-BdNi4rMO.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Yo",
+          "imported": "u"
+        },
+        {
+          "local": "Xo",
+          "imported": "T"
+        },
+        {
+          "local": "Jo",
+          "imported": "t"
+        }
+      ],
+      "resolved": "assets/vendor.d/useTranscriptController-BdNi4rMO.js"
+    },
+    {
+      "specifier": "./safeMarkdown-sAzUuXkU.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "je",
+          "imported": "m"
+        },
+        {
+          "local": "Qo",
+          "imported": "s"
+        }
+      ],
+      "resolved": "assets/vendor.d/safeMarkdown-sAzUuXkU.js"
+    },
+    {
+      "specifier": "./LinkOff-BeDdBoha.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Zo",
+          "imported": "L"
+        }
+      ],
+      "resolved": "assets/vendor.d/LinkOff-BeDdBoha.js"
+    },
+    {
+      "specifier": "./tableScrollbars-C9bhlJjO.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ea",
+          "imported": "T"
+        }
+      ],
+      "resolved": "assets/vendor.d/tableScrollbars-C9bhlJjO.js"
+    },
+    {
+      "specifier": "./shellOwnScroll-BIIV4RF2.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "fs",
+          "imported": "S"
+        }
+      ],
+      "resolved": "assets/vendor.d/shellOwnScroll-BIIV4RF2.js"
+    },
+    {
+      "specifier": "./SaveOutlined-DgCkQRT8.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ps",
+          "imported": "S"
+        }
+      ],
+      "resolved": "assets/vendor.d/SaveOutlined-DgCkQRT8.js"
+    },
+    {
+      "specifier": "./useFormModified-cVB1R-yN.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ta",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/useFormModified-cVB1R-yN.js"
+    },
+    {
+      "specifier": "./taskboxApi-BuYlRWHe.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "na",
+          "imported": "f"
+        }
+      ],
+      "resolved": "assets/vendor.d/taskboxApi-BuYlRWHe.js"
+    },
+    {
+      "specifier": "./bootstrapController-BMV_i07c.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "sa",
+          "imported": "z"
+        }
+      ],
+      "resolved": "assets/vendor.d/bootstrapController-BMV_i07c.js"
+    },
+    {
+      "specifier": "./pendingRecordings-DpKJ8Y2R.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ia",
+          "imported": "u"
+        },
+        {
+          "local": "ra",
+          "imported": "r"
+        },
+        {
+          "local": "hs",
+          "imported": "a"
+        }
+      ],
+      "resolved": "assets/vendor.d/pendingRecordings-DpKJ8Y2R.js"
+    },
+    {
+      "specifier": "./meetingCalendar-_jcQJ1qd.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "xs",
+          "imported": "p"
+        }
+      ],
+      "resolved": "assets/vendor.d/meetingCalendar-_jcQJ1qd.js"
+    },
+    {
+      "specifier": "./nativeRecordingSync-CMpETFg9.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "oa",
+          "imported": "syncNativeRecordingLeftovers"
+        }
+      ],
+      "resolved": "assets/vendor.d/nativeRecordingSync-CMpETFg9.js"
+    },
+    {
+      "specifier": "./videoMeetingApi-BCL1yHsp.js",
+      "type": "dynamic",
+      "resolved": "assets/vendor.d/videoMeetingApi-BCL1yHsp.js"
+    },
+    {
+      "specifier": "./videoLink-BfLN3LRj.js",
+      "type": "dynamic",
+      "resolved": "assets/vendor.d/videoLink-BfLN3LRj.js"
+    },
+    {
+      "specifier": "./videoMeetingApi-BCL1yHsp.js",
+      "type": "dynamic",
+      "resolved": "assets/vendor.d/videoMeetingApi-BCL1yHsp.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "El",
+      "exported": "M"
+    },
+    {
+      "local": "xa",
+      "exported": "V"
+    },
+    {
+      "local": "Nl",
+      "exported": "a"
+    },
+    {
+      "local": "va",
+      "exported": "b"
+    },
+    {
+      "local": "Vl",
+      "exported": "u"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": null,
+      "keys": [
+        "attachments",
+        "video_meeting"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "file",
+        "seconds",
+        "part",
+        "more"
+      ]
+    },
+    {
+      "function": "fa",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "ha",
+      "keys": [
+        "code",
+        "size"
+      ]
+    },
+    {
+      "function": "xa",
+      "keys": [
+        "code",
+        "source",
+        "sourceSeq",
+        "onCreate",
+        "creating",
+        "fontSize"
+      ]
+    },
+    {
+      "function": "ya",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "ka",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "folder"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "folder",
+        "depth"
+      ]
+    },
+    {
+      "function": "Gs",
+      "keys": [
+        "c",
+        "item",
+        "onUnlink"
+      ]
+    },
+    {
+      "function": "ja",
+      "keys": [
+        "c"
+      ]
+    },
+    {
+      "function": "_a",
+      "keys": [
+        "c"
+      ]
+    },
+    {
+      "function": "Fa",
+      "keys": [
+        "c"
+      ]
+    },
+    {
+      "function": "qa",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "Ca",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "Ss",
+      "keys": [
+        "controller",
+        "name",
+        "placeholder",
+        "maxLength"
+      ]
+    },
+    {
+      "function": "Ra",
+      "keys": [
+        "controller",
+        "name",
+        "placeholder"
+      ]
+    },
+    {
+      "function": "Aa",
+      "keys": [
+        "seq",
+        "src",
+        "name",
+        "seconds",
+        "done",
+        "onRemove"
+      ]
+    },
+    {
+      "function": "Da",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "Wa",
+      "keys": [
+        "value"
+      ]
+    },
+    {
+      "function": "$a",
+      "keys": [
+        "controller",
+        "meetingSeq"
+      ]
+    },
+    {
+      "function": "Ha",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "_s",
+      "keys": [
+        "label",
+        "description",
+        "children"
+      ]
+    },
+    {
+      "function": "Ga",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "Ya",
+      "keys": [
+        "items"
+      ]
+    },
+    {
+      "function": "Xa",
+      "keys": [
+        "meeting"
+      ]
+    },
+    {
+      "function": "El",
+      "keys": [
+        "controller",
+        "docked"
+      ]
+    },
+    {
+      "function": "el",
+      "keys": [
+        "readLevels",
+        "live",
+        "readPlayback"
+      ]
+    },
+    {
+      "function": "nl",
+      "keys": [
+        "readWave",
+        "live",
+        "audioRef",
+        "historyRef"
+      ]
+    },
+    {
+      "function": "Nl",
+      "keys": [
+        "controller"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [
+    "& .ehfuse-editor-wrapper"
+  ],
+  "missingDependencies": [],
+  "importedBy": [
+    "CalendarSidebarPanel",
+    "Layout",
+    "MeetingsPage",
+    "MobileDashboardLayout",
+    "PostComposerHost",
+    "StackedTaskDetailSlot",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog"
+  ],
+  "service": "회의",
+  "purpose": "회의 기록 화면",
+  "reuseGrade": "C",
+  "integration": "녹음·전사·회의 API와 브라우저 권한 연결",
+  "exportedParameters": [
+    {
+      "export": "M",
+      "compiledLocal": "El",
+      "keys": [
+        "controller",
+        "docked"
+      ]
+    },
+    {
+      "export": "V",
+      "compiledLocal": "xa",
+      "keys": [
+        "code",
+        "source",
+        "sourceSeq",
+        "onCreate",
+        "creating",
+        "fontSize"
+      ]
+    },
+    {
+      "export": "a",
+      "compiledLocal": "Nl",
+      "keys": [
+        "controller"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,523 @@
+import { r as x, j as t } from "./react-CjxcGQav.js";
+import { e as z, c8 as H, ak as G, bO as _, bT as E, bv as I, D as W, fL as P, cI as Y, B as d, al as K, aq as j, cn as U, cY as Q, bQ as J, ma as X, cm as Z, s as O, cz as $, dv as ee, L, F as te, d8 as se, lr as ae, be as re, bx as ne } from "../js.d/main-Cm9wS5wt.js";
+import { t as S, D as w, P as oe, d as C, c as ie, T as le } from "./terms-BH45hJsC.js";
+import { k as ce } from "./deal-B3IQ_ej7.js";
+import { T as de } from "./Trans-CU1vl0TZ.js";
+import { u as me, b as pe, a as ue } from "./MobileCardListLayout-D5_p2Xer.js";
+import { u as fe } from "./useClientSort-CdwrAOWp.js";
+import { T as be } from "./tableScrollbars-C9bhlJjO.js";
+import { u as ye } from "./useColumnWidths-DSAca5rC.js";
+import { u as xe } from "./sidebarAction-Z0aCDENX.js";
+import "./stylis-DdLD6a3t.js";
+import "./mobileSearchOverlay-DYWcMOOb.js";
+import "./profileApi-Btafs-pM.js";
+const F = {
+  name: "",
+  basis: "closing",
+  closing_day: 0,
+  pay_month_offset: 1,
+  pay_day: 0,
+  pay_days: 30,
+  memo: "",
+  enabled: !0
+};
+function N(e) {
+  const a = String(e.name ?? "").trim();
+  if (!a) return E("partner.termsNameRequired");
+  const n = e.basis === "days" || e.basis === "immediate" ? e.basis : "closing",
+    o = Number(e.pay_days) || 0;
+  return n === "days" && o <= 0 ? E("partner.termsPayDaysRequired") : {
+    name: a,
+    basis: n,
+    closing_day: Number(e.closing_day) || 0,
+    pay_month_offset: Number(e.pay_month_offset) || 0,
+    pay_day: Number(e.pay_day) || 0,
+    pay_days: o,
+    memo: String(e.memo ?? ""),
+    enabled: e.enabled !== !1
+  };
+}
+function he(e = {}) {
+  const a = x.useRef(e);
+  a.current = e;
+  const n = {
+      form: z({
+        modalId: "partner-terms-form"
+      })
+    },
+    o = H({
+      stateId: "partner-terms-form-ui",
+      initialValues: {
+        target: null
+      }
+    }),
+    i = G({
+      formId: "partner-terms-form",
+      initialValues: F,
+      onValidate: r => {
+        const l = N(r);
+        return typeof l == "string" ? (_(l), !1) : !0;
+      },
+      onSubmit: async r => {
+        const l = N(r);
+        if (typeof l == "string") return !1;
+        const y = o.getValue("target");
+        try {
+          return y ? await S.update(y.seq, l) : await S.create(l), a.current.onChanged?.("saved"), n.form.close(), !0;
+        } catch (p) {
+          return _(p instanceof Error ? p.message : E("partner.termsSaveFailed")), !1;
+        }
+      }
+    }),
+    m = r => {
+      i.setFormValues(r ? {
+        name: r.name,
+        basis: r.basis,
+        closing_day: r.closing_day,
+        pay_month_offset: r.pay_month_offset,
+        pay_day: r.pay_day,
+        pay_days: r.pay_days || 30,
+        memo: r.memo,
+        enabled: r.enabled
+      } : F), o.setValue("target", r), n.form.open();
+    };
+  return {
+    form: i,
+    modals: n,
+    ui: o,
+    openCreate: () => m(null),
+    openEdit: r => m(r),
+    remove: async () => {
+      const r = o.getValue("target");
+      if (r) try {
+        await S.remove(r.seq), a.current.onChanged?.("removed"), n.form.close();
+      } catch (l) {
+        _(l instanceof Error ? l.message : E("partner.termsDeleteFailed"));
+      }
+    }
+  };
+}
+const ge = X(le);
+function _e(e) {
+  return {
+    basis: e.useValue("basis"),
+    closing_day: Number(e.useValue("closing_day")) || 0,
+    pay_month_offset: Number(e.useValue("pay_month_offset")) || 0,
+    pay_day: Number(e.useValue("pay_day")) || 0,
+    pay_days: Number(e.useValue("pay_days")) || 0
+  };
+}
+function je({
+  form: e,
+  isMobile: a
+}) {
+  const n = I(),
+    o = _e(e),
+    i = ce();
+  return t.jsxs(t.Fragment, {
+    children: [o.basis === "closing" ? t.jsxs(d, {
+      sx: {
+        display: "flex",
+        gap: 2,
+        flexDirection: a ? "column" : "row"
+      },
+      children: [t.jsx(j, {
+        form: e,
+        name: "closing_day",
+        label: n("partner.closingDay"),
+        options: w,
+        showEmptyOption: !1,
+        fullWidth: !0
+      }), t.jsx(j, {
+        form: e,
+        name: "pay_month_offset",
+        label: n("partner.payMonth"),
+        options: oe,
+        showEmptyOption: !1,
+        fullWidth: !0
+      }), t.jsx(j, {
+        form: e,
+        name: "pay_day",
+        label: n("partner.payDay"),
+        options: w,
+        showEmptyOption: !1,
+        fullWidth: !0
+      })]
+    }) : null, o.basis === "days" ? t.jsx(Z, {
+      form: e,
+      name: "pay_days",
+      label: n("partner.payDaysLabel"),
+      fullWidth: !0,
+      textAlign: "right",
+      min: 1,
+      max: 365
+    }) : null, t.jsxs(d, {
+      sx: {
+        bgcolor: O[50],
+        borderRadius: 1.5,
+        px: 2,
+        py: 1.5,
+        fontSize: 14,
+        display: "flex",
+        flexDirection: "column",
+        gap: .5
+      },
+      children: [t.jsx(d, {
+        sx: {
+          fontWeight: 600
+        },
+        children: C(o)
+      }), t.jsx(d, {
+        sx: {
+          color: O[600]
+        },
+        children: t.jsx(de, {
+          i18nKey: "partner.termsTodayDue",
+          values: {
+            today: i,
+            due: ie(i, o)
+          },
+          components: {
+            b: t.jsx("b", {})
+          }
+        })
+      })]
+    })]
+  });
+}
+function Se({
+  controller: e
+}) {
+  const a = I(),
+    n = W(),
+    o = P("partner").canWrite,
+    {
+      form: i,
+      modals: m,
+      ui: f
+    } = e,
+    b = f.useValue("target"),
+    h = i.isSubmitting;
+  return t.jsx(Y, {
+    readOnly: !o,
+    open: m.form.isOpen,
+    onClose: m.form.close,
+    title: a(b ? "partner.termsEdit" : "partner.termsCreate"),
+    maxWidth: "sm",
+    backdropClick: !1,
+    scrollPastLastSection: !1,
+    fullScreen: n,
+    mobilePresentation: n ? "slide" : "dialog",
+    titleIcons: {
+      delete: {
+        visible: !!b && o,
+        confirmConfig: {
+          title: a("partner.termsDelete"),
+          message: a("partner.termsDeleteConfirm"),
+          confirmText: a("partner.delete"),
+          cancelText: a("partner.cancel")
+        }
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    onDelete: e.remove,
+    tabs: {
+      visible: !1
+    },
+    actions: {
+      showCancelButton: !0,
+      right: o ? t.jsx(J, {
+        variant: "contained",
+        onClick: () => {
+          i.submit();
+        },
+        disabled: h,
+        children: a(h ? "partner.saving" : "partner.save")
+      }) : void 0
+    },
+    sections: [{
+      id: "terms-main",
+      showTitle: !1,
+      children: t.jsxs(d, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: 2
+        },
+        children: [t.jsx(K, {
+          form: i,
+          name: "name",
+          label: a("partner.termsName"),
+          required: !0,
+          fullWidth: !0,
+          autoFocus: !n && !b,
+          placeholder: a("partner.termsNamePlaceholder"),
+          slotProps: {
+            htmlInput: {
+              maxLength: 100
+            }
+          }
+        }), t.jsx(j, {
+          form: i,
+          name: "basis",
+          label: a("partner.termsBasis"),
+          options: ge,
+          showEmptyOption: !1,
+          fullWidth: !0
+        }), t.jsx(je, {
+          form: i,
+          isMobile: n
+        }), t.jsx(U, {
+          form: i,
+          name: "memo",
+          label: a("partner.note"),
+          fullWidth: !0,
+          minRows: 2,
+          slotProps: {
+            htmlInput: {
+              maxLength: 200
+            }
+          }
+        }), t.jsx(Q, {
+          form: i,
+          name: "enabled",
+          label: a("partner.enabled")
+        })]
+      })
+    }]
+  });
+}
+const Ce = 48,
+  Ee = "#9b9a97",
+  Oe = "#f8f8f7";
+function k() {
+  const e = I();
+  return t.jsx(d, {
+    sx: {
+      py: 6,
+      px: 2,
+      textAlign: "center",
+      color: Ee,
+      fontSize: 14,
+      wordBreak: "keep-all"
+    },
+    children: e("partner.termsEmpty")
+  });
+}
+function Ae() {
+  const e = I(),
+    a = P("partner").canWrite,
+    n = ye("partner.terms"),
+    o = W(),
+    m = $()?.seq ?? 0,
+    [f, b] = x.useState([]),
+    [h, r] = x.useState(!1),
+    l = x.useRef(0),
+    y = x.useCallback(async (s = !1) => {
+      if (!m) {
+        b([]);
+        return;
+      }
+      const c = ++l.current;
+      s || r(!0);
+      try {
+        const u = await S.list(!0);
+        c === l.current && b(u);
+      } catch (u) {
+        c === l.current && !s && _(u instanceof Error ? u.message : e("partner.termsLoadFailed"));
+      } finally {
+        c === l.current && r(!1);
+      }
+    }, [m]);
+  x.useEffect(() => {
+    y();
+  }, [y]), ee(["partner_terms"], () => {
+    y(!0);
+  });
+  const p = he({
+      onChanged: s => {
+        ne({
+          message: e(s === "removed" ? "partner.deleted" : "partner.saved"),
+          delay: 500
+        }), y();
+      }
+    }),
+    R = t.jsx(Se, {
+      controller: p
+    }),
+    [D, V] = x.useState([]),
+    A = D.length > 0 ? f.filter(s => D.includes(s.enabled ? "on" : "off")) : f,
+    {
+      rows: v,
+      tableSort: B
+    } = fe(A, {
+      rule: s => C(s)
+    }),
+    T = me(h);
+  if (xe(!o && a ? {
+    label: e("partner.termsCreate"),
+    onClick: () => p.openCreate()
+  } : null), o) {
+    const s = [...f.map(c => t.jsxs(d, {
+      role: "button",
+      tabIndex: 0,
+      onClick: () => p.openEdit(c),
+      onKeyDown: u => {
+        (u.key === "Enter" || u.key === " ") && (u.preventDefault(), p.openEdit(c));
+      },
+      sx: {
+        display: "flex",
+        flexDirection: "column",
+        gap: .5,
+        px: 2,
+        py: 1.5,
+        cursor: "pointer",
+        userSelect: "none",
+        opacity: c.enabled ? 1 : .5,
+        "&:active": {
+          bgcolor: Oe
+        }
+      },
+      children: [t.jsxs(L, {
+        noWrap: !0,
+        sx: {
+          fontSize: 15,
+          fontWeight: 600
+        },
+        children: [c.name, c.enabled ? "" : e("partner.inactiveSuffix")]
+      }), t.jsx(d, {
+        sx: {
+          fontSize: 14,
+          color: "text.secondary"
+        },
+        children: C(c)
+      })]
+    }, c.seq))];
+    return T && f.length === 0 && s.push(t.jsx(k, {}, "empty")), T || s.push(t.jsx(ue, {}, "loading")), t.jsxs(t.Fragment, {
+      children: [t.jsx(pe, {
+        attachHead: !0,
+        children: s
+      }), a ? t.jsx(te, {
+        color: "primary",
+        "aria-label": e("partner.termsCreate"),
+        onClick: p.openCreate,
+        sx: {
+          position: "fixed",
+          right: 24,
+          bottom: "calc(24px + var(--taskbox-fab-lift, 0px))",
+          zIndex: 40
+        },
+        children: t.jsx(se, {})
+      }) : null, R]
+    });
+  }
+  const g = (s, c) => t.jsx(d, {
+      component: "span",
+      sx: {
+        opacity: s.enabled ? 1 : .5,
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap"
+      },
+      children: c
+    }),
+    M = [{
+      id: "name",
+      text: e("partner.termsName"),
+      sortable: !0,
+      width: 280,
+      style: {
+        fontSize: 15
+      },
+      render: s => g(s, s.name)
+    }, {
+      id: "rule",
+      text: e("partner.rule"),
+      sortable: !0,
+      render: s => g(s, C(s))
+    }, {
+      id: "memo",
+      text: e("partner.note"),
+      width: 260,
+      render: s => g(s, s.memo)
+    }, {
+      id: "enabled",
+      text: e("partner.enabled"),
+      width: 90,
+      align: "center",
+      sortable: !0,
+      filterOptions: [{
+        value: "on",
+        label: e("partner.enabled")
+      }, {
+        value: "off",
+        label: e("partner.disabled")
+      }],
+      filterValues: D,
+      onFilterChange: V,
+      render: s => g(s, s.enabled ? e("partner.enabled") : e("partner.disabled"))
+    }],
+    q = {
+      showSearch: !1,
+      collapsible: !1,
+      showCollapseButton: !1,
+      showClearIcon: !1
+    };
+  return t.jsxs(t.Fragment, {
+    children: [t.jsxs(d, {
+      sx: {
+        position: "relative",
+        height: "100%",
+        minHeight: 0,
+        display: "flex",
+        flexDirection: "column"
+      },
+      children: [t.jsx(ae, {
+        header: q,
+        tableProps: {
+          ...n,
+          scrollbars: be,
+          mobile: !0,
+          variant: "notion",
+          columns: M,
+          data: v,
+          totalCount: v.length,
+          getRowId: s => String(s.seq),
+          ...B,
+          rowHeight: Ce,
+          onRowClick: p.openEdit,
+          loading: h,
+          emptyMessage: t.jsx(k, {})
+        }
+      }), m ? null : t.jsxs(d, {
+        sx: {
+          position: "absolute",
+          inset: 0,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 1,
+          color: O[500],
+          bgcolor: "background.paper",
+          "& .MuiSvgIcon-root": {
+            fontSize: 48,
+            color: O[300]
+          }
+        },
+        children: [t.jsx(re, {}), t.jsx(L, {
+          sx: {
+            fontSize: "0.9rem"
+          },
+          children: e("partner.termsNeedOrg")
+        })]
+      })]
+    }), R]
+  });
+}
+export { Ae as default };

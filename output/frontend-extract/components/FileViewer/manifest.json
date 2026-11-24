@@ -1,0 +1,550 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/FileViewer-D5PyYcLh.js",
+  "path": "assets/vendor.d/FileViewer-D5PyYcLh.js",
+  "name": "FileViewer",
+  "kind": "ui",
+  "bytes": 1174871,
+  "sha256": "3b3677ecab440f8ebbfaa8426a460560f5bc76872a1bd97b43a35b72a24e049b",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/FileViewer-D5PyYcLh.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Y",
+          "imported": "j"
+        },
+        {
+          "local": "O",
+          "imported": "r"
+        },
+        {
+          "local": "is",
+          "imported": "e"
+        },
+        {
+          "local": "kh",
+          "imported": "p"
+        },
+        {
+          "local": "PE",
+          "imported": "s"
+        },
+        {
+          "local": "Ll",
+          "imported": "t"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "bg",
+          "imported": "c"
+        },
+        {
+          "local": "el",
+          "imported": "cr"
+        },
+        {
+          "local": "Rg",
+          "imported": "hF"
+        },
+        {
+          "local": "Sg",
+          "imported": "bF"
+        },
+        {
+          "local": "nt",
+          "imported": "B"
+        },
+        {
+          "local": "Br",
+          "imported": "bH"
+        },
+        {
+          "local": "Ht",
+          "imported": "bI"
+        },
+        {
+          "local": "Ur",
+          "imported": "L"
+        },
+        {
+          "local": "Wo",
+          "imported": "lT"
+        },
+        {
+          "local": "LE",
+          "imported": "fq"
+        },
+        {
+          "local": "gf",
+          "imported": "gL"
+        },
+        {
+          "local": "DE",
+          "imported": "fr"
+        },
+        {
+          "local": "BE",
+          "imported": "gM"
+        },
+        {
+          "local": "UE",
+          "imported": "d8"
+        },
+        {
+          "local": "HE",
+          "imported": "g4"
+        },
+        {
+          "local": "VE",
+          "imported": "i1"
+        },
+        {
+          "local": "GE",
+          "imported": "ki"
+        },
+        {
+          "local": "WE",
+          "imported": "lU"
+        },
+        {
+          "local": "$E",
+          "imported": "go"
+        },
+        {
+          "local": "zE",
+          "imported": "fs"
+        },
+        {
+          "local": "XE",
+          "imported": "g5"
+        },
+        {
+          "local": "qE",
+          "imported": "k9"
+        },
+        {
+          "local": "YE",
+          "imported": "gO"
+        },
+        {
+          "local": "KE",
+          "imported": "ka"
+        },
+        {
+          "local": "jE",
+          "imported": "kb"
+        },
+        {
+          "local": "mf",
+          "imported": "kc"
+        },
+        {
+          "local": "JE",
+          "imported": "kd"
+        },
+        {
+          "local": "QE",
+          "imported": "ke"
+        },
+        {
+          "local": "vf",
+          "imported": "lV"
+        },
+        {
+          "local": "ZE",
+          "imported": "jm"
+        },
+        {
+          "local": "e2",
+          "imported": "jn"
+        },
+        {
+          "local": "Dl",
+          "imported": "bQ"
+        },
+        {
+          "local": "t2",
+          "imported": "d4"
+        },
+        {
+          "local": "r2",
+          "imported": "gn"
+        },
+        {
+          "local": "xf",
+          "imported": "j9"
+        },
+        {
+          "local": "n2",
+          "imported": "lW"
+        },
+        {
+          "local": "Ef",
+          "imported": "lX"
+        },
+        {
+          "local": "i2",
+          "imported": "lY"
+        },
+        {
+          "local": "s2",
+          "imported": "lZ"
+        },
+        {
+          "local": "a2",
+          "imported": "d_"
+        },
+        {
+          "local": "o2",
+          "imported": "bT"
+        },
+        {
+          "local": "c2",
+          "imported": "bM"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./RotateRight-DbtMfjGZ.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "l2",
+          "imported": "R"
+        },
+        {
+          "local": "u2",
+          "imported": "a"
+        }
+      ],
+      "resolved": "assets/vendor.d/RotateRight-DbtMfjGZ.js"
+    },
+    {
+      "specifier": "./tiny-invariant-CopsF_GD.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "dt",
+          "imported": "i"
+        }
+      ],
+      "resolved": "assets/vendor.d/tiny-invariant-CopsF_GD.js"
+    },
+    {
+      "specifier": "./Snackbar-DxIDGM8-.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "h2",
+          "imported": "S"
+        }
+      ],
+      "resolved": "assets/vendor.d/Snackbar-DxIDGM8-.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "Cg",
+      "exported": "F"
+    },
+    {
+      "local": "bf",
+      "exported": "a"
+    },
+    {
+      "local": "KO",
+      "exported": "b"
+    },
+    {
+      "local": "RO",
+      "exported": "h"
+    },
+    {
+      "local": "HO",
+      "exported": "i"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "sw",
+      "keys": [
+        "children"
+      ]
+    },
+    {
+      "function": "cw",
+      "keys": [
+        "width",
+        "height",
+        "isEditorReady",
+        "loading",
+        "_ref",
+        "className",
+        "wrapperProps"
+      ]
+    },
+    {
+      "function": "pw",
+      "keys": [
+        "original",
+        "modified",
+        "language",
+        "originalLanguage",
+        "modifiedLanguage",
+        "originalModelPath",
+        "modifiedModelPath",
+        "keepCurrentOriginalModel",
+        "keepCurrentModifiedModel",
+        "theme",
+        "loading",
+        "options",
+        "height",
+        "width",
+        "className",
+        "wrapperProps",
+        "beforeMount",
+        "onMount"
+      ]
+    },
+    {
+      "function": "xw",
+      "keys": [
+        "defaultValue",
+        "defaultLanguage",
+        "defaultPath",
+        "value",
+        "language",
+        "path",
+        "theme",
+        "line",
+        "loading",
+        "options",
+        "overrideServices",
+        "saveViewState",
+        "keepCurrentModel",
+        "width",
+        "height",
+        "className",
+        "wrapperProps",
+        "beforeMount",
+        "onMount",
+        "onChange",
+        "onValidate"
+      ]
+    },
+    {
+      "function": "Ph",
+      "keys": [
+        "html",
+        "dir",
+        "className"
+      ]
+    },
+    {
+      "function": "iy",
+      "keys": [
+        "src",
+        "srcPos",
+        "dest",
+        "width",
+        "height",
+        "nonBlackColor",
+        "inverseDecode"
+      ]
+    },
+    {
+      "function": "i1",
+      "keys": [
+        "responseHeaders",
+        "isHttp",
+        "rangeChunkSize",
+        "disableRange"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "value",
+        "done"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "value",
+        "done"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "value",
+        "done"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "value",
+        "done"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "value",
+        "done"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "pdfInfo"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "relatedTarget"
+      ]
+    },
+    {
+      "function": "Ws",
+      "keys": [
+        "children",
+        "type"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "children",
+        "className",
+        "error",
+        "externalLinkRel",
+        "externalLinkTarget",
+        "file",
+        "inputRef",
+        "imageResourcesPath",
+        "loading",
+        "noData",
+        "onItemClick",
+        "onLoadError",
+        "onLoadProgress",
+        "onLoadSuccess",
+        "onPassword",
+        "onSourceError",
+        "onSourceSuccess",
+        "options",
+        "renderMode",
+        "rotate",
+        "scale"
+      ]
+    },
+    {
+      "function": "I1",
+      "keys": [
+        "className",
+        "node"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "value",
+        "children"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "open",
+        "onClose",
+        "file",
+        "files",
+        "initialIndex",
+        "loadFile",
+        "onDownload",
+        "onShare",
+        "pdfAssetBase",
+        "convertOffice",
+        "locale",
+        "labels",
+        "pageNavPosition",
+        "variant",
+        "toolbar",
+        "swipe",
+        "chrome"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "numPages"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "open",
+        "onClose",
+        "file"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [
+    "5.4.296",
+    "0.10.3",
+    "1.0.2",
+    "7.1.2",
+    "0.5.0",
+    "1.2.0",
+    "1.2.1"
+  ],
+  "missingDependencies": [],
+  "importedBy": [
+    "AppMuaProvider",
+    "ApprovalAllDocumentsPage",
+    "ApprovalBoxPage",
+    "ApprovalDetailDialog",
+    "ApprovalDraftedPage",
+    "BoardListPage",
+    "BoardTrashPage",
+    "CalendarMonthListPage",
+    "CalendarMonthPage",
+    "CalendarSidebarPanel",
+    "CertificatePage",
+    "ContractPage",
+    "DrivePage",
+    "FaqPage",
+    "FileUploadBox",
+    "Layout",
+    "MeetingsPage",
+    "MobileDashboardLayout",
+    "PostComposerHost",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog",
+    "TrainingPage",
+    "filePreview",
+    "index",
+    "index.esm"
+  ],
+  "service": "공통",
+  "purpose": "파일·PDF 미리보기",
+  "reuseGrade": "C",
+  "integration": "파일 URL·PDF worker·권한 처리 확인",
+  "exportedParameters": []
+}

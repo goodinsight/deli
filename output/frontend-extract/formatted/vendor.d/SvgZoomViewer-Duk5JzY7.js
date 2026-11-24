@@ -1,0 +1,335 @@
+import { r as n, j as c } from "./react-CjxcGQav.js";
+import { bv as nt, D as ot, fq as st, B as M, bI as w, d8 as ct, g4 as at, go as it, K as lt } from "../js.d/main-Cm9wS5wt.js";
+import { R as ut, a as ft } from "./RotateRight-DbtMfjGZ.js";
+import "./stylis-DdLD6a3t.js";
+const B = 1,
+  $ = 20,
+  F = 80,
+  U = {
+    position: "absolute",
+    top: 0,
+    zIndex: 3,
+    display: "flex",
+    gap: 1,
+    p: 1.5,
+    pointerEvents: "none",
+    "& .MuiIconButton-root": {
+      color: "#fff",
+      backgroundColor: "rgba(15,23,42,0.55)",
+      p: 1.5,
+      pointerEvents: "auto",
+      touchAction: "manipulation",
+      "& svg": {
+        fontSize: "1.9rem"
+      },
+      "&:hover": {
+        backgroundColor: "rgba(15,23,42,0.8)"
+      }
+    }
+  };
+function P(l) {
+  return {
+    onPointerDown: a => {
+      a.stopPropagation();
+    },
+    onPointerUp: a => {
+      a.stopPropagation(), a.preventDefault(), l();
+    }
+  };
+}
+function X(l, a, T) {
+  return Math.min(T, Math.max(a, l));
+}
+function N(l, a) {
+  return Math.hypot(l.x - a.x, l.y - a.y);
+}
+function Z(l, a) {
+  return {
+    x: (l.x + a.x) / 2,
+    y: (l.y + a.y) / 2
+  };
+}
+function K() {
+  return {
+    scale: 1,
+    tx: 0,
+    ty: 0,
+    rotation: 0
+  };
+}
+function bt({
+  open: l,
+  onClose: a,
+  svgMarkup: T
+}) {
+  const m = nt(),
+    G = ot(),
+    u = n.useRef(K()),
+    k = n.useRef(null),
+    C = n.useRef(null),
+    I = n.useRef(0),
+    i = n.useRef(new Map()),
+    S = n.useRef(null),
+    g = n.useRef(null),
+    j = n.useRef(null),
+    D = n.useCallback((t, e, r, o) => {
+      const s = C.current,
+        f = k.current;
+      if (!s || !f) return {
+        tx: e,
+        ty: r
+      };
+      const p = s.clientWidth,
+        h = s.clientHeight;
+      let b = f.offsetWidth,
+        Y = f.offsetHeight;
+      const _ = (Math.round(o / 90) % 4 + 4) % 4;
+      if (_ === 1 || _ === 3) {
+        const rt = b;
+        b = Y, Y = rt;
+      }
+      const L = b * t,
+        O = Y * t,
+        V = L > p ? (L + p) / 2 - F : 0,
+        q = O > h ? (O + h) / 2 - F : 0;
+      return {
+        tx: X(e, -V, V),
+        ty: X(r, -q, q)
+      };
+    }, []),
+    y = n.useCallback((t, e) => {
+      const r = C.current,
+        o = k.current;
+      if (!r || !o) return t > 1;
+      const s = (Math.round(e / 90) % 4 + 4) % 4,
+        f = s === 1 || s === 3,
+        p = f ? o.offsetHeight : o.offsetWidth,
+        h = f ? o.offsetWidth : o.offsetHeight;
+      return p * t > r.clientWidth + 1 || h * t > r.clientHeight + 1;
+    }, []),
+    W = n.useRef(y);
+  W.current = y;
+  const d = n.useCallback(() => {
+      const t = u.current,
+        e = D(t.scale, t.tx, t.ty, t.rotation);
+      t.tx = e.tx, t.ty = e.ty;
+    }, [D]),
+    x = n.useCallback(t => {
+      const e = k.current;
+      if (!e) return;
+      const {
+        scale: r,
+        tx: o,
+        ty: s,
+        rotation: f
+      } = u.current;
+      e.style.transition = t ? "transform 120ms ease-out" : "none", e.style.transform = `translate(${o}px, ${s}px) scale(${r}) rotate(${f}deg)`;
+      const p = C.current;
+      p && (p.style.cursor = W.current(r, u.current.rotation) ? "grab" : "default");
+    }, []),
+    A = n.useCallback(() => {
+      I.current || (I.current = requestAnimationFrame(() => {
+        I.current = 0, x(!1);
+      }));
+    }, [x]);
+  n.useEffect(() => () => {
+    I.current && cancelAnimationFrame(I.current);
+  }, []);
+  const v = n.useCallback(t => {
+      const e = u.current,
+        r = X(e.scale * t, B, $);
+      r === B && (e.tx = 0, e.ty = 0), e.scale = r, d(), x(!0);
+    }, [x, d]),
+    z = n.useCallback(t => {
+      u.current.rotation += t, d(), x(!0);
+    }, [x, d]),
+    J = n.useCallback(t => {
+      t.preventDefault(), v(t.deltaY < 0 ? 1.15 : 1 / 1.15);
+    }, [v]),
+    Q = n.useCallback(() => {
+      const t = u.current;
+      t.scale > 1 ? (t.scale = 1, t.tx = 0, t.ty = 0) : t.scale = 2.5, d(), x(!0);
+    }, [x, d]),
+    tt = n.useCallback(t => {
+      t.currentTarget.setPointerCapture?.(t.pointerId), S.current = t.currentTarget, i.current.set(t.pointerId, {
+        x: t.clientX,
+        y: t.clientY
+      });
+      const e = [...i.current.values()],
+        r = u.current;
+      if (e.length === 2) {
+        g.current = null;
+        const o = Z(e[0], e[1]),
+          s = t.currentTarget.getBoundingClientRect();
+        j.current = {
+          startDist: N(e[0], e[1]),
+          baseScale: r.scale,
+          baseTx: r.tx,
+          baseTy: r.ty,
+          startMidX: o.x,
+          startMidY: o.y,
+          centerX: s.left + s.width / 2,
+          centerY: s.top + s.height / 2
+        };
+      } else e.length === 1 && y(r.scale, r.rotation) && (g.current = {
+        startX: t.clientX,
+        startY: t.clientY,
+        baseTx: r.tx,
+        baseTy: r.ty
+      });
+    }, [y]),
+    et = n.useCallback(t => {
+      if (!i.current.has(t.pointerId)) return;
+      i.current.set(t.pointerId, {
+        x: t.clientX,
+        y: t.clientY
+      });
+      const e = j.current,
+        r = [...i.current.values()];
+      if (e && r.length >= 2) {
+        const s = N(r[0], r[1]),
+          f = Z(r[0], r[1]),
+          p = X(e.baseScale * s / e.startDist, B, $),
+          h = p / e.baseScale,
+          b = u.current;
+        b.scale = p, b.tx = f.x - e.centerX - h * (e.startMidX - e.centerX - e.baseTx), b.ty = f.y - e.centerY - h * (e.startMidY - e.centerY - e.baseTy), d(), A();
+        return;
+      }
+      const o = g.current;
+      if (o && r.length === 1) {
+        const s = u.current;
+        s.tx = o.baseTx + (t.clientX - o.startX), s.ty = o.baseTy + (t.clientY - o.startY), d(), A();
+      }
+    }, [A, d]),
+    E = n.useCallback(t => {
+      if (i.current.has(t.pointerId)) {
+        if (i.current.delete(t.pointerId), t.currentTarget.hasPointerCapture?.(t.pointerId) && t.currentTarget.releasePointerCapture?.(t.pointerId), i.current.size < 2 && (j.current = null), i.current.size === 0) g.current = null;else if (i.current.size === 1) {
+          const e = u.current;
+          if (y(e.scale, e.rotation)) {
+            const r = [...i.current.values()][0];
+            g.current = {
+              startX: r.x,
+              startY: r.y,
+              baseTx: e.tx,
+              baseTy: e.ty
+            };
+          }
+        }
+      }
+    }, [y]),
+    R = n.useCallback(() => {
+      const t = C.current;
+      if (t) {
+        for (const r of i.current.keys()) t.hasPointerCapture?.(r) && t.releasePointerCapture?.(r);
+        t.style.touchAction = "";
+      }
+      const e = S.current;
+      if (e && e !== t) for (const r of i.current.keys()) e.hasPointerCapture?.(r) && e.releasePointerCapture?.(r);
+      S.current = null, i.current.clear(), j.current = null, g.current = null;
+    }, []);
+  n.useEffect(() => (l || R(), R), [l, R]);
+  const H = n.useCallback(() => {
+    R(), a();
+  }, [R, a]);
+  return c.jsxs(st, {
+    open: l,
+    onClose: H,
+    fullScreen: !0,
+    slotProps: {
+      paper: {
+        sx: {
+          bgcolor: "#000000",
+          touchAction: "none",
+          overscrollBehavior: "contain"
+        }
+      }
+    },
+    children: [c.jsxs(M, {
+      sx: {
+        ...U,
+        left: 0
+      },
+      children: [!G && c.jsxs(c.Fragment, {
+        children: [c.jsx(w, {
+          "aria-label": m("approval.zoomIn"),
+          ...P(() => v(1.4)),
+          children: c.jsx(ct, {})
+        }), c.jsx(w, {
+          "aria-label": m("approval.zoomOut"),
+          ...P(() => v(1 / 1.4)),
+          children: c.jsx(at, {})
+        })]
+      }), c.jsx(w, {
+        "aria-label": m("approval.rotateLeft"),
+        ...P(() => z(-90)),
+        children: c.jsx(ut, {})
+      }), c.jsx(w, {
+        "aria-label": m("approval.rotateRight"),
+        ...P(() => z(90)),
+        children: c.jsx(ft, {})
+      })]
+    }), c.jsx(M, {
+      sx: {
+        ...U,
+        right: 0
+      },
+      children: c.jsx(w, {
+        "aria-label": m("approval.close"),
+        ...P(H),
+        children: c.jsx(it, {})
+      })
+    }), c.jsx(M, {
+      ref: C,
+      "data-allow-pinch": "true",
+      onWheel: J,
+      onDoubleClick: Q,
+      onPointerDown: tt,
+      onPointerMove: et,
+      onPointerUp: E,
+      onPointerCancel: E,
+      sx: {
+        position: "absolute",
+        inset: 0,
+        overflow: "hidden",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        touchAction: "none",
+        overscrollBehavior: "contain",
+        userSelect: "none",
+        "&:active": {
+          cursor: "grabbing"
+        }
+      },
+      children: T ? c.jsx(M, {
+        ref: t => {
+          k.current = t, t && (u.current = K());
+        },
+        style: {
+          transform: "translate(0px, 0px) scale(1) rotate(0deg)",
+          transformOrigin: "center center"
+        },
+        sx: {
+          width: "100%",
+          maxWidth: "100%",
+          boxSizing: "border-box",
+          "& svg": {
+            display: "block",
+            width: "100%",
+            height: "auto",
+            maxWidth: "100%",
+            background: "#fff"
+          }
+        },
+        dangerouslySetInnerHTML: {
+          __html: T
+        }
+      }) : c.jsx(lt, {
+        sx: {
+          color: "#ffffff"
+        }
+      })
+    })]
+  });
+}
+export { bt as SvgZoomViewer };

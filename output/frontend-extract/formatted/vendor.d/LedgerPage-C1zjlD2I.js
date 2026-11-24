@@ -1,0 +1,946 @@
+import { r as g, j as e } from "./react-CjxcGQav.js";
+import { e as Se, c8 as ke, ak as Ce, dv as ge, h0 as Ee, fA as qe, bO as R, bT as j, cL as We, fL as pe, bv as O, D as fe, cz as he, B as l, K as ne, cH as ae, cT as Le, cO as Te, cm as se, al as oe, ar as Ve, aq as B, cn as Re, cI as we, bQ as Y, F as Me, d8 as Oe, lr as Ie, s as G, L as ie, bx as De } from "../js.d/main-Cm9wS5wt.js";
+import { O as N } from "./OptionToggleGroup-Cvm2wRyq.js";
+import { M as Be } from "./MobileListTitleBar-tZ34p2gY.js";
+import { a as k } from "./accountingApi-BfPys7bV.js";
+import { a as Pe, g as Fe, u as ze } from "./glStore-Bh_caf5d.js";
+import { k as xe, i as ye, P as Ae, m as Ne, s as be, w as U, a as re } from "./accounting-C0pu0niI.js";
+import { C as He } from "./ClassificationFields-DGHklZBP.js";
+import { u as $e, b as Ge, a as Ue } from "./MobileCardListLayout-D5_p2Xer.js";
+import { T as Ye } from "./tableScrollbars-C9bhlJjO.js";
+import { u as Ke } from "./useColumnWidths-DSAca5rC.js";
+import { u as Je } from "./sidebarAction-Z0aCDENX.js";
+import "./stylis-DdLD6a3t.js";
+import "./mobileSearchOverlay-DYWcMOOb.js";
+import "./profileApi-Btafs-pM.js";
+const H = {
+  direction: "expense",
+  status: "finish",
+  payment_date: "",
+  amount: "",
+  vat_amount: "",
+  payment_method: "transfer",
+  bankbook_seq: "",
+  card_seq: "",
+  partner_name: "",
+  tran_item: "",
+  ac_code: 0,
+  ac_label: "",
+  summary: "",
+  memo: "",
+  same_summary: !1
+};
+function $(n) {
+  return {
+    direction: n.direction,
+    status: n.status === "pending" ? "pending" : "finish",
+    payment_date: n.payment_time.slice(0, 10),
+    amount: n.amount || "",
+    vat_amount: n.vat_amount || "",
+    payment_method: n.payment_method,
+    bankbook_seq: n.bankbook_seq || "",
+    card_seq: n.card_seq || "",
+    partner_name: n.partner_name,
+    tran_item: n.tran_item,
+    ac_code: n.ac_code,
+    ac_label: Pe(Fe().accountByCode.get(n.ac_code)),
+    summary: n.summary,
+    memo: n.memo,
+    same_summary: !1
+  };
+}
+function ce(n, a) {
+  const t = a ? !ye(a.source) : !1,
+    m = n.payment_method === "card" && Number(n.card_seq) || 0,
+    d = {
+      status: n.status,
+      payment_method: n.payment_method,
+      bankbook_seq: m ? 0 : Number(n.bankbook_seq) || 0,
+      card_seq: m,
+      tran_item: n.tran_item,
+      ac_code: Number(n.ac_code) || 0,
+      summary: String(n.summary ?? "").trim(),
+      memo: String(n.memo ?? "").trim()
+    };
+  if (!t) {
+    const r = Math.round(Number(n.amount) || 0);
+    if (r <= 0) return j("accounting.enterAmount");
+    if (!n.payment_date) return j("accounting.enterDate");
+    Object.assign(d, {
+      direction: n.direction,
+      payment_time: `${n.payment_date} ${a?.payment_time.slice(11) || "00:00:00"}`,
+      amount: r,
+      vat_amount: Math.max(0, Math.round(Number(n.vat_amount) || 0)),
+      partner_name: String(n.partner_name ?? "").trim()
+    });
+  }
+  return n.payment_method === "card" && !m ? j("accounting.selectCardUsed") : d;
+}
+function Qe(n = {}) {
+  const a = g.useRef(n);
+  a.current = n;
+  const t = g.useRef(0),
+    m = g.useRef(null),
+    d = {
+      form: Se({
+        modalId: "accounting-ledger-form"
+      })
+    },
+    r = ke({
+      stateId: "accounting-ledger-form-ui",
+      initialValues: {
+        seq: 0,
+        row: null,
+        loading: !1,
+        bankbooks: [],
+        cards: []
+      }
+    }),
+    i = Ce({
+      formId: "accounting-ledger-form",
+      initialValues: H,
+      onValidate: o => {
+        const u = ce(o, r.getValue("row"));
+        return typeof u == "string" ? (R(u), !1) : !0;
+      },
+      onSubmit: async o => {
+        const u = r.getValue("row"),
+          c = ce(o, u);
+        if (typeof c == "string") return !1;
+        try {
+          const h = u ? await k.update(u.seq, c) : await k.create(c);
+          return o.same_summary && h?.seq && (c.tran_item || c.ac_code) && (await k.classify({
+            seqs: [h.seq],
+            tran_item: c.tran_item,
+            ac_code: c.ac_code,
+            same_summary: !0
+          })), a.current.onChanged?.("saved"), d.form.close(), !0;
+        } catch (h) {
+          return R(h instanceof Error ? h.message : j("accounting.errCreateEntry")), !1;
+        }
+      }
+    }),
+    p = () => k.books().then(o => r.setValues({
+      bankbooks: o.bankbooks,
+      cards: o.cards
+    })).catch(() => {}),
+    W = (o = "expense") => {
+      ++t.current, m.current = null, r.setValues({
+        seq: 0,
+        row: null,
+        loading: !1
+      }), i.setFormValues({
+        ...H,
+        direction: o,
+        payment_date: xe()
+      }), d.form.open(), p();
+    },
+    C = o => {
+      const u = ++t.current;
+      m.current = null, r.setValues({
+        seq: o,
+        row: null,
+        loading: !0
+      }), i.setFormValues(H), d.form.open(), p(), k.detail(o).then(c => {
+        u === t.current && (r.setValues({
+          row: c,
+          loading: !1
+        }), m.current = $(c), i.setFormValues($(c)));
+      }).catch(c => {
+        u === t.current && (r.setValue("loading", !1), R(c instanceof Error ? c.message : j("accounting.errLoadEntry")), d.form.close());
+      });
+    },
+    E = async () => {
+      const o = r.getValue("row");
+      if (o) try {
+        await k.remove(o.seq), d.form.close(), a.current.onChanged?.("removed");
+      } catch (u) {
+        R(u instanceof Error ? u.message : j("accounting.errDeleteEntry"));
+      }
+    };
+  return ge(["accounting_transaction", "bankbook", "bankbook_card"], o => {
+    if (!d.form.isOpen) return;
+    Ee(o, "bankbook", "bankbook_card") && p();
+    const u = r.getValue("row");
+    if (!u || !m.current) return;
+    const c = qe(o, "accounting_transaction", u.seq);
+    if (!c && !o.resync) return;
+    if (c?.action === "delete") {
+      m.current = null, d.form.close(), R(j("accounting.entryDeletedByOther"));
+      return;
+    }
+    const h = t.current;
+    k.detail(u.seq).then(b => {
+      if (h !== t.current || !m.current || !d.form.isOpen) return;
+      const L = i.getFormValues(),
+        {
+          patch: _,
+          baseline: q
+        } = We(L, m.current, $(b), {
+          skip: ["same_summary"]
+        });
+      m.current = q, Object.keys(_).length > 0 && i.setFormValues(_), r.setValue("row", b);
+    }).catch(() => {});
+  }, {
+    enabled: d.form.isOpen
+  }), {
+    form: i,
+    ui: r,
+    modals: d,
+    openCreate: W,
+    openEdit: C,
+    remove: E
+  };
+}
+function Xe({
+  controller: n
+}) {
+  const a = pe("accounting"),
+    t = O(),
+    m = g.useMemo(() => [{
+      value: "expense",
+      label: t("accounting.directionExpense")
+    }, {
+      value: "revenue",
+      label: t("accounting.directionRevenue")
+    }], [t]),
+    d = g.useMemo(() => Ae.map(y => ({
+      value: y,
+      label: Ne(y, t)
+    })), [t]),
+    r = fe(),
+    {
+      form: i,
+      ui: p,
+      modals: W
+    } = n,
+    C = he()?.seq ?? 0,
+    E = ze(C),
+    o = p.useValue("row"),
+    u = !!p.useValue("loading"),
+    c = p.useValue("bankbooks") ?? [],
+    h = p.useValue("cards") ?? [],
+    b = i.useValue("direction") ?? "expense",
+    L = i.useValue("payment_method") ?? "transfer",
+    _ = String(i.useValue("summary") ?? ""),
+    q = i.isSubmitting,
+    x = o ? !ye(o.source) : !1,
+    I = !!p.useValue("seq"),
+    w = !!o || I,
+    P = b === "revenue" ? [{
+      value: "finish",
+      label: t("accounting.statusReceived")
+    }, {
+      value: "pending",
+      label: t("accounting.statusReceivableLong")
+    }] : [{
+      value: "finish",
+      label: t("accounting.statusPaid")
+    }, {
+      value: "pending",
+      label: t("accounting.statusPayableLong")
+    }],
+    T = [{
+      id: "ledger-main",
+      showTitle: !1,
+      children: u ? e.jsx(l, {
+        sx: {
+          display: "flex",
+          justifyContent: "center",
+          py: 6
+        },
+        children: e.jsx(ne, {
+          size: 28
+        })
+      }) : e.jsxs(l, {
+        sx: {
+          display: "grid",
+          gap: 2.5
+        },
+        children: [x && o ? e.jsx(ae, {
+          severity: "info",
+          sx: {
+            fontSize: "0.9375rem"
+          },
+          children: t("accounting.lockedSourceNotice", {
+            source: be(o.source, t)
+          })
+        }) : null, o?.status === "completed" ? e.jsx(ae, {
+          severity: "info",
+          sx: {
+            fontSize: "0.9375rem"
+          },
+          children: t("accounting.creditCardNotice")
+        }) : null, e.jsx(Le, {
+          form: i,
+          name: "direction",
+          options: m,
+          exclusive: !0,
+          disabled: x,
+          fullWidth: !0
+        }), e.jsxs(l, {
+          sx: {
+            display: "grid",
+            gap: 2.5,
+            gridTemplateColumns: r ? "minmax(0, 1fr)" : "repeat(3, minmax(0, 1fr))"
+          },
+          children: [e.jsx(Te, {
+            form: i,
+            name: "payment_date",
+            label: t("accounting.date"),
+            disabled: x,
+            fullWidth: !0
+          }), e.jsx(se, {
+            form: i,
+            name: "amount",
+            label: t("accounting.amountInclVat"),
+            suffix: t("accounting.wonUnit"),
+            min: 0,
+            disabled: x,
+            fullWidth: !0
+          }), e.jsx(se, {
+            form: i,
+            name: "vat_amount",
+            label: t("accounting.vatPortion"),
+            suffix: t("accounting.wonUnit"),
+            min: 0,
+            disabled: x,
+            fullWidth: !0
+          })]
+        }), e.jsxs(l, {
+          sx: {
+            display: "grid",
+            gap: 2.5,
+            gridTemplateColumns: r ? "minmax(0, 1fr)" : "repeat(2, minmax(0, 1fr))"
+          },
+          children: [e.jsx(oe, {
+            form: i,
+            name: "partner_name",
+            label: t(b === "revenue" ? "accounting.payer" : "accounting.payee"),
+            disabled: x,
+            fullWidth: !0
+          }), e.jsx(oe, {
+            form: i,
+            name: "summary",
+            label: t("accounting.description"),
+            fullWidth: !0
+          })]
+        }), e.jsx(He, {
+          form: i,
+          items: E.items,
+          accounts: E.accounts,
+          accountByCode: E.accountByCode,
+          stacked: r
+        }), _.trim() ? e.jsx(Ve, {
+          form: i,
+          name: "same_summary",
+          label: t("accounting.applyToSameDescription", {
+            summary: _.trim()
+          })
+        }) : null, e.jsxs(l, {
+          sx: {
+            display: "grid",
+            gap: 2.5,
+            gridTemplateColumns: r ? "minmax(0, 1fr)" : "repeat(3, minmax(0, 1fr))"
+          },
+          children: [e.jsx(B, {
+            form: i,
+            name: "payment_method",
+            label: t("accounting.paymentMethod"),
+            options: d,
+            showEmptyOption: !1,
+            fullWidth: !0
+          }), L === "card" ? e.jsx(B, {
+            form: i,
+            name: "card_seq",
+            label: t("accounting.card"),
+            options: h.map(y => ({
+              value: y.seq,
+              label: `${y.name} · ${y.card_type === "check" ? t("accounting.cardCheckShort") : t("accounting.cardCreditShort")}`
+            })),
+            emptyLabel: h.length ? t("accounting.select") : t("accounting.registerCardFirst"),
+            fullWidth: !0
+          }) : e.jsx(B, {
+            form: i,
+            name: "bankbook_seq",
+            label: t("accounting.bankbook"),
+            options: c.map(y => ({
+              value: y.seq,
+              label: y.name
+            })),
+            emptyLabel: t("accounting.noBankbook"),
+            fullWidth: !0
+          }), L === "card" ? null : e.jsx(B, {
+            form: i,
+            name: "status",
+            label: t("accounting.status"),
+            options: P,
+            showEmptyOption: !1,
+            fullWidth: !0
+          })]
+        }), e.jsx(Re, {
+          form: i,
+          name: "memo",
+          label: t("accounting.memo"),
+          minRows: 2,
+          fullWidth: !0
+        }), o && o.fee_amount > 0 ? e.jsx(l, {
+          sx: {
+            fontSize: "0.9375rem",
+            color: "text.secondary"
+          },
+          children: t("accounting.fee", {
+            amount: U(o.fee_amount, t)
+          })
+        }) : null]
+      })
+    }];
+  return e.jsx(we, {
+    readOnly: !a.canWrite,
+    open: W.form.isOpen,
+    onClose: W.form.close,
+    title: t(w ? "accounting.entry" : "accounting.addEntry"),
+    width: "720px",
+    fullScreen: r,
+    mobilePresentation: r ? "slide" : "dialog",
+    draggable: !0,
+    backdropClick: !1,
+    titleIcons: {
+      delete: {
+        visible: a.canWrite && !!o && !x,
+        confirmConfig: {
+          title: t("accounting.deleteEntryTitle"),
+          message: t("accounting.deleteEntryMessage"),
+          confirmText: t("accounting.delete"),
+          cancelText: t("accounting.cancel")
+        }
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    onDelete: n.remove,
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !0,
+      right: e.jsx(Y, {
+        style: a.canWrite ? void 0 : {
+          display: "none"
+        },
+        variant: "contained",
+        onClick: () => {
+          i.submit();
+        },
+        disabled: q || u,
+        sx: {
+          minWidth: 80
+        },
+        children: q ? e.jsx(ne, {
+          size: 20,
+          color: "inherit"
+        }) : t("accounting.save")
+      })
+    },
+    sections: T
+  });
+}
+const le = 50,
+  Ze = 300,
+  et = 52;
+function tt(n) {
+  const a = xe(),
+    [t, m] = a.split("-").map(Number);
+  if (n === "month") return {
+    from: `${a.slice(0, 7)}-01`,
+    to: a
+  };
+  if (n === "last_month") {
+    const d = new Date(t, m - 2, 1),
+      r = new Date(t, m - 1, 0),
+      i = p => `${p.getFullYear()}-${String(p.getMonth() + 1).padStart(2, "0")}-${String(p.getDate()).padStart(2, "0")}`;
+    return {
+      from: i(d),
+      to: i(r)
+    };
+  }
+  return n === "year" ? {
+    from: `${t}-01-01`,
+    to: a
+  } : {
+    from: "",
+    to: ""
+  };
+}
+function ue({
+  direction: n
+}) {
+  const a = O(),
+    t = n === "revenue";
+  return e.jsx(l, {
+    component: "span",
+    sx: {
+      display: "inline-flex",
+      alignItems: "center",
+      px: 1,
+      height: 24,
+      borderRadius: 999,
+      fontSize: 14,
+      fontWeight: 600,
+      color: t ? "#1d4ed8" : G[600],
+      bgcolor: t ? "rgba(37, 99, 235, 0.10)" : G[100],
+      whiteSpace: "nowrap"
+    },
+    children: a(t ? "accounting.revenueShort" : "accounting.directionExpense")
+  });
+}
+function de({
+  row: n
+}) {
+  const a = O();
+  return n.ac_code ? e.jsxs(l, {
+    component: "span",
+    sx: {
+      display: "block",
+      minWidth: 0,
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap"
+    },
+    children: [n.tran_item ? `${n.tran_item} · ` : "", e.jsx(l, {
+      component: "span",
+      sx: {
+        color: "text.secondary"
+      },
+      children: n.ac_name
+    })]
+  }) : e.jsx(l, {
+    component: "span",
+    sx: {
+      color: "#b45309",
+      fontWeight: 600
+    },
+    children: a("accounting.unclassified")
+  });
+}
+function me({
+  children: n
+}) {
+  return e.jsx(l, {
+    component: "span",
+    sx: {
+      display: "block",
+      minWidth: 0,
+      overflow: "hidden",
+      textOverflow: "ellipsis",
+      whiteSpace: "nowrap"
+    },
+    children: n
+  });
+}
+function nt({
+  summary: n,
+  onUnclassified: a
+}) {
+  const t = O();
+  return !n || n.unclassified <= 0 ? null : e.jsx(l, {
+    sx: {
+      display: "flex",
+      alignItems: "flex-end",
+      px: {
+        xs: 0,
+        sm: .5
+      }
+    },
+    children: e.jsx(Y, {
+      onClick: a,
+      sx: {
+        color: "#b45309",
+        fontSize: 15,
+        fontWeight: 600,
+        px: 1
+      },
+      children: t("accounting.classifyUnclassified", {
+        count: n.unclassified
+      })
+    })
+  });
+}
+function yt() {
+  const n = pe("accounting"),
+    a = O(),
+    t = Ke("accounting.ledger"),
+    m = fe(),
+    d = he()?.seq ?? 0,
+    [r, i] = g.useState([]),
+    [p, W] = g.useState(0),
+    [C, E] = g.useState(null),
+    [o, u] = g.useState(!1),
+    [c, h] = g.useState("month"),
+    [b, L] = g.useState(""),
+    [_, q] = g.useState(!1),
+    [x, I] = g.useState(""),
+    [w, P] = g.useState(""),
+    D = g.useRef(1),
+    T = g.useRef(0);
+  g.useEffect(() => {
+    const s = setTimeout(() => P(x.trim()), Ze);
+    return () => clearTimeout(s);
+  }, [x]);
+  const y = g.useMemo(() => ({
+      ...tt(c),
+      direction: b,
+      unclassified: _,
+      search: w
+    }), [c, b, _, w]),
+    M = g.useCallback(async s => {
+      if (!d) return;
+      const v = ++T.current,
+        f = s === "refresh",
+        V = s === "more" ? D.current + 1 : 1;
+      f || u(!0);
+      try {
+        const S = await k.list(y, V, f ? Math.max(1, D.current) * le : le);
+        if (v !== T.current) return;
+        f || (D.current = V), i(ve => s === "more" ? [...ve, ...S.items] : S.items), W(S.total), S.summary && E(S.summary);
+      } catch (S) {
+        if (v !== T.current || f) return;
+        R(S instanceof Error ? S.message : j("accounting.errLoadLedger"));
+      } finally {
+        v === T.current && u(!1);
+      }
+    }, [d, y]);
+  g.useEffect(() => {
+    M("reload");
+  }, [M]), ge(["accounting_transaction"], () => {
+    M("refresh");
+  }, {
+    enabled: d > 0
+  });
+  const F = Qe({
+      onChanged: s => {
+        De({
+          message: s === "removed" ? j("accounting.deleted") : j("accounting.saved"),
+          delay: 500
+        }), M("reload");
+      }
+    }),
+    K = r.length < p,
+    J = () => {
+      !o && K && M("more");
+    },
+    Q = () => F.openCreate(b === "revenue" ? "revenue" : "expense"),
+    z = s => F.openEdit(s.seq),
+    X = a(_ ? "accounting.emptyUnclassified" : w ? "accounting.emptySearch" : "accounting.emptyPeriod"),
+    Z = e.jsxs(l, {
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        gap: 2,
+        flexWrap: "wrap",
+        "& .MuiToggleButtonGroup-root": {
+          height: 40,
+          flexWrap: "nowrap"
+        }
+      },
+      children: [e.jsx(N, {
+        size: "medium",
+        value: c,
+        onChange: s => h(s || "month"),
+        options: [{
+          value: "month",
+          label: a("accounting.rangeThisMonth")
+        }, {
+          value: "last_month",
+          label: a("accounting.rangeLastMonth")
+        }, {
+          value: "year",
+          label: a("accounting.rangeThisYear")
+        }, {
+          value: "all",
+          label: a("accounting.all")
+        }]
+      }), e.jsx(N, {
+        size: "medium",
+        value: b,
+        onChange: s => L(s ?? ""),
+        options: [{
+          value: "",
+          label: a("accounting.all")
+        }, {
+          value: "revenue",
+          label: a("accounting.revenueShort")
+        }, {
+          value: "expense",
+          label: a("accounting.directionExpense")
+        }]
+      }), e.jsx(N, {
+        size: "medium",
+        value: _ ? "only" : "",
+        onChange: s => q(s === "only"),
+        options: [{
+          value: "only",
+          label: a("accounting.unclassifiedOnly")
+        }]
+      })]
+    }),
+    A = C && C.unclassified > 0 ? e.jsx(nt, {
+      summary: C,
+      onUnclassified: () => q(!0)
+    }) : null,
+    ee = e.jsx(Xe, {
+      controller: F
+    }),
+    te = $e(o);
+  if (Je(!m && n.canWrite ? {
+    label: a("accounting.addEntry"),
+    onClick: () => Q()
+  } : null), m) {
+    const s = f => e.jsxs(l, {
+        role: "button",
+        tabIndex: 0,
+        onClick: () => z(f),
+        onKeyDown: V => {
+          (V.key === "Enter" || V.key === " ") && (V.preventDefault(), z(f));
+        },
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: .5,
+          px: 2,
+          py: 1.5,
+          cursor: "pointer",
+          userSelect: "none",
+          "&:active": {
+            bgcolor: G[50]
+          }
+        },
+        children: [e.jsxs(l, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: .75,
+            minWidth: 0
+          },
+          children: [e.jsx(ue, {
+            direction: f.direction
+          }), e.jsx(ie, {
+            noWrap: !0,
+            sx: {
+              fontSize: 15,
+              fontWeight: 600,
+              minWidth: 0,
+              flex: 1
+            },
+            children: f.partner_name || f.summary || "-"
+          }), e.jsx(ie, {
+            sx: {
+              fontSize: 15,
+              fontWeight: 700,
+              whiteSpace: "nowrap"
+            },
+            children: U(f.amount, a)
+          })]
+        }), e.jsxs(l, {
+          sx: {
+            display: "flex",
+            gap: 1.25,
+            fontSize: 14,
+            color: "text.secondary",
+            flexWrap: "wrap"
+          },
+          children: [e.jsx("span", {
+            children: f.payment_time.slice(0, 10)
+          }), e.jsx(de, {
+            row: f
+          }), e.jsx("span", {
+            children: re(f.direction, f.status, a)
+          })]
+        })]
+      }, f.seq),
+      v = [e.jsx(Be, {
+        title: a("accounting.ledgerTitle"),
+        searchValue: x,
+        onSearchChange: I,
+        searchPlaceholder: a("accounting.searchDescription"),
+        below: e.jsxs(l, {
+          sx: {
+            display: "grid",
+            gap: 1.5
+          },
+          children: [Z, A]
+        })
+      }, "title"), ...r.map(s)];
+    return te && r.length === 0 && v.push(e.jsx(l, {
+      sx: {
+        py: 6,
+        textAlign: "center",
+        color: "text.secondary",
+        fontSize: 15
+      },
+      children: X
+    }, "empty")), te || v.push(e.jsx(Ue, {
+      contentHeight: 22.5
+    }, "loading")), K && v.push(e.jsx(Y, {
+      fullWidth: !0,
+      onClick: J,
+      disabled: o,
+      children: a("accounting.more")
+    }, "more")), e.jsxs(e.Fragment, {
+      children: [e.jsx(Ge, {
+        attachHead: !0,
+        children: v
+      }), e.jsx(Me, {
+        style: n.canWrite ? void 0 : {
+          display: "none"
+        },
+        color: "primary",
+        "aria-label": a("accounting.addEntry"),
+        onClick: Q,
+        sx: {
+          position: "fixed",
+          right: 24,
+          bottom: "calc(24px + var(--taskbox-fab-lift, 0px))",
+          zIndex: 40
+        },
+        children: e.jsx(Oe, {})
+      }), ee]
+    });
+  }
+  const _e = [{
+      id: "payment_time",
+      text: a("accounting.date"),
+      width: 110,
+      align: "center",
+      render: s => s.payment_time.slice(0, 10)
+    }, {
+      id: "direction",
+      text: a("accounting.type"),
+      width: 80,
+      align: "center",
+      render: s => e.jsx(ue, {
+        direction: s.direction
+      })
+    }, {
+      id: "partner_name",
+      text: a("accounting.counterparty"),
+      width: 200,
+      render: s => e.jsx(me, {
+        children: s.partner_name || "-"
+      })
+    }, {
+      id: "summary",
+      text: a("accounting.description"),
+      render: s => e.jsx(me, {
+        children: s.summary !== s.partner_name ? s.summary : ""
+      })
+    }, {
+      id: "ac_name",
+      text: a("accounting.classification"),
+      width: 220,
+      render: s => e.jsx(de, {
+        row: s
+      })
+    }, {
+      id: "amount",
+      text: a("accounting.amount"),
+      width: 140,
+      align: "right",
+      render: s => e.jsx(l, {
+        component: "span",
+        sx: {
+          fontWeight: 600,
+          color: s.direction === "revenue" ? "#1d4ed8" : void 0
+        },
+        children: U(s.amount, a)
+      })
+    }, {
+      id: "status",
+      text: a("accounting.status"),
+      width: 120,
+      align: "center",
+      render: s => re(s.direction, s.status, a)
+    }, {
+      id: "source",
+      text: a("accounting.source"),
+      width: 120,
+      align: "center",
+      render: s => be(s.source, a)
+    }],
+    je = {
+      filter: {
+        stateId: "accounting-ledger-filters",
+        showChips: !1,
+        groups: [{
+          filters: [{
+            type: "custom",
+            name: "ledger-toggles",
+            node: Z
+          }]
+        }]
+      },
+      showSearch: !0,
+      searchValue: x,
+      searchPlaceholder: a("accounting.searchDescription"),
+      onSearchChange: I,
+      searchLoading: o,
+      collapsible: !1,
+      showCollapseButton: !1,
+      showClearIcon: !1
+    };
+  return e.jsxs(e.Fragment, {
+    children: [e.jsxs(l, {
+      sx: {
+        height: "100%",
+        minHeight: 0,
+        display: "flex",
+        flexDirection: "column",
+        gap: 2
+      },
+      children: [A ? e.jsx(l, {
+        sx: {
+          px: .5
+        },
+        children: A
+      }) : null, e.jsx(l, {
+        sx: {
+          flex: 1,
+          minHeight: 0
+        },
+        children: e.jsx(Ie, {
+          header: je,
+          tableProps: {
+            ...t,
+            scrollbars: Ye,
+            mobile: !0,
+            variant: "notion",
+            columns: _e,
+            data: r,
+            totalCount: p,
+            getRowId: s => String(s.seq),
+            rowHeight: et,
+            onRowClick: z,
+            onLoadMore: J,
+            loading: o,
+            emptyMessage: e.jsx(l, {
+              sx: {
+                py: 6,
+                textAlign: "center",
+                color: "text.secondary",
+                fontSize: 15
+              },
+              children: X
+            })
+          }
+        })
+      })]
+    }), ee]
+  });
+}
+export { yt as default };

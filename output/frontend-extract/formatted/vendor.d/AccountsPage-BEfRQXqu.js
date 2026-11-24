@@ -1,0 +1,1101 @@
+import { j as e, r as f } from "./react-CjxcGQav.js";
+import { bv as R, B as x, bQ as P, d8 as ne, bH as $, bI as Y, b as E, s as y, d4 as re, w as ce, ij as M, bT as h, L as p, e as B, ak as W, bO as S, bx as k, cI as X, c4 as D, al as le, ao as ie, cb as ue, aq as de, D as me, cc as Q, ca as fe, br as xe, bP as pe, cO as he, bR as ge, gd as be, kH as N, bw as je, by as Se, u as ye, lr as Ce } from "../js.d/main-Cm9wS5wt.js";
+import { a as I, f as J } from "./accountsApi-C1f6V7yi.js";
+import { R as _e } from "./Refresh-xoMt5L00.js";
+import { O as ve } from "./OptionToggleGroup-Cvm2wRyq.js";
+import { a as we, b as Re, m as Z, r as z, A as ee, s as te } from "./filters-aeQ2Z_k-.js";
+import { f as F } from "./index.esm-gjRImBGa.js";
+import { r as Te } from "./rowNoColumn-B_tyJFB_.js";
+import { s as ke } from "./socialLinkApi-BmpcVziz.js";
+import { S as Ie, a as Le } from "./SocialProviderIcon-CfLZ-VWP.js";
+import { T } from "./Trans-CU1vl0TZ.js";
+import { u as Ae } from "./useClientSort-CdwrAOWp.js";
+import { T as Ee } from "./tableScrollbars-C9bhlJjO.js";
+import { u as De } from "./useColumnWidths-DSAca5rC.js";
+import "./stylis-DdLD6a3t.js";
+import "./profileApi-Btafs-pM.js";
+const Fe = "active";
+function ze({
+  loading: s,
+  status: n,
+  onSearch: r,
+  onStatusChange: t,
+  onFilterChange: c,
+  onReload: o,
+  onCreate: i
+}) {
+  const a = R(),
+    b = e.jsx(x, {
+      sx: {
+        "& .MuiToggleButtonGroup-root": {
+          height: 40,
+          flexWrap: "nowrap"
+        }
+      },
+      children: e.jsx(ve, {
+        size: "medium",
+        value: n,
+        onChange: C => t(C ?? ""),
+        options: we(a),
+        sx: {
+          "& .MuiToggleButtonGroup-grouped": {
+            minWidth: 56,
+            px: 1.5,
+            fontSize: 13
+          }
+        }
+      })
+    }),
+    g = Re(a, c, b);
+  return {
+    show: !0,
+    right: e.jsx($, {
+      title: a("accounts.refresh"),
+      children: e.jsx("span", {
+        children: e.jsx(Y, {
+          onClick: o,
+          disabled: s,
+          "aria-label": a("accounts.refresh"),
+          children: e.jsx(_e, {})
+        })
+      })
+    }),
+    showSearch: !0,
+    searchPlaceholder: a("accounts.searchPlaceholder"),
+    searchDebounce: 200,
+    onSearch: r,
+    left: e.jsx(P, {
+      size: "small",
+      variant: "contained",
+      startIcon: e.jsx(ne, {}),
+      onClick: i,
+      children: a("accounts.addAccount")
+    }),
+    filter: {
+      ...g,
+      groups: [...g.groups]
+    }
+  };
+}
+function j({
+  text: s,
+  muted: n = !1
+}) {
+  return e.jsx(p, {
+    sx: {
+      fontSize: 14,
+      color: n ? "text.secondary" : "text.primary"
+    },
+    children: s || "-"
+  });
+}
+const Oe = {
+  approval: "accounts.featureApproval",
+  hr: "accounts.featureHr",
+  attendance: "accounts.featureAttendance",
+  attendance_plus: "accounts.featureAttendancePlus",
+  labor: "accounts.featureLabor",
+  meetings: "accounts.featureMeetings",
+  meetings_plus: "accounts.featureMeetingsPlus",
+  consult_plus: "accounts.featureConsultPlus",
+  chat_plus: "accounts.featureChatPlus",
+  vault: "accounts.featureVault",
+  partner: "accounts.featurePartner",
+  customer: "accounts.featureCustomer",
+  booking: "accounts.featureBooking",
+  board: "accounts.featureBoard",
+  support: "accounts.featureSupport",
+  startup: "accounts.featureStartup",
+  accounting: "accounts.featureAccounting",
+  tax: "accounts.featureTax"
+};
+function Pe(s, n = h) {
+  const r = Oe[s];
+  return r ? n(r) : s;
+}
+function Me({
+  t: s,
+  count: n,
+  mySeq: r,
+  busySeq: t,
+  onRoleChange: c
+}) {
+  return [Te(), {
+    id: "name",
+    text: s("accounts.columnNameWithCount", {
+      count: n
+    }),
+    width: 180,
+    sortable: !0,
+    render: o => e.jsx(j, {
+      text: o.seq === r ? s("accounts.nameMe", {
+        name: o.name
+      }) : o.name
+    })
+  }, {
+    id: "email",
+    text: s("accounts.email"),
+    width: 260,
+    sortable: !0,
+    render: o => e.jsx(j, {
+      text: o.email
+    })
+  }, {
+    id: "member_type",
+    text: s("accounts.memberType"),
+    width: 110,
+    align: "center",
+    sortable: !0,
+    render: o => e.jsx(j, {
+      text: Z(z(o), s)
+    })
+  }, {
+    id: "org_name",
+    text: s("accounts.org"),
+    width: 200,
+    sortable: !0,
+    render: o => e.jsx(j, {
+      text: o.org_name,
+      muted: !0
+    })
+  }, {
+    id: "member_cnt",
+    text: s("accounts.members"),
+    width: 90,
+    align: "center",
+    sortable: !0,
+    render: o => e.jsx(j, {
+      text: o.org_seq > 0 ? s("accounts.memberCount", {
+        count: o.member_cnt
+      }) : ""
+    })
+  }, {
+    id: "paid",
+    text: s("accounts.paidFree"),
+    width: 90,
+    align: "center",
+    sortable: !0,
+    render: o => o.org_seq > 0 ? e.jsx(F, {
+      label: o.paid ? s("accounts.paid") : s("accounts.free"),
+      size: "md",
+      shape: "rounded",
+      variant: "filled",
+      background: o.paid ? E[50] : y[100],
+      color: o.paid ? E[700] : y[700],
+      weight: 600,
+      style: {
+        fontSize: 13,
+        height: 26
+      }
+    }) : e.jsx(j, {
+      text: ""
+    })
+  }, {
+    id: "features",
+    text: s("accounts.features"),
+    width: 130,
+    align: "center",
+    sortable: !0,
+    render: o => o.org_seq > 0 ? e.jsx(F, {
+      label: s("accounts.featureCount", {
+        count: o.features.length
+      }),
+      size: "md",
+      shape: "rounded",
+      variant: "filled",
+      background: y[100],
+      color: y[700],
+      weight: 400,
+      style: {
+        fontSize: 13,
+        height: 26
+      }
+    }) : e.jsx(j, {
+      text: ""
+    })
+  }, {
+    id: "rbac_role",
+    text: s("accounts.role"),
+    width: 170,
+    sortable: !0,
+    render: o => e.jsx(re, {
+      select: !0,
+      size: "small",
+      value: o.rbac_role,
+      disabled: o.seq === r || t === o.seq,
+      onChange: i => c(o, i.target.value),
+      onClick: i => i.stopPropagation(),
+      fullWidth: !0,
+      children: ee.map(i => e.jsx(ce, {
+        value: i,
+        children: M(i)
+      }, i))
+    })
+  }, {
+    id: "status",
+    text: s("accounts.status"),
+    width: 90,
+    align: "center",
+    sortable: !0,
+    render: o => e.jsx(j, {
+      text: te(o.status, s)
+    })
+  }, {
+    id: "last_login_time",
+    text: s("accounts.lastLogin"),
+    width: 170,
+    sortable: !0,
+    render: o => e.jsx(j, {
+      text: o.last_login_time,
+      muted: !0
+    })
+  }];
+}
+const V = {
+  name: "",
+  email: "",
+  password: "",
+  rbac_role: "user"
+};
+function Ue(s = {}) {
+  const n = f.useRef(s);
+  n.current = s;
+  const r = f.useRef(0),
+    t = {
+      detail: B({
+        modalId: "accounts-detail-dialog",
+        onClose: () => {
+          r.current += 1;
+        }
+      }),
+      create: B({
+        modalId: "accounts-create-dialog"
+      })
+    },
+    [c, o] = f.useState(null),
+    [i, a] = f.useState({
+      links: null,
+      failed: !1
+    }),
+    b = f.useRef(null);
+  b.current = c;
+  const g = W({
+      formId: "accounts-create-form",
+      initialValues: V,
+      onValidate: l => String(l.name ?? "").trim() ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(l.email ?? "").trim().toLowerCase()) ? String(l.password ?? "").length < 8 ? (S(h("accounts.passwordMinLength")), !1) : !0 : (S(h("accounts.enterValidEmail")), !1) : (S(h("accounts.enterName")), !1),
+      onSubmit: async l => {
+        try {
+          await I.create({
+            name: String(l.name ?? "").trim(),
+            email: String(l.email ?? "").trim().toLowerCase(),
+            password: String(l.password ?? ""),
+            rbac_role: l.rbac_role
+          });
+        } catch (u) {
+          return S(u instanceof Error ? u.message : h("accounts.createFailed")), !1;
+        }
+        return k(h("accounts.accountAdded")), t.create.close(), n.current.onCreated?.(), !0;
+      }
+    }),
+    C = W({
+      formId: "accounts-free-period-form",
+      initialValues: {
+        free_until: ""
+      },
+      onValidate: l => {
+        const u = String(l.free_until ?? "").trim();
+        return u && !/^\d{4}-\d{2}-\d{2}$/.test(u) ? (S(h("accounts.pickDateAgain")), !1) : !0;
+      },
+      onSubmit: async l => {
+        const u = b.current;
+        if (!u || u.org_seq <= 0) return !1;
+        const _ = String(l.free_until ?? "").trim();
+        let A = _;
+        try {
+          A = await I.setFreeUntil(u.org_seq, _);
+        } catch (v) {
+          return S(v instanceof Error ? v.message : h("accounts.freePeriodSaveFailed")), !1;
+        }
+        return o({
+          ...u,
+          org_free_until: A
+        }), k({
+          message: _ ? h("accounts.freePeriodSet") : h("accounts.freeUnlimitedSet"),
+          delay: 800
+        }), n.current.onChanged?.(), !0;
+      }
+    });
+  return {
+    forms: {
+      create: g,
+      free: C
+    },
+    modals: t,
+    detailRow: c,
+    social: i,
+    openDetail: l => {
+      const u = ++r.current;
+      o(l), C.setFormValues({
+        free_until: J(l)?.until ?? ""
+      }), a({
+        links: null,
+        failed: !1
+      }), t.detail.open(), !(l.seq <= 0) && ke.listForAccount(l.seq).then(_ => {
+        r.current === u && a({
+          links: _,
+          failed: !1
+        });
+      }).catch(() => {
+        r.current === u && a({
+          links: null,
+          failed: !0
+        });
+      });
+    },
+    openCreate: () => {
+      g.setFormValues({
+        ...V
+      }), t.create.open();
+    },
+    removeDetail: async () => {
+      const l = b.current;
+      if (!(!l || l.seq <= 0)) {
+        try {
+          await I.remove(l.seq);
+        } catch (u) {
+          S(u instanceof Error ? u.message : h("accounts.memberDeleteFailed"));
+          return;
+        }
+        k({
+          message: h("accounts.memberDeleted"),
+          delay: 800
+        }), t.detail.close(), n.current.onChanged?.();
+      }
+    }
+  };
+}
+function qe({
+  controller: s
+}) {
+  const n = R(),
+    r = s.forms.create,
+    t = s.modals.create,
+    c = r.isSubmitting,
+    [o, i] = f.useState(!0);
+  return f.useEffect(() => {
+    t.isOpen && i(!0);
+  }, [t.isOpen]), e.jsx(X, {
+    fontScaleKey: "AccountFormDialog",
+    open: t.isOpen,
+    onClose: t.close,
+    title: n("accounts.addAdminAccount"),
+    maxWidth: "xs",
+    backdropClick: !1,
+    titleIcons: {
+      delete: {
+        visible: !1
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    tabs: {
+      visible: !1
+    },
+    sectionContentPaddingTop: 0,
+    actions: {
+      showCancelButton: !0,
+      right: e.jsx(P, {
+        variant: "contained",
+        onClick: () => {
+          r.submit();
+        },
+        disabled: c,
+        children: n(c ? "accounts.adding" : "accounts.add")
+      })
+    },
+    sections: [{
+      id: "account-form",
+      title: "",
+      showTitle: !1,
+      children: e.jsxs(D, {
+        spacing: 2,
+        sx: {
+          pt: 1
+        },
+        children: [e.jsx(le, {
+          form: r,
+          name: "name",
+          label: n("accounts.name"),
+          fullWidth: !0,
+          autoComplete: "off",
+          slotProps: {
+            htmlInput: {
+              autoComplete: "off",
+              "data-form-type": "other"
+            }
+          }
+        }), e.jsx(ie, {
+          form: r,
+          name: "email",
+          label: n("accounts.email"),
+          fullWidth: !0,
+          autoComplete: "off",
+          slotProps: {
+            htmlInput: {
+              readOnly: o,
+              onFocus: () => i(!1),
+              autoComplete: "off",
+              "data-form-type": "other"
+            }
+          }
+        }), e.jsx(ue, {
+          form: r,
+          name: "password",
+          label: n("accounts.initialPasswordLabel"),
+          fullWidth: !0,
+          autoComplete: "off",
+          slotProps: {
+            htmlInput: {
+              autoComplete: "new-password",
+              "data-form-type": "other"
+            }
+          }
+        }), e.jsx(de, {
+          form: r,
+          name: "rbac_role",
+          label: n("accounts.role"),
+          options: ee.map(a => ({
+            value: a,
+            label: M(a)
+          })),
+          showEmptyOption: !1,
+          fullWidth: !0
+        })]
+      })
+    }]
+  });
+}
+function Be(s) {
+  switch (s) {
+    case "active":
+      return "success";
+    case "blocked":
+      return "error";
+    case "inactive":
+    case "dormant":
+      return "warning";
+    default:
+      return "default";
+  }
+}
+const G = {
+  owner: "accounts.orgRoleOwner",
+  manager: "accounts.orgRoleManager",
+  admin: "accounts.orgRoleManager",
+  member: "accounts.orgRoleMember"
+};
+function We({
+  email: s
+}) {
+  const n = R(),
+    r = be(!0).length > 0;
+  if (!s) return e.jsx(p, {
+    sx: {
+      fontSize: 14
+    },
+    children: "-"
+  });
+  const t = () => {
+    navigator.clipboard?.writeText(s).then(() => k(n("accounts.emailCopied"))).catch(() => Se(n("accounts.copyFailed")));
+  };
+  return e.jsxs(x, {
+    sx: {
+      display: "flex",
+      alignItems: "center",
+      gap: .5,
+      minWidth: 0
+    },
+    children: [r ? e.jsx(x, {
+      component: "span",
+      role: "link",
+      tabIndex: 0,
+      title: n("accounts.composeMail"),
+      onClick: () => N(s),
+      onKeyDown: c => {
+        c.key === "Enter" && N(s);
+      },
+      sx: {
+        fontSize: 14,
+        wordBreak: "break-all",
+        color: "primary.main",
+        cursor: "pointer",
+        "&:hover": {
+          textDecoration: "underline"
+        }
+      },
+      children: s
+    }) : e.jsx(p, {
+      sx: {
+        fontSize: 14,
+        wordBreak: "break-all"
+      },
+      children: s
+    }), e.jsx($, {
+      title: n("accounts.copy"),
+      children: e.jsx(Y, {
+        size: "small",
+        "aria-label": n("accounts.copyEmail"),
+        onClick: t,
+        sx: {
+          p: .25,
+          color: "text.secondary"
+        },
+        children: e.jsx(je, {
+          sx: {
+            fontSize: 16
+          }
+        })
+      })
+    })]
+  });
+}
+function d({
+  label: s,
+  value: n,
+  wide: r = !1
+}) {
+  return e.jsxs(x, {
+    sx: {
+      display: "flex",
+      alignItems: "flex-start",
+      gap: 2,
+      minHeight: 24,
+      minWidth: 0,
+      gridColumn: r ? "1 / -1" : void 0
+    },
+    children: [e.jsx(p, {
+      sx: {
+        width: 96,
+        flexShrink: 0,
+        fontSize: 14,
+        color: "text.secondary"
+      },
+      children: s
+    }), e.jsx(x, {
+      sx: {
+        flex: 1,
+        minWidth: 0,
+        fontSize: 14
+      },
+      children: typeof n == "string" || typeof n == "number" ? e.jsx(p, {
+        sx: {
+          fontSize: 14,
+          wordBreak: "break-all"
+        },
+        children: String(n) || "-"
+      }) : n ?? e.jsx(p, {
+        sx: {
+          fontSize: 14
+        },
+        children: "-"
+      })
+    })]
+  });
+}
+function Ne({
+  links: s,
+  failed: n
+}) {
+  const r = R();
+  return n ? e.jsx(p, {
+    sx: {
+      fontSize: 14,
+      color: "text.secondary"
+    },
+    children: r("accounts.loadFailed")
+  }) : s === null ? e.jsx(p, {
+    sx: {
+      fontSize: 14,
+      color: "text.secondary"
+    },
+    children: r("accounts.loading")
+  }) : e.jsx(D, {
+    spacing: 1.25,
+    children: Ie.map(t => {
+      const c = s.find(o => o.provider === t.key);
+      return e.jsxs(D, {
+        direction: "row",
+        spacing: 1.5,
+        sx: {
+          alignItems: "center"
+        },
+        children: [e.jsx(x, {
+          sx: {
+            width: 28,
+            height: 28,
+            flexShrink: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: "50%",
+            bgcolor: t.brandColor,
+            color: t.textColor,
+            border: t.borderColor ? `1px solid ${t.borderColor}` : "1px solid rgba(0,0,0,0.08)",
+            filter: c ? "none" : "grayscale(1)",
+            opacity: c ? 1 : .45
+          },
+          children: e.jsx(Le, {
+            provider: t.key,
+            sx: {
+              fontSize: "0.9375rem"
+            }
+          })
+        }), e.jsx(p, {
+          sx: {
+            fontSize: 14,
+            width: 60,
+            flexShrink: 0
+          },
+          children: t.shortLabel
+        }), c ? e.jsxs(e.Fragment, {
+          children: [e.jsx(Q, {
+            size: "small",
+            color: "success",
+            variant: "outlined",
+            label: r("accounts.linked")
+          }), e.jsx(p, {
+            sx: {
+              fontSize: 14,
+              color: "text.secondary",
+              flex: 1,
+              minWidth: 0,
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap"
+            },
+            children: c.email ?? ""
+          })]
+        }) : e.jsx(p, {
+          sx: {
+            fontSize: 14,
+            color: "text.disabled"
+          },
+          children: r("accounts.notLinked")
+        })]
+      }, t.key);
+    })
+  });
+}
+const K = {
+    display: "grid",
+    gridTemplateColumns: {
+      xs: "minmax(0, 1fr)",
+      sm: "repeat(2, minmax(0, 1fr))"
+    },
+    columnGap: 3,
+    rowGap: .5
+  },
+  Ve = 360,
+  H = {
+    fontSize: 14,
+    height: 26
+  };
+function Ge({
+  controller: s
+}) {
+  const n = me(),
+    r = s.modals.detail,
+    t = s.detailRow,
+    c = s.forms.free,
+    o = !!(t && t.org_seq > 0),
+    i = t ? J(t) : null,
+    a = R(),
+    b = [{
+      id: "account-detail",
+      title: a("accounts.sectionMember"),
+      children: e.jsxs(x, {
+        sx: K,
+        children: [e.jsx(d, {
+          label: a("accounts.name"),
+          value: t?.name ?? ""
+        }), e.jsx(d, {
+          label: a("accounts.status"),
+          value: t ? e.jsx(Q, {
+            size: "small",
+            label: te(t.status, a),
+            color: Be(t.status),
+            variant: "outlined",
+            sx: {
+              fontSize: 14
+            }
+          }) : null
+        }), e.jsx(d, {
+          label: a("accounts.email"),
+          value: e.jsx(We, {
+            email: t?.email ?? ""
+          })
+        }), e.jsx(d, {
+          label: a("accounts.mobilePhone"),
+          value: t?.phone ?? ""
+        }), e.jsx(d, {
+          label: a("accounts.memberType"),
+          value: t ? Z(z(t), a) : ""
+        }), e.jsx(d, {
+          label: a("accounts.role"),
+          value: t ? M(t.rbac_role) : ""
+        }), e.jsx(d, {
+          label: a("accounts.joinedDate"),
+          value: t?.created_time.slice(0, 10) ?? ""
+        }), e.jsx(d, {
+          label: a("accounts.lastLogin"),
+          value: t?.last_login_time.slice(0, 16) ?? ""
+        }), e.jsx(d, {
+          label: a("accounts.appVersion"),
+          value: t ? t.app_version || (t.app_installed ? a("accounts.appVersionUnknown") : a("accounts.appNotInstalled")) : ""
+        }), e.jsx(d, {
+          label: a("accounts.department"),
+          value: t?.department ?? ""
+        }), e.jsx(d, {
+          label: a("accounts.position"),
+          value: t?.position ?? ""
+        }), e.jsx(d, {
+          label: a("accounts.memberNo"),
+          value: t ? String(t.seq) : ""
+        })]
+      })
+    }, {
+      id: "account-org",
+      title: a("accounts.sectionOrg"),
+      children: o ? e.jsxs(x, {
+        sx: K,
+        children: [e.jsx(d, {
+          label: a("accounts.org"),
+          value: t?.org_name ?? ""
+        }), e.jsx(d, {
+          label: a("accounts.members"),
+          value: t ? a("accounts.memberCount", {
+            count: t.member_cnt
+          }) : ""
+        }), e.jsx(d, {
+          label: a("accounts.orgRole"),
+          value: t && G[t.org_role] ? a(G[t.org_role]) : ""
+        }), e.jsx(d, {
+          label: a("accounts.orgCreatedDate"),
+          value: t?.org_created_time.slice(0, 10) ?? ""
+        }), e.jsx(d, {
+          label: a("accounts.orgNo"),
+          value: t ? String(t.org_seq) : ""
+        }), e.jsx(d, {
+          label: a("accounts.paidFree"),
+          value: e.jsx(F, {
+            label: t?.paid ? a("accounts.paid") : a("accounts.free"),
+            size: "md",
+            shape: "rounded",
+            variant: "filled",
+            background: t?.paid ? E[50] : y[100],
+            color: t?.paid ? E[700] : y[700],
+            weight: 600,
+            style: H
+          })
+        }), e.jsx(d, {
+          label: a("accounts.freeUse"),
+          value: i ? e.jsx(p, {
+            sx: {
+              fontSize: 14,
+              color: i.active ? "text.primary" : "text.secondary"
+            },
+            children: i.unlimited ? a("accounts.freeUseUnlimited") : i.active ? i.granted ? a("accounts.freeUseUntilGranted", {
+              date: i.until
+            }) : a("accounts.freeUseUntilTrial", {
+              date: i.until
+            }) : a("accounts.freeUseEnded", {
+              date: i.until
+            })
+          }) : ""
+        }), e.jsx(d, {
+          label: a("accounts.features"),
+          wide: !0,
+          value: t && t.features.length > 0 ? e.jsx(D, {
+            direction: "row",
+            sx: {
+              flexWrap: "wrap",
+              gap: .75
+            },
+            children: t.features.map(g => e.jsx(F, {
+              label: Pe(g, a),
+              size: "md",
+              shape: "rounded",
+              variant: "filled",
+              background: y[100],
+              color: y[700],
+              weight: 400,
+              style: H
+            }, g))
+          }) : ""
+        })]
+      }) : e.jsx(p, {
+        sx: {
+          fontSize: 14,
+          color: "text.secondary"
+        },
+        children: a("accounts.noOrgYet")
+      })
+    }, ...(o ? [{
+      id: "account-free-period",
+      title: a("accounts.sectionFreePeriod"),
+      children: e.jsx(x, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: fe
+        },
+        children: e.jsxs(x, {
+          component: "ul",
+          sx: {
+            m: 0,
+            pl: 2.5,
+            fontSize: 14,
+            color: "text.secondary",
+            listStyleType: "disc",
+            "& li + li": {
+              mt: .5
+            },
+            wordBreak: "keep-all",
+            "& b": {
+              color: "text.primary",
+              fontWeight: 600
+            }
+          },
+          children: [e.jsx("li", {
+            children: e.jsx(T, {
+              i18nKey: "accounts.freePeriodNote1",
+              components: {
+                b: e.jsx("b", {})
+              }
+            })
+          }), e.jsx("li", {
+            children: e.jsx(T, {
+              i18nKey: "accounts.freePeriodNote2",
+              components: {
+                b: e.jsx("b", {})
+              }
+            })
+          }), e.jsx("li", {
+            children: e.jsx(T, {
+              i18nKey: "accounts.freePeriodNote3",
+              values: {
+                days: xe
+              },
+              components: {
+                b: e.jsx("b", {})
+              }
+            })
+          }), e.jsx("li", {
+            children: e.jsx(T, {
+              i18nKey: "accounts.freePeriodNote4",
+              components: {
+                b: e.jsx("b", {})
+              }
+            })
+          }), e.jsx("li", {
+            children: e.jsx(T, {
+              i18nKey: "accounts.freePeriodNote5",
+              components: {
+                b: e.jsx("b", {})
+              }
+            })
+          })]
+        })
+      })
+    }] : []), {
+      id: "account-social",
+      title: a("accounts.sectionSocialLogin"),
+      children: e.jsx(Ne, {
+        links: s.social.links,
+        failed: s.social.failed
+      })
+    }];
+  return e.jsx(X, {
+    fontScaleKey: "AccountDetailDialog",
+    open: r.isOpen,
+    onClose: r.close,
+    title: t?.name ? a("accounts.memberInfoOf", {
+      name: t.name
+    }) : a("accounts.memberInfo"),
+    sideDrawer: !n,
+    fullScreen: n,
+    mobilePresentation: n ? "slide" : "dialog",
+    titleIcons: {
+      delete: {
+        visible: !!t?.added_by_admin,
+        confirmConfig: {
+          title: a("accounts.deleteMember"),
+          message: t?.name ? a("accounts.deleteMemberConfirm", {
+            name: t.name
+          }) : a("accounts.deleteThisMemberConfirm"),
+          confirmText: a("accounts.delete"),
+          cancelText: a("accounts.cancel")
+        }
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    onDelete: () => {
+      s.removeDetail();
+    },
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !0,
+      left: o ? e.jsxs(x, {
+        sx: {
+          ...pe,
+          width: Ve,
+          maxWidth: "100%"
+        },
+        children: [e.jsx(x, {
+          children: e.jsx(he, {
+            form: c,
+            name: "free_until",
+            label: a("accounts.freeUntilLabel"),
+            fullWidth: !0
+          })
+        }), e.jsx(P, {
+          variant: "contained",
+          onClick: () => {
+            c.submit();
+          },
+          disabled: c.isSubmitting,
+          sx: ge,
+          children: c.isSubmitting ? a("accounts.saving") : a("accounts.save")
+        })]
+      }) : void 0
+    },
+    sections: b
+  });
+}
+function Ke(s, n, r) {
+  const t = n.trim().toLowerCase();
+  return s.filter(c => r.memberTypes.length > 0 && !r.memberTypes.includes(z(c)) || r.status && c.status !== r.status ? !1 : t ? `${c.name} ${c.email} ${c.org_name}`.toLowerCase().includes(t) : !0);
+}
+function it() {
+  const s = R(),
+    n = De("accounts.list"),
+    t = ye().useValue("account"),
+    [c, o] = f.useState([]),
+    [i, a] = f.useState(!0),
+    [b, g] = f.useState(0),
+    [C, U] = f.useState(""),
+    [L, O] = f.useState({
+      memberTypes: [],
+      status: Fe
+    }),
+    l = async () => {
+      a(!0);
+      try {
+        o(await I.list());
+      } catch (m) {
+        S(m instanceof Error ? m.message : s("accounts.listLoadFailed"));
+      } finally {
+        a(!1);
+      }
+    };
+  f.useEffect(() => {
+    l();
+  }, []);
+  const u = Ue({
+      onCreated: () => {
+        l();
+      },
+      onChanged: () => {
+        l();
+      }
+    }),
+    _ = async (m, w) => {
+      g(m.seq);
+      try {
+        await I.updateRole(m.seq, w), await l(), k(s("accounts.roleChanged"));
+      } catch (q) {
+        S(q instanceof Error ? q.message : s("accounts.roleChangeFailed"));
+      } finally {
+        g(0);
+      }
+    },
+    A = f.useMemo(() => Ke(c, C, L), [c, C, L]),
+    {
+      rows: v,
+      tableSort: ae
+    } = Ae(A, {
+      member_type: m => z(m),
+      features: m => Array.isArray(m.features) ? m.features.length : 0
+    }),
+    se = f.useMemo(() => Me({
+      t: s,
+      count: v.length,
+      mySeq: Number(t?.seq ?? 0),
+      busySeq: b,
+      onRoleChange: (m, w) => {
+        _(m, w);
+      }
+    }), [s, v.length, t?.seq, b]),
+    oe = ze({
+      loading: i,
+      status: L.status,
+      onSearch: U,
+      onStatusChange: m => O(w => ({
+        ...w,
+        status: m
+      })),
+      onFilterChange: m => O(w => ({
+        ...w,
+        ...m
+      })),
+      onReload: () => {
+        l();
+      },
+      onCreate: u.openCreate
+    });
+  return e.jsxs(x, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      flexGrow: 1,
+      height: 0,
+      minHeight: 520
+    },
+    children: [e.jsx(Ce, {
+      header: oe,
+      tableProps: {
+        ...n,
+        scrollbars: Ee,
+        mobile: !0,
+        variant: "notion",
+        data: v,
+        totalCount: v.length,
+        ...ae,
+        loading: i,
+        columns: se,
+        getRowId: m => m.seq,
+        rowHeight: 56,
+        emptyMessage: s("accounts.noAccounts"),
+        onRowClick: u.openDetail
+      }
+    }), e.jsx(Ge, {
+      controller: u
+    }), e.jsx(qe, {
+      controller: u
+    })]
+  });
+}
+export { it as default };

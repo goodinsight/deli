@@ -1,0 +1,1189 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/EmployeeFormDialog-BHKK47Dg.js",
+  "path": "assets/vendor.d/EmployeeFormDialog-BHKK47Dg.js",
+  "name": "EmployeeFormDialog",
+  "kind": "ui",
+  "bytes": 63578,
+  "sha256": "3c4fc7066b48c664933c9c4ec0c3f49b0f6abead3d5b652af44810066a087b6e",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/EmployeeFormDialog-BHKK47Dg.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "e",
+          "imported": "j"
+        },
+        {
+          "local": "M",
+          "imported": "r"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "We",
+          "imported": "c"
+        },
+        {
+          "local": "z",
+          "imported": "as"
+        },
+        {
+          "local": "bn",
+          "imported": "fm"
+        },
+        {
+          "local": "Me",
+          "imported": "e"
+        },
+        {
+          "local": "Yt",
+          "imported": "c8"
+        },
+        {
+          "local": "_n",
+          "imported": "cZ"
+        },
+        {
+          "local": "jn",
+          "imported": "d3"
+        },
+        {
+          "local": "vn",
+          "imported": "fz"
+        },
+        {
+          "local": "m",
+          "imported": "bT"
+        },
+        {
+          "local": "Pe",
+          "imported": "ak"
+        },
+        {
+          "local": "me",
+          "imported": "bx"
+        },
+        {
+          "local": "Sn",
+          "imported": "c2"
+        },
+        {
+          "local": "se",
+          "imported": "bv"
+        },
+        {
+          "local": "De",
+          "imported": "D"
+        },
+        {
+          "local": "Be",
+          "imported": "fo"
+        },
+        {
+          "local": "ye",
+          "imported": "w"
+        },
+        {
+          "local": "T",
+          "imported": "B"
+        },
+        {
+          "local": "kn",
+          "imported": "d2"
+        },
+        {
+          "local": "ve",
+          "imported": "c4"
+        },
+        {
+          "local": "wn",
+          "imported": "cM"
+        },
+        {
+          "local": "oe",
+          "imported": "bQ"
+        },
+        {
+          "local": "En",
+          "imported": "bJ"
+        },
+        {
+          "local": "Jt",
+          "imported": "ao"
+        },
+        {
+          "local": "Ue",
+          "imported": "aq"
+        },
+        {
+          "local": "ke",
+          "imported": "L"
+        },
+        {
+          "local": "Oe",
+          "imported": "ar"
+        },
+        {
+          "local": "Cn",
+          "imported": "c_"
+        },
+        {
+          "local": "He",
+          "imported": "cI"
+        },
+        {
+          "local": "Kt",
+          "imported": "K"
+        },
+        {
+          "local": "Ut",
+          "imported": "dv"
+        },
+        {
+          "local": "In",
+          "imported": "fA"
+        },
+        {
+          "local": "R",
+          "imported": "bO"
+        },
+        {
+          "local": "On",
+          "imported": "cL"
+        },
+        {
+          "local": "yt",
+          "imported": "cz"
+        },
+        {
+          "local": "It",
+          "imported": "z"
+        },
+        {
+          "local": "nt",
+          "imported": "ca"
+        },
+        {
+          "local": "Fe",
+          "imported": "al"
+        },
+        {
+          "local": "Q",
+          "imported": "aB"
+        },
+        {
+          "local": "Fn",
+          "imported": "df"
+        },
+        {
+          "local": "Zt",
+          "imported": "aG"
+        },
+        {
+          "local": "ft",
+          "imported": "fB"
+        },
+        {
+          "local": "Mn",
+          "imported": "aF"
+        },
+        {
+          "local": "Te",
+          "imported": "j"
+        },
+        {
+          "local": "Qt",
+          "imported": "aH"
+        },
+        {
+          "local": "Ee",
+          "imported": "fC"
+        },
+        {
+          "local": "Pn",
+          "imported": "aU"
+        },
+        {
+          "local": "xt",
+          "imported": "ba"
+        },
+        {
+          "local": "Ot",
+          "imported": "A"
+        },
+        {
+          "local": "Ze",
+          "imported": "av"
+        },
+        {
+          "local": "Tn",
+          "imported": "P"
+        },
+        {
+          "local": "Vn",
+          "imported": "fD"
+        },
+        {
+          "local": "Ve",
+          "imported": "fE"
+        },
+        {
+          "local": "Ft",
+          "imported": "bD"
+        },
+        {
+          "local": "Ln",
+          "imported": "fF"
+        },
+        {
+          "local": "qn",
+          "imported": "b7"
+        },
+        {
+          "local": "Nn",
+          "imported": "fG"
+        },
+        {
+          "local": "An",
+          "imported": "fH"
+        },
+        {
+          "local": "Rn",
+          "imported": "eG"
+        },
+        {
+          "local": "Wn",
+          "imported": "U"
+        },
+        {
+          "local": "Dn",
+          "imported": "fI"
+        },
+        {
+          "local": "ot",
+          "imported": "a_"
+        },
+        {
+          "local": "Xt",
+          "imported": "q"
+        },
+        {
+          "local": "Bn",
+          "imported": "b3"
+        },
+        {
+          "local": "Hn",
+          "imported": "fJ"
+        },
+        {
+          "local": "zn",
+          "imported": "fK"
+        },
+        {
+          "local": "$n",
+          "imported": "cG"
+        },
+        {
+          "local": "Gn",
+          "imported": "cD"
+        },
+        {
+          "local": "Yn",
+          "imported": "fL"
+        },
+        {
+          "local": "Jn",
+          "imported": "fM"
+        },
+        {
+          "local": "Kn",
+          "imported": "d1"
+        },
+        {
+          "local": "pe",
+          "imported": "cC"
+        },
+        {
+          "local": "Mt",
+          "imported": "fN"
+        },
+        {
+          "local": "Un",
+          "imported": "aw"
+        },
+        {
+          "local": "Zn",
+          "imported": "cS"
+        },
+        {
+          "local": "Qn",
+          "imported": "cn"
+        },
+        {
+          "local": "Xn",
+          "imported": "fO"
+        },
+        {
+          "local": "eo",
+          "imported": "cO"
+        },
+        {
+          "local": "Pt",
+          "imported": "cY"
+        },
+        {
+          "local": "to",
+          "imported": "cm"
+        },
+        {
+          "local": "no",
+          "imported": "dy"
+        },
+        {
+          "local": "oo",
+          "imported": "an"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./useFileViewer-B-2ewnr3.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "so",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/useFileViewer-B-2ewnr3.js"
+    },
+    {
+      "specifier": "./employeeApi-CdGzOYcj.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ce",
+          "imported": "e"
+        }
+      ],
+      "resolved": "assets/vendor.d/employeeApi-CdGzOYcj.js"
+    },
+    {
+      "specifier": "./birthdayCalendar-CWu_jG3x.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Qe",
+          "imported": "i"
+        }
+      ],
+      "resolved": "assets/vendor.d/birthdayCalendar-CWu_jG3x.js"
+    },
+    {
+      "specifier": "./types-CVhETUvu.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Tt",
+          "imported": "b"
+        },
+        {
+          "local": "st",
+          "imported": "E"
+        },
+        {
+          "local": "Le",
+          "imported": "a"
+        },
+        {
+          "local": "qe",
+          "imported": "L"
+        },
+        {
+          "local": "en",
+          "imported": "P"
+        },
+        {
+          "local": "be",
+          "imported": "C"
+        },
+        {
+          "local": "Ne",
+          "imported": "G"
+        },
+        {
+          "local": "tn",
+          "imported": "h"
+        },
+        {
+          "local": "nn",
+          "imported": "H"
+        },
+        {
+          "local": "on",
+          "imported": "W"
+        },
+        {
+          "local": "sn",
+          "imported": "M"
+        },
+        {
+          "local": "rn",
+          "imported": "c"
+        },
+        {
+          "local": "rt",
+          "imported": "B"
+        },
+        {
+          "local": "an",
+          "imported": "d"
+        }
+      ],
+      "resolved": "assets/vendor.d/types-CVhETUvu.js"
+    },
+    {
+      "specifier": "./ContactPhoneOutlined-DpFEzROB.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "at",
+          "imported": "C"
+        }
+      ],
+      "resolved": "assets/vendor.d/ContactPhoneOutlined-DpFEzROB.js"
+    },
+    {
+      "specifier": "./EmployeeSelectDialog-Cdnxeoz9.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ro",
+          "imported": "E"
+        }
+      ],
+      "resolved": "assets/vendor.d/EmployeeSelectDialog-Cdnxeoz9.js"
+    },
+    {
+      "specifier": "./bootstrapController-BMV_i07c.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ao",
+          "imported": "x"
+        },
+        {
+          "local": "io",
+          "imported": "z"
+        }
+      ],
+      "resolved": "assets/vendor.d/bootstrapController-BMV_i07c.js"
+    },
+    {
+      "specifier": "./InlineErrorAlert-D9ICJPt7.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Vt",
+          "imported": "I"
+        }
+      ],
+      "resolved": "assets/vendor.d/InlineErrorAlert-D9ICJPt7.js"
+    },
+    {
+      "specifier": "./Trans-CU1vl0TZ.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Lt",
+          "imported": "T"
+        }
+      ],
+      "resolved": "assets/vendor.d/Trans-CU1vl0TZ.js"
+    },
+    {
+      "specifier": "./employeeAccountApi-p-ORLvrh.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "he",
+          "imported": "e"
+        }
+      ],
+      "resolved": "assets/vendor.d/employeeAccountApi-p-ORLvrh.js"
+    },
+    {
+      "specifier": "./WomanOutlined-CzlFMUkT.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "lo",
+          "imported": "M"
+        },
+        {
+          "local": "co",
+          "imported": "T"
+        },
+        {
+          "local": "qt",
+          "imported": "A"
+        },
+        {
+          "local": "mo",
+          "imported": "W"
+        },
+        {
+          "local": "ln",
+          "imported": "C"
+        },
+        {
+          "local": "uo",
+          "imported": "a"
+        },
+        {
+          "local": "po",
+          "imported": "b"
+        }
+      ],
+      "resolved": "assets/vendor.d/WomanOutlined-CzlFMUkT.js"
+    },
+    {
+      "specifier": "./tableScrollbars-C9bhlJjO.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ho",
+          "imported": "T"
+        }
+      ],
+      "resolved": "assets/vendor.d/tableScrollbars-C9bhlJjO.js"
+    },
+    {
+      "specifier": "./AccountBoxOutlined-BxNEw8I0.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "yo",
+          "imported": "A"
+        }
+      ],
+      "resolved": "assets/vendor.d/AccountBoxOutlined-BxNEw8I0.js"
+    },
+    {
+      "specifier": "./AssignmentIndOutlined-DynSb23A.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "fo",
+          "imported": "A"
+        }
+      ],
+      "resolved": "assets/vendor.d/AssignmentIndOutlined-DynSb23A.js"
+    },
+    {
+      "specifier": "./EventBusyOutlined-DqcCaRMs.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ze",
+          "imported": "E"
+        }
+      ],
+      "resolved": "assets/vendor.d/EventBusyOutlined-DqcCaRMs.js"
+    },
+    {
+      "specifier": "./PaidOutlined-Cy1uVjW3.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "xo",
+          "imported": "N"
+        },
+        {
+          "local": "go",
+          "imported": "P"
+        },
+        {
+          "local": "bo",
+          "imported": "M"
+        }
+      ],
+      "resolved": "assets/vendor.d/PaidOutlined-Cy1uVjW3.js"
+    },
+    {
+      "specifier": "./PercentOutlined-XX2JPqvz.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "cn",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/PercentOutlined-XX2JPqvz.js"
+    },
+    {
+      "specifier": "./PhoneAndroidOutlined-DafU-b-9.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "mn",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/PhoneAndroidOutlined-DafU-b-9.js"
+    },
+    {
+      "specifier": "./PhoneOutlined-Bjc_e42S.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Nt",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/PhoneOutlined-Bjc_e42S.js"
+    },
+    {
+      "specifier": "./ScheduleOutlined-C_7j7r9e.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "_o",
+          "imported": "S"
+        }
+      ],
+      "resolved": "assets/vendor.d/ScheduleOutlined-C_7j7r9e.js"
+    },
+    {
+      "specifier": "./ToggleOnOutlined-5BVdqdOm.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "jo",
+          "imported": "T"
+        }
+      ],
+      "resolved": "assets/vendor.d/ToggleOnOutlined-5BVdqdOm.js"
+    },
+    {
+      "specifier": "./WorkOutlineOutlined-D5AzVFs6.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "At",
+          "imported": "W"
+        }
+      ],
+      "resolved": "assets/vendor.d/WorkOutlineOutlined-D5AzVFs6.js"
+    },
+    {
+      "specifier": "./PropertyFields-TuJTG5XK.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "vo",
+          "imported": "E"
+        },
+        {
+          "local": "$e",
+          "imported": "I"
+        },
+        {
+          "local": "So",
+          "imported": "a"
+        },
+        {
+          "local": "ko",
+          "imported": "b"
+        },
+        {
+          "local": "wo",
+          "imported": "f"
+        }
+      ],
+      "resolved": "assets/vendor.d/PropertyFields-TuJTG5XK.js"
+    },
+    {
+      "specifier": "./hrCodeApi-BRtc5fIX.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Eo",
+          "imported": "h"
+        }
+      ],
+      "resolved": "assets/vendor.d/hrCodeApi-BRtc5fIX.js"
+    },
+    {
+      "specifier": "./i18nLabels-BNTLL7cu.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Co",
+          "imported": "l"
+        }
+      ],
+      "resolved": "assets/vendor.d/i18nLabels-BNTLL7cu.js"
+    },
+    {
+      "specifier": "./propertySections-Bwsl7OH-.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Io",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/propertySections-Bwsl7OH-.js"
+    },
+    {
+      "specifier": "./Person-DnoEHesw.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Oo",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/Person-DnoEHesw.js"
+    },
+    {
+      "specifier": "./squircle-CQM8EvXm.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Fo",
+          "imported": "S"
+        }
+      ],
+      "resolved": "assets/vendor.d/squircle-CQM8EvXm.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "ae",
+      "exported": "D"
+    },
+    {
+      "local": "Gt",
+      "exported": "E"
+    },
+    {
+      "local": "Qs",
+      "exported": "H"
+    },
+    {
+      "local": "Do",
+      "exported": "I"
+    },
+    {
+      "local": "Vo",
+      "exported": "L"
+    },
+    {
+      "local": "Lo",
+      "exported": "M"
+    },
+    {
+      "local": "te",
+      "exported": "N"
+    },
+    {
+      "local": "tt",
+      "exported": "P"
+    },
+    {
+      "local": "H",
+      "exported": "S"
+    },
+    {
+      "local": "N",
+      "exported": "T"
+    },
+    {
+      "local": "No",
+      "exported": "a"
+    },
+    {
+      "local": "Xs",
+      "exported": "b"
+    },
+    {
+      "local": "Dt",
+      "exported": "c"
+    },
+    {
+      "local": "qo",
+      "exported": "d"
+    },
+    {
+      "local": "$o",
+      "exported": "e"
+    },
+    {
+      "local": "Ks",
+      "exported": "f"
+    },
+    {
+      "local": "gt",
+      "exported": "g"
+    },
+    {
+      "local": "we",
+      "exported": "h"
+    },
+    {
+      "local": "ls",
+      "exported": "i"
+    },
+    {
+      "local": "ne",
+      "exported": "j"
+    },
+    {
+      "local": "To",
+      "exported": "k"
+    },
+    {
+      "local": "Bt",
+      "exported": "l"
+    },
+    {
+      "local": "hn",
+      "exported": "m"
+    },
+    {
+      "local": "Zs",
+      "exported": "n"
+    },
+    {
+      "local": "ts",
+      "exported": "o"
+    },
+    {
+      "local": "Us",
+      "exported": "p"
+    },
+    {
+      "local": "bt",
+      "exported": "q"
+    },
+    {
+      "local": "pn",
+      "exported": "r"
+    },
+    {
+      "local": "de",
+      "exported": "t"
+    },
+    {
+      "local": "Js",
+      "exported": "u"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "Lo",
+      "keys": [
+        "member",
+        "size"
+      ]
+    },
+    {
+      "function": "Do",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "smsEnabled",
+        "invites"
+      ]
+    },
+    {
+      "function": "Uo",
+      "keys": [
+        "orgSeq",
+        "onChanged"
+      ]
+    },
+    {
+      "function": "Zo",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "es",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "Us",
+      "keys": [
+        "orgSeq",
+        "onChanged"
+      ]
+    },
+    {
+      "function": "Zs",
+      "keys": [
+        "employee",
+        "invite"
+      ]
+    },
+    {
+      "function": "is",
+      "keys": [
+        "employee",
+        "invite"
+      ]
+    },
+    {
+      "function": "N",
+      "keys": [
+        "controller",
+        "icon",
+        "label",
+        "name",
+        "maxLength",
+        "placeholder",
+        "inputMode",
+        "wide",
+        "full",
+        "rowStart",
+        "multiline",
+        "normalize",
+        "date",
+        "format"
+      ]
+    },
+    {
+      "function": "te",
+      "keys": [
+        "controller",
+        "icon",
+        "label",
+        "name",
+        "unit",
+        "decimal",
+        "max"
+      ]
+    },
+    {
+      "function": "H",
+      "keys": [
+        "controller",
+        "icon",
+        "label",
+        "name",
+        "options",
+        "emptyLabel",
+        "numeric"
+      ]
+    },
+    {
+      "function": "we",
+      "keys": [
+        "controller",
+        "icon",
+        "label",
+        "name"
+      ]
+    },
+    {
+      "function": "ms",
+      "keys": [
+        "controller",
+        "units",
+        "members",
+        "positionOptions",
+        "jobTitleOptions",
+        "employmentOptions",
+        "onLinkMember"
+      ]
+    },
+    {
+      "function": "us",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "ds",
+      "keys": [
+        "controller",
+        "showJumin",
+        "onToggleJumin"
+      ]
+    },
+    {
+      "function": "ps",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "hs",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "ys",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "fs",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "Xs",
+      "keys": [
+        "controller",
+        "units",
+        "members",
+        "docked"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "AttendanceHost",
+    "CalendarSidebarPanel",
+    "ChatMemberPanel",
+    "ChatPage",
+    "EmployeeListPage",
+    "Layout",
+    "MobileDashboardLayout",
+    "OrgChartPage",
+    "OrgMembersPage",
+    "PostComposerHost",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog",
+    "TeamPage",
+    "mobileBandDialog"
+  ],
+  "service": "인사",
+  "purpose": "직원 등록·수정",
+  "reuseGrade": "C",
+  "integration": "controller/units/members 계약을 새 HR API에 연결",
+  "exportedParameters": [
+    {
+      "export": "I",
+      "compiledLocal": "Do",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "export": "M",
+      "compiledLocal": "Lo",
+      "keys": [
+        "member",
+        "size"
+      ]
+    },
+    {
+      "export": "N",
+      "compiledLocal": "te",
+      "keys": [
+        "controller",
+        "icon",
+        "label",
+        "name",
+        "unit",
+        "decimal",
+        "max"
+      ]
+    },
+    {
+      "export": "S",
+      "compiledLocal": "H",
+      "keys": [
+        "controller",
+        "icon",
+        "label",
+        "name",
+        "options",
+        "emptyLabel",
+        "numeric"
+      ]
+    },
+    {
+      "export": "T",
+      "compiledLocal": "N",
+      "keys": [
+        "controller",
+        "icon",
+        "label",
+        "name",
+        "maxLength",
+        "placeholder",
+        "inputMode",
+        "wide",
+        "full",
+        "rowStart",
+        "multiline",
+        "normalize",
+        "date",
+        "format"
+      ]
+    },
+    {
+      "export": "b",
+      "compiledLocal": "Xs",
+      "keys": [
+        "controller",
+        "units",
+        "members",
+        "docked"
+      ]
+    },
+    {
+      "export": "h",
+      "compiledLocal": "we",
+      "keys": [
+        "controller",
+        "icon",
+        "label",
+        "name"
+      ]
+    },
+    {
+      "export": "n",
+      "compiledLocal": "Zs",
+      "keys": [
+        "employee",
+        "invite"
+      ]
+    },
+    {
+      "export": "p",
+      "compiledLocal": "Us",
+      "keys": [
+        "orgSeq",
+        "onChanged"
+      ]
+    }
+  ]
+}

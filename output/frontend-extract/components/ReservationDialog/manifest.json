@@ -1,0 +1,208 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/ReservationDialog-DnyeBFBI.js",
+  "path": "assets/vendor.d/ReservationDialog-DnyeBFBI.js",
+  "name": "ReservationDialog",
+  "kind": "ui",
+  "bytes": 6484,
+  "sha256": "ea920604aa5ac9ab00e657fcacef0e05cbd8ab87b5dd8387b78e4e0e69ba5397",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/ReservationDialog-DnyeBFBI.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "W",
+          "imported": "r"
+        },
+        {
+          "local": "Y",
+          "imported": "u"
+        },
+        {
+          "local": "n",
+          "imported": "j"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "$",
+          "imported": "e"
+        },
+        {
+          "local": "M",
+          "imported": "c8"
+        },
+        {
+          "local": "w",
+          "imported": "ak"
+        },
+        {
+          "local": "h",
+          "imported": "k7"
+        },
+        {
+          "local": "b",
+          "imported": "bO"
+        },
+        {
+          "local": "r",
+          "imported": "bT"
+        },
+        {
+          "local": "E",
+          "imported": "bx"
+        },
+        {
+          "local": "I",
+          "imported": "bv"
+        },
+        {
+          "local": "H",
+          "imported": "mb"
+        },
+        {
+          "local": "O",
+          "imported": "mc"
+        },
+        {
+          "local": "K",
+          "imported": "D"
+        },
+        {
+          "local": "N",
+          "imported": "md"
+        },
+        {
+          "local": "z",
+          "imported": "k5"
+        },
+        {
+          "local": "x",
+          "imported": "B"
+        },
+        {
+          "local": "G",
+          "imported": "L"
+        },
+        {
+          "local": "U",
+          "imported": "aB"
+        },
+        {
+          "local": "B",
+          "imported": "lQ"
+        },
+        {
+          "local": "j",
+          "imported": "al"
+        },
+        {
+          "local": "Q",
+          "imported": "cn"
+        },
+        {
+          "local": "J",
+          "imported": "cI"
+        },
+        {
+          "local": "R",
+          "imported": "bQ"
+        },
+        {
+          "local": "X",
+          "imported": "K"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./ToneChip-BFljqlNi.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Z",
+          "imported": "T"
+        }
+      ],
+      "resolved": "assets/vendor.d/ToneChip-BFljqlNi.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "te",
+      "exported": "R"
+    },
+    {
+      "local": "oe",
+      "exported": "a"
+    },
+    {
+      "local": "ie",
+      "exported": "u"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "te",
+      "keys": [
+        "phase"
+      ]
+    },
+    {
+      "function": "oe",
+      "keys": [
+        "controller",
+        "resources",
+        "manage",
+        "onReturn"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "ApprovalAllDocumentsPage",
+    "ApprovalBoxPage",
+    "ApprovalDetailDialog",
+    "ApprovalDraftedPage",
+    "Layout",
+    "MobileDashboardLayout",
+    "OfficeReservationPage",
+    "PostComposerHost",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog"
+  ],
+  "service": "일정",
+  "purpose": "예약 폼",
+  "reuseGrade": "C",
+  "integration": "자원·예약 충돌 검증·API 연결",
+  "exportedParameters": [
+    {
+      "export": "R",
+      "compiledLocal": "te",
+      "keys": [
+        "phase"
+      ]
+    },
+    {
+      "export": "a",
+      "compiledLocal": "oe",
+      "keys": [
+        "controller",
+        "resources",
+        "manage",
+        "onReturn"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+import{j as t}from"./react-CjxcGQav.js";import{cH as n}from"../js.d/main-Cm9wS5wt.js";function o({message:r}){return r?t.jsx(n,{severity:"error",variant:"outlined",sx:{fontSize:"14px",py:.5},children:r}):null}export{o as I};

@@ -1,0 +1,189 @@
+import { p as d } from "./profileApi-Btafs-pM.js";
+const C = .9,
+  k = 1.6,
+  p = .1,
+  s = [{
+    key: "slate",
+    labelKey: "chat.bgColorSlate",
+    color: "#D0D9E0"
+  }, {
+    key: "warm",
+    labelKey: "chat.bgColorWarm",
+    color: "#E7DFD3"
+  }, {
+    key: "mint",
+    labelKey: "chat.bgColorMint",
+    color: "#D4E4DD"
+  }, {
+    key: "sky",
+    labelKey: "chat.bgColorSky",
+    color: "#D3E0EC"
+  }, {
+    key: "lilac",
+    labelKey: "chat.bgColorLilac",
+    color: "#DEDAE8"
+  }, {
+    key: "sand",
+    labelKey: "chat.bgColorSand",
+    color: "#E8E2D5"
+  }, {
+    key: "rose",
+    labelKey: "chat.bgColorRose",
+    color: "#EADCDC"
+  }, {
+    key: "cream",
+    labelKey: "chat.bgColorCream",
+    color: "#EFE8D8"
+  }, {
+    key: "peach",
+    labelKey: "chat.bgColorPeach",
+    color: "#F0DFD4"
+  }, {
+    key: "olive",
+    labelKey: "chat.bgColorOlive",
+    color: "#DFE2D0"
+  }, {
+    key: "aqua",
+    labelKey: "chat.bgColorAqua",
+    color: "#D2E5E6"
+  }, {
+    key: "fog",
+    labelKey: "chat.bgColorFog",
+    color: "#E2E2E2"
+  }],
+  y = [{
+    key: "none",
+    labelKey: "chat.bgPatternNone"
+  }, {
+    key: "logo",
+    labelKey: "chat.bgPatternLogo"
+  }, {
+    key: "check",
+    labelKey: "chat.bgPatternCheck"
+  }, {
+    key: "heart",
+    labelKey: "chat.bgPatternHeart"
+  }, {
+    key: "star",
+    labelKey: "chat.bgPatternStar"
+  }, {
+    key: "flower",
+    labelKey: "chat.bgPatternFlower"
+  }, {
+    key: "dot",
+    labelKey: "chat.bgPatternDot"
+  }, {
+    key: "grid",
+    labelKey: "chat.bgPatternGrid"
+  }, {
+    key: "leaf",
+    labelKey: "chat.bgPatternLeaf"
+  }, {
+    key: "wave",
+    labelKey: "chat.bgPatternWave"
+  }, {
+    key: "diamond",
+    labelKey: "chat.bgPatternDiamond"
+  }, {
+    key: "ring",
+    labelKey: "chat.bgPatternRing"
+  }],
+  c = {
+    bgColor: "slate",
+    bgPattern: "logo",
+    scale: 1,
+    photoOriginal: !1
+  };
+function g(t) {
+  const e = t?.chat,
+    o = s.some(a => a.key === e?.bgColor) ? e?.bgColor : c.bgColor,
+    n = y.some(a => a.key === e?.bgPattern) ? e?.bgPattern : c.bgPattern,
+    l = Number(e?.scale);
+  return {
+    bgColor: o,
+    bgPattern: n,
+    scale: Number.isFinite(l) ? Math.min(k, Math.max(C, l)) : c.scale,
+    photoOriginal: e?.photoOriginal === !0
+  };
+}
+function w(t, e) {
+  const o = g(e),
+    n = s.find(a => a.key === t?.bg_color)?.key ?? o.bgColor,
+    l = y.find(a => a.key === t?.bg_pattern)?.key ?? o.bgPattern;
+  return {
+    bgColor: n,
+    bgPattern: l
+  };
+}
+function m(t, e) {
+  const o = Math.round((t + e) * 10) / 10;
+  return Math.min(k, Math.max(C, o));
+}
+function P(t) {
+  return (s.find(e => e.key === t) ?? s[0]).color;
+}
+function x(t) {
+  const e = "%23b9c2cb";
+  switch (t) {
+    case "logo":
+      return r(`%3Cg stroke='${e}' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='1.4' y='2.8' width='11.2' height='9.8' rx='2.2' stroke-width='1.1'/%3E%3Cpath d='M1.4 5.8 H12.6' stroke-width='1'/%3E%3Cpath d='M4.6 1.5 V3.4 M9.4 1.5 V3.4' stroke-width='1.2'/%3E%3Cpath d='M4 9.4 L5.3 10.7 L7.6 8.1' stroke-width='1.2'/%3E%3Cpath d='M9 9.6 H11.2' stroke-width='1.1'/%3E%3C/g%3E`);
+    case "check":
+      return r(`%3Ccircle cx='7' cy='7' r='6.2' stroke='${e}' stroke-width='1.3' fill='none'/%3E%3Cpath d='M4 7.2 L6.2 9.4 L10.2 4.6' stroke='${e}' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E`);
+    case "heart":
+      return r(`%3Cpath d='M7 12.5 C1.5 8.5 2 4.5 4.6 3.4 C6 2.8 7 3.8 7 4.8 C7 3.8 8 2.8 9.4 3.4 C12 4.5 12.5 8.5 7 12.5 Z' stroke='${e}' stroke-width='1.3' stroke-linejoin='round' fill='none'/%3E`);
+    case "star":
+      return r(`%3Cpath d='M7 1.5 L8.7 5.4 L12.9 5.8 L9.8 8.6 L10.7 12.7 L7 10.6 L3.3 12.7 L4.2 8.6 L1.1 5.8 L5.3 5.4 Z' stroke='${e}' stroke-width='1.2' stroke-linejoin='round' fill='none'/%3E`);
+    case "flower":
+      return r(`%3Cg stroke='${e}' stroke-width='1.1' fill='none'%3E%3Cellipse cx='7' cy='2.8' rx='1.9' ry='2.6'/%3E%3Cellipse cx='11' cy='5.7' rx='1.9' ry='2.6' transform='rotate(72 11 5.7)'/%3E%3Cellipse cx='9.5' cy='10.5' rx='1.9' ry='2.6' transform='rotate(144 9.5 10.5)'/%3E%3Cellipse cx='4.5' cy='10.5' rx='1.9' ry='2.6' transform='rotate(216 4.5 10.5)'/%3E%3Cellipse cx='3' cy='5.7' rx='1.9' ry='2.6' transform='rotate(288 3 5.7)'/%3E%3C/g%3E%3Ccircle cx='7' cy='6.8' r='1.5' stroke='${e}' stroke-width='1.1' fill='none'/%3E`);
+    case "dot":
+      return r(`%3Ccircle cx='7' cy='7' r='2.4' fill='${e}'/%3E`);
+    case "grid":
+      return E(`%3Cpath d='M0 32h64M32 0v64' stroke='${e}' stroke-width='1.4'/%3E`);
+    case "leaf":
+      return r(`%3Cpath d='M7 1.6 C11 4.6 11.6 9.4 7 12.4 C2.4 9.4 3 4.6 7 1.6 Z' stroke='${e}' stroke-width='1.3' stroke-linejoin='round' fill='none'/%3E%3Cpath d='M7 3.4 V10.6' stroke='${e}' stroke-width='1' stroke-linecap='round'/%3E`);
+    case "wave":
+      return r(`%3Cg stroke='${e}' stroke-width='1.2' stroke-linecap='round' fill='none'%3E%3Cpath d='M0.5 5.4 Q3.75 3.2 7 5.4 T13.5 5.4'/%3E%3Cpath d='M0.5 9.4 Q3.75 7.2 7 9.4 T13.5 9.4'/%3E%3C/g%3E`);
+    case "diamond":
+      return r(`%3Cpath d='M7 1.8 L12.2 7 L7 12.2 L1.8 7 Z' stroke='${e}' stroke-width='1.3' stroke-linejoin='round' fill='none'/%3E`);
+    case "ring":
+      return r(`%3Ccircle cx='7' cy='7' r='4.4' stroke='${e}' stroke-width='1.4' fill='none'/%3E`);
+    default:
+      return "";
+  }
+}
+const h = 1.35;
+function E(t) {
+  return `url("data:image/svg+xml,%3Csvg fill='none' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.55'%3E${t}%3C/g%3E%3C/svg%3E")`;
+}
+function r(t) {
+  const e = Math.round((64 - 14 * h) / 2 * 100) / 100;
+  return `url("data:image/svg+xml,%3Csvg fill='none' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.55' transform='translate(${e} ${e}) scale(${h})'%3E${t}%3C/g%3E%3C/svg%3E")`;
+}
+function L() {
+  return b.photoOriginal;
+}
+let b = c;
+function f(t) {
+  b = g(t);
+}
+async function K(t, e) {
+  const o = Number(t?.seq ?? 0) || 0,
+    n = String(t?.email ?? "");
+  if (!o || !n) return null;
+  const l = t?.etc ?? {},
+    a = g(l),
+    i = {
+      ...l,
+      chat: {
+        ...a,
+        ...e
+      }
+    };
+  return await d({
+    seq: o,
+    email: n,
+    name: String(t?.name ?? ""),
+    etc: i
+  }), f(i), i;
+}
+export { s as C, w as a, x as b, y as c, P as d, p as e, k as f, C as g, f as h, m as n, L as p, g as r, K as s };

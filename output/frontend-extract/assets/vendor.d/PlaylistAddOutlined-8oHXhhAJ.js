@@ -1,0 +1,1 @@
+import{j as t}from"./react-CjxcGQav.js";import{c as v}from"../js.d/main-Cm9wS5wt.js";const s=v(t.jsx("path",{d:"M14 10H3v2h11zm0-4H3v2h11zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2zM3 16h7v-2H3z"}));export{s as P};

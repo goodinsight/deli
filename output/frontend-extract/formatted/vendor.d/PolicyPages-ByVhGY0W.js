@@ -1,0 +1,21 @@
+import { j as t } from "./react-CjxcGQav.js";
+import { P as e } from "./PolicyDocument-DN4sQ1C8.js";
+import { p as i, a as r, t as o, b as s } from "./policyContent-DPfknNhV.js";
+import "../js.d/main-Cm9wS5wt.js";
+import "./stylis-DdLD6a3t.js";
+import "./companyInfo-Btqdi-Wt.js";
+function v() {
+  return t.jsx(e, {
+    title: "이용약관",
+    effectiveDate: s,
+    sections: o
+  });
+}
+function u() {
+  return t.jsx(e, {
+    title: "개인정보처리방침",
+    effectiveDate: r,
+    sections: i
+  });
+}
+export { u as PrivacyPage, v as TermsPage };

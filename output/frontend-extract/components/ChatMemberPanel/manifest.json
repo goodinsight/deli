@@ -1,0 +1,1067 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/ChatMemberPanel-DmXFJG7n.js",
+  "path": "assets/vendor.d/ChatMemberPanel-DmXFJG7n.js",
+  "name": "ChatMemberPanel",
+  "kind": "ui",
+  "bytes": 47576,
+  "sha256": "0b4b43704c7669aab00eb6207817605221e77830ebf47be833ffd1c3bb758098",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/ChatMemberPanel-DmXFJG7n.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "e",
+          "imported": "j"
+        },
+        {
+          "local": "x",
+          "imported": "r"
+        },
+        {
+          "local": "Ye",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "./aliasStore-DiN6Kp-5.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "an",
+          "imported": "j"
+        },
+        {
+          "local": "rn",
+          "imported": "k"
+        },
+        {
+          "local": "cn",
+          "imported": "l"
+        },
+        {
+          "local": "Y",
+          "imported": "m"
+        },
+        {
+          "local": "$e",
+          "imported": "n"
+        },
+        {
+          "local": "me",
+          "imported": "d"
+        },
+        {
+          "local": "he",
+          "imported": "o"
+        },
+        {
+          "local": "ln",
+          "imported": "q"
+        },
+        {
+          "local": "Et",
+          "imported": "t"
+        },
+        {
+          "local": "un",
+          "imported": "v"
+        },
+        {
+          "local": "hn",
+          "imported": "w"
+        },
+        {
+          "local": "dn",
+          "imported": "x"
+        },
+        {
+          "local": "At",
+          "imported": "c"
+        },
+        {
+          "local": "ct",
+          "imported": "y"
+        },
+        {
+          "local": "it",
+          "imported": "z"
+        }
+      ],
+      "resolved": "assets/vendor.d/aliasStore-DiN6Kp-5.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "zt",
+          "imported": "c"
+        },
+        {
+          "local": "Ke",
+          "imported": "bH"
+        },
+        {
+          "local": "d",
+          "imported": "B"
+        },
+        {
+          "local": "Ee",
+          "imported": "fm"
+        },
+        {
+          "local": "j",
+          "imported": "s"
+        },
+        {
+          "local": "Z",
+          "imported": "bv"
+        },
+        {
+          "local": "Ae",
+          "imported": "D"
+        },
+        {
+          "local": "ge",
+          "imported": "cz"
+        },
+        {
+          "local": "pn",
+          "imported": "cZ"
+        },
+        {
+          "local": "re",
+          "imported": "c2"
+        },
+        {
+          "local": "Tt",
+          "imported": "cI"
+        },
+        {
+          "local": "xe",
+          "imported": "K"
+        },
+        {
+          "local": "Ge",
+          "imported": "bQ"
+        },
+        {
+          "local": "qe",
+          "imported": "a1"
+        },
+        {
+          "local": "C",
+          "imported": "L"
+        },
+        {
+          "local": "Me",
+          "imported": "c1"
+        },
+        {
+          "local": "X",
+          "imported": "bO"
+        },
+        {
+          "local": "P",
+          "imported": "bT"
+        },
+        {
+          "local": "ze",
+          "imported": "fq"
+        },
+        {
+          "local": "B",
+          "imported": "bI"
+        },
+        {
+          "local": "Je",
+          "imported": "go"
+        },
+        {
+          "local": "Ot",
+          "imported": "fs"
+        },
+        {
+          "local": "be",
+          "imported": "u"
+        },
+        {
+          "local": "fn",
+          "imported": "ik"
+        },
+        {
+          "local": "Fe",
+          "imported": "bh"
+        },
+        {
+          "local": "xn",
+          "imported": "fr"
+        },
+        {
+          "local": "mn",
+          "imported": "d4"
+        },
+        {
+          "local": "gn",
+          "imported": "ft"
+        },
+        {
+          "local": "lt",
+          "imported": "bU"
+        },
+        {
+          "local": "Ue",
+          "imported": "e"
+        },
+        {
+          "local": "Wt",
+          "imported": "dC"
+        },
+        {
+          "local": "Dt",
+          "imported": "gL"
+        },
+        {
+          "local": "bn",
+          "imported": "ks"
+        },
+        {
+          "local": "jn",
+          "imported": "o"
+        },
+        {
+          "local": "yn",
+          "imported": "d8"
+        },
+        {
+          "local": "Sn",
+          "imported": "dj"
+        },
+        {
+          "local": "Lt",
+          "imported": "cW"
+        },
+        {
+          "local": "Ft",
+          "imported": "g5"
+        },
+        {
+          "local": "vn",
+          "imported": "I"
+        },
+        {
+          "local": "kn",
+          "imported": "ci"
+        },
+        {
+          "local": "Cn",
+          "imported": "cl"
+        },
+        {
+          "local": "_n",
+          "imported": "y"
+        },
+        {
+          "local": "wn",
+          "imported": "gM"
+        },
+        {
+          "local": "Mn",
+          "imported": "jl"
+        },
+        {
+          "local": "Rn",
+          "imported": "l0"
+        },
+        {
+          "local": "qn",
+          "imported": "dN"
+        },
+        {
+          "local": "In",
+          "imported": "by"
+        },
+        {
+          "local": "Ne",
+          "imported": "G"
+        },
+        {
+          "local": "Pn",
+          "imported": "bx"
+        },
+        {
+          "local": "En",
+          "imported": "iA"
+        },
+        {
+          "local": "An",
+          "imported": "a_"
+        },
+        {
+          "local": "zn",
+          "imported": "eF"
+        },
+        {
+          "local": "Tn",
+          "imported": "kM"
+        },
+        {
+          "local": "On",
+          "imported": "l1"
+        },
+        {
+          "local": "Wn",
+          "imported": "j"
+        },
+        {
+          "local": "ut",
+          "imported": "fo"
+        },
+        {
+          "local": "ht",
+          "imported": "w"
+        },
+        {
+          "local": "dt",
+          "imported": "fp"
+        },
+        {
+          "local": "pt",
+          "imported": "d5"
+        },
+        {
+          "local": "ft",
+          "imported": "b"
+        },
+        {
+          "local": "Dn",
+          "imported": "aR"
+        },
+        {
+          "local": "xt",
+          "imported": "i2"
+        },
+        {
+          "local": "mt",
+          "imported": "c_"
+        },
+        {
+          "local": "gt",
+          "imported": "cN"
+        },
+        {
+          "local": "bt",
+          "imported": "iI"
+        },
+        {
+          "local": "Ln",
+          "imported": "gK"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./squircle-CQM8EvXm.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "je",
+          "imported": "S"
+        },
+        {
+          "local": "Ce",
+          "imported": "a"
+        }
+      ],
+      "resolved": "assets/vendor.d/squircle-CQM8EvXm.js"
+    },
+    {
+      "specifier": "./ForwardMessageDialog-CaXjV13U.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "de",
+          "imported": "a"
+        },
+        {
+          "local": "Fn",
+          "imported": "f"
+        }
+      ],
+      "resolved": "assets/vendor.d/ForwardMessageDialog-CaXjV13U.js"
+    },
+    {
+      "specifier": "./Person-DnoEHesw.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Te",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/Person-DnoEHesw.js"
+    },
+    {
+      "specifier": "./chatPrefs-Be7HCbgk.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ve",
+          "imported": "r"
+        },
+        {
+          "local": "Nn",
+          "imported": "a"
+        },
+        {
+          "local": "Hn",
+          "imported": "C"
+        },
+        {
+          "local": "Bn",
+          "imported": "c"
+        },
+        {
+          "local": "$n",
+          "imported": "b"
+        },
+        {
+          "local": "Gn",
+          "imported": "d"
+        },
+        {
+          "local": "Nt",
+          "imported": "s"
+        },
+        {
+          "local": "Un",
+          "imported": "e"
+        },
+        {
+          "local": "Vn",
+          "imported": "f"
+        },
+        {
+          "local": "Xn",
+          "imported": "g"
+        },
+        {
+          "local": "Yn",
+          "imported": "n"
+        }
+      ],
+      "resolved": "assets/vendor.d/chatPrefs-Be7HCbgk.js"
+    },
+    {
+      "specifier": "./PhotoLibraryOutlined-7mbJKs9u.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Kn",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/PhotoLibraryOutlined-7mbJKs9u.js"
+    },
+    {
+      "specifier": "./InsertDriveFileOutlined-DcD-Yh-v.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Jn",
+          "imported": "I"
+        }
+      ],
+      "resolved": "assets/vendor.d/InsertDriveFileOutlined-DcD-Yh-v.js"
+    },
+    {
+      "specifier": "./Link-CVsHTXRQ.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Qn",
+          "imported": "L"
+        }
+      ],
+      "resolved": "assets/vendor.d/Link-CVsHTXRQ.js"
+    },
+    {
+      "specifier": "./Logout-B1FcT8mE.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Zn",
+          "imported": "L"
+        }
+      ],
+      "resolved": "assets/vendor.d/Logout-B1FcT8mE.js"
+    },
+    {
+      "specifier": "./ChatCallButtons-TGIgJ8cF.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "es",
+          "imported": "P"
+        },
+        {
+          "local": "ts",
+          "imported": "a"
+        },
+        {
+          "local": "ns",
+          "imported": "C"
+        },
+        {
+          "local": "ss",
+          "imported": "V"
+        }
+      ],
+      "resolved": "assets/vendor.d/ChatCallButtons-TGIgJ8cF.js"
+    },
+    {
+      "specifier": "./orgTree-Dh5HFjBo.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ht",
+          "imported": "c"
+        }
+      ],
+      "resolved": "assets/vendor.d/orgTree-Dh5HFjBo.js"
+    },
+    {
+      "specifier": "./useFileViewer-B-2ewnr3.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "os",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/useFileViewer-B-2ewnr3.js"
+    },
+    {
+      "specifier": "./formatFileSize-Cwk2MLba.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "as",
+          "imported": "f"
+        }
+      ],
+      "resolved": "assets/vendor.d/formatFileSize-Cwk2MLba.js"
+    },
+    {
+      "specifier": "./largeFile-DlThjw63.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Re",
+          "imported": "c"
+        },
+        {
+          "local": "rs",
+          "imported": "d"
+        },
+        {
+          "local": "cs",
+          "imported": "C"
+        },
+        {
+          "local": "is",
+          "imported": "r"
+        }
+      ],
+      "resolved": "assets/vendor.d/largeFile-DlThjw63.js"
+    },
+    {
+      "specifier": "./profileApi-Btafs-pM.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "jt",
+          "imported": "p"
+        }
+      ],
+      "resolved": "assets/vendor.d/profileApi-Btafs-pM.js"
+    },
+    {
+      "specifier": "./ChatRoomView-DTjnT2W1.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ls",
+          "imported": "c"
+        },
+        {
+          "local": "us",
+          "imported": "p"
+        },
+        {
+          "local": "hs",
+          "imported": "a"
+        },
+        {
+          "local": "ds",
+          "imported": "d"
+        }
+      ],
+      "resolved": "assets/vendor.d/ChatRoomView-DTjnT2W1.js"
+    },
+    {
+      "specifier": "./profileEcho-q2FaD_03.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Bt",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/profileEcho-q2FaD_03.js"
+    },
+    {
+      "specifier": "./PickMenuDialog-BtpyEh4Z.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "yt",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/PickMenuDialog-BtpyEh4Z.js"
+    },
+    {
+      "specifier": "./EmployeeFormDialog-BHKK47Dg.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ps",
+          "imported": "u"
+        },
+        {
+          "local": "fs",
+          "imported": "b"
+        }
+      ],
+      "resolved": "assets/vendor.d/EmployeeFormDialog-BHKK47Dg.js"
+    },
+    {
+      "specifier": "./employeeApi-CdGzOYcj.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "xs",
+          "imported": "e"
+        }
+      ],
+      "resolved": "assets/vendor.d/employeeApi-CdGzOYcj.js"
+    },
+    {
+      "specifier": "./WorkspacesOutlined-DwFzV-9Z.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ms",
+          "imported": "W"
+        }
+      ],
+      "resolved": "assets/vendor.d/WorkspacesOutlined-DwFzV-9Z.js"
+    },
+    {
+      "specifier": "./PhoneOutlined-Bjc_e42S.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "gs",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/PhoneOutlined-Bjc_e42S.js"
+    },
+    {
+      "specifier": "./videoMeetingApi-BCL1yHsp.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "bs",
+          "imported": "videoMeetingApi"
+        }
+      ],
+      "resolved": "assets/vendor.d/videoMeetingApi-BCL1yHsp.js"
+    },
+    {
+      "specifier": "./callStore-DH1_RYeP.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "St",
+          "imported": "g"
+        },
+        {
+          "local": "js",
+          "imported": "p"
+        },
+        {
+          "local": "ys",
+          "imported": "j"
+        },
+        {
+          "local": "Ss",
+          "imported": "h"
+        }
+      ],
+      "resolved": "assets/vendor.d/callStore-DH1_RYeP.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "Oo",
+      "exported": "C"
+    },
+    {
+      "local": "vs",
+      "exported": "N"
+    },
+    {
+      "local": "Gt",
+      "exported": "R"
+    },
+    {
+      "local": "Eo",
+      "exported": "a"
+    },
+    {
+      "local": "ks",
+      "exported": "b"
+    },
+    {
+      "local": "eo",
+      "exported": "c"
+    },
+    {
+      "local": "Us",
+      "exported": "d"
+    },
+    {
+      "local": "It",
+      "exported": "e"
+    },
+    {
+      "local": "Bs",
+      "exported": "f"
+    },
+    {
+      "local": "Ao",
+      "exported": "g"
+    },
+    {
+      "local": "zo",
+      "exported": "h"
+    },
+    {
+      "local": "Po",
+      "exported": "i"
+    },
+    {
+      "local": "Rs",
+      "exported": "j"
+    },
+    {
+      "local": "To",
+      "exported": "p"
+    },
+    {
+      "local": "ws",
+      "exported": "r"
+    },
+    {
+      "local": "to",
+      "exported": "u"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "Xe",
+      "keys": [
+        "src",
+        "size",
+        "sx"
+      ]
+    },
+    {
+      "function": "kt",
+      "keys": [
+        "faces",
+        "size",
+        "each",
+        "spots"
+      ]
+    },
+    {
+      "function": "Gt",
+      "keys": [
+        "faces",
+        "names",
+        "size"
+      ]
+    },
+    {
+      "function": "_s",
+      "keys": [
+        "faces",
+        "size"
+      ]
+    },
+    {
+      "function": "Rs",
+      "keys": [
+        "open",
+        "onClose",
+        "excludeAccountSeqs",
+        "onPick",
+        "title",
+        "confirmLabel"
+      ]
+    },
+    {
+      "function": "qs",
+      "keys": [
+        "room",
+        "myAccountSeq",
+        "onOpened"
+      ]
+    },
+    {
+      "function": "Ut",
+      "keys": [
+        "room",
+        "myName",
+        "myAvatar",
+        "faceSize"
+      ]
+    },
+    {
+      "function": "Po",
+      "keys": [
+        "open",
+        "onClose",
+        "room",
+        "myName",
+        "myAvatar"
+      ]
+    },
+    {
+      "function": "Ds",
+      "keys": [
+        "open",
+        "roomSeq",
+        "photos",
+        "onClose",
+        "onOpenPhoto"
+      ]
+    },
+    {
+      "function": "ae",
+      "keys": [
+        "children"
+      ]
+    },
+    {
+      "function": "Rt",
+      "keys": [
+        "arrows",
+        "children"
+      ]
+    },
+    {
+      "function": "Be",
+      "keys": [
+        "icon",
+        "color",
+        "label",
+        "count",
+        "action"
+      ]
+    },
+    {
+      "function": "Hs",
+      "keys": [
+        "fullScreen",
+        "children"
+      ]
+    },
+    {
+      "function": "Bs",
+      "keys": [
+        "open",
+        "onClose",
+        "fullScreen",
+        "onLeft",
+        "room",
+        "messages",
+        "myAccountSeq",
+        "myName",
+        "myAvatar"
+      ]
+    },
+    {
+      "function": "$s",
+      "keys": [
+        "value",
+        "min",
+        "max",
+        "step",
+        "onApply"
+      ]
+    },
+    {
+      "function": "It",
+      "keys": [
+        "roomSeq",
+        "title",
+        "memberCount",
+        "onBack",
+        "onOpenDrawer",
+        "extraActions",
+        "leading",
+        "height",
+        "rootProps"
+      ]
+    },
+    {
+      "function": "Eo",
+      "keys": [
+        "open",
+        "roomSeq",
+        "onClose",
+        "windowed"
+      ]
+    },
+    {
+      "function": "so",
+      "keys": [
+        "member",
+        "size",
+        "avatarOverride"
+      ]
+    },
+    {
+      "function": "Oo",
+      "keys": [
+        "fullWidth",
+        "roomy",
+        "onOpenRoom",
+        "onMemberPreview"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "CalendarSidebarPanel",
+    "ChatPage",
+    "ChatRoomListPanel",
+    "Layout",
+    "MobileDashboardLayout",
+    "PostComposerHost",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog"
+  ],
+  "service": "채팅",
+  "purpose": "참여자 패널",
+  "reuseGrade": "C",
+  "integration": "참여자 API·초대 권한 연결",
+  "exportedParameters": [
+    {
+      "export": "C",
+      "compiledLocal": "Oo",
+      "keys": [
+        "fullWidth",
+        "roomy",
+        "onOpenRoom",
+        "onMemberPreview"
+      ]
+    },
+    {
+      "export": "R",
+      "compiledLocal": "Gt",
+      "keys": [
+        "faces",
+        "names",
+        "size"
+      ]
+    },
+    {
+      "export": "a",
+      "compiledLocal": "Eo",
+      "keys": [
+        "open",
+        "roomSeq",
+        "onClose",
+        "windowed"
+      ]
+    },
+    {
+      "export": "e",
+      "compiledLocal": "It",
+      "keys": [
+        "roomSeq",
+        "title",
+        "memberCount",
+        "onBack",
+        "onOpenDrawer",
+        "extraActions",
+        "leading",
+        "height",
+        "rootProps"
+      ]
+    },
+    {
+      "export": "f",
+      "compiledLocal": "Bs",
+      "keys": [
+        "open",
+        "onClose",
+        "fullScreen",
+        "onLeft",
+        "room",
+        "messages",
+        "myAccountSeq",
+        "myName",
+        "myAvatar"
+      ]
+    },
+    {
+      "export": "i",
+      "compiledLocal": "Po",
+      "keys": [
+        "open",
+        "onClose",
+        "room",
+        "myName",
+        "myAvatar"
+      ]
+    },
+    {
+      "export": "j",
+      "compiledLocal": "Rs",
+      "keys": [
+        "open",
+        "onClose",
+        "excludeAccountSeqs",
+        "onPick",
+        "title",
+        "confirmLabel"
+      ]
+    }
+  ]
+}

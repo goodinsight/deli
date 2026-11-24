@@ -1,0 +1,37 @@
+{
+  "assets": [
+    {
+      "contentType": "",
+      "id": "f14c2338d32a9bd0",
+      "kind": "stylesheet",
+      "name": "main-BARtwNPI.css",
+      "path": "C:\\Users\\MS\\AppData\\Local\\Temp/browser-use/assets/fc0233eb-46d0-4ac8-a8ce-77a1ceb4f592/f14c2338d32a9bd0.css",
+      "url": "https://work-test.elimsafety.com/css.d/main-BARtwNPI.css"
+    },
+    {
+      "contentType": "font/woff2",
+      "id": "15f857ebe290a7e0",
+      "kind": "font",
+      "name": "noto-sans-kr-latin-400-normal-CHjycKhk.woff2",
+      "path": "C:\\Users\\MS\\AppData\\Local\\Temp/browser-use/assets/fc0233eb-46d0-4ac8-a8ce-77a1ceb4f592/15f857ebe290a7e0.woff2",
+      "url": "https://work-test.elimsafety.com/fonts/noto-sans-kr-latin-400-normal-CHjycKhk.woff2"
+    },
+    {
+      "contentType": "",
+      "id": "360287727bf08159",
+      "kind": "stylesheet",
+      "name": "printDocChrome-BUGcyOM6.css",
+      "path": "C:\\Users\\MS\\AppData\\Local\\Temp/browser-use/assets/fc0233eb-46d0-4ac8-a8ce-77a1ceb4f592/360287727bf08159.css",
+      "url": "https://work-test.elimsafety.com/css.d/printDocChrome-BUGcyOM6.css"
+    }
+  ],
+  "directoryPath": "C:\\Users\\MS\\AppData\\Local\\Temp/browser-use/assets/fc0233eb-46d0-4ac8-a8ce-77a1ceb4f592",
+  "failures": [],
+  "manifestPath": "C:\\Users\\MS\\AppData\\Local\\Temp/browser-use/assets/fc0233eb-46d0-4ac8-a8ce-77a1ceb4f592/manifest.json",
+  "summary": {
+    "downloadedCount": 3,
+    "elapsedMs": 86397.0038999999,
+    "failedCount": 0,
+    "requestedCount": 3
+  }
+}

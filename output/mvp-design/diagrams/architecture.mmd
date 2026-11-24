@@ -1,0 +1,20 @@
+flowchart TB
+  Browser[12개 서비스 UI] --> Web[Next.js 웹 + 세션 BFF]
+  Web --> API[NestJS 업무 API / 모듈형 모놀리스]
+  OIDC[OIDC 제공자] --> Web
+  subgraph Domains[도메인 모듈]
+    CRM[CRM / Party / Facility]
+    Trade[Trade / Quote / Contract]
+    Work[Work / Meetings]
+    Schedule[Scheduling / Resource]
+    People[People / Attendance]
+    Approval[Approval]
+    Finance[Finance]
+    Comm[Communication / Mail / Chat]
+    Content[Content / File / Document]
+  end
+  API --> Domains
+  Domains --> DB[(PostgreSQL / tenant / audit / outbox)]
+  Content --> Store[(Private object storage)]
+  DB --> Worker[Worker / retry / PDF / sync / notification]
+  Worker --> External[메일 제공자 1종 / 외부 어댑터]

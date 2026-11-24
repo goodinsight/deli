@@ -1,0 +1,74 @@
+[
+  {
+    "name": "react / react-dom",
+    "version": "19.2.4",
+    "status": "확인",
+    "file": "formatted/vendor.d/react-CjxcGQav.js",
+    "line": 625,
+    "evidence": "version = \"19.2.4\"",
+    "note": "React 렌더링 런타임"
+  },
+  {
+    "name": "react-router 계열",
+    "version": "7.17.0",
+    "status": "확인",
+    "file": "formatted/vendor.d/react-CjxcGQav.js",
+    "line": 10621,
+    "evidence": "__reactRouterVersion = \"7.17.0\"",
+    "note": "라우팅; react-router-dom 참조 문자열도 존재"
+  },
+  {
+    "name": "@mui/material",
+    "version": "버전 미확인",
+    "status": "확인",
+    "file": "formatted/js.d/main-Cm9wS5wt.js",
+    "line": 5055,
+    "evidence": "from '@mui/material/styles'",
+    "note": "MUI 클래스·컴포넌트 구현 확인"
+  },
+  {
+    "name": "Emotion 계열",
+    "version": "버전 미확인",
+    "status": "확인",
+    "file": "formatted/js.d/main-Cm9wS5wt.js",
+    "line": 1629,
+    "evidence": "data-emotion",
+    "note": "스타일 삽입 코드 및 실제 CSSOM. 정확한 설치 패키지 목록 미확인"
+  },
+  {
+    "name": "styled-components",
+    "version": "6.4.1",
+    "status": "확인",
+    "file": "formatted/js.d/main-Cm9wS5wt.js",
+    "line": 81436,
+    "evidence": "Ov = \"6.4.1\"",
+    "note": "data-styled-version 및 번들 버전 상수"
+  },
+  {
+    "name": "i18next / react-i18next",
+    "version": "버전 미확인",
+    "status": "확인",
+    "file": "formatted/js.d/main-Cm9wS5wt.js",
+    "line": 54785,
+    "evidence": "react-i18next::",
+    "note": "한국어·영어 번역 청크 포함"
+  },
+  {
+    "name": "Vite",
+    "version": "버전 미확인",
+    "status": "빌드 흔적 확인",
+    "file": "formatted/js.d/main-Cm9wS5wt.js",
+    "line": 1,
+    "evidence": "__vite__mapDeps",
+    "note": "빌드 도구 흔적; 원본 설정 파일 미확보"
+  },
+  {
+    "name": "ehfuse 에디터",
+    "version": "패키지 이름·버전 미확인",
+    "status": "내부 모듈 흔적",
+    "file": "formatted/js.d/main-Cm9wS5wt.js",
+    "line": 25051,
+    "evidence": "ehfuse-editor",
+    "note": "클래스 및 구현 코드 확인. npm 패키지로 단정하지 않음"
+  }
+]

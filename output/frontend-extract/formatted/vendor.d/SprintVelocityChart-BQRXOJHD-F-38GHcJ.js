@@ -1,0 +1,130 @@
+import { rQ as d, pO as n, rR as x, B as l, rS as f, fQ as C, rT as j, rU as g, rV as B, rW as y, rX as k, rY as v } from "../js.d/main-Cm9wS5wt.js";
+import { j as t } from "./react-CjxcGQav.js";
+import { R as A, C as $, X as S, Y as D, T as R } from "./CartesianChart-Cxj4zTfW.js";
+import { B as b, a as G, C as _ } from "./BarChart-3N7r9fM3.js";
+import { R as w } from "./ReferenceLine-C5Het1wy.js";
+import "./stylis-DdLD6a3t.js";
+import "./d3-BkRUnfR7.js";
+import "./reselect-DokMjEPX.js";
+import "./tiny-invariant-CopsF_GD.js";
+import "./ErrorBarContext-D-uFP9dS.js";
+import "./graphicalItemSelectors-DFj0YMxL.js";
+function q(p, c) {
+  let r = c.filter(e => e.sprint_seq === p.seq && !e.archived && e.completed);
+  return {
+    points: r.reduce((e, a) => e + (a.story_points ?? 0), 0),
+    count: r.length
+  };
+}
+function E({
+  sprints: p,
+  tasks: c,
+  height: r = 200
+}) {
+  d();
+  let e = [...p].sort((s, i) => `${s.start_date}|${s.seq}`.localeCompare(`${i.start_date}|${i.seq}`)).map(s => ({
+      sprint: s,
+      ...q(s, c)
+    })),
+    a = e.some(s => s.points > 0),
+    u = a ? "SP" : n("chart.unitCount"),
+    h = e.filter(s => s.sprint.status === "closed").map(s => a ? s.points : s.count),
+    o = h.length > 0 ? Math.round(h.reduce((s, i) => s + i, 0) / h.length * 10) / 10 : null,
+    m = e.map(s => ({
+      목표: s.sprint.status !== "closed" ? n("chart.goalInProgress", {
+        name: s.sprint.name
+      }) : s.sprint.name,
+      완료: a ? s.points : s.count,
+      closed: s.sprint.status === "closed"
+    }));
+  return e.length === 0 ? t.jsx(x, {
+    text: n("chart.noGoals"),
+    height: r
+  }) : t.jsxs(l, {
+    sx: v(r),
+    children: [t.jsxs(l, {
+      sx: {
+        flexShrink: 0,
+        mb: 1,
+        display: "flex",
+        justifyContent: "space-between",
+        flexWrap: "wrap",
+        gap: 1,
+        fontSize: 14,
+        color: "#000"
+      },
+      children: [t.jsx("span", {
+        children: n(a ? "chart.donePointsByGoal" : "chart.doneCountByGoal")
+      }), o !== null ? t.jsx("span", {
+        children: f("chart.closedAverage", {
+          value: t.jsx(l, {
+            component: "span",
+            sx: {
+              color: "#2f80ed",
+              fontWeight: 700
+            },
+            children: o
+          })
+        }, {
+          unit: u
+        })
+      }) : null]
+    }), t.jsx(l, {
+      sx: k(r),
+      children: t.jsx(A, {
+        width: "100%",
+        height: "100%",
+        children: t.jsxs(b, {
+          data: m,
+          margin: {
+            top: 8,
+            right: 12,
+            left: 0,
+            bottom: 0
+          },
+          barCategoryGap: "28%",
+          children: [t.jsx($, {
+            strokeDasharray: "3 3",
+            stroke: C
+          }), t.jsx(S, {
+            dataKey: "목표",
+            tick: {
+              fontSize: 13
+            },
+            tickMargin: 6,
+            interval: 0
+          }), t.jsx(D, {
+            tick: {
+              fontSize: 13
+            },
+            width: 40,
+            allowDecimals: !1
+          }), t.jsx(R, {
+            ...j,
+            formatter: s => `${Number(s ?? 0)}${u}`
+          }), o !== null ? t.jsx(w, {
+            y: o,
+            stroke: g,
+            strokeDasharray: "6 5",
+            label: {
+              value: n("chart.averageValue", {
+                value: o,
+                unit: u
+              }),
+              position: "right",
+              fontSize: 13
+            }
+          }) : null, t.jsx(G, {
+            dataKey: "완료",
+            name: n("chart.seriesDone"),
+            radius: [4, 4, 0, 0],
+            children: m.map(s => t.jsx(_, {
+              fill: s.closed ? B : y
+            }, s.목표))
+          })]
+        })
+      })
+    })]
+  });
+}
+export { E as SprintVelocityChart };

@@ -1,0 +1,20 @@
+import { jJ as r, bT as o } from "../js.d/main-Cm9wS5wt.js";
+const a = ["exe", "scr", "com", "pif", "bat", "cmd", "msi", "msp", "msc", "vbs", "vbe", "js", "jse", "wsf", "wsh", "ws", "ps1", "hta", "cpl", "lnk", "reg", "jar"],
+  l = new Set(a);
+function c(t) {
+  const s = String(t ?? "").trim().replace(/[.\s]+$/, "").toLowerCase(),
+    e = s.lastIndexOf(".");
+  if (e < 0) return "";
+  const n = s.slice(e + 1);
+  return l.has(n) ? n : "";
+}
+function i(t) {
+  const s = t.filter(e => c(e.name));
+  return s.length === 0 ? t : (r({
+    title: o("components.fileTypeNotAllowed"),
+    message: o("components.executableBlocked", {
+      names: s.map(e => e.name).join(", ")
+    })
+  }), t.filter(e => !c(e.name)));
+}
+export { i as d };

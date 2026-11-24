@@ -1,0 +1,1001 @@
+import { j as e, r as h, k as G, l as Q } from "./react-CjxcGQav.js";
+import { bv as P, kD as J, B as l, L as m, s as j, cc as R, k_ as N, b0 as O, bQ as q, i2 as Z, c_ as V, K as B, al as U, cn as ee, bO as X, bT as C, b as $, as as E, D as te, gL as ne, oq as A, df as se, a1 as oe } from "../js.d/main-Cm9wS5wt.js";
+import { T as re } from "./tableScrollbars-C9bhlJjO.js";
+import { s as ie, p as I, S as ae } from "./safeMarkdown-sAzUuXkU.js";
+import { P as le, a as ce } from "./PlayArrowRounded-emG8NLik.js";
+import { M as de } from "./MeetingRecordingPlayer-vear-u6W.js";
+import "./stylis-DdLD6a3t.js";
+import "./meetingsApi-CCkjq69B.js";
+import "./nativeRecordingSync-CMpETFg9.js";
+import "./pendingRecordings-DpKJ8Y2R.js";
+const me = [{
+    key: "agenda",
+    titleKey: "meetings.agenda"
+  }, {
+    key: "content",
+    titleKey: "meetings.content"
+  }, {
+    key: "decisions",
+    titleKey: "meetings.decisions"
+  }, {
+    key: "follow_ups",
+    titleKey: "meetings.followUps"
+  }],
+  xe = {
+    fontSize: 15,
+    fontWeight: 700,
+    color: j[700],
+    mb: 1
+  },
+  M = {
+    fontSize: 15,
+    lineHeight: 1.7,
+    whiteSpace: "pre-wrap",
+    overflowWrap: "anywhere",
+    userSelect: "text"
+  },
+  ge = {
+    fontSize: 15,
+    lineHeight: 1.7,
+    overflowWrap: "anywhere",
+    userSelect: "text",
+    "& > :first-of-type": {
+      mt: 0
+    },
+    "& > :last-child": {
+      mb: 0
+    },
+    "& p, & ul, & ol, & blockquote, & pre": {
+      my: 1
+    },
+    "& ul, & ol": {
+      pl: 3
+    },
+    "& a": {
+      color: "primary.main"
+    },
+    "& blockquote": {
+      borderLeft: "3px solid #cbd5e1",
+      pl: 1.5,
+      ml: 0,
+      color: "text.secondary"
+    }
+  };
+function T({
+  title: n,
+  children: s
+}) {
+  return e.jsxs(l, {
+    component: "section",
+    sx: {
+      pt: 2.5,
+      borderTop: `1px solid ${j[200]}`
+    },
+    children: [e.jsx(m, {
+      component: "h2",
+      sx: xe,
+      children: n
+    }), s]
+  });
+}
+const he = /^\[(?:(\d{1,2}):)?(\d{1,3}):(\d{2})\]\s*/,
+  ue = /^(화자 ?\d{1,2})\s*[:：]\s*(.*)$/,
+  F = [{
+    bg: $[100],
+    fg: $[700]
+  }, {
+    bg: E.amber100,
+    fg: E.amber800
+  }, {
+    bg: E.emerald50,
+    fg: E.emerald700
+  }, {
+    bg: E.sky100,
+    fg: E.sky700
+  }, {
+    bg: E.rose50,
+    fg: E.rose700
+  }],
+  fe = n => F[((Number(n.replace(/\D/g, "")) || 1) - 1) % F.length],
+  H = n => {
+    const s = Math.floor(n / 3600),
+      r = Math.floor(n % 3600 / 60),
+      o = n % 60,
+      i = c => String(c).padStart(2, "0");
+    return s ? `${s}:${i(r)}:${i(o)}` : `${i(r)}:${i(o)}`;
+  };
+function pe({
+  transcript: n,
+  names: s,
+  playback: r,
+  onPlayFrom: o,
+  onPause: i
+}) {
+  const c = P(),
+    f = n.split(`
+`).map(a => a.trim()).filter(Boolean).map(a => {
+      const x = he.exec(a),
+        p = x ? Number(x[1] ?? 0) * 3600 + Number(x[2]) * 60 + Number(x[3]) : -1,
+        k = x ? a.slice(x[0].length) : a,
+        w = ue.exec(k);
+      return {
+        at: p,
+        speaker: w?.[1] ?? "",
+        text: w ? w[2] : k
+      };
+    });
+  let t = -1;
+  return r.playing && f.forEach(({
+    at: a
+  }, x) => a >= 0 && a <= r.time && (t = x)), e.jsx(l, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 1,
+      userSelect: "text"
+    },
+    children: f.map((a, x) => {
+      const p = x === t,
+        k = a.speaker ? fe(a.speaker) : null;
+      return e.jsxs(l, {
+        sx: {
+          display: "flex",
+          alignItems: "flex-start",
+          gap: 1
+        },
+        children: [a.at >= 0 ? e.jsx(q, {
+          size: "small",
+          startIcon: p ? e.jsx(le, {}) : e.jsx(ce, {}),
+          onClick: () => p ? i() : o(a.at),
+          "aria-label": p ? c("meetings.stop") : c("meetings.playFrom", {
+            time: H(a.at)
+          }),
+          sx: {
+            fontSize: 14,
+            minWidth: 92,
+            justifyContent: "flex-start",
+            px: 1,
+            flexShrink: 0,
+            color: p ? $[700] : j[600]
+          },
+          children: H(a.at)
+        }) : null, e.jsxs(m, {
+          sx: {
+            ...M,
+            flex: 1,
+            minWidth: 0,
+            bgcolor: p ? $[50] : "transparent",
+            borderRadius: 1
+          },
+          children: [k ? e.jsx(R, {
+            size: "small",
+            label: s[a.speaker] || a.speaker,
+            sx: {
+              mr: .75,
+              fontSize: 14,
+              bgcolor: k.bg,
+              color: k.fg,
+              height: 24
+            }
+          }) : null, a.text]
+        })]
+      }, x);
+    })
+  });
+}
+function je({
+  token: n,
+  keyValue: s,
+  recording: r,
+  allowDownload: o
+}) {
+  const i = P(),
+    [c, f] = h.useState(!1),
+    [t, a] = h.useState(!1),
+    [x, p] = h.useState(null),
+    [k, w] = h.useState(null),
+    [u, S] = h.useState({
+      playing: !1,
+      time: 0
+    }),
+    W = () => {
+      const z = !c;
+      f(z), z && !x && (a(!0), I.transcript(n, r.seq, s).then(_ => p({
+        text: _.transcript,
+        names: _.speaker_names
+      })).catch(_ => X(_ instanceof Error ? _.message : C("meetings.transcriptLoadFailed"))).finally(() => a(!1)));
+    };
+  return e.jsxs(l, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 1
+    },
+    children: [e.jsx(de, {
+      src: I.recordingUrl(n, r.seq, s),
+      downloadSrc: I.recordingUrl(n, r.seq, s, !0),
+      name: r.name || "recording",
+      seconds: r.seconds,
+      allowDownload: o,
+      seekRequest: k,
+      onPlaybackChange: (z, _) => {
+        const g = Math.floor(_);
+        S(y => y.playing !== z || y.time !== g ? {
+          playing: z,
+          time: g
+        } : y);
+      }
+    }), r.has_transcript ? e.jsx(l, {
+      children: e.jsx(q, {
+        size: "small",
+        startIcon: c ? e.jsx(Z, {}) : e.jsx(V, {}),
+        onClick: W,
+        sx: {
+          fontSize: 14
+        },
+        children: i("meetings.transcript")
+      })
+    }) : null, c ? t ? e.jsx(l, {
+      sx: {
+        display: "flex",
+        justifyContent: "center",
+        py: 1
+      },
+      children: e.jsx(B, {
+        size: 22
+      })
+    }) : x?.text ? e.jsx(pe, {
+      transcript: x.text,
+      names: x.names,
+      playback: u,
+      onPlayFrom: z => w({
+        at: z,
+        id: Date.now()
+      }),
+      onPause: () => w({
+        at: 0,
+        id: Date.now(),
+        pause: !0
+      })
+    }) : e.jsx(m, {
+      sx: {
+        fontSize: 14,
+        color: "text.secondary"
+      },
+      children: i("meetings.noTranscript")
+    }) : null]
+  });
+}
+function Se({
+  token: n,
+  keyValue: s,
+  meetingSeq: r,
+  allowComment: o
+}) {
+  const i = P(),
+    [c, f] = h.useState(null),
+    [t, a] = h.useState(() => {
+      try {
+        return window.localStorage.getItem("meeting-share-guest-name") ?? "";
+      } catch {
+        return "";
+      }
+    }),
+    [x, p] = h.useState(""),
+    [k, w] = h.useState(!1),
+    [u, S] = h.useState(!1);
+  h.useEffect(() => {
+    f(null), I.comments(n, r, s).then(f).catch(() => f([]));
+  }, [n, r, s]);
+  const W = t.trim().length > 0,
+    z = x.trim().length > 0,
+    _ = async () => {
+      if (w(!0), !(!W || !z || u)) {
+        S(!0);
+        try {
+          const g = await I.addComment(n, {
+            meeting_seq: r,
+            name: t.trim(),
+            body: x.trim()
+          }, s);
+          f(y => [...(y ?? []), g]), p(""), w(!1);
+          try {
+            window.localStorage.setItem("meeting-share-guest-name", t.trim());
+          } catch {}
+        } catch (g) {
+          X(g instanceof Error ? g.message : C("meetings.commentFailed"));
+        } finally {
+          S(!1);
+        }
+      }
+    };
+  return e.jsxs(T, {
+    title: c ? i("meetings.commentsCount", {
+      count: c.length
+    }) : i("meetings.comments"),
+    children: [c === null ? e.jsx(B, {
+      size: 22
+    }) : c.length ? e.jsx(l, {
+      component: "ul",
+      sx: {
+        listStyle: "none",
+        m: 0,
+        p: 0,
+        display: "flex",
+        flexDirection: "column",
+        gap: 1.5,
+        mb: o ? 2.5 : 0
+      },
+      children: c.map(g => e.jsxs(l, {
+        component: "li",
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: .25
+        },
+        children: [e.jsxs(l, {
+          sx: {
+            display: "flex",
+            alignItems: "baseline",
+            gap: 1
+          },
+          children: [e.jsx(m, {
+            sx: {
+              fontSize: 15,
+              fontWeight: 600
+            },
+            children: g.guest_name
+          }), e.jsx(m, {
+            sx: {
+              fontSize: 14,
+              color: "text.secondary"
+            },
+            children: g.created_time.slice(0, 16)
+          })]
+        }), e.jsx(m, {
+          sx: M,
+          children: g.body
+        })]
+      }, g.seq))
+    }) : e.jsx(m, {
+      sx: {
+        fontSize: 14,
+        color: "text.secondary",
+        mb: o ? 2 : 0
+      },
+      children: i("meetings.noCommentsYet")
+    }), o ? e.jsxs(l, {
+      sx: {
+        display: "flex",
+        flexDirection: "column",
+        gap: 1.5
+      },
+      children: [e.jsx(U, {
+        label: i("meetings.name"),
+        value: t,
+        onChange: g => a(g.target.value),
+        fullWidth: !0,
+        error: k && !W,
+        slotProps: {
+          htmlInput: {
+            maxLength: 40
+          }
+        },
+        disabled: u,
+        sx: {
+          maxWidth: 320
+        }
+      }), e.jsx(ee, {
+        label: i("meetings.comment"),
+        value: x,
+        onChange: g => p(g.target.value),
+        fullWidth: !0,
+        minRows: 3,
+        slotProps: {
+          htmlInput: {
+            maxLength: 2e3
+          }
+        },
+        disabled: u
+      }), e.jsxs(l, {
+        sx: {
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          gap: 2,
+          flexWrap: "wrap"
+        },
+        children: [e.jsx(m, {
+          sx: {
+            fontSize: 14,
+            color: "text.secondary",
+            wordBreak: "keep-all"
+          },
+          children: i("meetings.commentNotice")
+        }), e.jsx(q, {
+          variant: "contained",
+          onClick: () => {
+            _();
+          },
+          disabled: u,
+          sx: {
+            minWidth: 96
+          },
+          children: u ? e.jsx(B, {
+            size: 20,
+            color: "inherit"
+          }) : i("meetings.postComment")
+        })]
+      })]
+    }) : null]
+  });
+}
+function K({
+  token: n,
+  keyValue: s,
+  head: r,
+  meeting: o
+}) {
+  const i = P(),
+    c = J(o.attendees),
+    f = [o.meeting_date, o.meeting_time].filter(Boolean).join(" ");
+  return e.jsxs(l, {
+    component: "article",
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 2.5
+    },
+    children: [e.jsxs(l, {
+      children: [e.jsx(m, {
+        component: "h1",
+        sx: {
+          fontSize: {
+            xs: "1.375rem",
+            sm: "1.625rem"
+          },
+          fontWeight: 700,
+          lineHeight: 1.3,
+          wordBreak: "keep-all"
+        },
+        children: o.title
+      }), e.jsxs(m, {
+        sx: {
+          fontSize: 15,
+          color: j[600],
+          mt: .75
+        },
+        children: [[f, o.place].filter(Boolean).join(" · "), o.author_name ? ` · ${i("meetings.createdBy", {
+          who: o.author_name
+        })}` : ""]
+      }), c.length ? e.jsx(l, {
+        sx: {
+          display: "flex",
+          flexWrap: "wrap",
+          gap: .75,
+          mt: 1.25
+        },
+        children: c.map(t => e.jsx(R, {
+          size: "small",
+          label: t,
+          variant: "outlined",
+          sx: {
+            fontSize: 14
+          }
+        }, t))
+      }) : null]
+    }), me.filter(t => o[t.key].trim()).map(t => e.jsx(T, {
+      title: i(t.titleKey),
+      children: t.key === "content" || t.key === "decisions" ? e.jsx(l, {
+        sx: ge,
+        dangerouslySetInnerHTML: {
+          __html: ie(o[t.key])
+        }
+      }) : e.jsx(m, {
+        sx: M,
+        children: o[t.key]
+      })
+    }, t.key)), o.attachments.length ? e.jsxs(T, {
+      title: i("meetings.attachments"),
+      children: [e.jsx(l, {
+        sx: {
+          display: "flex",
+          flexWrap: "wrap",
+          gap: 1
+        },
+        children: o.attachments.map(t => r.allow_download ? e.jsx(R, {
+          component: "a",
+          href: I.fileUrl(n, t.uuid, s),
+          clickable: !0,
+          icon: e.jsx(O, {
+            sx: {
+              fontSize: 18
+            }
+          }),
+          label: `${t.name} (${N(t.size)})`,
+          variant: "outlined",
+          sx: {
+            fontSize: 14,
+            maxWidth: "100%"
+          }
+        }, t.uuid) : e.jsx(R, {
+          icon: e.jsx(O, {
+            sx: {
+              fontSize: 18
+            }
+          }),
+          label: `${t.name} (${N(t.size)})`,
+          variant: "outlined",
+          sx: {
+            fontSize: 14,
+            maxWidth: "100%"
+          }
+        }, t.uuid))
+      }), r.allow_download ? null : e.jsx(m, {
+        sx: {
+          fontSize: 14,
+          color: "text.secondary",
+          mt: 1
+        },
+        children: i("meetings.noAttachDownload")
+      })]
+    }) : null, o.recordings.length ? e.jsx(T, {
+      title: i("meetings.recordingsCount", {
+        count: o.recordings.length
+      }),
+      children: e.jsx(l, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: 2
+        },
+        children: o.recordings.map(t => e.jsx(je, {
+          token: n,
+          keyValue: s,
+          recording: t,
+          allowDownload: r.allow_download
+        }, t.seq))
+      })
+    }) : null, e.jsx(Se, {
+      token: n,
+      keyValue: s,
+      meetingSeq: o.seq,
+      allowComment: r.allow_comment
+    })]
+  });
+}
+function L({
+  head: n,
+  children: s
+}) {
+  const r = P();
+  return e.jsxs(l, {
+    sx: {
+      minHeight: "100vh",
+      bgcolor: j[50],
+      color: j[900],
+      display: "flex",
+      flexDirection: "column"
+    },
+    children: [e.jsx(l, {
+      component: "header",
+      sx: {
+        bgcolor: "#fff",
+        borderBottom: `1px solid ${j[200]}`
+      },
+      children: e.jsxs(l, {
+        sx: {
+          maxWidth: 860,
+          mx: "auto",
+          px: 2,
+          py: 1.5,
+          display: "flex",
+          alignItems: "center",
+          gap: 1.5,
+          minHeight: 60
+        },
+        children: [n?.org_logo ? e.jsx(l, {
+          component: "img",
+          src: n.org_logo,
+          alt: "",
+          sx: {
+            height: 32,
+            maxWidth: 140,
+            objectFit: "contain"
+          }
+        }) : null, e.jsx(m, {
+          noWrap: !0,
+          sx: {
+            fontSize: 15,
+            fontWeight: 600,
+            color: j[700]
+          },
+          children: n?.org_name || r("meetings.taskham")
+        }), e.jsx(m, {
+          sx: {
+            fontSize: 14,
+            color: j[500],
+            ml: "auto",
+            flexShrink: 0
+          },
+          children: r("meetings.sharedNotes")
+        })]
+      })
+    }), e.jsx(l, {
+      component: "main",
+      sx: {
+        flex: 1,
+        width: "100%",
+        maxWidth: 860,
+        mx: "auto",
+        px: 2,
+        py: {
+          xs: 2,
+          sm: 3
+        }
+      },
+      children: e.jsx(l, {
+        sx: {
+          bgcolor: "#fff",
+          border: `1px solid ${j[200]}`,
+          borderRadius: 2,
+          p: {
+            xs: 2,
+            sm: 3.5
+          }
+        },
+        children: s
+      })
+    }), e.jsx(l, {
+      component: "footer",
+      sx: {
+        textAlign: "center",
+        py: 2.5,
+        fontSize: 14,
+        color: j[500]
+      },
+      children: r("meetings.footerShareLink")
+    })]
+  });
+}
+function v({
+  children: n
+}) {
+  return e.jsx(l, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      gap: 1.5,
+      py: 4,
+      textAlign: "center"
+    },
+    children: n
+  });
+}
+function ye({
+  head: n,
+  busy: s,
+  error: r,
+  onSubmit: o
+}) {
+  const i = P(),
+    [c, f] = h.useState("");
+  return e.jsxs(v, {
+    children: [e.jsx(oe, {
+      sx: {
+        fontSize: 40,
+        color: j[400]
+      }
+    }), e.jsx(m, {
+      sx: {
+        fontSize: "1.125rem",
+        fontWeight: 700
+      },
+      children: i("meetings.passwordProtected")
+    }), e.jsx(m, {
+      sx: {
+        fontSize: 15,
+        color: j[600],
+        wordBreak: "keep-all"
+      },
+      children: i("meetings.enterPasswordFrom", {
+        who: n.org_name || i("meetings.sharer")
+      })
+    }), e.jsxs(l, {
+      component: "form",
+      onSubmit: t => {
+        t.preventDefault(), c && !s && o(c);
+      },
+      sx: {
+        width: "100%",
+        maxWidth: 360,
+        display: "flex",
+        flexDirection: "column",
+        gap: 1.5,
+        mt: 1
+      },
+      children: [e.jsx(U, {
+        label: i("meetings.password"),
+        type: "password",
+        value: c,
+        onChange: t => f(t.target.value),
+        fullWidth: !0,
+        autoFocus: !0,
+        autoComplete: "off",
+        error: !!r,
+        disabled: s,
+        slotProps: {
+          htmlInput: {
+            maxLength: 64
+          }
+        }
+      }), r ? e.jsx(m, {
+        sx: {
+          fontSize: 14,
+          color: "error.main"
+        },
+        children: r
+      }) : null, e.jsx(q, {
+        type: "submit",
+        variant: "contained",
+        disabled: !c || s,
+        sx: {
+          height: 48,
+          fontSize: "1rem"
+        },
+        children: s ? e.jsx(B, {
+          size: 20,
+          color: "inherit"
+        }) : i("meetings.open")
+      })]
+    })]
+  });
+}
+function Le() {
+  const n = P(),
+    {
+      token: s = ""
+    } = G(),
+    [r, o] = Q(),
+    i = te(),
+    [c, f] = h.useState(""),
+    [t, a] = h.useState({
+      kind: "loading"
+    }),
+    [x, p] = h.useState(!1),
+    [k, w] = h.useState(""),
+    u = Number(r.get("m")) || 0,
+    [S, W] = h.useState({
+      seq: 0,
+      meeting: null,
+      error: ""
+    }),
+    z = d => {
+      a({
+        kind: "loading"
+      }), I.info(s, d).then(b => a({
+        kind: "ready",
+        info: b
+      })).catch(b => {
+        if (b instanceof ae && b.status === 401 && b.head) return a({
+          kind: "locked",
+          head: b.head
+        });
+        a({
+          kind: "gone",
+          message: b instanceof Error ? b.message : C("meetings.cannotOpenShare")
+        });
+      });
+    };
+  h.useEffect(() => {
+    z("");
+  }, [s]), h.useEffect(() => {
+    if (t.kind !== "ready") return;
+    const d = t.info.meeting?.title || S.meeting?.title || t.info.folder_name || C("meetings.sharedNotes");
+    document.title = `${d} — ${t.info.org_name || C("meetings.taskham")}`;
+  }, [t, S.meeting]), h.useEffect(() => {
+    if (t.kind !== "ready" || t.info.kind !== "folder" || !u) return void W({
+      seq: 0,
+      meeting: null,
+      error: ""
+    });
+    S.seq === u && (S.meeting || S.error) || (W({
+      seq: u,
+      meeting: null,
+      error: ""
+    }), I.meeting(s, u, c).then(d => W({
+      seq: u,
+      meeting: d,
+      error: ""
+    })).catch(d => W({
+      seq: u,
+      meeting: null,
+      error: d instanceof Error ? d.message : C("meetings.loadFailed")
+    })));
+  }, [t, u, s, c]);
+  const _ = d => {
+      p(!0), w(""), I.unlock(s, d).then(({
+        key: b
+      }) => {
+        f(b), z(b);
+      }).catch(b => w(b instanceof Error ? b.message : C("meetings.wrongPassword"))).finally(() => p(!1));
+    },
+    g = t.kind === "ready" ? t.info : t.kind === "locked" ? t.head : null;
+  if (t.kind === "loading") return e.jsx(L, {
+    head: null,
+    children: e.jsx(v, {
+      children: e.jsx(B, {
+        size: 28
+      })
+    })
+  });
+  if (t.kind === "gone") return e.jsx(L, {
+    head: null,
+    children: e.jsxs(v, {
+      children: [e.jsx(m, {
+        sx: {
+          fontSize: "1.125rem",
+          fontWeight: 700
+        },
+        children: n("meetings.cannotOpenLink")
+      }), e.jsx(m, {
+        sx: {
+          fontSize: 15,
+          color: j[600],
+          wordBreak: "keep-all"
+        },
+        children: n("meetings.askNewLink", {
+          reason: t.message
+        })
+      })]
+    })
+  });
+  if (t.kind === "locked") return e.jsx(L, {
+    head: g,
+    children: e.jsx(ye, {
+      head: t.head,
+      busy: x,
+      error: k,
+      onSubmit: _
+    })
+  });
+  const y = t.info;
+  if (y.kind === "meeting" && y.meeting) return e.jsx(L, {
+    head: g,
+    children: e.jsx(K, {
+      token: s,
+      keyValue: c,
+      head: y,
+      meeting: y.meeting
+    })
+  });
+  if (u) return e.jsxs(L, {
+    head: g,
+    children: [e.jsx(l, {
+      sx: {
+        mb: 2
+      },
+      children: e.jsx(q, {
+        startIcon: e.jsx(ne, {}),
+        onClick: () => o({}, {
+          replace: !1
+        }),
+        sx: {
+          fontSize: 15,
+          ml: -1
+        },
+        children: y.folder_name || n("meetings.list")
+      })
+    }), S.meeting ? e.jsx(K, {
+      token: s,
+      keyValue: c,
+      head: y,
+      meeting: S.meeting
+    }) : S.error ? e.jsx(m, {
+      sx: {
+        fontSize: 15,
+        color: "error.main"
+      },
+      children: S.error
+    }) : e.jsx(v, {
+      children: e.jsx(B, {
+        size: 28
+      })
+    })]
+  });
+  const D = y.meetings ?? [],
+    Y = [{
+      id: "meeting_date",
+      text: n("meetings.meetingDate"),
+      width: 120,
+      mobile: "sub",
+      render: d => `${d.meeting_date}${d.meeting_time ? ` ${d.meeting_time}` : ""}`
+    }, {
+      id: "title",
+      text: n("meetings.meetingTitle"),
+      primary: !0,
+      mobile: "title",
+      render: d => e.jsxs(l, {
+        sx: {
+          minWidth: 0
+        },
+        children: [e.jsx(m, {
+          noWrap: !0,
+          sx: {
+            fontSize: 15,
+            fontWeight: 600
+          },
+          children: d.title
+        }), A(d.agenda) ? e.jsx(m, {
+          noWrap: !0,
+          sx: {
+            fontSize: 14,
+            color: "text.secondary"
+          },
+          children: A(d.agenda)
+        }) : null]
+      })
+    }, {
+      id: "attendees",
+      text: n("meetings.attendees"),
+      width: 200,
+      render: d => d.attendees
+    }, {
+      id: "recordings",
+      text: n("meetings.recording"),
+      width: 72,
+      align: "center",
+      mobile: "badge",
+      render: d => d.recordings.length ? n("meetings.itemCount", {
+        count: d.recordings.length
+      }) : ""
+    }];
+  return e.jsxs(L, {
+    head: g,
+    children: [e.jsx(m, {
+      component: "h1",
+      sx: {
+        fontSize: {
+          xs: "1.375rem",
+          sm: "1.625rem"
+        },
+        fontWeight: 700,
+        lineHeight: 1.3,
+        wordBreak: "keep-all"
+      },
+      children: y.folder_name || n("meetings.meetingNotes")
+    }), e.jsx(m, {
+      sx: {
+        fontSize: 15,
+        color: j[600],
+        mt: .75,
+        mb: 2
+      },
+      children: n("meetings.folderListHint", {
+        count: D.length
+      })
+    }), D.length ? e.jsx(se, {
+      scrollbars: re,
+      variant: "notion",
+      framed: !1,
+      showPaper: !1,
+      autoHeight: !0,
+      mobile: i,
+      columns: Y,
+      data: D,
+      totalCount: D.length,
+      getRowId: d => String(d.seq),
+      onRowClick: d => o({
+        m: String(d.seq)
+      })
+    }) : e.jsx(m, {
+      sx: {
+        fontSize: 15,
+        color: "text.secondary"
+      },
+      children: n("meetings.folderEmpty")
+    })]
+  });
+}
+export { Le as default };

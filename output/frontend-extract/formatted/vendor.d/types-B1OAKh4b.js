@@ -1,0 +1,141 @@
+import { bT as r, ce as a, cf as u } from "../js.d/main-Cm9wS5wt.js";
+const E = {
+    none: "customer.dealFilterNone",
+    quote: "customer.dealFilterQuote",
+    contract: "customer.dealFilterContract"
+  },
+  f = {
+    created: "customer.createdDate",
+    consult: "customer.lastConsultDate",
+    deal: "customer.lastDealDate"
+  },
+  T = {
+    quote: "customer.docKindQuote",
+    contract: "customer.docKindContract",
+    building_register: "customer.docKindBuildingRegister",
+    facility_register: "customer.docKindFacilityRegister",
+    report: "customer.docKindReport",
+    etc: "customer.docKindEtc"
+  },
+  S = t => t === "building_register" || t === "facility_register",
+  b = "facility_no",
+  l = "@basic",
+  p = "customer.tabExtraInfo";
+function y(t) {
+  const e = [];
+  for (const s of t) s.tab_name && s.tab_name !== l && !e.includes(s.tab_name) && e.push(s.tab_name);
+  return e;
+}
+const m = [{
+    id: "phone",
+    labelKey: "customer.phone"
+  }, {
+    id: "region",
+    labelKey: "customer.region"
+  }, {
+    id: "manager_account_seq",
+    labelKey: "customer.manager"
+  }, {
+    id: "deal_count",
+    labelKey: "customer.deal"
+  }, {
+    id: "last_consult_at",
+    labelKey: "customer.lastConsult"
+  }, {
+    id: "created_time",
+    labelKey: "customer.createdDate"
+  }, {
+    id: "visit_count",
+    labelKey: "customer.visits",
+    feature: "booking"
+  }, {
+    id: "sales_total",
+    labelKey: "customer.salesTotal",
+    feature: "booking"
+  }, {
+    id: "last_visit_at",
+    labelKey: "customer.lastVisit",
+    feature: "booking"
+  }],
+  _ = t => `extra-${t}`;
+function g(t, e) {
+  const s = m.map(o => o.id),
+    c = [...s.slice(0, 3), ...t.map(_), ...s.slice(3)];
+  if (e.length === 0) return c;
+  const i = new Map(e.map((o, n) => [o, n]));
+  return c.map((o, n) => ({
+    id: o,
+    key: i.has(o) ? i.get(o) : e.length + n
+  })).sort((o, n) => o.key - n.key).map(o => o.id);
+}
+const L = {
+    text: "customer.fieldTypeText",
+    textarea: "customer.fieldTypeTextarea",
+    number: "customer.fieldTypeNumber",
+    money: "customer.fieldTypeMoney",
+    date: "customer.fieldTypeDate",
+    period: "customer.fieldTypePeriod",
+    month: "customer.fieldTypeMonth",
+    select: "customer.fieldTypeSelect",
+    multiselect: "customer.fieldTypeMultiselect",
+    bool: "customer.fieldTypeBool",
+    phone: "customer.fieldTypePhone",
+    person: "customer.fieldTypePerson"
+  },
+  C = {
+    call_in: "customer.channelCall",
+    call_out: "customer.channelCall",
+    visit: "customer.channelVisit",
+    email: "customer.channelEmail",
+    web: "customer.channelWeb",
+    kakao: "customer.channelKakao",
+    message: "customer.channelMessage",
+    etc: "customer.channelEtc"
+  },
+  K = ["call_in", "visit", "email", "web", "kakao"],
+  N = "consult",
+  U = "/dashboard/customer/consults",
+  R = {
+    open: "customer.consultStatusOpen",
+    done: "customer.consultStatusDone"
+  };
+function O(t, e, s = []) {
+  if (e == null || e === "") return "";
+  if (t.field_type === "person") return s.find(c => c.account_seq === Number(e))?.name ?? "";
+  if (t.field_type === "bool") return e === !0 ? r("customer.yes") : "";
+  if (Array.isArray(e)) return e.join(", ");
+  if (t.field_type === "number" && Number.isFinite(Number(e))) return Number(e).toLocaleString(a(u()), {
+    maximumFractionDigits: 2
+  });
+  if (t.field_type === "money" && Number.isFinite(Number(e))) return r("customer.wonAmount", {
+    amount: Number(e).toLocaleString(a(u()))
+  });
+  if (t.field_type === "month") return /^\d{4}-\d{2}$/.test(String(e)) ? `${String(e).slice(2, 4)}.${String(e).slice(5, 7)}` : String(e);
+  if (t.field_type === "period") {
+    const c = n => /^\d{4}-\d{2}-\d{2}$/.test(n) ? `${n.slice(2, 4)}.${n.slice(5, 7)}.${n.slice(8, 10)}` : n,
+      [i = "", o = ""] = String(e).split("~");
+    return `${c(i)}~${c(o)}`;
+  }
+  return String(e);
+}
+const h = "seq",
+  M = "new_phone",
+  A = "consult_for",
+  Y = "consult_name";
+function D(t) {
+  return t.result === "answered" ? t.direction === "out" ? r("customer.callOutgoing") : r("customer.callIncoming") : t.result === "missed" ? r("customer.callMissed") : t.result === "no_answer" ? r("customer.callNoAnswer") : t.result === "canceled" ? r("customer.callCanceled") : t.result === "rejected" ? r("customer.callRejected") : r("customer.call");
+}
+function I(t) {
+  if (!t) return "";
+  const e = Math.floor(t / 60),
+    s = t % 60;
+  return e ? s ? r("customer.durationMinSec", {
+    min: e,
+    sec: s
+  }) : r("customer.durationMin", {
+    min: e
+  }) : r("customer.durationSec", {
+    sec: s
+  });
+}
+export { p as C, L as F, l as a, m as b, y as c, g as d, _ as e, O as f, R as g, K as h, C as i, S as j, D as k, I as l, T as m, h as n, M as o, A as p, Y as q, b as r, E as s, f as t, N as u, U as v };

@@ -1,0 +1,701 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/ReferenceList-mhfbKusm.js",
+  "path": "assets/vendor.d/ReferenceList-mhfbKusm.js",
+  "name": "ReferenceList",
+  "kind": "ui",
+  "bytes": 58603,
+  "sha256": "bffad5f73abeb8eb09a0baef860d26ccaeb9cca78b77404f8b00d9bbe6f82a3c",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/ReferenceList-mhfbKusm.js",
+  "imports": [
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ke",
+          "imported": "c"
+        },
+        {
+          "local": "I",
+          "imported": "bM"
+        },
+        {
+          "local": "on",
+          "imported": "eY"
+        },
+        {
+          "local": "y",
+          "imported": "bT"
+        },
+        {
+          "local": "F",
+          "imported": "ds"
+        },
+        {
+          "local": "ie",
+          "imported": "bx"
+        },
+        {
+          "local": "ne",
+          "imported": "jQ"
+        },
+        {
+          "local": "an",
+          "imported": "jR"
+        },
+        {
+          "local": "sn",
+          "imported": "e"
+        },
+        {
+          "local": "ln",
+          "imported": "c8"
+        },
+        {
+          "local": "cn",
+          "imported": "jS"
+        },
+        {
+          "local": "un",
+          "imported": "ak"
+        },
+        {
+          "local": "dn",
+          "imported": "jT"
+        },
+        {
+          "local": "pn",
+          "imported": "jU"
+        },
+        {
+          "local": "mn",
+          "imported": "jV"
+        },
+        {
+          "local": "Et",
+          "imported": "jW"
+        },
+        {
+          "local": "fn",
+          "imported": "jX"
+        },
+        {
+          "local": "se",
+          "imported": "bv"
+        },
+        {
+          "local": "hn",
+          "imported": "ce"
+        },
+        {
+          "local": "gn",
+          "imported": "cf"
+        },
+        {
+          "local": "x",
+          "imported": "B"
+        },
+        {
+          "local": "M",
+          "imported": "L"
+        },
+        {
+          "local": "$e",
+          "imported": "D"
+        },
+        {
+          "local": "fe",
+          "imported": "bH"
+        },
+        {
+          "local": "oe",
+          "imported": "bI"
+        },
+        {
+          "local": "xn",
+          "imported": "I"
+        },
+        {
+          "local": "yn",
+          "imported": "d4"
+        },
+        {
+          "local": "st",
+          "imported": "jY"
+        },
+        {
+          "local": "bn",
+          "imported": "jZ"
+        },
+        {
+          "local": "vn",
+          "imported": "j_"
+        },
+        {
+          "local": "Sn",
+          "imported": "j$"
+        },
+        {
+          "local": "we",
+          "imported": "ca"
+        },
+        {
+          "local": "_e",
+          "imported": "k0"
+        },
+        {
+          "local": "De",
+          "imported": "cO"
+        },
+        {
+          "local": "wn",
+          "imported": "d8"
+        },
+        {
+          "local": "_n",
+          "imported": "fi"
+        },
+        {
+          "local": "Tn",
+          "imported": "b5"
+        },
+        {
+          "local": "lt",
+          "imported": "fo"
+        },
+        {
+          "local": "Te",
+          "imported": "w"
+        },
+        {
+          "local": "ct",
+          "imported": "fp"
+        },
+        {
+          "local": "Fe",
+          "imported": "d5"
+        },
+        {
+          "local": "An",
+          "imported": "k1"
+        },
+        {
+          "local": "jn",
+          "imported": "k2"
+        },
+        {
+          "local": "En",
+          "imported": "cJ"
+        },
+        {
+          "local": "ut",
+          "imported": "c4"
+        },
+        {
+          "local": "Nn",
+          "imported": "al"
+        },
+        {
+          "local": "dt",
+          "imported": "bQ"
+        },
+        {
+          "local": "Cn",
+          "imported": "iH"
+        },
+        {
+          "local": "Mn",
+          "imported": "fm"
+        },
+        {
+          "local": "In",
+          "imported": "go"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "l",
+          "imported": "j"
+        },
+        {
+          "local": "L",
+          "imported": "r"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "./FileUploadBox-crZW1mG0.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "$n",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/FileUploadBox-crZW1mG0.js"
+    },
+    {
+      "specifier": "./bootstrapController-BMV_i07c.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Pn",
+          "imported": "z"
+        }
+      ],
+      "resolved": "assets/vendor.d/bootstrapController-BMV_i07c.js"
+    },
+    {
+      "specifier": "./printDocChrome-BMZLbM8A.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ye",
+          "imported": "e"
+        },
+        {
+          "local": "z",
+          "imported": "T"
+        },
+        {
+          "local": "Rn",
+          "imported": "h"
+        },
+        {
+          "local": "kn",
+          "imported": "a"
+        },
+        {
+          "local": "Ln",
+          "imported": "i"
+        },
+        {
+          "local": "Dn",
+          "imported": "j"
+        },
+        {
+          "local": "Fn",
+          "imported": "k"
+        },
+        {
+          "local": "On",
+          "imported": "l"
+        },
+        {
+          "local": "Vn",
+          "imported": "n"
+        },
+        {
+          "local": "Bn",
+          "imported": "g"
+        }
+      ],
+      "resolved": "assets/vendor.d/printDocChrome-BMZLbM8A.js"
+    },
+    {
+      "specifier": "./index.esm-BLbQfyP0.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "zn",
+          "imported": "EhfuseEditor"
+        }
+      ],
+      "resolved": "assets/vendor.d/index.esm-BLbQfyP0.js"
+    },
+    {
+      "specifier": "./Refresh-xoMt5L00.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Hn",
+          "imported": "R"
+        }
+      ],
+      "resolved": "assets/vendor.d/Refresh-xoMt5L00.js"
+    },
+    {
+      "specifier": "./date_utils-CYURFdnX.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Nt",
+          "imported": "b"
+        }
+      ],
+      "resolved": "assets/vendor.d/date_utils-CYURFdnX.js"
+    },
+    {
+      "specifier": "./OptionToggleGroup-Cvm2wRyq.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Wn",
+          "imported": "O"
+        }
+      ],
+      "resolved": "assets/vendor.d/OptionToggleGroup-Cvm2wRyq.js"
+    },
+    {
+      "specifier": "./resolveAssetPreviewSrc-CLlbOCzq.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "qn",
+          "imported": "r"
+        }
+      ],
+      "resolved": "assets/vendor.d/resolveAssetPreviewSrc-CLlbOCzq.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "jr",
+      "exported": "A"
+    },
+    {
+      "local": "Gn",
+      "exported": "B"
+    },
+    {
+      "local": "_r",
+      "exported": "C"
+    },
+    {
+      "local": "Ct",
+      "exported": "F"
+    },
+    {
+      "local": "ge",
+      "exported": "P"
+    },
+    {
+      "local": "Jo",
+      "exported": "R"
+    },
+    {
+      "local": "tn",
+      "exported": "S"
+    },
+    {
+      "local": "zo",
+      "exported": "a"
+    },
+    {
+      "local": "qo",
+      "exported": "b"
+    },
+    {
+      "local": "Ar",
+      "exported": "c"
+    },
+    {
+      "local": "wr",
+      "exported": "d"
+    },
+    {
+      "local": "Go",
+      "exported": "e"
+    },
+    {
+      "local": "Bo",
+      "exported": "f"
+    },
+    {
+      "local": "Yo",
+      "exported": "g"
+    },
+    {
+      "local": "et",
+      "exported": "h"
+    },
+    {
+      "local": "zt",
+      "exported": "i"
+    },
+    {
+      "local": "Uo",
+      "exported": "j"
+    },
+    {
+      "local": "nt",
+      "exported": "k"
+    },
+    {
+      "local": "tt",
+      "exported": "l"
+    },
+    {
+      "local": "Xo",
+      "exported": "m"
+    },
+    {
+      "local": "Zo",
+      "exported": "n"
+    },
+    {
+      "local": "Qo",
+      "exported": "o"
+    },
+    {
+      "local": "Ko",
+      "exported": "p"
+    },
+    {
+      "local": "Un",
+      "exported": "q"
+    },
+    {
+      "local": "Tr",
+      "exported": "r"
+    },
+    {
+      "local": "Rt",
+      "exported": "s"
+    },
+    {
+      "local": "Sr",
+      "exported": "t"
+    },
+    {
+      "local": "Ho",
+      "exported": "u"
+    },
+    {
+      "local": "Tt",
+      "exported": "v"
+    },
+    {
+      "local": "Wo",
+      "exported": "w"
+    },
+    {
+      "local": "be",
+      "exported": "x"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "jo",
+      "keys": [
+        "form"
+      ]
+    },
+    {
+      "function": "Ko",
+      "keys": [
+        "form",
+        "guide",
+        "readonly"
+      ]
+    },
+    {
+      "function": "tn",
+      "keys": [
+        "left",
+        "title",
+        "titleStyle",
+        "children",
+        "sx"
+      ]
+    },
+    {
+      "function": "Zo",
+      "keys": [
+        "children",
+        "editorPlaceholder",
+        "onReset",
+        "onLoadTemplate",
+        "documentLabel",
+        "headerCaption",
+        "editorRef",
+        "editorDefaultValue",
+        "editorReadOnly",
+        "showEditor",
+        "hideHeader",
+        "hideDocumentLabel",
+        "footer",
+        "headerActions"
+      ]
+    },
+    {
+      "function": "_t",
+      "keys": [
+        "stampers"
+      ]
+    },
+    {
+      "function": "Tt",
+      "keys": [
+        "form",
+        "placeholder",
+        "autoFocusKey"
+      ]
+    },
+    {
+      "function": "No",
+      "keys": [
+        "form",
+        "readonly",
+        "hideTitle",
+        "extraField"
+      ]
+    },
+    {
+      "function": "Qo",
+      "keys": [
+        "form",
+        "readonly",
+        "hideTitle",
+        "extraField"
+      ]
+    },
+    {
+      "function": "Mo",
+      "keys": [
+        "reference",
+        "index",
+        "onDelete",
+        "showReadState"
+      ]
+    },
+    {
+      "function": "Jo",
+      "keys": [
+        "references",
+        "templates",
+        "onAddReference",
+        "onLoadTemplate",
+        "onSaveTemplate",
+        "onDeleteTemplate",
+        "onDelete",
+        "hideActions",
+        "emptyMessage",
+        "minHeight",
+        "headerSx",
+        "headerTitleStyle",
+        "bodySx",
+        "hideHeader",
+        "notifyAt",
+        "onChangeNotifyAt",
+        "showReadState"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [
+    ".ehfuse-editor-content",
+    "& .ehfuse-toolbar"
+  ],
+  "missingDependencies": [],
+  "importedBy": [
+    "ApprovalAllDocumentsPage",
+    "ApprovalBoxPage",
+    "ApprovalDetailDialog",
+    "ApprovalDraftedPage",
+    "CalendarSidebarPanel",
+    "Layout",
+    "MobileDashboardLayout",
+    "PostComposerHost",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog",
+    "index"
+  ],
+  "service": "공통",
+  "purpose": "참조 목록",
+  "reuseGrade": "B",
+  "integration": "참조 대상·프로필·에디터와 상태 연결",
+  "exportedParameters": [
+    {
+      "export": "R",
+      "compiledLocal": "Jo",
+      "keys": [
+        "references",
+        "templates",
+        "onAddReference",
+        "onLoadTemplate",
+        "onSaveTemplate",
+        "onDeleteTemplate",
+        "onDelete",
+        "hideActions",
+        "emptyMessage",
+        "minHeight",
+        "headerSx",
+        "headerTitleStyle",
+        "bodySx",
+        "hideHeader",
+        "notifyAt",
+        "onChangeNotifyAt",
+        "showReadState"
+      ]
+    },
+    {
+      "export": "S",
+      "compiledLocal": "tn",
+      "keys": [
+        "left",
+        "title",
+        "titleStyle",
+        "children",
+        "sx"
+      ]
+    },
+    {
+      "export": "n",
+      "compiledLocal": "Zo",
+      "keys": [
+        "children",
+        "editorPlaceholder",
+        "onReset",
+        "onLoadTemplate",
+        "documentLabel",
+        "headerCaption",
+        "editorRef",
+        "editorDefaultValue",
+        "editorReadOnly",
+        "showEditor",
+        "hideHeader",
+        "hideDocumentLabel",
+        "footer",
+        "headerActions"
+      ]
+    },
+    {
+      "export": "o",
+      "compiledLocal": "Qo",
+      "keys": [
+        "form",
+        "readonly",
+        "hideTitle",
+        "extraField"
+      ]
+    },
+    {
+      "export": "p",
+      "compiledLocal": "Ko",
+      "keys": [
+        "form",
+        "guide",
+        "readonly"
+      ]
+    },
+    {
+      "export": "v",
+      "compiledLocal": "Tt",
+      "keys": [
+        "form",
+        "placeholder",
+        "autoFocusKey"
+      ]
+    }
+  ]
+}

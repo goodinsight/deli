@@ -1,0 +1,536 @@
+import { j as e, u as w, i as k, r as C, k as A, N as $, L as j } from "./react-CjxcGQav.js";
+import { C as R } from "./CategoryBadge-Da-Xn0t9.js";
+import { bv as b, B as o, as as d, f as i, s as n, d as m, jN as W, l as x, u as I, na as L, bS as B, lU as H, cQ as F, b as y, rC as N } from "../js.d/main-Cm9wS5wt.js";
+import { f as T } from "./formatFileSize-Cwk2MLba.js";
+import { A as V } from "./ArticleThumbnail-BgD4TwQX.js";
+import { F as D } from "./FavoriteBorder-BkFztsJe.js";
+import { a as E, b as P } from "./newsController-BGsu8k2g.js";
+import { s as _, a as M } from "./shareArticle-Cy4lemZ5.js";
+import { u as U } from "./mobileBase-CknPHYoV.js";
+import "./stylis-DdLD6a3t.js";
+function O() {
+  const r = b();
+  return e.jsx(o, {
+    component: "span",
+    sx: {
+      borderRadius: .5,
+      bgcolor: d.amber100,
+      px: .75,
+      py: .25,
+      fontSize: {
+        xs: "0.875rem",
+        md: "0.75rem"
+      },
+      fontWeight: i.bold,
+      color: d.amber700
+    },
+    children: r("components.premium")
+  });
+}
+function Q({
+  attachments: r
+}) {
+  const l = b();
+  return r.length === 0 ? null : e.jsxs(o, {
+    sx: {
+      mt: 4,
+      borderRadius: 3,
+      border: `1px solid ${n[200]}`,
+      bgcolor: n[50],
+      p: 2
+    },
+    children: [e.jsx(o, {
+      component: "h2",
+      sx: {
+        m: 0,
+        fontSize: m.sm,
+        fontWeight: i.black,
+        color: n[700]
+      },
+      children: l("components.attachments")
+    }), e.jsx(o, {
+      component: "ul",
+      sx: {
+        listStyle: "none",
+        m: 0,
+        mt: 1,
+        p: 0,
+        "& > * + *": {
+          mt: .5
+        }
+      },
+      children: r.map(s => e.jsx(o, {
+        component: "li",
+        children: e.jsxs(o, {
+          component: "a",
+          href: s.url,
+          target: "_blank",
+          rel: "noreferrer",
+          download: s.name,
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: .75,
+            borderRadius: 1.5,
+            px: 1,
+            py: 1,
+            fontSize: m.sm,
+            color: n[700],
+            textDecoration: "none",
+            "&:hover": {
+              bgcolor: "#fff"
+            }
+          },
+          children: [e.jsx(W, {
+            fontSize: "small",
+            sx: {
+              flexShrink: 0,
+              color: n[400]
+            }
+          }), e.jsx(o, {
+            component: "span",
+            sx: {
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+              fontWeight: i.semibold
+            },
+            children: s.name
+          }), e.jsx(o, {
+            component: "span",
+            sx: {
+              flexShrink: 0,
+              fontSize: m.xs,
+              color: n[400]
+            },
+            children: T(s.size)
+          })]
+        })
+      }, s.uuid))
+    })]
+  });
+}
+function q({
+  article: r,
+  paragraphs: l
+}) {
+  if (r.bodyHtml) return e.jsx(o, {
+    sx: {
+      lineHeight: x.loose,
+      color: n[800],
+      "& > * + *": {
+        mt: 3
+      },
+      "& img": {
+        my: 2,
+        height: "auto",
+        maxWidth: "100%",
+        borderRadius: 2
+      }
+    },
+    dangerouslySetInnerHTML: {
+      __html: r.bodyHtml
+    }
+  });
+  const s = l ?? r.body;
+  return e.jsx(o, {
+    sx: {
+      "& > * + *": {
+        mt: 3
+      }
+    },
+    children: s.map((t, a) => e.jsx(o, {
+      component: "p",
+      sx: {
+        m: 0,
+        lineHeight: x.loose,
+        color: n[800]
+      },
+      children: t
+    }, a))
+  });
+}
+function G({
+  slug: r,
+  sx: l
+}) {
+  const s = b(),
+    t = I(),
+    a = E(),
+    f = w(),
+    p = k(),
+    u = t.useValue("sessionChecked") ?? !1,
+    c = t.useValue("logined") ?? !1,
+    g = (a.useValue("favoriteSlugs") ?? []).includes(r),
+    z = () => {
+      if (!c) {
+        const v = `${p.pathname}${p.search}`;
+        B(v), f("/login", {
+          state: {
+            from: v
+          }
+        });
+        return;
+      }
+      a.actions.toggleFavorite(r);
+    };
+  return u ? e.jsxs(o, {
+    component: "button",
+    type: "button",
+    onClick: z,
+    "aria-pressed": g,
+    "aria-label": s(g ? "components.unfavorite" : "components.favorite"),
+    sx: [{
+      display: "inline-flex",
+      alignItems: "center",
+      gap: .75,
+      cursor: "pointer",
+      borderRadius: 1.5,
+      px: 2,
+      py: 1.25,
+      fontSize: m.sm,
+      fontWeight: i.semibold,
+      transition: "background-color 150ms, color 150ms"
+    }, g ? {
+      border: `1px solid ${d.rose200}`,
+      bgcolor: d.rose50,
+      color: d.rose600
+    } : {
+      border: `1px solid ${n[300]}`,
+      bgcolor: "transparent",
+      color: n[600],
+      "&:hover": {
+        bgcolor: n[100]
+      }
+    }, ...(Array.isArray(l) ? l : [l])],
+    children: [g ? e.jsx(L, {
+      fontSize: "small"
+    }) : e.jsx(D, {
+      fontSize: "small"
+    }), s(g ? "components.saved" : "components.like")]
+  }) : null;
+}
+function J({
+  slug: r,
+  title: l = "",
+  sx: s
+}) {
+  const t = b(),
+    [a, f] = C.useState(!1),
+    p = () => {
+      _(M(r), l).then(h => {
+        h === "copied" && (f(!0), window.setTimeout(() => f(!1), 1500));
+      });
+    };
+  return e.jsxs(o, {
+    component: "button",
+    type: "button",
+    onClick: p,
+    "aria-label": t("components.share"),
+    sx: [{
+      display: "inline-flex",
+      alignItems: "center",
+      gap: .75,
+      cursor: "pointer",
+      borderRadius: 1.5,
+      px: 2,
+      py: 1.25,
+      fontSize: m.sm,
+      fontWeight: i.semibold,
+      transition: "background-color 150ms, color 150ms"
+    }, a ? {
+      border: `1px solid ${d.emerald200}`,
+      bgcolor: d.emerald50,
+      color: d.emerald600
+    } : {
+      border: `1px solid ${n[300]}`,
+      bgcolor: "transparent",
+      color: n[600],
+      "&:hover": {
+        bgcolor: n[100]
+      }
+    }, ...(Array.isArray(s) ? s : [s])],
+    children: [e.jsx(H, {
+      fontSize: "small"
+    }), t(a ? "components.linkCopied" : "components.share")]
+  });
+}
+function le() {
+  const r = U(),
+    {
+      id: l
+    } = A(),
+    {
+      state: s
+    } = P(l),
+    t = s.useValue("article"),
+    a = s.useValue("articleLoaded"),
+    p = s.useValue("articles") ?? [];
+  if (!t) return a ? e.jsx($, {
+    to: `${r}/news`,
+    replace: !0
+  }) : e.jsx(F, {});
+  const h = p.filter(c => c.category === t.category && c.id !== t.id).slice(0, 3),
+    u = t.premium,
+    S = u ? t.body.slice(0, 1) : t.body;
+  return e.jsx(o, {
+    children: e.jsxs(o, {
+      sx: {
+        px: 2,
+        py: 2.5
+      },
+      children: [e.jsxs(o, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: .75
+        },
+        children: [e.jsx(R, {
+          category: t.category
+        }), t.premium && e.jsx(O, {})]
+      }), e.jsx(o, {
+        component: "h1",
+        sx: {
+          m: 0,
+          mt: 1.25,
+          fontSize: m["2xl"],
+          lineHeight: x.snug,
+          fontWeight: i.black
+        },
+        children: t.title
+      }), e.jsxs(o, {
+        sx: {
+          mt: 1.25,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          borderBottom: `1px solid ${n[200]}`,
+          pb: 1.5,
+          fontSize: "0.9375rem",
+          color: n[500]
+        },
+        children: [e.jsxs(o, {
+          component: "span",
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: .75
+          },
+          children: [e.jsx(o, {
+            component: "span",
+            sx: {
+              display: "flex",
+              height: 16,
+              width: 16,
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: "9999px",
+              bgcolor: y[900],
+              fontSize: "0.8125rem",
+              fontWeight: i.black,
+              color: "#fff"
+            },
+            children: "창"
+          }), t.author, " · ", N(t.date)]
+        }), e.jsxs(o, {
+          component: "span",
+          children: ["조회 ", t.views.toLocaleString()]
+        })]
+      }), e.jsxs(o, {
+        sx: {
+          mt: 1.5,
+          display: "flex",
+          justifyContent: "flex-end",
+          gap: 1
+        },
+        children: [e.jsx(G, {
+          slug: t.id
+        }), e.jsx(J, {
+          slug: t.id,
+          title: t.title
+        })]
+      }), e.jsx(V, {
+        article: t,
+        sx: {
+          mt: 2,
+          aspectRatio: "16 / 9",
+          width: "100%",
+          borderRadius: 3
+        }
+      }), e.jsx(o, {
+        component: "p",
+        sx: {
+          mt: 2,
+          mb: 0,
+          borderLeft: `4px solid ${y[600]}`,
+          bgcolor: n[50],
+          p: 1.5,
+          fontSize: "1rem",
+          lineHeight: x.relaxed,
+          color: n[700]
+        },
+        children: t.summary
+      }), e.jsx(o, {
+        sx: {
+          mt: 2.5,
+          fontSize: "1.125rem"
+        },
+        children: e.jsx(q, {
+          article: t,
+          paragraphs: S
+        })
+      }), u && e.jsxs(o, {
+        sx: {
+          position: "relative",
+          mt: 2.5
+        },
+        children: [e.jsx(o, {
+          sx: {
+            pointerEvents: "none",
+            userSelect: "none",
+            filter: "blur(4px)",
+            "& > * + *": {
+              mt: 1
+            }
+          },
+          children: e.jsx(o, {
+            component: "p",
+            sx: {
+              m: 0,
+              fontSize: "1.125rem",
+              lineHeight: x.relaxed,
+              color: n[400]
+            },
+            children: "이 뒤의 내용은 유료회원에게만 제공됩니다. 창업보국 멤버십에 가입하면 모든 프리미엄 기사와 데이터 보고서를 제한 없이 열람할 수 있습니다."
+          })
+        }), e.jsx(o, {
+          sx: {
+            position: "absolute",
+            inset: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          },
+          children: e.jsxs(o, {
+            sx: {
+              borderRadius: 3,
+              border: `1px solid ${n[200]}`,
+              bgcolor: "#fff",
+              p: 2,
+              textAlign: "center",
+              boxShadow: 3
+            },
+            children: [e.jsx(o, {
+              component: "p",
+              sx: {
+                m: 0,
+                fontSize: "1.125rem",
+                fontWeight: i.bold
+              },
+              children: "멤버십 전용 콘텐츠입니다"
+            }), e.jsx(o, {
+              component: "p",
+              sx: {
+                mt: .5,
+                mb: 0,
+                fontSize: "1rem",
+                color: n[500]
+              },
+              children: "월 9,900원으로 모든 기사를 열람하세요."
+            }), e.jsxs(o, {
+              sx: {
+                mt: 1.5,
+                display: "flex",
+                justifyContent: "center",
+                gap: 1
+              },
+              children: [e.jsx(o, {
+                component: j,
+                to: `${r}/pricing`,
+                sx: {
+                  borderRadius: 1.5,
+                  bgcolor: y[600],
+                  px: 1.75,
+                  py: .75,
+                  fontSize: "1rem",
+                  fontWeight: i.bold,
+                  color: "#fff",
+                  textDecoration: "none"
+                },
+                children: "멤버십 가입"
+              }), e.jsx(o, {
+                component: j,
+                to: `${r}/login`,
+                sx: {
+                  borderRadius: 1.5,
+                  border: `1px solid ${n[300]}`,
+                  px: 1.75,
+                  py: .75,
+                  fontSize: "1rem",
+                  fontWeight: i.semibold,
+                  color: "inherit",
+                  textDecoration: "none"
+                },
+                children: "로그인"
+              })]
+            })]
+          })
+        })]
+      }), !u && e.jsx(Q, {
+        attachments: t.attachments
+      }), h.length > 0 && e.jsxs(o, {
+        sx: {
+          mt: 4,
+          borderTop: `1px solid ${n[200]}`,
+          pt: 2.5
+        },
+        children: [e.jsx(o, {
+          component: "h2",
+          sx: {
+            m: 0,
+            fontSize: "1.125rem",
+            fontWeight: i.black
+          },
+          children: "관련 기사"
+        }), e.jsx(o, {
+          component: "ul",
+          sx: {
+            listStyle: "none",
+            m: 0,
+            mt: 1.25,
+            p: 0,
+            "& > * + *": {
+              mt: 1.5
+            }
+          },
+          children: h.map(c => e.jsxs(o, {
+            component: "li",
+            children: [e.jsx(o, {
+              component: j,
+              to: `${r}/news/${c.id}`,
+              sx: {
+                display: "block",
+                fontSize: m.base,
+                lineHeight: x.snug,
+                fontWeight: i.semibold,
+                color: n[700],
+                textDecoration: "none"
+              },
+              children: c.title
+            }), e.jsx(o, {
+              component: "span",
+              sx: {
+                mt: .5,
+                display: "block",
+                fontSize: "0.9375rem",
+                color: n[400]
+              },
+              children: c.date
+            })]
+          }, c.id))
+        })]
+      })]
+    })
+  });
+}
+export { le as default };

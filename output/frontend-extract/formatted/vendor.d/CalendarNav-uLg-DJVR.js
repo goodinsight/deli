@@ -1,0 +1,178 @@
+import { r as f, j as e } from "./react-CjxcGQav.js";
+import { bM as u, bv as g, aC as B, dj as w, bI as C, ci as E, cl as I, bQ as W, B as t, L as j } from "../js.d/main-Cm9wS5wt.js";
+const S = "/v1/calendar/preference",
+  v = {
+    load: async () => (await u.http.get(S))?.data?.hide_completed !== !1,
+    save: async n => {
+      await u.http.patch(S, {
+        hide_completed: n
+      });
+    }
+  };
+let a = !0,
+  b = !1;
+const r = new Set();
+function z(n) {
+  return r.add(n), () => r.delete(n);
+}
+function L(n) {
+  a !== n && (a = n, r.forEach(s => s()), v.save(n).catch(() => {}));
+}
+function H() {
+  b || (b = !0, v.load().then(n => {
+    n !== a && (a = n, r.forEach(s => s()));
+  }).catch(() => {}));
+}
+function A() {
+  return f.useEffect(() => H(), []), f.useSyncExternalStore(z, () => a);
+}
+const _ = {
+  fontSize: "0.8125rem",
+  ml: .75
+};
+function F({
+  trailing: n
+}) {
+  const s = g(),
+    l = A();
+  return e.jsx(B, {
+    control: e.jsx(w, {
+      checked: l,
+      onChange: o => L(o.target.checked)
+    }),
+    label: s("calendar.hideCompleted"),
+    sx: {
+      flexShrink: 0,
+      mr: n ? .5 : 0,
+      ml: 0,
+      "& .MuiFormControlLabel-label": _
+    }
+  });
+}
+function R({
+  title: n,
+  onPrev: s,
+  onNext: l,
+  onToday: o,
+  trailing: i,
+  leading: d,
+  bare: k = !1,
+  showHideCompleted: y = !0
+}) {
+  const c = g(),
+    x = e.jsx(C, {
+      size: "small",
+      "aria-label": c("calendar.prev"),
+      onClick: s,
+      children: e.jsx(E, {})
+    }),
+    h = e.jsx(C, {
+      size: "small",
+      "aria-label": c("calendar.next"),
+      onClick: l,
+      children: e.jsx(I, {})
+    }),
+    m = e.jsx(W, {
+      size: "small",
+      variant: "outlined",
+      onClick: o,
+      sx: {
+        whiteSpace: "nowrap",
+        flexShrink: 0
+      },
+      children: c("calendar.today")
+    }),
+    p = y ? e.jsx(e.Fragment, {
+      children: e.jsx(F, {
+        trailing: i
+      })
+    }) : null;
+  return e.jsxs(t, {
+    sx: k ? {
+      flexShrink: 0
+    } : {
+      px: {
+        xs: .5,
+        sm: 2
+      },
+      pt: {
+        xs: .5,
+        sm: 1.25
+      },
+      pb: 1.25,
+      flexShrink: 0
+    },
+    children: [e.jsxs(t, {
+      sx: {
+        display: {
+          xs: "block",
+          sm: "none"
+        }
+      },
+      children: [e.jsxs(t, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: .5
+        },
+        children: [x, e.jsx(j, {
+          sx: {
+            flex: 1,
+            minWidth: 0,
+            textAlign: "center",
+            fontSize: "1.05rem",
+            fontWeight: 700
+          },
+          noWrap: !0,
+          children: n
+        }), h]
+      }), e.jsxs(t, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: 1,
+          px: 1,
+          mt: 1.25
+        },
+        children: [m, e.jsx(t, {
+          sx: {
+            flex: 1,
+            minWidth: 0
+          }
+        }), p, i]
+      })]
+    }), e.jsxs(t, {
+      sx: {
+        display: {
+          xs: "none",
+          sm: "flex"
+        },
+        alignItems: "center",
+        gap: 1
+      },
+      children: [d ? e.jsx(t, {
+        sx: {
+          mr: .5,
+          flexShrink: 0
+        },
+        children: d
+      }) : null, x, h, e.jsx(t, {
+        sx: {
+          ml: .5
+        },
+        children: m
+      }), e.jsx(j, {
+        sx: {
+          flex: 1,
+          minWidth: 0,
+          ml: 1,
+          fontSize: "1.15rem",
+          fontWeight: 700
+        },
+        noWrap: !0,
+        children: n
+      }), p, i]
+    })]
+  });
+}
+export { R as C, F as a, A as u };

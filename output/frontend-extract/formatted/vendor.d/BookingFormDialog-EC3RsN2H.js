@@ -1,0 +1,920 @@
+import { r as v, j as o } from "./react-CjxcGQav.js";
+import { e as he, c8 as xe, ak as _e, dv as ke, fA as ye, bO as V, bT as k, cL as Se, bx as z, bv as Ve, D as qe, fL as je, L as ee, B as g, ca as A, bQ as G, cQ as Ne, cI as ve, db as H, fN as Me, an as ae, al as re, aq as te, bI as ne, g4 as Fe, d8 as Ce, cP as Oe, cm as se, lQ as ie, cn as we } from "../js.d/main-Cm9wS5wt.js";
+import { b as q, g as Ie, u as Te, a as Be } from "./bookingApi-DC6gLfSO.js";
+import { D as Re, m as pe, s as U, n as ue, o as De, p as le, c as Ee, l as R, q as ce, t as me, j as de } from "./types-CVXtrYKe.js";
+import { O as ge } from "./OptionToggleGroup-Cvm2wRyq.js";
+const Pe = 300,
+  Y = i => String(i).padStart(2, "0"),
+  fe = i => `${i.getFullYear()}-${Y(i.getMonth() + 1)}-${Y(i.getDate())} ${Y(i.getHours())}:${Y(i.getMinutes())}`;
+function We() {
+  const i = new Date();
+  return i.setMinutes(0, 0, 0), i.setHours(i.getHours() + 1), i;
+}
+function oe(i, p) {
+  const a = /^(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2})/.exec(i);
+  if (!a) return "";
+  const [, f, u, h, l, c] = a.map(Number);
+  return fe(new Date(f, u - 1, h, l, c + p));
+}
+function Q(i, p) {
+  const a = i?.start_at || fe(We());
+  return {
+    new_name: "",
+    new_phone: "",
+    start_at: a,
+    end_at: i?.end_at || oe(a, p.default_minutes),
+    resource_seq: i?.resource_seq || "",
+    party_size: i?.party_size ?? 1,
+    price: i?.price || "",
+    deposit_amount: i ? i.deposit_amount || "" : p.deposit_unit === "percent" ? "" : p.deposit_default || "",
+    contact_phone: i?.contact_phone ?? "",
+    memo: i?.memo ?? "",
+    status: i?.status ?? "confirmed",
+    cancel_reason: i?.cancel_reason ?? ""
+  };
+}
+function Qe(i) {
+  const p = v.useRef(i);
+  p.current = i;
+  const a = v.useRef(60),
+    f = {
+      form: he({
+        modalId: "booking-form"
+      })
+    },
+    u = xe({
+      stateId: "booking-form-ui",
+      initialValues: {
+        target: null,
+        customerMode: "pick",
+        customerSeq: 0,
+        customerName: "",
+        customerOptions: [],
+        customerSearching: !1,
+        paying: !1,
+        messages: null,
+        sending: !1,
+        opening: !1,
+        items: []
+      }
+    }),
+    h = v.useRef(0),
+    l = v.useRef(null),
+    c = _e({
+      formId: "booking-form",
+      initialValues: Q(null, Re),
+      onValidate: e => {
+        if (!u.getValue("target")) {
+          const d = u.getValue("customerMode");
+          if (d === "pick" && !(Number(u.getValue("customerSeq")) > 0)) return V(k("booking.errPickCustomer")), !1;
+          if (d === "new" && !String(e.new_name ?? "").trim()) return V(k("booking.errCustomerName")), !1;
+        }
+        const s = String(e.start_at ?? ""),
+          r = String(e.end_at ?? "");
+        return /^\d{4}-\d{2}-\d{2} \d{2}:\d{2}/.test(s) ? !r || r <= s ? (V(k("booking.errEndAfterStart")), !1) : !0 : (V(k("booking.errBookingTime")), !1);
+      },
+      onSubmit: async e => {
+        const n = u.getValue("target"),
+          s = {
+            start_at: String(e.start_at ?? ""),
+            end_at: String(e.end_at ?? ""),
+            resource_seq: Number(e.resource_seq) || 0,
+            party_size: Math.max(1, Number(e.party_size) || 1),
+            price: Number(e.price) || 0,
+            deposit_amount: Number(e.deposit_amount) || 0,
+            contact_phone: String(e.contact_phone ?? "").trim(),
+            memo: String(e.memo ?? ""),
+            items: (u.getValue("items") ?? []).map(r => ({
+              product_seq: r.product_seq,
+              qty: r.qty,
+              price: r.price
+            }))
+          };
+        try {
+          return n ? (e.status !== n.status && (s.status = e.status), e.status === "canceled" && (s.cancel_reason = String(e.cancel_reason ?? "").trim()), await q.update(n.seq, s)) : (u.getValue("customerMode") === "pick" ? s.customer_seq = Number(u.getValue("customerSeq")) || 0 : (s.customer_name = String(e.new_name ?? "").trim(), s.customer_phone = String(e.new_phone ?? "").trim()), await q.create(s)), f.form.close(), z({
+            message: k("booking.saved"),
+            delay: 500
+          }), p.current.onChanged?.(), !0;
+        } catch (r) {
+          return V(r instanceof Error ? r.message : k("booking.errSaveBooking")), !1;
+        }
+      }
+    }),
+    x = v.useRef(0),
+    m = v.useRef(null),
+    C = async e => {
+      const n = ++x.current;
+      u.setValue("customerSearching", !0);
+      try {
+        const s = await q.searchCustomers(e);
+        if (n !== x.current) return;
+        const r = Number(u.getValue("customerSeq")) || 0,
+          d = (u.getValue("customerOptions") ?? []).find(b => b.value === r);
+        d && !s.some(b => b.value === r) && s.unshift(d), u.setValue("customerOptions", s);
+      } catch {} finally {
+        n === x.current && u.setValue("customerSearching", !1);
+      }
+    },
+    D = e => {
+      m.current !== null && clearTimeout(m.current), m.current = setTimeout(() => {
+        m.current = null, C(e.trim());
+      }, Pe);
+    },
+    K = e => {
+      const n = (u.getValue("customerOptions") ?? []).find(s => s.value === e);
+      u.setValues({
+        customerSeq: n ? e : 0,
+        customerName: n?.name ?? ""
+      }), n?.phone && !String(c.getFormValue("contact_phone") ?? "").trim() && c.setFormValue("contact_phone", n.phone);
+    },
+    J = e => u.setValue("customerMode", e),
+    M = v.useRef(""),
+    y = () => {
+      const e = c.getFormValue("price");
+      if ((Number(e) || 0) !== (Number(M.current) || 0)) return;
+      const n = (p.current.getResources?.() ?? []).find(d => d.seq === Number(c.getFormValue("resource_seq"))),
+        s = U(u.getValue("items") ?? []).amount,
+        r = ue(n, String(c.getFormValue("start_at") ?? ""), String(c.getFormValue("end_at") ?? "")) + s || "";
+      M.current = r, c.setFormValue("price", r), E(Number(r) || 0);
+    },
+    j = v.useRef(""),
+    E = e => {
+      const n = p.current.getSettings();
+      if (n.deposit_unit !== "percent" || u.getValue("target")) return;
+      const s = c.getFormValue("deposit_amount");
+      if ((Number(s) || 0) !== (Number(j.current) || 0)) return;
+      const r = De(n, e) || "";
+      j.current = r, c.setFormValue("deposit_amount", r);
+    },
+    X = e => {
+      const n = oe(e, a.current);
+      n && c.setFormValue("end_at", n), y();
+    },
+    P = e => {
+      const n = String(c.getFormValue("start_at") ?? ""),
+        s = Date.parse(n.replace(" ", "T")),
+        r = Date.parse(e.replace(" ", "T"));
+      Number.isFinite(s) && Number.isFinite(r) && r > s && (a.current = Math.round((r - s) / 6e4)), y();
+    },
+    N = e => {
+      u.setValue("items", e);
+      const n = (p.current.getResources?.() ?? []).find(r => r.seq === Number(c.getFormValue("resource_seq"))),
+        s = U(e).minutes;
+      if (s > 0 && n?.price_unit !== "day" && n?.price_unit !== "month") {
+        const r = oe(String(c.getFormValue("start_at") ?? ""), s);
+        r && (c.setFormValue("end_at", r), a.current = s);
+      }
+      y();
+    },
+    W = e => {
+      const n = Ie().find(r => r.seq === e);
+      if (!n) return;
+      const s = u.getValue("items") ?? [];
+      N(s.some(r => r.product_seq === e) ? s.map(r => r.product_seq === e ? {
+        ...r,
+        qty: r.qty + 1
+      } : r) : [...s, {
+        product_seq: n.seq,
+        name: n.name,
+        price: n.price,
+        cost: n.cost,
+        qty: 1,
+        tax_type: n.tax_type,
+        duration_minutes: n.duration_minutes
+      }]);
+    },
+    F = (e, n) => {
+      const s = u.getValue("items") ?? [];
+      N(n <= 0 ? s.filter(r => r.product_seq !== e) : s.map(r => r.product_seq === e ? {
+        ...r,
+        qty: Math.min(999, n)
+      } : r));
+    },
+    L = e => {
+      const n = pe(String(c.getFormValue("start_at") ?? ""), e);
+      n && (c.setFormValue("end_at", n), P(n));
+    },
+    O = e => {
+      const n = p.current.getSettings(),
+        s = Q(null, n);
+      e && typeof e.start_at == "string" && e.start_at && typeof e.end_at == "string" && e.end_at && (s.start_at = e.start_at, s.end_at = e.end_at, s.resource_seq = Number(e.resource_seq) || "");
+      const r = Date.parse(s.start_at.replace(" ", "T")),
+        d = Date.parse(s.end_at.replace(" ", "T"));
+      a.current = Number.isFinite(r) && Number.isFinite(d) && d > r ? Math.round((d - r) / 6e4) : n.default_minutes, c.setFormValues(s), u.setValue("items", []), u.setValue("target", null), M.current = "", j.current = "", y(), h.current += 1, l.current = null, u.setValues({
+        target: null,
+        customerMode: "pick",
+        customerSeq: 0,
+        customerName: "",
+        customerOptions: [],
+        paying: !1,
+        messages: null,
+        sending: !1,
+        opening: !1,
+        items: []
+      }), f.form.open(), C("");
+    },
+    Z = e => {
+      const n = Q(e, p.current.getSettings()),
+        s = Date.parse(n.start_at.replace(" ", "T")),
+        r = Date.parse(n.end_at.replace(" ", "T"));
+      a.current = Number.isFinite(s) && Number.isFinite(r) && r > s ? Math.round((r - s) / 6e4) : 60, c.setFormValues(n);
+      const d = (p.current.getResources?.() ?? []).find(t => t.seq === e.resource_seq),
+        b = ue(d, e.start_at, e.end_at) + U(e.items).amount;
+      M.current = n.price === "" ? "" : Number(n.price) === b ? b : NaN, h.current += 1;
+      const T = h.current;
+      l.current = {
+        values: n,
+        items: e.items
+      }, u.setValues({
+        target: e,
+        customerMode: "pick",
+        customerSeq: e.customer_seq,
+        customerName: e.customer_name,
+        paying: !1,
+        messages: null,
+        sending: !1,
+        opening: !0,
+        items: e.items
+      }), S().finally(() => {
+        T === h.current && (u.setValue("opening", !1), f.form.open());
+      });
+    },
+    S = async () => {
+      const e = u.getValue("target");
+      if (!e) return;
+      const n = h.current;
+      try {
+        const s = await q.messages(e.seq);
+        n === h.current && u.setValue("messages", s);
+      } catch {
+        n === h.current && u.setValue("messages", {
+          draft: null,
+          items: []
+        });
+      }
+    },
+    w = async () => {
+      const e = u.getValue("target"),
+        n = u.getValue("messages")?.draft;
+      if (!(!e || !n || n.blocked)) {
+        u.setValue("sending", !0);
+        try {
+          const s = await q.sendMessage(e.seq, n.kind);
+          s.queued ? z({
+            message: k("booking.messageSent"),
+            delay: 800
+          }) : V(s.reason || k("booking.errSendMessage")), await S();
+        } catch (s) {
+          V(s instanceof Error ? s.message : k("booking.errSendMessage"));
+        } finally {
+          u.setValue("sending", !1);
+        }
+      }
+    },
+    I = async e => {
+      const n = u.getValue("target");
+      if (n) {
+        u.setValue("paying", !0);
+        try {
+          e ? await q.markPaid(n.seq) : await q.markUnpaid(n.seq);
+          const s = await q.detail(n.seq);
+          u.setValue("target", s), c.setFormValue("status", s.status), l.current && (l.current = {
+            ...l.current,
+            values: {
+              ...l.current.values,
+              status: s.status
+            }
+          }), z({
+            message: e ? k("booking.paidConfirmed") : k("booking.paidReverted"),
+            delay: 800
+          }), S(), p.current.onChanged?.();
+        } catch (s) {
+          V(s instanceof Error ? s.message : k("booking.errSavePaid"));
+        } finally {
+          u.setValue("paying", !1);
+        }
+      }
+    },
+    $ = async () => {
+      const e = u.getValue("target");
+      if (e) try {
+        await q.remove(e.seq), f.form.close(), z({
+          message: k("booking.deleted"),
+          delay: 500
+        }), p.current.onChanged?.();
+      } catch (n) {
+        V(n instanceof Error ? n.message : k("booking.errDeleteBooking"));
+      }
+    };
+  return ke(["booking"], e => {
+    const n = u.getValue("target");
+    if (!n || !l.current || !f.form.isOpen) return;
+    const s = ye(e, "booking", n.seq);
+    if (!s && !e.resync) return;
+    if (s?.action === "delete") {
+      l.current = null, f.form.close(), V(k("booking.bookingDeletedByOther"));
+      return;
+    }
+    const r = h.current;
+    q.detail(n.seq).then(d => {
+      const b = l.current;
+      if (r !== h.current || !b || !f.form.isOpen) return;
+      const T = c.getFormValues(),
+        {
+          patch: t,
+          baseline: _
+        } = Se(T, b.values, Q(d, p.current.getSettings()), {
+          skip: ["new_name", "new_phone"]
+        }),
+        B = u.getValue("items") ?? [],
+        be = JSON.stringify(B) === JSON.stringify(b.items);
+      l.current = {
+        values: _,
+        items: d.items
+      }, Object.keys(t).length > 0 && c.setFormValues(t), u.setValues(be ? {
+        target: d,
+        items: d.items
+      } : {
+        target: d
+      }), d.status !== n.status && S();
+    }).catch(() => {});
+  }, {
+    enabled: f.form.isOpen
+  }), {
+    form: c,
+    modals: f,
+    ui: u,
+    openCreate: O,
+    openEdit: Z,
+    setPaid: I,
+    sendMessage: w,
+    remove: $,
+    searchCustomers: D,
+    pickCustomer: K,
+    changeCustomerMode: J,
+    changeStart: X,
+    changeEnd: P,
+    refreshPrice: y,
+    applyMonths: L,
+    addItem: W,
+    changeItemQty: F
+  };
+}
+const Le = [{
+    value: "pick",
+    labelKey: "booking.customerExisting"
+  }, {
+    value: "new",
+    labelKey: "booking.customerNew"
+  }],
+  $e = () => Object.keys(de).map(i => ({
+    value: i,
+    label: de[i]
+  }));
+function Ue({
+  controller: i,
+  resources: p
+}) {
+  const a = Ve(),
+    f = qe(),
+    u = je("booking").canWrite,
+    h = Te(),
+    {
+      form: l,
+      modals: c,
+      ui: x
+    } = i,
+    m = x.useValue("target"),
+    C = x.useValue("customerMode") ?? "pick",
+    D = Number(x.useValue("customerSeq")) || 0,
+    K = String(x.useValue("customerName") ?? ""),
+    J = x.useValue("customerOptions") ?? [],
+    M = !!x.useValue("customerSearching"),
+    y = !!x.useValue("paying"),
+    j = x.useValue("messages"),
+    E = !!x.useValue("sending"),
+    X = !!x.useValue("opening"),
+    P = l.useFormValue("status") ?? "confirmed",
+    N = l.isSubmitting,
+    W = p.filter(t => t.enabled || t.seq === m?.resource_seq).map(t => ({
+      value: t.seq,
+      label: t.group_name ? `${t.group_name} · ${t.name}` : t.name
+    })),
+    F = x.useValue("items") ?? [],
+    L = Be().filter(t => t.enabled),
+    O = U(F),
+    Z = Number(l.useFormValue("resource_seq")) || 0,
+    S = p.find(t => t.seq === Z),
+    w = String(l.useFormValue("start_at") ?? ""),
+    I = String(l.useFormValue("end_at") ?? ""),
+    $ = S?.price_unit === "month",
+    e = $ && pe(w, le(w, I)) === I ? le(w, I) : 0,
+    n = $ ? Ee.month.filter(t => t.value >= (S?.min_units ?? 0)) : [],
+    s = (t, _) => o.jsxs(g, {
+      sx: {
+        display: "flex",
+        gap: A,
+        flexDirection: f ? "column" : "row"
+      },
+      children: [o.jsx(g, {
+        sx: {
+          flex: 1,
+          minWidth: 0
+        },
+        children: t
+      }), o.jsx(g, {
+        sx: {
+          flex: 1,
+          minWidth: 0
+        },
+        children: _
+      })]
+    }),
+    r = (...t) => o.jsx(g, {
+      sx: {
+        display: "grid",
+        gap: A,
+        gridTemplateColumns: f ? "minmax(0, 1fr)" : "minmax(0, 1.35fr) minmax(0, 1.35fr) minmax(0, 0.8fr) minmax(0, 1fr)"
+      },
+      children: t.map((_, B) => o.jsx(g, {
+        sx: {
+          minWidth: 0
+        },
+        children: _
+      }, B))
+    }),
+    d = m && m.deposit_amount > 0 ? o.jsx(ee, {
+      sx: {
+        fontSize: "0.875rem",
+        color: m.paid_at ? "success.dark" : "warning.dark"
+      },
+      children: m.paid_at ? `${a("booking.paidAt", {
+        time: m.paid_at.slice(0, 16)
+      })}${m.paid_by_name ? ` · ${m.paid_by_name}` : ""} · ${R(m.deposit_amount)}` : `${a("booking.statusAwaitingPayment")} · ${R(m.deposit_amount)}${m.deposit_due_at ? ` · ${a("booking.depositDue", {
+        time: m.deposit_due_at
+      })}` : ""}`
+    }) : null,
+    b = j?.draft ?? null,
+    T = o.jsxs(g, {
+      sx: {
+        display: "flex",
+        flexDirection: "column",
+        gap: A
+      },
+      children: [b ? o.jsxs(o.Fragment, {
+        children: [o.jsx(g, {
+          sx: {
+            p: 2,
+            border: 1,
+            borderColor: "divider",
+            borderRadius: 1,
+            bgcolor: "action.hover",
+            fontSize: "0.9375rem",
+            lineHeight: 1.6,
+            whiteSpace: "pre-wrap",
+            wordBreak: "keep-all"
+          },
+          children: b.body
+        }), o.jsxs(g, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: 1.5
+          },
+          children: [u ? o.jsx(G, {
+            variant: "outlined",
+            onClick: () => {
+              i.sendMessage();
+            },
+            disabled: !!b.blocked || E || N || y,
+            children: E ? a("booking.sending") : a("booking.sendMessage", {
+              kind: ce[b.kind]
+            })
+          }) : null, o.jsx(ee, {
+            sx: {
+              fontSize: "0.875rem",
+              color: b.blocked ? "warning.dark" : "text.secondary"
+            },
+            children: b.blocked || a("booking.messageReceiver", {
+              receiver: b.receiver
+            })
+          })]
+        })]
+      }) : o.jsx(ee, {
+        sx: {
+          fontSize: "0.875rem",
+          color: "text.secondary"
+        },
+        children: a(j ? "booking.noMessageForStatus" : "booking.loadingMessages")
+      }), j && j.items.length > 0 ? o.jsx(g, {
+        component: "ul",
+        sx: {
+          m: 0,
+          p: 0,
+          listStyle: "none",
+          display: "flex",
+          flexDirection: "column",
+          gap: .75
+        },
+        children: j.items.map(t => o.jsxs(g, {
+          component: "li",
+          sx: {
+            fontSize: "0.875rem",
+            color: "text.secondary",
+            wordBreak: "keep-all"
+          },
+          children: [t.created_time.slice(0, 16), " · ", ce[t.kind] ?? t.kind, t.sender_name ? ` · ${t.sender_name}` : "", " ·", " ", o.jsx(g, {
+            component: "span",
+            sx: {
+              color: t.status === "queued" ? "success.dark" : "warning.dark"
+            },
+            children: t.status === "queued" ? a("booking.messageQueued") : a("booking.messageSkipped", {
+              reason: t.reason
+            })
+          })]
+        }, t.seq))
+      }) : null]
+    });
+  return o.jsxs(o.Fragment, {
+    children: [X ? o.jsx(Ne, {
+      clear: !0
+    }) : null, o.jsx(ve, {
+      readOnly: !u,
+      open: c.form.isOpen,
+      onClose: c.form.close,
+      title: m ? a("booking.bookingTitle", {
+        name: K
+      }) : a("booking.newBooking"),
+      maxWidth: "md",
+      backdropClick: !1,
+      scrollPastLastSection: !1,
+      fullScreen: f,
+      mobilePresentation: f ? "slide" : "dialog",
+      titleIcons: {
+        print: {
+          visible: !1
+        },
+        share: {
+          visible: !1
+        },
+        delete: {
+          visible: !!m && u,
+          confirmConfig: {
+            title: a("booking.deleteBooking"),
+            message: a("booking.deleteBookingConfirm"),
+            confirmText: a("booking.delete"),
+            cancelText: a("booking.cancel")
+          }
+        }
+      },
+      onDelete: i.remove,
+      tabs: {
+        visible: !1
+      },
+      actions: {
+        showCancelButton: !0,
+        left: m && u ? m.status === "awaiting_payment" ? o.jsx(G, {
+          variant: "outlined",
+          color: "success",
+          onClick: () => {
+            i.setPaid(!0);
+          },
+          disabled: y || N,
+          children: a("booking.confirmPayment")
+        }) : m.status === "confirmed" && m.paid_at ? o.jsx(G, {
+          onClick: () => {
+            i.setPaid(!1);
+          },
+          disabled: y || N,
+          children: a(f ? "booking.undoConfirmShort" : "booking.undoConfirmPayment")
+        }) : void 0 : void 0,
+        right: u ? o.jsx(G, {
+          variant: "contained",
+          onClick: () => {
+            l.submit();
+          },
+          disabled: N || y,
+          children: a(N ? "booking.saving" : "booking.save")
+        }) : void 0
+      },
+      sections: [{
+        id: "booking-main",
+        showTitle: !1,
+        children: o.jsxs(g, {
+          sx: {
+            display: "flex",
+            flexDirection: "column",
+            gap: A
+          },
+          children: [m ? null : o.jsxs(o.Fragment, {
+            children: [o.jsx(ge, {
+              size: "medium",
+              value: C,
+              onChange: t => i.changeCustomerMode(t ?? "pick"),
+              options: Le.map(({
+                value: t,
+                labelKey: _
+              }) => ({
+                value: t,
+                label: a(_)
+              })),
+              sx: f ? {
+                width: "100%",
+                "& .MuiToggleButtonGroup-grouped": {
+                  flex: 1
+                },
+                ...H
+              } : {
+                alignSelf: "flex-start",
+                "& .MuiToggleButtonGroup-grouped": {
+                  minWidth: 96
+                },
+                ...H
+              }
+            }), C === "pick" ? o.jsx(Me, {
+              label: a("booking.customerSearchLabel"),
+              options: J,
+              value: D || null,
+              onChange: t => i.pickCustomer(Number(t) || 0),
+              disableFilter: !0,
+              onInputChange: (t, _, B) => {
+                B === "input" && (!_.trim() && D && i.pickCustomer(0), i.searchCustomers(_));
+              },
+              disablePortal: !1,
+              loading: M,
+              noOptionsText: a("booking.customerNoOptions"),
+              fullWidth: !0
+            }) : s(o.jsx(re, {
+              form: l,
+              name: "new_name",
+              label: a("booking.customerName"),
+              fullWidth: !0,
+              required: !0,
+              slotProps: {
+                htmlInput: {
+                  maxLength: 100
+                }
+              }
+            }), o.jsx(ae, {
+              form: l,
+              name: "new_phone",
+              label: a("booking.mobile"),
+              includeDash: !0,
+              fullWidth: !0
+            }))]
+          }), (() => {
+            const t = W.length > 0 ? o.jsx(te, {
+                form: l,
+                name: "resource_seq",
+                label: h.resource,
+                options: W,
+                emptyLabel: a("booking.select"),
+                onChange: () => i.refreshPrice(),
+                fullWidth: !0
+              }) : null,
+              _ = m ? o.jsx(te, {
+                form: l,
+                name: "status",
+                label: a("booking.colStatus"),
+                options: $e(),
+                showEmptyOption: !1,
+                fullWidth: !0
+              }) : null;
+            return t && _ ? s(t, _) : t ?? (_ ? s(_, null) : null);
+          })(), S && S.options.length > 0 ? o.jsx(g, {
+            component: "ul",
+            "aria-label": a("booking.resourceOptions", {
+              resource: h.resource
+            }),
+            sx: {
+              m: 0,
+              p: 0,
+              listStyle: "none",
+              display: "flex",
+              flexWrap: "wrap",
+              gap: .75
+            },
+            children: S.options.map(t => o.jsx(g, {
+              component: "li",
+              sx: {
+                px: 1.25,
+                py: .25,
+                borderRadius: "9999px",
+                bgcolor: "action.hover",
+                fontSize: "0.875rem",
+                color: "text.secondary"
+              },
+              children: t
+            }, t))
+          }) : null, L.length > 0 || F.length > 0 ? o.jsxs(g, {
+            sx: {
+              display: "flex",
+              flexDirection: "column",
+              gap: 1.5
+            },
+            children: [o.jsx(te, {
+              label: a("booking.addItem", {
+                product: h.product
+              }),
+              value: "",
+              options: L.map(t => ({
+                value: t.seq,
+                label: `${t.category_name ? `${t.category_name} · ` : ""}${t.name} — ${R(t.price)}${t.duration_minutes > 0 ? ` · ${me(t.duration_minutes)}` : ""}`
+              })),
+              emptyLabel: a("booking.select"),
+              onChange: t => i.addItem(Number(t.target.value) || 0),
+              fullWidth: !0
+            }), F.length > 0 ? o.jsxs(g, {
+              component: "ul",
+              sx: {
+                m: 0,
+                p: 0,
+                listStyle: "none",
+                border: 1,
+                borderColor: "divider",
+                borderRadius: 1,
+                overflow: "hidden"
+              },
+              children: [F.map(t => o.jsxs(g, {
+                component: "li",
+                sx: {
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1,
+                  pl: 1.5,
+                  pr: .5,
+                  py: .5,
+                  borderBottom: 1,
+                  borderColor: "divider"
+                },
+                children: [o.jsx(g, {
+                  sx: {
+                    flex: 1,
+                    minWidth: 0,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap"
+                  },
+                  children: t.name
+                }), o.jsx(ne, {
+                  size: "small",
+                  "aria-label": a("booking.qtyMinus", {
+                    name: t.name
+                  }),
+                  onClick: () => i.changeItemQty(t.product_seq, t.qty - 1),
+                  children: o.jsx(Fe, {
+                    fontSize: "small"
+                  })
+                }), o.jsx(g, {
+                  sx: {
+                    minWidth: 24,
+                    textAlign: "center",
+                    fontVariantNumeric: "tabular-nums"
+                  },
+                  children: t.qty
+                }), o.jsx(ne, {
+                  size: "small",
+                  "aria-label": a("booking.qtyPlus", {
+                    name: t.name
+                  }),
+                  onClick: () => i.changeItemQty(t.product_seq, t.qty + 1),
+                  children: o.jsx(Ce, {
+                    fontSize: "small"
+                  })
+                }), o.jsx(g, {
+                  sx: {
+                    width: 96,
+                    flexShrink: 0,
+                    textAlign: "right",
+                    fontVariantNumeric: "tabular-nums"
+                  },
+                  children: R(t.price * t.qty)
+                }), o.jsx(ne, {
+                  size: "small",
+                  "aria-label": a("booking.removeItem", {
+                    name: t.name
+                  }),
+                  onClick: () => i.changeItemQty(t.product_seq, 0),
+                  sx: {
+                    color: "error.main"
+                  },
+                  children: o.jsx(Oe, {
+                    fontSize: "small"
+                  })
+                })]
+              }, t.product_seq)), o.jsxs(g, {
+                component: "li",
+                sx: {
+                  display: "flex",
+                  justifyContent: "space-between",
+                  gap: 2,
+                  px: 1.5,
+                  py: 1,
+                  bgcolor: "action.hover",
+                  fontWeight: 600
+                },
+                children: [o.jsx("span", {
+                  children: a("booking.itemsTotal", {
+                    product: h.product
+                  })
+                }), o.jsxs(g, {
+                  component: "span",
+                  sx: {
+                    fontVariantNumeric: "tabular-nums"
+                  },
+                  children: [R(O.amount), O.minutes > 0 ? ` · ${me(O.minutes)}` : ""]
+                })]
+              })]
+            }) : null]
+          }) : null, n.length > 0 ? o.jsx(ge, {
+            size: "medium",
+            value: e || null,
+            onChange: t => t && i.applyMonths(Number(t)),
+            options: n,
+            sx: f ? {
+              width: "100%",
+              "& .MuiToggleButtonGroup-grouped": {
+                flex: 1
+              },
+              ...H
+            } : {
+              alignSelf: "flex-start",
+              "& .MuiToggleButtonGroup-grouped": {
+                minWidth: 96
+              },
+              ...H
+            }
+          }) : null, r(o.jsx(ie, {
+            form: l,
+            name: "start_at",
+            label: a("booking.start"),
+            format: "YYYY-MM-DD HH:mm",
+            onChange: t => i.changeStart(String(t.target.value ?? "")),
+            fullWidth: !0
+          }), o.jsx(ie, {
+            form: l,
+            name: "end_at",
+            label: a("booking.end"),
+            format: "YYYY-MM-DD HH:mm",
+            onChange: t => i.changeEnd(String(t.target.value ?? "")),
+            fullWidth: !0
+          }), o.jsx(se, {
+            form: l,
+            name: "party_size",
+            label: a("booking.colParty"),
+            suffix: a("booking.peopleSuffix"),
+            min: 1,
+            fullWidth: !0
+          }), o.jsx(se, {
+            form: l,
+            name: "price",
+            label: a("booking.colPrice"),
+            suffix: a("booking.wonSuffix"),
+            min: 0,
+            fullWidth: !0
+          })), s(o.jsx(se, {
+            form: l,
+            name: "deposit_amount",
+            label: a("booking.depositLabel"),
+            suffix: a("booking.wonSuffix"),
+            min: 0,
+            fullWidth: !0
+          }), o.jsx(ae, {
+            form: l,
+            name: "contact_phone",
+            label: a("booking.contactPhoneLabel"),
+            includeDash: !0,
+            fullWidth: !0
+          })), d, m && P === "canceled" ? o.jsx(re, {
+            form: l,
+            name: "cancel_reason",
+            label: a("booking.cancelReason"),
+            fullWidth: !0,
+            slotProps: {
+              htmlInput: {
+                maxLength: 200
+              }
+            }
+          }) : null, o.jsx(we, {
+            form: l,
+            name: "memo",
+            label: a("booking.colMemo"),
+            fullWidth: !0,
+            minRows: 3,
+            slotProps: {
+              htmlInput: {
+                maxLength: 5e3
+              }
+            }
+          })]
+        })
+      }, ...(m ? [{
+        id: "booking-message",
+        title: a("booking.customerNotice"),
+        children: T
+      }] : [])]
+    })]
+  });
+}
+export { Ue as B, Qe as u };

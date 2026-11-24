@@ -1,0 +1,5293 @@
+import { r as s, j as e, u as Zn, i as er } from "./react-CjxcGQav.js";
+import { co as tr, cp as nr, cq as rr, cr as or, cs as ar, ct as sr, L as F, p0 as ir, c as Ge, bM as ge, bv as z, c8 as Je, bO as dt, bT as g, ds as J, bx as Ne, B as c, fy as lr, fk as cr, D as Re, du as Ct, fm as kt, p1 as dr, bH as te, bI as X, go as Ve, p2 as rn, M as pr, w as qe, eO as At, eP as Pe, h3 as Tt, eM as wt, eN as Dt, mY as ur, eK as An, eU as Ft, eV as _t, eL as Rt, eW as It, eX as Lt, bQ as K, hW as on, cl as xt, jY as ie, p3 as Te, cI as Be, cW as Et, fq as Xe, fr as Qe, fs as Ze, al as Tn, aq as wn, ft as Dn, e as Ke, ak as mr, eR as Fn, cJ as Fe, I as _e, p4 as Nt, y as fr, fN as hr, el as an, em as sn, gR as xr, aG as gr, bh as _n, mW as qt, p5 as vr, fx as Pt, K as Vt, p6 as ln, ce as Ot, cf as zt, iH as br, p7 as yr, p8 as Sr, p9 as jr, pa as Cr, kf as kr, jZ as Ar, pb as Tr, fo as Rn, d5 as gt, c4 as vt, pc as In, eQ as wr, fi as Dr, hi as Ln, ck as En, fp as cn, k1 as Fr, k2 as _r, pd as dn, cc as Rr, pe as Ir, pf as Lr, jN as pn, d8 as Er, b5 as Nr, jA as un, d6 as He, aB as qr, s as Pr, bK as Vr, z as Or, fL as zr, cz as Mr, pg as Wr, ph as Hr } from "../js.d/main-Cm9wS5wt.js";
+import { f as Br, S as Mt, s as Kr, t as Ur, j as Yr, m as $r, e as Gr, g as Jr, p as Xr, n as Qr, o as pt, v as Zr, B as eo, F as to, R as no, b as ro } from "./ReferenceList-mhfbKusm.js";
+import { B as oo } from "./Bookmark-D9hRs62u.js";
+import { z as Wt } from "./bootstrapController-BMV_i07c.js";
+import { u as Le, F as ao } from "./FileUploadBox-crZW1mG0.js";
+import { b as Nn, r as qn, g as bt, a as Pn, c as so, i as io } from "./formPermission-dS9nHLBQ.js";
+import { u as Ht } from "./useTeamApprovalSettings-C0SRRQJg.js";
+import { t as yt, m as lo, a as co, r as Vn, c as On, b as po, e as uo, s as mo } from "./utils-B6Q5_urv.js";
+import { r as fo } from "./resolveAssetPreviewSrc-CLlbOCzq.js";
+import { c as ho } from "./closeModalThenNavigate-E6PLv0o1.js";
+import { h as xo, i as go } from "./FileViewer-D5PyYcLh.js";
+import { u as vo } from "./useFileViewer-B-2ewnr3.js";
+import { u as bo } from "./mobileSearchOverlay-DYWcMOOb.js";
+import { u as yo } from "./useAppBasePath-BVB_xO8H.js";
+import "./stylis-DdLD6a3t.js";
+import "./printDocChrome-BMZLbM8A.js";
+import "./index.esm-BLbQfyP0.js";
+import "./RotateRight-DbtMfjGZ.js";
+import "./tiny-invariant-CopsF_GD.js";
+import "./Snackbar-DxIDGM8-.js";
+import "./Refresh-xoMt5L00.js";
+import "./date_utils-CYURFdnX.js";
+import "./OptionToggleGroup-Cvm2wRyq.js";
+import "./profileEcho-q2FaD_03.js";
+import "./teamMembers-0yRsmqL6.js";
+import "./pendingRecordings-DpKJ8Y2R.js";
+import "./meetingsApi-CCkjq69B.js";
+import "./orgTree-Dh5HFjBo.js";
+import "./mxApi-R6g9QtQq.js";
+import "./aliasStore-DiN6Kp-5.js";
+import "./profileApi-Btafs-pM.js";
+import "./AccountAvatar-DtrhoS_d.js";
+import "./Person-DnoEHesw.js";
+import "./uploadGuard-BK1B6cyC.js";
+import "./documentViewerStore-BlSjH3BG.js";
+function So(t) {
+  return tr("MuiDialogContentText", t);
+}
+nr("MuiDialogContentText", ["root"]);
+const jo = t => {
+    const {
+        classes: n
+      } = t,
+      l = ar({
+        root: ["root"]
+      }, So, n);
+    return {
+      ...n,
+      ...l
+    };
+  },
+  Co = sr(F, {
+    shouldForwardProp: t => ir(t) || t === "classes",
+    name: "MuiDialogContentText",
+    slot: "Root"
+  })({}),
+  ko = s.forwardRef(function (n, o) {
+    const l = rr({
+        props: n,
+        name: "MuiDialogContentText"
+      }),
+      {
+        children: i,
+        className: a,
+        ...m
+      } = l,
+      h = jo(m);
+    return e.jsx(Co, {
+      component: "p",
+      variant: "body1",
+      color: "textSecondary",
+      ref: o,
+      ownerState: m,
+      className: or(h.root, a),
+      ...l,
+      classes: h
+    });
+  }),
+  Ao = Ge(e.jsx("path", {
+    d: "M7 14H5v5h5v-2H7zm-2-4h2V7h3V5H5zm12 7h-3v2h5v-5h-2zM14 5v2h3v3h2V5z"
+  })),
+  To = Ge(e.jsx("path", {
+    d: "M5 16h3v3h2v-5H5zm3-8H5v2h5V5H8zm6 11h2v-3h3v-2h-5zm2-11V5h-2v5h5V8z"
+  })),
+  wo = Ge(e.jsx("path", {
+    d: "M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4m-9-2V7H4v3H1v2h3v3h2v-3h3v-2zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4"
+  })),
+  Do = Ge(e.jsx("path", {
+    d: "M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.89-2-2-2m0 16H5V7h14zm-5.5-6c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5M12 9c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5"
+  })),
+  Fo = "장례식장";
+function zn(t) {
+  const n = String(t ?? "").trim();
+  return !n || n === Fo;
+}
+const Ue = ["자금일보 결재선", "도우미수당 결재선"],
+  _o = async t => {
+    const n = await ge.http.get(`/v1/approval/last-line?type=${encodeURIComponent(t)}`),
+      o = Array.isArray(n?.data?.approvers) ? n.data.approvers : [];
+    if (o.length === 0) return null;
+    const l = Array.isArray(n?.data?.references) ? n.data.references : [];
+    return {
+      approvers_json: JSON.stringify(o),
+      references_json: JSON.stringify(l)
+    };
+  },
+  Ye = async () => {
+    const t = await ge.http.get("/v1/approval/line-templates");
+    return Array.isArray(t.data?.items) ? t.data.items : [];
+  },
+  Mn = async (t, n, o, l, i) => {
+    const a = await ge.http.post("/v1/approval/line-templates", {
+      name: t,
+      approvers: n,
+      references: o,
+      form_type: String(i ?? "").trim(),
+      ...(l ? {
+        seq: l
+      } : {})
+    });
+    return {
+      seq: Number(a.data?.seq ?? 0)
+    };
+  },
+  Bt = async t => {
+    await ge.http.delete(`/v1/approval/line-templates/${t}`);
+  },
+  Ro = async t => {
+    await ge.http.post("/v1/approval/line-templates/reorder", {
+      seqs: t
+    });
+  },
+  et = t => {
+    try {
+      return JSON.parse(t.approvers_json);
+    } catch {
+      return [];
+    }
+  },
+  tt = t => {
+    try {
+      return JSON.parse(t.references_json);
+    } catch {
+      return [];
+    }
+  };
+function Io({
+  open: t,
+  initialApprovers: n,
+  initialReferences: o,
+  initialTemplateSeq: l,
+  openInNameMode: i,
+  maxApprovers: a,
+  candidateAccountSeqs: m,
+  candidateMembers: h,
+  onConfirm: d
+}) {
+  const u = z(),
+    [r, p] = s.useState([]),
+    [y, C] = s.useState([]),
+    [v, _] = s.useState([]),
+    [b, S] = s.useState([]),
+    [A, R] = s.useState(!1),
+    [H, W] = s.useState(0),
+    [B, ue] = s.useState(!1),
+    [ve, Y] = s.useState(!1),
+    [ee, le] = s.useState(!1),
+    [ce, V] = s.useState(""),
+    ne = s.useRef(null),
+    O = Je({
+      stateId: "bootstrapState"
+    }).useValue("data.employee"),
+    {
+      account: Q
+    } = Le(),
+    Z = Number(Q?.seq ?? 0),
+    P = m ? m.join(",") : "",
+    M = s.useMemo(() => {
+      const k = P ? new Set(P.split(",").map(Number)) : null,
+        w = new Map((h ?? []).map(I => [I.account_seq, I])),
+        E = yt(O).filter(I => !k || k.has(Number(I.account_seq ?? 0))).map(I => {
+          const de = w.get(Number(I.account_seq ?? 0));
+          return de ? {
+            ...I,
+            department: I.department || de.department || void 0,
+            role_name: I.role_name || de.position || void 0
+          } : I;
+        }),
+        q = new Set(E.map(I => Number(I.account_seq ?? 0))),
+        Ce = (h ?? []).filter(I => I.account_seq > 0 && !q.has(I.account_seq) && (!k || k.has(I.account_seq))).map(I => ({
+          seq: I.account_seq,
+          account_seq: I.account_seq,
+          name: I.name,
+          department: I.department || void 0,
+          role_name: I.position || void 0
+        }));
+      return [...E, ...Ce].filter(I => !(Z > 0 && Number(I.account_seq ?? 0) === Z));
+    }, [O, Z, P, h]),
+    me = s.useMemo(() => M.length > 0 ? "" : yt(O).length === 0 && !h?.length ? u("approval.employeeRosterLoadFailed") : u(P ? "approval.noOtherMembersInOrg" : "approval.noOtherMembers"), [M, O, P, h, u]),
+    U = s.useMemo(() => r.map(k => Number(k.account_seq ?? 0)).filter(k => k > 0), [r]),
+    fe = s.useMemo(() => y.map(k => Number(k.account_seq ?? 0)).filter(k => k > 0), [y]);
+  s.useEffect(() => {
+    t && (p(n), C(o), W(l ?? 0), _([]), i ? (le(!0), V(""), setTimeout(() => ne.current?.focus(), 80)) : le(!1), A || Ye().then(k => S(k.filter(w => !Ue.includes(w.name)))).catch(() => S([])).finally(() => R(!0)));
+  }, [t]);
+  const he = s.useCallback(k => {
+      if (!k.account_seq) {
+        dt(g("approval.noAccountCannotAddApprover"));
+        return;
+      }
+      U.includes(Number(k.account_seq)) || (C(w => w.filter(E => Number(E.account_seq ?? 0) !== Number(k.account_seq))), p(w => a && w.length >= a ? w : [...w, lo(k, w.length + 1)]));
+    }, [U, a]),
+    be = s.useCallback(k => {
+      fe.includes(Number(k.account_seq ?? 0)) || (p(w => w.filter(E => Number(E.account_seq ?? 0) !== Number(k.account_seq ?? 0)).map((E, q) => ({
+        ...E,
+        order: q + 1
+      }))), C(w => [...w, co(k)]));
+    }, [fe]),
+    x = s.useCallback(k => {
+      p(w => w.filter((E, q) => q !== k).map((E, q) => ({
+        ...E,
+        order: q + 1
+      })));
+    }, []),
+    j = s.useCallback(k => {
+      C(w => w.filter((E, q) => q !== k));
+    }, []),
+    L = s.useCallback(k => {
+      _(w => w.includes(k) ? w.filter(E => E !== k) : [...w, k]);
+    }, []),
+    $ = s.useCallback(() => {
+      const k = M.filter(q => v.includes(q.seq)),
+        w = a ? Math.max(0, a - r.length) : k.length,
+        E = k.slice(0, w);
+      k.length > E.length && J({
+        message: g("approval.maxApproversWarning", {
+          count: a
+        })
+      }), E.forEach(q => he(q)), _([]);
+    }, [M, v, r.length, a, he]),
+    oe = s.useCallback(() => {
+      M.filter(w => v.includes(w.seq)).forEach(w => be(w)), _([]);
+    }, [M, v, be]),
+    T = s.useCallback(k => {
+      p(k);
+    }, []),
+    G = s.useCallback((k, w) => {
+      p(E => E.map((q, Ce) => Ce === k ? {
+        ...q,
+        role: w
+      } : q));
+    }, []),
+    ae = s.useCallback(k => {
+      const w = b.find(q => q.seq === k);
+      if (!w) return;
+      let E = Vn(et(w), M);
+      a && E.length > a && (E = E.slice(0, a).map((q, Ce) => ({
+        ...q,
+        order: Ce + 1
+      })), J({
+        message: g("approval.maxApproversWarning", {
+          count: a
+        })
+      })), p(E), C(On(tt(w), M)), W(k);
+    }, [b, M, a]),
+    ye = s.useCallback(k => {
+      S(w => {
+        const E = new Map(w.map(I => [I.seq, I])),
+          q = k.map(I => E.get(I)).filter(I => !!I),
+          Ce = w.filter(I => !k.includes(I.seq));
+        return [...q, ...Ce];
+      }), Ro(k).catch(() => {
+        Ye().then(w => S(w.filter(E => !Ue.includes(E.name)))).catch(() => {});
+      });
+    }, []),
+    Se = s.useCallback(async k => {
+      ue(!0);
+      try {
+        const {
+          seq: w
+        } = await Mn(k, r, y);
+        S(E => [{
+          seq: w,
+          account_seq: 0,
+          name: k,
+          approvers_json: JSON.stringify(r),
+          references_json: JSON.stringify(y)
+        }, ...E]), W(w), Ne({
+          message: g("approval.templateSaved"),
+          delay: 500
+        });
+      } catch {
+        dt(g("approval.templateSaveFailed"));
+      } finally {
+        ue(!1);
+      }
+    }, [r, y]),
+    xe = s.useCallback(async k => {
+      if (window.confirm(g("approval.confirmDeleteTemplate"))) {
+        Y(!0);
+        try {
+          await Bt(k), S(w => w.filter(E => E.seq !== k)), W(0), Ne({
+            message: g("approval.templateDeleted"),
+            delay: 500
+          });
+        } catch {
+          dt(g("approval.templateDeleteFailed"));
+        } finally {
+          Y(!1);
+        }
+      }
+    }, []),
+    we = s.useCallback(() => {
+      V(""), le(!0), setTimeout(() => ne.current?.focus(), 60);
+    }, []),
+    je = s.useCallback(() => {
+      le(!1), V("");
+    }, []),
+    se = s.useCallback(async () => {
+      const k = ce.trim();
+      k && (await Se(k), le(!1), V(""));
+    }, [ce, Se]),
+    ot = s.useCallback(k => {
+      k.key === "Enter" && se(), k.key === "Escape" && je();
+    }, [se, je]),
+    Ie = s.useCallback(() => {}, [r, y, d]);
+  return {
+    employees: M,
+    emptyReason: me,
+    selectedSeqs: v,
+    setSelectedSeqs: _,
+    approverSeqs: U,
+    referenceSeqs: fe,
+    handleToggleEmployee: L,
+    handleAddSelectedToApprovers: $,
+    handleAddSelectedToReferences: oe,
+    approvers: r,
+    handleRemoveApprover: x,
+    handleApproverReorder: T,
+    handleChangeApproverRole: G,
+    references: y,
+    handleRemoveReference: j,
+    templates: b,
+    templatesLoaded: A,
+    selectedTemplateSeq: H,
+    saving: B,
+    deleting: ve,
+    handleLoadTemplate: ae,
+    handleDeleteTemplate: xe,
+    handleReorderTemplates: ye,
+    templateNameMode: ee,
+    newTemplateName: ce,
+    templateNameInputRef: ne,
+    setNewTemplateName: V,
+    handleStartNewTemplate: we,
+    handleCancelNewTemplate: je,
+    handleConfirmNewTemplate: se,
+    handleTemplateNameKey: ot,
+    handleConfirm: Ie
+  };
+}
+const mn = s.memo(function ({
+    employees: n,
+    selectedSeqs: o,
+    onSelectionChange: l,
+    approverSeqs: i,
+    referenceSeqs: a,
+    labelFormat: m = "default",
+    emptyReason: h = ""
+  }) {
+    const d = z(),
+      u = s.useMemo(() => n.filter(b => Number(b.account_seq ?? 0) > 0 && !i.includes(Number(b.account_seq ?? 0)) && !a.includes(Number(b.account_seq ?? 0))), [n, i, a]),
+      [r, p] = s.useState(""),
+      y = s.useMemo(() => {
+        const b = r.trim().toLowerCase();
+        return b ? u.filter(S => [S.name, S.department, S.role_name, S.work_position].filter(Boolean).some(A => String(A).toLowerCase().includes(b))) : u;
+      }, [u, r]),
+      C = s.useMemo(() => po(y, {
+        labelFormat: m
+      }), [y, m, d]),
+      v = s.useMemo(() => u.filter(b => o.includes(b.seq)).map(uo), []),
+      _ = i.length + a.length;
+    return e.jsxs(e.Fragment, {
+      children: [e.jsx(c, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: .5,
+          px: 2,
+          minHeight: 50,
+          bgcolor: "#f5f5f5",
+          borderBottom: "1px solid #cccccc",
+          flexShrink: 0
+        },
+        children: e.jsx(F, {
+          sx: {
+            fontWeight: 500,
+            lineHeight: 1
+          },
+          children: d("approval.employeeListCount", {
+            count: u.length
+          })
+        })
+      }), e.jsx(c, {
+        sx: {
+          px: 1.5,
+          py: 1,
+          borderBottom: "1px solid #cccccc",
+          flexShrink: 0
+        },
+        children: e.jsx(lr, {
+          size: "small",
+          fullWidth: !0,
+          placeholder: d("approval.searchNameDept"),
+          onSearch: p,
+          onClear: () => p(""),
+          sx: {
+            "& .MuiOutlinedInput-notchedOutline": {
+              border: "none"
+            },
+            "& .MuiInputBase-root": {
+              px: 0
+            }
+          }
+        })
+      }), e.jsx(c, {
+        sx: {
+          flex: 1,
+          minHeight: 0,
+          overflow: "hidden"
+        },
+        children: h && n.length === 0 ? e.jsx(F, {
+          sx: {
+            p: 2,
+            fontSize: 15,
+            color: "text.secondary",
+            textAlign: "center",
+            wordBreak: "keep-all"
+          },
+          children: h
+        }) : e.jsx(cr, {
+          items: C,
+          checkbox: !0,
+          multiSelect: !0,
+          selectionMode: "child",
+          toggleCheckOnLabelClick: !0,
+          showSearch: !1,
+          defaultExpanded: !0,
+          initialSelections: v,
+          resetTrigger: _,
+          onChange: b => l(b.map(mo).filter(S => S > 0)),
+          styles: {
+            maxHeight: 460,
+            border: "none",
+            borderRadius: "0"
+          }
+        })
+      })]
+    });
+  }),
+  Lo = ["approve", "agree", "final"],
+  Eo = {
+    approve: "approval.roleHintApprove",
+    agree: "approval.roleHintAgree",
+    final: "approval.roleHintFinal"
+  };
+function No({
+  role: t,
+  onChange: n
+}) {
+  const o = z(),
+    [l, i] = s.useState(null),
+    a = t === "approve";
+  return e.jsxs(e.Fragment, {
+    children: [e.jsx(c, {
+      component: "button",
+      type: "button",
+      onClick: m => i(m.currentTarget),
+      "aria-label": o("approval.approverRole"),
+      sx: {
+        flexShrink: 0,
+        px: .75,
+        py: .25,
+        borderRadius: 1,
+        border: "1px solid",
+        borderColor: a ? "#e2e8f0" : "transparent",
+        bgcolor: a ? "#fff" : t === "final" ? "#fee2e2" : "#e0e7ff",
+        color: a ? "#64748b" : t === "final" ? "#991b1b" : "#3730a3",
+        font: "inherit",
+        fontSize: 14,
+        fontWeight: 600,
+        lineHeight: 1.4,
+        cursor: "pointer",
+        whiteSpace: "nowrap"
+      },
+      children: rn[t]
+    }), e.jsx(pr, {
+      open: !!l,
+      anchorEl: l,
+      onClose: () => i(null),
+      transitionDuration: 0,
+      anchorOrigin: {
+        vertical: "bottom",
+        horizontal: "right"
+      },
+      transformOrigin: {
+        vertical: "top",
+        horizontal: "right"
+      },
+      children: Lo.map(m => e.jsxs(qe, {
+        selected: m === t,
+        onClick: () => {
+          i(null), m !== t && n(m);
+        },
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          gap: .25
+        },
+        children: [e.jsx(F, {
+          sx: {
+            fontSize: 15,
+            fontWeight: 600
+          },
+          children: rn[m]
+        }), e.jsx(F, {
+          sx: {
+            fontSize: 14,
+            color: "text.secondary"
+          },
+          children: o(Eo[m])
+        })]
+      }, m))
+    })]
+  });
+}
+const Wn = s.memo(function ({
+  name: n,
+  department: o,
+  role_name: l,
+  workPosition: i,
+  avatar: a,
+  dragHandleProps: m,
+  isDragging: h,
+  onRemove: d,
+  role: u,
+  onChangeRole: r
+}) {
+  const p = z(),
+    y = [o, l, i].filter(Boolean).join(" / "),
+    C = Re();
+  return e.jsxs(c, {
+    sx: {
+      display: "flex",
+      alignItems: "center",
+      gap: 1,
+      flexShrink: 0,
+      pl: m !== void 0 ? .5 : 1.5,
+      pr: 1,
+      py: 1.5,
+      borderBottom: "1px solid #e5e7eb",
+      bgcolor: h ? "action.hover" : "#fff",
+      userSelect: "none",
+      minWidth: 0,
+      "&:hover .PersonCard-removeIcon": {
+        color: "#475569"
+      }
+    },
+    children: [m !== void 0 && e.jsx(c, {
+      ...m,
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        cursor: h ? "grabbing" : "grab",
+        color: "#94a3b8",
+        flexShrink: 0,
+        px: .5,
+        touchAction: "none",
+        "&:hover": {
+          color: "#475569"
+        }
+      },
+      children: e.jsx(Ct, {
+        fontSize: "small"
+      })
+    }), !C && e.jsx(kt, {
+      src: a,
+      sx: {
+        fontSize: "1rem",
+        flexShrink: 0
+      },
+      children: n?.charAt(0)
+    }), e.jsxs(c, {
+      sx: {
+        flex: 1,
+        minWidth: 0,
+        lineHeight: 1.2,
+        ml: C ? 0 : 1
+      },
+      children: [e.jsx(F, {
+        variant: "body2",
+        fontWeight: 500,
+        noWrap: !0,
+        children: n
+      }), y && e.jsx(F, {
+        variant: "caption",
+        color: "text.secondary",
+        noWrap: !0,
+        display: "block",
+        children: y
+      })]
+    }), r && e.jsx(No, {
+      role: dr(u),
+      onChange: r
+    }), e.jsx(te, {
+      title: p("approval.removeItem"),
+      children: e.jsx(X, {
+        onClick: d,
+        className: "PersonCard-removeIcon",
+        sx: {
+          color: "#cbd5e1",
+          flexShrink: 0,
+          "&:hover": {
+            color: "#475569",
+            bgcolor: "#f8fafc"
+          }
+        },
+        children: e.jsx(Ve, {
+          fontSize: "small"
+        })
+      })
+    })]
+  });
+});
+function Kt() {
+  const n = Je({
+      stateId: "bootstrapState"
+    }).getValue("data")?.employee ?? [],
+    {
+      byAccount: o,
+      byEmployee: l
+    } = s.useMemo(() => {
+      const i = new Map(),
+        a = new Map();
+      for (const m of n) {
+        const h = String(m.avatar ?? "").trim();
+        if (!h) continue;
+        const d = Number(m.login_account_seq ?? 0),
+          u = Number(m.seq ?? 0);
+        d > 0 && i.set(d, h), u > 0 && a.set(u, h);
+      }
+      return {
+        byAccount: i,
+        byEmployee: a
+      };
+    }, [n]);
+  return s.useMemo(() => i => {
+    if (!i) return "";
+    const m = String(i.avatar ?? "").trim() || o.get(Number(i.account_seq ?? i.seq ?? 0)) || l.get(Number(i.employee_seq ?? i.seq ?? 0)) || "";
+    return m ? fo(m, "sm") : "";
+  }, [o, l]);
+}
+function qo({
+  approver: t,
+  index: n,
+  avatarSrc: o,
+  onRemove: l,
+  onChangeRole: i
+}) {
+  const a = `approver-${Number(t.employee_seq ?? t.seq ?? n)}`,
+    {
+      attributes: m,
+      listeners: h,
+      setNodeRef: d,
+      transform: u,
+      transition: r,
+      isDragging: p
+    } = It({
+      id: a
+    }),
+    y = {
+      transform: Lt.Transform.toString(u),
+      transition: r
+    };
+  return e.jsx(c, {
+    ref: d,
+    style: y,
+    children: e.jsx(Wn, {
+      name: t.name,
+      department: t.department,
+      role_name: t.role_name,
+      workPosition: t.work_position,
+      avatar: o,
+      dragHandleProps: {
+        ...m,
+        ...h
+      },
+      isDragging: p,
+      onRemove: l,
+      role: t.role,
+      onChangeRole: i
+    })
+  });
+}
+function fn({
+  approvers: t,
+  onRemove: n,
+  onReorder: o,
+  onChangeRole: l
+}) {
+  const i = z(),
+    a = Kt(),
+    m = At(Pe(Tt, {
+      activationConstraint: {
+        distance: 8
+      }
+    })),
+    h = t.map((u, r) => `approver-${Number(u.employee_seq ?? u.seq ?? r)}`),
+    d = u => {
+      const {
+        active: r,
+        over: p
+      } = u;
+      if (!p || r.id === p.id) return;
+      const y = h.indexOf(String(r.id)),
+        C = h.indexOf(String(p.id));
+      y < 0 || C < 0 || o(Rt(t, y, C).map((v, _) => ({
+        ...v,
+        order: _ + 1
+      })));
+    };
+  return e.jsxs(c, {
+    sx: {
+      flex: 1,
+      display: "flex",
+      flexDirection: "column",
+      minWidth: 0,
+      height: "100%"
+    },
+    children: [e.jsx(c, {
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        gap: .5,
+        px: 2,
+        minHeight: 50,
+        bgcolor: "#f5f5f5",
+        borderBottom: "1px solid #cccccc",
+        flexShrink: 0
+      },
+      children: e.jsx(F, {
+        sx: {
+          fontWeight: 500,
+          lineHeight: 1
+        },
+        children: i("approval.approvalLineCount", {
+          count: t.length
+        })
+      })
+    }), e.jsx(c, {
+      sx: {
+        flex: 1,
+        overflowY: "auto",
+        p: t.length === 0 ? 1.25 : 0
+      },
+      children: t.length === 0 ? e.jsx(c, {
+        sx: {
+          height: "100%",
+          minHeight: 60,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          p: 2
+        },
+        children: e.jsx(F, {
+          color: "text.secondary",
+          sx: {
+            fontSize: 14,
+            wordBreak: "keep-all",
+            textAlign: "center"
+          },
+          children: i("approval.addApprovalLineHint")
+        })
+      }) : e.jsx(wt, {
+        sensors: m,
+        collisionDetection: An,
+        modifiers: [Dt, ur],
+        onDragEnd: d,
+        children: e.jsx(Ft, {
+          items: h,
+          strategy: _t,
+          children: e.jsx(c, {
+            sx: {
+              display: "flex",
+              flexDirection: "column"
+            },
+            children: t.map((u, r) => e.jsx(qo, {
+              approver: u,
+              index: r,
+              avatarSrc: a(u),
+              onRemove: () => n(r),
+              onChangeRole: p => l(r, p)
+            }, h[r]))
+          })
+        })
+      })
+    })]
+  });
+}
+function hn({
+  references: t,
+  onRemove: n
+}) {
+  const o = z(),
+    l = Kt();
+  return e.jsxs(c, {
+    sx: {
+      flex: 1,
+      display: "flex",
+      flexDirection: "column",
+      minWidth: 0,
+      height: "100%"
+    },
+    children: [e.jsx(c, {
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        gap: .5,
+        px: 2,
+        minHeight: 50,
+        bgcolor: "#f5f5f5",
+        borderBottom: "1px solid #cccccc",
+        flexShrink: 0
+      },
+      children: e.jsx(F, {
+        sx: {
+          fontWeight: 500,
+          lineHeight: 1
+        },
+        children: o("approval.referencesCount", {
+          count: t.length
+        })
+      })
+    }), e.jsx(c, {
+      sx: {
+        flex: 1,
+        overflowY: "auto",
+        p: t.length === 0 ? 1.25 : 0
+      },
+      children: t.length === 0 ? e.jsx(c, {
+        sx: {
+          height: "100%",
+          minHeight: 60,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          p: 2
+        },
+        children: e.jsx(F, {
+          color: "text.secondary",
+          sx: {
+            fontSize: 14,
+            wordBreak: "keep-all",
+            textAlign: "center"
+          },
+          children: o("approval.noReferencesYet")
+        })
+      }) : e.jsx(c, {
+        sx: {
+          display: "flex",
+          flexDirection: "column"
+        },
+        children: t.map((i, a) => e.jsx(Wn, {
+          name: i.name,
+          department: i.department,
+          role_name: i.role_name,
+          avatar: l(i),
+          onRemove: () => n(a)
+        }, i.id))
+      })
+    })]
+  });
+}
+function Po({
+  state: t
+}) {
+  const n = z(),
+    o = Re(),
+    l = t.selectedSeqs.length === 0;
+  return o ? e.jsxs(c, {
+    sx: {
+      flex: 1,
+      minWidth: 0,
+      display: "flex",
+      flexDirection: "column",
+      gap: 2,
+      minHeight: 0,
+      overflow: "hidden",
+      userSelect: "none"
+    },
+    children: [e.jsx(c, {
+      sx: {
+        flex: 1.3,
+        minHeight: 0,
+        display: "flex",
+        flexDirection: "column",
+        border: "1px solid #cccccc",
+        borderRadius: 1,
+        overflow: "hidden"
+      },
+      children: e.jsx(mn, {
+        employees: t.employees,
+        selectedSeqs: t.selectedSeqs,
+        onSelectionChange: t.setSelectedSeqs,
+        approverSeqs: t.approverSeqs,
+        referenceSeqs: t.referenceSeqs,
+        emptyReason: t.emptyReason
+      })
+    }), e.jsxs(c, {
+      sx: {
+        display: "flex",
+        gap: 2,
+        flexShrink: 0
+      },
+      children: [e.jsx(K, {
+        variant: "outlined",
+        fullWidth: !0,
+        disabled: l,
+        onClick: t.handleAddSelectedToApprovers,
+        endIcon: e.jsx(on, {}),
+        sx: {
+          borderColor: "#cccccc"
+        },
+        children: n("approval.addToApprovalLine")
+      }), e.jsx(K, {
+        variant: "outlined",
+        color: "inherit",
+        fullWidth: !0,
+        disabled: l,
+        onClick: t.handleAddSelectedToReferences,
+        endIcon: e.jsx(on, {}),
+        sx: {
+          borderColor: "#cccccc"
+        },
+        children: n("approval.addToReferences")
+      })]
+    }), e.jsxs(c, {
+      sx: {
+        flex: 1,
+        minHeight: 0,
+        display: "flex",
+        flexDirection: "row",
+        gap: 2
+      },
+      children: [e.jsx(c, {
+        sx: {
+          flex: 1,
+          minWidth: 0,
+          display: "flex",
+          flexDirection: "column",
+          border: "1px solid #cccccc",
+          borderRadius: 1,
+          overflow: "hidden"
+        },
+        children: e.jsx(fn, {
+          approvers: t.approvers,
+          onRemove: t.handleRemoveApprover,
+          onReorder: t.handleApproverReorder,
+          onChangeRole: t.handleChangeApproverRole
+        })
+      }), e.jsx(c, {
+        sx: {
+          flex: 1,
+          minWidth: 0,
+          display: "flex",
+          flexDirection: "column",
+          border: "1px solid #cccccc",
+          borderRadius: 1,
+          overflow: "hidden"
+        },
+        children: e.jsx(hn, {
+          references: t.references,
+          onRemove: t.handleRemoveReference
+        })
+      })]
+    })]
+  }) : e.jsxs(c, {
+    sx: {
+      flex: 1,
+      minWidth: 0,
+      display: "flex",
+      flexDirection: "row",
+      gap: 1.5,
+      overflow: "hidden",
+      minHeight: 0,
+      userSelect: "none"
+    },
+    children: [e.jsx(c, {
+      sx: {
+        flex: 1,
+        minWidth: 0,
+        display: "flex",
+        flexDirection: "column",
+        border: "1px solid #cccccc",
+        borderRadius: 1,
+        overflow: "hidden"
+      },
+      children: e.jsx(mn, {
+        employees: t.employees,
+        selectedSeqs: t.selectedSeqs,
+        onSelectionChange: t.setSelectedSeqs,
+        approverSeqs: t.approverSeqs,
+        referenceSeqs: t.referenceSeqs,
+        emptyReason: t.emptyReason
+      })
+    }), e.jsxs(c, {
+      sx: {
+        display: "flex",
+        flexDirection: "column",
+        flexShrink: 0,
+        px: 1,
+        gap: 1,
+        alignSelf: "stretch"
+      },
+      children: [e.jsx(c, {
+        sx: {
+          flex: 1.3,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
+        },
+        children: e.jsx("span", {
+          children: e.jsx(K, {
+            variant: "outlined",
+            size: "small",
+            disabled: t.selectedSeqs.length === 0,
+            onClick: t.handleAddSelectedToApprovers,
+            sx: {
+              minWidth: 0,
+              px: 2,
+              py: 2,
+              borderColor: "#cccccc"
+            },
+            children: e.jsx(xt, {
+              sx: {
+                color: t.selectedSeqs.length === 0 ? "#bbbbbb" : "#000000"
+              }
+            })
+          })
+        })
+      }), e.jsx(c, {
+        sx: {
+          flex: 1,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
+        },
+        children: e.jsx("span", {
+          children: e.jsx(K, {
+            variant: "outlined",
+            size: "small",
+            color: "inherit",
+            disabled: t.selectedSeqs.length === 0,
+            onClick: t.handleAddSelectedToReferences,
+            sx: {
+              minWidth: 0,
+              px: 2,
+              py: 2,
+              borderColor: "#cccccc"
+            },
+            children: e.jsx(xt, {
+              sx: {
+                color: t.selectedSeqs.length === 0 ? "#bbbbbb" : "#000000"
+              }
+            })
+          })
+        })
+      })]
+    }), e.jsxs(c, {
+      sx: {
+        flex: 1,
+        minWidth: 0,
+        display: "flex",
+        flexDirection: "column",
+        gap: 2.5,
+        overflow: "hidden"
+      },
+      children: [e.jsx(c, {
+        sx: {
+          flex: 1.3,
+          display: "flex",
+          flexDirection: "column",
+          border: "1px solid #cccccc",
+          borderRadius: 1,
+          overflow: "hidden",
+          minHeight: 0
+        },
+        children: e.jsx(fn, {
+          approvers: t.approvers,
+          onRemove: t.handleRemoveApprover,
+          onReorder: t.handleApproverReorder,
+          onChangeRole: t.handleChangeApproverRole
+        })
+      }), e.jsx(c, {
+        sx: {
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          border: "1px solid #cccccc",
+          borderRadius: 1,
+          overflow: "hidden",
+          minHeight: 0
+        },
+        children: e.jsx(hn, {
+          references: t.references,
+          onRemove: t.handleRemoveReference
+        })
+      })]
+    })]
+  });
+}
+function Hn({
+  controller: t,
+  hideSaveTemplate: n = !1,
+  maxApprovers: o,
+  candidateAccountSeqs: l,
+  candidateMembers: i
+}) {
+  const a = z(),
+    m = Re(),
+    {
+      form: h,
+      modals: d,
+      draft: u,
+      isEditing: r,
+      saving: p
+    } = t,
+    [y, C] = s.useState(null),
+    _ = String(h.useFormValue("name") ?? "").trim().length > 0 && !p,
+    {
+      canManage: b
+    } = Ht(),
+    S = Object.keys(ie).map(W => ({
+      value: W,
+      label: Te(a, W)
+    })),
+    A = Io({
+      open: d.line.isOpen,
+      initialApprovers: u.approvers,
+      initialReferences: u.references,
+      maxApprovers: o,
+      candidateAccountSeqs: l,
+      candidateMembers: i,
+      onConfirm: () => {}
+    }),
+    R = o ? A.approvers.length === o : A.approvers.length > 0,
+    H = [{
+      id: "approval-line-composer",
+      showTitle: !1,
+      children: e.jsx(c, {
+        sx: {
+          height: m ? "calc(100dvh - 170px)" : "min(62vh, 600px)",
+          display: "flex",
+          minHeight: 0,
+          width: 0,
+          minWidth: "100%",
+          overflow: "hidden"
+        },
+        children: e.jsx(Po, {
+          state: A
+        })
+      })
+    }];
+  return e.jsxs(e.Fragment, {
+    children: [e.jsx(Be, {
+      fontScaleKey: "ApprovalLineDialog",
+      open: d.line.isOpen,
+      onClose: () => {
+        p || d.line.close();
+      },
+      title: a(r ? "approval.editApprovalLine" : "approval.approvalLine"),
+      tabs: {
+        visible: !1
+      },
+      sections: H,
+      scrollPastLastSection: !1,
+      maxWidth: "lg",
+      fullScreen: m,
+      mobilePresentation: m ? "slide" : "dialog",
+      backdropClick: !1,
+      sx: {
+        DialogContent: {
+          userSelect: "none"
+        }
+      },
+      actions: {
+        visible: !0,
+        showCancelButton: !1,
+        right: e.jsxs(c, {
+          sx: {
+            display: "flex",
+            gap: 1,
+            alignItems: "center",
+            ...(m ? {
+              width: "100%",
+              gap: "0.75rem"
+            } : {})
+          },
+          children: [e.jsx(K, {
+            color: "inherit",
+            onClick: d.line.close,
+            disabled: p,
+            children: a("approval.cancel")
+          }), r && b && e.jsx(K, {
+            color: "error",
+            onClick: W => C(W.currentTarget),
+            children: a("approval.delete")
+          }), !n && b && e.jsx(K, {
+            variant: "outlined",
+            onClick: () => t.startSaveTemplate(A.approvers, A.references),
+            children: a("approval.save")
+          }), m ? e.jsx(K, {
+            variant: "contained",
+            onClick: () => t.apply(A.approvers, A.references),
+            disabled: !R,
+            children: a("approval.ok")
+          }) : e.jsx(te, {
+            title: o && !R ? a("approval.approversRequiredCount", {
+              count: o
+            }) : "",
+            disableInteractive: !0,
+            arrow: !0,
+            placement: "top",
+            children: e.jsx("span", {
+              children: e.jsx(K, {
+                variant: "contained",
+                onClick: () => t.apply(A.approvers, A.references),
+                disabled: !R,
+                children: a("approval.ok")
+              })
+            })
+          })]
+        })
+      }
+    }), e.jsx(Et, {
+      open: !!y,
+      anchorEl: y,
+      title: a("approval.confirmDeleteApprovalLine"),
+      confirmText: a("approval.delete"),
+      placement: "top-end",
+      zIndex: 1302,
+      onCancel: () => C(null),
+      onConfirm: () => {
+        C(null), t.removeTemplate();
+      }
+    }), e.jsxs(Xe, {
+      open: d.templateName.isOpen,
+      onClose: p ? void 0 : d.templateName.close,
+      maxWidth: "xs",
+      fullWidth: !0,
+      children: [e.jsx(Qe, {
+        children: a(r ? "approval.confirmApprovalLineName" : "approval.saveApprovalLineTemplate")
+      }), e.jsxs(Ze, {
+        sx: {
+          py: "0 !important"
+        },
+        children: [e.jsx(Tn, {
+          form: h,
+          name: "name",
+          autoFocus: !0,
+          fullWidth: !0,
+          placeholder: a("approval.approvalLineNamePlaceholder"),
+          onKeyDown: W => {
+            W.key === "Enter" ? h.submit() : W.key === "Escape" && !p && d.templateName.close();
+          },
+          disabled: p,
+          sx: {
+            mt: 1
+          }
+        }), e.jsx(c, {
+          sx: {
+            mt: 2
+          },
+          children: e.jsx(wn, {
+            form: h,
+            name: "form_type",
+            label: a("approval.autoApplyForm"),
+            options: S,
+            showEmptyOption: !0,
+            emptyLabel: a("approval.noneGeneralTemplate"),
+            disabled: p,
+            fullWidth: !0
+          })
+        })]
+      }), e.jsxs(Dn, {
+        children: [e.jsx(K, {
+          color: "inherit",
+          onClick: d.templateName.close,
+          disabled: p,
+          children: a("approval.cancel")
+        }), e.jsx(K, {
+          variant: "contained",
+          onClick: () => {
+            h.submit();
+          },
+          disabled: !_,
+          children: a("approval.save")
+        })]
+      })]
+    })]
+  });
+}
+function Vo(t) {
+  const n = t,
+    o = [n?.items, n?.data?.items, n?.data?.data?.items];
+  for (const l of o) if (Array.isArray(l)) return l;
+  return [];
+}
+async function Oo(t) {
+  if (!t) return [];
+  const n = await ge.list("approval_doc", {
+    page: 1,
+    limit: 100,
+    fields: ["*"],
+    conditions: {
+      account_seq: t,
+      status: "draft"
+    },
+    orderBy: "updated_time",
+    orderDir: "DESC"
+  });
+  return Vo(n);
+}
+async function zo(t) {
+  try {
+    return await ge.delete("approval_doc", t), Ne({
+      message: g("approval.deletedDone"),
+      delay: 400
+    }), !0;
+  } catch (n) {
+    return J({
+      message: n instanceof Error ? n.message : g("approval.deleteFailed")
+    }), !1;
+  }
+}
+async function Mo(t, n) {
+  const o = await Br(n);
+  return o ? (Object.keys(o).forEach(l => {
+    t.setFormValue(l, o[l]);
+  }), !0) : (J(g("approval.draftLoadFailed")), !1);
+}
+async function Bn(t, n, o, l, i) {
+  try {
+    return await Mn(t, n, o, l, i), Ne({
+      message: l ? g("approval.lineTemplateUpdated") : g("approval.lineTemplateSaved")
+    }), !0;
+  } catch (a) {
+    return J({
+      message: a instanceof Error ? a.message : g("approval.templateSaveFailed")
+    }), !1;
+  }
+}
+const xn = {
+  approvers: [],
+  references: [],
+  template: null
+};
+function Kn(t) {
+  const n = s.useId(),
+    o = t.idSuffix ?? n,
+    l = s.useRef(t);
+  l.current = t;
+  const i = {
+      line: Ke({
+        modalId: `approval-line-${o}-dialog`,
+        onClose: () => l.current.onClose?.()
+      }),
+      templateName: Ke({
+        modalId: `approval-line-template-name-${o}-dialog`
+      })
+    },
+    a = s.useRef(i);
+  a.current = i;
+  const [m, h] = s.useState(xn),
+    d = s.useRef(m),
+    u = s.useRef({
+      approvers: [],
+      references: []
+    }),
+    r = m.template?.seq ?? 0,
+    p = mr({
+      formId: `approval-line-template-${o}-form`,
+      initialValues: {
+        name: "",
+        form_type: ""
+      },
+      onValidate: b => String(b.name ?? "").trim() ? !0 : (J({
+        message: g("approval.enterApprovalLineName")
+      }), !1),
+      onSubmit: async b => {
+        const S = d.current.template?.seq ?? 0,
+          {
+            approvers: A,
+            references: R
+          } = u.current;
+        return (await Bn(String(b.name ?? "").trim(), A, R, S > 0 ? S : void 0, String(b.form_type ?? ""))) ? (l.current.onSaved?.(), l.current.onApply(A, R), ho(a.current.templateName.close, () => a.current.line.close()), !0) : !1;
+      }
+    }),
+    y = b => {
+      const S = {
+        ...xn,
+        ...b
+      };
+      d.current = S, h(S), i.line.open();
+    },
+    C = (b, S) => {
+      l.current.onApply(b, S), i.line.close();
+    },
+    v = (b, S) => {
+      if (b.length === 0) {
+        J({
+          message: g("approval.approvalLineNeedsOne")
+        });
+        return;
+      }
+      u.current = {
+        approvers: b,
+        references: S
+      };
+      const A = d.current.template,
+        R = (A?.seq ?? 0) > 0;
+      p.setFormValues({
+        name: R ? A?.name ?? "" : "",
+        form_type: R ? A?.formType ?? "" : ""
+      }), i.templateName.open();
+    },
+    _ = async () => {
+      await l.current.onDeleteTemplate?.(String(d.current.template?.seq ?? 0)), i.line.close();
+    };
+  return {
+    form: p,
+    modals: i,
+    draft: m,
+    isEditing: r > 0,
+    saving: p.isSubmitting,
+    open: y,
+    apply: C,
+    startSaveTemplate: v,
+    removeTemplate: _
+  };
+}
+const Wo = 48,
+  Ho = new Set(["fund_report", "transfer_report"]);
+function gn({
+  title: t
+}) {
+  return e.jsx(c, {
+    sx: {
+      px: 2,
+      minHeight: Wo,
+      borderBottom: "1px solid #cccccc",
+      backgroundColor: "#f5f5f5",
+      display: "flex",
+      alignItems: "center"
+    },
+    children: e.jsx(F, {
+      sx: {
+        fontWeight: 500,
+        lineHeight: 1
+      },
+      children: t
+    })
+  });
+}
+function Un({
+  icon: t
+}) {
+  return e.jsx(c, {
+    sx: {
+      flexShrink: 0,
+      width: 36,
+      height: 36,
+      mr: 2,
+      borderRadius: "50%",
+      bgcolor: "#f1f5f9",
+      color: "#64748b",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    children: e.jsx(t, {})
+  });
+}
+function vn({
+  text: t
+}) {
+  return e.jsx(c, {
+    sx: {
+      height: "100%",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      p: 2
+    },
+    children: e.jsx(F, {
+      variant: "body2",
+      color: "text.secondary",
+      children: t
+    })
+  });
+}
+function Bo({
+  item: t,
+  disabled: n,
+  hasLine: o,
+  canEditLine: l,
+  listed: i,
+  onEditLine: a,
+  onRemove: m,
+  assigneeName: h,
+  onEditAssignee: d
+}) {
+  const u = z(),
+    {
+      attributes: r,
+      listeners: p,
+      setNodeRef: y,
+      transform: C,
+      transition: v,
+      isDragging: _
+    } = It({
+      id: t.id,
+      disabled: n
+    }),
+    b = {
+      transform: Lt.Transform.toString(C),
+      transition: v
+    };
+  return e.jsxs(c, {
+    ref: y,
+    style: b,
+    sx: {
+      flexShrink: 0,
+      userSelect: "none",
+      pl: .5,
+      pr: 2,
+      py: 1.75,
+      display: "flex",
+      alignItems: "center",
+      borderBottom: "1px solid #e5e7eb",
+      bgcolor: "#fff",
+      zIndex: _ ? 10 : "auto",
+      opacity: _ ? .85 : 1,
+      "&:hover .FormTypeManager-removeIcon": {
+        color: "#475569"
+      }
+    },
+    children: [e.jsx(c, {
+      ...r,
+      ...p,
+      "aria-label": u("approval.reorder"),
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        color: "#94a3b8",
+        cursor: n ? "default" : _ ? "grabbing" : "grab",
+        touchAction: "none",
+        userSelect: "none",
+        flexShrink: 0,
+        px: 1.75,
+        "&:hover": n ? {} : {
+          color: "#475569"
+        }
+      },
+      children: e.jsx(Ct, {
+        fontSize: "small"
+      })
+    }), e.jsx(Un, {
+      icon: t.icon
+    }), e.jsxs(c, {
+      sx: {
+        minWidth: 0,
+        flex: 1,
+        display: "flex",
+        flexDirection: "column"
+      },
+      children: [e.jsxs(c, {
+        sx: {
+          minWidth: 0,
+          display: "flex",
+          alignItems: "center",
+          gap: .5
+        },
+        children: [e.jsx(F, {
+          sx: {
+            fontWeight: 500,
+            lineHeight: 1.65
+          },
+          noWrap: !0,
+          children: Te(u, t.id)
+        }), o ? e.jsx(te, {
+          title: u("approval.formHasDefaultLine"),
+          disableInteractive: !0,
+          arrow: !0,
+          placement: "top",
+          children: e.jsx(xr, {
+            sx: {
+              fontSize: 18,
+              color: "#22c55e",
+              flexShrink: 0
+            }
+          })
+        }) : null]
+      }), e.jsx(F, {
+        variant: "caption",
+        color: "text.secondary",
+        noWrap: !0,
+        sx: {
+          display: "block",
+          lineHeight: 1.65
+        },
+        children: Nt(u, t.id)
+      }), h ? e.jsx(F, {
+        variant: "caption",
+        noWrap: !0,
+        sx: {
+          display: "block",
+          lineHeight: 1.65,
+          color: "#0f766e"
+        },
+        children: u("approval.handlerName", {
+          name: h
+        })
+      }) : null]
+    }), d ? e.jsx(te, {
+      title: u(h ? "approval.changeHandler" : "approval.assignHandler"),
+      disableInteractive: !0,
+      arrow: !0,
+      placement: "top",
+      children: e.jsx(X, {
+        onClick: S => d(t.id, S.currentTarget),
+        "aria-label": u("approval.assignHandler"),
+        className: "FormTypeManager-removeIcon",
+        onPointerDown: S => S.stopPropagation(),
+        sx: {
+          color: h ? "#0f766e" : "#cbd5e1",
+          flexShrink: 0,
+          "&:hover": {
+            color: "#475569",
+            bgcolor: "#f8fafc"
+          }
+        },
+        children: e.jsx(gr, {
+          fontSize: "small"
+        })
+      })
+    }) : null, i ? null : e.jsx(F, {
+      component: "span",
+      sx: {
+        fontSize: 13,
+        color: "text.secondary",
+        flexShrink: 0,
+        whiteSpace: "nowrap"
+      },
+      children: u("approval.formWrittenInTaskbox")
+    }), l ? e.jsx(te, {
+      title: u(o ? "approval.editDefaultLine" : "approval.setDefaultLine"),
+      disableInteractive: !0,
+      arrow: !0,
+      placement: "top",
+      children: e.jsx(X, {
+        onClick: () => a(t.id),
+        "aria-label": u("approval.setDefaultLine"),
+        className: "FormTypeManager-removeIcon",
+        onPointerDown: S => S.stopPropagation(),
+        sx: {
+          color: "#cbd5e1",
+          flexShrink: 0,
+          "&:hover": {
+            color: "#475569",
+            bgcolor: "#f8fafc"
+          }
+        },
+        children: e.jsx(_n, {
+          fontSize: "small"
+        })
+      })
+    }) : null, n ? null : e.jsx(X, {
+      onClick: () => m(t.id),
+      "aria-label": u("approval.removeUsedForm"),
+      className: "FormTypeManager-removeIcon",
+      onPointerDown: S => S.stopPropagation(),
+      sx: {
+        color: "#cbd5e1",
+        flexShrink: 0,
+        "&:hover": {
+          color: "#475569",
+          bgcolor: "#f8fafc"
+        }
+      },
+      children: e.jsx(Ve, {
+        fontSize: "small"
+      })
+    })]
+  });
+}
+function Ko() {
+  const t = z(),
+    n = Object.entries(ie).map(([x, j]) => ({
+      id: x,
+      icon: j.icon,
+      label: j.label,
+      description: j.description
+    })),
+    {
+      state: o
+    } = Wt(),
+    {
+      state: l
+    } = Le(),
+    i = Ht(),
+    a = i.canManage,
+    m = l.getValue("global_vars"),
+    h = Nn(m?.pv_items),
+    d = zn(o.useValue("data.license.license_type")),
+    u = n.filter(x => d || !ie[x.id]?.funeralOnly).filter(x => {
+      const j = qn(h, ie[x.id]?.requiredPv, x.label);
+      return !j || l.actions.hasPv(j);
+    }),
+    r = a,
+    [p, y] = s.useState([]),
+    [C, v] = s.useState(null),
+    _ = () => {
+      Ye().then(x => y(x.filter(j => !Ue.includes(j.name)))).catch(() => {});
+    };
+  s.useEffect(() => {
+    _();
+  }, []);
+  const b = new Map();
+  for (const x of p) {
+    const j = String(x.form_type ?? "").trim();
+    j && !b.has(j) && b.set(j, x);
+  }
+  const S = C ? b.get(C.id) : void 0,
+    A = Kn({
+      idSuffix: "form-type",
+      onApply: (x, j) => {
+        H(x, j);
+      },
+      onDeleteTemplate: x => W(x),
+      onClose: () => v(null)
+    }),
+    R = x => {
+      const j = u.find($ => $.id === x);
+      if (!j) return;
+      const L = b.get(j.id);
+      v(j), A.open({
+        approvers: L ? et(L) : [],
+        references: L ? tt(L) : [],
+        template: {
+          seq: L?.seq ?? 0,
+          name: L?.name ?? "",
+          formType: j.id
+        }
+      });
+    },
+    H = async (x, j) => {
+      if (!C) return;
+      const L = S?.name || `${C.label} 결재선`;
+      (await Bn(L, x, j, S?.seq, C.id)) && _();
+    },
+    W = async x => {
+      const j = Number(x);
+      if (j) try {
+        await Bt(j), _();
+      } catch (L) {
+        J({
+          message: L instanceof Error ? L.message : g("approval.lineDeleteFailed")
+        });
+      }
+    },
+    [B, ue] = s.useState(() => (bt(i.settings) ?? Pn()).map(j => u.find(L => L.id === j)).filter(Boolean)),
+    ve = () => {
+      const x = i.settings.approval;
+      return x && typeof x == "object" && !Array.isArray(x) ? x : {};
+    },
+    Y = ve().assignees ?? {},
+    ee = o.useValue("data.employee") ?? [],
+    le = ee.filter(x => Number(x.login_account_seq ?? 0) > 0).map(x => ({
+      value: Number(x.login_account_seq),
+      label: [x.name, x.group_name, x.position || x.role_name].filter(Boolean).join(" · ")
+    })),
+    ce = x => {
+      const j = Number(Y[x] ?? 0);
+      return j ? ee.find(L => Number(L.login_account_seq ?? 0) === j)?.name ?? t("approval.accountSeqFallback", {
+        seq: j
+      }) : "";
+    },
+    [V, ne] = s.useState(null),
+    re = async x => {
+      if (a) try {
+        const j = await an({
+          endpoint: "/v1/approval/active-form-types",
+          method: "PATCH",
+          params: {
+            assignees: x
+          }
+        });
+        if (!j || !sn(j)) {
+          J({
+            message: j?.message || g("approval.handlerSaveFailed")
+          });
+          return;
+        }
+        i.patchApproval({
+          ...ve(),
+          assignees: x
+        });
+      } catch (j) {
+        J({
+          message: j instanceof Error ? j.message : g("approval.handlerSaveError")
+        });
+      }
+    },
+    O = (x, j) => {
+      const L = {};
+      for (const [$, oe] of Object.entries(Y)) Number(oe) > 0 && (L[$] = Number(oe));
+      j > 0 ? L[x] = j : delete L[x], ne(null), re(L);
+    },
+    Q = s.useRef(!0),
+    Z = s.useRef(null),
+    P = async x => {
+      if (!a) return;
+      const j = new Set(u.map(T => T.id)),
+        $ = (bt(i.settings) ?? []).filter(T => !j.has(T)),
+        oe = [...x, ...$];
+      try {
+        const T = await an({
+          endpoint: "/v1/approval/active-form-types",
+          method: "PATCH",
+          params: {
+            activeFormTypes: oe
+          }
+        });
+        if (!T || !sn(T)) {
+          J({
+            message: T?.message || g("approval.formSettingsSaveFailed")
+          });
+          return;
+        }
+        i.patchApproval({
+          ...ve(),
+          activeFormTypes: oe
+        });
+      } catch (T) {
+        J({
+          message: T instanceof Error ? T.message : g("approval.formSettingsSaveError")
+        });
+      }
+    };
+  s.useEffect(() => {
+    if (Q.current) {
+      Q.current = !1;
+      return;
+    }
+    if (!a) return;
+    Z.current && clearTimeout(Z.current);
+    const x = B.map(j => j.id);
+    return Z.current = setTimeout(() => {
+      P(x);
+    }, 600), () => {
+      Z.current && clearTimeout(Z.current);
+    };
+  }, [B, a]);
+  const M = At(Pe(Tt), Pe(Fn)),
+    me = u.filter(x => !B.some(j => j.id === x.id)),
+    U = x => {
+      if (!a) return;
+      const j = u.find(L => L.id === x);
+      !j || B.some(L => L.id === x) || ue([...B, j]);
+    },
+    fe = x => {
+      a && ue(B.filter(j => j.id !== x));
+    },
+    he = x => {
+      if (!a) return;
+      const {
+        active: j,
+        over: L
+      } = x;
+      if (!L || j.id === L.id) return;
+      const $ = B.findIndex(T => T.id === j.id),
+        oe = B.findIndex(T => T.id === L.id);
+      $ < 0 || oe < 0 || ue(Rt(B, $, oe));
+    },
+    be = {
+      display: "flex",
+      flexDirection: "column",
+      minHeight: 0,
+      overflow: "hidden",
+      border: "1px solid #cccccc"
+    };
+  return e.jsxs(c, {
+    sx: {
+      height: "100%",
+      display: "flex",
+      flexDirection: "column",
+      minHeight: 0
+    },
+    children: [a ? null : e.jsx(F, {
+      variant: "caption",
+      color: "text.secondary",
+      sx: {
+        display: "block",
+        mb: 1.5,
+        flexShrink: 0
+      },
+      children: t("approval.onlyOwnerCanChangeForms")
+    }), e.jsx(wt, {
+      sensors: M,
+      modifiers: [Dt],
+      onDragEnd: he,
+      children: e.jsxs(c, {
+        sx: {
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: 2.5,
+          flex: 1,
+          minHeight: 0
+        },
+        children: [e.jsxs(Fe, {
+          variant: "outlined",
+          sx: be,
+          children: [e.jsx(gn, {
+            title: t("approval.formListCount", {
+              count: me.length
+            })
+          }), e.jsx(c, {
+            sx: {
+              flex: 1,
+              minHeight: 0
+            },
+            children: e.jsx(_e, {
+              style: {
+                height: "100%"
+              },
+              track: {
+                alignment: "outside"
+              },
+              children: me.length === 0 ? e.jsx(vn, {
+                text: t("approval.allFormsAdded")
+              }) : me.map(x => e.jsxs(c, {
+                onClick: () => U(x.id),
+                sx: {
+                  flexShrink: 0,
+                  userSelect: "none",
+                  px: 2,
+                  py: 1.75,
+                  display: "flex",
+                  alignItems: "center",
+                  borderBottom: "1px solid #e5e7eb",
+                  cursor: a ? "pointer" : "default",
+                  "&:hover": a ? {
+                    backgroundColor: "action.hover",
+                    "& .FormTypeManager-rowChevron": {
+                      color: "#475569"
+                    }
+                  } : {}
+                },
+                children: [e.jsx(Un, {
+                  icon: x.icon
+                }), e.jsxs(c, {
+                  sx: {
+                    minWidth: 0,
+                    flex: 1,
+                    lineHeight: 1.2
+                  },
+                  children: [e.jsx(F, {
+                    sx: {
+                      fontWeight: 500,
+                      lineHeight: 1.65
+                    },
+                    noWrap: !0,
+                    children: Te(t, x.id)
+                  }), e.jsx(F, {
+                    variant: "caption",
+                    color: "text.secondary",
+                    noWrap: !0,
+                    sx: {
+                      display: "block",
+                      lineHeight: 1.65
+                    },
+                    children: Nt(t, x.id)
+                  })]
+                }), a ? e.jsx(xt, {
+                  className: "FormTypeManager-rowChevron",
+                  fontSize: "small",
+                  sx: {
+                    color: "#94a3b8",
+                    flexShrink: 0,
+                    mr: 1
+                  }
+                }) : null]
+              }, x.id))
+            })
+          })]
+        }), e.jsxs(Fe, {
+          variant: "outlined",
+          sx: be,
+          children: [e.jsx(gn, {
+            title: t("approval.usedFormsCount", {
+              count: B.length
+            })
+          }), e.jsx(c, {
+            sx: {
+              flex: 1,
+              minHeight: 0
+            },
+            children: e.jsx(_e, {
+              style: {
+                height: "100%"
+              },
+              track: {
+                alignment: "outside"
+              },
+              children: B.length === 0 ? e.jsx(vn, {
+                text: t("approval.addFormsToUse")
+              }) : e.jsx(Ft, {
+                items: B.map(x => x.id),
+                strategy: _t,
+                children: B.map(x => e.jsx(Bo, {
+                  item: x,
+                  disabled: !a,
+                  hasLine: b.has(x.id),
+                  canEditLine: r && !Ho.has(x.id),
+                  listed: !ie[x.id]?.hidden,
+                  onEditLine: R,
+                  onRemove: fe,
+                  assigneeName: ce(x.id),
+                  onEditAssignee: a ? (j, L) => ne({
+                    id: j,
+                    anchor: L
+                  }) : void 0
+                }, x.id))
+              })
+            })
+          })]
+        })]
+      })
+    }), e.jsxs(fr, {
+      open: !!V,
+      anchorEl: V?.anchor ?? null,
+      onClose: () => ne(null),
+      transitionDuration: 0,
+      anchorOrigin: {
+        vertical: "bottom",
+        horizontal: "right"
+      },
+      transformOrigin: {
+        vertical: "top",
+        horizontal: "right"
+      },
+      slotProps: {
+        paper: {
+          sx: {
+            p: 2,
+            width: 320,
+            display: "flex",
+            flexDirection: "column",
+            gap: 1.5
+          }
+        }
+      },
+      children: [e.jsx(F, {
+        sx: {
+          fontSize: 15,
+          fontWeight: 600
+        },
+        children: V ? t("approval.formHandlerTitle", {
+          form: Te(t, V.id)
+        }) : ""
+      }), e.jsx(F, {
+        sx: {
+          fontSize: 14,
+          color: "text.secondary"
+        },
+        children: t("approval.handlerHint")
+      }), e.jsx(hr, {
+        label: t("approval.assignee"),
+        options: le,
+        value: V && Number(Y[V.id] ?? 0) || null,
+        onChange: x => V && O(V.id, Number(x) || 0),
+        disablePortal: !1,
+        placeholder: t("approval.searchByName"),
+        noOptionsText: t("approval.noSelectablePeople"),
+        fullWidth: !0
+      }), V && Number(Y[V.id] ?? 0) > 0 ? e.jsx(K, {
+        variant: "outlined",
+        color: "error",
+        onClick: () => O(V.id, 0),
+        sx: {
+          alignSelf: "flex-end"
+        },
+        children: t("approval.clearAssignee")
+      }) : null]
+    }), e.jsx(Hn, {
+      controller: A,
+      hideSaveTemplate: !0
+    })]
+  });
+}
+function Uo({
+  controller: t
+}) {
+  const n = z(),
+    o = t.modals.manager,
+    l = [{
+      id: "form-type-manager",
+      showTitle: !1,
+      children: e.jsx(c, {
+        sx: {
+          height: "min(62vh, 560px)",
+          display: "flex",
+          flexDirection: "column",
+          minHeight: 0,
+          overflow: "hidden"
+        },
+        children: e.jsx(Ko, {})
+      })
+    }];
+  return e.jsx(Be, {
+    fontScaleKey: "FormTypeManagerDialog",
+    open: o.isOpen,
+    onClose: o.close,
+    title: n("approval.selectApprovalDocuments"),
+    tabs: {
+      visible: !1
+    },
+    sections: l,
+    scrollPastLastSection: !1,
+    maxWidth: "lg",
+    backdropClick: !1,
+    sx: {
+      DialogContent: {
+        userSelect: "none"
+      }
+    },
+    actions: {
+      visible: !0,
+      showCancelButton: !1,
+      right: e.jsx(K, {
+        variant: "contained",
+        onClick: o.close,
+        children: n("approval.ok")
+      })
+    }
+  });
+}
+function Yo(t = {}) {
+  const n = s.useRef(t);
+  n.current = t;
+  const o = {
+    manager: Ke({
+      modalId: "approval-form-type-manager",
+      onClose: () => n.current.onClose?.()
+    })
+  };
+  return {
+    modals: o,
+    open: () => o.manager.open()
+  };
+}
+function nt() {
+  const t = z(),
+    {
+      state: n
+    } = Wt(),
+    {
+      state: o
+    } = Le(),
+    {
+      settings: l,
+      canManage: i
+    } = Ht(),
+    a = zn(n.useValue("data.license.license_type")),
+    m = bt(l) ?? Pn(),
+    h = so(l),
+    d = o.getValue("global_vars"),
+    u = Nn(d?.pv_items);
+  return {
+    documentTypes: m.filter(p => p in ie).filter(p => a || !ie[p].funeralOnly).filter(p => io(h, p)).filter(p => {
+      const y = ie[p],
+        C = qn(u, y.requiredPv, y.label);
+      return !C || o.actions.hasPv(C);
+    }).map(p => ({
+      id: p,
+      icon: ie[p].icon,
+      label: Te(t, p),
+      description: Nt(t, p)
+    })),
+    canManageForms: i
+  };
+}
+const Ut = 20;
+function $o({
+  selectedType: t,
+  onTypeSelect: n,
+  onSettings: o,
+  onSettingsClose: l
+}) {
+  const i = z(),
+    a = Yo({
+      onClose: l
+    }),
+    [m, h] = s.useState([]),
+    {
+      documentTypes: d,
+      canManageForms: u
+    } = nt(),
+    r = [...d].sort((v, _) => {
+      const b = m.includes(v.id),
+        S = m.includes(_.id);
+      return b && !S ? -1 : !b && S ? 1 : 0;
+    }),
+    p = () => {
+      a.open(), o && o();
+    },
+    y = (v, _) => {
+      _.stopPropagation(), h(b => b.includes(v) ? b.filter(S => S !== v) : [...b, v]);
+    },
+    C = r[0]?.id === t;
+  return e.jsxs(Fe, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      height: "100%"
+    },
+    children: [e.jsx(Mt, {
+      sx: C ? {
+        borderBottom: "1px solid",
+        borderBottomColor: "primary.main"
+      } : void 0,
+      title: e.jsx(c, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: 1,
+          flex: 1
+        },
+        children: e.jsx(F, {
+          variant: "subtitle1",
+          fontWeight: 600,
+          children: i("approval.selectApprovalDocuments")
+        })
+      }),
+      children: u && e.jsx(c, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          pr: 1,
+          gap: .5
+        },
+        children: e.jsx(te, {
+          title: i("approval.documentSettings"),
+          disableInteractive: !0,
+          arrow: !0,
+          children: e.jsx(X, {
+            size: "medium",
+            onClick: p,
+            children: e.jsx(qt, {
+              sx: {
+                fontSize: Ut
+              }
+            })
+          })
+        })
+      })
+    }), e.jsx(_e, {
+      track: {
+        alignment: "outside"
+      },
+      children: e.jsx(c, {
+        children: r.map((v, _) => {
+          const b = t === v.id,
+            S = r[_ + 1]?.id === t,
+            A = v.icon;
+          return e.jsxs(c, {
+            onClick: () => n(v.id),
+            sx: {
+              pl: 2,
+              pr: 4,
+              py: 1.5,
+              display: "flex",
+              alignItems: "center",
+              borderBottom: "1px solid",
+              borderBottomColor: b || S ? "primary.main" : "#e5e7eb",
+              borderLeft: "3px solid",
+              borderLeftColor: b ? "primary.main" : "transparent",
+              borderRight: "1px solid",
+              borderRightColor: b ? "primary.main" : "transparent",
+              cursor: "pointer",
+              backgroundColor: "transparent"
+            },
+            children: [e.jsx(c, {
+              sx: {
+                flexShrink: 0,
+                width: 36,
+                height: 36,
+                mr: 2,
+                borderRadius: "50%",
+                bgcolor: b ? "primary.main" : "#f1f5f9",
+                color: b ? "#fff" : "#64748b",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              },
+              children: e.jsx(A, {
+                sx: {
+                  fontSize: 20
+                }
+              })
+            }), e.jsxs(c, {
+              sx: {
+                minWidth: 0,
+                flex: 1,
+                display: "flex",
+                flexDirection: "column"
+              },
+              children: [e.jsx(F, {
+                sx: {
+                  fontSize: 15,
+                  fontWeight: 500,
+                  lineHeight: 1.4
+                },
+                noWrap: !0,
+                children: v.label
+              }), e.jsx(F, {
+                color: "text.secondary",
+                sx: {
+                  fontSize: 14,
+                  lineHeight: 1.4
+                },
+                noWrap: !0,
+                children: v.description
+              })]
+            }), e.jsx(X, {
+              size: "small",
+              onClick: R => y(v.id, R),
+              sx: {
+                flexShrink: 0,
+                p: .5,
+                color: m.includes(v.id) ? "#FFC107" : "action.disabled"
+              },
+              children: m.includes(v.id) ? e.jsx(oo, {
+                sx: {
+                  fontSize: 20
+                }
+              }) : e.jsx(vr, {
+                sx: {
+                  fontSize: 20
+                }
+              })
+            })]
+          }, v.id);
+        })
+      })
+    }), e.jsx(Uo, {
+      controller: a
+    })]
+  });
+}
+const Go = "approval_doc";
+function Yn(t) {
+  const n = t.getFormValue("_ui.expenseLineFiles");
+  return n && typeof n == "object" ? n : {};
+}
+function Jo(t) {
+  return Object.values(Yn(t)).some(n => Array.isArray(n) && n.length > 0);
+}
+async function bn(t, n) {
+  if (!n) return !1;
+  const o = Yn(t),
+    l = t.getFormValue("expense_lines") ?? [];
+  let i = !1;
+  for (const a of l) {
+    const m = a._lid,
+      h = m ? o[m] : void 0;
+    if (!h || h.length === 0) continue;
+    const d = [];
+    for (const u of h) {
+      const r = await ge.fileUpload(Go, u, {
+          refSeq: n
+        }),
+        p = String(r?.uuid ?? r?.data?.uuid ?? "").trim();
+      p && d.push({
+        uuid: p,
+        name: u.name,
+        size: u.size
+      });
+    }
+    d.length > 0 && (a.attachments = [...(a.attachments ?? []), ...d], i = !0);
+  }
+  return i && (t.setFormValue("expense_lines", l), t.setFormValue("_ui.expenseLineFiles", {})), i;
+}
+function Xo(t) {
+  const n = String(t ?? "").trim();
+  if (!n) return "-";
+  const o = new Date(n.replace(" ", "T"));
+  return Number.isNaN(o.getTime()) ? n : o.toLocaleString(Ot(zt()), {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit"
+  });
+}
+function Qo({
+  open: t,
+  accountSeq: n,
+  onClose: o,
+  onSelect: l
+}) {
+  const i = z(),
+    {
+      requestClose: a
+    } = Pt({
+      open: t,
+      onClose: o,
+      modalId: "approval-draft-load",
+      mobileOnly: !0
+    }),
+    [m, h] = s.useState([]),
+    [d, u] = s.useState(!1),
+    [r, p] = s.useState(null),
+    y = s.useCallback(async () => {
+      u(!1);
+      try {
+        h(await Oo(n));
+      } catch {
+        h([]);
+      } finally {
+        u(!0);
+      }
+    }, [n]);
+  s.useEffect(() => {
+    t && y();
+  }, [t, y]);
+  const C = async () => {
+    const v = r?.doc;
+    p(null), v && (await zo(Number(v.seq))) && (await y());
+  };
+  return e.jsxs(Xe, {
+    open: t,
+    onClose: a,
+    maxWidth: "sm",
+    fullWidth: !0,
+    children: [e.jsxs(Qe, {
+      sx: {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        pr: 2
+      },
+      children: [e.jsx(F, {
+        variant: "h6",
+        children: i("approval.loadDraft")
+      }), e.jsx(X, {
+        onClick: a,
+        size: "small",
+        children: e.jsx(Ve, {})
+      })]
+    }), e.jsx(Ze, {
+      dividers: !0,
+      sx: {
+        p: 0,
+        height: 480,
+        display: "flex",
+        flexDirection: "column"
+      },
+      children: d ? m.length === 0 ? e.jsx(c, {
+        sx: {
+          flex: 1,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
+        },
+        children: e.jsx(F, {
+          variant: "body2",
+          color: "text.secondary",
+          children: i("approval.noDrafts")
+        })
+      }) : e.jsx(c, {
+        sx: {
+          flex: 1,
+          minHeight: 0,
+          overflowY: "auto"
+        },
+        children: m.map(v => {
+          const _ = ie[v.type]?.icon,
+            b = Te(i, v.type),
+            S = ln(v) || i("approval.untitledParen"),
+            A = Number(v.amount ?? 0);
+          return e.jsxs(c, {
+            onClick: () => l(Number(v.seq)),
+            sx: {
+              display: "flex",
+              alignItems: "center",
+              gap: 1.5,
+              px: 2,
+              py: 1.25,
+              borderBottom: "1px solid #eef2f6",
+              cursor: "pointer",
+              "&:hover": {
+                backgroundColor: "action.hover"
+              },
+              "&:hover .draft-del": {
+                opacity: 1
+              }
+            },
+            children: [e.jsx(c, {
+              sx: {
+                flexShrink: 0,
+                width: 36,
+                height: 36,
+                borderRadius: "50%",
+                bgcolor: "#f1f5f9",
+                color: "#64748b",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              },
+              children: _ ? e.jsx(_, {
+                sx: {
+                  fontSize: 20
+                }
+              }) : null
+            }), e.jsxs(c, {
+              sx: {
+                flex: 1,
+                minWidth: 0
+              },
+              children: [e.jsxs(c, {
+                sx: {
+                  display: "flex",
+                  alignItems: "baseline",
+                  gap: .75,
+                  minWidth: 0
+                },
+                children: [e.jsx(F, {
+                  sx: {
+                    fontWeight: 600
+                  },
+                  noWrap: !0,
+                  children: S
+                }), e.jsx(F, {
+                  variant: "caption",
+                  color: "text.secondary",
+                  sx: {
+                    flexShrink: 0
+                  },
+                  children: b
+                })]
+              }), e.jsxs(F, {
+                variant: "caption",
+                color: "text.secondary",
+                noWrap: !0,
+                sx: {
+                  display: "block"
+                },
+                children: [i("approval.lastModified", {
+                  time: Xo(v.updated_time ?? v.created_time)
+                }), A > 0 ? ` · ${i("approval.amountWon", {
+                  amount: A.toLocaleString(Ot(zt()))
+                })}` : ""]
+              })]
+            }), e.jsx(te, {
+              title: i("approval.delete"),
+              disableInteractive: !0,
+              arrow: !0,
+              children: e.jsx(X, {
+                className: "draft-del",
+                size: "small",
+                onClick: R => {
+                  R.stopPropagation(), p({
+                    el: R.currentTarget,
+                    doc: v
+                  });
+                },
+                sx: {
+                  flexShrink: 0,
+                  opacity: 0,
+                  transition: "opacity 0.15s"
+                },
+                children: e.jsx(br, {
+                  fontSize: "small"
+                })
+              })
+            })]
+          }, v.seq);
+        })
+      }) : e.jsx(c, {
+        sx: {
+          flex: 1,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
+        },
+        children: e.jsx(Vt, {
+          size: 28
+        })
+      })
+    }), e.jsx(Et, {
+      open: !!r,
+      anchorEl: r?.el ?? null,
+      title: i("approval.confirmDeleteDraft", {
+        title: r ? ln(r.doc) || i("approval.untitled") : ""
+      }),
+      confirmText: i("approval.delete"),
+      cancelText: i("approval.cancel"),
+      placement: "left",
+      minWidth: 240,
+      zIndex: 1401,
+      onCancel: () => p(null),
+      onConfirm: () => {
+        C();
+      }
+    })]
+  });
+}
+function Zo({
+  open: t,
+  onCancel: n,
+  onDiscard: o,
+  onSaveDraft: l
+}) {
+  const i = z(),
+    {
+      requestClose: a
+    } = Pt({
+      open: t,
+      onClose: n,
+      modalId: "approval-form-switch",
+      mobileOnly: !0
+    });
+  return e.jsxs(Xe, {
+    open: t,
+    onClose: a,
+    maxWidth: "xs",
+    fullWidth: !0,
+    children: [e.jsx(Qe, {
+      children: i("approval.switchForm")
+    }), e.jsx(Ze, {
+      children: e.jsx(ko, {
+        children: i("approval.switchFormPrompt")
+      })
+    }), e.jsxs(Dn, {
+      children: [e.jsx(K, {
+        onClick: a,
+        color: "inherit",
+        children: i("approval.cancel")
+      }), e.jsx(K, {
+        onClick: o,
+        color: "inherit",
+        children: i("approval.dontSave")
+      }), e.jsx(K, {
+        onClick: l,
+        variant: "contained",
+        children: i("approval.saveDraft")
+      })]
+    })]
+  });
+}
+function rt(t) {
+  return typeof t != "string" ? t == null : t.trim() === "";
+}
+function Yt(t) {
+  if (typeof t == "number") return Number.isFinite(t) && t > 0;
+  if (typeof t == "string") {
+    const n = t.replace(/,/g, ""),
+      o = Number(n);
+    return Number.isFinite(o) && o > 0;
+  }
+  return !1;
+}
+function ea() {
+  const t = new Date();
+  return `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, "0")}-${String(t.getDate()).padStart(2, "0")}`;
+}
+function pe(t, n) {
+  for (const o of n) {
+    const l = t(o.key);
+    if (!(o.validator ? o.validator(l) : !rt(l))) return {
+      valid: !1,
+      message: o.message
+    };
+  }
+  return {
+    valid: !0
+  };
+}
+function ta(t) {
+  const n = t("expense_lines");
+  return (Array.isArray(n) ? n : []).filter(i => {
+    if (!i || typeof i != "object") return !1;
+    const a = i;
+    return !rt(a.detail) && Yt(a.amount);
+  }).length === 0 ? {
+    valid: !1,
+    message: g("approval.vExpenseLines")
+  } : {
+    valid: !0
+  };
+}
+function na(t) {
+  const n = t("purchase_lines");
+  return (Array.isArray(n) ? n : []).filter(i => {
+    if (!i || typeof i != "object") return !1;
+    const a = i;
+    return !rt(a.item_name) && Yt(a.amount);
+  }).length === 0 ? {
+    valid: !1,
+    message: g("approval.vPurchaseLines")
+  } : {
+    valid: !0
+  };
+}
+const ra = {
+  expense: t => ta(t),
+  purchase: t => na(t),
+  report: t => pe(t, [{
+    key: "title",
+    message: g("approval.vReportTitle")
+  }]),
+  ritual_report: t => pe(t, [{
+    key: "ritual_leader",
+    message: g("approval.vRitualLeader")
+  }, {
+    key: "ritual_deceased",
+    message: g("approval.vRitualDeceased")
+  }]),
+  proposal: t => pe(t, [{
+    key: "title",
+    message: g("approval.vProposalTitle")
+  }]),
+  business_trip: t => pe(t, [{
+    key: "title",
+    message: g("approval.vTripPurpose")
+  }, {
+    key: "destination",
+    message: g("approval.vTripDestination")
+  }, {
+    key: "start_date",
+    message: g("approval.vTripStart")
+  }, {
+    key: "end_date",
+    message: g("approval.vTripEnd")
+  }]),
+  vacation: t => pe(t, [{
+    key: "vacationType",
+    message: g("approval.vVacationType")
+  }, {
+    key: "start_date",
+    message: g("approval.vVacationStart")
+  }, {
+    key: "start_date",
+    message: g("approval.vVacationStartFromToday"),
+    validator: n => Cr.includes(String(t("vacationType") ?? "")) || String(n ?? "").slice(0, 10) >= ea()
+  }, {
+    key: "end_date",
+    message: g("approval.vVacationEnd")
+  }, {
+    key: "end_date",
+    message: g("approval.vVacationEndBeforeStart"),
+    validator: n => String(n ?? "").slice(0, 10) >= String(t("start_date") ?? "").slice(0, 10)
+  }]),
+  draft: t => pe(t, [{
+    key: "title",
+    message: g("approval.vDraftTitle")
+  }]),
+  cooperation: t => pe(t, [{
+    key: "title",
+    message: g("approval.vCooperationTitle")
+  }, {
+    key: "requestDepartment",
+    message: g("approval.vRequestDepartment")
+  }]),
+  education: t => pe(t, [{
+    key: "title",
+    message: g("approval.vEducationName")
+  }, {
+    key: "start_date",
+    message: g("approval.vEducationStart")
+  }, {
+    key: "end_date",
+    message: g("approval.vEducationEnd")
+  }]),
+  vehicle: t => pe(t, [{
+    key: "title",
+    message: g("approval.vVehiclePurpose")
+  }, {
+    key: "vehicle",
+    message: g("approval.vVehicle")
+  }, {
+    key: "start_time",
+    message: g("approval.vVehicleStart")
+  }, {
+    key: "end_time",
+    message: g("approval.vVehicleReturn")
+  }, {
+    key: "driver",
+    message: g("approval.vDriver")
+  }]),
+  supply: t => pe(t, [{
+    key: "title",
+    message: g("approval.vSupplyName")
+  }, {
+    key: "quantity",
+    message: g("approval.vQuantity"),
+    validator: Yt
+  }]),
+  certificate: t => pe(t, [{
+    key: "certificateType",
+    message: g("approval.vCertificateType")
+  }, {
+    key: "purpose",
+    message: g("approval.vCertificatePurpose")
+  }]),
+  overtime: t => pe(t, [{
+    key: "overtimeType",
+    message: g("approval.vOvertimeType")
+  }, {
+    key: "overtime_date",
+    message: g("approval.vOvertimeDate")
+  }, {
+    key: "start_time",
+    message: g("approval.vStartTime")
+  }, {
+    key: "end_time",
+    message: g("approval.vEndTime")
+  }, {
+    key: "content",
+    message: g("approval.vOvertimeContent"),
+    validator: n => String(n ?? "").replace(/<[^>]*>/g, "").replace(/&nbsp;|\s/g, "") !== ""
+  }, {
+    key: "request_time",
+    message: g("approval.vRequestTimeExceeds"),
+    validator: n => {
+      if (rt(n)) return !0;
+      const o = Sr(n),
+        l = jr(t("start_time"), t("end_time"));
+      return o !== null && o > 0 && (l === null || o <= l);
+    }
+  }]),
+  meeting_minutes: t => pe(t, [{
+    key: "title",
+    message: g("approval.vMeetingTitle")
+  }, {
+    key: "meetingType",
+    message: g("approval.vMeetingType")
+  }, {
+    key: "start_time",
+    message: g("approval.vMeetingStart")
+  }, {
+    key: "end_time",
+    message: g("approval.vMeetingEnd")
+  }, {
+    key: "location",
+    message: g("approval.vLocation")
+  }])
+};
+function oa(t, n) {
+  if (!t) return {
+    valid: !0
+  };
+  const o = ra[t];
+  return o ? o(n) : {
+    valid: !0
+  };
+}
+function aa(t, n, o) {
+  const l = oa(n, t);
+  if (!l.valid) return l;
+  const i = (t("approvers") ?? []).filter(a => Number(a.seq || a.employee_seq || 0) > 0 || !!a.name);
+  return i.length < 1 ? {
+    valid: !1,
+    message: g("approval.vApproversMin")
+  } : yr(i) ? {
+    valid: !1,
+    message: g("approval.vApproversDuplicate")
+  } : o > 0 && i.some(a => Number(a.seq || a.employee_seq || 0) === o) ? {
+    valid: !1,
+    message: g("approval.vDrafterInLine")
+  } : {
+    valid: !0
+  };
+}
+function yn(t) {
+  return t.map((n, o) => ({
+    ...n,
+    order: o + 1,
+    status: "waiting"
+  }));
+}
+function sa({
+  setApprovers: t,
+  setReferences: n,
+  enabled: o = !0
+}) {
+  const [l, i] = s.useState([]),
+    m = Je({
+      stateId: "bootstrapState"
+    }).getValue("data"),
+    h = s.useMemo(() => yt(m?.employee), [m?.employee]),
+    d = s.useCallback(() => {
+      Ye().then(y => i(y.filter(C => !Ue.includes(C.name)))).catch(() => {});
+    }, []);
+  s.useEffect(() => {
+    o && d();
+  }, [o, d]);
+  const u = s.useCallback((y, C) => {
+      t(yn(y)), n(C), d();
+    }, [t, n, d]),
+    r = s.useCallback(y => {
+      t(yn(Vn(et(y), h))), n(On(tt(y), h));
+    }, [t, n, h]),
+    p = s.useCallback(async y => {
+      const C = l.find(v => String(v.seq) === y);
+      if (C) try {
+        await Bt(C.seq), Ne({
+          message: g("approval.deletedDone"),
+          delay: 400
+        }), d();
+      } catch (v) {
+        J({
+          message: v instanceof Error ? v.message : g("approval.deleteFailed")
+        });
+      }
+    }, [l, d]);
+  return {
+    lineTemplates: l,
+    applyApprovalLine: u,
+    handleApplyTemplate: r,
+    handleDeleteTemplate: p,
+    reloadTemplates: d
+  };
+}
+const ia = ["report", "draft", "meeting_minutes"];
+function Sn(t) {
+  return ia.includes(String(t ?? ""));
+}
+function la({
+  open: t,
+  onClose: n,
+  form: o,
+  type: l,
+  editorRef: i
+}) {
+  const a = z(),
+    {
+      requestClose: m
+    } = Pt({
+      open: t,
+      onClose: n,
+      modalId: "approval-preview",
+      mobileOnly: !0
+    }),
+    h = Je({
+      stateId: "loginState"
+    }),
+    [d, u] = s.useState(""),
+    [r, p] = s.useState(!1);
+  return s.useEffect(() => {
+    if (!t) return;
+    let y = !1;
+    return p(!0), u(""), (async () => {
+      try {
+        const C = h.getValue("account"),
+          v = String(C?.name ?? "").trim(),
+          _ = Kr(),
+          b = String(i.current?.getHtml() ?? o.getFormValue("content") ?? ""),
+          S = {
+            documentTypeLabel: ie[l]?.label ?? "",
+            title: String(o.getFormValue("title") ?? ""),
+            docNo: "",
+            importance: String(o.getFormValue("importance") ?? ""),
+            retentionPeriod: String(o.getFormValue("retentionPeriod") ?? ""),
+            contentHtml: b,
+            bodyWidth: Ur() || void 0,
+            authorName: v,
+            createdTime: _,
+            drafterPosition: String(C?.role_name ?? ""),
+            drafterSignatureImage: "",
+            approvers: o.getFormValue("approvers") ?? [],
+            attachments: []
+          };
+        let A;
+        l === "draft" ? A = Yr({
+          ...S,
+          department: String(o.getFormValue("department") ?? ""),
+          coDrafter: String(o.getFormValue("coDrafter") ?? ""),
+          collaborator: String(o.getFormValue("collaborator") ?? "")
+        }) : l === "meeting_minutes" ? A = $r({
+          ...S,
+          meetingType: String(o.getFormValue("meetingType") ?? ""),
+          startTime: String(o.getFormValue("start_time") ?? ""),
+          endTime: String(o.getFormValue("end_time") ?? ""),
+          location: String(o.getFormValue("location") ?? ""),
+          host: String(o.getFormValue("host") ?? ""),
+          attendees: String(o.getFormValue("attendees") ?? "")
+        }) : A = Gr({
+          ...S,
+          reportType: String(o.getFormValue("reportType") ?? ""),
+          department: String(o.getFormValue("department") ?? ""),
+          startDate: String(o.getFormValue("start_date") ?? ""),
+          endDate: String(o.getFormValue("end_date") ?? "")
+        });
+        const R = await Jr(A, !1, !0);
+        y || u(R[0] ?? "");
+      } finally {
+        y || p(!1);
+      }
+    })(), () => {
+      y = !0;
+    };
+  }, [t, l]), e.jsxs(Xe, {
+    open: t,
+    onClose: m,
+    maxWidth: "md",
+    fullWidth: !0,
+    scroll: "paper",
+    children: [e.jsxs(Qe, {
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        gap: 1,
+        pr: 1
+      },
+      children: [e.jsx(F, {
+        variant: "subtitle1",
+        sx: {
+          fontWeight: 600,
+          flex: 1
+        },
+        children: a("approval.documentPreview")
+      }), e.jsx(F, {
+        variant: "caption",
+        color: "text.secondary",
+        sx: {
+          mr: 1
+        },
+        children: a("approval.previewHint")
+      }), e.jsx(X, {
+        size: "small",
+        onClick: m,
+        "aria-label": a("approval.close"),
+        children: e.jsx(Ve, {
+          fontSize: "small"
+        })
+      })]
+    }), e.jsx(Ze, {
+      dividers: !0,
+      sx: {
+        p: 0,
+        bgcolor: "#f1f5f9"
+      },
+      children: r ? e.jsx(c, {
+        sx: {
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: 400
+        },
+        children: e.jsx(Vt, {
+          size: 28
+        })
+      }) : d ? e.jsx(_e, {
+        children: e.jsx(c, {
+          sx: {
+            p: 2,
+            "& svg": {
+              width: "100%",
+              height: "auto",
+              display: "block",
+              bgcolor: "#ffffff"
+            }
+          },
+          dangerouslySetInnerHTML: {
+            __html: d
+          }
+        })
+      }) : e.jsx(c, {
+        sx: {
+          p: 4,
+          textAlign: "center"
+        },
+        children: e.jsx(F, {
+          variant: "body2",
+          color: "text.secondary",
+          children: a("approval.previewFailed")
+        })
+      })
+    })]
+  });
+}
+function $e({
+  form: t,
+  type: n,
+  content: o,
+  editorRef: l,
+  onReset: i,
+  onLoadTemplate: a,
+  fullView: m = !1,
+  onToggleFullView: h,
+  hideDocumentLabel: d = !1,
+  hideHeaderTools: u = !1
+}) {
+  const r = z(),
+    p = Re(),
+    [y, C] = s.useState(!1),
+    v = ie[n],
+    _ = v?.component || kr,
+    b = v?.headerField,
+    S = v?.showEditor ?? !0,
+    A = v?.footerGuide ? e.jsx(Xr, {
+      form: t,
+      guide: v.footerGuide
+    }) : void 0;
+  return e.jsxs(e.Fragment, {
+    children: [e.jsx(Fe, {
+      sx: {
+        height: "100%",
+        boxSizing: "border-box",
+        borderRadius: p ? 2 : 1,
+        ...(p ? {} : {
+          border: "1px solid #94a3b8"
+        })
+      },
+      elevation: 0,
+      children: e.jsx(Qr, {
+        onReset: u ? void 0 : i,
+        onLoadTemplate: u ? void 0 : a,
+        hideHeader: u && d && !Sn(n),
+        editorPlaceholder: Tr(r, n),
+        documentLabel: v ? Te(r, n) : void 0,
+        hideDocumentLabel: d,
+        editorRef: l,
+        editorDefaultValue: o,
+        showEditor: S,
+        footer: A,
+        headerActions: e.jsxs(e.Fragment, {
+          children: [Sn(n) && e.jsx(te, {
+            title: r("approval.documentPreview"),
+            disableInteractive: !0,
+            arrow: !0,
+            children: e.jsx(X, {
+              size: "medium",
+              onClick: () => C(!0),
+              children: e.jsx(Do, {
+                sx: {
+                  fontSize: 24
+                }
+              })
+            })
+          }), !p && h ? e.jsx(te, {
+            title: r(m ? "approval.exitFullView" : "approval.fullView"),
+            disableInteractive: !0,
+            arrow: !0,
+            children: e.jsx(X, {
+              size: "medium",
+              onClick: h,
+              children: m ? e.jsx(To, {
+                sx: {
+                  fontSize: 24
+                }
+              }) : e.jsx(Ao, {
+                sx: {
+                  fontSize: 24
+                }
+              })
+            })
+          }) : null]
+        }),
+        children: v?.autoTitle ? e.jsxs(e.Fragment, {
+          children: [e.jsx(_, {
+            form: t
+          }), e.jsx(c, {
+            sx: {
+              px: 2,
+              pt: .5,
+              pb: 2
+            },
+            children: e.jsx(pt, {
+              form: t,
+              hideTitle: !0
+            })
+          })]
+        }) : p ? e.jsxs(e.Fragment, {
+          children: [v?.hideTitleField ? null : e.jsx(c, {
+            sx: {
+              px: 2,
+              pt: 2
+            },
+            children: e.jsx(Zr, {
+              form: t,
+              placeholder: Ar(r, n),
+              autoFocusKey: n
+            })
+          }), e.jsx(c, {
+            sx: {
+              px: 2,
+              pt: v?.hideTitleField ? 2 : 2.5
+            },
+            children: e.jsx(pt, {
+              form: t,
+              hideTitle: !0
+            })
+          }), e.jsx(_, {
+            form: t
+          })]
+        }) : e.jsxs(e.Fragment, {
+          children: [e.jsx(c, {
+            sx: {
+              px: 2,
+              pt: 2
+            },
+            children: e.jsx(pt, {
+              form: t,
+              extraField: b ? e.jsx(b, {
+                form: t
+              }) : void 0
+            })
+          }), e.jsx(_, {
+            form: t,
+            headerFieldLifted: !!b
+          })]
+        })
+      })
+    }), e.jsx(la, {
+      open: y,
+      onClose: () => C(!1),
+      form: t,
+      type: n,
+      editorRef: l
+    })]
+  });
+}
+function $n({
+  anchorEl: t,
+  onClose: n,
+  templates: o,
+  onLoadTemplate: l,
+  onEditTemplate: i
+}) {
+  const a = z(),
+    {
+      state: m
+    } = Le(),
+    h = m.actions.hasPv("결재선관리");
+  return e.jsx(Rn, {
+    anchorEl: t,
+    open: !!t,
+    onClose: n,
+    disableEnforceFocus: !0,
+    anchorOrigin: {
+      vertical: "bottom",
+      horizontal: "left"
+    },
+    transformOrigin: {
+      vertical: "top",
+      horizontal: "left"
+    },
+    slotProps: {
+      paper: {
+        sx: {
+          minWidth: 220
+        }
+      }
+    },
+    children: !o || o.length === 0 ? e.jsx(qe, {
+      disabled: !0,
+      children: e.jsx(F, {
+        variant: "body2",
+        color: "text.secondary",
+        children: a("approval.noSavedLineTemplates")
+      })
+    }) : o.map(d => e.jsxs(qe, {
+      onClick: () => {
+        l?.(d.id), n();
+      },
+      sx: {
+        pr: 1,
+        gap: 1
+      },
+      children: [e.jsx(gt, {
+        sx: {
+          mr: 1
+        },
+        children: d.name
+      }), h && e.jsx(c, {
+        sx: {
+          display: "flex",
+          gap: .25,
+          flexShrink: 0
+        },
+        children: e.jsx(te, {
+          title: a("approval.modify"),
+          disableInteractive: !0,
+          arrow: !0,
+          children: e.jsx(X, {
+            size: "small",
+            onClick: u => {
+              u.stopPropagation(), n(), i?.(d.id);
+            },
+            children: e.jsx(_n, {
+              fontSize: "small"
+            })
+          })
+        })
+      })]
+    }, d.id))
+  });
+}
+function St({
+  onNewDocument: t,
+  onSaveDraft: n,
+  onSubmit: o,
+  submitConfirmOpen: l,
+  submitting: i,
+  onCancelSubmit: a,
+  onConfirmSubmit: m,
+  sx: h
+}) {
+  const d = z(),
+    u = Re(),
+    r = {
+      flex: "1 1 0",
+      minWidth: 0,
+      whiteSpace: "nowrap"
+    },
+    p = "medium",
+    [y, C] = s.useState(null);
+  return e.jsxs(c, {
+    sx: [{
+      p: u ? 1.5 : 2,
+      flexShrink: 0
+    }, ...(Array.isArray(h) ? h : h ? [h] : [])],
+    children: [e.jsxs(vt, {
+      direction: "row",
+      spacing: u ? 1.5 : 2,
+      children: [t && e.jsx(K, {
+        variant: "outlined",
+        size: p,
+        onClick: t,
+        disabled: i,
+        sx: r,
+        children: d("approval.newDocument")
+      }), e.jsx(K, {
+        variant: "outlined",
+        size: p,
+        onClick: n,
+        disabled: i,
+        sx: r,
+        children: d("approval.saveDraft")
+      }), e.jsx(K, {
+        ref: C,
+        variant: "contained",
+        size: p,
+        onClick: o,
+        disabled: i,
+        sx: r,
+        children: i ? e.jsx(Vt, {
+          size: 22,
+          color: "inherit"
+        }) : d("approval.submit")
+      })]
+    }), e.jsx(Et, {
+      open: l,
+      anchorEl: y,
+      title: d("approval.submitConfirm"),
+      confirmText: d("approval.submit"),
+      cancelText: d("approval.cancel"),
+      placement: "top-end",
+      minWidth: 260,
+      zIndex: 1401,
+      onCancel: a,
+      onConfirm: m
+    })]
+  });
+}
+function ca(t) {
+  return t.approved_time ?? t.approvedAt ?? "";
+}
+function da(t) {
+  return t === "approved" || t === "rejected" || t === "in_progress" ? "filled" : "outlined";
+}
+function jn({
+  id: t,
+  approver: n,
+  approverKey: o,
+  avatarSrc: l,
+  onDelete: i,
+  avatarRef: a,
+  showStatus: m = !1,
+  disableReorder: h = !1,
+  handleSlot: d = !0
+}) {
+  const u = z(),
+    {
+      attributes: r,
+      listeners: p,
+      setNodeRef: y,
+      transform: C,
+      transition: v,
+      isDragging: _
+    } = It({
+      id: t,
+      disabled: h
+    }),
+    b = ca(n),
+    S = n.comment?.trim() ?? "",
+    A = {
+      transform: Lt.Transform.toString(C),
+      transition: v,
+      opacity: _ ? .5 : 1
+    };
+  return e.jsxs(c, {
+    ref: y,
+    style: A,
+    sx: {
+      userSelect: "none",
+      display: "flex",
+      alignItems: "center",
+      position: "relative",
+      py: m ? .75 : 1,
+      "&:hover .delete-button": {
+        opacity: 1
+      }
+    },
+    children: [d && e.jsx(c, {
+      sx: {
+        width: 24,
+        mr: .5,
+        flexShrink: 0,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        color: "text.disabled",
+        cursor: h ? "default" : "grab",
+        "&:active": h ? void 0 : {
+          cursor: "grabbing"
+        }
+      },
+      ...(h ? {} : r),
+      ...(h ? {} : p),
+      children: !h && e.jsx(Ct, {
+        fontSize: "small"
+      })
+    }), e.jsx(c, {
+      ref: a,
+      sx: {
+        display: "flex"
+      },
+      children: e.jsx(kt, {
+        alt: n.name,
+        src: l || void 0,
+        sx: {
+          width: 32,
+          height: 32,
+          mr: 1.5,
+          bgcolor: `hsl(${(n.order ?? 0) * 60}, 60%, 70%)`,
+          position: "relative",
+          zIndex: 1,
+          fontSize: "0.875rem"
+        },
+        children: n.name[0]
+      })
+    }), e.jsxs(c, {
+      sx: {
+        flex: 1,
+        minWidth: 0,
+        lineHeight: 1
+      },
+      children: [e.jsxs(c, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: 1,
+          minWidth: 0
+        },
+        children: [e.jsxs(F, {
+          variant: "body2",
+          fontWeight: 600,
+          noWrap: !0,
+          sx: {
+            minWidth: 0,
+            flex: 1
+          },
+          children: [n.name, dn(n.role) || Number(n.proxied_for_account_seq ?? 0) > 0 ? e.jsxs(c, {
+            component: "span",
+            sx: {
+              ml: .5,
+              fontWeight: 400,
+              color: "text.secondary"
+            },
+            children: ["(", [dn(n.role), Number(n.proxied_for_account_seq ?? 0) > 0 ? u("approval.proxyMark") : ""].filter(Boolean).join("·"), ")"]
+          }) : null]
+        }), m && e.jsx(Rr, {
+          size: "small",
+          label: Lr(n.status),
+          color: Ir[n.status],
+          variant: da(n.status),
+          sx: {
+            height: 22,
+            borderRadius: 1.25,
+            flexShrink: 0,
+            "& .MuiChip-label": {
+              px: .75,
+              fontSize: "0.7rem",
+              fontWeight: 600
+            }
+          }
+        })]
+      }), e.jsx(F, {
+        variant: "caption",
+        color: "text.secondary",
+        noWrap: !0,
+        sx: {
+          display: "block",
+          mt: .25
+        },
+        children: [n.department, n.role_name, n.work_position, n.proxied_for_name ? u("approval.onBehalfOf", {
+          name: n.proxied_for_name
+        }) : ""].filter(Boolean).join(" / ") || "-"
+      }), m && (b || S) && e.jsxs(F, {
+        variant: "caption",
+        color: "text.secondary",
+        sx: {
+          display: "block",
+          mt: .4,
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+          lineHeight: 1.35
+        },
+        children: [b ? new Date(b).toLocaleString(Ot(zt())) : "", b && S ? " · " : "", S]
+      })]
+    }), i && e.jsx(te, {
+      title: u("approval.delete"),
+      disableInteractive: !0,
+      arrow: !0,
+      children: e.jsx(X, {
+        className: "delete-button",
+        size: "small",
+        onClick: () => i(o),
+        sx: {
+          opacity: 0,
+          transition: "opacity 0.2s"
+        },
+        children: e.jsx(Ve, {
+          fontSize: "small"
+        })
+      })
+    })]
+  });
+}
+function pa({
+  drafter: t,
+  avatarSrc: n,
+  avatarRef: o,
+  handleSlot: l = !0
+}) {
+  const i = z(),
+    a = [t.department, t.role_name, t.work_position].filter(Boolean).join(" / ");
+  return e.jsxs(c, {
+    sx: {
+      display: "flex",
+      alignItems: "center",
+      position: "relative",
+      py: 1,
+      opacity: .9
+    },
+    children: [l && e.jsx(c, {
+      sx: {
+        width: 24,
+        mr: .5,
+        flexShrink: 0
+      }
+    }), e.jsx(c, {
+      ref: o,
+      sx: {
+        display: "flex"
+      },
+      children: e.jsx(kt, {
+        alt: t.name,
+        src: n || void 0,
+        sx: {
+          width: 32,
+          height: 32,
+          mr: 1.5,
+          bgcolor: "grey.400",
+          position: "relative",
+          zIndex: 1,
+          fontSize: "0.875rem"
+        },
+        children: t.name?.[0] ?? "?"
+      })
+    }), e.jsxs(c, {
+      sx: {
+        flex: 1,
+        minWidth: 0,
+        lineHeight: 1
+      },
+      children: [e.jsx(F, {
+        variant: "body2",
+        fontWeight: 600,
+        noWrap: !0,
+        sx: {
+          minWidth: 0
+        },
+        children: t.name
+      }), e.jsx(F, {
+        variant: "caption",
+        color: "text.secondary",
+        noWrap: !0,
+        sx: {
+          display: "block",
+          mt: .25
+        },
+        children: a || i("approval.drafter")
+      })]
+    })]
+  });
+}
+function ua({
+  approvers: t,
+  drafter: n,
+  templates: o,
+  onAddApprover: l,
+  onLoadTemplate: i,
+  onSaveTemplate: a,
+  onEditTemplate: m,
+  onSettings: h,
+  onReorder: d,
+  onDelete: u,
+  hideActions: r = !1,
+  extraAction: p,
+  showStatus: y = !1,
+  disableReorder: C = !1,
+  minHeight: v = 240,
+  headerSx: _,
+  headerTitleStyle: b,
+  bodySx: S,
+  hideHeader: A = !1
+}) {
+  const R = z(),
+    [H, W] = s.useState(0),
+    [B, ue] = s.useState(0),
+    [ve, Y] = s.useState(59),
+    ee = s.useRef([]),
+    [le, ce] = s.useState(null),
+    [V, ne] = s.useState(null),
+    [re, O] = s.useState(null),
+    {
+      state: Q
+    } = Le(),
+    Z = Q.actions.hasPv("결재선관리"),
+    [P, M] = s.useState(""),
+    me = Kt(),
+    U = s.useMemo(() => t.map((T, G) => ({
+      approver: T,
+      key: In(T, G)
+    })), [t]),
+    fe = s.useMemo(() => U.map(T => T.key), [U]),
+    he = !C && typeof d == "function" && t.length > 1,
+    be = At(Pe(Tt), Pe(Fn, {
+      coordinateGetter: wr
+    }));
+  s.useEffect(() => {
+    const T = (n ? 1 : 0) + t.length;
+    if (T > 1 && ee.current.length > 1) {
+      const G = ee.current[0],
+        ae = ee.current[T - 1];
+      if (G && ae) {
+        const ye = G.getBoundingClientRect(),
+          Se = ae.getBoundingClientRect(),
+          xe = G.parentElement?.parentElement?.getBoundingClientRect();
+        if (xe) {
+          const we = ye.top + ye.height / 2 - xe.top,
+            je = Se.top + Se.height / 2 - xe.top;
+          ue(we), W(je - we), Y(ye.left - xe.left + 16 - 1);
+        }
+      }
+    } else W(0);
+  }, [t, n]);
+  const x = T => {
+      if (!d) return;
+      const {
+        active: G,
+        over: ae
+      } = T;
+      if (ae && G.id !== ae.id) {
+        const ye = fe.indexOf(G.id),
+          Se = fe.indexOf(ae.id),
+          xe = Rt(t, ye, Se).map((we, je) => ({
+            ...we,
+            order: je + 1
+          }));
+        d(xe);
+      }
+    },
+    j = () => O(null),
+    L = () => ce(null),
+    $ = () => {
+      ne(null), M("");
+    },
+    oe = () => {
+      P.trim() && a && (a(P.trim()), $());
+    };
+  return e.jsxs(c, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      width: "100%"
+    },
+    className: "approval-line-container",
+    children: [!A && e.jsx(Mt, {
+      title: e.jsxs(c, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          width: "100%",
+          pr: 1
+        },
+        children: [e.jsxs(c, {
+          component: "button",
+          type: "button",
+          onClick: T => ce(T.currentTarget),
+          sx: {
+            display: "inline-flex",
+            alignItems: "center",
+            gap: .25,
+            font: "inherit",
+            color: "inherit",
+            background: "none",
+            border: 0,
+            p: 0,
+            m: 0,
+            cursor: "pointer",
+            "&:hover": {
+              color: "primary.main"
+            }
+          },
+          children: [e.jsx(Ln, {
+            sx: {
+              fontSize: 20,
+              mr: 1,
+              color: "text.secondary"
+            }
+          }), R("approval.approvalLine"), t.length > 0 && e.jsxs(c, {
+            component: "span",
+            sx: {
+              ml: .5,
+              color: "text.secondary",
+              fontWeight: 400
+            },
+            children: ["(", t.length, ")"]
+          }), e.jsx(En, {
+            sx: {
+              fontSize: 20,
+              color: "inherit"
+            }
+          })]
+        }), h && e.jsx(te, {
+          title: R("approval.approvalLineSettings"),
+          disableInteractive: !0,
+          arrow: !0,
+          children: e.jsx(X, {
+            size: "small",
+            sx: {
+              ml: 1
+            },
+            onClick: h,
+            children: e.jsx(qt, {
+              sx: {
+                fontSize: Ut
+              }
+            })
+          })
+        })]
+      }),
+      sx: _,
+      titleStyle: b,
+      children: (p != null || !r) && e.jsxs(c, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          pr: 1,
+          gap: .5
+        },
+        children: [p, !r && e.jsxs(e.Fragment, {
+          children: [e.jsx(te, {
+            title: R("approval.add"),
+            disableInteractive: !0,
+            arrow: !0,
+            children: e.jsx("span", {
+              children: e.jsx(X, {
+                size: "medium",
+                onClick: l,
+                children: e.jsx(wo, {
+                  sx: {
+                    fontSize: 24
+                  }
+                })
+              })
+            })
+          }), e.jsx(te, {
+            title: R("approval.more"),
+            disableInteractive: !0,
+            arrow: !0,
+            children: e.jsx(X, {
+              size: "medium",
+              onClick: T => O(T.currentTarget),
+              children: e.jsx(Dr, {
+                sx: {
+                  fontSize: 24
+                }
+              })
+            })
+          })]
+        })]
+      })
+    }), e.jsxs(Rn, {
+      anchorEl: re,
+      open: !!re,
+      onClose: j,
+      anchorOrigin: {
+        vertical: "bottom",
+        horizontal: "right"
+      },
+      transformOrigin: {
+        vertical: "top",
+        horizontal: "right"
+      },
+      children: [Z && e.jsxs(qe, {
+        onClick: () => {
+          j(), ne(re);
+        },
+        disabled: t.length === 0,
+        children: [e.jsx(cn, {
+          children: e.jsx(eo, {
+            fontSize: "small"
+          })
+        }), e.jsx(gt, {
+          children: R("approval.saveLine")
+        })]
+      }), e.jsxs(qe, {
+        onClick: () => {
+          ce(re), j();
+        },
+        children: [e.jsx(cn, {
+          children: e.jsx(to, {
+            fontSize: "small"
+          })
+        }), e.jsx(gt, {
+          children: R("approval.loadLine")
+        })]
+      })]
+    }), e.jsx(Fr, {
+      open: !!V,
+      anchorEl: V,
+      placement: "bottom-end",
+      sx: {
+        zIndex: 1300
+      },
+      children: e.jsx(_r, {
+        onClickAway: $,
+        children: e.jsx(Fe, {
+          sx: {
+            p: 2.5,
+            minWidth: 300
+          },
+          children: e.jsxs(vt, {
+            spacing: 2,
+            children: [e.jsx(F, {
+              variant: "subtitle1",
+              fontWeight: 600,
+              children: R("approval.saveApprovalLine")
+            }), e.jsx(Tn, {
+              autoFocus: !0,
+              fullWidth: !0,
+              size: "medium",
+              placeholder: R("approval.approvalLineNamePlaceholder"),
+              value: P,
+              onChange: T => M(T.target.value),
+              onKeyDown: T => {
+                T.key === "Enter" ? oe() : T.key === "Escape" && $();
+              }
+            }), e.jsxs(c, {
+              sx: {
+                display: "flex",
+                justifyContent: "flex-end",
+                gap: 1
+              },
+              children: [e.jsx(K, {
+                color: "inherit",
+                onClick: $,
+                children: R("approval.cancel")
+              }), e.jsx(K, {
+                variant: "contained",
+                onClick: oe,
+                disabled: !P.trim(),
+                children: R("approval.ok")
+              })]
+            })]
+          })
+        })
+      })
+    }), e.jsx($n, {
+      anchorEl: le,
+      onClose: L,
+      templates: o,
+      onLoadTemplate: i,
+      onEditTemplate: m
+    }), e.jsxs(vt, {
+      spacing: 0,
+      sx: {
+        px: 2,
+        py: 1,
+        position: "relative",
+        minHeight: v,
+        ...S
+      },
+      children: [(n ? 1 : 0) + t.length > 1 && H > 0 && e.jsx(c, {
+        sx: {
+          position: "absolute",
+          left: `${ve}px`,
+          top: `${B}px`,
+          height: `${H}px`,
+          width: 2,
+          bgcolor: "divider",
+          zIndex: 0
+        }
+      }), n && e.jsx(pa, {
+        handleSlot: he,
+        drafter: n,
+        avatarSrc: me(n),
+        avatarRef: T => {
+          ee.current[0] = T;
+        }
+      }), t.length === 0 ? !n && e.jsx(c, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flex: 1
+        },
+        children: e.jsx(F, {
+          variant: "subtitle1",
+          color: "text.secondary",
+          children: R("approval.addApproversHint")
+        })
+      }) : he ? e.jsx(wt, {
+        sensors: be,
+        collisionDetection: An,
+        onDragEnd: x,
+        modifiers: [Dt],
+        children: e.jsx(Ft, {
+          items: fe,
+          strategy: _t,
+          children: U.map((T, G) => e.jsx(jn, {
+            handleSlot: he,
+            id: T.key,
+            approver: T.approver,
+            approverKey: T.key,
+            avatarSrc: me(T.approver),
+            onDelete: u,
+            avatarRef: ae => {
+              ee.current[(n ? 1 : 0) + G] = ae;
+            },
+            showStatus: y,
+            disableReorder: C
+          }, T.key))
+        })
+      }) : U.map((T, G) => e.jsx(jn, {
+        handleSlot: he,
+        id: T.key,
+        approver: T.approver,
+        approverKey: T.key,
+        avatarSrc: me(T.approver),
+        onDelete: u,
+        avatarRef: ae => {
+          ee.current[(n ? 1 : 0) + G] = ae;
+        },
+        showStatus: y,
+        disableReorder: !0
+      }, T.key))]
+    })]
+  });
+}
+const jt = "approval_doc";
+function ma(t) {
+  return !t || t.length === 0 ? [] : t.filter(Boolean).map((n, o) => {
+    const l = n;
+    return {
+      table_name: jt,
+      seq: Number(l.seq ?? o + 1),
+      uuid: String(l.uuid ?? ""),
+      user_seq: Number(l.user_seq ?? 0),
+      user_name: String(l.user_name ?? ""),
+      name: String(l.original_name ?? l.name ?? "첨부파일"),
+      size: Number(l.size ?? 0),
+      created_time: String(l.created_time ?? l.uploaded_time ?? "")
+    };
+  });
+}
+const Cn = {
+    position: "sticky",
+    top: 0,
+    zIndex: 2,
+    bgcolor: "background.paper"
+  },
+  kn = {
+    border: "1px solid",
+    borderColor: "divider",
+    borderRadius: 1.5,
+    py: 1
+  },
+  ut = {
+    fontSize: 22,
+    color: "text.secondary"
+  };
+function mt({
+  count: t
+}) {
+  return t <= 0 ? null : e.jsxs(c, {
+    component: "span",
+    sx: {
+      ml: .5,
+      color: "text.secondary",
+      fontWeight: 400
+    },
+    children: ["(", t, ")"]
+  });
+}
+function Gn({
+  approvers: t,
+  references: n,
+  attachments: o,
+  drafter: l,
+  templates: i,
+  onAddApprover: a,
+  onLoadTemplate: m,
+  onEditTemplate: h,
+  onSettings: d,
+  onReorderApprovers: u,
+  onDeleteApprover: r,
+  onAddReference: p,
+  onDeleteReference: y,
+  referenceNotifyAt: C,
+  onChangeReferenceNotifyAt: v,
+  fileUploadBoxRef: _,
+  fileResetKey: b,
+  topSlot: S,
+  stacked: A = !1
+}) {
+  const R = z(),
+    H = s.useCallback((O, Q) => ge.fileUpload(jt, O, {
+      refSeq: Q
+    }), []),
+    W = s.useCallback(async O => (await Promise.all(O.map(Q => Q.uuid ? ge.fileDelete(jt, Q.uuid) : Promise.resolve())), {
+      ok: !0
+    }), []),
+    B = vo(),
+    ue = s.useCallback(O => {
+      if (!O.uuid) return;
+      const Q = ge.fileViewUrl(O.uuid),
+        Z = xo(O.name, "");
+      if (!go(Z)) {
+        window.open(Q, "_blank", "noopener,noreferrer");
+        return;
+      }
+      B.open({
+        ...O,
+        name: Z,
+        previewUrl: Q
+      });
+    }, []),
+    [ve, Y] = s.useState(null),
+    ee = e.jsxs(e.Fragment, {
+      children: [S, e.jsx(ua, {
+        approvers: t,
+        drafter: l,
+        templates: i,
+        onAddApprover: a,
+        onSaveTemplate: async () => {},
+        onLoadTemplate: m,
+        onEditTemplate: h,
+        onSettings: d,
+        onReorder: u,
+        onDelete: r,
+        headerSx: Cn,
+        bodySx: A ? kn : void 0,
+        minHeight: A ? void 0 : 0,
+        hideHeader: A,
+        hideActions: !0
+      }), A && e.jsx($n, {
+        anchorEl: ve,
+        onClose: () => Y(null),
+        templates: i,
+        onLoadTemplate: m,
+        onEditTemplate: h
+      })]
+    }),
+    le = e.jsx(no, {
+      references: n,
+      templates: [],
+      onAddReference: p,
+      onSaveTemplate: async () => {},
+      onLoadTemplate: () => {},
+      onDeleteTemplate: async () => {},
+      onDelete: y,
+      headerSx: Cn,
+      bodySx: A ? kn : void 0,
+      minHeight: A ? void 0 : 0,
+      hideHeader: A,
+      hideActions: !0,
+      notifyAt: C,
+      onChangeNotifyAt: v
+    }),
+    ce = o.length === 0 ? A ? 64 : "100%" : void 0,
+    V = e.jsx(c, {
+      sx: {
+        p: A ? 0 : 1.5,
+        height: A ? "auto" : o.length === 0 ? "100%" : "auto",
+        boxSizing: "border-box"
+      },
+      children: e.jsx(ao, {
+        ref: _,
+        uploadedFiles: ma(o),
+        multiple: !0,
+        variant: "box",
+        height: ce,
+        uploadFile: H,
+        deleteUploadedFiles: W,
+        openUploadedFile: ue,
+        canDeleteUploadedFile: () => !0
+      }, b)
+    }),
+    ne = A ? V : e.jsxs(e.Fragment, {
+      children: [e.jsx(Mt, {
+        title: e.jsxs(c, {
+          sx: {
+            display: "inline-flex",
+            alignItems: "center"
+          },
+          children: [e.jsx(pn, {
+            sx: {
+              fontSize: 20,
+              mr: 1,
+              color: "text.secondary"
+            }
+          }), R("approval.attachments"), o.length > 0 && e.jsxs(c, {
+            component: "span",
+            sx: {
+              ml: .5,
+              color: "text.secondary",
+              fontWeight: 400
+            },
+            children: ["(", o.length, ")"]
+          })]
+        })
+      }), A ? V : e.jsx(_e, {
+        style: {
+          flex: 1,
+          minHeight: 0
+        },
+        children: V
+      })]
+    }),
+    re = A ? {
+      line: {
+        icon: e.jsx(Ln, {
+          sx: ut
+        }),
+        title: e.jsxs(c, {
+          component: "button",
+          type: "button",
+          onClick: O => Y(O.currentTarget),
+          sx: {
+            display: "inline-flex",
+            alignItems: "center",
+            font: "inherit",
+            color: "inherit",
+            background: "none",
+            border: 0,
+            p: 0,
+            m: 0,
+            cursor: "pointer"
+          },
+          children: [R("approval.approvalLine"), e.jsx(mt, {
+            count: t.length
+          }), e.jsx(En, {
+            sx: {
+              fontSize: 22
+            }
+          })]
+        }),
+        endIcon: e.jsx(te, {
+          title: R("approval.approvalLineSettings"),
+          disableInteractive: !0,
+          arrow: !0,
+          children: e.jsx(X, {
+            size: "small",
+            onClick: d,
+            children: e.jsx(qt, {
+              sx: {
+                fontSize: Ut
+              }
+            })
+          })
+        })
+      },
+      reference: {
+        icon: e.jsx(Nr, {
+          sx: ut
+        }),
+        title: e.jsxs(e.Fragment, {
+          children: [R("approval.reference"), e.jsx(mt, {
+            count: n.length
+          })]
+        }),
+        endIcon: e.jsx(te, {
+          title: R("approval.addReference"),
+          disableInteractive: !0,
+          arrow: !0,
+          children: e.jsx(X, {
+            size: "small",
+            onClick: p,
+            children: e.jsx(Er, {})
+          })
+        })
+      },
+      attachment: {
+        icon: e.jsx(pn, {
+          sx: ut
+        }),
+        title: e.jsxs(e.Fragment, {
+          children: [R("approval.attachments"), e.jsx(mt, {
+            count: o.length
+          })]
+        })
+      }
+    } : void 0;
+  return {
+    approvalLineNode: ee,
+    referenceNode: le,
+    attachmentNode: ne,
+    heads: re
+  };
+}
+const ft = {
+  flex: "1 1 auto",
+  minHeight: 0
+};
+function Jn(t) {
+  const {
+      stacked: n = !1,
+      showActions: o = !0,
+      onSaveDraft: l,
+      onSubmit: i,
+      submitConfirmOpen: a,
+      submitting: m,
+      onCancelSubmit: h,
+      onConfirmSubmit: d
+    } = t,
+    {
+      approvalLineNode: u,
+      referenceNode: r,
+      attachmentNode: p
+    } = Gn(t);
+  return e.jsx(Fe, {
+    sx: {
+      height: n ? "auto" : "100%",
+      boxSizing: "border-box"
+    },
+    elevation: n ? 0 : void 0,
+    children: e.jsxs(c, {
+      sx: {
+        display: "flex",
+        flexDirection: "column",
+        height: n ? "auto" : "100%"
+      },
+      children: [e.jsx(c, {
+        sx: {
+          ...(n ? {} : ft),
+          display: "flex",
+          flexDirection: "column",
+          borderBottom: "1px solid #cccccc"
+        },
+        children: n ? u : e.jsx(_e, {
+          style: {
+            flex: 1,
+            minHeight: 0
+          },
+          children: u
+        })
+      }), e.jsx(c, {
+        sx: {
+          ...(n ? {} : ft),
+          display: "flex",
+          flexDirection: "column",
+          borderBottom: "1px solid #cccccc"
+        },
+        children: n ? r : e.jsx(_e, {
+          style: {
+            flex: 1,
+            minHeight: 0
+          },
+          children: r
+        })
+      }), e.jsx(c, {
+        sx: {
+          ...(n ? {} : ft),
+          display: "flex",
+          flexDirection: "column",
+          borderBottom: 1,
+          borderColor: "divider"
+        },
+        children: p
+      }), o && e.jsx(St, {
+        onSaveDraft: l,
+        onSubmit: i,
+        submitConfirmOpen: a,
+        submitting: m,
+        onCancelSubmit: h,
+        onConfirmSubmit: d
+      })]
+    })
+  });
+}
+function fa({
+  selectedType: t,
+  onTypeSelect: n,
+  onClose: o
+}) {
+  const {
+      documentTypes: l
+    } = nt(),
+    i = a => {
+      n(a), o();
+    };
+  return e.jsx(c, {
+    sx: {
+      backgroundColor: "background.paper",
+      border: "1px solid #e5e7eb",
+      borderRadius: 1.5,
+      p: .75,
+      display: "flex",
+      flexDirection: "column",
+      gap: .25,
+      maxHeight: "70vh",
+      overflowY: "auto"
+    },
+    children: l.map(a => {
+      const m = a.id === t,
+        h = a.icon;
+      return e.jsxs(c, {
+        role: "button",
+        tabIndex: 0,
+        onClick: () => i(a.id),
+        onKeyDown: d => {
+          (d.key === "Enter" || d.key === " ") && (d.preventDefault(), i(a.id));
+        },
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: 1.25,
+          px: 1,
+          py: 1,
+          borderRadius: 1,
+          cursor: "pointer",
+          userSelect: "none",
+          backgroundColor: m ? "#eff6ff" : "transparent",
+          WebkitTapHighlightColor: "transparent",
+          "@media (hover: hover)": {
+            "&:hover": {
+              backgroundColor: m ? "#dbeafe" : "#f8fafc"
+            }
+          }
+        },
+        children: [e.jsx(c, {
+          sx: {
+            flexShrink: 0,
+            width: 32,
+            height: 32,
+            borderRadius: "50%",
+            bgcolor: m ? "primary.main" : "#f1f5f9",
+            color: m ? "#fff" : "#64748b",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"
+          },
+          children: e.jsx(h, {
+            sx: {
+              fontSize: 18
+            }
+          })
+        }), e.jsxs(c, {
+          sx: {
+            minWidth: 0
+          },
+          children: [e.jsx(F, {
+            variant: "subtitle2",
+            fontWeight: m ? 700 : 500,
+            noWrap: !0,
+            sx: {
+              fontSize: un(16)
+            },
+            children: a.label
+          }), e.jsx(F, {
+            variant: "caption",
+            color: "text.secondary",
+            noWrap: !0,
+            display: "block",
+            sx: {
+              fontSize: un(15)
+            },
+            children: a.description
+          })]
+        })]
+      }, a.id);
+    })
+  });
+}
+const ha = "min(1280px, calc(100vw - 64px))",
+  ht = "calc(100vh - 160px)",
+  xa = 340;
+function ga(t) {
+  const n = Re(),
+    o = z(),
+    {
+      documentTypes: l
+    } = nt(),
+    i = bo(),
+    a = i.useValue("open");
+  s.useEffect(() => (i.setValue("active", !0), i.setValue("icon", "document"), () => {
+    i.setValue("active", !1), i.setValue("open", !1), i.setValue("icon", "search");
+  }), [i]);
+  const m = s.useRef(null),
+    h = s.useCallback(p => {
+      const y = document.documentElement;
+      if (m.current?.disconnect(), m.current = null, !p) {
+        y.style.removeProperty("--shell-fab-bottom");
+        return;
+      }
+      const C = () => y.style.setProperty("--shell-fab-bottom", `${Math.round(p.offsetHeight)}px`);
+      C();
+      const v = new ResizeObserver(C);
+      v.observe(p), m.current = v;
+    }, []),
+    d = Gn({
+      approvers: t.approvers,
+      references: t.references,
+      attachments: t.attachments,
+      drafter: t.drafter,
+      templates: t.templates,
+      onAddApprover: t.onAddApprover,
+      onLoadTemplate: t.onLoadLineTemplate,
+      onEditTemplate: t.onEditTemplate,
+      onSettings: t.onSettings,
+      onReorderApprovers: t.onReorderApprovers,
+      onDeleteApprover: t.onDeleteApprover,
+      onAddReference: t.onAddReference,
+      onDeleteReference: t.onDeleteReference,
+      referenceNotifyAt: t.referenceNotifyAt,
+      onChangeReferenceNotifyAt: t.onChangeReferenceNotifyAt,
+      fileUploadBoxRef: t.fileUploadBoxRef,
+      fileResetKey: t.fileResetKey,
+      topSlot: t.topSlot,
+      stacked: !0
+    }),
+    u = async () => {
+      (await Or({
+        title: g("approval.startNewDocumentConfirm"),
+        message: g("approval.contentWillBeCleared"),
+        confirmText: g("approval.newDocument"),
+        cancelText: g("approval.cancel")
+      })) && t.onReset();
+    },
+    r = e.jsxs(c, {
+      sx: {
+        position: "relative",
+        minWidth: 0,
+        width: "100%",
+        maxWidth: "100vw",
+        overflowX: "hidden"
+      },
+      children: [e.jsx(c, {
+        "data-search-open": a ? "true" : "false",
+        sx: {
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 30,
+          transition: "opacity 200ms ease, transform 200ms ease",
+          boxShadow: "0 8px 24px rgba(15,23,42,0.14)",
+          borderRadius: 1.5,
+          '&[data-search-open="false"]': {
+            opacity: 0,
+            transform: "translateY(-8px)",
+            pointerEvents: "none"
+          },
+          '&[data-search-open="true"]': {
+            opacity: 1,
+            transform: "translateY(0)",
+            pointerEvents: "auto"
+          }
+        },
+        children: e.jsx(fa, {
+          selectedType: t.type,
+          onTypeSelect: t.onTypeSelect,
+          onClose: () => i.setValue("open", !1)
+        })
+      }), !t.fixedType && e.jsx(c, {
+        sx: {
+          bgcolor: "#fff",
+          p: 2,
+          mb: He
+        },
+        children: e.jsx(qr, {
+          label: o("approval.documentKind"),
+          value: t.type,
+          onChange: p => t.onTypeSelect(String(p.target.value)),
+          options: [...l.map(p => ({
+            value: p.id,
+            label: p.label
+          })), ...(t.type in ie && !l.some(p => p.id === t.type) ? [{
+            value: t.type,
+            label: Te(o, t.type)
+          }] : [])],
+          showEmptyOption: !1,
+          fullWidth: !0
+        })
+      }), e.jsx($e, {
+        hideDocumentLabel: t.fixedType,
+        hideHeaderTools: !0,
+        form: t.form,
+        type: t.type,
+        content: t.content,
+        editorRef: t.editorRef,
+        onReset: t.onReset,
+        onLoadTemplate: t.onLoadTemplate
+      })]
+    });
+  return n ? e.jsx(Be, {
+    open: t.open,
+    onClose: t.onClose,
+    onExited: t.onExited,
+    title: t.fixedType && ie[t.type] ? Te(o, t.type) : o("approval.requestApproval"),
+    fullScreen: n,
+    width: n ? void 0 : "960px",
+    mobilePresentation: n ? "slide" : "dialog",
+    draggable: !1,
+    backdropClick: !1,
+    actions: n ? {
+      visible: !1
+    } : {
+      visible: !0,
+      showCancelButton: !1,
+      right: e.jsx(St, {
+        sx: {
+          p: 0,
+          width: 520
+        },
+        onNewDocument: u,
+        onSaveDraft: t.onSaveDraft,
+        onSubmit: t.onSubmit,
+        submitConfirmOpen: t.submitConfirmOpen,
+        submitting: t.submitting,
+        onCancelSubmit: t.onCancelSubmit,
+        onConfirmSubmit: t.onConfirmSubmit
+      })
+    },
+    titleIcons: {
+      delete: {
+        visible: !1
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      },
+      custom: [{
+        icon: e.jsx(Vr, {}),
+        tooltip: o("approval.loadDraft"),
+        onClick: t.onLoadTemplate
+      }]
+    },
+    tabs: {
+      visible: !1
+    },
+    contentPaddingX: 0,
+    contentTopPadding: 0,
+    contentBottomPadding: 0,
+    sx: {
+      DialogContent: {
+        bgcolor: Pr[200],
+        "& .sections-container": {
+          display: "flex",
+          flexDirection: "column",
+          gap: He,
+          pb: n ? `calc(var(--shell-fab-bottom, 72px) + ${He})` : He
+        },
+        "& .sections-container > [id^='section-']": {
+          m: 0,
+          bgcolor: "#fff",
+          borderRadius: 0,
+          p: 2
+        },
+        "& .sections-container > #section-0": {
+          bgcolor: "transparent",
+          p: 0
+        },
+        "& .sections-container > #section-0 .MuiPaper-root": {
+          borderRadius: 0,
+          boxShadow: "none",
+          border: 0
+        }
+      }
+    },
+    scrollPastLastSection: !1,
+    sections: [{
+      id: "approval-body",
+      title: "",
+      showTitle: !1,
+      children: r
+    }, {
+      id: "approval-line",
+      icon: d.heads?.line.icon,
+      title: d.heads?.line.title,
+      endIcon: d.heads?.line.endIcon,
+      children: e.jsx(c, {
+        sx: {
+          minWidth: 0,
+          width: "100%"
+        },
+        children: d.approvalLineNode
+      })
+    }, {
+      id: "approval-reference",
+      icon: d.heads?.reference.icon,
+      title: d.heads?.reference.title,
+      endIcon: d.heads?.reference.endIcon,
+      children: e.jsx(c, {
+        sx: {
+          minWidth: 0,
+          width: "100%"
+        },
+        children: d.referenceNode
+      })
+    }, {
+      id: "approval-attachments",
+      icon: d.heads?.attachment.icon,
+      title: d.heads?.attachment.title,
+      children: e.jsxs(c, {
+        sx: {
+          minWidth: 0,
+          width: "100%"
+        },
+        children: [d.attachmentNode, n && e.jsx(c, {
+          ref: h,
+          sx: {
+            position: "fixed",
+            left: 0,
+            right: 0,
+            bottom: "var(--taskbox-fab-lift, 0px)",
+            zIndex: 30,
+            borderTop: "1px solid",
+            borderColor: "divider",
+            bgcolor: "background.paper"
+          },
+          children: e.jsx(St, {
+            onNewDocument: u,
+            onSaveDraft: t.onSaveDraft,
+            onSubmit: t.onSubmit,
+            submitConfirmOpen: t.submitConfirmOpen,
+            submitting: t.submitting,
+            onCancelSubmit: t.onCancelSubmit,
+            onConfirmSubmit: t.onConfirmSubmit
+          })
+        })]
+      })
+    }]
+  }) : e.jsx(Be, {
+    open: t.open,
+    onClose: t.onClose,
+    onExited: t.onExited,
+    title: t.fixedType && ie[t.type] ? Te(o, t.type) : o("approval.requestApproval"),
+    width: ha,
+    fixedHeight: ht,
+    maxContentHeight: ht,
+    draggable: !1,
+    backdropClick: !1,
+    actions: {
+      visible: !1
+    },
+    titleIcons: {
+      delete: {
+        visible: !1
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    tabs: {
+      visible: !1
+    },
+    contentPaddingX: 0,
+    contentTopPadding: 0,
+    contentBottomPadding: 0,
+    scrollPastLastSection: !1,
+    sections: [{
+      id: "approval-desktop",
+      title: "",
+      showTitle: !1,
+      children: e.jsxs(c, {
+        sx: {
+          display: "flex",
+          gap: 2,
+          p: 2,
+          boxSizing: "border-box",
+          height: ht,
+          width: "100%",
+          minWidth: 0
+        },
+        children: [e.jsx(c, {
+          sx: {
+            flex: 1,
+            minWidth: 0,
+            height: "100%"
+          },
+          children: e.jsx($e, {
+            hideDocumentLabel: t.fixedType,
+            form: t.form,
+            type: t.type,
+            content: t.content,
+            editorRef: t.editorRef,
+            onReset: u,
+            onLoadTemplate: t.onLoadTemplate
+          })
+        }), e.jsx(c, {
+          sx: {
+            width: xa,
+            flexShrink: 0,
+            height: "100%"
+          },
+          children: e.jsx(Jn, {
+            approvers: t.approvers,
+            references: t.references,
+            attachments: t.attachments,
+            drafter: t.drafter,
+            templates: t.templates,
+            onAddApprover: t.onAddApprover,
+            onLoadTemplate: t.onLoadLineTemplate,
+            onEditTemplate: t.onEditTemplate,
+            onSettings: t.onSettings,
+            onReorderApprovers: t.onReorderApprovers,
+            onDeleteApprover: t.onDeleteApprover,
+            onAddReference: t.onAddReference,
+            referenceNotifyAt: t.referenceNotifyAt,
+            onChangeReferenceNotifyAt: t.onChangeReferenceNotifyAt,
+            onDeleteReference: t.onDeleteReference,
+            fileUploadBoxRef: t.fileUploadBoxRef,
+            fileResetKey: t.fileResetKey,
+            onSaveDraft: t.onSaveDraft,
+            onSubmit: t.onSubmit,
+            submitConfirmOpen: t.submitConfirmOpen,
+            submitting: t.submitting,
+            onCancelSubmit: t.onCancelSubmit,
+            onConfirmSubmit: t.onConfirmSubmit
+          })
+        })]
+      })
+    }]
+  });
+}
+const va = {
+  list: async () => {
+    const t = await ge.http.get("/v1/approval/orgs");
+    if (!t?.ok) throw new Error(t?.message || g("approval.orgListLoadFailed"));
+    return Array.isArray(t.data?.orgs) ? t.data.orgs : [];
+  }
+};
+function ts({
+  embed: t
+} = {}) {
+  const n = z(),
+    o = Zn(),
+    l = zr("approval"),
+    i = yo(),
+    a = er(),
+    [m, h] = s.useState(() => t ? {
+      initialType: t.initialType,
+      initialFormData: t.initialFormData
+    } : null),
+    d = t ? m : a.state,
+    u = s.useCallback(() => {
+      t ? h(null) : o(a.pathname, {
+        replace: !0,
+        state: null
+      });
+    }, [t, o, a.pathname]),
+    {
+      form: r,
+      lastSavedSeqRef: p
+    } = ro(),
+    {
+      account: y
+    } = Le(),
+    {
+      state: C
+    } = Wt(),
+    v = !!C.useValue("data.license.settings.fundDailyReport.balanceAccounts.transpose"),
+    b = Re() || !!t,
+    S = Ke({
+      modalId: "approval-create-dialog"
+    }),
+    A = S.open;
+  s.useEffect(() => {
+    b && l.canWrite && A();
+  }, [b]), s.useEffect(() => {
+    l.canWrite || !t || (J({
+      message: g("approval.noWritePermission")
+    }), t.onExited());
+  }, [l.canWrite]);
+  const R = s.useCallback(() => {
+      if (t) {
+        t.onExited();
+        return;
+      }
+      Number(window.history.state?.idx ?? 0) > 0 ? o(-1) : o("/dashboard/approval/my-requests", {
+        replace: !0
+      });
+    }, [o, t]),
+    H = s.useRef(null),
+    W = s.useRef(null),
+    [B, ue] = s.useState(0),
+    [ve, Y] = s.useState(!1),
+    [ee, le] = s.useState(!1),
+    [ce, V] = s.useState(!1),
+    ne = s.useCallback(() => {
+      V(f => !f);
+    }, []),
+    [re, O] = s.useState(null),
+    Q = Number(y?.seq ?? 0),
+    Z = f => Q ? f.filter(D => Number(D.account_seq ?? 0) !== Q) : f,
+    P = r.useFormValue("type"),
+    [M, me] = s.useState([]),
+    U = Number(r.useFormValue("org_seq") ?? 0) || 0;
+  s.useEffect(() => {
+    va.list().then(me).catch(() => me([]));
+  }, []);
+  const fe = Mr()?.seq ?? 0,
+    he = s.useRef(!1);
+  s.useEffect(() => {
+    const f = M.find(N => N.seq === fe);
+    if (f && !he.current && U !== f.seq) {
+      U > 0 && (r.setFormValue("approvers", []), r.setFormValue("references", [])), r.setFormValue("org_seq", f.seq);
+      return;
+    }
+    if (U > 0 && M.some(N => N.seq === U)) return;
+    const D = f ?? M.find(N => N.mine) ?? M[0];
+    D && r.setFormValue("org_seq", D.seq);
+  }, [M, U, fe]);
+  const be = M.find(f => f.seq === U) ?? null,
+    x = be?.account_seqs,
+    j = be?.members,
+    L = f => {
+      f !== U && (he.current = !0, r.setFormValue("org_seq", f), r.setFormValue("approvers", []), r.setFormValue("references", []));
+    },
+    $ = M.length > 1 ? e.jsx(c, {
+      sx: {
+        px: 1.5,
+        pt: 1.5,
+        pb: .5
+      },
+      children: e.jsx(wn, {
+        label: n("approval.targetOrg"),
+        value: U,
+        onChange: f => L(Number(f.target.value) || 0),
+        options: M.map(f => ({
+          value: f.seq,
+          label: f.mine ? n("approval.myOrgSuffix", {
+            name: f.name
+          }) : f.name
+        })),
+        showEmptyOption: !1,
+        fullWidth: !0
+      })
+    }) : void 0,
+    oe = r.useFormValue("approvers") ?? [],
+    T = Z(oe),
+    G = r.useFormValue("references") ?? [],
+    ae = r.useFormValue("reference_notify_at") === "submit" ? "submit" : "complete",
+    ye = s.useCallback(f => r.setFormValue("reference_notify_at", f === "submit" ? "submit" : ""), [r]),
+    Se = r.useFormValue("attachments") ?? [],
+    xe = r.useFormValue("content") ?? "",
+    we = r.useFormValue("_ui.submitConfirmOpen") ?? !1,
+    je = r.useFormValue("_ui.submitting") ?? !1,
+    {
+      lineTemplates: se,
+      applyApprovalLine: ot,
+      handleApplyTemplate: Ie,
+      handleDeleteTemplate: k,
+      reloadTemplates: w
+    } = sa({
+      setApprovers: f => r.setFormValue("approvers", Z(f)),
+      setReferences: f => r.setFormValue("references", f)
+    }),
+    E = Kn({
+      idSuffix: "create",
+      onApply: ot,
+      onDeleteTemplate: k,
+      onSaved: w
+    }),
+    q = () => {
+      E.open({
+        approvers: T,
+        references: G
+      });
+    },
+    Ce = f => {
+      const D = se.find(N => String(N.seq) === f);
+      D && E.open({
+        approvers: et(D),
+        references: tt(D),
+        template: {
+          seq: D.seq,
+          name: D.name,
+          formType: String(D.form_type ?? "").trim()
+        }
+      });
+    };
+  s.useEffect(() => {
+    le(!1), r.resetForm(), queueMicrotask(() => H.current?.setHtml(""));
+  }, []);
+  const I = s.useRef(null),
+    de = s.useCallback((f, D) => {
+      Ie(D), r.setFormValue("_ui.autoLine", {
+        approvers: r.getFormValue("approvers"),
+        references: r.getFormValue("references")
+      }), I.current = f;
+    }, [r, Ie]),
+    Oe = s.useRef(!1),
+    ze = s.useCallback(async f => {
+      I.current = f;
+      const D = await _o(f).catch(() => null);
+      if (!D || String(r.getFormValue("type") ?? "") !== f) return;
+      const N = r.getFormValue("approvers");
+      Array.isArray(N) && N.length > 0 || (de(f, {
+        seq: 0,
+        account_seq: 0,
+        name: "",
+        form_type: f,
+        ...D
+      }), Oe.current = !0);
+    }, [r, de]),
+    ke = s.useCallback(f => {
+      r.resetForm(), r.setFormValue("type", f), queueMicrotask(() => H.current?.setHtml("")), ue(N => N + 1), I.current = null, Oe.current = !1;
+      const D = se.find(N => String(N.form_type ?? "").trim() === f);
+      D ? de(f, D) : ze(f);
+    }, [r, se, de, ze]);
+  s.useEffect(() => {
+    if (!P) return;
+    const f = se.find(De => String(De.form_type ?? "").trim() === P),
+      D = r.getFormValue("approvers"),
+      N = r.getFormValue("_ui.autoLine"),
+      Ae = Oe.current && JSON.stringify(D ?? []) === JSON.stringify(N?.approvers ?? []);
+    if (f && Ae) {
+      Oe.current = !1, de(P, f);
+      return;
+    }
+    if (I.current !== P) {
+      if (Array.isArray(D) && D.length > 0) {
+        I.current = P;
+        return;
+      }
+      f ? de(P, f) : ze(P);
+    }
+  }, [se, P, r, de, ze]);
+  const {
+      documentTypes: Me
+    } = nt(),
+    at = s.useRef(!1);
+  s.useEffect(() => {
+    if (at.current || Me.length === 0) return;
+    const f = d;
+    if (f?.loadDraftSeq || f?.initialType) return;
+    at.current = !0;
+    const D = String(r.getFormValue("type") ?? "");
+    Me.some(N => N.id === D) || ke(Me[0].id);
+  }, [Me, d]);
+  const st = s.useCallback(() => {
+      ke(String(r.getFormValue("type") ?? "expense"));
+    }, [r, ke]),
+    $t = s.useCallback(f => {
+      if (f !== String(r.getFormValue("type") ?? "")) {
+        if (ee) {
+          J(g("approval.formLockedByDocNo"));
+          return;
+        }
+        Wr(D => r.getFormValue(D)) ? O(f) : ke(f);
+      }
+    }, [r, ke, ee]),
+    Gt = s.useCallback(f => {
+      r.setFormValue("approvers", f);
+    }, [r]),
+    Jt = s.useCallback(f => {
+      const N = (r.getFormValue("approvers") ?? []).filter((Ae, De) => In(Ae, De) !== f).map((Ae, De) => ({
+        ...Ae,
+        order: De + 1
+      }));
+      r.setFormValue("approvers", N);
+    }, [r]),
+    Xt = s.useCallback(f => {
+      const D = (r.getFormValue("references") ?? []).filter(N => N.id !== f);
+      r.setFormValue("references", D);
+    }, [r]),
+    Ee = s.useCallback(async () => {
+      const f = p.current;
+      f && (await W.current?.handleUploadFiles("approval_doc", "ref_seq", f));
+    }, [p]),
+    We = s.useCallback(async () => (r.setFormValue("content", H.current?.getHtml() ?? ""), r.setFormValue("_ui.submitMode", "draft"), (await r.submit()) ? (await Ee(), (await bn(r, p.current)) && (await r.submit()), !0) : (J(g("approval.saveDraftFailedRetry")), !1)), [r, Ee, p]),
+    Xn = s.useCallback(async () => {
+      const f = re;
+      !f || !(await We()) || (O(null), ke(f));
+    }, [re, We, ke]),
+    Qn = s.useCallback(() => {
+      const f = re;
+      O(null), f && ke(f);
+    }, [re, ke]),
+    it = s.useCallback(async f => {
+      if (await Mo(r, f), H.current?.setHtml(String(r.getFormValue("content") ?? "")), (r.getFormValue("approvers") ?? []).length === 0) {
+        I.current = null;
+        const N = String(r.getFormValue("type") ?? ""),
+          Ae = se.find(De => String(De.form_type ?? "").trim() === N);
+        Ae && de(N, Ae);
+      }
+      le(!!String(r.getFormValue("doc_no") ?? "").trim()), Y(!1);
+    }, [r, se, de]);
+  s.useEffect(() => {
+    const f = Number(d?.loadDraftSeq ?? 0);
+    f <= 0 || (it(f), u());
+  }, [d, u, it]);
+  const lt = s.useRef(!1);
+  s.useEffect(() => {
+    const f = d,
+      D = String(f?.initialType ?? "").trim();
+    if (!D) {
+      lt.current = !1;
+      return;
+    }
+    if (lt.current) return;
+    lt.current = !0, at.current = !0, ke(D);
+    const N = f?.initialFormData;
+    if (N && typeof N == "object") for (const [Ae, De] of Object.entries(N)) r.setFormValue(Ae, De);
+    u();
+  }, [d]);
+  const Qt = s.useCallback(() => {
+      r.setFormValue("content", H.current?.getHtml() ?? "");
+      const f = aa(D => r.getFormValue(D), P, Number(y?.seq ?? 0));
+      if (!f.valid) {
+        J(f.message ?? g("approval.fillRequiredFields"));
+        return;
+      }
+      r.setFormValue("_ui.submitConfirmOpen", !0);
+    }, [r, P, y?.seq]),
+    Zt = s.useCallback(() => {
+      r.setFormValue("_ui.submitConfirmOpen", !1);
+    }, [r]),
+    en = S.close,
+    ct = s.useCallback(() => {
+      t ? en() : o(`${i}/approval/my-requests`);
+    }, [t, en, o, i]),
+    tn = s.useCallback(async () => {
+      r.setFormValue("_ui.submitConfirmOpen", !1), r.setFormValue("_ui.submitting", !0);
+      try {
+        if (Jo(r)) {
+          if (r.setFormValue("_ui.submitMode", "draft"), !(await r.submit())) {
+            J(g("approval.saveFailedRetry"));
+            return;
+          }
+          await Ee(), await bn(r, p.current), r.setFormValue("_ui.submitMode", "submit"), (await r.submit()) && (r.resetForm(), H.current?.setHtml(""), ct());
+          return;
+        }
+        r.setFormValue("_ui.submitMode", "submit"), (await r.submit()) && (await Ee(), r.resetForm(), H.current?.setHtml(""), ct());
+      } finally {
+        r.setFormValue("_ui.submitting", !1);
+      }
+    }, [r, ct, Ee, p, v]),
+    nn = y?.name ? {
+      name: y.name,
+      account_seq: Number(y.seq ?? 0)
+    } : null;
+  return l.canWrite ? e.jsxs(c, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      ...(b ? {
+        width: "100%",
+        minWidth: 0,
+        flex: "1 1 auto"
+      } : {
+        height: "100%",
+        flex: "1 1 auto",
+        minHeight: 0,
+        position: "relative"
+      }),
+      userSelect: "none"
+    },
+    children: [b ? e.jsx(ga, {
+      open: S.isOpen,
+      onClose: S.close,
+      onExited: R,
+      form: r,
+      type: P,
+      fixedType: !!t?.initialType,
+      content: xe,
+      editorRef: H,
+      approvers: T,
+      references: G,
+      attachments: Se,
+      drafter: nn,
+      topSlot: $,
+      templates: se.map(f => ({
+        id: String(f.seq),
+        name: f.name
+      })),
+      fileUploadBoxRef: W,
+      fileResetKey: B,
+      submitConfirmOpen: we,
+      submitting: je,
+      onTypeSelect: $t,
+      onReset: st,
+      onLoadTemplate: () => Y(!0),
+      onAddApprover: q,
+      onLoadLineTemplate: f => {
+        const D = se.find(N => String(N.seq) === f);
+        D && Ie(D);
+      },
+      onEditTemplate: Ce,
+      onSettings: q,
+      onReorderApprovers: Gt,
+      onDeleteApprover: Jt,
+      onAddReference: q,
+      referenceNotifyAt: ae,
+      onChangeReferenceNotifyAt: ye,
+      onDeleteReference: Xt,
+      onSaveDraft: We,
+      onSubmit: Qt,
+      onCancelSubmit: Zt,
+      onConfirmSubmit: tn
+    }) : e.jsx(c, {
+      sx: {
+        position: "absolute",
+        inset: 0,
+        display: "flex",
+        flexDirection: "column"
+      },
+      children: ce ? e.jsx(c, {
+        sx: {
+          flex: 1,
+          minHeight: 0,
+          boxSizing: "border-box"
+        },
+        children: e.jsx($e, {
+          form: r,
+          type: P,
+          content: xe,
+          editorRef: H,
+          onReset: st,
+          onLoadTemplate: () => Y(!0),
+          fullView: !0,
+          onToggleFullView: ne
+        })
+      }) : e.jsxs(Hr, {
+        panelConfigs: [{
+          ratio: .25
+        }, {
+          ratio: .8
+        }, {
+          ratio: .25
+        }],
+        resizable: !1,
+        minWidth: 200,
+        paper: {
+          show: !1
+        },
+        children: [e.jsx(Fe, {
+          sx: {
+            height: "100%",
+            boxSizing: "border-box"
+          },
+          elevation: 0,
+          children: e.jsx($o, {
+            selectedType: P,
+            onTypeSelect: $t,
+            onSettings: () => {},
+            onSettingsClose: w
+          })
+        }), e.jsx($e, {
+          form: r,
+          type: P,
+          content: xe,
+          editorRef: H,
+          onReset: st,
+          onLoadTemplate: () => Y(!0),
+          fullView: !1,
+          onToggleFullView: ne
+        }), e.jsx(Jn, {
+          approvers: T,
+          references: G,
+          attachments: Se,
+          drafter: nn,
+          topSlot: void 0,
+          templates: se.map(f => ({
+            id: String(f.seq),
+            name: f.name
+          })),
+          onAddApprover: q,
+          onLoadTemplate: f => {
+            const D = se.find(N => String(N.seq) === f);
+            D && Ie(D);
+          },
+          onEditTemplate: Ce,
+          onSettings: q,
+          onReorderApprovers: Gt,
+          onDeleteApprover: Jt,
+          onAddReference: q,
+          referenceNotifyAt: ae,
+          onChangeReferenceNotifyAt: ye,
+          onDeleteReference: Xt,
+          fileUploadBoxRef: W,
+          fileResetKey: B,
+          onSaveDraft: We,
+          onSubmit: Qt,
+          submitConfirmOpen: we,
+          submitting: je,
+          onCancelSubmit: Zt,
+          onConfirmSubmit: tn
+        })]
+      })
+    }), e.jsx(Zo, {
+      open: re !== null,
+      onCancel: () => O(null),
+      onDiscard: Qn,
+      onSaveDraft: () => {
+        Xn();
+      }
+    }), e.jsx(Hn, {
+      controller: E,
+      candidateAccountSeqs: x,
+      candidateMembers: j
+    }), e.jsx(Qo, {
+      open: ve,
+      accountSeq: Number(y?.seq ?? 0),
+      onClose: () => Y(!1),
+      onSelect: f => {
+        it(f);
+      }
+    })]
+  }) : t ? null : e.jsx(c, {
+    sx: {
+      p: 3
+    },
+    children: e.jsx(F, {
+      sx: {
+        fontSize: 15,
+        color: "text.secondary"
+      },
+      children: n("approval.noWritePermissionReadOnly")
+    })
+  });
+}
+export { ts as default };

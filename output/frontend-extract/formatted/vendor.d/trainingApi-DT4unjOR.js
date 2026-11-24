@@ -1,0 +1,188 @@
+import { bM as m, bT as d } from "../js.d/main-Cm9wS5wt.js";
+import { T as f } from "./training-Bx0zycZu.js";
+const c = "/v1/hr";
+function u(e, t) {
+  if (!e || e.ok === !1) throw new Error(e?.message || t);
+  return e.data;
+}
+function s(e) {
+  return typeof e == "string" ? e : e == null ? "" : String(e);
+}
+function i(e) {
+  const t = Number(e ?? 0);
+  return Number.isFinite(t) ? t : 0;
+}
+function _(e) {
+  return e === !0 || e === 1 || e === "1" || e === "true";
+}
+function o(e) {
+  const t = s(e).slice(0, 10);
+  return /^\d{4}-\d{2}-\d{2}$/.test(t) && t !== "0000-00-00" ? t : "";
+}
+function l(e) {
+  return Array.isArray(e) ? e : [];
+}
+function p(e) {
+  const t = s(e);
+  return f.includes(t) ? t : "etc";
+}
+function y(e) {
+  if (e == null || e === "") return null;
+  const t = Number(e);
+  return Number.isFinite(t) ? t : null;
+}
+function $(e, t) {
+  const n = (e instanceof Error ? e.message : "").replace(/^HTTP \d+:\s*/, "");
+  try {
+    const r = JSON.parse(n);
+    if (typeof r.message == "string" && r.message) return r.message;
+  } catch {}
+  return t;
+}
+function g(e) {
+  const t = e ?? {};
+  return {
+    seq: i(t.seq),
+    name: s(t.name),
+    category: p(t.category),
+    institution: s(t.institution),
+    start_date: o(t.start_date),
+    end_date: o(t.end_date),
+    hours: i(t.hours),
+    location: s(t.location),
+    next_date: o(t.next_date),
+    next_days_left: o(t.next_date) ? y(t.next_days_left) : null,
+    attendee_count: i(t.attendee_count),
+    completed_count: i(t.completed_count),
+    attachment_count: i(t.attachment_count),
+    created_date: o(t.created_date)
+  };
+}
+function w(e) {
+  const t = e ?? {},
+    n = s(t.status);
+  return {
+    employee_seq: i(t.employee_seq),
+    completed: _(t.completed),
+    completed_date: o(t.completed_date),
+    note: s(t.note),
+    name: s(t.name),
+    unit_seq: i(t.unit_seq),
+    position: s(t.position),
+    status: ["active", "leave", "resigned"].includes(n) ? n : ""
+  };
+}
+function h(e) {
+  const t = e ?? {},
+    n = s(t.uuid);
+  return n ? {
+    uuid: n,
+    name: s(t.name) || d("hr.attachmentDefaultName"),
+    size: i(t.size)
+  } : null;
+}
+const A = {
+  list: async (e = {}) => {
+    const t = new URLSearchParams();
+    e.category && t.set("category", e.category), e.search && t.set("search", e.search), e.year && t.set("year", e.year);
+    const n = t.toString(),
+      r = await m.http.get(n ? `${c}/trainings?${n}` : `${c}/trainings`),
+      a = u(r, d("hr.errLoadTrainings"));
+    return {
+      today: o(a.today),
+      items: (a.items ?? []).map(g)
+    };
+  },
+  calendar: async (e = !1) => {
+    const t = await m.http.get(e ? `${c}/my-trainings/calendar` : `${c}/trainings/calendar`);
+    return (u(t, d("hr.errLoadTrainingCalendar")).items ?? []).map(r => {
+      const a = r ?? {};
+      return {
+        seq: i(a.seq),
+        name: s(a.name),
+        category: p(a.category),
+        start_date: o(a.start_date),
+        end_date: o(a.end_date),
+        next_date: o(a.next_date)
+      };
+    });
+  },
+  detail: async e => {
+    const t = await m.http.get(`${c}/trainings/${e}`),
+      n = u(t, d("hr.errLoadTraining")) ?? {};
+    return {
+      ...g(n),
+      content: s(n.content),
+      memo: s(n.memo),
+      attendees: l(n.attendees).map(w),
+      attachments: l(n.attachments).map(h).filter(r => r !== null),
+      updated_time: s(n.updated_time)
+    };
+  },
+  create: async e => {
+    const t = await m.http.post(`${c}/trainings`, e);
+    return i(u(t, d("hr.errCreateTraining")).seq);
+  },
+  update: async (e, t) => {
+    const n = await m.http.patch(`${c}/trainings/${e}`, t);
+    u(n, d("hr.errUpdateTraining"));
+  },
+  remove: async e => {
+    const t = await m.http.delete(`${c}/trainings/${e}`);
+    u(t, d("hr.errDeleteTraining"));
+  },
+  importForEmployee: async (e, t) => {
+    const n = await m.http.post(`${c}/employees/${e}/trainings/import`, {
+        items: t
+      }),
+      r = u(n, d("hr.errImportTraining"));
+    return {
+      created: i(r.created),
+      joined: i(r.joined),
+      skipped: i(r.skipped)
+    };
+  },
+  forEmployee: async e => {
+    const t = await m.http.get(`${c}/employees/${e}/trainings`);
+    return (u(t, d("hr.errLoadEmployeeTrainings")).items ?? []).map(r => {
+      const a = r ?? {};
+      return {
+        seq: i(a.seq),
+        name: s(a.name),
+        category: p(a.category),
+        start_date: o(a.start_date),
+        end_date: o(a.end_date),
+        hours: i(a.hours),
+        next_date: o(a.next_date),
+        next_days_left: o(a.next_date) ? y(a.next_days_left) : null,
+        completed: _(a.completed),
+        completed_date: o(a.completed_date)
+      };
+    });
+  },
+  uploadFile: async (e, t) => {
+    const n = new FormData();
+    n.append("file", t, t.name);
+    const r = await m.requestForm("POST", `${c}/trainings/${e}/files`, n, !0),
+      a = h(u(r, d("hr.errUploadAttachment", {
+        name: t.name
+      })));
+    if (!a) throw new Error(d("hr.errUploadAttachment", {
+      name: t.name
+    }));
+    return a;
+  },
+  removeFile: async (e, t) => {
+    const n = await m.http.delete(`${c}/trainings/${e}/files/${encodeURIComponent(t)}`);
+    u(n, d("hr.errRemoveAttachment"));
+  },
+  downloadFile: async (e, t) => {
+    try {
+      const n = await m.requestBinary("GET", `${c}/trainings/${e}/files/${encodeURIComponent(t)}`);
+      return new Blob([n]);
+    } catch (n) {
+      throw new Error($(n, d("hr.errDownloadAttachment")));
+    }
+  }
+};
+export { A as t };

@@ -1,0 +1,305 @@
+import { bv as w, bM as n, bT as i } from "../js.d/main-Cm9wS5wt.js";
+import { i as v } from "./profileApi-Btafs-pM.js";
+import { d as x, D as p, g as P } from "./types-CVXtrYKe.js";
+import { r as S } from "./react-CjxcGQav.js";
+let h = "general";
+const f = new Set();
+function b(t) {
+  t !== h && (h = t, f.forEach(e => e()));
+}
+function R() {
+  w();
+  const t = S.useSyncExternalStore(e => (f.add(e), () => f.delete(e)), () => h, () => "general");
+  return x(t);
+}
+let g = [];
+const y = new Set();
+function A(t) {
+  g = t, y.forEach(e => e());
+}
+function M() {
+  return g;
+}
+function N() {
+  return S.useSyncExternalStore(t => (y.add(t), () => y.delete(t)), () => g, () => g);
+}
+const c = "/v1/booking";
+function u(t, e) {
+  if (!t || t.ok === !1) throw new Error(t?.message || e);
+  return t.data;
+}
+function a(t) {
+  const e = Number(t ?? 0);
+  return Number.isFinite(e) ? e : 0;
+}
+function s(t) {
+  return typeof t == "string" ? t : t == null ? "" : String(t);
+}
+const B = ["requested", "awaiting_payment", "confirmed", "done", "canceled", "no_show"];
+function k(t) {
+  const e = t ?? {},
+    o = s(e.status);
+  return {
+    seq: a(e.seq),
+    customer_seq: a(e.customer_seq),
+    customer_name: s(e.customer_name),
+    contact_phone: s(e.contact_phone),
+    start_at: s(e.start_at),
+    end_at: s(e.end_at),
+    resource_seq: a(e.resource_seq),
+    party_size: Math.max(1, a(e.party_size)),
+    price: a(e.price),
+    items: q(e.items),
+    cost: a(e.cost),
+    status: B.includes(o) ? o : "confirmed",
+    deposit_amount: a(e.deposit_amount),
+    deposit_due_at: s(e.deposit_due_at),
+    paid_at: s(e.paid_at),
+    paid_by_name: s(e.paid_by_name),
+    memo: s(e.memo),
+    handler_name: s(e.handler_name),
+    cancel_reason: s(e.cancel_reason),
+    source: s(e.source) || "manual"
+  };
+}
+function l(t) {
+  const e = t ?? {};
+  return {
+    seq: a(e.seq),
+    name: s(e.name),
+    category_name: s(e.category_name),
+    price: a(e.price),
+    cost: a(e.cost),
+    duration_minutes: a(e.duration_minutes),
+    tax_type: s(e.tax_type) === "free" ? "free" : "taxable",
+    description: s(e.description),
+    sort_no: a(e.sort_no),
+    enabled: e.enabled !== !1
+  };
+}
+function q(t) {
+  return Array.isArray(t) ? t.map(e => {
+    const o = e ?? {};
+    return {
+      product_seq: a(o.product_seq),
+      name: s(o.name),
+      price: a(o.price),
+      cost: a(o.cost),
+      qty: Math.max(1, a(o.qty) || 1),
+      tax_type: s(o.tax_type) === "free" ? "free" : "taxable",
+      duration_minutes: a(o.duration_minutes)
+    };
+  }) : [];
+}
+function m(t) {
+  const e = t ?? {};
+  return {
+    seq: a(e.seq),
+    name: s(e.name),
+    group_name: s(e.group_name),
+    capacity: Math.max(1, a(e.capacity) || 1),
+    price: a(e.price),
+    price_unit: ["hour", "day", "month"].find(o => o === s(e.price_unit)) ?? "booking",
+    min_units: Math.max(0, a(e.min_units)),
+    options: Array.isArray(e.options) ? e.options.map(o => s(o)).filter(Boolean) : [],
+    sort_no: a(e.sort_no),
+    enabled: e.enabled !== !1
+  };
+}
+function $(t) {
+  const e = t ?? {};
+  return {
+    bank_name: s(e.bank_name),
+    account_no: s(e.account_no),
+    account_holder: s(e.account_holder),
+    deposit_default: a(e.deposit_default),
+    deposit_unit: e.deposit_unit === "percent" ? "percent" : "won",
+    deposit_due_hours: a(e.deposit_due_hours),
+    contact_phone: s(e.contact_phone),
+    default_minutes: a(e.default_minutes) || p.default_minutes,
+    day_start_time: s(e.day_start_time) || p.day_start_time,
+    day_end_time: s(e.day_end_time) || p.day_end_time,
+    business_type: P.find(o => o.value === s(e.business_type))?.value ?? "general",
+    open_hours: Array.isArray(e.open_hours) && e.open_hours.length === 7 ? e.open_hours.map((o, r) => ({
+      day: r,
+      open: s(o?.open) || "09:00",
+      close: s(o?.close) || "18:00",
+      closed: o?.closed === !0
+    })) : p.open_hours,
+    closed_dates: Array.isArray(e.closed_dates) ? e.closed_dates.map(o => ({
+      date: s(o?.date),
+      memo: s(o?.memo)
+    })).filter(o => o.date) : [],
+    close_on_holidays: e.close_on_holidays === !0,
+    online_enabled: e.online_enabled === !0,
+    slot_min: a(e.slot_min) || p.slot_min,
+    min_notice_min: a(e.min_notice_min),
+    min_days_ahead: a(e.min_days_ahead),
+    max_days_ahead: a(e.max_days_ahead) || p.max_days_ahead,
+    auto_confirm: e.auto_confirm !== !1,
+    cancel_until_min: a(e.cancel_until_min),
+    allow_guest: e.allow_guest !== !1,
+    page_slug: s(e.page_slug),
+    page_intro: s(e.page_intro),
+    page_logo: s(e.page_logo),
+    page_og_image: s(e.page_og_image),
+    page_header_image: e.page_header_image === "og" ? "og" : "logo",
+    page_name: s(e.page_name),
+    page_address: s(e.page_address),
+    page_address2: s(e.page_address2)
+  };
+}
+const C = {
+  meta: async () => {
+    const t = await n.http.get(`${c}/meta`),
+      e = u(t, i("booking.errLoadMeta")) ?? {},
+      o = Array.isArray(e.resources) ? e.resources.map(m) : [],
+      r = Array.isArray(e.products) ? e.products.map(l) : [];
+    A(r);
+    const _ = $(e.settings);
+    return b(_.business_type), {
+      settings: _,
+      resources: o,
+      products: r,
+      can_manage: e.can_manage === !0
+    };
+  },
+  createProduct: async t => {
+    const e = await n.http.post(`${c}/products`, t);
+    return l(u(e, i("booking.errCreateProduct")));
+  },
+  updateProduct: async (t, e) => {
+    const o = await n.http.patch(`${c}/products/${t}`, e);
+    return l(u(o, i("booking.errUpdateProduct")));
+  },
+  removeProduct: async t => {
+    const e = await n.http.delete(`${c}/products/${t}`);
+    u(e, i("booking.errDeleteProduct"));
+  },
+  productSales: async () => {
+    const t = await n.http.get(`${c}/products/sales`);
+    return u(t, i("booking.errLoadProductSales"))?.by_product ?? {};
+  },
+  stats: async (t, e) => {
+    const o = await n.http.get(`${c}/stats?from=${t}&to=${e}`);
+    return u(o, i("booking.errLoadStats")) ?? null;
+  },
+  saveSettings: async t => {
+    const e = await n.http.put(`${c}/settings`, t),
+      o = $(u(e, i("booking.errSaveSettings")).settings);
+    return b(o.business_type), o;
+  },
+  uploadPageLogo: async (t, e) => {
+    const o = await n.fileUpload("booking_setting", t, {
+        isPublic: !0,
+        ...(v(e) ? {
+          replaceUuid: e.trim()
+        } : {})
+      }),
+      r = String(o?.uuid ?? o?.data?.uuid ?? "").trim();
+    if (o?.ok && r) return r;
+    throw new Error(o?.message || i("booking.errUploadLogo"));
+  },
+  list: async (t = {}) => {
+    const e = new URLSearchParams();
+    t.overlapFrom && e.set("overlap_from", t.overlapFrom), t.from && e.set("from", t.from), t.to && e.set("to", t.to), t.status && e.set("status", t.status), t.resourceSeq && e.set("resource_seq", String(t.resourceSeq)), t.search && e.set("search", t.search), t.customerSeq && e.set("customer_seq", String(t.customerSeq)), t.desc && e.set("order", "desc"), e.set("page", String(t.page ?? 1)), e.set("limit", String(t.limit ?? 50));
+    const o = await n.http.get(`${c}/list?${e.toString()}`),
+      r = u(o, i("booking.errLoadList"));
+    return {
+      items: (r.items ?? []).map(k),
+      total: a(r.total)
+    };
+  },
+  detail: async t => {
+    const e = await n.http.get(`${c}/${t}`);
+    return k(u(e, i("booking.errLoadBooking")));
+  },
+  create: async t => {
+    const e = await n.http.post(`${c}`, t);
+    return a(u(e, i("booking.errCreateBooking")).seq);
+  },
+  update: async (t, e) => {
+    const o = await n.http.patch(`${c}/${t}`, e);
+    u(o, i("booking.errUpdateBooking"));
+  },
+  markPaid: async t => {
+    const e = await n.http.post(`${c}/${t}/paid`, {});
+    u(e, i("booking.errSavePaid"));
+  },
+  markUnpaid: async t => {
+    const e = await n.http.post(`${c}/${t}/unpaid`, {});
+    u(e, i("booking.errRevertPaid"));
+  },
+  remove: async t => {
+    const e = await n.http.delete(`${c}/${t}`);
+    u(e, i("booking.errDeleteBooking"));
+  },
+  createResource: async t => {
+    const e = await n.http.post(`${c}/resources`, t);
+    return m(u(e, i("booking.errCreateResource")));
+  },
+  updateResource: async (t, e) => {
+    const o = await n.http.patch(`${c}/resources/${t}`, e);
+    return m(u(o, i("booking.errUpdateResource")));
+  },
+  reorderResources: async t => {
+    const e = await n.http.put(`${c}/resources/order`, {
+      seqs: t
+    });
+    return (u(e, i("booking.errSaveOrder")).resources ?? []).map(m);
+  },
+  removeResource: async t => {
+    const e = await n.http.delete(`${c}/resources/${t}`);
+    u(e, i("booking.errDeleteResource"));
+  },
+  searchCustomers: async t => {
+    const e = await n.http.get(`${c}/customers?search=${encodeURIComponent(t)}`);
+    return (u(e, i("booking.errSearchCustomer")).items ?? []).map(o => {
+      const r = o ?? {},
+        _ = s(r.name),
+        d = s(r.phone);
+      return {
+        value: a(r.seq),
+        label: d ? `${_} · ${d}` : _,
+        name: _,
+        phone: d
+      };
+    });
+  },
+  messages: async t => {
+    const e = await n.http.get(`${c}/${t}/messages`),
+      o = u(e, i("booking.errLoadMessages")),
+      r = o.draft;
+    return {
+      draft: r ? {
+        kind: s(r.kind),
+        receiver: s(r.receiver),
+        body: s(r.body),
+        blocked: s(r.blocked)
+      } : null,
+      items: (o.items ?? []).map(_ => {
+        const d = _ ?? {};
+        return {
+          seq: a(d.seq),
+          kind: s(d.kind),
+          status: s(d.status) === "queued" ? "queued" : "skipped",
+          reason: s(d.reason),
+          receiver: s(d.receiver),
+          sender_name: s(d.sender_name),
+          created_time: s(d.created_time)
+        };
+      })
+    };
+  },
+  sendMessage: async (t, e) => {
+    const o = await n.http.post(`${c}/${t}/messages`, {
+        kind: e
+      }),
+      r = u(o, i("booking.errSendMessage"));
+    return {
+      queued: r.queued === !0,
+      reason: s(r.reason)
+    };
+  }
+};
+export { N as a, C as b, M as g, A as s, R as u };

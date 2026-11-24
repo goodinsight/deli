@@ -1,0 +1,252 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/MobileCardListLayout-D5_p2Xer.js",
+  "path": "assets/vendor.d/MobileCardListLayout-D5_p2Xer.js",
+  "name": "MobileCardListLayout",
+  "kind": "ui",
+  "bytes": 3817,
+  "sha256": "50c473dbed1e348b032725f6c0e4d333460ecb1b84b101a7886cfe88018003a8",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/MobileCardListLayout-D5_p2Xer.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "s",
+          "imported": "j"
+        },
+        {
+          "local": "a",
+          "imported": "r"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "m",
+          "imported": "hF"
+        },
+        {
+          "local": "b",
+          "imported": "bF"
+        },
+        {
+          "local": "r",
+          "imported": "B"
+        },
+        {
+          "local": "y",
+          "imported": "bQ"
+        },
+        {
+          "local": "g",
+          "imported": "lo"
+        },
+        {
+          "local": "f",
+          "imported": "lp"
+        },
+        {
+          "local": "c",
+          "imported": "K"
+        },
+        {
+          "local": "u",
+          "imported": "d7"
+        },
+        {
+          "local": "p",
+          "imported": "d6"
+        },
+        {
+          "local": "M",
+          "imported": "lq"
+        },
+        {
+          "local": "E",
+          "imported": "lr"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./mobileSearchOverlay-DYWcMOOb.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "j",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/mobileSearchOverlay-DYWcMOOb.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "D",
+      "exported": "C"
+    },
+    {
+      "local": "k",
+      "exported": "M"
+    },
+    {
+      "local": "R",
+      "exported": "a"
+    },
+    {
+      "local": "T",
+      "exported": "b"
+    },
+    {
+      "local": "_",
+      "exported": "c"
+    },
+    {
+      "local": "B",
+      "exported": "d"
+    },
+    {
+      "local": "H",
+      "exported": "e"
+    },
+    {
+      "local": "A",
+      "exported": "f"
+    },
+    {
+      "local": "G",
+      "exported": "g"
+    },
+    {
+      "local": "z",
+      "exported": "h"
+    },
+    {
+      "local": "L",
+      "exported": "m"
+    },
+    {
+      "local": "$",
+      "exported": "u"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "S",
+      "keys": [
+        "open",
+        "onClose"
+      ]
+    },
+    {
+      "function": "H",
+      "keys": [
+        "header",
+        "searchOverlayOpen",
+        "storageKey",
+        "children",
+        "inDialog"
+      ]
+    },
+    {
+      "function": "T",
+      "keys": [
+        "children",
+        "attachHead"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "AnnualLeavePage",
+    "AppMuaProvider",
+    "ApprovalAllDocumentsPage",
+    "ApprovalBoxPage",
+    "ApprovalDraftedPage",
+    "ApprovalMobileList",
+    "AttendancePage",
+    "AttendanceRecordsPage",
+    "AttendanceReportPage",
+    "AttendanceStatusPage",
+    "AttendanceSummaryPage",
+    "BalanceListPage",
+    "BoardListPage",
+    "BoardTrashPage",
+    "BookingListPage",
+    "BookingProductsPage",
+    "CalendarMonthListPage",
+    "CalendarMonthPage",
+    "CallListPage",
+    "CareerPage",
+    "CertificatePage",
+    "ConsultListPage",
+    "ContractPage",
+    "CustomerDealListPage",
+    "CustomerListPage",
+    "DealListPage",
+    "DrivePage",
+    "EmployeeListPage",
+    "EventPage",
+    "InsurancePage",
+    "Layout",
+    "LedgerPage",
+    "MeetingsPage",
+    "MentionsPage",
+    "MobileDashboardLayout",
+    "MyAttendancePage",
+    "OfficeReservationPage",
+    "PartnerListPage",
+    "PayrollPage",
+    "PayrollRunPage",
+    "PostComposerHost",
+    "PostLockDialogs",
+    "ProjectsPage",
+    "PurchaseListPage",
+    "QualificationPage",
+    "SalesListPage",
+    "SubsidyPage",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog",
+    "TermsListPage",
+    "TrainingPage",
+    "VehicleLogPage",
+    "VoucherListPage",
+    "WorkSchedulePage",
+    "taskboxProviderConfig"
+  ],
+  "service": "공통",
+  "purpose": "모바일 카드 목록 레이아웃",
+  "reuseGrade": "B",
+  "integration": "스크롤·검색·라우터 의존 분리",
+  "exportedParameters": [
+    {
+      "export": "b",
+      "compiledLocal": "T",
+      "keys": [
+        "children",
+        "attachHead"
+      ]
+    },
+    {
+      "export": "e",
+      "compiledLocal": "H",
+      "keys": [
+        "header",
+        "searchOverlayOpen",
+        "storageKey",
+        "children",
+        "inDialog"
+      ]
+    }
+  ]
+}

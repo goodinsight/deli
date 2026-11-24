@@ -1,0 +1,381 @@
+import { r as W, u as Y, j as n } from "./react-CjxcGQav.js";
+import { e as $, c8 as M, ak as w, k7 as h, bO as b, bT as r, bx as E, bv as I, mb as H, mc as O, D as K, md as N, k5 as z, B as x, L as G, aB as U, lQ as B, al as j, cn as Q, cI as J, bQ as R, K as X } from "../js.d/main-Cm9wS5wt.js";
+import { T as Z } from "./ToneChip-BFljqlNi.js";
+function T(a) {
+  return {
+    seq: 0,
+    kind: a,
+    resource_seq: 0,
+    start_at: "",
+    end_at: "",
+    title: "",
+    purpose: "",
+    user_name: "",
+    attendees: "",
+    task_seq: 0,
+    meeting_seq: 0
+  };
+}
+function A(a, c) {
+  return a instanceof Error && a.message ? a.message : c;
+}
+const ee = "/dashboard/approval/create";
+function ie(a) {
+  const c = W.useRef(a);
+  c.current = a;
+  const q = Y(),
+    l = {
+      form: $({
+        modalId: `office-reservation-${a.scope ? `${a.scope}-` : ""}${a.kind}`
+      })
+    },
+    i = M({
+      stateId: `office-reservation-${a.scope ? `${a.scope}-` : ""}${a.kind}-ui`,
+      initialValues: {
+        item: null,
+        busy: !1
+      }
+    }),
+    f = w({
+      formId: `office-reservation-${a.scope ? `${a.scope}-` : ""}${a.kind}`,
+      initialValues: T(a.kind),
+      onValidate: e => e.resource_seq ? !e.start_at || !e.end_at ? (b(r("office.timeRequired")), !1) : e.end_at <= e.start_at ? (b(r("office.endAfterStart")), !1) : !0 : (b(e.kind === "vehicle" ? r("office.pickVehicle") : r("office.pickRoom")), !1),
+      onSubmit: async e => {
+        const o = {
+          resource_seq: e.resource_seq,
+          start_at: e.start_at,
+          end_at: e.end_at,
+          title: e.title.trim(),
+          purpose: e.purpose,
+          user_name: e.user_name.trim(),
+          attendees: e.attendees
+        };
+        try {
+          e.seq ? await h.updateReservation(e.seq, o) : await h.createReservation({
+            ...o,
+            ...(e.task_seq ? {
+              task_seq: e.task_seq
+            } : {}),
+            ...(e.meeting_seq ? {
+              meeting_seq: e.meeting_seq
+            } : {})
+          });
+        } catch (m) {
+          return b(A(m, r("office.reservationSaveFailed"))), !1;
+        }
+        return E({
+          message: e.seq ? r("office.reservationUpdated") : r("office.reserved"),
+          delay: 500
+        }), l.form.close(), c.current.onChanged(), !0;
+      }
+    }),
+    g = (e = {}) => {
+      i.setValue("item", null), f.setFormValues({
+        ...T(c.current.kind),
+        ...e
+      }), l.form.open();
+    },
+    s = e => {
+      i.setValue("item", e), f.setFormValues({
+        seq: e.seq,
+        kind: e.kind,
+        resource_seq: e.resource_seq,
+        start_at: e.start_at,
+        end_at: e.end_at,
+        title: e.title,
+        purpose: e.purpose,
+        user_name: e.user_name,
+        attendees: e.attendees,
+        task_seq: e.task_seq,
+        meeting_seq: e.meeting_seq
+      }), l.form.open();
+    },
+    _ = e => {
+      q(ee, {
+        state: {
+          initialType: "vehicle",
+          initialFormData: {
+            ...(e.vehicleSeq ? {
+              vehicle_seq: e.vehicleSeq,
+              vehicle: e.vehicleName ?? ""
+            } : {}),
+            ...(e.start ? {
+              start_time: e.start
+            } : {}),
+            ...(e.end ? {
+              end_time: e.end
+            } : {}),
+            ...(e.taskSeq ? {
+              task_seq: e.taskSeq
+            } : {}),
+            ...(e.title ? {
+              title: e.title
+            } : {})
+          }
+        }
+      });
+    },
+    t = async e => {
+      const o = i.getValue("item");
+      if (!(!o || i.getValue("busy"))) {
+        i.setValue("busy", !0);
+        try {
+          e === "cancel" ? await h.cancelReservation(o.seq) : e === "start" ? await h.startReservation(o.seq) : await h.returnReservation(o.seq), E({
+            message: e === "cancel" ? r("office.reservationCanceled") : e === "start" ? r("office.startRecorded") : r("office.returned"),
+            delay: 500
+          }), l.form.close(), c.current.onChanged();
+        } catch (m) {
+          b(A(m, r("office.taskFailed")));
+        } finally {
+          i.setValue("busy", !1);
+        }
+      }
+    };
+  return {
+    form: f,
+    modals: l,
+    ui: i,
+    openCreate: g,
+    openEdit: s,
+    openVehicleRequest: _,
+    cancel: () => t("cancel"),
+    start: () => t("start"),
+    returnBack: () => t("return")
+  };
+}
+function te({
+  phase: a
+}) {
+  const c = I();
+  return n.jsx(Z, {
+    label: c(O[a]),
+    tone: H[a]
+  });
+}
+function oe({
+  controller: a,
+  resources: c,
+  manage: q,
+  onReturn: l
+}) {
+  const {
+      form: i,
+      modals: f,
+      ui: g
+    } = a,
+    s = I(),
+    _ = K(),
+    t = g.useValue("item"),
+    e = !!g.useValue("busy"),
+    o = i.useFormValue("kind") ?? "room",
+    m = s(N[o]),
+    p = i.isSubmitting || e,
+    v = !!t?.doc_seq,
+    y = t ? ["returned", "canceled"].includes(t.status) : !1,
+    k = !t || (t.mine || q) && !y,
+    d = p || !k || v,
+    C = t ? z(t) : null,
+    S = !!(t && o === "vehicle" && k && t.status === "confirmed"),
+    V = !!(t && o === "vehicle" && k && (t.status === "confirmed" || t.status === "in_use")),
+    L = !!(t && k && !y && (!v || q)),
+    P = c.filter(u => u.enabled || u.seq === t?.resource_seq).map(u => ({
+      value: u.seq,
+      label: u.enabled ? u.name : s("office.resourceDisabled", {
+        name: u.name
+      })
+    })),
+    D = {
+      display: "grid",
+      gridTemplateColumns: _ ? "1fr" : "repeat(2, minmax(0, 1fr))",
+      gap: 2
+    },
+    F = [{
+      id: "office-reservation-basic",
+      title: s("office.reservation"),
+      children: n.jsxs(x, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: 2
+        },
+        children: [t ? n.jsxs(x, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+            flexWrap: "wrap",
+            fontSize: 14,
+            color: "text.secondary"
+          },
+          children: [C ? n.jsx(te, {
+            phase: C
+          }) : null, n.jsx("span", {
+            children: s("office.bookedBy", {
+              name: t.booker_name || "-"
+            })
+          }), t.doc_seq ? n.jsxs("span", {
+            children: ["· ", s("office.approvalDoc", {
+              doc: t.doc_no || `#${t.doc_seq}`
+            })]
+          }) : null, t.actual_start_at ? n.jsxs("span", {
+            children: ["· ", s("office.departedAt", {
+              time: t.actual_start_at.slice(5)
+            })]
+          }) : null, t.actual_end_at ? n.jsxs("span", {
+            children: ["· ", s("office.returnedAt", {
+              time: t.actual_end_at.slice(5)
+            })]
+          }) : null]
+        }) : null, v ? n.jsx(G, {
+          sx: {
+            fontSize: 14,
+            color: "text.secondary"
+          },
+          children: s("office.linkedToDocHint")
+        }) : null, n.jsx(U, {
+          form: i,
+          name: "resource_seq",
+          label: m,
+          options: P,
+          disabled: d,
+          fullWidth: !0
+        }), n.jsxs(x, {
+          sx: D,
+          children: [n.jsx(B, {
+            form: i,
+            name: "start_at",
+            label: s("office.start"),
+            format: "YYYY-MM-DD HH:mm",
+            minuteStep: 10,
+            disabled: d,
+            fullWidth: !0
+          }), n.jsx(B, {
+            form: i,
+            name: "end_at",
+            label: s("office.end"),
+            format: "YYYY-MM-DD HH:mm",
+            minuteStep: 10,
+            disabled: d,
+            fullWidth: !0
+          })]
+        }), n.jsx(j, {
+          form: i,
+          name: "title",
+          label: s(o === "vehicle" ? "office.purpose" : "office.meetingName"),
+          disabled: d,
+          fullWidth: !0,
+          slotProps: {
+            htmlInput: {
+              maxLength: 200
+            }
+          }
+        }), n.jsxs(x, {
+          sx: D,
+          children: [n.jsx(j, {
+            form: i,
+            name: "user_name",
+            label: s(o === "vehicle" ? "office.driver" : "office.user"),
+            disabled: d,
+            fullWidth: !0,
+            slotProps: {
+              htmlInput: {
+                maxLength: 50
+              }
+            }
+          }), n.jsx(j, {
+            form: i,
+            name: "attendees",
+            label: s(o === "vehicle" ? "office.passengers" : "office.attendees"),
+            disabled: d,
+            fullWidth: !0
+          })]
+        }), n.jsx(Q, {
+          form: i,
+          name: "purpose",
+          label: s(o === "vehicle" ? "office.destinationMemo" : "office.memo"),
+          minRows: 3,
+          disabled: d,
+          fullWidth: !0
+        })]
+      })
+    }];
+  return n.jsx(J, {
+    open: f.form.isOpen,
+    onClose: f.form.close,
+    title: s("office.resourceReservation", {
+      label: t ? t.resource_name : m
+    }),
+    maxWidth: "sm",
+    fullScreen: _,
+    mobilePresentation: _ ? "slide" : "dialog",
+    draggable: !0,
+    backdropClick: !1,
+    titleIcons: {
+      delete: {
+        visible: L,
+        confirmConfig: {
+          title: s("office.cancelReservation"),
+          message: s(v ? "office.cancelLinkedConfirm" : "office.cancelConfirm"),
+          confirmText: s("office.cancelReservation"),
+          cancelText: s("office.close")
+        }
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    onDelete: a.cancel,
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !0,
+      left: S || V ? n.jsxs(x, {
+        sx: {
+          display: "flex",
+          gap: 1
+        },
+        children: [S ? n.jsx(R, {
+          variant: "outlined",
+          onClick: () => {
+            a.start();
+          },
+          disabled: p,
+          children: s("office.depart")
+        }) : null, V ? n.jsx(R, {
+          variant: "outlined",
+          onClick: () => {
+            if (l && t) {
+              f.form.close(), l(t);
+              return;
+            }
+            a.returnBack();
+          },
+          disabled: p,
+          children: s("office.return")
+        }) : null]
+      }) : void 0,
+      right: d ? void 0 : n.jsx(R, {
+        variant: "contained",
+        onClick: () => {
+          i.submit();
+        },
+        disabled: p,
+        sx: {
+          minWidth: 80
+        },
+        children: p ? n.jsx(X, {
+          size: 20,
+          color: "inherit"
+        }) : s(t ? "office.save" : "office.reserve")
+      })
+    },
+    sections: F
+  });
+}
+export { te as R, oe as a, ie as u };

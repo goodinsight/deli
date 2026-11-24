@@ -1,0 +1,616 @@
+import { r as p, j as b } from "./react-CjxcGQav.js";
+import { c as z, u as X, i as H, P as Y, S as J, d as Q, T as Z, e as tt, f as et } from "./StackedTaskDetailSlot-CKKU4m9r.js";
+import { T as ot } from "./TaskMonthlyFields-B0lhyzjQ.js";
+import { u as st, E as at } from "./EmployeeSelectDialog-Cdnxeoz9.js";
+import { t as it } from "./pickerEmployees-s9FYphgr.js";
+import { oa as nt, bT as L, qm as rt, bO as mt, fx as pt, by as ct, kM as lt, ly as kt, bv as ut, h6 as dt, fw as Tt, q0 as ft, q1 as gt, q2 as $, qo as Ct, o5 as bt, B as qt, sc as ht, qb as St } from "../js.d/main-Cm9wS5wt.js";
+import { b as yt } from "./employeeAvatars-DaG0jIhW.js";
+import { u as W, c as G } from "./taskDetailHost-C45bt_tL.js";
+import { m as vt } from "./ApprovalDetailDialog-v7PUkzWr.js";
+import { u as xt, T as _t } from "./DictationButton-9kid6hUO.js";
+import { d as Dt, e as At } from "./taskboxProviderConfig-DZSmb5uq.js";
+import { z as Et } from "./bootstrapController-BMV_i07c.js";
+import "./EventSeatOutlined-59UM_j63.js";
+import "./videoMeetingApi-BCL1yHsp.js";
+import "./stylis-DdLD6a3t.js";
+import "./videoLink-BfLN3LRj.js";
+import "./ChatCallButtons-TGIgJ8cF.js";
+import "./PhoneOutlined-Bjc_e42S.js";
+import "./aliasStore-DiN6Kp-5.js";
+import "./callStore-DH1_RYeP.js";
+import "./MeetingRecordScreen-XaBBkFFb.js";
+import "./FileUploadBox-crZW1mG0.js";
+import "./AccountAvatar-DtrhoS_d.js";
+import "./Person-DnoEHesw.js";
+import "./resolveAssetPreviewSrc-CLlbOCzq.js";
+import "./date_utils-CYURFdnX.js";
+import "./FileViewer-D5PyYcLh.js";
+import "./RotateRight-DbtMfjGZ.js";
+import "./tiny-invariant-CopsF_GD.js";
+import "./Snackbar-DxIDGM8-.js";
+import "./uploadGuard-BK1B6cyC.js";
+import "./propertySections-Bwsl7OH-.js";
+import "./ForwardMessageDialog-CaXjV13U.js";
+import "./squircle-CQM8EvXm.js";
+import "./AddTaskOutlined-CgupI6Z3.js";
+import "./Title-WCY0exuZ.js";
+import "./ScheduleOutlined-C_7j7r9e.js";
+import "./RecordVoiceOverOutlined-C838alHh.js";
+import "./GroupOutlined-CA-gNtcg.js";
+import "./GroupAddOutlined-DigKoBGv.js";
+import "./ArrowBackOutlined-BhSdaUts.js";
+import "./PropertyFields-TuJTG5XK.js";
+import "./FormValue-CAMilU-0.js";
+import "./useCalendarTasks-Cl5o2Ebi.js";
+import "./taskboxApi-BuYlRWHe.js";
+import "./FeedProfileAvatar-B6gqXpYU.js";
+import "./CallOutlined-B2W58-Kt.js";
+import "./chatRoomHost-ImRyH_Na.js";
+import "./meetingsApi-CCkjq69B.js";
+import "./MeetingRecordingPlayer-vear-u6W.js";
+import "./nativeRecordingSync-CMpETFg9.js";
+import "./pendingRecordings-DpKJ8Y2R.js";
+import "./useTranscriptController-BdNi4rMO.js";
+import "./PlayArrowRounded-emG8NLik.js";
+import "./teamMembers-0yRsmqL6.js";
+import "./policyContent-DPfknNhV.js";
+import "./companyInfo-Btqdi-Wt.js";
+import "./safeMarkdown-sAzUuXkU.js";
+import "./LinkOff-BeDdBoha.js";
+import "./tableScrollbars-C9bhlJjO.js";
+import "./shellOwnScroll-BIIV4RF2.js";
+import "./SaveOutlined-DgCkQRT8.js";
+import "./useFormModified-cVB1R-yN.js";
+import "./meetingCalendar-_jcQJ1qd.js";
+import "./ReplayOutlined-BZwnvaIm.js";
+import "./BoardPostDetail-CniIF2a7.js";
+import "./biometricController-CswvQnMD.js";
+import "./attendanceBio-C-9dHF9O.js";
+import "./ThumbUp-CuLuUDoD.js";
+import "./PictureAsPdfOutlined-ChIt6cmZ.js";
+import "./FolderZipOutlined-BdWYvuz4.js";
+import "./InsertDriveFileOutlined-DcD-Yh-v.js";
+import "./FavoriteBorder-BkFztsJe.js";
+import "./formatFileSize-Cwk2MLba.js";
+import "./useFileViewer-B-2ewnr3.js";
+import "./documentViewerStore-BlSjH3BG.js";
+import "./html-d5LenlcH.js";
+import "./types-B1OAKh4b.js";
+import "./filePreview-B-5SZXbS.js";
+import "./listViewMode-iTl-2ucA.js";
+import "./profileApi-Btafs-pM.js";
+import "./TaskBookmarkButton-0oVnbzsT.js";
+import "./Bookmark-D9hRs62u.js";
+import "./BookmarkBorder-D_zgRRjF.js";
+import "./DealFormDialog-Dw6MXJZk.js";
+import "./dealApi-CnzQt6qM.js";
+import "./partnerApi-Dqdgl0Fn.js";
+import "./customerMetaStore-Bj9KdRyn.js";
+import "./deal-B3IQ_ej7.js";
+import "./PropertyContentEditor-DIsouMXi.js";
+import "./EventBusyOutlined-DqcCaRMs.js";
+import "./TagOutlined-Cfq6rbok.js";
+import "./Notes-i9IHZW02.js";
+import "./CategoryOutlined-DcAqxAdD.js";
+import "./PhoneAndroidOutlined-DafU-b-9.js";
+import "./ChecklistOutlined-PwlgFlaS.js";
+import "./ItemLineFields-DmS0gZQx.js";
+import "./CustomerPickMenu-D2UYfJ2O.js";
+import "./utils-B6Q5_urv.js";
+import "./ReservationDialog-DnyeBFBI.js";
+import "./ToneChip-BFljqlNi.js";
+import "./VehicleLogDialog-BPXUMXE7.js";
+import "./Send-yl2RzZF4.js";
+import "./ZoomIn-B3VGPGla.js";
+import "./printSvgDocument-DHC1JJCG.js";
+import "./printDocChrome-BMZLbM8A.js";
+import "./ReferenceList-mhfbKusm.js";
+import "./index.esm-BLbQfyP0.js";
+import "./Refresh-xoMt5L00.js";
+import "./OptionToggleGroup-Cvm2wRyq.js";
+import "./Image-BpXScS6T.js";
+import "./CalendarSidebarPanel-DlQr_b8l.js";
+import "./InlineErrorAlert-D9ICJPt7.js";
+import "./mobileBandDialog-C3M4tWPv.js";
+import "./BusinessCenterOutlined-gZ8sR_r3.js";
+import "./OrgChartPage-DPIPUrhu.js";
+import "./EmployeeFormDialog-BHKK47Dg.js";
+import "./employeeApi-CdGzOYcj.js";
+import "./types-CVhETUvu.js";
+import "./i18nLabels-BNTLL7cu.js";
+import "./birthdayCalendar-CWu_jG3x.js";
+import "./trainingCalendar-BpMTSUwd.js";
+import "./trainingApi-DT4unjOR.js";
+import "./training-Bx0zycZu.js";
+import "./ContactPhoneOutlined-DpFEzROB.js";
+import "./Trans-CU1vl0TZ.js";
+import "./employeeAccountApi-p-ORLvrh.js";
+import "./WomanOutlined-CzlFMUkT.js";
+import "./AccountBoxOutlined-BxNEw8I0.js";
+import "./AssignmentIndOutlined-DynSb23A.js";
+import "./PaidOutlined-Cy1uVjW3.js";
+import "./PercentOutlined-XX2JPqvz.js";
+import "./ToggleOnOutlined-5BVdqdOm.js";
+import "./WorkOutlineOutlined-D5AzVFs6.js";
+import "./hrCodeApi-BRtc5fIX.js";
+import "./index.esm-gjRImBGa.js";
+import "./PersonRemoveOutlined-CyeIj2nP.js";
+import "./mobileTitlePicker-u2JmU445.js";
+import "./mxApi-R6g9QtQq.js";
+import "./orgTree-Dh5HFjBo.js";
+import "./lastBoard-DXeRnS9N.js";
+import "./PhoneMissedOutlined-Cf-_1h4d.js";
+import "./TableChartOutlined-CH8ZYsPl.js";
+import "./customerDialogActions-CaaeVzAY.js";
+import "./ConsultHistoryPanel-X3hMdgAl.js";
+import "./AltRouteOutlined-BY5W7vtA.js";
+import "./ForwardOutlined-L-S9T4to.js";
+import "./CustomerFormDialog-pXADTEX2.js";
+import "./bookingApi-DC6gLfSO.js";
+import "./types-CVXtrYKe.js";
+import "./SectionCreateButton-DLuyExHb.js";
+import "./StopCircleOutlined-vWHA8Xrv.js";
+import "./AttendanceParts-mHb1cK0h.js";
+import "./attendanceMgmt-B_e3bPBn.js";
+import "./browser-FfRve9p6.js";
+import "./LanguageOutlined-dNJSO7u2.js";
+import "./supportCenterApi-KQJIqJUd.js";
+import "./approvalDetailHost-CFvt90Au.js";
+import "./DynamicFeedOutlined-CALXdaS2.js";
+import "./ViewWeekOutlined-Dme8hz7e.js";
+import "./ViewTimelineOutlined-CVOcikTc.js";
+import "./WorkspacesOutlined-DwFzV-9Z.js";
+import "./EventRepeatOutlined-BzT6rPrF.js";
+import "./EditCalendarOutlined-k4e0HIS9.js";
+import "./Link-CVsHTXRQ.js";
+import "./boardPostHost-qkMGoKtn.js";
+import "./ChatMemberPanel-DmXFJG7n.js";
+import "./chatPrefs-Be7HCbgk.js";
+import "./PhotoLibraryOutlined-7mbJKs9u.js";
+import "./Logout-B1FcT8mE.js";
+import "./largeFile-DlThjw63.js";
+import "./ChatRoomView-DTjnT2W1.js";
+import "./FileDropOverlay-Bw4w8zRu.js";
+import "./profileEcho-q2FaD_03.js";
+import "./EmojiPanel-DTZZq0Nb.js";
+import "./CheckRounded-q96oOTwH.js";
+import "./PickMenuDialog-BtpyEh4Z.js";
+import "./useLongPress-C-MDKVjl.js";
+import "./MeetRoomUI-B9KJeSBQ.js";
+import "./DrawOutlined-Ciurzwfe.js";
+import "./shareArticle-Cy4lemZ5.js";
+import "./TuneOutlined-91VtWDYC.js";
+import "./notificationsRealtime-BoFKeECQ.js";
+import "./attendanceMgmtApi-CC4DR0XR.js";
+import "./notificationIntent-BMq5F2BF.js";
+import "./EmployeeRecordsDialog-Cu-T1ysd.js";
+import "./RepeatRowCard-CW6Yl_Xr.js";
+import "./LocalLibraryOutlined-DXLWZCv4.js";
+import "./socialLinkApi-BmpcVziz.js";
+import "./SocialProviderIcon-CfLZ-VWP.js";
+import "./WithdrawDialog-BzZqPW3a.js";
+import "./GridViewOutlined-C38fbc__.js";
+import "./PageSlideDialog-D4MWDBvN.js";
+import "./LoginPage-xO8sELhl.js";
+import "./BiometricLoginButton-saWv6dRk.js";
+import "./SocialLoginButtons-BfzUwflP.js";
+import "./TaskhamLogoIcon-D-7jf3TJ.js";
+import "./TaskhamWordmark-C6fF9fOj.js";
+import "./AuthLanguageButton-cBZSK8_3.js";
+import "./SignupPage-d9HBBRMK.js";
+import "./SignupConsents-CHsJ0gen.js";
+import "./oauthSignup-BvADUlBj.js";
+import "./PolicyDocument-DN4sQ1C8.js";
+import "./SignupEmailVerify-DuMbXunG.js";
+import "./PricingPage-HO2Ywdf6.js";
+import "./Reveal-C3c42DZa.js";
+import "./AlternateEmailOutlined-ChAd88mi.js";
+import "./MailOutlineOutlined-CwnGWzzM.js";
+import "./publicPageSx-9Lwcd6Z3.js";
+import "./SubscribePage-BAavvAts.js";
+import "./AddRounded-DeRMyh-W.js";
+import "./homeSx-C09ESIq-.js";
+import "./PricingCalculator-B_H7Reed.js";
+import "./calendarKinds-BI5RuiF8.js";
+import "./useHolidayNames-CGgpEQbF.js";
+import "./CalendarMemoPanel-D3bG3c90.js";
+import "./MicNoneOutlined-CCn21vm0.js";
+import "./MobileCardListLayout-D5_p2Xer.js";
+import "./mobileSearchOverlay-DYWcMOOb.js";
+function Rt() {
+  const n = W(),
+    {
+      state: r
+    } = xt(),
+    o = r.useValue("tasksById"),
+    w = r.useValue("taskSeqs"),
+    M = p.useMemo(() => Dt(o, w), [o, w]),
+    _ = r.useValue("customTabs"),
+    f = st().useValue("account"),
+    E = String(f?.name ?? "").trim(),
+    d = nt(Number(f?.seq ?? 0)),
+    j = String(f?.rbac_role ?? "").trim().toLowerCase() === "admin",
+    {
+      state: g
+    } = Et(),
+    k = p.useCallback(s => o[s] ?? null, [o]),
+    C = p.useCallback(s => {
+      const i = g.getValue("data.license"),
+        c = new Map(_.map(l => [l.key, l.label]));
+      (async () => {
+        try {
+          await r.actions.ensureTaskDetail(s.seq), await z({
+            facilityName: String(i?.name ?? "").trim(),
+            documentTitle: L("taskbox.printTaskDetail"),
+            subtitle: "",
+            printedAt: new Date(),
+            printedBy: E
+          }, rt(k(s.seq) ?? s, c));
+        } catch (l) {
+          mt(l instanceof Error ? l.message : L("taskbox.printPrepareFailed"));
+        }
+      })();
+    }, [g, _, k, E, r.actions]),
+    T = n !== null ? k(n) : null;
+  p.useEffect(() => {
+    n !== null && T && r.actions.markTaskRead(n);
+  }, [n, T]);
+  const D = X({
+      seq: n,
+      task: T,
+      onCancel: G,
+      applyServerTask: s => r.actions.applyServerTask(s, d),
+      relockTask: s => r.actions.relockTask(s)
+    }),
+    v = H(T) && !D,
+    A = p.useRef(null);
+  T && (v || A.current?.seq !== T.seq) && (A.current = T);
+  const V = v ? T : A.current ?? T,
+    R = p.useRef(null);
+  n === null ? R.current = null : v && (R.current = n);
+  const x = n !== null && (v || R.current === n),
+    P = n !== null && !!T && !x && !D,
+    {
+      requestClose: O
+    } = pt({
+      open: x,
+      onClose: G,
+      modalId: "taskbox-detail-global"
+    }),
+    [h, y] = p.useState([]);
+  p.useEffect(() => {
+    n !== null && r.actions.ensureTaskDetail(n);
+  }, [n, v, !!T, r.actions]), p.useEffect(() => {
+    n !== null && T && r.actions.ensureLinkedTasks(n, d);
+  }, [n, !!T, d, r.actions]), p.useEffect(() => {
+    for (const s of h) s.open && (r.actions.ensureTaskDetail(s.seq), r.actions.ensureLinkedTasks(s.seq, d));
+  }, [h, d, r.actions]);
+  const q = p.useCallback(s => {
+      s > 0 && y(i => {
+        const c = i[i.length - 1];
+        return c && c.open && c.seq === s ? i : [...i, {
+          seq: s,
+          open: !0
+        }];
+      });
+    }, []),
+    N = p.useCallback(() => {
+      y(s => {
+        const i = s.map(c => c.open).lastIndexOf(!0);
+        return i < 0 ? s : s.map((c, l) => l === i ? {
+          ...c,
+          open: !1
+        } : c);
+      }), window.setTimeout(() => {
+        y(s => {
+          const i = s.map(c => c.open).indexOf(!1);
+          return i < 0 ? s : s.filter((c, l) => l !== i);
+        });
+      }, 320);
+    }, []);
+  p.useEffect(() => {
+    x || y([]);
+  }, [x]);
+  const B = p.useMemo(() => h.map(s => {
+      const i = k(s.seq);
+      return {
+        ...s,
+        task: i,
+        ready: H(i)
+      };
+    }), [h, k]),
+    F = B.some(s => s.open && s.task && !s.ready),
+    [u, a] = p.useState(null),
+    t = p.useMemo(() => u ? k(u.taskSeq) : null, [u, k]),
+    e = p.useCallback((s, i, c) => a({
+      taskSeq: s.seq,
+      field: i,
+      open: !0,
+      stage: c
+    }), []),
+    m = p.useCallback(() => a(s => s ? {
+      ...s,
+      open: !1
+    } : null), []),
+    K = p.useCallback(s => {
+      if (m(), !u) return;
+      const i = s.map(S => S.name),
+        c = s.map(S => Number(S.account_seq ?? 0)),
+        l = u.stage;
+      if (u.field === "manager") {
+        const S = s[0];
+        if (!S) {
+          l ? l({
+            manager_name: "",
+            manager_account_seq: 0
+          }) : r.actions.setTaskManager(u.taskSeq, "", 0);
+          return;
+        }
+        s.length > 1 && ct(L("taskbox.singleManagerSet", {
+          name: S.name
+        }));
+        const U = Number(S.account_seq ?? 0);
+        l ? l({
+          manager_name: S.name,
+          manager_account_seq: U
+        }) : r.actions.setTaskManager(u.taskSeq, S.name, U);
+      } else u.field === "targets" ? l ? l({
+        target_names: i,
+        target_account_seqs: c
+      }) : r.actions.setTaskNoticeTargets(u.taskSeq, i, c) : l ? l({
+        receiver_names: i,
+        receiver_account_seqs: c
+      }) : r.actions.setTaskReceivers(u.taskSeq, i, c);
+    }, [m, u, r.actions]);
+  return {
+    state: r,
+    bootstrapState: g,
+    tasks: M,
+    customTabs: _,
+    loginAccountName: E,
+    myAccountSeq: d,
+    isAdminRole: j,
+    detail: {
+      task: V,
+      open: x,
+      requestClose: O
+    },
+    loading: P || F,
+    stackedTasks: B,
+    memberDialog: u,
+    memberDialogTask: t,
+    actions: {
+      findTaskBySeq: k,
+      printTask: C,
+      pushStackedTask: q,
+      popStackedTask: N,
+      openMemberDialog: e,
+      closeMemberDialog: m,
+      applyMembers: K,
+      convertChecklistToTask: (s, i, c) => {
+        Promise.resolve(r.actions.convertChecklistItemToTask(s, i, c, d)).then(l => {
+          Number(l) > 0 && q(Number(l));
+        });
+      },
+      createFollowUpTask: s => {
+        const i = k(s);
+        i && (r.setValue("followUpOriginSeq", s), lt({
+          title: L("taskbox.followUpTitle", {
+            title: i.title
+          }),
+          tabKey: String(i.tab_key ?? ""),
+          visibility: "involved"
+        }));
+      },
+      deleteTask: (s, i) => {
+        i(), r.actions.removeTask(s.seq);
+      },
+      ackConfirm: s => {
+        k(s)?.is_notice ? r.actions.ackNoticeTask(s) : r.actions.confirmTask(s);
+      },
+      requestConfirm: s => {
+        const i = k(s);
+        i && r.actions.requestConfirm(i);
+      }
+    }
+  };
+}
+function Va() {
+  const n = W();
+  p.useEffect(() => {
+    n !== null && n > 0 && vt(_t, n, kt()?.seq ?? 0);
+  }, [n]);
+  const [r, o] = p.useState(!1);
+  return p.useEffect(() => {
+    n !== null && o(!0);
+  }, [n]), !r && n === null ? null : b.jsx(wt, {});
+}
+function wt() {
+  const n = ut(),
+    r = Rt(),
+    {
+      state: o,
+      bootstrapState: w,
+      tasks: M,
+      customTabs: _,
+      loginAccountName: I,
+      myAccountSeq: f,
+      isAdminRole: E,
+      detail: d,
+      stackedTasks: j,
+      memberDialog: g,
+      memberDialogTask: k,
+      actions: C
+    } = r,
+    T = dt(),
+    D = T ? String(d.task?.title ?? "") : "";
+  p.useEffect(() => {
+    D && (document.title = D);
+  }, [D]);
+  const v = o.useValue("taskAudits"),
+    A = o.useValue("auditLoadingTaskSeq"),
+    R = o.useValue("sprints") ?? [],
+    x = o.useValue("statusOptions"),
+    P = At(!1),
+    O = p.useMemo(() => ({
+      ...P,
+      myAccountSeq: f,
+      onReturnTask: (a, t) => o.actions.returnTask(a.seq, t),
+      onReviewDone: a => o.actions.reviewDoneTask(a.seq)
+    }), [P, f, o.actions]),
+    h = w.useValue("data.employee"),
+    {
+      current: y
+    } = Tt(),
+    q = ft(y),
+    N = p.useMemo(() => {
+      const a = yt(h);
+      if (q) for (const [t, e] of gt(q, y?.origin ?? "")) (e.startsWith("data:") || !a.has(t)) && a.set(t, e);
+      return a;
+    }, [h, q, y?.origin]),
+    B = p.useMemo(() => q ? $(q) : it(h), [q, h]),
+    F = p.useMemo(() => q ? $(q) : void 0, [q]),
+    u = a => b.jsx(Q, {
+      presentation: a.presentation,
+      open: a.open,
+      task: a.task,
+      postMode: !!(a.task?.is_post || a.task?.is_poll),
+      leadingContent: a.task?.is_poll ? b.jsx(Z, {
+        task: a.task
+      }) : a.task ? b.jsxs(b.Fragment, {
+        children: [b.jsx(ot, {
+          task: a.task,
+          myAccountSeq: f,
+          onSave: (t, e) => o.actions.updateTaskFields(t, e)
+        }), b.jsx(tt, {
+          task: a.task
+        }), b.jsx(et, {
+          task: a.task
+        })]
+      }) : void 0,
+      customTabs: _,
+      sprints: R,
+      sprintProject: !!_.find(t => t.key === String(a.task?.tab_key ?? ""))?.useSprints,
+      onChangeSprint: (t, e) => o.actions.assignTaskSprint(t, e),
+      onChangeStoryPoints: (t, e) => o.actions.updateTaskStoryPoints(t, e),
+      statusOptions: x,
+      avatarSrcByName: N,
+      onClose: a.onClose,
+      onChangeTitle: (t, e) => o.actions.updateTaskTitle(t, e),
+      onChangeIcon: (t, e) => o.actions.updateTaskIcon(t, e),
+      onChangeIconColor: (t, e) => o.actions.updateTaskIconColor(t, e),
+      onToggleCompleted: (t, e) => o.actions.setTaskCompleted(t, e, I),
+      onChangeStatus: (t, e) => o.actions.updateTaskStatus(t, e),
+      onChangeLabels: (t, e) => o.actions.updateTaskLabels(t, e),
+      onAddLabelOption: (t, e) => o.actions.addStatusOption(t, e),
+      onChangeProject: (t, e) => o.actions.setTaskProject(t, e),
+      onAddProject: (t, e) => Promise.resolve(o.actions.addCustomTab(t, e)),
+      onChangeDate: (t, e, m) => o.actions.updateTaskDate(t, e, m),
+      onSaveFields: (t, e) => o.actions.updateTaskFields(t, e),
+      onChangeReminder: (t, e) => o.actions.updateTaskReminder(t, e),
+      onMemberEdit: C.openMemberDialog,
+      onChangePriority: (t, e) => o.actions.updateTaskPriority(t, e),
+      onChangeVisibility: (t, e, m) => o.actions.updateTaskFields(t, {
+        visibility: e,
+        visibility_group_seq: m
+      }),
+      onChangeRepeat: (t, e, m) => o.actions.changeTaskRepeat(t, e, m, f),
+      onChangeEventTime: (t, e) => o.actions.updateTaskEventTime(t, e),
+      onChangeEventPlace: (t, e) => o.actions.updateTaskEventPlace(t, e),
+      onChangeEventAddress: (t, e) => o.actions.updateTaskEventAddress(t, e),
+      onChangeNote: (t, e) => o.actions.updateTaskNote(t, e),
+      onChangeContent: (t, e) => o.actions.updateTaskContent(t, e),
+      onAddChecklistItem: (t, e) => o.actions.addTaskChecklistItem(t, e),
+      onToggleChecklistItem: (t, e, m) => o.actions.toggleTaskChecklistItem(t, e, m, f),
+      onRemoveChecklistItem: (t, e) => o.actions.removeTaskChecklistItem(t, e),
+      onUpdateChecklistItem: (t, e, m) => o.actions.updateTaskChecklistItem(t, e, m),
+      onReorderChecklist: (t, e) => o.actions.reorderTaskChecklist(t, e),
+      onConvertChecklistToTask: C.convertChecklistToTask,
+      onOpenChecklistTask: C.pushStackedTask,
+      onOpenRelatedTask: C.pushStackedTask,
+      resolveChecklistTask: t => M.find(e => e.seq === t),
+      relatedTasksPool: M,
+      onLinkRelatedTask: (t, e, m) => o.actions.linkTaskRelation(t, e, m),
+      onUnlinkRelatedTask: (t, e, m) => o.actions.unlinkTaskRelation(t, e, m),
+      onCreateFollowUpTask: C.createFollowUpTask,
+      onLinkChecklistTask: (t, e, m) => o.actions.linkChecklistTask(t, e, m),
+      onAddAttachments: (t, e) => o.actions.uploadTaskAttachments(t, e),
+      onRemoveAttachment: (t, e) => o.actions.removeTaskAttachment(t, e),
+      onReorderAttachments: (t, e, m) => o.actions.reorderTaskAttachments(t, e, m),
+      currentUserName: I,
+      myAccountSeq: f,
+      noticeAdmin: E,
+      canDelete: a.task ? St(a.task, f) : !1,
+      onDelete: t => C.deleteTask(t, a.onClose),
+      pickerEmployees: B,
+      onAckConfirm: C.ackConfirm,
+      onRequestConfirm: C.requestConfirm,
+      activityItems: a.task ? v[a.task.seq] : void 0,
+      activityLoading: A > 0 && A === a.task?.seq,
+      onLoadActivity: t => o.actions.loadTaskAudit(t),
+      onPrint: C.printTask,
+      onPostPasswordSaved: t => o.actions.applyServerTask(t, f),
+      onChangeBugField: (t, e, m) => o.actions.updateTaskBugField(t, e, m),
+      onChangeResolution: (t, e) => o.actions.updateTaskResolution(t, e),
+      onClaimTask: t => o.actions.claimTask(t),
+      onVerifyBug: (t, e) => o.actions.verifyBugTask(t, e),
+      onUpdateComment: (t, e, m) => o.actions.updateTaskComment(t, e, m),
+      onRemoveComment: (t, e) => o.actions.removeTaskComment(t, e),
+      onToggleCommentReaction: (t, e, m) => o.actions.toggleTaskCommentReaction(t, e, m, f, I),
+      onAddComment: (t, e, m) => o.actions.addTaskComment(t, e, m)
+    }, a.key);
+  return b.jsxs(Ct, {
+    config: O,
+    children: [b.jsx(Y, {
+      open: r.loading,
+      spinnerId: "taskbox-detail-global-loading",
+      ariaLabelledBy: "taskbox-detail-global-loading"
+    }), T ? d.task ? b.jsx(bt, {
+      children: b.jsx(qt, {
+        [ht]: "",
+        sx: {
+          position: "fixed",
+          inset: 0,
+          bgcolor: "background.paper",
+          display: "flex",
+          flexDirection: "column"
+        },
+        children: u({
+          key: `window-${d.task.seq}`,
+          task: d.task,
+          open: !0,
+          onClose: () => window.close(),
+          presentation: "dock"
+        })
+      })
+    }) : null : u({
+      key: `base-${d.task?.seq ?? 0}`,
+      task: d.task,
+      open: d.open,
+      onClose: d.requestClose,
+      presentation: "auto"
+    }), j.map((a, t) => b.jsx(J, {
+      open: a.open && a.ready,
+      onClose: C.popStackedTask,
+      children: e => u({
+        key: `stacked-${a.seq}-${t}`,
+        task: a.task,
+        open: a.open && a.ready,
+        onClose: e,
+        presentation: "dialog"
+      })
+    }, `stacked-${a.seq}-${t}`)), b.jsx(at, {
+      candidates: F,
+      open: !!g?.open,
+      singleSelect: g?.field === "manager",
+      excludeSelf: g?.field === "targets" && (k?.author_account_seq ?? 0) === f,
+      excludeAccountSeqs: g?.field === "receivers" && (k?.manager_account_seq ?? 0) > 0 ? [k?.manager_account_seq] : void 0,
+      title: g?.field === "manager" ? n("taskbox.pickManager") : g?.field === "targets" ? n("taskbox.pickTargets") : k?.is_event ? n("taskbox.pickAttendees") : n("taskbox.pickReferences"),
+      hint: g?.field === "manager" ? n("taskbox.singleManagerHint") : g?.field === "targets" ? n("taskbox.targetsHint") : void 0,
+      initialAccountSeqs: g?.field === "manager" ? k?.manager_account_seq ? [k.manager_account_seq] : [] : g?.field === "targets" ? k?.target_account_seqs ?? [] : k?.receiver_account_seqs ?? [],
+      onClose: C.closeMemberDialog,
+      onApply: C.applyMembers
+    })]
+  });
+}
+export { Va as TaskDetailDrawerHost };

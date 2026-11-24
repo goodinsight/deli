@@ -1,0 +1,3712 @@
+import { j as e, r as R, L as f } from "./react-CjxcGQav.js";
+import { W as ke, Z as ce, e as xe } from "./emphasize-CAl3kWp2.js";
+import { A as u, R as x } from "./Reveal-C3c42DZa.js";
+import { C as we } from "./inquiryApi-Bvz4Euoj.js";
+import { c as O, B as n, as as m, b as i, f as a, d as o, l as p, s as t, N as T, aE as C, T as Ie, $ as Ce, A as Re, aT as Ae, E as Te, bK as We, j as Ee, k as ze, m as $e, aY as ve, bL as _e, a1 as U, br as De, a6 as Be, a3 as He, e as Pe } from "../js.d/main-Cm9wS5wt.js";
+import { P as F } from "./publicPageSx-9Lwcd6Z3.js";
+import { u as N, f as me, g as Le, h as X, i as M, e as pe, d as b, E as y, H as j, L as S, S as k, C as E, b as A, c as z, B as Oe, I as Fe, T as he } from "./homeSx-C09ESIq-.js";
+import { A as Ne } from "./AlternateEmailOutlined-ChAd88mi.js";
+import { P as ge } from "./PlatformIllustrations-8f3Kzcc8.js";
+import { s as $, a as fe, B as be, P as Xe, b as Me } from "./screenShots-CYp-Froz.js";
+import { C as je } from "./CheckRounded-q96oOTwH.js";
+import { A as Ge } from "./ApiOutlined-DjAqxmxO.js";
+import { H as Ye } from "./HeadsetMicOutlined-vh6_uK4I.js";
+import { A as Ue, P as Ke } from "./PageSlideDialog-D4MWDBvN.js";
+import Ve from "./ContactPage-CY5GeLXG.js";
+import "./stylis-DdLD6a3t.js";
+import "./LoginPage-xO8sELhl.js";
+import "./BiometricLoginButton-saWv6dRk.js";
+import "./biometricController-CswvQnMD.js";
+import "./SocialLoginButtons-BfzUwflP.js";
+import "./SocialProviderIcon-CfLZ-VWP.js";
+import "./TaskhamLogoIcon-D-7jf3TJ.js";
+import "./TaskhamWordmark-C6fF9fOj.js";
+import "./AuthLanguageButton-cBZSK8_3.js";
+import "./LanguageOutlined-dNJSO7u2.js";
+import "./SignupPage-d9HBBRMK.js";
+import "./SignupConsents-CHsJ0gen.js";
+import "./policyContent-DPfknNhV.js";
+import "./companyInfo-Btqdi-Wt.js";
+import "./oauthSignup-BvADUlBj.js";
+import "./PolicyDocument-DN4sQ1C8.js";
+import "./Trans-CU1vl0TZ.js";
+import "./SignupEmailVerify-DuMbXunG.js";
+import "./CallOutlined-B2W58-Kt.js";
+import "./ScheduleOutlined-C_7j7r9e.js";
+const qe = O(e.jsx("path", {
+    d: "M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8"
+  })),
+  Qe = O(e.jsx("path", {
+    d: "M20 4v12H5.17L4 17.17V4zm0-2H4c-1.1 0-2 .9-2 2v15.59c0 .89 1.08 1.34 1.71.71L6 18h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2"
+  })),
+  Je = O(e.jsx("path", {
+    d: "M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4m0 2c-2.67 0-8 1.34-8 4v1c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-1c0-2.66-5.33-4-8-4"
+  })),
+  Ze = 2e4;
+function en(s) {
+  const l = typeof window < "u" && window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+    [r, d] = R.useState(0);
+  return R.useEffect(() => {
+    if (l) return;
+    let c = window.setTimeout(h, Ze);
+    function h() {
+      const _ = s.current?.getBoundingClientRect();
+      !!_ && _.bottom > 0 && _.top < window.innerHeight * .5 && document.visibilityState === "visible" ? d(ye => ye + 1) : c = window.setTimeout(h, 2e3);
+    }
+    return () => window.clearTimeout(c);
+  }, [r, l, s]), r;
+}
+const nn = C`from { transform: translateY(-105%); }`,
+  sn = C`from { opacity: 0; transform: translateY(14px); }`,
+  tn = C`
+    0% { background-position: -80% 0, 0 0; }
+    45%, 100% { background-position: 200% 0, 0 0; }
+`,
+  K = "linear-gradient(90deg, #7aa8ff, #5ee0ff)",
+  v = "@media (prefers-reduced-motion: no-preference)",
+  on = s => ({
+    [v]: {
+      animation: `${sn} 0.7s ease both`,
+      animationDelay: `${s}s`
+    }
+  }),
+  V = s => ({
+    display: "block",
+    overflow: "hidden",
+    pb: "0.1em",
+    mb: "-0.1em",
+    "& > span": {
+      display: "inline-block",
+      [v]: {
+        animation: `${nn} 0.75s cubic-bezier(0.2, 0.7, 0.2, 1) both`,
+        animationDelay: `${s}s`
+      }
+    }
+  }),
+  rn = .1,
+  ln = .55,
+  an = 1.05,
+  dn = 1.4,
+  cn = C`50% { opacity: 0; }`,
+  G = 1750,
+  Y = 32,
+  xn = 250,
+  I = ["업무 지시부터 일정·회의록·채팅·인사·근태까지 한곳에서.", `${T}명까지는 기간 제한 없이 무료입니다.`],
+  B = I.reduce((s, l, r) => (s.push(r === 0 ? G : s[r - 1] + ce(I[r - 1], {
+    speed: Y
+  }) + xn), s), []),
+  mn = B[B.length - 1] + ce(I[I.length - 1], {
+    speed: Y
+  }),
+  pn = G,
+  hn = s => Math.round((mn - G) / Math.max(1, s - 1)),
+  gn = C`from { opacity: 0; transform: translateY(8px) scale(0.92); }`,
+  fn = 82,
+  q = 78,
+  bn = [{
+    title: "이번 달 매출 마감 보고서 작성",
+    who: "김",
+    due: "오늘",
+    state: "진행중"
+  }, {
+    title: "신규 거래처 계약서 검토",
+    who: "박",
+    due: "내일",
+    state: "검토대기"
+  }, {
+    title: "홈페이지 배너 교체",
+    who: "이",
+    due: "월요일",
+    state: "완료"
+  }, {
+    title: "주간 회의 안건 취합",
+    who: "최",
+    due: "수요일",
+    state: "진행중"
+  }, {
+    title: "다음 달 채용 공고 초안",
+    who: "정",
+    due: "금요일",
+    state: "진행중"
+  }],
+  Q = {
+    진행중: {
+      bg: m.blue50,
+      fg: m.blue700
+    },
+    검토대기: {
+      bg: m.amber50,
+      fg: m.amber700
+    },
+    완료: {
+      bg: m.emerald50,
+      fg: m.emerald700
+    }
+  },
+  J = [{
+    label: "업무 지시 · 확인",
+    to: "/#features"
+  }, {
+    label: "자동 출퇴근",
+    to: "/attendance#auto"
+  }, {
+    label: "연차 자동 계산",
+    to: "/attendance#leave"
+  }, {
+    label: "전자결재",
+    to: "/#platform"
+  }, {
+    label: "급여대장",
+    to: "/hr#labor"
+  }, {
+    label: "기업메일",
+    to: "/mail"
+  }, {
+    label: "사내 메신저",
+    to: "/chat"
+  }, {
+    label: "회의록 AI 받아 적기",
+    to: "/meetings"
+  }, {
+    label: "일정 · 예약",
+    to: "/booking"
+  }, {
+    label: "고객 · 견적 · 계약",
+    to: "/customers"
+  }, {
+    label: "드라이브",
+    to: "/#platform"
+  }, {
+    label: "공개 API",
+    to: "/developers"
+  }];
+function jn() {
+  const s = N(),
+    l = R.useRef(null),
+    r = en(l),
+    d = typeof window < "u" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  return e.jsx(n, {
+    component: "section",
+    ref: l,
+    sx: {
+      position: "relative",
+      overflow: "hidden",
+      bgcolor: i[900],
+      color: "#fff",
+      backgroundImage: `radial-gradient(900px 520px at 12% -10%, ${m.blue700}66, transparent 60%),
+                    radial-gradient(760px 420px at 92% 8%, ${m.blue500}40, transparent 62%)`
+    },
+    children: e.jsxs(n, {
+      sx: {
+        ...F,
+        position: "relative",
+        pt: {
+          xs: 4.5,
+          md: 12
+        },
+        pb: {
+          xs: 7,
+          md: 12
+        },
+        display: "grid",
+        gap: {
+          xs: 6,
+          md: 7
+        },
+        alignItems: "center",
+        gridTemplateColumns: {
+          xs: "1fr",
+          md: "minmax(0, 1.05fr) minmax(0, 1fr)"
+        }
+      },
+      children: [e.jsxs(n, {
+        sx: {
+          textAlign: "left"
+        },
+        children: [e.jsx(n, {
+          component: "p",
+          sx: {
+            m: 0,
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 1,
+            borderRadius: "9999px",
+            border: "1px solid rgba(147, 197, 253, 0.35)",
+            bgcolor: "rgba(255, 255, 255, 0.06)",
+            px: {
+              xs: 1.75,
+              md: 2.5
+            },
+            py: {
+              xs: .75,
+              md: 1.25
+            },
+            fontSize: {
+              xs: o.sm,
+              md: o.lg
+            },
+            fontWeight: a.medium,
+            letterSpacing: "0.04em",
+            color: m.blue100,
+            ...on(an)
+          },
+          children: "팀을 위한 업무 운영 플랫폼"
+        }, `badge-${r}`), e.jsxs(n, {
+          component: "h1",
+          sx: {
+            m: 0,
+            mt: 3,
+            fontFamily: '"GyeonggiTitle", "Noto Sans KR", sans-serif',
+            fontSize: {
+              xs: "2.0625rem",
+              sm: o["4xl"],
+              md: o["5xl"]
+            },
+            fontWeight: a.normal,
+            lineHeight: p.tight,
+            letterSpacing: "-0.03em",
+            wordBreak: "keep-all"
+          },
+          children: [e.jsx(n, {
+            component: "span",
+            sx: V(rn),
+            children: e.jsx("span", {
+              children: "회사의 하루가"
+            })
+          }), e.jsx(n, {
+            component: "span",
+            sx: V(ln),
+            children: e.jsxs("span", {
+              children: [e.jsx(n, {
+                component: "span",
+                sx: {
+                  color: "transparent",
+                  backgroundImage: K,
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  [v]: {
+                    backgroundImage: `linear-gradient(100deg, transparent 0%, rgba(255, 255, 255, 0.95) 50%, transparent 100%), ${K}`,
+                    backgroundSize: "40% 100%, 100% 100%",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "-80% 0, 0 0",
+                    WebkitBackgroundClip: "text",
+                    backgroundClip: "text",
+                    animation: `${tn} 3.5s ${dn}s ease-in-out infinite`
+                  }
+                },
+                children: "업무함 하나"
+              }), "로 돌아갑니다"]
+            })
+          })]
+        }, `h1-${r}`), e.jsxs(n, {
+          component: "p",
+          sx: {
+            m: 0,
+            mt: {
+              xs: 2.5,
+              md: 3
+            },
+            maxWidth: 540,
+            fontSize: {
+              xs: o.base,
+              md: o.lg
+            },
+            lineHeight: p.relaxed,
+            color: t[300],
+            wordBreak: "keep-all"
+          },
+          children: [e.jsx(n, {
+            component: "span",
+            sx: {
+              position: "absolute",
+              width: 1,
+              height: 1,
+              overflow: "hidden",
+              clipPath: "inset(50%)",
+              whiteSpace: "nowrap"
+            },
+            children: I.join(" ")
+          }), I.map((c, h) => e.jsx(n, {
+            component: "span",
+            "aria-hidden": "true",
+            sx: {
+              display: "block",
+              "& .hero-caret": {
+                display: "inline-block",
+                width: "2px",
+                height: "1.05em",
+                m: "0 0 0 2px",
+                verticalAlign: "-0.15em",
+                bgcolor: m.blue300,
+                animation: `${cn} 0.9s steps(1) infinite`
+              }
+            },
+            children: d ? c : e.jsx(ke, {
+              text: c,
+              delay: B[h],
+              speed: Y,
+              caretClassName: "hero-caret",
+              ariaHidden: !0
+            }, `${r}-${h}`)
+          }, h))]
+        }), e.jsx(n, {
+          component: "ul",
+          "aria-label": "주요 기능",
+          sx: {
+            listStyle: "none",
+            m: 0,
+            p: 0,
+            mt: {
+              xs: 2.5,
+              md: 3
+            },
+            maxWidth: 560,
+            display: "flex",
+            flexWrap: "wrap",
+            gap: 1
+          },
+          children: J.map((c, h) => e.jsx(n, {
+            component: "li",
+            sx: {
+              [v]: {
+                animation: `${gn} 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both`,
+                animationDelay: `${pn + h * hn(J.length)}ms`
+              }
+            },
+            children: e.jsx(n, {
+              component: f,
+              to: c.to,
+              sx: {
+                display: "inline-block",
+                textDecoration: "none",
+                transition: "background-color 0.15s ease, border-color 0.15s ease",
+                "&:hover": {
+                  bgcolor: "rgba(255, 255, 255, 0.14)",
+                  borderColor: "rgba(147, 197, 253, 0.6)"
+                },
+                borderRadius: "9999px",
+                border: "1px solid rgba(147, 197, 253, 0.35)",
+                bgcolor: "rgba(255, 255, 255, 0.06)",
+                px: 1.5,
+                py: .5,
+                fontSize: o.sm,
+                fontWeight: a.medium,
+                color: m.blue100,
+                whiteSpace: "nowrap"
+              },
+              children: c.label
+            })
+          }, c.label))
+        }, `chips-${r}`), e.jsxs(n, {
+          sx: {
+            mt: {
+              xs: 3.5,
+              md: 4
+            },
+            display: "flex",
+            flexDirection: {
+              xs: "column",
+              sm: "row"
+            },
+            flexWrap: "wrap",
+            gap: {
+              xs: 2,
+              sm: 2.5
+            }
+          },
+          children: [e.jsxs(n, {
+            component: f,
+            to: s.to,
+            sx: {
+              ...me,
+              width: {
+                xs: "100%",
+                sm: "auto"
+              },
+              fontSize: {
+                xs: o.base,
+                md: o.xl
+              },
+              px: {
+                xs: 3.5,
+                md: 4
+              },
+              pt: {
+                xs: "13px",
+                sm: "11px",
+                md: "15px"
+              },
+              pb: {
+                xs: "15px",
+                sm: "13px",
+                md: "17px"
+              }
+            },
+            children: [s.label, e.jsx(u, {
+              sx: {
+                fontSize: 20
+              }
+            })]
+          }), e.jsx(n, {
+            component: f,
+            to: "/contact",
+            sx: {
+              ...Le,
+              width: {
+                xs: "100%",
+                sm: "auto"
+              },
+              fontSize: {
+                xs: o.base,
+                md: o.xl
+              },
+              px: {
+                xs: 3.5,
+                md: 4
+              },
+              pt: {
+                xs: "13px",
+                sm: "11px",
+                md: "15px"
+              },
+              pb: {
+                xs: "15px",
+                sm: "13px",
+                md: "17px"
+              }
+            },
+            children: "상담 신청하기"
+          })]
+        }), e.jsx(n, {
+          component: "img",
+          src: M("cta-team"),
+          alt: "",
+          loading: "eager",
+          sx: {
+            display: {
+              xs: "block",
+              md: "none"
+            },
+            width: "100%",
+            maxWidth: 320,
+            height: "auto",
+            aspectRatio: X("cta-team"),
+            mx: "auto",
+            mt: 4
+          }
+        })]
+      }), e.jsxs(n, {
+        "aria-hidden": "true",
+        sx: {
+          display: {
+            xs: "none",
+            md: "block"
+          },
+          borderRadius: 3.5,
+          bgcolor: "#fff",
+          color: t[900],
+          boxShadow: "0 34px 80px rgba(2, 6, 23, 0.5)",
+          overflow: "hidden"
+        },
+        children: [e.jsx(n, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: 2,
+            borderBottom: `1px solid ${t[200]}`,
+            px: 3,
+            py: 1.75,
+            fontSize: o.base,
+            overflowX: "auto"
+          },
+          children: ["전체", "내 업무", "보낸 업무", "공지사항", "보관함"].map((c, h) => e.jsx(n, {
+            sx: {
+              pb: .5,
+              fontWeight: h === 1 ? a.bold : a.medium,
+              color: h === 1 ? i[600] : t[500],
+              borderBottom: h === 1 ? `2px solid ${i[600]}` : "2px solid transparent",
+              whiteSpace: "nowrap"
+            },
+            children: c
+          }, c))
+        }), e.jsx(n, {
+          component: "ul",
+          sx: {
+            m: 0,
+            p: 0,
+            listStyle: "none"
+          },
+          children: bn.map(c => e.jsxs(n, {
+            component: "li",
+            sx: {
+              display: "grid",
+              gridTemplateColumns: {
+                xs: `auto minmax(0, 1fr) ${q}px`,
+                sm: `auto minmax(0, 1fr) ${fn}px ${q}px`
+              },
+              alignItems: "center",
+              gap: 1.5,
+              px: {
+                xs: 1.75,
+                sm: 3
+              },
+              py: 1.75,
+              borderBottom: `1px solid ${t[100]}`,
+              fontSize: o.base
+            },
+            children: [c.state === "완료" ? e.jsx(we, {
+              sx: {
+                fontSize: 22,
+                color: m.emerald600
+              }
+            }) : e.jsx(n, {
+              sx: {
+                width: 20,
+                height: 20,
+                borderRadius: "50%",
+                border: `2px solid ${t[300]}`
+              }
+            }), e.jsx(n, {
+              sx: {
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+                fontWeight: a.medium,
+                color: c.state === "완료" ? t[400] : t[800],
+                textDecoration: c.state === "완료" ? "line-through" : "none"
+              },
+              children: c.title
+            }), e.jsxs(n, {
+              sx: {
+                display: {
+                  xs: "none",
+                  sm: "inline-flex"
+                },
+                alignItems: "center",
+                gap: .75,
+                color: t[500],
+                whiteSpace: "nowrap",
+                justifyContent: "flex-start"
+              },
+              children: [e.jsx(n, {
+                sx: {
+                  width: 24,
+                  height: 24,
+                  borderRadius: "50%",
+                  bgcolor: i[900],
+                  color: "#fff",
+                  fontSize: o.xs,
+                  fontWeight: a.black,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center"
+                },
+                children: c.who
+              }), c.due]
+            }), e.jsx(n, {
+              sx: {
+                borderRadius: "9999px",
+                px: 1.25,
+                py: .5,
+                fontSize: o.sm,
+                fontWeight: a.semibold,
+                bgcolor: Q[c.state].bg,
+                color: Q[c.state].fg,
+                whiteSpace: "nowrap",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center"
+              },
+              children: c.state
+            })]
+          }, c.title))
+        }), e.jsxs(n, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+            px: 3,
+            py: 1.5,
+            fontSize: o.sm,
+            color: t[500],
+            bgcolor: t[50]
+          },
+          children: [e.jsx(n, {
+            sx: {
+              width: 7,
+              height: 7,
+              borderRadius: "50%",
+              bgcolor: m.emerald600,
+              flexShrink: 0
+            }
+          }), "방금 박OO 님이 ‘신규 거래처 계약서 검토’를 완료했습니다 · 실시간 반영"]
+        })]
+      })]
+    })
+  });
+}
+const un = [{
+    label: "업무관리",
+    to: "/tasks",
+    wide: "task-list",
+    phone: "task-list-m"
+  }, {
+    label: "근태관리",
+    to: "/attendance",
+    wide: "att-status-week",
+    phone: "att-my-month-m"
+  }, {
+    label: "인사 관리",
+    to: "/hr",
+    wide: "hr-events",
+    phone: "hr-employees-m"
+  }, {
+    label: "회의록",
+    to: "/meetings",
+    wide: "mtg-transcript",
+    phone: "mtg-content-m"
+  }, {
+    label: "업무 채팅",
+    to: "/chat",
+    wide: "chat-rooms",
+    phone: "chat-list-m"
+  }, {
+    label: "메일",
+    to: "/mail",
+    wide: "mail-split",
+    phone: "mail-list-m"
+  }, {
+    label: "상담 관리",
+    to: "/consults",
+    wide: "consult-list",
+    phone: "consult-detail-m"
+  }, {
+    label: "고객 관리",
+    to: "/customers",
+    wide: "cust-split",
+    phone: "cust-list-m"
+  }, {
+    label: "거래처 관리",
+    to: "/partners",
+    wide: "partner-purchases",
+    phone: "partner-balances-m"
+  }],
+  Z = s => `/taskham/home/screens/${s}-sm.webp`,
+  Sn = {
+    xs: 180,
+    md: 440
+  },
+  D = {
+    xs: 14,
+    md: 32
+  };
+function yn({
+  slide: s,
+  hidden: l
+}) {
+  return e.jsxs(n, {
+    component: f,
+    to: s.to,
+    "aria-hidden": l || void 0,
+    tabIndex: l ? -1 : void 0,
+    sx: {
+      flexShrink: 0,
+      width: Sn,
+      mr: {
+        xs: 2,
+        md: 3
+      },
+      ...(l ? {
+        "@media (prefers-reduced-motion: reduce)": {
+          display: "none"
+        }
+      } : {}),
+      display: "block",
+      textDecoration: "none",
+      color: "inherit",
+      outline: "none",
+      "&:focus-visible .gallery-frame": {
+        boxShadow: `0 0 0 3px ${i[300]}`
+      },
+      "@media (hover: hover)": {
+        "&:hover .gallery-label": {
+          color: i[600]
+        }
+      }
+    },
+    children: [e.jsxs(n, {
+      className: "gallery-frame",
+      sx: {
+        display: {
+          xs: "none",
+          md: "block"
+        },
+        borderRadius: 3,
+        border: `1px solid ${t[200]}`,
+        bgcolor: "#fff",
+        overflow: "hidden",
+        boxShadow: "0 12px 28px rgba(15, 42, 92, 0.10)",
+        transition: "box-shadow 150ms"
+      },
+      children: [e.jsx(n, {
+        sx: {
+          display: "flex",
+          gap: .75,
+          alignItems: "center",
+          px: 1.5,
+          height: 22,
+          bgcolor: t[100],
+          borderBottom: `1px solid ${t[200]}`
+        },
+        children: [0, 1, 2].map(r => e.jsx(n, {
+          sx: {
+            width: 8,
+            height: 8,
+            borderRadius: "50%",
+            bgcolor: t[300]
+          }
+        }, r))
+      }), e.jsx(n, {
+        component: "img",
+        src: Z(s.wide),
+        alt: l ? "" : `${s.label} 화면`,
+        loading: "lazy",
+        decoding: "async",
+        sx: {
+          display: "block",
+          width: "100%",
+          height: "auto",
+          aspectRatio: "1600 / 1000"
+        }
+      })]
+    }), e.jsx(n, {
+      className: "gallery-frame",
+      sx: {
+        display: {
+          xs: "block",
+          md: "none"
+        },
+        bgcolor: t[900],
+        p: .75,
+        borderRadius: "24px",
+        boxShadow: "0 12px 28px rgba(15, 42, 92, 0.14)"
+      },
+      children: e.jsx(n, {
+        component: "img",
+        src: Z(s.phone),
+        alt: l ? "" : `${s.label} 폰 화면`,
+        loading: "lazy",
+        decoding: "async",
+        sx: {
+          display: "block",
+          width: "100%",
+          height: "auto",
+          aspectRatio: "780 / 1688",
+          borderRadius: "18px"
+        }
+      })
+    }), e.jsx(n, {
+      className: "gallery-label",
+      sx: {
+        mt: 1.5,
+        textAlign: "center",
+        fontSize: {
+          xs: o.base,
+          md: o.lg
+        },
+        lineHeight: p.normal,
+        fontWeight: a.medium,
+        color: i[900],
+        transition: "color 150ms"
+      },
+      children: s.label
+    })]
+  });
+}
+function kn() {
+  return e.jsxs(n, {
+    component: "section",
+    id: "screens",
+    sx: {
+      bgcolor: t[50],
+      borderTop: `1px solid ${t[200]}`,
+      borderBottom: `1px solid ${t[200]}`,
+      ...pe,
+      overflow: "hidden"
+    },
+    children: [e.jsx(n, {
+      sx: F,
+      children: e.jsxs(x, {
+        sx: b,
+        children: [e.jsx(n, {
+          component: "p",
+          sx: y,
+          children: "SCREENS"
+        }), e.jsx(n, {
+          component: "h2",
+          sx: j,
+          children: "실제 화면으로 둘러보세요"
+        }), e.jsxs(n, {
+          component: "p",
+          sx: S,
+          children: ["업무부터 근태 · 인사 · 고객 · 거래처까지, 업무함에서 쓰는 화면 그대로입니다.", e.jsx("br", {}), "화면 속 회사와 사람은 예시입니다."]
+        })]
+      })
+    }), e.jsx(n, {
+      sx: {
+        mt: {
+          xs: 5,
+          md: 6
+        },
+        maskImage: "linear-gradient(to right, transparent, #000 6%, #000 94%, transparent)",
+        "@media (prefers-reduced-motion: reduce)": {
+          overflowX: "auto",
+          maskImage: "none"
+        }
+      },
+      children: e.jsx(n, {
+        sx: {
+          display: "flex",
+          width: "max-content",
+          "@keyframes homeScreenGallery": {
+            from: {
+              transform: "translateX(0)"
+            },
+            to: {
+              transform: "translateX(-50%)"
+            }
+          },
+          animation: `homeScreenGallery ${D.xs}s linear infinite`,
+          animationDuration: {
+            xs: `${D.xs}s`,
+            md: `${D.md}s`
+          },
+          "@media (prefers-reduced-motion: reduce)": {
+            animation: "none"
+          }
+        },
+        children: [!1, !0].map(s => un.map(l => e.jsx(yn, {
+          slide: l,
+          hidden: s
+        }, `${s ? "b" : "a"}-${l.wide}`)))
+      })
+    })]
+  });
+}
+function H({
+  name: s,
+  alt: l,
+  width: r = 260,
+  height: d = 280,
+  imageHeight: c = 900
+}) {
+  return e.jsx(n, {
+    sx: {
+      maxWidth: r,
+      mx: "auto",
+      height: d,
+      overflow: "hidden",
+      border: `7px solid ${i[900]}`,
+      borderBottom: "none",
+      borderRadius: "30px 30px 0 0",
+      bgcolor: "#fff",
+      boxShadow: "0 12px 30px rgba(15, 35, 80, 0.18)",
+      maskImage: "linear-gradient(to bottom, #000 82%, transparent)",
+      WebkitMaskImage: "linear-gradient(to bottom, #000 82%, transparent)"
+    },
+    children: e.jsx(n, {
+      component: "img",
+      src: $(s),
+      alt: l,
+      loading: "lazy",
+      width: 780,
+      height: c,
+      sx: {
+        display: "block",
+        width: "100%",
+        height: "auto"
+      }
+    })
+  });
+}
+const wn = [{
+    art: "task",
+    phone: "card-task",
+    title: "업무 관리",
+    desc: "등록부터 검수·보관까지"
+  }, {
+    art: "calendar",
+    phone: "card-calendar",
+    title: "일정 관리",
+    desc: "마감과 세금 신고 기한까지 한눈에"
+  }, {
+    art: "meetings",
+    phone: "card-meetings",
+    title: "회의록",
+    desc: "폴더로 정리하고 앞뒤 회의를 연결",
+    to: "/meetings"
+  }, {
+    art: "board",
+    phone: "card-board",
+    title: "게시판",
+    desc: "공지와 자료를 한곳에"
+  }, {
+    art: "chat",
+    phone: "card-chat",
+    title: "업무 채팅",
+    desc: "바로 대화하고 다른 언어는 자동 번역",
+    to: "/chat"
+  }, {
+    art: "mail",
+    phone: "card-mail",
+    title: "메일",
+    desc: "쓰던 메일 계정을 등록해 업무 옆에서",
+    to: "/mail"
+  }, {
+    art: "hr",
+    phone: "card-hr",
+    title: "인사·노무 관리",
+    desc: "직원 명부·발령·증명서와 급여·4대보험",
+    to: "/hr"
+  }, {
+    art: "attendance",
+    phone: "card-attendance",
+    title: "근태 관리",
+    desc: "출퇴근 기록과 휴가 일정",
+    to: "/attendance"
+  }],
+  In = {
+    art: "addon",
+    title: "선택 서비스",
+    desc: "기업메일·전자결재 등은 필요할 때 추가",
+    to: "/pricing"
+  };
+function Cn({
+  item: s
+}) {
+  const l = s.art === "addon";
+  return e.jsxs(n, {
+    ...(s.to ? {
+      component: f,
+      to: s.to
+    } : {}),
+    sx: {
+      ...A,
+      height: "100%",
+      display: "flex",
+      flexDirection: "column",
+      overflow: "hidden",
+      textDecoration: "none"
+    },
+    children: [e.jsx(n, {
+      sx: {
+        order: 1,
+        bgcolor: l ? i[100] : i[50],
+        px: 2,
+        pt: 2.5,
+        ...(s.phone ? {} : {
+          pb: 1.5
+        })
+      },
+      children: s.phone ? e.jsx(H, {
+        name: s.phone,
+        alt: `${s.title} 실제 화면`
+      }) : e.jsx(n, {
+        sx: {
+          maxWidth: 280,
+          mx: "auto"
+        },
+        children: e.jsx(ge, {
+          kind: s.art,
+          tone: l ? i[200] : i[100]
+        })
+      })
+    }), e.jsxs(n, {
+      sx: {
+        p: {
+          xs: 2.5,
+          md: 3
+        },
+        display: "flex",
+        flexDirection: "column",
+        gap: 2,
+        flex: 1
+      },
+      children: [e.jsxs(n, {
+        children: [e.jsx(n, {
+          component: "h3",
+          sx: {
+            m: 0,
+            fontSize: {
+              xs: "1.375rem",
+              md: "1.6875rem"
+            },
+            fontWeight: a.medium,
+            letterSpacing: "-0.01em",
+            lineHeight: p.snug,
+            color: i[900],
+            wordBreak: "keep-all"
+          },
+          children: s.title
+        }), e.jsx(n, {
+          component: "p",
+          sx: {
+            m: 0,
+            mt: 1.5,
+            fontSize: {
+              xs: o.base,
+              md: o.lg
+            },
+            lineHeight: p.relaxed,
+            color: t[600],
+            wordBreak: "keep-all"
+          },
+          children: s.desc
+        })]
+      }), s.to ? e.jsxs(n, {
+        sx: {
+          mt: "auto",
+          display: "inline-flex",
+          alignItems: "center",
+          gap: .5,
+          fontSize: o.sm,
+          fontWeight: a.semibold,
+          color: i[600]
+        },
+        children: ["자세히", e.jsx(u, {
+          sx: {
+            fontSize: 18
+          }
+        })]
+      }) : null]
+    })]
+  });
+}
+const ue = [{
+    icon: Ie,
+    label: "업무관리 협업툴",
+    short: "업무관리"
+  }, {
+    icon: Ne,
+    label: "기업메일 서비스",
+    short: "기업메일"
+  }, {
+    icon: Ce,
+    label: "전자결재 그룹웨어",
+    short: "전자결재"
+  }, {
+    icon: Re,
+    label: "근태관리 앱",
+    short: "근태관리"
+  }, {
+    icon: Qe,
+    label: "사내 메신저",
+    short: "메신저"
+  }, {
+    icon: Ae,
+    label: "공유 캘린더",
+    short: "일정"
+  }, {
+    icon: Te,
+    label: "회의록 앱",
+    short: "회의록"
+  }, {
+    icon: We,
+    label: "클라우드 드라이브",
+    short: "드라이브"
+  }, {
+    icon: Ee,
+    label: "인사관리 프로그램",
+    short: "인사"
+  }, {
+    icon: ze,
+    label: "고객관리 CRM",
+    short: "고객관리"
+  }, {
+    icon: $e,
+    label: "예약 관리 시스템",
+    short: "예약"
+  }, {
+    icon: ve,
+    label: "사내 게시판",
+    short: "게시판"
+  }],
+  Rn = ue.map(s => ({
+    icon: s.icon,
+    label: s.short
+  })),
+  An = C`
+    0% { background-position: -80% 0, 0 0; }
+    45%, 100% { background-position: 200% 0, 0 0; }
+`;
+function ee({
+  tone: s,
+  title: l,
+  children: r
+}) {
+  const d = s === "brand";
+  return e.jsxs(n, {
+    sx: {
+      height: "100%",
+      borderRadius: 3,
+      border: `1px solid ${d ? i[700] : t[200]}`,
+      bgcolor: d ? i[700] : t[50],
+      boxShadow: d ? "0 24px 48px rgba(15, 42, 92, 0.22)" : "none",
+      p: {
+        xs: 2.5,
+        md: 3.5
+      },
+      display: "flex",
+      flexDirection: "column",
+      gap: 2.5
+    },
+    children: [e.jsx(n, {
+      component: "h3",
+      sx: {
+        ...z,
+        color: d ? "#fff" : z.color
+      },
+      children: l
+    }), e.jsx(n, {
+      sx: {
+        flex: 1
+      },
+      children: r
+    })]
+  });
+}
+function ne({
+  icon: s,
+  label: l,
+  joined: r
+}) {
+  return e.jsxs(n, {
+    sx: {
+      display: "flex",
+      alignItems: "center",
+      gap: 1,
+      minWidth: 0,
+      fontSize: {
+        xs: o.base,
+        md: o.lg
+      },
+      color: r ? "#fff" : t[500],
+      borderRadius: 2,
+      px: 1.5,
+      py: 1.25,
+      ...(r ? {
+        bgcolor: "rgba(255,255,255,0.12)",
+        border: "1px solid rgba(255,255,255,0.3)",
+        fontWeight: a.semibold
+      } : {
+        bgcolor: "#fff",
+        border: `1px dashed ${t[300]}`
+      })
+    },
+    children: [e.jsx(s, {
+      sx: {
+        fontSize: 22,
+        flexShrink: 0,
+        color: r ? i[100] : t[400]
+      }
+    }), e.jsx(n, {
+      component: "span",
+      sx: {
+        minWidth: 0,
+        wordBreak: "keep-all"
+      },
+      children: l
+    })]
+  });
+}
+function Tn() {
+  return e.jsxs(n, {
+    sx: {
+      mt: 6,
+      display: "grid",
+      gap: {
+        xs: 2,
+        md: 3
+      },
+      alignItems: "stretch",
+      gridTemplateColumns: {
+        xs: "1fr",
+        md: "minmax(0, 1fr) auto minmax(0, 1fr)"
+      }
+    },
+    children: [e.jsx(ee, {
+      tone: "muted",
+      title: "따로 쓰면",
+      children: e.jsx(n, {
+        sx: {
+          display: "grid",
+          gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+          gap: 1.25
+        },
+        children: ue.map(s => e.jsx(ne, {
+          icon: s.icon,
+          label: s.label
+        }, s.label))
+      })
+    }), e.jsx(n, {
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+      },
+      children: e.jsx(n, {
+        sx: {
+          width: 48,
+          height: 48,
+          borderRadius: "50%",
+          bgcolor: i[50],
+          color: i[600],
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
+        },
+        children: e.jsx(u, {
+          sx: {
+            fontSize: 28,
+            transform: {
+              xs: "rotate(90deg)",
+              md: "none"
+            }
+          }
+        })
+      })
+    }), e.jsxs(ee, {
+      tone: "brand",
+      title: "업무함 하나로",
+      children: [e.jsx(n, {
+        sx: {
+          display: "grid",
+          gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+          gap: 1.25
+        },
+        children: Rn.map(s => e.jsx(ne, {
+          icon: s.icon,
+          label: s.label,
+          joined: !0
+        }, s.label))
+      }), e.jsxs(n, {
+        sx: {
+          mt: 2,
+          display: "flex",
+          alignItems: "flex-start",
+          gap: 1.25,
+          flexWrap: "wrap"
+        },
+        children: [e.jsx(n, {
+          component: "p",
+          sx: {
+            ...E,
+            mt: 0,
+            color: i[50],
+            flex: "1 1 240px"
+          },
+          children: "휴가 결재가 끝나면 근태에 바로 들어갑니다."
+        }), e.jsxs(n, {
+          component: "span",
+          sx: {
+            flexShrink: 0,
+            px: 1.5,
+            py: .5,
+            borderRadius: "9999px",
+            bgcolor: "#fff",
+            color: i[700],
+            fontSize: {
+              xs: o.sm,
+              md: o.base
+            },
+            fontWeight: a.bold
+          },
+          children: [T, "명까지 무료"]
+        })]
+      })]
+    })]
+  });
+}
+function Wn() {
+  return e.jsx(n, {
+    component: "section",
+    id: "platform",
+    sx: {
+      bgcolor: "#fff"
+    },
+    children: e.jsxs(n, {
+      sx: k,
+      children: [e.jsxs(x, {
+        sx: b,
+        children: [e.jsx(n, {
+          component: "p",
+          sx: y,
+          children: "ALL IN ONE"
+        }), e.jsxs(n, {
+          component: "h2",
+          sx: j,
+          children: ["일정 · 메일 · 결재 · 근태 · 회의 · 채팅,", e.jsx("br", {}), e.jsx(n, {
+            component: "span",
+            sx: {
+              color: i[700],
+              "@media (prefers-reduced-motion: no-preference)": {
+                color: "transparent",
+                backgroundImage: `linear-gradient(100deg, transparent 0%, rgba(255, 255, 255, 0.85) 50%, transparent 100%), linear-gradient(90deg, ${i[700]}, ${i[700]})`,
+                backgroundSize: "40% 100%, 100% 100%",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "-80% 0, 0 0",
+                WebkitBackgroundClip: "text",
+                backgroundClip: "text",
+                animation: `${An} 3.5s 0.6s ease-in-out infinite`
+              }
+            },
+            children: "모두 회사 일입니다."
+          })]
+        }), e.jsxs(n, {
+          component: "p",
+          sx: S,
+          children: ["기능은 합치고, 비용은 줄이세요.", e.jsx("br", {}), "아래 여덟 가지는 ", T, "명까지 기간 제한 없이 무료입니다."]
+        })]
+      }), e.jsx(x, {
+        children: e.jsx(Tn, {})
+      }), e.jsx(n, {
+        sx: {
+          mt: 6,
+          display: "grid",
+          gap: 2,
+          gridTemplateColumns: {
+            xs: "1fr",
+            sm: "repeat(2, minmax(0, 1fr))",
+            lg: "repeat(3, minmax(0, 1fr))"
+          }
+        },
+        children: [...wn, In].map((s, l) => e.jsx(x, {
+          delay: l % 3 * .07,
+          children: e.jsx(Cn, {
+            item: s
+          })
+        }, s.title))
+      })]
+    })
+  });
+}
+const En = [{
+  title: `제목 · 책임자 · 마감,
+세 칸이면 업무가 넘어갑니다`,
+  desc: "메신저에 흘러간 지시를 다시 찾지 않습니다. 세 칸만 채우면 책임자의 받은 업무함에 그대로 꽂히고, 반복되는 업무는 템플릿으로 여러 건을 한 번에 올립니다.",
+  stat: "3",
+  statUnit: "칸",
+  statLabel: "제목 · 책임자 · 마감만 채우면 등록 끝",
+  image: "step-register"
+}, {
+  title: `같은 업무를
+각자 편한 보기로 봅니다`,
+  desc: "실무자는 목록으로 훑고, 팀장은 상태 보기로 병목을 찾고, 일정 책임자는 **주간·월간과 타임라인**으로 마감을 봅니다. 그룹·정렬·필터와 보기 설정은 계정마다 따로 기억됩니다.",
+  stat: "7",
+  statUnit: "가지",
+  statLabel: "목록 · 주간 · 월간 · 프로젝트 · 상태 · 목표 · 타임라인",
+  image: "step-views"
+}, {
+  title: `확인까지 있어야
+비로소 끝납니다`,
+  desc: "책임자가 처리하고 완료하면 보낸 사람에게 검수 대기로 표시되고, 검수를 마치거나 사유와 함께 되돌려 보냅니다. 동료의 변경은 **새로고침 없이 바로 반영**되고, 누가 언제 무엇을 바꿨는지 활동 기록에 남습니다.",
+  stat: "0",
+  statUnit: "초",
+  statLabel: "동료가 바꾸면 새로고침 없이 내 화면에 바로",
+  image: "step-review"
+}];
+function zn() {
+  return e.jsx(n, {
+    component: "section",
+    id: "features",
+    sx: {
+      bgcolor: "#fff"
+    },
+    children: e.jsxs(n, {
+      sx: k,
+      children: [e.jsxs(x, {
+        sx: b,
+        children: [e.jsx(n, {
+          component: "p",
+          sx: y,
+          children: "FEATURES"
+        }), e.jsx(n, {
+          component: "h2",
+          sx: j,
+          children: "업무를 주고받는 데 필요한 것만, 빠짐없이"
+        }), e.jsx(n, {
+          component: "p",
+          sx: S,
+          children: "기능을 늘리기보다 업무 하나가 등록되고 끝나기까지의 길을 짧게 만드는 데 집중했습니다."
+        })]
+      }), e.jsx(n, {
+        sx: {
+          mt: {
+            xs: 5,
+            md: 10
+          },
+          display: "grid",
+          gap: {
+            xs: 4,
+            md: 12
+          }
+        },
+        children: En.map((s, l) => e.jsx(x, {
+          children: e.jsxs(n, {
+            sx: {
+              display: "grid",
+              alignItems: "center",
+              gap: {
+                xs: 1.5,
+                md: 8
+              },
+              gridTemplateColumns: {
+                xs: "1fr",
+                md: "minmax(0, 1fr) minmax(0, 1fr)"
+              }
+            },
+            children: [e.jsxs(n, {
+              sx: {
+                order: {
+                  xs: 0,
+                  md: l % 2 === 0 ? 0 : 1
+                },
+                textAlign: {
+                  xs: "center",
+                  md: "left"
+                }
+              },
+              children: [e.jsx(n, {
+                component: "h3",
+                sx: {
+                  m: 0,
+                  mt: 3,
+                  fontSize: {
+                    xs: o["2xl"],
+                    sm: o["3xl"],
+                    md: o["4xl"]
+                  },
+                  fontWeight: a.medium,
+                  lineHeight: p.tight,
+                  letterSpacing: "-0.025em",
+                  color: i[900],
+                  whiteSpace: "pre-line",
+                  wordBreak: "keep-all"
+                },
+                children: s.title
+              }), e.jsx(n, {
+                component: "p",
+                sx: {
+                  m: 0,
+                  mt: 2,
+                  maxWidth: 520,
+                  mx: {
+                    xs: "auto",
+                    md: 0
+                  },
+                  fontSize: "1.125rem",
+                  lineHeight: p.relaxed,
+                  color: t[600],
+                  wordBreak: "keep-all"
+                },
+                children: xe(s.desc)
+              }), e.jsxs(n, {
+                sx: {
+                  mt: {
+                    xs: 3.5,
+                    md: 4.5
+                  },
+                  pt: {
+                    xs: 3,
+                    md: 4
+                  },
+                  pb: {
+                    xs: 0,
+                    md: 0
+                  },
+                  borderTop: `1px solid ${t[200]}`,
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  textAlign: "center"
+                },
+                children: [e.jsxs(n, {
+                  sx: {
+                    display: "flex",
+                    alignItems: "baseline",
+                    gap: .75
+                  },
+                  children: [e.jsx(n, {
+                    component: "span",
+                    sx: {
+                      fontSize: {
+                        xs: "3.25rem",
+                        md: "4rem"
+                      },
+                      fontWeight: a.medium,
+                      letterSpacing: "-0.04em",
+                      lineHeight: 1,
+                      color: i[600]
+                    },
+                    children: s.stat
+                  }), e.jsx(n, {
+                    component: "span",
+                    sx: {
+                      fontSize: o.xl,
+                      fontWeight: a.medium,
+                      color: i[600]
+                    },
+                    children: s.statUnit
+                  })]
+                }), e.jsx(n, {
+                  component: "span",
+                  sx: {
+                    mt: 1,
+                    fontSize: {
+                      xs: o.base,
+                      md: o.xl
+                    },
+                    color: t[900],
+                    wordBreak: "keep-all"
+                  },
+                  children: s.statLabel
+                })]
+              })]
+            }), e.jsx(fe, {
+              name: s.image,
+              alt: `${s.title.replace(`
+`, " ")} — 실제 화면`,
+              sx: {
+                order: {
+                  xs: 1,
+                  md: l % 2 === 0 ? 1 : 0
+                },
+                maxWidth: {
+                  xs: 420,
+                  md: 520
+                },
+                justifySelf: "center",
+                mt: {
+                  xs: 2,
+                  md: 0
+                }
+              }
+            })]
+          })
+        }, s.title))
+      })]
+    })
+  });
+}
+const $n = {
+    "@keyframes homeViewFadeIn": {
+      from: {
+        opacity: 0,
+        transform: "translateY(10px)"
+      },
+      to: {
+        opacity: 1,
+        transform: "none"
+      }
+    },
+    animation: "homeViewFadeIn 260ms ease-out"
+  },
+  W = [{
+    key: "list",
+    name: "목록",
+    desc: "수천 건도 끊김 없이 스크롤되는 목록. 그룹·정렬·필터를 원하는 대로 겁니다.",
+    wide: "task-list",
+    phone: "task-list-m"
+  }, {
+    key: "feed",
+    name: "피드",
+    desc: "글 · 업무 · 일정이 올라온 순서대로 흐릅니다. 카드에서 바로 댓글을 달고 확인합니다.",
+    wide: "task-feed",
+    phone: "task-feed-m"
+  }, {
+    key: "project",
+    name: "프로젝트",
+    desc: "프로젝트마다 칸을 나눠 남은 업무와 진행률을 봅니다.",
+    wide: "task-project"
+  }, {
+    key: "month",
+    name: "월간",
+    desc: "한 달 달력에 마감을 놓고 봅니다. 주간 보기도 있습니다.",
+    wide: "task-month"
+  }, {
+    key: "timeline",
+    name: "타임라인",
+    desc: "시작일부터 마감까지를 막대로 봅니다. 일정이 겹치는 구간을 미리 찾습니다.",
+    wide: "task-timeline"
+  }];
+function vn() {
+  const [s, l] = R.useState(W[0].key),
+    r = W.find(d => d.key === s) ?? W[0];
+  return e.jsx(n, {
+    component: "section",
+    id: "views",
+    sx: {
+      bgcolor: t[50],
+      borderTop: `1px solid ${t[200]}`,
+      borderBottom: `1px solid ${t[200]}`
+    },
+    children: e.jsxs(n, {
+      sx: k,
+      children: [e.jsxs(x, {
+        sx: b,
+        children: [e.jsx(n, {
+          component: "p",
+          sx: y,
+          children: "VIEWS"
+        }), e.jsx(n, {
+          component: "h2",
+          sx: j,
+          children: "같은 업무, 사람마다 다른 보기"
+        }), e.jsxs(n, {
+          component: "p",
+          sx: S,
+          children: ["실무자는 목록과 피드로 빠르게 훑고, 팀장은 프로젝트 보기로 진행률을 보고, 일정 책임자는", " ", e.jsx(n, {
+            component: "span",
+            sx: {
+              fontWeight: a.medium,
+              color: t[900]
+            },
+            children: "월간과 타임라인"
+          }), "으로 마감을 봅니다. 보기 설정은 계정마다 따로 기억됩니다."]
+        })]
+      }), e.jsx(n, {
+        role: "tablist",
+        "aria-label": "보기 방식 선택",
+        sx: {
+          mt: 5,
+          mx: "auto",
+          width: "fit-content",
+          maxWidth: "100%",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          gap: .5,
+          borderRadius: "9999px",
+          border: `1px solid ${t[200]}`,
+          bgcolor: "#fff",
+          p: .75
+        },
+        children: W.map(d => e.jsx(n, {
+          component: "button",
+          type: "button",
+          role: "tab",
+          id: `view-tab-${d.key}`,
+          "aria-selected": d.key === s,
+          "aria-controls": `view-panel-${d.key}`,
+          onClick: () => l(d.key),
+          sx: {
+            cursor: "pointer",
+            border: "none",
+            outline: "none",
+            "&:focus, &:focus-visible": {
+              outline: "none"
+            },
+            borderRadius: "9999px",
+            px: {
+              xs: 1.75,
+              sm: 2.75,
+              md: 3.5
+            },
+            py: 1.25,
+            fontSize: o.base,
+            fontWeight: a.medium,
+            fontFamily: "inherit",
+            whiteSpace: "nowrap",
+            transition: "background-color 150ms, color 150ms",
+            bgcolor: d.key === s ? i[600] : "transparent",
+            color: d.key === s ? "#fff" : t[600],
+            "&:hover": {
+              bgcolor: d.key === s ? i[700] : i[50]
+            }
+          },
+          children: d.name
+        }, d.key))
+      }), e.jsx(n, {
+        component: "p",
+        sx: {
+          m: 0,
+          mx: "auto",
+          mt: 2.5,
+          maxWidth: 560,
+          textAlign: "center",
+          fontSize: "1.125rem",
+          lineHeight: p.relaxed,
+          color: t[600],
+          wordBreak: "keep-all"
+        },
+        children: r.desc
+      }), e.jsxs(n, {
+        role: "tabpanel",
+        id: `view-panel-${r.key}`,
+        "aria-labelledby": `view-tab-${r.key}`,
+        sx: {
+          mt: 4,
+          ...$n
+        },
+        children: [e.jsx(be, {
+          src: $(r.wide),
+          alt: `업무함 ${r.name} 보기 실제 화면`,
+          sx: {
+            display: r.phone ? {
+              xs: "none",
+              md: "block"
+            } : "block",
+            maxWidth: 940,
+            mx: "auto"
+          }
+        }), r.phone ? e.jsx(Xe, {
+          src: $(r.phone),
+          alt: `업무함 ${r.name} 보기 실제 화면`,
+          sx: {
+            display: {
+              xs: "block",
+              md: "none"
+            },
+            width: Me,
+            mx: "auto"
+          }
+        }) : null]
+      }, r.key)]
+    })
+  });
+}
+const _n = [{
+    key: "attendance",
+    eyebrow: "근태관리",
+    title: e.jsxs(e.Fragment, {
+      children: ["출퇴근 기록부터", e.jsx("br", {}), "연차·월 마감까지"]
+    }),
+    lead: "GPS 근무지와 QR 로 출퇴근을 기록하고 휴가와 월 마감까지 이어집니다.",
+    points: ["등록한 근무지 반경 안에서만 출퇴근 기록", "근무지를 벗어나면 자동 퇴근 · 외근에서 돌아오면 자동 복귀", "연차 자동 계산과 반차·반반차"],
+    to: "/attendance",
+    linkLabel: "근태관리 자세히",
+    wide: "att-summary",
+    phone: "svc-attendance"
+  }, {
+    key: "hr",
+    eyebrow: "인사 관리",
+    title: e.jsxs(e.Fragment, {
+      children: ["직원 명부부터", e.jsx("br", {}), "발령·증명서까지"]
+    }),
+    lead: "직원 정보와 경력·교육·발령 이력을 한 명부에 모으고 증명서를 PDF 로 발급합니다.",
+    points: ["부서·직급·직책은 조직이 정하는 대로", "발령 전후의 부서·직급이 그 시점 그대로 남음", "발급한 증명서는 발급번호와 함께 대장에 기록"],
+    to: "/hr",
+    linkLabel: "인사 관리 자세히",
+    wide: "hr-payroll",
+    phone: "svc-hr"
+  }, {
+    key: "meetings",
+    eyebrow: "회의록",
+    title: e.jsxs(e.Fragment, {
+      children: ["회의는 녹음만,", e.jsx("br", {}), "정리는 업무함이"]
+    }),
+    lead: "폰이나 브라우저에서 회의를 녹음하면 텍스트로 변환하고 안건·결정 사항·후속 조치로 정리합니다.",
+    points: ["녹음은 1분마다 서버에 저장 — 끊겨도 남음", "AI 가 안건·내용·결정·후속 조치로 정리", "후속 조치를 그대로 업무로 등록"],
+    to: "/meetings",
+    linkLabel: "회의록 자세히",
+    wide: "mtg-transcript",
+    phone: "svc-meetings"
+  }],
+  Dn = [{
+    icon: qe,
+    title: "필요할 때 더하는 선택 서비스",
+    desc: "기본 기능으로 시작하고, 필요한 것만 조직 단위로 켭니다. 금액은 요금 안내에 있습니다.",
+    chips: ["기업메일", "전자결재", "근태 플러스", "회의록 플러스", "상담 플러스", "대화 보관함"],
+    to: "/pricing",
+    linkLabel: "요금 안내"
+  }, {
+    icon: Ge,
+    title: "홈페이지·사내 시스템과 API 로 연동",
+    desc: "조직이 발급한 API 키로 업무함의 업무를 사내 시스템에서 읽고 씁니다. 키는 언제든 끄거나 폐기합니다.",
+    chips: ["API 키 발급", "허용 IP 제한", "API 매뉴얼"],
+    to: "/developers",
+    linkLabel: "API 연동 안내"
+  }],
+  Bn = [{
+    art: "partner",
+    phone: "card-partner",
+    to: "/partners",
+    linkLabel: "거래처 관리 자세히",
+    title: "거래처 관리",
+    desc: "**매출처와 매입처를 한 명부에** 모으고, 업종에 맞는 분류로 묶습니다.",
+    chips: ["매출처 · 매입처", "거래처 분류", "견적 · 계약"]
+  }, {
+    art: "customer",
+    phone: "card-customer",
+    to: "/customers",
+    linkLabel: "고객 관리 자세히",
+    title: "고객 관리",
+    desc: "고객에게 적는 **항목과 분류를 조직이 정하고**, 이름이나 전화번호로 바로 찾습니다.",
+    chips: ["무료", "고객 명부", "조직이 정하는 항목", "분류 · 폴더"]
+  }, {
+    art: "consult",
+    phone: "card-consult",
+    to: "/consults",
+    linkLabel: "상담 관리 자세히",
+    title: "상담 관리",
+    desc: "누가 언제 무슨 상담을 했는지 **고객마다 이력으로 쌓이고**, 전체 상담을 한 목록에서 봅니다.",
+    chips: ["무료", "상담 기록", "고객별 이력", "킹콜 연동 · 받아 적기(상담 플러스)"]
+  }, {
+    art: "booking",
+    phone: "card-booking",
+    to: "/booking",
+    linkLabel: "예약 관리 자세히",
+    title: "예약 관리",
+    desc: "호실·담당·자리처럼 **대상별로 겹치지 않게** 예약을 받고, 달력으로 한눈에 봅니다.",
+    chips: ["무료", "대상별 예약", "예약 달력", "예약금 입금 확인"]
+  }, {
+    art: "accounting",
+    phone: "card-accounting",
+    to: "/accounting",
+    linkLabel: "회계 자세히",
+    title: "회계",
+    desc: "매출과 지출을 장부에 적고, **손익과 통장·카드 잔액**을 봅니다.",
+    chips: ["매출 · 지출 장부", "손익", "통장 · 카드"]
+  }, {
+    art: "free",
+    title: "정식 출시 전까지 무료",
+    desc: "조직의 **서비스 설정에서 켜면 바로** 씁니다. 쓰다가 걸리는 점은 화면의 의견 보내기로 알려 주세요.",
+    chips: ["서비스 설정에서 켜기", "의견 보내기"]
+  }],
+  se = {
+    borderRadius: "9999px",
+    bgcolor: t[100],
+    color: t[700],
+    px: 1.5,
+    py: .5,
+    fontSize: o.sm,
+    fontWeight: a.medium
+  },
+  te = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: .5,
+    mt: 2.5,
+    fontSize: {
+      xs: o.base,
+      md: o.lg
+    },
+    fontWeight: a.semibold,
+    color: i[600],
+    textDecoration: "none",
+    "&:hover": {
+      textDecoration: "underline"
+    }
+  };
+function Hn() {
+  return e.jsx(n, {
+    component: "section",
+    id: "services",
+    sx: {
+      bgcolor: t[50],
+      borderTop: `1px solid ${t[200]}`,
+      borderBottom: `1px solid ${t[200]}`
+    },
+    children: e.jsxs(n, {
+      sx: k,
+      children: [e.jsxs(x, {
+        sx: b,
+        children: [e.jsx(n, {
+          component: "p",
+          sx: y,
+          children: "MORE THAN TASKS"
+        }), e.jsx(n, {
+          component: "h2",
+          sx: j,
+          children: "업무 관리만이 아닙니다"
+        }), e.jsxs(n, {
+          component: "p",
+          sx: S,
+          children: ["근태·인사·회의록도 같은 구성원, 같은 화면에서 이어집니다.", e.jsx("br", {}), "셋 다 기본 제공이라 ", T, "명까지 기간 제한 없이 무료입니다."]
+        })]
+      }), e.jsx(n, {
+        sx: {
+          mt: {
+            xs: 5,
+            md: 8
+          },
+          display: "flex",
+          flexDirection: "column",
+          gap: {
+            xs: 6,
+            md: 10
+          }
+        },
+        children: _n.map((s, l) => e.jsx(x, {
+          children: e.jsxs(n, {
+            sx: {
+              display: "grid",
+              gap: {
+                xs: 3,
+                md: 7
+              },
+              alignItems: "center",
+              gridTemplateColumns: {
+                xs: "1fr",
+                md: "minmax(0, 1fr) minmax(0, 1fr)"
+              }
+            },
+            children: [e.jsxs(n, {
+              sx: {
+                order: {
+                  xs: 0,
+                  md: l % 2 === 0 ? 0 : 1
+                }
+              },
+              children: [e.jsx(n, {
+                component: "p",
+                sx: {
+                  ...y,
+                  mb: 2
+                },
+                children: s.eyebrow
+              }), e.jsx(n, {
+                component: "h3",
+                sx: {
+                  m: 0,
+                  fontFamily: '"GyeonggiTitle", "Noto Sans KR", sans-serif',
+                  fontSize: {
+                    xs: o["2xl"],
+                    md: o["4xl"]
+                  },
+                  fontWeight: a.normal,
+                  letterSpacing: "-0.02em",
+                  lineHeight: p.tight,
+                  color: i[900],
+                  wordBreak: "keep-all"
+                },
+                children: s.title
+              }), e.jsx(n, {
+                component: "p",
+                sx: {
+                  ...E,
+                  mt: 2
+                },
+                children: s.lead
+              }), e.jsx(n, {
+                component: "ul",
+                sx: {
+                  listStyle: "none",
+                  m: 0,
+                  mt: 2.5,
+                  p: 0,
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 1.25
+                },
+                children: s.points.map(r => e.jsxs(n, {
+                  component: "li",
+                  sx: {
+                    display: "flex",
+                    alignItems: "flex-start",
+                    gap: 1.25,
+                    fontSize: {
+                      xs: o.base,
+                      md: o.lg
+                    },
+                    lineHeight: p.relaxed,
+                    color: t[700],
+                    wordBreak: "keep-all"
+                  },
+                  children: [e.jsx(je, {
+                    sx: {
+                      fontSize: 22,
+                      color: i[600],
+                      flexShrink: 0,
+                      mt: "0.2em"
+                    }
+                  }), r]
+                }, r))
+              }), e.jsxs(n, {
+                component: f,
+                to: s.to,
+                sx: {
+                  ...Oe,
+                  mt: 3.5,
+                  width: {
+                    xs: "100%",
+                    sm: "auto"
+                  }
+                },
+                children: [s.linkLabel, e.jsx(u, {
+                  sx: {
+                    fontSize: 20
+                  }
+                })]
+              })]
+            }), e.jsxs(n, {
+              sx: {
+                order: {
+                  xs: 1,
+                  md: l % 2 === 0 ? 1 : 0
+                },
+                minWidth: 0
+              },
+              children: [e.jsx(n, {
+                sx: {
+                  display: {
+                    xs: "block",
+                    md: "none"
+                  }
+                },
+                children: e.jsx(H, {
+                  name: s.phone,
+                  alt: `${s.eyebrow} 실제 화면`,
+                  width: 300,
+                  height: 380,
+                  imageHeight: 1040
+                })
+              }), e.jsx(be, {
+                src: $(s.wide),
+                alt: `${s.eyebrow} 실제 화면`,
+                sx: {
+                  display: {
+                    xs: "none",
+                    md: "block"
+                  }
+                }
+              })]
+            })]
+          })
+        }, s.key))
+      }), e.jsxs(x, {
+        sx: {
+          ...b,
+          mt: {
+            xs: 8,
+            md: 12
+          }
+        },
+        children: [e.jsx(n, {
+          component: "h2",
+          sx: j,
+          children: "회사 밖과 닿는 일도 같은 곳에서"
+        }), e.jsxs(n, {
+          component: "p",
+          sx: S,
+          children: ["거래처·고객·상담·예약·회계까지 이어집니다.", e.jsx("br", {}), "고객 · 상담 · 예약은 무료이고, 거래처 · 회계는 정식 출시 전까지 무료입니다."]
+        })]
+      }), e.jsx(n, {
+        sx: {
+          mt: {
+            xs: 4,
+            md: 6
+          },
+          display: "grid",
+          gap: 2,
+          gridTemplateColumns: {
+            xs: "1fr",
+            sm: "repeat(2, minmax(0, 1fr))",
+            lg: "repeat(3, minmax(0, 1fr))"
+          }
+        },
+        children: Bn.map((s, l) => e.jsx(x, {
+          delay: l % 3 * .07,
+          sx: {
+            height: "100%"
+          },
+          children: e.jsxs(n, {
+            sx: {
+              ...A,
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              overflow: "hidden"
+            },
+            children: [e.jsx(n, {
+              sx: {
+                order: 1,
+                bgcolor: i[50],
+                px: 2,
+                pt: 2.5,
+                ...(s.phone ? {} : {
+                  pb: 1.5
+                })
+              },
+              children: s.phone ? e.jsx(H, {
+                name: s.phone,
+                alt: `${s.title} 실제 화면`
+              }) : e.jsx(n, {
+                sx: {
+                  maxWidth: 280,
+                  mx: "auto"
+                },
+                children: e.jsx(ge, {
+                  kind: s.art
+                })
+              })
+            }), e.jsxs(n, {
+              sx: {
+                minWidth: 0,
+                p: {
+                  xs: 2.5,
+                  md: 3
+                },
+                flex: 1,
+                display: "flex",
+                flexDirection: "column"
+              },
+              children: [e.jsx(n, {
+                component: "h3",
+                sx: z,
+                children: s.title
+              }), e.jsx(n, {
+                component: "p",
+                sx: E,
+                children: xe(s.desc)
+              }), e.jsx(n, {
+                sx: {
+                  mt: 2,
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: 1
+                },
+                children: s.chips.map(r => e.jsx(n, {
+                  component: "span",
+                  sx: se,
+                  children: r
+                }, r))
+              }), s.to ? e.jsx(n, {
+                sx: {
+                  mt: "auto"
+                },
+                children: e.jsxs(n, {
+                  component: f,
+                  to: s.to,
+                  sx: te,
+                  children: [s.linkLabel, e.jsx(u, {
+                    sx: {
+                      fontSize: 20
+                    }
+                  })]
+                })
+              }) : null]
+            })]
+          })
+        }, s.title))
+      }), e.jsx(n, {
+        sx: {
+          mt: {
+            xs: 6,
+            md: 10
+          },
+          display: "grid",
+          gap: 2,
+          gridTemplateColumns: {
+            xs: "1fr",
+            md: "repeat(2, minmax(0, 1fr))"
+          }
+        },
+        children: Dn.map((s, l) => e.jsx(x, {
+          delay: l * .07,
+          sx: {
+            height: "100%"
+          },
+          children: e.jsxs(n, {
+            sx: {
+              ...A,
+              height: "100%",
+              p: {
+                xs: 2.5,
+                md: 3
+              },
+              display: "flex",
+              gap: 2
+            },
+            children: [e.jsx(n, {
+              sx: {
+                ...Fe,
+                display: {
+                  xs: "none",
+                  md: "inline-flex"
+                }
+              },
+              children: e.jsx(s.icon, {
+                sx: {
+                  fontSize: 26
+                }
+              })
+            }), e.jsxs(n, {
+              sx: {
+                minWidth: 0
+              },
+              children: [e.jsx(n, {
+                component: "h3",
+                sx: z,
+                children: s.title
+              }), e.jsx(n, {
+                component: "p",
+                sx: E,
+                children: s.desc
+              }), e.jsx(n, {
+                sx: {
+                  mt: 2,
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: 1
+                },
+                children: s.chips.map(r => e.jsx(n, {
+                  component: "span",
+                  sx: se,
+                  children: r
+                }, r))
+              }), e.jsxs(n, {
+                component: f,
+                to: s.to,
+                sx: te,
+                children: [s.linkLabel, e.jsx(u, {
+                  sx: {
+                    fontSize: 20
+                  }
+                })]
+              })]
+            })]
+          })
+        }, s.title))
+      })]
+    })
+  });
+}
+const oe = {
+    store: "MDAybDtQLQr61pgcfBJfhjKTUxYJRNXBXGvAvRYsXTVsApa14VP3FX6K3q7xtDPEmn0XouC0A20Kbg/Y7mtmU5Cnv6OpTwuEHbdB",
+    wire: "cf f0 73 ad 54 e0 92 ca bc 8f 75 f4 b7 7c 58 b3 12 5c 39 f9 62 4a 0b 25 98 c2 95 21 18 6d a7 33"
+  },
+  Pn = {
+    m: 0,
+    fontSize: {
+      xs: "1.375rem",
+      md: "1.6875rem"
+    },
+    fontWeight: a.medium,
+    letterSpacing: "-0.01em",
+    lineHeight: p.snug,
+    color: i[900],
+    wordBreak: "keep-all"
+  },
+  P = {
+    m: 0,
+    fontSize: {
+      xs: o.base,
+      md: o.lg
+    },
+    lineHeight: p.relaxed,
+    color: t[600],
+    wordBreak: "keep-all"
+  },
+  Se = '"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace';
+function ie({
+  icon: s,
+  text: l,
+  enc: r
+}) {
+  return e.jsxs(n, {
+    sx: {
+      display: "flex",
+      alignItems: "center",
+      gap: .75,
+      fontSize: o.sm,
+      fontWeight: a.medium,
+      color: r ? i[700] : t[600]
+    },
+    children: [e.jsx(s, {
+      sx: {
+        fontSize: 16,
+        flexShrink: 0
+      }
+    }), l]
+  });
+}
+function re({
+  plainLabel: s,
+  lockLabel: l,
+  encLabel: r,
+  enc: d
+}) {
+  return e.jsxs(n, {
+    sx: {
+      display: "grid"
+    },
+    children: [e.jsxs(n, {
+      sx: {
+        display: "grid",
+        gap: 1,
+        p: "14px 16px",
+        borderRadius: "12px",
+        border: `1px solid ${t[200]}`,
+        bgcolor: t[50],
+        minWidth: 0
+      },
+      children: [e.jsx(ie, {
+        icon: _e,
+        text: s
+      }), e.jsxs(n, {
+        sx: {
+          fontSize: {
+            xs: o.base,
+            md: o.lg
+          },
+          lineHeight: 1.5,
+          color: t[900],
+          "& b": {
+            fontWeight: a.bold
+          }
+        },
+        children: ["이름 ", e.jsx("b", {
+          children: "홍길동"
+        }), " · 연락처 ", e.jsx("b", {
+          children: "010-1234-5678"
+        })]
+      })]
+    }), e.jsx(n, {
+      "aria-hidden": "true",
+      sx: {
+        position: "relative",
+        display: "flex",
+        justifyContent: "center",
+        py: 1.5,
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          left: "50%",
+          top: 0,
+          bottom: 0,
+          borderLeft: `1px dashed ${i[300]}`
+        }
+      },
+      children: e.jsxs(n, {
+        component: "span",
+        sx: {
+          position: "relative",
+          display: "inline-flex",
+          alignItems: "center",
+          gap: .75,
+          px: "18px",
+          py: 1,
+          borderRadius: "9999px",
+          border: `1.5px solid ${i[400]}`,
+          bgcolor: "#fff",
+          boxShadow: "0 0 18px rgba(37, 99, 235, 0.15)",
+          fontSize: "1.0625rem",
+          fontWeight: a.bold,
+          lineHeight: 1.4,
+          color: i[700]
+        },
+        children: [e.jsx(U, {
+          sx: {
+            fontSize: 19
+          }
+        }), l]
+      })
+    }), e.jsxs(n, {
+      sx: {
+        display: "grid",
+        gap: 1,
+        p: "14px 16px",
+        borderRadius: "12px",
+        border: `1px solid ${i[200]}`,
+        bgcolor: i[50],
+        minWidth: 0
+      },
+      children: [e.jsx(ie, {
+        icon: U,
+        text: r,
+        enc: !0
+      }), e.jsx(n, {
+        component: "code",
+        sx: {
+          display: "-webkit-box",
+          WebkitBoxOrient: "vertical",
+          WebkitLineClamp: 2,
+          overflow: "hidden",
+          fontFamily: Se,
+          fontSize: o.sm,
+          fontWeight: a.medium,
+          lineHeight: 1.6,
+          color: i[700],
+          overflowWrap: "anywhere",
+          wordBreak: "break-all"
+        },
+        children: d
+      })]
+    })]
+  });
+}
+const L = {
+  gridRow: {
+    md: "span 4"
+  },
+  gridTemplateRows: {
+    md: "subgrid"
+  }
+};
+function le({
+  tag: s,
+  title: l,
+  children: r,
+  desc: d
+}) {
+  return e.jsxs(n, {
+    sx: {
+      ...A,
+      height: "100%",
+      p: {
+        xs: 2.5,
+        md: 3
+      },
+      display: "grid",
+      gap: 2,
+      alignContent: "start",
+      minWidth: 0,
+      ...L
+    },
+    children: [e.jsx(n, {
+      component: "span",
+      sx: {
+        ...he,
+        justifySelf: "start"
+      },
+      children: s
+    }), e.jsx(n, {
+      component: "h3",
+      sx: Pn,
+      children: l
+    }), r, e.jsx(n, {
+      component: "p",
+      sx: P,
+      children: d
+    })]
+  });
+}
+function Ln() {
+  return e.jsx(n, {
+    component: "section",
+    id: "security",
+    sx: {
+      bgcolor: t[50],
+      borderBottom: `1px solid ${t[200]}`
+    },
+    children: e.jsxs(n, {
+      sx: k,
+      children: [e.jsxs(x, {
+        sx: b,
+        children: [e.jsx(n, {
+          component: "p",
+          sx: y,
+          children: "SECURITY"
+        }), e.jsx(n, {
+          component: "h2",
+          sx: j,
+          children: "보이지 않는 곳까지 두 번 잠급니다"
+        }), e.jsxs(n, {
+          component: "p",
+          sx: S,
+          children: ["방화벽 · 보안 접속(HTTPS)은 어느 서비스나 합니다.", e.jsx("br", {}), "업무함은 그 안쪽에서 회사 정보를 두 번 더 잠급니다."]
+        })]
+      }), e.jsxs(n, {
+        sx: {
+          mt: 6,
+          display: "grid",
+          columnGap: 2,
+          rowGap: {
+            xs: 2,
+            md: 2
+          },
+          gridTemplateColumns: {
+            xs: "1fr",
+            md: "repeat(2, minmax(0, 1fr))"
+          }
+        },
+        children: [e.jsx(x, {
+          sx: {
+            display: {
+              md: "grid"
+            },
+            ...L
+          },
+          children: e.jsx(le, {
+            tag: "01 · 보관할 때",
+            title: "서버에 저장되는 정보를 잠급니다",
+            desc: "열쇠가 없으면 이렇게만 보입니다. 그 열쇠는 서버 안의 보안 칩(TPM)에 묶어 두어, 서버 밖으로 빼내도 풀리지 않습니다. 이름처럼 찾는 데 쓰는 칸만 따로 둡니다.",
+            children: e.jsx(re, {
+              plainLabel: "화면에서 보는 모습(예시)",
+              lockLabel: "저장할 때 잠금",
+              encLabel: "서버에 실제로 저장된 모습 · 시험 계정",
+              enc: `${oe.store}…`
+            })
+          })
+        }), e.jsx(x, {
+          delay: .07,
+          sx: {
+            display: {
+              md: "grid"
+            },
+            ...L
+          },
+          children: e.jsx(le, {
+            tag: "02 · 주고받을 때",
+            title: "인터넷으로 오가는 정보도 한 번 더 잠급니다",
+            desc: "누가 중간에서 엿봐도 알아볼 수 없습니다.",
+            children: e.jsx(re, {
+              plainLabel: "보통 사이트(예시) — 중간에서 보면 그대로 보입니다",
+              lockLabel: "보내기 전에 한 번 더 잠금",
+              encLabel: "업무함 — 실제로 오가는 모습",
+              enc: `${oe.wire} …`
+            })
+          })
+        })]
+      }), e.jsxs(n, {
+        sx: {
+          mt: 3,
+          display: "flex",
+          flexWrap: "wrap",
+          alignItems: "center",
+          columnGap: 2.5,
+          rowGap: 1
+        },
+        children: [e.jsx(n, {
+          component: "p",
+          sx: {
+            ...P,
+            fontWeight: a.semibold,
+            color: i[900]
+          },
+          children: "중간에서 엿봐도, 서버를 통째로 가져가도 내용은 읽을 수 없습니다."
+        }), e.jsxs(n, {
+          component: "p",
+          sx: {
+            ...P,
+            fontSize: o.base,
+            color: t[600]
+          },
+          children: ["두 잠금 모두", " ", e.jsx(n, {
+            component: "code",
+            sx: {
+              fontFamily: Se,
+              fontSize: o.sm,
+              fontWeight: a.medium,
+              color: i[700]
+            },
+            children: "XChaCha20-Poly1305"
+          }), " ", "· 인터넷 보안 표준(TLS 1.3) 계열 암호"]
+        })]
+      })]
+    })
+  });
+}
+const On = [{
+  no: "01",
+  title: "업무를 등록한다",
+  desc: "제목 · 책임자 · 마감만 적으면 됩니다. 반복되는 일은 템플릿으로 여러 건을 한 번에 올립니다.",
+  hint: "빈 화면에서 30초",
+  image: "step-register"
+}, {
+  no: "02",
+  title: "진행을 확인한다",
+  desc: "책임자가 처리하고 완료하면 보낸 사람에게 검수 대기로 표시됩니다. 검수를 마치거나 사유와 함께 되돌려 보내고, 그 사이 경과는 댓글과 활동 기록에 남습니다.",
+  hint: "묻지 않아도 보임",
+  image: "step-review"
+}, {
+  no: "03",
+  title: "보관으로 마무리한다",
+  desc: "끝난 업무는 7일이 지나면 자동으로 보관함에 들어가고, 언제든 검색해 다시 꺼내 볼 수 있습니다.",
+  hint: "기록은 남고 화면은 비움",
+  image: "step-archive"
+}];
+function ae() {
+  return e.jsx(u, {
+    "aria-hidden": "true",
+    sx: {
+      fontSize: "0.85em",
+      verticalAlign: "-0.12em",
+      mx: {
+        xs: .75,
+        md: 1
+      },
+      color: i[600]
+    }
+  });
+}
+function Fn() {
+  return e.jsx(n, {
+    component: "section",
+    id: "flow",
+    sx: {
+      bgcolor: "#fff"
+    },
+    children: e.jsxs(n, {
+      sx: k,
+      children: [e.jsxs(x, {
+        sx: b,
+        children: [e.jsx(n, {
+          component: "p",
+          sx: y,
+          children: "HOW IT WORKS"
+        }), e.jsxs(n, {
+          component: "h2",
+          sx: j,
+          children: ["등록", e.jsx(ae, {}), "확인", e.jsx(ae, {}), "보관, ", e.jsx(n, {
+            component: "br",
+            sx: {
+              display: {
+                xs: "inline",
+                md: "none"
+              }
+            }
+          }), "세 걸음이면 끝"]
+        }), e.jsxs(n, {
+          component: "p",
+          sx: S,
+          children: ["별도 교육 없이 첫날부터 씁니다.", e.jsx("br", {}), "업무를 보내는 사람과 받는 사람이 같은 화면을 보기 때문입니다."]
+        })]
+      }), e.jsx(n, {
+        sx: {
+          position: "relative",
+          mt: 6,
+          display: "grid",
+          gap: {
+            xs: 5,
+            md: 3
+          },
+          gridTemplateColumns: {
+            xs: "1fr",
+            md: "repeat(3, minmax(0, 1fr))"
+          },
+          "&::before": {
+            content: '""',
+            display: {
+              xs: "none",
+              md: "block"
+            },
+            position: "absolute",
+            top: 28,
+            left: "16%",
+            right: "16%",
+            height: "2px",
+            backgroundImage: `linear-gradient(90deg, ${m.blue300} 50%, transparent 0)`,
+            backgroundSize: "12px 2px",
+            backgroundRepeat: "repeat-x"
+          }
+        },
+        children: On.map((s, l) => e.jsx(x, {
+          delay: l * .12,
+          children: e.jsxs(n, {
+            sx: {
+              position: "relative",
+              textAlign: "center"
+            },
+            children: [e.jsx(n, {
+              sx: {
+                width: 56,
+                height: 56,
+                mx: "auto",
+                borderRadius: "50%",
+                bgcolor: i[600],
+                color: "#fff",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: o.lg,
+                fontWeight: a.medium,
+                boxShadow: `0 0 0 8px ${i[50]}`
+              },
+              children: s.no
+            }), e.jsx(fe, {
+              name: s.image,
+              alt: `${s.title} — 실제 화면`,
+              sx: {
+                mt: 3,
+                mx: "auto",
+                maxWidth: 360
+              }
+            }), e.jsx(n, {
+              component: "h3",
+              sx: {
+                m: 0,
+                mt: 2.5,
+                fontSize: {
+                  xs: o["2xl"],
+                  md: o["3xl"]
+                },
+                fontWeight: a.medium,
+                letterSpacing: "-0.02em",
+                color: i[900]
+              },
+              children: s.title
+            }), e.jsx(n, {
+              component: "p",
+              sx: {
+                m: 0,
+                mx: "auto",
+                mt: 1.5,
+                maxWidth: 340,
+                fontSize: o.base,
+                lineHeight: p.relaxed,
+                color: t[600],
+                wordBreak: "keep-all"
+              },
+              children: s.desc
+            }), e.jsx(n, {
+              component: "span",
+              sx: {
+                ...he,
+                mt: 2.5
+              },
+              children: s.hint
+            })]
+          }, s.no)
+        }, s.no))
+      })]
+    })
+  });
+}
+const Nn = [{
+  tag: "소규모 사업장",
+  problem: "지시는 단톡방에, 마감은 각자 메모장에. 어제 시킨 일이 어떻게 됐는지 매번 다시 물어봐야 한다.",
+  answer: "업무를 등록하면 책임자의 받은 업무함에 남습니다. 마감 알림이 대신 재촉하고, 책임자가 완료하면 그때 검수하면 됩니다.",
+  image: "case-small-business"
+}, {
+  tag: "여러 지점 · 현장",
+  problem: "본사 지시가 지점마다 다르게 전달되고, 어느 지점이 처리했는지 취합에만 반나절이 걸린다.",
+  answer: "업무 템플릿으로 지점별 업무를 한 번에 만들어 보내고, 어느 지점이 남았는지 한 화면에서 봅니다.",
+  image: "case-multi-branch"
+}, {
+  tag: "반복되는 정기 업무",
+  problem: "주간 보고, 월 마감, 정기 점검. 매번 같은 목록을 손으로 다시 만들고 책임자를 다시 지정한다.",
+  answer: "업무 템플릿에 담아 두면 책임자와 마감까지 붙어서 한 번에 등록됩니다. 완료되면 자동으로 보관됩니다.",
+  image: "case-recurring"
+}, {
+  tag: "도구가 흩어진 팀",
+  problem: '기록은 노션에, 결재는 플로우에, 지시는 슬랙에, 일정은 엑셀에. 정작 "이 일 지금 누가 하고 있지"는 어디에도 없다.',
+  answer: "업무 하나에 책임자·마감·대화·파일이 함께 붙습니다. 도구를 다 걷어내지 않아도, 주고받는 일만큼은 여기서 끝납니다.",
+  image: "case-scattered-tools"
+}, {
+  tag: "담당자가 바뀔 때",
+  problem: "퇴사·휴가·신입 합류. 그 사람 단톡방과 머릿속에만 있던 진행 상황이 통째로 사라져, 남은 사람이 처음부터 다시 묻는다.",
+  answer: "업무마다 지금까지의 대화·파일·처리 이력이 그대로 남습니다. 책임자만 바꾸면 인수인계가 끝나고, 새로 온 사람도 첫날 목록부터 봅니다.",
+  image: "case-handover"
+}, {
+  tag: "외부 협력 · 프리랜서",
+  problem: "메일로 요청하고 메일로 받다 보니, 마지막으로 오간 파일과 버전이 어디 있었는지 매번 찾는다.",
+  answer: "업무 하나에 본문·댓글·첨부가 함께 붙습니다. 끝난 뒤에도 보관함에서 업무를 다시 열면 파일과 대화가 그대로 있습니다.",
+  image: "case-external"
+}];
+function Xn() {
+  return e.jsx(n, {
+    component: "section",
+    id: "cases",
+    sx: {
+      bgcolor: "#fff",
+      borderBottom: `1px solid ${t[200]}`
+    },
+    children: e.jsxs(n, {
+      sx: {
+        ...k,
+        pt: {
+          xs: 2,
+          md: 3
+        }
+      },
+      children: [e.jsx(x, {
+        sx: b,
+        children: e.jsx(n, {
+          component: "h2",
+          sx: j,
+          children: "이런 상황이라면, 업무함입니다"
+        })
+      }), e.jsx(n, {
+        sx: {
+          mt: 6,
+          display: "grid",
+          gap: 2.5,
+          gridTemplateColumns: {
+            xs: "1fr",
+            sm: "repeat(2, minmax(0, 1fr))",
+            md: "repeat(3, minmax(0, 1fr))"
+          }
+        },
+        children: Nn.map((s, l) => e.jsx(x, {
+          delay: l * .07,
+          sx: {
+            height: "100%"
+          },
+          children: e.jsxs(n, {
+            sx: {
+              ...A,
+              height: "100%",
+              overflow: "hidden",
+              display: "flex",
+              flexDirection: "column"
+            },
+            children: [e.jsx(n, {
+              sx: {
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: {
+                  xs: 230,
+                  md: 280
+                },
+                bgcolor: i[50],
+                px: 2,
+                py: 1.5
+              },
+              children: e.jsx(n, {
+                component: "img",
+                src: M(s.image),
+                alt: "",
+                loading: "lazy",
+                sx: {
+                  maxWidth: "100%",
+                  maxHeight: "100%",
+                  width: "auto",
+                  height: "auto",
+                  aspectRatio: X(s.image)
+                }
+              })
+            }), e.jsxs(n, {
+              sx: {
+                p: 3.5,
+                display: "flex",
+                flexDirection: "column",
+                flex: 1
+              },
+              children: [e.jsx(n, {
+                component: "h3",
+                sx: {
+                  m: 0,
+                  fontSize: {
+                    xs: "1.5625rem",
+                    md: "1.875rem"
+                  },
+                  fontWeight: a.medium,
+                  letterSpacing: "-0.01em",
+                  lineHeight: p.snug,
+                  color: t[900],
+                  wordBreak: "keep-all"
+                },
+                children: s.tag
+              }), e.jsx(n, {
+                component: "p",
+                sx: {
+                  m: 0,
+                  mt: 2.5,
+                  pl: 2,
+                  borderLeft: `3px solid ${t[200]}`,
+                  fontSize: o.base,
+                  lineHeight: p.relaxed,
+                  color: t[700],
+                  wordBreak: "keep-all",
+                  minHeight: {
+                    md: "calc(1.0625rem * 1.625 * 4)"
+                  }
+                },
+                children: s.problem
+              }), e.jsxs(n, {
+                sx: {
+                  mt: 2.5,
+                  display: "flex",
+                  gap: 1.5,
+                  alignItems: "flex-start"
+                },
+                children: [e.jsx(u, {
+                  sx: {
+                    fontSize: 20,
+                    color: m.emerald600,
+                    mt: "3px",
+                    flexShrink: 0
+                  }
+                }), e.jsx(n, {
+                  component: "p",
+                  sx: {
+                    m: 0,
+                    fontSize: o.base,
+                    fontWeight: a.medium,
+                    lineHeight: p.relaxed,
+                    color: t[900],
+                    wordBreak: "keep-all"
+                  },
+                  children: s.answer
+                })]
+              })]
+            })]
+          })
+        }, s.tag))
+      })]
+    })
+  });
+}
+function w({
+  children: s
+}) {
+  return e.jsx(n, {
+    component: "strong",
+    sx: {
+      color: t[900],
+      fontWeight: a.bold
+    },
+    children: s
+  });
+}
+function g({
+  children: s
+}) {
+  return e.jsx(n, {
+    component: "strong",
+    sx: {
+      fontWeight: a.bold
+    },
+    children: s
+  });
+}
+const Mn = [{
+  area: "업무 지시 · 확인",
+  text: e.jsxs(e.Fragment, {
+    children: ["단톡방을 거슬러 올라가지 않아도 ", e.jsx(w, {
+      children: "어제 시킨 일이 어디까지 됐는지"
+    }), " 목록에서 바로 보입니다."]
+  }),
+  tags: ["책임자", "마감 알림", "검수"],
+  points: [e.jsxs(e.Fragment, {
+    children: ["책임자·마감이 업무에 붙어 ", e.jsx(g, {
+      children: "다시 묻는 일이 줄어듭니다"
+    })]
+  }), e.jsxs(e.Fragment, {
+    children: ["마감 알림이 ", e.jsx(g, {
+      children: "대신 재촉합니다"
+    })]
+  })],
+  band: i[100],
+  mark: i[700]
+}, {
+  area: "근태 · 출퇴근",
+  text: e.jsxs(e.Fragment, {
+    children: ["출근 기록을 따로 챙기지 않아도 ", e.jsx(w, {
+      children: "근무지에 도착하면 출근 안내가 뜨고"
+    }), " 한 달 기록이 저절로 쌓입니다."]
+  }),
+  tags: ["위치", "QR", "휴가"],
+  points: [e.jsxs(e.Fragment, {
+    children: ["지각·연장·휴가가 ", e.jsx(g, {
+      children: "자동으로 집계됩니다"
+    })]
+  }), e.jsxs(e.Fragment, {
+    children: ["정정·근무 변경은 ", e.jsx(g, {
+      children: "요청과 승인으로 남습니다"
+    })]
+  })],
+  band: m.emerald50,
+  mark: m.emerald700
+}, {
+  area: "전자결재",
+  text: e.jsxs(e.Fragment, {
+    children: ["서류를 들고 자리를 찾아다니지 않아도 ", e.jsx(w, {
+      children: "폰에서 바로 승인하고"
+    }), " 결재가 누구에게 멈춰 있는지 보입니다."]
+  }),
+  tags: ["결재선", "알림", "모바일 승인"],
+  points: [e.jsxs(e.Fragment, {
+    children: ["결재할 문서만 ", e.jsx(g, {
+      children: "한 탭에 모입니다"
+    })]
+  }), e.jsxs(e.Fragment, {
+    children: ["지난번 결재선이 ", e.jsx(g, {
+      children: "자동으로 채워집니다"
+    })]
+  })],
+  band: m.amber100,
+  mark: m.amber800
+}, {
+  area: "회의록",
+  text: e.jsxs(e.Fragment, {
+    children: ["받아 적느라 회의를 놓치지 않아도 ", e.jsx(w, {
+      children: "녹음하면 받아 적고 정리까지"
+    }), " 끝나 있습니다."]
+  }),
+  tags: ["녹음", "받아 적기", "요약"],
+  points: [e.jsxs(e.Fragment, {
+    children: ["결정·후속 조치가 ", e.jsx(g, {
+      children: "칸으로 나뉘어 남습니다"
+    })]
+  }), e.jsxs(e.Fragment, {
+    children: ["지난 회의를 ", e.jsx(g, {
+      children: "내용 검색으로 찾습니다"
+    })]
+  })],
+  band: m.sky100,
+  mark: m.sky700
+}, {
+  area: "인수인계",
+  text: e.jsxs(e.Fragment, {
+    children: ["담당자가 바뀌어도 ", e.jsx(w, {
+      children: "대화·파일·처리 이력이 업무에 그대로 남아"
+    }), " 처음부터 다시 묻지 않습니다."]
+  }),
+  tags: ["이력", "첨부", "보관함"],
+  points: [e.jsxs(e.Fragment, {
+    children: ["책임자만 바꾸면 ", e.jsx(g, {
+      children: "인수인계가 끝납니다"
+    })]
+  }), e.jsxs(e.Fragment, {
+    children: ["끝난 업무도 ", e.jsx(g, {
+      children: "보관함에서 다시 엽니다"
+    })]
+  })],
+  band: t[100],
+  mark: t[700]
+}, {
+  area: "흩어진 도구",
+  text: e.jsxs(e.Fragment, {
+    children: ["메신저·메일·결재·근태를 오가지 않아도 ", e.jsx(w, {
+      children: "한 앱에서 이어집니다."
+    }), " 대화하다 나온 일은 그 자리에서 업무가 됩니다."]
+  }),
+  tags: ["채팅", "메일", "일정"],
+  points: [e.jsxs(e.Fragment, {
+    children: ["채팅 내용을 ", e.jsx(g, {
+      children: "업무로 바로 등록합니다"
+    })]
+  }), e.jsxs(e.Fragment, {
+    children: ["알림이 ", e.jsx(g, {
+      children: "한곳으로 모입니다"
+    })]
+  })],
+  band: m.rose50,
+  mark: m.rose700
+}];
+function Gn() {
+  return e.jsx(n, {
+    component: "section",
+    id: "changes",
+    sx: {
+      bgcolor: "#fff",
+      borderBottom: `1px solid ${t[200]}`
+    },
+    children: e.jsxs(n, {
+      sx: k,
+      children: [e.jsxs(x, {
+        sx: b,
+        children: [e.jsx(n, {
+          component: "h2",
+          sx: j,
+          children: "쓰기 시작하면, 이렇게 달라집니다"
+        }), e.jsx(n, {
+          component: "p",
+          sx: S,
+          children: "업무·근태·결재·회의에서 달라지는 점만 모았습니다."
+        })]
+      }), e.jsx(n, {
+        sx: {
+          mt: 6,
+          display: {
+            xs: "flex",
+            md: "grid"
+          },
+          gap: 2.5,
+          gridTemplateColumns: {
+            md: "repeat(3, minmax(0, 1fr))"
+          },
+          overflowX: {
+            xs: "auto",
+            md: "visible"
+          },
+          overflowY: {
+            xs: "hidden",
+            md: "visible"
+          },
+          scrollSnapType: {
+            xs: "x mandatory",
+            md: "none"
+          },
+          mx: {
+            xs: -2,
+            md: 0
+          },
+          px: {
+            xs: 2,
+            md: 0
+          },
+          scrollPaddingLeft: {
+            xs: "16px",
+            md: 0
+          },
+          "&::-webkit-scrollbar": {
+            display: "none"
+          },
+          scrollbarWidth: "none"
+        },
+        children: Mn.map((s, l) => e.jsx(x, {
+          delay: l * .06,
+          sx: {
+            height: {
+              md: "100%"
+            },
+            flex: {
+              xs: "0 0 84%",
+              md: "initial"
+            },
+            scrollSnapAlign: {
+              xs: "start",
+              md: "none"
+            }
+          },
+          children: e.jsxs(n, {
+            sx: {
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              borderRadius: 3,
+              overflow: "hidden",
+              bgcolor: t[50]
+            },
+            children: [e.jsxs(n, {
+              sx: {
+                p: 3.5,
+                display: "flex",
+                flexDirection: "column",
+                flex: 1
+              },
+              children: [e.jsx(n, {
+                component: "p",
+                sx: {
+                  m: 0,
+                  fontSize: o.lg,
+                  lineHeight: p.relaxed,
+                  color: t[500],
+                  wordBreak: "keep-all"
+                },
+                children: s.text
+              }), e.jsxs(n, {
+                sx: {
+                  mt: "auto",
+                  pt: 4
+                },
+                children: [e.jsx(n, {
+                  component: "p",
+                  sx: {
+                    m: 0,
+                    fontSize: o.sm,
+                    color: t[500]
+                  },
+                  children: s.area
+                }), e.jsx(n, {
+                  component: "ul",
+                  sx: {
+                    m: 0,
+                    mt: 1.5,
+                    p: 0,
+                    listStyle: "none",
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: 1
+                  },
+                  children: s.tags.map(r => e.jsx(n, {
+                    component: "li",
+                    sx: {
+                      px: 1.5,
+                      py: "5px",
+                      borderRadius: "9999px",
+                      border: `1px solid ${t[300]}`,
+                      fontSize: o.sm,
+                      lineHeight: p.none,
+                      color: t[700]
+                    },
+                    children: r
+                  }, r))
+                })]
+              })]
+            }), e.jsx(n, {
+              component: "ul",
+              sx: {
+                m: 0,
+                px: 3.5,
+                py: 2.5,
+                listStyle: "none",
+                display: "grid",
+                gap: 1,
+                alignContent: "start",
+                minHeight: {
+                  xs: "calc(1.0625rem * 1.375 * 5 + 8px + 40px)",
+                  sm: "calc(1.0625rem * 1.375 * 4 + 8px + 40px)"
+                },
+                bgcolor: s.band,
+                color: t[800]
+              },
+              children: s.points.map((r, d) => e.jsxs(n, {
+                component: "li",
+                sx: {
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: 1,
+                  fontSize: o.base,
+                  lineHeight: p.snug,
+                  wordBreak: "keep-all"
+                },
+                children: [e.jsx(je, {
+                  sx: {
+                    fontSize: 20,
+                    mt: "2px",
+                    flexShrink: 0,
+                    color: s.mark
+                  }
+                }), e.jsx("span", {
+                  children: r
+                })]
+              }, d))
+            })]
+          })
+        }, s.area))
+      })]
+    })
+  });
+}
+const Yn = [{
+  q: "쓰던 메신저나 엑셀을 버려야 하나요?",
+  a: "아닙니다. 한꺼번에 바꾸지 않아도 됩니다. **'누가 무엇을 언제까지'만 업무함으로** 옮겨도 다시 묻는 일이 크게 줄어듭니다. 업무 채팅과 일정도 들어 있으니, 익숙해지면 하나씩 옮겨 오면 됩니다."
+}, {
+  q: "설치나 서버 구축이 필요한가요?",
+  a: "필요 없습니다. **웹 브라우저로 접속해 회원가입하면 바로** 씁니다. **PC와 모바일 어디서나** 이어서 쓸 수 있어 현장에서도 그대로 확인하고 처리할 수 있습니다."
+}, {
+  q: "팀원이 익히는 데 얼마나 걸리나요?",
+  a: "업무 등록은 **제목 · 책임자 · 마감 세 칸**이면 충분합니다. 받는 사람은 자기 업무함에 쌓인 목록을 보고 처리한 뒤 완료하면 되므로, **따로 교육 시간을 잡지 않아도** 됩니다."
+}, {
+  q: "비용은 어떻게 되나요?",
+  a: `**3명까지는 기간 제한 없이 무료**이고, 가입 후 **${De}일은 인원 제한 없이 무료**입니다. 그 뒤에는 **4인째부터 1인당 월 ${Be(He)}**(부가세 포함)이며, 인원별 단가와 선택 서비스는 요금 안내에서 확인할 수 있습니다.`
+}, {
+  q: "근태·인사·회의록은 따로 요금을 내나요?",
+  a: `아닙니다. 업무·일정·회의록·게시판·채팅·인사·노무·근태는 **기본 제공**이라 **${T}명까지 기간 제한 없이 무료**입니다. 기업메일·전자결재처럼 필요할 때 더하는 **선택 서비스만 따로 요금**이 있고, 금액은 요금 안내에 있습니다.`
+}, {
+  q: "쓰고 있는 홈페이지나 사내 시스템과 연동할 수 있나요?",
+  a: "조직 설정에서 **API 키를 발급**해 사내 시스템에서 **업무를 읽고 쓸 수** 있습니다. 키는 쓰임마다 나뉘고, **허용 IP 를 정하거나 언제든 끄고 폐기**할 수 있습니다. 끝점과 예제는 API 매뉴얼에 있습니다."
+}, {
+  q: "지난 업무 기록은 어떻게 남나요?",
+  a: "완료된 업무는 **사라지지 않고 보관함으로** 옮겨집니다. 누가 언제 무엇을 바꿨는지는 **활동 기록에 남고**, 보관된 업무도 검색해 언제든 다시 열어 볼 수 있습니다."
+}, {
+  q: "우리 회사에 맞게 바꿀 수 있나요?",
+  a: "**라벨, 업무 템플릿, 본문 양식, 자동화 규칙**을 팀에 맞게 설정할 수 있습니다. 그 이상으로 필요한 부분이 있다면 상담 신청을 통해 함께 찾아 드립니다."
+}];
+function Un({
+  text: s
+}) {
+  return e.jsx(e.Fragment, {
+    children: s.split("**").map((l, r) => r % 2 === 1 ? e.jsx(n, {
+      component: "strong",
+      sx: {
+        fontWeight: a.medium,
+        color: t[900]
+      },
+      children: l
+    }, r) : l)
+  });
+}
+function Kn() {
+  return e.jsx(n, {
+    component: "section",
+    id: "faq",
+    sx: {
+      bgcolor: "#fff"
+    },
+    children: e.jsxs(n, {
+      sx: k,
+      children: [e.jsxs(x, {
+        sx: b,
+        children: [e.jsx(n, {
+          component: "p",
+          sx: y,
+          children: "FAQ"
+        }), e.jsx(n, {
+          component: "h2",
+          sx: j,
+          children: "자주 묻는 질문"
+        }), e.jsx(n, {
+          component: "p",
+          sx: S,
+          children: "도입 전에 가장 많이 확인하시는 것들을 모았습니다. 더 궁금한 점은 언제든 상담 신청으로 물어보세요."
+        })]
+      }), e.jsx(x, {
+        delay: .1,
+        children: e.jsx(n, {
+          sx: {
+            mt: {
+              xs: 4,
+              md: 6
+            },
+            mx: "auto",
+            maxWidth: {
+              xs: 840,
+              md: 1120
+            },
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              md: "repeat(2, minmax(0, 1fr))"
+            },
+            alignItems: "stretch",
+            gap: {
+              xs: 2,
+              md: 2.5
+            }
+          },
+          children: Yn.map(s => e.jsxs(n, {
+            component: "article",
+            sx: {
+              borderRadius: {
+                xs: 3,
+                md: 4
+              },
+              border: `1px solid ${t[200]}`,
+              bgcolor: "#fff",
+              px: {
+                xs: 3,
+                md: 4
+              },
+              py: {
+                xs: 3.5,
+                md: 4
+              }
+            },
+            children: [e.jsxs(n, {
+              component: "h3",
+              sx: {
+                m: 0,
+                fontSize: {
+                  xs: o.xl,
+                  md: o["2xl"]
+                },
+                fontWeight: a.medium,
+                lineHeight: p.snug,
+                letterSpacing: "-0.02em",
+                color: t[900],
+                wordBreak: "keep-all"
+              },
+              children: ["Q. ", s.q]
+            }), e.jsx(n, {
+              component: "p",
+              sx: {
+                m: 0,
+                mt: {
+                  xs: 2,
+                  md: 2.5
+                },
+                fontSize: {
+                  xs: "1rem",
+                  md: "1.125rem"
+                },
+                lineHeight: p.relaxed,
+                color: t[500],
+                wordBreak: "keep-all"
+              },
+              children: e.jsx(Un, {
+                text: s.a
+              })
+            })]
+          }, s.q))
+        })
+      }), e.jsx(x, {
+        delay: .15,
+        children: e.jsxs(n, {
+          sx: {
+            mt: {
+              xs: 10,
+              md: 13
+            },
+            mx: "auto",
+            maxWidth: 840,
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 2,
+            borderRadius: {
+              xs: 3,
+              md: 4
+            },
+            bgcolor: t[50],
+            px: {
+              xs: 3,
+              md: 5
+            },
+            py: {
+              xs: 3.5,
+              md: 4
+            }
+          },
+          children: [e.jsxs(n, {
+            children: [e.jsx(n, {
+              sx: {
+                fontSize: {
+                  xs: o.xl,
+                  md: o["2xl"]
+                },
+                fontWeight: a.medium,
+                lineHeight: p.snug,
+                color: i[900],
+                wordBreak: "keep-all"
+              },
+              children: "여기에 없는 질문이 있으신가요?"
+            }), e.jsx(n, {
+              sx: {
+                mt: 1,
+                fontSize: {
+                  xs: o.base,
+                  md: o.lg
+                },
+                color: t[600],
+                wordBreak: "keep-all"
+              },
+              children: "팀 상황을 적어 주시면 영업일 기준 1일 안에 답드립니다."
+            })]
+          }), e.jsxs(n, {
+            component: f,
+            to: "/contact",
+            sx: {
+              display: "inline-flex",
+              alignItems: "center",
+              gap: .75,
+              fontSize: {
+                xs: o.lg,
+                md: o.xl
+              },
+              fontWeight: a.medium,
+              color: i[600],
+              textDecoration: "none",
+              whiteSpace: "nowrap",
+              "&:hover": {
+                color: i[700]
+              }
+            },
+            children: ["상담 신청하기", e.jsx(u, {
+              sx: {
+                fontSize: {
+                  xs: 22,
+                  md: 24
+                }
+              }
+            })]
+          })]
+        })
+      })]
+    })
+  });
+}
+function Vn() {
+  const s = N();
+  return e.jsx(n, {
+    component: "section",
+    id: "contact",
+    sx: {
+      bgcolor: t[50],
+      borderTop: `1px solid ${t[200]}`
+    },
+    children: e.jsx(n, {
+      sx: {
+        ...F,
+        ...pe
+      },
+      children: e.jsx(x, {
+        children: e.jsxs(n, {
+          sx: {
+            borderRadius: 4,
+            bgcolor: i[900],
+            color: "#fff",
+            backgroundImage: `radial-gradient(620px 380px at 88% 0%, ${m.blue700}66, transparent 62%)`,
+            px: {
+              xs: 3,
+              md: 7
+            },
+            py: {
+              xs: 5,
+              md: 6
+            },
+            display: "grid",
+            alignItems: "center",
+            gap: {
+              xs: 3,
+              md: 5
+            },
+            gridTemplateColumns: {
+              xs: "1fr",
+              md: "minmax(0, 1fr) 280px"
+            }
+          },
+          children: [e.jsxs(n, {
+            children: [e.jsx(n, {
+              component: "h2",
+              sx: {
+                m: 0,
+                fontFamily: '"GyeonggiTitle", "Noto Sans KR", sans-serif',
+                fontSize: {
+                  xs: o["2xl"],
+                  sm: o["3xl"],
+                  md: o["4xl"]
+                },
+                fontWeight: a.normal,
+                letterSpacing: "-0.02em",
+                lineHeight: p.tight,
+                wordBreak: "keep-all"
+              },
+              children: "오늘 받은 일부터 업무함에 담아 보세요"
+            }), e.jsxs(n, {
+              component: "p",
+              sx: {
+                m: 0,
+                mt: 2,
+                fontSize: {
+                  xs: o.base,
+                  md: o.xl
+                },
+                lineHeight: p.relaxed,
+                color: t[300],
+                wordBreak: "keep-all"
+              },
+              children: ["가입하고 팀원을 초대하면 첫 업무를 바로 등록할 수 있습니다.", e.jsx(n, {
+                component: "br",
+                sx: {
+                  display: {
+                    xs: "none",
+                    sm: "inline"
+                  }
+                }
+              }), " ", "설치도, 구축도 필요 없습니다."]
+            }), e.jsxs(n, {
+              component: f,
+              to: s.to,
+              sx: {
+                ...me,
+                mt: 3.5
+              },
+              children: [s.label, e.jsx(u, {
+                sx: {
+                  fontSize: 20
+                }
+              })]
+            })]
+          }), e.jsx(n, {
+            component: "img",
+            src: M("cta-team"),
+            alt: "",
+            loading: "lazy",
+            sx: {
+              display: {
+                xs: "none",
+                md: "block"
+              },
+              width: "100%",
+              height: "auto",
+              aspectRatio: X("cta-team")
+            }
+          })]
+        })
+      })
+    })
+  });
+}
+const de = {
+  width: 56,
+  height: 56,
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  borderRadius: "50%",
+  textDecoration: "none",
+  transition: "background-color 150ms, transform 150ms",
+  "&:active": {
+    transform: "scale(0.95)"
+  }
+};
+function qn() {
+  const s = N(),
+    l = s.to !== "/signup",
+    [r, d] = R.useState(null),
+    c = Pe();
+  return e.jsxs(n, {
+    sx: {
+      position: "fixed",
+      right: 16,
+      bottom: "calc(16px + env(safe-area-inset-bottom, 0px))",
+      zIndex: 40,
+      display: {
+        xs: "flex",
+        md: "none"
+      },
+      flexDirection: "column",
+      alignItems: "flex-end",
+      gap: 2
+    },
+    children: [e.jsx(n, {
+      ...(l ? {
+        component: f,
+        to: s.to
+      } : {
+        component: "button",
+        type: "button",
+        onClick: () => d("login")
+      }),
+      "aria-label": l ? "내 업무함" : "로그인",
+      sx: {
+        border: "none",
+        cursor: "pointer",
+        ...de,
+        bgcolor: i[600],
+        color: "#fff",
+        boxShadow: "0 12px 28px rgba(29, 78, 216, 0.4)",
+        "&:hover": {
+          bgcolor: i[700]
+        }
+      },
+      children: e.jsx(Je, {
+        sx: {
+          fontSize: 28
+        }
+      })
+    }), e.jsx(n, {
+      component: "button",
+      type: "button",
+      onClick: () => c.open(),
+      "aria-label": "상담신청",
+      sx: {
+        cursor: "pointer",
+        ...de,
+        bgcolor: "#fff",
+        color: i[900],
+        border: `1px solid ${t[200]}`,
+        boxShadow: "0 10px 24px rgba(15, 42, 92, 0.18)",
+        "&:hover": {
+          bgcolor: t[50]
+        }
+      },
+      children: e.jsx(Ye, {
+        sx: {
+          fontSize: 26,
+          color: i[600]
+        }
+      })
+    }), e.jsx(Ue, {
+      kind: r,
+      onClose: () => d(null)
+    }), e.jsx(Ke, {
+      open: c.isOpen,
+      onClose: c.close,
+      title: "상담신청",
+      children: e.jsx(Ve, {
+        embedded: !0
+      })
+    })]
+  });
+}
+function vs() {
+  return e.jsxs(n, {
+    sx: {
+      "& section[id]": {
+        scrollMarginTop: 8
+      }
+    },
+    children: [e.jsx(jn, {}), e.jsx(Wn, {}), e.jsx(kn, {}), e.jsx(zn, {}), e.jsx(vn, {}), e.jsx(Hn, {}), e.jsx(Ln, {}), e.jsx(Fn, {}), e.jsx(Xn, {}), e.jsx(Gn, {}), e.jsx(Kn, {}), e.jsx(Vn, {}), e.jsx(qn, {})]
+  });
+}
+export { vs as default };

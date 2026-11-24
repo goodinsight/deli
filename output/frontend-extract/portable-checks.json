@@ -1,0 +1,21 @@
+{
+  "checks": [
+    {
+      "file": "index.js",
+      "parsed": true
+    },
+    {
+      "file": "InlineErrorAlert.jsx",
+      "parsed": true
+    },
+    {
+      "file": "OptionToggleGroup.jsx",
+      "parsed": true
+    },
+    {
+      "file": "ToneChip.jsx",
+      "parsed": true
+    }
+  ],
+  "runtimeTested": false
+}

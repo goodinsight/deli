@@ -1,0 +1,63 @@
+import { bT as p } from "../js.d/main-Cm9wS5wt.js";
+function m(n) {
+  const a = [];
+  for (const t of Array.from(document.styleSheets)) {
+    let o = !1;
+    try {
+      o = Array.from(t.cssRules).some(i => i instanceof CSSFontFaceRule && i.style.getPropertyValue("font-family").includes(n));
+    } catch {
+      continue;
+    }
+    if (o) if (t.href) a.push(`<link rel="stylesheet" href="${t.href.replace(/"/g, "&quot;")}">`);else {
+      const i = t.ownerNode?.textContent ?? "";
+      a.push(`<style>${i.replace(/<\/style/gi, "<\\/style")}</style>`);
+    }
+  }
+  return a.join("");
+}
+async function u(n, a) {
+  const t = n.body.textContent ?? "";
+  await Promise.all([400, 500, 600, 700].map(o => n.fonts.load(`${o} 12px '${a}'`, t).catch(() => {}))), await n.fonts.ready;
+}
+async function g(n, a) {
+  const {
+      pageWidth: t,
+      pageHeight: o,
+      fontFamily: i
+    } = a,
+    e = document.createElement("iframe");
+  e.setAttribute("aria-hidden", "true"), Object.assign(e.style, {
+    position: "fixed",
+    top: "0",
+    left: "-99999px",
+    width: `${t}pt`,
+    height: `${o}pt`,
+    border: "0",
+    opacity: "0",
+    pointerEvents: "none"
+  });
+  const d = n.map(c => `<div class="page">${c}</div>`).join(""),
+    f = `<!doctype html><html><head><meta charset="utf-8">${m(i)}<style>
+        @page { size: ${t}pt ${o}pt; margin: 0; }
+        html, body { margin: 0 !important; padding: 0 !important; background: #ffffff !important; overflow: visible !important; height: auto !important; }
+        .page { width: ${t}pt; height: ${o}pt; overflow: hidden; break-after: page; display: flex; align-items: center; justify-content: center; }
+        .page:last-child { break-after: auto; }
+        .page > svg { width: 100%; height: 100%; display: block; }
+        * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    </style></head><body>${d}</body></html>`,
+    s = () => e.remove();
+  await new Promise((c, h) => {
+    e.onload = () => c(), e.onerror = () => h(new Error(p("utils.printPrepareFailed"))), document.body.appendChild(e), e.srcdoc = f;
+  });
+  const r = e.contentWindow,
+    l = e.contentDocument;
+  if (!r || !l) throw s(), new Error(p("utils.printPrepareFailed"));
+  await u(l, i), r.addEventListener("afterprint", s, {
+    once: !0
+  }), window.setTimeout(() => {
+    document.body.contains(e) && s();
+  }, 6e4), window.setTimeout(() => {
+    r.focus(), r.print();
+  }, 100);
+}
+export { g as p };

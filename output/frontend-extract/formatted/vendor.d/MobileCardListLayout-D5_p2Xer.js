@@ -1,0 +1,256 @@
+import { j as s, r as a } from "./react-CjxcGQav.js";
+import { hF as m, bF as b, B as r, bQ as y, lo as g, lp as f, K as c, d7 as u, d6 as p, lq as M, lr as E } from "../js.d/main-Cm9wS5wt.js";
+import { u as j } from "./mobileSearchOverlay-DYWcMOOb.js";
+function w() {
+  const t = m();
+  return `calc(100vw - ${(b(t.breakpoints.up("md")) ? 24 : 16) * 2}px)`;
+}
+const A = "100%",
+  x = 56,
+  L = {
+    "& .list-layout-header-row": {
+      minWidth: 0,
+      columnGap: "0px"
+    },
+    "& .list-layout-header": {
+      px: 2
+    },
+    "& .list-layout-filter-row": {
+      marginTop: 0
+    }
+  };
+function S({
+  open: t,
+  onClose: e
+}) {
+  return s.jsx(r, {
+    onClick: e,
+    onTouchMove: n => n.preventDefault(),
+    onWheel: n => n.preventDefault(),
+    sx: {
+      position: "fixed",
+      top: `${x}px`,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      zIndex: 20,
+      backgroundColor: "rgba(15,23,42,0.32)",
+      touchAction: "none",
+      overscrollBehavior: "contain",
+      transition: "opacity 200ms ease",
+      opacity: t ? 1 : 0,
+      pointerEvents: t ? "auto" : "none"
+    }
+  });
+}
+function v(t, e) {
+  return t.type === "custom" ? s.jsx(a.Fragment, {
+    children: t.node
+  }, t.name || e) : t.type === "button" ? s.jsx(y, {
+    variant: t.variant ?? "outlined",
+    size: "small",
+    onClick: t.onClick,
+    sx: {
+      height: 40,
+      ...t.sx
+    },
+    children: t.title || t.name
+  }, t.name || e) : s.jsx(g, {
+    ...t
+  }, t.name || e);
+}
+function B(t, e) {
+  const n = t.flatMap(o => o.filters);
+  return [{
+    row: 1,
+    filters: [{
+      type: "custom",
+      name: `${e}-static-filters`,
+      node: s.jsx(r, {
+        sx: {
+          width: "100%",
+          pt: 2,
+          display: "flex",
+          flexWrap: "wrap",
+          alignItems: "center",
+          gap: 2
+        },
+        children: n.map(v)
+      })
+    }]
+  }];
+}
+const C = 30;
+function k() {
+  return f() ? null : s.jsx(r, {
+    sx: {
+      position: "fixed",
+      top: `calc(50% + ${C}px)`,
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      zIndex: 1
+    },
+    children: s.jsx(c, {
+      size: 44,
+      thickness: 4,
+      sx: {
+        color: "#94a3b8"
+      }
+    })
+  });
+}
+function R({
+  py: t = 6,
+  contentHeight: e = 21
+} = {}) {
+  return f() ? null : s.jsx(r, {
+    sx: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      py: t,
+      px: 2,
+      height: e,
+      boxSizing: "content-box"
+    },
+    children: s.jsx(c, {
+      size: 21
+    })
+  });
+}
+function $(t) {
+  const e = a.useRef(!1),
+    n = a.useRef(!1),
+    [, o] = a.useState(0);
+  return t ? e.current = !0 : e.current && (n.current = !0), a.useEffect(() => {
+    if (n.current) return;
+    const i = window.setTimeout(() => {
+      !e.current && !n.current && (n.current = !0, o(l => l + 1));
+    }, 800);
+    return () => window.clearTimeout(i);
+  }, []), n.current;
+}
+function z() {
+  return s.jsx(r, {
+    sx: {
+      py: 2,
+      display: "flex",
+      justifyContent: "center"
+    },
+    children: s.jsx(c, {
+      size: 24,
+      thickness: 4,
+      sx: {
+        color: "#94a3b8"
+      }
+    })
+  });
+}
+const _ = {
+    xs: 2,
+    md: 3
+  },
+  D = _;
+function G(t) {
+  let e = t?.parentElement ?? null;
+  for (; e;) {
+    const {
+      overflowY: n
+    } = window.getComputedStyle(e);
+    if ((n === "auto" || n === "scroll") && e.scrollHeight > e.clientHeight) return e;
+    e = e.parentElement;
+  }
+  return null;
+}
+function H({
+  header: t,
+  searchOverlayOpen: e,
+  storageKey: n,
+  children: o,
+  inDialog: i = !1
+}) {
+  const l = w(),
+    d = i ? "100%" : `calc(${l} / var(--mfd-font-scale, 1))`,
+    h = j();
+  return s.jsxs(r, {
+    "data-search-open": e ? "true" : "false",
+    sx: {
+      position: "relative",
+      width: d,
+      maxWidth: d,
+      minWidth: 0,
+      userSelect: "none",
+      "& .list-layout": {
+        position: "relative",
+        width: "100%",
+        maxWidth: "100%",
+        minWidth: 0,
+        height: "auto"
+      },
+      "& .list-layout-header-left": {
+        minWidth: 0
+      },
+      "& .list-layout-filters": {
+        flexBasis: "100%",
+        minWidth: 0,
+        maxWidth: "100%"
+      },
+      "& .list-layout-filters > *": {
+        flexWrap: "wrap",
+        minWidth: 0,
+        maxWidth: "100%"
+      },
+      ...L,
+      "& .list-layout-header": {
+        borderRadius: 0,
+        position: "fixed",
+        top: `${x}px`,
+        left: 0,
+        right: 0,
+        zIndex: 30,
+        boxShadow: "0 8px 24px rgba(15,23,42,0.14)",
+        transition: "opacity 200ms ease, transform 200ms ease"
+      },
+      '&[data-search-open="false"] .list-layout-header': {
+        opacity: 0,
+        transform: "translateY(-8px)",
+        pointerEvents: "none"
+      },
+      '&[data-search-open="true"] .list-layout-header': {
+        opacity: 1,
+        transform: "translateY(0)",
+        pointerEvents: "auto"
+      }
+    },
+    children: [s.jsx(S, {
+      open: e,
+      onClose: () => h.setValue("open", !1)
+    }), s.jsx(E, {
+      header: t,
+      leftPaper: !1,
+      leftScroll: !1,
+      storageKey: n,
+      leftPanel: o
+    })]
+  });
+}
+function T({
+  children: t,
+  attachHead: e = !1
+}) {
+  return s.jsx(r, {
+    sx: {
+      mx: `-${u}px`,
+      mt: e ? `-${u}px` : `calc(${p} - ${u}px)`,
+      "& > .stack-contents-layout > .MuiPaper-root": {
+        borderRadius: 0,
+        boxShadow: "none"
+      }
+    },
+    children: s.jsx(M, {
+      gap: p,
+      children: t
+    })
+  });
+}
+export { D as C, k as M, R as a, T as b, _ as c, B as d, H as e, A as f, G as g, z as h, L as m, $ as u };

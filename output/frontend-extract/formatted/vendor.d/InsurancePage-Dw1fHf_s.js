@@ -1,0 +1,1062 @@
+import { r as u, j as s, l as Ge } from "./react-CjxcGQav.js";
+import { bM as ee, bT as k, e as He, c8 as $e, ak as Qe, dv as Le, cL as Je, bv as le, fL as Xe, D as Oe, c4 as Ze, L as T, B as i, cY as et, cm as tt, ca as nt, cn as st, cI as rt, bQ as H, K as Ae, cO as at, cz as ot, bO as te, c2 as it, s as ie, lr as be, z as lt, bx as Se } from "../js.d/main-Cm9wS5wt.js";
+import { O as ct } from "./OptionToggleGroup-Cvm2wRyq.js";
+import { E as dt, a as ut } from "./EdgeTabs-Ccbggjn6.js";
+import { u as mt } from "./mobileSearchOverlay-DYWcMOOb.js";
+import { I as M, a as pt, p as ht, b as ne, c as we, T as $, d as je, e as qe } from "./insurance-CLCwXZrk.js";
+import { t as ft, i as gt, p as yt } from "./formInput-KrHl7zSm.js";
+import { E as se } from "./types-CVhETUvu.js";
+import { I as xt } from "./InlineErrorAlert-D9ICJPt7.js";
+import { u as _t, a as bt, b as St } from "./MobileCardListLayout-D5_p2Xer.js";
+import { T as ve } from "./tableScrollbars-C9bhlJjO.js";
+import { u as Ce } from "./useColumnWidths-DSAca5rC.js";
+import { c as wt } from "./orgTree-Dh5HFjBo.js";
+import { r as Ee } from "./rowNoColumn-B_tyJFB_.js";
+import { w as ke } from "./headerCount-4t1ZKu-L.js";
+import { u as Te } from "./useClientSort-CdwrAOWp.js";
+import "./stylis-DdLD6a3t.js";
+import "./i18nLabels-BNTLL7cu.js";
+import "./profileApi-Btafs-pM.js";
+const re = "/v1/hr/insurance";
+function ae(t, n) {
+  if (!t || t.ok === !1) throw new Error(t?.message || n);
+  return t.data;
+}
+function E(t) {
+  return typeof t == "string" ? t : t == null ? "" : String(t);
+}
+function R(t) {
+  const n = Number(t ?? 0);
+  return Number.isFinite(n) ? n : 0;
+}
+function Y(t) {
+  return t === !0 || t === 1 || t === "1" || t === "true";
+}
+function S(t) {
+  const n = E(t).slice(0, 10);
+  return /^\d{4}-\d{2}-\d{2}$/.test(n) && n !== "0000-00-00" ? n : "";
+}
+function Me(t) {
+  const n = t ?? {};
+  return {
+    seq: R(n.seq),
+    name: E(n.name),
+    unit_seq: R(n.unit_seq),
+    position: E(n.position),
+    employment_type: E(n.employment_type) || "regular",
+    status: E(n.status) || "active",
+    join_date: S(n.join_date),
+    resign_date: S(n.resign_date)
+  };
+}
+function jt(t) {
+  const n = t ?? {};
+  return {
+    seq: R(n.seq),
+    pension: Y(n.pension),
+    health: Y(n.health),
+    employment: Y(n.employment),
+    accident: Y(n.accident),
+    monthly_wage: R(n.monthly_wage),
+    acquired_date: S(n.acquired_date),
+    lost_date: S(n.lost_date),
+    acquire_reported_date: S(n.acquire_reported_date),
+    lose_reported_date: S(n.lose_reported_date),
+    memo: E(n.memo)
+  };
+}
+function qt(t) {
+  const n = t ?? {},
+    c = Array.isArray(n.insurances) ? n.insurances : [];
+  return {
+    employee: Me(n.employee),
+    kind: n.kind === "lose" ? "lose" : "acquire",
+    event_date: S(n.event_date),
+    deadline: S(n.deadline),
+    days_left: R(n.days_left),
+    insurances: c.filter(o => M.includes(o))
+  };
+}
+const V = {
+    list: async () => {
+      const t = await ee.http.get(re),
+        n = ae(t, k("hr.errLoadInsurance"));
+      return {
+        today: S(n.today),
+        rows: (n.rows ?? []).map(c => ({
+          employee: Me(c.employee),
+          insurance: jt(c.insurance)
+        })),
+        tasks: (n.tasks ?? []).map(qt)
+      };
+    },
+    update: async (t, n) => {
+      const c = await ee.http.put(`${re}/${t}`, n);
+      ae(c, k("hr.errSaveInsurance"));
+    },
+    report: async (t, n) => {
+      const c = await ee.http.post(`${re}/report`, {
+        items: t,
+        ...(n ? {
+          reported_date: n
+        } : {})
+      });
+      return R(ae(c, k("hr.errSaveReportDone")).done);
+    }
+  },
+  vt = {
+    seq: 0,
+    pension: !1,
+    health: !1,
+    employment: !1,
+    accident: !1,
+    monthly_wage: "",
+    acquired_date: "",
+    lost_date: "",
+    acquire_reported_date: "",
+    lose_reported_date: "",
+    memo: ""
+  },
+  Ct = {
+    row: null,
+    saving: !1,
+    error: ""
+  },
+  Et = ["acquired_date", "acquire_reported_date", "lost_date", "lose_reported_date"];
+function kt({
+  onSaved: t
+}) {
+  const n = u.useRef(t);
+  n.current = t;
+  const c = u.useRef(null),
+    o = {
+      form: He({
+        modalId: "hr-insurance-edit-dialog"
+      })
+    },
+    p = $e({
+      stateId: "hr-insurance-ui",
+      initialValues: Ct
+    }),
+    h = Qe({
+      formId: "hr-insurance-form",
+      initialValues: vt,
+      onValidate: l => Et.some(a => gt(l[a])) ? (p.setValue("error", yt()), !1) : l.lost_date && l.acquired_date && l.lost_date < l.acquired_date ? (p.setValue("error", k("hr.insuranceErrDates")), !1) : !0,
+      onSubmit: async l => {
+        const a = p.getValue("row");
+        if (!a) return !1;
+        p.setValues({
+          saving: !0,
+          error: ""
+        });
+        try {
+          const {
+            seq: x,
+            ...g
+          } = l;
+          return await V.update(a.employee.seq, {
+            ...g,
+            monthly_wage: ft(g.monthly_wage)
+          }), n.current(), o.form.close(), !0;
+        } catch (x) {
+          return p.setValues({
+            saving: !1,
+            error: x instanceof Error ? x.message : k("hr.errSaveInsurance")
+          }), !1;
+        }
+      }
+    }),
+    y = l => {
+      const a = {
+        ...l.insurance,
+        monthly_wage: l.insurance.monthly_wage || ""
+      };
+      h.setFormValues(a), c.current = a, p.setValues({
+        row: l,
+        saving: !1,
+        error: ""
+      }), o.form.open();
+    };
+  return Le(["hr_insurance"], l => {
+    const a = p.getValue("row");
+    !a || !o.form.isOpen || !l.changes.some(g => g.employee_seq === a.employee.seq || g.action === "bulk") && !l.resync || V.list().then(g => {
+      if (p.getValue("row")?.employee.seq !== a.employee.seq || !o.form.isOpen) return;
+      const f = g.rows.find(Q => Q.employee.seq === a.employee.seq);
+      if (!f) return;
+      const I = h.getFormValues(),
+        L = {
+          ...f.insurance,
+          monthly_wage: f.insurance.monthly_wage || ""
+        },
+        {
+          patch: j,
+          baseline: q
+        } = Je(I, c.current ?? I, L);
+      c.current = q, Object.keys(j).length > 0 && h.setFormValues(j), p.setValue("row", f);
+    }).catch(() => {});
+  }, {
+    enabled: o.form.isOpen
+  }), {
+    form: h,
+    modals: o,
+    ui: p,
+    openEdit: y
+  };
+}
+function G(t) {
+  return s.jsx(at, {
+    form: t.form,
+    name: t.name,
+    label: t.label,
+    disabled: t.disabled,
+    readonlyInput: !0,
+    fullWidth: !0,
+    slotProps: {
+      inputLabel: {
+        shrink: !0
+      }
+    }
+  });
+}
+function Tt({
+  controller: t
+}) {
+  const n = le(),
+    c = Xe("hr"),
+    {
+      form: o,
+      modals: p,
+      ui: h
+    } = t,
+    y = Oe(),
+    l = h.useValue("row"),
+    a = !!h.useValue("saving"),
+    x = String(h.useValue("error") ?? ""),
+    g = Number(o.useFormValue("seq")) || 0,
+    F = [{
+      id: "insurance-edit",
+      showTitle: !1,
+      children: l ? s.jsxs(Ze, {
+        spacing: 2.5,
+        children: [g === 0 && s.jsx(T, {
+          sx: {
+            fontSize: 14,
+            color: "text.secondary"
+          },
+          children: n("hr.insuranceDefaultsNote")
+        }), s.jsxs(i, {
+          children: [s.jsx(T, {
+            sx: {
+              fontSize: 14,
+              color: "text.secondary",
+              mb: .5
+            },
+            children: n("hr.insuranceEnrolled")
+          }), s.jsx(i, {
+            sx: {
+              display: "grid",
+              gridTemplateColumns: "repeat(2, minmax(0, 1fr))"
+            },
+            children: M.map(f => s.jsx(et, {
+              form: o,
+              name: f,
+              label: pt[f],
+              disabled: a
+            }, f))
+          }), s.jsx(T, {
+            sx: {
+              fontSize: 13,
+              color: "text.secondary",
+              mt: .5
+            },
+            children: n("hr.insuranceExclusionNote")
+          })]
+        }), s.jsx(tt, {
+          form: o,
+          name: "monthly_wage",
+          label: n("hr.insuranceMonthlyWageKrw"),
+          placeholder: n("hr.insuranceMonthlyWagePlaceholder"),
+          min: 0,
+          decimalLength: 0,
+          textAlign: "left",
+          disabled: a,
+          fullWidth: !0
+        }), s.jsxs(i, {
+          sx: {
+            display: "grid",
+            gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+            gap: nt
+          },
+          children: [s.jsx(G, {
+            form: o,
+            name: "acquired_date",
+            label: n("hr.insuranceAcquiredDateFull"),
+            disabled: a
+          }), s.jsx(G, {
+            form: o,
+            name: "acquire_reported_date",
+            label: n("hr.insuranceAcquireReported"),
+            disabled: a
+          }), s.jsx(G, {
+            form: o,
+            name: "lost_date",
+            label: n("hr.insuranceLostDateFull"),
+            disabled: a
+          }), s.jsx(G, {
+            form: o,
+            name: "lose_reported_date",
+            label: n("hr.insuranceLoseReported"),
+            disabled: a
+          })]
+        }), s.jsx(st, {
+          form: o,
+          name: "memo",
+          label: n("hr.employeeMemo"),
+          placeholder: n("hr.insuranceMemoPlaceholder"),
+          minRows: 2,
+          disabled: a,
+          slotProps: {
+            htmlInput: {
+              maxLength: 500
+            }
+          },
+          fullWidth: !0
+        }), x && s.jsx(xt, {
+          message: x
+        })]
+      }) : null
+    }];
+  return s.jsx(rt, {
+    readOnly: !c.canWrite,
+    open: p.form.isOpen,
+    onClose: p.form.close,
+    title: l ? n("hr.insuranceTitleOf", {
+      name: l.employee.name
+    }) : n("hr.insuranceTitle"),
+    width: "600px",
+    fullScreen: y,
+    mobilePresentation: y ? "slide" : "dialog",
+    draggable: !0,
+    backdropClick: !1,
+    titleIcons: {
+      delete: {
+        visible: !1
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !0,
+      right: s.jsx(H, {
+        style: c.canWrite ? void 0 : {
+          display: "none"
+        },
+        variant: "contained",
+        onClick: () => {
+          o.submit();
+        },
+        disabled: a || !l,
+        sx: {
+          minWidth: 80
+        },
+        children: a ? s.jsx(Ae, {
+          size: 20,
+          color: "inherit"
+        }) : n("hr.save")
+      })
+    },
+    sections: F
+  });
+}
+const Re = 48,
+  Rt = "#9b9a97";
+function It({
+  on: t
+}) {
+  return t ? s.jsx(i, {
+    component: "span",
+    sx: {
+      color: "primary.main",
+      fontSize: 16,
+      lineHeight: 1
+    },
+    children: "●"
+  }) : s.jsx(i, {
+    component: "span",
+    sx: {
+      color: ie[300]
+    },
+    children: "–"
+  });
+}
+function Ie({
+  kind: t
+}) {
+  const n = t === "lose";
+  return s.jsx(i, {
+    component: "span",
+    sx: {
+      px: 1,
+      py: .25,
+      borderRadius: 1,
+      fontSize: 12,
+      fontWeight: 600,
+      color: n ? "#b45309" : "#1d4ed8",
+      bgcolor: n ? "#fef3c7" : "#dbeafe",
+      whiteSpace: "nowrap"
+    },
+    children: $[t]
+  });
+}
+function oe({
+  tab: t,
+  searching: n
+}) {
+  const c = le(),
+    o = c(n ? "hr.employeeNoneFound" : t === "tasks" ? "hr.insuranceNoTasks" : "hr.employeeNoneRegistered");
+  return s.jsx(i, {
+    sx: {
+      py: 6,
+      px: 2,
+      textAlign: "center",
+      color: Rt,
+      fontSize: 14,
+      wordBreak: "keep-all"
+    },
+    children: o
+  });
+}
+function Jt() {
+  const t = le(),
+    n = Ce("hr.insurance.tasks"),
+    c = Ce("hr.insurance.status"),
+    o = Oe(),
+    h = ot()?.seq ?? 0,
+    [y, l] = u.useState([]),
+    [a, x] = u.useState([]),
+    [g, F] = u.useState([]),
+    [f, I] = u.useState(!1),
+    [L, j] = u.useState(""),
+    [q, Q] = u.useState([]),
+    [N, Ve] = u.useState([]),
+    [D, Fe] = u.useState([]),
+    [B, Ne] = u.useState([]),
+    [v, P] = u.useState(""),
+    O = mt(),
+    J = !!O.useValue("open");
+  u.useEffect(() => {
+    if (o) return O.setValue("active", !0), () => {
+      O.setValue("active", !1), O.setValue("open", !1);
+    };
+  }, [o, O]), u.useEffect(() => {
+    o && !J && j("");
+  }, [o, J]);
+  const [De, ce] = Ge(),
+    _ = ht(De.get(ne)),
+    de = u.useCallback(e => {
+      ce(r => {
+        const m = new URLSearchParams(r);
+        return e === "tasks" ? m.set(ne, e) : m.delete(ne), m;
+      }, {
+        replace: !0
+      });
+    }, [ce]),
+    C = u.useCallback(async (e = !1) => {
+      if (!h) {
+        l([]), x([]);
+        return;
+      }
+      e || I(!0);
+      try {
+        const r = await V.list();
+        l(r.rows), x(r.tasks);
+      } catch (r) {
+        e || te(r instanceof Error ? r.message : k("hr.errLoadInsurance"));
+      } finally {
+        I(!1);
+      }
+    }, [h]);
+  u.useEffect(() => {
+    C();
+  }, [C]), Le(["hr_insurance", "employee"], () => {
+    C(!0);
+  });
+  const Be = wt();
+  u.useEffect(() => {
+    if (!h) return;
+    let e = !0;
+    return it.getTree(h).then(r => {
+      e && F(r.units ?? []);
+    }).catch(() => {}), () => {
+      e = !1;
+    };
+  }, [h, Be]);
+  const A = u.useMemo(() => {
+      const e = new Map();
+      for (const r of g) e.set(r.seq, r.name);
+      return e;
+    }, [g]),
+    b = L.trim(),
+    ue = u.useMemo(() => [...y.filter(r => (!b || r.employee.name.includes(b)) && (q.length === 0 || q.includes(String(r.employee.unit_seq))) && (N.length === 0 || N.includes(r.employee.employment_type)))].sort((r, m) => {
+      const d = r.employee.status === "resigned" ? 1 : 0,
+        Z = m.employee.status === "resigned" ? 1 : 0;
+      return d - Z || r.employee.name.localeCompare(m.employee.name, "ko");
+    }), [y, b, q, N]),
+    w = u.useMemo(() => a.filter(e => (!b || e.employee.name.includes(b)) && (D.length === 0 || D.includes(e.kind)) && (B.length === 0 || B.includes(String(e.employee.unit_seq)))), [a, b, D, B]),
+    {
+      rows: z,
+      tableSort: Pe
+    } = Te(ue, {
+      name: e => e.employee.name,
+      unit: e => A.get(e.employee.unit_seq) ?? "",
+      employment_type: e => se[e.employee.employment_type] ?? "",
+      ...Object.fromEntries(M.map(e => [e, r => r.insurance[e]])),
+      acquired_date: e => e.insurance.acquired_date,
+      lost_date: e => e.insurance.lost_date,
+      monthly_wage: e => e.insurance.monthly_wage
+    }),
+    {
+      rows: W,
+      tableSort: ze
+    } = Te(w, {
+      kind: e => $[e.kind],
+      name: e => e.employee.name,
+      unit: e => A.get(e.employee.unit_seq) ?? "",
+      insurances: e => e.insurances.length
+    }),
+    me = e => [...new Set(e)].map(r => ({
+      value: String(r),
+      label: A.get(r) ?? t("hr.employeeNotAssigned")
+    })),
+    pe = kt({
+      onSaved: () => {
+        C();
+      }
+    }),
+    K = e => {
+      const r = y.find(m => m.employee.seq === e);
+      r && pe.openEdit(r);
+    },
+    U = e => `${e.employee.seq}-${e.kind}`,
+    We = async e => {
+      if (!v) {
+        P(U(e));
+        try {
+          await V.report([{
+            employee_seq: e.employee.seq,
+            kind: e.kind
+          }]), Se({
+            message: t("hr.insuranceMarkedDone", {
+              name: e.employee.name,
+              kind: $[e.kind]
+            }),
+            delay: 500
+          }), await C();
+        } catch (r) {
+          te(r instanceof Error ? r.message : t("hr.errSaveReportDone"));
+        } finally {
+          P("");
+        }
+      }
+    },
+    he = async () => {
+      if (!(w.length === 0 || v || !(await lt({
+        message: t("hr.insuranceMarkAllMessage", {
+          count: w.length
+        }),
+        confirmText: t("hr.insuranceMarkDone")
+      })))) {
+        P("all");
+        try {
+          const r = await V.report(w.map(m => ({
+            employee_seq: m.employee.seq,
+            kind: m.kind
+          })));
+          Se({
+            message: t("hr.insuranceMarkedN", {
+              count: r
+            }),
+            delay: 500
+          }), await C();
+        } catch (r) {
+          te(r instanceof Error ? r.message : t("hr.errSaveReportDone"));
+        } finally {
+          P("");
+        }
+      }
+    },
+    fe = [{
+      value: "status",
+      label: t("hr.insuranceTabStatus")
+    }, {
+      value: "tasks",
+      label: a.length ? t("hr.insuranceTasksN", {
+        count: a.length
+      }) : t("hr.insuranceTabTasks")
+    }],
+    Ke = s.jsx(i, {
+      sx: {
+        "& .MuiToggleButtonGroup-root": {
+          height: 40,
+          flexWrap: "nowrap"
+        }
+      },
+      children: s.jsx(ct, {
+        size: "medium",
+        value: _,
+        onChange: e => {
+          e && de(e);
+        },
+        options: fe,
+        sx: {
+          "& .MuiToggleButtonGroup-grouped": {
+            minWidth: 88,
+            px: 1.5
+          }
+        }
+      })
+    }),
+    ge = e => s.jsx(H, {
+      size: "small",
+      variant: "outlined",
+      disabled: !!v,
+      onClick: r => {
+        r.stopPropagation(), We(e);
+      },
+      sx: {
+        minWidth: 64,
+        whiteSpace: "nowrap"
+      },
+      children: v === U(e) ? s.jsx(Ae, {
+        size: 16
+      }) : t("hr.subsidyStatusCompleted")
+    }),
+    ye = s.jsx(Tt, {
+      controller: pe
+    }),
+    X = e => e.map(r => we[r]).join("·"),
+    xe = _t(f);
+  if (o) {
+    const e = d => s.jsxs(i, {
+        role: "button",
+        tabIndex: 0,
+        onClick: () => K(d.employee.seq),
+        sx: {
+          p: 1.5,
+          cursor: "pointer",
+          userSelect: "none",
+          "&:active": {
+            bgcolor: "#f8f8f7"
+          }
+        },
+        children: [s.jsxs(i, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: .75
+          },
+          children: [s.jsx(T, {
+            sx: {
+              fontSize: 15,
+              fontWeight: 600
+            },
+            children: d.employee.name
+          }), d.employee.status === "resigned" && s.jsx(T, {
+            sx: {
+              fontSize: 14,
+              color: ie[500]
+            },
+            children: t("hr.employeeStatusResigned")
+          })]
+        }), s.jsxs(i, {
+          sx: {
+            display: "flex",
+            gap: 1.25,
+            fontSize: 14,
+            color: "text.secondary",
+            mt: .5,
+            flexWrap: "wrap"
+          },
+          children: [s.jsx("span", {
+            children: X(M.filter(Z => d.insurance[Z])) || t("hr.insuranceNone")
+          }), d.insurance.acquired_date ? s.jsx("span", {
+            children: t("hr.insuranceAcquiredOn", {
+              date: d.insurance.acquired_date
+            })
+          }) : null, d.insurance.lost_date ? s.jsx("span", {
+            children: t("hr.insuranceLostOn", {
+              date: d.insurance.lost_date
+            })
+          }) : null]
+        })]
+      }, d.employee.seq),
+      r = d => s.jsxs(i, {
+        role: "button",
+        tabIndex: 0,
+        onClick: () => K(d.employee.seq),
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: 1,
+          p: 1.5,
+          cursor: "pointer",
+          "&:active": {
+            bgcolor: "#f8f8f7"
+          }
+        },
+        children: [s.jsxs(i, {
+          sx: {
+            flex: 1,
+            minWidth: 0
+          },
+          children: [s.jsxs(i, {
+            sx: {
+              display: "flex",
+              alignItems: "center",
+              gap: .75
+            },
+            children: [s.jsx(Ie, {
+              kind: d.kind
+            }), s.jsx(T, {
+              sx: {
+                fontSize: 15,
+                fontWeight: 600
+              },
+              children: d.employee.name
+            })]
+          }), s.jsxs(i, {
+            sx: {
+              display: "flex",
+              gap: 1.25,
+              fontSize: 14,
+              mt: .5,
+              flexWrap: "wrap"
+            },
+            children: [s.jsx(i, {
+              component: "span",
+              sx: {
+                color: qe(d.days_left),
+                fontWeight: 600
+              },
+              children: je(d.days_left)
+            }), s.jsx(i, {
+              component: "span",
+              sx: {
+                color: "text.secondary"
+              },
+              children: t("hr.insuranceDeadlineOn", {
+                date: d.deadline
+              })
+            }), s.jsx(i, {
+              component: "span",
+              sx: {
+                color: "text.secondary"
+              },
+              children: X(d.insurances)
+            })]
+          })]
+        }), ge(d)]
+      }, U(d)),
+      m = [];
+    return _ === "tasks" && w.length > 1 && m.push(s.jsx(i, {
+      sx: {
+        display: "flex",
+        justifyContent: "flex-end",
+        p: 1.5
+      },
+      children: s.jsx(H, {
+        size: "small",
+        variant: "outlined",
+        onClick: () => {
+          he();
+        },
+        disabled: !!v,
+        sx: {
+          whiteSpace: "nowrap"
+        },
+        children: t("hr.insuranceAllDone")
+      })
+    }, "head")), m.push(...(_ === "tasks" ? W.map(r) : z.map(e))), xe && (_ === "tasks" ? w.length === 0 : ue.length === 0) && m.push(s.jsx(oe, {
+      tab: _,
+      searching: !!b
+    }, "empty")), xe || m.push(s.jsx(bt, {}, "loading")), s.jsxs(s.Fragment, {
+      children: [s.jsx(dt, {
+        value: _,
+        options: fe,
+        onChange: de,
+        ariaLabel: t("hr.insuranceView"),
+        above: s.jsx(ut, {
+          open: J,
+          value: L,
+          onChange: j,
+          placeholder: t("hr.employeeSearchName")
+        })
+      }), s.jsx(St, {
+        attachHead: !0,
+        children: m
+      }), ye]
+    });
+  }
+  const Ue = [Ee(), {
+      id: "name",
+      text: ke(t("hr.name"), z.length),
+      sortable: !0,
+      style: {
+        fontSize: 15
+      },
+      render: e => s.jsxs(i, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: .75,
+          minWidth: 0
+        },
+        children: [s.jsx(i, {
+          component: "span",
+          sx: {
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap"
+          },
+          children: e.employee.name
+        }), e.employee.status === "resigned" && s.jsx(i, {
+          component: "span",
+          sx: {
+            fontSize: 12,
+            color: ie[400]
+          },
+          children: t("hr.employeeStatusResigned")
+        }), e.insurance.seq === 0 && s.jsx(i, {
+          component: "span",
+          sx: {
+            fontSize: 12,
+            color: "#d97706"
+          },
+          children: t("hr.insuranceUnverified")
+        })]
+      })
+    }, {
+      id: "unit",
+      text: t("hr.attAdminUnit"),
+      width: 120,
+      align: "center",
+      sortable: !0,
+      filterOptions: me(y.map(e => e.employee.unit_seq)),
+      filterValues: q,
+      onFilterChange: Q,
+      render: e => A.get(e.employee.unit_seq) ?? ""
+    }, {
+      id: "employment_type",
+      text: t("hr.employeeEmploymentType"),
+      width: 96,
+      align: "center",
+      sortable: !0,
+      filterOptions: [...new Set(y.map(e => e.employee.employment_type))].map(e => ({
+        value: e,
+        label: se[e] ?? e
+      })),
+      filterValues: N,
+      onFilterChange: Ve,
+      render: e => se[e.employee.employment_type] ?? ""
+    }, ...M.map(e => ({
+      id: e,
+      text: we[e],
+      width: 64,
+      align: "center",
+      sortable: !0,
+      render: r => s.jsx(It, {
+        on: r.insurance[e]
+      })
+    })), {
+      id: "acquired_date",
+      text: t("hr.insuranceAcquiredDate"),
+      width: 112,
+      align: "center",
+      sortable: !0,
+      render: e => e.insurance.acquired_date
+    }, {
+      id: "lost_date",
+      text: t("hr.insuranceLostDate"),
+      width: 112,
+      align: "center",
+      sortable: !0,
+      render: e => e.insurance.lost_date
+    }, {
+      id: "monthly_wage",
+      text: t("hr.insuranceMonthlyWage"),
+      width: 120,
+      align: "right",
+      sortable: !0,
+      render: e => e.insurance.monthly_wage ? e.insurance.monthly_wage.toLocaleString("ko-KR") : ""
+    }],
+    Ye = [Ee(), {
+      id: "kind",
+      text: t("hr.attAdminKind"),
+      width: 96,
+      align: "center",
+      sortable: !0,
+      filterOptions: ["acquire", "lose"].map(e => ({
+        value: e,
+        label: $[e]
+      })),
+      filterValues: D,
+      onFilterChange: Fe,
+      render: e => s.jsx(Ie, {
+        kind: e.kind
+      })
+    }, {
+      id: "name",
+      text: ke(t("hr.name"), W.length),
+      sortable: !0,
+      style: {
+        fontSize: 15
+      },
+      render: e => e.employee.name
+    }, {
+      id: "unit",
+      text: t("hr.attAdminUnit"),
+      width: 120,
+      align: "center",
+      sortable: !0,
+      filterOptions: me(a.map(e => e.employee.unit_seq)),
+      filterValues: B,
+      onFilterChange: Ne,
+      render: e => A.get(e.employee.unit_seq) ?? ""
+    }, {
+      id: "event_date",
+      text: t("hr.insuranceEventDate"),
+      width: 150,
+      align: "center",
+      sortable: !0,
+      render: e => e.kind === "acquire" ? t("hr.insuranceEventAcquire", {
+        date: e.event_date
+      }) : t("hr.insuranceEventLose", {
+        date: e.event_date
+      })
+    }, {
+      id: "deadline",
+      text: t("hr.insuranceDeadline"),
+      width: 112,
+      align: "center",
+      sortable: !0,
+      render: e => e.deadline
+    }, {
+      id: "days_left",
+      text: t("hr.insuranceRemaining"),
+      width: 96,
+      align: "center",
+      sortable: !0,
+      render: e => s.jsx(i, {
+        component: "span",
+        sx: {
+          color: qe(e.days_left),
+          fontWeight: 600
+        },
+        children: je(e.days_left)
+      })
+    }, {
+      id: "insurances",
+      text: t("hr.insuranceTargets"),
+      width: 150,
+      align: "center",
+      sortable: !0,
+      render: e => X(e.insurances)
+    }, {
+      id: "action",
+      text: "",
+      width: 88,
+      align: "center",
+      render: e => ge(e)
+    }],
+    _e = {
+      left: _ === "tasks" && w.length > 1 ? s.jsx(H, {
+        variant: "outlined",
+        onClick: () => {
+          he();
+        },
+        disabled: !!v,
+        children: t("hr.insuranceMarkAllDone")
+      }) : void 0,
+      filter: {
+        stateId: "insurance-filters",
+        showChips: !1,
+        groups: [{
+          filters: [{
+            type: "custom",
+            name: "insurance-tab",
+            node: Ke
+          }]
+        }]
+      },
+      showSearch: !0,
+      searchValue: L,
+      searchPlaceholder: t("hr.employeeSearchName"),
+      onSearchChange: j,
+      searchLoading: f,
+      collapsible: !1,
+      showCollapseButton: !1,
+      showClearIcon: !1
+    };
+  return s.jsxs(s.Fragment, {
+    children: [s.jsx(i, {
+      sx: {
+        position: "relative",
+        height: "100%",
+        minHeight: 0,
+        display: "flex",
+        flexDirection: "column"
+      },
+      children: _ === "tasks" ? s.jsx(be, {
+        header: _e,
+        tableProps: {
+          ...n,
+          scrollbars: ve,
+          mobile: !0,
+          variant: "notion",
+          columns: Ye,
+          data: W,
+          totalCount: W.length,
+          ...ze,
+          getRowId: e => U(e),
+          rowHeight: Re,
+          onRowClick: e => K(e.employee.seq),
+          loading: f,
+          emptyMessage: s.jsx(oe, {
+            tab: _,
+            searching: !!b
+          })
+        }
+      }, "tasks") : s.jsx(be, {
+        header: _e,
+        tableProps: {
+          ...c,
+          scrollbars: ve,
+          mobile: !0,
+          variant: "notion",
+          columns: Ue,
+          data: z,
+          totalCount: z.length,
+          ...Pe,
+          getRowId: e => String(e.employee.seq),
+          rowHeight: Re,
+          onRowClick: e => K(e.employee.seq),
+          loading: f,
+          emptyMessage: s.jsx(oe, {
+            tab: _,
+            searching: !!b
+          })
+        }
+      }, "status")
+    }), ye]
+  });
+}
+export { Jt as default };

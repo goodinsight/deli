@@ -1,0 +1,42 @@
+const e = `{{body}}
+
+Turn on desktop notifications to be alerted even when you're in another window.`,
+  t = "Delete all",
+  o = "Deleted notifications can't be recovered.",
+  n = "Delete all notifications?",
+  a = `If you forget to clock in or out, we'll remind you with a notification in the corner of your screen.
+It appears even when you're in another window.`,
+  i = "Turn on desktop notifications?",
+  l = "Turn on desktop notifications",
+  r = "No new notifications.",
+  s = "Go to my attendance",
+  c = "Later",
+  d = "Mark all read",
+  k = "{{count}} unread notification will be marked as read.",
+  u = "{{count}} unread notifications will be marked as read.",
+  f = "Mark all notifications as read?",
+  y = "Mark read",
+  p = "Deleted",
+  w = "Notifications",
+  m = "Turn on",
+  A = {
+    bodyWithDesktopHint: e,
+    deleteAll: t,
+    deleteAllBody: o,
+    deleteAllTitle: n,
+    desktopAskBody: a,
+    desktopAskTitle: i,
+    desktopTurnOn: l,
+    empty: r,
+    goMyAttendance: s,
+    later: c,
+    markAllRead: d,
+    markAllReadBody_one: k,
+    markAllReadBody_other: u,
+    markAllReadTitle: f,
+    markRead: y,
+    targetDeleted: p,
+    title: w,
+    turnOn: m
+  };
+export { e as bodyWithDesktopHint, A as default, t as deleteAll, o as deleteAllBody, n as deleteAllTitle, a as desktopAskBody, i as desktopAskTitle, l as desktopTurnOn, r as empty, s as goMyAttendance, c as later, d as markAllRead, k as markAllReadBody_one, u as markAllReadBody_other, f as markAllReadTitle, y as markRead, p as targetDeleted, w as title, m as turnOn };

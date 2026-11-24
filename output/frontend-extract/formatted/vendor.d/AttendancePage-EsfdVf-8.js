@@ -1,0 +1,314 @@
+import { j as t } from "./react-CjxcGQav.js";
+import { H as r, S as c } from "./screenShots-CYp-Froz.js";
+import { c as d, B as e, N as l, s as o, O as p, Q as m, R as x, U as u, V as j, X as O, n as h, Y as I, Z as S, $ as g, a0 as f, a1 as T, P as E } from "../js.d/main-Cm9wS5wt.js";
+import { H as b } from "./HowToRegOutlined-Cua-bhim.js";
+import { P as w, G as A, T as L } from "./TodayOutlined-Cf-LLnTn.js";
+import { F as N } from "./FreeBreakfastOutlined-DsHDTKlm.js";
+import { S as P } from "./ScheduleOutlined-C_7j7r9e.js";
+import { V as R } from "./ViewWeekOutlined-Dme8hz7e.js";
+import { L as y } from "./LogoutOutlined-DeC1rT68.js";
+import { F as C } from "./FingerprintOutlined-B7f6E0Pe.js";
+import { S as i } from "./homeSx-C09ESIq-.js";
+import { F as H, H as F, L as _, S as n, C as s, I as a, a as v } from "./featurePageParts-Deueehn5.js";
+import { E as G } from "./emphasize-CAl3kWp2.js";
+import "./stylis-DdLD6a3t.js";
+import "./publicPageSx-9Lwcd6Z3.js";
+import "./Reveal-C3c42DZa.js";
+const B = d(t.jsx("path", {
+    d: "M19 7v4H5.83l3.58-3.59L8 6l-6 6 6 6 1.41-1.41L5.83 13H21V7z"
+  })),
+  V = d(t.jsx("path", {
+    d: "M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4m8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7"
+  })),
+  $ = [{
+    icon: V,
+    tag: "GPS",
+    title: "근무지 반경 안에서만",
+    desc: "등록한 근무지 **반경 안에 있을 때만** 출퇴근이 기록됩니다."
+  }, {
+    icon: m,
+    tag: "QR",
+    title: "30초마다 바뀌는 코드",
+    desc: "사무실 화면에 뜬 코드를 폰으로 찍습니다. **사진을 전달받아 밖에서 찍지 못하도록** 위치 확인을 함께 걸 수 있습니다."
+  }, {
+    icon: x,
+    tag: "사내 Wi-Fi · 모바일 앱",
+    title: "사내 공유기에 연결돼 있으면",
+    desc: "등록한 사내 공유기에 연결돼 있으면 기록됩니다. **실내에서 GPS 가 튀어도** 됩니다."
+  }],
+  k = [{
+    icon: u,
+    tag: "모바일 앱",
+    title: "근무지 도착·이탈 안내",
+    desc: "**앱을 켜지 않아도** 근무지에 도착하면 출근을, 근무 중 근무지를 벗어나면 퇴근을 안내합니다."
+  }, {
+    icon: j,
+    title: "지각 사유",
+    desc: "지각 출근은 **사유를 적어야 기록**됩니다. 자동으로 찍힌 지각은 나중에 사유를 받습니다."
+  }, {
+    icon: N,
+    title: "휴게·외근",
+    points: ["휴게 시작과 종료를 기록", "외근지에서 바로 출근(직출), 외근 중 퇴근(직퇴)", "승인된 출장·재택 날은 **위치 확인 없이 기록**"]
+  }],
+  M = [{
+    icon: b,
+    tag: "근태 플러스",
+    title: "자동 출근",
+    desc: "근무지에 도착하거나 사내 Wi-Fi 에 연결되면 **묻지 않고 출근을 기록**합니다."
+  }, {
+    icon: y,
+    tag: "모바일 앱",
+    title: "자동 퇴근",
+    desc: "퇴근 시각이 지나 근무지를 벗어나면 **5분 뒤 나간 시각으로 퇴근**을 기록합니다. 그사이 [퇴근 아님]을 누르면 그만둡니다."
+  }, {
+    icon: B,
+    tag: "모바일 앱",
+    title: "외근 자동 복귀",
+    desc: "외근 중 근무지에 들어오거나 사내 Wi-Fi 에 연결되면 **5분 뒤 들어온 시각으로 복귀**를 기록합니다."
+  }, {
+    icon: p,
+    title: "놓친 기록 알림",
+    points: ["출근 30분 전 · 10분 전 · 정각 알림", "미출근이면 **30분마다 다시 알림**(최대 4시간)", "퇴근을 안 찍었으면 1시간 뒤 알림", "PC 에서는 데스크톱 알림"]
+  }],
+  U = [{
+    icon: w,
+    title: "출퇴근 기기 한 대",
+    desc: "직원마다 출퇴근을 찍는 **기기를 한 대로** 정합니다. 기기를 바꾸려면 담당자 승인을 받습니다."
+  }, {
+    icon: C,
+    tag: "선택 · 모바일 앱",
+    title: "지문 · 얼굴 2차 인증",
+    desc: "직접 누른 출근·퇴근은 그 기기의 지문·얼굴 확인을 거쳐야 기록됩니다. 서버가 서명으로 검증해 **위조할 수 없습니다**."
+  }, {
+    icon: A,
+    title: "위치 조작 방지",
+    points: ["가짜 위치(모의 위치)로는 기록할 수 없습니다", "모의 위치 앱이 지정된 기기·**루팅 기기도** 위치로 기록할 수 없습니다", "의심 기록은 관리자 화면에 표시됩니다"]
+  }, {
+    icon: O,
+    tag: "선택 · 모바일 앱",
+    title: "외근 이동 동선",
+    desc: "**외근 중에만** 위치를 남겨 담당자가 지도에서 동선을 봅니다. 외근을 시작할 때 직원에게 알리고 90일 뒤 지웁니다."
+  }],
+  D = [{
+    icon: L,
+    title: "근태 현황",
+    points: ["오늘 한 장 — 출근·미출근·휴가·외근이 한눈에", "그 주의 기록을 표로 확인", "담당자가 기록을 바로 수정", "직원의 정정 요청을 승인·반려", "근무지 출입 기록과 **직원별 출퇴근 알림** 받기"]
+  }, {
+    icon: P,
+    title: "근무제",
+    desc: "직원별로 근무제를 배정합니다.",
+    chips: ["고정 근무", "시차 출퇴근", "선택 근무(코어타임)", "재량 근무", "교대 근무"]
+  }, {
+    icon: R,
+    title: "근무 일정(교대 편성)",
+    points: ["**교대 틀**을 만들어 둡니다(예: 오픈 07~16, 마감 14~23)", "주간 편성표로 배치", "기간 복사로 다음 편성을 빠르게", "직원이 근무 변경을 요청하면 담당자가 승인"]
+  }],
+  W = [{
+    icon: h,
+    title: "연차 자동 계산",
+    desc: "입사일 기준과 회계연도 기준 가운데 골라 **연차를 자동으로 계산**합니다."
+  }, {
+    icon: I,
+    title: "반차·반반차, 이월·조정·소멸",
+    desc: "반차·반반차 단위로 쓰고, 남은 연차는 **이월·조정·소멸**로 정리합니다."
+  }, {
+    icon: S,
+    title: "연차 사용 촉진",
+    desc: "**근로기준법 제61조**에 따라 통지, 사용 계획, 사용일 지정 순서로 진행합니다."
+  }, {
+    icon: g,
+    tag: "전자결재 연동",
+    title: "승인되면 근태에 반영",
+    desc: "휴가신청서·연장근로신청서가 승인되면 **근태에 자동으로 반영**됩니다."
+  }],
+  Q = [{
+    icon: f,
+    title: "직원별 집계",
+    points: ["실근로·연장·야간·휴일 근로", "지각·조퇴·결근", "주 52시간 초과 경고", "엑셀 내보내기"]
+  }, {
+    icon: T,
+    title: "월 마감·근태 보고서",
+    desc: "마감한 달은 **고칠 수 없게 잠급니다**. 한 달의 근태는 근태 보고서로 확인합니다."
+  }, {
+    icon: E,
+    title: "급여 연동",
+    desc: "그달 근태로 **연장·야간·휴일 수당**을 급여대장에 채웁니다."
+  }];
+function dt() {
+  return t.jsxs(e, {
+    children: [t.jsx(H, {
+      eyebrow: "ATTENDANCE",
+      title: t.jsxs(t.Fragment, {
+        children: ["출퇴근 기록부터 연차·급여까지", t.jsx("br", {}), "근태를 한곳에서 관리합니다"]
+      }),
+      lead: t.jsxs(t.Fragment, {
+        children: ["도착하면 출근, 나가면 퇴근 — ", t.jsx(G, {
+          children: "직원이 신경 쓰지 않아도 출퇴근이 기록"
+        }), "되고 휴가·월 마감까지 이어집니다.", t.jsx(_, {}), "근태 관리는 기본 제공 기능이라 ", l, "명까지 기간 제한 없이 무료입니다."]
+      }),
+      children: t.jsx(r, {
+        wide: "att-status-day",
+        phone: "att-my-month-m",
+        wideAlt: "근태 현황 화면 — 직원마다 오늘 출근 · 퇴근 시각과 근무 시간, 지각 표시",
+        phoneAlt: "직원 앱의 월간 기록 — 근무일 · 실근로 · 연장 시간과 이번 달 예상 수당",
+        sx: F
+      })
+    }), t.jsx(e, {
+      component: "section",
+      id: "auto",
+      sx: {
+        bgcolor: o[50],
+        borderTop: `1px solid ${o[200]}`,
+        borderBottom: `1px solid ${o[200]}`
+      },
+      children: t.jsxs(e, {
+        sx: i,
+        children: [t.jsx(n, {
+          eyebrow: "AUTO",
+          title: "직원이 신경 쓰지 않아도 출퇴근이 기록됩니다",
+          lead: "도착하면 출근, 퇴근 시각이 지나 나가면 퇴근, 외근에서 돌아오면 복귀까지 **앱이 기록**합니다. 틀렸을 때만 5분 안에 바로잡습니다."
+        }), t.jsx(s, {
+          points: M,
+          columns: 2
+        })]
+      })
+    }), t.jsx(e, {
+      component: "section",
+      id: "record",
+      sx: {
+        bgcolor: "#fff"
+      },
+      children: t.jsxs(e, {
+        sx: i,
+        children: [t.jsx(n, {
+          eyebrow: "CHECK-IN",
+          title: "출퇴근은 세 가지 방식으로 기록합니다",
+          lead: "조직이 쓸 방식을 고르고, **여러 방식을 함께 켤** 수 있습니다."
+        }), t.jsx(s, {
+          points: $,
+          columns: 3
+        }), t.jsx(s, {
+          points: k,
+          columns: 3,
+          mt: 2
+        })]
+      })
+    }), t.jsx(e, {
+      component: "section",
+      id: "trust",
+      sx: {
+        bgcolor: o[50],
+        borderTop: `1px solid ${o[200]}`,
+        borderBottom: `1px solid ${o[200]}`
+      },
+      children: t.jsxs(e, {
+        sx: i,
+        children: [t.jsx(n, {
+          eyebrow: "TRUST",
+          title: "대신 찍어 주기와 위치 조작을 막습니다",
+          lead: "기기 한 대, 지문·얼굴 확인, 위치 조작 차단, 외근 동선까지 **조직에 맞게 켭니다**."
+        }), t.jsx(c, {
+          wide: "att-route",
+          phone: "att-route-m",
+          alt: "외근 동선 화면 — 외근 중 남긴 위치를 지도에 시간 순으로 이은 선과 시작 · 마지막 시각",
+          caption: "외근 동선 — 외근 중 남긴 위치를 지도에서 시간 순으로",
+          sx: a
+        }), t.jsx(s, {
+          points: U,
+          columns: 2
+        })]
+      })
+    }), t.jsx(e, {
+      component: "section",
+      id: "manage",
+      sx: {
+        bgcolor: "#fff"
+      },
+      children: t.jsxs(e, {
+        sx: i,
+        children: [t.jsx(n, {
+          eyebrow: "MANAGE",
+          title: "관리자는 오늘의 근태를 한 장으로 봅니다",
+          lead: "**누가 출근했고 누가 아직인지** 확인하고, 근무제와 근무 일정을 직원별로 정합니다."
+        }), t.jsx(c, {
+          wide: "att-status-week",
+          phone: "att-status-m",
+          alt: "근태 현황 화면 — 직원별 출근 · 퇴근 시각과 휴가 · 지각 표시",
+          caption: "근태 현황 — 직원별 출근 · 퇴근과 휴가 · 지각",
+          more: [{
+            wide: "att-records",
+            phone: "att-records-m",
+            alt: "휴가 · 근태 기록 — 날짜별 지각 · 휴가 · 출장",
+            caption: "휴가 · 근태 기록 — 날짜별 지각 · 휴가 · 출장"
+          }, {
+            wide: "att-schedule",
+            phone: "att-schedule-m",
+            alt: "근무 일정 — 직원별 한 주 근무 시간",
+            caption: "근무 일정 — 직원별 한 주 근무 시간"
+          }],
+          sx: a
+        }), t.jsx(s, {
+          points: D,
+          columns: 3
+        })]
+      })
+    }), t.jsx(e, {
+      component: "section",
+      id: "leave",
+      sx: {
+        bgcolor: o[50],
+        borderTop: `1px solid ${o[200]}`,
+        borderBottom: `1px solid ${o[200]}`
+      },
+      children: t.jsxs(e, {
+        sx: i,
+        children: [t.jsx(n, {
+          eyebrow: "LEAVE",
+          title: "연차는 자동으로 계산합니다",
+          lead: "연차 계산과 사용 촉진까지 **근태 안에서** 이어집니다."
+        }), t.jsx(c, {
+          wide: "att-leave",
+          phone: "att-leave-m",
+          alt: "연차 현황 화면 — 직원별 입사일 기준 발생 · 사용 · 잔여 연차",
+          sx: a
+        }), t.jsx(s, {
+          points: W,
+          columns: 2
+        })]
+      })
+    }), t.jsx(e, {
+      component: "section",
+      id: "closing",
+      sx: {
+        bgcolor: "#fff"
+      },
+      children: t.jsxs(e, {
+        sx: i,
+        children: [t.jsx(n, {
+          eyebrow: "CLOSING",
+          title: "한 달 근태를 집계해 마감하고 급여로 넘깁니다",
+          lead: "직원별 집계부터 월 마감, 급여대장의 수당까지 **한 흐름**입니다."
+        }), t.jsx(c, {
+          wide: "att-summary",
+          phone: "att-summary-m",
+          alt: "근태 집계 화면 — 한 달 실근로 · 연장 · 지각 · 휴가를 직원별로 모은 표와 마감 단추",
+          caption: "근태 집계 — 한 달 실근로 · 연장 · 지각 · 휴가",
+          more: [{
+            wide: "att-report",
+            phone: "att-report-m",
+            alt: "근태 보고서 — 최근 6개월 추이와 부서별 집계",
+            caption: "근태 보고서 — 최근 6개월 추이와 부서별 집계"
+          }],
+          sx: a
+        }), t.jsx(s, {
+          points: Q,
+          columns: 3
+        })]
+      })
+    }), t.jsx(v, {
+      title: "내일 출근부터 업무함으로 기록해 보세요",
+      lead: `근태 관리는 기본 제공 기능입니다. **${l}명까지 기간 제한 없이 무료**입니다.`
+    })]
+  });
+}
+export { dt as default };

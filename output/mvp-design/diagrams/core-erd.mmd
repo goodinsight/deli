@@ -1,0 +1,25 @@
+erDiagram
+  TENANT ||--o{ MEMBER : contains
+  MEMBER o|--o| EMPLOYEE : linked
+  PARTY ||--o{ PARTY_ROLE : has
+  PARTY ||--o{ CONTACT : has
+  PARTY ||--o{ FACILITY_RELATION : owns_or_manages
+  FACILITY ||--o{ FACILITY_RELATION : relates
+  PARTY ||--o{ CONSULTATION : has
+  PARTY ||--o{ QUOTE : receives
+  QUOTE ||--o{ QUOTE_VERSION : versions
+  QUOTE_VERSION o|--o{ CONTRACT : converted
+  CONTRACT ||--o{ RECEIVABLE : billed
+  RECEIVABLE ||--o{ ALLOCATION : settled
+  CASH_MOVEMENT ||--o{ ALLOCATION : applied
+  WORKSPACE ||--o{ TASK : contains
+  MEETING ||--o{ TASK : followup
+  EMPLOYEE ||--o{ LEAVE_REQUEST : submits
+  LEAVE_REQUEST ||--o{ LEAVE_LEDGER : effects
+  APPROVAL_REQUEST ||--o{ APPROVAL_STEP : stages
+  APPROVAL_STEP ||--o{ APPROVAL_DECISION : history
+  RESOURCE ||--o{ RESERVATION : occupied
+  FILE_OBJECT ||--o{ ATTACHMENT : linked
+  DOCUMENT ||--o{ DOCUMENT_VERSION : versions
+  ROOM ||--o{ MESSAGE : stores
+  ROOM ||--o{ ROOM_MEMBER : has

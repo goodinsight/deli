@@ -1,0 +1,1313 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/ChatRoomView-DTjnT2W1.js",
+  "path": "assets/vendor.d/ChatRoomView-DTjnT2W1.js",
+  "name": "ChatRoomView",
+  "kind": "ui",
+  "bytes": 113583,
+  "sha256": "d330ae43320d080d7db2a0ae3b56c78e840db2d1bd519ed7a928ca35514a36ea",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/ChatRoomView-DTjnT2W1.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "e",
+          "imported": "j"
+        },
+        {
+          "local": "l",
+          "imported": "r"
+        },
+        {
+          "local": "on",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "./largeFile-DlThjw63.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Tn",
+          "imported": "u"
+        },
+        {
+          "local": "Rs",
+          "imported": "a"
+        },
+        {
+          "local": "yo",
+          "imported": "b"
+        },
+        {
+          "local": "Gn",
+          "imported": "e"
+        },
+        {
+          "local": "jo",
+          "imported": "f"
+        },
+        {
+          "local": "Ts",
+          "imported": "L"
+        },
+        {
+          "local": "Mn",
+          "imported": "g"
+        },
+        {
+          "local": "wo",
+          "imported": "h"
+        },
+        {
+          "local": "Vn",
+          "imported": "i"
+        },
+        {
+          "local": "Ms",
+          "imported": "n"
+        },
+        {
+          "local": "Es",
+          "imported": "j"
+        },
+        {
+          "local": "zs",
+          "imported": "k"
+        },
+        {
+          "local": "So",
+          "imported": "l"
+        },
+        {
+          "local": "vo",
+          "imported": "m"
+        },
+        {
+          "local": "ko",
+          "imported": "o"
+        },
+        {
+          "local": "bo",
+          "imported": "p"
+        },
+        {
+          "local": "Co",
+          "imported": "q"
+        },
+        {
+          "local": "Ro",
+          "imported": "c"
+        },
+        {
+          "local": "To",
+          "imported": "s"
+        },
+        {
+          "local": "_s",
+          "imported": "t"
+        },
+        {
+          "local": "Mo",
+          "imported": "d"
+        },
+        {
+          "local": "Eo",
+          "imported": "r"
+        }
+      ],
+      "resolved": "assets/vendor.d/largeFile-DlThjw63.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ut",
+          "imported": "c"
+        },
+        {
+          "local": "re",
+          "imported": "bv"
+        },
+        {
+          "local": "d",
+          "imported": "B"
+        },
+        {
+          "local": "pe",
+          "imported": "bI"
+        },
+        {
+          "local": "v",
+          "imported": "L"
+        },
+        {
+          "local": "Ps",
+          "imported": "ce"
+        },
+        {
+          "local": "Is",
+          "imported": "cf"
+        },
+        {
+          "local": "en",
+          "imported": "bG"
+        },
+        {
+          "local": "As",
+          "imported": "fq"
+        },
+        {
+          "local": "Ds",
+          "imported": "fr"
+        },
+        {
+          "local": "Ht",
+          "imported": "go"
+        },
+        {
+          "local": "Ls",
+          "imported": "fs"
+        },
+        {
+          "local": "w",
+          "imported": "s"
+        },
+        {
+          "local": "an",
+          "imported": "d4"
+        },
+        {
+          "local": "Ws",
+          "imported": "ft"
+        },
+        {
+          "local": "le",
+          "imported": "bQ"
+        },
+        {
+          "local": "zo",
+          "imported": "bX"
+        },
+        {
+          "local": "_o",
+          "imported": "l2"
+        },
+        {
+          "local": "D",
+          "imported": "bT"
+        },
+        {
+          "local": "Po",
+          "imported": "eq"
+        },
+        {
+          "local": "Ln",
+          "imported": "cz"
+        },
+        {
+          "local": "Io",
+          "imported": "hH"
+        },
+        {
+          "local": "kt",
+          "imported": "D"
+        },
+        {
+          "local": "Wn",
+          "imported": "u"
+        },
+        {
+          "local": "Ee",
+          "imported": "b"
+        },
+        {
+          "local": "tt",
+          "imported": "as"
+        },
+        {
+          "local": "lt",
+          "imported": "K"
+        },
+        {
+          "local": "Os",
+          "imported": "cc"
+        },
+        {
+          "local": "On",
+          "imported": "cI"
+        },
+        {
+          "local": "Fs",
+          "imported": "dN"
+        },
+        {
+          "local": "Ao",
+          "imported": "cE"
+        },
+        {
+          "local": "rn",
+          "imported": "bH"
+        },
+        {
+          "local": "xn",
+          "imported": "bB"
+        },
+        {
+          "local": "J",
+          "imported": "bO"
+        },
+        {
+          "local": "Fn",
+          "imported": "z"
+        },
+        {
+          "local": "Bs",
+          "imported": "bx"
+        },
+        {
+          "local": "Do",
+          "imported": "l1"
+        },
+        {
+          "local": "Lo",
+          "imported": "fB"
+        },
+        {
+          "local": "Wo",
+          "imported": "e7"
+        },
+        {
+          "local": "En",
+          "imported": "i"
+        },
+        {
+          "local": "gn",
+          "imported": "l3"
+        },
+        {
+          "local": "Oo",
+          "imported": "l4"
+        },
+        {
+          "local": "Kn",
+          "imported": "by"
+        },
+        {
+          "local": "Ns",
+          "imported": "e"
+        },
+        {
+          "local": "Fo",
+          "imported": "cW"
+        },
+        {
+          "local": "Bo",
+          "imported": "dd"
+        },
+        {
+          "local": "No",
+          "imported": "aC"
+        },
+        {
+          "local": "Uo",
+          "imported": "aD"
+        },
+        {
+          "local": "Ho",
+          "imported": "fm"
+        },
+        {
+          "local": "$o",
+          "imported": "l5"
+        },
+        {
+          "local": "Us",
+          "imported": "d8"
+        },
+        {
+          "local": "qo",
+          "imported": "l6"
+        },
+        {
+          "local": "Xn",
+          "imported": "cN"
+        },
+        {
+          "local": "Go",
+          "imported": "jv"
+        },
+        {
+          "local": "Vo",
+          "imported": "ik"
+        },
+        {
+          "local": "Ko",
+          "imported": "b0"
+        },
+        {
+          "local": "Hs",
+          "imported": "U"
+        },
+        {
+          "local": "Xo",
+          "imported": "l7"
+        },
+        {
+          "local": "Yo",
+          "imported": "l8"
+        },
+        {
+          "local": "Jo",
+          "imported": "l9"
+        },
+        {
+          "local": "Qo",
+          "imported": "la"
+        },
+        {
+          "local": "Zo",
+          "imported": "_"
+        },
+        {
+          "local": "$s",
+          "imported": "G"
+        },
+        {
+          "local": "ea",
+          "imported": "lb"
+        },
+        {
+          "local": "ta",
+          "imported": "k1"
+        },
+        {
+          "local": "na",
+          "imported": "cJ"
+        },
+        {
+          "local": "sa",
+          "imported": "hF"
+        },
+        {
+          "local": "oa",
+          "imported": "bF"
+        },
+        {
+          "local": "aa",
+          "imported": "M"
+        },
+        {
+          "local": "qs",
+          "imported": "jx"
+        },
+        {
+          "local": "$e",
+          "imported": "w"
+        },
+        {
+          "local": "ra",
+          "imported": "fj"
+        },
+        {
+          "local": "Gs",
+          "imported": "o"
+        },
+        {
+          "local": "ia",
+          "imported": "aX"
+        },
+        {
+          "local": "la",
+          "imported": "i1"
+        },
+        {
+          "local": "ca",
+          "imported": "j9"
+        },
+        {
+          "local": "Yn",
+          "imported": "d1"
+        },
+        {
+          "local": "da",
+          "imported": "dq"
+        },
+        {
+          "local": "ua",
+          "imported": "gn"
+        },
+        {
+          "local": "fa",
+          "imported": "aT"
+        },
+        {
+          "local": "ha",
+          "imported": "I"
+        },
+        {
+          "local": "ma",
+          "imported": "F"
+        },
+        {
+          "local": "pa",
+          "imported": "lc"
+        },
+        {
+          "local": "xa",
+          "imported": "ks"
+        },
+        {
+          "local": "Vs",
+          "imported": "kM"
+        },
+        {
+          "local": "ga",
+          "imported": "Z"
+        },
+        {
+          "local": "ya",
+          "imported": "i2"
+        },
+        {
+          "local": "ja",
+          "imported": "c_"
+        },
+        {
+          "local": "wa",
+          "imported": "b9"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./chatPrefs-Be7HCbgk.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "zn",
+          "imported": "p"
+        },
+        {
+          "local": "Sa",
+          "imported": "a"
+        },
+        {
+          "local": "va",
+          "imported": "r"
+        },
+        {
+          "local": "ka",
+          "imported": "d"
+        },
+        {
+          "local": "ba",
+          "imported": "b"
+        },
+        {
+          "local": "Ca",
+          "imported": "h"
+        }
+      ],
+      "resolved": "assets/vendor.d/chatPrefs-Be7HCbgk.js"
+    },
+    {
+      "specifier": "./FileDropOverlay-Bw4w8zRu.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ra",
+          "imported": "F"
+        }
+      ],
+      "resolved": "assets/vendor.d/FileDropOverlay-Bw4w8zRu.js"
+    },
+    {
+      "specifier": "./aliasStore-DiN6Kp-5.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "be",
+          "imported": "m"
+        },
+        {
+          "local": "Ks",
+          "imported": "A"
+        },
+        {
+          "local": "Ta",
+          "imported": "B"
+        },
+        {
+          "local": "Ma",
+          "imported": "C"
+        },
+        {
+          "local": "Ea",
+          "imported": "D"
+        },
+        {
+          "local": "za",
+          "imported": "E"
+        },
+        {
+          "local": "_n",
+          "imported": "F"
+        },
+        {
+          "local": "Jn",
+          "imported": "x"
+        },
+        {
+          "local": "Pn",
+          "imported": "G"
+        },
+        {
+          "local": "_a",
+          "imported": "c"
+        },
+        {
+          "local": "Pa",
+          "imported": "t"
+        },
+        {
+          "local": "Ia",
+          "imported": "H"
+        },
+        {
+          "local": "Aa",
+          "imported": "j"
+        },
+        {
+          "local": "yn",
+          "imported": "l"
+        },
+        {
+          "local": "Da",
+          "imported": "d"
+        },
+        {
+          "local": "La",
+          "imported": "I"
+        },
+        {
+          "local": "Wa",
+          "imported": "J"
+        },
+        {
+          "local": "Oa",
+          "imported": "K"
+        },
+        {
+          "local": "Qn",
+          "imported": "L"
+        },
+        {
+          "local": "Fa",
+          "imported": "M"
+        },
+        {
+          "local": "Ba",
+          "imported": "v"
+        }
+      ],
+      "resolved": "assets/vendor.d/aliasStore-DiN6Kp-5.js"
+    },
+    {
+      "specifier": "./ForwardMessageDialog-CaXjV13U.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Na",
+          "imported": "F"
+        },
+        {
+          "local": "jn",
+          "imported": "a"
+        },
+        {
+          "local": "Ua",
+          "imported": "t"
+        },
+        {
+          "local": "Zn",
+          "imported": "n"
+        },
+        {
+          "local": "Ha",
+          "imported": "b"
+        }
+      ],
+      "resolved": "assets/vendor.d/ForwardMessageDialog-CaXjV13U.js"
+    },
+    {
+      "specifier": "./profileEcho-q2FaD_03.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "$a",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/profileEcho-q2FaD_03.js"
+    },
+    {
+      "specifier": "./EmojiPanel-DTZZq0Nb.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "qa",
+          "imported": "E"
+        },
+        {
+          "local": "Ga",
+          "imported": "Q"
+        },
+        {
+          "local": "Va",
+          "imported": "a"
+        },
+        {
+          "local": "es",
+          "imported": "r"
+        },
+        {
+          "local": "ts",
+          "imported": "b"
+        },
+        {
+          "local": "Ka",
+          "imported": "s"
+        },
+        {
+          "local": "Xa",
+          "imported": "c"
+        },
+        {
+          "local": "Ya",
+          "imported": "d"
+        },
+        {
+          "local": "Xs",
+          "imported": "p"
+        },
+        {
+          "local": "Ja",
+          "imported": "e"
+        }
+      ],
+      "resolved": "assets/vendor.d/EmojiPanel-DTZZq0Nb.js"
+    },
+    {
+      "specifier": "./ContactPhoneOutlined-DpFEzROB.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Qa",
+          "imported": "C"
+        }
+      ],
+      "resolved": "assets/vendor.d/ContactPhoneOutlined-DpFEzROB.js"
+    },
+    {
+      "specifier": "./PlayArrowRounded-emG8NLik.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Bn",
+          "imported": "P"
+        },
+        {
+          "local": "Nn",
+          "imported": "a"
+        }
+      ],
+      "resolved": "assets/vendor.d/PlayArrowRounded-emG8NLik.js"
+    },
+    {
+      "specifier": "./StopCircleOutlined-vWHA8Xrv.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Za",
+          "imported": "S"
+        }
+      ],
+      "resolved": "assets/vendor.d/StopCircleOutlined-vWHA8Xrv.js"
+    },
+    {
+      "specifier": "./InsertDriveFileOutlined-DcD-Yh-v.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "er",
+          "imported": "I"
+        }
+      ],
+      "resolved": "assets/vendor.d/InsertDriveFileOutlined-DcD-Yh-v.js"
+    },
+    {
+      "specifier": "./formatFileSize-Cwk2MLba.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Un",
+          "imported": "f"
+        }
+      ],
+      "resolved": "assets/vendor.d/formatFileSize-Cwk2MLba.js"
+    },
+    {
+      "specifier": "./uploadGuard-BK1B6cyC.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "tr",
+          "imported": "d"
+        }
+      ],
+      "resolved": "assets/vendor.d/uploadGuard-BK1B6cyC.js"
+    },
+    {
+      "specifier": "./PhoneOutlined-Bjc_e42S.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "nr",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/PhoneOutlined-Bjc_e42S.js"
+    },
+    {
+      "specifier": "./PhoneMissedOutlined-Cf-_1h4d.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "sr",
+          "imported": "P"
+        },
+        {
+          "local": "or",
+          "imported": "A"
+        }
+      ],
+      "resolved": "assets/vendor.d/PhoneMissedOutlined-Cf-_1h4d.js"
+    },
+    {
+      "specifier": "./meetingCalendar-_jcQJ1qd.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ar",
+          "imported": "o"
+        }
+      ],
+      "resolved": "assets/vendor.d/meetingCalendar-_jcQJ1qd.js"
+    },
+    {
+      "specifier": "./videoMeetingApi-BCL1yHsp.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "tn",
+          "imported": "videoMeetingApi"
+        }
+      ],
+      "resolved": "assets/vendor.d/videoMeetingApi-BCL1yHsp.js"
+    },
+    {
+      "specifier": "./callStore-DH1_RYeP.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ys",
+          "imported": "u"
+        },
+        {
+          "local": "Js",
+          "imported": "p"
+        },
+        {
+          "local": "Qs",
+          "imported": "j"
+        },
+        {
+          "local": "rr",
+          "imported": "w"
+        },
+        {
+          "local": "ir",
+          "imported": "r"
+        }
+      ],
+      "resolved": "assets/vendor.d/callStore-DH1_RYeP.js"
+    },
+    {
+      "specifier": "./MeetingRecordingPlayer-vear-u6W.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "lr",
+          "imported": "M"
+        }
+      ],
+      "resolved": "assets/vendor.d/MeetingRecordingPlayer-vear-u6W.js"
+    },
+    {
+      "specifier": "./squircle-CQM8EvXm.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ns",
+          "imported": "S"
+        }
+      ],
+      "resolved": "assets/vendor.d/squircle-CQM8EvXm.js"
+    },
+    {
+      "specifier": "./useFileViewer-B-2ewnr3.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "cr",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/useFileViewer-B-2ewnr3.js"
+    },
+    {
+      "specifier": "./AccountAvatar-DtrhoS_d.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Zs",
+          "imported": "A"
+        }
+      ],
+      "resolved": "assets/vendor.d/AccountAvatar-DtrhoS_d.js"
+    },
+    {
+      "specifier": "./CheckRounded-q96oOTwH.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ss",
+          "imported": "C"
+        }
+      ],
+      "resolved": "assets/vendor.d/CheckRounded-q96oOTwH.js"
+    },
+    {
+      "specifier": "./ChatPhotoEditDialog-DqGZ2sKu.js",
+      "type": "dynamic",
+      "resolved": "assets/vendor.d/ChatPhotoEditDialog-DqGZ2sKu.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "dr",
+      "exported": "C"
+    },
+    {
+      "local": "pl",
+      "exported": "H"
+    },
+    {
+      "local": "wt",
+      "exported": "P"
+    },
+    {
+      "local": "Ft",
+      "exported": "R"
+    },
+    {
+      "local": "pi",
+      "exported": "S"
+    },
+    {
+      "local": "xl",
+      "exported": "a"
+    },
+    {
+      "local": "Pr",
+      "exported": "b"
+    },
+    {
+      "local": "mr",
+      "exported": "c"
+    },
+    {
+      "local": "gl",
+      "exported": "d"
+    },
+    {
+      "local": "mi",
+      "exported": "e"
+    },
+    {
+      "local": "so",
+      "exported": "f"
+    },
+    {
+      "local": "Kr",
+      "exported": "g"
+    },
+    {
+      "local": "Nt",
+      "exported": "i"
+    },
+    {
+      "local": "no",
+      "exported": "p"
+    },
+    {
+      "local": "oo",
+      "exported": "r"
+    },
+    {
+      "local": "Jt",
+      "exported": "u"
+    },
+    {
+      "local": "Hi",
+      "exported": "w"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "gr",
+      "keys": [
+        "url",
+        "seed",
+        "scale",
+        "mine"
+      ]
+    },
+    {
+      "function": "Br",
+      "keys": [
+        "target",
+        "onCancel"
+      ]
+    },
+    {
+      "function": "Hr",
+      "keys": [
+        "open",
+        "onClose",
+        "onPick"
+      ]
+    },
+    {
+      "function": "qr",
+      "keys": [
+        "stream",
+        "color",
+        "height",
+        "levelsRef"
+      ]
+    },
+    {
+      "function": "Gr",
+      "keys": [
+        "levels",
+        "progress",
+        "onSeek",
+        "color",
+        "restColor",
+        "height"
+      ]
+    },
+    {
+      "function": "Kr",
+      "keys": [
+        "reason",
+        "sx",
+        "guest"
+      ]
+    },
+    {
+      "function": "si",
+      "keys": [
+        "code",
+        "onClose"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "at"
+      ]
+    },
+    {
+      "function": "ai",
+      "keys": [
+        "description",
+        "payload",
+        "roomSeq",
+        "fs"
+      ]
+    },
+    {
+      "function": "ii",
+      "keys": [
+        "description",
+        "payload",
+        "fs",
+        "messageSeq",
+        "shownText",
+        "translateRow"
+      ]
+    },
+    {
+      "function": "ci",
+      "keys": [
+        "bubble",
+        "shownText",
+        "translateRow",
+        "canDelete",
+        "fs",
+        "onMake"
+      ]
+    },
+    {
+      "function": "di",
+      "keys": [
+        "draft",
+        "posting",
+        "onDiscard",
+        "onPost"
+      ]
+    },
+    {
+      "function": "wt",
+      "keys": [
+        "icon",
+        "label",
+        "onClick",
+        "disabled"
+      ]
+    },
+    {
+      "function": "xi",
+      "keys": [
+        "roomSeq",
+        "placeholder",
+        "replyTarget",
+        "onCancelReply",
+        "onSend",
+        "sending",
+        "onActivity",
+        "language",
+        "mentionCandidates"
+      ]
+    },
+    {
+      "function": "gi",
+      "keys": [
+        "anchorEl",
+        "src",
+        "onClose"
+      ]
+    },
+    {
+      "function": "yi",
+      "keys": [
+        "workerName",
+        "description",
+        "canScrollToSource",
+        "onClick"
+      ]
+    },
+    {
+      "function": "ji",
+      "keys": [
+        "open",
+        "anchorPosition",
+        "canShowOwnerActions",
+        "canEdit",
+        "isSpecialNote",
+        "onClose",
+        "onExited",
+        "onCopy",
+        "onReply",
+        "onEdit",
+        "onDelete",
+        "onShare",
+        "onSendToMe",
+        "onForward",
+        "onNotice",
+        "onMakeTask",
+        "onReact",
+        "onMoreEmoji",
+        "myReactions"
+      ]
+    },
+    {
+      "function": "Ti",
+      "keys": [
+        "name",
+        "lat",
+        "lon",
+        "url",
+        "scale"
+      ]
+    },
+    {
+      "function": "Mi",
+      "keys": [
+        "file",
+        "scale"
+      ]
+    },
+    {
+      "function": "bn",
+      "keys": [
+        "children"
+      ]
+    },
+    {
+      "function": "Ei",
+      "keys": [
+        "open",
+        "onClose",
+        "onPick"
+      ]
+    },
+    {
+      "function": "Cn",
+      "keys": [
+        "items",
+        "onPick",
+        "columns"
+      ]
+    },
+    {
+      "function": "vt",
+      "keys": [
+        "label"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "src"
+      ]
+    },
+    {
+      "function": "Wi",
+      "keys": [
+        "bubbles",
+        "emptyTitle",
+        "highlightedId",
+        "currentAccountSeq",
+        "roomSeq",
+        "hasMore",
+        "loadingOlder",
+        "onLoadOlder",
+        "onReply",
+        "onUpdate",
+        "onSoftDelete",
+        "readPeers",
+        "isGroupRoom",
+        "composerActivityAt",
+        "translations",
+        "translatePending",
+        "translateLimited",
+        "myLanguage",
+        "reactions",
+        "onToggleReaction",
+        "onVisibleRangeChange",
+        "bgColor",
+        "bgPattern",
+        "onMakeFromSummary",
+        "mentionNames"
+      ]
+    },
+    {
+      "function": "Bi",
+      "keys": [
+        "text",
+        "byName",
+        "onEdit"
+      ]
+    },
+    {
+      "function": "Ni",
+      "keys": [
+        "open",
+        "roomSeq",
+        "initialText",
+        "onClose"
+      ]
+    },
+    {
+      "function": "Ui",
+      "keys": [
+        "roomSeq"
+      ]
+    },
+    {
+      "function": "gl",
+      "keys": [
+        "roomSeq"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "CalendarSidebarPanel",
+    "ChatMemberPanel",
+    "ChatPage",
+    "ChatRoomListPanel",
+    "Layout",
+    "MeetPage",
+    "MeetRoomUI",
+    "MobileDashboardLayout",
+    "PostComposerHost",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog"
+  ],
+  "service": "채팅",
+  "purpose": "메시지·입력·첨부",
+  "reuseGrade": "C",
+  "integration": "채팅 전송·첨부·소켓·권한 어댑터 교체",
+  "exportedParameters": [
+    {
+      "export": "P",
+      "compiledLocal": "wt",
+      "keys": [
+        "icon",
+        "label",
+        "onClick",
+        "disabled"
+      ]
+    },
+    {
+      "export": "d",
+      "compiledLocal": "gl",
+      "keys": [
+        "roomSeq"
+      ]
+    },
+    {
+      "export": "g",
+      "compiledLocal": "Kr",
+      "keys": [
+        "reason",
+        "sx",
+        "guest"
+      ]
+    }
+  ]
+}

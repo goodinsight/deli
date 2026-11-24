@@ -1,0 +1,325 @@
+import { k as Y, u as q, r as n, j as t, N as J } from "./react-CjxcGQav.js";
+import { u as K, nd as Z, cQ as ee, B as s, as as I, al as x, f as l, s as h, l as M, b as te, bO as c, bx as ae } from "../js.d/main-Cm9wS5wt.js";
+import { t as se, n as ne } from "./newsAdminApi-DyrOnwXM.js";
+import { N as oe } from "./constants-Bzad1vkl.js";
+import { u as re } from "./newsController-BGsu8k2g.js";
+import { h as ie } from "./htmlToParagraphs-BRG7WnR0.js";
+import { r as le } from "./formatFileSize-Cwk2MLba.js";
+import { u as ce } from "./dashboardBase-vwyZVF5L.js";
+import "./stylis-DdLD6a3t.js";
+function ue() {
+  const a = new Date(),
+    r = String(a.getMonth() + 1).padStart(2, "0"),
+    i = String(a.getDate()).padStart(2, "0");
+  return `${a.getFullYear()}-${r}-${i}`;
+}
+function de(a) {
+  return a ? (a.bodyHtml ? ie(a.bodyHtml) : a.body).join(`
+
+`) : "";
+}
+function me(a) {
+  return a.split(/\n{2,}/).map(r => r.trim()).filter(Boolean);
+}
+const p = {
+  borderRadius: 2,
+  border: `1px solid ${h[300]}`,
+  px: 1.5,
+  py: 1.25,
+  fontSize: "1rem",
+  fontFamily: "inherit"
+};
+function u({
+  label: a,
+  children: r
+}) {
+  return t.jsxs(s, {
+    component: "label",
+    sx: {
+      display: "grid",
+      gap: .75
+    },
+    children: [t.jsx(s, {
+      component: "span",
+      sx: {
+        fontSize: "0.9375rem",
+        color: h[500]
+      },
+      children: a
+    }), r]
+  });
+}
+function Ce() {
+  const {
+      slug: a
+    } = Y(),
+    r = q(),
+    i = ce(),
+    {
+      state: f
+    } = re(),
+    b = K(),
+    V = b.useValue("account"),
+    _ = b.useValue("sessionChecked") ?? !1,
+    G = Z(V),
+    y = f.useValue("articles"),
+    S = n.useMemo(() => y ?? [], [y]),
+    o = n.useMemo(() => a ? S.find(e => e.id === a) ?? null : null, [S, a]),
+    j = !a,
+    [v, C] = n.useState(""),
+    [g, w] = n.useState(""),
+    [W, z] = n.useState("정책"),
+    [A, T] = n.useState(""),
+    [k, E] = n.useState(ue()),
+    [N, $] = n.useState(""),
+    [R, B] = n.useState(""),
+    [P, D] = n.useState(!1),
+    [d, L] = n.useState(""),
+    [H, F] = n.useState(!1);
+  n.useEffect(() => {
+    o && (C(o.id), w(o.title), z(o.category), T(o.author), E(o.date), $(o.summary), B(de(o)), D(o.premium));
+  }, [o]);
+  const O = async e => {
+      if (e) try {
+        L(await le(e));
+      } catch {
+        c("이미지를 읽지 못했습니다.");
+      }
+    },
+    Q = async () => {
+      const e = v.trim();
+      if (!e) {
+        c("슬러그를 입력하세요. (예: mss-budget-2027)");
+        return;
+      }
+      if (!/^[a-z0-9-]+$/.test(e)) {
+        c("슬러그는 영문 소문자·숫자·하이픈만 사용할 수 있습니다.");
+        return;
+      }
+      if (!g.trim()) {
+        c("제목을 입력하세요.");
+        return;
+      }
+      const U = me(R);
+      F(!0);
+      try {
+        const m = {
+          slug: e,
+          category: W,
+          title: g.trim(),
+          summary: N.trim(),
+          body: U,
+          body_html: U.map(X => `<p>${X}</p>`).join(""),
+          attachments: (o?.attachments ?? []).map(se),
+          author: A.trim(),
+          date: k,
+          premium: P,
+          status: "published",
+          ...(d ? {
+            thumbnail: d
+          } : {})
+        };
+        await ne.upsert(m), await f.actions.loadArticles(), ae(j ? "기사를 등록했습니다." : "기사를 수정했습니다."), r(`${i}/news`, {
+          replace: !0
+        });
+      } catch (m) {
+        c(m instanceof Error ? m.message : "저장에 실패했습니다.");
+      } finally {
+        F(!1);
+      }
+    };
+  return _ ? G ? t.jsxs(s, {
+    sx: {
+      display: "grid",
+      gap: 2,
+      px: 2,
+      py: 2
+    },
+    children: [t.jsx(s, {
+      component: "p",
+      sx: {
+        m: 0,
+        borderRadius: 3,
+        bgcolor: I.amber50,
+        px: 2,
+        py: 1.5,
+        fontSize: "0.9375rem",
+        color: I.amber800
+      },
+      children: "모바일에서는 본문을 문단 텍스트로 편집합니다. 본문 이미지·서식이 있는 기사는 데스크톱에서 수정하세요."
+    }), t.jsx(x, {
+      value: v,
+      onChange: e => C(e.target.value),
+      label: "슬러그 (URL 식별자)",
+      placeholder: "mss-budget-2027",
+      disabled: !j,
+      fullWidth: !0,
+      size: "medium"
+    }), t.jsx(x, {
+      value: g,
+      onChange: e => w(e.target.value),
+      label: "제목",
+      fullWidth: !0,
+      size: "medium"
+    }), t.jsxs(s, {
+      sx: {
+        display: "grid",
+        gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+        gap: 1.5
+      },
+      children: [t.jsx(u, {
+        label: "분류",
+        children: t.jsx(s, {
+          component: "select",
+          value: W,
+          onChange: e => z(e.target.value),
+          sx: {
+            ...p,
+            py: 1.5,
+            fontWeight: l.semibold
+          },
+          children: oe.map(e => t.jsx("option", {
+            value: e,
+            children: e
+          }, e))
+        })
+      }), t.jsx(u, {
+        label: "게재일",
+        children: t.jsx(s, {
+          component: "input",
+          type: "date",
+          value: k,
+          onChange: e => E(e.target.value),
+          sx: {
+            ...p,
+            py: 1.5,
+            fontWeight: l.semibold
+          }
+        })
+      })]
+    }), t.jsx(x, {
+      value: A,
+      onChange: e => T(e.target.value),
+      label: "기자·작성 주체",
+      fullWidth: !0,
+      size: "medium"
+    }), t.jsx(u, {
+      label: "요약",
+      children: t.jsx(s, {
+        component: "textarea",
+        value: N,
+        onChange: e => $(e.target.value),
+        rows: 3,
+        sx: {
+          ...p,
+          lineHeight: M.relaxed
+        }
+      })
+    }), t.jsx(u, {
+      label: "본문 (빈 줄로 문단 구분)",
+      children: t.jsx(s, {
+        component: "textarea",
+        value: R,
+        onChange: e => B(e.target.value),
+        rows: 12,
+        sx: {
+          ...p,
+          lineHeight: M.relaxed
+        }
+      })
+    }), t.jsxs(u, {
+      label: "대표 이미지",
+      children: [t.jsx(s, {
+        component: "input",
+        type: "file",
+        accept: "image/*",
+        onChange: e => {
+          O(e.target.files?.[0]);
+        },
+        sx: {
+          fontSize: "0.9375rem"
+        }
+      }), d && t.jsx(s, {
+        component: "img",
+        src: d,
+        alt: "대표 이미지 미리보기",
+        sx: {
+          mt: .5,
+          borderRadius: 2,
+          maxWidth: "100%"
+        }
+      })]
+    }), t.jsxs(s, {
+      component: "label",
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        gap: 1
+      },
+      children: [t.jsx(s, {
+        component: "input",
+        type: "checkbox",
+        checked: P,
+        onChange: e => D(e.target.checked),
+        sx: {
+          height: 20,
+          width: 20
+        }
+      }), t.jsx(s, {
+        component: "span",
+        sx: {
+          fontSize: "1rem",
+          fontWeight: l.semibold
+        },
+        children: "유료(멤버십) 전용 기사"
+      })]
+    }), t.jsxs(s, {
+      sx: {
+        mt: 1,
+        display: "grid",
+        gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+        gap: 1.5
+      },
+      children: [t.jsx(s, {
+        component: "button",
+        onClick: () => r(`${i}/news`),
+        sx: {
+          cursor: "pointer",
+          borderRadius: 3,
+          border: `1px solid ${h[300]}`,
+          bgcolor: "transparent",
+          py: 1.75,
+          fontSize: "1.0625rem",
+          fontWeight: l.semibold,
+          color: h[600]
+        },
+        children: "취소"
+      }), t.jsx(s, {
+        component: "button",
+        onClick: () => {
+          Q();
+        },
+        disabled: H,
+        sx: {
+          cursor: "pointer",
+          borderRadius: 3,
+          border: "none",
+          bgcolor: te[600],
+          py: 1.75,
+          fontSize: "1.0625rem",
+          fontWeight: l.bold,
+          color: "#fff",
+          "&:disabled": {
+            opacity: .6,
+            cursor: "default"
+          }
+        },
+        children: H ? "저장 중…" : "저장"
+      })]
+    })]
+  }) : t.jsx(J, {
+    to: i,
+    replace: !0
+  }) : t.jsx(ee, {});
+}
+export { Ce as default };

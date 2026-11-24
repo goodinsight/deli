@@ -1,0 +1,1283 @@
+import { j as e, r as g, u as Ne, k as Ve } from "./react-CjxcGQav.js";
+import { c as Me, bv as G, fL as Ce, D as ke, c4 as h, ca as C, L as j, bQ as I, d8 as fe, B as d, cY as ge, al as J, bI as Z, cP as ae, cn as qe, cI as $e, K as E, ar as He, cm as je, cz as Ge, bO as T, bT as Ue, dv as Qe, bH as $, gL as Ye, cO as Ke, nl as Xe, fo as Je, w as be, fp as we, ba as Ze, fq as en, fr as nn, fs as tn, fN as on, ft as sn, lr as an, fQ as rn, df as ln, bx as _e, z as X, j9 as cn } from "../js.d/main-Cm9wS5wt.js";
+import { P as dn } from "./PictureAsPdfOutlined-ChIt6cmZ.js";
+import { a as un } from "./EdgeTabs-Ccbggjn6.js";
+import { u as hn } from "./mobileSearchOverlay-DYWcMOOb.js";
+import { e as mn } from "./employeeApi-CdGzOYcj.js";
+import { F as Ae, D as pn, t as N, A as xn, w, a as yn, n as ve, p as A, u as fn, P as Se, r as oe, b as gn, c as se, d as W, e as jn } from "./PayrollPage-BorMK4s6.js";
+import { a as bn } from "./attendanceMgmtApi-CC4DR0XR.js";
+import { m as Ie } from "./attendanceMgmt-B_e3bPBn.js";
+import { I as wn } from "./InlineErrorAlert-D9ICJPt7.js";
+import { R as Pe } from "./RepeatRowCard-CW6Yl_Xr.js";
+import { b as _n } from "./MobileCardListLayout-D5_p2Xer.js";
+import { T as vn } from "./tableScrollbars-C9bhlJjO.js";
+import { u as Sn } from "./useColumnWidths-DSAca5rC.js";
+import "./stylis-DdLD6a3t.js";
+import "./types-CVhETUvu.js";
+import "./i18nLabels-BNTLL7cu.js";
+import "./attendanceBio-C-9dHF9O.js";
+import "./profileApi-Btafs-pM.js";
+const In = Me(e.jsx("path", {
+  d: "M12 7c.55 0 1 .45 1 1v4c0 .55-.45 1-1 1s-1-.45-1-1V8c0-.55.45-1 1-1m-.01-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2M12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8m1-3h-2v-2h2z"
+}));
+function H({
+  form: n,
+  name: i,
+  disabled: r,
+  grow: c,
+  negative: p
+}) {
+  const a = n.useFormValue(i),
+    b = c ? {
+      flex: 1,
+      minWidth: 0
+    } : {
+      width: 140,
+      flexShrink: 0
+    },
+    m = p ? {
+      size: "small",
+      placeholder: "0",
+      negative: !0,
+      max: 0,
+      decimalLength: 0,
+      sx: b
+    } : {
+      size: "small",
+      placeholder: "0",
+      min: 0,
+      decimalLength: 0,
+      sx: b
+    };
+  return r ? e.jsx(je, {
+    ...m,
+    value: N(a),
+    disabled: !0
+  }) : e.jsx(je, {
+    ...m,
+    form: n,
+    name: i
+  });
+}
+const Cn = g.memo(function ({
+  id: i,
+  form: r,
+  disabled: c,
+  locked: p,
+  saving: a,
+  isMobile: b,
+  onRemove: m
+}) {
+  const s = G(),
+    v = N(r.useFormValue(`earnings.${i}.amount`)),
+    f = xn.includes(String(r.useFormValue(`earnings.${i}.code`) ?? "")),
+    P = e.jsx(J, {
+      form: r,
+      name: `earnings.${i}.name`,
+      size: "small",
+      placeholder: s("hr.payrollItemName"),
+      disabled: c,
+      slotProps: {
+        htmlInput: {
+          maxLength: 50
+        }
+      },
+      sx: {
+        flex: 1,
+        minWidth: 0
+      }
+    }),
+    S = e.jsx(d, {
+      sx: {
+        flexShrink: 0,
+        "& .MuiFormControlLabel-root": {
+          mr: 0
+        }
+      },
+      children: e.jsx(He, {
+        form: r,
+        name: `earnings.${i}.nontaxable`,
+        size: "small",
+        label: s("hr.payrollNontaxable"),
+        disabled: c
+      })
+    }),
+    x = v !== 0 ? e.jsx(J, {
+      form: r,
+      name: `earnings.${i}.note`,
+      size: "small",
+      placeholder: s("hr.payrollCalcMethod"),
+      disabled: c,
+      slotProps: {
+        htmlInput: {
+          maxLength: 200
+        }
+      },
+      fullWidth: !0
+    }) : null;
+  return b ? e.jsx(Pe, {
+    onRemove: p ? void 0 : () => m(i),
+    removeAriaLabel: s("hr.payrollRemoveItem"),
+    disabled: a,
+    sx: {
+      p: 1.5,
+      borderRadius: 1
+    },
+    children: e.jsxs(h, {
+      spacing: C,
+      children: [P, e.jsxs(h, {
+        direction: "row",
+        spacing: C,
+        alignItems: "center",
+        children: [e.jsx(H, {
+          form: r,
+          name: `earnings.${i}.amount`,
+          disabled: c,
+          negative: f,
+          grow: !0
+        }), S]
+      }), x]
+    })
+  }) : e.jsxs(h, {
+    spacing: C,
+    children: [e.jsxs(h, {
+      direction: "row",
+      spacing: C,
+      alignItems: "center",
+      children: [P, e.jsx(H, {
+        form: r,
+        name: `earnings.${i}.amount`,
+        disabled: c,
+        negative: f
+      }), S, !p && e.jsx(Z, {
+        "aria-label": s("hr.payrollRemoveItem"),
+        onClick: () => m(i),
+        disabled: a,
+        children: e.jsx(ae, {
+          fontSize: "small"
+        })
+      })]
+    }), x]
+  });
+});
+function kn({
+  form: n
+}) {
+  const i = G(),
+    r = n.useFormValue("earningIds") ?? [],
+    c = n.useFormValue("earnings") ?? {},
+    p = r.reduce((a, b) => a + N(c[b]?.amount), 0);
+  return e.jsxs(h, {
+    direction: "row",
+    justifyContent: "space-between",
+    sx: {
+      pt: 1,
+      borderTop: "1px solid",
+      borderColor: "divider"
+    },
+    children: [e.jsx(j, {
+      sx: {
+        fontWeight: 600
+      },
+      children: i("hr.payrollGross")
+    }), e.jsx(j, {
+      sx: {
+        fontWeight: 700
+      },
+      children: i("hr.wonAmount", {
+        amount: w(p)
+      })
+    })]
+  });
+}
+function An({
+  form: n
+}) {
+  const i = G(),
+    r = n.useFormValue("earningIds") ?? [],
+    c = n.useFormValue("earnings") ?? {},
+    p = n.useFormValue("fixed") ?? {},
+    a = n.useFormValue("customIds") ?? [],
+    b = n.useFormValue("custom") ?? {},
+    m = r.reduce((v, f) => v + N(c[f]?.amount), 0),
+    s = Ae.reduce((v, f) => v + N(p[f]), 0) + a.reduce((v, f) => v + N(b[f]?.amount), 0);
+  return e.jsxs(e.Fragment, {
+    children: [e.jsxs(h, {
+      direction: "row",
+      justifyContent: "space-between",
+      sx: {
+        pt: 1,
+        borderTop: "1px solid",
+        borderColor: "divider"
+      },
+      children: [e.jsx(j, {
+        sx: {
+          fontWeight: 600
+        },
+        children: i("hr.payrollTotalDeduction")
+      }), e.jsx(j, {
+        sx: {
+          fontWeight: 700
+        },
+        children: i("hr.wonAmount", {
+          amount: w(s)
+        })
+      })]
+    }), e.jsxs(h, {
+      direction: "row",
+      justifyContent: "space-between",
+      children: [e.jsx(j, {
+        sx: {
+          fontWeight: 700
+        },
+        children: i("hr.payrollNet")
+      }), e.jsx(j, {
+        sx: {
+          fontWeight: 700,
+          color: "primary.main"
+        },
+        children: i("hr.wonAmount", {
+          amount: w(m - s)
+        })
+      })]
+    })]
+  });
+}
+function Pn({
+  controller: n,
+  run: i
+}) {
+  const r = G(),
+    c = Ce("hr"),
+    p = ke(),
+    a = n.forms.payslip,
+    b = n.modals.payslip,
+    m = n.ui.useValue("payslipItem"),
+    s = n.ui.useValue("payslipError"),
+    v = a.useFormValue("earningIds") ?? [],
+    f = a.useFormValue("customIds") ?? [],
+    P = !!a.useFormValue("auto_deduction"),
+    S = !!a.useFormValue("auto_income_tax"),
+    x = i.status === "confirmed",
+    _ = !c.canWrite,
+    R = x || _,
+    u = a.isSubmitting,
+    F = !!n.ui.useValue("payslipDownloading"),
+    V = m?.auto_income_tax ? m.deductions.find(l => l.code === "income_tax")?.note ?? "" : "",
+    U = l => a.setFormValue("earningIds", (a.getFormValue("earningIds") ?? []).filter(D => D !== l)),
+    Q = l => a.setFormValue("customIds", (a.getFormValue("customIds") ?? []).filter(D => D !== l)),
+    O = () => {
+      const l = ve();
+      a.setFormValue(`earnings.${l}`, {
+        code: `item${Date.now()}`,
+        name: "",
+        amount: "",
+        nontaxable: !1,
+        note: ""
+      }), a.setFormValue("earningIds", [...(a.getFormValue("earningIds") ?? []), l]);
+    },
+    Y = () => {
+      const l = ve();
+      a.setFormValue(`custom.${l}`, {
+        code: "custom",
+        name: "",
+        amount: "",
+        note: ""
+      }), a.setFormValue("customIds", [...(a.getFormValue("customIds") ?? []), l]);
+    },
+    L = m ? [{
+      id: "payslip-earnings",
+      title: r("hr.payrollEarnings"),
+      children: e.jsxs(h, {
+        spacing: C,
+        children: [m.attendance_check ? e.jsx(j, {
+          sx: {
+            fontSize: 14,
+            color: "warning.dark",
+            wordBreak: "keep-all"
+          },
+          children: r("hr.payrollCheckNeededWith", {
+            text: m.attendance_check
+          })
+        }) : null, v.map(l => e.jsx(Cn, {
+          id: l,
+          form: a,
+          disabled: x || u,
+          locked: R,
+          saving: u,
+          isMobile: p,
+          onRemove: U
+        }, l)), !R && e.jsx(I, {
+          startIcon: e.jsx(fe, {}),
+          onClick: O,
+          disabled: u,
+          sx: {
+            alignSelf: "flex-start"
+          },
+          children: r("hr.payrollAddEarning")
+        }), e.jsx(kn, {
+          form: a
+        })]
+      })
+    }, {
+      id: "payslip-deductions",
+      title: r("hr.payrollDeductions"),
+      children: e.jsxs(h, {
+        spacing: C,
+        children: [e.jsxs(d, {
+          children: [e.jsx(ge, {
+            form: a,
+            name: "auto_deduction",
+            label: r("hr.payrollAutoInsurance"),
+            disabled: x || u
+          }), e.jsx(j, {
+            sx: {
+              fontSize: 13,
+              color: "text.secondary"
+            },
+            children: r(P ? "hr.payrollAutoInsuranceOn" : "hr.payrollAutoInsuranceOff")
+          })]
+        }), e.jsxs(d, {
+          children: [e.jsx(ge, {
+            form: a,
+            name: "auto_income_tax",
+            label: r("hr.payrollAutoIncomeTax"),
+            disabled: x || u
+          }), e.jsx(j, {
+            sx: {
+              fontSize: 13,
+              color: "text.secondary"
+            },
+            children: r(S ? "hr.payrollAutoIncomeTaxOn" : "hr.payrollAutoIncomeTaxOff")
+          }), S && V && e.jsx(j, {
+            sx: {
+              fontSize: 13,
+              color: "text.secondary"
+            },
+            children: r("hr.payrollLastCalc", {
+              basis: V
+            })
+          })]
+        }), e.jsx(d, {
+          sx: {
+            display: "grid",
+            gridTemplateColumns: p ? "1fr" : "1fr 1fr",
+            gap: C
+          },
+          children: Ae.map(l => {
+            const D = P && yn.includes(l) || S && l === "income_tax" || (P || S) && l === "local_income_tax";
+            return e.jsxs(h, {
+              direction: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              spacing: C,
+              children: [e.jsx(j, {
+                sx: {
+                  fontSize: 14
+                },
+                children: pn[l]
+              }), e.jsx(H, {
+                form: a,
+                name: `fixed.${l}`,
+                disabled: x || u || D
+              })]
+            }, l);
+          })
+        }), f.map(l => p ? e.jsx(Pe, {
+          onRemove: R ? void 0 : () => Q(l),
+          removeAriaLabel: r("hr.payrollRemoveDeduction"),
+          disabled: u,
+          sx: {
+            p: 1.5,
+            borderRadius: 1
+          },
+          children: e.jsxs(h, {
+            spacing: C,
+            children: [e.jsx(J, {
+              form: a,
+              name: `custom.${l}.name`,
+              size: "small",
+              placeholder: r("hr.payrollOtherDeductionPlaceholder"),
+              disabled: x || u,
+              slotProps: {
+                htmlInput: {
+                  maxLength: 50
+                }
+              },
+              fullWidth: !0
+            }), e.jsx(d, {
+              sx: {
+                display: "flex"
+              },
+              children: e.jsx(H, {
+                form: a,
+                name: `custom.${l}.amount`,
+                disabled: x || u,
+                grow: !0
+              })
+            })]
+          })
+        }, l) : e.jsxs(h, {
+          direction: "row",
+          spacing: C,
+          alignItems: "center",
+          children: [e.jsx(J, {
+            form: a,
+            name: `custom.${l}.name`,
+            size: "small",
+            placeholder: r("hr.payrollOtherDeductionPlaceholder"),
+            disabled: x || u,
+            slotProps: {
+              htmlInput: {
+                maxLength: 50
+              }
+            },
+            sx: {
+              flex: 1,
+              minWidth: 0
+            }
+          }), e.jsx(H, {
+            form: a,
+            name: `custom.${l}.amount`,
+            disabled: x || u
+          }), !R && e.jsx(Z, {
+            "aria-label": r("hr.payrollRemoveDeduction"),
+            onClick: () => Q(l),
+            disabled: u,
+            children: e.jsx(ae, {
+              fontSize: "small"
+            })
+          })]
+        }, l)), !R && e.jsx(I, {
+          startIcon: e.jsx(fe, {}),
+          onClick: Y,
+          disabled: u,
+          sx: {
+            alignSelf: "flex-start"
+          },
+          children: r("hr.payrollAddOtherDeduction")
+        }), e.jsx(An, {
+          form: a
+        }), e.jsx(qe, {
+          form: a,
+          name: "note",
+          label: r("hr.employeeMemo"),
+          minRows: 2,
+          disabled: x || u,
+          slotProps: {
+            htmlInput: {
+              maxLength: 500
+            }
+          },
+          fullWidth: !0
+        }), s && e.jsx(wn, {
+          message: s
+        })]
+      })
+    }] : [];
+  return e.jsx($e, {
+    readOnly: !c.canWrite,
+    open: b.isOpen,
+    onClose: b.close,
+    title: m ? r("hr.payrollPayslipTitle", {
+      name: m.employee_name
+    }) : r("hr.payrollPay"),
+    width: "720px",
+    fullScreen: p,
+    mobilePresentation: p ? "slide" : "dialog",
+    draggable: !0,
+    backdropClick: !1,
+    titleIcons: {
+      delete: {
+        visible: !1
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !0,
+      right: x ? e.jsx(I, {
+        variant: "contained",
+        onClick: () => {
+          n.downloadPayslip(i.pay_month);
+        },
+        disabled: F,
+        sx: {
+          minWidth: 120
+        },
+        children: F ? e.jsx(E, {
+          size: 20,
+          color: "inherit"
+        }) : r("hr.payrollPayslipPdf")
+      }) : e.jsx(I, {
+        style: c.canWrite ? void 0 : {
+          display: "none"
+        },
+        variant: "contained",
+        onClick: () => {
+          a.submit();
+        },
+        disabled: u,
+        sx: {
+          minWidth: 80
+        },
+        children: u ? e.jsx(E, {
+          size: 20,
+          color: "inherit"
+        }) : r("hr.save")
+      })
+    },
+    sections: L
+  });
+}
+const Rn = 48;
+function Kn() {
+  const n = G(),
+    i = Ce("hr"),
+    r = Sn("hr.payrollRun"),
+    c = ke(),
+    p = Ne(),
+    a = Ve(),
+    b = Number(a.seq) || 0,
+    m = Ge()?.seq ?? 0,
+    [s, v] = g.useState(null),
+    [f, P] = g.useState([]),
+    [S, x] = g.useState(!1),
+    [_, R] = g.useState(""),
+    [u, F] = g.useState(""),
+    [V, U] = g.useState(0),
+    [Q, O] = g.useState(!1),
+    [Y, L] = g.useState(null),
+    [l, D] = g.useState([]),
+    [ee, re] = g.useState(null),
+    M = g.useCallback(async (t = !1) => {
+      if (!(!b || !m)) {
+        t || x(!0);
+        try {
+          const o = await A.getRun(b);
+          v(o.run), P(o.items);
+        } catch (o) {
+          t || T(o instanceof Error ? o.message : Ue("hr.errLoadPayrollRun"));
+        } finally {
+          x(!1);
+        }
+      }
+    }, [b, m]);
+  g.useEffect(() => {
+    M();
+  }, [M]), Qe(["hr_payroll_run", "hr_payroll_item"], () => {
+    M(!0);
+  });
+  const le = fn({
+      onPayslipSaved: () => {
+        M();
+      }
+    }),
+    ie = !!s,
+    q = hn(),
+    ne = !!q.useValue("open");
+  g.useEffect(() => {
+    if (!(!c || !ie)) return q.setValue("active", !0), () => {
+      q.setValue("active", !1), q.setValue("open", !1);
+    };
+  }, [c, ie, q]), g.useEffect(() => {
+    c && !ne && F("");
+  }, [c, ne]);
+  const K = g.useMemo(() => {
+      const t = u.trim();
+      return t ? f.filter(o => o.employee_name.includes(t)) : f;
+    }, [f, u]),
+    te = s?.status === "draft",
+    B = async (t, o, y) => {
+      if (!_) {
+        R(t);
+        try {
+          await o(), y && _e({
+            message: y,
+            delay: 600
+          }), await M();
+        } catch (z) {
+          T(z instanceof Error ? z.message : n("hr.errProcess"));
+        } finally {
+          R("");
+        }
+      }
+    },
+    Re = async () => {
+      if (!s) return;
+      if (!s.pay_date) {
+        T(n("hr.payrollErrPayDate"));
+        return;
+      }
+      (await X({
+        message: n("hr.payrollConfirmMessage", {
+          title: oe(s)
+        }),
+        confirmText: n("hr.payrollStatusConfirmed")
+      })) && (await B("confirm", () => A.updateRun(s.seq, {
+        status: "confirmed"
+      }), n("hr.payrollConfirmedDone")));
+    },
+    Ee = async () => {
+      if (!s) return;
+      (await X({
+        message: n("hr.payrollReopenMessage"),
+        confirmText: n("hr.payrollReopen")
+      })) && (await B("reopen", () => A.updateRun(s.seq, {
+        status: "draft"
+      }), n("hr.payrollReopenedDone")));
+    },
+    De = async () => {
+      if (!(!s || !(await X({
+        message: n("hr.payrollDeleteMessage", {
+          title: oe(s)
+        }),
+        confirmText: n("hr.delete")
+      })))) try {
+        await A.removeRun(s.seq), _e({
+          message: n("hr.deleted"),
+          delay: 500
+        }), p(Se);
+      } catch (o) {
+        T(o instanceof Error ? o.message : n("hr.errDeletePayrollRun"));
+      }
+    },
+    ze = async () => {
+      re(null), O(!0);
+      try {
+        const t = await mn.list({
+            limit: 200
+          }),
+          o = new Set(f.map(y => y.employee_seq));
+        D(t.items.filter(y => !o.has(y.seq) && y.employment_type !== "freelance"));
+      } catch (t) {
+        T(t instanceof Error ? t.message : n("hr.errLoadEmployees"));
+      }
+    },
+    Te = async t => {
+      if (!(V || !s)) {
+        U(t.seq);
+        try {
+          await cn(await A.payslip(t.seq), n("hr.payrollPayslipFile", {
+            month: s.pay_month,
+            name: t.employee_name
+          }));
+        } catch (o) {
+          T(o instanceof Error ? o.message : n("hr.payrollErrPayslip"));
+        } finally {
+          U(0);
+        }
+      }
+    },
+    We = async t => {
+      (await X({
+        message: n("hr.payrollRemoveLineMessage", {
+          name: t.employee_name
+        }),
+        confirmText: n("hr.payrollRemove")
+      })) && (await B(`remove-${t.seq}`, () => A.removeItem(t.seq)));
+    },
+    ce = t => le.openPayslipDialog(t);
+  if (!s) return e.jsx(d, {
+    sx: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100%",
+      py: 6
+    },
+    children: S ? e.jsx(E, {
+      size: 28
+    }) : e.jsx(j, {
+      sx: {
+        color: "text.secondary"
+      },
+      children: n("hr.payrollNotFound")
+    })
+  });
+  const de = e.jsxs(h, {
+      direction: "row",
+      alignItems: "center",
+      spacing: 1,
+      sx: {
+        minWidth: 0
+      },
+      children: [!c && e.jsx($, {
+        title: n("hr.payrollRunList"),
+        children: e.jsx(Z, {
+          "aria-label": n("hr.payrollRunList"),
+          onClick: () => p(Se),
+          size: "small",
+          children: e.jsx(Ye, {
+            fontSize: "small"
+          })
+        })
+      }), e.jsx(j, {
+        sx: {
+          fontSize: 16,
+          fontWeight: 700,
+          whiteSpace: "nowrap"
+        },
+        children: oe(s)
+      }), e.jsx(gn, {
+        status: s.status
+      })]
+    }),
+    ue = e.jsx(Ke, {
+      size: "small",
+      label: n("hr.payrollPayDate"),
+      value: s.pay_date,
+      onChange: t => {
+        const o = t.target.value;
+        o && !/^\d{4}-\d{2}-\d{2}$/.test(o) || (v(y => y && {
+          ...y,
+          pay_date: o
+        }), A.updateRun(s.seq, {
+          pay_date: o
+        }).catch(y => T(y instanceof Error ? y.message : n("hr.payrollErrSavePayDate"))));
+      },
+      disabled: !te,
+      slotProps: {
+        inputLabel: {
+          shrink: !0
+        }
+      },
+      sx: {
+        width: 160
+      }
+    }),
+    he = e.jsx(h, {
+      direction: "row",
+      spacing: 1,
+      sx: {
+        flexWrap: "nowrap"
+      },
+      style: i.canWrite ? void 0 : {
+        display: "none"
+      },
+      children: te ? e.jsxs(e.Fragment, {
+        children: [e.jsx(I, {
+          variant: "contained",
+          disableElevation: !0,
+          onClick: () => {
+            Re();
+          },
+          disabled: !!_,
+          children: _ === "confirm" ? e.jsx(E, {
+            size: 18,
+            color: "inherit"
+          }) : n("hr.payrollStatusConfirmed")
+        }), e.jsx(I, {
+          variant: "outlined",
+          onClick: () => {
+            B("recalc", () => A.recalculate(s.seq), n("hr.payrollRecalculated"));
+          },
+          disabled: !!_,
+          children: _ === "recalc" ? e.jsx(E, {
+            size: 18
+          }) : n("hr.payrollRecalculate")
+        }), e.jsx(I, {
+          variant: "outlined",
+          onClick: () => {
+            B("attendance", async () => {
+              await bn.fillPayroll(s.seq);
+            }, n("hr.payrollAttendanceApplied"));
+          },
+          disabled: !!_,
+          children: _ === "attendance" ? e.jsx(E, {
+            size: 18
+          }) : n("hr.payrollApplyAttendance")
+        }), e.jsx(I, {
+          variant: "outlined",
+          "aria-label": n("approval.more"),
+          onClick: t => L(t.currentTarget),
+          disabled: !!_,
+          sx: {
+            minWidth: 40,
+            px: 0,
+            "&.MuiButton-sizeMedium": {
+              minHeight: 40
+            }
+          },
+          children: e.jsx(Xe, {})
+        }), e.jsxs(Je, {
+          open: !!Y,
+          anchorEl: Y,
+          onClose: () => L(null),
+          children: [e.jsxs(be, {
+            onClick: () => {
+              L(null), ze();
+            },
+            children: [e.jsx(we, {
+              children: e.jsx(Ze, {
+                fontSize: "small"
+              })
+            }), n("hr.payrollAddEmployee")]
+          }), e.jsxs(be, {
+            onClick: () => {
+              L(null), De();
+            },
+            sx: {
+              color: "error.main"
+            },
+            children: [e.jsx(we, {
+              sx: {
+                color: "inherit"
+              },
+              children: e.jsx(ae, {
+                fontSize: "small"
+              })
+            }), n("hr.delete")]
+          })]
+        })]
+      }) : e.jsx(I, {
+        variant: "outlined",
+        onClick: () => {
+          Ee();
+        },
+        disabled: !!_,
+        children: _ === "reopen" ? e.jsx(E, {
+          size: 18
+        }) : n("hr.payrollReopen")
+      })
+    }),
+    me = f.filter(t => t.attendance_check).length,
+    pe = e.jsxs(h, {
+      direction: "row",
+      spacing: 2.5,
+      flexWrap: "wrap",
+      useFlexGap: !0,
+      sx: {
+        fontSize: 14,
+        color: "text.secondary"
+      },
+      children: [e.jsx("span", {
+        children: n("hr.payrollHeadcountN", {
+          count: s.employee_count
+        })
+      }), e.jsx("span", {
+        children: n("hr.payrollGrossWith", {
+          amount: n("hr.wonAmount", {
+            amount: w(s.total_gross)
+          })
+        })
+      }), e.jsx("span", {
+        children: n("hr.payrollDeductionWith", {
+          amount: n("hr.wonAmount", {
+            amount: w(s.total_deduction)
+          })
+        })
+      }), e.jsx(d, {
+        component: "span",
+        sx: {
+          color: "text.primary",
+          fontWeight: 700
+        },
+        children: n("hr.payrollNetWith", {
+          amount: n("hr.wonAmount", {
+            amount: w(s.total_net)
+          })
+        })
+      }), s.status === "confirmed" && s.confirmed_by_name ? e.jsx("span", {
+        children: n("hr.payrollConfirmedBy", {
+          name: s.confirmed_by_name
+        })
+      }) : null, me > 0 ? e.jsx(d, {
+        component: "span",
+        sx: {
+          color: "warning.dark",
+          fontWeight: 600
+        },
+        children: n("hr.payrollCheckNeededN", {
+          count: me
+        })
+      }) : null]
+    }),
+    xe = e.jsxs(e.Fragment, {
+      children: [s && e.jsx(Pn, {
+        controller: le,
+        run: s
+      }), e.jsxs(en, {
+        open: Q,
+        onClose: () => O(!1),
+        fullWidth: !0,
+        maxWidth: "xs",
+        children: [e.jsx(nn, {
+          children: n("hr.payrollAddEmployee")
+        }), e.jsx(tn, {
+          sx: {
+            pt: "8px !important"
+          },
+          children: e.jsx(on, {
+            label: n("hr.employee"),
+            options: l.map(t => ({
+              value: t.seq,
+              label: t.name
+            })),
+            value: ee?.seq ?? null,
+            onChange: t => re(l.find(o => o.seq === Number(t)) ?? null),
+            noOptionsText: n("hr.payrollNoEmployeesToAdd"),
+            autoFocus: !0,
+            fullWidth: !0
+          })
+        }), e.jsxs(sn, {
+          children: [e.jsx(I, {
+            onClick: () => O(!1),
+            children: n("hr.cancel")
+          }), e.jsx(I, {
+            variant: "contained",
+            disabled: !ee || !!_,
+            onClick: () => {
+              const t = ee;
+              t && (O(!1), B("add", () => A.addItem(s.seq, t.seq), n("hr.payrollLineAdded", {
+                name: t.name
+              })));
+            },
+            children: n("hr.add")
+          })]
+        })]
+      })]
+    }),
+    ye = e.jsx(d, {
+      sx: {
+        py: 6,
+        px: 2,
+        textAlign: "center",
+        color: "#9b9a97",
+        fontSize: 14,
+        wordBreak: "keep-all"
+      },
+      children: n("hr.payrollNoLines")
+    });
+  if (c) {
+    const t = [e.jsxs(d, {
+      children: [e.jsx(un, {
+        open: ne,
+        value: u,
+        onChange: F,
+        placeholder: n("hr.employeeSearchName")
+      }), e.jsxs(h, {
+        spacing: 1,
+        sx: {
+          p: 1.5
+        },
+        children: [de, ue, pe, he]
+      })]
+    }, "head"), ...K.map(o => e.jsxs(d, {
+      role: "button",
+      tabIndex: 0,
+      onClick: () => ce(o),
+      sx: {
+        p: 1.5,
+        cursor: "pointer",
+        "&:active": {
+          bgcolor: "#f8f8f7"
+        }
+      },
+      children: [e.jsxs(h, {
+        direction: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        children: [e.jsx(j, {
+          sx: {
+            fontSize: 15,
+            fontWeight: 600
+          },
+          children: o.employee_name
+        }), e.jsx(j, {
+          sx: {
+            fontSize: 15,
+            fontWeight: 700
+          },
+          children: n("hr.wonAmount", {
+            amount: w(o.net)
+          })
+        })]
+      }), e.jsxs(h, {
+        direction: "row",
+        spacing: 1.25,
+        sx: {
+          mt: .5,
+          fontSize: 14,
+          color: "text.secondary"
+        },
+        children: [e.jsx("span", {
+          children: n("hr.payrollGrossWith", {
+            amount: w(o.gross)
+          })
+        }), e.jsx("span", {
+          children: n("hr.payrollDeductionWith", {
+            amount: w(o.total_deduction)
+          })
+        }), se(o) < 0 ? e.jsx("span", {
+          children: n("hr.payrollAttendanceWith", {
+            amount: w(se(o))
+          })
+        }) : null]
+      }), o.attendance_check ? e.jsx(j, {
+        sx: {
+          mt: .5,
+          fontSize: 14,
+          color: "warning.dark",
+          wordBreak: "keep-all"
+        },
+        children: n("hr.payrollCheckNeededWith", {
+          text: o.attendance_check
+        })
+      }) : null]
+    }, o.seq))];
+    return !S && K.length === 0 && t.push(e.jsx(d, {
+      children: ye
+    }, "empty")), e.jsxs(e.Fragment, {
+      children: [e.jsx(_n, {
+        attachHead: !0,
+        children: t
+      }), xe]
+    });
+  }
+  const k = (t, o, y, z = 110) => ({
+      id: t,
+      text: o,
+      width: z,
+      align: "right",
+      render: Be => w(y(Be))
+    }),
+    Fe = [{
+      id: "employee_name",
+      text: n("hr.name"),
+      width: 100,
+      pinned: "left",
+      style: {
+        fontSize: 15
+      },
+      render: t => e.jsx(d, {
+        component: "span",
+        sx: {
+          display: "block",
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis"
+        },
+        children: t.employee_name
+      })
+    }, {
+      id: "unit_name",
+      text: n("hr.attAdminUnit"),
+      width: 110,
+      align: "center"
+    }, {
+      id: "attendance_check",
+      text: n("hr.payrollAttendanceCol"),
+      width: 280,
+      render: t => {
+        const o = t.attendance_summary;
+        if (!o) return e.jsx(d, {
+          component: "span",
+          sx: {
+            color: "text.disabled"
+          },
+          children: n("hr.payrollAttendanceNotApplied")
+        });
+        const z = [n("hr.daysN", {
+          count: o.work_days
+        }), Ie(o.work_minutes, n("hr.minutesOnly", {
+          m: 0
+        })), o.late_count > 0 ? `${n("hr.attSetStatLate")} ${n("hr.timesN", {
+          count: o.late_count
+        })}` : "", o.early_count > 0 ? `${n("hr.attSetStatEarly")} ${n("hr.timesN", {
+          count: o.early_count
+        })}` : "", o.absent_count > 0 ? `${n("hr.attSetDayStatusAbsent")} ${n("hr.daysN", {
+          count: o.absent_count
+        })}` : "", o.overtime_minutes > 0 ? `${n("hr.attSetStatOvertime")} ${Ie(o.overtime_minutes)}` : ""].filter(Boolean).join(" · ");
+        return e.jsxs(d, {
+          component: "span",
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: .5,
+            minWidth: 0
+          },
+          children: [e.jsx(d, {
+            component: "span",
+            title: z,
+            sx: {
+              minWidth: 0,
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap"
+            },
+            children: z
+          }), t.attendance_check ? e.jsx($, {
+            title: t.attendance_check,
+            children: e.jsx(In, {
+              "aria-label": n("hr.payrollCheckNeeded"),
+              sx: {
+                fontSize: 18,
+                color: "warning.main",
+                flexShrink: 0
+              }
+            })
+          }) : null]
+        });
+      }
+    }, k("gross", n("hr.payrollGross"), t => t.gross, 120), k("attendance_deduction", n("hr.attSetDeductionTitle"), se, 100), k("pension", n("hr.insurancePension"), t => W(t, "pension")), k("health", n("hr.insuranceHealth"), t => W(t, "health")), k("long_term_care", n("hr.payrollLongTermCare"), t => W(t, "long_term_care"), 100), k("employment", n("hr.insuranceEmployment"), t => W(t, "employment"), 100), {
+      id: "income_tax",
+      text: n("hr.payrollIncomeTax"),
+      width: 110,
+      align: "right",
+      render: t => t.auto_income_tax ? e.jsx($, {
+        title: t.deductions.find(o => o.code === "income_tax")?.note || n("hr.payrollSimplifiedTax"),
+        children: e.jsx("span", {
+          children: w(W(t, "income_tax"))
+        })
+      }) : e.jsx($, {
+        title: n("hr.payrollManualTax"),
+        children: e.jsxs("span", {
+          children: [w(W(t, "income_tax")), e.jsx(d, {
+            component: "span",
+            sx: {
+              ml: .5,
+              fontSize: 12,
+              color: "text.secondary"
+            },
+            children: n("hr.payrollManual")
+          })]
+        })
+      })
+    }, k("local_income_tax", n("hr.payrollLocalIncomeTax"), t => W(t, "local_income_tax"), 100), k("custom", n("hr.payrollOtherDeductions"), jn, 100), k("total_deduction", n("hr.payrollTotalDeduction"), t => t.total_deduction, 120), {
+      id: "net",
+      text: n("hr.payrollNet"),
+      width: 130,
+      align: "right",
+      render: t => e.jsx(d, {
+        component: "span",
+        sx: {
+          fontWeight: 700
+        },
+        children: w(t.net)
+      })
+    }, {
+      id: "action",
+      text: "",
+      width: 64,
+      align: "center",
+      render: t => te ? e.jsx(I, {
+        size: "small",
+        color: "inherit",
+        onClick: o => {
+          o.stopPropagation(), We(t);
+        },
+        sx: {
+          minWidth: 0,
+          color: "text.secondary"
+        },
+        children: n("hr.payrollRemove")
+      }) : e.jsx($, {
+        title: n("hr.payrollPayslipPdf"),
+        children: e.jsx(Z, {
+          size: "small",
+          onClick: o => {
+            o.stopPropagation(), Te(t);
+          },
+          children: V === t.seq ? e.jsx(E, {
+            size: 16
+          }) : e.jsx(dn, {
+            fontSize: "small"
+          })
+        })
+      })
+    }],
+    Oe = {
+      left: e.jsxs(h, {
+        direction: "row",
+        alignItems: "center",
+        spacing: 2,
+        sx: {
+          minWidth: 0
+        },
+        children: [de, ue]
+      }),
+      filter: {
+        groups: [{
+          filters: [{
+            type: "custom",
+            name: "actions",
+            node: he
+          }]
+        }]
+      },
+      showSearch: !0,
+      searchValue: u,
+      searchPlaceholder: n("hr.employeeSearchName"),
+      onSearchChange: F,
+      searchLoading: S,
+      collapsible: !1,
+      showCollapseButton: !1,
+      showClearIcon: !1
+    },
+    Le = {
+      ...r,
+      scrollbars: vn,
+      mobile: !0,
+      variant: "notion",
+      columns: Fe,
+      data: K,
+      totalCount: K.length,
+      getRowId: t => String(t.seq),
+      rowHeight: Rn,
+      onRowClick: ce,
+      loading: S,
+      emptyMessage: ye
+    };
+  return e.jsxs(e.Fragment, {
+    children: [e.jsx(d, {
+      sx: {
+        position: "relative",
+        height: "100%",
+        minHeight: 0,
+        display: "flex",
+        flexDirection: "column"
+      },
+      children: e.jsx(an, {
+        header: Oe,
+        leftPanel: e.jsxs(d, {
+          sx: {
+            height: "100%",
+            minHeight: 0,
+            display: "flex",
+            flexDirection: "column"
+          },
+          children: [e.jsx(d, {
+            sx: {
+              px: 2,
+              py: 1.25,
+              borderBottom: `1px solid ${rn}`,
+              flexShrink: 0
+            },
+            children: pe
+          }), e.jsx(d, {
+            sx: {
+              flex: 1,
+              minHeight: 0
+            },
+            children: e.jsx(ln, {
+              ...Le,
+              framed: !1,
+              scrollbarGutter: !0
+            })
+          })]
+        })
+      })
+    }), xe]
+  });
+}
+export { Kn as default };

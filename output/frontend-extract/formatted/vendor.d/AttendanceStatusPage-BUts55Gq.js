@@ -1,0 +1,1523 @@
+import { j as e, r as f, l as nt } from "./react-CjxcGQav.js";
+import { c as rt, bO as je, bT as b, dv as it, e as De, c8 as Ie, ak as Pe, bx as le, bv as Ae, D as Ce, c4 as Qe, ca as Se, B as n, dy as qe, L as W, al as Ze, bQ as K, cI as Xe, K as Je, cz as lt, nr as ct, lo as dt, cj as ut, df as Me, gn as ht, bI as Ve, go as mt, bH as pt, aZ as xt } from "../js.d/main-Cm9wS5wt.js";
+import { I as ft } from "./index.esm-gjRImBGa.js";
+import { E as gt } from "./EdgeTabs-Ccbggjn6.js";
+import { O as kt } from "./OptionToggleGroup-Cvm2wRyq.js";
+import { u as jt } from "./useColumnWidths-DSAca5rC.js";
+import { u as yt } from "./useSwipeNav-B6w6Iias.js";
+import { a as N } from "./attendanceMgmtApi-CC4DR0XR.js";
+import { t as ae, m as pe, j as Le, k as xe, p as _e, s as F, n as oe, G as bt, D as ye, d as Be, e as H, g as vt } from "./attendanceMgmt-B_e3bPBn.js";
+import { u as wt, O as St } from "./OutingTrackDialog-B6nMyUiB.js";
+import { b as ze } from "./attendance-CHHNhWTj.js";
+import { a as _t, b as At, c as Ct } from "./AttendanceDevicePanels-B5hqoF42.js";
+import { c as Ne, C as ce, P as U, E as he, D as be, f as $e, a as ve, O as Rt, W as Ot, F as Tt } from "./AttendanceParts-mHb1cK0h.js";
+import { I as et } from "./InlineErrorAlert-D9ICJPt7.js";
+import { b as Wt } from "./MobileCardListLayout-D5_p2Xer.js";
+import { a as Fe, T as Ge } from "./tableScrollbars-C9bhlJjO.js";
+import { H as we } from "./HeadSortFilter-BqVEEiod.js";
+import { o as Et } from "./HeadFilter-Byax-_oc.js";
+import { w as Dt, l as It } from "./i18nLabels-BNTLL7cu.js";
+import { r as He } from "./rowNoColumn-B_tyJFB_.js";
+import { w as Ue } from "./headerCount-4t1ZKu-L.js";
+import "./stylis-DdLD6a3t.js";
+import "./profileApi-Btafs-pM.js";
+import "./attendanceBio-C-9dHF9O.js";
+import "./leaflet-CcRL-kL8.js";
+import "./mobileSearchOverlay-DYWcMOOb.js";
+const Pt = rt(e.jsx("path", {
+  d: "M7.58 4.08 6.15 2.65C3.75 4.48 2.17 7.3 2.03 10.5h2c.15-2.65 1.51-4.97 3.55-6.42m12.39 6.42h2c-.15-3.2-1.73-6.02-4.12-7.85l-1.42 1.43c2.02 1.45 3.39 3.77 3.54 6.42M18 11c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2zm-6 11c.14 0 .27-.01.4-.04.65-.14 1.18-.58 1.44-1.18q.15-.36.15-.78h-4c.01 1.1.9 2 2.01 2"
+}));
+function qt(g) {
+  const [t, c] = f.useState(ae),
+    [E, v] = f.useState(null),
+    [w, V] = f.useState([]),
+    [q, _] = f.useState([]),
+    [D, S] = f.useState(!1),
+    [x, u] = f.useState(new Set());
+  f.useEffect(() => {
+    g && N.watches().then(r => u(new Set(r.employee_seqs))).catch(() => {});
+  }, [g]);
+  const h = async (r, l) => {
+      const j = !x.has(r),
+        T = Q => u(ee => {
+          const G = new Set(ee);
+          return Q ? G.add(r) : G.delete(r), G;
+        });
+      T(j);
+      try {
+        await N.setWatch(r, j), le({
+          message: j ? b("hr.attAdminWatchOnDone", {
+            name: l
+          }) : b("hr.attAdminWatchOffDone", {
+            name: l
+          }),
+          delay: 1200
+        });
+      } catch (Q) {
+        T(!j), je(Q instanceof Error ? Q.message : b("hr.errSaveWatch"));
+      }
+    },
+    [A, R] = f.useState(!1),
+    Z = f.useRef(t);
+  Z.current = t;
+  const Y = f.useRef(D);
+  Y.current = D;
+  const L = f.useCallback(async (r = !1) => {
+    if (g) {
+      r || R(!0);
+      try {
+        const [l, j, T] = await Promise.all([N.status(Z.current), N.requests(Y.current), N.geoEvents(Z.current).catch(() => ({
+          date: "",
+          items: []
+        }))]);
+        v(l), V(j.items), _(T.items);
+      } catch (l) {
+        r || je(l instanceof Error ? l.message : b("hr.errLoadAttendanceStatus"));
+      } finally {
+        R(!1);
+      }
+    }
+  }, [g]);
+  f.useEffect(() => {
+    L();
+  }, [L, t, D]), it(["hr_clock", "hr_clock_request", "hr_attendance", "hr_overtime", "hr_work_assign", "hr_shift", "hr_att_close", "employee", "hr_geo_event"], () => {
+    L(!0);
+  });
+  const X = De({
+      modalId: "hr-clock-edit-dialog"
+    }),
+    O = Ie({
+      stateId: "hr-clock-edit-ui",
+      initialValues: {
+        employee: null,
+        day: null,
+        saving: !1,
+        error: ""
+      }
+    }),
+    J = Pe({
+      formId: "hr-clock-edit-form",
+      initialValues: {
+        check_in: "",
+        check_out: "",
+        memo: ""
+      },
+      onValidate: r => r.check_in ? !0 : (O.setValue("error", b("hr.attAdminErrClockIn")), !1),
+      onSubmit: async r => {
+        const l = O.getValue("employee"),
+          j = O.getValue("day");
+        if (!l || !j) return !1;
+        O.setValues({
+          saving: !0,
+          error: ""
+        });
+        try {
+          return await N.putClock({
+            employee_seq: l.seq,
+            work_date: j.date,
+            check_in: r.check_in,
+            check_out: r.check_out,
+            memo: r.memo.trim()
+          }), le({
+            message: b("hr.attAdminRecordSaved"),
+            delay: 700
+          }), X.close(), O.setValue("saving", !1), L(), !0;
+        } catch (T) {
+          return O.setValues({
+            saving: !1,
+            error: T instanceof Error ? T.message : b("hr.errSaveRecord")
+          }), !1;
+        }
+      }
+    }),
+    k = (r, l) => {
+      J.setFormValues({
+        check_in: l.clock?.check_in_at.slice(11, 16) ?? "",
+        check_out: l.clock?.check_out_at.slice(11, 16) ?? "",
+        memo: l.clock?.memo ?? ""
+      }), O.setValues({
+        employee: r,
+        day: l,
+        saving: !1,
+        error: ""
+      }), X.open();
+    },
+    $ = async () => {
+      const r = O.getValue("day");
+      if (r?.clock) {
+        O.setValue("saving", !0);
+        try {
+          await N.removeClock(r.clock.seq), le({
+            message: b("hr.deleted"),
+            delay: 500
+          }), X.close(), L();
+        } catch (l) {
+          O.setValues({
+            saving: !1,
+            error: l instanceof Error ? l.message : b("hr.errDeleteRecord")
+          });
+        }
+      }
+    },
+    fe = async r => {
+      try {
+        await N.reviewRequest(r.seq, "approve"), le({
+          message: b("hr.attAdminApprovedClock"),
+          delay: 900
+        }), L();
+      } catch (l) {
+        je(l instanceof Error ? l.message : b("hr.errProcessRequest"));
+      }
+    },
+    ne = De({
+      modalId: "hr-clock-reject-dialog"
+    }),
+    B = Ie({
+      stateId: "hr-clock-reject-ui",
+      initialValues: {
+        target: null,
+        saving: !1,
+        error: ""
+      }
+    }),
+    re = Pe({
+      formId: "hr-clock-reject-form",
+      initialValues: {
+        reject_reason: ""
+      },
+      onValidate: r => r.reject_reason.trim() ? !0 : (B.setValue("error", b("hr.attAdminErrRejectReason")), !1),
+      onSubmit: async r => {
+        const l = B.getValue("target");
+        if (!l) return !1;
+        B.setValues({
+          saving: !0,
+          error: ""
+        });
+        try {
+          return await N.reviewRequest(l.seq, "reject", r.reject_reason.trim()), le({
+            message: b("hr.rejectedDone"),
+            delay: 700
+          }), ne.close(), B.setValue("saving", !1), L(), !0;
+        } catch (j) {
+          return B.setValues({
+            saving: !1,
+            error: j instanceof Error ? j.message : b("hr.errProcessRequest")
+          }), !1;
+        }
+      }
+    }),
+    I = wt("hr-outing-track-ui", (r, l) => N.outingTrack(l, r));
+  return {
+    date: t,
+    setDate: c,
+    data: E,
+    requests: w,
+    geoEvents: q,
+    showAllRequests: D,
+    setShowAllRequests: S,
+    loading: A,
+    reload: L,
+    edit: {
+      modal: X,
+      ui: O,
+      form: J,
+      open: k,
+      remove: $
+    },
+    reject: {
+      modal: ne,
+      ui: B,
+      form: re,
+      open: r => {
+        re.setFormValues({
+          reject_reason: ""
+        }), B.setValues({
+          target: r,
+          saving: !1,
+          error: ""
+        }), ne.open();
+      }
+    },
+    track: {
+      ...I,
+      open: (r, l) => I.open(l, r.name, r.seq)
+    },
+    approve: fe,
+    watches: x,
+    toggleWatch: h
+  };
+}
+function Mt({
+  controller: g
+}) {
+  const t = Ae(),
+    c = t("hr.minutesOnly", {
+      m: 0
+    }),
+    {
+      modal: E,
+      ui: v,
+      form: w
+    } = g.edit,
+    V = Ce(),
+    q = v.useValue("employee"),
+    _ = v.useValue("day"),
+    D = !!v.useValue("saving"),
+    S = String(v.useValue("error") ?? ""),
+    x = _?.clock ?? null,
+    u = [{
+      id: "clock-edit-time",
+      title: _ ? t("hr.attAdminClockSection", {
+        date: F(_.date),
+        planned: _e(_.planned)
+      }) : t("hr.attAdminRecord"),
+      children: e.jsxs(Qe, {
+        spacing: Se,
+        children: [e.jsxs(n, {
+          sx: {
+            display: "grid",
+            gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+            gap: Se
+          },
+          children: [e.jsx(qe, {
+            form: w,
+            name: "check_in",
+            label: t("hr.myAttClockInTime"),
+            disabled: D,
+            fullWidth: !0
+          }), e.jsx(qe, {
+            form: w,
+            name: "check_out",
+            label: t("hr.myAttClockOutTime"),
+            disabled: D,
+            fullWidth: !0
+          })]
+        }), e.jsx(W, {
+          sx: {
+            fontSize: 14,
+            color: "text.secondary"
+          },
+          children: t("hr.myAttReqMidnightNote")
+        }), e.jsx(Ze, {
+          form: w,
+          name: "memo",
+          label: t("hr.attAdminEditReason"),
+          disabled: D,
+          fullWidth: !0,
+          slotProps: {
+            htmlInput: {
+              maxLength: 300
+            }
+          }
+        }), x && e.jsxs(n, {
+          component: "ul",
+          sx: {
+            listStyleType: "disc",
+            m: 0,
+            pl: 2.5,
+            fontSize: 14,
+            color: "text.secondary"
+          },
+          children: [e.jsx("li", {
+            children: t("hr.attAdminCalcNow", {
+              work: pe(x.work_minutes, c),
+              overtime: pe(x.overtime_minutes, c),
+              night: pe(x.night_minutes, c)
+            })
+          }), e.jsx("li", {
+            children: t("hr.attAdminMethods", {
+              in: Le(x.in_method),
+              place: x.place ? ` · ${x.place}` : "",
+              out: Le(x.out_method)
+            })
+          }), xe(x.location_flags) && e.jsx(n, {
+            component: "li",
+            sx: {
+              color: xe(x.location_flags, !0) ? "error.main" : "inherit"
+            },
+            children: t("hr.attAdminLocationCheck", {
+              flags: xe(x.location_flags)
+            })
+          }), x.breaks.length > 0 && e.jsx("li", {
+            children: t("hr.attAdminBreaks", {
+              list: x.breaks.map(h => `${h.start}~${h.end || "…"}`).join(", ")
+            })
+          }), (x.outings ?? []).length > 0 && e.jsxs("li", {
+            children: [t("hr.attSetClockMethodOutside"), " ", (x.outings ?? []).map(h => `${h.start}~${h.end || "…"} ${h.place}${h.reason ? `(${h.reason})` : ""}`).join(", "), q && _ && e.jsx(K, {
+              size: "small",
+              onClick: () => g.track.open(q, _.date),
+              sx: {
+                ml: 1,
+                p: 0,
+                minWidth: 0,
+                fontSize: 14,
+                verticalAlign: "baseline"
+              },
+              children: t("hr.attAdminViewRoute")
+            })]
+          })]
+        }), S && e.jsx(et, {
+          message: S
+        })]
+      })
+    }];
+  return e.jsx(Xe, {
+    open: E.isOpen,
+    onClose: E.close,
+    title: q ? t("hr.attAdminClockTitleOf", {
+      name: q.name
+    }) : t("hr.attAdminClockTitle"),
+    width: "520px",
+    fullScreen: V,
+    mobilePresentation: V ? "slide" : "dialog",
+    draggable: !0,
+    backdropClick: !1,
+    titleIcons: {
+      delete: {
+        visible: !!x,
+        confirmConfig: {
+          title: t("hr.attAdminDeleteRecord"),
+          message: t("hr.attAdminDeleteRecordConfirm"),
+          confirmText: t("hr.delete"),
+          cancelText: t("hr.cancel")
+        }
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    onDelete: g.edit.remove,
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !0,
+      right: e.jsx(K, {
+        variant: "contained",
+        onClick: () => {
+          w.submit();
+        },
+        disabled: D,
+        sx: {
+          minWidth: 80
+        },
+        children: D ? e.jsx(Je, {
+          size: 20,
+          color: "inherit"
+        }) : t("hr.save")
+      })
+    },
+    sections: u
+  });
+}
+function Vt({
+  controller: g
+}) {
+  const t = Ae(),
+    {
+      modal: c,
+      ui: E,
+      form: v
+    } = g.reject,
+    w = Ce(),
+    V = !!E.useValue("saving"),
+    q = String(E.useValue("error") ?? ""),
+    _ = E.useValue("target");
+  return e.jsx(Xe, {
+    open: c.isOpen,
+    onClose: c.close,
+    title: t("hr.attAdminRejectClockTitle"),
+    width: "480px",
+    fullScreen: w,
+    mobilePresentation: w ? "slide" : "dialog",
+    draggable: !0,
+    backdropClick: !1,
+    titleIcons: {
+      delete: {
+        visible: !1
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !0,
+      right: e.jsx(K, {
+        variant: "contained",
+        color: "error",
+        onClick: () => {
+          v.submit();
+        },
+        disabled: V,
+        sx: {
+          minWidth: 80
+        },
+        children: V ? e.jsx(Je, {
+          size: 20,
+          color: "inherit"
+        }) : t("hr.attSetRequestStatusRejected")
+      })
+    },
+    sections: [{
+      id: "reject-reason",
+      title: _ ? `${_.employee?.name ?? ""} · ${F(_.work_date)}` : t("hr.rejectReason"),
+      children: e.jsxs(Qe, {
+        spacing: Se,
+        children: [e.jsx(W, {
+          sx: {
+            fontSize: 15,
+            color: "text.secondary"
+          },
+          children: t("hr.attAdminRejectNote")
+        }), e.jsx(Ze, {
+          form: v,
+          name: "reject_reason",
+          label: t("hr.rejectReason"),
+          disabled: V,
+          fullWidth: !0,
+          slotProps: {
+            htmlInput: {
+              maxLength: 300
+            }
+          }
+        }), q && e.jsx(et, {
+          message: q
+        })]
+      })
+    }]
+  });
+}
+const Ke = {
+    display: "grid",
+    gridTemplateColumns: "repeat(7, minmax(0, 1fr))",
+    columnGap: "2px"
+  },
+  Lt = It({
+    done: "hr.attAdminShortDone",
+    working: "hr.attAdminShortWorking",
+    missing_out: "hr.attAdminShortMissingOut",
+    absent: "hr.attSetDayStatusAbsent",
+    leave: "hr.attSetDayStatusLeave",
+    half: "hr.attSetDayStatusHalf",
+    quarter: "hr.attSetDayStatusQuarter",
+    away: "hr.attAdminShortAway",
+    off: "hr.attSetDayStatusOff",
+    upcoming: "hr.attSetDayStatusUpcoming",
+    not_yet: "hr.attSetDayStatusNotYet",
+    none: ""
+  }),
+  Bt = new Set(["off", "none", "upcoming"]),
+  me = ["not_yet", "absent", "missing_out", "working", "done", "leave", "half", "quarter", "away", "upcoming", "off"];
+function Ye(g) {
+  const t = g.clock?.outings?.find(w => w.start && !w.end),
+    c = g.clock?.out_method === "offsite" ? ` · ${g.clock.out_reason ? b("hr.attAdminOffsiteOutWith", {
+      reason: g.clock.out_reason
+    }) : b("hr.attAdminOffsiteOut")}` : "",
+    E = g.clock?.late_reason ? ` · ${b("hr.attAdminLateReasonWith", {
+      reason: g.clock.late_reason
+    })}` : "",
+    v = xe(g.clock?.location_flags, !0);
+  return (t ? ` · ${b("hr.attAdminOutingWith", {
+    place: t.place
+  })}` : "") + E + c + (v ? ` · ${b("hr.attAdminSuspectWith", {
+    flags: v
+  })}` : "");
+}
+function ms({
+  embedded: g = !1
+} = {}) {
+  const t = Ae(),
+    c = Ce(),
+    E = jt("hr.attendance.day"),
+    v = lt()?.seq ?? 0,
+    [w, V] = nt(),
+    [q, _] = f.useState("today"),
+    D = ["today", "week", "requests"].includes(w.get("tab") ?? "") ? w.get("tab") : "today",
+    S = g ? q : D,
+    x = s => g ? _(s) : V(s === "today" ? {} : {
+      tab: s
+    }, {
+      replace: !0
+    }),
+    u = qt(v),
+    {
+      data: h,
+      date: A,
+      setDate: R,
+      requests: Z
+    } = u,
+    Y = _t(v),
+    [L, X] = f.useState([]),
+    [O, J] = f.useState(!1),
+    [k, $] = f.useState(null),
+    [fe, ne] = f.useState([]),
+    [B, re] = f.useState([]),
+    I = f.useMemo(() => h?.employees ?? [], [h]),
+    de = f.useMemo(() => {
+      const s = [...new Set(I.map(i => i.employee.unit_seq || 0))],
+        d = i => i && h?.units[i] || t("hr.attAdminNoUnit");
+      return s.map(i => ({
+        value: String(i),
+        label: d(i),
+        chip: d(i)
+      })).sort((i, P) => i.value === "0" ? 1 : P.value === "0" ? -1 : i.label.localeCompare(P.label, "ko"));
+    }, [I, h, t]),
+    r = L.filter(s => de.some(d => d.value === s)),
+    l = r.join(","),
+    j = f.useMemo(() => l ? I.filter(s => l.split(",").includes(String(s.employee.unit_seq || 0))) : I, [I, l]),
+    T = f.useMemo(() => {
+      const s = new Map();
+      for (const d of j) s.set(d.day.status, (s.get(d.day.status) ?? 0) + 1);
+      return s;
+    }, [j]),
+    Q = j.filter(s => s.day.late).length,
+    ee = (h?.pending_requests ?? 0) + Y.items.length,
+    G = s => h?.units[s] ?? "",
+    tt = yt(() => R(oe(A, -7)), () => R(oe(A, 7))),
+    Re = [{
+      value: "today",
+      label: t("hr.attAdminTabDay")
+    }, {
+      value: "week",
+      label: t("hr.attAdminTabWeek")
+    }, {
+      value: "requests",
+      label: ee ? t("hr.attAdminRequestsN", {
+        count: ee
+      }) : t("hr.attSetClockMethodRequest")
+    }],
+    st = Re.map(s => s.value === "requests" && ee ? {
+      value: s.value,
+      label: e.jsxs(n, {
+        component: "span",
+        sx: {
+          display: "inline-flex",
+          alignItems: "center",
+          gap: .75
+        },
+        children: [t("hr.attSetClockMethodRequest"), e.jsx(ft, {
+          count: ee,
+          background: "#d32f2f"
+        })]
+      })
+    } : s),
+    ot = e.jsx(kt, {
+      size: "medium",
+      value: S,
+      onChange: s => x(s ?? "today"),
+      options: st,
+      sx: {
+        height: 40,
+        flexWrap: "nowrap",
+        flexShrink: 0
+      }
+    }),
+    ue = S === "requests" ? null : S === "today" ? e.jsx(Ne, {
+      large: c,
+      label: A === ae() ? t("hr.attAdminTodayDate", {
+        date: F(A)
+      }) : F(A),
+      onPrev: () => R(oe(A, -1)),
+      onNext: () => R(oe(A, 1)),
+      pick: {
+        mode: "date",
+        value: A,
+        onPick: R
+      }
+    }) : e.jsx(Ne, {
+      large: c,
+      label: h ? t("hr.attAdminWeekOf", {
+        date: F(h.week_start)
+      }) : "",
+      onPrev: () => R(oe(A, -7)),
+      onNext: () => R(oe(A, 7)),
+      pick: {
+        mode: "date",
+        value: A,
+        onPick: R
+      }
+    }),
+    Oe = e.jsx(n, {
+      sx: {
+        display: "flex",
+        flexDirection: "column",
+        gap: .75
+      },
+      children: u.geoEvents.map(s => e.jsxs(n, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: 1,
+          fontSize: 15,
+          lineHeight: 1.25,
+          flexWrap: "wrap"
+        },
+        children: [e.jsx(n, {
+          component: "span",
+          sx: {
+            fontWeight: 600,
+            minWidth: 44
+          },
+          children: s.at.slice(11, 16)
+        }), e.jsx(n, {
+          component: "span",
+          sx: {
+            fontWeight: 600
+          },
+          children: s.employee?.name ?? t("hr.employee")
+        }), e.jsx(n, {
+          component: "span",
+          sx: {
+            color: s.kind === "enter" ? "#047857" : "#b45309"
+          },
+          children: s.kind === "enter" ? t("hr.myAttGeoEnter") : t("hr.myAttGeoExit")
+        }), e.jsx(n, {
+          component: "span",
+          sx: {
+            color: "text.secondary"
+          },
+          children: [s.place, bt[s.prompt], s.accuracy ? `±${s.accuracy}m` : ""].filter(Boolean).join(" · ")
+        })]
+      }, s.seq))
+    }),
+    ge = S === "today" && h ? e.jsxs(n, {
+      sx: {
+        display: "flex",
+        gap: 1,
+        flexWrap: "wrap",
+        alignItems: "center",
+        flex: c ? void 0 : "1 1 auto",
+        minWidth: 0
+      },
+      children: [de.length > 0 && e.jsx(n, {
+        sx: {
+          mr: 1,
+          "& .MuiButton-root, & button": {
+            height: 40
+          }
+        },
+        children: e.jsx(ct, {
+          stateId: "attendance-status-filters",
+          children: e.jsx(dt, {
+            name: "attendance-status-unit",
+            title: t("hr.attAdminUnit"),
+            type: "checkbox",
+            showBadge: !0,
+            options: de,
+            selectedOptions: r,
+            onChange: (s, d) => X(Array.isArray(d) ? d.map(i => String(i)) : [])
+          })
+        })
+      }), e.jsx(ce, {
+        label: r.length ? t("hr.attAdminNOfM", {
+          total: I.length,
+          count: j.length
+        }) : t("hr.attAdminAllN", {
+          count: I.length
+        }),
+        tone: {
+          color: "#334155",
+          bg: "#f1f5f9"
+        }
+      }), me.filter(s => T.get(s)).map(s => e.jsx(ce, {
+        label: `${ye[s]} ${T.get(s)}`,
+        tone: Be(s)
+      }, s)), Q > 0 && e.jsx(ce, {
+        label: t("hr.attAdminLateN", {
+          count: Q
+        }),
+        tone: {
+          color: "#b45309",
+          bg: "#fef3c7"
+        }
+      }), !c && u.geoEvents.length > 0 && e.jsx(ut, {
+        onClick: () => J(!0),
+        sx: {
+          borderRadius: 1,
+          "&:hover": {
+            opacity: .8
+          }
+        },
+        children: e.jsx(ce, {
+          label: t("hr.attAdminGeoN", {
+            count: u.geoEvents.length
+          }),
+          tone: {
+            color: "#1d4ed8",
+            bg: "#dbeafe"
+          }
+        })
+      })]
+    }) : null,
+    Te = S !== "requests" && A !== ae(),
+    at = e.jsx(U, {
+      children: e.jsxs(n, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: 1.5,
+          flexWrap: "wrap"
+        },
+        children: [!c && ot, c ? ue && e.jsxs(n, {
+          sx: {
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            position: "relative"
+          },
+          children: [Te && e.jsx(K, {
+            onClick: () => R(ae()),
+            sx: {
+              position: "absolute",
+              left: 0,
+              top: "50%",
+              transform: "translateY(-50%)",
+              minWidth: 0,
+              px: 0
+            },
+            children: t("hr.attAdminGoToday")
+          }), ue]
+        }) : e.jsxs(e.Fragment, {
+          children: [ge ? e.jsx(n, {
+            sx: {
+              flex: 1,
+              minWidth: 0,
+              display: "flex",
+              ml: .5
+            },
+            children: ge
+          }) : e.jsx(n, {
+            sx: {
+              flex: 1
+            }
+          }), Te && e.jsx(K, {
+            size: "small",
+            onClick: () => R(ae()),
+            children: t("hr.attAdminGoToday")
+          }), ue]
+        })]
+      })
+    }, "header"),
+    We = s => e.jsx(pt, {
+      title: u.watches.has(s.seq) ? t("hr.attAdminWatchOff") : t("hr.attAdminWatchOn"),
+      children: e.jsx(Ve, {
+        "aria-label": u.watches.has(s.seq) ? t("hr.attAdminWatchOff") : t("hr.attAdminWatchOn"),
+        onClick: d => {
+          d.stopPropagation(), u.toggleWatch(s.seq, s.name);
+        },
+        sx: {
+          color: u.watches.has(s.seq) ? "primary.main" : "#cbd5e1"
+        },
+        children: u.watches.has(s.seq) ? e.jsx(Pt, {}) : e.jsx(xt, {})
+      })
+    }),
+    z = c && !ue ? [] : [at];
+  if (S === "today" && h) {
+    c && z.push(e.jsx(U, {
+      children: ge
+    }, "counts")), c && S === "today" && u.geoEvents.length && z.push(e.jsx(U, {
+      title: t("hr.attAdminGeoTitle"),
+      children: e.jsx(n, {
+        sx: {
+          maxHeight: 119,
+          overflowY: "auto"
+        },
+        children: Oe
+      })
+    }, "geo"));
+    const s = ({
+      employee: d,
+      day: i
+    }) => {
+      const P = i.leaves.map(M => ze[M.kind] ?? M.kind).join(" · ");
+      return e.jsxs(n, {
+        role: "button",
+        tabIndex: 0,
+        onClick: () => u.edit.open(d, i),
+        sx: {
+          display: "grid",
+          gridTemplateColumns: "1fr auto auto",
+          alignItems: "center",
+          gap: 1,
+          cursor: "pointer"
+        },
+        children: [e.jsxs(n, {
+          sx: {
+            minWidth: 0
+          },
+          children: [e.jsxs(W, {
+            sx: {
+              fontSize: 15,
+              fontWeight: 600
+            },
+            children: [d.name, " ", d.position]
+          }), G(d.unit_seq) && e.jsx(W, {
+            sx: {
+              fontSize: 14,
+              color: "text.secondary"
+            },
+            children: G(d.unit_seq)
+          })]
+        }), e.jsxs(n, {
+          sx: {
+            justifySelf: "end",
+            textAlign: "right"
+          },
+          children: [e.jsx(be, {
+            status: i.status,
+            late: i.late,
+            early: i.early,
+            filled: i.filled
+          }), e.jsxs(W, {
+            sx: {
+              fontSize: 14,
+              color: "text.secondary",
+              mt: .25
+            },
+            children: [i.clock?.check_in_at ? `${H(i.clock.check_in_at, i.date)}~${i.clock.check_out_at ? H(i.clock.check_out_at, i.date) : ""}` : P || _e(i.planned), Ye(i)]
+          })]
+        }), We(d)]
+      }, d.seq);
+    };
+    if (c && j.length > 0) for (const d of j) z.push(e.jsx(U, {
+      children: s(d)
+    }, `today-${d.employee.seq}`));else if (c || I.length === 0) z.push(e.jsx(U, {
+      children: e.jsx(he, {
+        text: I.length === 0 ? t("hr.attAdminNoEmployees") : t("hr.attAdminNoUnitEmployees")
+      })
+    }, "today-list"));else {
+      const d = o => {
+          const C = me.indexOf(o);
+          return C < 0 ? me.length : C;
+        },
+        i = o => {
+          switch (k?.by) {
+            case "name":
+              return o.employee.name;
+            case "position":
+              return o.employee.position || "￿";
+            case "unit":
+              return G(o.employee.unit_seq) || "￿";
+            case "status":
+              return d(o.day.status);
+            case "check_in":
+              return o.day.clock?.check_in_at || "￿";
+            case "check_out":
+              return o.day.clock?.check_out_at || "￿";
+            case "work":
+              return o.day.clock?.work_minutes ?? 0;
+            default:
+              return 0;
+          }
+        },
+        P = fe.filter(o => T.get(o)),
+        M = new Map();
+      for (const o of j) o.employee.position && M.set(o.employee.position, (M.get(o.employee.position) ?? 0) + 1);
+      const ie = [...M].sort((o, C) => o[0].localeCompare(C[0], "ko")).map(([o, C]) => ({
+          value: o,
+          label: o,
+          count: C
+        })),
+        te = B.filter(o => M.has(o)),
+        a = j.filter(o => (!P.length || P.includes(o.day.status)) && (!te.length || te.includes(o.employee.position ?? ""))),
+        p = k ? [...a].sort((o, C) => {
+          const se = i(o),
+            ke = i(C),
+            Ee = typeof se == "number" && typeof ke == "number" ? se - ke : String(se).localeCompare(String(ke), "ko");
+          return k.dir === "asc" ? Ee : -Ee;
+        }) : a,
+        m = me.filter(o => T.get(o)).map(o => ({
+          value: o,
+          label: ye[o],
+          count: T.get(o)
+        })),
+        y = [He(), {
+          id: "name",
+          text: Ue(t("hr.name"), p.length),
+          width: 120,
+          sortable: !0,
+          primary: !0,
+          style: {
+            fontWeight: 600,
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis"
+          },
+          render: ({
+            employee: o
+          }) => o.name
+        }, {
+          id: "position",
+          text: e.jsx(we, {
+            label: t("hr.employeePosition"),
+            menuId: "attendance-position",
+            sort: {
+              active: k?.by === "position" ? k.dir : null,
+              onChange: o => $(o ? {
+                by: "position",
+                dir: o
+              } : null)
+            },
+            filter: {
+              options: ie,
+              value: te,
+              onChange: re
+            }
+          }),
+          width: 100,
+          align: "center",
+          style: {
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis"
+          },
+          render: ({
+            employee: o
+          }) => o.position ?? ""
+        }, {
+          id: "unit",
+          text: t("hr.attAdminUnit"),
+          width: 140,
+          sortable: !0,
+          style: {
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis"
+          },
+          render: ({
+            employee: o
+          }) => e.jsx(n, {
+            component: "span",
+            sx: {
+              color: "text.secondary"
+            },
+            children: G(o.unit_seq)
+          })
+        }, {
+          id: "status",
+          text: e.jsx(we, {
+            label: t("hr.myAttColStatus"),
+            menuId: "attendance-status",
+            sort: {
+              active: k?.by === "status" ? k.dir : null,
+              onChange: o => $(o ? {
+                by: "status",
+                dir: o
+              } : null)
+            },
+            filter: {
+              options: m,
+              value: P,
+              onChange: ne
+            }
+          }),
+          width: 200,
+          render: ({
+            day: o
+          }) => e.jsx(be, {
+            status: o.status,
+            late: o.late,
+            early: o.early,
+            filled: o.filled
+          })
+        }, {
+          id: "planned",
+          text: t("hr.attSetDayStatusUpcoming"),
+          width: 120,
+          align: "center",
+          render: ({
+            day: o
+          }) => e.jsx(n, {
+            component: "span",
+            sx: {
+              color: "text.secondary"
+            },
+            children: _e(o.planned)
+          })
+        }, {
+          id: "check_in",
+          text: t("hr.attSetStart"),
+          width: 90,
+          align: "center",
+          sortable: !0,
+          render: ({
+            day: o
+          }) => o.clock?.check_in_at ? H(o.clock.check_in_at, o.date) : ""
+        }, {
+          id: "check_out",
+          text: t("hr.attSetEnd"),
+          width: 90,
+          align: "center",
+          sortable: !0,
+          render: ({
+            day: o
+          }) => o.clock?.check_out_at ? H(o.clock.check_out_at, o.date) : o.clock?.check_in_at ? e.jsx(n, {
+            component: "span",
+            sx: {
+              color: "text.secondary"
+            },
+            children: t("hr.attSetDayStatusWorking")
+          }) : ""
+        }, {
+          id: "work",
+          text: t("hr.attAdminWorkTime"),
+          width: 110,
+          align: "center",
+          sortable: !0,
+          render: ({
+            day: o
+          }) => pe(o.clock?.work_minutes ?? 0)
+        }, {
+          id: "detail",
+          text: t("hr.attAdminDetails"),
+          minWidth: 200,
+          render: ({
+            day: o
+          }) => {
+            const C = o.leaves.map(se => ze[se.kind] ?? se.kind).join(" · ");
+            return [o.clock?.check_in_at ? "" : C, o.clock?.place ?? "", Ye(o).replace(/^ · /, "")].filter(Boolean).join(" · ");
+          }
+        }, {
+          id: "watch",
+          text: "",
+          width: c ? 64 : 64 + Fe,
+          align: "center",
+          cellPadding: c ? 0 : `0 ${Fe}px 0 0`,
+          headerMenu: !1,
+          render: ({
+            employee: o
+          }) => We(o)
+        }];
+      z.push(e.jsx(U, {
+        fill: !0,
+        flush: !c,
+        children: e.jsx($e, {
+          children: e.jsx(Me, {
+            scrollbars: Ge,
+            ...E,
+            variant: "notion",
+            autoHeight: !0,
+            showPaper: !1,
+            framed: !1,
+            scrollbarGutter: !c,
+            rowHeightMode: "auto",
+            data: p,
+            totalCount: p.length,
+            getRowId: o => o.employee.seq,
+            columns: y,
+            onRowClick: ({
+              employee: o,
+              day: C
+            }) => u.edit.open(o, C),
+            sortBy: k?.by,
+            sortDirection: k?.dir,
+            onSort: (o, C) => $({
+              by: o,
+              dir: C
+            }),
+            onSortClear: () => $(null),
+            onHeaderContextMenu: Et,
+            emptyMessage: e.jsx(he, {
+              text: t("hr.attAdminNoStatusEmployees")
+            })
+          })
+        })
+      }, "today-list"));
+    }
+  }
+  if (S === "week" && h) {
+    const s = h.employees[0]?.week.map(a => a.date) ?? [],
+      d = new Map();
+    for (const a of h.employees) a.employee.position && d.set(a.employee.position, (d.get(a.employee.position) ?? 0) + 1);
+    const i = [...d].sort((a, p) => a[0].localeCompare(p[0], "ko")).map(([a, p]) => ({
+        value: a,
+        label: a,
+        count: p
+      })),
+      P = B.filter(a => d.has(a)),
+      M = P.length ? h.employees.filter(a => P.includes(a.employee.position ?? "")) : h.employees,
+      ie = k?.by === "employee" ? [...M].sort((a, p) => (k.dir === "asc" ? 1 : -1) * a.employee.name.localeCompare(p.employee.name, "ko")) : k?.by === "position" ? [...M].sort((a, p) => (k.dir === "asc" ? 1 : -1) * (a.employee.position || "￿").localeCompare(p.employee.position || "￿", "ko")) : M,
+      te = new Set(h.holidays ?? []);
+    z.push(e.jsx(U, {
+      fill: !0,
+      flush: !c,
+      children: h.employees.length === 0 ? e.jsx(he, {
+        text: t("hr.attAdminNoTargets")
+      }) : c ? e.jsxs(n, {
+        ...tt,
+        sx: {
+          display: "flex",
+          flexDirection: "column"
+        },
+        children: [e.jsx(n, {
+          sx: Ke,
+          children: s.map(a => {
+            const p = new Date(`${a}T00:00:00Z`).getUTCDay(),
+              m = p === 0 || te.has(a),
+              y = a === ae();
+            return e.jsxs(n, {
+              sx: {
+                textAlign: "center",
+                fontSize: 14,
+                lineHeight: 1.35,
+                py: .5,
+                borderRadius: 1,
+                color: m ? "#dc2626" : p === 6 ? "#2563eb" : ve.headerColor,
+                ...(y ? {
+                  bgcolor: "#eff6ff",
+                  fontWeight: 700
+                } : {})
+              },
+              children: [e.jsx(n, {
+                children: Dt(p)
+              }), e.jsx(n, {
+                children: Number(a.slice(8, 10))
+              })]
+            }, a);
+          })
+        }), h.employees.map(({
+          employee: a,
+          week: p
+        }) => e.jsxs(n, {
+          sx: {
+            borderTop: `1px solid ${ve.border}`,
+            py: 1,
+            "&:last-of-type": {
+              pb: 0
+            }
+          },
+          children: [e.jsxs(W, {
+            sx: {
+              fontSize: 15,
+              fontWeight: 600,
+              mb: .5,
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis"
+            },
+            children: [a.name, " ", a.position]
+          }), e.jsx(n, {
+            sx: Ke,
+            children: p.map(m => {
+              const y = Bt.has(m.status) && !m.late;
+              return e.jsxs(n, {
+                role: "button",
+                tabIndex: 0,
+                "aria-label": `${a.name} ${F(m.date)} ${ye[m.status]}`,
+                onClick: () => u.edit.open(a, m),
+                sx: {
+                  textAlign: "center",
+                  fontSize: 14,
+                  lineHeight: 1.35,
+                  py: .5,
+                  minHeight: 44,
+                  borderRadius: 1,
+                  cursor: "pointer",
+                  "&:active": {
+                    bgcolor: ve.hoverBg
+                  }
+                },
+                children: [e.jsx(n, {
+                  sx: {
+                    color: m.status === "off" ? Rt : y ? "text.secondary" : Be(m.status).color,
+                    fontWeight: y ? 400 : 600,
+                    whiteSpace: "nowrap"
+                  },
+                  children: Lt[m.status] || "–"
+                }), m.late && e.jsx(n, {
+                  sx: {
+                    color: "#b45309",
+                    fontWeight: 600
+                  },
+                  children: t("hr.attSetStatLate")
+                }), m.clock?.check_in_at && e.jsx(n, {
+                  sx: {
+                    color: "text.secondary"
+                  },
+                  children: H(m.clock.check_in_at, m.date)
+                }), m.clock?.check_out_at && e.jsx(n, {
+                  sx: {
+                    color: "text.secondary"
+                  },
+                  children: H(m.clock.check_out_at, m.date)
+                })]
+              }, m.date);
+            })
+          })]
+        }, a.seq))]
+      }) : e.jsx($e, {
+        children: e.jsx(Me, {
+          scrollbars: Ge,
+          variant: "notion",
+          autoHeight: !0,
+          showPaper: !1,
+          framed: !1,
+          scrollbarGutter: !c,
+          rowHeightMode: "auto",
+          data: ie,
+          totalCount: ie.length,
+          getRowId: a => a.employee.seq,
+          sortBy: k?.by === "employee" ? k.by : void 0,
+          sortDirection: k?.by === "employee" ? k.dir : void 0,
+          onSort: (a, p) => $({
+            by: String(a),
+            dir: p
+          }),
+          onSortClear: () => $(null),
+          columns: [He({
+            pinned: !0
+          }), {
+            id: "employee",
+            text: Ue(t("hr.employee"), ie.length),
+            width: 110,
+            pinned: "left",
+            primary: !0,
+            sortable: !0,
+            style: {
+              fontWeight: 500,
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis"
+            },
+            render: ({
+              employee: a
+            }) => a.name
+          }, {
+            id: "position",
+            text: e.jsx(we, {
+              label: t("hr.employeePosition"),
+              menuId: "attendance-week-position",
+              sort: {
+                active: k?.by === "position" ? k.dir : null,
+                onChange: a => $(a ? {
+                  by: "position",
+                  dir: a
+                } : null)
+              },
+              filter: {
+                options: i,
+                value: P,
+                onChange: re
+              }
+            }),
+            width: 100,
+            pinned: "left",
+            align: "center",
+            style: {
+              whiteSpace: "nowrap",
+              overflow: "hidden",
+              textOverflow: "ellipsis"
+            },
+            render: ({
+              employee: a
+            }) => a.position ?? ""
+          }, ...s.map((a, p) => ({
+            id: a,
+            text: e.jsx(Ot, {
+              date: a,
+              holiday: te.has(a),
+              label: F(a)
+            }),
+            width: 87,
+            align: "center",
+            cellPadding: "6px 14px",
+            onCellClick: ({
+              employee: m,
+              week: y
+            }) => y[p] && u.edit.open(m, y[p]),
+            render: ({
+              week: m
+            }) => {
+              const y = m[p];
+              return y ? e.jsxs(e.Fragment, {
+                children: [e.jsx(be, {
+                  status: y.status,
+                  late: y.late,
+                  quiet: !0
+                }), y.clock?.check_in_at && e.jsxs(W, {
+                  sx: {
+                    fontSize: 14,
+                    color: "text.secondary",
+                    mt: .25,
+                    whiteSpace: "nowrap"
+                  },
+                  children: [H(y.clock.check_in_at, y.date), "~", y.clock.check_out_at ? H(y.clock.check_out_at, y.date) : ""]
+                })]
+              }) : null;
+            }
+          }))]
+        })
+      })
+    }, "week"));
+  }
+  return S === "requests" && (Y.items.length && z.push(e.jsx(At, {
+    controller: Y
+  }, "device-requests")), z.push(e.jsx(U, {
+    title: u.showAllRequests ? t("hr.attAdminAllRequests") : t("hr.attAdminPendingRequests"),
+    action: e.jsx(K, {
+      size: "small",
+      onClick: () => u.setShowAllRequests(!u.showAllRequests),
+      children: u.showAllRequests ? t("hr.attAdminPendingOnly") : t("hr.attAdminShowProcessed")
+    }),
+    children: Z.length === 0 ? e.jsx(he, {
+      text: t("hr.attAdminNoRequests")
+    }) : Z.map(s => e.jsxs(n, {
+      sx: {
+        py: 1.25,
+        borderBottom: "1px solid #f1f5f9",
+        display: "flex",
+        gap: 1,
+        flexWrap: "wrap",
+        alignItems: "center"
+      },
+      children: [e.jsxs(W, {
+        sx: {
+          fontSize: 15,
+          fontWeight: 600
+        },
+        children: [s.employee?.name, " · ", F(s.work_date)]
+      }), e.jsx(W, {
+        sx: {
+          fontSize: 15
+        },
+        children: t("hr.attAdminRequestLine", {
+          summary: vt(s) || "—"
+        })
+      }), s.current && e.jsx(W, {
+        sx: {
+          fontSize: 14,
+          color: "text.secondary"
+        },
+        children: t("hr.attAdminCurrentLine", {
+          in: s.current.check_in_at ? s.current.check_in_at.slice(11) : "—",
+          out: s.current.check_out_at ? s.current.check_out_at.slice(11) : "—"
+        })
+      }), e.jsx(n, {
+        sx: {
+          flex: 1
+        }
+      }), s.status === "pending" ? e.jsxs(n, {
+        sx: {
+          display: "flex",
+          gap: 1
+        },
+        children: [e.jsx(K, {
+          size: "small",
+          variant: "contained",
+          disableElevation: !0,
+          onClick: () => {
+            u.approve(s);
+          },
+          children: t("hr.attSetRequestStatusApproved")
+        }), e.jsx(K, {
+          size: "small",
+          variant: "outlined",
+          color: "error",
+          onClick: () => u.reject.open(s),
+          children: t("hr.attSetRequestStatusRejected")
+        })]
+      }) : e.jsx(ce, {
+        label: s.status === "approved" ? t("hr.attSetRequestStatusApproved") : t("hr.attSetRequestStatusRejected"),
+        tone: s.status === "approved" ? {
+          color: "#047857",
+          bg: "#d1fae5"
+        } : {
+          color: "#b91c1c",
+          bg: "#fee2e2"
+        }
+      }), e.jsxs(W, {
+        sx: {
+          fontSize: 14,
+          color: "text.secondary",
+          flexBasis: "100%"
+        },
+        children: [s.reason, s.status === "rejected" && s.reject_reason ? ` · ${t("hr.attAdminRejectedWith", {
+          reason: s.reject_reason
+        })}` : ""]
+      }), s.status !== "pending" && (s.reviewer_name || s.reviewed_at) && e.jsxs(W, {
+        sx: {
+          fontSize: 14,
+          color: "text.secondary",
+          flexBasis: "100%"
+        },
+        children: [s.status === "approved" ? t("hr.attSetRequestStatusApproved") : t("hr.attSetRequestStatusRejected"), s.reviewer_name ? ` · ${s.reviewer_name}` : "", s.reviewed_at ? ` · ${F(s.reviewed_at.slice(0, 10))} ${s.reviewed_at.slice(11, 16)}` : ""]
+      })]
+    }, s.seq))
+  }, "requests"))), e.jsxs(e.Fragment, {
+    children: [c ? e.jsxs(e.Fragment, {
+      children: [e.jsx(gt, {
+        value: S,
+        options: Re,
+        onChange: x,
+        ariaLabel: t("hr.attAdminViewStatus")
+      }), e.jsx(Wt, {
+        attachHead: !0,
+        children: z
+      })]
+    }) : e.jsx(Tt, {
+      children: z
+    }), !c && e.jsxs(ht, {
+      anchor: "right",
+      open: O,
+      onClose: () => J(!1),
+      slotProps: {
+        paper: {
+          sx: {
+            width: 440,
+            maxWidth: "100vw"
+          }
+        }
+      },
+      children: [e.jsxs(n, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: 1,
+          px: 2,
+          py: 1.5,
+          borderBottom: "1px solid #e2e8f0"
+        },
+        children: [e.jsx(W, {
+          sx: {
+            fontSize: 18,
+            fontWeight: 700,
+            flex: 1
+          },
+          children: t("hr.attAdminGeoTitle")
+        }), e.jsx(Ve, {
+          "aria-label": t("hr.close"),
+          onClick: () => J(!1),
+          children: e.jsx(mt, {})
+        })]
+      }), e.jsx(n, {
+        sx: {
+          p: 2,
+          overflowY: "auto"
+        },
+        children: Oe
+      })]
+    }), e.jsx(Mt, {
+      controller: u
+    }), u.track.modal.isOpen && e.jsx(St, {
+      track: u.track
+    }), e.jsx(Vt, {
+      controller: u
+    }), e.jsx(Ct, {
+      controller: Y
+    })]
+  });
+}
+export { ms as default };

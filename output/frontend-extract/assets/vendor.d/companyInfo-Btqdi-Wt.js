@@ -1,0 +1,1 @@
+const e={serviceName:"업무함",legalName:"(주)와우그로스",ceo:"김영진",businessNumber:"320-87-03391",ecommerceNumber:"",address:"경기도 화성시 봉담읍 와우안길 17, 501호(수원대학교 고운첨단과학기술원 창업보육센터)",tel:"1877-9883",email:"contact@taskham.com",establishedDate:"2024-08-26",businessType:"정보통신업(응용 소프트웨어 개발 및 공급업) · 전문, 과학 및 기술서비스업(경영 컨설팅업)",privacyOfficer:{name:"김영진",tel:"031-232-5114"}},a=2026;export{a,e as c};

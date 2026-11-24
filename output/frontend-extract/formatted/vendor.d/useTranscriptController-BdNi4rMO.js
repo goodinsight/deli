@@ -1,0 +1,656 @@
+import { j as s, r as v } from "./react-CjxcGQav.js";
+import { P as ne, a as ae } from "./PlayArrowRounded-emG8NLik.js";
+import { e as oe, c8 as X, z as re, bT as u, bM as C, fv as w, bO as N, bv as U, D as ce, cI as ie, B as d, K as le, L as y, bI as Q, cP as me, bQ as j, cc as pe, y as ue, bP as de, fN as xe, dh as fe, ar as ge, b as O, as as g, ak as he } from "../js.d/main-Cm9wS5wt.js";
+import { E as be } from "./EmployeeSelectDialog-Cdnxeoz9.js";
+import { u as ke } from "./teamMembers-0yRsmqL6.js";
+import { a as ye } from "./policyContent-DPfknNhV.js";
+const J = /^\[(?:(\d{1,2}):)?(\d{1,3}):(\d{2})\]\s*/,
+  Y = /^(화자 ?\d{1,2})\s*[:：]\s*(.*)$/;
+function Te(e, t) {
+  return e.split(`
+`).map(o => o.trim()).filter(Boolean).map(o => {
+    const m = J.exec(o),
+      r = m ? `${m[0].trim()} ` : "",
+      n = m ? o.slice(m[0].length) : o,
+      x = Y.exec(n);
+    if (!x) return r + n;
+    const f = x[1].replace(/^화자\s*/, "화자 ");
+    return `${r}${t[f]?.trim() || f}: ${x[2]}`;
+  }).join(`
+`);
+}
+function Se() {
+  const e = oe({
+      modalId: "voice-profiles-dialog"
+    }),
+    t = X({
+      stateId: "voice-profiles-ui",
+      initialValues: {
+        loading: !1,
+        items: []
+      }
+    }),
+    o = async () => {
+      t.setValue("loading", !0);
+      try {
+        const n = await C.http.get("/v1/voices");
+        t.setValues({
+          items: w(n, u("components.savedVoicesLoadFailed")).items ?? [],
+          loading: !1
+        });
+      } catch (n) {
+        t.setValue("loading", !1), N(n instanceof Error ? n.message : u("components.savedVoicesLoadFailed"));
+      }
+    };
+  return {
+    modal: e,
+    ui: t,
+    open: () => {
+      e.open(), o();
+    },
+    remove: async n => {
+      if (await re({
+        title: u("components.deleteVoiceTitle"),
+        message: u("components.deleteVoiceConfirm", {
+          name: n.name
+        }),
+        confirmText: u("components.deleteAction"),
+        cancelText: u("common.cancel")
+      })) try {
+        const f = await C.http.delete(`/v1/voices/${n.seq}`);
+        w(f, u("components.voiceDeleteFailed")), t.setValue("items", (t.getValue("items") ?? []).filter(V => V.seq !== n.seq));
+      } catch (f) {
+        N(f instanceof Error ? f.message : u("components.voiceDeleteFailed"));
+      }
+    }
+  };
+}
+async function Le() {
+  const e = await C.http.get("/v1/voices/consent");
+  return w(e, u("components.voiceConsentLoadFailed")).agreed === !0;
+}
+async function Pe(e) {
+  const t = await C.http.put("/v1/voices/consent", {
+    agreed: e,
+    doc_version: ye
+  });
+  w(t, u("components.voiceConsentSaveFailed")), F = null;
+}
+let F = null;
+async function ve() {
+  if (F && Date.now() - F.at < 6e4) return F.seqs;
+  const e = await C.http.get("/v1/voices/consented"),
+    t = new Set((w(e, u("components.voiceConsentsLoadFailed")).account_seqs ?? []).map(Number));
+  return F = {
+    at: Date.now(),
+    seqs: t
+  }, t;
+}
+function Ve({
+  controller: e
+}) {
+  const t = U(),
+    o = ce(),
+    m = !!e.ui.useValue("loading"),
+    r = e.ui.useValue("items") ?? [];
+  return s.jsx(ie, {
+    open: e.modal.isOpen,
+    onClose: e.modal.close,
+    title: t("components.savedVoices"),
+    maxWidth: "xs",
+    fullScreen: o,
+    mobilePresentation: o ? "slide" : "dialog",
+    titleIcons: {
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      },
+      delete: {
+        visible: !1
+      }
+    },
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      showCancelButton: !1
+    },
+    sections: [{
+      id: "voice-profiles",
+      showTitle: !1,
+      children: s.jsxs(d, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: 1.5
+        },
+        children: [s.jsxs(d, {
+          component: "ul",
+          sx: {
+            m: 0,
+            pl: 2.5,
+            fontSize: "0.875rem",
+            color: "text.secondary",
+            display: "flex",
+            flexDirection: "column",
+            gap: .5
+          },
+          children: [s.jsx("li", {
+            children: t("components.savedVoicesNote1")
+          }), s.jsx("li", {
+            children: t("components.savedVoicesNote2")
+          })]
+        }), m ? s.jsx(d, {
+          sx: {
+            display: "flex",
+            justifyContent: "center",
+            py: 2
+          },
+          children: s.jsx(le, {
+            size: 24
+          })
+        }) : r.length === 0 ? s.jsx(y, {
+          sx: {
+            fontSize: "0.875rem",
+            color: "text.secondary"
+          },
+          children: t("components.noSavedVoices")
+        }) : s.jsx(d, {
+          component: "ul",
+          sx: {
+            listStyle: "none",
+            m: 0,
+            p: 0,
+            border: 1,
+            borderColor: "divider",
+            borderRadius: 1.5
+          },
+          children: r.map((n, x) => s.jsxs(d, {
+            component: "li",
+            sx: {
+              display: "flex",
+              alignItems: "center",
+              gap: .5,
+              pl: 2,
+              pr: .5,
+              minHeight: 48,
+              borderTop: x === 0 ? 0 : 1,
+              borderColor: "divider"
+            },
+            children: [s.jsxs(d, {
+              sx: {
+                flex: 1,
+                minWidth: 0,
+                py: 1
+              },
+              children: [s.jsx(y, {
+                sx: {
+                  fontSize: "0.9375rem"
+                },
+                children: n.name
+              }), s.jsxs(y, {
+                sx: {
+                  fontSize: "0.875rem",
+                  color: "text.secondary"
+                },
+                children: [t("components.voiceLearned", {
+                  seconds: n.seconds,
+                  count: n.samples
+                }), n.consent_at ? t("components.voiceConsentAt", {
+                  date: n.consent_at.slice(0, 10)
+                }) : "", n.last_matched_at ? t("components.voiceLastMatched", {
+                  date: n.last_matched_at.slice(5, 10).replace("-", "/")
+                }) : ""]
+              })]
+            }), s.jsx(Q, {
+              "aria-label": t("components.deleteVoiceOf", {
+                name: n.name
+              }),
+              onClick: () => {
+                e.remove(n);
+              },
+              sx: {
+                color: "text.secondary",
+                "&:hover": {
+                  color: "error.main"
+                }
+              },
+              children: s.jsx(me, {})
+            })]
+          }, n.seq))
+        })]
+      })
+    }]
+  });
+}
+const K = [{
+    bg: O[100],
+    fg: O[700]
+  }, {
+    bg: g.amber100,
+    fg: g.amber800
+  }, {
+    bg: g.emerald50,
+    fg: g.emerald700
+  }, {
+    bg: g.violet50,
+    fg: g.violet700
+  }, {
+    bg: g.sky100,
+    fg: g.sky700
+  }, {
+    bg: g.rose50,
+    fg: g.rose700
+  }],
+  R = e => K[((Number(e.replace(/\D/g, "")) || 1) - 1) % K.length],
+  W = 6,
+  je = 18,
+  A = {
+    fontSize: "0.875rem",
+    lineHeight: 1.7,
+    whiteSpace: "pre-wrap",
+    overflowWrap: "anywhere",
+    flex: 1,
+    minWidth: 0,
+    flexBasis: {
+      xs: "100%",
+      sm: 0
+    },
+    pl: {
+      xs: `${je}px`,
+      sm: 0
+    }
+  },
+  H = {
+    display: "flex",
+    alignItems: "flex-start",
+    flexWrap: {
+      xs: "wrap",
+      sm: "nowrap"
+    },
+    columnGap: 1,
+    rowGap: .25
+  },
+  G = e => {
+    const t = Math.floor(e / 3600),
+      o = Math.floor(e % 3600 / 60),
+      m = e % 60,
+      r = n => String(n).padStart(2, "0");
+    return t ? `${t}:${r(o)}:${r(m)}` : `${r(o)}:${r(m)}`;
+  };
+function Re({
+  controller: e,
+  transcript: t,
+  speakerNames: o,
+  canPlay: m
+}) {
+  const r = U(),
+    n = String(e.ui.useValue("speakerKey") ?? ""),
+    x = Number(e.ui.useValue("speakerLine") ?? -1),
+    f = String(e.speakerForm.useFormValue("name") ?? ""),
+    V = e.ui.useValue("playback") ?? {
+      playing: !1,
+      time: 0
+    },
+    [T, _] = v.useState(null),
+    [q, c] = v.useState(!1),
+    p = ke(),
+    l = Se(),
+    k = new Map(p.members.map(a => [a.nickname || a.name, a.account_seq])),
+    E = [...k.keys()].map(a => {
+      const i = p.members.find(b => (b.nickname || b.name) === a);
+      return {
+        value: a,
+        label: i?.position ? `${a} · ${i.position}` : a
+      };
+    }),
+    h = t.split(`
+`).filter(a => a.trim()),
+    M = h.map(a => {
+      const i = J.exec(a.trim());
+      return {
+        at: i ? Number(i[1] ?? 0) * 3600 + Number(i[2]) * 60 + Number(i[3]) : -1,
+        rest: i ? a.trim().slice(i[0].length) : a.trim()
+      };
+    });
+  let z = -1;
+  V.playing && M.forEach(({
+    at: a
+  }, i) => a >= 0 && a <= V.time && (z = i));
+  const [Z, ee] = v.useState(new Set());
+  v.useEffect(() => {
+    n && ve().then(ee).catch(() => {});
+  }, [n]);
+  const D = Number(e.speakerForm.useFormValue("accountSeq") ?? 0),
+    L = D > 0 && Z.has(D);
+  v.useEffect(() => {
+    e.speakerForm.setFormValue("autoRemember", L);
+  }, [L]);
+  const $ = a => {
+    e.speakerForm.setFormValue("name", a.slice(0, 30)), e.speakerForm.setFormValue("accountSeq", k.get(a.trim()) ?? 0);
+  };
+  return s.jsxs(d, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 1
+    },
+    children: [M.map(({
+      at: a,
+      rest: i
+    }, b) => {
+      const I = b === z,
+        B = a >= 0 ? s.jsx(j, {
+          size: "small",
+          startIcon: I ? s.jsx(ne, {}) : s.jsx(ae, {}),
+          disabled: !m,
+          "aria-label": I ? r("components.pause") : r("components.playFrom", {
+            time: G(a)
+          }),
+          onClick: () => I ? e.pausePlayback() : e.playFrom(a),
+          sx: {
+            flexShrink: 0,
+            minWidth: 0,
+            px: `${W}px`,
+            ml: {
+              xs: `-${W}px`,
+              sm: 0
+            },
+            py: 0,
+            mt: .25,
+            height: 24,
+            fontSize: "0.875rem",
+            color: I ? "primary.main" : "text.secondary",
+            fontVariantNumeric: "tabular-nums",
+            "& .MuiButton-startIcon": {
+              mr: .25
+            }
+          },
+          children: G(a)
+        }) : null,
+        P = Y.exec(i);
+      if (!P) return s.jsxs(d, {
+        sx: H,
+        children: [B, s.jsx(y, {
+          sx: A,
+          children: i
+        })]
+      }, b);
+      const S = P[1].replace(/^화자\s*/, "화자 "),
+        se = o[S];
+      return s.jsxs(d, {
+        sx: H,
+        children: [B, s.jsx(pe, {
+          size: "small",
+          label: se || S,
+          onClick: te => {
+            _(te.currentTarget), e.editSpeaker(S, b, h[b]);
+          },
+          sx: {
+            flexShrink: 0,
+            mt: .25,
+            fontSize: "0.875rem",
+            cursor: "pointer",
+            borderRadius: "6px",
+            border: 0,
+            bgcolor: R(S).bg,
+            color: R(S).fg,
+            "&:hover": {
+              bgcolor: R(S).bg,
+              filter: "brightness(0.96)"
+            }
+          }
+        }), s.jsx(y, {
+          sx: A,
+          children: P[2]
+        })]
+      }, b);
+    }), s.jsx(ue, {
+      open: !!n && !!T,
+      anchorEl: T,
+      onClose: e.closeSpeaker,
+      anchorOrigin: {
+        vertical: "bottom",
+        horizontal: "left"
+      },
+      slotProps: {
+        paper: {
+          sx: {
+            p: 1.5,
+            width: 340,
+            maxWidth: "calc(100vw - 24px)"
+          }
+        }
+      },
+      children: s.jsxs(d, {
+        component: "form",
+        onSubmit: a => {
+          a.preventDefault(), e.speakerForm.submit();
+        },
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: 1.5
+        },
+        children: [s.jsxs(d, {
+          sx: {
+            ...de,
+            gap: .5,
+            alignItems: "center"
+          },
+          children: [s.jsx(xe, {
+            label: r("components.speakerName", {
+              speaker: n
+            }),
+            options: E,
+            freeSolo: !0,
+            fullWidth: !0,
+            disablePortal: !1,
+            inputValue: f,
+            value: null,
+            onInputChange: (a, i) => $(i),
+            onChange: a => a !== null && $(String(a))
+          }), s.jsx(Q, {
+            "aria-label": r("components.pickFromOrgChart"),
+            title: r("components.pickFromOrgChart"),
+            onClick: () => c(!0),
+            sx: {
+              flexShrink: 0,
+              color: "text.secondary",
+              "&:hover": {
+                color: "text.primary",
+                backgroundColor: "action.hover"
+              }
+            },
+            children: s.jsx(fe, {})
+          })]
+        }), L ? s.jsx(y, {
+          sx: {
+            fontSize: "0.875rem",
+            color: "text.secondary"
+          },
+          children: r("components.voiceConsentedHint")
+        }) : s.jsx(ge, {
+          form: e.speakerForm,
+          name: "remember",
+          label: r("components.rememberVoice")
+        }), x >= 0 && e.canMerge() && s.jsxs(d, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: 1
+          },
+          children: [s.jsx(y, {
+            sx: {
+              flex: 1,
+              fontSize: "0.875rem",
+              color: "text.secondary",
+              wordBreak: "keep-all"
+            },
+            children: r("components.speakerFromLineHint", {
+              speaker: n
+            })
+          }), x < h.length - 1 && s.jsx(j, {
+            size: "small",
+            onClick: () => {
+              e.mergeLine();
+            },
+            sx: {
+              flexShrink: 0,
+              fontSize: "0.875rem"
+            },
+            children: r("components.mergeWithNext")
+          })]
+        }), s.jsxs(d, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: 1.5
+          },
+          children: [s.jsx(j, {
+            size: "small",
+            onClick: l.open,
+            sx: {
+              mr: "auto",
+              fontSize: "0.875rem",
+              color: "text.secondary"
+            },
+            children: r("components.savedVoices")
+          }), s.jsx(j, {
+            onClick: e.closeSpeaker,
+            children: r("common.cancel")
+          }), s.jsx(j, {
+            type: "submit",
+            variant: "contained",
+            disableElevation: !0,
+            children: r("common.save")
+          })]
+        })]
+      })
+    }), n ? s.jsx(Ve, {
+      controller: l
+    }) : null, s.jsx(be, {
+      open: q,
+      title: r("components.pickSpeaker", {
+        speaker: n
+      }),
+      singleSelect: !0,
+      onClose: () => c(!1),
+      onApply: a => {
+        c(!1);
+        const i = a[0];
+        i?.name && (e.speakerForm.setFormValue("name", i.name), e.speakerForm.setFormValue("accountSeq", Number(i.account_seq) || 0));
+      }
+    })]
+  });
+}
+function _e(e) {
+  const t = v.useRef(e);
+  t.current = e;
+  const o = X({
+      stateId: `${e.id}-transcript-ui`,
+      initialValues: {
+        speakerKey: "",
+        speakerLine: -1,
+        speakerExpect: "",
+        seekRequest: null,
+        playback: {
+          playing: !1,
+          time: 0
+        }
+      }
+    }),
+    m = he({
+      formId: `${e.id}-transcript-speaker`,
+      initialValues: {
+        name: "",
+        accountSeq: 0,
+        remember: !1,
+        autoRemember: !1
+      },
+      onSubmit: async c => {
+        const p = String(o.getValue("speakerKey") ?? "");
+        if (!p) return !1;
+        const l = String(c.name ?? "").trim(),
+          k = (c.remember || c.autoRemember) && l ? {
+            key: p,
+            name: l,
+            account_seq: Number(c.accountSeq) || 0,
+            by_checkbox: !!c.remember && !c.autoRemember
+          } : void 0,
+          E = Number(o.getValue("speakerLine") ?? -1);
+        try {
+          const h = t.current.saveFrom;
+          return h && E >= 0 && l ? await h({
+            line: E,
+            expect: String(o.getValue("speakerExpect") ?? ""),
+            key: p,
+            name: l
+          }, k) : await t.current.save({
+            ...t.current.getNames(),
+            [p]: l
+          }, k), o.setValue("speakerKey", ""), !0;
+        } catch (h) {
+          return N(h instanceof Error ? h.message : u("components.speakerNameSaveFailed")), !1;
+        }
+      }
+    });
+  return {
+    ui: o,
+    speakerForm: m,
+    editSpeaker: (c, p = -1, l = "") => {
+      m.setFormValues({
+        name: t.current.getNames()[c] ?? "",
+        accountSeq: 0,
+        remember: !1,
+        autoRemember: !1
+      }), o.setValues({
+        speakerKey: c,
+        speakerLine: p,
+        speakerExpect: l
+      });
+    },
+    closeSpeaker: () => o.setValue("speakerKey", ""),
+    mergeLine: async () => {
+      const c = t.current.mergeNext,
+        p = Number(o.getValue("speakerLine") ?? -1);
+      if (!(!c || p < 0)) try {
+        await c(p, String(o.getValue("speakerExpect") ?? "")), o.setValue("speakerKey", "");
+      } catch (l) {
+        N(l instanceof Error ? l.message : u("components.mergeLineFailed"));
+      }
+    },
+    canMerge: () => !!t.current.mergeNext,
+    playFrom: c => o.setValue("seekRequest", {
+      at: c,
+      id: Date.now()
+    }),
+    pausePlayback: () => o.setValue("seekRequest", {
+      at: 0,
+      id: Date.now(),
+      pause: !0
+    }),
+    setPlayback: (c, p) => {
+      const l = o.getValue("playback"),
+        k = Math.floor(p);
+      (l.playing !== c || l.time !== k) && o.setValue("playback", {
+        playing: c,
+        time: k
+      });
+    },
+    reset: () => o.setValues({
+      speakerKey: "",
+      speakerLine: -1,
+      speakerExpect: "",
+      seekRequest: null,
+      playback: {
+        playing: !1,
+        time: 0
+      }
+    })
+  };
+}
+export { Re as T, Le as f, Pe as s, Te as t, _e as u };

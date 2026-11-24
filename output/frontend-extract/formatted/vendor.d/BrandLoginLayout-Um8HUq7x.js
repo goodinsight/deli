@@ -1,0 +1,110 @@
+import { i as x, r as d, j as o, N as h, O as _ } from "./react-CjxcGQav.js";
+import { T as g } from "./TaskhamLogoIcon-D-7jf3TJ.js";
+import { J as u, B as e, K as f, L as I, s as p, f as E, d as G } from "../js.d/main-Cm9wS5wt.js";
+import { L as H, a as L, b as j, c as O, d as T } from "./orgDomainController-rUjUS_-n.js";
+import "./stylis-DdLD6a3t.js";
+import "./profileApi-Btafs-pM.js";
+const A = ["/login", "/invite/", "/secure-mail/", "/auth/callback"],
+  a = {
+    xs: T,
+    md: O
+  },
+  c = {
+    xs: j,
+    md: L
+  },
+  N = 36,
+  l = "taskham.hostBrand.showName";
+function S() {
+  try {
+    return window.localStorage.getItem(l) !== "0";
+  } catch {
+    return !0;
+  }
+}
+function P() {
+  const {
+      pathname: n
+    } = x(),
+    {
+      loaded: s,
+      brand: t
+    } = u(),
+    r = s ? !!t?.show_name : S();
+  d.useEffect(() => {
+    if (!(!s || !t)) try {
+      window.localStorage.setItem(l, t.show_name ? "1" : "0");
+    } catch {}
+  }, [s, t]);
+  const i = r ? N : 0;
+  return A.some(m => n === m || n.startsWith(m)) ? o.jsx(e, {
+    sx: {
+      minHeight: "100dvh",
+      display: "flex",
+      flexDirection: "column",
+      bgcolor: "#fff"
+    },
+    children: o.jsxs(e, {
+      component: "main",
+      sx: {
+        flex: 1,
+        px: 2,
+        pt: {
+          xs: 6,
+          md: 10
+        }
+      },
+      children: [o.jsxs(e, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 1.5,
+          minHeight: {
+            xs: a.xs + i,
+            md: a.md + i
+          }
+        },
+        children: [s ? t?.image_url ? o.jsx(e, {
+          component: "img",
+          src: t.image_url,
+          alt: t.name,
+          sx: {
+            width: c,
+            maxWidth: "100%",
+            aspectRatio: `${H} / 1`,
+            objectFit: "cover"
+          }
+        }) : t?.logo_url ? o.jsx(e, {
+          component: "img",
+          src: t.logo_url,
+          alt: t.name,
+          sx: {
+            height: a,
+            maxWidth: c,
+            objectFit: "contain"
+          }
+        }) : o.jsx(g, {
+          size: a.xs
+        }) : o.jsx(f, {
+          size: 24,
+          sx: {
+            mt: 2
+          }
+        }), s && t && r && o.jsx(I, {
+          component: "p",
+          sx: {
+            fontSize: G.lg,
+            fontWeight: E.bold,
+            color: p[800]
+          },
+          children: t.name
+        })]
+      }), o.jsx(_, {})]
+    })
+  }) : o.jsx(h, {
+    to: "/login",
+    replace: !0
+  });
+}
+export { P as default };

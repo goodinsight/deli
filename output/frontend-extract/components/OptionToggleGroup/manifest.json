@@ -1,0 +1,117 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/OptionToggleGroup-Cvm2wRyq.js",
+  "path": "assets/vendor.d/OptionToggleGroup-Cvm2wRyq.js",
+  "name": "OptionToggleGroup",
+  "kind": "ui",
+  "bytes": 1033,
+  "sha256": "db56f01058367916e945ca23e93815a33904a9190fbebde7fea6ef7b2966f687",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/OptionToggleGroup-Cvm2wRyq.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "n",
+          "imported": "j"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "g",
+          "imported": "da"
+        },
+        {
+          "local": "c",
+          "imported": "dc"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "m",
+      "exported": "O"
+    }
+  ],
+  "destructuredParameters": [],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "AccountsPage",
+    "AiUsagePage",
+    "AnnualLeavePage",
+    "ApprovalAllDocumentsPage",
+    "ApprovalBoxPage",
+    "ApprovalDraftedPage",
+    "AttendancePage",
+    "AttendanceRecordsPage",
+    "AttendanceStatusPage",
+    "BalanceListPage",
+    "BoardListPage",
+    "BoardTrashPage",
+    "BookingCalendarPage",
+    "BookingFormDialog",
+    "BookingListPage",
+    "BookingProductsPage",
+    "BookingStatsPage",
+    "CalendarMonthPage",
+    "CalendarSidebarPanel",
+    "CallListPage",
+    "CareerPage",
+    "CertificatePage",
+    "ChatPage",
+    "ConsultListPage",
+    "ConsultStatsPage",
+    "ContractPage",
+    "CustomerDealListPage",
+    "CustomerListPage",
+    "CustomerStatsPage",
+    "DealListPage",
+    "DrivePage",
+    "EmployeeListPage",
+    "EventPage",
+    "ImportPage",
+    "InsurancePage",
+    "Layout",
+    "LedgerPage",
+    "ListViewModeToggle",
+    "MeetingsPage",
+    "MentionsPage",
+    "MobileDashboardLayout",
+    "PartnerListPage",
+    "PnlPage",
+    "PostComposerHost",
+    "PurchaseListPage",
+    "QualificationPage",
+    "ReferenceList",
+    "SalesListPage",
+    "SiteAnalyticsPage",
+    "StatsView",
+    "SubsidyPage",
+    "TaskBoxScreen",
+    "TaskContributionPage",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog",
+    "TeamPage",
+    "TrainingPage",
+    "VideoOperatorPage",
+    "VoucherListPage",
+    "WorkSchedulePage",
+    "index"
+  ],
+  "service": "공통",
+  "purpose": "단일·다중 선택",
+  "reuseGrade": "A",
+  "integration": "MUI ToggleButtonGroup으로 이식; portable에 재구성본 제공",
+  "exportedParameters": []
+}

@@ -1,0 +1,144 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/PropertyFields-TuJTG5XK.js",
+  "path": "assets/vendor.d/PropertyFields-TuJTG5XK.js",
+  "name": "PropertyFields",
+  "kind": "ui",
+  "bytes": 407,
+  "sha256": "84a6207b951ce51abd52364f48545c6b1800c4ce6c382e8dba4378002a5dfc5c",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/PropertyFields-TuJTG5XK.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "e",
+          "imported": "j"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "o",
+          "imported": "fZ"
+        },
+        {
+          "local": "a",
+          "imported": "f_"
+        },
+        {
+          "local": "r",
+          "imported": "f$"
+        },
+        {
+          "local": "i",
+          "imported": "bv"
+        },
+        {
+          "local": "c",
+          "imported": "g0"
+        },
+        {
+          "local": "m",
+          "imported": "g1"
+        },
+        {
+          "local": "f",
+          "imported": "g2"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "d",
+      "exported": "E"
+    },
+    {
+      "local": "x",
+      "exported": "G"
+    },
+    {
+      "local": "l",
+      "exported": "I"
+    },
+    {
+      "local": "g",
+      "exported": "a"
+    },
+    {
+      "local": "I",
+      "exported": "b"
+    },
+    {
+      "local": "_",
+      "exported": "f"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "d",
+      "keys": [
+        "text"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "AttendanceHost",
+    "CalendarMonthListPage",
+    "CalendarMonthPage",
+    "CalendarSidebarPanel",
+    "CallListPage",
+    "CareerPage",
+    "ChatPage",
+    "ConsultHistoryPanel",
+    "ConsultListPage",
+    "CustomerDealListPage",
+    "CustomerListPage",
+    "DealFormDialog",
+    "DealListPage",
+    "EmployeeFormDialog",
+    "EmployeeListPage",
+    "EmployeeRecordsDialog",
+    "EventPage",
+    "Layout",
+    "MailboxAdminPage",
+    "MeetingRecordScreen",
+    "MeetingsPage",
+    "MobileDashboardLayout",
+    "OrgMembersPage",
+    "PartnerListPage",
+    "PostComposerHost",
+    "QualificationPage",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskMonthlyFields",
+    "TaskTransferDialog",
+    "TeamPage",
+    "TrainingEditDialog",
+    "TrainingPage"
+  ],
+  "service": "공통",
+  "purpose": "속성 표시·편집 필드",
+  "reuseGrade": "B",
+  "integration": "필드 스키마와 편집 상태 연결",
+  "exportedParameters": [
+    {
+      "export": "E",
+      "compiledLocal": "d",
+      "keys": [
+        "text"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+import { bT as s, gi as o } from "../js.d/main-Cm9wS5wt.js";
+const m = ["admin", "demo", "user"],
+  n = [{
+    value: "personal",
+    labelKey: "accounts.memberTypePersonal"
+  }, {
+    value: "biz",
+    labelKey: "accounts.memberTypeBiz"
+  }, {
+    value: "org",
+    labelKey: "accounts.memberTypeOrg"
+  }, {
+    value: "staff",
+    labelKey: "accounts.memberTypeStaff"
+  }],
+  u = [{
+    value: "active",
+    labelKey: "accounts.statusActive"
+  }, {
+    value: "inactive",
+    labelKey: "accounts.statusInactive"
+  }, {
+    value: "blocked",
+    labelKey: "accounts.statusBlocked"
+  }, {
+    value: "dormant",
+    labelKey: "accounts.statusDormant"
+  }];
+function b(e) {
+  return o(e) === "staff" ? "staff" : e.member_type === "biz" || e.member_type === "org" ? e.member_type : "personal";
+}
+function y(e, a = s) {
+  const l = n.find(t => t.value === e)?.labelKey;
+  return l ? a(l) : e;
+}
+function i(e, a = s) {
+  const l = u.find(t => t.value === e)?.labelKey;
+  return l ? a(l) : e;
+}
+function p(e) {
+  return [{
+    value: "",
+    label: e("accounts.all")
+  }, ...u.map(a => ({
+    value: a.value,
+    label: e(a.labelKey)
+  }))];
+}
+function v(e, a, l) {
+  return {
+    stateId: "accountsFilter",
+    showChips: !0,
+    groups: [{
+      filters: [{
+        name: "memberTypes",
+        title: e("accounts.memberType"),
+        type: "checkbox",
+        options: n.map(t => ({
+          label: e(t.labelKey),
+          value: t.value
+        }))
+      }, {
+        type: "custom",
+        name: "accountStatus",
+        node: l
+      }]
+    }],
+    onChange: t => {
+      a({
+        memberTypes: (t.memberTypes ?? []).map(c => String(c))
+      });
+    },
+    onReset: () => a({
+      memberTypes: []
+    })
+  };
+}
+export { m as A, p as a, v as b, y as m, b as r, i as s };

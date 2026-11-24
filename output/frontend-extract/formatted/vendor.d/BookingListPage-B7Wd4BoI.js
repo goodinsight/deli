@@ -1,0 +1,505 @@
+import { r as n, j as t } from "./react-CjxcGQav.js";
+import { u as he, b as V } from "./bookingApi-DC6gLfSO.js";
+import { bv as se, fL as xe, D as be, cz as Se, nR as ke, bO as X, bT as $, dv as _e, aq as Y, B as c, bQ as Ee, F as ye, d8 as je, lr as Ce, db as Te, L as C, nS as Oe, K as Re } from "../js.d/main-Cm9wS5wt.js";
+import { E as Le } from "./EdgeTabs-Ccbggjn6.js";
+import { O as ve } from "./OptionToggleGroup-Cvm2wRyq.js";
+import { b as Be } from "./MobileCardListLayout-D5_p2Xer.js";
+import { M as De } from "./MobileListTitleBar-tZ34p2gY.js";
+import { u as Ie, B as Pe } from "./BookingFormDialog-EC3RsN2H.js";
+import { D as Ae, r as T, k as Q, l as _, j as R } from "./types-CVXtrYKe.js";
+import { T as we } from "./tableScrollbars-C9bhlJjO.js";
+import { u as Me } from "./useColumnWidths-DSAca5rC.js";
+import { u as We } from "./sidebarAction-Z0aCDENX.js";
+import "./profileApi-Btafs-pM.js";
+import "./stylis-DdLD6a3t.js";
+import "./mobileSearchOverlay-DYWcMOOb.js";
+const J = 50,
+  ze = 48,
+  qe = "#9b9a97",
+  He = "#f8f8f7",
+  Fe = 2,
+  Ge = 1.5,
+  Z = 150,
+  O = 40,
+  Ke = 300,
+  Ne = [{
+    value: "upcoming",
+    labelKey: "booking.periodUpcoming"
+  }, {
+    value: "past",
+    labelKey: "booking.periodPast"
+  }, {
+    value: "all",
+    labelKey: "booking.periodAll"
+  }],
+  Ue = () => Object.keys(R).map(o => ({
+    value: o,
+    label: R[o]
+  }));
+function ee(o) {
+  const i = new Date();
+  return i.setDate(i.getDate() + o), `${i.getFullYear()}-${String(i.getMonth() + 1).padStart(2, "0")}-${String(i.getDate()).padStart(2, "0")}`;
+}
+function te({
+  period: o
+}) {
+  const i = se();
+  return t.jsx(c, {
+    sx: {
+      py: 6,
+      px: 2,
+      textAlign: "center",
+      color: qe,
+      fontSize: 14,
+      wordBreak: "keep-all"
+    },
+    children: i(o === "upcoming" ? "booking.emptyUpcoming" : "booking.emptyAll")
+  });
+}
+const Ve = {
+  confirmed: {
+    color: "primary.main",
+    fontWeight: 600
+  },
+  requested: {
+    color: "warning.dark",
+    fontWeight: 600
+  },
+  awaiting_payment: {
+    color: "warning.dark",
+    fontWeight: 600
+  },
+  done: {
+    color: "success.dark",
+    fontWeight: 600
+  },
+  canceled: {
+    color: "text.secondary"
+  },
+  no_show: {
+    color: "text.secondary"
+  }
+};
+function oe({
+  status: o
+}) {
+  const i = Ve[o];
+  return t.jsx(c, {
+    component: "span",
+    sx: i,
+    children: R[o]
+  });
+}
+function ut() {
+  const o = se(),
+    i = Ne.map(({
+      value: e,
+      labelKey: a
+    }) => ({
+      value: e,
+      label: o(a)
+    })),
+    L = o("booking.searchCustomer"),
+    v = xe("booking").canWrite,
+    ne = Me("booking.list"),
+    re = he(),
+    r = be(),
+    b = Se()?.seq ?? 0,
+    [h, B] = n.useState([]),
+    [D, I] = n.useState(0),
+    [m, P] = n.useState(!1),
+    [u, A] = n.useState("upcoming"),
+    [E, ie] = n.useState(""),
+    [w, ae] = n.useState(Ae),
+    [d, le] = n.useState([]),
+    [y, M] = n.useState(0),
+    [S, W] = n.useState(""),
+    [z, ce] = n.useState("");
+  n.useEffect(() => {
+    const e = setTimeout(() => ce(S.trim()), Ke);
+    return () => clearTimeout(e);
+  }, [S]);
+  const q = n.useRef(d);
+  q.current = d;
+  const H = n.useRef(w);
+  H.current = w;
+  const j = n.useRef(1),
+    k = n.useRef(0);
+  n.useEffect(() => {
+    if (!b) return;
+    let e = !0;
+    const a = (l, p = !1) => {
+      V.meta().then(g => {
+        e && (ae(g.settings), le(g.resources), l && M(0));
+      }).catch(g => !p && X(g instanceof Error ? g.message : $("booking.errLoadMeta")));
+    };
+    a(!0);
+    const s = ke(l => a(!1, l));
+    return () => {
+      e = !1, s();
+    };
+  }, [b]);
+  const x = n.useCallback(async e => {
+    if (!b) {
+      B([]), I(0);
+      return;
+    }
+    const a = ++k.current,
+      s = e === "refresh",
+      l = e === "more" ? j.current + 1 : 1;
+    s || P(!0);
+    try {
+      const p = await V.list({
+        from: u === "upcoming" ? ee(0) : void 0,
+        to: u === "past" ? ee(-1) : void 0,
+        desc: u !== "upcoming",
+        status: E,
+        resourceSeq: y,
+        search: z,
+        page: l,
+        limit: s ? Math.max(1, j.current) * J : J
+      });
+      if (a !== k.current) return;
+      s || (j.current = l), B(g => e === "more" ? [...g, ...p.items] : p.items), I(p.total);
+    } catch (p) {
+      if (a !== k.current || s) return;
+      X(p instanceof Error ? p.message : $("booking.errLoadList"));
+    } finally {
+      a === k.current && P(!1);
+    }
+  }, [b, u, E, y, z]);
+  n.useEffect(() => {
+    x("reload");
+  }, [x]), _e(["booking"], () => {
+    x("refresh");
+  });
+  const f = Ie({
+      getSettings: () => H.current,
+      getResources: () => q.current,
+      onChanged: () => {
+        x("reload");
+      }
+    }),
+    F = d.length > 0,
+    G = h.length < D,
+    K = () => {
+      !m && G && x("more");
+    },
+    ue = !m && h.length === 0,
+    de = t.jsx(ve, {
+      size: "medium",
+      value: u,
+      onChange: e => A(e ?? u),
+      options: i,
+      sx: r ? {
+        flexWrap: "nowrap",
+        flexShrink: 0,
+        "& .MuiToggleButtonGroup-grouped": {
+          minWidth: 64,
+          flex: 1
+        },
+        ...Te
+      } : {
+        flexWrap: "nowrap",
+        flexShrink: 0,
+        height: O,
+        "& .MuiToggleButtonGroup-grouped": {
+          minWidth: 64,
+          px: 1.5
+        }
+      }
+    }),
+    pe = t.jsx(Y, {
+      value: E,
+      options: Ue(),
+      emptyLabel: o("booking.allStatuses"),
+      onChange: e => ie(String(e.target.value ?? "") || ""),
+      fullWidth: r,
+      size: r ? void 0 : "small",
+      formControlProps: {
+        sx: {
+          width: r ? "100%" : Z,
+          flexShrink: 0
+        }
+      },
+      sx: r ? void 0 : {
+        height: O
+      }
+    }),
+    ge = F ? t.jsx(Y, {
+      value: y || "",
+      options: d.map(e => ({
+        value: e.seq,
+        label: T(d, e.seq)
+      })),
+      emptyLabel: o("booking.allResources"),
+      onChange: e => M(Number(e.target.value) || 0),
+      fullWidth: r,
+      size: r ? void 0 : "small",
+      formControlProps: {
+        sx: {
+          width: r ? "100%" : Z,
+          flexShrink: 0
+        }
+      },
+      sx: r ? void 0 : {
+        height: O
+      }
+    }) : null,
+    N = t.jsxs(c, {
+      sx: {
+        display: "flex",
+        flexDirection: r ? "column" : "row",
+        alignItems: "stretch",
+        gap: r ? Ge : Fe
+      },
+      children: [r ? null : de, pe, ge]
+    }),
+    U = t.jsx(t.Fragment, {
+      children: t.jsx(Pe, {
+        controller: f,
+        resources: d
+      })
+    });
+  if (We(!r && v ? {
+    label: o("booking.newBooking"),
+    onClick: () => f.openCreate()
+  } : null), r) {
+    const e = s => t.jsxs(c, {
+        role: "button",
+        tabIndex: 0,
+        onClick: () => f.openEdit(s),
+        onKeyDown: l => {
+          (l.key === "Enter" || l.key === " ") && (l.preventDefault(), f.openEdit(s));
+        },
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: .5,
+          p: 1.5,
+          cursor: "pointer",
+          userSelect: "none",
+          "&:active": {
+            bgcolor: He
+          }
+        },
+        children: [t.jsxs(c, {
+          sx: {
+            display: "flex",
+            alignItems: "baseline",
+            gap: 1
+          },
+          children: [t.jsx(C, {
+            sx: {
+              fontSize: Oe(15),
+              fontWeight: 600
+            },
+            children: s.customer_name
+          }), t.jsx(C, {
+            sx: {
+              fontSize: 14
+            },
+            children: t.jsx(oe, {
+              status: s.status
+            })
+          })]
+        }), t.jsx(C, {
+          sx: {
+            fontSize: 14
+          },
+          children: Q(s.start_at, s.end_at)
+        }), t.jsxs(c, {
+          sx: {
+            display: "flex",
+            flexWrap: "wrap",
+            columnGap: 1.25,
+            fontSize: 14,
+            color: "text.secondary"
+          },
+          children: [s.resource_seq ? t.jsx("span", {
+            children: T(d, s.resource_seq)
+          }) : null, s.party_size > 1 ? t.jsx("span", {
+            children: o("booking.people", {
+              count: s.party_size
+            })
+          }) : null, s.price > 0 ? t.jsx("span", {
+            children: _(s.price)
+          }) : null, s.deposit_amount > 0 ? t.jsx("span", {
+            children: o("booking.depositAmount", {
+              amount: _(s.deposit_amount)
+            })
+          }) : null, s.contact_phone ? t.jsx("span", {
+            children: s.contact_phone
+          }) : null]
+        })]
+      }, s.seq),
+      a = [t.jsx(De, {
+        searchValue: S,
+        onSearchChange: W,
+        searchPlaceholder: L,
+        below: N
+      }, "filters"), ...h.map(e)];
+    return ue && a.push(t.jsx(te, {
+      period: u
+    }, "empty")), m && h.length === 0 && a.push(t.jsx(c, {
+      sx: {
+        display: "flex",
+        justifyContent: "center",
+        py: 4
+      },
+      children: t.jsx(Re, {
+        size: 28
+      })
+    }, "loading")), G && a.push(t.jsx(c, {
+      sx: {
+        display: "flex",
+        justifyContent: "center",
+        py: .5
+      },
+      children: t.jsx(Ee, {
+        fullWidth: !0,
+        onClick: K,
+        disabled: m,
+        children: o("booking.loadMore")
+      })
+    }, "more")), t.jsxs(t.Fragment, {
+      children: [t.jsx(Le, {
+        value: u,
+        options: i,
+        onChange: A,
+        ariaLabel: o("booking.periodLabel")
+      }), t.jsx(Be, {
+        attachHead: !0,
+        children: a
+      }), v ? t.jsx(ye, {
+        color: "primary",
+        "aria-label": o("booking.newBooking"),
+        onClick: () => f.openCreate(),
+        sx: {
+          position: "fixed",
+          right: 24,
+          bottom: "calc(24px + var(--taskbox-fab-lift, 0px))",
+          zIndex: 40
+        },
+        children: t.jsx(je, {})
+      }) : null, U]
+    });
+  }
+  const me = [{
+      id: "start_at",
+      text: o("booking.colBookingTime"),
+      width: 270,
+      render: e => Q(e.start_at, e.end_at)
+    }, {
+      id: "customer_name",
+      text: o("booking.colCustomer"),
+      width: 150,
+      style: {
+        fontSize: 15
+      }
+    }, ...(F ? [{
+      id: "resource_seq",
+      text: re.resource,
+      width: 150,
+      render: e => T(d, e.resource_seq)
+    }] : []), {
+      id: "contact_phone",
+      text: o("booking.colContact"),
+      width: 150,
+      align: "center"
+    }, {
+      id: "party_size",
+      text: o("booking.colParty"),
+      width: 80,
+      align: "center",
+      render: e => o("booking.people", {
+        count: e.party_size
+      })
+    }, {
+      id: "price",
+      text: o("booking.colPrice"),
+      width: 120,
+      align: "right",
+      render: e => e.price > 0 ? _(e.price) : ""
+    }, {
+      id: "deposit_amount",
+      text: o("booking.colDeposit"),
+      width: 120,
+      align: "right",
+      render: e => e.deposit_amount > 0 ? _(e.deposit_amount) : ""
+    }, {
+      id: "memo",
+      text: o("booking.colMemo"),
+      render: e => t.jsx(c, {
+        component: "span",
+        sx: {
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap"
+        },
+        children: e.memo.split(`
+`)[0]
+      })
+    }, {
+      id: "status",
+      text: o("booking.colStatus"),
+      width: 100,
+      align: "center",
+      render: e => t.jsx(oe, {
+        status: e.status
+      })
+    }],
+    fe = {
+      filter: {
+        stateId: "booking-filters",
+        showChips: !1,
+        groups: [{
+          filters: [{
+            type: "custom",
+            name: "booking-filters",
+            node: N
+          }]
+        }]
+      },
+      showSearch: !0,
+      searchValue: S,
+      searchPlaceholder: L,
+      onSearchChange: W,
+      searchLoading: m,
+      collapsible: !1,
+      showCollapseButton: !1,
+      showClearIcon: !1
+    };
+  return t.jsxs(t.Fragment, {
+    children: [t.jsx(c, {
+      sx: {
+        position: "relative",
+        height: "100%",
+        minHeight: 0,
+        display: "flex",
+        flexDirection: "column"
+      },
+      children: t.jsx(Ce, {
+        header: fe,
+        tableProps: {
+          ...ne,
+          scrollbars: we,
+          mobile: !0,
+          variant: "notion",
+          columns: me,
+          data: h,
+          totalCount: D,
+          getRowId: e => String(e.seq),
+          rowHeight: ze,
+          onRowClick: f.openEdit,
+          onLoadMore: K,
+          loading: m,
+          emptyMessage: t.jsx(te, {
+            period: u
+          })
+        }
+      })
+    }), U]
+  });
+}
+export { ut as default };

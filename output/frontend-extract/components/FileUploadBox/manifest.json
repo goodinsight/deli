@@ -1,0 +1,368 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/FileUploadBox-crZW1mG0.js",
+  "path": "assets/vendor.d/FileUploadBox-crZW1mG0.js",
+  "name": "FileUploadBox",
+  "kind": "ui",
+  "bytes": 42995,
+  "sha256": "da1372322c0eaa5e636cb5df2bba7971ec41c0a28a865272720545ddf6d9e266",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/FileUploadBox-crZW1mG0.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "d",
+          "imported": "r"
+        },
+        {
+          "local": "Ge",
+          "imported": "e"
+        },
+        {
+          "local": "S",
+          "imported": "j"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ae",
+          "imported": "jG"
+        },
+        {
+          "local": "N",
+          "imported": "bM"
+        },
+        {
+          "local": "dn",
+          "imported": "jH"
+        },
+        {
+          "local": "fn",
+          "imported": "jI"
+        },
+        {
+          "local": "h",
+          "imported": "bT"
+        },
+        {
+          "local": "pn",
+          "imported": "i"
+        },
+        {
+          "local": "tt",
+          "imported": "ic"
+        },
+        {
+          "local": "B",
+          "imported": "jJ"
+        },
+        {
+          "local": "mn",
+          "imported": "jK"
+        },
+        {
+          "local": "De",
+          "imported": "em"
+        },
+        {
+          "local": "gn",
+          "imported": "ep"
+        },
+        {
+          "local": "hn",
+          "imported": "bW"
+        },
+        {
+          "local": "wn",
+          "imported": "z"
+        },
+        {
+          "local": "Ht",
+          "imported": "jL"
+        },
+        {
+          "local": "$t",
+          "imported": "bx"
+        },
+        {
+          "local": "vn",
+          "imported": "u"
+        },
+        {
+          "local": "yn",
+          "imported": "e"
+        },
+        {
+          "local": "Sn",
+          "imported": "c8"
+        },
+        {
+          "local": "En",
+          "imported": "ch"
+        },
+        {
+          "local": "Dt",
+          "imported": "hE"
+        },
+        {
+          "local": "Rn",
+          "imported": "D"
+        },
+        {
+          "local": "bn",
+          "imported": "bv"
+        },
+        {
+          "local": "Cn",
+          "imported": "hH"
+        },
+        {
+          "local": "xn",
+          "imported": "el"
+        },
+        {
+          "local": "_n",
+          "imported": "d_"
+        },
+        {
+          "local": "Y",
+          "imported": "B"
+        },
+        {
+          "local": "$e",
+          "imported": "d"
+        },
+        {
+          "local": "kt",
+          "imported": "dd"
+        },
+        {
+          "local": "An",
+          "imported": "jM"
+        },
+        {
+          "local": "Tn",
+          "imported": "bI"
+        },
+        {
+          "local": "nt",
+          "imported": "jN"
+        },
+        {
+          "local": "Dn",
+          "imported": "bH"
+        },
+        {
+          "local": "mt",
+          "imported": "as"
+        },
+        {
+          "local": "It",
+          "imported": "jO"
+        },
+        {
+          "local": "Pt",
+          "imported": "jP"
+        },
+        {
+          "local": "kn",
+          "imported": "j9"
+        },
+        {
+          "local": "In",
+          "imported": "ds"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./bootstrapController-BMV_i07c.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Pn",
+          "imported": "z"
+        }
+      ],
+      "resolved": "assets/vendor.d/bootstrapController-BMV_i07c.js"
+    },
+    {
+      "specifier": "./AccountAvatar-DtrhoS_d.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ln",
+          "imported": "p"
+        }
+      ],
+      "resolved": "assets/vendor.d/AccountAvatar-DtrhoS_d.js"
+    },
+    {
+      "specifier": "./resolveAssetPreviewSrc-CLlbOCzq.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "On",
+          "imported": "r"
+        }
+      ],
+      "resolved": "assets/vendor.d/resolveAssetPreviewSrc-CLlbOCzq.js"
+    },
+    {
+      "specifier": "./date_utils-CYURFdnX.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "jn",
+          "imported": "b"
+        }
+      ],
+      "resolved": "assets/vendor.d/date_utils-CYURFdnX.js"
+    },
+    {
+      "specifier": "./FileViewer-D5PyYcLh.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Fn",
+          "imported": "F"
+        }
+      ],
+      "resolved": "assets/vendor.d/FileViewer-D5PyYcLh.js"
+    },
+    {
+      "specifier": "./uploadGuard-BK1B6cyC.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Mn",
+          "imported": "d"
+        }
+      ],
+      "resolved": "assets/vendor.d/uploadGuard-BK1B6cyC.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "xs",
+      "exported": "F"
+    },
+    {
+      "local": "Vo",
+      "exported": "u"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": null,
+      "keys": [
+        "account_seq",
+        "permissions",
+        "groups"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "setLoginState",
+        "resetBootstrapState",
+        "refreshBootstrap"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "email",
+        "password",
+        "rememberMe",
+        "loginType"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "account",
+        "rememberMe",
+        "email"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "account"
+      ]
+    },
+    {
+      "function": null,
+      "keys": [
+        "uploadedFiles",
+        "thumbWidth",
+        "uploaderUrl",
+        "multiple",
+        "height",
+        "onFileUploaded",
+        "onAttachedFilesChange",
+        "onFilesPicked",
+        "uploadFile",
+        "deleteUploadedFiles",
+        "openUploadedFile",
+        "canDeleteUploadedFile",
+        "viewInBrowser",
+        "acceptedFileTypes",
+        "maxFileSize",
+        "deletePvName",
+        "readonly",
+        "variant",
+        "iconSize",
+        "dropzoneText",
+        "progress",
+        "initialFiles"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "AppMuaProvider",
+    "ApprovalAllDocumentsPage",
+    "ApprovalBoxPage",
+    "ApprovalDetailDialog",
+    "ApprovalDraftedPage",
+    "ApprovalMobileList",
+    "BoardListPage",
+    "BoardTrashPage",
+    "CalendarMemoPanel",
+    "CalendarMonthListPage",
+    "CalendarMonthPage",
+    "CalendarSidebarPanel",
+    "ContractPage",
+    "FaqPage",
+    "Layout",
+    "MeetingRecordScreen",
+    "MeetingsPage",
+    "MobileDashboardLayout",
+    "PostComposerHost",
+    "ReferenceList",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog",
+    "TrainingEditDialog",
+    "TrainingPage",
+    "index",
+    "useApprovalHandleScope"
+  ],
+  "service": "공통",
+  "purpose": "파일 첨부",
+  "reuseGrade": "C",
+  "integration": "uploadFile/deleteUploadedFiles/openUploadedFile 콜백 및 인증 분리",
+  "exportedParameters": []
+}

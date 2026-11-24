@@ -1,0 +1,262 @@
+import { j as e, u as L, r as x, L as p } from "./react-CjxcGQav.js";
+import { C as W, a as T, S as h, A as V, W as k, b } from "./ArticleRankList-B0iEJ7wy.js";
+import { bv as A, L as c, c4 as l, B as g, dd as E, u as I, n7 as M, n8 as B, ce as j, cf as v, n9 as N, fj as P, bQ as f } from "../js.d/main-Cm9wS5wt.js";
+import { u as R } from "./newsController-BGsu8k2g.js";
+import { a as D } from "./accountsApi-C1f6V7yi.js";
+import { N as U } from "./constants-Bzad1vkl.js";
+import "./stylis-DdLD6a3t.js";
+function G(u) {
+  return U.map(n => ({
+    category: n,
+    count: u.filter(a => a.category === n).length
+  })).filter(n => n.count > 0).sort((n, a) => a.count - n.count);
+}
+function O({
+  articles: u
+}) {
+  const n = G(u),
+    a = n[0]?.count ?? 0,
+    t = A();
+  return e.jsx(W, {
+    variant: "outlined",
+    sx: {
+      flex: "1 1 320px",
+      minWidth: 300
+    },
+    children: e.jsxs(T, {
+      children: [e.jsx(c, {
+        sx: {
+          fontSize: 15,
+          fontWeight: 800
+        },
+        children: t("home.byCategory")
+      }), n.length === 0 ? e.jsx(c, {
+        sx: {
+          mt: 2,
+          fontSize: 13,
+          color: "text.secondary"
+        },
+        children: t("home.noArticles")
+      }) : e.jsx(l, {
+        spacing: 1.5,
+        sx: {
+          mt: 2
+        },
+        children: n.map(i => e.jsxs(g, {
+          children: [e.jsxs(l, {
+            direction: "row",
+            justifyContent: "space-between",
+            sx: {
+              mb: .5
+            },
+            children: [e.jsx(c, {
+              sx: {
+                fontSize: 13,
+                fontWeight: 700
+              },
+              children: i.category
+            }), e.jsx(c, {
+              sx: {
+                fontSize: 13,
+                color: "text.secondary"
+              },
+              children: t("home.count", {
+                value: i.count
+              })
+            })]
+          }), e.jsx(E, {
+            variant: "determinate",
+            value: a > 0 ? i.count / a * 100 : 0,
+            sx: {
+              height: 6,
+              borderRadius: 3
+            }
+          })]
+        }, i.category))
+      })]
+    })
+  });
+}
+function H() {
+  return new Date().toLocaleDateString(j(v()), {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    weekday: "short"
+  });
+}
+function Y() {
+  const {
+      state: u
+    } = R(),
+    n = I(),
+    a = L(),
+    t = A(),
+    i = n.useValue("account"),
+    m = M(i),
+    s = u.useValue("articles") ?? [],
+    [d, w] = x.useState(-1);
+  x.useEffect(() => {
+    if (!m) return;
+    let o = !0;
+    return D.list().then(r => {
+      o && w(r.length);
+    }).catch(() => {
+      o && w(-1);
+    }), () => {
+      o = !1;
+    };
+  }, [m]);
+  const S = s.filter(o => o.premium).length,
+    y = s.reduce((o, r) => o + r.views, 0),
+    C = x.useMemo(() => [...s].sort((o, r) => r.date.localeCompare(o.date)).slice(0, 5), [s]),
+    z = x.useMemo(() => [...s].sort((o, r) => r.views - o.views).slice(0, 5), [s]);
+  return e.jsxs(g, {
+    sx: {
+      p: 3
+    },
+    children: [e.jsxs(l, {
+      direction: {
+        xs: "column",
+        sm: "row"
+      },
+      spacing: 1,
+      sx: {
+        alignItems: {
+          sm: "flex-end"
+        },
+        justifyContent: "space-between"
+      },
+      children: [e.jsxs(g, {
+        children: [e.jsx(c, {
+          sx: {
+            fontSize: 22,
+            fontWeight: 900
+          },
+          children: i?.name ? t("home.hello", {
+            name: i.name
+          }) : t("home.operations")
+        }), e.jsx(c, {
+          sx: {
+            mt: .5,
+            fontSize: 14,
+            color: "text.secondary"
+          },
+          children: t("home.staffSubtitle")
+        })]
+      }), e.jsx(c, {
+        sx: {
+          fontSize: 13,
+          color: "text.secondary"
+        },
+        children: H()
+      })]
+    }), e.jsxs(l, {
+      direction: "row",
+      sx: {
+        mt: 3,
+        flexWrap: "wrap",
+        gap: 2
+      },
+      children: [e.jsx(h, {
+        label: t("home.publishedArticles"),
+        value: s.length,
+        unit: t("home.countUnit"),
+        icon: e.jsx(V, {
+          sx: {
+            fontSize: 18,
+            color: "text.secondary"
+          }
+        })
+      }), e.jsx(h, {
+        label: t("home.premiumArticles"),
+        value: S,
+        unit: t("home.countUnit"),
+        caption: s.length > 0 ? t("home.percentOfAll", {
+          percent: Math.round(S / s.length * 100)
+        }) : void 0,
+        icon: e.jsx(k, {
+          sx: {
+            fontSize: 18,
+            color: "text.secondary"
+          }
+        })
+      }), e.jsx(h, {
+        label: t("home.totalViews"),
+        value: y,
+        caption: s.length > 0 ? t("home.avgViews", {
+          value: Math.round(y / s.length).toLocaleString(j(v()))
+        }) : void 0,
+        icon: e.jsx(B, {
+          sx: {
+            fontSize: 18,
+            color: "text.secondary"
+          }
+        })
+      }), m && e.jsx(h, {
+        label: t("home.accounts"),
+        value: d >= 0 ? d : "—",
+        unit: d >= 0 ? t("home.peopleUnit") : void 0,
+        icon: e.jsx(N, {
+          sx: {
+            fontSize: 18,
+            color: "text.secondary"
+          }
+        })
+      })]
+    }), e.jsxs(l, {
+      direction: "row",
+      sx: {
+        mt: 2,
+        flexWrap: "wrap",
+        gap: 2
+      },
+      children: [e.jsx(b, {
+        title: t("home.recentPublished"),
+        articles: C,
+        metric: o => o.date,
+        onSelect: () => a("/dashboard/news"),
+        emptyText: t("home.noArticles")
+      }), e.jsx(b, {
+        title: t("home.mostViewed"),
+        articles: z,
+        metric: o => t("home.views", {
+          value: o.views.toLocaleString(j(v()))
+        }),
+        onSelect: o => a(`/news/${o.id}`),
+        emptyText: t("home.noArticles")
+      }), e.jsx(O, {
+        articles: s
+      })]
+    }), e.jsx(P, {
+      sx: {
+        mt: 3
+      }
+    }), e.jsxs(l, {
+      direction: "row",
+      spacing: 1.5,
+      sx: {
+        mt: 2,
+        flexWrap: "wrap",
+        gap: 1.5
+      },
+      children: [e.jsx(f, {
+        component: p,
+        to: "/dashboard/news",
+        variant: "contained",
+        children: t("home.manageNews")
+      }), m && e.jsx(f, {
+        component: p,
+        to: "/dashboard/accounts",
+        variant: "outlined",
+        children: t("home.manageMembers")
+      }), e.jsx(f, {
+        component: p,
+        to: "/news",
+        variant: "text",
+        children: t("home.viewPublicSite")
+      })]
+    })]
+  });
+}
+export { Y as default };

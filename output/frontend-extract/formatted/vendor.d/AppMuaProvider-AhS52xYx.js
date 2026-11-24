@@ -1,0 +1,818 @@
+const __vite__mapDeps = (i, m = __vite__mapDeps, d = m.f || (m.f = ["vendor.d/index.esm-BLbQfyP0.js", "js.d/main-Cm9wS5wt.js", "vendor.d/react-CjxcGQav.js", "vendor.d/stylis-DdLD6a3t.js", "css.d/main-BARtwNPI.css", "vendor.d/FileViewer-D5PyYcLh.js", "vendor.d/RotateRight-DbtMfjGZ.js", "vendor.d/tiny-invariant-CopsF_GD.js", "vendor.d/Snackbar-DxIDGM8-.js"])) => i.map(i => d[i]);
+import { r as i, j as s, u as fe, i as xe, k as ge } from "./react-CjxcGQav.js";
+import { M as he } from "./MobileCardListLayout-D5_p2Xer.js";
+import { D, bv as q, ak as be, bM as R, bT as E, bO as U, B as I, L as H, bH as Se, bI as X, a1 as _e, aW as we, go as ye, y as je, d4 as $, w as Q, bQ as G, K as Me, _ as ve, c8 as Pe, gD as ke, gE as Ee, gF as _, bm as Ce, iW as Y, iX as Fe, iY as Z, iZ as Te, j1 as Ae, j2 as Ie, j3 as Oe, bo as Be, bt as Le, iH as ze, k as De, dP as qe, j4 as Ve, u as Ne, cZ as Re, j5 as He, j6 as J, s as $e, j7 as Ge, j8 as ee, o as Ke, j9 as We, i as Ue, ja as Xe, jb as Qe, jc as Ye, jd as Ze, je as Je, jf as ea, jg as aa, jh as sa, ji as oa, jj as ta, cI as ae } from "../js.d/main-Cm9wS5wt.js";
+import { E as la } from "./EmployeeSelectDialog-Cdnxeoz9.js";
+import { F as ra } from "./FileUploadBox-crZW1mG0.js";
+import { f as ce } from "./formatFileSize-Cwk2MLba.js";
+import { z as na } from "./bootstrapController-BMV_i07c.js";
+import { P as ia } from "./PickMenuDialog-BtpyEh4Z.js";
+import { u as ca } from "./mobileTitlePicker-u2JmU445.js";
+import { u as ua } from "./useFileViewer-B-2ewnr3.js";
+import { i as ma } from "./filePreview-B-5SZXbS.js";
+import { u as da, S as pa, P as fa, M as xa, c as ga } from "./shellOwnScroll-BIIV4RF2.js";
+import "./mobileSearchOverlay-DYWcMOOb.js";
+import "./stylis-DdLD6a3t.js";
+import "./utils-B6Q5_urv.js";
+import "./AccountAvatar-DtrhoS_d.js";
+import "./Person-DnoEHesw.js";
+import "./resolveAssetPreviewSrc-CLlbOCzq.js";
+import "./date_utils-CYURFdnX.js";
+import "./FileViewer-D5PyYcLh.js";
+import "./RotateRight-DbtMfjGZ.js";
+import "./tiny-invariant-CopsF_GD.js";
+import "./Snackbar-DxIDGM8-.js";
+import "./uploadGuard-BK1B6cyC.js";
+import "./profileEcho-q2FaD_03.js";
+import "./teamMembers-0yRsmqL6.js";
+import "./pendingRecordings-DpKJ8Y2R.js";
+import "./meetingsApi-CCkjq69B.js";
+import "./orgTree-Dh5HFjBo.js";
+import "./mxApi-R6g9QtQq.js";
+import "./aliasStore-DiN6Kp-5.js";
+import "./profileApi-Btafs-pM.js";
+import "./useLongPress-C-MDKVjl.js";
+import "./documentViewerStore-BlSjH3BG.js";
+const A = 20,
+  se = 500,
+  ha = [1, 7, 30],
+  ba = [0, 1, 3, 5, 10],
+  oe = t => ({
+    name: t.name,
+    size: t.size,
+    percent: 0,
+    status: "uploading",
+    url: "",
+    token: "",
+    expires_at: "",
+    expire_days: 7,
+    has_password: !1,
+    max_downloads: 0
+  }),
+  K = t => t.replace(/[&<>"]/g, n => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;"
+  })[n] ?? n);
+function te(t) {
+  const n = t.expires_at.slice(0, 10);
+  return '<p style="margin:0 0 12px;padding:10px 14px;border:1px solid #d0d7de;border-radius:6px;background:#f6f8fa;font-size:14px;line-height:1.6;">' + E("mail.largeAttachmentLine", {
+    link: `<a href="${K(t.url)}">${K(t.name)}</a>`,
+    size: ce(t.size),
+    until: n,
+    interpolation: {
+      escapeValue: !1
+    }
+  }) + (t.has_password ? ` · 🔒 ${K(E("mail.largeAttachmentPasswordNote"))}` : "") + "</p>";
+}
+function Sa(t, n, S) {
+  const c = new DOMParser().parseFromString(`<div id="root">${t}</div>`, "text/html"),
+    x = c.getElementById("root");
+  if (!x) return t;
+  const o = [...x.querySelectorAll("a")].find(b => b.getAttribute("href") === n);
+  if (!o) return S + t;
+  const m = c.createElement("div");
+  m.innerHTML = S;
+  const p = m.firstElementChild;
+  return p ? ((o.closest("p, div:not(#root), li") ?? o).replaceWith(p), x.innerHTML) : t;
+}
+function le(t, n) {
+  const c = new DOMParser().parseFromString(`<div id="root">${t}</div>`, "text/html").getElementById("root");
+  if (!c) return t;
+  let x = !1;
+  return c.querySelectorAll("a").forEach(o => {
+    o.getAttribute("href") === n && ((o.closest("p, div:not(#root), li") ?? o).remove(), x = !0);
+  }), x ? c.innerHTML : t;
+}
+function _a({
+  onAttachedFilesChange: t,
+  onFilesPicked: n,
+  progress: S,
+  ...c
+}) {
+  const x = D(),
+    o = q(),
+    m = be({
+      formId: "mail-compose-form"
+    }),
+    p = i.useRef(new Map()),
+    [, b] = i.useState(0),
+    f = i.useCallback(() => b(a => a + 1), []),
+    j = i.useCallback(async (a, e) => {
+      try {
+        const r = new FormData();
+        r.append("file", a, a.name);
+        const u = (await R.requestForm("POST", "/v1/mua/large-files", r, !0, (w, P) => {
+          e.percent = P > 0 ? Math.round(w / P * 100) : 0, f();
+        }))?.data;
+        if (!u?.url) throw new Error(E("mail.uploadFailed"));
+        if (!p.current.has(a)) return;
+        e.status = "done", e.percent = 100, e.url = u.url, e.token = u.token, e.expires_at = u.expires_at, e.expire_days = u.expire_days ?? 7, m.setFormValue("body_html", te(u) + String(m.getFormValue("body_html") ?? ""));
+      } catch (r) {
+        e.status = "error", U({
+          message: `${a.name}: ${r instanceof Error ? r.message : E("mail.uploadFailed")}`
+        });
+      }
+      f();
+    }, [m, f]),
+    l = i.useCallback(a => {
+      const e = p.current,
+        r = [];
+      let h = 0;
+      for (const u of a) {
+        if (e.has(u)) continue;
+        if (u.size <= A * 1024 * 1024 && h + u.size <= A * 1024 * 1024) {
+          r.push(u), h += u.size;
+          continue;
+        }
+        const P = oe(u);
+        e.set(u, P), j(u, P);
+      }
+      for (const [u, w] of [...e]) if (!a.includes(u) && (e.delete(u), w.url)) {
+        const P = String(m.getFormValue("body_html") ?? "");
+        m.setFormValue("body_html", le(P, w.url));
+      }
+      f(), t?.(r);
+    }, [m, t, f, j]),
+    O = i.useCallback(a => {
+      const e = [];
+      let r = 0;
+      for (const h of a) {
+        if (h.size <= A * 1024 * 1024 && r + h.size <= A * 1024 * 1024) {
+          e.push(h), r += h.size;
+          continue;
+        }
+        const w = oe(h);
+        p.current.set(h, w), j(h, w);
+      }
+      f(), e.length > 0 && n?.(e);
+    }, [n, f, j]),
+    B = i.useCallback(a => {
+      const e = p.current.get(a);
+      p.current.delete(a), e?.url && m.setFormValue("body_html", le(String(m.getFormValue("body_html") ?? ""), e.url)), e?.token && R.http.delete(`/v1/mua/large-files/${e.token}`, {}, !0).catch(() => {}), f();
+    }, [m, f]),
+    [M, k] = i.useState(null),
+    [g, v] = i.useState({
+      expire_days: 7,
+      password: "",
+      clearPassword: !1,
+      max_downloads: 0
+    }),
+    [C, F] = i.useState(!1),
+    L = (a, e) => {
+      const r = p.current.get(e);
+      r && (v({
+        expire_days: r.expire_days,
+        password: "",
+        clearPassword: !1,
+        max_downloads: r.max_downloads
+      }), k({
+        anchor: a,
+        file: e
+      }));
+    },
+    V = async () => {
+      const a = M ? p.current.get(M.file) : void 0;
+      if (a?.token) {
+        F(!0);
+        try {
+          const e = {
+            expire_days: g.expire_days,
+            max_downloads: g.max_downloads
+          };
+          g.password ? e.password = g.password : g.clearPassword && (e.password = "");
+          const r = await R.http.patch(`/v1/mua/large-files/${a.token}`, e, !0);
+          if (!r?.ok || !r.data) throw new Error(r?.error || r?.message || E("mail.largeSecuritySaveFailed"));
+          Object.assign(a, {
+            expires_at: r.data.expires_at,
+            expire_days: r.data.expire_days,
+            has_password: r.data.has_password,
+            max_downloads: r.data.max_downloads
+          }), m.setFormValue("body_html", Sa(String(m.getFormValue("body_html") ?? ""), a.url, te(a))), k(null), f();
+        } catch (e) {
+          U({
+            message: e instanceof Error ? e.message : E("mail.largeSecuritySaveFailed")
+          });
+        } finally {
+          F(!1);
+        }
+      }
+    },
+    z = M ? p.current.get(M.file) : void 0,
+    T = [...p.current.values()].find(a => a.status === "uploading"),
+    N = S ?? (T ? {
+      label: T.name,
+      percent: T.percent
+    } : null);
+  return s.jsxs(I, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 1
+    },
+    children: [s.jsx(ra, {
+      ...c,
+      progress: N,
+      maxFileSize: se,
+      dropzoneText: o(x ? "mail.dropzoneTap" : "mail.dropzoneDrag"),
+      onAttachedFilesChange: l,
+      onFilesPicked: n ? O : void 0
+    }), s.jsx(H, {
+      sx: {
+        fontSize: 14,
+        color: "text.secondary",
+        mt: -.5
+      },
+      children: o("mail.largeFileNotice", {
+        inline: A,
+        max: se
+      })
+    }), [...p.current.entries()].filter(([, a]) => !(n && a.status === "uploading")).map(([a, e], r) => s.jsx(I, {
+      sx: {
+        display: "flex",
+        flexDirection: "column",
+        gap: .5
+      },
+      children: s.jsxs(I, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: .5
+        },
+        children: [s.jsxs(H, {
+          sx: {
+            flex: 1,
+            minWidth: 0,
+            fontSize: 14,
+            color: e.status === "error" ? "error.main" : "text.secondary"
+          },
+          children: [e.name, " (", ce(e.size), ") ·", " ", e.status === "uploading" ? o("mail.uploadingPercent", {
+            percent: e.percent
+          }) : e.status === "done" ? [o("mail.linkInsertedDays", {
+            days: e.expire_days
+          }), e.has_password ? o("mail.largeHasPassword") : "", e.max_downloads > 0 ? o("mail.largeMaxTimes", {
+            count: e.max_downloads
+          }) : ""].filter(Boolean).join(" · ") : o("mail.uploadFailedRetry")]
+        }), e.status === "done" && e.token ? s.jsx(Se, {
+          title: o("mail.largeSecurity"),
+          arrow: !0,
+          children: s.jsx(X, {
+            size: "small",
+            "aria-label": o("mail.largeSecurity"),
+            onClick: h => L(h.currentTarget, a),
+            sx: {
+              color: e.has_password ? "primary.main" : "text.secondary"
+            },
+            children: e.has_password ? s.jsx(_e, {
+              sx: {
+                fontSize: 18
+              }
+            }) : s.jsx(we, {
+              sx: {
+                fontSize: 18
+              }
+            })
+          })
+        }) : null, n ? s.jsx(X, {
+          size: "small",
+          "aria-label": o("mail.removeLargeFile"),
+          onClick: () => B(a),
+          sx: {
+            color: "text.secondary"
+          },
+          children: s.jsx(ye, {
+            sx: {
+              fontSize: 18
+            }
+          })
+        }) : null]
+      })
+    }, `${e.name}-${r}`)), s.jsxs(je, {
+      open: !!M,
+      anchorEl: M?.anchor,
+      onClose: () => k(null),
+      anchorOrigin: {
+        vertical: "bottom",
+        horizontal: "right"
+      },
+      transformOrigin: {
+        vertical: "top",
+        horizontal: "right"
+      },
+      slotProps: {
+        paper: {
+          sx: {
+            p: 2,
+            width: 320,
+            maxWidth: "calc(100vw - 32px)",
+            display: "flex",
+            flexDirection: "column",
+            gap: 2
+          }
+        }
+      },
+      children: [s.jsx(H, {
+        sx: {
+          fontSize: 15,
+          fontWeight: 700
+        },
+        children: o("mail.largeSecurity")
+      }), s.jsx($, {
+        select: !0,
+        label: o("mail.largeExpire"),
+        value: g.expire_days,
+        onChange: a => v(e => ({
+          ...e,
+          expire_days: Number(a.target.value)
+        })),
+        fullWidth: !0,
+        children: ha.map(a => s.jsx(Q, {
+          value: a,
+          children: o("mail.largeExpireDays", {
+            days: a
+          })
+        }, a))
+      }), s.jsx($, {
+        type: "password",
+        label: o("mail.largePassword"),
+        value: g.password,
+        onChange: a => v(e => ({
+          ...e,
+          password: a.target.value,
+          clearPassword: !1
+        })),
+        helperText: z?.has_password ? o("mail.largePasswordSet") : o("mail.largePasswordHint"),
+        autoComplete: "new-password",
+        slotProps: {
+          htmlInput: {
+            maxLength: 64
+          }
+        },
+        fullWidth: !0
+      }), z?.has_password ? s.jsx(G, {
+        size: "small",
+        onClick: () => v(a => ({
+          ...a,
+          password: "",
+          clearPassword: !a.clearPassword
+        })),
+        sx: {
+          alignSelf: "flex-start",
+          mt: -1,
+          fontSize: 14
+        },
+        color: g.clearPassword ? "error" : "primary",
+        children: g.clearPassword ? o("mail.largePasswordWillRemove") : o("mail.largePasswordRemove")
+      }) : null, s.jsx($, {
+        select: !0,
+        label: o("mail.largeMaxDownloads"),
+        value: g.max_downloads,
+        onChange: a => v(e => ({
+          ...e,
+          max_downloads: Number(a.target.value)
+        })),
+        fullWidth: !0,
+        children: ba.map(a => s.jsx(Q, {
+          value: a,
+          children: a === 0 ? o("mail.largeNoLimit") : o("mail.largeMaxTimes", {
+            count: a
+          })
+        }, a))
+      }), s.jsxs(I, {
+        sx: {
+          display: "flex",
+          justifyContent: "flex-end",
+          gap: 1
+        },
+        children: [s.jsx(G, {
+          onClick: () => k(null),
+          children: o("mail.largeCancel")
+        }), s.jsx(G, {
+          variant: "contained",
+          onClick: () => {
+            V();
+          },
+          disabled: C || g.password.length > 0 && g.password.length < 4,
+          sx: {
+            minWidth: 72
+          },
+          children: C ? s.jsx(Me, {
+            size: 20,
+            color: "inherit"
+          }) : o("mail.largeSave")
+        })]
+      })]
+    })]
+  });
+}
+let ue = null;
+const me = () => ue ??= ve(() => import("./index.esm-BLbQfyP0.js"), __vite__mapDeps([0, 1, 2, 3, 4, 5, 6, 7, 8])),
+  wa = i.lazy(() => me().then(t => ({
+    default: t.EhfuseEditor
+  })));
+function re() {
+  me().catch(() => {
+    ue = null;
+  });
+}
+const ya = [{
+    label: "Default",
+    labelKo: "기본 글꼴",
+    value: "default",
+    fontFamily: "inherit"
+  }, {
+    label: "Malgun Gothic",
+    labelKo: "맑은 고딕",
+    value: "malgun",
+    fontFamily: '"Malgun Gothic", "Apple SD Gothic Neo", sans-serif'
+  }, {
+    label: "Gulim",
+    labelKo: "굴림",
+    value: "gulim",
+    fontFamily: 'Gulim, "Apple SD Gothic Neo", sans-serif'
+  }, {
+    label: "Dotum",
+    labelKo: "돋움",
+    value: "dotum",
+    fontFamily: 'Dotum, "Apple SD Gothic Neo", sans-serif'
+  }, {
+    label: "Batang",
+    labelKo: "바탕",
+    value: "batang",
+    fontFamily: "Batang, AppleMyungjo, serif"
+  }, {
+    label: "Gungsuh",
+    labelKo: "궁서",
+    value: "gungsuh",
+    fontFamily: "Gungsuh, serif"
+  }, {
+    label: "Arial",
+    value: "arial",
+    fontFamily: "Arial, Helvetica, sans-serif"
+  }, {
+    label: "Verdana",
+    value: "verdana",
+    fontFamily: "Verdana, Geneva, sans-serif"
+  }, {
+    label: "Tahoma",
+    value: "tahoma",
+    fontFamily: "Tahoma, Geneva, sans-serif"
+  }, {
+    label: "Georgia",
+    value: "georgia",
+    fontFamily: "Georgia, serif"
+  }, {
+    label: "Times New Roman",
+    value: "times",
+    fontFamily: '"Times New Roman", Times, serif'
+  }, {
+    label: "Courier New",
+    value: "courier",
+    fontFamily: '"Courier New", Courier, monospace'
+  }],
+  ja = {
+    left: [["font", "size"], ["bold", "italic", "underline", "strike"], ["color", "bgcolor"], ["table"], ["align"], ["bulletList", "numberList"], ["indent", "outdent"], ["link", "image"], ["clear"]],
+    right: []
+  },
+  Ma = i.forwardRef(function (n, S) {
+    return s.jsx(i.Suspense, {
+      fallback: s.jsx(I, {
+        sx: {
+          minHeight: Number(n.minHeight) || 120
+        }
+      }),
+      children: s.jsx(wa, {
+        ref: S,
+        ...n
+      })
+    });
+  }),
+  va = [{
+    path: `${_}/sent`,
+    labelKey: "mail.folderSent",
+    icon: s.jsx(Ae, {})
+  }, {
+    path: `${_}/starred`,
+    labelKey: "mail.folderStarred",
+    icon: s.jsx(Ie, {})
+  }, {
+    path: `${_}/draft`,
+    labelKey: "mail.folderDraft",
+    icon: s.jsx(Oe, {})
+  }, {
+    path: `${_}/scheduled`,
+    labelKey: "mail.folderScheduled",
+    icon: s.jsx(Be, {})
+  }, {
+    path: `${_}/spam`,
+    labelKey: "mail.folderSpam",
+    icon: s.jsx(Le, {})
+  }, {
+    path: `${_}/trash`,
+    labelKey: "mail.folderTrash",
+    icon: s.jsx(ze, {})
+  }, {
+    path: `${_}/contacts`,
+    labelKey: "mail.folderContacts",
+    icon: s.jsx(De, {})
+  }];
+function de() {
+  return D() ? s.jsx(Pa, {}) : null;
+}
+function Pa() {
+  const t = fe(),
+    n = q(),
+    {
+      pathname: S
+    } = xe(),
+    c = ca(),
+    x = !!c.useValue("open"),
+    o = Pe({
+      stateId: Ee,
+      initialValues: ke,
+      autoCleanup: !1
+    }),
+    m = (o.useValue("accounts") ?? []).filter(l => l.in_sidebar !== !1),
+    p = (o.useValue("folders") ?? []).filter(l => l.in_sidebar !== !1);
+  i.useEffect(() => (c.setValue("active", !0), c.setValue("title", ""), () => {
+    c.setValue("active", !1), c.setValue("open", !1);
+  }), []);
+  const b = S.replace(/\/$/, ""),
+    f = l => {
+      c.setValue("open", !1), l !== b && t(l);
+    },
+    j = [{
+      key: "inbox",
+      icon: s.jsx(Ce, {}),
+      label: n("mail.folderInbox"),
+      selected: b === _,
+      onSelect: () => f(_)
+    }, ...(m.length > 1 ? m.map(l => ({
+      key: `account-${l.seq}`,
+      icon: s.jsx(Fe, {
+        email: l.email,
+        scope: l.scope,
+        size: 20
+      }),
+      label: l.name || l.email,
+      selected: b === Y(l.seq),
+      onSelect: () => f(Y(l.seq))
+    })) : []), ...p.map(l => ({
+      key: `folder-${l.seq}`,
+      icon: s.jsx(Te, {
+        icon: l.icon,
+        color: l.color,
+        shared: l.scope === "shared"
+      }),
+      label: l.name,
+      selected: b === Z(l.seq),
+      onSelect: () => f(Z(l.seq))
+    })), ...va.map(l => ({
+      key: l.path,
+      icon: l.icon,
+      label: n(l.labelKey),
+      selected: b === l.path,
+      onSelect: () => f(l.path)
+    }))];
+  return s.jsx(ia, {
+    open: x,
+    onClose: () => c.setValue("open", !1),
+    items: j
+  });
+}
+const ka = {
+  "메일 관리": "mail.myMailManage"
+};
+function Ea({
+  title: t,
+  ...n
+}) {
+  const S = q(),
+    c = t && typeof t == "object" && "text" in t ? t.text : t,
+    x = typeof c == "string" ? ka[c] : void 0,
+    o = x ? S(x) : void 0;
+  return o ? s.jsx(ae, {
+    ...n,
+    title: t && typeof t == "object" ? {
+      ...t,
+      text: o
+    } : o
+  }) : s.jsx(ae, {
+    ...n,
+    title: t
+  });
+}
+function y({
+  children: t
+}) {
+  const n = q(),
+    c = Ne().useValue("account"),
+    x = D(),
+    o = da(),
+    {
+      groups: m,
+      myOrgSeq: p
+    } = Re(),
+    b = i.useMemo(() => ({
+      groups: m,
+      current: p
+    }), [m, p]),
+    f = ua(),
+    {
+      state: j
+    } = na(),
+    l = j.useValue("data.team_members.members"),
+    O = j.useValue("data.employee"),
+    B = i.useMemo(() => {
+      const a = new Map();
+      for (const e of O ?? []) {
+        const r = Number(e.login_account_seq ?? 0);
+        r && a.set(r, [e.group_name, e.position || e.role_name].filter(Boolean).join(" "));
+      }
+      return (l ?? []).filter(e => String(e.email ?? "").includes("@")).map(e => ({
+        name: e.name,
+        email: e.email,
+        organization: a.get(e.account_seq) ?? ""
+      }));
+    }, [l, O]),
+    M = He();
+  i.useEffect(() => {
+    if (!M) return;
+    const a = window.requestIdleCallback;
+    if (a) {
+      const r = a(re, {
+        timeout: 8e3
+      });
+      return () => window.cancelIdleCallback?.(r);
+    }
+    const e = window.setTimeout(re, 3e3);
+    return () => window.clearTimeout(e);
+  }, [M]);
+  const [k, g] = i.useState(null),
+    [v, C] = i.useState([]),
+    F = i.useCallback(() => {
+      const a = new Set((l ?? []).map(e => String(e.email ?? "").toLowerCase()));
+      return Promise.all([J.listContacts().catch(() => null), J.listSentRecipients().catch(() => null)]).then(([e, r]) => {
+        const h = e && e.ok !== !1 ? e.data?.items ?? [] : [],
+          u = r && r.ok !== !1 ? r.data?.items ?? [] : [],
+          w = h.filter(d => d.source !== "mail" || d.is_favorite || !!(String(d.organization ?? "").trim() || String(d.phone ?? "").trim())).map(d => ({
+            seq: ne + d.seq,
+            account_seq: ne + d.seq,
+            name: d.name || d.email,
+            role_name: d.email,
+            org: n("mail.addressBook"),
+            email: d.email
+          })),
+          P = new Set([...a, ...w.map(d => d.email.toLowerCase())]),
+          pe = u.filter(d => !P.has(d.email.toLowerCase())).map((d, W) => ({
+            seq: ie + W,
+            account_seq: ie + W,
+            name: d.name || d.email,
+            role_name: d.email,
+            org: n("mail.sentAddresses"),
+            email: d.email
+          }));
+        C([...w, ...pe]);
+      }).catch(() => C([])), new Promise(e => g({
+        resolve: e
+      }));
+    }, [n, l]),
+    L = a => {
+      k?.resolve(a), g(null);
+    },
+    V = i.useMemo(() => new Map((l ?? []).map(a => [Number(a.account_seq), a])), [l]),
+    z = i.useMemo(() => new Map(v.map(a => [a.account_seq, a])), [v]),
+    T = a => L(a.map(e => V.get(Number(e.account_seq ?? 0)) ?? z.get(e.account_seq)).filter(e => !!(e && String(e.email ?? "").includes("@"))).map(e => ({
+      name: e.name,
+      email: e.email
+    }))),
+    N = i.useMemo(() => ({
+      account: c,
+      recipientDirectory: B,
+      pickRecipients: F,
+      folderPath: a => a === "inbox" ? _ : `${_}/${a}`,
+      FormDialogComponent: Ea,
+      FileUploadBoxComponent: _a,
+      mobileEditorToolbar: "pwa",
+      ComposeEditorComponent: Ma,
+      composeToolbarOptions: ja,
+      editorFontOptions: ya,
+      signatureBelowEditor: !0,
+      autoSaveDraft: !0,
+      desktop: {
+        iconToolbar: !0,
+        scopeTabs: !0,
+        flat: !0
+      },
+      labels: !0,
+      saveBlob: We,
+      openExternalUrl: Ke,
+      openMessageWindow: ee.open,
+      loadingSpinner: he,
+      windowMessageSeq: ee.windowSeq(),
+      inboxPath: _,
+      homePath: Ge,
+      isMobile: x,
+      teams: b.groups.map(a => ({
+        seq: a.seq,
+        name: a.name,
+        role: a.role === "admin" ? "manager" : a.role
+      })),
+      currentTeamSeq: b.current,
+      appHostsMailManage: !0,
+      canPreviewAttachment: a => ma(a.name),
+      previewAttachment: a => f.open({
+        seq: 0,
+        table_name: "",
+        user_seq: 0,
+        user_name: "",
+        created_time: "",
+        name: a.name,
+        size: a.size,
+        mimeType: a.mime,
+        blob: a.blob
+      }),
+      mobile: {
+        ownScroll: {
+          useOwnScroll: ga,
+          appBarHeight: xa,
+          appBarSlot: o,
+          background: $e[200],
+          scrollbars: {
+            pullToRefresh: fa,
+            scrollTopFab: pa
+          },
+          cssLinked: !Ue()
+        }
+      }
+    }), [c, x, b, f, o, B, F]);
+  return s.jsxs(Xe, {
+    config: N,
+    children: [t, s.jsx(la, {
+      open: !!k,
+      title: n("mail.pickRecipients"),
+      excludeSelf: !0,
+      extraCandidates: v,
+      onClose: () => L(null),
+      onApply: T
+    })]
+  });
+}
+const ne = 1e9,
+  ie = 15e8;
+function cs() {
+  const t = D(),
+    {
+      folder: n
+    } = ge();
+  return qe(!t && n !== "contacts"), s.jsxs(y, {
+    children: [s.jsx(Ve, {}), s.jsx(de, {})]
+  });
+}
+function us() {
+  return s.jsxs(y, {
+    children: [s.jsx(ea, {}), s.jsx(de, {})]
+  });
+}
+function ms() {
+  return s.jsx(y, {
+    children: s.jsx(Je, {})
+  });
+}
+function ds() {
+  return s.jsx(y, {
+    children: s.jsx(aa, {})
+  });
+}
+function ps() {
+  return s.jsx(y, {
+    children: s.jsx(oa, {})
+  });
+}
+function fs() {
+  return s.jsx(y, {
+    children: s.jsx(Ye, {})
+  });
+}
+function xs() {
+  return s.jsx(y, {
+    children: s.jsx(sa, {})
+  });
+}
+function gs() {
+  return s.jsx(y, {
+    children: s.jsx(ta, {})
+  });
+}
+function hs() {
+  return s.jsx(y, {
+    children: s.jsx(Qe, {})
+  });
+}
+function bs() {
+  return s.jsx(y, {
+    children: s.jsx(Ze, {})
+  });
+}
+export { y as AppMuaProvider, hs as MailContactsSubPage, fs as MailDraftSubPage, bs as MailFolderSubPage, ms as MailInboxSubPage, us as MailInboxTabPage, ds as MailSentSubPage, xs as MailSpamSubPage, ps as MailStarredSubPage, gs as MailTrashSubPage, cs as default };

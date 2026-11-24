@@ -1,0 +1,22 @@
+import { j as n } from "./react-CjxcGQav.js";
+import { B as p } from "../js.d/main-Cm9wS5wt.js";
+function i({
+  label: r,
+  tone: o
+}) {
+  return n.jsx(p, {
+    component: "span",
+    sx: {
+      px: 1,
+      py: .25,
+      borderRadius: 1,
+      fontSize: 12,
+      fontWeight: 600,
+      color: o.color,
+      bgcolor: o.bg,
+      whiteSpace: "nowrap"
+    },
+    children: r
+  });
+}
+export { i as T };

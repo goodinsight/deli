@@ -1,0 +1,47 @@
+import { j as r } from "./react-CjxcGQav.js";
+import { B as e, K as i, aO as n, L as p } from "../js.d/main-Cm9wS5wt.js";
+function x({
+  label: o,
+  busy: s = !1,
+  zIndex: a = 5
+}) {
+  return r.jsx(e, {
+    sx: {
+      position: "absolute",
+      inset: 0,
+      zIndex: a,
+      display: "grid",
+      placeItems: "center",
+      pointerEvents: "none",
+      bgcolor: "rgba(37, 99, 235, 0.10)",
+      border: "2px dashed",
+      borderColor: "primary.main"
+    },
+    children: r.jsxs(e, {
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        gap: 1,
+        px: 2.5,
+        py: 1.5,
+        borderRadius: 2,
+        bgcolor: "#fff",
+        boxShadow: "0 6px 18px rgba(15, 23, 42, 0.14)"
+      },
+      children: [s ? r.jsx(i, {
+        size: 18
+      }) : r.jsx(n, {
+        sx: {
+          color: "primary.main"
+        }
+      }), r.jsx(p, {
+        sx: {
+          fontSize: "0.9375rem",
+          fontWeight: 600
+        },
+        children: o
+      })]
+    })
+  });
+}
+export { x as F };

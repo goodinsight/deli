@@ -1,0 +1,230 @@
+import { j as e } from "./react-CjxcGQav.js";
+import { A as d } from "./AssignmentIndOutlined-DynSb23A.js";
+import { D as r } from "./DynamicFeedOutlined-CALXdaS2.js";
+import { c as m, B as t, N as o, aV as x, aW as p, ay as O, aX as h, aY as u, aZ as I, a_ as S, a$ as j, b0 as E, C as T, E as f, S as C, p as N, aT as b } from "../js.d/main-Cm9wS5wt.js";
+import { C as k } from "./ChecklistOutlined-PwlgFlaS.js";
+import { V as A } from "./ViewListOutlined-C97qxXWt.js";
+import { S as g } from "./SwapHorizOutlined-DWsqc1am.js";
+import { A as R } from "./AlternateEmailOutlined-ChAd88mi.js";
+import { S as s } from "./homeSx-C09ESIq-.js";
+import { F as H, H as _, L as w, T as c, S as i, C as n, I as l, a as y } from "./featurePageParts-Deueehn5.js";
+import { E as F } from "./emphasize-CAl3kWp2.js";
+import { H as v, S as a } from "./screenShots-CYp-Froz.js";
+import "./stylis-DdLD6a3t.js";
+import "./publicPageSx-9Lwcd6Z3.js";
+import "./Reveal-C3c42DZa.js";
+const L = m(e.jsx("path", {
+    d: "M4 6H2v14c0 1.1.9 2 2 2h14v-2H4zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2m0 14H8V4h12zm-7-2h2v-3h3V9h-3V6h-2v3h-3v2h3z"
+  })),
+  P = [{
+    icon: d,
+    title: "제목 · 책임자 · 마감이면 등록",
+    desc: "**세 칸만 적으면** 책임자의 업무함에 들어갑니다. 내용 · 할일 · 파일은 필요할 때 더합니다."
+  }, {
+    icon: r,
+    title: "업무 · 글 · 일정 · 투표",
+    desc: "**맡겨서 끝내야 하는 것은 업무로**, 알리기만 할 것은 글로, 날짜가 정해진 것은 일정으로 올립니다. 의견을 모을 때는 투표를 씁니다.",
+    chips: ["업무", "글", "일정", "투표"]
+  }, {
+    icon: x,
+    title: "반복 업무",
+    desc: "매일 · 매주 · 매월 · 매년 하는 일은 반복으로 걸어 두면 **회차마다 업무가 만들어집니다**."
+  }, {
+    icon: L,
+    title: "템플릿으로 여러 건을 한 번에",
+    desc: "자주 하는 일을 템플릿으로 저장해 두고, 고르면 **기준일에 맞춰 할 일까지 한꺼번에** 만듭니다. 본문 양식도 저장해 불러옵니다."
+  }, {
+    icon: p,
+    title: "공개 범위와 가져가기",
+    desc: "업무마다 비공개 · 부서공개 · 전체공개를 고릅니다. 책임자가 없는 공개 업무는 **본 사람이 가져가 맡습니다**."
+  }, {
+    icon: g,
+    title: "업무 이관",
+    desc: "퇴사나 부서 이동 때 진행 중인 업무를 **메모와 함께 통째로 넘기고**, 받은 사람이 받았다고 확인합니다."
+  }],
+  G = [{
+    icon: O,
+    title: "확인 → 완료 → 검수",
+    points: ["받은 사람은 [확인]으로 읽었다고 남깁니다", "책임자가 완료하면 작성자에게 **검수 대기**로 남습니다", "작성자는 검수를 마치거나 사유를 적어 되돌립니다"]
+  }, {
+    icon: k,
+    title: "할일로 쪼개기",
+    desc: "업무 안에 할일 목록을 두면 **진행이 2/5 처럼 보입니다**. 할일 하나를 따로 업무로 꺼내 다른 사람에게 맡길 수도 있습니다."
+  }, {
+    icon: A,
+    title: "피드 · 목록 · 주간 · 월간",
+    desc: "목록은 마감예정 · 상태 · 책임자로 묶어 봅니다. 주간 · 월간 달력에서는 **카드를 다른 날로 끌어** 날짜를 바꿉니다.",
+    chips: ["피드", "목록", "주간", "월간"]
+  }, {
+    icon: h,
+    title: "보관과 휴지통",
+    desc: "끝난 업무는 **7일 뒤 보관함으로** 들어가 목록이 가벼워집니다. 지운 업무는 휴지통에서 되살립니다."
+  }],
+  V = [{
+    icon: u,
+    title: "댓글과 @언급",
+    desc: "업무마다 댓글을 달고 파일을 붙입니다. **@이름으로 부르면** 그 사람에게 알림이 갑니다."
+  }, {
+    icon: I,
+    title: "알림",
+    desc: "배정 · 확인 · 완료 · 되돌리기, 마감 전 · 당일 · 지연, 댓글이 **벨과 앱 푸시로** 옵니다. 종류별로 끌 수 있습니다."
+  }, {
+    icon: S,
+    title: "작업공간과 권한",
+    desc: "**프로젝트 · 팀마다 작업공간**을 두고, 들어올 사람과 보기 · 쓰기 권한을 정합니다. 피드에서 공간의 업무 · 글 · 투표와 참여자를 함께 봅니다."
+  }, {
+    icon: j,
+    title: "실시간 반영",
+    desc: "동료가 상태를 바꾸거나 댓글을 달면 새로 고치지 않아도 **내 화면에 바로 반영**됩니다."
+  }, {
+    icon: R,
+    title: "나를 언급 · 북마크",
+    desc: "나를 부른 댓글과 표시해 둔 업무를 따로 모아 봅니다."
+  }, {
+    icon: E,
+    title: "파일 모아 보기",
+    desc: "공간 안 업무와 댓글에 붙은 파일을 한곳에서 찾습니다."
+  }],
+  B = [{
+    icon: T,
+    title: "채팅 말풍선을 업무로",
+    desc: "채팅에서 나온 부탁을 말풍선 메뉴에서 바로 업무로 만듭니다.",
+    link: {
+      to: "/chat",
+      label: "업무 채팅 자세히 보기"
+    }
+  }, {
+    icon: f,
+    title: "회의록 후속 조치를 업무로",
+    desc: "회의록의 후속 조치 줄마다 [업무로]를 누르면 **담당 · 할 일이 채워진** 업무 등록 창이 열립니다.",
+    link: {
+      to: "/meetings",
+      label: "회의록 자세히 보기"
+    }
+  }, {
+    icon: C,
+    title: "상담을 업무로",
+    desc: "고객 상담에서 할 일이 생기면 업무로 등록하고, **고객 상세에서도 그 업무**를 봅니다.",
+    link: {
+      to: "/consults",
+      label: "상담 관리 자세히 보기"
+    }
+  }, {
+    icon: N,
+    title: "보던 페이지 · 메일을 업무로",
+    desc: "크롬 확장 프로그램으로 **웹페이지 · 긁은 글 · Gmail 메일**을 업무로 만듭니다.",
+    link: {
+      to: "/extension",
+      label: "크롬 확장 자세히 보기"
+    }
+  }, {
+    icon: b,
+    title: "구글 캘린더 연동",
+    desc: "업무 · 일정을 구글 캘린더로 내보내고, **구글 캘린더 일정**을 주간 · 월간 보기에 겹쳐 봅니다."
+  }];
+function se() {
+  return e.jsxs(t, {
+    children: [e.jsx(H, {
+      eyebrow: "TASKS",
+      title: e.jsxs(e.Fragment, {
+        children: ["맡긴 일이 어디까지 왔는지", e.jsx("br", {}), "묻지 않아도 보입니다"]
+      }),
+      lead: e.jsxs(e.Fragment, {
+        children: ["업무를 맡기면 받은 사람의 ", e.jsx(F, {
+          children: "확인, 진행, 완료, 검수까지 한 화면에"
+        }), " 남습니다.", e.jsx(w, {}), "업무 관리는 기본 제공 기능이라 ", o, "명까지 기간 제한 없이 무료입니다."]
+      }),
+      children: e.jsx(v, {
+        wide: "task-list",
+        phone: "task-list-m",
+        wideAlt: "업무 목록 — 검수 대기 · 이번 주 · 이후로 묶인 업무와 상태 · 마감예정 · 책임자",
+        phoneAlt: "폰의 업무함 — 미확인 업무와 검수 단추",
+        sx: _
+      })
+    }), e.jsx(t, {
+      component: "section",
+      id: "create",
+      sx: c,
+      children: e.jsxs(t, {
+        sx: s,
+        children: [e.jsx(i, {
+          eyebrow: "CREATE",
+          title: "적는 데 오래 걸리지 않습니다",
+          lead: "**세 칸이면 맡기고**, 되풀이되는 일은 반복 · 템플릿으로 한 번에 만듭니다."
+        }), e.jsx(n, {
+          points: P,
+          columns: 3
+        })]
+      })
+    }), e.jsx(t, {
+      component: "section",
+      id: "progress",
+      sx: {
+        bgcolor: "#fff"
+      },
+      children: e.jsxs(t, {
+        sx: s,
+        children: [e.jsx(i, {
+          eyebrow: "PROGRESS",
+          title: "끝날 때까지 놓치지 않습니다",
+          lead: "확인 · 완료 · 검수가 남고, 할일로 쪼갠 **진행이 숫자로** 보입니다."
+        }), e.jsx(a, {
+          wide: "task-detail",
+          phone: "task-detail-m",
+          alt: "업무 상세 — 할일 2/5 진행과 @언급이 들어간 댓글",
+          caption: "업무 상세 — 할일 진행과 댓글",
+          more: [{
+            wide: "task-month",
+            alt: "월간 보기 — 마감이 달력에 놓인 업무 · 일정",
+            caption: "월간 보기 — 마감이 달력에"
+          }],
+          sx: l
+        }), e.jsx(n, {
+          points: G,
+          columns: 2
+        })]
+      })
+    }), e.jsx(t, {
+      component: "section",
+      id: "together",
+      sx: c,
+      children: e.jsxs(t, {
+        sx: s,
+        children: [e.jsx(i, {
+          eyebrow: "TOGETHER",
+          title: "이야기가 업무 옆에 남습니다",
+          lead: "댓글 · 알림 · 투표가 **업무와 같은 공간**에 있어 따로 찾지 않습니다."
+        }), e.jsx(a, {
+          wide: "task-feed",
+          phone: "task-feed-m",
+          alt: "작업공간 피드 — 회의 시간 투표 결과와 공간 참여자",
+          sx: l
+        }), e.jsx(n, {
+          points: V,
+          columns: 3
+        })]
+      })
+    }), e.jsx(t, {
+      component: "section",
+      id: "connect",
+      sx: {
+        bgcolor: "#fff"
+      },
+      children: e.jsxs(t, {
+        sx: s,
+        children: [e.jsx(i, {
+          eyebrow: "CONNECT",
+          title: "대화 · 회의 · 상담에서 나온 일이 업무가 됩니다",
+          lead: "**할 일이 생긴 자리에서 바로 업무로** 옮겨 따로 옮겨 적지 않습니다."
+        }), e.jsx(n, {
+          points: B,
+          columns: 3
+        })]
+      })
+    }), e.jsx(y, {
+      title: "오늘 맡길 일부터 업무함에 적어 보세요",
+      lead: `업무 관리는 기본 제공 기능입니다. **${o}명까지 기간 제한 없이 무료**입니다.`
+    })]
+  });
+}
+export { se as default };

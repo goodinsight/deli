@@ -1,0 +1,59 @@
+import { r as d } from "./react-CjxcGQav.js";
+import { bM as o, eY as f } from "../js.d/main-Cm9wS5wt.js";
+import { p as m } from "./partnerApi-Dqdgl0Fn.js";
+const E = "partner.category.changed",
+  p = 200;
+let t = {
+  loaded: !1,
+  items: []
+};
+const s = new Set(),
+  h = new Set();
+let n = null,
+  r = null,
+  u = !1;
+function c(e) {
+  t = e, s.forEach(i => i());
+}
+function _() {
+  return t;
+}
+function a() {
+  return n || (n = (async () => {
+    try {
+      c({
+        loaded: !0,
+        items: await m.listCategories()
+      });
+    } catch {
+      c({
+        ...t,
+        loaded: !0
+      });
+    }
+  })().finally(() => {
+    n = null;
+  }), n);
+}
+function R() {
+  r !== null && clearTimeout(r), r = setTimeout(() => {
+    r = null, t.loaded && a(), h.forEach(e => e());
+  }, p);
+}
+function S(e) {
+  e.status === "open" && e.previousStatus !== "open" && t.loaded && a();
+}
+function g() {
+  if (u) return;
+  u = !0, o.addRealtimeEventListener(E, R), o.addRealtimeStatusListener(S), o.connectRealtime?.().catch(() => {});
+}
+typeof window < "u" && window.addEventListener(f, () => {
+  t.loaded && a();
+});
+function w(e = !0) {
+  const i = d.useSyncExternalStore(l => (s.add(l), () => s.delete(l)), () => t, () => t);
+  return d.useEffect(() => {
+    e && (g(), !t.loaded && !n && a());
+  }, [e]), i;
+}
+export { _ as g, w as u };

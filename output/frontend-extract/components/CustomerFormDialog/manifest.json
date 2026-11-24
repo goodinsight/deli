@@ -1,0 +1,603 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/CustomerFormDialog-pXADTEX2.js",
+  "path": "assets/vendor.d/CustomerFormDialog-pXADTEX2.js",
+  "name": "CustomerFormDialog",
+  "kind": "ui",
+  "bytes": 31668,
+  "sha256": "e25336fd46404a82c51868f48ce59e95d09474040a8edb6c2c372ce918bb3c65",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/CustomerFormDialog-pXADTEX2.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "O",
+          "imported": "r"
+        },
+        {
+          "local": "e",
+          "imported": "j"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Me",
+          "imported": "e"
+        },
+        {
+          "local": "Ae",
+          "imported": "c8"
+        },
+        {
+          "local": "ze",
+          "imported": "ak"
+        },
+        {
+          "local": "Ue",
+          "imported": "dv"
+        },
+        {
+          "local": "Ne",
+          "imported": "fA"
+        },
+        {
+          "local": "v",
+          "imported": "bO"
+        },
+        {
+          "local": "b",
+          "imported": "bT"
+        },
+        {
+          "local": "Ge",
+          "imported": "cL"
+        },
+        {
+          "local": "$e",
+          "imported": "dE"
+        },
+        {
+          "local": "we",
+          "imported": "z"
+        },
+        {
+          "local": "N",
+          "imported": "bx"
+        },
+        {
+          "local": "Ke",
+          "imported": "kM"
+        },
+        {
+          "local": "Ve",
+          "imported": "dC"
+        },
+        {
+          "local": "He",
+          "imported": "cK"
+        },
+        {
+          "local": "M",
+          "imported": "bv"
+        },
+        {
+          "local": "d",
+          "imported": "B"
+        },
+        {
+          "local": "R",
+          "imported": "s"
+        },
+        {
+          "local": "V",
+          "imported": "L"
+        },
+        {
+          "local": "Le",
+          "imported": "bI"
+        },
+        {
+          "local": "B",
+          "imported": "bQ"
+        },
+        {
+          "local": "De",
+          "imported": "d8"
+        },
+        {
+          "local": "w",
+          "imported": "K"
+        },
+        {
+          "local": "Xe",
+          "imported": "aO"
+        },
+        {
+          "local": "Ye",
+          "imported": "M"
+        },
+        {
+          "local": "Qe",
+          "imported": "w"
+        },
+        {
+          "local": "Je",
+          "imported": "aw"
+        },
+        {
+          "local": "Ze",
+          "imported": "cP"
+        },
+        {
+          "local": "et",
+          "imported": "d3"
+        },
+        {
+          "local": "Ee",
+          "imported": "D"
+        },
+        {
+          "local": "Fe",
+          "imported": "lN"
+        },
+        {
+          "local": "Re",
+          "imported": "ca"
+        },
+        {
+          "local": "tt",
+          "imported": "lR"
+        },
+        {
+          "local": "pe",
+          "imported": "al"
+        },
+        {
+          "local": "Te",
+          "imported": "cY"
+        },
+        {
+          "local": "st",
+          "imported": "cT"
+        },
+        {
+          "local": "nt",
+          "imported": "db"
+        },
+        {
+          "local": "$",
+          "imported": "aq"
+        },
+        {
+          "local": "fe",
+          "imported": "an"
+        },
+        {
+          "local": "ee",
+          "imported": "cO"
+        },
+        {
+          "local": "rt",
+          "imported": "lS"
+        },
+        {
+          "local": "he",
+          "imported": "cm"
+        },
+        {
+          "local": "ot",
+          "imported": "cn"
+        },
+        {
+          "local": "be",
+          "imported": "ce"
+        },
+        {
+          "local": "ye",
+          "imported": "cf"
+        },
+        {
+          "local": "_e",
+          "imported": "fL"
+        },
+        {
+          "local": "at",
+          "imported": "cz"
+        },
+        {
+          "local": "it",
+          "imported": "lJ"
+        },
+        {
+          "local": "lt",
+          "imported": "lO"
+        },
+        {
+          "local": "ct",
+          "imported": "ao"
+        },
+        {
+          "local": "ut",
+          "imported": "cS"
+        },
+        {
+          "local": "dt",
+          "imported": "lK"
+        },
+        {
+          "local": "mt",
+          "imported": "lP"
+        },
+        {
+          "local": "pt",
+          "imported": "lM"
+        },
+        {
+          "local": "ft",
+          "imported": "cC"
+        },
+        {
+          "local": "xt",
+          "imported": "cI"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./ConsultHistoryPanel-X3hMdgAl.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "gt",
+          "imported": "a"
+        },
+        {
+          "local": "ht",
+          "imported": "b"
+        }
+      ],
+      "resolved": "assets/vendor.d/ConsultHistoryPanel-X3hMdgAl.js"
+    },
+    {
+      "specifier": "./customerMetaStore-Bj9KdRyn.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "xe",
+          "imported": "g"
+        },
+        {
+          "local": "S",
+          "imported": "c"
+        },
+        {
+          "local": "je",
+          "imported": "r"
+        },
+        {
+          "local": "bt",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/customerMetaStore-Bj9KdRyn.js"
+    },
+    {
+      "specifier": "./dealApi-CnzQt6qM.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "yt",
+          "imported": "d"
+        }
+      ],
+      "resolved": "assets/vendor.d/dealApi-CnzQt6qM.js"
+    },
+    {
+      "specifier": "./types-B1OAKh4b.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Z",
+          "imported": "j"
+        },
+        {
+          "local": "_t",
+          "imported": "k"
+        },
+        {
+          "local": "Ce",
+          "imported": "l"
+        },
+        {
+          "local": "qe",
+          "imported": "m"
+        },
+        {
+          "local": "jt",
+          "imported": "a"
+        },
+        {
+          "local": "Ct",
+          "imported": "C"
+        },
+        {
+          "local": "le",
+          "imported": "c"
+        }
+      ],
+      "resolved": "assets/vendor.d/types-B1OAKh4b.js"
+    },
+    {
+      "specifier": "./taskDetailHost-C45bt_tL.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "qt",
+          "imported": "o"
+        }
+      ],
+      "resolved": "assets/vendor.d/taskDetailHost-C45bt_tL.js"
+    },
+    {
+      "specifier": "./bookingApi-DC6gLfSO.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "St",
+          "imported": "b"
+        }
+      ],
+      "resolved": "assets/vendor.d/bookingApi-DC6gLfSO.js"
+    },
+    {
+      "specifier": "./SectionCreateButton-DLuyExHb.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "kt",
+          "imported": "P"
+        },
+        {
+          "local": "ce",
+          "imported": "S"
+        }
+      ],
+      "resolved": "assets/vendor.d/SectionCreateButton-DLuyExHb.js"
+    },
+    {
+      "specifier": "./StopCircleOutlined-vWHA8Xrv.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "vt",
+          "imported": "S"
+        }
+      ],
+      "resolved": "assets/vendor.d/StopCircleOutlined-vWHA8Xrv.js"
+    },
+    {
+      "specifier": "./MeetingRecordingPlayer-vear-u6W.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "It",
+          "imported": "M"
+        }
+      ],
+      "resolved": "assets/vendor.d/MeetingRecordingPlayer-vear-u6W.js"
+    },
+    {
+      "specifier": "./deal-B3IQ_ej7.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Vt",
+          "imported": "D"
+        },
+        {
+          "local": "Lt",
+          "imported": "f"
+        }
+      ],
+      "resolved": "assets/vendor.d/deal-B3IQ_ej7.js"
+    },
+    {
+      "specifier": "./useFileViewer-B-2ewnr3.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Dt",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/useFileViewer-B-2ewnr3.js"
+    },
+    {
+      "specifier": "./DealFormDialog-Dw6MXJZk.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Et",
+          "imported": "C"
+        },
+        {
+          "local": "ue",
+          "imported": "c"
+        }
+      ],
+      "resolved": "assets/vendor.d/DealFormDialog-Dw6MXJZk.js"
+    },
+    {
+      "specifier": "./PropertyContentEditor-DIsouMXi.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ft",
+          "imported": "u"
+        },
+        {
+          "local": "Rt",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/PropertyContentEditor-DIsouMXi.js"
+    },
+    {
+      "specifier": "./propertySections-Bwsl7OH-.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Tt",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/propertySections-Bwsl7OH-.js"
+    },
+    {
+      "specifier": "./types-CVXtrYKe.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Wt",
+          "imported": "j"
+        }
+      ],
+      "resolved": "assets/vendor.d/types-CVXtrYKe.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "fs",
+      "exported": "C"
+    },
+    {
+      "local": "ps",
+      "exported": "u"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "Bt",
+      "keys": [
+        "calls",
+        "onOpen"
+      ]
+    },
+    {
+      "function": "Mt",
+      "keys": [
+        "deals",
+        "loading",
+        "onCreate",
+        "onOpen"
+      ]
+    },
+    {
+      "function": "Ut",
+      "keys": [
+        "documents",
+        "loading",
+        "uploading",
+        "onUpload",
+        "onRemove"
+      ]
+    },
+    {
+      "function": "Nt",
+      "keys": [
+        "tasks",
+        "loading",
+        "onCreate",
+        "onOpen"
+      ]
+    },
+    {
+      "function": "Gt",
+      "keys": [
+        "form",
+        "name",
+        "label",
+        "required"
+      ]
+    },
+    {
+      "function": "Ht",
+      "keys": [
+        "form",
+        "field"
+      ]
+    },
+    {
+      "function": "de",
+      "keys": [
+        "form",
+        "fields"
+      ]
+    },
+    {
+      "function": "me",
+      "keys": [
+        "label",
+        "value"
+      ]
+    },
+    {
+      "function": "Xt",
+      "keys": [
+        "customer",
+        "bookings",
+        "loading"
+      ]
+    },
+    {
+      "function": "fs",
+      "keys": [
+        "controller",
+        "consultController",
+        "dealController",
+        "meta",
+        "rows",
+        "docked"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "CalendarSidebarPanel",
+    "CustomerListPage",
+    "Layout",
+    "MobileDashboardLayout",
+    "PostComposerHost",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog"
+  ],
+  "service": "고객",
+  "purpose": "고객 등록·수정",
+  "reuseGrade": "C",
+  "integration": "고객·상담·계약 controller, meta, rows 연결",
+  "exportedParameters": [
+    {
+      "export": "C",
+      "compiledLocal": "fs",
+      "keys": [
+        "controller",
+        "consultController",
+        "dealController",
+        "meta",
+        "rows",
+        "docked"
+      ]
+    }
+  ]
+}

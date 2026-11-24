@@ -1,0 +1,956 @@
+import { A as Ae } from "./callStore-DH1_RYeP.js";
+import { FilesetResolver as Me, ImageSegmenter as Pe } from "./vision_bundle-Dd4pd80D.js";
+import "../js.d/main-Cm9wS5wt.js";
+import "./react-CjxcGQav.js";
+import "./stylis-DdLD6a3t.js";
+import "./videoMeetingApi-BCL1yHsp.js";
+var Te = (e => (e[e.trace = 0] = "trace", e[e.debug = 1] = "debug", e[e.info = 2] = "info", e[e.warn = 3] = "warn", e[e.error = 4] = "error", e[e.silent = 5] = "silent", e))(Te || {}),
+  ve = (e => (e.ProcessorWrapper = "livekit-processor-wrapper", e.BackgroundProcessor = "livekit-background-processor", e.WebGl = "livekit-track-processor-web-gl", e))(ve || {}),
+  De = w("livekit"),
+  be = Object.values(ve).map(e => w(e));
+De.setDefaultLevel(2);
+function w(e) {
+  return Ae(e);
+}
+function it(e, t) {
+  if (t) w(t).setLevel(e);else for (const a of be) a.setLevel(e);
+}
+function st(e, t) {
+  (t ? [t] : be).forEach(r => {
+    const i = r.methodFactory;
+    r.methodFactory = (o, n, u) => {
+      const s = i(o, n, u),
+        c = Te[o],
+        h = c >= n && c < 5;
+      return (m, f) => {
+        f ? s(m, f) : s(m), h && e(c, m, f);
+      };
+    }, r.setLevel(r.getLevel());
+  });
+}
+var ue = w("livekit-processor-wrapper"),
+  Ce = "onmessage = (e) => { setTimeout(() => postMessage(0), e.data); };";
+function Be(e, t) {
+  let a = ce(e, t),
+    r;
+  try {
+    const i = URL.createObjectURL(new Blob([Ce], {
+      type: "text/javascript"
+    }));
+    r = new Worker(i), URL.revokeObjectURL(i);
+  } catch (i) {
+    return ue.warn("Frame ticker worker could not be created, falling back to a window timer", i), a;
+  }
+  return r.onmessage = () => {
+    a?.stop(), a = void 0;
+    try {
+      t();
+    } finally {
+      r.postMessage(e);
+    }
+  }, r.onerror = i => {
+    r.terminate(), ue.warn("Frame ticker worker failed, falling back to a window timer", i), a ?? (a = ce(e, t));
+  }, r.postMessage(e), {
+    stop() {
+      r.terminate(), a?.stop();
+    }
+  };
+}
+function ce(e, t) {
+  let a = setTimeout(function r() {
+    a = setTimeout(r, e), t();
+  }, e);
+  return {
+    stop() {
+      clearTimeout(a);
+    }
+  };
+}
+var Ue = () => typeof OffscreenCanvas < "u";
+async function de(e) {
+  return new Promise(t => setTimeout(t, e));
+}
+async function Ie(e) {
+  await de(10);
+  const a = Date.now();
+  for (; Date.now() - a < 500;) {
+    const {
+      width: r,
+      height: i
+    } = e.getSettings();
+    if (r && i) return {
+      width: r,
+      height: i
+    };
+    await de(50);
+  }
+  return {
+    width: void 0,
+    height: void 0
+  };
+}
+function H(e, t) {
+  if (Ue()) return new OffscreenCanvas(e, t);
+  const a = document.createElement("canvas");
+  return a.width = e, a.height = t, a;
+}
+var W = class ge {
+    constructor(t, a, r = {}) {
+      this.useStreamFallback = !1, this.processingEnabled = !1, this.log = w("livekit-processor-wrapper"), this.lifecycleState = "idle";
+      var i;
+      if (this.name = a, this.transformer = t, this.maxFps = (i = r.maxFps) != null ? i : 30, !Number.isFinite(this.maxFps) || this.maxFps <= 0) throw new RangeError(`maxFps must be a positive number, got ${this.maxFps}`);
+    }
+    static get isSupported() {
+      const t = typeof MediaStreamTrackGenerator < "u" && typeof MediaStreamTrackProcessor < "u",
+        a = typeof HTMLCanvasElement < "u" && typeof VideoFrame < "u" && "captureStream" in HTMLCanvasElement.prototype;
+      return t || a;
+    }
+    static get hasModernApiSupport() {
+      return typeof MediaStreamTrackGenerator < "u" && typeof MediaStreamTrackProcessor < "u";
+    }
+    async setup(t) {
+      this.source = t.track;
+      const {
+        width: a,
+        height: r
+      } = await Ie(this.source);
+      if (this.sourceDummy = t.element, !(this.sourceDummy instanceof HTMLVideoElement)) throw TypeError("Currently only video transformers are supported");
+      if (this.sourceDummy instanceof HTMLVideoElement && (this.sourceDummy.height = r ?? 300, this.sourceDummy.width = a ?? 300), this.useStreamFallback = !ge.hasModernApiSupport, this.useStreamFallback) {
+        const i = document.querySelector('canvas[data-livekit-processor="' + this.name + '"]');
+        i ? (this.displayCanvas = i, this.displayCanvas.width = a ?? 300, this.displayCanvas.height = r ?? 300) : (this.displayCanvas = document.createElement("canvas"), this.displayCanvas.width = a ?? 300, this.displayCanvas.height = r ?? 300, this.displayCanvas.style.display = "none", this.displayCanvas.dataset.livekitProcessor = this.name, document.body.appendChild(this.displayCanvas)), this.renderContext = this.displayCanvas.getContext("2d"), this.capturedStream = this.displayCanvas.captureStream(), this.canvas = H(a ?? 300, r ?? 300);
+      } else this.processor = new MediaStreamTrackProcessor({
+        track: this.source
+      }), this.trackGenerator = new MediaStreamTrackGenerator({
+        kind: "video",
+        signalTarget: this.source
+      }), this.canvas = H(a ?? 300, r ?? 300);
+    }
+    async init(t) {
+      if (this.log.debug("Init called"), this.lifecycleState = "initializing", await this.setup(t), !this.canvas) throw new TypeError("Expected canvas to be defined after setup");
+      await this.transformer.init({
+        outputCanvas: this.canvas,
+        inputElement: this.sourceDummy
+      }), this.useStreamFallback ? this.initFallbackPath() : this.initStreamProcessorPath(), this.lifecycleState = "running";
+    }
+    initStreamProcessorPath() {
+      if (!this.processor || !this.trackGenerator) throw new TypeError("Expected processor and trackGenerator to be defined for stream processor path");
+      this.processor.readable.pipeThrough(this.transformer.transformer).pipeTo(this.trackGenerator.writable).then(() => this.handleMediaExhausted()).catch(r => {
+        r instanceof DOMException && r.name === "AbortError" ? this.log.log("stream processor path aborted") : r instanceof DOMException && r.name === "InvalidStateError" && r.message === "Stream closed" ? (this.log.log("stream processor underlying stream closed"), this.handleMediaExhausted()) : (this.log.error("error when trying to pipe", r), this.destroy());
+      }), this.processedTrack = this.trackGenerator;
+    }
+    initFallbackPath() {
+      if (!this.capturedStream || !this.source || !this.canvas || !this.renderContext) throw new TypeError("Missing required components for fallback implementation");
+      this.processedTrack = this.capturedStream.getVideoTracks()[0], this.processingEnabled = !0, this.frameCallback = t => {
+        if (!this.processingEnabled || !t) {
+          t.close();
+          return;
+        }
+        const a = {
+          enqueue: r => {
+            if (this.renderContext && this.displayCanvas) {
+              const {
+                videoWidth: i,
+                videoHeight: o
+              } = this.sourceDummy;
+              i && o && (this.displayCanvas.width !== i || this.displayCanvas.height !== o) && (this.displayCanvas.width = i, this.displayCanvas.height = o), this.renderContext.drawImage(r, 0, 0, this.displayCanvas.width, this.displayCanvas.height), r.close();
+            }
+          }
+        };
+        try {
+          this.transformer.transform(t, a);
+        } catch (r) {
+          this.log.error("Error in transform:", r), t.close();
+        }
+      }, this.startRenderLoop();
+    }
+    startRenderLoop() {
+      if (!this.sourceDummy || !(this.sourceDummy instanceof HTMLVideoElement)) {
+        this.handleMediaExhausted();
+        return;
+      }
+      let t = -1,
+        a = performance.now();
+      const r = this.sourceDummy,
+        i = 1e3 / this.maxFps;
+      let o = this.maxFps,
+        n = [],
+        u = 0,
+        s = 0,
+        c = 0,
+        h = -1 / 0;
+      const m = () => {
+        if (!this.processingEnabled || !this.sourceDummy || !(this.sourceDummy instanceof HTMLVideoElement)) {
+          this.handleMediaExhausted();
+          return;
+        }
+        if (this.sourceDummy.paused) {
+          performance.now() - h > 1e3 && (h = performance.now(), this.log.warn("Video is paused, trying to play"), this.sourceDummy.play().catch(p => this.log.warn("Unable to play video", p)));
+          return;
+        }
+        const f = r.currentTime,
+          l = performance.now(),
+          T = f !== t;
+        if (T) {
+          if (u > 0) {
+            const p = l - u;
+            n.push(p), n.length > 10 && n.shift(), n.length > 2 && (o = 1e3 / (n.reduce((X, q) => X + q, 0) / n.length), (typeof window < "u" && window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1") && l - c > 5e3 && (this.log.debug(`[${this.name}] Estimated video FPS: ${o.toFixed(1)}, Processing at: ${(s / 5).toFixed(1)} FPS`), s = 0, c = l));
+          }
+          u = l;
+        }
+        if (T && l >= a) {
+          t = f, a = Math.max(l, a + i), s++;
+          try {
+            if (r.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+              const p = new VideoFrame(r);
+              this.frameCallback ? this.frameCallback(p) : p.close();
+            }
+          } catch (p) {
+            this.log.error("Error in render loop:", p);
+          }
+        }
+      };
+      this.frameTicker = Be(1e3 / (this.maxFps * 2), m);
+    }
+    async restart(t) {
+      this.log.debug("Restart called"), await this.destroy({
+        willProcessorRestart: !0
+      }), await this.init(t);
+    }
+    async restartTransformer(...t) {
+      await this.transformer.restart(t[0]);
+    }
+    async updateTransformerOptions(...t) {
+      await this.transformer.update(t[0]);
+    }
+    async handleMediaExhausted() {
+      this.log.debug("Media was exhausted from source"), this.lifecycleState === "running" && (this.lifecycleState = "media-exhausted", await this.cleanup());
+    }
+    async cleanup() {
+      var t, a, r, i, o;
+      this.useStreamFallback ? (this.processingEnabled = !1, (t = this.frameTicker) == null || t.stop(), this.frameTicker = void 0, this.displayCanvas && this.displayCanvas.parentNode && this.displayCanvas.parentNode.removeChild(this.displayCanvas), (a = this.capturedStream) == null || a.getTracks().forEach(n => n.stop())) : (await ((i = (r = this.processor) == null ? void 0 : r.writableControl) == null ? void 0 : i.close()), (o = this.trackGenerator) == null || o.stop());
+    }
+    async destroy(t = {
+      willProcessorRestart: !1
+    }) {
+      switch (this.log.debug(`Destroy called - lifecycleState=${this.lifecycleState}, transformerDestroyOptions=${JSON.stringify(t)}`), this.lifecycleState) {
+        case "running":
+        case "media-exhausted":
+          this.lifecycleState = "destroying", await this.cleanup(), await this.transformer.destroy(t), this.lifecycleState = "destroyed";
+          break;
+      }
+    }
+  },
+  Le = {
+    "@mediapipe/tasks-vision": "0.10.14"
+  },
+  Ee = w("livekit-track-processor-web-gl");
+function y(e, t) {
+  const a = e.TEXTURE0 + t;
+  e.activeTexture(a);
+  const r = e.createTexture();
+  return e.bindTexture(e.TEXTURE_2D, r), e.texParameteri(e.TEXTURE_2D, e.TEXTURE_WRAP_S, e.CLAMP_TO_EDGE), e.texParameteri(e.TEXTURE_2D, e.TEXTURE_WRAP_T, e.CLAMP_TO_EDGE), e.texParameteri(e.TEXTURE_2D, e.TEXTURE_MIN_FILTER, e.LINEAR), e.texParameteri(e.TEXTURE_2D, e.TEXTURE_MAG_FILTER, e.LINEAR), e.bindTexture(e.TEXTURE_2D, r), r;
+}
+function x(e, t, a) {
+  const r = e.createShader(t);
+  if (e.shaderSource(r, a), e.compileShader(r), !e.getShaderParameter(r, e.COMPILE_STATUS)) throw Ee.error("Shader compile failed:", e.getShaderInfoLog(r)), e.deleteShader(r), new Error("Shader compile failed");
+  return r;
+}
+function z(e, t, a) {
+  const r = e.createProgram();
+  if (e.attachShader(r, t), e.attachShader(r, a), e.linkProgram(r), !e.getProgramParameter(r, e.LINK_STATUS)) throw Ee.error("Program link failed:", e.getProgramInfoLog(r)), new Error("Program link failed");
+  return r;
+}
+function Q(e, t, a, r) {
+  e.bindTexture(e.TEXTURE_2D, t), e.texImage2D(e.TEXTURE_2D, 0, e.RGBA, a, r, 0, e.RGBA, e.UNSIGNED_BYTE, null);
+}
+function N(e, t, a, r) {
+  const i = e.createFramebuffer();
+  if (e.bindFramebuffer(e.FRAMEBUFFER, i), e.framebufferTexture2D(e.FRAMEBUFFER, e.COLOR_ATTACHMENT0, e.TEXTURE_2D, t, 0), Q(e, t, a, r), e.checkFramebufferStatus(e.FRAMEBUFFER) !== e.FRAMEBUFFER_COMPLETE) throw new Error("Framebuffer not complete");
+  return e.bindFramebuffer(e.FRAMEBUFFER, null), i;
+}
+function Ne(e) {
+  const t = e.createBuffer();
+  return e.bindBuffer(e.ARRAY_BUFFER, t), e.bufferData(e.ARRAY_BUFFER, new Float32Array([-1, -1, -1, 1, 1, 1, -1, -1, 1, 1, 1, -1]), e.STATIC_DRAW), t;
+}
+async function Xe(e, t, a) {
+  const r = e.width / e.height,
+    i = t / a;
+  let o = 0,
+    n = 0,
+    u = e.width,
+    s = e.height;
+  return r > i ? (u = Math.round(e.height * i), o = Math.round((e.width - u) / 2)) : r < i && (s = Math.round(e.width / i), n = Math.round((e.height - s) / 2)), createImageBitmap(e, o, n, u, s, {
+    resizeWidth: t,
+    resizeHeight: a,
+    resizeQuality: "medium"
+  });
+}
+var R;
+function Ge() {
+  return R || (R = new ImageData(2, 2), R.data[0] = 0, R.data[1] = 0, R.data[2] = 0, R.data[3] = 0), R;
+}
+var ee = (e, ...t) => e.reduce((a, r, i) => a + r + (i < t.length ? String(t[i]) : ""), ""),
+  te = (e = !0) => `#version 300 es
+  in vec2 position;
+  out vec2 texCoords;
+
+  void main() {
+    texCoords = (position + 1.0) / 2.0;
+    texCoords.y = ${e ? "1.0 - texCoords.y" : "texCoords.y"};
+    gl_Position = vec4(position, 0, 1.0);
+  }
+`,
+  xe = 16,
+  Z = 1 + Math.ceil(xe / 2),
+  Oe = ee`#version 300 es
+  precision mediump float;
+  const int MAX_TAPS = ${Z};
+  in vec2 texCoords;
+  uniform sampler2D u_texture;
+  uniform vec2 u_texelSize;
+  uniform vec2 u_direction;
+  // Normalized Gaussian taps, pre-merged in pairs so one bilinear fetch reads two
+  // texels (offsets fall between texel centers). Index 0 is the center tap.
+  uniform float u_weights[MAX_TAPS];
+  uniform float u_offsets[MAX_TAPS];
+  uniform int u_tapCount;
+  out vec4 fragColor;
+
+  void main() {
+    vec3 result = texture(u_texture, texCoords).rgb * u_weights[0];
+
+    for (int i = 1; i < MAX_TAPS; ++i) {
+      if (i >= u_tapCount) break;
+      vec2 offset = u_direction * u_texelSize * u_offsets[i];
+      result += (texture(u_texture, texCoords + offset).rgb + texture(u_texture, texCoords - offset).rgb) * u_weights[i];
+    }
+
+    fragColor = vec4(result, 1.0);
+  }
+`;
+function Ve(e) {
+  const t = e,
+    a = Math.min(xe, Math.ceil(e)),
+    r = s => Math.exp(-(s * s) / (2 * t * t)),
+    i = new Float32Array(Z),
+    o = new Float32Array(Z);
+  i[0] = r(0);
+  let n = i[0],
+    u = 1;
+  for (let s = 1; s <= a; s += 2) {
+    const c = r(s),
+      h = s + 1 <= a ? r(s + 1) : 0,
+      m = c + h;
+    i[u] = m, o[u] = (s * c + (s + 1) * h) / m, n += 2 * m, u += 1;
+  }
+  for (let s = 0; s < u; s++) i[s] /= n;
+  return {
+    weights: i,
+    offsets: o,
+    tapCount: u
+  };
+}
+function He(e) {
+  const t = x(e, e.VERTEX_SHADER, te()),
+    a = x(e, e.FRAGMENT_SHADER, Oe),
+    r = z(e, t, a),
+    i = {
+      position: e.getAttribLocation(r, "position"),
+      texture: e.getUniformLocation(r, "u_texture"),
+      texelSize: e.getUniformLocation(r, "u_texelSize"),
+      direction: e.getUniformLocation(r, "u_direction"),
+      weights: e.getUniformLocation(r, "u_weights"),
+      offsets: e.getUniformLocation(r, "u_offsets"),
+      tapCount: e.getUniformLocation(r, "u_tapCount"),
+      kernelRadius: null
+    };
+  return {
+    program: r,
+    shader: a,
+    vertexShader: t,
+    uniforms: i
+  };
+}
+function me(e, t, a, r, i, o, n, u, s, c) {
+  e.useProgram(o), e.bindBuffer(e.ARRAY_BUFFER, u), e.vertexAttribPointer(n.position, 2, e.FLOAT, !1, 0, 0), e.enableVertexAttribArray(n.position);
+  const h = 1 / a,
+    m = 1 / r;
+  if (e.bindFramebuffer(e.FRAMEBUFFER, s[0]), e.viewport(0, 0, a, r), e.activeTexture(e.TEXTURE0), e.bindTexture(e.TEXTURE_2D, t), e.uniform1i(n.texture, 0), e.uniform2f(n.texelSize, h, m), e.uniform2f(n.direction, 1, 0), n.weights) {
+    if (n.kernelRadius !== i) {
+      const f = Ve(i);
+      e.uniform1fv(n.weights, f.weights), e.uniform1fv(n.offsets, f.offsets), e.uniform1i(n.tapCount, f.tapCount), n.kernelRadius = i;
+    }
+  } else e.uniform1f(n.radius, i);
+  return e.drawArrays(e.TRIANGLES, 0, 6), e.bindFramebuffer(e.FRAMEBUFFER, s[1]), e.viewport(0, 0, a, r), e.activeTexture(e.TEXTURE0), e.bindTexture(e.TEXTURE_2D, c[0]), e.uniform1i(n.texture, 0), e.uniform2f(n.direction, 0, 1), e.drawArrays(e.TRIANGLES, 0, 6), e.bindFramebuffer(e.FRAMEBUFFER, null), c[1];
+}
+var We = ee`#version 300 es
+precision mediump float;
+
+in vec2 texCoords;
+
+uniform sampler2D u_texture;
+uniform vec2 u_texelSize;    // 1.0 / texture size
+uniform vec2 u_direction;    // (1.0, 0.0) for horizontal, (0.0, 1.0) for vertical
+uniform float u_radius;      // blur radius in texels
+
+out vec4 fragColor;
+
+void main() {
+    vec3 sum = vec3(0.0);
+    float count = 0.0;
+
+    // Limit radius to avoid excessive loop cost
+    const int MAX_RADIUS = 16;
+    int radius = int(min(float(MAX_RADIUS), u_radius));
+
+    for (int i = -MAX_RADIUS; i <= MAX_RADIUS; ++i) {
+        if (abs(i) > radius) continue;
+
+        vec2 offset = u_direction * u_texelSize * float(i);
+        sum += texture(u_texture, texCoords + offset).rgb;
+        count += 1.0;
+  }
+
+  fragColor = vec4(sum / count, 1.0);
+}
+`;
+function ze(e) {
+  const t = x(e, e.VERTEX_SHADER, te()),
+    a = x(e, e.FRAGMENT_SHADER, We),
+    r = z(e, t, a),
+    i = {
+      position: e.getAttribLocation(r, "position"),
+      texture: e.getUniformLocation(r, "u_texture"),
+      texelSize: e.getUniformLocation(r, "u_texelSize"),
+      direction: e.getUniformLocation(r, "u_direction"),
+      radius: e.getUniformLocation(r, "u_radius")
+    };
+  return {
+    program: r,
+    vertexShader: t,
+    fragmentShader: a,
+    uniforms: i
+  };
+}
+var $e = ee`#version 300 es
+  precision mediump float;
+  in vec2 texCoords;
+  uniform sampler2D background;
+  uniform bool disableBackground;
+  uniform sampler2D frame;
+  uniform sampler2D mask;
+  out vec4 fragColor;
+  
+  void main() {
+    vec4 frameTex = texture(frame, texCoords);
+
+    if (disableBackground) {
+      fragColor = frameTex;
+    } else {
+      vec4 bgTex = texture(background, texCoords);
+
+      float maskVal = texture(mask, texCoords).r;
+
+      // Compute screen-space gradient to detect edge sharpness
+      float grad = length(vec2(dFdx(maskVal), dFdy(maskVal)));
+
+      float edgeSoftness = 2.0; // higher = softer
+
+      // Create a smooth edge around binary transition
+      float smoothAlpha = smoothstep(0.5 - grad * edgeSoftness, 0.5 + grad * edgeSoftness, maskVal);
+
+      // Optional: preserve frame alpha, or override as fully opaque
+      vec4 blended = mix(bgTex, vec4(frameTex.rgb, 1.0), 1.0 - smoothAlpha);
+      fragColor = blended;
+    }
+  
+  }
+`;
+function qe(e) {
+  const t = x(e, e.VERTEX_SHADER, te()),
+    a = x(e, e.FRAGMENT_SHADER, $e),
+    r = z(e, t, a),
+    i = {
+      position: e.getAttribLocation(r, "position")
+    },
+    o = {
+      mask: e.getUniformLocation(r, "mask"),
+      frame: e.getUniformLocation(r, "frame"),
+      background: e.getUniformLocation(r, "background"),
+      disableBackground: e.getUniformLocation(r, "disableBackground"),
+      stepWidth: e.getUniformLocation(r, "u_stepWidth")
+    };
+  return {
+    program: r,
+    vertexShader: t,
+    fragmentShader: a,
+    attribLocations: i,
+    uniformLocations: o
+  };
+}
+function Ye(e, t, a) {
+  const r = e.createTexture();
+  e.bindTexture(e.TEXTURE_2D, r), e.texImage2D(e.TEXTURE_2D, 0, e.RGBA, t, a, 0, e.RGBA, e.UNSIGNED_BYTE, null), e.texParameteri(e.TEXTURE_2D, e.TEXTURE_MIN_FILTER, e.LINEAR), e.texParameteri(e.TEXTURE_2D, e.TEXTURE_MAG_FILTER, e.LINEAR), e.texParameteri(e.TEXTURE_2D, e.TEXTURE_WRAP_S, e.CLAMP_TO_EDGE), e.texParameteri(e.TEXTURE_2D, e.TEXTURE_WRAP_T, e.CLAMP_TO_EDGE);
+  const i = e.createFramebuffer();
+  e.bindFramebuffer(e.FRAMEBUFFER, i), e.framebufferTexture2D(e.FRAMEBUFFER, e.COLOR_ATTACHMENT0, e.TEXTURE_2D, r, 0);
+  const o = `
+      attribute vec2 position;
+      varying vec2 v_uv;
+      void main() {
+        v_uv = (position + 1.0) * 0.5;
+        gl_Position = vec4(position, 0.0, 1.0);
+      }
+    `,
+    n = `
+      precision mediump float;
+      varying vec2 v_uv;
+      uniform sampler2D u_texture;
+      void main() {
+        gl_FragColor = texture2D(u_texture, v_uv);
+      }
+    `,
+    u = x(e, e.VERTEX_SHADER, o),
+    s = x(e, e.FRAGMENT_SHADER, n),
+    c = z(e, u, s),
+    h = {
+      texture: e.getUniformLocation(c, "u_texture"),
+      position: e.getAttribLocation(c, "position")
+    };
+  return {
+    framebuffer: i,
+    texture: r,
+    program: c,
+    uniforms: h
+  };
+}
+function je(e, t, a, r, i, o) {
+  return e.useProgram(a.program), e.bindFramebuffer(e.FRAMEBUFFER, a.framebuffer), e.viewport(0, 0, i, o), e.bindBuffer(e.ARRAY_BUFFER, r), e.enableVertexAttribArray(a.uniforms.position), e.vertexAttribPointer(a.uniforms.position, 2, e.FLOAT, !1, 0, 0), e.activeTexture(e.TEXTURE0), e.bindTexture(e.TEXTURE_2D, t), e.uniform1i(a.uniforms.texture, 0), e.drawArrays(e.TRIANGLES, 0, 6), e.bindFramebuffer(e.FRAMEBUFFER, null), a.texture;
+}
+var he = w("livekit-track-processor-web-gl"),
+  fe = e => {
+    const t = e.getContext("webgl2", {
+      antialias: !1,
+      premultipliedAlpha: !0
+    });
+    let a = null,
+      r = 8;
+    const i = 4,
+      o = 640,
+      n = (d, E) => Math.max(1, Math.round(Math.max(d, E) / o));
+    if (!t) {
+      he.error("Failed to create WebGL context");
+      return;
+    }
+    t.disable(t.BLEND), t.blendFunc(t.SRC_ALPHA, t.ONE_MINUS_SRC_ALPHA);
+    const u = qe(t),
+      s = u.program,
+      c = u.attribLocations.position,
+      {
+        mask: h,
+        frame: m,
+        background: f,
+        disableBackground: l
+      } = u.uniformLocations,
+      T = He(t),
+      p = T.program,
+      ae = T.uniforms,
+      $ = ze(t),
+      X = $.program,
+      q = $.uniforms,
+      C = y(t, 0),
+      G = y(t, 1),
+      S = Ne(t);
+    if (!S) throw new Error("Failed to create vertex buffer");
+    let g = [],
+      B = [],
+      v = [],
+      ie = 0,
+      U = 1;
+    g.push(y(t, 3)), g.push(y(t, 4));
+    let _ = Math.floor(e.width / i),
+      k = Math.floor(e.height / i);
+    const A = Ye(t, _, k);
+    B.push(N(t, g[0], _, k)), B.push(N(t, g[1], _, k));
+    let M = n(e.width, e.height),
+      P = Math.max(1, Math.round(e.width / M)),
+      D = Math.max(1, Math.round(e.height / M));
+    const O = y(t, 5),
+      se = N(t, O, P, D);
+    v.push(y(t, 6)), v.push(y(t, 7));
+    const oe = [N(t, v[0], P, D), N(t, v[1], P, D)];
+    let b = null,
+      V = null,
+      I = e.width,
+      L = e.height;
+    function ne() {
+      if (!(e.width === I && e.height === L)) {
+        I = e.width, L = e.height, _ = Math.floor(I / i), k = Math.floor(L / i);
+        for (const d of [A.texture, ...g]) Q(t, d, _, k);
+        M = n(I, L), P = Math.max(1, Math.round(I / M)), D = Math.max(1, Math.round(L / M));
+        for (const d of [O, ...v]) Q(t, d, P, D);
+        V && j(V);
+      }
+    }
+    let Y = !1;
+    t.useProgram(s), t.uniform1i(l, Y ? 1 : 0), t.uniform1i(f, 0), t.uniform1i(m, 1), t.uniform1i(h, 2);
+    function _e(d) {
+      if (d.codedWidth === 0 || v.length === 0) return;
+      const E = d.displayWidth,
+        K = d.displayHeight;
+      ne(), t.activeTexture(t.TEXTURE1), t.bindTexture(t.TEXTURE_2D, G), t.texImage2D(t.TEXTURE_2D, 0, t.RGBA, t.RGBA, t.UNSIGNED_BYTE, d);
+      let J = C;
+      if (a) {
+        const Se = je(t, G, A, S, _, k);
+        J = me(t, Se, _, k, a, p, ae, S, B, g);
+      } else b && (J = C);
+      t.viewport(0, 0, E, K), t.clearColor(1, 1, 1, 1), t.clear(t.COLOR_BUFFER_BIT), t.useProgram(s), t.bindBuffer(t.ARRAY_BUFFER, S), t.vertexAttribPointer(c, 2, t.FLOAT, !1, 0, 0), t.enableVertexAttribArray(c), t.activeTexture(t.TEXTURE0), t.bindTexture(t.TEXTURE_2D, J), t.uniform1i(f, 0), t.uniform1i(l, Y ? 1 : 0), t.activeTexture(t.TEXTURE1), t.bindTexture(t.TEXTURE_2D, G), t.uniform1i(m, 1), t.activeTexture(t.TEXTURE2), t.bindTexture(t.TEXTURE_2D, v[ie]), t.uniform1i(h, 2), t.enable(t.BLEND), t.drawArrays(t.TRIANGLES, 0, 6), t.disable(t.BLEND);
+    }
+    async function j(d) {
+      if (V = d, b = null, d) {
+        b = Ge(), t.activeTexture(t.TEXTURE0), t.bindTexture(t.TEXTURE_2D, C), t.texImage2D(t.TEXTURE_2D, 0, t.RGBA, t.RGBA, t.UNSIGNED_BYTE, b);
+        try {
+          b = await Xe(d, e.width, e.height);
+        } catch (E) {
+          he.error("Error processing background image, falling back to black background:", E);
+        }
+        t.activeTexture(t.TEXTURE0), t.bindTexture(t.TEXTURE_2D, C), t.texImage2D(t.TEXTURE_2D, 0, t.RGBA, t.RGBA, t.UNSIGNED_BYTE, b);
+      }
+    }
+    function ke(d) {
+      a = d ? Math.max(1, Math.floor(d / i)) : null, j(null);
+    }
+    function ye(d) {
+      Y = d;
+    }
+    function Re(d) {
+      if (v.length === 0) return;
+      ne();
+      const E = [se, oe[U]],
+        K = [O, v[U]];
+      me(t, d, P, D, Math.max(1, Math.round(r / M)), X, q, S, E, K), ie = U, U = 1 - U;
+    }
+    function Fe() {
+      t.deleteProgram(s), t.deleteProgram(p), t.deleteProgram(X), t.deleteTexture(C), t.deleteTexture(G), t.deleteTexture(O), t.deleteFramebuffer(se);
+      for (const d of g) t.deleteTexture(d);
+      for (const d of B) t.deleteFramebuffer(d);
+      for (const d of v) t.deleteTexture(d);
+      for (const d of oe) t.deleteFramebuffer(d);
+      t.deleteBuffer(S), A && (t.deleteTexture(A.texture), t.deleteFramebuffer(A.framebuffer), t.deleteProgram(A.program)), b && (b instanceof ImageBitmap && b.close(), b = null), V = null, g = [], B = [], v = [];
+    }
+    return {
+      renderFrame: _e,
+      updateMask: Re,
+      setBackgroundImage: j,
+      setBlurRadius: ke,
+      setBackgroundDisabled: ye,
+      cleanup: Fe
+    };
+  },
+  Ke = class {
+    constructor() {
+      this.isDisabled = !1;
+    }
+    async init({
+      outputCanvas: e,
+      inputElement: t
+    }) {
+      if (!(t instanceof HTMLVideoElement)) throw TypeError("Video transformer needs a HTMLVideoElement as input");
+      this.transformer = new TransformStream({
+        transform: (a, r) => this.transform(a, r)
+      }), this.canvas = e || null, e && (this.gl = fe(this.canvas || H(t.videoWidth, t.videoHeight))), this.inputVideo = t, this.isDisabled = !1;
+    }
+    async restart({
+      outputCanvas: e,
+      inputElement: t
+    }) {
+      var a;
+      this.canvas = e || null, (a = this.gl) == null || a.cleanup(), this.gl = fe(this.canvas || H(t.videoWidth, t.videoHeight)), this.inputVideo = t, this.isDisabled = !1;
+    }
+    async destroy() {
+      var e;
+      this.isDisabled = !0, this.canvas = void 0, (e = this.gl) == null || e.cleanup(), this.gl = void 0;
+    }
+  },
+  F = class extends Ke {
+    constructor(e) {
+      super(), this.backgroundImageAndPath = null, this.segmentationTimeMs = 0, this.isFirstFrame = !0, this.log = w("livekit-processor-wrapper"), this.options = e, this.update(e);
+    }
+    static get isSupported() {
+      return typeof OffscreenCanvas < "u" && typeof VideoFrame < "u" && typeof createImageBitmap < "u" && !!document.createElement("canvas").getContext("webgl2");
+    }
+    async init({
+      outputCanvas: e,
+      inputElement: t
+    }) {
+      var a, r, i, o, n, u, s, c;
+      await super.init({
+        outputCanvas: e,
+        inputElement: t
+      });
+      const h = await Me.forVisionTasks((r = (a = this.options.assetPaths) == null ? void 0 : a.tasksVisionFileSet) != null ? r : `https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@${Le["@mediapipe/tasks-vision"]}/wasm`);
+      this.imageSegmenter = await Pe.createFromOptions(h, {
+        baseOptions: {
+          modelAssetPath: (o = (i = this.options.assetPaths) == null ? void 0 : i.modelAssetPath) != null ? o : "https://storage.googleapis.com/mediapipe-models/image_segmenter/selfie_segmenter/float16/latest/selfie_segmenter.tflite",
+          delegate: "GPU",
+          ...this.options.segmenterOptions
+        },
+        canvas: this.canvas,
+        runningMode: "VIDEO",
+        outputCategoryMask: !0,
+        outputConfidenceMasks: !1
+      }), (n = this.options) != null && n.imagePath && (await this.loadAndSetBackground(this.options.imagePath).catch(m => this.log.error("Error while loading processor background image: ", m))), typeof this.options.blurRadius == "number" && ((u = this.gl) == null || u.setBlurRadius(this.options.blurRadius)), (c = this.gl) == null || c.setBackgroundDisabled((s = this.options.backgroundDisabled) != null ? s : !1);
+    }
+    async destroy(e) {
+      var t;
+      await super.destroy(), await ((t = this.imageSegmenter) == null ? void 0 : t.close()), this.backgroundImageAndPath = null, e?.willProcessorRestart || (this.isFirstFrame = !0);
+    }
+    async loadAndSetBackground(e) {
+      var t, a;
+      if (!this.backgroundImageAndPath || ((t = this.backgroundImageAndPath) == null ? void 0 : t.path) !== e) {
+        const r = new Image();
+        await new Promise((o, n) => {
+          r.crossOrigin = "Anonymous", r.onload = () => o(r), r.onerror = u => n(u), r.src = e;
+        });
+        const i = await createImageBitmap(r);
+        this.backgroundImageAndPath = {
+          imageData: i,
+          path: e
+        };
+      }
+      (a = this.gl) == null || a.setBackgroundImage(this.backgroundImageAndPath.imageData);
+    }
+    async transform(e, t) {
+      var a, r, i, o;
+      let n = !1;
+      try {
+        if (!(e instanceof VideoFrame) || e.codedWidth === 0 || e.codedHeight === 0) {
+          this.log.debug("empty frame detected, ignoring");
+          return;
+        }
+        let u = (r = (a = this.isDisabled) != null ? a : this.options.backgroundDisabled) != null ? r : !1;
+        if (typeof this.options.blurRadius != "number" && typeof this.options.imagePath != "string" && (u = !0), u) {
+          t.enqueue(e), n = !0;
+          return;
+        }
+        const s = Date.now();
+        if (!this.canvas) throw TypeError("Canvas needs to be initialized first");
+        this.canvas.width = e.displayWidth, this.canvas.height = e.displayHeight, this.isFirstFrame && (t.enqueue(e.clone()), this.inputVideo && (await new Promise(m => {
+          this.inputVideo.requestVideoFrameCallback((f, l) => {
+            const T = l.expectedDisplayTime - l.presentationTime;
+            setTimeout(m, T);
+          });
+        }))), this.isFirstFrame = !1;
+        const c = performance.now(),
+          h = new Promise((m, f) => {
+            var l;
+            try {
+              let T = performance.now();
+              (l = this.imageSegmenter) == null || l.segmentForVideo(e, T, p => {
+                this.segmentationTimeMs = performance.now() - T, this.segmentationResults = p, this.updateMask(p.categoryMask), p.close(), m();
+              });
+            } catch (T) {
+              f(T);
+            }
+          });
+        if (this.drawFrame(e), this.canvas && this.canvas.width > 0 && this.canvas.height > 0) {
+          const m = new VideoFrame(this.canvas, {
+            timestamp: e.timestamp || s
+          });
+          t.enqueue(m);
+          const f = performance.now() - c,
+            l = {
+              processingTimeMs: this.segmentationTimeMs + f,
+              segmentationTimeMs: this.segmentationTimeMs,
+              filterTimeMs: f
+            };
+          (o = (i = this.options).onFrameProcessed) == null || o.call(i, l);
+        } else t.enqueue(e);
+        await h;
+      } catch (u) {
+        this.log.error("Error while processing frame: ", u);
+      } finally {
+        n || e.close();
+      }
+    }
+    async update(e) {
+      var t, a, r, i, o;
+      this.options = {
+        ...this.options,
+        ...e
+      }, (a = this.gl) == null || a.setBlurRadius((t = e.blurRadius) != null ? t : null), e.imagePath ? await this.loadAndSetBackground(e.imagePath) : (r = this.gl) == null || r.setBackgroundImage(null), (o = this.gl) == null || o.setBackgroundDisabled((i = e.backgroundDisabled) != null ? i : !1);
+    }
+    async drawFrame(e) {
+      var t;
+      this.gl && ((t = this.gl) == null || t.renderFrame(e));
+    }
+    async updateMask(e) {
+      var t;
+      e && ((t = this.gl) == null || t.updateMask(e.getAsWebGLTexture()));
+    }
+  },
+  le = 0,
+  pe = 10,
+  ot = class {
+    constructor(e = {}) {
+      this.name = "gain-audio-processor";
+      var t;
+      const a = (t = e.gainValue) != null ? t : 1;
+      this.gainValue = Math.max(le, Math.min(pe, a));
+    }
+    static get isSupported() {
+      return typeof AudioContext < "u" && typeof GainNode < "u" && typeof MediaStreamAudioSourceNode < "u" && typeof MediaStreamAudioDestinationNode < "u";
+    }
+    async init(e) {
+      const {
+        track: t,
+        audioContext: a
+      } = e;
+      this.sourceNode = a.createMediaStreamSource(new MediaStream([t])), this.gainNode = a.createGain(), this.gainNode.gain.value = this.gainValue, this.destinationNode = a.createMediaStreamDestination(), this.sourceNode.connect(this.gainNode), this.gainNode.connect(this.destinationNode), this.processedTrack = this.destinationNode.stream.getAudioTracks()[0];
+    }
+    async restart(e) {
+      await this.destroy(), await this.init(e);
+    }
+    async destroy() {
+      var e, t, a, r;
+      (e = this.sourceNode) == null || e.disconnect(), (t = this.gainNode) == null || t.disconnect(), (a = this.destinationNode) == null || a.disconnect(), (r = this.processedTrack) == null || r.stop(), this.sourceNode = void 0, this.gainNode = void 0, this.destinationNode = void 0, this.processedTrack = void 0;
+    }
+    setGain(e) {
+      Number.isFinite(e) && (this.gainValue = Math.max(le, Math.min(pe, e)), this.gainNode && (this.gainNode.gain.value = this.gainValue));
+    }
+    getGain() {
+      return this.gainValue;
+    }
+    async onPublish(e) {
+      `${this.name}${e.name}`;
+    }
+    async onUnpublish() {
+      `${this.name}`;
+    }
+  },
+  re = 10,
+  nt = () => F.isSupported && W.isSupported,
+  ut = () => F.isSupported && W.hasModernApiSupport,
+  Je = class extends W {
+    get mode() {
+      const e = this.transformer.options;
+      return e.backgroundDisabled ? "disabled" : typeof e.imagePath == "string" && typeof e.blurRadius > "u" ? "virtual-background" : typeof e.imagePath > "u" ? "background-blur" : "legacy";
+    }
+    async switchTo(e) {
+      var t;
+      switch (e.mode) {
+        case "background-blur":
+          await this.updateTransformerOptions({
+            imagePath: void 0,
+            blurRadius: (t = e.blurRadius) != null ? t : re,
+            backgroundDisabled: !1
+          });
+          break;
+        case "virtual-background":
+          await this.updateTransformerOptions({
+            imagePath: e.imagePath,
+            blurRadius: void 0,
+            backgroundDisabled: !1
+          });
+          break;
+        case "disabled":
+          await this.updateTransformerOptions({
+            imagePath: void 0,
+            backgroundDisabled: !0
+          });
+          break;
+      }
+    }
+  },
+  we = (e, t = "background-processor") => {
+    const a = F.isSupported,
+      r = W.isSupported;
+    if (!a) throw new Error("Background transformer is not supported in this browser");
+    if (!r) throw new Error("Neither MediaStreamTrackProcessor nor canvas.captureStream() fallback is supported in this browser");
+    let i, o;
+    switch (e.mode) {
+      case "background-blur":
+        {
+          const {
+            mode: u,
+            blurRadius: s = re,
+            segmenterOptions: c,
+            assetPaths: h,
+            onFrameProcessed: m,
+            ...f
+          } = e;
+          o = f, i = new F({
+            blurRadius: s,
+            segmenterOptions: c,
+            assetPaths: h,
+            onFrameProcessed: m
+          });
+          break;
+        }
+      case "virtual-background":
+        {
+          const {
+            mode: u,
+            imagePath: s,
+            segmenterOptions: c,
+            assetPaths: h,
+            onFrameProcessed: m,
+            ...f
+          } = e;
+          o = f, i = new F({
+            imagePath: s,
+            segmenterOptions: c,
+            assetPaths: h,
+            onFrameProcessed: m
+          });
+          break;
+        }
+      case "disabled":
+        {
+          const {
+            segmenterOptions: u,
+            assetPaths: s,
+            onFrameProcessed: c,
+            ...h
+          } = e;
+          o = h, i = new F({
+            segmenterOptions: u,
+            assetPaths: s,
+            onFrameProcessed: c
+          });
+          break;
+        }
+      default:
+        {
+          const {
+            blurRadius: u,
+            imagePath: s,
+            segmenterOptions: c,
+            assetPaths: h,
+            onFrameProcessed: m,
+            ...f
+          } = e;
+          o = f, i = new F({
+            blurRadius: u,
+            imagePath: s,
+            segmenterOptions: c,
+            assetPaths: h,
+            onFrameProcessed: m
+          });
+          break;
+        }
+    }
+    return new Je(i, t, o);
+  },
+  ct = (e = re, t, a, r) => we({
+    blurRadius: e,
+    segmenterOptions: t,
+    onFrameProcessed: a,
+    ...r
+  }, "background-blur"),
+  dt = (e, t, a, r) => we({
+    imagePath: e,
+    segmenterOptions: t,
+    onFrameProcessed: a,
+    ...r
+  }, "virtual-background");
+export { ct as BackgroundBlur, we as BackgroundProcessor, Je as BackgroundProcessorWrapper, F as BackgroundTransformer, ot as GainAudioProcessor, Te as LogLevel, ve as LoggerNames, W as ProcessorWrapper, Ke as VideoTransformer, dt as VirtualBackground, w as getLogger, st as setLogExtension, it as setLogLevel, nt as supportsBackgroundProcessors, ut as supportsModernBackgroundProcessors };

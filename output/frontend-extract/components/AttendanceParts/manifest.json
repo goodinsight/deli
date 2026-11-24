@@ -1,0 +1,416 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/AttendanceParts-mHb1cK0h.js",
+  "path": "assets/vendor.d/AttendanceParts-mHb1cK0h.js",
+  "name": "AttendanceParts",
+  "kind": "ui",
+  "bytes": 7391,
+  "sha256": "c81c9750db9af5da460ac635ccff1fabd1734dc402a9df63bdeba463b0efdbdb",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/AttendanceParts-mHb1cK0h.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "b",
+          "imported": "r"
+        },
+        {
+          "local": "n",
+          "imported": "j"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "i",
+          "imported": "B"
+        },
+        {
+          "local": "y",
+          "imported": "fQ"
+        },
+        {
+          "local": "m",
+          "imported": "L"
+        },
+        {
+          "local": "v",
+          "imported": "cl"
+        },
+        {
+          "local": "T",
+          "imported": "bv"
+        },
+        {
+          "local": "w",
+          "imported": "bI"
+        },
+        {
+          "local": "A",
+          "imported": "ci"
+        },
+        {
+          "local": "B",
+          "imported": "cj"
+        },
+        {
+          "local": "z",
+          "imported": "fR"
+        },
+        {
+          "local": "D",
+          "imported": "bT"
+        },
+        {
+          "local": "C",
+          "imported": "dP"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./attendanceMgmt-B_e3bPBn.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "j",
+          "imported": "D"
+        },
+        {
+          "local": "W",
+          "imported": "d"
+        },
+        {
+          "local": "k",
+          "imported": "t"
+        }
+      ],
+      "resolved": "assets/vendor.d/attendanceMgmt-B_e3bPBn.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "I",
+      "exported": "C"
+    },
+    {
+      "local": "_",
+      "exported": "D"
+    },
+    {
+      "local": "q",
+      "exported": "E"
+    },
+    {
+      "local": "oe",
+      "exported": "F"
+    },
+    {
+      "local": "F",
+      "exported": "K"
+    },
+    {
+      "local": "Z",
+      "exported": "N"
+    },
+    {
+      "local": "P",
+      "exported": "O"
+    },
+    {
+      "local": "J",
+      "exported": "P"
+    },
+    {
+      "local": "K",
+      "exported": "S"
+    },
+    {
+      "local": "ne",
+      "exported": "W"
+    },
+    {
+      "local": "ee",
+      "exported": "a"
+    },
+    {
+      "local": "Y",
+      "exported": "b"
+    },
+    {
+      "local": "Q",
+      "exported": "c"
+    },
+    {
+      "local": "V",
+      "exported": "d"
+    },
+    {
+      "local": "H",
+      "exported": "e"
+    },
+    {
+      "local": "te",
+      "exported": "f"
+    },
+    {
+      "local": "G",
+      "exported": "k"
+    },
+    {
+      "local": "X",
+      "exported": "m"
+    },
+    {
+      "local": "E",
+      "exported": "u"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "F",
+      "keys": [
+        "children"
+      ]
+    },
+    {
+      "function": "I",
+      "keys": [
+        "label",
+        "tone",
+        "minWidth"
+      ]
+    },
+    {
+      "function": "_",
+      "keys": [
+        "status",
+        "late",
+        "early",
+        "filled",
+        "plain",
+        "quiet"
+      ]
+    },
+    {
+      "function": "Y",
+      "keys": [
+        "label",
+        "value",
+        "danger",
+        "tone",
+        "dense",
+        "onClick",
+        "badge"
+      ]
+    },
+    {
+      "function": "Q",
+      "keys": [
+        "label",
+        "onPrev",
+        "onNext",
+        "large",
+        "nextDisabled",
+        "pick"
+      ]
+    },
+    {
+      "function": "Z",
+      "keys": [
+        "items",
+        "sx"
+      ]
+    },
+    {
+      "function": "q",
+      "keys": [
+        "text"
+      ]
+    },
+    {
+      "function": "J",
+      "keys": [
+        "title",
+        "action",
+        "children",
+        "column",
+        "fill",
+        "flush"
+      ]
+    },
+    {
+      "function": "te",
+      "keys": [
+        "children"
+      ]
+    },
+    {
+      "function": "ne",
+      "keys": [
+        "date",
+        "label",
+        "holiday",
+        "opacity"
+      ]
+    },
+    {
+      "function": "oe",
+      "keys": [
+        "children"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "AnnualLeavePage",
+    "AttendanceDevicePanels",
+    "AttendanceHost",
+    "AttendancePage",
+    "AttendanceRecordsPage",
+    "AttendanceReportPage",
+    "AttendanceSidebarSummary",
+    "AttendanceStatusPage",
+    "AttendanceSummaryPage",
+    "BookingCalendarPage",
+    "CalendarSidebarPanel",
+    "Layout",
+    "LeavePlanDialog",
+    "MobileDashboardLayout",
+    "MyAttendanceCards",
+    "MyAttendancePage",
+    "OutingTrackDialog",
+    "PnlPage",
+    "PostComposerHost",
+    "ShiftRequestPanels",
+    "SidebarClockButtons",
+    "SiteAnalyticsPage",
+    "TaskBoxScreen",
+    "TaskContributionPage",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog",
+    "TeamPage",
+    "VehicleLogPage",
+    "VideoOperatorPage",
+    "WorkSchedulePage"
+  ],
+  "service": "근태",
+  "purpose": "근태 공통 UI",
+  "reuseGrade": "B",
+  "integration": "근태 날짜·상태 표현 및 locale 연결",
+  "exportedParameters": [
+    {
+      "export": "C",
+      "compiledLocal": "I",
+      "keys": [
+        "label",
+        "tone",
+        "minWidth"
+      ]
+    },
+    {
+      "export": "D",
+      "compiledLocal": "_",
+      "keys": [
+        "status",
+        "late",
+        "early",
+        "filled",
+        "plain",
+        "quiet"
+      ]
+    },
+    {
+      "export": "E",
+      "compiledLocal": "q",
+      "keys": [
+        "text"
+      ]
+    },
+    {
+      "export": "F",
+      "compiledLocal": "oe",
+      "keys": [
+        "children"
+      ]
+    },
+    {
+      "export": "K",
+      "compiledLocal": "F",
+      "keys": [
+        "children"
+      ]
+    },
+    {
+      "export": "N",
+      "compiledLocal": "Z",
+      "keys": [
+        "items",
+        "sx"
+      ]
+    },
+    {
+      "export": "P",
+      "compiledLocal": "J",
+      "keys": [
+        "title",
+        "action",
+        "children",
+        "column",
+        "fill",
+        "flush"
+      ]
+    },
+    {
+      "export": "W",
+      "compiledLocal": "ne",
+      "keys": [
+        "date",
+        "label",
+        "holiday",
+        "opacity"
+      ]
+    },
+    {
+      "export": "b",
+      "compiledLocal": "Y",
+      "keys": [
+        "label",
+        "value",
+        "danger",
+        "tone",
+        "dense",
+        "onClick",
+        "badge"
+      ]
+    },
+    {
+      "export": "c",
+      "compiledLocal": "Q",
+      "keys": [
+        "label",
+        "onPrev",
+        "onNext",
+        "large",
+        "nextDisabled",
+        "pick"
+      ]
+    },
+    {
+      "export": "f",
+      "compiledLocal": "te",
+      "keys": [
+        "children"
+      ]
+    }
+  ]
+}

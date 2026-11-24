@@ -1,0 +1,118 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/PropertyContentEditor-DIsouMXi.js",
+  "path": "assets/vendor.d/PropertyContentEditor-DIsouMXi.js",
+  "name": "PropertyContentEditor",
+  "kind": "ui",
+  "bytes": 1018,
+  "sha256": "70eae40f2637ed8afee7bf1db327a2818b93a85c8d72eb73037db92b3ef26b9b",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/PropertyContentEditor-DIsouMXi.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "r",
+          "imported": "r"
+        },
+        {
+          "local": "u",
+          "imported": "j"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "p",
+          "imported": "bv"
+        },
+        {
+          "local": "x",
+          "imported": "bH"
+        },
+        {
+          "local": "E",
+          "imported": "bI"
+        },
+        {
+          "local": "R",
+          "imported": "m9"
+        },
+        {
+          "local": "g",
+          "imported": "lM"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "T",
+      "exported": "P"
+    },
+    {
+      "local": "M",
+      "exported": "u"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "T",
+      "keys": [
+        "syncKey",
+        "value",
+        "onSave",
+        "readOnly",
+        "minHeight",
+        "editing",
+        "onEditingChange"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "CallListPage",
+    "ConsultHistoryPanel",
+    "ConsultListPage",
+    "CustomerDealListPage",
+    "CustomerFormDialog",
+    "CustomerListPage",
+    "DealFormDialog",
+    "DealListPage",
+    "Layout",
+    "MobileDashboardLayout",
+    "PartnerListPage",
+    "PostComposerHost",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog"
+  ],
+  "service": "공통",
+  "purpose": "리치 텍스트 편집기 래퍼",
+  "reuseGrade": "B",
+  "integration": "에디터·저장 콜백·이미지 업로드 분리",
+  "exportedParameters": [
+    {
+      "export": "P",
+      "compiledLocal": "T",
+      "keys": [
+        "syncKey",
+        "value",
+        "onSave",
+        "readOnly",
+        "minHeight",
+        "editing",
+        "onEditingChange"
+      ]
+    }
+  ]
+}

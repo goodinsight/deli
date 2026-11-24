@@ -1,0 +1,137 @@
+import { u as L, r as g, j as o } from "./react-CjxcGQav.js";
+import { bv as H, u as E, bO as R, bx as j, bT as n, t as A, bM as l, bU as C, bV as O, bW as V, bX as W, bY as z, bZ as B, b_ as D, b$ as F, c0 as U, c1 as q, r as N, B as u, as as $, f as P, l as d, d as p, b as _, s as G } from "../js.d/main-Cm9wS5wt.js";
+import { t as I } from "./connectReturn-D4P3CxZQ.js";
+import { s as K } from "./oauthSignup-BvADUlBj.js";
+import "./stylis-DdLD6a3t.js";
+function Q() {
+  const i = L(),
+    f = H(),
+    r = E(),
+    [m, b] = g.useState(""),
+    k = g.useRef(!1);
+  return g.useEffect(() => {
+    if (k.current) return;
+    k.current = !0;
+    const t = new URLSearchParams(window.location.search),
+      x = t.get("access_token") ?? "",
+      w = t.get("refresh_token") ?? "",
+      a = t.get("error") ?? "",
+      h = t.get("linked") ?? "",
+      v = t.get("oauth_signup") ?? "";
+    if (window.history.replaceState(null, "", window.location.pathname), h) {
+      const e = h === "changupboguk" ? I() : "";
+      if (e) {
+        const c = new URL(e);
+        c.searchParams.set(a ? "connect_error" : "connected", a || "taskham"), window.location.replace(c.toString());
+        return;
+      }
+      a ? R(a) : j({
+        message: h === "changupboguk" ? n("auth.changupbogukLinked") : n("auth.socialLinked"),
+        delay: 300
+      }), r.setValue("socialLinks", null), i(A() || "/", {
+        replace: !0
+      });
+      return;
+    }
+    if (v && !a) {
+      K({
+        ticket: v,
+        provider: t.get("provider") ?? "",
+        email: t.get("email") ?? "",
+        name: t.get("name") ?? ""
+      });
+      const e = window.location.pathname.startsWith("/app/") ? "/app" : "";
+      i(`${e}/signup`, {
+        replace: !0
+      });
+      return;
+    }
+    if (a || !x) {
+      b(a || n("auth.socialLoginFailed"));
+      return;
+    }
+    l.setToken(x), (async () => {
+      try {
+        if (w) try {
+          const s = await l.http.post("/v1/auth/token_refresh", {
+              refresh_token: w
+            }),
+            T = String(s?.data?.access_token ?? "");
+          T && l.setToken(T);
+        } catch (s) {
+          console.error("소셜 로그인 refresh 쿠키 발급 실패 — 세션이 5분 뒤 끊길 수 있다", s);
+        }
+        const e = await C.me();
+        if (!e) throw new Error(n("auth.accountLoadFailed"));
+        if (r.setValue("account", e), r.setValue("logined", !0), r.setValue("sessionChecked", !0), r.setValue("loginError", ""), O(), V(Number(e?.seq ?? 0)), W()) {
+          await z();
+          const s = B()?.org_seq ?? 0;
+          s > 0 && (D(), await F(s).catch(() => {}));
+        }
+        const c = A(),
+          S = U(),
+          y = S?.type === "chat_message" && S.seq > 0 ? q : "";
+        i(c || y || N(e), {
+          replace: !0
+        });
+      } catch (e) {
+        l.setToken(""), b(e instanceof Error ? e.message : n("auth.loginProcessError"));
+      }
+    })();
+  }, []), o.jsx(u, {
+    sx: {
+      mx: "auto",
+      display: "flex",
+      maxWidth: 448,
+      flexDirection: "column",
+      alignItems: "center",
+      px: 2,
+      py: 12,
+      textAlign: "center"
+    },
+    children: m ? o.jsxs(o.Fragment, {
+      children: [o.jsx(u, {
+        component: "p",
+        sx: {
+          fontSize: p.base,
+          lineHeight: d.normal,
+          fontWeight: P.semibold,
+          color: $.rose700
+        },
+        children: m
+      }), o.jsx(u, {
+        component: "button",
+        type: "button",
+        onClick: () => i("/login", {
+          replace: !0
+        }),
+        sx: {
+          mt: 3,
+          borderRadius: "6px",
+          bgcolor: _[600],
+          px: 3,
+          py: 1.5,
+          fontSize: p.base,
+          lineHeight: d.normal,
+          fontWeight: P.bold,
+          color: "#fff",
+          "@media (hover: hover)": {
+            "&:hover": {
+              bgcolor: _[700]
+            }
+          }
+        },
+        children: f("auth.backToLogin")
+      })]
+    }) : o.jsx(u, {
+      component: "p",
+      sx: {
+        fontSize: p.base,
+        lineHeight: d.normal,
+        color: G[500]
+      },
+      children: f("auth.loginProcessing")
+    })
+  });
+}
+export { Q as default };

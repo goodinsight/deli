@@ -1,0 +1,15768 @@
+import { r as b, j as e, u as Bo, l as Vo } from "./react-CjxcGQav.js";
+import { d as qo, u as An, I as Dn, L as Mn, o as Os, C as $o, M as Ko, a as Go, b as Ho, c as Uo, r as Yo, E as Xo, e as Jo } from "./mobileBandDialog-C3M4tWPv.js";
+import { co as ys, cp as _s, cq as Ss, cr as Xt, cs as js, ct as bt, L as k, cu as es, cv as Gi, cw as Hi, c as ct, cx as Qo, cy as Ts, cz as De, e as de, ak as je, bO as K, bT as c, cA as Ct, bx as _e, bv as J, D as me, cB as Zo, B as m, ca as le, cC as tn, cD as sn, cE as er, cF as Ie, a_ as Ui, cG as hs, aR as fs, cH as Jt, f as Ne, cI as ge, bQ as B, cJ as Yi, cj as Ft, c4 as X, b as Rn, K as ye, cl as hn, z as Ae, cK as Nn, cL as nn, aO as on, cM as xt, c3 as It, al as re, aw as tr, cN as Xi, aq as ae, cO as Be, cn as ft, cc as we, b0 as ws, cP as Qt, cQ as sr, cm as kt, am as nr, cR as ir, an as or, cS as Ji, cT as rr, cU as Qi, bB as Zi, a0 as ar, cV as lr, bK as cr, cW as eo, c2 as to, c6 as dr, cX as at, d as ur, cY as he, cZ as so, c_ as no, M as io, w as vs, b$ as mr, bH as Ot, a6 as Ut, ce as zt, cf as Wt, c$ as pr, c8 as Rt, aF as gr, bM as oe, d0 as fr, d1 as xr, bI as ht, d2 as oo, bw as hr, d3 as br, d4 as bs, aD as yr, d5 as _r, d6 as rn, d7 as wt, s as bn, d8 as Zt, cb as yn, c7 as Sr, d9 as Pn, da as jr, db as wr, dc as zn, o as vr, dd as xs, ar as kr, de as Cr, df as Wn, dg as Ln, aU as Bn, aX as Fr, bD as Ir, bC as ro, a1 as Es, dh as Vn, di as Or, dj as ao, dk as Tr, dl as Er, dm as Ar, dn as Dr, dp as Mr, u as _n, ap as Te, dq as Rr, bh as Nr, dr as Pr, ds as zr, bJ as Wr, dt as qn, du as Lr, dv as Br, dw as Vr, dx as qr, aB as rt, dy as pt, dz as $r, dA as Kr, i as Gr, dB as $n, bP as Hr, bR as Kn, dC as ns, dD as Ur, dE as Yr, dF as Xr, dG as Jr, dH as Qr, dI as Zr, aA as ea, j as ta, dJ as sa, dK as na, aH as ia, P as oa, q as ra, dL as aa, dM as la, dN as ca, A as da, k as ua, H as ma, S as pa, m as ga, aQ as fa, dO as xa } from "../js.d/main-Cm9wS5wt.js";
+import { D as ha, S as ba, V as ya, I as _a, C as Sa, a as ja } from "./VpnKeyOutlined-CDOhh6HY.js";
+import { A as wa } from "./AlternateEmailOutlined-ChAd88mi.js";
+import { L as va } from "./LanguageOutlined-dNJSO7u2.js";
+import { T as ka } from "./ToggleOnOutlined-5BVdqdOm.js";
+import { S as Ca } from "./SwapHorizOutlined-DWsqc1am.js";
+import { VIDEO_MAX_PARTICIPANTS_CAP as lo, videoMeetingSettingsApi as Gn } from "./videoMeetingApi-BCL1yHsp.js";
+import { H as Fa } from "./HowToRegOutlined-Cua-bhim.js";
+import { R as st } from "./RepeatRowCard-CW6Yl_Xr.js";
+import { f as ks } from "./training-Bx0zycZu.js";
+import { s as Ia, c as Je, i as Hn, a as Un, b as Yn, g as As, l as Oa, e as Ta, d as Tt, f as Ea, h as Aa, r as Kt, j as Da, u as Ma, o as Ra, k as co, m as Na } from "./bootstrapController-BMV_i07c.js";
+import { u as Pa } from "./useFileViewer-B-2ewnr3.js";
+import { r as za } from "./resolveAssetPreviewSrc-CLlbOCzq.js";
+import { m as We, f as an, d as Wa } from "./mxApi-R6g9QtQq.js";
+import { t as La, L as is, e as Ds, d as Xn, b as Jn, c as Qn, a as Zn, O as St, u as Ba } from "./orgDomainController-rUjUS_-n.js";
+import { I as Ee } from "./InlineErrorAlert-D9ICJPt7.js";
+import { T as ie } from "./Trans-CU1vl0TZ.js";
+import { M as Va } from "./OrgChartPage-DPIPUrhu.js";
+import { E as Sn } from "./EmployeeSelectDialog-Cdnxeoz9.js";
+import { t as uo } from "./utils-B6Q5_urv.js";
+import { c as qa, o as $a } from "./EmployeeFormDialog-BHKK47Dg.js";
+import { p as Ka, a as Ga, f as Ha } from "./date_utils-CYURFdnX.js";
+import { O as mo } from "./OptionToggleGroup-Cvm2wRyq.js";
+import { T as ei } from "./tableScrollbars-C9bhlJjO.js";
+import { A as Ua } from "./AdminPanelSettingsOutlined-eoyukwrm.js";
+import { C as Ya } from "./CloudQueueOutlined-D7LQhfzM.js";
+import { S as Xa } from "./SaveOutlined-DgCkQRT8.js";
+import { C as Ja } from "./CategoryOutlined-DcAqxAdD.js";
+import { A as Qa } from "./AltRouteOutlined-BY5W7vtA.js";
+import { u as Za } from "./teamMembers-0yRsmqL6.js";
+import { G as el } from "./GroupAddOutlined-DigKoBGv.js";
+import { R as po } from "./Refresh-xoMt5L00.js";
+import { a as Le } from "./attendanceMgmtApi-CC4DR0XR.js";
+import { e as tl } from "./employeeApi-CdGzOYcj.js";
+import { W as sl, a as go, C as ti, b as nl } from "./attendanceMgmt-B_e3bPBn.js";
+import { N as He, E as Yt, P as $e } from "./AttendanceParts-mHb1cK0h.js";
+import { L as os } from "./leaflet-CcRL-kL8.js";
+import { AttendanceQrBoard as il } from "./AttendanceQrPage-bbjADVUV.js";
+import "./profileApi-Btafs-pM.js";
+import "./BusinessCenterOutlined-gZ8sR_r3.js";
+import "./lastBoard-DXeRnS9N.js";
+import "./hrCodeApi-BRtc5fIX.js";
+import "./types-CVhETUvu.js";
+import "./i18nLabels-BNTLL7cu.js";
+import "./stylis-DdLD6a3t.js";
+import "./profileEcho-q2FaD_03.js";
+import "./pendingRecordings-DpKJ8Y2R.js";
+import "./meetingsApi-CCkjq69B.js";
+import "./orgTree-Dh5HFjBo.js";
+import "./aliasStore-DiN6Kp-5.js";
+import "./documentViewerStore-BlSjH3BG.js";
+import "./index.esm-gjRImBGa.js";
+import "./Person-DnoEHesw.js";
+import "./PersonRemoveOutlined-CyeIj2nP.js";
+import "./mobileTitlePicker-u2JmU445.js";
+import "./birthdayCalendar-CWu_jG3x.js";
+import "./trainingCalendar-BpMTSUwd.js";
+import "./trainingApi-DT4unjOR.js";
+import "./ContactPhoneOutlined-DpFEzROB.js";
+import "./employeeAccountApi-p-ORLvrh.js";
+import "./WomanOutlined-CzlFMUkT.js";
+import "./AccountBoxOutlined-BxNEw8I0.js";
+import "./AssignmentIndOutlined-DynSb23A.js";
+import "./EventBusyOutlined-DqcCaRMs.js";
+import "./PaidOutlined-Cy1uVjW3.js";
+import "./PercentOutlined-XX2JPqvz.js";
+import "./PhoneAndroidOutlined-DafU-b-9.js";
+import "./PhoneOutlined-Bjc_e42S.js";
+import "./ScheduleOutlined-C_7j7r9e.js";
+import "./WorkOutlineOutlined-D5AzVFs6.js";
+import "./PropertyFields-TuJTG5XK.js";
+import "./propertySections-Bwsl7OH-.js";
+import "./squircle-CQM8EvXm.js";
+import "./attendanceBio-C-9dHF9O.js";
+import "./browser-FfRve9p6.js";
+function ol(s) {
+  return ys("MuiAlertTitle", s);
+}
+_s("MuiAlertTitle", ["root"]);
+const rl = s => {
+    const {
+      classes: t
+    } = s;
+    return js({
+      root: ["root"]
+    }, ol, t);
+  },
+  al = bt(k, {
+    name: "MuiAlertTitle",
+    slot: "Root"
+  })(es(({
+    theme: s
+  }) => ({
+    fontWeight: s.typography.fontWeightMedium,
+    marginTop: -2
+  }))),
+  ln = b.forwardRef(function (t, i) {
+    const n = Ss({
+        props: t,
+        name: "MuiAlertTitle"
+      }),
+      {
+        className: o,
+        ...r
+      } = n,
+      a = n,
+      d = rl(a);
+    return e.jsx(al, {
+      gutterBottom: !0,
+      component: "div",
+      ownerState: a,
+      ref: i,
+      className: Xt(d.root, o),
+      ...r
+    });
+  });
+function ll(s) {
+  return ys("MuiStep", s);
+}
+_s("MuiStep", ["root", "horizontal", "vertical", "alternativeLabel", "completed"]);
+const cl = s => {
+    const {
+      classes: t,
+      orientation: i,
+      alternativeLabel: n,
+      completed: o
+    } = s;
+    return js({
+      root: ["root", i, n && "alternativeLabel", o && "completed"]
+    }, ll, t);
+  },
+  dl = bt("div", {
+    name: "MuiStep",
+    slot: "Root",
+    overridesResolver: (s, t) => {
+      const {
+        ownerState: i
+      } = s;
+      return [t.root, t[i.orientation], i.alternativeLabel && t.alternativeLabel, i.completed && t.completed];
+    }
+  })({
+    variants: [{
+      props: {
+        orientation: "horizontal"
+      },
+      style: {
+        paddingLeft: 8,
+        paddingRight: 8
+      }
+    }, {
+      props: {
+        alternativeLabel: !0
+      },
+      style: {
+        flex: 1,
+        position: "relative"
+      }
+    }]
+  }),
+  ul = b.forwardRef(function (t, i) {
+    const n = Ss({
+        props: t,
+        name: "MuiStep"
+      }),
+      {
+        active: o,
+        children: r,
+        className: a,
+        component: d = "div",
+        completed: l,
+        disabled: u,
+        expanded: p = !1,
+        index: x,
+        last: h,
+        ...g
+      } = n,
+      {
+        activeStep: F,
+        connector: I,
+        alternativeLabel: _,
+        orientation: v,
+        nonLinear: C
+      } = b.useContext(Gi);
+    let [w = !1, E = !1, A = !1] = [o, l, u];
+    F === x ? w = o !== void 0 ? o : !0 : !C && F > x ? E = l !== void 0 ? l : !0 : !C && F < x && (A = u !== void 0 ? u : !0);
+    const S = b.useMemo(() => ({
+        index: x,
+        last: h,
+        expanded: p,
+        icon: x + 1,
+        active: w,
+        completed: E,
+        disabled: A
+      }), [x, h, p, w, E, A]),
+      L = {
+        ...n,
+        active: w,
+        orientation: v,
+        alternativeLabel: _,
+        completed: E,
+        disabled: A,
+        expanded: p,
+        component: d
+      },
+      j = cl(L),
+      y = e.jsxs(dl, {
+        as: d,
+        className: Xt(j.root, a),
+        ref: i,
+        ownerState: L,
+        ...g,
+        children: [I && _ && x !== 0 ? I : null, r]
+      });
+    return e.jsx(Hi.Provider, {
+      value: S,
+      children: I && !_ && x !== 0 ? e.jsxs(b.Fragment, {
+        children: [I, y]
+      }) : y
+    });
+  }),
+  ml = ct(e.jsx("path", {
+    d: "M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm-2 17l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z"
+  })),
+  pl = ct(e.jsx("path", {
+    d: "M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"
+  }));
+function gl(s) {
+  return ys("MuiStepIcon", s);
+}
+const Ms = _s("MuiStepIcon", ["root", "active", "completed", "error", "text"]);
+var si;
+const fl = s => {
+    const {
+      classes: t,
+      active: i,
+      completed: n,
+      error: o
+    } = s;
+    return js({
+      root: ["root", i && "active", n && "completed", o && "error"],
+      text: ["text"]
+    }, gl, t);
+  },
+  Rs = bt(Qo, {
+    name: "MuiStepIcon",
+    slot: "Root"
+  })(es(({
+    theme: s
+  }) => ({
+    display: "block",
+    transition: s.transitions.create("color", {
+      duration: s.transitions.duration.shortest
+    }),
+    color: (s.vars || s).palette.text.disabled,
+    [`&.${Ms.completed}`]: {
+      color: (s.vars || s).palette.primary.main
+    },
+    [`&.${Ms.active}`]: {
+      color: (s.vars || s).palette.primary.main
+    },
+    [`&.${Ms.error}`]: {
+      color: (s.vars || s).palette.error.main
+    }
+  }))),
+  xl = bt("text", {
+    name: "MuiStepIcon",
+    slot: "Text"
+  })(es(({
+    theme: s
+  }) => ({
+    fill: (s.vars || s).palette.primary.contrastText,
+    fontSize: s.typography.caption.fontSize,
+    fontFamily: s.typography.fontFamily
+  }))),
+  hl = b.forwardRef(function (t, i) {
+    const n = Ss({
+        props: t,
+        name: "MuiStepIcon"
+      }),
+      {
+        active: o = !1,
+        className: r,
+        completed: a = !1,
+        error: d = !1,
+        icon: l,
+        ...u
+      } = n,
+      p = {
+        ...n,
+        active: o,
+        completed: a,
+        error: d
+      },
+      x = fl(p);
+    if (typeof l == "number" || typeof l == "string") {
+      const h = Xt(r, x.root);
+      return d ? e.jsx(Rs, {
+        as: pl,
+        className: h,
+        ref: i,
+        ownerState: p,
+        ...u
+      }) : a ? e.jsx(Rs, {
+        as: ml,
+        className: h,
+        ref: i,
+        ownerState: p,
+        ...u
+      }) : e.jsxs(Rs, {
+        className: h,
+        ref: i,
+        ownerState: p,
+        ...u,
+        children: [si || (si = e.jsx("circle", {
+          cx: "12",
+          cy: "12",
+          r: "12"
+        })), e.jsx(xl, {
+          className: x.text,
+          x: "12",
+          y: "12",
+          textAnchor: "middle",
+          dominantBaseline: "central",
+          ownerState: p,
+          children: l
+        })]
+      });
+    }
+    return l;
+  });
+function bl(s) {
+  return ys("MuiStepLabel", s);
+}
+const gt = _s("MuiStepLabel", ["root", "horizontal", "vertical", "label", "active", "completed", "error", "disabled", "iconContainer", "alternativeLabel", "labelContainer"]),
+  yl = s => {
+    const {
+      classes: t,
+      orientation: i,
+      active: n,
+      completed: o,
+      error: r,
+      disabled: a,
+      alternativeLabel: d
+    } = s;
+    return js({
+      root: ["root", i, r && "error", a && "disabled", d && "alternativeLabel"],
+      label: ["label", n && "active", o && "completed", r && "error", a && "disabled", d && "alternativeLabel"],
+      iconContainer: ["iconContainer", n && "active", o && "completed", r && "error", a && "disabled", d && "alternativeLabel"],
+      labelContainer: ["labelContainer", d && "alternativeLabel"]
+    }, bl, t);
+  },
+  _l = bt("span", {
+    name: "MuiStepLabel",
+    slot: "Root",
+    overridesResolver: (s, t) => {
+      const {
+        ownerState: i
+      } = s;
+      return [t.root, t[i.orientation]];
+    }
+  })({
+    display: "flex",
+    alignItems: "center",
+    [`&.${gt.alternativeLabel}`]: {
+      flexDirection: "column"
+    },
+    [`&.${gt.disabled}`]: {
+      cursor: "default"
+    },
+    variants: [{
+      props: {
+        orientation: "vertical"
+      },
+      style: {
+        textAlign: "left",
+        padding: "8px 0"
+      }
+    }]
+  }),
+  Sl = bt("span", {
+    name: "MuiStepLabel",
+    slot: "Label"
+  })(es(({
+    theme: s
+  }) => ({
+    ...s.typography.body2,
+    display: "block",
+    transition: s.transitions.create("color", {
+      duration: s.transitions.duration.shortest
+    }),
+    [`&.${gt.active}`]: {
+      color: (s.vars || s).palette.text.primary,
+      fontWeight: 500
+    },
+    [`&.${gt.completed}`]: {
+      color: (s.vars || s).palette.text.primary,
+      fontWeight: 500
+    },
+    [`&.${gt.alternativeLabel}`]: {
+      marginTop: 16
+    },
+    [`&.${gt.error}`]: {
+      color: (s.vars || s).palette.error.main
+    }
+  }))),
+  jl = bt("span", {
+    name: "MuiStepLabel",
+    slot: "IconContainer"
+  })({
+    flexShrink: 0,
+    display: "flex",
+    paddingRight: 8,
+    [`&.${gt.alternativeLabel}`]: {
+      paddingRight: 0
+    }
+  }),
+  wl = bt("span", {
+    name: "MuiStepLabel",
+    slot: "LabelContainer"
+  })(es(({
+    theme: s
+  }) => ({
+    width: "100%",
+    color: (s.vars || s).palette.text.secondary,
+    [`&.${gt.alternativeLabel}`]: {
+      textAlign: "center"
+    }
+  }))),
+  fo = b.forwardRef(function (t, i) {
+    const n = Ss({
+        props: t,
+        name: "MuiStepLabel"
+      }),
+      {
+        children: o,
+        className: r,
+        componentsProps: a = {},
+        error: d = !1,
+        icon: l,
+        optional: u,
+        slots: p = {},
+        slotProps: x = {},
+        StepIconComponent: h,
+        StepIconProps: g,
+        ...F
+      } = n,
+      {
+        alternativeLabel: I,
+        orientation: _
+      } = b.useContext(Gi),
+      {
+        active: v,
+        disabled: C,
+        completed: w,
+        icon: E
+      } = b.useContext(Hi),
+      A = l || E;
+    let S = h;
+    A && !S && (S = hl);
+    const L = {
+        ...n,
+        active: v,
+        alternativeLabel: I,
+        completed: w,
+        disabled: C,
+        error: d,
+        orientation: _
+      },
+      j = yl(L),
+      y = {
+        slots: p,
+        slotProps: {
+          stepIcon: g,
+          ...a,
+          ...x
+        }
+      },
+      [D, M] = Ts("root", {
+        elementType: _l,
+        externalForwardedProps: {
+          ...y,
+          ...F
+        },
+        ownerState: L,
+        ref: i,
+        className: Xt(j.root, r)
+      }),
+      [z, O] = Ts("label", {
+        elementType: Sl,
+        externalForwardedProps: y,
+        ownerState: L
+      }),
+      [T, $] = Ts("stepIcon", {
+        elementType: S,
+        externalForwardedProps: y,
+        ownerState: L
+      });
+    return e.jsxs(D, {
+      ...M,
+      children: [A || T ? e.jsx(jl, {
+        className: j.iconContainer,
+        ownerState: L,
+        children: e.jsx(T, {
+          completed: w,
+          active: v,
+          error: d,
+          icon: A,
+          ...$
+        })
+      }) : null, e.jsxs(wl, {
+        className: j.labelContainer,
+        ownerState: L,
+        children: [o ? e.jsx(z, {
+          ...O,
+          className: Xt(j.label, O?.className),
+          children: o
+        }) : null, u]
+      })]
+    });
+  });
+fo.muiName = "StepLabel";
+const xo = ct(e.jsx("path", {
+    d: "M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2M12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8"
+  })),
+  vl = ct(e.jsx("path", {
+    d: "M12 6c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6 2.69-6 6-6m0-2c-4.42 0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8"
+  })),
+  kl = ct(e.jsx("path", {
+    d: "M15 21h-2v-2h2zm-2-7h-2v5h2zm8-2h-2v4h2zm-2-2h-2v2h2zM7 12H5v2h2zm-2-2H3v2h2zm7-5h2V3h-2zm-7.5-.5v3h3v-3zM9 9H3V3h6zm-4.5 7.5v3h3v-3zM9 21H3v-6h6zm7.5-16.5v3h3v-3zM21 9h-6V3h6zm-2 10v-3h-4v2h2v3h4v-2zm-2-7h-4v2h4zm-4-2H7v2h2v2h2v-2h2zm1-1V7h-2V5h-2v4zM6.75 5.25h-1.5v1.5h1.5zm0 12h-1.5v1.5h1.5zm12-12h-1.5v1.5h1.5z"
+  })),
+  Cl = ct(e.jsx("path", {
+    d: "M9 12c1.93 0 3.5-1.57 3.5-3.5S10.93 5 9 5 5.5 6.57 5.5 8.5 7.07 12 9 12m0-5c.83 0 1.5.67 1.5 1.5S9.83 10 9 10s-1.5-.67-1.5-1.5S8.17 7 9 7m.05 10H4.77c.99-.5 2.7-1 4.23-1 .11 0 .23.01.34.01.34-.73.93-1.33 1.64-1.81-.73-.13-1.42-.2-1.98-.2-2.34 0-7 1.17-7 3.5V19h7v-1.5c0-.17.02-.34.05-.5m7.45-2.5c-1.84 0-5.5 1.01-5.5 3V19h11v-1.5c0-1.99-3.66-3-5.5-3m1.21-1.82c.76-.43 1.29-1.24 1.29-2.18C19 9.12 17.88 8 16.5 8S14 9.12 14 10.5c0 .94.53 1.75 1.29 2.18.36.2.77.32 1.21.32s.85-.12 1.21-.32"
+  })),
+  cn = ct(e.jsx("path", {
+    d: "m1 9 2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9m8 8 3 3 3-3c-1.65-1.66-4.34-1.66-6 0m-4-4 2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13"
+  })),
+  Fl = ct(e.jsx("path", {
+    d: "M15.53 17.46 12 21l-3.53-3.54c.9-.9 2.15-1.46 3.53-1.46s2.63.56 3.53 1.46"
+  })),
+  Il = ct(e.jsx("path", {
+    d: "M12 10c3.03 0 5.78 1.23 7.76 3.22l-2.12 2.12C16.2 13.9 14.2 13 12 13s-4.2.9-5.64 2.35l-2.12-2.12C6.22 11.23 8.97 10 12 10m0 6c-1.38 0-2.63.56-3.53 1.46L12 21l3.53-3.54c-.9-.9-2.15-1.46-3.53-1.46"
+  })),
+  Ol = {
+    ask_summary: !0,
+    record_meetings: !0,
+    max_participants: String(lo),
+    folder_seq: 0,
+    approver: "host"
+  };
+function Tl() {
+  const t = De()?.seq ?? 0,
+    [i, n] = b.useState(!1),
+    [o, r] = b.useState(null),
+    a = {
+      form: de({
+        modalId: "video-meeting-settings-dialog"
+      })
+    },
+    d = o?.can_edit ?? !1,
+    l = o?.max_participants_cap ?? lo,
+    u = je({
+      formId: "video-meeting-settings-form",
+      initialValues: Ol,
+      onValidate: x => {
+        const h = Math.trunc(Number(x.max_participants));
+        return !Number.isFinite(h) || h < 2 || h > l ? (K(c("videoMeeting.maxParticipantsRange", {
+          max: l
+        })), !1) : !0;
+      },
+      onSubmit: async x => {
+        if (!t || !d) return !1;
+        try {
+          return await Gn.save(t, {
+            ask_summary: x.ask_summary === !0,
+            record_meetings: x.record_meetings === !0,
+            max_participants: Math.trunc(Number(x.max_participants)),
+            folder_seq: Number(x.folder_seq) || 0,
+            approver: x.approver === "members" ? "members" : "host"
+          }), await Ct().catch(() => {}), a.form.close(), _e({
+            message: c("videoMeeting.saved")
+          }), !0;
+        } catch (h) {
+          return K({
+            message: h instanceof Error ? h.message : c("videoMeeting.orgSettingsSaveFailed")
+          }), !1;
+        }
+      }
+    }),
+    p = async () => {
+      if (!t) return void a.form.open();
+      n(!0), await Gn.get(t).then(x => {
+        r(x), u.setFormValues({
+          ask_summary: x.ask_summary,
+          record_meetings: x.record_meetings,
+          max_participants: String(x.max_participants),
+          folder_seq: x.folder_seq,
+          approver: x.approver
+        });
+      }).catch(x => K({
+        message: x instanceof Error ? x.message : c("videoMeeting.orgSettingsLoadFailed")
+      })).finally(() => n(!1)), a.form.open();
+    };
+  return {
+    form: u,
+    modals: a,
+    loading: i,
+    canEdit: d,
+    cap: l,
+    folders: o?.folders ?? [],
+    openDialog: p
+  };
+}
+const El = 1e5;
+function Al({
+  controller: s
+}) {
+  const t = J(),
+    i = me(),
+    {
+      form: n,
+      modals: o,
+      loading: r,
+      canEdit: a,
+      cap: d,
+      folders: l
+    } = s,
+    u = r || !a,
+    p = [{
+      value: 0,
+      label: t("videoMeeting.noFolder")
+    }, ...Zo(l.map(F => ({
+      ...F,
+      sort_no: 0,
+      group_seq: 0
+    }))).map(({
+      folder: F
+    }) => {
+      const I = [];
+      for (let _ = F.seq, v = 0; _ && v < 20; v += 1) {
+        const C = l.find(w => w.seq === _);
+        if (!C) break;
+        I.unshift(C.name), _ = C.parent_seq;
+      }
+      return {
+        value: F.seq,
+        label: I.join(" › ")
+      };
+    })],
+    x = F => {
+      const I = Math.trunc(Number(F.replace(/[^\d]/g, "")));
+      return Number.isFinite(I) && I >= 2 && I <= d ? String(I) : null;
+    },
+    g = [{
+      id: "video-meeting-settings",
+      showTitle: !1,
+      children: e.jsxs(m, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: le
+        },
+        children: [!r && !a ? e.jsx(k, {
+          sx: {
+            fontSize: 15,
+            color: "text.secondary"
+          },
+          children: t("videoMeeting.onlyAdmins")
+        }) : null, e.jsx(st, {
+          children: e.jsxs(tn, {
+            twoColumnMin: El,
+            children: [e.jsx(sn, {
+              icon: e.jsx(er, {}),
+              label: t("videoMeeting.askSummary"),
+              form: n,
+              name: "ask_summary",
+              readOnly: u
+            }), e.jsx(sn, {
+              icon: e.jsx(vl, {}),
+              label: t("videoMeeting.recordMeetings"),
+              form: n,
+              name: "record_meetings",
+              readOnly: u
+            }), e.jsx(Ie, {
+              icon: e.jsx(Ui, {}),
+              label: t("videoMeeting.maxParticipants"),
+              form: n,
+              name: "max_participants",
+              inputMode: "numeric",
+              maxLength: 2,
+              parse: x,
+              placeholder: `2 ~ ${d}`,
+              readOnly: u
+            }), e.jsx(hs, {
+              icon: e.jsx(fs, {}),
+              label: t("videoMeeting.notesFolder"),
+              form: n,
+              name: "folder_seq",
+              options: p,
+              readOnly: u
+            }), e.jsx(hs, {
+              icon: e.jsx(Fa, {}),
+              label: t("videoMeeting.waitingApprover"),
+              form: n,
+              name: "approver",
+              options: [{
+                value: "host",
+                label: t("videoMeeting.hostOnly")
+              }, {
+                value: "members",
+                label: t("videoMeeting.anyMember")
+              }],
+              readOnly: u
+            })]
+          })
+        }), e.jsxs(Jt, {
+          severity: "info",
+          sx: {
+            fontSize: 14,
+            wordBreak: "keep-all"
+          },
+          children: [e.jsx(ln, {
+            sx: {
+              fontSize: "0.9375rem",
+              fontWeight: Ne.bold
+            },
+            children: t("videoMeeting.howUsed")
+          }), e.jsxs(m, {
+            component: "ul",
+            sx: {
+              listStyleType: "disc",
+              m: 0,
+              pl: 2.5,
+              display: "grid",
+              gap: .5
+            },
+            children: [e.jsxs("li", {
+              children: [e.jsx("b", {
+                children: t("videoMeeting.askSummary")
+              }), " — ", t("videoMeeting.askSummaryHelp")]
+            }), e.jsxs("li", {
+              children: [e.jsx("b", {
+                children: t("videoMeeting.recordMeetings")
+              }), " — ", t("videoMeeting.recordMeetingsHelp")]
+            }), e.jsxs("li", {
+              children: [e.jsx("b", {
+                children: t("videoMeeting.waitingApprover")
+              }), " — ", t("videoMeeting.waitingApproverHelp")]
+            }), e.jsx("li", {
+              children: t("videoMeeting.pricingNote")
+            })]
+          })]
+        }), e.jsx(Jt, {
+          severity: "warning",
+          sx: {
+            fontSize: 14,
+            wordBreak: "keep-all"
+          },
+          children: t("videoMeeting.e2eNote")
+        })]
+      })
+    }];
+  return e.jsx(ge, {
+    open: o.form.isOpen,
+    onClose: o.form.close,
+    title: t("videoMeeting.settingsTitle"),
+    maxWidth: "sm",
+    fullScreen: i,
+    mobilePresentation: i ? "slide" : "dialog",
+    draggable: !0,
+    titleIcons: {
+      delete: {
+        visible: !1
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    loading: r,
+    actions: {
+      visible: !0,
+      showCancelButton: !1,
+      right: e.jsxs(e.Fragment, {
+        children: [e.jsx(B, {
+          onClick: o.form.close,
+          children: t("videoMeeting.cancel")
+        }), e.jsx(B, {
+          variant: "contained",
+          onClick: () => {
+            n.submit();
+          },
+          disabled: !a || n.isSubmitting,
+          children: t("videoMeeting.save")
+        })]
+      })
+    },
+    sections: g
+  });
+}
+const Dl = 640;
+function ni({
+  title: s,
+  titleExtra: t,
+  action: i,
+  columns: n = 1,
+  children: o
+}) {
+  return e.jsx(m, {
+    sx: {
+      minWidth: 0
+    },
+    children: e.jsxs(Yi, {
+      sx: {
+        borderRadius: 2,
+        boxShadow: "0 1px 3px rgba(0,0,0,0.12)",
+        overflow: "hidden",
+        "&& > * + *": {
+          borderTop: 1,
+          borderColor: "divider"
+        }
+      },
+      children: [s && e.jsxs(m, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: 1,
+          px: 2.5,
+          py: 1.5
+        },
+        children: [e.jsx(k, {
+          variant: "subtitle1",
+          sx: {
+            fontWeight: 700,
+            flex: t ? "0 0 auto" : 1,
+            minWidth: 0
+          },
+          children: s
+        }), t ? e.jsx(m, {
+          sx: {
+            my: -.75,
+            flex: 1,
+            minWidth: 0,
+            display: "flex",
+            alignItems: "center"
+          },
+          children: t
+        }) : null, i ? e.jsx(m, {
+          sx: {
+            my: -.75,
+            flexShrink: 0
+          },
+          children: i
+        }) : null]
+      }), n === 2 ? e.jsx(m, {
+        sx: {
+          containerType: "inline-size"
+        },
+        children: e.jsx(m, {
+          sx: {
+            display: "grid",
+            gridTemplateColumns: "minmax(0, 1fr)",
+            "&& > * + *": {
+              borderTop: 1,
+              borderColor: "divider"
+            },
+            [`@container (min-width: ${Dl}px)`]: {
+              gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+              "&& > *:nth-of-type(2)": {
+                borderTop: 0
+              },
+              "&& > *:nth-of-type(even)": {
+                borderLeft: 1,
+                borderColor: "divider"
+              },
+              "&& > *:last-child:nth-of-type(odd)": {
+                gridColumn: "1 / -1"
+              }
+            }
+          },
+          children: o
+        })
+      }) : o]
+    })
+  });
+}
+const Ml = {
+  normal: "text.secondary",
+  empty: "text.disabled",
+  warning: "warning.dark",
+  error: "error.main"
+};
+function Se({
+  item: s,
+  onClick: t,
+  badge: i,
+  danger: n = !1,
+  status: o,
+  loading: r = !1
+}) {
+  return e.jsxs(Ft, {
+    onClick: () => {
+      r || t(s);
+    },
+    "aria-busy": r || void 0,
+    "data-tour": `settings-${s.id}`,
+    sx: {
+      display: "flex",
+      width: "100%",
+      textAlign: "left",
+      px: 2.5,
+      py: 1.5,
+      gap: 2,
+      alignItems: "center",
+      transition: "background-color 0.15s ease",
+      "&:hover": {
+        bgcolor: "action.hover",
+        "& .settings-row-chevron": {
+          color: "text.secondary"
+        }
+      }
+    },
+    children: [e.jsx(X, {
+      alignItems: "center",
+      justifyContent: "center",
+      sx: {
+        flexShrink: 0,
+        width: 40,
+        height: 40,
+        borderRadius: "50%",
+        bgcolor: n ? "rgba(211, 47, 47, 0.08)" : Rn[50],
+        color: n ? "error.main" : Rn[600]
+      },
+      children: s.icon
+    }), e.jsxs(X, {
+      spacing: 0,
+      sx: {
+        minWidth: 0,
+        flex: 1
+      },
+      children: [e.jsx(k, {
+        variant: "subtitle1",
+        sx: {
+          fontSize: a => {
+            const d = a.typography.subtitle1.fontSize;
+            return `calc(${typeof d == "number" ? `${d}px` : d} - 2px)`;
+          },
+          fontWeight: 500,
+          lineHeight: 1.4,
+          color: n ? "error.main" : "text.primary"
+        },
+        children: s.label
+      }), e.jsx(k, {
+        variant: "body2",
+        sx: {
+          fontSize: 14,
+          lineHeight: 1.45,
+          color: o ? Ml[o.tone ?? "normal"] : "text.secondary",
+          wordBreak: "keep-all"
+        },
+        children: o ? o.text : s.description
+      })]
+    }), i, r ? e.jsx(m, {
+      sx: {
+        flexShrink: 0,
+        width: 24,
+        height: 24,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+      },
+      children: e.jsx(ye, {
+        size: 18
+      })
+    }) : e.jsx(hn, {
+      className: "settings-row-chevron",
+      sx: {
+        flexShrink: 0,
+        color: "text.disabled",
+        transition: "color 0.15s ease"
+      }
+    })]
+  });
+}
+const jn = 120,
+  ho = "taskham-team-upload-zone-height",
+  Rl = 900;
+function Nl() {
+  try {
+    if (typeof window > "u" || window.innerWidth < Rl) return null;
+    const s = Number(localStorage.getItem(ho));
+    return Number.isFinite(s) && s >= jn && s < 600 ? s : null;
+  } catch {
+    return null;
+  }
+}
+const Pl = 3e3;
+function zl(s, t) {
+  const i = b.useRef(null),
+    n = b.useRef(null),
+    o = b.useRef(null),
+    r = b.useRef(null),
+    [a, d] = b.useState(Nl),
+    [l, u] = b.useState(!1);
+  b.useLayoutEffect(() => {
+    if (t) return;
+    const x = setTimeout(() => u(!0), Pl);
+    return () => clearTimeout(x);
+  }, [t]);
+  const p = s && (t || l);
+  return b.useLayoutEffect(() => {
+    const x = i.current,
+      h = n.current,
+      g = o.current,
+      F = r.current;
+    if (!p || !x || !h || !g || !F) return;
+    const I = () => {
+      const v = h.querySelector('[data-tour^="settings-"]'),
+        C = g.querySelector(`[aria-label="${CSS.escape(c("settings.uploadDocs"))}"]`),
+        w = g.getBoundingClientRect(),
+        E = F.getBoundingClientRect();
+      if (C && Math.abs(w.top - E.top) < 1 && w.right <= E.left) {
+        const z = w.height - C.getBoundingClientRect().height,
+          O = Math.round((E.height - z) * 100) / 100;
+        d(T => T !== null && Math.abs(T - O) < .5 ? T : O);
+        return;
+      }
+      const A = h.getBoundingClientRect().right <= g.getBoundingClientRect().left;
+      if (!v || !C || !A) {
+        d(null);
+        return;
+      }
+      const S = v.getBoundingClientRect().height,
+        L = parseFloat(getComputedStyle(x).rowGap) || 0,
+        j = g.getBoundingClientRect().height - C.getBoundingClientRect().height,
+        y = F.getBoundingClientRect().height + L * 2 + j;
+      if (S <= 0) return;
+      let D = 1;
+      for (; D * S - y < jn;) D += 1;
+      const M = Math.round((D * S - y) * 100) / 100;
+      d(z => z !== null && Math.abs(z - M) < .5 ? z : M);
+      try {
+        localStorage.setItem(ho, String(M));
+      } catch {}
+    };
+    I();
+    const _ = new ResizeObserver(I);
+    for (const v of [x, h, g, F]) _.observe(v);
+    return () => _.disconnect();
+  }, [p]), {
+    gridRef: i,
+    orgRef: n,
+    uploadRef: o,
+    docsRef: r,
+    height: a
+  };
+}
+const Wl = ["서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주"],
+  Ll = ["농업·임업·어업", "광업", "제조업", "전기·가스·증기·공기조절 공급업", "수도·하수·폐기물처리·원료재생업", "건설업", "도매·소매업", "운수·창고업", "숙박·음식점업", "정보통신업", "금융·보험업", "부동산업", "전문·과학·기술 서비스업", "사업시설관리·사업지원·임대 서비스업", "공공행정·국방·사회보장행정", "교육 서비스업", "보건업·사회복지 서비스업", "예술·스포츠·여가관련 서비스업", "협회·단체·수리·기타 개인 서비스업", "가구내 고용활동", "국제·외국기관"],
+  ii = {
+    "농업·임업·어업": ["농업", "임업", "어업"],
+    광업: ["석탄·원유·천연가스 광업", "금속 광업", "비금속광물 광업(연료용 제외)", "광업 지원 서비스업"],
+    제조업: ["식료품 제조업", "음료 제조업", "담배 제조업", "섬유제품 제조업(의복 제외)", "의복·의복액세서리·모피제품 제조업", "가죽·가방·신발 제조업", "목재·나무제품 제조업(가구 제외)", "펄프·종이·종이제품 제조업", "인쇄·기록매체 복제업", "코크스·연탄·석유정제품 제조업", "화학물질·화학제품 제조업(의약품 제외)", "의료용 물질·의약품 제조업", "고무·플라스틱제품 제조업", "비금속 광물제품 제조업", "1차 금속 제조업", "금속가공제품 제조업(기계·가구 제외)", "전자부품·컴퓨터·영상·음향·통신장비 제조업", "의료·정밀·광학기기·시계 제조업", "전기장비 제조업", "기타 기계·장비 제조업", "자동차·트레일러 제조업", "기타 운송장비 제조업", "가구 제조업", "기타 제품 제조업", "산업용 기계·장비 수리업"],
+    "전기·가스·증기·공기조절 공급업": ["전기·가스·증기·공기조절 공급업"],
+    "수도·하수·폐기물처리·원료재생업": ["수도업", "하수·폐수·분뇨 처리업", "폐기물 수집·운반·처리·원료재생업", "환경 정화·복원업"],
+    건설업: ["종합 건설업", "전문직별 공사업"],
+    "도매·소매업": ["자동차·부품 판매업", "도매·상품중개업", "소매업(자동차 제외)"],
+    "운수·창고업": ["육상운송·파이프라인 운송업", "수상 운송업", "항공 운송업", "창고·운송관련 서비스업"],
+    "숙박·음식점업": ["숙박업", "음식점·주점업"],
+    정보통신업: ["출판업", "영상·오디오 기록물 제작·배급업", "방송업", "우편·통신업", "컴퓨터 프로그래밍·시스템 통합·관리업", "정보서비스업"],
+    "금융·보험업": ["금융업", "보험·연금업", "금융·보험 관련 서비스업"],
+    부동산업: ["부동산업"],
+    "전문·과학·기술 서비스업": ["연구개발업", "전문서비스업", "건축기술·엔지니어링·과학기술 서비스업", "기타 전문·과학·기술 서비스업"],
+    "사업시설관리·사업지원·임대 서비스업": ["사업시설 관리·조경 서비스업", "사업지원 서비스업", "임대업(부동산 제외)"],
+    "공공행정·국방·사회보장행정": ["공공행정·국방·사회보장행정"],
+    "교육 서비스업": ["교육 서비스업"],
+    "보건업·사회복지 서비스업": ["보건업", "사회복지 서비스업"],
+    "예술·스포츠·여가관련 서비스업": ["창작·예술·여가관련 서비스업", "스포츠·오락관련 서비스업"],
+    "협회·단체·수리·기타 개인 서비스업": ["협회·단체", "수리업", "기타 개인 서비스업"],
+    "가구내 고용활동": ["가구내 고용활동·자가소비 생산활동"],
+    "국제·외국기관": ["국제·외국기관"]
+  },
+  Bl = ["예비창업자", "개인사업자", "법인사업자"],
+  Vl = ["소상공인", "소기업", "중기업", "중견기업", "대기업", "기타"],
+  bo = ["없음(대표자만)", "1~4명", "5~9명", "10~29명", "30~49명", "50~99명", "100~299명", "300명 이상"],
+  yo = ["없음(매출 전)", "1억원 미만", "1~5억원", "5~10억원", "10~30억원", "30~50억원", "50~100억원", "100~300억원", "300억원 이상"],
+  ql = ["없음(내수)", "10만불 미만", "10~100만불", "100~500만불", "500만~1,000만불", "1,000만불 이상"],
+  $l = ["미구축", "기초", "고도화1", "고도화2"],
+  Ns = ["예", "아니오"],
+  Kl = ["남", "여"],
+  Gl = ["단독대표", "공동대표", "각자대표"],
+  _o = ["벤처기업", "이노비즈", "메인비즈", "기업부설연구소", "연구개발전담부서", "여성기업", "장애인기업", "사회적기업", "소셜벤처", "창업기업", "중소기업", "소상공인", "신용평가등급", "데이터바우처 공급기업", "데이터사업자", "ISO", "사업자등록증", "사업자등록증명", "부가가치세과세표준증명", "재무제표", "납세증명서", "4대보험 가입자명부", "주주명부", "법인등기사항증명서", "통장사본", "자격증", "기타"];
+function ve(s) {
+  return s.map(t => ({
+    value: t,
+    label: t
+  }));
+}
+function oi(s, t) {
+  return s.indexOf(t.trim());
+}
+function Hl(s, t) {
+  const i = oi(bo, s),
+    n = oi(yo, t);
+  if (i < 0 && n < 0) return "";
+  const o = i < 0 ? -1 : i <= 2 ? 0 : i <= 4 ? 1 : i <= 6 ? 2 : 3,
+    r = n < 0 ? -1 : n <= 3 ? 0 : n <= 6 ? 1 : n === 7 ? 2 : 3,
+    a = Math.max(o, r);
+  return ["소상공인", "소기업", "중기업", "중견기업"][a] ?? "";
+}
+function So({
+  text: s
+}) {
+  return e.jsx(k, {
+    sx: {
+      py: 4,
+      textAlign: "center",
+      fontSize: 15,
+      color: "text.secondary"
+    },
+    children: s
+  });
+}
+function Oe({
+  columns: s = 3,
+  children: t
+}) {
+  return e.jsx(m, {
+    sx: {
+      display: "grid",
+      gap: 2.5,
+      gridTemplateColumns: {
+        xs: "1fr",
+        sm: "repeat(2, 1fr)",
+        md: `repeat(${s}, 1fr)`
+      }
+    },
+    children: t
+  });
+}
+const Ul = ["사업화", "기술개발", "자금", "시설·공간", "교육·멘토링", "행사·네트워크", "인력", "글로벌·판로", "경영", "기타"],
+  jo = [{
+    code: "C",
+    label: "제조"
+  }, {
+    code: "A",
+    label: "농림어업"
+  }, {
+    code: "I",
+    label: "숙박·음식"
+  }, {
+    code: "J",
+    label: "정보통신"
+  }, {
+    code: "G",
+    label: "도소매"
+  }, {
+    code: "S",
+    label: "기타 서비스"
+  }, {
+    code: "N",
+    label: "사업지원·임대"
+  }, {
+    code: "M",
+    label: "전문·과학기술"
+  }, {
+    code: "H",
+    label: "운수·창고"
+  }, {
+    code: "R",
+    label: "예술·스포츠"
+  }, {
+    code: "P",
+    label: "교육"
+  }, {
+    code: "F",
+    label: "건설"
+  }, {
+    code: "Q",
+    label: "보건·복지"
+  }, {
+    code: "D",
+    label: "전기·가스"
+  }, {
+    code: "E",
+    label: "수도·환경"
+  }, {
+    code: "K",
+    label: "금융·보험"
+  }, {
+    code: "L",
+    label: "부동산"
+  }, {
+    code: "B",
+    label: "광업"
+  }],
+  Yl = [{
+    key: "status",
+    label: "상태",
+    options: ["모집중", "모집마감"],
+    defaultOpen: !0,
+    defaultOption: "모집중"
+  }, {
+    key: "ksic",
+    label: "산업분류",
+    allOption: "전체",
+    multi: !0,
+    options: ["전체", ...jo.map(s => s.label)]
+  }, {
+    key: "field",
+    label: "분야별",
+    options: ["전체", ...Ul],
+    defaultOpen: !0,
+    allOption: "전체"
+  }, {
+    key: "region",
+    label: "지역",
+    allOption: "전체",
+    multi: !0,
+    options: ["전체", "전국", "서울", "부산", "대구", "인천", "전남광주", "대전", "울산", "세종", "경기", "강원", "충북", "충남", "전북", "경북", "경남", "제주"]
+  }, {
+    key: "agency",
+    label: "기관별",
+    options: ["전체", "중앙부처", "지자체", "공공", "민간", "교육"],
+    allOption: "전체"
+  }, {
+    key: "flagship",
+    label: "초격차",
+    allOption: "전체",
+    options: ["전체", "사이버보안·네트워크", "시스템반도체", "바이오·헬스", "미래모빌리티", "빅데이터·AI", "친환경·에너지", "차세대원전", "우주항공·해양", "양자기술", "로봇"]
+  }],
+  Xl = ["ksic", "field", "region", "agency", "flagship"],
+  ri = {
+    ksic: "ksic:",
+    agency: "agency:"
+  };
+function Jl(s, t) {
+  return s === "ksic" ? `${ri.ksic}${jo.find(i => i.label === t)?.code ?? ""}` : `${ri[s] ?? ""}${t}`;
+}
+const ai = {
+  ksic: "orgCompany.interestGroupKsic",
+  field: "orgCompany.interestGroupField",
+  region: "orgCompany.interestGroupRegion",
+  agency: "orgCompany.interestGroupAgency",
+  flagship: "orgCompany.interestGroupFlagship"
+};
+function Ql(s = c) {
+  return Xl.flatMap(t => {
+    const i = Yl.find(n => n.key === t);
+    return i ? [{
+      label: ai[t] ? s(ai[t]) : i.label.replace(/별$/, ""),
+      options: i.options.filter(n => n !== i.allOption).map(n => ({
+        value: Jl(t, n),
+        label: n
+      }))
+    }] : [];
+  });
+}
+function Ps(s) {
+  const t = Ql(),
+    i = new Set(t.flatMap(o => o.options.map(r => r.value))),
+    n = s.filter(o => !i.has(o));
+  return [...t, ...(n.length > 0 ? [{
+    label: c("settings.otherGroup"),
+    options: n.map(o => ({
+      value: o,
+      label: o
+    }))
+  }] : [])];
+}
+const Zl = {
+  jpg: "image/jpeg",
+  jpeg: "image/jpeg",
+  png: "image/png",
+  webp: "image/webp",
+  heic: "image/heic",
+  heif: "image/heif",
+  pdf: "application/pdf"
+};
+function rs(s, t) {
+  const i = t.includes(".") ? (t.split(".").pop() ?? "").toLowerCase() : "",
+    n = Zl[i] ?? "application/octet-stream";
+  return {
+    blob: new Blob([s], {
+      type: n
+    }),
+    mimeType: n,
+    name: t,
+    table_name: "company",
+    uuid: "",
+    seq: 0,
+    user_seq: 0,
+    user_name: "",
+    size: s.size,
+    created_time: ""
+  };
+}
+const ec = {
+    careers: "settings.extraCareers",
+    achievements: "settings.extraAchievements",
+    fundings: "settings.extraFundings",
+    licenses: "settings.extraLicenses"
+  },
+  wo = {
+    business: "settings.sectionBusiness",
+    interest: "settings.sectionInterest",
+    certifications: "settings.sectionCertifications",
+    licenses: "settings.sectionLicenses",
+    credits: "settings.sectionCredits",
+    patents: "settings.sectionPatents",
+    achievements: "settings.sectionAchievements",
+    careers: "settings.sectionCareers",
+    fundings: "settings.sectionFundings",
+    shareholders: "settings.sectionShareholders",
+    bank_accounts: "settings.sectionBankAccounts"
+  },
+  vo = ["certifications", "licenses", "credits", "patents", "achievements", "careers", "fundings", "shareholders", "bank_accounts"];
+function tc(s) {
+  return s !== "business" && s !== "interest";
+}
+const li = {
+    사업자등록증: "registration",
+    사업자등록증명: "registration",
+    부가가치세과세표준증명: "revenue",
+    재무제표: "revenue",
+    "4대보험 가입자명부": "employee",
+    주주명부: "shareholders"
+  },
+  sc = {
+    company_name: "settings.bizCompanyName",
+    ceo_name: "settings.bizCeoName",
+    tax_id: "settings.bizTaxId",
+    corp_no: "settings.bizCorpNo",
+    establish_date: "settings.bizEstablishDate",
+    biz_type: "settings.bizBizType",
+    industry: "settings.bizIndustry",
+    addr1: "settings.bizAddr1",
+    founded_date: "settings.bizFoundedDate",
+    region: "settings.bizRegion",
+    ksic: "settings.bizKsic",
+    ksic_division: "settings.bizKsicDivision",
+    corp_type: "settings.bizCorpType",
+    biz_scale: "settings.bizBizScale",
+    ceo_gender: "settings.bizCeoGender",
+    ceo_type: "settings.bizCeoType",
+    revenue_band: "settings.bizRevenueBand",
+    employee_count: "settings.bizEmployeeCount",
+    employee_band: "settings.bizEmployeeBand",
+    employment_insurance: "settings.bizEmploymentInsurance"
+  };
+function tt(s) {
+  return `${s}-${Date.now()}-${Math.floor(Math.random() * 1e3)}`;
+}
+function nc(s) {
+  switch (s) {
+    case "certifications":
+      return {
+        id: tt("cert"),
+        kind: "",
+        name: "",
+        agency: "",
+        number: "",
+        issued_date: "",
+        expire_date: "",
+        base_date: "",
+        detail: "",
+        file_uuid: "",
+        file_name: "",
+        file_size: ""
+      };
+    case "licenses":
+      return {
+        id: tt("license"),
+        name: "",
+        agency: "",
+        number: "",
+        issued_date: "",
+        expire_date: ""
+      };
+    case "credits":
+      return {
+        id: tt("credit"),
+        grade: "",
+        agency: "",
+        rated_date: "",
+        expire_date: ""
+      };
+    case "patents":
+      return {
+        id: tt("patent"),
+        title: "",
+        kind: "",
+        number: "",
+        applied_date: "",
+        registered_date: "",
+        status: "",
+        file_uuid: "",
+        file_name: "",
+        file_size: ""
+      };
+    case "achievements":
+      return {
+        id: tt("achv"),
+        year: "",
+        title: "",
+        description: ""
+      };
+    case "careers":
+      return {
+        id: tt("career"),
+        period: "",
+        organization: "",
+        position: "",
+        description: ""
+      };
+    case "fundings":
+      return {
+        id: tt("fund"),
+        round: "",
+        investor: "",
+        amount: "",
+        funded_date: "",
+        note: ""
+      };
+    case "shareholders":
+      return {
+        id: tt("holder"),
+        name: "",
+        shares: "",
+        ratio: "",
+        note: ""
+      };
+    case "bank_accounts":
+      return {
+        id: tt("bank"),
+        bank: "",
+        account_no: "",
+        holder: "",
+        account_type: "",
+        note: "",
+        file_uuid: "",
+        file_name: "",
+        file_size: ""
+      };
+  }
+}
+let ci = 0;
+function wn() {
+  return ci += 1, `r${ci}`;
+}
+function dn(s) {
+  const t = {},
+    i = {};
+  for (const n of vo) {
+    const o = s[n],
+      r = o.map(() => wn());
+    t[n] = r, i[n] = Object.fromEntries(o.map((a, d) => [r[d], {
+      ...a
+    }]));
+  }
+  return {
+    business: {
+      ...s.business
+    },
+    interest: {
+      ...s.interest
+    },
+    rowIds: t,
+    rows: i,
+    docSearch: ""
+  };
+}
+function Ue(s, t) {
+  const i = s.rows?.[t] ?? {};
+  return (s.rowIds?.[t] ?? []).map(n => i[n]).filter(n => !!n);
+}
+function un(s) {
+  return Object.entries(s).every(([t, i]) => t === "id" || !String(i ?? "").trim());
+}
+function Lt(s, t) {
+  return {
+    seq: t,
+    business: s.business,
+    interest: s.interest,
+    certifications: Ue(s, "certifications").filter(i => !un(i)),
+    licenses: Ue(s, "licenses"),
+    credits: Ue(s, "credits"),
+    patents: Ue(s, "patents"),
+    achievements: Ue(s, "achievements"),
+    careers: Ue(s, "careers"),
+    fundings: Ue(s, "fundings"),
+    shareholders: Ue(s, "shareholders"),
+    bank_accounts: Ue(s, "bank_accounts")
+  };
+}
+const ic = dn(Ta());
+function oc(s, t, i) {
+  const n = [],
+    o = {
+      ...s.rowIds
+    };
+  let r = !1;
+  for (const a of ["business", "interest"]) {
+    const {
+      patch: d
+    } = nn(s[a], t[a], i[a]);
+    for (const [l, u] of Object.entries(d)) n.push([`${a}.${l}`, u]);
+  }
+  for (const a of vo) {
+    const d = s.rowIds?.[a] ?? [],
+      l = s.rows?.[a] ?? {},
+      u = new Map();
+    for (const I of d) {
+      const _ = String(l[I]?.id ?? "");
+      _ && u.set(_, I);
+    }
+    const p = new Map(t[a].map(I => [String(I.id ?? ""), I])),
+      x = i[a],
+      h = new Set(x.map(I => String(I.id ?? "")));
+    let g = [...d],
+      F = !1;
+    for (const I of x) {
+      const _ = String(I.id ?? "");
+      if (!_) continue;
+      const v = u.get(_);
+      if (v) {
+        const C = l[v],
+          w = p.get(_) ?? l[v],
+          {
+            patch: E
+          } = nn(C, w, I);
+        for (const [A, S] of Object.entries(E)) n.push([`rows.${a}.${v}.${A}`, S]);
+      } else if (!p.has(_)) {
+        const C = wn();
+        n.push([`rows.${a}.${C}`, {
+          ...I
+        }]), g.push(C), F = !0;
+      }
+    }
+    for (const I of d) {
+      const _ = String(l[I]?.id ?? "");
+      if (!_ || h.has(_)) continue;
+      const v = p.get(_);
+      v && JSON.stringify(l[I]) === JSON.stringify(v) && (g = g.filter(C => C !== I), F = !0);
+    }
+    F && (o[a] = g, r = !0);
+  }
+  return r && n.push(["rowIds", o]), n;
+}
+function rc(s = {}) {
+  const t = {
+      form: de({
+        modalId: "settings-company-info-dialog",
+        onClose: s.onClosed
+      }),
+      doc: de({
+        modalId: "settings-company-doc-dialog",
+        onClose: s.onClosed
+      })
+    },
+    [i, n] = b.useState(""),
+    o = Pa(),
+    [r, a] = b.useState("business"),
+    [d, l] = b.useState(!1),
+    u = b.useRef(0),
+    p = q => {
+      u.current = q;
+    },
+    [x, h] = b.useState(null),
+    [g, F] = b.useState(!1),
+    [I, _] = b.useState(!1),
+    [v, C] = b.useState(!1),
+    [w, E] = b.useState([]),
+    [A, S] = b.useState(""),
+    [L, j] = b.useState(() => Ps([])),
+    y = b.useRef(0),
+    D = b.useRef(0),
+    M = b.useRef(null),
+    z = q => {
+      const P = D.current;
+      M.current = structuredClone(q), Yn(P, structuredClone({
+        ...q,
+        registration_file: As(P)?.registration_file ?? null
+      }));
+    },
+    O = q => {
+      h(q);
+      const P = As(D.current);
+      P && Yn(D.current, {
+        ...P,
+        registration_file: q
+      });
+    },
+    T = je({
+      formId: "settings-company-info-form",
+      initialValues: ic,
+      onSubmit: async q => {
+        try {
+          const P = Lt(q, u.current);
+          return p(await Je.save(P)), z({
+            ...P,
+            seq: u.current
+          }), Hn(), Un(), _e({
+            message: c("settings.sectionSaved", {
+              section: c(wo[r])
+            }),
+            delay: 500
+          }), t.form.close(), !0;
+        } catch (P) {
+          return K(P instanceof Error ? P.message : c("settings.saveFailedGeneric")), !1;
+        }
+      }
+    }),
+    $ = b.useRef({
+      saved: "",
+      promise: null,
+      again: !1
+    }),
+    [, ee] = b.useState(0),
+    te = () => {
+      const q = T.getFormValues();
+      return Ue(q, "certifications").some(un) ? !0 : JSON.stringify(Lt(q, 0)) !== $.current.saved;
+    },
+    Q = (q = !1) => {
+      const P = $.current;
+      return P.promise ? (P.again = !0, P.promise) : (P.promise = (async () => {
+        try {
+          do {
+            P.again = !1;
+            const Y = Lt(T.getFormValues(), u.current),
+              ue = JSON.stringify({
+                ...Y,
+                seq: 0
+              });
+            ue !== P.saved && (p(await Je.save(Y)), P.saved = ue, z({
+              ...Y,
+              seq: u.current
+            }), Hn(), Un(), q && _e({
+              message: c("settings.saved"),
+              delay: 500
+            }));
+          } while (P.again);
+        } catch (Y) {
+          K(Y instanceof Error ? Y.message : c("settings.saveFailedGeneric"));
+        } finally {
+          P.promise = null, ee(Y => Y + 1);
+        }
+      })(), P.promise);
+    },
+    U = (q, P) => {
+      const Y = dn(structuredClone(P));
+      T.setFormValues(Y), D.current = q, M.current = structuredClone(P), $.current.saved = JSON.stringify(Lt(Y, 0)), p(P.seq), h(P.registration_file ?? null), j(Ps(P.interest.fields));
+    },
+    pe = () => {
+      const q = Nn()?.seq ?? 0,
+        P = As(q);
+      return P ? (++y.current, l(!1), U(q, P), !0) : !1;
+    },
+    be = () => {
+      if (pe()) return Promise.resolve(!0);
+      const q = ++y.current,
+        P = Nn()?.seq ?? 0;
+      return l(!0), Oa(P).then(Y => q !== y.current ? !1 : (U(P, Y), !0)).catch(Y => (K(Y instanceof Error ? Y.message : c("settings.companyInfoLoadFailed")), !1)).finally(() => {
+        q === y.current && l(!1);
+      });
+    },
+    ke = b.useRef(!1);
+  ke.current = t.form.isOpen || t.doc.isOpen, b.useEffect(() => Ia((q, P) => {
+    const Y = M.current;
+    if (!(!ke.current || !Y || q !== D.current)) {
+      for (const [ue, Fe] of oc(T.getFormValues(), Y, P)) T.setFormValue(ue, Fe);
+      M.current = structuredClone(P), u.current || p(P.seq), h(P.registration_file ?? null), $.current.saved = JSON.stringify(Lt(dn(P), 0)), ee(ue => ue + 1), j(Ps(T.getFormValues().interest?.fields ?? []));
+    }
+  }), []);
+  const H = async q => {
+      a(q), v || E([]), await be(), t.form.open();
+    },
+    Z = q => {
+      const P = () => {
+        const Y = T.getFormValues(),
+          ue = (Y.rowIds?.certifications ?? []).find(Fe => String(Y.rows?.certifications?.[Fe]?.id ?? "") === q);
+        n(ue ?? "");
+      };
+      if (a("certifications"), n(""), pe()) {
+        P(), t.doc.open();
+        return;
+      }
+      be().then(Y => {
+        Y && P(), t.doc.open();
+      });
+    },
+    se = async q => {
+      if (!g) {
+        F(!0);
+        try {
+          const P = await Je.extractRegistration(q);
+          if (P.file && O(P.file), P.extractError) {
+            K(P.extractError);
+            return;
+          }
+          const Y = Object.entries(P.fields);
+          for (const [ue, Fe] of Y) T.setFormValue(`business.${ue}`, Fe);
+          if (Y.length === 0) {
+            K(c("settings.registrationNothingRead"));
+            return;
+          }
+          _e(c("settings.registrationFilled", {
+            count: Y.length
+          }));
+        } catch (P) {
+          K(P instanceof Error ? P.message : c("settings.registrationReadFailed"));
+        } finally {
+          F(!1);
+        }
+      }
+    },
+    fe = async () => {
+      if (x) try {
+        const q = await Je.downloadRegistration();
+        o.open(rs(q, x.name));
+      } catch (q) {
+        K(q instanceof Error ? q.message : c("settings.registrationOpenFailed"));
+      }
+    },
+    Me = async () => {
+      if (!(!x || !(await Ae({
+        title: c("settings.deleteRegistration"),
+        message: c("settings.deleteFileConfirm", {
+          name: x.name
+        }),
+        confirmText: c("settings.delete"),
+        cancelText: c("settings.cancel")
+      })))) try {
+        await Je.deleteRegistration(), O(null);
+      } catch (P) {
+        K(P instanceof Error ? P.message : c("settings.registrationDeleteFailed"));
+      }
+    },
+    f = (q, P = {}) => {
+      const Y = wn();
+      return T.setFormValue(`rows.${q}.${Y}`, {
+        ...nc(q),
+        ...P
+      }), T.setFormValue(`rowIds.${q}`, [...(T.getFormValue(`rowIds.${q}`) ?? []), Y]), Y;
+    },
+    R = async q => {
+      if (!I) {
+        _(!0);
+        try {
+          const P = await Je.extractPatent(q),
+            Y = P.file ? {
+              file_uuid: P.file.uuid,
+              file_name: P.file.name,
+              file_size: String(P.file.size)
+            } : {},
+            ue = Object.entries(P.fields);
+          if (S(f("patents", {
+            ...P.fields,
+            ...Y
+          })), P.extractError) {
+            K(P.extractError);
+            return;
+          }
+          if (ue.length === 0) {
+            K(c("settings.patentNothingRead"));
+            return;
+          }
+          _e(c("settings.patentFilled", {
+            count: ue.length
+          }));
+        } catch (P) {
+          K(P instanceof Error ? P.message : c("settings.patentReadFailed"));
+        } finally {
+          _(!1);
+        }
+      }
+    },
+    V = async q => {
+      const P = String(T.getFormValue(`rows.patents.${q}.file_uuid`) ?? "");
+      if (P) try {
+        const Y = String(T.getFormValue(`rows.patents.${q}.file_name`) ?? "") || c("settings.patentDoc");
+        o.open(rs(await Je.downloadPatentFile(P), Y));
+      } catch (Y) {
+        K(Y instanceof Error ? Y.message : c("settings.patentOpenFailed"));
+      }
+    },
+    N = q => {
+      for (const P of ["file_uuid", "file_name", "file_size"]) T.setFormValue(`rows.patents.${q}.${P}`, "");
+    },
+    G = (q, P) => {
+      const Y = li[q];
+      if (!Y || !P) return "";
+      let ue = "";
+      for (const Fe of Ue(T.getFormValues(), "certifications")) {
+        if (li[Fe.kind] !== Y) continue;
+        const ne = Fe.base_date || Fe.issued_date;
+        ne > P && ne > ue && (ue = ne);
+      }
+      return ue;
+    },
+    xe = async q => {
+      if (v || q.length === 0) return;
+      C(!0);
+      const P = q.map(ue => ({
+          file: ue,
+          id: tt("up")
+        })),
+        Y = (ue, Fe) => E(ne => ne.map(yt => yt.id === ue ? {
+          ...yt,
+          ...Fe
+        } : yt));
+      E(ue => [...P.map(({
+        file: Fe,
+        id: ne
+      }) => ({
+        id: ne,
+        fileName: Fe.name,
+        status: "reading",
+        title: "",
+        updates: [],
+        note: ""
+      })), ...ue]);
+      try {
+        for (const {
+          file: ue,
+          id: Fe
+        } of P) try {
+          const [ne] = await Je.extractDocuments([ue]);
+          if (!ne || !ne.file) {
+            Y(Fe, {
+              status: "error",
+              note: ne?.error || c("settings.fileSaveFailed")
+            });
+            continue;
+          }
+          const yt = {
+              file_uuid: ne.file.uuid,
+              file_name: ne.file.name,
+              file_size: String(ne.file.size)
+            },
+            ts = ne.target === "patent",
+            ss = ts ? "" : G(ne.fields.kind ?? "", ne.fields.base_date ?? "");
+          f(ts ? "patents" : "certifications", {
+            ...ne.fields,
+            ...yt
+          });
+          const _t = [],
+            On = (Ce, Ve) => {
+              for (const [Xe, Pe] of Object.entries(Ce)) {
+                if (!Pe) continue;
+                const qe = String(T.getFormValue(`business.${Xe}`) ?? "").trim();
+                if (qe === Pe || qe && !Ve) continue;
+                T.setFormValue(`business.${Xe}`, Pe);
+                const Tn = sc[Xe],
+                  En = Tn ? c(Tn) : Xe;
+                _t.includes(En) || _t.push(En);
+              }
+            };
+          if (ne.bank) {
+            const Ce = Pe => Pe.replace(/\D/g, ""),
+              Ve = T.getFormValues(),
+              Xe = (Ve.rowIds?.bank_accounts ?? []).find(Pe => Ce(Ve.rows?.bank_accounts?.[Pe]?.account_no ?? "") === Ce(ne.bank?.account_no ?? ""));
+            if (!Xe) f("bank_accounts", {
+              ...ne.bank,
+              ...yt
+            }), _t.push(c("settings.sectionBankAccounts"));else if (!Ve.rows.bank_accounts[Xe].file_uuid) for (const [Pe, qe] of Object.entries(yt)) T.setFormValue(`rows.bank_accounts.${Xe}.${Pe}`, qe);
+          }
+          if (ne.extra) {
+            const Ce = ne.extra,
+              Ve = T.getFormValues();
+            Ce.card === "licenses" && (Ve.rowIds?.licenses ?? []).some(Pe => {
+              const qe = Ve.rows?.licenses?.[Pe];
+              return qe?.name === Ce.row.name && (qe?.number ?? "") === (Ce.row.number ?? "");
+            }) || (f(Ce.card, Ce.row), _t.push(c(ec[Ce.card])));
+          }
+          if (ne.credit) {
+            const Ce = ne.credit,
+              Ve = T.getFormValues();
+            (Ve.rowIds?.credits ?? []).some(Pe => {
+              const qe = Ve.rows?.credits?.[Pe];
+              return qe?.grade === Ce.grade && qe?.agency === Ce.agency && qe?.rated_date === Ce.rated_date;
+            }) || (f("credits", Ce), _t.push(c("settings.sectionCredits")));
+          }
+          if (ne.shareholders.length > 0 && !ss) {
+            T.setFormValue("rowIds.shareholders", []);
+            for (const Ce of ne.shareholders) f("shareholders", Ce);
+            _t.push(c("settings.sectionShareholders"));
+          }
+          ss || On(ne.businessUpdate, !0), On(ne.business, !1);
+          const Lo = ss && (Object.keys(ne.businessUpdate).length > 0 || ne.shareholders.length > 0);
+          await Q();
+          const Is = ne.fields;
+          Y(Fe, {
+            status: ne.error ? "error" : "done",
+            title: ts ? Is.title || c("settings.patentDoc") : Is.name || Is.kind || "",
+            updates: _t,
+            note: ne.error || (ts ? c("settings.uploadNotePatent") : Lo ? c("settings.uploadNoteSkipped", {
+              date: ss
+            }) : Object.keys(ne.fields).length > 0 ? c("settings.uploadNoteSaved") : c("settings.uploadNoteUnknown"))
+          });
+        } catch (ne) {
+          Y(Fe, {
+            status: "error",
+            note: ne instanceof Error ? ne.message : c("settings.docUploadFailed")
+          });
+        }
+      } finally {
+        C(!1);
+      }
+    },
+    Ye = async q => {
+      if (!(v || q.length === 0)) {
+        if (C(!0), !(await be())) {
+          C(!1);
+          return;
+        }
+        await xe(q);
+      }
+    },
+    W = async q => {
+      const P = String(T.getFormValue(`rows.certifications.${q}.file_uuid`) ?? "");
+      if (P) try {
+        const Y = String(T.getFormValue(`rows.certifications.${q}.file_name`) ?? "") || c("settings.doc");
+        o.open(rs(await Je.downloadDocFile(P), Y));
+      } catch (Y) {
+        K(Y instanceof Error ? Y.message : c("settings.docOpenFailed"));
+      }
+    },
+    ce = async q => {
+      const P = String(T.getFormValue(`rows.certifications.${q}.file_name`) ?? "") || c("settings.doc");
+      if (await Ae({
+        title: c("settings.deleteAttachment"),
+        message: c("settings.deleteFileConfirm", {
+          name: P
+        }),
+        confirmText: c("settings.delete"),
+        cancelText: c("settings.cancel")
+      })) {
+        for (const ue of ["file_uuid", "file_name", "file_size"]) T.setFormValue(`rows.certifications.${q}.${ue}`, "");
+        await Q();
+      }
+    },
+    Re = (q, P) => {
+      const Y = T.getFormValue(`rowIds.${q}`) ?? [];
+      T.setFormValue(`rowIds.${q}`, Y.filter(ue => ue !== P));
+    };
+  return {
+    form: T,
+    modals: t,
+    section: r,
+    loading: d,
+    extracting: g,
+    extractingPatent: I,
+    focusRowKey: A,
+    registrationFile: x,
+    interestOptionGroups: L,
+    openDialog: H,
+    openDoc: Z,
+    docKey: i,
+    addRow: f,
+    removeRow: Re,
+    extractFromRegistration: se,
+    viewRegistration: fe,
+    deleteRegistration: Me,
+    extractFromPatent: R,
+    viewPatentFile: V,
+    removePatentFile: N,
+    extractingDocs: v,
+    docUploads: w,
+    uploadDocuments: xe,
+    uploadDocumentsFromPage: Ye,
+    viewDocFile: W,
+    removeDocFile: ce,
+    deleteDocRow: async q => {
+      const P = T.getFormValue(`rows.certifications.${q}`);
+      P && !un(P) && !(await Ae({
+        title: c("settings.deleteDoc"),
+        message: c("settings.deleteNamedConfirm", {
+          name: P.name || P.file_name || c("settings.doc")
+        }),
+        confirmText: c("settings.delete"),
+        cancelText: c("settings.cancel")
+      })) || (Re("certifications", q), await Q());
+    },
+    viewBankFile: async q => {
+      const P = String(T.getFormValue(`rows.bank_accounts.${q}.file_uuid`) ?? "");
+      if (P) try {
+        const Y = String(T.getFormValue(`rows.bank_accounts.${q}.file_name`) ?? "") || c("settings.bankbookCopy");
+        o.open(rs(await Je.downloadDocFile(P), Y));
+      } catch (Y) {
+        K(Y instanceof Error ? Y.message : c("settings.bankbookOpenFailed"));
+      }
+    },
+    removeBankFile: q => {
+      for (const P of ["file_uuid", "file_name", "file_size"]) T.setFormValue(`rows.bank_accounts.${q}.${P}`, "");
+    },
+    saveDocsNow: Q,
+    isDocsDirty: te
+  };
+}
+const Cs = {
+    maxWidth: "100%",
+    height: "auto",
+    minHeight: 36,
+    fontSize: 14,
+    px: .75,
+    "& .MuiChip-label": {
+      px: 1.25,
+      py: .75,
+      whiteSpace: "normal",
+      wordBreak: "keep-all",
+      overflowWrap: "anywhere",
+      lineHeight: 1.5
+    },
+    "& .MuiChip-deleteIcon": {
+      fontSize: 20,
+      mr: .25
+    }
+  },
+  Fs = "outlined",
+  ko = [["name", "settings.docName"], ["agency", "settings.docAgency"], ["number", "settings.docNumber"], ["issued_date", "settings.docIssuedDate"], ["expire_date", "settings.docExpireDate"], ["base_date", "settings.docBaseDate"]],
+  ac = 60;
+function lc(s) {
+  const t = Date.parse(s.slice(0, 10));
+  if (!s || Number.isNaN(t)) return null;
+  const i = Math.floor((t - Date.now()) / 864e5) + 1;
+  return i < 0 ? "error" : i <= ac ? "warning" : null;
+}
+function cc({
+  controller: s,
+  rowKey: t,
+  open: i,
+  onToggle: n,
+  disabled: o
+}) {
+  const r = J(),
+    {
+      form: a
+    } = s,
+    d = b.useRef(null),
+    l = S => `rows.certifications.${t}.${S}`,
+    u = String(a.useFormValue(l("name")) ?? ""),
+    p = String(a.useFormValue(l("kind")) ?? ""),
+    x = String(a.useFormValue(l("expire_date")) ?? ""),
+    h = String(a.useFormValue(l("file_uuid")) ?? ""),
+    g = String(a.useFormValue(l("file_name")) ?? ""),
+    F = Number(a.useFormValue(l("file_size")) ?? 0) || 0,
+    I = lc(x),
+    _ = String(a.useFormValue(l("agency")) ?? ""),
+    v = String(a.useFormValue(l("number")) ?? ""),
+    C = String(a.useFormValue(l("detail")) ?? ""),
+    w = String(a.useFormValue("docSearch") ?? "").trim().toLowerCase(),
+    E = !!w && !i && ![u, p, _, v, C, g].some(S => S.toLowerCase().includes(w)),
+    A = [p && p !== u ? p : "", x ? r(I === "error" ? "settings.expiredOn" : "settings.expiresOn", {
+      date: x
+    }) : ""].filter(Boolean).join(" · ");
+  return E ? null : e.jsxs(m, {
+    ref: d,
+    sx: {
+      borderBottom: 1,
+      borderColor: "divider",
+      minWidth: 0,
+      scrollMarginTop: 96
+    },
+    children: [e.jsxs(Ft, {
+      onClick: n,
+      "aria-expanded": i,
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        gap: 1.5,
+        width: "100%",
+        px: 1,
+        py: 1.25,
+        minHeight: 56,
+        textAlign: "left",
+        bgcolor: i ? "action.hover" : "transparent"
+      },
+      children: [e.jsx(tr, {
+        sx: {
+          color: "text.secondary",
+          flexShrink: 0
+        }
+      }), e.jsxs(m, {
+        sx: {
+          flex: 1,
+          minWidth: 0
+        },
+        children: [e.jsx(k, {
+          noWrap: !0,
+          sx: {
+            fontSize: 15,
+            fontWeight: 500
+          },
+          children: u || g || r("settings.newDoc")
+        }), A && e.jsx(k, {
+          noWrap: !0,
+          sx: {
+            fontSize: 14,
+            color: I ? `${I}.main` : "text.secondary"
+          },
+          children: A
+        })]
+      }), e.jsx(hn, {
+        sx: {
+          color: "text.secondary",
+          flexShrink: 0,
+          transition: "transform 0.2s",
+          transform: i ? "rotate(90deg)" : "none"
+        }
+      })]
+    }), e.jsx(Xi, {
+      in: i,
+      mountOnEnter: !0,
+      onEntered: () => d.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      }),
+      children: e.jsxs(m, {
+        sx: {
+          px: 1,
+          pt: 2.5,
+          pb: 3
+        },
+        children: [e.jsxs(Oe, {
+          columns: 2,
+          children: [e.jsx(ae, {
+            form: a,
+            name: l("kind"),
+            label: r("settings.docKind"),
+            options: ve(_o),
+            fullWidth: !0
+          }), ko.map(([S, L]) => S.endsWith("_date") ? e.jsx(Be, {
+            form: a,
+            name: l(S),
+            label: r(L),
+            fullWidth: !0
+          }, S) : e.jsx(re, {
+            form: a,
+            name: l(S),
+            label: r(L),
+            fullWidth: !0
+          }, S))]
+        }), e.jsx(m, {
+          sx: {
+            mt: 2.5
+          },
+          children: e.jsx(ft, {
+            form: a,
+            name: l("detail"),
+            label: r("settings.docDetail"),
+            minRows: 2,
+            fullWidth: !0
+          })
+        }), e.jsxs(m, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: 1,
+            mt: 2
+          },
+          children: [h && e.jsx(we, {
+            icon: e.jsx(ws, {
+              sx: {
+                fontSize: 18
+              }
+            }),
+            label: `${g || r("settings.doc")} (${ks(F)})`,
+            size: "small",
+            variant: Fs,
+            onClick: () => {
+              s.viewDocFile(t);
+            },
+            onDelete: () => {
+              s.removeDocFile(t);
+            },
+            sx: Cs
+          }), e.jsx(B, {
+            color: "error",
+            size: "small",
+            startIcon: e.jsx(Qt, {}),
+            onClick: () => {
+              s.deleteDocRow(t);
+            },
+            disabled: o,
+            sx: {
+              ml: "auto"
+            },
+            children: r("settings.delete")
+          })]
+        })]
+      })
+    })]
+  });
+}
+const Co = {
+  position: "sticky",
+  top: 0,
+  zIndex: 2,
+  bgcolor: "background.paper",
+  mx: -.5,
+  px: .5,
+  mt: -1.5,
+  pt: 1.5,
+  pb: 2
+};
+function dc({
+  item: s
+}) {
+  const t = J();
+  return e.jsxs(m, {
+    sx: {
+      display: "flex",
+      alignItems: "flex-start",
+      gap: 1.5,
+      px: 1,
+      py: 1.5,
+      borderBottom: 1,
+      borderColor: "divider",
+      minWidth: 0
+    },
+    children: [e.jsx(m, {
+      sx: {
+        width: 24,
+        height: 24,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexShrink: 0
+      },
+      children: s.status === "reading" ? e.jsx(ye, {
+        size: 18
+      }) : s.status === "done" ? e.jsx(It, {
+        sx: {
+          color: "success.main"
+        }
+      }) : e.jsx(xo, {
+        sx: {
+          color: "error.main"
+        }
+      })
+    }), e.jsxs(m, {
+      sx: {
+        flex: 1,
+        minWidth: 0
+      },
+      children: [e.jsx(k, {
+        noWrap: !0,
+        sx: {
+          fontSize: 15,
+          fontWeight: 500
+        },
+        children: s.title || s.fileName
+      }), e.jsx(k, {
+        sx: {
+          fontSize: 14,
+          color: s.status === "error" ? "error.main" : "text.secondary",
+          wordBreak: "keep-all"
+        },
+        children: s.status === "reading" ? t("settings.reading") : [s.title ? s.fileName : "", s.note].filter(Boolean).join(" · ")
+      }), s.updates.length > 0 && e.jsx(k, {
+        sx: {
+          mt: .25,
+          fontSize: 14,
+          color: "primary.main",
+          wordBreak: "keep-all"
+        },
+        children: t("settings.updatedFields", {
+          fields: s.updates.join(", ")
+        })
+      })]
+    })]
+  });
+}
+function uc({
+  controller: s,
+  placement: t = "dialog",
+  zoneHeight: i = null
+}) {
+  const n = J(),
+    o = me(),
+    {
+      form: r,
+      extractingDocs: a,
+      docUploads: d
+    } = s,
+    l = d.filter(_ => _.status !== "reading"),
+    u = t === "page",
+    p = i !== null,
+    x = a || r.isSubmitting,
+    h = _ => {
+      u ? s.uploadDocumentsFromPage(_) : s.uploadDocuments(_);
+    },
+    g = b.useRef(null),
+    [F, I] = b.useState(!1);
+  return e.jsxs(m, {
+    children: [e.jsxs(m, {
+      sx: u ? void 0 : Co,
+      children: [e.jsxs(Ft, {
+        component: "div",
+        role: "button",
+        "aria-label": n("settings.uploadDocs"),
+        disabled: x,
+        onClick: () => g.current?.click(),
+        onDragOver: _ => {
+          _.preventDefault(), x || I(!0);
+        },
+        onDragLeave: () => I(!1),
+        onDrop: _ => {
+          if (_.preventDefault(), I(!1), x) return;
+          const v = Array.from(_.dataTransfer?.files ?? []);
+          v.length > 0 && h(v);
+        },
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: p ? .5 : .75,
+          width: "100%",
+          minHeight: p ? 0 : u ? {
+            xs: 128,
+            sm: 160
+          } : {
+            xs: 128,
+            sm: 300
+          },
+          ...(p ? {
+            height: i,
+            boxSizing: "border-box",
+            overflow: "hidden"
+          } : null),
+          px: 2,
+          py: p ? 1 : 3,
+          border: "2px dashed",
+          borderColor: _ => F ? _.palette.primary.main : xt(_.palette.primary.main, .45),
+          borderRadius: u ? 2 : 1.5,
+          bgcolor: F ? "action.hover" : u ? "background.paper" : "transparent",
+          color: "primary.main",
+          textAlign: "center",
+          transition: "border-color 0.15s, background-color 0.15s",
+          "&:hover": {
+            borderColor: "primary.main"
+          },
+          "&.Mui-disabled": {
+            color: "text.disabled"
+          }
+        },
+        children: [a ? e.jsx(ye, {
+          size: p ? 26 : 32
+        }) : e.jsx(on, {
+          sx: {
+            fontSize: p ? 32 : 40
+          }
+        }), e.jsx(k, {
+          sx: {
+            fontSize: p ? 17 : {
+              xs: 16,
+              sm: 18
+            },
+            fontWeight: 600,
+            lineHeight: p ? 1.35 : void 0
+          },
+          children: n(a ? "settings.readingDocs" : F ? "settings.dropHere" : o ? "settings.tapToUploadDocs" : "settings.dragOrClickDocs")
+        }), e.jsx(k, {
+          sx: {
+            fontSize: p ? 14 : {
+              xs: 14,
+              sm: 15
+            },
+            lineHeight: p ? 1.35 : void 0,
+            color: "text.secondary",
+            wordBreak: "keep-all"
+          },
+          children: n(p ? "settings.docsAutoSortShort" : "settings.docsAutoSort")
+        })]
+      }), e.jsx("input", {
+        ref: g,
+        type: "file",
+        accept: "image/*,application/pdf",
+        multiple: !0,
+        hidden: !0,
+        onChange: _ => {
+          const v = Array.from(_.target.files ?? []);
+          _.target.value = "", v.length > 0 && h(v);
+        }
+      })]
+    }), l.length > 0 && e.jsx(m, {
+      sx: u ? {
+        mt: 1.5,
+        bgcolor: "background.paper",
+        borderRadius: 2,
+        overflow: "hidden"
+      } : {
+        borderTop: 1,
+        borderColor: "divider"
+      },
+      children: l.map(_ => e.jsx(dc, {
+        item: _
+      }, _.id))
+    })]
+  });
+}
+function mc({
+  controller: s,
+  openKey: t,
+  onOpenKeyChange: i
+}) {
+  const n = J(),
+    {
+      form: o,
+      extractingDocs: r
+    } = s,
+    a = r || o.isSubmitting,
+    d = o.useFormValue("rowIds.certifications") ?? [];
+  return d.length === 0 ? e.jsx(So, {
+    text: n("settings.noDocs")
+  }) : e.jsxs(m, {
+    children: [e.jsx(m, {
+      sx: Co,
+      children: e.jsx(re, {
+        form: o,
+        name: "docSearch",
+        label: n("settings.searchDocs"),
+        fullWidth: !0
+      })
+    }), e.jsx(m, {
+      sx: {
+        borderTop: 1,
+        borderColor: "divider"
+      },
+      children: d.map(l => e.jsx(cc, {
+        controller: s,
+        rowKey: l,
+        open: t === l,
+        onToggle: () => i(t === l ? "" : l),
+        disabled: a
+      }, l))
+    })]
+  });
+}
+function pc({
+  controller: s
+}) {
+  const t = J(),
+    {
+      form: i,
+      modals: n,
+      extractingDocs: o
+    } = s;
+  i.useFormValue("rows.certifications"), i.useFormValue("rowIds.certifications");
+  const r = i.isSubmitting;
+  return s.loading || !s.isDocsDirty() ? e.jsx(B, {
+    variant: "contained",
+    onClick: n.form.close,
+    children: t("settings.close")
+  }) : e.jsxs(e.Fragment, {
+    children: [e.jsx(B, {
+      color: "inherit",
+      onClick: n.form.close,
+      children: t("settings.cancel")
+    }), e.jsx(B, {
+      variant: "contained",
+      onClick: () => {
+        s.saveDocsNow(!0);
+      },
+      disabled: r || o,
+      children: t("settings.save")
+    })]
+  });
+}
+const gc = ["AAA", "AA+", "AA", "AA-", "A+", "A", "A-", "BBB+", "BBB", "BBB-", "BB+", "BB", "BB-", "B+", "B", "B-", "CCC+", "CCC", "CCC-", "CC", "C", "D"],
+  fc = ["NICE평가정보", "한국평가데이터(KoDATA)", "이크레더블", "나이스디앤비", "SCI평가정보"],
+  xc = {
+    certifications: "settings.addDirect",
+    licenses: "settings.addLicense",
+    credits: "settings.addCredit",
+    patents: "settings.addPatent",
+    achievements: "settings.addAchievement",
+    careers: "settings.addCareer",
+    fundings: "settings.addFunding",
+    shareholders: "settings.addShareholder",
+    bank_accounts: "settings.addBankAccount"
+  },
+  hc = {
+    certifications: "settings.emptyCertifications",
+    licenses: "settings.emptyLicenses",
+    credits: "settings.emptyCredits",
+    patents: "settings.emptyPatents",
+    achievements: "settings.emptyAchievements",
+    careers: "settings.emptyCareers",
+    fundings: "settings.emptyFundings",
+    shareholders: "settings.emptyShareholders",
+    bank_accounts: "settings.emptyBankAccounts"
+  },
+  di = [];
+function bc({
+  controller: s
+}) {
+  const t = J(),
+    {
+      form: i
+    } = s,
+    n = String(i.useFormValue("business.ksic") ?? ""),
+    o = String(i.useFormValue("business.ksic_division") ?? ""),
+    r = ii[n] ?? di;
+  return b.useEffect(() => {
+    !o || (ii[n] ?? di).includes(o) || i.setFormValue("business.ksic_division", "");
+  }, [o, n, i]), e.jsxs(e.Fragment, {
+    children: [e.jsx(ae, {
+      form: i,
+      name: "business.ksic",
+      label: t("settings.ksicSection"),
+      options: ve(Ll),
+      fullWidth: !0
+    }), e.jsx(ae, {
+      form: i,
+      name: "business.ksic_division",
+      label: t("settings.bizKsicDivision"),
+      options: ve(r),
+      emptyLabel: t(n ? "settings.notSelected" : "settings.pickSectionFirst"),
+      fullWidth: !0
+    })]
+  });
+}
+function yc({
+  controller: s
+}) {
+  const t = J(),
+    {
+      form: i
+    } = s,
+    n = String(i.useFormValue("business.employee_band") ?? ""),
+    o = String(i.useFormValue("business.revenue_band") ?? ""),
+    r = String(i.useFormValue("business.biz_scale") ?? ""),
+    a = Hl(n, o);
+  return b.useEffect(() => {
+    !a || r || i.setFormValue("business.biz_scale", a);
+  }, [a, r, i]), e.jsx(ae, {
+    form: i,
+    name: "business.biz_scale",
+    label: t("settings.bizBizScale"),
+    options: ve(Vl),
+    emptyLabel: t(a ? "settings.notSelected" : "settings.autoFromRevenueEmployees"),
+    fullWidth: !0
+  });
+}
+function _c({
+  controller: s,
+  rowKey: t
+}) {
+  const i = J(),
+    {
+      form: n
+    } = s,
+    o = String(n.useFormValue(`rows.bank_accounts.${t}.file_uuid`) ?? ""),
+    r = String(n.useFormValue(`rows.bank_accounts.${t}.file_name`) ?? ""),
+    a = Number(n.useFormValue(`rows.bank_accounts.${t}.file_size`) ?? 0) || 0;
+  return o ? e.jsx(m, {
+    sx: {
+      mt: 2.5
+    },
+    children: e.jsx(we, {
+      icon: e.jsx(ws, {
+        sx: {
+          fontSize: 18
+        }
+      }),
+      label: `${r || i("settings.bankbookCopy")} (${ks(a)})`,
+      size: "small",
+      variant: Fs,
+      onClick: () => {
+        s.viewBankFile(t);
+      },
+      onDelete: () => s.removeBankFile(t),
+      sx: Cs
+    })
+  }) : null;
+}
+const Sc = ["특허", "실용신안", "상표", "디자인"],
+  jc = ["출원", "등록", "거절", "포기", "소멸"];
+function ui({
+  controller: s,
+  rowKey: t,
+  name: i,
+  label: n,
+  values: o
+}) {
+  const {
+      form: r
+    } = s,
+    a = `rows.patents.${t}.${i}`,
+    d = String(r.useFormValue(a) ?? "").trim(),
+    l = d && !o.includes(d) ? [...o, d] : o;
+  return e.jsx(ae, {
+    form: r,
+    name: a,
+    label: n,
+    options: ve(l),
+    fullWidth: !0
+  });
+}
+const wc = {
+  patents: ["title", "kind", "status", "number", "applied_date"],
+  licenses: ["name", "agency", "number", "issued_date", "expire_date"],
+  credits: ["grade", "agency", "rated_date", "expire_date", ""],
+  achievements: ["title", "year", "description", "", ""],
+  careers: ["organization", "position", "period", "description", ""],
+  shareholders: ["name", "shares", "ratio", "note", ""],
+  bank_accounts: ["bank", "account_no", "holder", "account_type", "note"],
+  fundings: ["round", "investor", "amount", "funded_date", "note"]
+};
+function vc(s, t, i) {
+  const n = (o, r = " · ") => o.filter(Boolean).join(r);
+  switch (s) {
+    case "patents":
+      return {
+        title: t.title || i("settings.newPatent"),
+        meta: n([t.kind, t.status, t.number, t.applied_date && i("settings.appliedOn", {
+          date: t.applied_date
+        })])
+      };
+    case "licenses":
+      return {
+        title: t.name || i("settings.newLicense"),
+        meta: n([t.agency, t.number, t.expire_date ? i("settings.expiresOn", {
+          date: t.expire_date
+        }) : t.issued_date && i("settings.issuedOn", {
+          date: t.issued_date
+        })])
+      };
+    case "credits":
+      return {
+        title: n([t.grade, t.agency]) || i("settings.newCredit"),
+        meta: n([t.rated_date && i("settings.ratedOn", {
+          date: t.rated_date
+        }), t.expire_date && i("settings.expiresOn", {
+          date: t.expire_date
+        })])
+      };
+    case "achievements":
+      return {
+        title: t.title || i("settings.newAchievement"),
+        meta: n([t.year, t.description])
+      };
+    case "careers":
+      return {
+        title: n([t.organization, t.position], " ") || i("settings.newCareer"),
+        meta: n([t.period, t.description])
+      };
+    case "shareholders":
+      return {
+        title: t.name || i("settings.newShareholder"),
+        meta: n([t.shares && i("settings.sharesCount", {
+          shares: t.shares
+        }), t.ratio, t.note])
+      };
+    case "bank_accounts":
+      return {
+        title: n([t.bank, t.account_no], " ") || i("settings.newBankAccount"),
+        meta: n([t.holder, t.account_type, t.note])
+      };
+    case "fundings":
+      return {
+        title: n([t.round, t.investor]) || i("settings.newFunding"),
+        meta: n([t.amount, t.funded_date, t.note])
+      };
+    default:
+      return {
+        title: i("settings.newItem"),
+        meta: ""
+      };
+  }
+}
+function kc({
+  controller: s,
+  section: t,
+  rowKey: i,
+  open: n,
+  last: o,
+  onToggle: r,
+  onRemove: a,
+  children: d
+}) {
+  const l = J(),
+    {
+      form: u
+    } = s,
+    p = b.useRef(null),
+    [x, h] = b.useState(null),
+    g = wc[t] ?? ["", "", "", "", ""],
+    F = w => w ? `rows.${t}.${i}.${w}` : "__none__",
+    I = [u.useFormValue(F(g[0])), u.useFormValue(F(g[1])), u.useFormValue(F(g[2])), u.useFormValue(F(g[3])), u.useFormValue(F(g[4]))],
+    _ = {};
+  g.forEach((w, E) => {
+    w && (_[w] = String(I[E] ?? "").trim());
+  });
+  const {
+    title: v,
+    meta: C
+  } = vc(t, _, l);
+  return e.jsxs(m, {
+    ref: p,
+    "data-company-row": i,
+    sx: {
+      borderBottom: o ? 0 : 1,
+      borderColor: "divider",
+      minWidth: 0
+    },
+    children: [e.jsxs(m, {
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        bgcolor: n ? "action.hover" : "transparent"
+      },
+      children: [e.jsxs(Ft, {
+        onClick: r,
+        "aria-expanded": n,
+        sx: {
+          display: "block",
+          flex: 1,
+          minWidth: 0,
+          px: 1,
+          py: 1.25,
+          minHeight: 56,
+          textAlign: "left"
+        },
+        children: [e.jsx(k, {
+          noWrap: !0,
+          sx: {
+            fontSize: 15,
+            fontWeight: 500
+          },
+          children: v
+        }), C && e.jsx(k, {
+          sx: {
+            fontSize: 14,
+            color: "text.secondary",
+            wordBreak: "keep-all",
+            overflowWrap: "anywhere"
+          },
+          children: C
+        })]
+      }), e.jsx(Ft, {
+        onClick: r,
+        "aria-label": l(n ? "settings.collapse" : "settings.expand"),
+        tabIndex: -1,
+        sx: {
+          alignSelf: "stretch",
+          px: 1,
+          flexShrink: 0
+        },
+        children: e.jsx(hn, {
+          sx: {
+            color: "text.secondary",
+            transition: "transform 0.2s",
+            transform: n ? "rotate(90deg)" : "none"
+          }
+        })
+      })]
+    }), e.jsx(Xi, {
+      in: n,
+      mountOnEnter: !0,
+      onEntered: () => p.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      }),
+      children: e.jsxs(m, {
+        sx: {
+          px: 1,
+          pt: 2.5,
+          pb: 3
+        },
+        children: [d, e.jsx(m, {
+          sx: {
+            display: "flex",
+            justifyContent: "flex-end",
+            mt: 1.5
+          },
+          children: e.jsx(B, {
+            color: "error",
+            onClick: w => h(w.currentTarget),
+            children: l("settings.delete")
+          })
+        })]
+      })
+    }), e.jsx(eo, {
+      open: !!x,
+      anchorEl: x,
+      title: l("settings.deleteRowConfirm"),
+      confirmText: l("settings.delete"),
+      placement: "top-end",
+      zIndex: 1302,
+      onCancel: () => h(null),
+      onConfirm: () => {
+        h(null), a();
+      }
+    })]
+  });
+}
+function Cc({
+  controller: s,
+  rowKey: t
+}) {
+  const i = J(),
+    {
+      form: n
+    } = s,
+    o = String(n.useFormValue(`rows.patents.${t}.file_uuid`) ?? ""),
+    r = String(n.useFormValue(`rows.patents.${t}.file_name`) ?? ""),
+    a = Number(n.useFormValue(`rows.patents.${t}.file_size`) ?? 0) || 0;
+  return o ? e.jsx(m, {
+    sx: {
+      mt: 2.5
+    },
+    children: e.jsx(we, {
+      icon: e.jsx(ws, {
+        sx: {
+          fontSize: 18
+        }
+      }),
+      label: `${r || i("settings.patentDoc")} (${ks(a)})`,
+      size: "small",
+      variant: Fs,
+      onClick: () => {
+        s.viewPatentFile(t);
+      },
+      onDelete: () => s.removePatentFile(t),
+      sx: Cs
+    })
+  }) : null;
+}
+function Fc({
+  controller: s
+}) {
+  const t = J(),
+    i = me(),
+    {
+      form: n,
+      modals: o,
+      section: r,
+      loading: a,
+      extracting: d,
+      extractingPatent: l,
+      focusRowKey: u,
+      interestOptionGroups: p
+    } = s,
+    x = n.isSubmitting,
+    h = b.useRef(null),
+    g = b.useRef(null),
+    [F, I] = b.useState(""),
+    [_, v] = b.useState([]),
+    C = M => v(z => z.includes(M) ? z.filter(O => O !== M) : [...z, M]),
+    w = M => v(z => z.includes(M) ? z : [...z, M]);
+  b.useEffect(() => {
+    if (!u) return;
+    w(u);
+    const M = requestAnimationFrame(() => {
+      const z = document.querySelector(`[data-company-row="${u}"]`);
+      z?.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      }), z?.querySelector("input")?.focus({
+        preventScroll: !0
+      });
+    });
+    return () => cancelAnimationFrame(M);
+  }, [u]);
+  const E = n.useFormValue("rowIds") ?? {},
+    A = e.jsxs(Oe, {
+      columns: 3,
+      children: [e.jsx(Be, {
+        form: n,
+        name: "business.founded_date",
+        label: t("settings.bizFoundedDate"),
+        fullWidth: !0
+      }), e.jsx(bc, {
+        controller: s
+      }), e.jsx(ae, {
+        form: n,
+        name: "business.corp_type",
+        label: t("settings.bizCorpType"),
+        options: ve(Bl),
+        fullWidth: !0
+      }), e.jsx(yc, {
+        controller: s
+      }), e.jsx(ae, {
+        form: n,
+        name: "business.employee_band",
+        label: t("settings.regularWorkersInsurance"),
+        options: ve(bo),
+        fullWidth: !0
+      }), e.jsx(ae, {
+        form: n,
+        name: "business.revenue_band",
+        label: t("settings.bizRevenueBand"),
+        options: ve(yo),
+        fullWidth: !0
+      }), e.jsx(ae, {
+        form: n,
+        name: "business.export_band",
+        label: t("settings.exports"),
+        options: ve(ql),
+        fullWidth: !0
+      })]
+    }),
+    S = e.jsxs(Oe, {
+      columns: 3,
+      children: [e.jsx(ae, {
+        form: n,
+        name: "business.region",
+        label: t("settings.bizRegion"),
+        options: ve(Wl),
+        fullWidth: !0
+      }), e.jsx(ae, {
+        form: n,
+        name: "business.employment_insurance",
+        label: t("settings.bizEmploymentInsurance"),
+        options: ve(Ns),
+        fullWidth: !0
+      }), e.jsx(ae, {
+        form: n,
+        name: "business.has_factory",
+        label: t("settings.factoryRegistration"),
+        options: ve(Ns),
+        fullWidth: !0
+      }), e.jsx(ae, {
+        form: n,
+        name: "business.smart_factory_level",
+        label: t("settings.smartFactoryLevel"),
+        options: ve($l),
+        fullWidth: !0
+      }), e.jsx(ae, {
+        form: n,
+        name: "business.smart_farm",
+        label: t("settings.smartFarm"),
+        options: ve(Ns),
+        fullWidth: !0
+      })]
+    }),
+    L = (() => {
+      if (a) return e.jsx(m, {
+        sx: {
+          minHeight: 320,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center"
+        },
+        children: e.jsx(sr, {
+          overlay: !1
+        })
+      });
+      if (r === "business") return e.jsxs(m, {
+        sx: {
+          display: "grid",
+          gap: 2.5
+        },
+        children: [e.jsx(B, {
+          variant: "outlined",
+          fullWidth: !0,
+          sx: {
+            "&&": {
+              minHeight: 56
+            }
+          },
+          disabled: d || x,
+          startIcon: d ? e.jsx(ye, {
+            size: 18
+          }) : e.jsx(on, {}),
+          onClick: () => h.current?.click(),
+          children: t(d ? "settings.readingRegistration" : "settings.autofillFromRegistration")
+        }), e.jsx("input", {
+          ref: h,
+          type: "file",
+          accept: "image/*,application/pdf",
+          hidden: !0,
+          onChange: O => {
+            const T = O.target.files?.[0];
+            O.target.value = "", T && s.extractFromRegistration(T);
+          }
+        }), e.jsxs(Oe, {
+          columns: 3,
+          children: [e.jsx(re, {
+            form: n,
+            name: "business.company_name",
+            label: t("settings.bizCompanyName"),
+            fullWidth: !0
+          }), e.jsx(re, {
+            form: n,
+            name: "business.ceo_name",
+            label: t("settings.bizCeoName"),
+            fullWidth: !0
+          }), e.jsx(ae, {
+            form: n,
+            name: "business.ceo_type",
+            label: t("settings.bizCeoType"),
+            options: ve(Gl),
+            fullWidth: !0
+          }), e.jsx(kt, {
+            form: n,
+            name: "business.ceo_birth_year",
+            label: t("settings.ceoBirthYear"),
+            placeholder: "1980",
+            thousandSeparator: !1,
+            min: 1900,
+            max: 2100,
+            suffix: t("settings.yearSuffix"),
+            fullWidth: !0
+          }), e.jsx(ae, {
+            form: n,
+            name: "business.ceo_gender",
+            label: t("settings.bizCeoGender"),
+            options: ve(Kl),
+            fullWidth: !0
+          }), e.jsx(Be, {
+            form: n,
+            name: "business.establish_date",
+            label: t("settings.bizEstablishDate"),
+            fullWidth: !0
+          }), e.jsx(nr, {
+            form: n,
+            name: "business.tax_id",
+            label: t("settings.bizTaxId"),
+            includeDash: !0,
+            fullWidth: !0
+          }), e.jsx(ir, {
+            form: n,
+            name: "business.corp_no",
+            label: t("settings.bizCorpNo"),
+            includeDash: !0,
+            fullWidth: !0
+          }), e.jsx(kt, {
+            form: n,
+            name: "business.employee_count",
+            label: t("settings.bizEmployeeCount"),
+            min: 0,
+            suffix: t("settings.peopleSuffix"),
+            fullWidth: !0
+          })]
+        }), e.jsxs(Oe, {
+          columns: 2,
+          children: [e.jsx(re, {
+            form: n,
+            name: "business.biz_type",
+            label: t("settings.bizBizType"),
+            fullWidth: !0
+          }), e.jsx(re, {
+            form: n,
+            name: "business.industry",
+            label: t("settings.bizIndustry"),
+            fullWidth: !0
+          })]
+        }), e.jsxs(Oe, {
+          columns: 3,
+          children: [e.jsx(or, {
+            form: n,
+            name: "business.tel",
+            label: t("settings.mainPhone"),
+            includeDash: !0,
+            fullWidth: !0
+          }), e.jsx(re, {
+            form: n,
+            name: "business.homepage",
+            label: t("settings.homepage"),
+            fullWidth: !0
+          })]
+        }), e.jsxs(Oe, {
+          columns: 3,
+          children: [e.jsx(Ji, {
+            form: n,
+            name: "business.addr1",
+            label: t("settings.bizAddr1"),
+            onAddressComplete: (O, T) => {
+              n.setFormValue("business.addr1", O), T.zonecode && n.setFormValue("business.postal_code", T.zonecode);
+            },
+            fullWidth: !0
+          }), e.jsx(re, {
+            form: n,
+            name: "business.addr2",
+            label: t("settings.addressDetail"),
+            fullWidth: !0
+          }), e.jsx(re, {
+            form: n,
+            name: "business.postal_code",
+            label: t("settings.postalCode"),
+            fullWidth: !0
+          })]
+        })]
+      });
+      if (r === "interest") return e.jsxs(m, {
+        sx: {
+          display: "grid",
+          gap: 2.5
+        },
+        children: [p.map(O => e.jsxs(m, {
+          sx: {
+            display: "grid",
+            gap: 1
+          },
+          children: [e.jsx(k, {
+            sx: {
+              fontSize: 13,
+              fontWeight: 600,
+              color: "text.secondary"
+            },
+            children: O.label
+          }), e.jsx(rr, {
+            form: n,
+            name: "interest.fields",
+            exclusive: !1,
+            size: "small",
+            options: O.options,
+            sx: {
+              display: "flex",
+              flexWrap: "wrap",
+              gap: 1.5,
+              "& .MuiToggleButtonGroup-grouped, & .MuiToggleButtonGroup-grouped:not(:first-of-type)": {
+                m: 0,
+                border: "1px solid",
+                borderColor: "divider",
+                borderRadius: "8px !important",
+                px: 1.75,
+                py: .75,
+                fontSize: 15
+              },
+              "& .MuiToggleButton-root:hover": {
+                bgcolor: "transparent"
+              },
+              "& .MuiToggleButton-root.Mui-selected, & .MuiToggleButton-root.Mui-selected:hover": {
+                bgcolor: "primary.main",
+                borderColor: "primary.main",
+                color: "primary.contrastText"
+              }
+            }
+          })]
+        }, O.label)), e.jsx(Qi, {
+          form: n,
+          name: "interest.keywords",
+          label: t("settings.keywords"),
+          fullWidth: !0
+        }), e.jsx(ft, {
+          form: n,
+          name: "interest.note",
+          label: t("settings.memo"),
+          minRows: 3,
+          fullWidth: !0
+        })]
+      });
+      if (r === "certifications") return null;
+      const M = E[r] ?? [],
+        z = (O, T) => `rows.${r}.${O}.${T}`;
+      return e.jsxs(m, {
+        children: [r === "patents" && e.jsxs(e.Fragment, {
+          children: [e.jsx(B, {
+            variant: "outlined",
+            fullWidth: !0,
+            sx: {
+              "&&": {
+                minHeight: 56
+              },
+              mb: 2
+            },
+            disabled: l || x,
+            startIcon: l ? e.jsx(ye, {
+              size: 18
+            }) : e.jsx(on, {}),
+            onClick: () => g.current?.click(),
+            children: t(l ? "settings.readingPatentDoc" : "settings.addFromPatentDoc")
+          }), e.jsx("input", {
+            ref: g,
+            type: "file",
+            accept: "image/*,application/pdf",
+            hidden: !0,
+            onChange: O => {
+              const T = O.target.files?.[0];
+              O.target.value = "", T && s.extractFromPatent(T);
+            }
+          })]
+        }), M.length === 0 ? e.jsx(So, {
+          text: t(hc[r])
+        }) : M.map((O, T) => e.jsxs(kc, {
+          controller: s,
+          section: r,
+          rowKey: O,
+          open: _.includes(O),
+          last: T === M.length - 1,
+          onToggle: () => C(O),
+          onRemove: () => s.removeRow(r, O),
+          children: [r === "patents" && e.jsxs(m, {
+            children: [e.jsxs(m, {
+              sx: {
+                display: "grid",
+                gap: 2.5
+              },
+              children: [e.jsx(re, {
+                form: n,
+                name: z(O, "title"),
+                label: t("settings.patentTitle"),
+                fullWidth: !0
+              }), e.jsxs(Oe, {
+                columns: 3,
+                children: [e.jsx(m, {
+                  sx: {
+                    gridColumn: {
+                      sm: "span 2"
+                    },
+                    minWidth: 0
+                  },
+                  children: e.jsx(re, {
+                    form: n,
+                    name: z(O, "number"),
+                    label: t("settings.patentNumber"),
+                    fullWidth: !0
+                  })
+                }), e.jsx(Be, {
+                  form: n,
+                  name: z(O, "applied_date"),
+                  label: t("settings.appliedDate"),
+                  fullWidth: !0
+                }), e.jsx(ui, {
+                  controller: s,
+                  rowKey: O,
+                  name: "kind",
+                  label: t("settings.patentKind"),
+                  values: Sc
+                }), e.jsx(ui, {
+                  controller: s,
+                  rowKey: O,
+                  name: "status",
+                  label: t("settings.patentStatus"),
+                  values: jc
+                }), e.jsx(Be, {
+                  form: n,
+                  name: z(O, "registered_date"),
+                  label: t("settings.registeredDate"),
+                  fullWidth: !0
+                })]
+              })]
+            }), e.jsx(Cc, {
+              controller: s,
+              rowKey: O
+            })]
+          }), r === "licenses" && e.jsx(Oe, {
+            columns: 2,
+            children: ["name", "agency", "number", "issued_date", "expire_date"].map($ => {
+              const ee = {
+                name: t("settings.licenseName"),
+                agency: t("settings.docAgency"),
+                number: t("settings.licenseNumber"),
+                issued_date: t("settings.docIssuedDate"),
+                expire_date: t("settings.docExpireDate")
+              }[$];
+              return $.endsWith("_date") ? e.jsx(Be, {
+                form: n,
+                name: z(O, $),
+                label: ee,
+                fullWidth: !0
+              }, $) : e.jsx(re, {
+                form: n,
+                name: z(O, $),
+                label: ee,
+                fullWidth: !0
+              }, $);
+            })
+          }), r === "credits" && e.jsxs(Oe, {
+            columns: 2,
+            children: [e.jsx(ae, {
+              form: n,
+              name: z(O, "grade"),
+              label: t("settings.creditGrade"),
+              options: ve(gc),
+              fullWidth: !0
+            }), e.jsx(ae, {
+              form: n,
+              name: z(O, "agency"),
+              label: t("settings.creditAgency"),
+              options: ve(fc),
+              fullWidth: !0
+            }), e.jsx(Be, {
+              form: n,
+              name: z(O, "rated_date"),
+              label: t("settings.ratedDate"),
+              fullWidth: !0
+            }), e.jsx(Be, {
+              form: n,
+              name: z(O, "expire_date"),
+              label: t("settings.docExpireDate"),
+              fullWidth: !0
+            })]
+          }), r === "achievements" && e.jsxs(m, {
+            sx: {
+              display: "grid",
+              gap: 2.5
+            },
+            children: [e.jsxs(Oe, {
+              columns: 2,
+              children: [e.jsx(re, {
+                form: n,
+                name: z(O, "year"),
+                label: t("settings.year"),
+                fullWidth: !0
+              }), e.jsx(re, {
+                form: n,
+                name: z(O, "title"),
+                label: t("settings.achievementTitle"),
+                fullWidth: !0
+              })]
+            }), e.jsx(ft, {
+              form: n,
+              name: z(O, "description"),
+              label: t("settings.description"),
+              minRows: 2,
+              fullWidth: !0
+            })]
+          }), r === "careers" && e.jsxs(m, {
+            sx: {
+              display: "grid",
+              gap: 2.5
+            },
+            children: [e.jsxs(Oe, {
+              columns: 3,
+              children: [e.jsx(re, {
+                form: n,
+                name: z(O, "period"),
+                label: t("settings.period"),
+                placeholder: "2018-2022",
+                fullWidth: !0
+              }), e.jsx(re, {
+                form: n,
+                name: z(O, "organization"),
+                label: t("settings.organization"),
+                fullWidth: !0
+              }), e.jsx(re, {
+                form: n,
+                name: z(O, "position"),
+                label: t("settings.jobTitle"),
+                fullWidth: !0
+              })]
+            }), e.jsx(ft, {
+              form: n,
+              name: z(O, "description"),
+              label: t("settings.mainDuties"),
+              minRows: 2,
+              fullWidth: !0
+            })]
+          }), r === "shareholders" && e.jsx(Oe, {
+            columns: 2,
+            children: ["name", "shares", "ratio", "note"].map($ => e.jsx(re, {
+              form: n,
+              name: z(O, $),
+              label: {
+                name: t("settings.shareholder"),
+                shares: t("settings.shares"),
+                ratio: t("settings.shareRatio"),
+                note: t("settings.note")
+              }[$],
+              placeholder: $ === "ratio" ? "70%" : void 0,
+              fullWidth: !0
+            }, $))
+          }), r === "bank_accounts" && e.jsxs(m, {
+            children: [e.jsx(Oe, {
+              columns: 2,
+              children: ["bank", "account_no", "holder", "account_type"].map($ => e.jsx(re, {
+                form: n,
+                name: z(O, $),
+                label: {
+                  bank: t("settings.bank"),
+                  account_no: t("settings.accountNo"),
+                  holder: t("settings.accountHolder"),
+                  account_type: t("settings.accountType")
+                }[$],
+                fullWidth: !0
+              }, $))
+            }), e.jsx(m, {
+              sx: {
+                mt: 2.5
+              },
+              children: e.jsx(re, {
+                form: n,
+                name: z(O, "note"),
+                label: t("settings.accountPurpose"),
+                fullWidth: !0
+              })
+            }), e.jsx(_c, {
+              controller: s,
+              rowKey: O
+            })]
+          }), r === "fundings" && e.jsx(Oe, {
+            columns: 2,
+            children: ["round", "investor", "amount", "funded_date", "note"].map($ => {
+              const ee = {
+                round: t("settings.fundingRound"),
+                investor: t("settings.investor"),
+                amount: t("settings.amount"),
+                funded_date: t("settings.fundedDate"),
+                note: t("settings.note")
+              }[$];
+              return $ === "funded_date" ? e.jsx(Be, {
+                form: n,
+                name: z(O, $),
+                label: ee,
+                fullWidth: !0
+              }, $) : e.jsx(re, {
+                form: n,
+                name: z(O, $),
+                label: ee,
+                placeholder: $ === "round" ? t("settings.fundingRoundPlaceholder") : void 0,
+                fullWidth: !0
+              }, $);
+            })
+          })]
+        }, O))]
+      });
+    })(),
+    y = (r === "business" ? [{
+      id: "company-business",
+      title: t("settings.basicInfo"),
+      showTitle: !1,
+      icon: e.jsx(Zi, {}),
+      children: L
+    }, {
+      id: "company-scale",
+      title: t("settings.companyScale"),
+      icon: e.jsx(ar, {}),
+      children: A
+    }, {
+      id: "company-site",
+      title: t("settings.workplace"),
+      icon: e.jsx(lr, {}),
+      children: S
+    }] : r === "certifications" ? [{
+      id: "company-doc-list",
+      title: t("settings.docBox"),
+      showTitle: !1,
+      icon: e.jsx(cr, {}),
+      children: a ? L : e.jsx(mc, {
+        controller: s,
+        openKey: F,
+        onOpenKeyChange: I
+      })
+    }] : [{
+      id: `company-${r}`,
+      showTitle: !1,
+      children: L
+    }]).map(M => ({
+      ...M,
+      children: e.jsx(m, {
+        sx: {
+          width: "100%",
+          contain: "inline-size"
+        },
+        children: M.children
+      })
+    })),
+    D = tc(r) ? e.jsx(B, {
+      variant: "outlined",
+      onClick: () => {
+        const M = s.addRow(r);
+        r === "certifications" ? I(M) : w(M);
+      },
+      disabled: x || a,
+      children: t(i && r !== "certifications" ? "settings.add" : xc[r])
+    }) : void 0;
+  return e.jsx(ge, {
+    open: o.form.isOpen,
+    onClose: o.form.close,
+    title: t(wo[r]),
+    ...(r === "business" ? {
+      maxWidth: "md"
+    } : {
+      width: "720px"
+    }),
+    fullScreen: i,
+    mobilePresentation: i ? "slide" : "dialog",
+    draggable: !0,
+    backdropClick: !1,
+    titleIcons: {
+      delete: {
+        visible: !1
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: r !== "certifications",
+      right: r === "certifications" ? e.jsxs(e.Fragment, {
+        children: [D, e.jsx(pc, {
+          controller: s
+        })]
+      }) : e.jsxs(e.Fragment, {
+        children: [D, e.jsx(B, {
+          variant: "contained",
+          onClick: () => {
+            n.submit();
+          },
+          disabled: x || a,
+          children: t(x ? "settings.saving" : "settings.save")
+        })]
+      })
+    },
+    sections: y
+  });
+}
+function Ic({
+  controller: s,
+  rowKey: t
+}) {
+  const i = J(),
+    {
+      form: n
+    } = s,
+    o = l => `rows.certifications.${t}.${l}`,
+    r = String(n.useFormValue(o("file_uuid")) ?? ""),
+    a = String(n.useFormValue(o("file_name")) ?? ""),
+    d = Number(n.useFormValue(o("file_size")) ?? 0) || 0;
+  return e.jsxs(m, {
+    children: [e.jsx(m, {
+      sx: {
+        mb: 2.5
+      },
+      children: e.jsx(re, {
+        form: n,
+        name: o("name"),
+        label: i("settings.docName"),
+        fullWidth: !0
+      })
+    }), e.jsxs(Oe, {
+      columns: 2,
+      children: [e.jsx(ae, {
+        form: n,
+        name: o("kind"),
+        label: i("settings.docKind"),
+        options: ve(_o),
+        fullWidth: !0
+      }), ko.filter(([l]) => l !== "name").map(([l, u]) => l.endsWith("_date") ? e.jsx(Be, {
+        form: n,
+        name: o(l),
+        label: i(u),
+        fullWidth: !0
+      }, l) : e.jsx(re, {
+        form: n,
+        name: o(l),
+        label: i(u),
+        fullWidth: !0
+      }, l))]
+    }), e.jsx(m, {
+      sx: {
+        mt: 2.5
+      },
+      children: e.jsx(ft, {
+        form: n,
+        name: o("detail"),
+        label: i("settings.docDetail"),
+        minRows: 2,
+        fullWidth: !0
+      })
+    }), r && e.jsx(m, {
+      sx: {
+        mt: 2
+      },
+      children: e.jsx(we, {
+        icon: e.jsx(ws, {
+          sx: {
+            fontSize: 18
+          }
+        }),
+        label: `${a || i("settings.doc")} (${ks(d)})`,
+        size: "small",
+        variant: Fs,
+        onClick: () => {
+          s.viewDocFile(t);
+        },
+        onDelete: () => {
+          s.removeDocFile(t);
+        },
+        sx: Cs
+      })
+    })]
+  });
+}
+function Oc({
+  controller: s
+}) {
+  const t = J(),
+    {
+      form: i,
+      modals: n
+    } = s;
+  return i.useFormValue("rows.certifications"), i.useFormValue("rowIds.certifications"), s.loading || !s.isDocsDirty() ? e.jsx(B, {
+    variant: "contained",
+    onClick: n.doc.close,
+    children: t("settings.close")
+  }) : e.jsxs(e.Fragment, {
+    children: [e.jsx(B, {
+      color: "inherit",
+      onClick: n.doc.close,
+      children: t("settings.cancel")
+    }), e.jsx(B, {
+      variant: "contained",
+      disabled: i.isSubmitting,
+      onClick: () => {
+        s.saveDocsNow(!0).then(() => n.doc.close());
+      },
+      children: t("settings.save")
+    })]
+  });
+}
+function Tc({
+  controller: s
+}) {
+  const t = J(),
+    i = me(),
+    {
+      form: n,
+      modals: o,
+      docKey: r,
+      loading: a
+    } = s,
+    d = async () => {
+      await s.deleteDocRow(r), (n.getFormValue("rowIds.certifications") ?? []).includes(r) || o.doc.close();
+    },
+    u = [{
+      id: "company-doc",
+      showTitle: !1,
+      children: !a && !r ? e.jsx(k, {
+        sx: {
+          fontSize: 15,
+          color: "text.secondary"
+        },
+        children: t("settings.docNotFound")
+      }) : r ? e.jsx(Ic, {
+        controller: s,
+        rowKey: r
+      }) : null
+    }];
+  return e.jsx(ge, {
+    open: o.doc.isOpen,
+    onClose: o.doc.close,
+    title: t("settings.docInfo"),
+    maxWidth: "sm",
+    fullScreen: i,
+    mobilePresentation: i ? "slide" : "dialog",
+    draggable: !0,
+    titleIcons: {
+      delete: {
+        visible: !!r
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    onDelete: r ? () => {
+      d();
+    } : void 0,
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    loading: a,
+    actions: {
+      visible: !0,
+      showCancelButton: !1,
+      right: e.jsx(Oc, {
+        controller: s
+      })
+    },
+    sections: u
+  });
+}
+const Ec = 10 * 1024 * 1024,
+  Ac = 1024 * 1024;
+function Dc(s = {}) {
+  const t = De(),
+    i = t?.seq ?? 0,
+    n = t?.role === "owner",
+    o = {
+      form: de({
+        modalId: "settings-org-dialog",
+        onClose: s.onClosed
+      }),
+      logoCrop: de({
+        modalId: "settings-logo-crop-dialog"
+      })
+    },
+    [r, a] = b.useState(0),
+    [d, l] = b.useState(!1),
+    [u, p] = b.useState(!1),
+    [x, h] = b.useState(0),
+    [g, F] = b.useState(""),
+    [I, _] = b.useState(null),
+    [v, C] = b.useState(!1),
+    [w, E] = b.useState(""),
+    [A, S] = b.useState(null),
+    [L, j] = b.useState(!1),
+    [y, D] = b.useState(""),
+    [M, z] = b.useState(0),
+    [O, T] = b.useState(null),
+    [$, ee] = b.useState(""),
+    te = je({
+      formId: "settings-org-form",
+      initialValues: {
+        name: "",
+        seal_size_mm: ""
+      },
+      onValidate: G => n && !String(G.name ?? "").trim() ? (ee(c("settings.orgNameRequired")), !1) : !0,
+      onSubmit: async G => {
+        const xe = String(G.name ?? "").trim(),
+          Ye = n && xe !== (t?.name ?? "");
+        ee("");
+        try {
+          Ye && i && (await to.patchGroup(i, {
+            name: xe
+          }), dr());
+          let W, ce;
+          if (u) {
+            let nt = x;
+            if (!nt && (I || A)) {
+              if (nt = await Tt.patch({
+                name: xe || t?.name || "회사"
+              }), !nt) throw new Error(c("settings.companyCreateFailed"));
+              h(nt);
+            }
+            I ? W = await Tt.uploadLogo(nt, I, g || void 0) : v && g && (W = ""), A ? ce = await Tt.uploadSeal(nt, A, w || void 0) : L && w && (ce = "");
+          }
+          const Re = u && Number(G.seal_size_mm || 0) !== M ? Number(G.seal_size_mm || 0) : void 0;
+          return (W !== void 0 || ce !== void 0 || Re !== void 0) && (await Tt.patch({
+            ...(W !== void 0 ? {
+              logo_file: W
+            } : {}),
+            ...(ce !== void 0 ? {
+              seal_file: ce
+            } : {}),
+            ...(Re !== void 0 ? {
+              seal_size_mm: Re
+            } : {})
+          }), W !== void 0 && Ea(W)), _e({
+            message: c("settings.orgSettingsSaved"),
+            delay: 500
+          }), o.form.close(), !0;
+        } catch (W) {
+          return ee(W instanceof Error ? W.message : c("settings.saveFailedGeneric")), !1;
+        }
+      }
+    }),
+    Q = je({
+      formId: "settings-org-hr-master-form",
+      initialValues: qo
+    }),
+    U = o.form.isOpen,
+    pe = b.useRef(""),
+    be = G => {
+      pe.current && pe.current !== G && URL.revokeObjectURL(pe.current), pe.current = G, D(G);
+    },
+    ke = b.useRef(0),
+    H = async () => {
+      ke.current = i, a(0), ee(""), te.setFormValues({
+        name: t?.name ?? "",
+        seal_size_mm: ""
+      }), _(null), C(!1), S(null), j(!1), be(""), l(!0);
+      try {
+        const G = await Tt.get();
+        if (h(G.seq), F(G.logo_file), E(G.seal_file), z(G.seal_size_mm), te.setFormValue("seal_size_mm", G.seal_size_mm || ""), p(G.editable), G.seal_file && G.editable) {
+          const xe = await Tt.fetchSeal().catch(() => null);
+          be(xe ? URL.createObjectURL(xe) : "");
+        }
+      } catch (G) {
+        ee(G instanceof Error ? G.message : c("settings.orgSettingsLoadFailed"));
+      } finally {
+        l(!1);
+      }
+    };
+  return b.useEffect(() => {
+    if (!U) {
+      be("");
+      return;
+    }
+    ke.current !== i && H();
+  }, [U, i]), {
+    form: te,
+    hrForm: Q,
+    modals: o,
+    currentOrg: t,
+    nameEditable: n,
+    activeTab: r,
+    setActiveTab: a,
+    loading: d,
+    assetsEditable: u,
+    logoUuid: g,
+    logoFile: I,
+    logoRemoved: v,
+    sealFile: A,
+    sealRemoved: L,
+    storedSealUrl: y,
+    cropFile: O,
+    editLogo: async () => {
+      if (O) {
+        o.logoCrop.open();
+        return;
+      }
+      if (g) try {
+        const G = await fetch(za(g, null), {
+          credentials: "include"
+        });
+        if (!G.ok) throw new Error();
+        const xe = await G.blob();
+        T(new File([xe], "logo.png", {
+          type: xe.type || "image/png"
+        })), o.logoCrop.open();
+      } catch {
+        ee(c("settings.savedLogoLoadFailed"));
+      }
+    },
+    error: $,
+    openDialog: async () => {
+      await H(), o.form.open();
+    },
+    pickLogo: G => {
+      if (G) {
+        if (!G.type.startsWith("image/")) {
+          ee(c("settings.imageOnly"));
+          return;
+        }
+        if (G.size > Ec) {
+          ee(c("settings.logoMax10mb"));
+          return;
+        }
+        ee(""), T(G), o.logoCrop.open();
+      }
+    },
+    applyCroppedLogo: G => {
+      _(G), C(!1), o.logoCrop.close();
+    },
+    removeLogo: () => {
+      _(null), C(!0);
+    },
+    pickSeal: G => {
+      if (G) {
+        if (G.type !== "image/png") {
+          ee(c("settings.sealPngOnly"));
+          return;
+        }
+        if (G.size > Ac) {
+          ee(c("settings.sealMax1mb"));
+          return;
+        }
+        ee(""), S(G), j(!1);
+      }
+    },
+    removeSeal: () => {
+      S(null), j(!0);
+    },
+    closeThen: G => {
+      const xe = window.history.state;
+      if (o.form.isOpen && xe?.modalOpen === o.form.modalId) {
+        window.addEventListener("popstate", () => G(), {
+          once: !0
+        }), o.form.close();
+        return;
+      }
+      o.form.close(), G();
+    }
+  };
+}
+function Mc(s = {}) {
+  const t = {
+      list: de({
+        modalId: "mx-mail-domain-dialog",
+        onClose: s.onClosed
+      }),
+      add: de({
+        modalId: "mx-mail-domain-add-dialog"
+      }),
+      panel: de({
+        modalId: "mx-mail-domain-panel-dialog"
+      })
+    },
+    [i, n] = b.useState(""),
+    [o, r] = b.useState(""),
+    [a, d] = b.useState(0),
+    [l, u] = b.useState("dns"),
+    p = t.panel.isOpen,
+    x = (w, E) => {
+      d(w), u(E), t.panel.open();
+    },
+    h = je({
+      formId: "mx-mail-domain-add-form",
+      initialValues: {
+        domain: ""
+      },
+      onValidate: w => !!String(w.domain ?? "").trim(),
+      onSubmit: async w => {
+        r("");
+        try {
+          const E = await We.createDomain(String(w.domain ?? "").trim());
+          return await Kt(), t.add.close(), window.setTimeout(() => x(E.seq, "dns"), 350), !0;
+        } catch (E) {
+          return r(E instanceof Error ? E.message : c("mx.domainCreateFailed")), !1;
+        }
+      }
+    });
+  return {
+    addForm: h,
+    modals: t,
+    error: i,
+    addError: o,
+    panel: l,
+    panelSeq: a,
+    panelOpen: p,
+    openDialog: async () => {
+      Da().loaded || (await Kt()), t.list.open();
+    },
+    openAddDialog: () => {
+      h.setFormValues({
+        domain: ""
+      }), r(""), t.add.open();
+    },
+    openPanel: x,
+    closePanel: () => t.panel.close(),
+    reloadDomains: () => {
+      Kt();
+    },
+    handleDomainDeleted: () => {
+      t.panel.close(), Kt();
+    },
+    saveDomainOrder: w => We.reorderDomains(w).then(E => Aa(E)).catch(E => n(E instanceof Error ? E.message : c("mx.domainOrderSaveFailed")))
+  };
+}
+function mi({
+  label: s,
+  value: t
+}) {
+  return e.jsxs(m, {
+    sx: {
+      display: "flex",
+      gap: 1,
+      alignItems: "baseline",
+      minWidth: 0
+    },
+    children: [e.jsx(k, {
+      component: "span",
+      sx: {
+        fontSize: "0.875rem",
+        color: "text.secondary",
+        flexShrink: 0
+      },
+      children: s
+    }), e.jsx(k, {
+      component: "code",
+      sx: {
+        fontSize: "0.9375rem",
+        fontWeight: Ne.bold,
+        color: "text.primary",
+        wordBreak: "break-all",
+        userSelect: "all"
+      },
+      children: t
+    })]
+  });
+}
+function Rc({
+  controller: s
+}) {
+  const t = J(),
+    i = me(),
+    {
+      form: n,
+      modals: o,
+      domain: r,
+      loading: a,
+      verifying: d,
+      error: l,
+      saved: u,
+      dirty: p
+    } = s,
+    x = o.form.isOpen,
+    h = n.isSubmitting,
+    g = r.editable,
+    F = a || h || d,
+    I = La(String(n.useFormValue("host") ?? "")),
+    _ = An(s.imageFile),
+    v = s.imageFile ? _ : s.imageRemoved ? "" : r.image_url,
+    C = An(s.ogImage.file),
+    w = s.ogImage.file ? C : s.ogImage.removed ? "" : r.og_image_url,
+    E = I || t("settings.domainPlaceholder"),
+    A = E.split(".")[0] ?? "work",
+    S = r.status === "active" ? e.jsx(we, {
+      size: "small",
+      color: "success",
+      icon: e.jsx(It, {}),
+      label: t("settings.connected")
+    }) : r.status === "failed" ? e.jsx(we, {
+      size: "small",
+      color: "error",
+      label: t("settings.connectionFailed")
+    }) : r.status === "pending" ? e.jsx(we, {
+      size: "small",
+      label: t("settings.notVerifiedYet")
+    }) : null,
+    L = [{
+      id: "org-domain",
+      showTitle: !1,
+      children: e.jsxs(X, {
+        spacing: 2.5,
+        children: [e.jsx(re, {
+          form: n,
+          name: "host",
+          label: t("settings.accessAddress"),
+          placeholder: t("settings.domainPlaceholder"),
+          fullWidth: !0,
+          readonly: !g,
+          disabled: F,
+          slotProps: {
+            htmlInput: {
+              maxLength: 253,
+              autoCapitalize: "none",
+              autoCorrect: "off",
+              spellCheck: !1
+            }
+          }
+        }), e.jsx(m, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: 1.5,
+            flexWrap: "wrap",
+            minHeight: 32
+          },
+          children: a ? e.jsx(ye, {
+            size: 18
+          }) : r.host ? e.jsxs(e.Fragment, {
+            children: [S, r.status === "active" && e.jsxs(at, {
+              href: `https://${r.host}/login`,
+              target: "_blank",
+              rel: "noopener",
+              sx: {
+                fontSize: ur.base
+              },
+              children: ["https://", r.host, "/login"]
+            })]
+          }) : e.jsx(k, {
+            sx: {
+              fontSize: "0.9375rem",
+              color: "text.secondary"
+            },
+            children: t("settings.noAddressYet")
+          })
+        }), r.status === "failed" && r.error && e.jsx(Ee, {
+          message: r.error
+        }), d && e.jsxs(m, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: 1.5,
+            fontSize: "0.9375rem",
+            color: "text.secondary"
+          },
+          children: [e.jsx(ye, {
+            size: 18
+          }), t("settings.verifyingDns")]
+        }), e.jsx(Dn, {
+          label: t("settings.loginImage"),
+          hint: t("settings.loginImageHint", {
+            aspect: is,
+            pcW: Zn,
+            pcH: Qn,
+            phoneW: Jn,
+            phoneH: Xn,
+            outW: Ds.maxWidth,
+            outH: Ds.height
+          }),
+          src: v,
+          boxSx: {
+            width: 168,
+            height: 168 / is,
+            bgcolor: "#fafafa",
+            "& img": {
+              width: "100%",
+              height: "100%",
+              objectFit: "cover"
+            }
+          },
+          accept: "image/png,image/jpeg,image/webp,image/svg+xml",
+          disabled: F || !g,
+          onPick: s.pickImage,
+          droppable: !0,
+          onRemove: s.removeImage,
+          onEdit: () => {
+            s.editImage();
+          }
+        }), e.jsx(Dn, {
+          label: t("settings.ogImage"),
+          hint: t("settings.ogImageHint", {
+            w: St.maxWidth,
+            h: St.height
+          }),
+          src: w,
+          boxSx: {
+            width: 168,
+            height: 168 * St.height / St.maxWidth,
+            bgcolor: "#fafafa",
+            "& img": {
+              width: "100%",
+              height: "100%",
+              objectFit: "cover"
+            }
+          },
+          accept: "image/png,image/jpeg,image/webp,image/svg+xml",
+          disabled: F || !g,
+          onPick: s.ogImage.pick,
+          droppable: !0,
+          onRemove: s.ogImage.remove,
+          onEdit: () => {
+            s.ogImage.edit();
+          }
+        }), e.jsxs(m, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 2,
+            py: .75
+          },
+          children: [e.jsxs(m, {
+            sx: {
+              minWidth: 0
+            },
+            children: [e.jsx(k, {
+              sx: {
+                fontSize: 17,
+                fontWeight: 600
+              },
+              children: t("settings.showOrgName")
+            }), e.jsx(k, {
+              sx: {
+                fontSize: 15,
+                color: "text.secondary"
+              },
+              children: t("settings.showOrgNameDesc")
+            })]
+          }), e.jsx(he, {
+            form: n,
+            name: "show_name",
+            disabled: F || !g,
+            slotProps: {
+              input: {
+                "aria-label": t("settings.showOrgName")
+              }
+            }
+          })]
+        }), e.jsxs(m, {
+          children: [e.jsx(k, {
+            sx: {
+              fontSize: "0.9375rem",
+              fontWeight: Ne.bold,
+              color: "text.primary",
+              mb: 1
+            },
+            children: t("settings.howToConnect")
+          }), e.jsxs(m, {
+            component: "ol",
+            sx: {
+              m: 0,
+              pl: 2.5,
+              display: "grid",
+              gap: 1,
+              fontSize: "0.875rem",
+              color: "text.primary"
+            },
+            children: [e.jsxs(m, {
+              component: "li",
+              children: [e.jsx(ie, {
+                i18nKey: "settings.domainStep1",
+                components: {
+                  b: e.jsx("b", {})
+                }
+              }), e.jsxs(X, {
+                spacing: .5,
+                sx: {
+                  mt: .75
+                },
+                children: [e.jsx(mi, {
+                  label: t("settings.recordName"),
+                  value: A
+                }), e.jsx(mi, {
+                  label: t("settings.recordValue"),
+                  value: r.target
+                })]
+              })]
+            }), e.jsx(m, {
+              component: "li",
+              children: e.jsx(ie, {
+                i18nKey: "settings.domainStep2",
+                components: {
+                  b: e.jsx("b", {})
+                }
+              })
+            }), e.jsx(m, {
+              component: "li",
+              children: e.jsx(ie, {
+                i18nKey: "settings.domainStep3",
+                values: {
+                  host: E
+                },
+                components: {
+                  b: e.jsx("b", {})
+                }
+              })
+            })]
+          })]
+        }), !g && !a && e.jsx(k, {
+          sx: {
+            fontSize: "0.875rem",
+            color: "text.secondary"
+          },
+          children: t("settings.domainOwnerOnly")
+        }), l && e.jsx(Ee, {
+          message: l
+        })]
+      })
+    }];
+  return e.jsxs(e.Fragment, {
+    children: [e.jsx(Mn, {
+      controller: s,
+      output: Ds,
+      aspect: is,
+      dialogSize: "md",
+      title: t("settings.cropLoginImage"),
+      guide: t("settings.cropLoginImageGuide", {
+        aspect: is,
+        pcW: Zn,
+        pcH: Qn,
+        phoneW: Jn,
+        phoneH: Xn
+      })
+    }), e.jsx(Mn, {
+      controller: s.ogImage.cropHost,
+      output: St,
+      aspect: St.maxWidth / St.height,
+      dialogSize: "md",
+      title: t("settings.cropOgImage"),
+      background: "#ffffff",
+      upscale: !0,
+      guide: t("settings.cropOgImageGuide")
+    }), e.jsx(ge, {
+      open: x,
+      onClose: o.form.close,
+      title: t("settings.accessAddress"),
+      width: "520px",
+      fullScreen: i,
+      mobilePresentation: i ? "slide" : "dialog",
+      draggable: !0,
+      backdropClick: !1,
+      tabs: {
+        visible: !1
+      },
+      titleIcons: {
+        delete: {
+          visible: g && !!r.host,
+          confirmConfig: {
+            title: t("settings.deleteAccessAddress"),
+            message: t("settings.deleteAccessAddressMessage", {
+              host: r.host
+            }),
+            confirmText: t("settings.delete"),
+            cancelText: t("settings.cancel")
+          }
+        },
+        print: {
+          visible: !1
+        },
+        share: {
+          visible: !1
+        }
+      },
+      onDelete: () => {
+        s.remove();
+      },
+      scrollPastLastSection: !1,
+      actions: {
+        visible: !0,
+        showCancelButton: !0,
+        right: e.jsxs(X, {
+          direction: "row",
+          spacing: 2,
+          children: [g && e.jsx(B, {
+            variant: "outlined",
+            onClick: () => {
+              s.verify();
+            },
+            disabled: F || !u,
+            startIcon: d ? e.jsx(ye, {
+              size: 16,
+              color: "inherit"
+            }) : void 0,
+            children: d ? t("settings.verifying") : r.status === "active" ? t("settings.verifyAgain") : t("settings.verifyConnection")
+          }), e.jsx(B, {
+            variant: "contained",
+            onClick: () => {
+              n.submit();
+            },
+            disabled: F || !g || !I || !p,
+            children: t(h ? "settings.saving" : "settings.save")
+          })]
+        })
+      },
+      sections: L
+    })]
+  });
+}
+function Nc() {
+  const s = J(),
+    {
+      groups: t
+    } = so(),
+    i = De(),
+    n = i?.seq ?? 0,
+    o = t.filter(p => p.role === "owner" || p.role === "admin"),
+    [r, a] = b.useState(null),
+    [d, l] = b.useState(!1);
+  if (o.length < 2) return null;
+  const u = p => {
+    a(null), !(p === n || d) && (l(!0), mr(p).catch(x => K(x instanceof Error ? x.message : c("groups.orgSwitchFailed"))).finally(() => l(!1)));
+  };
+  return e.jsxs(e.Fragment, {
+    children: [e.jsx(B, {
+      variant: "text",
+      disabled: d,
+      endIcon: e.jsx(no, {}),
+      "aria-label": s("groups.pickOrgToManage"),
+      onClick: p => a(p.currentTarget),
+      sx: {
+        typography: "body1",
+        fontSize: p => {
+          const x = p.typography.body1.fontSize;
+          return `calc(${typeof x == "number" ? `${x}px` : x} - 1px)`;
+        },
+        fontWeight: 600,
+        minWidth: 0,
+        px: 1,
+        mr: -1,
+        "& .MuiButton-endIcon": {
+          ml: .25
+        }
+      },
+      children: i?.name ?? s("groups.selectOrg")
+    }), e.jsx(io, {
+      anchorEl: r,
+      open: !!r,
+      onClose: () => a(null),
+      children: o.map(p => e.jsx(vs, {
+        selected: p.seq === n,
+        onClick: () => u(p.seq),
+        children: p.name
+      }, p.seq))
+    })]
+  });
+}
+const Pc = 240;
+function Fo(s) {
+  return s.name || s.kind || s.file_name || c("groups.untitledDoc");
+}
+function zc(s) {
+  const t = [Fo(s), s.agency].filter(Boolean).join(" · "),
+    i = [s.issued_date && c("groups.docIssued", {
+      date: s.issued_date
+    }), s.expire_date && c("groups.docExpires", {
+      date: s.expire_date
+    })].filter(Boolean).join(" · ");
+  return i ? `${t}
+${i}` : t;
+}
+function Wc({
+  docs: s,
+  onOpen: t
+}) {
+  const i = J();
+  return e.jsxs(Yi, {
+    sx: {
+      height: "100%",
+      borderRadius: 2,
+      boxShadow: "0 1px 3px rgba(0,0,0,0.12)",
+      overflow: "hidden"
+    },
+    children: [e.jsxs(X, {
+      direction: "row",
+      alignItems: "center",
+      gap: 1,
+      sx: {
+        px: 2.5,
+        py: 1.5,
+        borderBottom: 1,
+        borderColor: "divider"
+      },
+      children: [e.jsx(k, {
+        variant: "subtitle1",
+        sx: {
+          fontWeight: 700
+        },
+        children: i("groups.docBox")
+      }), e.jsx(we, {
+        label: s.length,
+        size: "small",
+        color: "primary",
+        sx: {
+          fontSize: "0.875rem",
+          fontWeight: 600
+        }
+      })]
+    }), e.jsx(X, {
+      sx: {
+        p: 2.5,
+        minHeight: jn,
+        boxSizing: "border-box"
+      },
+      children: s.length === 0 ? e.jsx(k, {
+        variant: "body2",
+        color: "text.secondary",
+        children: i("groups.docBoxEmpty")
+      }) : e.jsx(X, {
+        direction: "row",
+        useFlexGap: !0,
+        sx: {
+          flexWrap: "wrap",
+          gap: 1
+        },
+        children: s.map(n => e.jsx(Ot, {
+          title: e.jsx("span", {
+            style: {
+              whiteSpace: "pre-line"
+            },
+            children: zc(n)
+          }),
+          arrow: !0,
+          children: e.jsx(we, {
+            label: Fo(n),
+            variant: "outlined",
+            onClick: () => t(n),
+            sx: {
+              maxWidth: Pc,
+              borderRadius: 1.5,
+              "& .MuiChip-label": {
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap"
+              }
+            }
+          })
+        }, n.id))
+      })
+    })]
+  });
+}
+const Lc = 60,
+  Bc = {
+    approval: "groups.approval",
+    hr: "groups.hr",
+    partner: "groups.partners",
+    customer: "groups.customers",
+    booking: "groups.booking",
+    board: "groups.board",
+    startup: "groups.startup",
+    support: "groups.supportPrograms",
+    tax: "groups.taxSchedule"
+  },
+  Qe = () => ({
+    text: c("groups.statusEmpty"),
+    tone: "empty"
+  });
+function Io(s) {
+  const t = /^(\d{4})-(\d{2})-(\d{2})/.exec(s ?? "");
+  if (!t) return null;
+  const i = new Date(Number(t[1]), Number(t[2]) - 1, Number(t[3])),
+    n = new Date();
+  return n.setHours(0, 0, 0, 0), Math.round((i.getTime() - n.getTime()) / 864e5);
+}
+function pi(s) {
+  const t = s.map(Io).filter(o => o !== null),
+    i = t.filter(o => o < 0).length,
+    n = t.filter(o => o >= 0 && o <= Lc).length;
+  return i ? {
+    tone: "error",
+    note: c("groups.expiredCount", {
+      count: i
+    })
+  } : n ? {
+    tone: "warning",
+    note: c("groups.expiringSoonCount", {
+      count: n
+    })
+  } : {
+    tone: "normal",
+    note: ""
+  };
+}
+function mt(s, t = 3) {
+  const i = s.map(n => n.trim()).filter(Boolean);
+  return i.length <= t ? i.join(" · ") : c("groups.andMore", {
+    list: i.slice(0, t).join(" · "),
+    count: i.length - t
+  });
+}
+const Ge = s => s.filter(Boolean).join(" · ");
+function Vc(s, t) {
+  const i = (s.features ?? []).map(a => Bc[a]).filter(Boolean).map(a => c(a)),
+    n = t.reduce((a, d) => a + (Number(d.mailbox_count) || 0), 0),
+    o = t.filter(a => a.status !== "verified").length,
+    r = o > 0;
+  return {
+    team: {
+      text: s.name
+    },
+    members: {
+      text: c("groups.peopleCount", {
+        count: s.member_count || 1
+      })
+    },
+    features: i.length ? {
+      text: c("groups.featuresInUse", {
+        list: mt(i, 4)
+      })
+    } : {
+      text: c("groups.noFeaturesOn"),
+      tone: "empty"
+    },
+    mail: t.length ? {
+      text: Ge([o ? c("groups.dnsPending", {
+        count: o
+      }) : "", mt(t.map(a => a.domain), 1), c("groups.mailboxCount", {
+        count: n
+      })]),
+      tone: r ? "warning" : "normal"
+    } : {
+      text: c("groups.noDomains"),
+      tone: "empty"
+    }
+  };
+}
+function qc(s, t) {
+  if (!s) return null;
+  switch (t) {
+    case "business":
+      {
+        const i = s.business;
+        return !i.company_name && !i.tax_id ? Qe() : {
+          text: Ge([i.company_name, i.tax_id, i.ceo_name && c("groups.ceoName", {
+            name: i.ceo_name
+          })])
+        };
+      }
+    case "interest":
+      {
+        const i = s.interest.fields ?? [],
+          n = s.interest.keywords ?? [];
+        return !i.length && !n.length ? Qe() : {
+          text: Ge([mt(i), n.length ? c("groups.keywordCount", {
+            count: n.length
+          }) : ""])
+        };
+      }
+    case "licenses":
+      {
+        const i = s.licenses;
+        if (!i.length) return Qe();
+        const {
+          tone: n,
+          note: o
+        } = pi(i.map(r => r.expire_date));
+        return {
+          text: Ge([c("groups.itemCount", {
+            count: i.length
+          }), mt(i.map(r => r.name), 2), o]),
+          tone: n
+        };
+      }
+    case "credits":
+      {
+        const i = s.credits;
+        if (!i.length) return Qe();
+        const n = [...i].sort((d, l) => (l.rated_date || "").localeCompare(d.rated_date || ""))[0],
+          {
+            tone: o
+          } = pi([n.expire_date]),
+          r = Io(n.expire_date),
+          a = n.expire_date ? r !== null && r < 0 ? c("groups.expiredOn", {
+            date: n.expire_date
+          }) : c("groups.expiresOn", {
+            date: n.expire_date
+          }) : "";
+        return {
+          text: Ge([n.grade, n.agency, a, i.length > 1 ? c("groups.plusMore", {
+            count: i.length - 1
+          }) : ""]),
+          tone: o
+        };
+      }
+    case "patents":
+      {
+        const i = s.patents;
+        if (!i.length) return Qe();
+        const n = i.filter(r => r.status === "등록").length,
+          o = i.filter(r => r.status === "출원").length;
+        return {
+          text: Ge([c("groups.itemCount", {
+            count: i.length
+          }), n ? c("groups.patentRegistered", {
+            count: n
+          }) : "", o ? c("groups.patentApplied", {
+            count: o
+          }) : ""])
+        };
+      }
+    case "achievements":
+      {
+        const i = s.achievements;
+        if (!i.length) return Qe();
+        const n = i.map(o => o.year).filter(Boolean).sort().pop() ?? "";
+        return {
+          text: Ge([c("groups.itemCount", {
+            count: i.length
+          }), n && c("groups.latestYear", {
+            year: n
+          })])
+        };
+      }
+    case "careers":
+      {
+        const i = s.careers;
+        return i.length ? {
+          text: Ge([c("groups.itemCount", {
+            count: i.length
+          }), mt(i.map(n => n.organization), 2)])
+        } : Qe();
+      }
+    case "fundings":
+      {
+        const i = s.fundings;
+        return i.length ? {
+          text: Ge([c("groups.itemCount", {
+            count: i.length
+          }), mt(i.map(n => n.investor || n.round), 2)])
+        } : Qe();
+      }
+    case "shareholders":
+      {
+        const i = s.shareholders;
+        return i.length ? {
+          text: Ge([c("groups.peopleCount", {
+            count: i.length
+          }), mt(i.map(n => n.name), 2)])
+        } : Qe();
+      }
+    case "bank_accounts":
+      {
+        const i = s.bank_accounts;
+        return i.length ? {
+          text: Ge([c("groups.accountCount", {
+            count: i.length
+          }), mt(i.map(n => n.bank), 2)])
+        } : Qe();
+      }
+    default:
+      return null;
+  }
+}
+function $c(s, t) {
+  return s.price_basis === "counselors" ? t.counselors ?? 0 : t.seats;
+}
+function Gt(s, t, i) {
+  if (!t) return {
+    total: 0
+  };
+  const n = a => a.own_key_free ? 0 : Math.max(0, $c(a, t) - (a.free_seats ?? 0)) * (a.unit_price ?? 0);
+  return {
+    total: s.filter(a => (a.unit_price ?? 0) > 0 && i(a.key)).reduce((a, d) => a + n(d), 0)
+  };
+}
+function Kc(s = {}) {
+  const t = De(),
+    i = t?.seq ?? 0,
+    n = me(),
+    o = {
+      form: de({
+        modalId: "org-features-dialog",
+        onClose: s.onClosed
+      }),
+      confirm: de({
+        modalId: "org-features-confirm",
+        onClose: () => D(!1)
+      })
+    },
+    r = je({
+      formId: "org-features-form",
+      initialValues: {}
+    }),
+    [a, d] = b.useState([]),
+    [l, u] = b.useState(null),
+    [p, x] = b.useState(!1),
+    [h, g] = b.useState(!1),
+    [F, I] = b.useState(""),
+    [_, v] = b.useState(!1),
+    C = async () => {
+      if (i) {
+        g(!0);
+        try {
+          const T = await Os.list(i);
+          d(T.features), r.setFormValues(Object.fromEntries(T.features.map($ => [$.key, $.enabled]))), u(T.billing), x(T.can_edit);
+        } catch (T) {
+          K({
+            message: T instanceof Error ? T.message : c("groups.featuresLoadFailed")
+          });
+        } finally {
+          g(!1);
+        }
+      }
+    },
+    [w, E] = b.useState(""),
+    A = async T => {
+      E(typeof T == "string" ? T : ""), d([]), await C(), o.form.open();
+    },
+    S = T => !!r.getFormValue(T),
+    [L, j] = b.useState(null),
+    y = b.useRef(null),
+    D = T => {
+      const $ = y.current;
+      y.current = null, o.confirm.isOpen && o.confirm.close(), $?.(T);
+    },
+    M = T => (j(T), o.confirm.open(), new Promise($ => {
+      y.current = $;
+    })),
+    z = async (T, $) => {
+      const ee = a.find(U => U.key === T);
+      if (!ee || !i || F || n) return;
+      const te = Gt(a, l, U => U === T ? !$ : S(U)).total,
+        Q = Gt(a, l, S);
+      if ($ && (ee.unit_price ?? 0) > 0 && !(await M({
+        title: c("groups.featureTurnOnTitle", {
+          name: ee.label
+        }),
+        confirmText: c("groups.turnOn"),
+        turnOn: [ee],
+        turnOff: [],
+        before: te,
+        after: Q.total
+      }))) {
+        r.setFormValue(T, !1);
+        return;
+      }
+      if (!$ && T !== "tax" && !(await M({
+        title: c("groups.featureTurnOffTitle", {
+          name: ee.label
+        }),
+        confirmText: c("groups.turnOff"),
+        turnOn: [],
+        turnOff: [ee],
+        before: te,
+        after: Q.total
+      }))) {
+        r.setFormValue(T, !0);
+        return;
+      }
+      I(T);
+      try {
+        await Os.save(i, a.map(U => U.key).filter(U => !!r.getFormValue(U))), await Ct();
+      } catch (U) {
+        r.setFormValue(T, !$), K({
+          message: U instanceof Error ? U.message : c("groups.featuresSaveFailed")
+        });
+      } finally {
+        I("");
+      }
+    };
+  return {
+    modals: o,
+    deferred: n,
+    saving: _,
+    saveAll: async () => {
+      if (!i || _) return;
+      const T = a.filter(U => !U.enabled && S(U.key)),
+        $ = a.filter(U => U.enabled && !S(U.key));
+      if (T.length === 0 && $.length === 0) {
+        o.form.close();
+        return;
+      }
+      const ee = Gt(a, l, U => a.some(pe => pe.key === U && pe.enabled)).total,
+        te = Gt(a, l, S);
+      if (await M({
+        title: c("groups.serviceSettingsSaveTitle"),
+        confirmText: c("groups.save"),
+        turnOn: T,
+        turnOff: $,
+        before: ee,
+        after: te.total
+      })) {
+        v(!0);
+        try {
+          await Os.save(i, a.map(U => U.key).filter(U => !!r.getFormValue(U))), await Ct(), o.form.close();
+        } catch (U) {
+          K({
+            message: U instanceof Error ? U.message : c("groups.featuresSaveFailed")
+          });
+        } finally {
+          v(!1);
+        }
+      }
+    },
+    form: r,
+    orgName: t?.name ?? "",
+    features: a,
+    billing: l,
+    confirmView: L,
+    answer: D,
+    canEdit: p,
+    loading: h,
+    busyKey: F,
+    openDialog: A,
+    toggleFeature: z,
+    focusKey: w,
+    clearFocus: () => E("")
+  };
+}
+function Gc(s) {
+  const [t, i, n] = s.split("-").map(Number);
+  return t && i && n ? new Intl.DateTimeFormat(zt(Wt()), {
+    dateStyle: "long"
+  }).format(new Date(t, i - 1, n)) : s;
+}
+const zs = {
+    fontSize: 14,
+    color: "text.secondary"
+  },
+  as = {
+    fontSize: 17,
+    fontWeight: 600,
+    wordBreak: "keep-all"
+  },
+  Ws = {
+    fontSize: 14,
+    color: "text.secondary",
+    wordBreak: "keep-all"
+  };
+function Hc({
+  controller: s
+}) {
+  const t = J(),
+    {
+      modals: i,
+      confirmView: n,
+      billing: o,
+      answer: r
+    } = s,
+    a = !!(n && n.before !== n.after),
+    d = !!(n && [...n.turnOn, ...n.turnOff].some(x => (x.unit_price ?? 0) > 0)),
+    l = !!o?.trial && d,
+    p = [{
+      id: "confirm",
+      showTitle: !1,
+      children: n && e.jsxs(m, {
+        sx: {
+          display: "grid",
+          gap: 2
+        },
+        children: [l && o && e.jsxs(m, {
+          sx: {
+            p: 1.5,
+            borderRadius: 1.5,
+            border: "1px solid",
+            borderColor: "primary.main",
+            bgcolor: x => xt(x.palette.primary.main, .06),
+            display: "grid",
+            gap: .5
+          },
+          children: [e.jsx(k, {
+            sx: {
+              ...as,
+              color: "primary.main"
+            },
+            children: o.trial_unlimited ? t("groups.freeUsePeriod") : t("groups.freeTrialPeriod")
+          }), e.jsx(k, {
+            sx: {
+              fontSize: 15,
+              wordBreak: "keep-all"
+            },
+            children: o.trial_unlimited ? e.jsx("b", {
+              children: t("groups.noChargeUnlimited")
+            }) : e.jsx(ie, {
+              i18nKey: "groups.noChargeUntil",
+              values: {
+                date: Gc(o.trial_end),
+                days: o.trial_days_left
+              },
+              components: {
+                b: e.jsx("b", {})
+              }
+            })
+          })]
+        }), n.turnOn.length > 0 && e.jsxs(m, {
+          sx: {
+            display: "grid",
+            gap: .25
+          },
+          children: [e.jsx(k, {
+            sx: zs,
+            children: t("groups.turnOn")
+          }), e.jsx(k, {
+            sx: as,
+            children: n.turnOn.map(x => x.label).join(" · ")
+          })]
+        }), n.turnOff.length > 0 && e.jsxs(m, {
+          sx: {
+            display: "grid",
+            gap: .25
+          },
+          children: [e.jsx(k, {
+            sx: zs,
+            children: t("groups.turnOff")
+          }), e.jsx(k, {
+            sx: as,
+            children: n.turnOff.map(x => t("groups.featureInUse", {
+              name: x.label,
+              count: x.member_count
+            })).join(" · ")
+          }), e.jsxs(k, {
+            sx: Ws,
+            children: [e.jsx(ie, {
+              i18nKey: "groups.turnOffNote",
+              components: {
+                b: e.jsx("b", {})
+              }
+            }), n.turnOff.some(x => x.key === "approval") ? ` · ${t("groups.approvalsContinue")}` : ""]
+          })]
+        }), d && o && e.jsxs(m, {
+          sx: {
+            display: "grid",
+            gap: .25,
+            pt: 2,
+            borderTop: "1px solid",
+            borderColor: "divider"
+          },
+          children: [e.jsx(k, {
+            sx: zs,
+            children: t(l ? "groups.monthlyFeeAfterTrial" : "groups.monthlyFee")
+          }), e.jsx(k, {
+            sx: as,
+            children: a ? e.jsxs(e.Fragment, {
+              children: [e.jsxs(m, {
+                component: "span",
+                sx: {
+                  color: "text.secondary",
+                  fontWeight: 400
+                },
+                children: [Ut(n.before), " →", " "]
+              }), Ut(n.after)]
+            }) : t("groups.priceUnchanged", {
+              price: Ut(n.after)
+            })
+          }), e.jsxs(k, {
+            sx: Ws,
+            children: [t("groups.seatsVatIncluded", {
+              count: o.seats
+            }), [...n.turnOn, ...n.turnOff].some(x => x.price_basis === "counselors") ? ` · ${t("groups.counselorCount", {
+              count: o.counselors ?? 0
+            })}` : "", [...n.turnOn, ...n.turnOff].some(x => x.own_key_free) ? ` · ${t("groups.freeWithOwnKeyNow")}` : ""]
+          }), !l && a && e.jsx(k, {
+            sx: Ws,
+            children: e.jsx(ie, {
+              i18nKey: "groups.prorateNote",
+              components: {
+                b: e.jsx("b", {})
+              }
+            })
+          })]
+        })]
+      })
+    }];
+  return e.jsx(ge, {
+    open: i.confirm.isOpen,
+    onClose: i.confirm.close,
+    title: n?.title ?? "",
+    maxWidth: "xs",
+    fullScreen: !1,
+    titleIcons: {
+      delete: {
+        visible: !1
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !1,
+      right: e.jsxs(e.Fragment, {
+        children: [e.jsx(B, {
+          onClick: () => r(!1),
+          children: t("groups.cancel")
+        }), e.jsx(B, {
+          variant: "contained",
+          onClick: () => r(!0),
+          children: n?.confirmText ?? t("groups.ok")
+        })]
+      })
+    },
+    sections: p
+  });
+}
+const Uc = [{
+    kind: "free",
+    titleKey: "groups.free"
+  }, {
+    kind: "beta",
+    titleKey: "groups.betaTest"
+  }, {
+    kind: "paid",
+    titleKey: "groups.paid"
+  }],
+  Yc = s => s.beta ? "beta" : s.free ? "free" : "paid";
+function Xc({
+  feature: s,
+  controller: t
+}) {
+  const i = J(),
+    {
+      form: n,
+      canEdit: o,
+      busyKey: r,
+      toggleFeature: a
+    } = t,
+    d = !!n.useFormValue(s.key),
+    l = me(),
+    u = b.useRef(null),
+    p = t.focusKey === s.key;
+  b.useEffect(() => {
+    if (!p) return;
+    const h = window.setTimeout(() => {
+      u.current?.scrollIntoView({
+        block: "center",
+        behavior: "smooth"
+      }), t.clearFocus();
+    }, 120);
+    return () => window.clearTimeout(h);
+  }, [p]);
+  const x = e.jsx(he, {
+    name: s.key,
+    form: n,
+    disabled: !o || r === s.key,
+    onChange: (h, g) => {
+      a(s.key, g);
+    },
+    slotProps: {
+      input: {
+        "aria-label": i("groups.useItem", {
+          name: s.label
+        })
+      }
+    }
+  });
+  return e.jsxs(m, {
+    ref: u,
+    "data-feature-key": s.key,
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      gap: .5,
+      p: 1.5,
+      border: "1px solid",
+      borderColor: d ? "primary.main" : "divider",
+      borderRadius: 1.5,
+      bgcolor: d ? h => xt(h.palette.primary.main, .04) : "background.paper",
+      opacity: r === s.key ? .5 : 1
+    },
+    children: [e.jsxs(m, {
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        gap: 1
+      },
+      children: [e.jsx(k, {
+        sx: {
+          fontSize: 17,
+          fontWeight: 600,
+          minWidth: 0,
+          ...(l ? {
+            whiteSpace: "nowrap"
+          } : {
+            wordBreak: "keep-all"
+          })
+        },
+        children: s.label
+      }), !l && x]
+    }), e.jsx(k, {
+      sx: {
+        fontSize: 14,
+        color: "text.secondary",
+        wordBreak: "keep-all"
+      },
+      children: s.description
+    }), (s.unit_price ?? 0) > 0 && e.jsxs(k, {
+      sx: {
+        fontSize: 14,
+        fontWeight: 600,
+        wordBreak: "keep-all",
+        mt: l ? 0 : "auto",
+        pt: .5
+      },
+      children: [i(s.price_basis === "counselors" ? "groups.perCounselorMonthly" : "groups.perSeatMonthly", {
+        price: Ut(s.unit_price ?? 0)
+      }), (s.free_seats ?? 0) > 0 ? ` · ${i("groups.freeUpToSeats", {
+        count: s.free_seats
+      })}` : "", s.free_with_own_key ? ` · ${i(s.own_key_free ? "groups.freeWithOwnKeyNow" : "groups.freeWithOwnKey")}` : ""]
+    }), l && e.jsx(m, {
+      sx: {
+        display: "flex",
+        justifyContent: "flex-end",
+        mt: "auto"
+      },
+      children: x
+    })]
+  });
+}
+function Jc({
+  controller: s
+}) {
+  const t = J(),
+    {
+      form: i,
+      features: n,
+      billing: o
+    } = s,
+    r = n.filter(u => (u.unit_price ?? 0) > 0),
+    a = new Map(r.map(u => [u.key, !!i.useFormValue(u.key)]));
+  if (!o || r.length === 0) return null;
+  const {
+      total: d
+    } = Gt(n, o, u => a.get(u) === !0),
+    l = {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "baseline",
+      gap: 2
+    };
+  return e.jsxs(m, {
+    sx: {
+      mt: 1.5,
+      p: 1.5,
+      border: "1px solid",
+      borderColor: "divider",
+      borderRadius: 1.5,
+      display: "grid",
+      gap: .5
+    },
+    children: [e.jsxs(m, {
+      sx: l,
+      children: [e.jsx(k, {
+        sx: {
+          fontSize: 17,
+          fontWeight: 600,
+          wordBreak: "keep-all"
+        },
+        children: t("groups.monthlyFee")
+      }), e.jsx(k, {
+        sx: {
+          fontSize: 17,
+          fontWeight: 600,
+          whiteSpace: "nowrap"
+        },
+        children: Ut(d)
+      })]
+    }), e.jsxs(k, {
+      sx: {
+        fontSize: 14,
+        color: "text.secondary",
+        wordBreak: "keep-all"
+      },
+      children: [t("groups.basedOnSeatsVat", {
+        count: o.seats
+      }), r.some(u => u.price_basis === "counselors") ? ` · ${t("groups.counselorCount", {
+        count: o.counselors ?? 0
+      })}` : "", o.trial ? ` · ${o.trial_unlimited ? t("groups.noChargeFreeUse") : t("groups.noChargeDuringTrial", {
+        days: o.trial_days_left
+      })}` : ""]
+    })]
+  });
+}
+function Qc({
+  controller: s
+}) {
+  const t = J(),
+    i = me(),
+    {
+      modals: n,
+      features: o,
+      canEdit: r,
+      loading: a,
+      deferred: d,
+      saving: l,
+      saveAll: u
+    } = s,
+    p = g => e.jsx(Xc, {
+      feature: g,
+      controller: s
+    }, g.key),
+    h = [{
+      id: "features",
+      showTitle: !1,
+      children: e.jsxs(X, {
+        sx: {
+          gap: .5
+        },
+        children: [!a && !r && o.length > 0 && e.jsx(k, {
+          sx: {
+            fontSize: 15,
+            color: "text.secondary",
+            pb: 1
+          },
+          children: t("groups.serviceSettingsOwnerOnly")
+        }), Uc.map(({
+          kind: g,
+          titleKey: F
+        }) => {
+          const I = g !== "paid",
+            _ = o.filter(v => Yc(v) === g);
+          return _.length === 0 ? null : e.jsxs(m, {
+            sx: {
+              pb: 1
+            },
+            children: [e.jsx(k, {
+              sx: {
+                fontSize: 15,
+                fontWeight: 700,
+                color: "primary.main",
+                pt: 1,
+                pb: .5
+              },
+              children: t(F)
+            }), g === "beta" && e.jsxs(m, {
+              sx: {
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 2,
+                pb: 1
+              },
+              children: [e.jsx(k, {
+                sx: {
+                  minWidth: 0,
+                  fontSize: 15,
+                  color: "text.secondary",
+                  wordBreak: "keep-all"
+                },
+                children: e.jsx(ie, {
+                  i18nKey: "groups.betaNote",
+                  components: {
+                    b: e.jsx(m, {
+                      component: "span",
+                      sx: {
+                        color: "text.primary",
+                        fontWeight: 600
+                      }
+                    })
+                  }
+                })
+              }), e.jsx(B, {
+                variant: "outlined",
+                size: "small",
+                onClick: () => pr("베타 서비스"),
+                sx: {
+                  flexShrink: 0,
+                  whiteSpace: "nowrap"
+                },
+                children: t("groups.sendFeedback")
+              })]
+            }), e.jsx(m, {
+              sx: {
+                display: "grid",
+                gridTemplateColumns: i ? "repeat(2, minmax(0, 1fr))" : "repeat(3, minmax(0, 1fr))",
+                gap: 1.5
+              },
+              children: _.map(v => p(v))
+            }), !I && e.jsx(Jc, {
+              controller: s
+            }, o.map(v => v.key).join(","))]
+          }, g);
+        })]
+      })
+    }];
+  return e.jsxs(e.Fragment, {
+    children: [e.jsx(ge, {
+      open: n.form.isOpen,
+      onClose: n.form.close,
+      title: t("groups.serviceSettings"),
+      maxWidth: "md",
+      fullScreen: i,
+      mobilePresentation: i ? "slide" : "dialog",
+      draggable: !0,
+      titleIcons: {
+        delete: {
+          visible: !1
+        },
+        print: {
+          visible: !1
+        },
+        share: {
+          visible: !1
+        }
+      },
+      tabs: {
+        visible: !1
+      },
+      scrollPastLastSection: !1,
+      loading: a,
+      actions: {
+        visible: !0,
+        showCancelButton: !1,
+        right: d ? e.jsxs(e.Fragment, {
+          children: [e.jsx(B, {
+            onClick: n.form.close,
+            children: t("groups.cancel")
+          }), e.jsx(B, {
+            variant: "contained",
+            onClick: () => {
+              u();
+            },
+            disabled: !r || l,
+            children: t("groups.save")
+          })]
+        }) : e.jsx(B, {
+          variant: "contained",
+          onClick: n.form.close,
+          sx: {
+            minWidth: 80
+          },
+          children: t("groups.ok")
+        })
+      },
+      sections: h
+    }), e.jsx(Hc, {
+      controller: s
+    })]
+  });
+}
+const gi = {
+  owner: "groups.roleOwner",
+  admin: "groups.roleAdmin",
+  member: ""
+};
+function Zc({
+  controller: s
+}) {
+  const t = J(),
+    i = me(),
+    {
+      form: n,
+      modals: o,
+      canEdit: r,
+      loading: a,
+      members: d,
+      picker: l
+    } = s,
+    u = (n.useFormValue("bugNotifySeqs") ?? []).map(Number),
+    x = Rt({
+      stateId: "bootstrapState"
+    }).useValue("data.employee"),
+    h = b.useMemo(() => {
+      const _ = new Set(d.map(E => E.account_seq)),
+        v = uo(x).filter(E => _.has(Number(E.account_seq ?? 0))),
+        C = new Set(v.map(E => Number(E.account_seq))),
+        w = d.filter(E => !C.has(E.account_seq)).map(E => ({
+          seq: -E.account_seq,
+          account_seq: E.account_seq,
+          name: E.name,
+          department: ""
+        }));
+      return [...v, ...w];
+    }, [d, x]),
+    g = b.useMemo(() => new Map(d.map(_ => [_.account_seq, _])), [d]),
+    I = [{
+      id: "taskbox-org-settings",
+      showTitle: !1,
+      children: e.jsxs(m, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: 1.5
+        },
+        children: [!a && !r && e.jsx(k, {
+          sx: {
+            fontSize: 15,
+            color: "text.secondary"
+          },
+          children: t("groups.taskSettingsAdminOnly")
+        }), e.jsxs(m, {
+          sx: {
+            display: "flex",
+            flexDirection: "column",
+            gap: .5,
+            p: 1.5,
+            border: "1px solid",
+            borderColor: "divider",
+            borderRadius: 1.5
+          },
+          children: [e.jsxs(m, {
+            sx: {
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: 1
+            },
+            children: [e.jsx(k, {
+              sx: {
+                fontSize: 17,
+                fontWeight: 600
+              },
+              children: t("groups.taskContribution")
+            }), e.jsx(he, {
+              name: "contribution",
+              form: n,
+              disabled: !r,
+              slotProps: {
+                input: {
+                  "aria-label": t("groups.useItem", {
+                    name: t("groups.taskContribution")
+                  })
+                }
+              }
+            })]
+          }), e.jsxs(m, {
+            component: "ul",
+            sx: {
+              m: 0,
+              pl: 2.5,
+              fontSize: 14,
+              color: "text.secondary",
+              wordBreak: "keep-all"
+            },
+            children: [e.jsx("li", {
+              children: t("groups.contributionNote1")
+            }), e.jsx("li", {
+              children: t("groups.contributionNote2")
+            })]
+          })]
+        }), e.jsxs(m, {
+          sx: {
+            display: "flex",
+            flexDirection: "column",
+            gap: .5,
+            p: 1.5,
+            border: "1px solid",
+            borderColor: "divider",
+            borderRadius: 1.5
+          },
+          children: [e.jsxs(m, {
+            sx: {
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: 1
+            },
+            children: [e.jsx(k, {
+              sx: {
+                fontSize: 17,
+                fontWeight: 600
+              },
+              children: t("groups.externalShare")
+            }), e.jsx(he, {
+              name: "externalShare",
+              form: n,
+              disabled: !r,
+              slotProps: {
+                input: {
+                  "aria-label": t("groups.useItem", {
+                    name: t("groups.externalShare")
+                  })
+                }
+              }
+            })]
+          }), e.jsxs(m, {
+            component: "ul",
+            sx: {
+              m: 0,
+              pl: 2.5,
+              fontSize: 14,
+              color: "text.secondary",
+              wordBreak: "keep-all"
+            },
+            children: [e.jsx("li", {
+              children: t("groups.externalShareNote1")
+            }), e.jsx("li", {
+              children: t("groups.externalShareNote2")
+            })]
+          })]
+        }), e.jsxs(m, {
+          sx: {
+            display: "flex",
+            flexDirection: "column",
+            gap: .5,
+            p: 1.5,
+            border: "1px solid",
+            borderColor: "divider",
+            borderRadius: 1.5
+          },
+          children: [e.jsx(k, {
+            sx: {
+              fontSize: 17,
+              fontWeight: 600
+            },
+            children: t("groups.bugNotifyRecipients")
+          }), e.jsxs(m, {
+            component: "ul",
+            sx: {
+              m: 0,
+              pl: 2.5,
+              fontSize: 14,
+              color: "text.secondary",
+              wordBreak: "keep-all"
+            },
+            children: [e.jsx("li", {
+              children: t("groups.bugNotifyNote1")
+            }), e.jsx("li", {
+              children: t("groups.bugNotifyNote2")
+            })]
+          }), e.jsxs(m, {
+            sx: {
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              gap: 1,
+              mt: 1
+            },
+            children: [u.map(_ => {
+              const v = g.get(_),
+                C = v?.name ?? t("groups.accountFallback", {
+                  seq: _
+                });
+              return e.jsx(we, {
+                label: v && gi[v.role] ? `${C} (${t(gi[v.role])})` : C,
+                onDelete: r ? () => l.removePicked(_) : void 0,
+                sx: {
+                  fontSize: 14
+                }
+              }, _);
+            }), u.length === 0 ? e.jsx(k, {
+              sx: {
+                fontSize: 14,
+                color: "text.secondary"
+              },
+              children: t("groups.noOnePicked")
+            }) : null, r ? e.jsx(B, {
+              size: "small",
+              startIcon: e.jsx(gr, {}),
+              onClick: l.openPicker,
+              disabled: a,
+              children: t("groups.pickFromOrgChart")
+            }) : null]
+          })]
+        })]
+      })
+    }];
+  return e.jsxs(e.Fragment, {
+    children: [e.jsx(ge, {
+      open: o.form.isOpen,
+      onClose: o.form.close,
+      title: t("groups.taskSettings"),
+      maxWidth: "sm",
+      fullScreen: i,
+      mobilePresentation: i ? "slide" : "dialog",
+      draggable: !0,
+      titleIcons: {
+        delete: {
+          visible: !1
+        },
+        print: {
+          visible: !1
+        },
+        share: {
+          visible: !1
+        }
+      },
+      tabs: {
+        visible: !1
+      },
+      scrollPastLastSection: !1,
+      loading: a,
+      actions: {
+        visible: !0,
+        showCancelButton: !1,
+        right: e.jsxs(e.Fragment, {
+          children: [e.jsx(B, {
+            onClick: o.form.close,
+            children: t("groups.cancel")
+          }), e.jsx(B, {
+            variant: "contained",
+            onClick: () => {
+              n.submit();
+            },
+            disabled: !r,
+            children: t("groups.save")
+          })]
+        })
+      },
+      sections: I
+    }), e.jsx(Sn, {
+      open: l.open,
+      title: t("groups.bugNotifyRecipients"),
+      candidates: h,
+      initialAccountSeqs: u,
+      onClose: l.close,
+      onApply: _ => l.applyPicked(_.map(v => Number(v.account_seq ?? 0)))
+    }, l.key)]
+  });
+}
+function fi(s, t) {
+  if (!s?.ok || !s.data) throw new Error(s?.message || t);
+  return s.data;
+}
+const xi = {
+  get: async s => {
+    const t = fi(await oe.http.get(`/v1/groups/${s}/taskbox-settings`), c("groups.taskSettingsLoadFailed"));
+    return {
+      contribution: t.contribution === !0,
+      external_share: t.external_share !== !1,
+      bug_notify_account_seqs: Array.isArray(t.bug_notify_account_seqs) ? t.bug_notify_account_seqs.map(Number).filter(i => i > 0) : [],
+      members: Array.isArray(t.members) ? t.members : [],
+      can_edit: t.can_edit === !0
+    };
+  },
+  save: async (s, t) => {
+    fi(await oe.http.patch(`/v1/groups/${s}/taskbox-settings`, t), c("groups.taskSettingsSaveFailed"));
+  }
+};
+function ed() {
+  const t = De()?.seq ?? 0,
+    [i, n] = b.useState(!1),
+    [o, r] = b.useState(!1),
+    [a, d] = b.useState([]),
+    l = b.useRef([]),
+    u = {
+      form: de({
+        modalId: "taskbox-org-settings-dialog"
+      })
+    },
+    p = je({
+      formId: "taskbox-org-settings-form",
+      initialValues: {
+        contribution: !1,
+        bugNotifySeqs: [],
+        externalShare: !0
+      },
+      onSubmit: async w => {
+        if (!t || !i) return !1;
+        try {
+          const E = new Set(l.current.map(A => A.account_seq));
+          return await xi.save(t, {
+            contribution: w.contribution === !0,
+            external_share: w.externalShare !== !1,
+            bug_notify_account_seqs: (w.bugNotifySeqs ?? []).map(Number).filter(A => E.has(A))
+          }), await Ct(), u.form.close(), _e({
+            message: c("groups.saved")
+          }), !0;
+        } catch (E) {
+          return K({
+            message: E instanceof Error ? E.message : c("groups.taskSettingsSaveFailed")
+          }), !1;
+        }
+      }
+    }),
+    x = async () => {
+      if (!t) return void u.form.open();
+      r(!0), await xi.get(t).then(w => {
+        p.setFormValues({
+          contribution: w.contribution,
+          bugNotifySeqs: w.bug_notify_account_seqs,
+          externalShare: w.external_share
+        }), l.current = w.members, d(w.members), n(w.can_edit);
+      }).catch(w => K({
+        message: w instanceof Error ? w.message : c("groups.taskSettingsLoadFailed")
+      })).finally(() => r(!1)), u.form.open();
+    },
+    [h, g] = b.useState(!1),
+    [F, I] = b.useState(0);
+  return {
+    form: p,
+    modals: u,
+    canEdit: i,
+    loading: o,
+    members: a,
+    openDialog: x,
+    picker: {
+      open: h,
+      key: F,
+      openPicker: () => {
+        I(w => w + 1), g(!0);
+      },
+      close: () => g(!1),
+      applyPicked: w => {
+        p.setFormValue("bugNotifySeqs", [...new Set(w.filter(E => E > 0))]), g(!1);
+      },
+      removePicked: w => {
+        const E = (p.getFormValue("bugNotifySeqs") ?? []).map(Number);
+        p.setFormValue("bugNotifySeqs", E.filter(A => A !== w));
+      }
+    }
+  };
+}
+const Bt = "/v1/api-keys";
+function Vt(s, t) {
+  if (!s?.ok || !s.data) throw new Error(s?.message || s?.error || t);
+  return s.data;
+}
+const Mt = {
+    list: async () => {
+      const s = Vt(await oe.http.get(Bt), c("groups.apiKeyListLoadFailed"));
+      return {
+        items: Array.isArray(s.items) ? s.items : [],
+        kinds: Array.isArray(s.kinds) ? s.kinds : []
+      };
+    },
+    create: async s => Vt(await oe.http.post(Bt, s), c("groups.apiKeyIssueFailed")),
+    update: async (s, t) => Vt(await oe.http.patch(`${Bt}/${s}`, t), c("groups.apiKeySaveFailed")),
+    boards: async () => Vt(await oe.http.get(`${Bt}/boards`), c("groups.apiKeyListLoadFailed")).items ?? [],
+    remove: async s => {
+      Vt(await oe.http.delete(`${Bt}/${s}`), c("groups.apiKeyRevokeFailed"));
+    }
+  },
+  Ls = {
+    seq: 0,
+    kind: "",
+    name: "",
+    memo: "",
+    expire_date: "",
+    allowed_ips: "",
+    workspace_seq: "",
+    board_keys: [],
+    board_write: !1,
+    origins: "",
+    login_id_kind: "email",
+    require_email_verify: !0,
+    key: "",
+    key_prefix: ""
+  },
+  mn = "member",
+  pn = "support",
+  gn = "board",
+  td = "call",
+  sd = `${typeof window < "u" ? window.location.origin : "https://taskham.com"}/api/v1/public/call/atalk`,
+  nd = "taskham.com",
+  id = "2222";
+async function od(s) {
+  if (!s || typeof crypto > "u" || !crypto.subtle) return "";
+  const t = new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(`taskham-sftp:${s}`))),
+    i = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let n = "";
+  for (let o = 0; o < 20; o += 1) n += i[t[o] % i.length];
+  return n;
+}
+function rd(s) {
+  return {
+    seq: s.seq,
+    kind: s.kind,
+    name: s.name,
+    memo: s.memo,
+    expire_date: s.expire_date,
+    allowed_ips: s.allowed_ips ?? "",
+    workspace_seq: Number(s.workspace_seq ?? 0) || "",
+    board_keys: String(s.board_keys ?? "").split(",").map(t => t.trim()).filter(Boolean),
+    board_write: s.board_write === !0,
+    origins: s.origins ?? "",
+    login_id_kind: s.login_id_kind || "email",
+    require_email_verify: s.require_email_verify === !0,
+    key: s.key,
+    key_prefix: s.key_prefix
+  };
+}
+function ad(s) {
+  return Number(s?.status ?? 0) || 0;
+}
+function qt(s, t) {
+  return s instanceof Error && s.message ? s.message : t;
+}
+function ld() {
+  const s = {
+      list: de({
+        modalId: "org-api-keys-dialog"
+      }),
+      form: de({
+        modalId: "org-api-key-form-dialog"
+      })
+    },
+    [t, i] = b.useState([]),
+    [n, o] = b.useState([]),
+    [r, a] = b.useState(!1),
+    [d, l] = b.useState(!1),
+    [u, p] = b.useState(""),
+    [x, h] = b.useState(0),
+    g = je({
+      formId: "org-api-keys-enabled-form",
+      initialValues: {}
+    }),
+    F = async () => {
+      a(!0), p("");
+      try {
+        const y = await Mt.list();
+        i(y.items), o(y.kinds), g.setFormValues(Object.fromEntries(y.items.map(D => [String(D.seq), D.enabled])));
+      } catch (y) {
+        i([]), ad(y) === 403 ? p(qt(y, c("groups.apiKeyNoPermission"))) : K({
+          message: qt(y, c("groups.apiKeyListLoadFailed"))
+        });
+      } finally {
+        a(!1);
+      }
+    },
+    I = je({
+      formId: "org-api-key-form",
+      initialValues: Ls,
+      onValidate: y => !(y.seq > 0) && !y.kind ? (K({
+        message: c("groups.apiKeyTypeRequired")
+      }), !1) : String(y.name ?? "").trim() ? y.kind === mn && !String(y.origins ?? "").trim() ? (K({
+        message: c("groups.apiKeySiteRequired")
+      }), !1) : y.kind === pn && !(Number(y.workspace_seq) > 0) ? (K({
+        message: c("groups.apiKeyWorkspaceRequired")
+      }), !1) : y.kind === gn && !(Array.isArray(y.board_keys) && y.board_keys.length > 0) ? (K({
+        message: c("groups.apiKeyBoardsRequired")
+      }), !1) : !0 : (K({
+        message: c("groups.apiKeyNameRequired")
+      }), !1),
+      onSubmit: async y => {
+        l(!0);
+        try {
+          const D = {
+            name: String(y.name ?? "").trim(),
+            memo: String(y.memo ?? "").trim(),
+            expire_date: String(y.expire_date ?? "").slice(0, 10),
+            ...(y.kind === mn ? {
+              origins: String(y.origins ?? ""),
+              login_id_kind: y.login_id_kind === "username" ? "username" : "email",
+              require_email_verify: y.require_email_verify === !0
+            } : {
+              allowed_ips: String(y.allowed_ips ?? "")
+            }),
+            ...(y.kind === pn ? {
+              workspace_seq: Number(y.workspace_seq) || 0
+            } : {}),
+            ...(y.kind === gn ? {
+              board_keys: y.board_keys ?? [],
+              board_write: y.board_write === !0
+            } : {})
+          };
+          if (y.seq > 0) await Mt.update(y.seq, D), s.form.close();else {
+            const M = await Mt.create({
+              ...D,
+              kind: y.kind
+            });
+            L(Number(M?.seq) || 0), s.form.close();
+          }
+          return await F(), !0;
+        } catch (D) {
+          return K({
+            message: qt(D, c("groups.apiKeySaveFailed"))
+          }), !1;
+        } finally {
+          l(!1);
+        }
+      }
+    }),
+    _ = async () => {
+      i([]), await F(), s.list.open();
+    },
+    v = () => {
+      I.setFormValues({
+        ...Ls
+      }), s.form.open();
+    },
+    C = y => {
+      I.setFormValues(rd(y)), s.form.open();
+    },
+    w = async (y, D) => {
+      if (!x) {
+        h(y);
+        try {
+          await Mt.update(y, {
+            enabled: D
+          });
+        } catch (M) {
+          g.setFormValue(String(y), !D), K({
+            message: qt(M, c("groups.apiKeyToggleFailed"))
+          });
+        } finally {
+          h(0);
+        }
+      }
+    },
+    E = async y => {
+      if (y > 0) try {
+        await Mt.remove(y), s.form.close(), await F();
+      } catch (D) {
+        K({
+          message: qt(D, c("groups.apiKeyRevokeFailed"))
+        });
+      }
+    },
+    A = () => I.setFormValues({
+      ...Ls
+    }),
+    [S, L] = b.useState(0);
+  return {
+    modals: s,
+    form: I,
+    enabledForm: g,
+    items: t,
+    kinds: n,
+    loading: r,
+    saving: d,
+    blockedMessage: u,
+    busySeq: x,
+    openDialog: _,
+    openCreateDialog: v,
+    openEditDialog: C,
+    justCreatedSeq: S,
+    toggleEnabled: w,
+    removeKey: E,
+    resetForm: A,
+    copyKey: async y => {
+      const D = await qa(y);
+      return D || K({
+        message: c("groups.apiKeyCopyFailed")
+      }), D;
+    }
+  };
+}
+const cd = 1500;
+function jt({
+  value: s,
+  prefix: t = "",
+  onCopy: i,
+  label: n
+}) {
+  const o = J(),
+    r = n ?? o("groups.apiKey"),
+    [a, d] = b.useState(!1);
+  return b.useEffect(() => {
+    if (!a) return;
+    const l = setTimeout(() => d(!1), cd);
+    return () => clearTimeout(l);
+  }, [a]), e.jsxs(m, {
+    onClick: l => l.stopPropagation(),
+    children: [n ? e.jsx(k, {
+      sx: {
+        fontSize: 14,
+        color: "text.secondary",
+        mb: .75
+      },
+      children: n
+    }) : null, e.jsx(fr, {
+      fullWidth: !0,
+      readOnly: !0,
+      value: s || `${t}…`,
+      onFocus: l => l.target.select(),
+      inputProps: {
+        "aria-label": r,
+        "data-testid": "api-key-value"
+      },
+      endAdornment: e.jsx(xr, {
+        position: "end",
+        children: e.jsx(ht, {
+          size: "small",
+          edge: "end",
+          "aria-label": o("groups.copyLabel", {
+            name: r
+          }),
+          disabled: !s,
+          onClick: () => {
+            i(s).then(d);
+          },
+          children: a ? e.jsx(oo, {
+            "data-testid": "api-key-copied",
+            sx: {
+              fontSize: 18,
+              color: "success.main"
+            }
+          }) : e.jsx(hr, {
+            sx: {
+              fontSize: 18
+            }
+          })
+        })
+      })
+    })]
+  });
+}
+function dd({
+  controller: s
+}) {
+  const t = J(),
+    {
+      modals: i,
+      form: n,
+      kinds: o,
+      saving: r,
+      removeKey: a,
+      copyKey: d
+    } = s,
+    l = Number(n.useFormValue("seq")) || 0,
+    u = String(n.useFormValue("key") ?? ""),
+    p = String(n.useFormValue("key_prefix") ?? ""),
+    x = String(n.useFormValue("kind") ?? "") === mn,
+    h = String(n.useFormValue("kind") ?? "") === pn,
+    g = String(n.useFormValue("kind") ?? "") === td,
+    [F, I] = b.useState("");
+  b.useEffect(() => {
+    let y = !0;
+    return I(""), g && u && od(u).then(D => y && I(D)), () => {
+      y = !1;
+    };
+  }, [g, u]);
+  const _ = De()?.seq ?? 0,
+    {
+      items: v
+    } = br(),
+    C = Number(n.useFormValue("workspace_seq")) || 0,
+    w = v.filter(y => y.team_seq === _ && !y.archived && (!y.is_sample || y.seq === C)).map(y => ({
+      value: y.seq,
+      label: y.name
+    })),
+    E = String(n.useFormValue("login_id_kind") ?? "email"),
+    A = String(n.useFormValue("kind") ?? "") === gn,
+    S = n.useFormValue("board_keys") ?? [],
+    [L, j] = b.useState([]);
+  return b.useEffect(() => {
+    if (!A || !i.form.isOpen) return;
+    let y = !0;
+    return Mt.boards().then(D => y && j(D)).catch(() => y && j([])), () => {
+      y = !1;
+    };
+  }, [A, i.form.isOpen]), e.jsx(ge, {
+    backdropClick: !1,
+    open: i.form.isOpen,
+    onClose: i.form.close,
+    title: t(l ? "groups.apiKey" : "groups.issueNewApiKey"),
+    maxWidth: "sm",
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    titleIcons: {
+      delete: {
+        visible: l > 0,
+        confirmConfig: {
+          title: t("groups.revokeApiKeyTitle"),
+          message: t("groups.revokeApiKeyConfirm"),
+          confirmText: t("groups.revoke"),
+          cancelText: t("groups.cancel")
+        }
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    onDelete: l > 0 ? () => a(l) : void 0,
+    sections: [{
+      id: "api-key-main",
+      showTitle: !1,
+      children: e.jsxs(X, {
+        sx: {
+          gap: 2.5
+        },
+        children: [e.jsxs(m, {
+          sx: {
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "1fr 1fr"
+            },
+            gap: 2.5
+          },
+          children: [e.jsx(ae, {
+            form: n,
+            name: "kind",
+            label: t("groups.keyType"),
+            options: o.map(y => ({
+              value: y.key,
+              label: y.label
+            })),
+            disabled: r || l > 0,
+            fullWidth: !0
+          }), e.jsx(re, {
+            form: n,
+            name: "name",
+            label: t("groups.keyName"),
+            fullWidth: !0,
+            disabled: r,
+            slotProps: {
+              htmlInput: {
+                maxLength: 100
+              }
+            }
+          })]
+        }), g ? e.jsx($o, {}) : null, l > 0 && e.jsx(jt, {
+          value: u,
+          prefix: p,
+          onCopy: d,
+          label: t("groups.issuedKey")
+        }), g ? e.jsx(jt, {
+          value: sd,
+          onCopy: d,
+          label: t("groups.callReceiveUrl")
+        }) : null, g ? e.jsxs(m, {
+          sx: {
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "1fr 1fr"
+            },
+            gap: 2.5
+          },
+          children: [e.jsx(jt, {
+            value: nd,
+            onCopy: d,
+            label: t("groups.sftpHost")
+          }), e.jsx(jt, {
+            value: id,
+            onCopy: d,
+            label: t("groups.sftpPort")
+          }), e.jsx(jt, {
+            value: `org${_}`,
+            onCopy: d,
+            label: t("groups.sftpUser")
+          }), l > 0 ? e.jsx(jt, {
+            value: F,
+            prefix: t("groups.sftpPasswordUnavailable"),
+            onCopy: d,
+            label: t("groups.sftpPassword")
+          }) : null]
+        }) : null, h ? e.jsx(ae, {
+          form: n,
+          name: "workspace_seq",
+          label: t("groups.inquiryWorkspace"),
+          options: w,
+          disabled: r,
+          fullWidth: !0
+        }) : null, A ? e.jsxs(e.Fragment, {
+          children: [e.jsx(bs, {
+            select: !0,
+            label: t("groups.openBoards"),
+            value: S,
+            onChange: y => {
+              const D = y.target.value;
+              n.setFormValue("board_keys", Array.isArray(D) ? D : String(D).split(","));
+            },
+            helperText: t("groups.openBoardsHint"),
+            disabled: r,
+            fullWidth: !0,
+            slotProps: {
+              select: {
+                multiple: !0,
+                renderValue: y => y.map(D => L.find(M => M.key === D)?.label ?? D).join(", ")
+              }
+            },
+            children: L.map(y => e.jsxs(vs, {
+              value: y.key,
+              children: [e.jsx(yr, {
+                checked: S.includes(y.key),
+                size: "small",
+                sx: {
+                  p: 0,
+                  mr: 1
+                }
+              }), e.jsx(_r, {
+                primary: y.label
+              })]
+            }, y.key))
+          }), e.jsx(he, {
+            form: n,
+            name: "board_write",
+            label: t("groups.allowBoardWrite"),
+            disabled: r
+          })]
+        }) : null, x ? e.jsxs(e.Fragment, {
+          children: [e.jsx(ft, {
+            form: n,
+            name: "origins",
+            label: t("groups.siteOrigins"),
+            placeholder: "https://www.example.com",
+            minRows: 2,
+            disabled: r,
+            slotProps: {
+              htmlInput: {
+                maxLength: 1e3
+              }
+            }
+          }), e.jsx(ae, {
+            form: n,
+            name: "login_id_kind",
+            label: l > 0 ? t("groups.memberIdLocked") : t("groups.memberId"),
+            options: [{
+              value: "email",
+              label: t("groups.emailAddress")
+            }, {
+              value: "username",
+              label: t("groups.customUsername")
+            }],
+            showEmptyOption: !1,
+            disabled: r || l > 0,
+            fullWidth: !0
+          }), E === "email" ? e.jsx(he, {
+            form: n,
+            name: "require_email_verify",
+            label: t("groups.requireEmailVerify"),
+            disabled: r
+          }) : null]
+        }) : e.jsx(ft, {
+          form: n,
+          name: "allowed_ips",
+          label: t("groups.allowedIps"),
+          placeholder: `203.0.113.10
+203.0.113.0/24`,
+          minRows: 2,
+          disabled: r,
+          slotProps: {
+            htmlInput: {
+              maxLength: 1e3
+            }
+          }
+        }), e.jsx(Be, {
+          form: n,
+          name: "expire_date",
+          label: t("groups.expireDateOptional"),
+          fullWidth: !0,
+          disabled: r
+        }), e.jsx(ft, {
+          form: n,
+          name: "memo",
+          label: t("groups.memo"),
+          minRows: 4,
+          disabled: r,
+          slotProps: {
+            htmlInput: {
+              maxLength: 500
+            }
+          }
+        })]
+      })
+    }],
+    actions: {
+      visible: !0,
+      right: e.jsx(B, {
+        variant: "contained",
+        onClick: n.submit,
+        disabled: r,
+        sx: {
+          minWidth: 80
+        },
+        children: r ? e.jsx(ye, {
+          size: 20,
+          color: "inherit"
+        }) : t(l ? "groups.save" : "groups.issue")
+      })
+    }
+  });
+}
+function Bs(s, t = !0) {
+  const i = t ? Ka(s) : Ga(s);
+  if (!i || Number.isNaN(i.getTime())) return "";
+  const n = r => String(r).padStart(2, "0"),
+    o = `${n(i.getFullYear() % 100)}.${n(i.getMonth() + 1)}.${n(i.getDate())}`;
+  return t ? `${o} ${n(i.getHours())}:${n(i.getMinutes())}` : o;
+}
+function ud({
+  controller: s
+}) {
+  const t = J(),
+    i = me(),
+    {
+      modals: n,
+      enabledForm: o,
+      items: r,
+      kinds: a,
+      loading: d,
+      blockedMessage: l,
+      busySeq: u,
+      openCreateDialog: p,
+      openEditDialog: x,
+      toggleEnabled: h,
+      copyKey: g
+    } = s,
+    [F, I] = b.useState(() => new Set()),
+    _ = s.justCreatedSeq;
+  b.useEffect(() => {
+    _ > 0 && I(S => new Set(S).add(_));
+  }, [_]);
+  const v = S => I(L => {
+      const j = new Set(L);
+      return j.has(S) ? j.delete(S) : j.add(S), j;
+    }),
+    C = (S, L, j = !1) => e.jsxs(m, {
+      sx: {
+        minWidth: 0,
+        px: 1.5,
+        py: 1.25,
+        borderRadius: 1,
+        bgcolor: j ? "error.light" : "action.hover"
+      },
+      children: [e.jsx(k, {
+        sx: {
+          fontSize: 14,
+          color: j ? "error.contrastText" : "text.secondary"
+        },
+        children: S
+      }), e.jsx(k, {
+        sx: {
+          fontSize: 14,
+          fontWeight: 500,
+          color: j ? "error.contrastText" : "text.primary"
+        },
+        children: L
+      })]
+    }),
+    w = S => {
+      const L = F.has(S.seq);
+      return e.jsxs(m, {
+        onClick: () => x(S),
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: 1.25,
+          p: 2,
+          border: "1px solid",
+          borderColor: "grey.400",
+          borderRadius: 2,
+          ...(i ? {
+            mx: `-${wt}px`,
+            border: 0,
+            borderRadius: 0,
+            bgcolor: "#fff"
+          } : {}),
+          cursor: "pointer",
+          opacity: u === S.seq ? .5 : 1
+        },
+        children: [e.jsxs(X, {
+          direction: "row",
+          sx: {
+            alignItems: "center",
+            gap: 1
+          },
+          children: [e.jsxs(X, {
+            direction: "row",
+            sx: {
+              flex: 1,
+              minWidth: 0,
+              alignItems: "center",
+              gap: 1,
+              flexWrap: "wrap"
+            },
+            children: [e.jsx(we, {
+              size: "small",
+              variant: "outlined",
+              label: a.find(j => j.key === S.kind)?.label ?? t("groups.discontinuedApi")
+            }), e.jsx(k, {
+              sx: {
+                fontSize: 17,
+                fontWeight: 600
+              },
+              children: S.name
+            }), S.expired && e.jsx(we, {
+              size: "small",
+              color: "error",
+              label: t("groups.expired")
+            })]
+          }), e.jsx(ht, {
+            size: "small",
+            "aria-label": t(L ? "groups.collapse" : "groups.expand"),
+            "aria-expanded": L,
+            onClick: j => {
+              j.stopPropagation(), v(S.seq);
+            },
+            children: e.jsx(no, {
+              sx: {
+                transform: L ? "rotate(180deg)" : "none",
+                transition: "transform 150ms"
+              }
+            })
+          }), e.jsx(m, {
+            onClick: j => j.stopPropagation(),
+            children: e.jsx(he, {
+              name: String(S.seq),
+              form: o,
+              disabled: u === S.seq,
+              onChange: (j, y) => {
+                h(S.seq, y);
+              },
+              slotProps: {
+                input: {
+                  "aria-label": t("groups.useItem", {
+                    name: S.name
+                  })
+                }
+              }
+            })
+          })]
+        }), L ? e.jsxs(e.Fragment, {
+          children: [e.jsx(jt, {
+            value: S.key,
+            prefix: S.key_prefix,
+            onCopy: g
+          }), e.jsxs(m, {
+            sx: {
+              display: "grid",
+              gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+              gap: 1.5
+            },
+            children: [C(t("groups.createdDate"), Bs(S.created_time)), C(t("groups.expireDate"), S.expire_date ? Bs(S.expire_date, !1) : t("groups.noExpiry"), S.expired), C(t("groups.lastUsed"), S.last_used_at ? Bs(S.last_used_at) : t("groups.none"))]
+          }), S.memo && e.jsx(k, {
+            sx: {
+              fontSize: 14,
+              color: "text.secondary",
+              whiteSpace: "pre-wrap"
+            },
+            children: S.memo
+          })]
+        }) : null]
+      }, S.seq);
+    },
+    A = [{
+      id: "api-keys",
+      showTitle: !1,
+      children: e.jsx(X, {
+        sx: {
+          gap: i ? rn : 1.5
+        },
+        children: l ? e.jsx(k, {
+          sx: {
+            fontSize: 15,
+            color: "text.secondary",
+            py: 2
+          },
+          children: l
+        }) : e.jsxs(e.Fragment, {
+          children: [!d && r.length === 0 && e.jsx(k, {
+            sx: {
+              fontSize: 15,
+              color: "text.secondary",
+              py: 2
+            },
+            children: t("groups.apiKeysEmpty")
+          }), r.map(S => w(S))]
+        })
+      })
+    }];
+  return e.jsxs(e.Fragment, {
+    children: [e.jsx(ge, {
+      open: n.list.isOpen,
+      onClose: n.list.close,
+      title: t("groups.apiKey"),
+      maxWidth: "sm",
+      fullScreen: i,
+      mobilePresentation: i ? "slide" : "dialog",
+      draggable: !0,
+      titleIcons: {
+        delete: {
+          visible: !1
+        },
+        print: {
+          visible: !1
+        },
+        share: {
+          visible: !1
+        }
+      },
+      tabs: {
+        visible: !1
+      },
+      scrollPastLastSection: !1,
+      sx: i ? {
+        DialogContent: {
+          bgcolor: bn[200]
+        }
+      } : void 0,
+      contentPaddingX: i ? wt : void 0,
+      contentTopPadding: i ? 0 : void 0,
+      loading: d,
+      actions: {
+        visible: !0,
+        showCancelButton: !1,
+        left: l ? void 0 : e.jsx(B, {
+          variant: "outlined",
+          startIcon: e.jsx(Zt, {}),
+          onClick: p,
+          children: t(i ? "groups.add" : "groups.issueNewKey")
+        }),
+        right: e.jsx(B, {
+          variant: "contained",
+          onClick: n.list.close,
+          sx: {
+            minWidth: 80
+          },
+          children: t("groups.ok")
+        })
+      },
+      sections: A
+    }), e.jsx(dd, {
+      controller: s
+    })]
+  });
+}
+const Pt = [{
+    id: "gemini",
+    label: "Gemini",
+    placeholder: "AIza…",
+    keyUrl: "https://aistudio.google.com/apikey",
+    keySite: "Google AI Studio",
+    liftsSttLimit: !0
+  }, {
+    id: "elevenlabs",
+    label: "ElevenLabs",
+    placeholder: "sk_…",
+    keyUrl: "https://elevenlabs.io/app/settings/api-keys",
+    keySite: "ElevenLabs",
+    liftsSttLimit: !0
+  }, {
+    id: "openai",
+    label: "OpenAI",
+    placeholder: "sk-…",
+    keyUrl: "https://platform.openai.com/api-keys",
+    keySite: "OpenAI Platform",
+    liftsSttLimit: !1
+  }],
+  md = s => Pt.find(t => t.id === s) ?? Pt[0],
+  Vs = "/v1/ai-key",
+  Oo = {
+    has_key: !1,
+    key_hint: "",
+    set_date: "",
+    set_by: "",
+    rejected: !1,
+    last_error: "",
+    last_error_date: "",
+    editable: !1
+  };
+function hi(s, t) {
+  if (!s?.ok || !s.data) throw new Error(s?.error || s?.message || t);
+  const i = s.data;
+  return {
+    has_key: !!i.has_key,
+    key_hint: String(i.key_hint ?? ""),
+    set_date: String(i.set_date ?? ""),
+    set_by: String(i.set_by ?? ""),
+    rejected: !!i.rejected,
+    last_error: String(i.last_error ?? ""),
+    last_error_date: String(i.last_error_date ?? ""),
+    editable: !!i.editable
+  };
+}
+const bi = {
+  providers: Object.fromEntries(Pt.map(s => [s.id, Oo])),
+  editable: !1
+};
+function qs(s, t) {
+  const i = hi(s, t),
+    n = s?.data?.providers ?? {};
+  return {
+    providers: Object.fromEntries(Pt.map(r => [r.id, n[r.id] ? hi({
+      ok: !0,
+      data: n[r.id]
+    }, t) : r.id === "gemini" ? i : {
+      ...Oo,
+      editable: i.editable
+    }])),
+    editable: i.editable
+  };
+}
+const $s = {
+  get: async () => qs(await oe.http.get(Vs), c("settings.aiKeyLoadFailed")),
+  save: async (s, t) => qs(await oe.http.put(Vs, {
+    provider: s,
+    key: t
+  }), c("settings.aiKeySaveFailed")),
+  remove: async s => qs(await oe.http.delete(`${Vs}?provider=${s}`), c("settings.aiKeyDeleteFailed"))
+};
+function pd(s) {
+  const i = De()?.seq ?? 0,
+    n = {
+      form: de({
+        modalId: "settings-ai-key-dialog"
+      })
+    },
+    [o, r] = b.useState(bi),
+    [a, d] = b.useState("gemini"),
+    l = o.providers[a],
+    [u, p] = b.useState(!1),
+    [x, h] = b.useState(!1),
+    [g, F] = b.useState(!1),
+    [I, _] = b.useState(""),
+    v = je({
+      formId: "settings-ai-key-form",
+      initialValues: {
+        key: ""
+      },
+      onValidate: L => String(L.key ?? "").trim() ? (_(""), !0) : (_(c("settings.aiKeyPasteHint")), !1),
+      onSubmit: async L => {
+        try {
+          r(await $s.save(a, String(L.key ?? "").trim())), v.setFormValue("key", ""), _e({
+            message: c("settings.aiKeySaved")
+          });
+        } catch (j) {
+          _(j instanceof Error ? j.message : c("settings.aiKeySaveFailed"));
+        }
+      }
+    }),
+    C = async () => {
+      h(!0);
+      try {
+        r(await $s.get()), p(!0);
+      } catch (L) {
+        _(L instanceof Error ? L.message : c("settings.aiKeyLoadFailed"));
+      } finally {
+        h(!1);
+      }
+    };
+  b.useEffect(() => {
+    p(!1), r(bi), !(!s || !i) && C();
+  }, [s, i]);
+  const w = async () => {
+      _(""), v.setFormValue("key", ""), await C(), n.form.open();
+    },
+    E = async () => {
+      _(""), F(!0);
+      try {
+        r(await $s.remove(a)), v.setFormValue("key", ""), _e({
+          message: c("settings.aiKeyDeleted")
+        });
+      } catch (L) {
+        _(L instanceof Error ? L.message : c("settings.aiKeyDeleteFailed"));
+      } finally {
+        F(!1);
+      }
+    },
+    A = String(v.useFormValue("key") ?? "").trim();
+  return {
+    modals: n,
+    form: v,
+    aiKey: l,
+    keys: o,
+    provider: a,
+    selectProvider: L => {
+      L !== a && (d(L), _(""), v.setFormValue("key", ""));
+    },
+    loaded: u,
+    loading: x,
+    removing: g,
+    error: I,
+    dirty: !!A,
+    openDialog: w,
+    remove: E
+  };
+}
+function gd({
+  controller: s
+}) {
+  const t = J(),
+    i = me(),
+    {
+      form: n,
+      modals: o,
+      aiKey: r,
+      loading: a,
+      removing: d,
+      error: l,
+      dirty: u
+    } = s,
+    p = o.form.isOpen,
+    x = n.isSubmitting,
+    h = a || x || d,
+    g = r.editable || s.keys.editable,
+    F = md(s.provider),
+    I = F.label,
+    _ = [{
+      id: "ai-key",
+      showTitle: !1,
+      children: e.jsxs(X, {
+        spacing: 2.5,
+        children: [e.jsx(mo, {
+          value: s.provider,
+          onChange: v => v && s.selectProvider(v),
+          options: Pt.map(v => ({
+            value: v.id,
+            label: s.keys.providers[v.id]?.has_key ? `${v.label} ✓` : v.label
+          })),
+          disabled: x || d,
+          sx: {
+            width: "100%",
+            "& .MuiToggleButton-root": {
+              flex: 1,
+              textTransform: "none"
+            }
+          }
+        }), e.jsx(m, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: 1.5,
+            flexWrap: "wrap",
+            minHeight: 32
+          },
+          children: a && !s.loaded ? e.jsx(ye, {
+            size: 18
+          }) : r.has_key ? e.jsxs(e.Fragment, {
+            children: [r.rejected ? e.jsx(we, {
+              size: "small",
+              color: "error",
+              label: t("settings.rejected")
+            }) : e.jsx(we, {
+              size: "small",
+              color: "success",
+              icon: e.jsx(It, {}),
+              label: t("settings.usingOrgKey")
+            }), e.jsx(k, {
+              component: "code",
+              sx: {
+                fontSize: "0.9375rem",
+                fontWeight: Ne.bold,
+                color: "text.primary"
+              },
+              children: r.key_hint
+            }), e.jsx(k, {
+              sx: {
+                fontSize: "0.875rem",
+                color: "text.secondary"
+              },
+              children: [r.set_date.slice(0, 10), r.set_by].filter(Boolean).join(" · ")
+            })]
+          }) : e.jsx(k, {
+            sx: {
+              fontSize: "0.9375rem",
+              color: "text.secondary"
+            },
+            children: t("settings.noAiKey")
+          })
+        }), r.has_key && r.rejected && r.last_error && e.jsx(Ee, {
+          message: `${r.last_error_date.slice(0, 16)} ${r.last_error} ${t("settings.checkOrReplaceKey")}`
+        }), e.jsx(yn, {
+          form: n,
+          name: "key",
+          label: r.has_key ? t("settings.newProviderKey", {
+            provider: I
+          }) : t("settings.providerKey", {
+            provider: I
+          }),
+          placeholder: F.placeholder,
+          fullWidth: !0,
+          disabled: h || !g,
+          slotProps: {
+            htmlInput: {
+              maxLength: 200,
+              autoCapitalize: "none",
+              autoCorrect: "off",
+              spellCheck: !1,
+              autoComplete: "off"
+            }
+          }
+        }), x && e.jsxs(m, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: 1.5,
+            fontSize: "0.9375rem",
+            color: "text.secondary"
+          },
+          children: [e.jsx(ye, {
+            size: 18
+          }), t("settings.checkingKeyWithProvider", {
+            provider: I
+          })]
+        }), e.jsxs(m, {
+          children: [e.jsx(k, {
+            sx: {
+              fontSize: "0.9375rem",
+              fontWeight: Ne.bold,
+              color: "text.primary",
+              mb: 1
+            },
+            children: t("settings.withAKey")
+          }), e.jsxs(m, {
+            component: "ul",
+            sx: {
+              m: 0,
+              pl: 2.5,
+              display: "grid",
+              gap: 1,
+              fontSize: "0.875rem",
+              color: "text.primary"
+            },
+            children: [e.jsx(m, {
+              component: "li",
+              children: e.jsx(ie, {
+                i18nKey: `settings.aiKeyUse_${F.id}`,
+                components: {
+                  b: e.jsx("b", {})
+                }
+              })
+            }), F.liftsSttLimit && e.jsx(m, {
+              component: "li",
+              children: e.jsx(ie, {
+                i18nKey: "settings.aiKeyBullet2",
+                components: {
+                  b: e.jsx("b", {})
+                }
+              })
+            }), e.jsx(m, {
+              component: "li",
+              children: t("settings.aiKeyBulletRejected", {
+                provider: I
+              })
+            }), e.jsx(m, {
+              component: "li",
+              children: t("settings.aiKeyBullet4")
+            })]
+          })]
+        }), e.jsxs(m, {
+          children: [e.jsx(k, {
+            sx: {
+              fontSize: "0.9375rem",
+              fontWeight: Ne.bold,
+              color: "text.primary",
+              mb: 1
+            },
+            children: t("settings.createKey")
+          }), e.jsxs(m, {
+            component: "ol",
+            sx: {
+              m: 0,
+              pl: 2.5,
+              display: "grid",
+              gap: 1,
+              fontSize: "0.875rem",
+              color: "text.primary"
+            },
+            children: [e.jsx(m, {
+              component: "li",
+              children: e.jsx(ie, {
+                i18nKey: `settings.createKeyStepSite_${F.id}`,
+                components: {
+                  site: e.jsx(at, {
+                    href: F.keyUrl,
+                    target: "_blank",
+                    rel: "noopener"
+                  }),
+                  b: e.jsx("b", {})
+                }
+              })
+            }), e.jsx(m, {
+              component: "li",
+              children: e.jsx(ie, {
+                i18nKey: "settings.createKeyStepPaste",
+                values: {
+                  provider: I
+                },
+                components: {
+                  b: e.jsx("b", {})
+                }
+              })
+            })]
+          })]
+        }), !g && s.loaded && e.jsx(k, {
+          sx: {
+            fontSize: "0.875rem",
+            color: "text.secondary"
+          },
+          children: t("settings.aiKeyOwnerOnly")
+        }), l && e.jsx(Ee, {
+          message: l
+        })]
+      })
+    }];
+  return e.jsx(ge, {
+    open: p,
+    onClose: o.form.close,
+    title: t("settings.aiApiKeys"),
+    width: "520px",
+    fullScreen: i,
+    mobilePresentation: i ? "slide" : "dialog",
+    draggable: !0,
+    backdropClick: !1,
+    tabs: {
+      visible: !1
+    },
+    titleIcons: {
+      delete: {
+        visible: g && r.has_key,
+        confirmConfig: {
+          title: t("settings.deleteProviderKey", {
+            provider: I
+          }),
+          message: t("settings.deleteAiKeyMessage"),
+          confirmText: t("settings.delete"),
+          cancelText: t("settings.cancel")
+        }
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    onDelete: () => {
+      s.remove();
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !0,
+      right: e.jsx(B, {
+        variant: "contained",
+        onClick: () => {
+          n.submit();
+        },
+        disabled: h || !g || !u,
+        children: t(x ? "settings.checking" : "settings.save")
+      })
+    },
+    sections: _
+  });
+}
+const it = "/v1/migration",
+  To = s => s === "employees" || s === "hiworks";
+function ot(s, t) {
+  if (!s?.ok || !s.data) throw new Error(s?.error || s?.message || t);
+  return s.data;
+}
+const Ke = {
+    list: async () => ot(await oe.http.get(`${it}/jobs`), c("migration.loadFailed")),
+    upload: async (s, t = "employees") => {
+      const i = new FormData();
+      return i.append("file", s, s.name), ot(await oe.requestForm("POST", `${it}/upload?source=${t}`, i, !0), c("migration.startFailed")).item;
+    },
+    get: async s => ot(await oe.http.get(`${it}/jobs/${s}`), c("migration.loadFailed")).item,
+    start: async (s, t, i = "") => ot(await oe.http.post(`${it}/jobs`, {
+      source: s,
+      secret: t,
+      ...(i ? {
+        scope: i
+      } : {})
+    }), c("migration.startFailed")),
+    patchPlan: async (s, t) => ot(await oe.http.patch(`${it}/jobs/${s}/plan`, t), c("migration.saveFailed")).item,
+    run: async s => ot(await oe.http.post(`${it}/jobs/${s}/run`, {}), c("migration.startFailed")).item,
+    cancel: async s => ot(await oe.http.post(`${it}/jobs/${s}/cancel`, {}), c("migration.saveFailed")).item,
+    revert: async s => ot(await oe.http.post(`${it}/jobs/${s}/revert`, {}), c("migration.saveFailed")).item,
+    failed: async s => ot(await oe.http.get(`${it}/jobs/${s}/failed`), c("migration.loadFailed")).items
+  },
+  fd = new Set(["reading", "running", "reverting"]),
+  xd = 3e3;
+function hd(s, t) {
+  if (!s) return t ? "connect" : "source";
+  switch (s.status) {
+    case "reading":
+      return "reading";
+    case "ready":
+      return "check";
+    case "running":
+    case "reverting":
+      return "running";
+    case "done":
+      return "done";
+    case "reverted":
+      return "reverted";
+    default:
+      return "failed";
+  }
+}
+function bd(s) {
+  const t = Bo(),
+    n = De()?.seq ?? 0,
+    o = {
+      form: de({
+        modalId: "settings-migration-dialog"
+      }),
+      advanced: de({
+        modalId: "settings-migration-advanced-dialog"
+      })
+    },
+    r = o.form.isOpen,
+    [a, d] = b.useState(null),
+    [l, u] = b.useState(null),
+    [p, x] = b.useState(!1),
+    [h, g] = b.useState(!1),
+    [F, I] = b.useState(""),
+    [_, v] = b.useState(null),
+    [C, w] = b.useState(["notion", "flow"]),
+    [E, A] = b.useState([]),
+    S = b.useRef(null),
+    L = je({
+      formId: "settings-migration-key-form",
+      initialValues: {
+        secret: "",
+        scope: ""
+      },
+      onValidate: H => String(H.secret ?? "").trim() ? (I(""), !0) : (I(c("migration.pasteKey")), !1),
+      onSubmit: async H => {
+        if (l) {
+          if (E.length > 1 && !H.scope) {
+            I(c("migration.pickScopeNote"));
+            return;
+          }
+          try {
+            const Z = await Ke.start(l, String(H.secret ?? "").trim(), String(H.scope ?? ""));
+            if (!Z.item) {
+              A(Z.choices ?? []);
+              return;
+            }
+            L.setFormValues({
+              secret: "",
+              scope: ""
+            }), A([]), d(Z.item);
+          } catch (Z) {
+            I(Z instanceof Error ? Z.message : c("migration.startFailed"));
+          }
+        }
+      }
+    }),
+    j = je({
+      formId: "settings-migration-plan-form",
+      initialValues: {
+        people: {},
+        spaces: {},
+        fields: {},
+        employeeColumns: {},
+        includeSensitive: !1,
+        rooms: {}
+      }
+    }),
+    y = H => {
+      const Z = H.plan;
+      Z && (j.setFormValue("people", Object.fromEntries(Z.questions.map(se => [se.id, String(se.account_seq || 0)]))), j.setFormValue("spaces", Object.fromEntries(Z.spaces.map(se => [se.id, se.mode]))), j.setFormValue("fields", Object.fromEntries(Z.spaces.map(se => [se.id, Object.fromEntries(se.fields.filter(fe => fe.role === "field").map(fe => [fe.id, fe.mode]))]))), Z.rooms && j.setFormValue("rooms", Object.fromEntries(Z.rooms.map((se, fe) => [`r${fe}`, se.mode]))), Z.employees && (j.setFormValue("employeeColumns", Object.fromEntries(Z.employees.columns.map((se, fe) => [`c${fe}`, se.field || "-"]))), j.setFormValue("includeSensitive", Z.employees.include_sensitive)));
+    },
+    D = () => {
+      const H = a?.plan?.employees?.columns ?? [];
+      if (!H.length) return {};
+      const Z = j.getFormValue("employeeColumns") ?? {};
+      return {
+        employees: {
+          columns: Object.fromEntries(H.map((se, fe) => [se.header, (Z[`c${fe}`] ?? se.field) === "-" ? "" : Z[`c${fe}`] ?? se.field])),
+          include_sensitive: !!j.getFormValue("includeSensitive")
+        }
+      };
+    },
+    M = async () => {
+      x(!0);
+      try {
+        const H = await Ke.list();
+        w(H.sources);
+        const Z = H.items[0],
+          se = Z && Z.status !== "canceled" ? await Ke.get(Z.seq) : null;
+        d(se), se?.status === "ready" && y(se);
+      } catch (H) {
+        I(H instanceof Error ? H.message : c("migration.loadFailed"));
+      } finally {
+        x(!1);
+      }
+    },
+    z = b.useRef(0),
+    O = async () => {
+      z.current = n, I(""), v(null), u(null), L.setFormValue("secret", ""), s && n && (await M());
+    };
+  b.useEffect(() => {
+    r && s && n && z.current !== n && O();
+  }, [r, s, n]);
+  const T = async () => {
+    await O(), o.form.open();
+  };
+  b.useEffect(() => {
+    if (S.current && clearTimeout(S.current), !(!r || !a || !fd.has(a.status))) return S.current = setTimeout(async () => {
+      try {
+        const H = await Ke.get(a.seq);
+        H.status === "ready" && a.status !== "ready" && y(H), d(H);
+      } catch {
+        d({
+          ...a
+        });
+      }
+    }, xd), () => {
+      S.current && clearTimeout(S.current);
+    };
+  }, [r, a]);
+  const $ = async (H, Z) => {
+      I(""), g(!0);
+      try {
+        d(await H());
+      } catch (se) {
+        I(se instanceof Error ? se.message : c(Z));
+      } finally {
+        g(!1);
+      }
+    },
+    ee = () => {
+      const H = j.getFormValue("people") ?? {};
+      return {
+        people: Object.fromEntries(Object.entries(H).map(([Z, se]) => [Z, {
+          account_seq: Number(se) || 0
+        }]))
+      };
+    },
+    te = () => $(async () => {
+      if (!a) throw new Error(c("migration.loadFailed"));
+      return await Ke.patchPlan(a.seq, {
+        ...ee(),
+        ...D()
+      }), Ke.run(a.seq);
+    }, "migration.startFailed"),
+    Q = () => $(async () => {
+      if (!a) throw new Error(c("migration.loadFailed"));
+      const H = j.getFormValue("spaces") ?? {},
+        Z = j.getFormValue("fields") ?? {},
+        se = j.getFormValue("rooms") ?? {},
+        fe = {
+          ...ee(),
+          ...D(),
+          ...(a.plan?.rooms ? {
+            rooms: Object.fromEntries(a.plan.rooms.map((f, R) => [f.id, {
+              mode: se[`r${R}`] === "skip" ? "skip" : "new"
+            }]))
+          } : {}),
+          spaces: Object.fromEntries(Object.entries(H).map(([f, R]) => [f, {
+            mode: R,
+            fields: Object.fromEntries(Object.entries(Z[f] ?? {}).map(([V, N]) => [V, {
+              mode: N
+            }]))
+          }]))
+        },
+        Me = await Ke.patchPlan(a.seq, fe);
+      return y(Me), o.advanced.close(), Me;
+    }, "migration.saveFailed"),
+    U = H => $(() => Ke.upload(H, l === "slack" ? "slack" : "employees"), "migration.startFailed"),
+    pe = () => {
+      if (To(a?.source)) {
+        o.form.close(), t("/dashboard/hr/employees");
+        return;
+      }
+      if (a?.source === "slack") {
+        o.form.close(), t("/dashboard/chat");
+        return;
+      }
+      const H = a?.created_workspaces?.[0] ?? 0;
+      H && Sr(H), o.form.close(), t("/dashboard/approval");
+    },
+    be = () => {
+      $a(a?.created_employees ?? []), o.form.close(), t("/dashboard/hr/employees");
+    },
+    ke = async () => {
+      if (a) try {
+        v(await Ke.failed(a.seq));
+      } catch (H) {
+        I(H instanceof Error ? H.message : c("migration.loadFailed"));
+      }
+    };
+  return {
+    modals: o,
+    keyForm: L,
+    planForm: j,
+    job: a,
+    step: hd(a, l),
+    sources: C,
+    picked: l,
+    loading: p,
+    busy: h,
+    error: F,
+    failed: _,
+    openDialog: T,
+    choices: E,
+    pickSource: H => {
+      I(""), A([]), u(H);
+    },
+    backToSource: () => {
+      I(""), A([]), L.setFormValues({
+        secret: "",
+        scope: ""
+      }), u(null);
+    },
+    run: te,
+    cancel: () => a && $(() => Ke.cancel(a.seq), "migration.saveFailed").then(() => d(null)),
+    revert: () => a && $(() => Ke.revert(a.seq), "migration.saveFailed"),
+    startOver: () => {
+      I(""), v(null), u(null), d(null);
+    },
+    uploadFile: U,
+    openAdvanced: o.advanced.open,
+    saveAdvanced: Q,
+    goToWorkspace: pe,
+    inviteEmployees: be,
+    showFailed: ke
+  };
+}
+const Ks = {
+    fontSize: "0.9375rem",
+    fontWeight: Ne.bold,
+    color: "text.primary"
+  },
+  yi = {
+    display: "flex",
+    justifyContent: "space-between",
+    gap: 2,
+    fontSize: "0.875rem",
+    color: "text.primary"
+  },
+  yd = {
+    not_started: "migration.statusNotStarted",
+    in_progress: "migration.statusInProgress",
+    review_waiting: "migration.statusReview",
+    hold: "migration.statusHold",
+    waiting: "migration.statusWaiting"
+  };
+function _d({
+  controller: s
+}) {
+  const t = J(),
+    i = me(),
+    {
+      modals: n,
+      planForm: o,
+      job: r,
+      busy: a,
+      error: d
+    } = s,
+    l = r?.plan?.spaces ?? [],
+    u = r?.plan?.employees ?? null,
+    p = [{
+      value: "-",
+      label: t("migration.fieldSkip")
+    }, {
+      value: "unit",
+      label: t("migration.empField_unit")
+    }, ...(u?.fields ?? []).filter(h => h.field !== "unit").map(h => ({
+      value: h.field,
+      label: t(`migration.empField_${h.field}`)
+    }))],
+    x = [{
+      id: "migration-advanced",
+      showTitle: !1,
+      children: e.jsxs(X, {
+        spacing: le,
+        children: [e.jsx(k, {
+          sx: {
+            fontSize: "0.875rem",
+            color: "text.secondary"
+          },
+          children: t("migration.advancedNote")
+        }), r?.plan?.rooms && e.jsx(st, {
+          children: e.jsxs(X, {
+            spacing: le,
+            children: [e.jsx(k, {
+              sx: Ks,
+              children: t("migration.roomsTitle")
+            }), r.plan.rooms.map((h, g) => e.jsx(ae, {
+              form: o,
+              name: `rooms.r${g}`,
+              label: `${h.kind === "dm" ? h.name : `#${h.name}`} · ${t("migration.messageCount", {
+                count: h.messages
+              })}`,
+              options: [{
+                value: "new",
+                label: t("migration.roomNew")
+              }, {
+                value: "skip",
+                label: t("migration.spaceSkip")
+              }],
+              fullWidth: !0
+            }, h.id))]
+          })
+        }), u && e.jsx(st, {
+          children: e.jsxs(X, {
+            spacing: le,
+            children: [e.jsx(k, {
+              sx: Ks,
+              children: t("migration.employeeColumns")
+            }), u.columns.map((h, g) => e.jsx(ae, {
+              form: o,
+              name: `employeeColumns.c${g}`,
+              label: h.sample ? `${h.header} · ${h.sample}` : h.header,
+              options: p,
+              fullWidth: !0
+            }, h.header))]
+          })
+        }), l.map(h => e.jsx(st, {
+          children: e.jsxs(X, {
+            spacing: le,
+            children: [e.jsxs(k, {
+              sx: Ks,
+              children: [h.name, " · ", t("migration.taskCount", {
+                count: h.tasks
+              })]
+            }), e.jsx(ae, {
+              form: o,
+              name: `spaces.${h.id}`,
+              label: t("migration.workspace"),
+              options: [{
+                value: "new",
+                label: t("migration.spaceNew")
+              }, {
+                value: "skip",
+                label: t("migration.spaceSkip")
+              }],
+              fullWidth: !0
+            }), h.fields.filter(g => g.role === "field").map(g => e.jsx(ae, {
+              form: o,
+              name: `fields.${h.id}.${g.id}`,
+              label: g.name,
+              options: [{
+                value: "new",
+                label: t("migration.fieldNew")
+              }, {
+                value: "note",
+                label: t("migration.fieldNote")
+              }, {
+                value: "skip",
+                label: t("migration.fieldSkip")
+              }],
+              fullWidth: !0
+            }, g.id)), h.fields.some(g => g.role !== "field" && g.role !== "skip") && e.jsx(m, {
+              children: h.fields.filter(g => g.role !== "field" && g.role !== "skip").map(g => e.jsxs(m, {
+                sx: yi,
+                children: [e.jsx("span", {
+                  children: g.name
+                }), e.jsx("span", {
+                  children: t(`migration.role_${g.role}`)
+                })]
+              }, g.id))
+            }), h.statuses.length > 0 && e.jsx(m, {
+              children: h.statuses.map(g => e.jsxs(m, {
+                sx: yi,
+                children: [e.jsx("span", {
+                  children: g.name
+                }), e.jsxs("span", {
+                  children: [g.done ? t("migration.statusDone") : t(yd[g.status] ?? "migration.statusNotStarted"), g.label ? ` · ${t("migration.statusNewLabel")}` : ""]
+                })]
+              }, g.name))
+            })]
+          })
+        }, h.id)), d && e.jsx(Ee, {
+          message: d
+        })]
+      })
+    }];
+  return e.jsx(ge, {
+    open: n.advanced.isOpen,
+    onClose: n.advanced.close,
+    title: t("migration.advanced"),
+    width: "520px",
+    fullScreen: i,
+    mobilePresentation: i ? "slide" : "dialog",
+    draggable: !0,
+    backdropClick: !1,
+    tabs: {
+      visible: !1
+    },
+    titleIcons: {
+      delete: {
+        visible: !1
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !0,
+      right: e.jsx(B, {
+        variant: "contained",
+        onClick: () => {
+          s.saveAdvanced();
+        },
+        disabled: a,
+        children: t("migration.doneEditing")
+      })
+    },
+    sections: x
+  });
+}
+const ls = {
+    notion: "https://www.notion.so/profile/integrations",
+    flow: "https://flow.team",
+    asana: "https://app.asana.com/0/my-apps",
+    employees: "",
+    slack: "",
+    hiworks: "https://office.hiworks.com"
+  },
+  Gs = {
+    employees: {
+      prefix: "employees",
+      accept: ".xlsx,.xls,.csv"
+    },
+    slack: {
+      prefix: "slack",
+      accept: ".zip"
+    }
+  },
+  Sd = {
+    source: 0,
+    connect: 1,
+    reading: 1,
+    check: 2,
+    running: 3,
+    done: 4,
+    reverted: 4,
+    failed: 1
+  },
+  jd = ["migration.stepWhere", "migration.stepConnect", "migration.stepCheck", "migration.stepDone"],
+  cs = "2rem",
+  wd = {
+    py: 1,
+    "& .MuiStepIcon-root": {
+      fontSize: cs
+    },
+    "& .MuiStepLabel-label": {
+      typography: "body1"
+    },
+    "& .MuiStepConnector-root": {
+      top: `calc(${cs} / 2)`,
+      left: `calc(-50% + ${cs} / 2 + 8px)`,
+      right: `calc(50% + ${cs} / 2 + 8px)`
+    }
+  },
+  Ze = {
+    fontSize: "0.9375rem",
+    fontWeight: Ne.bold,
+    color: "text.primary"
+  },
+  ds = {
+    fontSize: "0.9375rem",
+    color: "text.primary",
+    lineHeight: 1.7
+  },
+  ze = {
+    fontSize: "0.875rem",
+    color: "text.secondary"
+  },
+  Hs = {
+    m: 0,
+    pl: 2.5,
+    display: "grid",
+    gap: 1,
+    fontSize: "0.875rem",
+    color: "text.primary"
+  };
+function Us({
+  label: s,
+  title: t,
+  message: i,
+  confirmText: n,
+  cancelText: o,
+  danger: r,
+  onConfirm: a
+}) {
+  const [d, l] = b.useState(null);
+  return e.jsxs(e.Fragment, {
+    children: [e.jsx(at, {
+      component: "button",
+      type: "button",
+      color: r ? "error" : "primary",
+      sx: {
+        fontSize: "0.875rem"
+      },
+      onClick: u => l(u.currentTarget),
+      children: s
+    }), e.jsx(eo, {
+      open: !!d,
+      anchorEl: d,
+      title: t,
+      content: i,
+      confirmText: n,
+      cancelText: o,
+      placement: "top",
+      zIndex: 1302,
+      onCancel: () => l(null),
+      onConfirm: () => {
+        l(null), a();
+      }
+    })]
+  });
+}
+function vd({
+  controller: s
+}) {
+  const t = J(),
+    i = me(),
+    {
+      modals: n,
+      keyForm: o,
+      planForm: r,
+      job: a,
+      step: d,
+      picked: l,
+      loading: u,
+      busy: p,
+      error: x,
+      failed: h
+    } = s,
+    g = O => O.toLocaleString(zt(Wt())),
+    F = a?.source ?? l ?? "notion",
+    I = t(`migration.source_${F}`),
+    _ = a?.plan ?? null,
+    v = a?.counts,
+    C = v?.read ?? {},
+    w = v?.readProgress,
+    E = w && w.total > 0 ? Math.min(100, Math.round(w.done / w.total * 100)) : null,
+    A = v && v.total > 0 ? Math.min(100, Math.round((v.done + v.skipped) / v.total * 100)) : 0,
+    S = o.isSubmitting,
+    L = Ma(),
+    j = To(F);
+  let y = null,
+    D = null;
+  const M = d === "connect" ? e.jsx(B, {
+    color: "inherit",
+    onClick: s.backToSource,
+    disabled: p || o.isSubmitting,
+    sx: i ? {
+      border: 1,
+      borderColor: Pn
+    } : void 0,
+    children: t("migration.back")
+  }) : null;
+  if (u && !a && d === "source") y = e.jsx(m, {
+    sx: {
+      display: "flex",
+      justifyContent: "center",
+      py: 4
+    },
+    children: e.jsx(ye, {
+      size: 24
+    })
+  });else if (d === "source") y = e.jsxs(X, {
+    spacing: le,
+    children: [e.jsx(k, {
+      sx: Ze,
+      children: t("migration.whereFrom")
+    }), e.jsxs(jr, {
+      exclusive: !0,
+      value: null,
+      onChange: (O, T) => {
+        if (T) {
+          if (T === "mail") {
+            Ra();
+            return;
+          }
+          s.pickSource(T);
+        }
+      },
+      sx: [wr, {
+        display: "grid",
+        gridTemplateColumns: i ? "1fr" : "repeat(3, minmax(0, 1fr))",
+        gap: 1.5,
+        "& .MuiToggleButtonGroup-grouped": {
+          m: 0,
+          border: 1,
+          borderColor: Pn,
+          borderRadius: 1.5,
+          fontWeight: Ne.bold,
+          color: "text.primary"
+        }
+      }],
+      children: [s.sources.map(O => e.jsx(zn, {
+        value: O,
+        children: t(`migration.source_${O}`)
+      }, O)), L && e.jsx(zn, {
+        value: "mail",
+        children: t("migration.source_mail")
+      })]
+    }), e.jsx(k, {
+      sx: ze,
+      children: t("migration.moreSourcesSoon")
+    })]
+  });else if (d === "connect" && Gs[F]) {
+    const O = Gs[F];
+    y = e.jsxs(X, {
+      spacing: le,
+      children: [e.jsx(k, {
+        sx: Ze,
+        children: t(`migration.${O.prefix}Title`)
+      }), e.jsx(m, {
+        component: "ol",
+        sx: Hs,
+        children: [1, 2, 3].map(T => e.jsx(m, {
+          component: "li",
+          children: e.jsx(ie, {
+            i18nKey: `migration.${O.prefix}Step${T}`,
+            components: {
+              b: e.jsx("b", {})
+            }
+          })
+        }, T))
+      }), e.jsx(k, {
+        sx: ze,
+        children: t(`migration.${O.prefix}Note`)
+      })]
+    }), D = e.jsxs(B, {
+      variant: "contained",
+      component: "label",
+      disabled: p,
+      children: [t(p ? "migration.uploading" : F === "slack" ? "migration.pickZip" : "migration.pickFile"), e.jsx("input", {
+        hidden: !0,
+        type: "file",
+        accept: Gs[F]?.accept,
+        onChange: T => {
+          const $ = T.target.files?.[0];
+          T.target.value = "", $ && s.uploadFile($);
+        }
+      })]
+    });
+  } else if (d === "connect") y = e.jsxs(X, {
+    spacing: le,
+    children: [e.jsx(k, {
+      sx: Ze,
+      children: t("migration.connectTitle", {
+        source: I
+      })
+    }), e.jsx(m, {
+      component: "ol",
+      sx: Hs,
+      children: [1, 2, 3].map(O => e.jsxs(m, {
+        component: "li",
+        children: [e.jsx(ie, {
+          i18nKey: `migration.${F}Step${O}`,
+          components: {
+            b: e.jsx("b", {})
+          }
+        }), O === 1 && ls[F] && e.jsx(m, {
+          children: e.jsx(at, {
+            href: ls[F],
+            target: "_blank",
+            rel: "noopener",
+            underline: "hover",
+            onClick: T => {
+              T.preventDefault(), vr(ls[F]);
+            },
+            children: ls[F].replace(/^https:\/\/(www\.)?/, "")
+          })
+        })]
+      }, O))
+    }), e.jsx(yn, {
+      form: o,
+      name: "secret",
+      label: t("migration.keyLabel", {
+        source: I
+      }),
+      placeholder: F === "notion" ? "ntn_…" : "",
+      fullWidth: !0,
+      disabled: S,
+      slotProps: {
+        htmlInput: {
+          maxLength: 300,
+          autoCapitalize: "none",
+          autoCorrect: "off",
+          spellCheck: !1,
+          autoComplete: "off"
+        }
+      }
+    }), e.jsx(k, {
+      sx: ze,
+      children: t("migration.keyNote", {
+        source: I
+      })
+    }), s.choices.length > 1 && e.jsx(st, {
+      sx: {
+        borderColor: "warning.main"
+      },
+      children: e.jsxs(X, {
+        spacing: le,
+        children: [e.jsx(k, {
+          sx: ze,
+          children: t("migration.pickScopeNote")
+        }), e.jsx(ae, {
+          form: o,
+          name: "scope",
+          label: t("migration.pickScope"),
+          options: s.choices.map(O => ({
+            value: O.id,
+            label: O.name
+          })),
+          emptyLabel: t("migration.pickScope"),
+          fullWidth: !0
+        })]
+      })
+    })]
+  }), D = e.jsx(B, {
+    variant: "contained",
+    onClick: () => {
+      o.submit();
+    },
+    disabled: S,
+    children: t(S ? "migration.checking" : s.choices.length > 1 ? "migration.moveThisScope" : "migration.connectAndRead")
+  });else if (d === "reading") y = e.jsxs(X, {
+    spacing: le,
+    sx: {
+      py: 2
+    },
+    children: [e.jsx(k, {
+      sx: {
+        ...Ze,
+        textAlign: "center"
+      },
+      children: t("migration.readingTitle", {
+        source: I
+      })
+    }), e.jsx(xs, {
+      variant: E === null ? "indeterminate" : "determinate",
+      value: E ?? 0
+    }), e.jsxs(m, {
+      sx: {
+        display: "flex",
+        justifyContent: "space-between",
+        gap: 2,
+        ...ze
+      },
+      children: [e.jsx("span", {
+        children: j ? t("migration.readingEmployees", {
+          count: g(C.employee ?? 0)
+        }) : F === "slack" ? t("migration.readingChat", {
+          rooms: g(C.room ?? 0),
+          messages: g(C.message ?? 0)
+        }) : t("migration.readingCounts", {
+          spaces: g(C.space ?? 0),
+          tasks: g(C.task ?? 0),
+          comments: g(C.comment ?? 0)
+        })
+      }), E !== null && e.jsxs("span", {
+        children: [E, "%"]
+      })]
+    }), e.jsx(k, {
+      sx: {
+        ...ze,
+        textAlign: "center"
+      },
+      children: t("migration.readingNote")
+    }), e.jsx(m, {
+      sx: {
+        textAlign: "center"
+      },
+      children: e.jsx(Us, {
+        label: t("migration.stop"),
+        title: t("migration.stopTitle"),
+        message: t("migration.stopMessage"),
+        confirmText: t("migration.stop"),
+        cancelText: t("migration.keepGoing"),
+        onConfirm: () => {
+          s.cancel();
+        }
+      })
+    })]
+  });else if (d === "check" && _?.employees) {
+    const O = _.employees;
+    y = e.jsxs(X, {
+      spacing: le,
+      children: [e.jsx(k, {
+        sx: Ze,
+        children: t("migration.checkTitle")
+      }), e.jsxs(k, {
+        sx: ds,
+        children: [t("migration.employeesSummary", {
+          total: g(O.total),
+          fresh: g(O.total - O.existing)
+        }), O.existing > 0 && e.jsxs(e.Fragment, {
+          children: [" ", t("migration.employeesExisting", {
+            count: g(O.existing)
+          })]
+        }), O.new_units > 0 && e.jsxs(e.Fragment, {
+          children: [" ", t("migration.employeesUnits", {
+            count: g(O.new_units)
+          })]
+        })]
+      }), !O.has_name && e.jsx(Ee, {
+        message: t("migration.pickNameColumn")
+      }), O.sensitive_columns > 0 && e.jsx(st, {
+        sx: {
+          borderColor: "warning.main"
+        },
+        children: e.jsxs(X, {
+          spacing: 1,
+          children: [e.jsx(kr, {
+            form: r,
+            name: "includeSensitive",
+            label: t("migration.includeSensitive")
+          }), e.jsx(k, {
+            sx: ze,
+            children: t("migration.includeSensitiveNote")
+          })]
+        })
+      }), e.jsx(k, {
+        sx: ze,
+        children: t("migration.employeesCheckNote")
+      }), e.jsx(m, {
+        children: e.jsx(at, {
+          component: "button",
+          type: "button",
+          onClick: s.openAdvanced,
+          sx: {
+            fontSize: "0.875rem"
+          },
+          children: t("migration.advanced")
+        })
+      })]
+    }), D = e.jsx(B, {
+      variant: "contained",
+      onClick: () => {
+        s.run();
+      },
+      disabled: p || !O.has_name || O.total === 0,
+      children: t("migration.move")
+    });
+  } else if (d === "check" && _) y = e.jsxs(X, {
+    spacing: le,
+    children: [e.jsx(k, {
+      sx: Ze,
+      children: t("migration.checkTitle")
+    }), e.jsx(k, {
+      sx: ds,
+      children: _.chat ? t("migration.chatSummary", {
+        rooms: g(_.chat.rooms),
+        messages: g(_.chat.messages),
+        files: g(_.chat.files)
+      }) : e.jsxs(e.Fragment, {
+        children: [t("migration.checkSummary", {
+          spaces: g(_.counts.spaces),
+          tasks: g(_.counts.tasks),
+          comments: g(_.counts.comments),
+          people: g(_.counts.people)
+        }), (_.create.fields > 0 || _.create.statuses > 0) && e.jsxs(e.Fragment, {
+          children: [" ", t("migration.checkCreate", {
+            fields: g(_.create.fields),
+            statuses: g(_.create.statuses)
+          })]
+        })]
+      })
+    }), _.questions.length > 0 && e.jsx(st, {
+      sx: {
+        borderColor: "warning.main"
+      },
+      children: e.jsxs(X, {
+        spacing: le,
+        children: [e.jsx(k, {
+          sx: Ze,
+          children: t("migration.whoIsThis")
+        }), _.questions.map(O => e.jsx(ae, {
+          form: r,
+          name: `people.${O.id}`,
+          label: O.email ? `${O.name} (${O.email})` : O.name,
+          options: [{
+            value: "0",
+            label: t("migration.keepNameOnly")
+          }, ..._.members.map(T => ({
+            value: String(T.account_seq),
+            label: T.name
+          }))],
+          fullWidth: !0
+        }, O.id))]
+      })
+    }), e.jsx(k, {
+      sx: ze,
+      children: t(F === "notion" ? "migration.checkNoteNotion" : F === "slack" ? "migration.checkNoteSlack" : "migration.checkNote")
+    }), e.jsx(m, {
+      children: e.jsx(at, {
+        component: "button",
+        type: "button",
+        onClick: s.openAdvanced,
+        sx: {
+          fontSize: "0.875rem"
+        },
+        children: t("migration.advanced")
+      })
+    })]
+  }), D = e.jsx(B, {
+    variant: "contained",
+    onClick: () => {
+      s.run();
+    },
+    disabled: p || (_.chat ? _.chat.messages === 0 : _.counts.tasks === 0),
+    children: t("migration.move")
+  });else if (d === "running") {
+    const O = a?.status === "reverting";
+    y = e.jsxs(X, {
+      spacing: le,
+      sx: {
+        py: 2
+      },
+      children: [e.jsx(k, {
+        sx: {
+          ...Ze,
+          textAlign: "center"
+        },
+        children: t(O ? "migration.revertingTitle" : "migration.runningTitle")
+      }), !O && e.jsxs(e.Fragment, {
+        children: [e.jsx(xs, {
+          variant: v?.total ? "determinate" : "indeterminate",
+          value: A
+        }), e.jsxs(m, {
+          sx: {
+            display: "flex",
+            justifyContent: "space-between",
+            ...ze
+          },
+          children: [e.jsx("span", {
+            children: t(j ? "migration.runningEmployees" : F === "slack" ? "migration.runningMessages" : "migration.runningCounts", {
+              done: g((v?.done ?? 0) + (v?.skipped ?? 0)),
+              total: g(v?.total ?? 0)
+            })
+          }), e.jsxs("span", {
+            children: [A, "%"]
+          })]
+        })]
+      }), O && e.jsx(xs, {}), e.jsx(k, {
+        sx: {
+          ...ze,
+          textAlign: "center"
+        },
+        children: t("migration.runningNote")
+      })]
+    });
+  } else d === "done" ? (y = e.jsxs(X, {
+    spacing: le,
+    sx: {
+      alignItems: "center",
+      textAlign: "center",
+      py: 2
+    },
+    children: [e.jsx(It, {
+      color: "success",
+      fontSize: "large"
+    }), e.jsx(k, {
+      sx: Ze,
+      children: t("migration.doneTitle")
+    }), e.jsx(k, {
+      sx: ds,
+      children: j ? t("migration.doneEmployees", {
+        count: g(v?.done ?? 0)
+      }) : F === "slack" ? t("migration.doneChat", {
+        count: g(v?.done ?? 0)
+      }) : t("migration.doneSummary", {
+        source: I,
+        tasks: g(v?.done ?? 0)
+      })
+    }), (v?.skipped ?? 0) > 0 && e.jsx(k, {
+      sx: ze,
+      children: t("migration.doneSkipped", {
+        count: g(v?.skipped ?? 0)
+      })
+    }), j && (a?.created_employees?.length ?? 0) > 0 && e.jsx(k, {
+      sx: ze,
+      children: t("migration.inviteNote")
+    }), e.jsxs(m, {
+      sx: {
+        display: "flex",
+        gap: 2.5,
+        flexWrap: "wrap",
+        justifyContent: "center",
+        fontSize: "0.875rem"
+      },
+      children: [(v?.failed ?? 0) > 0 && e.jsx(at, {
+        component: "button",
+        type: "button",
+        onClick: () => {
+          s.showFailed();
+        },
+        children: t("migration.showFailed", {
+          count: g(v?.failed ?? 0)
+        })
+      }), j && (a?.created_employees?.length ?? 0) > 0 && e.jsx(at, {
+        component: "button",
+        type: "button",
+        onClick: s.goToWorkspace,
+        children: t("migration.goToEmployees")
+      }), e.jsx(at, {
+        component: "button",
+        type: "button",
+        onClick: s.startOver,
+        children: t("migration.moveAnother")
+      }), e.jsx(Us, {
+        danger: !0,
+        label: t("migration.revert"),
+        title: t("migration.revertTitle"),
+        message: t("migration.revertMessage"),
+        confirmText: t("migration.revert"),
+        cancelText: t("migration.keepGoing"),
+        onConfirm: () => {
+          s.revert();
+        }
+      })]
+    }), h && e.jsxs(m, {
+      component: "ul",
+      sx: {
+        ...Hs,
+        textAlign: "left",
+        alignSelf: "stretch"
+      },
+      children: [h.length === 0 && e.jsx(m, {
+        component: "li",
+        children: t("migration.noFailed")
+      }), h.map((T, $) => e.jsxs(m, {
+        component: "li",
+        children: [e.jsx("b", {
+          children: T.name || T.kind
+        }), " — ", T.reason]
+      }, $))]
+    })]
+  }), D = j && (a?.created_employees?.length ?? 0) > 0 ? e.jsx(B, {
+    variant: "contained",
+    onClick: s.inviteEmployees,
+    children: t("migration.inviteEmployees", {
+      count: g(a?.created_employees?.length ?? 0)
+    })
+  }) : e.jsx(B, {
+    variant: "contained",
+    onClick: s.goToWorkspace,
+    children: t(j ? "migration.goToEmployees" : F === "slack" ? "migration.goToChat" : "migration.goToTaskham")
+  })) : (d === "reverted" || d === "failed") && (y = e.jsxs(X, {
+    spacing: le,
+    sx: {
+      py: 2
+    },
+    children: [e.jsx(k, {
+      sx: Ze,
+      children: t(d === "reverted" ? "migration.revertedTitle" : "migration.failedTitle")
+    }), a?.last_error && e.jsx(k, {
+      sx: ds,
+      children: a.last_error
+    }), d === "failed" && a?.created_workspaces?.length ? e.jsx(m, {
+      children: e.jsx(Us, {
+        danger: !0,
+        label: t("migration.revertPartial"),
+        title: t("migration.revertTitle"),
+        message: t("migration.revertMessage"),
+        confirmText: t("migration.revert"),
+        cancelText: t("migration.keepGoing"),
+        onConfirm: () => {
+          s.revert();
+        }
+      })
+    }) : null]
+  }), D = e.jsx(B, {
+    variant: "contained",
+    onClick: s.startOver,
+    children: t("migration.startAgain")
+  }));
+  const z = [{
+    id: "migration",
+    showTitle: !1,
+    children: e.jsxs(X, {
+      spacing: le,
+      children: [e.jsxs(m, {
+        sx: {
+          borderRadius: 2,
+          bgcolor: Ko,
+          px: 2,
+          pt: 2,
+          pb: 2
+        },
+        children: [e.jsx(m, {
+          component: "img",
+          src: Go,
+          alt: "",
+          sx: {
+            display: "block",
+            mx: "auto",
+            height: {
+              xs: 96,
+              sm: 140
+            },
+            maxWidth: "100%"
+          }
+        }), e.jsx(Cr, {
+          activeStep: Sd[d] ?? 0,
+          alternativeLabel: !0,
+          "aria-label": t("migration.stepsLabel"),
+          sx: {
+            ...wd,
+            mt: 1
+          },
+          children: jd.map(O => e.jsx(ul, {
+            children: e.jsx(fo, {
+              children: t(O)
+            })
+          }, O))
+        })]
+      }), y, x && e.jsx(Ee, {
+        message: x
+      })]
+    })
+  }];
+  return e.jsxs(e.Fragment, {
+    children: [e.jsx(ge, {
+      open: n.form.isOpen,
+      onClose: n.form.close,
+      title: t("migration.title"),
+      maxWidth: "md",
+      fullScreen: i,
+      mobilePresentation: i ? "slide" : "dialog",
+      draggable: !0,
+      backdropClick: !1,
+      tabs: {
+        visible: !1
+      },
+      titleIcons: {
+        delete: {
+          visible: !1
+        },
+        print: {
+          visible: !1
+        },
+        share: {
+          visible: !1
+        }
+      },
+      scrollPastLastSection: !1,
+      actions: {
+        visible: !!D,
+        showCancelButton: d === "connect" || d === "check",
+        left: M,
+        right: D
+      },
+      sections: z
+    }), e.jsx(_d, {
+      controller: s
+    })]
+  });
+}
+const _i = "/v1/org-permissions",
+  Eo = {
+    none: "settings.permNone",
+    read: "settings.permRead",
+    write: "settings.permWrite",
+    manage: "settings.permManage"
+  },
+  kd = {
+    features: [],
+    targets: [],
+    units: [],
+    positions: [],
+    members: [],
+    is_owner: !1
+  };
+function Si(s, t) {
+  if (!s?.ok || !s.data) throw new Error(s?.error || s?.message || t);
+  const i = s.data;
+  return {
+    features: Array.isArray(i.features) ? i.features : [],
+    targets: Array.isArray(i.targets) ? i.targets : [],
+    units: Array.isArray(i.units) ? i.units : [],
+    positions: Array.isArray(i.positions) ? i.positions : [],
+    members: Array.isArray(i.members) ? i.members : [],
+    is_owner: !!i.is_owner
+  };
+}
+function ji(s, t) {
+  const i = s instanceof Error ? s.message.replace(/^HTTP \d+:\s*/, "") : "";
+  try {
+    const n = JSON.parse(i);
+    if (typeof n.error == "string" && n.error) return n.error;
+    if (typeof n.message == "string" && n.message) return n.message;
+  } catch {}
+  return t;
+}
+const wi = {
+    get: async () => {
+      try {
+        return Si(await oe.http.get(_i), c("settings.permissionLoadFailed"));
+      } catch (s) {
+        throw new Error(ji(s, c("settings.permissionLoadFailed")));
+      }
+    },
+    putLevel: async (s, t, i, n) => {
+      try {
+        return Si(await oe.http.put(`${_i}/target`, {
+          target_type: s,
+          target_key: t,
+          feature: i,
+          level: n
+        }), c("settings.permissionSaveFailed"));
+      } catch (o) {
+        throw new Error(ji(o, c("settings.permissionSaveFailed")));
+      }
+    }
+  },
+  vi = {
+    owner: "settings.roleOwner",
+    admin: "settings.roleAdmin"
+  };
+function Cd(s) {
+  const t = new Map();
+  for (const r of s) t.set(r.parent_seq, [...(t.get(r.parent_seq) ?? []), r]);
+  const i = new Set(s.map(r => r.seq)),
+    n = [],
+    o = (r, a) => {
+      for (const d of [...(t.get(r) ?? [])].sort((l, u) => l.sort_no - u.sort_no || l.seq - u.seq)) n.push({
+        seq: d.seq,
+        name: d.name,
+        depth: a
+      }), o(d.seq, a + 1);
+    };
+  o(0, 0);
+  for (const r of s) r.parent_seq && !i.has(r.parent_seq) && !n.some(a => a.seq === r.seq) && n.push({
+    seq: r.seq,
+    name: r.name,
+    depth: 0
+  });
+  return n;
+}
+function Fd({
+  feature: s
+}) {
+  const t = J();
+  return e.jsx(Ot, {
+    disableInteractive: !0,
+    title: e.jsxs(m, {
+      sx: {
+        fontSize: 14,
+        lineHeight: 1.6
+      },
+      children: [s.levels.map(i => e.jsxs(m, {
+        children: [e.jsx("b", {
+          children: t(Eo[i])
+        }), " — ", s.remarks[i]]
+      }, i)), s.owner_only ? e.jsx(m, {
+        children: t("settings.ownerOnlyChanges")
+      }) : null, s.feature_on ? null : e.jsx(m, {
+        children: t("settings.featureOffNoEffect")
+      })]
+    }),
+    children: e.jsx(m, {
+      component: "span",
+      sx: {
+        color: s.feature_on ? void 0 : bn[400],
+        whiteSpace: "nowrap"
+      },
+      children: s.label
+    })
+  });
+}
+function ki({
+  text: s,
+  tone: t,
+  tip: i,
+  disabled: n,
+  current: o,
+  options: r,
+  onPick: a
+}) {
+  const [d, l] = b.useState(null),
+    u = t === "set" ? "primary.main" : t === "denied" ? "error.main" : "text.secondary",
+    p = e.jsx(Ft, {
+      disabled: n,
+      onClick: x => l(x.currentTarget),
+      sx: {
+        px: 1,
+        py: .5,
+        borderRadius: 1,
+        fontSize: 14,
+        fontWeight: t === "set" || t === "denied" ? 600 : 400,
+        color: u,
+        minWidth: 56,
+        "&:hover": {
+          bgcolor: "action.hover"
+        }
+      },
+      children: s
+    });
+  return e.jsxs(e.Fragment, {
+    children: [i ? e.jsx(Ot, {
+      disableInteractive: !0,
+      title: i,
+      placement: "top",
+      children: e.jsx("span", {
+        children: p
+      })
+    }) : p, e.jsx(io, {
+      anchorEl: d,
+      open: !!d,
+      onClose: () => l(null),
+      transitionDuration: 0,
+      children: r.map(x => e.jsx(vs, {
+        selected: x.value === o,
+        onClick: () => {
+          l(null), x.value !== o && a(x.value);
+        },
+        sx: {
+          fontSize: 15
+        },
+        children: x.label
+      }, x.value || "empty"))
+    })]
+  });
+}
+function Id({
+  controller: s
+}) {
+  const t = J(),
+    i = j => t(Eo[j]),
+    {
+      modals: n,
+      state: o,
+      people: r,
+      loaded: a,
+      tab: d,
+      setTab: l,
+      busy: u
+    } = s,
+    p = me(),
+    x = j => j.owner_only && !o.is_owner,
+    h = j => !!u || x(j),
+    g = (j, y = !1) => e.jsx(m, {
+      component: "span",
+      sx: {
+        fontSize: 14,
+        color: y ? "text.primary" : "text.secondary"
+      },
+      children: j
+    }),
+    F = j => j.levels.map(y => ({
+      value: y,
+      label: i(y)
+    })),
+    I = j => o.features.map(y => ({
+      id: `feature:${y.key}`,
+      text: e.jsx(Fd, {
+        feature: y
+      }),
+      width: 104,
+      align: "center",
+      render: D => j(D, y)
+    })),
+    _ = d === "unit" ? [{
+      id: "all",
+      target: "all",
+      key: "",
+      name: t("settings.allMembers"),
+      depth: 0
+    }, ...Cd(o.units).map(j => ({
+      id: `unit:${j.seq}`,
+      target: "unit",
+      key: String(j.seq),
+      name: j.name,
+      depth: j.depth
+    }))] : o.positions.map(j => ({
+      id: `position:${j}`,
+      target: "position",
+      key: j,
+      name: j,
+      depth: 0
+    })),
+    v = [{
+      id: "name",
+      text: t(d === "unit" ? "settings.department" : "settings.position"),
+      width: 180,
+      render: j => e.jsx(m, {
+        component: "span",
+        sx: {
+          pl: j.depth * 2,
+          fontWeight: j.target === "all" ? 600 : 500,
+          whiteSpace: "nowrap",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          display: "block"
+        },
+        children: j.name
+      })
+    }, ...I((j, y) => {
+      const D = s.levelOf(j.target, j.key, y.key);
+      return x(y) ? g(D ? i(D) : "—", !!D) : e.jsx(ki, {
+        text: D ? i(D) : "—",
+        tone: D ? "set" : "empty",
+        disabled: h(y),
+        current: D,
+        options: [{
+          value: "",
+          label: t("settings.notGranted")
+        }, ...F(y)],
+        onPick: M => {
+          s.setLevel(j.target, j.key, y.key, M);
+        }
+      });
+    })],
+    C = r.map(j => {
+      const y = o.members.find(D => D.account_seq === j.account_seq);
+      return {
+        id: `member:${j.account_seq}`,
+        accountSeq: j.account_seq,
+        name: j.nickname || j.name || j.email,
+        role: j.role,
+        position: y?.position ?? "",
+        inRoster: !!y,
+        hasEmployee: !!y?.in_roster
+      };
+    }),
+    w = [{
+      id: "name",
+      text: t("settings.member"),
+      width: 150,
+      render: j => e.jsxs(m, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: .75,
+          minWidth: 0
+        },
+        children: [e.jsx(m, {
+          component: "span",
+          sx: {
+            fontWeight: 500,
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis"
+          },
+          children: j.name
+        }), vi[j.role] ? e.jsx(m, {
+          component: "span",
+          sx: {
+            fontSize: 14,
+            color: "text.secondary",
+            flexShrink: 0
+          },
+          children: t(vi[j.role])
+        }) : null]
+      })
+    }, {
+      id: "position",
+      text: t("settings.position"),
+      width: 96,
+      render: j => j.role === "owner" ? null : e.jsx(m, {
+        component: "span",
+        sx: {
+          fontSize: 14,
+          color: j.hasEmployee && j.position ? "text.primary" : "text.secondary"
+        },
+        children: j.hasEmployee ? j.position || t("settings.permNone") : t("settings.notInRoster")
+      })
+    }, ...I((j, y) => {
+      if (j.role === "owner" || !j.inRoster) return e.jsx(m, {
+        component: "span",
+        sx: {
+          fontSize: 14,
+          color: "text.secondary"
+        },
+        children: t("settings.everything")
+      });
+      const D = o.members.find(T => T.account_seq === j.accountSeq)?.levels[y.key],
+        M = D?.inherited ?? "none",
+        z = D?.own ?? null;
+      if (x(y)) return g(i(D?.level ?? "none"), z !== null);
+      const O = z !== null ? t("settings.ownLevelTip", {
+        level: i(z),
+        inherited: i(M)
+      }) : M === "none" ? t("settings.noInheritedPermission") : t("settings.inheritedFrom", {
+        from: (D?.from ?? []).join(" · ")
+      });
+      return e.jsx(ki, {
+        tip: O,
+        text: i(z ?? M),
+        tone: z === null ? "inherited" : z === "none" ? "denied" : "set",
+        disabled: h(y),
+        current: z ?? "",
+        options: [{
+          value: "",
+          label: t("settings.asInherited", {
+            level: i(M)
+          })
+        }, {
+          value: "none",
+          label: i("none")
+        }, ...F(y)],
+        onPick: T => {
+          s.setLevel("member", String(j.accountSeq), y.key, T);
+        }
+      });
+    })],
+    E = e.jsx(m, {
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        gap: 2,
+        flexWrap: "wrap",
+        "& .MuiToggleButtonGroup-root": {
+          height: 40
+        }
+      },
+      children: e.jsx(mo, {
+        size: "medium",
+        value: d,
+        onChange: j => l(j || "unit"),
+        options: [{
+          value: "unit",
+          label: t("settings.byDepartment")
+        }, {
+          value: "position",
+          label: t("settings.byPosition")
+        }, {
+          value: "member",
+          label: t("settings.member")
+        }]
+      })
+    }),
+    A = e.jsxs(m, {
+      component: "ul",
+      sx: {
+        m: 0,
+        pl: 2.5,
+        color: "text.secondary",
+        fontSize: 14,
+        lineHeight: 1.7
+      },
+      children: [e.jsx("li", {
+        children: t("settings.permGuideLevels")
+      }), d === "unit" ? e.jsxs(e.Fragment, {
+        children: [e.jsx("li", {
+          children: t("settings.permGuideUnit")
+        }), e.jsx("li", {
+          children: t("settings.permGuideAll")
+        })]
+      }) : d === "position" ? e.jsx("li", {
+        children: t("settings.permGuidePosition")
+      }) : e.jsxs(e.Fragment, {
+        children: [e.jsx("li", {
+          children: t("settings.permGuideMember")
+        }), e.jsx("li", {
+          children: t("settings.permGuideRoles")
+        })]
+      }), o.is_owner ? null : e.jsx("li", {
+        children: t("settings.permGuideOwnerOnly")
+      })]
+    }),
+    S = t(d === "position" ? "settings.noPositions" : "settings.noDepartments"),
+    L = [{
+      id: "org-permission",
+      showTitle: !1,
+      children: e.jsxs(m, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: 2
+        },
+        children: [E, A, a ? d === "member" ? e.jsx(Wn, {
+          scrollbars: ei,
+          variant: "notion",
+          autoHeight: !0,
+          showPaper: !1,
+          paddingX: 0,
+          columns: w,
+          data: C,
+          totalCount: C.length,
+          getRowId: j => j.id,
+          emptyMessage: t("settings.noMembers")
+        }) : e.jsx(Wn, {
+          scrollbars: ei,
+          variant: "notion",
+          autoHeight: !0,
+          showPaper: !1,
+          paddingX: 0,
+          columns: v,
+          data: _,
+          totalCount: _.length,
+          getRowId: j => j.id,
+          emptyMessage: S
+        }) : e.jsx(k, {
+          sx: {
+            fontSize: 14,
+            color: "text.secondary"
+          },
+          children: t("settings.loading")
+        })]
+      })
+    }];
+  return e.jsx(ge, {
+    open: n.form.isOpen,
+    onClose: n.form.close,
+    title: t("settings.permissions"),
+    maxWidth: "xl",
+    fullScreen: p,
+    mobilePresentation: p ? "slide" : "dialog",
+    draggable: !0,
+    titleIcons: {
+      delete: {
+        visible: !1
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !1
+    },
+    sections: L
+  });
+}
+function Od() {
+  const t = De()?.seq ?? 0,
+    i = {
+      form: de({
+        modalId: "settings-org-permission-dialog"
+      })
+    },
+    [n, o] = b.useState(kd),
+    [r, a] = b.useState([]),
+    [d, l] = b.useState(!1),
+    [u, p] = b.useState("unit"),
+    [x, h] = b.useState(!1),
+    g = async () => {
+      try {
+        const [C, w] = await Promise.all([wi.get(), t ? to.listMembers(t) : Promise.resolve({
+          members: []
+        })]);
+        o(C), a(w.members ?? []), l(!0);
+      } catch (C) {
+        K(C instanceof Error ? C.message : c("settings.permissionLoadFailed"));
+      }
+    },
+    F = i.form.isOpen;
+  b.useEffect(() => {
+    if (!F) return;
+    const C = () => {
+      x || g();
+    };
+    return oe.addRealtimeEventListener(Ln, C), () => oe.removeRealtimeEventListener(Ln, C);
+  }, [F, x]);
+  const I = async () => {
+      l(!1), await g(), i.form.open();
+    },
+    _ = (C, w, E) => n.targets.find(A => A.target_type === C && A.target_key === w && A.feature === E)?.level ?? "";
+  return {
+    modals: i,
+    state: n,
+    people: r,
+    loaded: d,
+    tab: u,
+    setTab: p,
+    busy: x,
+    openDialog: I,
+    levelOf: _,
+    setLevel: async (C, w, E, A) => {
+      if (!(x || _(C, w, E) === A)) {
+        h(!0);
+        try {
+          o(await wi.putLevel(C, w, E, A));
+        } catch (S) {
+          K(S instanceof Error ? S.message : c("settings.permissionSaveFailed"));
+        } finally {
+          h(!1);
+        }
+      }
+    }
+  };
+}
+const dt = "/v1/org-storage",
+  Ao = s => {
+    const t = s ?? null;
+    return !t || t.grade !== "good" && t.grade !== "fair" && t.grade !== "slow" ? null : {
+      grade: t.grade,
+      latency_ms: Number(t.latency_ms) || 0,
+      up_kbps: Number(t.up_kbps) || 0,
+      down_kbps: Number(t.down_kbps) || 0,
+      note: String(t.note ?? ""),
+      date: String(t.date ?? "")
+    };
+  };
+class Do extends Error {
+  hostKey;
+  constructor(t, i) {
+    super(t), this.hostKey = i;
+  }
+}
+const Ci = s => s === "sftp" || s === "webdav" ? s : "s3",
+  fn = {
+    available: !1,
+    routing_enabled: !1,
+    drivers: ["s3"],
+    migration_enabled: !1,
+    mode: "default",
+    connection: null,
+    set_time: "",
+    set_by: "",
+    egress_ips: [],
+    editable: !1
+  };
+function $t(s) {
+  if (!s?.available) return fn;
+  const t = s.connection;
+  return {
+    available: !0,
+    routing_enabled: !!s.routing_enabled,
+    drivers: Array.isArray(s.drivers) && s.drivers.length ? s.drivers.map(Ci) : ["s3"],
+    migration_enabled: !!s.migration_enabled,
+    mode: s.mode === "own" ? "own" : "default",
+    connection: t ? {
+      driver: Ci(t.driver),
+      endpoint: String(t.endpoint ?? ""),
+      region: String(t.region ?? ""),
+      bucket: String(t.bucket ?? ""),
+      prefix: String(t.prefix ?? ""),
+      path_style: !!t.path_style,
+      access_key_hint: String(t.access_key_hint ?? ""),
+      host: String(t.host ?? ""),
+      port: Number(t.port) || 22,
+      user: String(t.user ?? ""),
+      root: String(t.root ?? ""),
+      host_key: String(t.host_key ?? ""),
+      has_password: !!t.has_password,
+      has_private_key: !!t.has_private_key,
+      last_check_time: String(t.last_check_time ?? ""),
+      last_reconcile_time: String(t.last_reconcile_time ?? ""),
+      last_reconcile_note: String(t.last_reconcile_note ?? ""),
+      speed: Ao(t.speed),
+      status: t.status === "error" ? "error" : "ok",
+      last_ok_time: String(t.last_ok_time ?? ""),
+      last_error: String(t.last_error ?? ""),
+      last_error_time: String(t.last_error_time ?? "")
+    } : null,
+    set_time: String(s.set_time ?? ""),
+    set_by: String(s.set_by ?? ""),
+    egress_ips: Array.isArray(s.egress_ips) ? s.egress_ips.map(String) : [],
+    editable: !!s.editable
+  };
+}
+function ut(s, t) {
+  if (!s?.ok || !s.data) throw new Error(s?.error || s?.message || t);
+  return s.data;
+}
+const lt = {
+  get: async () => $t(ut(await oe.http.get(dt), c("settings.storageLoadFailed"))),
+  test: async s => {
+    const t = ut(await oe.http.post(`${dt}/test`, s), c("settings.connectionCheckFailed"));
+    return {
+      view: $t(t.view),
+      speed: Ao(t.speed)
+    };
+  },
+  saveConnection: async s => {
+    try {
+      return $t(ut(await oe.http.put(`${dt}/connection`, s), c("settings.connectionSaveFailed")));
+    } catch (t) {
+      const i = t.details;
+      throw i?.code === "HOST_KEY_CHANGED" ? new Do(String(i.message ?? t.message), String(i.host_key ?? "")) : t;
+    }
+  },
+  setMode: async s => $t(ut(await oe.http.put(`${dt}/mode`, {
+    mode: s
+  }), c("settings.storageModeChangeFailed"))),
+  getMigration: async s => ut(await oe.http.get(`${dt}/migration${s ? "?counts=1" : ""}`), c("settings.migrationStatusLoadFailed")),
+  startMigration: async s => ut(await oe.http.post(`${dt}/migration`, {
+    direction: s
+  }), c("settings.migrationStartFailed")).job,
+  cancelMigration: async () => ut(await oe.http.post(`${dt}/migration/cancel`, {}), c("settings.migrationStopFailed")).job,
+  removeConnection: async () => $t(ut(await oe.http.delete(`${dt}/connection`), c("settings.connectionDeleteFailed")))
+};
+function Ht(s) {
+  return s >= 1024 ** 3 ? `${(s / 1024 ** 3).toFixed(1)}GB` : s >= 1024 ** 2 ? `${(s / 1024 ** 2).toFixed(1)}MB` : s >= 1024 ? `${Math.round(s / 1024)}KB` : `${s}B`;
+}
+function Td(s, t) {
+  const [i, n] = b.useState(null),
+    [o, r] = b.useState(null),
+    [a, d] = b.useState(!1),
+    [l, u] = b.useState(""),
+    p = s && t.available && t.migration_enabled,
+    x = i?.status === "running",
+    h = b.useRef(null),
+    g = async _ => {
+      try {
+        const v = await lt.getMigration(_);
+        return n(v.job), _ && r(v.pending), v.job;
+      } catch (v) {
+        return u(v instanceof Error ? v.message : c("settings.migrationStatusLoadFailed")), null;
+      }
+    };
+  return b.useEffect(() => {
+    p && (u(""), g(!0));
+  }, [p, t.mode, t.connection?.driver]), b.useEffect(() => {
+    if (!(!p || !x)) return h.current = window.setInterval(async () => {
+      const _ = await g(!1);
+      _ && _.status !== "running" && g(!0);
+    }, 3e3), () => {
+      h.current && window.clearInterval(h.current);
+    };
+  }, [p, x]), {
+    enabled: p,
+    job: i,
+    pending: o,
+    running: x,
+    busy: a,
+    error: l,
+    start: async () => {
+      if (!o || o.files <= 0) return;
+      const _ = o.direction === "to_own";
+      if (await Ae({
+        title: _ ? c("settings.migrateToOwnTitle") : c("settings.migrateToTaskhamTitle"),
+        message: c("settings.migrateMessage", {
+          count: o.files,
+          files: o.files.toLocaleString(zt(Wt())),
+          size: Ht(o.bytes)
+        }),
+        confirmText: c("settings.migrate"),
+        cancelText: c("settings.cancel")
+      })) {
+        d(!0), u("");
+        try {
+          n(await lt.startMigration(o.direction)), _e({
+            message: c("settings.migrationStarted")
+          });
+        } catch (C) {
+          u(C instanceof Error ? C.message : c("settings.migrationStartFailed"));
+        } finally {
+          d(!1);
+        }
+      }
+    },
+    cancel: async () => {
+      if (await Ae({
+        title: c("settings.stopMigrationTitle"),
+        message: c("settings.stopMigrationMessage"),
+        confirmText: c("settings.stop"),
+        cancelText: c("settings.keepMigrating")
+      })) {
+        d(!0);
+        try {
+          n(await lt.cancelMigration()), g(!0);
+        } catch (v) {
+          u(v instanceof Error ? v.message : c("settings.migrationStopFailed"));
+        } finally {
+          d(!1);
+        }
+      }
+    }
+  };
+}
+const Ed = {
+  mode: "default",
+  driver: "s3",
+  endpoint: "",
+  region: "",
+  bucket: "",
+  prefix: "",
+  path_style: !1,
+  access_key: "",
+  secret_key: "",
+  host: "",
+  port: 22,
+  user: "",
+  password: "",
+  private_key: "",
+  root: ""
+};
+function us(s) {
+  const t = s.connection;
+  return {
+    mode: s.mode,
+    driver: t?.driver || "s3",
+    endpoint: t?.endpoint ?? "",
+    region: t?.region ?? "",
+    bucket: t?.bucket ?? "",
+    prefix: t?.prefix ?? "",
+    path_style: t?.path_style ?? !1,
+    access_key: "",
+    secret_key: "",
+    host: t?.host ?? "",
+    port: t?.port || 22,
+    user: t?.user ?? "",
+    password: "",
+    private_key: "",
+    root: t?.root ?? ""
+  };
+}
+const et = s => String(s ?? "").trim();
+function Ys(s) {
+  const t = Number(s.port);
+  return {
+    driver: s.driver,
+    host: et(s.host).toLowerCase(),
+    port: Number.isInteger(t) && t > 0 && t < 65536 ? t : 22,
+    user: et(s.user),
+    password: String(s.password ?? ""),
+    private_key: et(s.private_key),
+    root: et(s.root).replace(/\/+$/, ""),
+    endpoint: et(s.endpoint).replace(/\/+$/, ""),
+    region: et(s.region),
+    bucket: et(s.bucket),
+    prefix: et(s.prefix).replace(/^\/+|\/+$/g, ""),
+    path_style: !!s.path_style,
+    access_key: et(s.access_key),
+    secret_key: et(s.secret_key)
+  };
+}
+function Xs(s, t) {
+  const i = s.connection,
+    n = !!(t.access_key || t.secret_key || t.password || t.private_key);
+  return i ? i.driver !== t.driver || n ? !0 : t.driver === "sftp" ? i.host !== t.host || i.port !== t.port || i.user !== t.user || i.root !== t.root : t.driver === "webdav" ? i.endpoint !== t.endpoint || i.prefix !== t.prefix || i.user !== t.user : i.endpoint !== t.endpoint || i.region !== t.region || i.bucket !== t.bucket || i.prefix !== t.prefix || i.path_style !== t.path_style : t.driver === "sftp" ? !!(t.host || t.user || t.root || n) : t.driver === "webdav" ? !!(t.endpoint || t.user || n) : !!(t.endpoint || t.bucket || n);
+}
+function Mo(s, t) {
+  const i = s.connection;
+  return !i || i.driver !== t.driver ? !0 : t.driver === "sftp" ? i.host !== t.host || i.port !== t.port || i.user !== t.user : t.driver === "webdav" ? i.endpoint !== t.endpoint || i.user !== t.user : i.endpoint !== t.endpoint || i.bucket !== t.bucket;
+}
+function Fi(s, t) {
+  const i = Mo(s, t);
+  return t.driver === "sftp" ? t.host ? t.user ? t.root ? i && !t.password && !t.private_key ? c("settings.passwordOrKeyRequired") : "" : c("settings.sftpRootRequired") : c("settings.userRequired") : c("settings.sftpHostRequired") : t.driver === "webdav" ? t.endpoint ? t.user ? i && !t.password ? c("settings.passwordRequired") : "" : c("settings.userRequired") : c("settings.webdavEndpointRequired") : t.endpoint ? t.bucket ? i && (!t.access_key || !t.secret_key) ? c("settings.accessKeysRequired") : "" : c("settings.bucketRequired") : c("settings.endpointRequired");
+}
+function Ad(s) {
+  const i = De()?.seq ?? 0,
+    n = {
+      form: de({
+        modalId: "settings-org-storage-dialog"
+      })
+    },
+    o = n.form.isOpen,
+    [r, a] = b.useState(fn),
+    [d, l] = b.useState(!1),
+    [u, p] = b.useState(!1),
+    [x, h] = b.useState(!1),
+    [g, F] = b.useState(!1),
+    [I, _] = b.useState(""),
+    [v, C] = b.useState(!1),
+    [w, E] = b.useState(null),
+    A = te => {
+      const Q = Ys(te),
+        U = Xs(r, Q);
+      return !U && te.mode === r.mode ? "" : te.mode === "own" || U ? Fi(r, Q) : "";
+    },
+    S = je({
+      formId: "settings-org-storage-form",
+      initialValues: Ed,
+      onValidate: te => {
+        const Q = A(te);
+        return _(Q), !Q;
+      },
+      onSubmit: async te => {
+        try {
+          const Q = Ys(te);
+          let U = r;
+          if (Xs(r, Q)) try {
+            U = await lt.saveConnection(Q);
+          } catch (pe) {
+            if (!(pe instanceof Do) || !pe.hostKey) throw pe;
+            if (!(await Ae({
+              title: c("settings.sftpHostKeyChanged"),
+              message: c("settings.trustNewHostKey", {
+                message: pe.message,
+                key: pe.hostKey
+              }),
+              confirmText: c("settings.trustAndSave"),
+              cancelText: c("settings.cancel")
+            }))) return _(c("settings.notSavedHostKeyChanged"));
+            U = await lt.saveConnection({
+              ...Q,
+              trust_host_key: pe.hostKey
+            });
+          }
+          te.mode !== U.mode && (U = await lt.setMode(te.mode)), a(U), S.setFormValues(us(U)), C(!1), E(null), _e({
+            message: U.mode === "own" ? c("settings.storageSavedOwn") : c("settings.connectionVerifiedSaved")
+          });
+        } catch (Q) {
+          _(Q instanceof Error ? Q.message : c("settings.storageSaveFailed"));
+        }
+      }
+    }),
+    L = async te => {
+      p(!0);
+      try {
+        const Q = await lt.get();
+        a(Q), l(!0), te && S.setFormValues(us(Q));
+      } catch (Q) {
+        _(Q instanceof Error ? Q.message : c("settings.storageLoadFailed"));
+      } finally {
+        p(!1);
+      }
+    };
+  b.useEffect(() => {
+    l(!1), a(fn), !(!s || !i) && L(!1);
+  }, [s, i]);
+  const j = async () => {
+      _(""), C(!1), S.setFormValues(us(r)), await L(!0), n.form.open();
+    },
+    y = S.useFormValue("driver"),
+    D = {
+      mode: S.useFormValue("mode") === "own" ? "own" : "default",
+      driver: y === "sftp" || y === "webdav" ? y : "s3",
+      endpoint: String(S.useFormValue("endpoint") ?? ""),
+      region: String(S.useFormValue("region") ?? ""),
+      bucket: String(S.useFormValue("bucket") ?? ""),
+      prefix: String(S.useFormValue("prefix") ?? ""),
+      path_style: !!S.useFormValue("path_style"),
+      access_key: String(S.useFormValue("access_key") ?? ""),
+      secret_key: String(S.useFormValue("secret_key") ?? ""),
+      host: String(S.useFormValue("host") ?? ""),
+      port: Number(S.useFormValue("port")) || 22,
+      user: String(S.useFormValue("user") ?? ""),
+      password: String(S.useFormValue("password") ?? ""),
+      private_key: String(S.useFormValue("private_key") ?? ""),
+      root: String(S.useFormValue("root") ?? "")
+    },
+    M = Ys(D),
+    z = Xs(r, M),
+    O = JSON.stringify(M);
+  b.useEffect(() => {
+    C(!1), E(null);
+  }, [O]);
+  const T = async () => {
+      const te = Fi(r, M);
+      if (_(te), !te) {
+        h(!0);
+        try {
+          const {
+            view: Q,
+            speed: U
+          } = await lt.test(M);
+          Q.available && a(Q), C(!0), E(U);
+        } catch (Q) {
+          C(!1), _(Q instanceof Error ? Q.message : c("settings.connectionCheckFailed"));
+        } finally {
+          h(!1);
+        }
+      }
+    },
+    $ = async () => {
+      _(""), F(!0);
+      try {
+        const te = await lt.removeConnection();
+        a(te), S.setFormValues(us(te)), _e({
+          message: c("settings.ownConnectionDeleted")
+        });
+      } catch (te) {
+        _(te instanceof Error ? te.message : c("settings.connectionDeleteFailed"));
+      } finally {
+        F(!1);
+      }
+    },
+    ee = Td(o, r);
+  return {
+    modals: n,
+    form: S,
+    storage: r,
+    loaded: d,
+    loading: u,
+    testing: x,
+    removing: g,
+    testedOk: v,
+    testedSpeed: w,
+    error: I,
+    mode: D.mode,
+    dirty: z || D.mode !== r.mode,
+    keepsStoredKeys: !Mo(r, M),
+    driver: D.driver,
+    openDialog: j,
+    test: T,
+    remove: $,
+    migration: ee
+  };
+}
+const Ii = {
+  done: "settings.migrationFinishedDone",
+  canceled: "settings.migrationFinishedStopped",
+  failed: "settings.migrationFinishedStopped"
+};
+function Dd({
+  migration: s,
+  connection: t,
+  dirty: i,
+  editable: n
+}) {
+  const o = J(),
+    {
+      job: r,
+      pending: a,
+      running: d,
+      busy: l,
+      error: u
+    } = s;
+  if (!s.enabled) return null;
+  const p = F => F.toLocaleString(zt(Wt()));
+  if (!t && !r && (!a || a.files === 0)) return null;
+  const x = (d ? r?.direction : a?.direction) === "to_own",
+    h = r && r.total_files > 0 ? Math.min(100, Math.round((r.done_files + r.failed_files) / r.total_files * 100)) : 0,
+    g = [t?.last_check_time && o("settings.autoCheckAt", {
+      time: t.last_check_time.slice(5, 16)
+    }), t?.last_reconcile_time && o("settings.reconcileAt", {
+      time: t.last_reconcile_time.slice(5, 16)
+    })].filter(Boolean).join(" · ");
+  return e.jsxs(X, {
+    spacing: le,
+    children: [e.jsx(k, {
+      sx: {
+        fontSize: "0.9375rem",
+        fontWeight: Ne.bold,
+        color: "text.primary"
+      },
+      children: o("settings.existingFiles")
+    }), e.jsx(st, {
+      children: e.jsxs(X, {
+        spacing: 1.5,
+        children: [d && r ? e.jsxs(e.Fragment, {
+          children: [e.jsx(k, {
+            sx: {
+              fontSize: "0.9375rem",
+              color: "text.primary"
+            },
+            children: o(r.direction === "to_own" ? "settings.migratingToOwn" : "settings.migratingToTaskham", {
+              done: p(r.done_files),
+              total: p(r.total_files),
+              doneBytes: Ht(r.done_bytes),
+              totalBytes: Ht(r.total_bytes)
+            })
+          }), e.jsx(xs, {
+            variant: "determinate",
+            value: h,
+            sx: {
+              height: 8,
+              borderRadius: 4
+            }
+          }), r.failed_files > 0 && e.jsx(k, {
+            sx: {
+              fontSize: "0.875rem",
+              color: "text.secondary"
+            },
+            children: o("settings.migrationFailedFiles", {
+              count: r.failed_files,
+              files: p(r.failed_files)
+            })
+          }), r.last_error && e.jsx(k, {
+            sx: {
+              fontSize: "0.875rem",
+              color: "text.secondary"
+            },
+            children: r.last_error
+          })]
+        }) : e.jsxs(e.Fragment, {
+          children: [e.jsx(k, {
+            sx: {
+              fontSize: "0.9375rem",
+              color: "text.primary"
+            },
+            children: a ? a.files === 0 ? o(x ? "settings.allFilesInOwn" : "settings.noFilesInOwn") : x ? o("settings.pendingToOwn", {
+              count: a.files,
+              files: p(a.files),
+              size: Ht(a.bytes)
+            }) : o("settings.pendingToTaskham", {
+              count: a.files,
+              files: p(a.files),
+              size: Ht(a.bytes)
+            }) : o("settings.countingFiles")
+          }), r && r.status !== "running" && r.finished_time && e.jsxs(k, {
+            sx: {
+              fontSize: "0.875rem",
+              color: "text.secondary"
+            },
+            children: [r.finished_time.slice(0, 16), " ", o(Ii[r.status] ?? Ii.done, {
+              target: o(r.direction === "to_own" ? "settings.toOwnStorage" : "settings.toTaskham"),
+              count: r.done_files,
+              files: p(r.done_files)
+            }), r.failed_files > 0 ? ` ${o("settings.migrationNotMoved", {
+              count: r.failed_files,
+              files: p(r.failed_files)
+            })}` : ""]
+          })]
+        }), g && e.jsx(k, {
+          sx: {
+            fontSize: "0.875rem",
+            color: "text.secondary"
+          },
+          children: g
+        }), n && e.jsx(m, {
+          children: d ? e.jsx(B, {
+            variant: "outlined",
+            onClick: () => {
+              s.cancel();
+            },
+            disabled: l,
+            children: o("settings.stopMigration")
+          }) : e.jsx(B, {
+            variant: "outlined",
+            onClick: () => {
+              s.start();
+            },
+            disabled: l || i || !a || a.files === 0,
+            startIcon: l ? e.jsx(ye, {
+              size: 16,
+              color: "inherit"
+            }) : void 0,
+            children: o(x ? "settings.moveToOwn" : "settings.moveBackToTaskham")
+          })
+        }), i && !d && a && a.files > 0 && e.jsx(k, {
+          sx: {
+            fontSize: "0.875rem",
+            color: "text.secondary"
+          },
+          children: o("settings.saveBeforeMigrate")
+        })]
+      })
+    }), u && e.jsx(Ee, {
+      message: u
+    })]
+  });
+}
+const Md = {
+    good: {
+      labelKey: "settings.speedGood",
+      color: "success"
+    },
+    fair: {
+      labelKey: "settings.speedFair",
+      color: "warning"
+    },
+    slow: {
+      labelKey: "settings.speedSlow",
+      color: "error"
+    }
+  },
+  Oi = s => s >= 1024 ? `${(s / 1024).toFixed(s >= 10 * 1024 ? 0 : 1)}MB/s` : `${s}KB/s`;
+function Ti({
+  speed: s
+}) {
+  const t = J(),
+    i = Md[s.grade],
+    n = [t("settings.speedLatency", {
+      ms: s.latency_ms
+    }), s.up_kbps ? t("settings.speedUpload", {
+      rate: Oi(s.up_kbps)
+    }) : "", s.down_kbps ? t("settings.speedDownload", {
+      rate: Oi(s.down_kbps)
+    }) : "", s.date ? t("settings.speedMeasuredAt", {
+      date: s.date.slice(5, 16)
+    }) : ""].filter(Boolean).join(" · ");
+  return e.jsxs(m, {
+    sx: {
+      display: "grid",
+      gap: .5
+    },
+    children: [e.jsxs(m, {
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        gap: 1.5,
+        flexWrap: "wrap",
+        minHeight: 32
+      },
+      children: [e.jsx(we, {
+        size: "small",
+        color: i.color,
+        label: t(i.labelKey)
+      }), e.jsx(k, {
+        sx: {
+          fontSize: "0.875rem",
+          color: "text.secondary"
+        },
+        children: n
+      })]
+    }), s.grade === "slow" && e.jsxs(k, {
+      sx: {
+        fontSize: "0.875rem",
+        color: "text.secondary",
+        wordBreak: "keep-all"
+      },
+      children: [s.note ? `${s.note} ` : "", t("settings.speedSlowHint")]
+    })]
+  });
+}
+const Rd = "1140px",
+  Ei = 1e5,
+  Nd = s => {
+    const t = Number(s);
+    return Number.isInteger(t) && t > 0 && t < 65536 ? String(t) : null;
+  };
+function Pd({
+  title: s,
+  ordered: t,
+  children: i
+}) {
+  return e.jsxs(m, {
+    children: [e.jsx(k, {
+      sx: {
+        fontSize: "0.9375rem",
+        fontWeight: Ne.bold,
+        color: "text.primary",
+        mb: 1
+      },
+      children: s
+    }), e.jsx(m, {
+      component: t ? "ol" : "ul",
+      sx: {
+        m: 0,
+        pl: 2.5,
+        display: "grid",
+        gap: 1,
+        fontSize: "0.875rem",
+        color: "text.primary",
+        wordBreak: "keep-all"
+      },
+      children: i
+    })]
+  });
+}
+function zd({
+  controller: s
+}) {
+  const t = J(),
+    i = me(),
+    {
+      form: n,
+      modals: o,
+      storage: r,
+      loading: a,
+      testing: d,
+      removing: l,
+      testedOk: u,
+      error: p,
+      dirty: x,
+      keepsStoredKeys: h,
+      driver: g
+    } = s,
+    F = o.form.isOpen,
+    I = n.isSubmitting,
+    _ = a || I || l || d,
+    v = r.editable,
+    C = r.connection,
+    w = r.egress_ips.join(", "),
+    [E, A] = b.useState(!1),
+    S = [{
+      value: "default",
+      label: t("settings.modeDefault")
+    }, {
+      value: "own",
+      label: r.routing_enabled ? t("settings.modeOwn") : t("settings.modeOwnPreparing"),
+      disabled: !r.routing_enabled || !C
+    }],
+    L = [{
+      value: "s3",
+      label: t("settings.driverS3")
+    }, {
+      value: "sftp",
+      label: r.drivers.includes("sftp") ? t("settings.driverSftp") : t("settings.driverSftpPreparing"),
+      disabled: !r.drivers.includes("sftp")
+    }, {
+      value: "webdav",
+      label: r.drivers.includes("webdav") ? t("settings.driverWebdav") : t("settings.driverWebdavPreparing"),
+      disabled: !r.drivers.includes("webdav")
+    }],
+    j = _ || !v,
+    y = ($, ee = t("settings.empty")) => h && C?.driver === g && $ ? t("settings.keepStoredValue") : ee,
+    D = C ? C.status === "error" ? e.jsx(we, {
+      size: "small",
+      color: "error",
+      label: t("settings.connectionFailed")
+    }) : e.jsx(we, {
+      size: "small",
+      color: "success",
+      icon: e.jsx(It, {}),
+      label: t("settings.connectionOk")
+    }) : null,
+    M = e.jsxs(X, {
+      spacing: le,
+      sx: i ? void 0 : {
+        flex: 1
+      },
+      children: [e.jsxs(Jt, {
+        severity: "info",
+        sx: {
+          fontSize: 14,
+          wordBreak: "keep-all"
+        },
+        children: [e.jsx(ln, {
+          sx: {
+            fontSize: "0.9375rem",
+            fontWeight: Ne.bold
+          },
+          children: t("settings.ownStorageBenefits")
+        }), e.jsxs(m, {
+          component: "ul",
+          sx: {
+            listStyleType: "disc",
+            m: 0,
+            pl: 2.5,
+            display: "grid",
+            gap: .5
+          },
+          children: [e.jsx("li", {
+            children: e.jsx(ie, {
+              i18nKey: "settings.ownBenefit1",
+              components: {
+                b: e.jsx("b", {})
+              }
+            })
+          }), e.jsx("li", {
+            children: t("settings.ownBenefit2")
+          }), e.jsx("li", {
+            children: t("settings.ownBenefit3")
+          }), !r.routing_enabled && e.jsx("li", {
+            children: e.jsx(ie, {
+              i18nKey: "settings.ownPreparingNote",
+              components: {
+                b: e.jsx("b", {})
+              }
+            })
+          })]
+        })]
+      }), e.jsxs(Jt, {
+        severity: "error",
+        sx: {
+          fontSize: 14,
+          wordBreak: "keep-all",
+          ...(i ? {} : {
+            flexGrow: 1
+          })
+        },
+        children: [e.jsx(ln, {
+          sx: {
+            fontSize: "0.9375rem",
+            fontWeight: Ne.bold
+          },
+          children: t("settings.caution")
+        }), e.jsxs(m, {
+          component: "ul",
+          sx: {
+            listStyleType: "disc",
+            m: 0,
+            pl: 2.5,
+            display: "grid",
+            gap: .5
+          },
+          children: [e.jsx("li", {
+            children: e.jsx(ie, {
+              i18nKey: "settings.ownCaution1",
+              components: {
+                b: e.jsx("b", {})
+              }
+            })
+          }), e.jsxs("li", {
+            children: [t("settings.ownCaution2"), r.migration_enabled ? ` ${t("settings.ownCaution2Migrate")}` : ""]
+          }), e.jsx("li", {
+            children: t("settings.ownCaution3")
+          }), e.jsx("li", {
+            children: t("settings.ownCaution4")
+          })]
+        })]
+      })]
+    }),
+    z = e.jsxs(Pd, {
+      title: t("settings.prepare"),
+      ordered: !0,
+      children: [g === "s3" && e.jsxs(e.Fragment, {
+        children: [e.jsx("li", {
+          children: e.jsx(ie, {
+            i18nKey: "settings.prepareS3Key",
+            components: {
+              b: e.jsx("b", {})
+            }
+          })
+        }), e.jsx("li", {
+          children: t("settings.prepareS3PathStyle")
+        })]
+      }), g === "sftp" && e.jsx("li", {
+        children: e.jsx(ie, {
+          i18nKey: "settings.prepareSftpAccount",
+          components: {
+            b: e.jsx("b", {})
+          }
+        })
+      }), g === "webdav" && e.jsx("li", {
+        children: e.jsx(ie, {
+          i18nKey: "settings.prepareWebdavAccount",
+          components: {
+            b: e.jsx("b", {})
+          }
+        })
+      }), w && e.jsx("li", {
+        children: e.jsx(ie, {
+          i18nKey: "settings.prepareFirewall",
+          values: {
+            egress: w
+          },
+          components: {
+            b: e.jsx("b", {})
+          }
+        })
+      }), g === "sftp" ? e.jsx("li", {
+        children: e.jsx(ie, {
+          i18nKey: "settings.prepareSftpHost",
+          components: {
+            b: e.jsx("b", {})
+          }
+        })
+      }) : e.jsx("li", {
+        children: g === "webdav" ? e.jsx(ie, {
+          i18nKey: "settings.prepareHttpsWebdav",
+          components: {
+            b: e.jsx("b", {})
+          }
+        }) : e.jsx(ie, {
+          i18nKey: "settings.prepareHttpsS3",
+          components: {
+            b: e.jsx("b", {})
+          }
+        })
+      }), e.jsx("li", {
+        children: e.jsx(ie, {
+          i18nKey: "settings.prepareVerify",
+          components: {
+            b: e.jsx("b", {})
+          }
+        })
+      })]
+    }),
+    O = e.jsxs(X, {
+      spacing: le,
+      sx: {
+        minWidth: 0
+      },
+      onFocus: $ => A($.target instanceof HTMLInputElement || $.target instanceof HTMLTextAreaElement),
+      onBlur: () => A(!1),
+      children: [e.jsx(st, {
+        children: e.jsx(tn, {
+          twoColumnMin: Ei,
+          children: e.jsx(hs, {
+            icon: e.jsx(Xa, {}),
+            label: t("settings.newFileLocation"),
+            form: n,
+            name: "mode",
+            options: S,
+            readOnly: j
+          })
+        })
+      }), e.jsx(k, {
+        sx: {
+          fontSize: "0.9375rem",
+          fontWeight: Ne.bold,
+          color: "text.primary"
+        },
+        children: t("settings.ownStorageConnection")
+      }), e.jsx(st, {
+        children: e.jsxs(tn, {
+          twoColumnMin: Ei,
+          children: [e.jsx(hs, {
+            icon: e.jsx(Ja, {}),
+            label: t("settings.docKind"),
+            form: n,
+            name: "driver",
+            options: L,
+            readOnly: j
+          }), g === "s3" && e.jsxs(e.Fragment, {
+            children: [e.jsx(Ie, {
+              icon: e.jsx(Bn, {}),
+              label: t("settings.endpoint"),
+              form: n,
+              name: "endpoint",
+              placeholder: "https://kr.object.ncloudstorage.com",
+              inputMode: "url",
+              maxLength: 300,
+              readOnly: j
+            }), e.jsx(Ie, {
+              icon: e.jsx(Fr, {}),
+              label: t("settings.bucket"),
+              form: n,
+              name: "bucket",
+              maxLength: 63,
+              readOnly: j
+            }), e.jsx(Ie, {
+              icon: e.jsx(Ir, {}),
+              label: t("settings.region"),
+              form: n,
+              name: "region",
+              placeholder: "ap-northeast-2",
+              maxLength: 40,
+              readOnly: j
+            }), e.jsx(Ie, {
+              icon: e.jsx(fs, {}),
+              label: t("settings.bucketPrefix"),
+              form: n,
+              name: "prefix",
+              placeholder: t("settings.emptyMeansRoot"),
+              maxLength: 200,
+              readOnly: j
+            }), e.jsx(Ie, {
+              icon: e.jsx(ro, {}),
+              label: t("settings.accessKey"),
+              form: n,
+              name: "access_key",
+              placeholder: h && C?.access_key_hint ? t("settings.keepAccessKeyHint", {
+                hint: C.access_key_hint
+              }) : t("settings.empty"),
+              maxLength: 200,
+              autoComplete: "off",
+              readOnly: j
+            }), e.jsx(Ie, {
+              icon: e.jsx(Es, {}),
+              label: t("settings.secretKey"),
+              form: n,
+              name: "secret_key",
+              type: "password",
+              autoComplete: "new-password",
+              placeholder: t(h && C ? "settings.keepStoredKey" : "settings.empty"),
+              maxLength: 200,
+              readOnly: j
+            }), e.jsx(sn, {
+              icon: e.jsx(Qa, {}),
+              label: t("settings.pathStyle"),
+              form: n,
+              name: "path_style",
+              readOnly: j
+            })]
+          }), g === "sftp" && e.jsxs(e.Fragment, {
+            children: [e.jsx(Ie, {
+              icon: e.jsx(ha, {}),
+              label: t("settings.serverAddress"),
+              form: n,
+              name: "host",
+              placeholder: "nas.example.com",
+              inputMode: "url",
+              maxLength: 253,
+              readOnly: j
+            }), e.jsx(Ie, {
+              icon: e.jsx(ba, {}),
+              label: t("settings.port"),
+              form: n,
+              name: "port",
+              inputMode: "numeric",
+              maxLength: 5,
+              parse: Nd,
+              readOnly: j
+            }), e.jsx(Ie, {
+              icon: e.jsx(Vn, {}),
+              label: t("settings.username"),
+              form: n,
+              name: "user",
+              maxLength: 100,
+              autoComplete: "off",
+              readOnly: j
+            }), e.jsx(Ie, {
+              icon: e.jsx(Es, {}),
+              label: t("settings.password"),
+              form: n,
+              name: "password",
+              type: "password",
+              autoComplete: "new-password",
+              placeholder: y(C?.has_password, t("settings.emptyIfPrivateKey")),
+              maxLength: 200,
+              readOnly: j
+            }), e.jsx(Or, {
+              icon: e.jsx(ya, {}),
+              label: t("settings.privateKey"),
+              form: n,
+              name: "private_key",
+              placeholder: y(C?.has_private_key, "-----BEGIN OPENSSH PRIVATE KEY-----"),
+              maxLength: 8e3,
+              readOnly: j
+            }), e.jsx(Ie, {
+              icon: e.jsx(fs, {}),
+              label: t("settings.serverFolder"),
+              form: n,
+              name: "root",
+              placeholder: "/volume1/taskham",
+              maxLength: 300,
+              readOnly: j
+            })]
+          }), g === "webdav" && e.jsxs(e.Fragment, {
+            children: [e.jsx(Ie, {
+              icon: e.jsx(Bn, {}),
+              label: t("settings.webdavAddress"),
+              form: n,
+              name: "endpoint",
+              placeholder: "https://nas.example.com:5006/taskham",
+              inputMode: "url",
+              maxLength: 300,
+              readOnly: j
+            }), e.jsx(Ie, {
+              icon: e.jsx(fs, {}),
+              label: t("settings.subfolder"),
+              form: n,
+              name: "prefix",
+              placeholder: t("settings.emptyMeansRoot"),
+              maxLength: 200,
+              readOnly: j
+            }), e.jsx(Ie, {
+              icon: e.jsx(Vn, {}),
+              label: t("settings.username"),
+              form: n,
+              name: "user",
+              maxLength: 100,
+              autoComplete: "off",
+              readOnly: j
+            }), e.jsx(Ie, {
+              icon: e.jsx(Es, {}),
+              label: t("settings.passwordAppPassword"),
+              form: n,
+              name: "password",
+              type: "password",
+              autoComplete: "new-password",
+              placeholder: y(C?.has_password),
+              maxLength: 200,
+              readOnly: j
+            })]
+          })]
+        })
+      }), C?.driver === "sftp" && g === "sftp" && C.host_key && e.jsx(k, {
+        sx: {
+          fontSize: "0.875rem",
+          color: "text.secondary",
+          wordBreak: "break-all"
+        },
+        children: t("settings.serverKey", {
+          key: C.host_key
+        })
+      }), (a && !s.loaded || C) && e.jsxs(m, {
+        sx: {
+          display: "grid",
+          gap: 1
+        },
+        children: [e.jsx(m, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: 1.5,
+            flexWrap: "wrap",
+            minHeight: 32
+          },
+          children: a && !s.loaded ? e.jsx(ye, {
+            size: 18
+          }) : e.jsxs(e.Fragment, {
+            children: [D, C && e.jsx(k, {
+              sx: {
+                fontSize: "0.875rem",
+                color: "text.secondary"
+              },
+              children: [C.status === "error" ? C.last_error_time && t("settings.failedAt", {
+                time: C.last_error_time.slice(5, 16)
+              }) : C.last_ok_time && t("settings.verifiedAt", {
+                time: C.last_ok_time.slice(5, 16)
+              }), r.set_time && `${t("settings.setAt", {
+                time: r.set_time.slice(5, 16)
+              })}${r.set_by ? ` ${r.set_by}` : ""}`].filter(Boolean).join(" · ")
+            })]
+          })
+        }), C?.status === "error" && C.last_error && e.jsx(Ee, {
+          message: C.last_error
+        }), C?.status !== "error" && C?.speed && !s.testedSpeed && e.jsx(Ti, {
+          speed: C.speed
+        })]
+      }), d && e.jsxs(m, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: 1.5,
+          fontSize: "0.9375rem",
+          color: "text.secondary"
+        },
+        children: [e.jsx(ye, {
+          size: 18
+        }), t("settings.testingStorage")]
+      }), u && !d && e.jsxs(m, {
+        sx: {
+          display: "grid",
+          gap: 1
+        },
+        children: [e.jsxs(m, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: 1,
+            fontSize: "0.9375rem",
+            color: "success.main"
+          },
+          children: [e.jsx(It, {
+            fontSize: "small"
+          }), t("settings.storageTestOk")]
+        }), s.testedSpeed && e.jsx(Ti, {
+          speed: s.testedSpeed
+        })]
+      }), p && e.jsx(Ee, {
+        message: p
+      }), e.jsx(Dd, {
+        migration: s.migration,
+        connection: C,
+        dirty: x,
+        editable: v
+      }), !v && s.loaded && e.jsx(k, {
+        sx: {
+          fontSize: "0.875rem",
+          color: "text.secondary"
+        },
+        children: t("settings.storageOwnerOnly")
+      })]
+    }),
+    T = [{
+      id: "org-storage",
+      showTitle: !1,
+      children: i ? e.jsxs(X, {
+        spacing: le,
+        children: [M, O, z]
+      }) : e.jsxs(m, {
+        sx: {
+          display: "grid",
+          gridTemplateColumns: "40% minmax(0, 1fr)",
+          gap: 3
+        },
+        children: [e.jsx(m, {
+          sx: {
+            alignSelf: "stretch",
+            display: "flex",
+            flexDirection: "column",
+            minWidth: 0
+          },
+          children: M
+        }), e.jsxs(X, {
+          spacing: le,
+          sx: {
+            minWidth: 0,
+            alignSelf: "start"
+          },
+          children: [O, z]
+        })]
+      })
+    }];
+  return e.jsx(ge, {
+    open: F,
+    onClose: o.form.close,
+    title: t("settings.fileStorage"),
+    width: Rd,
+    fullScreen: i,
+    mobilePresentation: i ? "slide" : "dialog",
+    draggable: !0,
+    backdropClick: !1,
+    tabs: {
+      visible: !1
+    },
+    titleIcons: {
+      delete: {
+        visible: v && !!C && r.mode === "default",
+        confirmConfig: {
+          title: t("settings.deleteOwnConnection"),
+          message: t("settings.deleteOwnConnectionMessage"),
+          confirmText: t("settings.delete"),
+          cancelText: t("settings.cancel")
+        }
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    onDelete: () => {
+      s.remove();
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !0,
+      right: e.jsxs(X, {
+        direction: "row",
+        spacing: 2,
+        sx: {
+          "@media (max-width:1023.95px)": {
+            display: "contents !important"
+          }
+        },
+        children: [v && e.jsx(B, {
+          variant: "outlined",
+          onClick: () => {
+            s.test();
+          },
+          disabled: _,
+          startIcon: d ? e.jsx(ye, {
+            size: 16,
+            color: "inherit"
+          }) : void 0,
+          children: t(d ? "settings.verifying" : "settings.verifyConnection")
+        }), e.jsx(B, {
+          variant: "contained",
+          onClick: () => {
+            n.submit();
+          },
+          disabled: _ || !v || !x && !E,
+          children: t(I ? "settings.checking" : "settings.save")
+        })]
+      })
+    },
+    sections: T
+  });
+}
+const Et = "/v1/groups";
+function At(s, t) {
+  if (!s?.ok || !s.data) throw new Error(s?.error || s?.message || t);
+  return s.data;
+}
+const vt = {
+    info: async s => {
+      const t = At(await oe.http.get(`${Et}/${s}/ownership`), c("groups.transferCandidatesLoadFailed"));
+      return {
+        name: String(t.name ?? ""),
+        candidates: Array.isArray(t.candidates) ? t.candidates : [],
+        identity: t.identity === "org_name" ? "org_name" : "password",
+        smsRequired: t.sms_required === !0,
+        verifiedPhone: String(t.verified_phone ?? "")
+      };
+    },
+    transfer: async (s, t) => {
+      At(await oe.http.post(`${Et}/${s}/transfer`, {
+        to_account_seq: t.toAccountSeq,
+        keep_me: t.keepMe,
+        passwd: t.passwd,
+        confirm_name: t.confirmName
+      }), c("groups.ownershipTransferFailed"));
+    },
+    sendDeleteCode: async s => {
+      At(await oe.http.post(`${Et}/${s}/delete/send-code`, {}), c("groups.codeSendFailed"));
+    },
+    remove: async (s, t) => {
+      const i = At(await oe.http.post(`${Et}/${s}/delete`, {
+        passwd: t.passwd,
+        confirm_name: t.confirmName,
+        sms_code: t.smsCode
+      }), c("groups.orgDeleteFailed"));
+      return String(i.purge_after ?? "");
+    },
+    restore: async s => {
+      At(await oe.http.post(`${Et}/${s}/restore`, {}), c("groups.orgRestoreFailed"));
+    },
+    pendingDeletions: async () => {
+      const s = At(await oe.http.get(`${Et}/pending-deletion`), c("groups.pendingDeletionLoadFailed"));
+      return Array.isArray(s.items) ? s.items : [];
+    }
+  },
+  Ai = {
+    toAccountSeq: "",
+    keepMe: "admin",
+    passwd: "",
+    confirmName: ""
+  },
+  Ro = [{
+    value: "admin",
+    labelKey: "groups.keepAsAdmin"
+  }, {
+    value: "member",
+    labelKey: "groups.keepAsMember"
+  }, {
+    value: "leave",
+    labelKey: "groups.leaveOrg"
+  }];
+function Wd() {
+  const t = De()?.seq ?? 0,
+    i = {
+      form: de({
+        modalId: "org-ownership-dialog"
+      })
+    },
+    [n, o] = b.useState(null),
+    [r, a] = b.useState(!1),
+    [d, l] = b.useState(!1),
+    u = je({
+      formId: "org-ownership-form",
+      initialValues: Ai,
+      onValidate: x => Number(x.toAccountSeq) ? (n?.identity === "org_name" ? x.confirmName.trim() !== n.name : !x.passwd) ? (K({
+        message: n?.identity === "org_name" ? c("groups.typeOrgNameExactly") : c("groups.passwordRequired")
+      }), !1) : !0 : (K({
+        message: c("groups.transferTargetRequired")
+      }), !1),
+      onSubmit: async x => {
+        const h = n?.candidates.find(_ => _.account_seq === Number(x.toAccountSeq)),
+          g = Ro.find(_ => _.value === x.keepMe)?.labelKey,
+          F = g ? c(g) : "";
+        if (!(await Ae({
+          title: c("groups.transferOwnershipTitle"),
+          message: c("groups.transferOwnershipConfirm", {
+            org: n?.name ?? "",
+            name: h?.name ?? c("groups.selectedPerson"),
+            keep: F
+          }),
+          confirmText: c("groups.transfer"),
+          cancelText: c("groups.cancel")
+        }))) return !1;
+        l(!0);
+        try {
+          return await vt.transfer(t, {
+            toAccountSeq: Number(x.toAccountSeq),
+            keepMe: x.keepMe,
+            passwd: x.passwd,
+            confirmName: x.confirmName.trim()
+          }), i.form.close(), _e({
+            message: c("groups.ownershipTransferred"),
+            delay: 500
+          }), await Ct(), !0;
+        } catch (_) {
+          return K({
+            message: _ instanceof Error ? _.message : c("groups.ownershipTransferFailed")
+          }), !1;
+        } finally {
+          l(!1);
+        }
+      }
+    });
+  return {
+    modals: i,
+    form: u,
+    info: n,
+    loading: r,
+    saving: d,
+    openDialog: async () => {
+      if (t) {
+        u.setFormValues({
+          ...Ai
+        }), o(null), a(!0);
+        try {
+          o(await vt.info(t));
+        } catch (x) {
+          K({
+            message: x instanceof Error ? x.message : c("groups.transferCandidatesLoadFailed")
+          });
+        } finally {
+          a(!1);
+        }
+        i.form.open();
+      }
+    }
+  };
+}
+const Ld = ["groups.ownershipNotice1", "groups.ownershipNotice2", "groups.ownershipNotice3", "groups.ownershipNotice4"];
+function Bd({
+  controller: s
+}) {
+  const t = J(),
+    i = me(),
+    {
+      modals: n,
+      form: o,
+      info: r,
+      loading: a,
+      saving: d
+    } = s,
+    l = r?.candidates ?? [],
+    p = [{
+      id: "ownership",
+      showTitle: !1,
+      children: e.jsxs(X, {
+        sx: {
+          gap: 2.5
+        },
+        children: [e.jsx(m, {
+          component: "ul",
+          sx: {
+            m: 0,
+            pl: 2.5,
+            display: "grid",
+            gap: .5,
+            listStyleType: "disc"
+          },
+          children: Ld.map(x => e.jsx(k, {
+            component: "li",
+            sx: {
+              fontSize: 15,
+              color: "text.secondary",
+              display: "list-item"
+            },
+            children: t(x)
+          }, x))
+        }), !a && r && l.length === 0 ? e.jsx(k, {
+          sx: {
+            fontSize: 15,
+            color: "text.secondary"
+          },
+          children: t("groups.noTransferCandidates")
+        }) : e.jsxs(e.Fragment, {
+          children: [e.jsx(ae, {
+            form: o,
+            name: "toAccountSeq",
+            label: t("groups.transferTarget"),
+            options: l.map(x => ({
+              value: String(x.account_seq),
+              label: x.role === "admin" ? t("groups.adminSuffix", {
+                name: x.name || x.email
+              }) : x.name || x.email
+            })),
+            disabled: d,
+            fullWidth: !0
+          }), e.jsx(ae, {
+            form: o,
+            name: "keepMe",
+            label: t("groups.afterTransferMe"),
+            options: Ro.map(x => ({
+              value: x.value,
+              label: t(x.labelKey)
+            })),
+            disabled: d,
+            fullWidth: !0
+          }), r?.identity === "org_name" ? e.jsx(re, {
+            form: o,
+            name: "confirmName",
+            label: t("groups.confirmOrgNameLabel", {
+              name: r.name
+            }),
+            disabled: d,
+            fullWidth: !0
+          }) : e.jsx(yn, {
+            form: o,
+            name: "passwd",
+            label: t("groups.password"),
+            disabled: d,
+            fullWidth: !0
+          })]
+        })]
+      })
+    }];
+  return e.jsx(ge, {
+    open: n.form.isOpen,
+    onClose: n.form.close,
+    title: t("groups.transferOwnershipTitle"),
+    maxWidth: "sm",
+    fullScreen: i,
+    mobilePresentation: i ? "slide" : "dialog",
+    draggable: !0,
+    titleIcons: {
+      delete: {
+        visible: !1
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    loading: a,
+    actions: {
+      visible: !0,
+      showCancelButton: !0,
+      right: e.jsx(B, {
+        variant: "contained",
+        onClick: o.submit,
+        disabled: d || l.length === 0,
+        sx: {
+          minWidth: 80
+        },
+        children: t("groups.transfer")
+      })
+    },
+    sections: p
+  });
+}
+const Di = {
+  passwd: "",
+  confirmName: "",
+  smsCode: ""
+};
+function No(s) {
+  return String(s ?? "").slice(0, 10);
+}
+function Vd() {
+  const t = De()?.seq ?? 0,
+    i = {
+      form: de({
+        modalId: "org-delete-dialog"
+      })
+    },
+    [n, o] = b.useState(null),
+    [r, a] = b.useState(!1),
+    [d, l] = b.useState(!1),
+    [u, p] = b.useState([]),
+    [x, h] = b.useState(0),
+    [g, F] = b.useState(!1),
+    [I, _] = b.useState(!1),
+    v = async () => {
+      try {
+        p(await vt.pendingDeletions());
+      } catch {
+        p([]);
+      }
+    };
+  b.useEffect(() => {
+    v();
+  }, []);
+  const C = je({
+    formId: "org-delete-form",
+    initialValues: Di,
+    onValidate: S => (n?.identity === "org_name" ? S.confirmName.trim() !== n.name : !S.passwd) ? (K({
+      message: n?.identity === "org_name" ? c("groups.typeOrgNameExactly") : c("groups.passwordRequired")
+    }), !1) : n?.smsRequired && !n.verifiedPhone ? (K({
+      message: c("groups.verifyPhoneFirst")
+    }), !1) : n?.smsRequired && !S.smsCode.trim() ? (K({
+      message: I ? c("groups.enterSmsCode") : c("groups.requestCodeFirst")
+    }), !1) : !0,
+    onSubmit: async S => {
+      if (!(await Ae({
+        title: c("groups.orgDeleteTitle"),
+        message: c("groups.orgDeleteConfirm", {
+          name: n?.name ?? ""
+        }),
+        confirmText: c("groups.delete"),
+        cancelText: c("groups.cancel")
+      }))) return !1;
+      l(!0);
+      try {
+        const j = await vt.remove(t, {
+          passwd: S.passwd,
+          confirmName: S.confirmName.trim(),
+          smsCode: S.smsCode.trim()
+        });
+        return i.form.close(), _e({
+          message: c("groups.orgDeleteDone", {
+            date: No(j)
+          }),
+          delay: 500
+        }), await Promise.all([Ct(), v()]), !0;
+      } catch (j) {
+        return K({
+          message: j instanceof Error ? j.message : c("groups.orgDeleteFailed")
+        }), !1;
+      } finally {
+        l(!1);
+      }
+    }
+  });
+  return {
+    modals: i,
+    form: C,
+    info: n,
+    loading: r,
+    saving: d,
+    pending: u,
+    restoringSeq: x,
+    codeSending: g,
+    codeSent: I,
+    openDialog: async () => {
+      if (t) {
+        C.setFormValues({
+          ...Di
+        }), o(null), _(!1), i.form.open(), a(!0);
+        try {
+          o(await vt.info(t));
+        } catch (S) {
+          K({
+            message: S instanceof Error ? S.message : c("groups.orgInfoLoadFailed")
+          });
+        } finally {
+          a(!1);
+        }
+      }
+    },
+    sendCode: async () => {
+      if (!(!t || g)) {
+        F(!0);
+        try {
+          await vt.sendDeleteCode(t), _(!0), _e({
+            message: n?.verifiedPhone ? c("groups.codeSentTo", {
+              phone: n.verifiedPhone
+            }) : c("groups.codeSentToPhone"),
+            delay: 500
+          });
+        } catch (S) {
+          K({
+            message: S instanceof Error ? S.message : c("groups.codeSendFailed")
+          });
+        } finally {
+          F(!1);
+        }
+      }
+    },
+    restore: async S => {
+      if (await Ae({
+        title: c("groups.orgRestoreTitle"),
+        message: c("groups.orgRestoreConfirm", {
+          name: S.name
+        }),
+        confirmText: c("groups.restore"),
+        cancelText: c("groups.cancel")
+      })) {
+        h(S.seq);
+        try {
+          await vt.restore(S.seq), _e({
+            message: c("groups.orgRestored"),
+            delay: 500
+          }), await Promise.all([Ct(), v()]);
+        } catch (j) {
+          K({
+            message: j instanceof Error ? j.message : c("groups.orgRestoreFailed")
+          });
+        } finally {
+          h(0);
+        }
+      }
+    }
+  };
+}
+function vn({
+  items: s
+}) {
+  return e.jsx(m, {
+    component: "ul",
+    sx: {
+      m: 0,
+      pl: 4.5,
+      pr: 3,
+      py: 1.5,
+      borderRadius: 1.5,
+      bgcolor: t => xt(t.palette.primary.main, .06),
+      color: "text.primary",
+      fontSize: "0.875rem",
+      lineHeight: 1.7,
+      wordBreak: "keep-all",
+      listStyleType: "disc",
+      "& li": {
+        display: "list-item"
+      }
+    },
+    children: s.map((t, i) => e.jsx("li", {
+      children: t
+    }, i))
+  });
+}
+function kn() {
+  const [s, t] = b.useState(""),
+    [i, n] = b.useState("");
+  return {
+    error: s,
+    setError: t,
+    busy: i,
+    run: async (r, a) => {
+      n(r), t("");
+      try {
+        return await a(), !0;
+      } catch (d) {
+        return t(d instanceof Error ? d.message : c("mx.taskFailed")), !1;
+      } finally {
+        n("");
+      }
+    }
+  };
+}
+function Cn({
+  open: s,
+  domain: t,
+  section: i,
+  error: n,
+  maxWidth: o = "md",
+  onClose: r,
+  left: a,
+  rightExtra: d,
+  confirmLabel: l,
+  domainAction: u,
+  onConfirm: p,
+  children: x
+}) {
+  const h = J(),
+    g = me(),
+    F = [{
+      id: "body",
+      showTitle: !1,
+      children: e.jsxs(X, {
+        spacing: 2,
+        children: [g && e.jsxs(m, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: 1
+          },
+          children: [e.jsx(k, {
+            sx: {
+              fontSize: 17,
+              fontWeight: 700,
+              wordBreak: "break-all",
+              flex: 1,
+              minWidth: 0
+            },
+            children: t.domain
+          }), u]
+        }), n && e.jsx(Ee, {
+          message: n
+        }), x]
+      })
+    }];
+  return e.jsx(ge, {
+    open: s,
+    onClose: r,
+    title: g ? i : `${t.domain} · ${i}`,
+    maxWidth: o,
+    fullScreen: g,
+    mobilePresentation: g ? "slide" : "dialog",
+    draggable: !0,
+    backdropClick: !1,
+    titleIcons: {
+      delete: {
+        visible: !1
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !0,
+      right: e.jsxs(e.Fragment, {
+        children: [d, e.jsx(B, {
+          variant: "contained",
+          onClick: p ?? r,
+          sx: {
+            minWidth: 80
+          },
+          children: l ?? h("mx.ok")
+        })]
+      }),
+      left: a
+    },
+    sections: F
+  });
+}
+function qd({
+  open: s,
+  domain: t,
+  canManage: i,
+  onClose: n,
+  onChanged: o
+}) {
+  const r = J(),
+    {
+      error: a,
+      busy: d,
+      run: l
+    } = kn(),
+    u = b.useRef(null),
+    p = b.useMemo(() => t?.aliases ?? [], [t]),
+    x = b.useMemo(() => t?.mailboxes ?? [], [t]),
+    [h, g] = b.useState(""),
+    [F, I] = b.useState([]),
+    [_, v] = b.useState("");
+  if (b.useEffect(() => {
+    if (!s || p.length > 0) return;
+    const S = setTimeout(() => u.current?.focus(), 200);
+    return () => clearTimeout(S);
+  }, [s, p.length]), !t) return null;
+  const C = !!h.trim() && F.length > 0,
+    w = () => l("add", async () => {
+      await We.createAlias(t.seq, {
+        local_part: h.trim(),
+        targets: F.join(","),
+        note: _.trim()
+      }), g(""), I([]), v(""), o();
+    }),
+    E = S => l(`alias-${S.seq}`, async () => {
+      await We.updateAlias(S.seq, {
+        enabled: !S.enabled
+      }), o();
+    }),
+    A = async S => {
+      (await Ae({
+        title: r("mx.deleteAlias"),
+        message: r("mx.deleteAliasConfirm", {
+          email: S.email
+        }),
+        confirmText: r("mx.delete"),
+        cancelText: r("mx.cancel")
+      })) && (await l(`alias-${S.seq}`, async () => {
+        await We.deleteAlias(S.seq), o();
+      }));
+    };
+  return e.jsxs(Cn, {
+    open: s,
+    domain: t,
+    section: r("mx.aliases"),
+    error: a,
+    maxWidth: "sm",
+    onClose: n,
+    rightExtra: i ? e.jsx(B, {
+      variant: "outlined",
+      disabled: !C || d === "add",
+      onClick: () => {
+        w();
+      },
+      "data-testid": "mx-alias-add",
+      children: r("mx.add")
+    }) : void 0,
+    confirmLabel: r(i ? "mx.save" : "mx.ok"),
+    onConfirm: async () => {
+      i && C && !(await w()) || n();
+    },
+    children: [e.jsx(vn, {
+      items: [r("mx.aliasHint1"), r("mx.aliasHint2"), e.jsx(ie, {
+        i18nKey: "mx.aliasHint3",
+        components: {
+          b: e.jsx("b", {})
+        }
+      }, "hint3")]
+    }), e.jsx(X, {
+      spacing: 1.5,
+      children: p.map(S => e.jsxs(X, {
+        direction: "row",
+        spacing: 1,
+        alignItems: "center",
+        "data-testid": `mx-alias-${S.email}`,
+        children: [e.jsxs(m, {
+          sx: {
+            flex: 1,
+            minWidth: 0
+          },
+          children: [e.jsx(k, {
+            sx: {
+              fontSize: "0.875rem",
+              fontWeight: 600,
+              wordBreak: "break-all"
+            },
+            children: S.email
+          }), e.jsxs(k, {
+            sx: {
+              fontSize: "0.875rem",
+              color: "text.secondary",
+              wordBreak: "break-all"
+            },
+            children: ["→ ", (S.targets ?? []).join(", "), S.note ? ` · ${S.note}` : ""]
+          })]
+        }), S.email.toLowerCase().startsWith("postmaster@") ? e.jsx(we, {
+          size: "small",
+          label: r("mx.default"),
+          sx: {
+            fontSize: "0.875rem"
+          }
+        }) : null, i && !S.email.toLowerCase().startsWith("postmaster@") && e.jsx(ao, {
+          size: "small",
+          checked: S.enabled,
+          onChange: () => {
+            E(S);
+          },
+          disabled: d === `alias-${S.seq}`
+        }), i && !S.email.toLowerCase().startsWith("postmaster@") && e.jsx(ht, {
+          size: "small",
+          onClick: () => {
+            A(S);
+          },
+          disabled: d === `alias-${S.seq}`,
+          "aria-label": r("mx.deleteAlias"),
+          children: e.jsx(Qt, {
+            fontSize: "small"
+          })
+        })]
+      }, S.seq))
+    }), i && e.jsxs(X, {
+      spacing: 2.5,
+      sx: p.length === 0 ? void 0 : {
+        pt: 2,
+        borderTop: "1px dashed",
+        borderColor: "divider"
+      },
+      children: [e.jsxs(X, {
+        direction: {
+          xs: "column",
+          sm: "row"
+        },
+        spacing: 2.5,
+        children: [e.jsx(bs, {
+          label: r("mx.aliasAddress"),
+          placeholder: "sales",
+          inputRef: u,
+          value: h,
+          onChange: S => g(S.target.value),
+          slotProps: {
+            htmlInput: {
+              "data-testid": "mx-alias-local"
+            },
+            input: {
+              endAdornment: e.jsxs(k, {
+                sx: {
+                  fontSize: "0.875rem",
+                  color: "text.disabled",
+                  whiteSpace: "nowrap"
+                },
+                children: ["@", t.domain]
+              })
+            }
+          },
+          sx: {
+            flex: 1
+          }
+        }), e.jsxs(Tr, {
+          sx: {
+            flex: 1
+          },
+          disabled: x.length === 0,
+          children: [e.jsx(Er, {
+            children: r("mx.forwardTo")
+          }), e.jsx(Ar, {
+            multiple: !0,
+            label: r("mx.forwardTo"),
+            value: F,
+            onChange: S => I(typeof S.target.value == "string" ? S.target.value.split(",") : S.target.value),
+            "data-testid": "mx-alias-targets",
+            renderValue: S => e.jsx(m, {
+              sx: {
+                display: "flex",
+                flexWrap: "wrap",
+                gap: .5
+              },
+              children: S.map(L => e.jsx(we, {
+                size: "small",
+                label: L
+              }, L))
+            }),
+            children: x.map(S => e.jsx(vs, {
+              value: S.email,
+              children: S.email
+            }, S.seq))
+          })]
+        })]
+      }), e.jsx(bs, {
+        label: r("mx.note"),
+        value: _,
+        onChange: S => v(S.target.value),
+        fullWidth: !0
+      })]
+    })]
+  });
+}
+function $d({
+  controller: s
+}) {
+  const t = J(),
+    i = me(),
+    {
+      addForm: n,
+      modals: o,
+      addError: r
+    } = s,
+    a = String(n.useFormValue("domain") ?? ""),
+    d = n.isSubmitting,
+    l = [{
+      id: "add-domain",
+      showTitle: !1,
+      children: e.jsxs(X, {
+        spacing: 2,
+        children: [r && e.jsx(Ee, {
+          message: r
+        }), e.jsx(vn, {
+          items: [t("mx.addDomainHint1"), t("mx.addDomainHint2")]
+        }), e.jsx(re, {
+          form: n,
+          name: "domain",
+          label: t("mx.domain"),
+          placeholder: "acme.com",
+          onKeyDown: u => {
+            u.key === "Enter" && a.trim() && !d && n.submit();
+          },
+          autoFocus: !0,
+          fullWidth: !0,
+          slotProps: {
+            htmlInput: {
+              "data-testid": "mx-domain-input"
+            }
+          }
+        })]
+      })
+    }];
+  return e.jsx(ge, {
+    open: o.add.isOpen,
+    onClose: o.add.close,
+    title: t("mx.addDomain"),
+    maxWidth: "sm",
+    fullScreen: i,
+    mobilePresentation: i ? "slide" : "dialog",
+    draggable: !0,
+    backdropClick: !1,
+    titleIcons: {
+      delete: {
+        visible: !1
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !0,
+      right: e.jsx(B, {
+        variant: "contained",
+        disabled: !a.trim() || d,
+        onClick: () => {
+          n.submit();
+        },
+        "data-testid": "mx-domain-add",
+        sx: {
+          minWidth: 80
+        },
+        children: t("mx.register")
+      })
+    },
+    sections: l
+  });
+}
+const Po = "just-issued",
+  zo = 5,
+  Mi = {
+    seq: 0,
+    domain_seq: 0,
+    domain: "",
+    local_part: "",
+    name: "",
+    scope: "personal",
+    account_seq: 0,
+    share_visibility: "all",
+    share_members: [],
+    quota_gb: zo,
+    quota_unlimited: !0,
+    origin_local_part: "",
+    smtp_password_time: "",
+    issued_password: ""
+  };
+function Ri(s) {
+  return Math.max(0, Math.round((Number(s) || 0) * 1024));
+}
+function Kd(s) {
+  return Math.round((Number(s) || 0) / 1024 * 10) / 10;
+}
+function Ni(s) {
+  return s.scope !== "shared" || s.share_visibility !== "members" ? {
+    share_visibility: "all",
+    share_members: []
+  } : {
+    share_visibility: "members",
+    share_members: s.share_members
+  };
+}
+const Gd = /^[A-Za-z0-9._-]+$/;
+function ms() {
+  Kt(), Dr();
+}
+function Hd(s) {
+  const t = {
+      form: de({
+        modalId: "mx-mailbox-form-dialog"
+      }),
+      member: de({
+        modalId: "mx-mailbox-member-dialog"
+      })
+    },
+    i = je({
+      formId: "mx-mailbox-form",
+      initialValues: Mi,
+      onValidate: u => {
+        const p = u.local_part.trim();
+        return p ? Gd.test(p) ? !u.quota_unlimited && !(Number(u.quota_gb) > 0) ? (K({
+          message: c("mx.quotaRequired")
+        }), !1) : u.scope === "shared" && u.share_visibility === "members" && u.share_members.length === 0 ? (K({
+          message: c("mx.shareMembersRequired")
+        }), !1) : u.scope === "personal" && !(u.account_seq > 0) ? (K({
+          message: c("mx.ownerRequired")
+        }), !1) : !0 : (K({
+          message: c("mx.localPartInvalid")
+        }), !1) : (K({
+          message: c("mx.localPartRequired")
+        }), !1);
+      },
+      onSubmit: async u => {
+        try {
+          if (u.seq > 0) {
+            const p = u.local_part.trim(),
+              x = p !== u.origin_local_part;
+            if (x && !(await Ae({
+              title: c("mx.changeAddress"),
+              message: c("mx.changeAddressConfirm", {
+                from: `${u.origin_local_part}@${u.domain}`,
+                to: `${p}@${u.domain}`
+              }),
+              confirmText: c("mx.change"),
+              cancelText: c("mx.cancel")
+            }))) return !1;
+            await We.updateMailbox(u.seq, {
+              ...(x ? {
+                local_part: p
+              } : {}),
+              scope: u.scope,
+              name: u.name.trim(),
+              ...(u.scope === "personal" ? {
+                account_seq: u.account_seq
+              } : {}),
+              ...Ni(u),
+              quota_mb: u.quota_unlimited ? 0 : Ri(u.quota_gb)
+            });
+          } else await We.createMailbox(u.domain_seq, {
+            local_part: u.local_part.trim(),
+            name: u.name.trim(),
+            scope: u.scope,
+            account_seq: u.scope === "personal" ? u.account_seq : 0,
+            ...Ni(u),
+            quota_mb: u.quota_unlimited ? 0 : Ri(u.quota_gb)
+          });
+          return ms(), t.form.close(), !0;
+        } catch (p) {
+          return K({
+            message: p instanceof Error ? p.message : c("mx.mailboxSaveFailed")
+          }), !1;
+        }
+      }
+    });
+  return {
+    form: i,
+    modals: t,
+    openCreate: u => {
+      i.setFormValues({
+        ...Mi,
+        domain_seq: u.seq,
+        domain: u.domain,
+        account_seq: s,
+        share_members: s > 0 ? [s] : []
+      }), t.form.open();
+    },
+    openEdit: (u, p) => {
+      i.setFormValues({
+        seq: p.seq,
+        domain_seq: u.seq,
+        domain: u.domain,
+        local_part: p.email.split("@")[0] ?? "",
+        name: p.name ?? "",
+        scope: p.scope,
+        account_seq: p.account_seq || s,
+        share_visibility: p.share_visibility === "members" ? "members" : "all",
+        share_members: Array.isArray(p.share_members) ? p.share_members : [],
+        quota_gb: Kd(p.quota_mb) || zo,
+        quota_unlimited: !(Number(p.quota_mb) > 0),
+        origin_local_part: p.email.split("@")[0] ?? "",
+        smtp_password_time: p.smtp_password_time ?? "",
+        issued_password: ""
+      }), t.form.open();
+    },
+    removeMailbox: async u => {
+      if (u > 0) try {
+        await We.deleteMailbox(u), ms();
+      } catch (p) {
+        K({
+          message: p instanceof Error ? p.message : c("mx.mailboxDeleteFailed")
+        });
+      }
+    },
+    toggleEnabled: async u => {
+      try {
+        await We.updateMailbox(u.seq, {
+          enabled: !u.enabled
+        }), ms();
+      } catch (p) {
+        K({
+          message: p instanceof Error ? p.message : c("mx.mailboxUpdateFailed")
+        });
+      }
+    },
+    issueSmtpPassword: async () => {
+      const u = i.getFormValues();
+      if (u.seq > 0 && !(u.smtp_password_time && !(await Ae({
+        title: c("mx.reissueAppPassword"),
+        message: c("mx.reissueAppPasswordConfirm"),
+        confirmText: c("mx.reissue"),
+        cancelText: c("mx.cancel")
+      })))) try {
+        const {
+          password: p
+        } = await We.issueSmtpPassword(u.seq);
+        i.setFormValue("issued_password", p), i.setFormValue("smtp_password_time", Po), ms();
+      } catch (p) {
+        K({
+          message: p instanceof Error ? p.message : c("mx.appPasswordIssueFailed")
+        });
+      }
+    },
+    applyShareMembers: u => {
+      i.setFormValue("share_members", [...new Set(u.filter(p => p > 0))]);
+    }
+  };
+}
+function Ud({
+  controller: s,
+  members: t,
+  mySeq: i
+}) {
+  const {
+      form: n,
+      modals: o,
+      removeMailbox: r,
+      issueSmtpPassword: a,
+      applyShareMembers: d
+    } = s,
+    l = J(),
+    u = me(),
+    p = Number(n.useFormValue("seq")) || 0,
+    x = String(n.useFormValue("domain") ?? ""),
+    h = String(n.useFormValue("scope") ?? "personal"),
+    g = !!n.isSubmitting,
+    F = !!n.useFormValue("quota_unlimited"),
+    I = Mr(_n().useValue("account")),
+    _ = String(n.useFormValue("smtp_password_time") ?? ""),
+    v = String(n.useFormValue("issued_password") ?? ""),
+    C = String(n.useFormValue("share_visibility") ?? "all"),
+    w = n.useFormValue("share_members"),
+    E = b.useMemo(() => Array.isArray(w) ? w : [], [w]),
+    A = b.useMemo(() => (t.length > 0 ? t : []).map(j => ({
+      value: j.account_seq,
+      label: j.account_seq === i ? l("mx.memberIsMe", {
+        name: j.name || j.email
+      }) : j.name || j.email
+    })), [t, i, l]),
+    S = b.useMemo(() => {
+      const j = new Map(t.map(y => [y.account_seq, y.nickname || y.name || y.email]));
+      return E.map(y => String(j.get(y) ?? `#${y}`));
+    }, [t, E]),
+    L = b.useMemo(() => t.map(j => ({
+      seq: j.account_seq,
+      account_seq: j.account_seq,
+      name: j.nickname || j.name || j.email
+    })), [t]);
+  return e.jsxs(e.Fragment, {
+    children: [e.jsx(ge, {
+      open: o.form.isOpen,
+      onClose: o.form.close,
+      title: l(p ? "mx.editMailbox" : "mx.createMailbox"),
+      width: "560px",
+      fullScreen: u,
+      mobilePresentation: u ? "slide" : "dialog",
+      draggable: !0,
+      backdropClick: !1,
+      titleIcons: {
+        delete: {
+          visible: p > 0,
+          confirmConfig: {
+            title: l("mx.deleteMailbox"),
+            message: l("mx.deleteMailboxConfirm"),
+            confirmText: l("mx.delete"),
+            cancelText: l("mx.cancel")
+          }
+        },
+        print: {
+          visible: !1
+        },
+        share: {
+          visible: !1
+        }
+      },
+      onDelete: async () => {
+        await r(p), o.form.close();
+      },
+      tabs: {
+        visible: !1
+      },
+      scrollPastLastSection: !1,
+      actions: {
+        visible: !0,
+        showCancelButton: !0,
+        left: I ? e.jsx(he, {
+          form: n,
+          name: "quota_unlimited",
+          label: l("mx.quotaUnlimited")
+        }) : void 0,
+        right: e.jsx(B, {
+          variant: "contained",
+          onClick: () => {
+            n.submit();
+          },
+          disabled: g,
+          sx: {
+            minWidth: 80
+          },
+          children: g ? e.jsx(ye, {
+            size: 20,
+            color: "inherit"
+          }) : l("mx.save")
+        })
+      },
+      sections: [{
+        id: "mailbox-main",
+        showTitle: !1,
+        children: e.jsxs(m, {
+          sx: {
+            display: "flex",
+            flexDirection: "column",
+            gap: 2
+          },
+          children: [e.jsxs(m, {
+            sx: {
+              display: "flex",
+              alignItems: "center",
+              gap: 1
+            },
+            children: [e.jsx(re, {
+              form: n,
+              name: "local_part",
+              label: l("mx.address"),
+              placeholder: "hong",
+              autoFocus: !p,
+              fullWidth: !0,
+              slotProps: {
+                htmlInput: {
+                  "data-testid": "mx-mailbox-local"
+                }
+              }
+            }), e.jsxs(k, {
+              sx: {
+                fontSize: "1rem",
+                color: "text.secondary",
+                whiteSpace: "nowrap"
+              },
+              children: ["@", x]
+            })]
+          }), e.jsx(re, {
+            form: n,
+            name: "name",
+            label: l("mx.displayName"),
+            fullWidth: !0
+          }), e.jsxs(m, {
+            sx: {
+              display: "grid",
+              gridTemplateColumns: {
+                xs: "1fr",
+                sm: "1fr 140px"
+              },
+              gap: 2
+            },
+            children: [e.jsx(ae, {
+              form: n,
+              name: "scope",
+              label: l("mx.mailboxType"),
+              showEmptyOption: !1,
+              options: [{
+                value: "personal",
+                label: l("mx.scopePersonalOption")
+              }, {
+                value: "shared",
+                label: l("mx.scopeSharedOption")
+              }],
+              fullWidth: !0
+            }), F ? e.jsx(re, {
+              name: "quota_unlimited_text",
+              value: l("mx.quotaUnlimitedValue"),
+              label: l("mx.quota"),
+              readonly: !0,
+              clearIcon: !1,
+              fullWidth: !0
+            }) : e.jsx(Te, {
+              form: n,
+              name: "quota_gb",
+              readOnly: !I,
+              label: l("mx.quota"),
+              suffix: "GB",
+              step: 1,
+              min: 1,
+              format: {
+                maximumFractionDigits: 1
+              },
+              fullWidth: !0
+            })]
+          }), h === "shared" && e.jsx(ae, {
+            form: n,
+            name: "share_visibility",
+            label: l("mx.shareVisibility"),
+            showEmptyOption: !1,
+            options: [{
+              value: "all",
+              label: l("mx.shareAll")
+            }, {
+              value: "members",
+              label: l("mx.shareMembersOnly")
+            }],
+            fullWidth: !0
+          }), h === "shared" && C === "members" && e.jsxs(m, {
+            sx: {
+              position: "relative",
+              "& .MuiInputBase-root": {
+                pr: 6,
+                cursor: "pointer"
+              }
+            },
+            ref: j => {
+              const y = j?.querySelector("input");
+              y && (y.readOnly = !0);
+            },
+            children: [e.jsx(Qi, {
+              label: l("mx.shareMembersCount", {
+                count: E.length
+              }),
+              value: S,
+              onChange: () => {},
+              onDelete: (j, y, D) => {
+                n.setFormValue("share_members", E.filter((M, z) => z !== D));
+              },
+              draggable: !1,
+              backspaceToDelete: !1,
+              spaceToConfirm: !1,
+              placeholder: E.length === 0 ? l("mx.pickMembersPlaceholder") : void 0,
+              onClick: o.member.open,
+              chipProps: {
+                sx: {
+                  fontSize: 14
+                }
+              },
+              fullWidth: !0,
+              "data-testid": "mx-mailbox-share-members"
+            }), e.jsx(Ot, {
+              title: l("mx.pickMembers"),
+              children: e.jsx(ht, {
+                "aria-label": l("mx.pickShareMembers"),
+                onClick: o.member.open,
+                sx: {
+                  position: "absolute",
+                  right: 8,
+                  top: 8
+                },
+                "data-testid": "mx-mailbox-share-pick",
+                children: e.jsx(el, {})
+              })
+            })]
+          }), h === "personal" && e.jsx(ae, {
+            form: n,
+            name: "account_seq",
+            label: l("mx.owner"),
+            showEmptyOption: A.length === 0,
+            emptyLabel: l("mx.membersLoadFailed"),
+            options: A,
+            fullWidth: !0
+          }), p > 0 && e.jsxs(m, {
+            sx: {
+              borderTop: 1,
+              borderColor: "divider",
+              pt: 2,
+              display: "grid",
+              gap: 1.25
+            },
+            children: [e.jsxs(m, {
+              sx: {
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 2
+              },
+              children: [e.jsxs(m, {
+                sx: {
+                  minWidth: 0
+                },
+                children: [e.jsx(k, {
+                  sx: {
+                    fontSize: "1rem",
+                    fontWeight: 600
+                  },
+                  children: l("mx.appPassword")
+                }), e.jsxs(k, {
+                  sx: {
+                    fontSize: "0.875rem",
+                    color: "text.secondary",
+                    wordBreak: "keep-all"
+                  },
+                  children: [_ ? _ === Po ? l("mx.appPasswordIssuedJustNow") : l("mx.appPasswordIssuedAt", {
+                    time: _.slice(0, 16)
+                  }) : l("mx.appPasswordNotIssued"), " ", "· ", l("mx.appPasswordUsage")]
+                })]
+              }), e.jsx(B, {
+                variant: "outlined",
+                onClick: () => {
+                  a();
+                },
+                sx: {
+                  flexShrink: 0
+                },
+                children: l(_ ? "mx.reissue" : "mx.issue")
+              })]
+            }), v && e.jsxs(m, {
+              sx: {
+                p: 1.5,
+                borderRadius: 1,
+                bgcolor: "action.hover",
+                display: "grid",
+                gap: .75
+              },
+              children: [e.jsxs(m, {
+                sx: {
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  gap: 1
+                },
+                children: [e.jsx(k, {
+                  sx: {
+                    fontFamily: "monospace",
+                    fontSize: "1.0625rem",
+                    fontWeight: 600,
+                    wordBreak: "break-all"
+                  },
+                  "data-testid": "mx-smtp-password",
+                  children: v
+                }), e.jsx(B, {
+                  size: "small",
+                  onClick: () => {
+                    navigator.clipboard?.writeText(v);
+                  },
+                  sx: {
+                    flexShrink: 0
+                  },
+                  children: l("mx.copy")
+                })]
+              }), e.jsx(k, {
+                sx: {
+                  fontSize: "0.875rem",
+                  color: "text.secondary",
+                  wordBreak: "keep-all"
+                },
+                children: l("mx.appPasswordShownOnce")
+              })]
+            })]
+          })]
+        })
+      }]
+    }), e.jsx(Sn, {
+      open: o.member.isOpen,
+      title: l("mx.shareMembers"),
+      candidates: L,
+      initialAccountSeqs: E,
+      onClose: o.member.close,
+      onApply: j => d(j.map(y => Number(y.account_seq) || 0))
+    })]
+  });
+}
+function Yd({
+  open: s,
+  domain: t,
+  canManage: i,
+  onClose: n,
+  onChanged: o
+}) {
+  const {
+      error: r,
+      busy: a,
+      run: d
+    } = kn(),
+    l = J(),
+    u = me(),
+    p = _n().useValue("account"),
+    x = Number(p?.seq ?? 0) || 0,
+    {
+      members: h
+    } = Za(),
+    [g, F] = b.useState(""),
+    I = Hd(x),
+    _ = b.useMemo(() => [...(t?.mailboxes ?? [])].sort((A, S) => A.email.localeCompare(S.email)), [t]),
+    v = t?.seq ?? 0;
+  b.useEffect(() => {
+    !s || !v || F("");
+  }, [s, v]);
+  const C = b.useMemo(() => {
+      const A = g.trim().toLowerCase();
+      return A ? _.filter(S => [S.email, S.name, S.account_name, S.account_email].some(L => (L ?? "").toLowerCase().includes(A))) : _;
+    }, [_, g]),
+    w = _.length === 0;
+  if (!t) return null;
+  const E = A => d(`mailbox-${A.seq}`, async () => {
+    await I.toggleEnabled(A), o();
+  });
+  return e.jsxs(e.Fragment, {
+    children: [e.jsx(Cn, {
+      open: s,
+      domain: t,
+      section: l("mx.mailboxes"),
+      error: r,
+      maxWidth: "sm",
+      onClose: n,
+      rightExtra: i ? e.jsx(Ot, {
+        title: t.status !== "verified" ? l("mx.mailboxNeedsMx") : "",
+        children: e.jsx(m, {
+          component: "span",
+          sx: {
+            ml: "0 !important"
+          },
+          children: e.jsx(B, {
+            variant: "outlined",
+            startIcon: e.jsx(Zt, {}),
+            disabled: t.status !== "verified",
+            onClick: () => I.openCreate(t),
+            "data-testid": "mx-mailbox-add",
+            children: l(u ? "mx.add" : "mx.create")
+          })
+        })
+      }) : void 0,
+      children: w ? e.jsx(k, {
+        sx: {
+          fontSize: "0.9375rem",
+          color: "text.secondary"
+        },
+        children: e.jsx(ie, {
+          i18nKey: "mx.noMailboxesYet",
+          values: {
+            button: l(u ? "mx.add" : "mx.create")
+          },
+          components: {
+            b: e.jsx("b", {})
+          }
+        })
+      }) : e.jsxs(e.Fragment, {
+        children: [e.jsx(bs, {
+          placeholder: l("mx.mailboxSearchPlaceholder"),
+          value: g,
+          onChange: A => F(A.target.value),
+          slotProps: {
+            htmlInput: {
+              "data-testid": "mx-mailbox-search"
+            },
+            input: {
+              startAdornment: e.jsx(Rr, {
+                sx: {
+                  mr: 1,
+                  color: "text.disabled"
+                }
+              })
+            }
+          },
+          fullWidth: !0
+        }), e.jsxs(X, {
+          spacing: 1.5,
+          sx: {
+            maxHeight: 420,
+            overflowY: "auto",
+            pr: .5
+          },
+          children: [C.length === 0 && e.jsx(k, {
+            sx: {
+              fontSize: "0.875rem",
+              color: "text.disabled"
+            },
+            children: l("mx.noMailboxMatch")
+          }), C.map(A => e.jsxs(X, {
+            direction: "row",
+            spacing: 1,
+            alignItems: "center",
+            "data-testid": `mx-mailbox-${A.email}`,
+            children: [e.jsxs(m, {
+              sx: {
+                flex: 1,
+                minWidth: 0
+              },
+              children: [e.jsx(k, {
+                sx: {
+                  fontSize: "1.125rem",
+                  fontWeight: 600,
+                  wordBreak: "break-all"
+                },
+                children: A.email
+              }), e.jsxs(k, {
+                sx: {
+                  fontSize: "0.9375rem",
+                  color: "text.secondary"
+                },
+                children: [A.scope === "shared" ? l("mx.sharedMailboxAll") : l("mx.ownedBy", {
+                  name: A.account_name || A.account_email || A.account_seq
+                }), A.name ? ` · ${A.name}` : "", " · ", an(A.used_bytes), A.quota_mb > 0 ? ` / ${an(A.quota_mb * 1024 * 1024)}` : ""]
+              })]
+            }), i && e.jsx(Ot, {
+              title: A.enabled ? l("mx.mailboxEnabledHint") : l("mx.off"),
+              children: e.jsx(ao, {
+                size: "small",
+                checked: A.enabled,
+                onChange: () => {
+                  E(A);
+                },
+                disabled: a === `mailbox-${A.seq}`
+              })
+            }), i && e.jsx(ht, {
+              size: "small",
+              onClick: () => I.openEdit(t, A),
+              disabled: a === `mailbox-${A.seq}`,
+              "aria-label": l("mx.editMailbox"),
+              "data-testid": `mx-mailbox-edit-${A.email}`,
+              children: e.jsx(Nr, {
+                fontSize: "small"
+              })
+            })]
+          }, A.seq))]
+        })]
+      })
+    }), e.jsx(Ud, {
+      controller: I,
+      members: h,
+      mySeq: x
+    })]
+  });
+}
+const Pi = {
+  mx: "mx.recordMx",
+  spf: "mx.recordSpf",
+  dkim: "mx.recordDkim",
+  dmarc: "mx.recordDmarc",
+  verify: "mx.recordVerify"
+};
+async function zi(s) {
+  try {
+    await navigator.clipboard.writeText(s), _e({
+      message: c("mx.copied")
+    });
+  } catch {}
+}
+function Dt({
+  text: s,
+  label: t
+}) {
+  return e.jsx(m, {
+    component: "span",
+    role: "button",
+    tabIndex: 0,
+    onClick: () => {
+      zi(s);
+    },
+    onKeyDown: i => {
+      (i.key === "Enter" || i.key === " ") && zi(s);
+    },
+    sx: {
+      color: "text.primary",
+      cursor: "pointer",
+      fontFamily: "monospace",
+      fontWeight: 600,
+      wordBreak: "break-all",
+      "&:hover, &:focus-visible": {
+        color: "primary.main"
+      }
+    },
+    children: t ?? s
+  });
+}
+function ps(s, t) {
+  return s === t ? "@" : s.endsWith(`.${t}`) ? s.slice(0, -(t.length + 1)) : s;
+}
+function Xd(s) {
+  const t = /^(\d{4})-(\d{2})-(\d{2})[ T](\d{2}):(\d{2})(?::(\d{2}))?/.exec(s.trim());
+  if (!t) return s;
+  const [, i, n, o, r, a, d] = t;
+  return new Date(Number(i), Number(n) - 1, Number(o), Number(r), Number(a), Number(d ?? 0)).toLocaleString(zt(Wt()), {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    weekday: "short",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hourCycle: "h23"
+  });
+}
+function Wi({
+  ok: s
+}) {
+  return s === null ? e.jsx(Pr, {
+    fontSize: "small",
+    sx: {
+      color: "text.disabled"
+    }
+  }) : s ? e.jsx(It, {
+    fontSize: "small",
+    color: "success"
+  }) : e.jsx(xo, {
+    fontSize: "small",
+    color: "warning"
+  });
+}
+function Jd({
+  open: s,
+  domain: t,
+  canManage: i,
+  onClose: n,
+  onChanged: o,
+  onDeleted: r
+}) {
+  const [a, d] = b.useState(t),
+    {
+      error: l,
+      busy: u,
+      run: p
+    } = kn(),
+    x = me(),
+    h = J(),
+    g = t?.seq ?? 0;
+  if (b.useEffect(() => {
+    !s || !g || d(t);
+  }, [s, g]), !a) return null;
+  const F = () => p("verify", async () => {
+      const w = await We.verifyDomain(a.seq);
+      d(w), o(), w.status === "verified" && _e({
+        message: c("mx.mxVerified")
+      });
+    }),
+    I = (a.records.find(w => w.key === "dkim")?.value.length ?? 0) > 253,
+    _ = async w => {
+      w === 2048 === I || !(await Ae({
+        title: c("mx.dkimRotateTitle", {
+          bits: w
+        }),
+        message: w === 1024 ? c("mx.dkimRotate1024Confirm") : c("mx.dkimRotate2048Confirm"),
+        confirmText: c("mx.change"),
+        cancelText: c("mx.cancel")
+      })) || (await p("dkim", async () => {
+        const A = await We.rotateDkim(a.seq, w);
+        d(A), o(), _e({
+          message: c("mx.dkimRotated")
+        });
+      }));
+    },
+    v = e.jsx(m, {
+      sx: {
+        mt: 2,
+        maxWidth: 240,
+        fontFamily: "inherit"
+      },
+      children: e.jsx(ae, {
+        size: "small",
+        label: h("mx.keyLength"),
+        value: I ? 2048 : 1024,
+        onChange: w => {
+          _(Number(w.target.value) === 1024 ? 1024 : 2048);
+        },
+        options: [{
+          value: 2048,
+          label: h("mx.key2048")
+        }, {
+          value: 1024,
+          label: h("mx.key1024")
+        }],
+        disabled: u === "dkim",
+        fullWidth: !0
+      })
+    }),
+    C = async () => {
+      if (a.mailbox_count > 0) {
+        zr(c("mx.deleteMailboxesFirst", {
+          count: a.mailbox_count
+        }));
+        return;
+      }
+      (await Ae({
+        title: c("mx.deleteDomain"),
+        message: c("mx.deleteDomainConfirm", {
+          domain: a.domain
+        }),
+        confirmText: c("mx.delete"),
+        cancelText: c("mx.cancel")
+      })) && (await p("delete-domain", async () => {
+        await We.deleteDomain(a.seq), r();
+      }));
+    };
+  return e.jsxs(Cn, {
+    open: s,
+    domain: a,
+    section: h("mx.dnsRecords"),
+    maxWidth: "lg",
+    error: l,
+    onClose: n,
+    rightExtra: i ? e.jsx(B, {
+      variant: "outlined",
+      startIcon: e.jsx(po, {}),
+      onClick: () => {
+        F();
+      },
+      disabled: u === "verify",
+      "data-testid": "mx-domain-verify",
+      children: h("mx.recheck")
+    }) : void 0,
+    domainAction: i && x ? e.jsx(ht, {
+      "aria-label": h("mx.deleteDomain"),
+      onClick: () => {
+        C();
+      },
+      disabled: u === "delete-domain",
+      sx: {
+        color: "text.secondary"
+      },
+      children: e.jsx(Qt, {})
+    }) : void 0,
+    left: i && !x ? e.jsx(Ot, {
+      title: a.mailbox_count > 0 ? h("mx.deleteMailboxesFirst", {
+        count: a.mailbox_count
+      }) : "",
+      children: e.jsx(m, {
+        component: "span",
+        sx: {
+          ml: "0 !important"
+        },
+        children: e.jsx(B, {
+          color: "error",
+          variant: "text",
+          onClick: () => {
+            C();
+          },
+          disabled: u === "delete-domain" || a.mailbox_count > 0,
+          children: h("mx.deleteDomain")
+        })
+      })
+    }) : void 0,
+    children: [e.jsx(m, {
+      sx: {
+        bgcolor: w => xt(w.palette.info.main, .08),
+        border: "1px solid",
+        borderColor: w => xt(w.palette.info.main, .3),
+        borderRadius: 1,
+        p: 1.5
+      },
+      children: e.jsxs(m, {
+        component: "ul",
+        sx: {
+          listStyleType: "disc",
+          m: 0,
+          pl: 2.5,
+          display: "flex",
+          flexDirection: "column",
+          gap: .75
+        },
+        children: [e.jsx(k, {
+          component: "li",
+          sx: {
+            fontSize: "0.875rem",
+            color: "text.primary"
+          },
+          children: e.jsx(ie, {
+            i18nKey: "mx.dnsHint1",
+            components: {
+              b: e.jsx("b", {})
+            }
+          })
+        }), e.jsx(k, {
+          component: "li",
+          sx: {
+            fontSize: "0.875rem",
+            color: "text.primary"
+          },
+          children: h("mx.dnsHint2")
+        }), e.jsx(k, {
+          component: "li",
+          sx: {
+            fontSize: "0.875rem",
+            color: "text.primary"
+          },
+          children: h("mx.dnsHint3")
+        }), e.jsx(k, {
+          component: "li",
+          sx: {
+            fontSize: "0.875rem",
+            color: "text.primary"
+          },
+          children: h("mx.dnsHint4")
+        })]
+      })
+    }), x ? e.jsx(m, {
+      sx: {
+        display: "flex",
+        flexDirection: "column"
+      },
+      children: a.records.map(w => e.jsxs(m, {
+        "data-testid": `mx-dns-${w.key}`,
+        sx: {
+          py: 1.5,
+          borderBottom: "1px solid",
+          borderColor: "divider",
+          minWidth: 0,
+          fontSize: "0.9375rem"
+        },
+        children: [e.jsxs(m, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: 1
+          },
+          children: [e.jsx(Wi, {
+            ok: w.ok
+          }), e.jsx(k, {
+            sx: {
+              fontSize: "0.9375rem",
+              fontWeight: 700
+            },
+            children: w.type
+          }), e.jsx(k, {
+            sx: {
+              fontSize: "0.875rem",
+              color: "text.secondary"
+            },
+            children: h(Pi[w.key])
+          })]
+        }), e.jsx(k, {
+          sx: {
+            fontSize: "0.875rem",
+            color: "text.secondary",
+            mt: 1
+          },
+          children: h("mx.nameHost")
+        }), e.jsx(m, {
+          sx: {
+            fontFamily: "monospace",
+            wordBreak: "break-all"
+          },
+          children: ps(w.name, a.domain) === "@" ? w.name : e.jsxs(e.Fragment, {
+            children: [e.jsx(Dt, {
+              text: ps(w.name, a.domain)
+            }), ".", a.domain]
+          })
+        }), w.key === "dkim" && v, e.jsx(k, {
+          sx: {
+            fontSize: "0.875rem",
+            color: "text.secondary",
+            mt: 1
+          },
+          children: h("mx.value")
+        }), e.jsx(m, {
+          sx: {
+            wordBreak: "break-all"
+          },
+          children: e.jsx(Dt, {
+            text: w.value
+          })
+        }), w.priority !== void 0 && e.jsx(k, {
+          component: "div",
+          sx: {
+            fontSize: "0.875rem",
+            color: "text.secondary",
+            mt: .5
+          },
+          children: e.jsx(ie, {
+            i18nKey: "mx.priorityField",
+            components: {
+              v: e.jsx(Dt, {
+                text: String(w.priority)
+              })
+            }
+          })
+        }), w.ok === !1 && (w.found ?? []).length > 0 && e.jsx(k, {
+          component: "div",
+          sx: {
+            fontSize: "0.875rem",
+            color: "warning.main",
+            mt: .5,
+            wordBreak: "break-all"
+          },
+          children: h("mx.currentValue", {
+            value: (w.found ?? []).join(" / ")
+          })
+        })]
+      }, w.key))
+    }) : e.jsx(m, {
+      sx: {
+        overflowX: "auto"
+      },
+      children: e.jsxs(m, {
+        component: "table",
+        sx: {
+          width: "100%",
+          borderCollapse: "collapse",
+          fontSize: "0.875rem",
+          "& td, & th": {
+            p: .75,
+            borderBottom: "1px solid",
+            borderColor: "divider",
+            verticalAlign: "top",
+            textAlign: "left"
+          }
+        },
+        children: [e.jsx("thead", {
+          children: e.jsxs("tr", {
+            children: [e.jsx("th", {
+              style: {
+                width: 28
+              }
+            }), e.jsx("th", {
+              children: h("mx.recordType")
+            }), e.jsx("th", {
+              children: h("mx.nameHost")
+            }), e.jsx("th", {
+              children: h("mx.value")
+            })]
+          })
+        }), e.jsx("tbody", {
+          children: a.records.map(w => e.jsxs("tr", {
+            "data-testid": `mx-dns-${w.key}`,
+            children: [e.jsx("td", {
+              children: e.jsx(Wi, {
+                ok: w.ok
+              })
+            }), e.jsxs("td", {
+              style: {
+                whiteSpace: "nowrap"
+              },
+              children: [w.type, e.jsx(k, {
+                component: "div",
+                sx: {
+                  fontSize: "0.875rem",
+                  color: "text.disabled"
+                },
+                children: h(Pi[w.key])
+              })]
+            }), e.jsxs("td", {
+              style: {
+                minWidth: 320,
+                fontFamily: "monospace",
+                wordBreak: "break-all"
+              },
+              children: [ps(w.name, a.domain) === "@" ? w.name : e.jsxs(e.Fragment, {
+                children: [e.jsx(Dt, {
+                  text: ps(w.name, a.domain)
+                }), ".", a.domain]
+              }), w.key === "dkim" && v]
+            }), e.jsxs("td", {
+              children: [e.jsx(Dt, {
+                text: w.value
+              }), w.priority !== void 0 && e.jsx(k, {
+                component: "div",
+                sx: {
+                  fontSize: "0.875rem",
+                  color: "text.secondary",
+                  mt: .5
+                },
+                children: e.jsx(ie, {
+                  i18nKey: "mx.priorityField",
+                  components: {
+                    v: e.jsx(Dt, {
+                      text: String(w.priority)
+                    })
+                  }
+                })
+              }), w.ok === !1 && (w.found ?? []).length > 0 && e.jsx(k, {
+                component: "div",
+                sx: {
+                  fontSize: "0.875rem",
+                  color: "warning.main",
+                  mt: .5,
+                  wordBreak: "break-all"
+                },
+                children: h("mx.currentValue", {
+                  value: (w.found ?? []).join(" / ")
+                })
+              })]
+            })]
+          }, w.key))
+        })]
+      })
+    }), e.jsx(k, {
+      sx: {
+        fontSize: "0.9375rem",
+        color: "text.primary"
+      },
+      children: a.last_check_time ? h("mx.lastChecked", {
+        time: Xd(a.last_check_time)
+      }) : h("mx.notCheckedYet")
+    })]
+  });
+}
+function Js({
+  children: s
+}) {
+  return e.jsx(m, {
+    component: "strong",
+    sx: {
+      fontWeight: 600,
+      color: "text.primary"
+    },
+    children: s
+  });
+}
+function Qd({
+  domains: s,
+  plain: t = !1
+}) {
+  const i = J();
+  if (s.length === 0) return null;
+  const n = `noreply@${s[0]}`;
+  return e.jsxs(m, {
+    sx: t ? void 0 : {
+      p: 2,
+      borderRadius: 1,
+      border: 1,
+      borderColor: "divider",
+      bgcolor: "action.hover"
+    },
+    children: [!t && e.jsx(k, {
+      sx: {
+        fontSize: "0.9375rem",
+        fontWeight: 700
+      },
+      children: i("mx.noreplyBoxTitle")
+    }), e.jsxs(m, {
+      component: "ul",
+      sx: {
+        listStyleType: "disc",
+        m: 0,
+        mt: t ? 0 : 1.25,
+        pl: 2.5,
+        fontSize: "0.9375rem",
+        lineHeight: 1.7,
+        color: "text.secondary"
+      },
+      children: [e.jsx("li", {
+        children: e.jsx(ie, {
+          i18nKey: "mx.noreplyBullet1",
+          values: {
+            example: n
+          },
+          components: {
+            b: e.jsx(Js, {
+              children: null
+            })
+          }
+        })
+      }), e.jsx("li", {
+        children: e.jsx(ie, {
+          i18nKey: "mx.noreplyBullet2",
+          components: {
+            b: e.jsx(Js, {
+              children: null
+            })
+          }
+        })
+      }), e.jsx("li", {
+        children: e.jsx(ie, {
+          i18nKey: "mx.noreplyBullet3",
+          components: {
+            b: e.jsx(Js, {
+              children: null
+            })
+          }
+        })
+      })]
+    })]
+  });
+}
+function Zd({
+  children: s
+}) {
+  return e.jsx(m, {
+    component: "strong",
+    sx: {
+      fontWeight: 600,
+      color: "text.primary"
+    },
+    children: s
+  });
+}
+const Qs = !0,
+  Fn = {
+    label: "mx.guideId",
+    value: "mx.guideIdValue",
+    valueKey: !0
+  },
+  In = {
+    label: "mx.guidePassword",
+    value: "mx.guidePasswordValue",
+    valueKey: !0
+  },
+  eu = [{
+    label: "mx.guideServer",
+    value: "smtp.taskham.com",
+    copy: !0
+  }, {
+    label: "mx.guidePort",
+    value: "587",
+    copy: !0
+  }, {
+    label: "mx.guideSecurity",
+    value: "mx.guideSecuritySmtp",
+    valueKey: !0
+  }, Fn, In],
+  tu = [{
+    label: "mx.guideServer",
+    value: "imap.taskham.com",
+    copy: !0
+  }, {
+    label: "mx.guidePort",
+    value: "993",
+    copy: !0
+  }, {
+    label: "mx.guideSecurity",
+    value: "SSL/TLS"
+  }, Fn, In],
+  su = [{
+    label: "mx.guideServer",
+    value: "pop3.taskham.com",
+    copy: !0
+  }, {
+    label: "mx.guidePort",
+    value: "995",
+    copy: !0
+  }, {
+    label: "mx.guideSecurity",
+    value: "SSL/TLS"
+  }, Fn, In];
+function Zs({
+  title: s,
+  rows: t
+}) {
+  const i = J();
+  return e.jsxs(m, {
+    children: [e.jsx(k, {
+      sx: {
+        fontSize: "0.9375rem",
+        fontWeight: 700
+      },
+      children: s
+    }), e.jsx(m, {
+      component: "dl",
+      sx: {
+        m: 0,
+        mt: 1,
+        display: "grid",
+        gridTemplateColumns: "auto 1fr",
+        columnGap: 2,
+        rowGap: .5,
+        fontSize: "0.9375rem",
+        lineHeight: 1.7
+      },
+      children: t.map(n => e.jsxs(m, {
+        sx: {
+          display: "contents"
+        },
+        children: [e.jsx(m, {
+          component: "dt",
+          sx: {
+            color: "text.secondary"
+          },
+          children: i(n.label)
+        }), e.jsx(m, {
+          component: "dd",
+          sx: {
+            m: 0,
+            fontWeight: 600,
+            wordBreak: "break-all"
+          },
+          children: n.copy ? e.jsxs(m, {
+            component: "button",
+            type: "button",
+            title: i("mx.clickToCopy"),
+            onClick: () => {
+              navigator.clipboard?.writeText(n.value), _e(c("mx.copiedValue", {
+                value: n.value
+              }));
+            },
+            sx: {
+              all: "unset",
+              cursor: "pointer",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: .5,
+              borderRadius: .5,
+              "&:hover": {
+                color: "primary.main"
+              },
+              "&:hover .copy-icon": {
+                opacity: 1
+              }
+            },
+            children: [n.value, e.jsx(Wr, {
+              className: "copy-icon",
+              sx: {
+                fontSize: 16,
+                opacity: .45
+              }
+            })]
+          }) : n.valueKey ? i(n.value) : n.value
+        })]
+      }, n.label))
+    })]
+  });
+}
+function nu({
+  plain: s = !1
+} = {}) {
+  const t = J(),
+    i = {
+      b: e.jsx(Zd, {
+        children: null
+      })
+    };
+  return e.jsxs(m, {
+    sx: s ? void 0 : {
+      p: 2,
+      borderRadius: 1,
+      border: 1,
+      borderColor: "divider",
+      bgcolor: "action.hover"
+    },
+    children: [e.jsxs(X, {
+      direction: "row",
+      alignItems: "center",
+      sx: {
+        gap: 1,
+        display: s && Qs ? "none" : "flex"
+      },
+      children: [e.jsx(k, {
+        sx: {
+          fontSize: "0.9375rem",
+          fontWeight: 700
+        },
+        children: t("mx.mailAppGuideTitle")
+      }), !Qs]
+    }), e.jsxs(m, {
+      sx: {
+        mt: 1.25,
+        display: "grid",
+        gap: 2,
+        "& > * + *": {
+          pt: 2,
+          borderTop: "1px solid",
+          borderColor: "divider"
+        }
+      },
+      children: [e.jsx(Zs, {
+        title: t("mx.guideSmtpTitle"),
+        rows: eu
+      }), e.jsx(Zs, {
+        title: t("mx.guideImapTitle"),
+        rows: tu
+      }), e.jsx(Zs, {
+        title: t("mx.guidePop3Title"),
+        rows: su
+      })]
+    }), e.jsxs(m, {
+      component: "ul",
+      sx: {
+        m: 0,
+        mt: 2,
+        p: 1.5,
+        pl: 3.5,
+        borderRadius: 1.5,
+        bgcolor: "#f1f5f9",
+        listStyleType: "disc",
+        fontSize: "0.9375rem",
+        lineHeight: 1.7,
+        color: "text.secondary"
+      },
+      children: [!Qs, e.jsx("li", {
+        children: e.jsx(ie, {
+          i18nKey: "mx.guideBullet1",
+          components: i
+        })
+      }), e.jsx("li", {
+        children: e.jsx(ie, {
+          i18nKey: "mx.guideBullet2",
+          components: i
+        })
+      }), e.jsx("li", {
+        children: e.jsx(ie, {
+          i18nKey: "mx.guideBullet3",
+          components: i
+        })
+      }), e.jsx("li", {
+        children: t("mx.guideBullet4")
+      }), e.jsx("li", {
+        children: e.jsx(ie, {
+          i18nKey: "mx.guideBullet5",
+          components: i
+        })
+      }), e.jsx("li", {
+        children: e.jsx(ie, {
+          i18nKey: "mx.guideBullet6",
+          components: i
+        })
+      })]
+    })]
+  });
+}
+function Li({
+  modal: s,
+  title: t,
+  children: i
+}) {
+  const n = J(),
+    o = me();
+  return e.jsx(ge, {
+    open: s.isOpen,
+    onClose: s.close,
+    title: t,
+    maxWidth: "sm",
+    fullScreen: o,
+    mobilePresentation: o ? "slide" : "dialog",
+    draggable: !0,
+    titleIcons: {
+      delete: {
+        visible: !1
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !0,
+      right: e.jsx(B, {
+        variant: "contained",
+        onClick: s.close,
+        sx: {
+          minWidth: 80
+        },
+        children: n("mx.ok")
+      })
+    },
+    sections: [{
+      id: "guide",
+      showTitle: !1,
+      children: i
+    }]
+  });
+}
+function Bi({
+  verifiedDomains: s,
+  inline: t = !1
+}) {
+  const i = de({
+      modalId: "mx-guide-noreply"
+    }),
+    n = de({
+      modalId: "mx-guide-smtp"
+    }),
+    o = J();
+  return e.jsxs(e.Fragment, {
+    children: [e.jsxs(X, {
+      direction: "row",
+      sx: {
+        gap: 1.5,
+        flexWrap: "wrap",
+        ...(t ? {
+          display: "contents"
+        } : {}),
+        "& .MuiButton-root": {
+          textTransform: "none",
+          whiteSpace: "nowrap"
+        }
+      },
+      children: [s.length > 0 && e.jsx(B, {
+        variant: "outlined",
+        startIcon: e.jsx(qn, {}),
+        onClick: i.open,
+        children: o("mx.noreplyGuideButton")
+      }), e.jsx(B, {
+        variant: "outlined",
+        startIcon: e.jsx(qn, {}),
+        onClick: n.open,
+        children: o("mx.mailAppGuideButton")
+      })]
+    }), e.jsx(Li, {
+      modal: i,
+      title: o("mx.noreplyGuideTitle"),
+      children: e.jsx(Qd, {
+        domains: s,
+        plain: !0
+      })
+    }), e.jsx(Li, {
+      modal: n,
+      title: o("mx.mailAppGuideTitle"),
+      children: e.jsx(nu, {
+        plain: !0
+      })
+    })]
+  });
+}
+function iu({
+  controller: s
+}) {
+  const t = J(),
+    i = me(),
+    {
+      loaded: n,
+      canManage: o,
+      domains: r
+    } = co(),
+    a = De()?.name ?? "",
+    {
+      modals: d,
+      error: l,
+      panel: u,
+      panelSeq: p,
+      panelOpen: x,
+      openPanel: h
+    } = s,
+    [g, F] = b.useState(0),
+    [I, _] = b.useState(null),
+    v = I === null ? r : I.map(y => r.find(D => D.seq === y)).filter(y => !!y),
+    C = y => {
+      if (!g || g === y) return;
+      const D = v.map(T => T.seq),
+        M = D.indexOf(g),
+        z = D.indexOf(y);
+      if (M < 0 || z < 0) return;
+      const O = [...D];
+      O.splice(z, 0, ...O.splice(M, 1)), _(O);
+    },
+    w = () => {
+      const y = v.map(M => M.seq);
+      if (F(0), !y.some((M, z) => r[z]?.seq !== M)) {
+        _(null);
+        return;
+      }
+      s.saveDomainOrder(y).finally(() => _(null));
+    },
+    E = r.find(y => y.seq === p) ?? null,
+    A = r.filter(y => y.status === "verified").map(y => y.domain),
+    S = e.jsxs(e.Fragment, {
+      children: [l && e.jsx(Ee, {
+        message: l
+      }), e.jsx(vn, {
+        items: [t("mx.domainListHint1"), t("mx.domainListHint2"), t("mx.domainListHint3")]
+      }), i && e.jsx(Bi, {
+        verifiedDomains: A
+      })]
+    }),
+    j = [{
+      id: "domains",
+      showTitle: !1,
+      children: e.jsxs(X, {
+        sx: {
+          gap: i ? rn : 2
+        },
+        children: [i ? e.jsx(X, {
+          sx: {
+            gap: 2,
+            mx: `-${wt}px`,
+            mt: `-${wt}px`,
+            p: 2,
+            bgcolor: "#fff"
+          },
+          children: S
+        }) : S, !n && e.jsx(ye, {
+          size: 20
+        }), e.jsxs(X, {
+          sx: {
+            gap: i ? rn : 1.5
+          },
+          children: [v.map(y => e.jsxs(m, {
+            onDragEnter: () => C(y.seq),
+            onDragOver: D => D.preventDefault(),
+            "data-testid": `mx-domain-chip-${y.domain}`,
+            sx: {
+              p: 2,
+              borderRadius: 2,
+              border: "1px solid",
+              borderColor: "divider",
+              bgcolor: "background.paper",
+              ...(i ? {
+                mx: `-${wt}px`,
+                border: 0,
+                borderRadius: 0
+              } : {}),
+              transition: "box-shadow 120ms",
+              opacity: g === y.seq ? .4 : 1,
+              "&:hover": {
+                boxShadow: 2
+              }
+            },
+            children: [e.jsxs(X, {
+              direction: "row",
+              alignItems: "center",
+              useFlexGap: !0,
+              flexWrap: "wrap",
+              sx: {
+                columnGap: 1,
+                rowGap: .75
+              },
+              children: [o && e.jsx(m, {
+                draggable: !0,
+                onDragStart: D => {
+                  D.stopPropagation(), D.dataTransfer.setData("text/plain", String(y.seq)), F(y.seq);
+                },
+                onDragEnd: w,
+                onClick: D => D.stopPropagation(),
+                "aria-label": t("mx.reorder"),
+                sx: {
+                  display: "flex",
+                  alignItems: "center",
+                  ml: -.75,
+                  color: "text.disabled",
+                  cursor: "grab",
+                  "&:active": {
+                    cursor: "grabbing"
+                  },
+                  "&:hover": {
+                    color: "text.secondary"
+                  }
+                },
+                children: e.jsx(Lr, {
+                  fontSize: "small"
+                })
+              }), e.jsx(k, {
+                sx: {
+                  fontSize: "1.25rem",
+                  fontWeight: 700,
+                  minWidth: 0,
+                  wordBreak: "break-all"
+                },
+                children: y.domain
+              }), e.jsx(m, {
+                sx: {
+                  flexBasis: "100%",
+                  height: 0,
+                  display: {
+                    xs: "block",
+                    sm: "none"
+                  }
+                }
+              }), y.status !== "verified" && e.jsx(we, {
+                size: "small",
+                label: Wa(y.status, t),
+                color: y.status === "suspended" ? "default" : "warning",
+                sx: {
+                  height: 24,
+                  borderRadius: "6px",
+                  fontSize: "0.875rem",
+                  "& .MuiChip-label": {
+                    px: .75
+                  }
+                }
+              }), e.jsx(m, {
+                sx: {
+                  flex: 1
+                }
+              }), e.jsx(k, {
+                role: "button",
+                tabIndex: 0,
+                onClick: () => h(y.seq, "dns"),
+                onKeyDown: D => {
+                  (D.key === "Enter" || D.key === " ") && h(y.seq, "dns");
+                },
+                "data-testid": `mx-domain-dns-${y.domain}`,
+                sx: {
+                  fontSize: "0.9375rem",
+                  color: "primary.main",
+                  cursor: "pointer",
+                  whiteSpace: "nowrap",
+                  "&:hover": {
+                    textDecoration: "underline"
+                  }
+                },
+                children: t("mx.dnsRecords")
+              })]
+            }), e.jsx(m, {
+              sx: {
+                mt: 1.5,
+                display: "grid",
+                gridTemplateColumns: {
+                  xs: "1fr 1fr",
+                  sm: "repeat(4, 1fr)"
+                },
+                gap: 1.5
+              },
+              children: [[t("mx.mailboxes"), t("mx.itemCount", {
+                count: y.mailbox_count
+              }), "mailboxes", "primary"], [t("mx.aliases"), t("mx.itemCount", {
+                count: y.alias_count
+              }), "aliases", "info"], [t("mx.mail"), t("mx.messageCount", {
+                count: y.message_count,
+                n: y.message_count.toLocaleString(zt(Wt()))
+              }), "", "success"], [t("mx.storageUsed"), an(y.used_bytes), "", "warning"]].map(([D, M, z, O]) => e.jsxs(m, {
+                ...(z ? {
+                  role: "button",
+                  tabIndex: 0,
+                  onClick: () => h(y.seq, z),
+                  onKeyDown: T => {
+                    (T.key === "Enter" || T.key === " ") && h(y.seq, z);
+                  }
+                } : {}),
+                sx: {
+                  px: 1.75,
+                  py: 1.5,
+                  borderRadius: 1.5,
+                  bgcolor: T => xt(T.palette[O].main, .1),
+                  ...(z ? {
+                    cursor: "pointer",
+                    transition: "background-color 120ms",
+                    "&:hover": {
+                      bgcolor: T => xt(T.palette[O].main, .22)
+                    }
+                  } : {})
+                },
+                children: [e.jsx(k, {
+                  sx: {
+                    fontSize: "0.9375rem",
+                    lineHeight: 1.2
+                  },
+                  children: D
+                }), e.jsx(k, {
+                  sx: {
+                    fontSize: "1.125rem",
+                    fontWeight: 600,
+                    mt: .5,
+                    whiteSpace: "nowrap",
+                    textAlign: "right"
+                  },
+                  children: M
+                })]
+              }, D))
+            }), e.jsx(k, {
+              sx: {
+                mt: 1,
+                fontSize: "0.875rem",
+                textAlign: "right"
+              },
+              children: t("mx.lastReceived", {
+                time: y.last_received_time ? Ha(y.last_received_time) : t("mx.none")
+              })
+            })]
+          }, y.seq)), r.length === 0 && n && e.jsx(k, {
+            sx: {
+              fontSize: "0.875rem",
+              color: "text.disabled"
+            },
+            children: t("mx.noDomains")
+          })]
+        })]
+      })
+    }];
+  return e.jsxs(e.Fragment, {
+    children: [e.jsx(ge, {
+      open: d.list.isOpen,
+      onClose: d.list.close,
+      title: a && !i ? t("mx.orgCompanyMail", {
+        name: a
+      }) : t("mx.companyMail"),
+      maxWidth: "md",
+      fullScreen: i,
+      mobilePresentation: i ? "slide" : "dialog",
+      draggable: !0,
+      backdropClick: !1,
+      titleIcons: {
+        delete: {
+          visible: !1
+        },
+        print: {
+          visible: !1
+        },
+        share: {
+          visible: !1
+        }
+      },
+      tabs: {
+        visible: !1
+      },
+      scrollPastLastSection: !1,
+      sx: i ? {
+        DialogContent: {
+          bgcolor: bn[200]
+        }
+      } : void 0,
+      contentPaddingX: i ? wt : void 0,
+      contentTopPadding: i ? wt : void 0,
+      actions: {
+        visible: !0,
+        showCancelButton: !1,
+        left: e.jsxs(e.Fragment, {
+          children: [o && e.jsx(B, {
+            variant: "outlined",
+            startIcon: e.jsx(Zt, {}),
+            onClick: s.openAddDialog,
+            "data-testid": "mx-domain-add-open",
+            sx: {
+              whiteSpace: "nowrap"
+            },
+            children: t(i ? "mx.add" : "mx.addDomain")
+          }), !i && e.jsx(Bi, {
+            verifiedDomains: A,
+            inline: !0
+          })]
+        }),
+        right: e.jsx(B, {
+          variant: "contained",
+          onClick: d.list.close,
+          sx: {
+            minWidth: 80
+          },
+          children: t("mx.ok")
+        })
+      },
+      sections: j
+    }), e.jsx($d, {
+      controller: s
+    }), e.jsx(Jd, {
+      open: x && u === "dns" && !!E,
+      domain: E,
+      canManage: o,
+      onClose: s.closePanel,
+      onChanged: s.reloadDomains,
+      onDeleted: s.handleDomainDeleted
+    }), e.jsx(Yd, {
+      open: x && u === "mailboxes" && !!E,
+      domain: E,
+      canManage: o,
+      onClose: s.closePanel,
+      onChanged: s.reloadDomains
+    }), e.jsx(qd, {
+      open: x && u === "aliases" && !!E,
+      domain: E,
+      canManage: o,
+      onClose: s.closePanel,
+      onChanged: s.reloadDomains
+    })]
+  });
+}
+const en = {
+    name: "",
+    work_type: "fixed",
+    work_start: "09:00",
+    work_end: "18:00",
+    core_start: "",
+    core_end: "",
+    break_minutes: 60,
+    workdays: [1, 2, 3, 4, 5],
+    daily_hours: 8,
+    late_grace_minutes: 0,
+    early_grace_minutes: 0,
+    overtime_grace_minutes: 0,
+    rounding_minutes: 0,
+    is_default: !1
+  },
+  Vi = {
+    name: "",
+    short_label: "",
+    color: "#2563eb",
+    start_time: "",
+    end_time: "",
+    break_minutes: 60
+  },
+  gs = {
+    lat: 37.5666,
+    lng: 126.9782
+  };
+function ou(s, t, i = !0) {
+  const [n, o] = b.useState(null),
+    [r, a] = b.useState([]),
+    [d, l] = b.useState(!1),
+    [u, p] = b.useState(!1),
+    x = b.useRef(null),
+    h = je({
+      formId: "hr-att-setting-form",
+      initialValues: {
+        check_methods: ["gps"],
+        locations: [],
+        wifi_networks: [],
+        remind_in_30: !0,
+        remind_in_10: !0,
+        remind_in_now: !0,
+        remind_check_out: !0,
+        allow_outside: !0,
+        qr_with_gps: !1,
+        weekly_limit_hours: 52,
+        week_start_day: 0,
+        overtime_mode: "auto",
+        lunch_start: "12:00",
+        lunch_end: "13:00",
+        auto_check_in: !1,
+        auto_methods: ["gps"],
+        auto_check_in_minutes: 60,
+        auto_late_free_minutes: 30,
+        auto_check_out_before: 0,
+        bio_check: !1,
+        track_outing: !1,
+        leave_basis: "hire_date",
+        fiscal_start_month: 1,
+        carry_over: !1,
+        carry_max_days: "",
+        leave_promotion: !1,
+        pay_overtime_rate: 1.5,
+        pay_night_rate: .5,
+        pay_holiday_rate: 1.5,
+        pay_holiday_over_rate: 2,
+        pay_night_shift_allowance: 0,
+        pay_night_hourly_allowance: 0,
+        pay_night_shift_min_hours: 4,
+        pay_night_meal_auto: !0,
+        pay_night_meal_minutes: 30,
+        pay_deduct_unpaid_leave: !0,
+        pay_deduct_absence: !0,
+        pay_deduct_late_early: !1,
+        pay_daily_wage_method: "hourly",
+        pay_deduct_weekly_holiday: !1,
+        start_date: ""
+      },
+      onValidate: f => {
+        if (!f.check_methods.length) return K(c("hr.attSetErrNoMethod")), !1;
+        if (!!f.lunch_start != !!f.lunch_end) return K(c("hr.attSetErrLunchBoth")), !1;
+        if (f.lunch_start && f.lunch_end <= f.lunch_start) return K(c("hr.attSetErrLunchOrder")), !1;
+        if (f.auto_check_in && !f.auto_methods.length) return K(c("hr.attSetErrAutoNoWay")), !1;
+        if (f.auto_check_in && f.auto_methods.includes("gps") && !f.locations.length) return K(c("hr.attSetErrAutoGpsNoLocation")), !1;
+        if (f.auto_check_in && f.auto_methods.includes("wifi") && !f.wifi_networks.some(V => V.name.trim() || V.bssid.trim())) return K(c("hr.attSetErrAutoWifiNone")), !1;
+        if (f.check_methods.length === 1 && f.check_methods[0] === "gps" && !f.locations.length) return K(c("hr.attSetErrGpsNoLocation")), !1;
+        const R = f.wifi_networks.filter(V => V.name.trim() || V.bssid.trim());
+        if (f.check_methods.length === 1 && f.check_methods[0] === "wifi" && !R.length) return K(c("hr.attSetErrWifiNone")), !1;
+        for (const [V, N] of f.locations.entries()) if (!Number.isFinite(Number(N.lat)) || !Number.isFinite(Number(N.lng)) || Number(N.lat) === 0 && Number(N.lng) === 0) return K(c("hr.attSetErrLocationMissing", {
+          n: V + 1
+        })), !1;
+        return !0;
+      },
+      onSubmit: async f => {
+        p(!0);
+        try {
+          return await Le.putSettings({
+            check_methods: f.check_methods,
+            locations: f.locations.map(R => ({
+              name: String(R.name ?? "").trim(),
+              lat: Number(R.lat),
+              lng: Number(R.lng),
+              radius_m: Number(R.radius_m) || 200
+            })),
+            wifi_networks: f.wifi_networks.map(R => ({
+              name: R.name.trim(),
+              bssid: R.bssid.trim()
+            })).filter(R => R.name || R.bssid),
+            remind_in_30: f.remind_in_30,
+            remind_in_10: f.remind_in_10,
+            remind_in_now: f.remind_in_now,
+            remind_check_out: f.remind_check_out,
+            allow_outside: f.allow_outside,
+            qr_with_gps: f.qr_with_gps,
+            weekly_limit_minutes: Math.round((Number(f.weekly_limit_hours) || 52) * 60),
+            week_start_day: Number(f.week_start_day) === 1 ? 1 : 0,
+            overtime_mode: f.overtime_mode === "approval" ? "approval" : "auto",
+            lunch_start: f.lunch_start ?? "",
+            lunch_end: f.lunch_end ?? "",
+            auto_check_in: f.auto_check_in,
+            auto_methods: f.auto_methods,
+            auto_check_in_minutes: Math.min(180, Math.max(10, Number(f.auto_check_in_minutes) || 60)),
+            auto_late_free_minutes: f.auto_late_free_minutes === "" ? 30 : Math.min(120, Math.max(0, Number(f.auto_late_free_minutes) || 0)),
+            auto_check_out_before: Math.min(120, Math.max(0, Number(f.auto_check_out_before) || 0)),
+            bio_check: f.bio_check,
+            track_outing: f.track_outing,
+            leave_basis: f.leave_basis,
+            fiscal_start_month: Number(f.fiscal_start_month) || 1,
+            carry_over: f.carry_over,
+            carry_max_days: Number(f.carry_max_days) || 0,
+            leave_promotion: f.leave_promotion,
+            start_date: f.start_date,
+            pay_rules: {
+              overtime_rate: Number(f.pay_overtime_rate) || 1.5,
+              night_rate: f.pay_night_rate === "" ? .5 : Number(f.pay_night_rate),
+              holiday_rate: Number(f.pay_holiday_rate) || 1.5,
+              holiday_over_rate: Number(f.pay_holiday_over_rate) || 2,
+              night_shift_allowance: Number(f.pay_night_shift_allowance) || 0,
+              night_hourly_allowance: Number(f.pay_night_hourly_allowance) || 0,
+              night_shift_min_minutes: Math.round((Number(f.pay_night_shift_min_hours) || 4) * 60),
+              night_meal_auto: f.pay_night_meal_auto,
+              night_meal_minutes: f.pay_night_meal_minutes === "" ? 30 : Number(f.pay_night_meal_minutes),
+              deduct_unpaid_leave: f.pay_deduct_unpaid_leave,
+              deduct_absence: f.pay_deduct_absence,
+              deduct_late_early: f.pay_deduct_late_early,
+              daily_wage_method: f.pay_daily_wage_method,
+              deduct_weekly_holiday: f.pay_deduct_weekly_holiday
+            }
+          }), _e({
+            message: c("hr.attSetSaved"),
+            delay: 700
+          }), t?.(), !0;
+        } catch (R) {
+          return K(R instanceof Error ? R.message : c("hr.errSaveAttendanceSettings")), !1;
+        } finally {
+          p(!1);
+        }
+      }
+    }),
+    g = b.useCallback(async (f = !1) => {
+      if (s) {
+        f || l(!0);
+        try {
+          const [R, V] = await Promise.all([Le.settings(), tl.list({
+            limit: 200
+          })]);
+          o(R), a(V.items.filter(xe => xe.status !== "resigned"));
+          const N = R.setting,
+            G = {
+              check_methods: N.check_methods,
+              locations: N.locations,
+              wifi_networks: N.wifi_networks ?? [],
+              remind_in_30: N.remind_in_30 !== !1,
+              remind_in_10: N.remind_in_10 !== !1,
+              remind_in_now: N.remind_in_now !== !1,
+              remind_check_out: N.remind_check_out,
+              allow_outside: N.allow_outside !== !1,
+              qr_with_gps: N.qr_with_gps === !0,
+              weekly_limit_hours: Math.round(N.weekly_limit_minutes / 60 * 10) / 10,
+              week_start_day: N.week_start_day === 1 ? 1 : 0,
+              overtime_mode: N.overtime_mode === "approval" ? "approval" : "auto",
+              lunch_start: N.lunch_start ?? "12:00",
+              lunch_end: N.lunch_end ?? "13:00",
+              auto_check_in: N.auto_check_in === !0,
+              auto_methods: N.auto_methods ?? ["gps", "wifi"].filter(xe => (N.check_methods ?? []).includes(xe)),
+              auto_check_in_minutes: N.auto_check_in_minutes || 60,
+              auto_late_free_minutes: N.auto_late_free_minutes ?? 30,
+              auto_check_out_before: N.auto_check_out_before ?? 0,
+              bio_check: N.bio_check === !0,
+              track_outing: N.track_outing === !0,
+              leave_basis: N.leave_basis,
+              fiscal_start_month: N.fiscal_start_month,
+              carry_over: N.carry_over,
+              carry_max_days: N.carry_max_days || "",
+              leave_promotion: !!N.leave_promotion,
+              start_date: N.start_date,
+              pay_overtime_rate: N.pay_rules?.overtime_rate ?? 1.5,
+              pay_night_rate: N.pay_rules?.night_rate ?? .5,
+              pay_holiday_rate: N.pay_rules?.holiday_rate ?? 1.5,
+              pay_holiday_over_rate: N.pay_rules?.holiday_over_rate ?? 2,
+              pay_night_shift_allowance: N.pay_rules?.night_shift_allowance ?? 0,
+              pay_night_hourly_allowance: N.pay_rules?.night_hourly_allowance ?? 0,
+              pay_night_shift_min_hours: Math.round((N.pay_rules?.night_shift_min_minutes ?? 240) / 60 * 10) / 10,
+              pay_night_meal_auto: N.pay_rules?.night_meal_auto ?? !0,
+              pay_night_meal_minutes: N.pay_rules?.night_meal_minutes ?? 30,
+              pay_deduct_unpaid_leave: N.pay_rules?.deduct_unpaid_leave ?? !0,
+              pay_deduct_absence: N.pay_rules?.deduct_absence ?? !0,
+              pay_deduct_late_early: N.pay_rules?.deduct_late_early ?? !1,
+              pay_daily_wage_method: N.pay_rules?.daily_wage_method === "calendar" ? "calendar" : "hourly",
+              pay_deduct_weekly_holiday: N.pay_rules?.deduct_weekly_holiday ?? !1
+            };
+          if (f && x.current) {
+            const xe = h.getFormValues(),
+              {
+                patch: Ye,
+                baseline: W
+              } = nn(xe, x.current, G);
+            x.current = W, Object.keys(Ye).length > 0 && h.setFormValues(Ye);
+          } else h.setFormValues(G), x.current = G;
+        } catch (R) {
+          f || K(R instanceof Error ? R.message : c("hr.errLoadAttendanceSettings"));
+        } finally {
+          l(!1);
+        }
+      }
+    }, [s]);
+  b.useEffect(() => {
+    i && g();
+  }, [g, i]), Br(["hr_att_setting", "hr_work_policy", "hr_work_assign", "hr_shift_template", "employee"], () => {
+    g(!0);
+  }, {
+    enabled: i
+  });
+  const F = f => {
+      const R = h.getFormValue("locations") ?? [];
+      h.setFormValue("locations", [...R, {
+        name: f?.name ?? c("hr.attSetLocationN", {
+          n: R.length + 1
+        }),
+        lat: f?.lat ?? 0,
+        lng: f?.lng ?? 0,
+        radius_m: f?.radius_m ?? 200
+      }]);
+    },
+    I = f => {
+      const R = h.getFormValue("wifi_networks") ?? [];
+      h.setFormValue("wifi_networks", [...R, {
+        name: f?.name ?? "",
+        bssid: f?.bssid ?? ""
+      }]);
+    },
+    _ = f => {
+      const R = h.getFormValue("wifi_networks") ?? [];
+      h.setFormValue("wifi_networks", R.filter((V, N) => N !== f));
+    },
+    v = f => {
+      const R = h.getFormValue("locations") ?? [];
+      h.setFormValue("locations", R.filter((V, N) => N !== f));
+    },
+    C = de({
+      modalId: "hr-wifi-scan-dialog"
+    }),
+    w = Rt({
+      stateId: "hr-wifi-scan-ui",
+      initialValues: {
+        scanning: !1,
+        networks: [],
+        connectedBssid: "",
+        error: "",
+        picked: []
+      }
+    }),
+    E = async () => {
+      w.setValues({
+        scanning: !0,
+        networks: [],
+        connectedBssid: "",
+        error: "",
+        picked: []
+      });
+      const [f, R] = await Promise.all([Vr(), qr(4e3)]);
+      let V = f ?? [];
+      const N = R?.bssid.toLowerCase() ?? "";
+      R?.ssid && !V.some(xe => xe.bssid === N) && (V = [{
+        ssid: R.ssid,
+        bssid: N,
+        level: 0
+      }, ...V]), V = [...V].sort((xe, Ye) => +(Ye.bssid === N && !!N) - +(xe.bssid === N && !!N));
+      const G = V.length > 0 ? "" : f === null ? c("hr.attSetErrWifiScanOld") : c("hr.attSetErrWifiScanNone");
+      w.setValues({
+        scanning: !1,
+        networks: V,
+        connectedBssid: N,
+        error: G
+      });
+    },
+    A = () => {
+      C.open(), E();
+    },
+    S = f => (h.getFormValue("wifi_networks") ?? []).some(V => f.bssid && V.bssid.toLowerCase() === f.bssid.toLowerCase() || !V.bssid && V.name === f.ssid),
+    L = f => {
+      if (S(f)) return;
+      const R = w.getValue("picked") ?? [];
+      w.setValue("picked", R.includes(f.bssid) ? R.filter(V => V !== f.bssid) : [...R, f.bssid]);
+    },
+    j = () => {
+      const f = w.getValue("picked") ?? [],
+        R = w.getValue("networks") ?? [],
+        V = h.getFormValue("wifi_networks") ?? [],
+        N = R.filter(G => f.includes(G.bssid) && !S(G)).map(G => ({
+          name: G.ssid,
+          bssid: G.bssid
+        }));
+      N.length > 0 && h.setFormValue("wifi_networks", [...V, ...N]), C.close();
+    },
+    y = de({
+      modalId: "hr-attendance-qr-dialog"
+    }),
+    D = de({
+      modalId: "hr-work-location-dialog"
+    }),
+    M = Rt({
+      stateId: "hr-work-location-ui",
+      initialValues: {
+        index: -1,
+        searching: !1,
+        results: [],
+        error: ""
+      }
+    }),
+    z = je({
+      formId: "hr-work-location-form",
+      initialValues: {
+        name: "",
+        lat: gs.lat,
+        lng: gs.lng,
+        radius_m: 200,
+        query: ""
+      },
+      onValidate: f => String(f.name ?? "").trim() ? !0 : (M.setValue("error", c("hr.attSetErrLocationName")), !1),
+      onSubmit: async f => {
+        const R = [...(h.getFormValue("locations") ?? [])],
+          V = {
+            name: String(f.name).trim(),
+            lat: Math.round(Number(f.lat) * 1e6) / 1e6,
+            lng: Math.round(Number(f.lng) * 1e6) / 1e6,
+            radius_m: Math.max(30, Number(f.radius_m) || 200)
+          },
+          N = Number(M.getValue("index"));
+        return N >= 0 && R[N] ? R[N] = V : R.push(V), h.setFormValue("locations", R), D.close(), !0;
+      }
+    }),
+    O = f => {
+      const R = h.getFormValue("locations") ?? [],
+        V = f >= 0 ? R[f] : void 0;
+      z.setFormValues({
+        name: V?.name ?? "",
+        lat: V && V.lat ? V.lat : gs.lat,
+        lng: V && V.lng ? V.lng : gs.lng,
+        radius_m: V?.radius_m ?? 200,
+        query: ""
+      }), M.setValues({
+        index: f,
+        searching: !1,
+        results: [],
+        error: ""
+      }), D.open(), !V && navigator.geolocation && navigator.geolocation.getCurrentPosition(N => z.setFormValues({
+        lat: N.coords.latitude,
+        lng: N.coords.longitude
+      }), () => {}, {
+        enableHighAccuracy: !0,
+        timeout: 8e3,
+        maximumAge: 6e4
+      });
+    },
+    T = async () => {
+      const f = String(z.getFormValue("query") ?? "").trim();
+      if (f.length < 2) {
+        M.setValue("error", c("hr.attSetErrSearchShort"));
+        return;
+      }
+      M.setValues({
+        searching: !0,
+        error: "",
+        results: []
+      });
+      try {
+        const {
+          items: R
+        } = await Le.geocode(f);
+        M.setValues({
+          searching: !1,
+          results: R,
+          error: R.length ? "" : c("hr.attSetErrSearchNone")
+        }), R.length === 1 && ee(R[0].lat, R[0].lng, R[0].name);
+      } catch (R) {
+        M.setValues({
+          searching: !1,
+          error: R instanceof Error ? R.message : c("hr.errFindAddress")
+        });
+      }
+    },
+    $ = async f => {
+      const R = [f.roadAddress, f.jibunAddress, [f.sido, f.sigungu, f.bname].filter(Boolean).join(" ")].filter(V => V.trim().length >= 2);
+      M.setValues({
+        searching: !0,
+        error: "",
+        results: []
+      });
+      try {
+        for (let V = 0; V < R.length; V++) {
+          const {
+            items: N
+          } = await Le.geocode(R[V]);
+          if (N.length) {
+            ee(N[0].lat, N[0].lng, f.buildingName || f.roadAddress || N[0].name), M.setValues({
+              searching: !1,
+              error: V === R.length - 1 && R.length > 1 ? c("hr.attSetErrSearchRough") : ""
+            });
+            return;
+          }
+        }
+        M.setValues({
+          searching: !1,
+          error: c("hr.attSetErrSearchNotOnMap")
+        });
+      } catch (V) {
+        M.setValues({
+          searching: !1,
+          error: V instanceof Error ? V.message : c("hr.errFindAddress")
+        });
+      }
+    },
+    ee = (f, R, V) => {
+      z.setFormValues({
+        lat: f,
+        lng: R
+      });
+      const N = G => {
+        !String(z.getFormValue("name") ?? "").trim() && G && z.setFormValue("name", G.split(",")[0].trim().slice(0, 60));
+      };
+      V ? N(V) : Le.reverseGeocode(f, R).then(G => N(G.name)).catch(() => {});
+    },
+    te = de({
+      modalId: "hr-work-policy-dialog"
+    }),
+    Q = Rt({
+      stateId: "hr-work-policy-ui",
+      initialValues: {
+        target: null,
+        saving: !1,
+        error: "",
+        asDefault: !1
+      }
+    }),
+    U = je({
+      formId: "hr-work-policy-form",
+      initialValues: en,
+      onValidate: f => {
+        const R = V => (Q.setValue("error", V), !1);
+        return f.name.trim() ? ["fixed", "flexible", "selective"].includes(f.work_type) && (!f.work_start || !f.work_end) ? R(c("hr.attSetErrPolicyTimes")) : f.work_type === "selective" && (!f.core_start || !f.core_end) ? R(c("hr.attSetErrCoreTime")) : f.work_type !== "shift" && !f.workdays.length ? R(c("hr.attSetErrWorkdays")) : !0 : R(c("hr.attSetErrPolicyName"));
+      },
+      onSubmit: async f => {
+        const R = Q.getValue("target");
+        Q.setValues({
+          saving: !0,
+          error: ""
+        });
+        const V = {
+          name: f.name.trim(),
+          work_type: f.work_type,
+          work_start: f.work_start,
+          work_end: f.work_end,
+          core_start: f.core_start,
+          core_end: f.core_end,
+          break_minutes: Number(f.break_minutes) || 0,
+          workdays: f.workdays,
+          daily_minutes: Math.round((Number(f.daily_hours) || 8) * 60),
+          late_grace_minutes: Number(f.late_grace_minutes) || 0,
+          early_grace_minutes: Number(f.early_grace_minutes) || 0,
+          overtime_grace_minutes: Number(f.overtime_grace_minutes) || 0,
+          rounding_minutes: Number(f.rounding_minutes) || 0,
+          is_default: f.is_default
+        };
+        try {
+          return R ? await Le.updatePolicy(R.seq, V) : await Le.createPolicy(V), te.close(), Q.setValue("saving", !1), g(), !0;
+        } catch (N) {
+          return Q.setValues({
+            saving: !1,
+            error: N instanceof Error ? N.message : c("hr.errSavePolicy")
+          }), !1;
+        }
+      }
+    }),
+    pe = (f, R = !1) => {
+      U.setFormValues(f ? {
+        name: f.name,
+        work_type: f.work_type,
+        work_start: f.work_start,
+        work_end: f.work_end,
+        core_start: f.core_start,
+        core_end: f.core_end,
+        break_minutes: f.break_minutes,
+        workdays: f.workdays,
+        daily_hours: Math.round(f.daily_minutes / 60 * 10) / 10,
+        late_grace_minutes: f.late_grace_minutes,
+        early_grace_minutes: f.early_grace_minutes ?? 0,
+        overtime_grace_minutes: f.overtime_grace_minutes ?? 0,
+        rounding_minutes: f.rounding_minutes,
+        is_default: f.is_default
+      } : R ? {
+        ...en,
+        name: c("hr.attSetDefaultPolicyName"),
+        is_default: !0
+      } : en), Q.setValues({
+        target: f ?? null,
+        saving: !1,
+        error: "",
+        asDefault: R
+      }), te.open();
+    },
+    be = async () => {
+      const f = Q.getValue("target");
+      if (f) {
+        Q.setValue("saving", !0);
+        try {
+          await Le.removePolicy(f.seq), te.close(), g();
+        } catch (R) {
+          Q.setValues({
+            saving: !1,
+            error: R instanceof Error ? R.message : c("hr.errDeletePolicy")
+          });
+        }
+      }
+    },
+    ke = de({
+      modalId: "hr-shift-template-dialog"
+    }),
+    H = Rt({
+      stateId: "hr-shift-template-ui",
+      initialValues: {
+        target: null,
+        saving: !1,
+        error: ""
+      }
+    }),
+    Z = je({
+      formId: "hr-shift-template-form",
+      initialValues: Vi,
+      onValidate: f => f.name.trim() ? !f.start_time || !f.end_time ? (H.setValue("error", c("hr.attSetErrTemplateTimes")), !1) : !0 : (H.setValue("error", c("hr.attSetErrTemplateName")), !1),
+      onSubmit: async f => {
+        const R = H.getValue("target");
+        H.setValues({
+          saving: !0,
+          error: ""
+        });
+        const V = {
+          name: f.name.trim(),
+          short_label: f.short_label.trim(),
+          color: f.color,
+          start_time: f.start_time,
+          end_time: f.end_time,
+          break_minutes: Number(f.break_minutes) || 0
+        };
+        try {
+          return R ? await Le.updateTemplate(R.seq, V) : await Le.createTemplate(V), ke.close(), H.setValue("saving", !1), g(), !0;
+        } catch (N) {
+          return H.setValues({
+            saving: !1,
+            error: N instanceof Error ? N.message : c("hr.errSaveTemplate")
+          }), !1;
+        }
+      }
+    });
+  return {
+    bundle: n,
+    employees: r,
+    loading: d,
+    savingSetting: u,
+    reload: g,
+    settingForm: h,
+    addLocation: F,
+    removeLocation: v,
+    qrModal: y,
+    addWifi: I,
+    removeWifi: _,
+    wifiScanModal: C,
+    wifiScanUi: w,
+    scanWifi: E,
+    openWifiScan: A,
+    pickScannedWifi: L,
+    confirmWifiScan: j,
+    location: {
+      modal: D,
+      ui: M,
+      form: z,
+      open: O,
+      search: T,
+      searchAddress: $,
+      pick: ee
+    },
+    policy: {
+      modal: te,
+      ui: Q,
+      form: U,
+      open: pe,
+      remove: be
+    },
+    template: {
+      modal: ke,
+      ui: H,
+      form: Z,
+      open: f => {
+        Z.setFormValues(f ? {
+          name: f.name,
+          short_label: f.short_label,
+          color: f.color || "#2563eb",
+          start_time: f.start_time,
+          end_time: f.end_time,
+          break_minutes: f.break_minutes
+        } : Vi), H.setValues({
+          target: f ?? null,
+          saving: !1,
+          error: ""
+        }), ke.open();
+      },
+      remove: async () => {
+        const f = H.getValue("target");
+        if (f) {
+          H.setValue("saving", !0);
+          try {
+            await Le.removeTemplate(f.seq), ke.close(), g();
+          } catch (R) {
+            H.setValues({
+              saving: !1,
+              error: R instanceof Error ? R.message : c("hr.errDeleteTemplate")
+            });
+          }
+        }
+      }
+    },
+    assign: async (f, R) => {
+      if (!R.length) return K(c("hr.attSetErrPickEmployee")), !1;
+      try {
+        return await Le.assign(f, R), _e({
+          message: c("hr.attSetAssigned", {
+            count: R.length
+          }),
+          delay: 700
+        }), g(), !0;
+      } catch (V) {
+        return K(V instanceof Error ? V.message : c("hr.errAssignPolicy")), !1;
+      }
+    }
+  };
+}
+const Nt = (s, t) => ({
+    display: "grid",
+    gridTemplateColumns: t ? "repeat(2, minmax(0, 1fr))" : `repeat(${s}, minmax(0, 1fr))`,
+    gap: 2
+  }),
+  ru = [{
+    value: "#2563eb",
+    labelKey: "hr.attSetColorBlue"
+  }, {
+    value: "#16a34a",
+    labelKey: "hr.attSetColorGreen"
+  }, {
+    value: "#f59e0b",
+    labelKey: "hr.attSetColorOrange"
+  }, {
+    value: "#7c3aed",
+    labelKey: "hr.attSetColorPurple"
+  }, {
+    value: "#db2777",
+    labelKey: "hr.attSetColorPink"
+  }, {
+    value: "#0f766e",
+    labelKey: "hr.attSetColorTeal"
+  }, {
+    value: "#475569",
+    labelKey: "hr.attSetColorGray"
+  }];
+function au({
+  form: s,
+  disabled: t
+}) {
+  const i = s.useFormValue("workdays"),
+    n = Array.isArray(i) ? i.map(Number) : [];
+  return e.jsx(m, {
+    sx: {
+      display: "grid",
+      gridTemplateColumns: "repeat(7, minmax(0, 1fr))",
+      gap: 1
+    },
+    children: go.map((o, r) => {
+      const a = r + 1,
+        d = n.includes(a);
+      return e.jsx(B, {
+        variant: d ? "contained" : "outlined",
+        disableElevation: !0,
+        disabled: t,
+        onClick: () => s.setFormValue("workdays", d ? n.filter(l => l !== a) : [...n, a].sort((l, u) => l - u)),
+        sx: {
+          minWidth: 0,
+          px: 0
+        },
+        children: o
+      }, a);
+    })
+  });
+}
+function Wo(s, t) {
+  return e.jsx(B, {
+    variant: "contained",
+    onClick: t,
+    disabled: s,
+    sx: {
+      minWidth: 80
+    },
+    children: s ? e.jsx(ye, {
+      size: 20,
+      color: "inherit"
+    }) : c("hr.save")
+  });
+}
+function lu({
+  controller: s
+}) {
+  const t = J(),
+    {
+      modal: i,
+      ui: n,
+      form: o,
+      remove: r
+    } = s.policy,
+    a = me(),
+    d = n.useValue("target"),
+    l = !!n.useValue("asDefault"),
+    u = !!n.useValue("saving"),
+    p = String(n.useValue("error") ?? ""),
+    x = o.useFormValue("work_type"),
+    h = x === "fixed" || x === "flexible" || x === "selective";
+  return e.jsx(ge, {
+    open: i.isOpen,
+    onClose: i.close,
+    title: t(l ? d ? "hr.attSetEditDefaultPolicy" : "hr.attSetSetDefaultPolicy" : d ? "hr.attSetEditPolicy" : "hr.attSetAddPolicy"),
+    width: "640px",
+    fullScreen: a,
+    mobilePresentation: a ? "slide" : "dialog",
+    draggable: !0,
+    backdropClick: !1,
+    titleIcons: {
+      delete: {
+        visible: !!d,
+        confirmConfig: {
+          title: t("hr.attSetDeletePolicy"),
+          message: t("hr.attSetDeletePolicyConfirm"),
+          confirmText: t("hr.delete"),
+          cancelText: t("hr.cancel")
+        }
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    onDelete: r,
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !0,
+      right: Wo(u, () => {
+        o.submit();
+      })
+    },
+    sections: [{
+      id: "policy-basic",
+      title: t("hr.attSetPolicies"),
+      children: e.jsxs(X, {
+        spacing: 2,
+        children: [e.jsxs(m, {
+          sx: l ? {
+            display: "grid"
+          } : Nt(2, a),
+          children: [!l && e.jsx(re, {
+            form: o,
+            name: "name",
+            label: t("hr.name"),
+            required: !0,
+            disabled: u,
+            fullWidth: !0
+          }), e.jsx(rt, {
+            form: o,
+            name: "work_type",
+            label: t("hr.attSetType"),
+            options: sl,
+            showEmptyOption: !1,
+            disabled: u,
+            fullWidth: !0
+          })]
+        }), h && e.jsxs(m, {
+          sx: Nt(4, a),
+          children: [e.jsx(pt, {
+            form: o,
+            name: "work_start",
+            label: t(x === "flexible" ? "hr.attSetBaseStart" : "hr.attSetStart"),
+            disabled: u,
+            fullWidth: !0
+          }), e.jsx(pt, {
+            form: o,
+            name: "work_end",
+            label: t(x === "flexible" ? "hr.attSetBaseEnd" : "hr.attSetEnd"),
+            disabled: u,
+            fullWidth: !0
+          }), x === "selective" && e.jsxs(e.Fragment, {
+            children: [e.jsx(pt, {
+              form: o,
+              name: "core_start",
+              label: t("hr.attSetCoreStart"),
+              disabled: u,
+              fullWidth: !0
+            }), e.jsx(pt, {
+              form: o,
+              name: "core_end",
+              label: t("hr.attSetCoreEnd"),
+              disabled: u,
+              fullWidth: !0
+            })]
+          })]
+        }), x !== "shift" && e.jsx(au, {
+          form: o,
+          disabled: u
+        })]
+      })
+    }, {
+      id: "policy-rule",
+      title: t("hr.attSetCalcRules"),
+      children: e.jsxs(X, {
+        spacing: 2,
+        children: [e.jsxs(m, {
+          sx: Nt(3, a),
+          children: [e.jsx(Te, {
+            size: "medium",
+            form: o,
+            name: "break_minutes",
+            label: t("hr.attSetBreak"),
+            suffix: t("hr.attSetMinutesSuffix"),
+            min: 0,
+            format: {
+              maximumFractionDigits: 0
+            },
+            disabled: u,
+            fullWidth: !0
+          }), e.jsx(Te, {
+            size: "medium",
+            form: o,
+            name: "daily_hours",
+            label: t("hr.attSetDailyHours"),
+            suffix: t("hr.attSetHoursSuffix"),
+            min: 1,
+            step: .5,
+            format: {
+              maximumFractionDigits: 1
+            },
+            disabled: u,
+            fullWidth: !0
+          }), e.jsx(Te, {
+            size: "medium",
+            form: o,
+            name: "rounding_minutes",
+            label: t("hr.attSetRounding"),
+            suffix: t("hr.attSetMinutesSuffix"),
+            min: 0,
+            format: {
+              maximumFractionDigits: 0
+            },
+            disabled: u,
+            fullWidth: !0
+          })]
+        }), e.jsxs(m, {
+          sx: Nt(3, a),
+          children: [e.jsx(Te, {
+            size: "medium",
+            form: o,
+            name: "late_grace_minutes",
+            label: t("hr.attSetLateGrace"),
+            suffix: t("hr.attSetMinutesSuffix"),
+            min: 0,
+            format: {
+              maximumFractionDigits: 0
+            },
+            disabled: u,
+            fullWidth: !0
+          }), e.jsx(Te, {
+            size: "medium",
+            form: o,
+            name: "early_grace_minutes",
+            label: t("hr.attSetEarlyGrace"),
+            suffix: t("hr.attSetMinutesSuffix"),
+            min: 0,
+            format: {
+              maximumFractionDigits: 0
+            },
+            disabled: u,
+            fullWidth: !0
+          }), e.jsx(Te, {
+            size: "medium",
+            form: o,
+            name: "overtime_grace_minutes",
+            label: t("hr.attSetOvertimeGrace"),
+            suffix: t("hr.attSetMinutesSuffix"),
+            min: 0,
+            format: {
+              maximumFractionDigits: 0
+            },
+            disabled: u,
+            fullWidth: !0
+          })]
+        }), !l && e.jsx(he, {
+          form: o,
+          name: "is_default",
+          label: t("hr.attSetUseAsDefault"),
+          disabled: u
+        }), e.jsx(He, {
+          items: [t("hr.attSetNoteGrace"), t("hr.attSetNoteOvertimeDef"), t("hr.attSetNoteNoLateFlex"), t("hr.attSetNoteSelectiveCore"), t("hr.attSetNoteShiftRoster")]
+        }), p && e.jsx(Ee, {
+          message: p
+        })]
+      })
+    }]
+  });
+}
+function cu({
+  controller: s
+}) {
+  const t = J(),
+    {
+      modal: i,
+      ui: n,
+      form: o,
+      remove: r
+    } = s.template,
+    a = me(),
+    d = n.useValue("target"),
+    l = !!n.useValue("saving"),
+    u = String(n.useValue("error") ?? "");
+  return e.jsx(ge, {
+    open: i.isOpen,
+    onClose: i.close,
+    title: t(d ? "hr.attSetEditTemplate" : "hr.attSetAddTemplate"),
+    width: "560px",
+    fullScreen: a,
+    mobilePresentation: a ? "slide" : "dialog",
+    draggable: !0,
+    backdropClick: !1,
+    titleIcons: {
+      delete: {
+        visible: !!d,
+        confirmConfig: {
+          title: t("hr.attSetDeleteTemplate"),
+          message: t("hr.attSetDeleteTemplateConfirm"),
+          confirmText: t("hr.delete"),
+          cancelText: t("hr.cancel")
+        }
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    onDelete: r,
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !0,
+      right: Wo(l, () => {
+        o.submit();
+      })
+    },
+    sections: [{
+      id: "template",
+      title: t("hr.attSetTemplates"),
+      children: e.jsxs(X, {
+        spacing: 2,
+        children: [e.jsxs(m, {
+          sx: Nt(3, a),
+          children: [e.jsx(re, {
+            form: o,
+            name: "name",
+            label: t("hr.name"),
+            required: !0,
+            disabled: l,
+            fullWidth: !0
+          }), e.jsx(re, {
+            form: o,
+            name: "short_label",
+            label: t("hr.attSetShortLabel"),
+            disabled: l,
+            fullWidth: !0,
+            slotProps: {
+              htmlInput: {
+                maxLength: 10
+              }
+            }
+          }), e.jsx(rt, {
+            form: o,
+            name: "color",
+            label: t("hr.attSetColor"),
+            options: ru.map(p => ({
+              value: p.value,
+              label: t(p.labelKey)
+            })),
+            showEmptyOption: !1,
+            disabled: l,
+            fullWidth: !0
+          })]
+        }), e.jsxs(m, {
+          sx: Nt(3, a),
+          children: [e.jsx(pt, {
+            form: o,
+            name: "start_time",
+            label: t("hr.attSetTimeStart"),
+            disabled: l,
+            fullWidth: !0
+          }), e.jsx(pt, {
+            form: o,
+            name: "end_time",
+            label: t("hr.attSetTimeEnd"),
+            disabled: l,
+            fullWidth: !0
+          }), e.jsx(kt, {
+            form: o,
+            name: "break_minutes",
+            label: t("hr.attSetBreak"),
+            suffix: t("hr.attSetMinutesSuffix"),
+            min: 0,
+            thousandSeparator: !1,
+            textAlign: "left",
+            disabled: l,
+            fullWidth: !0
+          })]
+        }), e.jsx(He, {
+          items: [t("hr.attSetNoteOvernight"), t("hr.attSetNoteNextDay")]
+        }), u && e.jsx(Ee, {
+          message: u
+        })]
+      })
+    }]
+  });
+}
+function du({
+  lat: s,
+  lng: t,
+  radius: i,
+  onPick: n,
+  height: o = 320
+}) {
+  const r = b.useRef(null),
+    a = b.useRef(null),
+    d = b.useRef(null),
+    l = b.useRef(null),
+    u = b.useRef(n);
+  return u.current = n, b.useEffect(() => {
+    if (!r.current || a.current) return;
+    const p = os.map(r.current, {
+      zoomControl: !0,
+      attributionControl: !0
+    }).setView([s, t], 16);
+    os.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(p), l.current = os.circle([s, t], {
+      radius: i,
+      color: "#2563eb",
+      weight: 1,
+      fillOpacity: .12
+    }).addTo(p), d.current = os.circleMarker([s, t], {
+      radius: 7,
+      color: "#fff",
+      weight: 2,
+      fillColor: "#2563eb",
+      fillOpacity: 1
+    }).addTo(p), p.on("click", h => u.current(h.latlng.lat, h.latlng.lng)), a.current = p;
+    const x = window.setTimeout(() => p.invalidateSize(), 350);
+    return () => {
+      window.clearTimeout(x), p.remove(), a.current = null;
+    };
+  }, []), b.useEffect(() => {
+    const p = a.current;
+    p && (d.current?.setLatLng([s, t]), l.current?.setLatLng([s, t]), l.current?.setRadius(i), p.getBounds().pad(-.1).contains([s, t]) || p.panTo([s, t]));
+  }, [s, t, i]), e.jsx(m, {
+    ref: r,
+    sx: {
+      width: "100%",
+      height: o,
+      borderRadius: 1.5,
+      overflow: "hidden",
+      zIndex: 0,
+      position: "relative"
+    }
+  });
+}
+function uu({
+  controller: s
+}) {
+  const t = J(),
+    {
+      modal: i,
+      ui: n,
+      form: o,
+      searchAddress: r,
+      pick: a
+    } = s.location,
+    d = me(),
+    l = Number(o.useFormValue("lat")) || 0,
+    u = Number(o.useFormValue("lng")) || 0,
+    p = Number(o.useFormValue("radius_m")) || 200,
+    x = !!n.useValue("searching"),
+    h = n.useValue("results") ?? [],
+    g = String(n.useValue("error") ?? ""),
+    F = Number(n.useValue("index")) < 0,
+    I = [{
+      id: "work-location-map",
+      title: t("hr.myAttLocation"),
+      children: e.jsxs(X, {
+        spacing: le,
+        children: [e.jsx(Ji, {
+          form: o,
+          name: "query",
+          label: t("hr.myAttAddress"),
+          fullWidth: !0,
+          onAddressComplete: (_, v) => {
+            r(v);
+          }
+        }), x && e.jsx(k, {
+          sx: {
+            fontSize: 14,
+            color: "text.secondary"
+          },
+          children: t("hr.myAttFindingAddress")
+        }), h.length > 1 && e.jsx(m, {
+          sx: {
+            display: "flex",
+            flexDirection: "column",
+            border: "1px solid #e2e8f0",
+            borderRadius: 1.5,
+            overflow: "hidden"
+          },
+          children: h.map(_ => e.jsx(m, {
+            role: "button",
+            tabIndex: 0,
+            onClick: () => a(_.lat, _.lng, _.name),
+            sx: {
+              px: 1.5,
+              py: 1,
+              fontSize: 14,
+              cursor: "pointer",
+              borderBottom: "1px solid #f1f5f9",
+              "&:hover": {
+                bgcolor: "#f8fafc"
+              }
+            },
+            children: _.name
+          }, `${_.lat},${_.lng}`))
+        }), e.jsx(du, {
+          lat: l,
+          lng: u,
+          radius: p,
+          onPick: (_, v) => a(_, v),
+          height: d ? 300 : 360
+        }), e.jsx(k, {
+          sx: {
+            fontSize: 14,
+            color: "text.secondary"
+          },
+          children: t("hr.myAttMapHint")
+        }), e.jsxs(m, {
+          sx: {
+            display: "grid",
+            gridTemplateColumns: d ? "minmax(0, 1fr)" : "2fr 1fr",
+            gap: le
+          },
+          children: [e.jsx(re, {
+            form: o,
+            name: "name",
+            label: t("hr.myAttLocationName"),
+            required: !0,
+            fullWidth: !0,
+            slotProps: {
+              htmlInput: {
+                maxLength: 60
+              }
+            }
+          }), e.jsx(kt, {
+            form: o,
+            name: "radius_m",
+            label: t("hr.myAttRadius"),
+            suffix: "m",
+            min: 30,
+            max: 5e3,
+            thousandSeparator: !1,
+            textAlign: "left",
+            fullWidth: !0
+          })]
+        }), g && e.jsx(Ee, {
+          message: g
+        })]
+      })
+    }];
+  return e.jsx(ge, {
+    open: i.isOpen,
+    onClose: i.close,
+    title: t(F ? "hr.myAttAddLocation" : "hr.myAttEditLocation"),
+    width: "720px",
+    fullScreen: d,
+    mobilePresentation: d ? "slide" : "dialog",
+    draggable: !0,
+    backdropClick: !1,
+    titleIcons: {
+      delete: {
+        visible: !1
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !0,
+      right: e.jsx(B, {
+        variant: "contained",
+        onClick: () => {
+          o.submit();
+        },
+        sx: {
+          minWidth: 96
+        },
+        children: t("hr.apply")
+      })
+    },
+    sections: I
+  });
+}
+function mu({
+  modal: s
+}) {
+  const t = J(),
+    i = me(),
+    [n, o] = b.useState(s.isOpen);
+  b.useEffect(() => {
+    if (s.isOpen) return o(!0);
+    const a = window.setTimeout(() => o(!1), 400);
+    return () => window.clearTimeout(a);
+  }, [s.isOpen]);
+  const r = [{
+    id: "attendance-qr",
+    showTitle: !1,
+    children: e.jsx(m, {
+      sx: {
+        py: 1
+      },
+      children: n && e.jsx(il, {
+        compact: !0
+      })
+    })
+  }];
+  return e.jsx(ge, {
+    open: s.isOpen,
+    onClose: s.close,
+    title: t("hr.myAttQrTitle"),
+    width: "560px",
+    fullScreen: i,
+    mobilePresentation: i ? "slide" : "dialog",
+    draggable: !0,
+    backdropClick: !1,
+    titleIcons: {
+      delete: {
+        visible: !1
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !0,
+      left: e.jsx(B, {
+        onClick: () => window.open("/dashboard/hr/attendance/qr", "_blank"),
+        children: t("hr.myAttNewTab")
+      }),
+      right: e.jsx(B, {
+        variant: "contained",
+        onClick: s.close,
+        sx: {
+          minWidth: 96
+        },
+        children: t("hr.confirm")
+      })
+    },
+    sections: r
+  });
+}
+function pu({
+  level: s
+}) {
+  return s === 0 || s >= -60 ? e.jsx(cn, {}) : s >= -75 ? e.jsx(Il, {}) : e.jsx(Fl, {});
+}
+function gu({
+  c: s,
+  registered: t
+}) {
+  const i = J(),
+    n = me(),
+    o = s.wifiScanUi,
+    r = !!o.useValue("scanning"),
+    a = o.useValue("networks") ?? [],
+    d = String(o.useValue("connectedBssid") ?? ""),
+    l = String(o.useValue("error") ?? ""),
+    u = o.useValue("picked") ?? [],
+    p = g => t.some(F => g.bssid && F.bssid.toLowerCase() === g.bssid || !F.bssid && F.name === g.ssid),
+    h = [{
+      id: "wifi-scan",
+      showTitle: !1,
+      children: r ? e.jsx(m, {
+        sx: {
+          py: 6,
+          display: "flex",
+          justifyContent: "center"
+        },
+        children: e.jsx(ye, {
+          size: 28
+        })
+      }) : a.length === 0 ? e.jsx(Yt, {
+        text: l || i("hr.myAttWifiNone")
+      }) : e.jsx(m, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          "& > * + *": {
+            borderTop: 1,
+            borderColor: "divider"
+          }
+        },
+        children: a.map(g => {
+          const F = p(g),
+            I = !!d && g.bssid === d;
+          return e.jsxs(Ft, {
+            disabled: F,
+            role: "checkbox",
+            "aria-checked": F || u.includes(g.bssid),
+            onClick: () => s.pickScannedWifi(g),
+            sx: {
+              display: "flex",
+              alignItems: "center",
+              gap: 1.5,
+              width: "100%",
+              textAlign: "left",
+              py: 1.25,
+              px: .5
+            },
+            children: [e.jsx(m, {
+              sx: {
+                display: "flex",
+                color: F ? "text.disabled" : "text.secondary",
+                flexShrink: 0
+              },
+              children: e.jsx(pu, {
+                level: g.level
+              })
+            }), e.jsxs(m, {
+              sx: {
+                flex: 1,
+                minWidth: 0
+              },
+              children: [e.jsxs(m, {
+                sx: {
+                  fontSize: 15,
+                  fontWeight: I ? 700 : 500,
+                  color: F ? "text.disabled" : "text.primary",
+                  wordBreak: "break-all"
+                },
+                children: [g.ssid, I && e.jsx(m, {
+                  component: "span",
+                  sx: {
+                    ml: 1,
+                    fontSize: 14,
+                    fontWeight: 500,
+                    color: "primary.main"
+                  },
+                  children: i("hr.myAttConnected")
+                })]
+              }), e.jsx(m, {
+                sx: {
+                  fontSize: 14,
+                  color: F ? "text.disabled" : "text.secondary"
+                },
+                children: g.bssid
+              })]
+            }), F ? e.jsxs(m, {
+              sx: {
+                display: "flex",
+                alignItems: "center",
+                gap: .5,
+                flexShrink: 0,
+                fontSize: 14,
+                color: "text.secondary"
+              },
+              children: [e.jsx(oo, {
+                fontSize: "small"
+              }), i("hr.myAttRegistered")]
+            }) : u.includes(g.bssid) ? e.jsx($r, {
+              sx: {
+                flexShrink: 0,
+                color: "primary.main"
+              }
+            }) : e.jsx(Kr, {
+              sx: {
+                flexShrink: 0,
+                color: "text.disabled"
+              }
+            })]
+          }, g.bssid || g.ssid);
+        })
+      })
+    }];
+  return e.jsx(ge, {
+    open: s.wifiScanModal.isOpen,
+    onClose: s.wifiScanModal.close,
+    title: i("hr.myAttWifiPick"),
+    width: "480px",
+    fullScreen: n,
+    mobilePresentation: n ? "slide" : "dialog",
+    draggable: !0,
+    titleIcons: {
+      delete: {
+        visible: !1
+      },
+      print: {
+        visible: !1
+      },
+      share: {
+        visible: !1
+      }
+    },
+    tabs: {
+      visible: !1
+    },
+    scrollPastLastSection: !1,
+    actions: {
+      visible: !0,
+      showCancelButton: !1,
+      left: e.jsx(B, {
+        variant: "outlined",
+        startIcon: e.jsx(po, {}),
+        disabled: r,
+        onClick: () => {
+          s.scanWifi();
+        },
+        children: i("hr.myAttRescan")
+      }),
+      right: e.jsx(B, {
+        variant: "contained",
+        onClick: s.confirmWifiScan,
+        sx: {
+          minWidth: 96
+        },
+        children: u.length ? i("hr.myAttAddN", {
+          count: u.length
+        }) : i("hr.confirm")
+      })
+    },
+    sections: h
+  });
+}
+function fu({
+  modal: s,
+  employees: t,
+  picked: i,
+  onChange: n,
+  policyName: o
+}) {
+  const r = J(),
+    d = Rt({
+      stateId: "bootstrapState"
+    }).getValue("data"),
+    l = b.useMemo(() => {
+      const u = new Map(uo(d?.employee).map(p => [p.seq, p]));
+      return t.map(p => {
+        const x = u.get(p.seq),
+          h = o(p.seq);
+        return {
+          ...(x ?? {
+            seq: p.seq,
+            name: p.name
+          }),
+          account_seq: void 0,
+          name: h ? `${p.name} · ${h}` : p.name
+        };
+      });
+    }, [t, d?.employee, o]);
+  return e.jsx(Sn, {
+    open: s.isOpen,
+    title: r("hr.attSetPickEmployees"),
+    candidates: l,
+    requireAccount: !1,
+    initialSeqs: i,
+    emptyHint: e.jsx(Yt, {
+      text: r("hr.attAdminNoAssignable")
+    }),
+    onClose: s.close,
+    onApply: u => n(u.map(p => p.seq))
+  }, s.isOpen ? "open" : "closed");
+}
+function qi(s) {
+  const t = s.workdays.map(n => go[n - 1]).join(""),
+    i = s.work_type === "shift" ? c("hr.attSetByRoster") : s.work_type === "discretionary" ? c("hr.attSetPlannedDiscretionary") : `${s.work_start}~${s.work_end}`;
+  return [nl[s.work_type], i, t, c("hr.attSetBreakMinutes", {
+    minutes: s.break_minutes
+  })].filter(Boolean).join(" · ");
+}
+function xu({
+  modal: s,
+  pending: t = !1,
+  onReady: i
+}) {
+  const n = J(),
+    o = me(),
+    r = De()?.seq ?? 0,
+    a = Array.from({
+      length: 12
+    }, (W, ce) => ({
+      value: ce + 1,
+      label: n("hr.attSetMonthN", {
+        month: ce + 1
+      })
+    })),
+    d = ou(r, s.close, !1);
+  b.useEffect(() => {
+    if (!t) return;
+    let W = !1;
+    return d.reload().then(() => {
+      W || i?.();
+    }), () => {
+      W = !0;
+    };
+  }, [t]);
+  const l = d.settingForm,
+    u = l.useFormValue("check_methods") ?? [],
+    p = !!l.useFormValue("qr_with_gps"),
+    x = u.includes("qr") && p,
+    h = l.useFormValue("locations") ?? [],
+    g = l.useFormValue("wifi_networks") ?? [],
+    F = l.useFormValue("leave_basis"),
+    I = !!l.useFormValue("carry_over"),
+    _ = !!l.useFormValue("auto_check_in"),
+    v = l.useFormValue("auto_methods"),
+    C = d.bundle?.setting.plus !== !1,
+    w = d.bundle?.setting.headcount ?? 0,
+    E = w >= 5,
+    A = !!l.useFormValue("pay_night_meal_auto"),
+    [S, L] = b.useState([]),
+    j = W => !!(W.work_start_time && W.work_end_time && W.work_start_time !== W.work_end_time),
+    y = d.employees.filter(j),
+    D = d.employees.filter(W => !j(W)),
+    [M, z] = b.useState(0),
+    [O, T] = b.useState(!1),
+    $ = {
+      isOpen: O,
+      open: () => T(!0),
+      close: () => T(!1)
+    },
+    ee = d.bundle?.policies ?? [],
+    te = d.bundle?.templates ?? [],
+    Q = new Map((d.bundle?.assignments ?? []).map(W => [W.employee_seq, W.policy_seq])),
+    U = ee.find(W => W.is_default),
+    pe = U ?? d.bundle?.builtin_policy,
+    be = ee.filter(W => !W.is_default),
+    ke = W => {
+      const ce = Q.get(W),
+        Re = ce ? ee.find(nt => nt.seq === ce) : void 0;
+      return Re && !Re.is_default ? Re.name : n("hr.attSetDefaultPolicy");
+    },
+    H = W => ({
+      display: "grid",
+      gridTemplateColumns: o ? "1fr" : `repeat(${W}, minmax(0, 1fr))`,
+      gap: le
+    }),
+    Z = {
+      display: "flex",
+      alignItems: "center"
+    },
+    se = {
+      display: "grid",
+      gridTemplateColumns: o ? "1fr" : "repeat(2, minmax(0, 1fr))",
+      columnGap: le,
+      rowGap: 0
+    },
+    fe = v ?? [],
+    Me = W => _ && C && fe.includes(W),
+    f = C ? u.includes("wifi") ? "method" : Me("wifi") ? "auto" : null : null,
+    R = u.includes("gps") || x ? "method" : Me("gps") ? "auto" : h.length > 0 ? "method" : null,
+    V = e.jsxs(m, {
+      sx: {
+        display: "flex",
+        flexDirection: "column",
+        gap: 1.5
+      },
+      children: [g.map((W, ce) => e.jsxs(m, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: 1.5,
+          p: 1.5,
+          borderRadius: 1.5,
+          bgcolor: "#f8fafc"
+        },
+        children: [e.jsx(cn, {
+          sx: {
+            color: "text.secondary",
+            flexShrink: 0
+          }
+        }), e.jsx(k, {
+          sx: {
+            minWidth: 0,
+            flex: 1,
+            fontSize: 15,
+            fontWeight: 600,
+            wordBreak: "break-all"
+          },
+          children: W.name || `Wi-Fi ${ce + 1}`
+        }), e.jsx(ht, {
+          "aria-label": n("hr.attSetDeleteWifi", {
+            name: W.name || `Wi-Fi ${ce + 1}`
+          }),
+          onClick: () => d.removeWifi(ce),
+          children: e.jsx(Qt, {})
+        })]
+      }, ce)), e.jsx(m, {
+        sx: {
+          display: "flex",
+          gap: 1.5,
+          flexWrap: "wrap"
+        },
+        children: Gr() ? e.jsx(B, {
+          variant: "outlined",
+          startIcon: e.jsx(cn, {}),
+          onClick: d.openWifiScan,
+          children: n("hr.attSetWifiScan")
+        }) : e.jsx(k, {
+          variant: "body2",
+          sx: {
+            color: "text.secondary"
+          },
+          children: n("hr.attSetWifiAppOnly")
+        })
+      })]
+    }),
+    N = e.jsxs(m, {
+      sx: {
+        display: "flex",
+        flexDirection: "column",
+        gap: 1.5
+      },
+      children: [h.map((W, ce) => e.jsxs(m, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: 1.5,
+          p: 1.5,
+          borderRadius: 1.5,
+          bgcolor: "#f8fafc"
+        },
+        children: [e.jsxs(m, {
+          sx: {
+            minWidth: 0,
+            flex: 1
+          },
+          children: [e.jsx(k, {
+            sx: {
+              fontSize: 15,
+              fontWeight: 600
+            },
+            children: W.name || n("hr.attSetLocationN", {
+              n: ce + 1
+            })
+          }), e.jsxs(k, {
+            sx: {
+              fontSize: 14,
+              color: "text.secondary"
+            },
+            children: [n("hr.attSetRadiusM", {
+              radius: W.radius_m
+            }), " · ", Number(W.lat).toFixed(5), ",", " ", Number(W.lng).toFixed(5)]
+          })]
+        }), e.jsx(B, {
+          variant: "outlined",
+          startIcon: e.jsx($n, {}),
+          onClick: () => d.location.open(ce),
+          children: n("hr.attSetMap")
+        }), e.jsx(ht, {
+          "aria-label": n("hr.attSetDeleteLocation"),
+          onClick: () => d.removeLocation(ce),
+          children: e.jsx(Qt, {})
+        })]
+      }, ce)), e.jsx(m, {
+        sx: {
+          display: "flex",
+          gap: 1.5,
+          flexWrap: "wrap"
+        },
+        children: e.jsx(B, {
+          startIcon: e.jsx($n, {}),
+          variant: "outlined",
+          onClick: () => d.location.open(-1),
+          children: n("hr.attSetAddLocationOnMap")
+        })
+      })]
+    }),
+    G = u.includes("qr") && e.jsx(B, {
+      variant: "outlined",
+      startIcon: e.jsx(kl, {}),
+      onClick: d.qrModal.open,
+      children: n("hr.attSetOpenQr")
+    }),
+    Ye = (d.bundle ? [e.jsx($e, {
+      title: n("hr.attSetMethodTitle"),
+      action: o && G,
+      children: e.jsxs(m, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: 2
+        },
+        children: [e.jsx(m, {
+          sx: {
+            display: "flex",
+            gap: 1.5,
+            flexWrap: "wrap"
+          },
+          children: Object.keys(ti).map(W => {
+            const ce = u.includes(W);
+            return e.jsx(B, {
+              variant: ce ? "contained" : "outlined",
+              disableElevation: !0,
+              sx: o ? {
+                flex: "1 1 auto"
+              } : void 0,
+              disabled: W === "wifi" && !C,
+              onClick: () => l.setFormValue("check_methods", ce ? u.filter(Re => Re !== W) : [...u, W]),
+              children: W === "wifi" && !C ? n("hr.attSetWifiPlusOnly") : ti[W]
+            }, W);
+          })
+        }), e.jsx(He, {
+          items: [n("hr.attSetNoteMethodAny"), n("hr.attSetNoteMethodGps"), n("hr.attSetNoteMethodQr"), n("hr.attSetNoteMethodWifi"), n("hr.attSetNoteQrWithGps"), n("hr.attSetNoteOutside"), n("hr.attSetNoteTrip")]
+        }), f === "method" && V, e.jsxs(m, {
+          sx: {
+            display: "flex",
+            flexDirection: "column"
+          },
+          children: [u.includes("qr") && e.jsx(he, {
+            form: l,
+            name: "qr_with_gps",
+            label: n("hr.attSetQrWithGps")
+          }), e.jsx(he, {
+            form: l,
+            name: "allow_outside",
+            label: n("hr.attSetAllowOutside")
+          })]
+        }), R === "method" && N]
+      })
+    }, "method"), e.jsx($e, {
+      title: n("hr.attSetAutoTitle"),
+      children: e.jsxs(m, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: 2
+        },
+        children: [e.jsxs(m, {
+          sx: {
+            position: "relative",
+            display: "flex",
+            flexDirection: "column",
+            gap: le
+          },
+          children: [e.jsx(he, {
+            form: l,
+            name: "auto_check_in",
+            label: n(C ? "hr.attSetAutoIn" : "hr.attSetAutoInPlus"),
+            disabled: !C
+          }), _ && C && e.jsxs(m, {
+            sx: {
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+              fontSize: 15,
+              ...(o ? {} : {
+                position: "absolute",
+                right: 0,
+                top: "50%",
+                transform: "translateY(-50%)"
+              })
+            },
+            children: [n("hr.attSetAutoInBefore"), e.jsx(m, {
+              sx: {
+                width: 88
+              },
+              children: e.jsx(kt, {
+                form: l,
+                name: "auto_check_in_minutes",
+                size: "small",
+                min: 10,
+                max: 180,
+                decimalLength: 0,
+                thousandSeparator: !1,
+                fullWidth: !0,
+                slotProps: {
+                  htmlInput: {
+                    "aria-label": n("hr.attSetAutoInMinutesAria")
+                  }
+                }
+              })
+            }), n("hr.attSetAutoInAfter")]
+          })]
+        }), _ && C ? e.jsxs(e.Fragment, {
+          children: [e.jsx(m, {
+            sx: {
+              display: "flex",
+              gap: 1.5,
+              flexWrap: "wrap"
+            },
+            children: ["gps", "wifi"].map(W => {
+              const ce = fe.includes(W);
+              return e.jsx(B, {
+                variant: ce ? "contained" : "outlined",
+                disableElevation: !0,
+                sx: o ? {
+                  flex: "1 1 auto"
+                } : void 0,
+                onClick: () => l.setFormValue("auto_methods", ce ? fe.filter(Re => Re !== W) : [...fe, W]),
+                children: n(W === "gps" ? "hr.attSetAutoWayGps" : "hr.attSetAutoWayWifi")
+              }, W);
+            })
+          }), e.jsxs(m, {
+            sx: {
+              display: "flex",
+              alignItems: "center",
+              gap: 1,
+              fontSize: 15,
+              flexWrap: "wrap"
+            },
+            children: [n("hr.attSetLateFreeBefore"), e.jsx(m, {
+              sx: {
+                width: 88
+              },
+              children: e.jsx(kt, {
+                form: l,
+                name: "auto_late_free_minutes",
+                size: "small",
+                min: 0,
+                max: 120,
+                decimalLength: 0,
+                thousandSeparator: !1,
+                fullWidth: !0,
+                slotProps: {
+                  htmlInput: {
+                    "aria-label": n("hr.attSetLateFreeAria")
+                  }
+                }
+              })
+            }), n("hr.attSetLateFreeAfter")]
+          }), e.jsx(He, {
+            items: [n("hr.attSetNoteAutoIn"), n("hr.attSetNoteLateArrival"), n("hr.attSetNoteLateReason"), n("hr.attSetNoteTooLate")]
+          })]
+        }) : e.jsx(He, {
+          items: [n("hr.attSetNoteAutoOff")]
+        }), f === "auto" && V, R === "auto" && N]
+      })
+    }, "auto"), e.jsxs($e, {
+      title: n("hr.attSetRuleTitle"),
+      children: [e.jsxs(m, {
+        sx: {
+          ...H(4),
+          gridTemplateColumns: o ? "repeat(2, minmax(0, 1fr))" : "repeat(4, minmax(0, 1fr))"
+        },
+        children: [e.jsx(Be, {
+          form: l,
+          name: "start_date",
+          label: n("hr.attSetStartDate"),
+          fullWidth: !0,
+          slotProps: {
+            inputLabel: {
+              shrink: !0
+            }
+          }
+        }), e.jsx(Te, {
+          size: "medium",
+          form: l,
+          name: "weekly_limit_hours",
+          label: n("hr.attSetWeeklyLimit"),
+          suffix: n("hr.attSetHoursSuffix"),
+          min: 1,
+          step: 1,
+          format: {
+            maximumFractionDigits: 1
+          },
+          fullWidth: !0
+        }), e.jsx(rt, {
+          form: l,
+          name: "week_start_day",
+          label: n("hr.attSetWeekStart"),
+          options: [{
+            value: 0,
+            label: n("hr.attSetSunday")
+          }, {
+            value: 1,
+            label: n("hr.attSetMonday")
+          }],
+          showEmptyOption: !1,
+          fullWidth: !0
+        }), e.jsx(rt, {
+          form: l,
+          name: "overtime_mode",
+          label: n("hr.attSetOvertimeRecognition"),
+          options: [{
+            value: "auto",
+            label: n("hr.attSetOvertimeAuto")
+          }, {
+            value: "approval",
+            label: n("hr.attSetOvertimeApproval")
+          }],
+          showEmptyOption: !1,
+          fullWidth: !0
+        }), e.jsx(pt, {
+          size: "medium",
+          form: l,
+          name: "lunch_start",
+          label: n("hr.attSetLunchStart"),
+          fullWidth: !0
+        }), e.jsx(pt, {
+          size: "medium",
+          form: l,
+          name: "lunch_end",
+          label: n("hr.attSetLunchEnd"),
+          fullWidth: !0
+        }), e.jsx(rt, {
+          form: l,
+          name: "auto_check_out_before",
+          label: n("hr.attSetAutoOutFrom"),
+          options: [{
+            value: 0,
+            label: n("hr.attSetAutoOut0")
+          }, {
+            value: 10,
+            label: n("hr.attSetAutoOut10")
+          }, {
+            value: 20,
+            label: n("hr.attSetAutoOut20")
+          }, {
+            value: 30,
+            label: n("hr.attSetAutoOut30")
+          }, {
+            value: 60,
+            label: n("hr.attSetAutoOut60")
+          }],
+          showEmptyOption: !1,
+          fullWidth: !0
+        }), e.jsxs(m, {
+          sx: {
+            ...se,
+            gridColumn: "1 / -1"
+          },
+          children: [e.jsx(m, {
+            sx: Z,
+            children: e.jsx(he, {
+              form: l,
+              name: "remind_in_30",
+              label: n("hr.attSetRemindIn30")
+            })
+          }), e.jsx(m, {
+            sx: Z,
+            children: e.jsx(he, {
+              form: l,
+              name: "remind_in_10",
+              label: n("hr.attSetRemindIn10")
+            })
+          }), e.jsx(m, {
+            sx: Z,
+            children: e.jsx(he, {
+              form: l,
+              name: "remind_in_now",
+              label: n("hr.attSetRemindInNow")
+            })
+          }), e.jsx(m, {
+            sx: Z,
+            children: e.jsx(he, {
+              form: l,
+              name: "remind_check_out",
+              label: n("hr.attSetRemindCheckOut")
+            })
+          }), e.jsx(m, {
+            sx: Z,
+            children: e.jsx(he, {
+              form: l,
+              name: "bio_check",
+              label: n("hr.attSetBioCheck")
+            })
+          }), e.jsx(m, {
+            sx: Z,
+            children: e.jsx(he, {
+              form: l,
+              name: "track_outing",
+              label: n("hr.attSetTrackOuting")
+            })
+          })]
+        })]
+      }), e.jsx(He, {
+        sx: {
+          mt: le
+        },
+        items: [n("hr.attSetNoteBeforeStart"), n("hr.attSetNoteRemind"), n("hr.attSetNoteRemindRepeat"), n("hr.attSetNoteRemindOut"), n("hr.attSetNoteAutoOut"), n("hr.attSetNoteBio"), n("hr.attSetNoteTrack"), n("hr.attSetNoteAutoReturn"), d.bundle.setting.tracking_start && !d.bundle.setting.start_date ? n("hr.attSetNoteStartEmptyWithDate", {
+          date: d.bundle.setting.tracking_start
+        }) : n("hr.attSetNoteStartEmpty"), n("hr.attSetNoteNoRecords")]
+      })]
+    }, "rule"), e.jsxs($e, {
+      title: n("hr.attSetLeaveTitle"),
+      children: [e.jsxs(m, {
+        sx: H(4),
+        children: [e.jsx(rt, {
+          form: l,
+          name: "leave_basis",
+          label: n("hr.attSetLeaveBasis"),
+          options: [{
+            value: "hire_date",
+            label: n("hr.attSetBasisHireDate")
+          }, {
+            value: "fiscal_year",
+            label: n("hr.attSetBasisFiscalYear")
+          }],
+          showEmptyOption: !1,
+          fullWidth: !0
+        }), F === "fiscal_year" && e.jsx(rt, {
+          form: l,
+          name: "fiscal_start_month",
+          label: n("hr.attSetFiscalStartMonth"),
+          options: a,
+          showEmptyOption: !1,
+          fullWidth: !0
+        }), e.jsx(he, {
+          form: l,
+          name: "carry_over",
+          label: n("hr.attSetCarryOver")
+        }), I && e.jsx(kt, {
+          form: l,
+          name: "carry_max_days",
+          label: n("hr.attSetCarryMax"),
+          suffix: n("hr.attSetDaysSuffix"),
+          min: 0,
+          decimalLength: 1,
+          thousandSeparator: !1,
+          textAlign: "left",
+          fullWidth: !0
+        }), e.jsx(m, {
+          sx: {
+            ...Z,
+            gridColumn: o ? "1 / -1" : "span 2"
+          },
+          children: e.jsx(he, {
+            form: l,
+            name: "leave_promotion",
+            label: n("hr.attSetLeavePromotion")
+          })
+        })]
+      }), e.jsx(He, {
+        sx: {
+          mt: le
+        },
+        items: [n("hr.attSetNotePromotion"), n("hr.attSetNotePromotionDesignate"), n("hr.attSetNotePromotionWhere"), n("hr.attSetNotePromotionPay")]
+      })]
+    }, "leave"), e.jsxs($e, {
+      title: n("hr.attSetPayTitle"),
+      children: [e.jsxs(m, {
+        sx: {
+          display: "flex",
+          gap: 1,
+          alignItems: "center",
+          flexWrap: "wrap",
+          mb: le
+        },
+        children: [e.jsx(k, {
+          sx: {
+            fontSize: 15,
+            fontWeight: 600
+          },
+          children: n("hr.attSetHeadcount", {
+            count: w
+          })
+        }), e.jsx(k, {
+          sx: {
+            fontSize: 14,
+            color: "text.secondary"
+          },
+          children: n(E ? "hr.attSetPremiumOn" : "hr.attSetPremiumOff")
+        })]
+      }), e.jsxs(m, {
+        sx: {
+          ...H(4),
+          gridTemplateColumns: o ? "repeat(2, minmax(0, 1fr))" : "repeat(4, minmax(0, 1fr))"
+        },
+        children: [E && e.jsxs(e.Fragment, {
+          children: [e.jsx(Te, {
+            size: "medium",
+            form: l,
+            name: "pay_overtime_rate",
+            label: n("hr.attSetOvertimeRate"),
+            suffix: n("hr.attSetRateSuffix"),
+            min: 1,
+            step: .1,
+            format: {
+              maximumFractionDigits: 2
+            },
+            fullWidth: !0
+          }), e.jsx(Te, {
+            size: "medium",
+            form: l,
+            name: "pay_night_rate",
+            label: n("hr.attSetNightRate"),
+            suffix: n("hr.attSetRateSuffix"),
+            min: 0,
+            step: .1,
+            format: {
+              maximumFractionDigits: 2
+            },
+            fullWidth: !0
+          }), e.jsx(Te, {
+            size: "medium",
+            form: l,
+            name: "pay_holiday_rate",
+            label: n("hr.attSetHolidayRate"),
+            suffix: n("hr.attSetRateSuffix"),
+            min: 1,
+            step: .1,
+            format: {
+              maximumFractionDigits: 2
+            },
+            fullWidth: !0
+          }), e.jsx(Te, {
+            size: "medium",
+            form: l,
+            name: "pay_holiday_over_rate",
+            label: n("hr.attSetHolidayOverRate"),
+            suffix: n("hr.attSetRateSuffix"),
+            min: 1,
+            step: .1,
+            format: {
+              maximumFractionDigits: 2
+            },
+            fullWidth: !0
+          })]
+        }), e.jsx(Te, {
+          size: "medium",
+          form: l,
+          name: "pay_night_shift_allowance",
+          label: n("hr.attSetNightShiftAllowance"),
+          suffix: n("hr.attSetWonSuffix"),
+          min: 0,
+          step: 1e3,
+          format: {
+            maximumFractionDigits: 0
+          },
+          fullWidth: !0
+        }), e.jsx(Te, {
+          size: "medium",
+          form: l,
+          name: "pay_night_hourly_allowance",
+          label: n("hr.attSetNightHourlyAllowance"),
+          suffix: n("hr.attSetWonSuffix"),
+          min: 0,
+          step: 1e3,
+          format: {
+            maximumFractionDigits: 0
+          },
+          fullWidth: !0
+        }), e.jsx(Te, {
+          size: "medium",
+          form: l,
+          name: "pay_night_shift_min_hours",
+          label: n("hr.attSetNightShiftMinHours"),
+          suffix: n("hr.attSetHoursSuffix"),
+          min: .5,
+          step: .5,
+          format: {
+            maximumFractionDigits: 1
+          },
+          fullWidth: !0
+        }), e.jsx(Te, {
+          size: "medium",
+          form: l,
+          name: "pay_night_meal_minutes",
+          label: n("hr.attSetNightMealMinutes"),
+          suffix: n("hr.attSetMinutesSuffix"),
+          min: 0,
+          step: 10,
+          format: {
+            maximumFractionDigits: 0
+          },
+          disabled: !A,
+          fullWidth: !0
+        }), e.jsx(m, {
+          sx: {
+            gridColumn: "1 / -1"
+          },
+          children: e.jsx(he, {
+            form: l,
+            name: "pay_night_meal_auto",
+            label: n("hr.attSetNightMealAuto")
+          })
+        })]
+      }), e.jsx(He, {
+        sx: {
+          mt: le
+        },
+        items: [n("hr.attSetNoteRateBase"), n("hr.attSetNoteLegalDefaults"), n("hr.attSetNoteUnder5"), n("hr.attSetNoteHeadcount"), n("hr.attSetNoteNightAllowance"), n("hr.attSetNoteNightShiftDays"), n("hr.attSetNoteMealAuto"), n("hr.attSetNotePayUsers")]
+      })]
+    }, "pay"), e.jsxs($e, {
+      title: n("hr.attSetDeductionTitle"),
+      children: [e.jsx(m, {
+        sx: H(2),
+        children: e.jsx(rt, {
+          form: l,
+          name: "pay_daily_wage_method",
+          label: n("hr.attSetDailyBasis"),
+          options: [{
+            value: "hourly",
+            label: n("hr.attSetDailyHourly")
+          }, {
+            value: "calendar",
+            label: n("hr.attSetDailyCalendar")
+          }],
+          showEmptyOption: !1,
+          fullWidth: !0
+        })
+      }), e.jsxs(m, {
+        sx: {
+          ...se,
+          mt: le
+        },
+        children: [e.jsx(m, {
+          sx: Z,
+          children: e.jsx(he, {
+            form: l,
+            name: "pay_deduct_unpaid_leave",
+            label: n("hr.attSetDeductUnpaidLeave")
+          })
+        }), e.jsx(m, {
+          sx: Z,
+          children: e.jsx(he, {
+            form: l,
+            name: "pay_deduct_absence",
+            label: n("hr.attSetDeductAbsence")
+          })
+        }), e.jsx(m, {
+          sx: Z,
+          children: e.jsx(he, {
+            form: l,
+            name: "pay_deduct_late_early",
+            label: n("hr.attSetDeductLateEarly")
+          })
+        }), e.jsx(m, {
+          sx: {
+            ...Z,
+            gridColumn: "1 / -1"
+          },
+          children: e.jsx(he, {
+            form: l,
+            name: "pay_deduct_weekly_holiday",
+            label: n("hr.attSetDeductWeeklyHoliday")
+          })
+        })]
+      }), e.jsx(He, {
+        sx: {
+          mt: le
+        },
+        items: [n("hr.attSetNoteDeductWhere"), n("hr.attSetNoteDeductAbsence"), n("hr.attSetNoteDeductLate"), n("hr.attSetNoteDeductExcluded"), n("hr.attSetNoteDeductSalaried")]
+      })]
+    }, "deduction"), e.jsxs($e, {
+      title: n("hr.attSetDefaultPolicy"),
+      action: e.jsx(B, {
+        variant: "outlined",
+        onClick: () => d.policy.open(U, !0),
+        children: n(U ? "hr.attSetEditDefault" : "hr.attSetSetDefault")
+      }),
+      children: [e.jsx(k, {
+        sx: {
+          fontSize: 15,
+          fontWeight: 600,
+          mb: 1.5
+        },
+        children: pe ? qi(pe) : ""
+      }), e.jsx(He, {
+        items: [n("hr.attSetNoteDefaultPolicy")]
+      })]
+    }, "default-policy"), e.jsx($e, {
+      title: n("hr.attSetPolicies"),
+      action: e.jsx(B, {
+        startIcon: e.jsx(Zt, {}),
+        variant: "outlined",
+        onClick: () => d.policy.open(),
+        children: n("hr.attSetAddPolicy")
+      }),
+      children: be.length === 0 ? e.jsx(Yt, {
+        text: n("hr.attSetPoliciesEmpty")
+      }) : be.map(W => e.jsxs(m, {
+        role: "button",
+        tabIndex: 0,
+        onClick: () => d.policy.open(W),
+        sx: {
+          py: 1.25,
+          borderBottom: "1px solid #f1f5f9",
+          cursor: "pointer",
+          display: "flex",
+          gap: 1,
+          alignItems: "center",
+          flexWrap: "wrap",
+          "&:hover": {
+            bgcolor: "#f8fafc"
+          }
+        },
+        children: [e.jsx(k, {
+          sx: {
+            fontSize: 15,
+            fontWeight: 600
+          },
+          children: W.name
+        }), e.jsx(k, {
+          sx: {
+            fontSize: 14,
+            color: "text.secondary",
+            flexBasis: o ? "100%" : "auto"
+          },
+          children: qi(W)
+        })]
+      }, W.seq))
+    }, "policies"), e.jsx($e, {
+      title: n("hr.attSetAssignTitle"),
+      children: e.jsxs(m, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: le
+        },
+        children: [e.jsxs(m, {
+          sx: {
+            ...Hr,
+            maxWidth: o ? "none" : 560,
+            ...(o ? {
+              flexWrap: "wrap",
+              "& > :first-child": {
+                flex: "1 1 100%",
+                minWidth: 0
+              },
+              "& > button": {
+                flex: "1 1 0",
+                minWidth: 0
+              }
+            } : {})
+          },
+          children: [e.jsx(rt, {
+            label: n("hr.attSetAssignTo"),
+            value: M,
+            onChange: W => z(Number(W.target.value) || 0),
+            options: [{
+              value: 0,
+              label: n("hr.attSetDefaultPolicy")
+            }, ...be.map(W => ({
+              value: W.seq,
+              label: W.name
+            }))],
+            showEmptyOption: !1,
+            fullWidth: !0
+          }), e.jsx(B, {
+            variant: "outlined",
+            disabled: D.length === 0,
+            sx: Kn,
+            onClick: $.open,
+            children: n("hr.attSetPickEmployees")
+          }), e.jsx(B, {
+            variant: "contained",
+            disableElevation: !0,
+            disabled: !S.length,
+            sx: Kn,
+            onClick: async () => {
+              (await d.assign(M, S)) && L([]);
+            },
+            children: n("hr.attSetApplyToN", {
+              count: S.length
+            })
+          })]
+        }), y.length > 0 && e.jsx(He, {
+          items: [n("hr.attSetNotePersonalExcluded", {
+            names: y.map(W => W.name).join(", ")
+          }), n("hr.attSetNotePersonalApplies")]
+        }), S.length > 0 && e.jsxs(k, {
+          sx: {
+            fontSize: 15,
+            wordBreak: "keep-all"
+          },
+          children: [n("hr.attSetPickedN", {
+            count: S.length
+          }), " ", D.filter(W => S.includes(W.seq)).map(W => W.name).join(", ")]
+        })]
+      })
+    }, "assign"), e.jsx($e, {
+      title: n("hr.attSetTemplates"),
+      action: e.jsx(B, {
+        startIcon: e.jsx(Zt, {}),
+        variant: "outlined",
+        onClick: () => d.template.open(),
+        children: n("hr.attSetAddTemplate")
+      }),
+      children: te.length === 0 ? e.jsx(Yt, {
+        text: n("hr.attSetTemplatesEmpty")
+      }) : e.jsx(m, {
+        sx: {
+          display: "flex",
+          gap: 1,
+          flexWrap: "wrap"
+        },
+        children: te.map(W => e.jsxs(m, {
+          role: "button",
+          tabIndex: 0,
+          onClick: () => d.template.open(W),
+          sx: {
+            px: 1.5,
+            py: 1,
+            borderRadius: 1.5,
+            border: "1px solid #e2e8f0",
+            borderLeft: `4px solid ${W.color || "#2563eb"}`,
+            cursor: "pointer",
+            fontSize: 15,
+            "&:hover": {
+              bgcolor: "#f8fafc"
+            }
+          },
+          children: [e.jsx("b", {
+            children: W.name
+          }), " ", W.start_time, "~", W.end_time, " ·", " ", n("hr.attSetBreakMinutes", {
+            minutes: W.break_minutes
+          })]
+        }, W.seq))
+      })
+    }, "templates")] : [e.jsx($e, {
+      title: n("hr.attSetTitle"),
+      children: e.jsx(m, {
+        sx: {
+          display: "flex",
+          justifyContent: "center",
+          py: 8
+        },
+        children: d.loading ? e.jsx(ye, {
+          size: 28
+        }) : e.jsx(Yt, {
+          text: n("hr.errLoadAttendanceSettings")
+        })
+      })
+    }, "loading")]).filter(b.isValidElement).map(W => {
+      const ce = W.props;
+      return {
+        id: `att-${String(W.key)}`,
+        title: ce.title ?? "",
+        endIcon: ce.action || void 0,
+        children: ce.children
+      };
+    });
+  return e.jsxs(e.Fragment, {
+    children: [e.jsx(ge, {
+      open: s.isOpen,
+      onClose: s.close,
+      title: n("hr.attSetTitle"),
+      width: "960px",
+      fullScreen: o,
+      mobilePresentation: o ? "slide" : "dialog",
+      draggable: !0,
+      backdropClick: !1,
+      titleIcons: {
+        delete: {
+          visible: !1
+        },
+        print: {
+          visible: !1
+        },
+        share: {
+          visible: !1
+        }
+      },
+      tabs: {
+        visible: !o,
+        position: "left",
+        leftTabTextAlign: "center"
+      },
+      scrollPastLastSection: !1,
+      ...(o ? Ho : {}),
+      actions: {
+        visible: !0,
+        showCancelButton: !0,
+        left: !o && G ? G : void 0,
+        right: e.jsx(B, {
+          variant: "contained",
+          onClick: () => {
+            l.submit();
+          },
+          disabled: d.savingSetting || !d.bundle,
+          sx: {
+            minWidth: 96
+          },
+          children: d.savingSetting ? e.jsx(ye, {
+            size: 20,
+            color: "inherit"
+          }) : n("hr.save")
+        })
+      },
+      sections: Ye
+    }), e.jsx(lu, {
+      controller: d
+    }), e.jsx(cu, {
+      controller: d
+    }), e.jsx(uu, {
+      controller: d
+    }), e.jsx(mu, {
+      modal: d.qrModal
+    }), e.jsx(gu, {
+      c: d,
+      registered: g
+    }), e.jsx(fu, {
+      modal: $,
+      employees: D,
+      picked: S,
+      onChange: L,
+      policyName: ke
+    })]
+  });
+}
+const hu = {
+    id: "company",
+    label: "groups.orgNameLogo",
+    description: "groups.orgNameLogoDesc",
+    icon: e.jsx(aa, {})
+  },
+  bu = {
+    id: "members",
+    label: "groups.manageMembers",
+    description: "groups.manageMembersDesc",
+    icon: e.jsx(Cl, {})
+  },
+  yu = {
+    id: "permissions",
+    label: "groups.permissions",
+    description: "groups.permissionsDesc",
+    icon: e.jsx(Ua, {})
+  },
+  _u = {
+    id: "features",
+    label: "groups.serviceSettings",
+    description: "groups.serviceSettingsDesc",
+    icon: e.jsx(ka, {})
+  },
+  Su = {
+    id: "taskbox-settings",
+    label: "groups.taskSettings",
+    description: "groups.taskSettingsDesc",
+    icon: e.jsx(la, {})
+  },
+  ju = {
+    id: "video-meeting",
+    label: "groups.videoMeetingSettings",
+    description: "groups.videoMeetingSettingsDesc",
+    icon: e.jsx(ca, {})
+  },
+  wu = {
+    id: "mail-domain",
+    label: "groups.companyMail",
+    description: "groups.companyMailDesc",
+    icon: e.jsx(wa, {})
+  },
+  vu = {
+    id: "org-domain",
+    label: "groups.accessDomain",
+    description: "groups.accessDomainDesc",
+    icon: e.jsx(va, {})
+  },
+  ku = {
+    id: "api-keys",
+    label: "groups.apiKeys",
+    description: "groups.apiKeysDesc",
+    icon: e.jsx(ro, {})
+  },
+  Cu = {
+    id: "ai-key",
+    label: "groups.aiApiKeys",
+    description: "groups.aiApiKeysDesc",
+    icon: e.jsx(fa, {})
+  },
+  Fu = {
+    id: "migration",
+    label: "migration.cardTitle",
+    description: "migration.cardDesc",
+    icon: e.jsx(xa, {})
+  };
+function Iu(s, t) {
+  if (!t) return null;
+  const i = Pt.filter(o => s.providers[o.id]?.has_key);
+  if (!i.length) return {
+    text: c("groups.usingProviderAi"),
+    tone: "empty"
+  };
+  const n = i.filter(o => s.providers[o.id]?.rejected);
+  return n.length ? {
+    text: c("groups.providerKeyRejected", {
+      providers: n.map(o => o.label).join(" · ")
+    }),
+    tone: "error"
+  } : {
+    text: c("groups.usingOrgKeys", {
+      providers: i.map(o => o.label).join(" · ")
+    })
+  };
+}
+const Ou = {
+  id: "org-storage",
+  label: "groups.fileStorage",
+  description: "groups.fileStorageDesc",
+  icon: e.jsx(Ya, {})
+};
+function Tu(s, t) {
+  return t ? s.connection?.status === "error" ? {
+    text: c("groups.companyStorageFailed"),
+    tone: "error"
+  } : s.mode === "own" ? {
+    text: c("groups.usingCompanyStorage", {
+      bucket: s.connection?.bucket ?? ""
+    })
+  } : {
+    text: s.connection ? c("groups.usingTaskhamStorageConnected") : c("groups.usingTaskhamStorage"),
+    tone: "empty"
+  } : null;
+}
+const Eu = {
+    id: "attendance",
+    label: "groups.attendanceSettings",
+    description: "groups.attendanceSettingsDesc",
+    icon: e.jsx(da, {})
+  },
+  Au = {
+    id: "customer",
+    label: "groups.customerSettings",
+    description: "groups.customerSettingsDesc",
+    icon: e.jsx(ua, {})
+  },
+  Du = {
+    id: "deal",
+    label: "groups.dealSettings",
+    description: "groups.dealSettingsDesc",
+    icon: e.jsx(ma, {})
+  },
+  Mu = {
+    id: "consult",
+    label: "groups.consultSettings",
+    description: "groups.consultSettingsDesc",
+    icon: e.jsx(pa, {})
+  },
+  Ru = {
+    id: "booking",
+    label: "groups.bookingSettings",
+    description: "groups.bookingSettingsDesc",
+    icon: e.jsx(ga, {})
+  },
+  Nu = {
+    id: "ownership",
+    label: "groups.transferOwnershipTitle",
+    description: "groups.transferOwnershipDesc",
+    icon: e.jsx(Ca, {})
+  },
+  Pu = {
+    id: "hide-org",
+    label: "groups.hideThisOrg",
+    description: "groups.hideThisOrgDesc",
+    icon: e.jsx(ja, {})
+  };
+async function zu(s, t) {
+  (await Ae({
+    title: c("groups.hideOrgConfirmTitle", {
+      name: t
+    }),
+    message: [`· ${c("groups.hideOrgNote1")}`, `· ${c("groups.hideOrgNote2")}`, `· ${c("groups.hideOrgNote3")}`, `· ${c("groups.hideOrgNote4")}`].join(`
+`),
+    confirmText: c("groups.hide"),
+    cancelText: c("groups.cancel")
+  })) && (await Zr(s).catch(n => K(n instanceof Error ? n.message : c("groups.orgHideFailed"))));
+}
+const $i = [{
+    id: "business",
+    label: "groups.companyInfo",
+    description: "groups.companyInfoDesc",
+    icon: e.jsx(Zi, {})
+  }, {
+    id: "interest",
+    label: "groups.interests",
+    description: "groups.interestsDesc",
+    icon: e.jsx(_a, {})
+  }, {
+    id: "certifications",
+    label: "groups.docManagement",
+    description: "groups.docManagementDesc",
+    icon: e.jsx(ea, {})
+  }, {
+    id: "licenses",
+    label: "groups.licenses",
+    description: "groups.licensesDesc",
+    icon: e.jsx(ta, {})
+  }, {
+    id: "credits",
+    label: "groups.creditRating",
+    description: "groups.creditRatingDesc",
+    icon: e.jsx(Sa, {})
+  }, {
+    id: "patents",
+    label: "groups.patents",
+    description: "groups.patentsDesc",
+    icon: e.jsx(sa, {})
+  }, {
+    id: "achievements",
+    label: "groups.achievements",
+    description: "groups.achievementsDesc",
+    icon: e.jsx(na, {})
+  }, {
+    id: "careers",
+    label: "groups.ceoCareer",
+    description: "groups.ceoCareerDesc",
+    icon: e.jsx(ia, {})
+  }, {
+    id: "fundings",
+    label: "groups.funding",
+    description: "groups.fundingDesc",
+    icon: e.jsx(oa, {})
+  }, {
+    id: "shareholders",
+    label: "groups.shareholders",
+    description: "groups.shareholdersDesc",
+    icon: e.jsx(Ui, {})
+  }, {
+    id: "bank_accounts",
+    label: "groups.bankAccounts",
+    description: "groups.bankAccountsDesc",
+    icon: e.jsx(ra, {})
+  }],
+  xn = {
+    xs: 2,
+    md: 3
+  };
+function Wu(s) {
+  const t = n => n.map(o => `"${o}"`).join(" "),
+    i = {
+      gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+      gridTemplateAreas: t(s ? ["upload docs", "org org", "profile ability"] : ["org org", "profile ability"])
+    };
+  return {
+    display: "grid",
+    gap: xn,
+    alignItems: "start",
+    gridTemplateColumns: {
+      xs: "minmax(0, 1fr)",
+      md: i.gridTemplateColumns
+    },
+    gridTemplateAreas: {
+      xs: t(s ? ["upload", "docs", "org", "profile", "ability"] : ["org", "profile", "ability"]),
+      md: i.gridTemplateAreas
+    },
+    gridTemplateRows: "none",
+    [`@container team-page (min-width: ${Lu}px)`]: {
+      gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+      gridTemplateAreas: t(s ? ["org org upload", "org org docs", "profile ability ."] : ["org org .", "profile ability ."]),
+      gridTemplateRows: s ? "auto 1fr auto" : "auto auto"
+    }
+  };
+}
+const Lu = 1500,
+  Ki = ["business", "interest", "credits", "shareholders", "bank_accounts"];
+function mp() {
+  const s = J(),
+    t = f => ({
+      ...f,
+      label: s(f.label),
+      description: s(f.description)
+    }),
+    {
+      loaded: i,
+      groups: n
+    } = so(),
+    o = De(),
+    r = o?.seq ?? 0,
+    a = Na(r),
+    {
+      domains: d
+    } = co(),
+    l = Dc(),
+    u = rc(),
+    p = Mc(),
+    x = Ba(),
+    h = Kc(),
+    g = ed(),
+    F = Tl(),
+    I = ld(),
+    _ = pd(o?.role === "owner" || o?.role === "admin"),
+    v = bd(o?.role === "owner" || o?.role === "admin"),
+    C = Od(),
+    w = Ad(o?.role === "owner" || o?.role === "admin"),
+    E = Wd(),
+    A = Vd(),
+    S = de({
+      modalId: "hr-attendance-settings-dialog"
+    }),
+    [L, j] = b.useState(!1),
+    [y, D] = b.useState(!1),
+    [M, z] = b.useState(""),
+    O = (f, R) => () => {
+      if (M) return;
+      const V = R();
+      V && typeof V.then == "function" && (z(f), V.finally(() => z("")));
+    },
+    T = () => {
+      y || (j(!0), D(!0));
+    },
+    $ = () => {
+      D(!1), S.open();
+    },
+    ee = o?.role === "owner" || o?.role === "admin",
+    te = zl(!!o && ee, a !== null),
+    Q = o?.use_hr === !0 && ns(o, "attendance"),
+    U = o?.use_customer === !0 && ns(o, "customer"),
+    pe = o?.use_booking === !0 && ns(o, "booking"),
+    [be, ke] = Vo();
+  b.useEffect(() => {
+    be.get("open") !== "attendance" || !Q || (T(), ke({}, {
+      replace: !0
+    }));
+  }, [be, Q]), b.useEffect(() => {
+    be.get("open") !== "migration" || !(o?.role === "owner" || o?.role === "admin") || (v.openDialog(), ke({}, {
+      replace: !0
+    }));
+  }, [be, o?.seq]);
+  const H = _n().useValue("account"),
+    Z = ee && H?.etc?.tourDone === !0 && H?.etc?.tourTeamDone !== !0,
+    [se, fe] = b.useState(!1);
+  b.useEffect(() => {
+    if (be.get("open") !== "features" || !o) return;
+    const f = be.get("focus") ?? "";
+    Z ? fe(f || !0) : h.openDialog(f), ke({}, {
+      replace: !0
+    });
+  }, [be, o?.seq]), b.useEffect(() => {
+    !se || Z || (fe(!1), h.openDialog(typeof se == "string" ? se : ""));
+  }, [se, Z]);
+  const Me = o ? Vc(o, d) : null;
+  return e.jsxs(m, {
+    sx: {
+      width: "100%"
+    },
+    children: [i && !o && e.jsx(k, {
+      sx: {
+        fontSize: "0.9375rem",
+        color: "text.secondary"
+      },
+      children: s("groups.noOrgYet")
+    }), A.pending.length > 0 && e.jsx(X, {
+      sx: {
+        gap: 1.5,
+        mb: xn
+      },
+      children: A.pending.map(f => e.jsx(Jt, {
+        severity: "warning",
+        action: e.jsx(B, {
+          color: "inherit",
+          size: "small",
+          disabled: A.restoringSeq === f.seq,
+          onClick: () => {
+            A.restore(f);
+          },
+          children: s("groups.restore")
+        }),
+        sx: {
+          fontSize: "0.9375rem",
+          alignItems: "center"
+        },
+        children: s("groups.orgPendingDeletion", {
+          name: f.name,
+          date: No(f.purge_after)
+        })
+      }, f.seq))
+    }), e.jsx(Va, {
+      showButtons: !1,
+      readonlyNotice: s("groups.orgSettingsAdminOnly"),
+      bottomGap: xn
+    }), o && e.jsx(m, {
+      sx: {
+        containerType: "inline-size",
+        containerName: "team-page"
+      },
+      children: e.jsxs(m, {
+        ref: te.gridRef,
+        sx: Wu(ee),
+        children: [ee && e.jsxs(e.Fragment, {
+          children: [e.jsx(m, {
+            ref: te.uploadRef,
+            "data-tour": "settings-doc-upload",
+            sx: {
+              gridArea: "upload",
+              minWidth: 0
+            },
+            children: e.jsx(uc, {
+              controller: u,
+              placement: "page",
+              zoneHeight: te.height
+            })
+          }), e.jsx(m, {
+            ref: te.docsRef,
+            sx: {
+              gridArea: "docs",
+              minWidth: 0
+            },
+            children: e.jsx(Wc, {
+              docs: a?.certifications ?? [],
+              onOpen: f => u.openDoc(f.id)
+            })
+          })]
+        }), e.jsx(m, {
+          ref: te.orgRef,
+          sx: {
+            gridArea: "org",
+            minWidth: 0
+          },
+          children: e.jsxs(ni, {
+            title: s("groups.orgManagement"),
+            columns: 2,
+            titleExtra: o.role === "owner" || o.role === "admin" ? e.jsx(B, {
+              size: "small",
+              startIcon: e.jsx(Xo, {}),
+              onClick: Yo,
+              sx: {
+                fontSize: 14,
+                whiteSpace: "nowrap",
+                "& .MuiButton-startIcon": {
+                  mt: "1px"
+                }
+              },
+              children: s("groups.tour")
+            }) : void 0,
+            action: e.jsx(Nc, {}),
+            children: [e.jsx(Se, {
+              item: t(hu),
+              onClick: O("team", l.openDialog),
+              loading: M === "team",
+              status: Me?.team
+            }), e.jsx(Se, {
+              item: t(bu),
+              onClick: Uo,
+              status: Me?.members
+            }), (o.role === "owner" || o.role === "admin") && e.jsx(Se, {
+              item: t(yu),
+              onClick: O("perm", C.openDialog),
+              loading: M === "perm"
+            }), e.jsx(Se, {
+              item: t(_u),
+              onClick: O("features", () => h.openDialog()),
+              loading: M === "features",
+              status: Me?.features
+            }), (o.role === "owner" || o.role === "admin") && e.jsx(Se, {
+              item: t(Su),
+              onClick: O("taskbox", g.openDialog),
+              loading: M === "taskbox",
+              status: {
+                text: o.task_contribution ? s("groups.contributionOn") : s("groups.contributionOff"),
+                tone: o.task_contribution ? "normal" : "empty"
+              }
+            }), (o.role === "owner" || o.role === "admin") && ns(o, "video_meeting") && e.jsx(Se, {
+              item: t(ju),
+              onClick: O("video", F.openDialog),
+              loading: M === "video"
+            }), e.jsx(Se, {
+              item: t(wu),
+              onClick: O("mail", p.openDialog),
+              loading: M === "mail",
+              status: Me?.mail
+            }), e.jsx(Se, {
+              item: t(vu),
+              onClick: O("domain", x.openDialog),
+              loading: M === "domain"
+            }), Q && e.jsx(Se, {
+              item: t(Eu),
+              onClick: T,
+              loading: y
+            }), U && e.jsx(Se, {
+              item: t(Au),
+              onClick: O("customer", () => Yr()),
+              loading: M === "customer"
+            }), U && e.jsx(Se, {
+              item: t(Du),
+              onClick: O("deal", () => Xr()),
+              loading: M === "deal"
+            }), U && e.jsx(Se, {
+              item: t(Mu),
+              onClick: O("consult", () => Jr()),
+              loading: M === "consult"
+            }), pe && e.jsx(Se, {
+              item: t(Ru),
+              onClick: O("booking", () => Qr()),
+              loading: M === "booking"
+            }), e.jsx(Se, {
+              item: t(ku),
+              onClick: O("apikeys", I.openDialog),
+              loading: M === "apikeys"
+            }), (o.role === "owner" || o.role === "admin") && e.jsx(Se, {
+              item: t(Cu),
+              onClick: O("aikey", _.openDialog),
+              loading: M === "aikey",
+              status: Iu(_.keys, _.loaded)
+            }), (o.role === "owner" || o.role === "admin") && e.jsx(Se, {
+              item: t(Fu),
+              onClick: O("migration", v.openDialog),
+              loading: M === "migration"
+            }), (o.role === "owner" || o.role === "admin") && w.storage.available && e.jsx(Se, {
+              item: t(Ou),
+              onClick: O("storage", w.openDialog),
+              loading: M === "storage",
+              status: Tu(w.storage, w.loaded)
+            }), o.role === "owner" && e.jsx(Se, {
+              item: t(Nu),
+              onClick: O("ownership", () => E.openDialog()),
+              loading: M === "ownership"
+            }), o.role === "owner" && n.length > 1 && e.jsx(Se, {
+              item: t(Pu),
+              onClick: () => {
+                zu(o.seq, o.name);
+              }
+            })]
+          })
+        }), [["profile", s("groups.companyProfile"), $i.filter(f => Ki.includes(f.id))], ["ability", s("groups.capabilities"), $i.filter(f => f.id !== "certifications" && !Ki.includes(f.id))]].map(([f, R, V]) => e.jsx(m, {
+          sx: {
+            gridArea: f,
+            minWidth: 0
+          },
+          children: e.jsx(ni, {
+            title: R,
+            children: V.map(N => e.jsx(Se, {
+              item: t(N),
+              onClick: O(`info-${N.id}`, () => u.openDialog(N.id)),
+              loading: M === `info-${N.id}`,
+              status: qc(a, N.id)
+            }, N.id))
+          })
+        }, f))]
+      })
+    }), e.jsx(iu, {
+      controller: p
+    }), e.jsx(Rc, {
+      controller: x
+    }), e.jsx(Jo, {
+      controller: l
+    }), e.jsx(Fc, {
+      controller: u
+    }), e.jsx(Tc, {
+      controller: u
+    }), e.jsx(Qc, {
+      controller: h
+    }), e.jsx(Zc, {
+      controller: g
+    }), e.jsx(Al, {
+      controller: F
+    }), e.jsx(ud, {
+      controller: I
+    }), e.jsx(gd, {
+      controller: _
+    }), e.jsx(vd, {
+      controller: v
+    }), e.jsx(Id, {
+      controller: C
+    }), e.jsx(zd, {
+      controller: w
+    }), e.jsx(Bd, {
+      controller: E
+    }), L && e.jsx(xu, {
+      modal: S,
+      pending: y,
+      onReady: $
+    }), e.jsx(Ur, {
+      open: y,
+      sx: {
+        zIndex: f => f.zIndex.modal + 1,
+        color: "#fff"
+      },
+      children: e.jsx(ye, {
+        color: "inherit"
+      })
+    })]
+  });
+}
+export { mp as default };

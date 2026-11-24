@@ -1,0 +1,369 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/TaskBoxCreateDrawer-DKt1HWkq.js",
+  "path": "assets/vendor.d/TaskBoxCreateDrawer-DKt1HWkq.js",
+  "name": "TaskBoxCreateDrawer",
+  "kind": "ui",
+  "bytes": 11265,
+  "sha256": "f62336a942914f329370dfa5834df27a91b9ade2937d27c3834163d24c212489",
+  "status": "downloaded",
+  "formatted": "formatted/vendor.d/TaskBoxCreateDrawer-DKt1HWkq.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "y",
+          "imported": "r"
+        },
+        {
+          "local": "e",
+          "imported": "j"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "G",
+          "imported": "by"
+        },
+        {
+          "local": "K",
+          "imported": "bT"
+        },
+        {
+          "local": "O",
+          "imported": "bv"
+        },
+        {
+          "local": "Q",
+          "imported": "mB"
+        },
+        {
+          "local": "H",
+          "imported": "cj"
+        },
+        {
+          "local": "A",
+          "imported": "gy"
+        },
+        {
+          "local": "j",
+          "imported": "B"
+        },
+        {
+          "local": "U",
+          "imported": "ck"
+        },
+        {
+          "local": "Z",
+          "imported": "M"
+        },
+        {
+          "local": "$",
+          "imported": "w"
+        },
+        {
+          "local": "J",
+          "imported": "D"
+        },
+        {
+          "local": "X",
+          "imported": "md"
+        },
+        {
+          "local": "I",
+          "imported": "lQ"
+        },
+        {
+          "local": "ee",
+          "imported": "L"
+        },
+        {
+          "local": "oe",
+          "imported": "qZ"
+        },
+        {
+          "local": "se",
+          "imported": "nm"
+        },
+        {
+          "local": "te",
+          "imported": "cI"
+        },
+        {
+          "local": "z",
+          "imported": "bQ"
+        },
+        {
+          "local": "ae",
+          "imported": "K"
+        },
+        {
+          "local": "ne",
+          "imported": "k3"
+        },
+        {
+          "local": "re",
+          "imported": "b4"
+        },
+        {
+          "local": "ie",
+          "imported": "fE"
+        },
+        {
+          "local": "Y",
+          "imported": "fw"
+        },
+        {
+          "local": "le",
+          "imported": "g6"
+        },
+        {
+          "local": "ce",
+          "imported": "d3"
+        },
+        {
+          "local": "me",
+          "imported": "rv"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./DictationButton-9kid6hUO.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ue",
+          "imported": "b"
+        },
+        {
+          "local": "de",
+          "imported": "c"
+        },
+        {
+          "local": "pe",
+          "imported": "d"
+        },
+        {
+          "local": "N",
+          "imported": "p"
+        },
+        {
+          "local": "fe",
+          "imported": "e"
+        },
+        {
+          "local": "xe",
+          "imported": "D"
+        },
+        {
+          "local": "ge",
+          "imported": "a"
+        }
+      ],
+      "resolved": "assets/vendor.d/DictationButton-9kid6hUO.js"
+    },
+    {
+      "specifier": "./EmployeeSelectDialog-Cdnxeoz9.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "be",
+          "imported": "E"
+        }
+      ],
+      "resolved": "assets/vendor.d/EmployeeSelectDialog-Cdnxeoz9.js"
+    },
+    {
+      "specifier": "./utils-B6Q5_urv.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ke",
+          "imported": "t"
+        }
+      ],
+      "resolved": "assets/vendor.d/utils-B6Q5_urv.js"
+    },
+    {
+      "specifier": "./taskboxProviderConfig-DZSmb5uq.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "he",
+          "imported": "i"
+        }
+      ],
+      "resolved": "assets/vendor.d/taskboxProviderConfig-DZSmb5uq.js"
+    },
+    {
+      "specifier": "./bootstrapController-BMV_i07c.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "_e",
+          "imported": "z"
+        }
+      ],
+      "resolved": "assets/vendor.d/bootstrapController-BMV_i07c.js"
+    },
+    {
+      "specifier": "./BoardPostDetail-CniIF2a7.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ve",
+          "imported": "m"
+        }
+      ],
+      "resolved": "assets/vendor.d/BoardPostDetail-CniIF2a7.js"
+    },
+    {
+      "specifier": "./workspaceCandidates-BzY4iDjW.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ve",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/workspaceCandidates-BzY4iDjW.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "Ee",
+      "exported": "T"
+    },
+    {
+      "local": "we",
+      "exported": "u"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "je",
+      "keys": [
+        "spaces",
+        "value",
+        "onChange"
+      ]
+    },
+    {
+      "function": "qe",
+      "keys": [
+        "controller",
+        "resources"
+      ]
+    },
+    {
+      "function": "P",
+      "keys": [
+        "children"
+      ]
+    },
+    {
+      "function": "ye",
+      "keys": [
+        "open",
+        "disabled",
+        "getTaskValues"
+      ]
+    },
+    {
+      "function": "Ee",
+      "keys": [
+        "controller",
+        "customTabs",
+        "sprints",
+        "avatarSrcByName",
+        "presetTitle",
+        "presetContent",
+        "presetVisibility",
+        "presetVisibilityGroupSeq",
+        "presetDueDate",
+        "presetTabKey",
+        "presetManager",
+        "excludeSelfAsManager",
+        "onAddProject",
+        "isNotice",
+        "defaultBug",
+        "pickerEmployees",
+        "memberCandidates",
+        "workspaceName",
+        "myAccountSeq",
+        "defaultWorkspaceSeq",
+        "avoidSampleSpace"
+      ]
+    },
+    {
+      "function": "we",
+      "keys": [
+        "controller",
+        "memberCandidates",
+        "myAccountSeq",
+        "excludeSelfAsManager",
+        "officeOpen"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "PostComposerHost",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskPostComposerDialog"
+  ],
+  "service": "업무",
+  "purpose": "업무 등록 드로어",
+  "reuseGrade": "C",
+  "integration": "업무 스키마·controller·참여자·첨부 연결",
+  "exportedParameters": [
+    {
+      "export": "T",
+      "compiledLocal": "Ee",
+      "keys": [
+        "controller",
+        "customTabs",
+        "sprints",
+        "avatarSrcByName",
+        "presetTitle",
+        "presetContent",
+        "presetVisibility",
+        "presetVisibilityGroupSeq",
+        "presetDueDate",
+        "presetTabKey",
+        "presetManager",
+        "excludeSelfAsManager",
+        "onAddProject",
+        "isNotice",
+        "defaultBug",
+        "pickerEmployees",
+        "memberCandidates",
+        "workspaceName",
+        "myAccountSeq",
+        "defaultWorkspaceSeq",
+        "avoidSampleSpace"
+      ]
+    },
+    {
+      "export": "u",
+      "compiledLocal": "we",
+      "keys": [
+        "controller",
+        "memberCandidates",
+        "myAccountSeq",
+        "excludeSelfAsManager",
+        "officeOpen"
+      ]
+    }
+  ]
+}

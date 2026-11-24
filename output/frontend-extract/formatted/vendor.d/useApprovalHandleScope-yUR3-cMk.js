@@ -1,0 +1,25 @@
+import { r as c } from "./react-CjxcGQav.js";
+import { z as l } from "./bootstrapController-BMV_i07c.js";
+import { u as m } from "./FileUploadBox-crZW1mG0.js";
+import { u as i } from "./useTeamApprovalSettings-C0SRRQJg.js";
+function f() {
+  const {
+      state: e
+    } = l(),
+    a = e.useValue("data.approval_counts"),
+    t = Number(a?.handle ?? 0),
+    {
+      account: r
+    } = m(),
+    o = Number(r?.seq ?? 0),
+    s = i(),
+    n = c.useMemo(() => {
+      const p = s.settings.approval;
+      return Object.values(p?.assignees ?? {}).some(u => Number(u) === o && o > 0);
+    }, [s.settings, o]);
+  return {
+    handleCount: t,
+    showHandleScope: t > 0 || n
+  };
+}
+export { f as u };

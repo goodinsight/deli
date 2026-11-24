@@ -1,0 +1,11 @@
+import { r as o } from "./resolveAssetPreviewSrc-CLlbOCzq.js";
+function i(n) {
+  const t = new Map();
+  for (const e of n ?? []) {
+    const r = String(e.name ?? "").trim(),
+      a = String(e.avatar ?? "").trim();
+    !r || !a || t.set(r, o(a, "sm"));
+  }
+  return t;
+}
+export { i as b };

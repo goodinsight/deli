@@ -1,0 +1,401 @@
+import { u as G, l as Q, r as i, j as t } from "./react-CjxcGQav.js";
+import { bv as A, D as F, cz as J, bO as X, dv as Z, B as n, L as U, lr as ee, s as C, ax as te, m7 as re } from "../js.d/main-Cm9wS5wt.js";
+import { O as ne } from "./OptionToggleGroup-Cvm2wRyq.js";
+import { M as ae } from "./MobileListTitleBar-tZ34p2gY.js";
+import { u as se } from "./useClientSort-CdwrAOWp.js";
+import { p as oe, B as v, v as ie, V as z, a as le, b as ce } from "./voucherApi-CFpm74z0.js";
+import { k as ue, w as pe } from "./deal-B3IQ_ej7.js";
+import { u as de, b as he, a as xe } from "./MobileCardListLayout-D5_p2Xer.js";
+import { T as fe } from "./tableScrollbars-C9bhlJjO.js";
+import { u as me } from "./useColumnWidths-DSAca5rC.js";
+import "./stylis-DdLD6a3t.js";
+import "./mobileSearchOverlay-DYWcMOOb.js";
+import "./profileApi-Btafs-pM.js";
+const ge = 48,
+  be = "#9b9a97",
+  Se = "#f8f8f7",
+  p = "#b91c1c",
+  _e = {
+    sales: "/dashboard/partner/sales",
+    purchase: "/dashboard/partner/purchases"
+  },
+  je = re([{
+    value: "sales",
+    labelKey: "partner.salesUnpaid"
+  }, {
+    value: "purchase",
+    labelKey: "partner.purchaseUnpaid"
+  }]),
+  l = r => pe(r);
+function V({
+  summary: r,
+  kind: f,
+  truncated: m
+}) {
+  const c = A(),
+    d = (u, g, b) => t.jsxs(n, {
+      sx: {
+        minWidth: 0
+      },
+      children: [t.jsx(n, {
+        sx: {
+          fontSize: 12,
+          color: C[500]
+        },
+        children: u
+      }), t.jsx(n, {
+        sx: {
+          fontSize: 17,
+          fontWeight: 700,
+          whiteSpace: "nowrap",
+          color: b
+        },
+        children: g
+      })]
+    });
+  return t.jsxs(n, {
+    sx: {
+      display: "flex",
+      gap: 3,
+      flexWrap: "wrap",
+      alignItems: "flex-end"
+    },
+    children: [d(c(`partner.${f}UnpaidTotal`), l(r.balance)), d(c("partner.overdueAmong"), l(r.overdue), r.overdue > 0 ? p : void 0), d(c("partner.openVouchers"), c("partner.voucherCount", {
+      count: r.count
+    })), m ? t.jsx(n, {
+      sx: {
+        fontSize: 13,
+        color: p
+      },
+      children: c("partner.balanceTruncated")
+    }) : null]
+  });
+}
+function ke() {
+  const r = A(),
+    f = me("partner.balance"),
+    m = F(),
+    c = G(),
+    u = J()?.seq ?? 0,
+    g = ue(),
+    [b, H] = Q(),
+    o = oe(b.get(v)),
+    M = e => H(a => {
+      const s = new URLSearchParams(a);
+      return e === "purchase" ? s.set(v, e) : s.delete(v), s;
+    }, {
+      replace: !0
+    }),
+    [E, R] = i.useState([]),
+    [w, O] = i.useState({
+      balance: 0,
+      overdue: 0,
+      count: 0
+    }),
+    [L, K] = i.useState(!1),
+    [T, I] = i.useState(!1),
+    [S, P] = i.useState(""),
+    h = i.useRef(0),
+    _ = i.useCallback(async (e = !1) => {
+      if (!u) {
+        R([]), O({
+          balance: 0,
+          overdue: 0,
+          count: 0
+        });
+        return;
+      }
+      const a = ++h.current;
+      e || I(!0);
+      try {
+        const s = await ie.balances(o);
+        if (a !== h.current) return;
+        R(s.items), O(s.summary), K(s.truncated);
+      } catch (s) {
+        a === h.current && !e && X(s instanceof Error ? s.message : r("partner.balanceLoadFailed"));
+      } finally {
+        a === h.current && I(!1);
+      }
+    }, [u, o]);
+  i.useEffect(() => {
+    _();
+  }, [_]), Z(["partner_voucher", "partner_payment", "partner"], () => {
+    _(!0);
+  });
+  const j = e => c(`${_e[o]}?${le}=${e.partner_seq}&${ce}=1`),
+    y = S.trim().toLowerCase(),
+    N = y ? E.filter(e => e.partner_name.toLowerCase().includes(y)) : E,
+    {
+      rows: x,
+      tableSort: Y
+    } = se(N),
+    B = t.jsx(n, {
+      sx: {
+        py: 6,
+        px: 2,
+        textAlign: "center",
+        color: be,
+        fontSize: 14,
+        wordBreak: "keep-all"
+      },
+      children: r(y ? "partner.partnerSearchEmpty" : `partner.${o}UnpaidEmpty`)
+    }),
+    W = t.jsx(n, {
+      sx: {
+        "& .MuiToggleButtonGroup-root": {
+          height: 40,
+          flexWrap: "nowrap"
+        }
+      },
+      children: t.jsx(ne, {
+        size: "medium",
+        value: o,
+        onChange: e => M(e ?? o),
+        options: je,
+        sx: {
+          "& .MuiToggleButtonGroup-grouped": {
+            minWidth: 72,
+            px: 1.5
+          }
+        }
+      })
+    }),
+    k = e => e.next_due_date ? t.jsx(n, {
+      component: "span",
+      sx: {
+        color: e.next_due_date < g ? p : void 0
+      },
+      children: e.next_due_date
+    }) : "-",
+    D = de(T);
+  if (m) {
+    const e = [t.jsx(ae, {
+      searchValue: S,
+      onSearchChange: P,
+      searchPlaceholder: r("partner.searchPartner"),
+      below: t.jsxs(n, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: 1.5
+        },
+        children: [W, t.jsx(V, {
+          summary: w,
+          kind: o,
+          truncated: L
+        })]
+      })
+    }, "title"), ...x.map(a => t.jsxs(n, {
+      role: "button",
+      tabIndex: 0,
+      onClick: () => j(a),
+      onKeyDown: s => {
+        (s.key === "Enter" || s.key === " ") && (s.preventDefault(), j(a));
+      },
+      sx: {
+        display: "flex",
+        flexDirection: "column",
+        gap: .5,
+        px: 2,
+        py: 1.5,
+        cursor: "pointer",
+        userSelect: "none",
+        "&:active": {
+          bgcolor: Se
+        }
+      },
+      children: [t.jsxs(n, {
+        sx: {
+          display: "flex",
+          justifyContent: "space-between",
+          gap: 1,
+          minWidth: 0
+        },
+        children: [t.jsx(U, {
+          noWrap: !0,
+          sx: {
+            fontSize: 15,
+            fontWeight: 600,
+            minWidth: 0
+          },
+          children: a.partner_name
+        }), t.jsx(n, {
+          sx: {
+            fontSize: 15,
+            fontWeight: 700,
+            whiteSpace: "nowrap"
+          },
+          children: l(a.balance)
+        })]
+      }), t.jsxs(n, {
+        sx: {
+          display: "flex",
+          gap: 1.25,
+          fontSize: 14,
+          color: "text.secondary",
+          flexWrap: "wrap"
+        },
+        children: [t.jsx("span", {
+          children: r("partner.openCount", {
+            count: a.count
+          })
+        }), a.next_due_date ? t.jsxs("span", {
+          children: [r("partner.dueLabel"), " ", k(a)]
+        }) : null, a.overdue > 0 ? t.jsx(n, {
+          component: "span",
+          sx: {
+            color: p
+          },
+          children: r("partner.overdueAmount", {
+            amount: l(a.overdue)
+          })
+        }) : null]
+      })]
+    }, a.partner_seq))];
+    return D && x.length === 0 && e.push(t.jsx(n, {
+      children: B
+    }, "empty")), D || e.push(t.jsx(xe, {}, "loading")), t.jsx(he, {
+      attachHead: !0,
+      children: e
+    });
+  }
+  const $ = [{
+      id: "partner_name",
+      sortable: !0,
+      text: z[o].partner,
+      style: {
+        fontSize: 15
+      }
+    }, {
+      id: "count",
+      sortable: !0,
+      text: r("partner.openVouchers"),
+      width: 100,
+      align: "center",
+      render: e => r("partner.voucherCount", {
+        count: e.count
+      })
+    }, {
+      id: "total",
+      sortable: !0,
+      text: r("partner.voucherTotal"),
+      width: 140,
+      align: "right",
+      render: e => l(e.total)
+    }, {
+      id: "paid",
+      sortable: !0,
+      text: r(`partner.${o}PaidTotal`),
+      width: 140,
+      align: "right",
+      render: e => l(e.paid)
+    }, {
+      id: "balance",
+      sortable: !0,
+      text: z[o].unpaid,
+      width: 150,
+      align: "right",
+      render: e => t.jsx(n, {
+        component: "span",
+        sx: {
+          fontWeight: 700
+        },
+        children: l(e.balance)
+      })
+    }, {
+      id: "overdue",
+      sortable: !0,
+      text: r("partner.statusOverdue"),
+      width: 140,
+      align: "right",
+      render: e => e.overdue > 0 ? t.jsx(n, {
+        component: "span",
+        sx: {
+          color: p
+        },
+        children: l(e.overdue)
+      }) : "-"
+    }, {
+      id: "next_due_date",
+      sortable: !0,
+      text: r("partner.earliestDueDate"),
+      width: 170,
+      align: "center",
+      render: k
+    }],
+    q = {
+      left: t.jsx(V, {
+        summary: w,
+        kind: o,
+        truncated: L
+      }),
+      filter: {
+        stateId: "partner-balance-filters",
+        showChips: !1,
+        groups: [{
+          filters: [{
+            type: "custom",
+            name: "balance-kind",
+            node: W
+          }]
+        }]
+      },
+      showSearch: !0,
+      searchValue: S,
+      searchPlaceholder: r("partner.searchPartner"),
+      onSearchChange: P,
+      collapsible: !1,
+      showCollapseButton: !1,
+      showClearIcon: !1
+    };
+  return t.jsxs(n, {
+    sx: {
+      position: "relative",
+      height: "100%",
+      minHeight: 0,
+      display: "flex",
+      flexDirection: "column"
+    },
+    children: [t.jsx(ee, {
+      header: q,
+      tableProps: {
+        ...f,
+        scrollbars: fe,
+        mobile: !0,
+        variant: "notion",
+        columns: $,
+        data: x,
+        totalCount: x.length,
+        getRowId: e => String(e.partner_seq),
+        rowHeight: ge,
+        onRowClick: j,
+        ...Y,
+        loading: T,
+        emptyMessage: B
+      }
+    }), u ? null : t.jsxs(n, {
+      sx: {
+        position: "absolute",
+        inset: 0,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: 1,
+        color: C[500],
+        bgcolor: "background.paper",
+        "& .MuiSvgIcon-root": {
+          fontSize: 48,
+          color: C[300]
+        }
+      },
+      children: [t.jsx(te, {}), t.jsx(U, {
+        sx: {
+          fontSize: "0.9rem"
+        },
+        children: r("partner.needOrgView")
+      })]
+    })]
+  });
+}
+export { ke as default };

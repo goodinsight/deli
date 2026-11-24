@@ -1,0 +1,1528 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/TaskDetailDrawerHost-DyqqQ0ys.js",
+  "path": "assets/vendor.d/TaskDetailDrawerHost-DyqqQ0ys.js",
+  "name": "TaskDetailDrawerHost",
+  "kind": "ui",
+  "bytes": 18422,
+  "sha256": "6e78c1d20ced6eb48dded1d542ca1e0dd04de231a9f29d7c00076ea57968d0eb",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/TaskDetailDrawerHost-DyqqQ0ys.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "p",
+          "imported": "r"
+        },
+        {
+          "local": "b",
+          "imported": "j"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "./StackedTaskDetailSlot-CKKU4m9r.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "z",
+          "imported": "c"
+        },
+        {
+          "local": "X",
+          "imported": "u"
+        },
+        {
+          "local": "H",
+          "imported": "i"
+        },
+        {
+          "local": "Y",
+          "imported": "P"
+        },
+        {
+          "local": "J",
+          "imported": "S"
+        },
+        {
+          "local": "Q",
+          "imported": "d"
+        },
+        {
+          "local": "Z",
+          "imported": "T"
+        },
+        {
+          "local": "tt",
+          "imported": "e"
+        },
+        {
+          "local": "et",
+          "imported": "f"
+        }
+      ],
+      "resolved": "assets/vendor.d/StackedTaskDetailSlot-CKKU4m9r.js"
+    },
+    {
+      "specifier": "./TaskMonthlyFields-B0lhyzjQ.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ot",
+          "imported": "T"
+        }
+      ],
+      "resolved": "assets/vendor.d/TaskMonthlyFields-B0lhyzjQ.js"
+    },
+    {
+      "specifier": "./EmployeeSelectDialog-Cdnxeoz9.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "st",
+          "imported": "u"
+        },
+        {
+          "local": "at",
+          "imported": "E"
+        }
+      ],
+      "resolved": "assets/vendor.d/EmployeeSelectDialog-Cdnxeoz9.js"
+    },
+    {
+      "specifier": "./pickerEmployees-s9FYphgr.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "it",
+          "imported": "t"
+        }
+      ],
+      "resolved": "assets/vendor.d/pickerEmployees-s9FYphgr.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "nt",
+          "imported": "oa"
+        },
+        {
+          "local": "L",
+          "imported": "bT"
+        },
+        {
+          "local": "rt",
+          "imported": "qm"
+        },
+        {
+          "local": "mt",
+          "imported": "bO"
+        },
+        {
+          "local": "pt",
+          "imported": "fx"
+        },
+        {
+          "local": "ct",
+          "imported": "by"
+        },
+        {
+          "local": "lt",
+          "imported": "kM"
+        },
+        {
+          "local": "kt",
+          "imported": "ly"
+        },
+        {
+          "local": "ut",
+          "imported": "bv"
+        },
+        {
+          "local": "dt",
+          "imported": "h6"
+        },
+        {
+          "local": "Tt",
+          "imported": "fw"
+        },
+        {
+          "local": "ft",
+          "imported": "q0"
+        },
+        {
+          "local": "gt",
+          "imported": "q1"
+        },
+        {
+          "local": "$",
+          "imported": "q2"
+        },
+        {
+          "local": "Ct",
+          "imported": "qo"
+        },
+        {
+          "local": "bt",
+          "imported": "o5"
+        },
+        {
+          "local": "qt",
+          "imported": "B"
+        },
+        {
+          "local": "ht",
+          "imported": "sc"
+        },
+        {
+          "local": "St",
+          "imported": "qb"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./employeeAvatars-DaG0jIhW.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "yt",
+          "imported": "b"
+        }
+      ],
+      "resolved": "assets/vendor.d/employeeAvatars-DaG0jIhW.js"
+    },
+    {
+      "specifier": "./taskDetailHost-C45bt_tL.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "W",
+          "imported": "u"
+        },
+        {
+          "local": "G",
+          "imported": "c"
+        }
+      ],
+      "resolved": "assets/vendor.d/taskDetailHost-C45bt_tL.js"
+    },
+    {
+      "specifier": "./ApprovalDetailDialog-v7PUkzWr.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "vt",
+          "imported": "m"
+        }
+      ],
+      "resolved": "assets/vendor.d/ApprovalDetailDialog-v7PUkzWr.js"
+    },
+    {
+      "specifier": "./DictationButton-9kid6hUO.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "xt",
+          "imported": "u"
+        },
+        {
+          "local": "_t",
+          "imported": "T"
+        }
+      ],
+      "resolved": "assets/vendor.d/DictationButton-9kid6hUO.js"
+    },
+    {
+      "specifier": "./taskboxProviderConfig-DZSmb5uq.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Dt",
+          "imported": "d"
+        },
+        {
+          "local": "At",
+          "imported": "e"
+        }
+      ],
+      "resolved": "assets/vendor.d/taskboxProviderConfig-DZSmb5uq.js"
+    },
+    {
+      "specifier": "./bootstrapController-BMV_i07c.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Et",
+          "imported": "z"
+        }
+      ],
+      "resolved": "assets/vendor.d/bootstrapController-BMV_i07c.js"
+    },
+    {
+      "specifier": "./EventSeatOutlined-59UM_j63.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/EventSeatOutlined-59UM_j63.js"
+    },
+    {
+      "specifier": "./videoMeetingApi-BCL1yHsp.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/videoMeetingApi-BCL1yHsp.js"
+    },
+    {
+      "specifier": "./stylis-DdLD6a3t.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/stylis-DdLD6a3t.js"
+    },
+    {
+      "specifier": "./videoLink-BfLN3LRj.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/videoLink-BfLN3LRj.js"
+    },
+    {
+      "specifier": "./ChatCallButtons-TGIgJ8cF.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/ChatCallButtons-TGIgJ8cF.js"
+    },
+    {
+      "specifier": "./PhoneOutlined-Bjc_e42S.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/PhoneOutlined-Bjc_e42S.js"
+    },
+    {
+      "specifier": "./aliasStore-DiN6Kp-5.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/aliasStore-DiN6Kp-5.js"
+    },
+    {
+      "specifier": "./callStore-DH1_RYeP.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/callStore-DH1_RYeP.js"
+    },
+    {
+      "specifier": "./MeetingRecordScreen-XaBBkFFb.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/MeetingRecordScreen-XaBBkFFb.js"
+    },
+    {
+      "specifier": "./FileUploadBox-crZW1mG0.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/FileUploadBox-crZW1mG0.js"
+    },
+    {
+      "specifier": "./AccountAvatar-DtrhoS_d.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/AccountAvatar-DtrhoS_d.js"
+    },
+    {
+      "specifier": "./Person-DnoEHesw.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/Person-DnoEHesw.js"
+    },
+    {
+      "specifier": "./resolveAssetPreviewSrc-CLlbOCzq.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/resolveAssetPreviewSrc-CLlbOCzq.js"
+    },
+    {
+      "specifier": "./date_utils-CYURFdnX.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/date_utils-CYURFdnX.js"
+    },
+    {
+      "specifier": "./FileViewer-D5PyYcLh.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/FileViewer-D5PyYcLh.js"
+    },
+    {
+      "specifier": "./RotateRight-DbtMfjGZ.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/RotateRight-DbtMfjGZ.js"
+    },
+    {
+      "specifier": "./tiny-invariant-CopsF_GD.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/tiny-invariant-CopsF_GD.js"
+    },
+    {
+      "specifier": "./Snackbar-DxIDGM8-.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/Snackbar-DxIDGM8-.js"
+    },
+    {
+      "specifier": "./uploadGuard-BK1B6cyC.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/uploadGuard-BK1B6cyC.js"
+    },
+    {
+      "specifier": "./propertySections-Bwsl7OH-.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/propertySections-Bwsl7OH-.js"
+    },
+    {
+      "specifier": "./ForwardMessageDialog-CaXjV13U.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/ForwardMessageDialog-CaXjV13U.js"
+    },
+    {
+      "specifier": "./squircle-CQM8EvXm.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/squircle-CQM8EvXm.js"
+    },
+    {
+      "specifier": "./AddTaskOutlined-CgupI6Z3.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/AddTaskOutlined-CgupI6Z3.js"
+    },
+    {
+      "specifier": "./Title-WCY0exuZ.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/Title-WCY0exuZ.js"
+    },
+    {
+      "specifier": "./ScheduleOutlined-C_7j7r9e.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/ScheduleOutlined-C_7j7r9e.js"
+    },
+    {
+      "specifier": "./RecordVoiceOverOutlined-C838alHh.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/RecordVoiceOverOutlined-C838alHh.js"
+    },
+    {
+      "specifier": "./GroupOutlined-CA-gNtcg.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/GroupOutlined-CA-gNtcg.js"
+    },
+    {
+      "specifier": "./GroupAddOutlined-DigKoBGv.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/GroupAddOutlined-DigKoBGv.js"
+    },
+    {
+      "specifier": "./ArrowBackOutlined-BhSdaUts.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/ArrowBackOutlined-BhSdaUts.js"
+    },
+    {
+      "specifier": "./PropertyFields-TuJTG5XK.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/PropertyFields-TuJTG5XK.js"
+    },
+    {
+      "specifier": "./FormValue-CAMilU-0.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/FormValue-CAMilU-0.js"
+    },
+    {
+      "specifier": "./useCalendarTasks-Cl5o2Ebi.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/useCalendarTasks-Cl5o2Ebi.js"
+    },
+    {
+      "specifier": "./taskboxApi-BuYlRWHe.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/taskboxApi-BuYlRWHe.js"
+    },
+    {
+      "specifier": "./FeedProfileAvatar-B6gqXpYU.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/FeedProfileAvatar-B6gqXpYU.js"
+    },
+    {
+      "specifier": "./CallOutlined-B2W58-Kt.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/CallOutlined-B2W58-Kt.js"
+    },
+    {
+      "specifier": "./chatRoomHost-ImRyH_Na.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/chatRoomHost-ImRyH_Na.js"
+    },
+    {
+      "specifier": "./meetingsApi-CCkjq69B.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/meetingsApi-CCkjq69B.js"
+    },
+    {
+      "specifier": "./MeetingRecordingPlayer-vear-u6W.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/MeetingRecordingPlayer-vear-u6W.js"
+    },
+    {
+      "specifier": "./nativeRecordingSync-CMpETFg9.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/nativeRecordingSync-CMpETFg9.js"
+    },
+    {
+      "specifier": "./pendingRecordings-DpKJ8Y2R.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/pendingRecordings-DpKJ8Y2R.js"
+    },
+    {
+      "specifier": "./useTranscriptController-BdNi4rMO.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/useTranscriptController-BdNi4rMO.js"
+    },
+    {
+      "specifier": "./PlayArrowRounded-emG8NLik.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/PlayArrowRounded-emG8NLik.js"
+    },
+    {
+      "specifier": "./teamMembers-0yRsmqL6.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/teamMembers-0yRsmqL6.js"
+    },
+    {
+      "specifier": "./policyContent-DPfknNhV.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/policyContent-DPfknNhV.js"
+    },
+    {
+      "specifier": "./companyInfo-Btqdi-Wt.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/companyInfo-Btqdi-Wt.js"
+    },
+    {
+      "specifier": "./safeMarkdown-sAzUuXkU.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/safeMarkdown-sAzUuXkU.js"
+    },
+    {
+      "specifier": "./LinkOff-BeDdBoha.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/LinkOff-BeDdBoha.js"
+    },
+    {
+      "specifier": "./tableScrollbars-C9bhlJjO.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/tableScrollbars-C9bhlJjO.js"
+    },
+    {
+      "specifier": "./shellOwnScroll-BIIV4RF2.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/shellOwnScroll-BIIV4RF2.js"
+    },
+    {
+      "specifier": "./SaveOutlined-DgCkQRT8.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/SaveOutlined-DgCkQRT8.js"
+    },
+    {
+      "specifier": "./useFormModified-cVB1R-yN.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/useFormModified-cVB1R-yN.js"
+    },
+    {
+      "specifier": "./meetingCalendar-_jcQJ1qd.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/meetingCalendar-_jcQJ1qd.js"
+    },
+    {
+      "specifier": "./ReplayOutlined-BZwnvaIm.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/ReplayOutlined-BZwnvaIm.js"
+    },
+    {
+      "specifier": "./BoardPostDetail-CniIF2a7.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/BoardPostDetail-CniIF2a7.js"
+    },
+    {
+      "specifier": "./biometricController-CswvQnMD.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/biometricController-CswvQnMD.js"
+    },
+    {
+      "specifier": "./attendanceBio-C-9dHF9O.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/attendanceBio-C-9dHF9O.js"
+    },
+    {
+      "specifier": "./ThumbUp-CuLuUDoD.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/ThumbUp-CuLuUDoD.js"
+    },
+    {
+      "specifier": "./PictureAsPdfOutlined-ChIt6cmZ.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/PictureAsPdfOutlined-ChIt6cmZ.js"
+    },
+    {
+      "specifier": "./FolderZipOutlined-BdWYvuz4.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/FolderZipOutlined-BdWYvuz4.js"
+    },
+    {
+      "specifier": "./InsertDriveFileOutlined-DcD-Yh-v.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/InsertDriveFileOutlined-DcD-Yh-v.js"
+    },
+    {
+      "specifier": "./FavoriteBorder-BkFztsJe.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/FavoriteBorder-BkFztsJe.js"
+    },
+    {
+      "specifier": "./formatFileSize-Cwk2MLba.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/formatFileSize-Cwk2MLba.js"
+    },
+    {
+      "specifier": "./useFileViewer-B-2ewnr3.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/useFileViewer-B-2ewnr3.js"
+    },
+    {
+      "specifier": "./documentViewerStore-BlSjH3BG.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/documentViewerStore-BlSjH3BG.js"
+    },
+    {
+      "specifier": "./html-d5LenlcH.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/html-d5LenlcH.js"
+    },
+    {
+      "specifier": "./types-B1OAKh4b.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/types-B1OAKh4b.js"
+    },
+    {
+      "specifier": "./filePreview-B-5SZXbS.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/filePreview-B-5SZXbS.js"
+    },
+    {
+      "specifier": "./listViewMode-iTl-2ucA.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/listViewMode-iTl-2ucA.js"
+    },
+    {
+      "specifier": "./profileApi-Btafs-pM.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/profileApi-Btafs-pM.js"
+    },
+    {
+      "specifier": "./TaskBookmarkButton-0oVnbzsT.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/TaskBookmarkButton-0oVnbzsT.js"
+    },
+    {
+      "specifier": "./Bookmark-D9hRs62u.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/Bookmark-D9hRs62u.js"
+    },
+    {
+      "specifier": "./BookmarkBorder-D_zgRRjF.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/BookmarkBorder-D_zgRRjF.js"
+    },
+    {
+      "specifier": "./DealFormDialog-Dw6MXJZk.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/DealFormDialog-Dw6MXJZk.js"
+    },
+    {
+      "specifier": "./dealApi-CnzQt6qM.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/dealApi-CnzQt6qM.js"
+    },
+    {
+      "specifier": "./partnerApi-Dqdgl0Fn.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/partnerApi-Dqdgl0Fn.js"
+    },
+    {
+      "specifier": "./customerMetaStore-Bj9KdRyn.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/customerMetaStore-Bj9KdRyn.js"
+    },
+    {
+      "specifier": "./deal-B3IQ_ej7.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/deal-B3IQ_ej7.js"
+    },
+    {
+      "specifier": "./PropertyContentEditor-DIsouMXi.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/PropertyContentEditor-DIsouMXi.js"
+    },
+    {
+      "specifier": "./EventBusyOutlined-DqcCaRMs.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/EventBusyOutlined-DqcCaRMs.js"
+    },
+    {
+      "specifier": "./TagOutlined-Cfq6rbok.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/TagOutlined-Cfq6rbok.js"
+    },
+    {
+      "specifier": "./Notes-i9IHZW02.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/Notes-i9IHZW02.js"
+    },
+    {
+      "specifier": "./CategoryOutlined-DcAqxAdD.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/CategoryOutlined-DcAqxAdD.js"
+    },
+    {
+      "specifier": "./PhoneAndroidOutlined-DafU-b-9.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/PhoneAndroidOutlined-DafU-b-9.js"
+    },
+    {
+      "specifier": "./ChecklistOutlined-PwlgFlaS.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/ChecklistOutlined-PwlgFlaS.js"
+    },
+    {
+      "specifier": "./ItemLineFields-DmS0gZQx.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/ItemLineFields-DmS0gZQx.js"
+    },
+    {
+      "specifier": "./CustomerPickMenu-D2UYfJ2O.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/CustomerPickMenu-D2UYfJ2O.js"
+    },
+    {
+      "specifier": "./utils-B6Q5_urv.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/utils-B6Q5_urv.js"
+    },
+    {
+      "specifier": "./ReservationDialog-DnyeBFBI.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/ReservationDialog-DnyeBFBI.js"
+    },
+    {
+      "specifier": "./ToneChip-BFljqlNi.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/ToneChip-BFljqlNi.js"
+    },
+    {
+      "specifier": "./VehicleLogDialog-BPXUMXE7.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/VehicleLogDialog-BPXUMXE7.js"
+    },
+    {
+      "specifier": "./Send-yl2RzZF4.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/Send-yl2RzZF4.js"
+    },
+    {
+      "specifier": "./ZoomIn-B3VGPGla.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/ZoomIn-B3VGPGla.js"
+    },
+    {
+      "specifier": "./printSvgDocument-DHC1JJCG.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/printSvgDocument-DHC1JJCG.js"
+    },
+    {
+      "specifier": "./printDocChrome-BMZLbM8A.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/printDocChrome-BMZLbM8A.js"
+    },
+    {
+      "specifier": "./ReferenceList-mhfbKusm.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/ReferenceList-mhfbKusm.js"
+    },
+    {
+      "specifier": "./index.esm-BLbQfyP0.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/index.esm-BLbQfyP0.js"
+    },
+    {
+      "specifier": "./Refresh-xoMt5L00.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/Refresh-xoMt5L00.js"
+    },
+    {
+      "specifier": "./OptionToggleGroup-Cvm2wRyq.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/OptionToggleGroup-Cvm2wRyq.js"
+    },
+    {
+      "specifier": "./Image-BpXScS6T.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/Image-BpXScS6T.js"
+    },
+    {
+      "specifier": "./CalendarSidebarPanel-DlQr_b8l.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/CalendarSidebarPanel-DlQr_b8l.js"
+    },
+    {
+      "specifier": "./InlineErrorAlert-D9ICJPt7.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/InlineErrorAlert-D9ICJPt7.js"
+    },
+    {
+      "specifier": "./mobileBandDialog-C3M4tWPv.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/mobileBandDialog-C3M4tWPv.js"
+    },
+    {
+      "specifier": "./BusinessCenterOutlined-gZ8sR_r3.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/BusinessCenterOutlined-gZ8sR_r3.js"
+    },
+    {
+      "specifier": "./OrgChartPage-DPIPUrhu.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/OrgChartPage-DPIPUrhu.js"
+    },
+    {
+      "specifier": "./EmployeeFormDialog-BHKK47Dg.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/EmployeeFormDialog-BHKK47Dg.js"
+    },
+    {
+      "specifier": "./employeeApi-CdGzOYcj.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/employeeApi-CdGzOYcj.js"
+    },
+    {
+      "specifier": "./types-CVhETUvu.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/types-CVhETUvu.js"
+    },
+    {
+      "specifier": "./i18nLabels-BNTLL7cu.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/i18nLabels-BNTLL7cu.js"
+    },
+    {
+      "specifier": "./birthdayCalendar-CWu_jG3x.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/birthdayCalendar-CWu_jG3x.js"
+    },
+    {
+      "specifier": "./trainingCalendar-BpMTSUwd.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/trainingCalendar-BpMTSUwd.js"
+    },
+    {
+      "specifier": "./trainingApi-DT4unjOR.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/trainingApi-DT4unjOR.js"
+    },
+    {
+      "specifier": "./training-Bx0zycZu.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/training-Bx0zycZu.js"
+    },
+    {
+      "specifier": "./ContactPhoneOutlined-DpFEzROB.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/ContactPhoneOutlined-DpFEzROB.js"
+    },
+    {
+      "specifier": "./Trans-CU1vl0TZ.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/Trans-CU1vl0TZ.js"
+    },
+    {
+      "specifier": "./employeeAccountApi-p-ORLvrh.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/employeeAccountApi-p-ORLvrh.js"
+    },
+    {
+      "specifier": "./WomanOutlined-CzlFMUkT.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/WomanOutlined-CzlFMUkT.js"
+    },
+    {
+      "specifier": "./AccountBoxOutlined-BxNEw8I0.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/AccountBoxOutlined-BxNEw8I0.js"
+    },
+    {
+      "specifier": "./AssignmentIndOutlined-DynSb23A.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/AssignmentIndOutlined-DynSb23A.js"
+    },
+    {
+      "specifier": "./PaidOutlined-Cy1uVjW3.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/PaidOutlined-Cy1uVjW3.js"
+    },
+    {
+      "specifier": "./PercentOutlined-XX2JPqvz.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/PercentOutlined-XX2JPqvz.js"
+    },
+    {
+      "specifier": "./ToggleOnOutlined-5BVdqdOm.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/ToggleOnOutlined-5BVdqdOm.js"
+    },
+    {
+      "specifier": "./WorkOutlineOutlined-D5AzVFs6.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/WorkOutlineOutlined-D5AzVFs6.js"
+    },
+    {
+      "specifier": "./hrCodeApi-BRtc5fIX.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/hrCodeApi-BRtc5fIX.js"
+    },
+    {
+      "specifier": "./index.esm-gjRImBGa.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/index.esm-gjRImBGa.js"
+    },
+    {
+      "specifier": "./PersonRemoveOutlined-CyeIj2nP.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/PersonRemoveOutlined-CyeIj2nP.js"
+    },
+    {
+      "specifier": "./mobileTitlePicker-u2JmU445.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/mobileTitlePicker-u2JmU445.js"
+    },
+    {
+      "specifier": "./mxApi-R6g9QtQq.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/mxApi-R6g9QtQq.js"
+    },
+    {
+      "specifier": "./orgTree-Dh5HFjBo.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/orgTree-Dh5HFjBo.js"
+    },
+    {
+      "specifier": "./lastBoard-DXeRnS9N.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/lastBoard-DXeRnS9N.js"
+    },
+    {
+      "specifier": "./PhoneMissedOutlined-Cf-_1h4d.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/PhoneMissedOutlined-Cf-_1h4d.js"
+    },
+    {
+      "specifier": "./TableChartOutlined-CH8ZYsPl.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/TableChartOutlined-CH8ZYsPl.js"
+    },
+    {
+      "specifier": "./customerDialogActions-CaaeVzAY.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/customerDialogActions-CaaeVzAY.js"
+    },
+    {
+      "specifier": "./ConsultHistoryPanel-X3hMdgAl.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/ConsultHistoryPanel-X3hMdgAl.js"
+    },
+    {
+      "specifier": "./AltRouteOutlined-BY5W7vtA.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/AltRouteOutlined-BY5W7vtA.js"
+    },
+    {
+      "specifier": "./ForwardOutlined-L-S9T4to.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/ForwardOutlined-L-S9T4to.js"
+    },
+    {
+      "specifier": "./CustomerFormDialog-pXADTEX2.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/CustomerFormDialog-pXADTEX2.js"
+    },
+    {
+      "specifier": "./bookingApi-DC6gLfSO.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/bookingApi-DC6gLfSO.js"
+    },
+    {
+      "specifier": "./types-CVXtrYKe.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/types-CVXtrYKe.js"
+    },
+    {
+      "specifier": "./SectionCreateButton-DLuyExHb.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/SectionCreateButton-DLuyExHb.js"
+    },
+    {
+      "specifier": "./StopCircleOutlined-vWHA8Xrv.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/StopCircleOutlined-vWHA8Xrv.js"
+    },
+    {
+      "specifier": "./AttendanceParts-mHb1cK0h.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/AttendanceParts-mHb1cK0h.js"
+    },
+    {
+      "specifier": "./attendanceMgmt-B_e3bPBn.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/attendanceMgmt-B_e3bPBn.js"
+    },
+    {
+      "specifier": "./browser-FfRve9p6.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/browser-FfRve9p6.js"
+    },
+    {
+      "specifier": "./LanguageOutlined-dNJSO7u2.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/LanguageOutlined-dNJSO7u2.js"
+    },
+    {
+      "specifier": "./supportCenterApi-KQJIqJUd.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/supportCenterApi-KQJIqJUd.js"
+    },
+    {
+      "specifier": "./approvalDetailHost-CFvt90Au.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/approvalDetailHost-CFvt90Au.js"
+    },
+    {
+      "specifier": "./DynamicFeedOutlined-CALXdaS2.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/DynamicFeedOutlined-CALXdaS2.js"
+    },
+    {
+      "specifier": "./ViewWeekOutlined-Dme8hz7e.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/ViewWeekOutlined-Dme8hz7e.js"
+    },
+    {
+      "specifier": "./ViewTimelineOutlined-CVOcikTc.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/ViewTimelineOutlined-CVOcikTc.js"
+    },
+    {
+      "specifier": "./WorkspacesOutlined-DwFzV-9Z.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/WorkspacesOutlined-DwFzV-9Z.js"
+    },
+    {
+      "specifier": "./EventRepeatOutlined-BzT6rPrF.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/EventRepeatOutlined-BzT6rPrF.js"
+    },
+    {
+      "specifier": "./EditCalendarOutlined-k4e0HIS9.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/EditCalendarOutlined-k4e0HIS9.js"
+    },
+    {
+      "specifier": "./Link-CVsHTXRQ.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/Link-CVsHTXRQ.js"
+    },
+    {
+      "specifier": "./boardPostHost-qkMGoKtn.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/boardPostHost-qkMGoKtn.js"
+    },
+    {
+      "specifier": "./ChatMemberPanel-DmXFJG7n.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/ChatMemberPanel-DmXFJG7n.js"
+    },
+    {
+      "specifier": "./chatPrefs-Be7HCbgk.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/chatPrefs-Be7HCbgk.js"
+    },
+    {
+      "specifier": "./PhotoLibraryOutlined-7mbJKs9u.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/PhotoLibraryOutlined-7mbJKs9u.js"
+    },
+    {
+      "specifier": "./Logout-B1FcT8mE.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/Logout-B1FcT8mE.js"
+    },
+    {
+      "specifier": "./largeFile-DlThjw63.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/largeFile-DlThjw63.js"
+    },
+    {
+      "specifier": "./ChatRoomView-DTjnT2W1.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/ChatRoomView-DTjnT2W1.js"
+    },
+    {
+      "specifier": "./FileDropOverlay-Bw4w8zRu.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/FileDropOverlay-Bw4w8zRu.js"
+    },
+    {
+      "specifier": "./profileEcho-q2FaD_03.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/profileEcho-q2FaD_03.js"
+    },
+    {
+      "specifier": "./EmojiPanel-DTZZq0Nb.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/EmojiPanel-DTZZq0Nb.js"
+    },
+    {
+      "specifier": "./CheckRounded-q96oOTwH.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/CheckRounded-q96oOTwH.js"
+    },
+    {
+      "specifier": "./PickMenuDialog-BtpyEh4Z.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/PickMenuDialog-BtpyEh4Z.js"
+    },
+    {
+      "specifier": "./useLongPress-C-MDKVjl.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/useLongPress-C-MDKVjl.js"
+    },
+    {
+      "specifier": "./MeetRoomUI-B9KJeSBQ.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/MeetRoomUI-B9KJeSBQ.js"
+    },
+    {
+      "specifier": "./DrawOutlined-Ciurzwfe.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/DrawOutlined-Ciurzwfe.js"
+    },
+    {
+      "specifier": "./shareArticle-Cy4lemZ5.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/shareArticle-Cy4lemZ5.js"
+    },
+    {
+      "specifier": "./TuneOutlined-91VtWDYC.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/TuneOutlined-91VtWDYC.js"
+    },
+    {
+      "specifier": "./notificationsRealtime-BoFKeECQ.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/notificationsRealtime-BoFKeECQ.js"
+    },
+    {
+      "specifier": "./attendanceMgmtApi-CC4DR0XR.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/attendanceMgmtApi-CC4DR0XR.js"
+    },
+    {
+      "specifier": "./notificationIntent-BMq5F2BF.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/notificationIntent-BMq5F2BF.js"
+    },
+    {
+      "specifier": "./EmployeeRecordsDialog-Cu-T1ysd.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/EmployeeRecordsDialog-Cu-T1ysd.js"
+    },
+    {
+      "specifier": "./RepeatRowCard-CW6Yl_Xr.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/RepeatRowCard-CW6Yl_Xr.js"
+    },
+    {
+      "specifier": "./LocalLibraryOutlined-DXLWZCv4.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/LocalLibraryOutlined-DXLWZCv4.js"
+    },
+    {
+      "specifier": "./socialLinkApi-BmpcVziz.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/socialLinkApi-BmpcVziz.js"
+    },
+    {
+      "specifier": "./SocialProviderIcon-CfLZ-VWP.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/SocialProviderIcon-CfLZ-VWP.js"
+    },
+    {
+      "specifier": "./WithdrawDialog-BzZqPW3a.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/WithdrawDialog-BzZqPW3a.js"
+    },
+    {
+      "specifier": "./GridViewOutlined-C38fbc__.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/GridViewOutlined-C38fbc__.js"
+    },
+    {
+      "specifier": "./PageSlideDialog-D4MWDBvN.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/PageSlideDialog-D4MWDBvN.js"
+    },
+    {
+      "specifier": "./LoginPage-xO8sELhl.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/LoginPage-xO8sELhl.js"
+    },
+    {
+      "specifier": "./BiometricLoginButton-saWv6dRk.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/BiometricLoginButton-saWv6dRk.js"
+    },
+    {
+      "specifier": "./SocialLoginButtons-BfzUwflP.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/SocialLoginButtons-BfzUwflP.js"
+    },
+    {
+      "specifier": "./TaskhamLogoIcon-D-7jf3TJ.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/TaskhamLogoIcon-D-7jf3TJ.js"
+    },
+    {
+      "specifier": "./TaskhamWordmark-C6fF9fOj.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/TaskhamWordmark-C6fF9fOj.js"
+    },
+    {
+      "specifier": "./AuthLanguageButton-cBZSK8_3.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/AuthLanguageButton-cBZSK8_3.js"
+    },
+    {
+      "specifier": "./SignupPage-d9HBBRMK.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/SignupPage-d9HBBRMK.js"
+    },
+    {
+      "specifier": "./SignupConsents-CHsJ0gen.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/SignupConsents-CHsJ0gen.js"
+    },
+    {
+      "specifier": "./oauthSignup-BvADUlBj.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/oauthSignup-BvADUlBj.js"
+    },
+    {
+      "specifier": "./PolicyDocument-DN4sQ1C8.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/PolicyDocument-DN4sQ1C8.js"
+    },
+    {
+      "specifier": "./SignupEmailVerify-DuMbXunG.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/SignupEmailVerify-DuMbXunG.js"
+    },
+    {
+      "specifier": "./PricingPage-HO2Ywdf6.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/PricingPage-HO2Ywdf6.js"
+    },
+    {
+      "specifier": "./Reveal-C3c42DZa.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/Reveal-C3c42DZa.js"
+    },
+    {
+      "specifier": "./AlternateEmailOutlined-ChAd88mi.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/AlternateEmailOutlined-ChAd88mi.js"
+    },
+    {
+      "specifier": "./MailOutlineOutlined-CwnGWzzM.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/MailOutlineOutlined-CwnGWzzM.js"
+    },
+    {
+      "specifier": "./publicPageSx-9Lwcd6Z3.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/publicPageSx-9Lwcd6Z3.js"
+    },
+    {
+      "specifier": "./SubscribePage-BAavvAts.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/SubscribePage-BAavvAts.js"
+    },
+    {
+      "specifier": "./AddRounded-DeRMyh-W.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/AddRounded-DeRMyh-W.js"
+    },
+    {
+      "specifier": "./homeSx-C09ESIq-.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/homeSx-C09ESIq-.js"
+    },
+    {
+      "specifier": "./PricingCalculator-B_H7Reed.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/PricingCalculator-B_H7Reed.js"
+    },
+    {
+      "specifier": "./calendarKinds-BI5RuiF8.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/calendarKinds-BI5RuiF8.js"
+    },
+    {
+      "specifier": "./useHolidayNames-CGgpEQbF.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/useHolidayNames-CGgpEQbF.js"
+    },
+    {
+      "specifier": "./CalendarMemoPanel-D3bG3c90.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/CalendarMemoPanel-D3bG3c90.js"
+    },
+    {
+      "specifier": "./MicNoneOutlined-CCn21vm0.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/MicNoneOutlined-CCn21vm0.js"
+    },
+    {
+      "specifier": "./MobileCardListLayout-D5_p2Xer.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/MobileCardListLayout-D5_p2Xer.js"
+    },
+    {
+      "specifier": "./mobileSearchOverlay-DYWcMOOb.js",
+      "type": "static",
+      "bindings": [],
+      "resolved": "assets/vendor.d/mobileSearchOverlay-DYWcMOOb.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "Va",
+      "exported": "TaskDetailDrawerHost"
+    }
+  ],
+  "destructuredParameters": [],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "CalendarSidebarPanel"
+  ],
+  "service": "업무",
+  "purpose": "업무 상세 호스트",
+  "reuseGrade": "C",
+  "integration": "라우트·전역 상세 상태 연결",
+  "exportedParameters": []
+}

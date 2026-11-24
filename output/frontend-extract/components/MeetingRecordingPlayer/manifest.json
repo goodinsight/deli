@@ -1,0 +1,232 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/MeetingRecordingPlayer-vear-u6W.js",
+  "path": "assets/vendor.d/MeetingRecordingPlayer-vear-u6W.js",
+  "name": "MeetingRecordingPlayer",
+  "kind": "ui",
+  "bytes": 14539,
+  "sha256": "ab1a93ef48efba597f5384b629d2a845d8bfb700a120ea75d12047475f2e34e2",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/MeetingRecordingPlayer-vear-u6W.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "d",
+          "imported": "j"
+        },
+        {
+          "local": "a",
+          "imported": "r"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ee",
+          "imported": "c"
+        },
+        {
+          "local": "v",
+          "imported": "bT"
+        },
+        {
+          "local": "te",
+          "imported": "lb"
+        },
+        {
+          "local": "pe",
+          "imported": "l7"
+        },
+        {
+          "local": "ge",
+          "imported": "l8"
+        },
+        {
+          "local": "P",
+          "imported": "l3"
+        },
+        {
+          "local": "ne",
+          "imported": "l_"
+        },
+        {
+          "local": "we",
+          "imported": "l$"
+        },
+        {
+          "local": "he",
+          "imported": "l9"
+        },
+        {
+          "local": "ve",
+          "imported": "la"
+        },
+        {
+          "local": "Se",
+          "imported": "m0"
+        },
+        {
+          "local": "xe",
+          "imported": "bv"
+        },
+        {
+          "local": "re",
+          "imported": "B"
+        },
+        {
+          "local": "ae",
+          "imported": "bI"
+        },
+        {
+          "local": "Ae",
+          "imported": "k$"
+        },
+        {
+          "local": "ke",
+          "imported": "L"
+        },
+        {
+          "local": "ye",
+          "imported": "m1"
+        },
+        {
+          "local": "Re",
+          "imported": "fi"
+        },
+        {
+          "local": "be",
+          "imported": "fo"
+        },
+        {
+          "local": "W",
+          "imported": "w"
+        },
+        {
+          "local": "K",
+          "imported": "fp"
+        },
+        {
+          "local": "Ne",
+          "imported": "ks"
+        },
+        {
+          "local": "Ee",
+          "imported": "cP"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./meetingsApi-CCkjq69B.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Te",
+          "imported": "m"
+        }
+      ],
+      "resolved": "assets/vendor.d/meetingsApi-CCkjq69B.js"
+    },
+    {
+      "specifier": "./nativeRecordingSync-CMpETFg9.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "De",
+          "imported": "subscribeNativeSaved"
+        }
+      ],
+      "resolved": "assets/vendor.d/nativeRecordingSync-CMpETFg9.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "Me",
+      "exported": "G"
+    },
+    {
+      "local": "Ze",
+      "exported": "M"
+    },
+    {
+      "local": "Ce",
+      "exported": "P"
+    },
+    {
+      "local": "oe",
+      "exported": "f"
+    },
+    {
+      "local": "qe",
+      "exported": "s"
+    },
+    {
+      "local": "Ye",
+      "exported": "u"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "Ze",
+      "keys": [
+        "src",
+        "name",
+        "seconds",
+        "onRemove",
+        "seekRequest",
+        "onPlaybackChange",
+        "allowDownload",
+        "downloadSrc"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "CallListPage",
+    "ChatPage",
+    "ChatRoomView",
+    "CustomerFormDialog",
+    "CustomerListPage",
+    "DictationButton",
+    "Layout",
+    "MeetPage",
+    "MeetRoomUI",
+    "MeetingRecordScreen",
+    "MeetingSharePage",
+    "MeetingsPage",
+    "MobileDashboardLayout",
+    "PostComposerHost",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog"
+  ],
+  "service": "회의",
+  "purpose": "녹음 재생·전사",
+  "reuseGrade": "B",
+  "integration": "오디오 소스·전사 구간 데이터 연결",
+  "exportedParameters": [
+    {
+      "export": "M",
+      "compiledLocal": "Ze",
+      "keys": [
+        "src",
+        "name",
+        "seconds",
+        "onRemove",
+        "seekRequest",
+        "onPlaybackChange",
+        "allowDownload",
+        "downloadSrc"
+      ]
+    }
+  ]
+}

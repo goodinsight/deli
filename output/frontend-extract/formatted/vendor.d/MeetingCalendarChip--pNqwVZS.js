@@ -1,0 +1,690 @@
+import { r as h, j as r, u as q } from "./react-CjxcGQav.js";
+import { bT as y, bv as p, bH as x, B as s, as as l, fF as z, cz as P, oe as w, e$ as B, cK as L, k4 as V, bM as Y, mc as G, k5 as U, of as X, og as J, oh as Q, ax as Z, ce as ee, cf as te, bx as ae } from "../js.d/main-Cm9wS5wt.js";
+import { N as ne } from "./bootstrapController-BMV_i07c.js";
+import { u as ie } from "./useHolidayNames-CGgpEQbF.js";
+import { E as oe } from "./EventBusyOutlined-DqcCaRMs.js";
+import { u as re, T as le } from "./TrainingEditDialog-CdnpriOe.js";
+import { i as se, c as ce } from "./trainingCalendar-BpMTSUwd.js";
+const N = "data-calendar-search-scope",
+  Ie = {
+    [N]: ""
+  };
+function de(e) {
+  return String(e ?? "").trim().toLowerCase();
+}
+function ve(e, t) {
+  return e ? t.some(a => String(a ?? "").toLowerCase().includes(e)) : !0;
+}
+const We = {
+    task: (e, t) => [e.title, t],
+    tax: e => [e.label, e.detail],
+    doc: e => [e.label],
+    birthday: e => [y("calendar.birthday"), e.name],
+    training: e => [e.kind === "next" ? y("calendar.nextTraining") : y("calendar.training"), e.title],
+    office: e => [e.item.resource_name, e.item.title, e.item.purpose, e.item.booker_name, e.item.user_name, e.item.attendees],
+    meeting: e => [y("calendar.meeting"), e.title]
+  },
+  D = "calendar-search";
+function me() {
+  const e = globalThis.CSS?.highlights,
+    t = globalThis.Highlight;
+  return e && t ? {
+    registry: e,
+    Highlight: t
+  } : null;
+}
+function ue(e) {
+  const t = [];
+  return document.querySelectorAll(`[${N}]`).forEach(a => {
+    const n = document.createTreeWalker(a, NodeFilter.SHOW_TEXT);
+    for (let i = n.nextNode(); i; i = n.nextNode()) {
+      const o = (i.nodeValue ?? "").toLowerCase();
+      for (let c = o.indexOf(e); c >= 0; c = o.indexOf(e, c + e.length)) {
+        const m = document.createRange();
+        m.setStart(i, c), m.setEnd(i, c + e.length), t.push(m);
+      }
+    }
+  }), t;
+}
+function je(e) {
+  const t = de(e);
+  h.useEffect(() => {
+    const a = me();
+    if (!a) return;
+    if (!t) {
+      a.registry.delete(D);
+      return;
+    }
+    let n = 0;
+    const i = () => {
+      n = 0, a.registry.set(D, new a.Highlight(...ue(t)));
+    };
+    i();
+    const o = new MutationObserver(() => {
+      n || (n = window.requestAnimationFrame(i));
+    });
+    return o.observe(document.body, {
+      childList: !0,
+      subtree: !0,
+      characterData: !0
+    }), () => {
+      o.disconnect(), n && window.cancelAnimationFrame(n), a.registry.delete(D);
+    };
+  }, [t]);
+}
+function _e({
+  entry: e
+}) {
+  const t = p();
+  return r.jsx(x, {
+    title: t("hr.birthdayOf", {
+      name: e.name
+    }),
+    placement: "top",
+    disableInteractive: !0,
+    children: r.jsxs(s, {
+      onClick: a => a.stopPropagation(),
+      sx: {
+        display: "flex",
+        alignItems: "flex-start",
+        gap: .5,
+        px: .75,
+        py: .375,
+        borderRadius: 1,
+        minWidth: 0,
+        fontSize: 14,
+        lineHeight: 1.35,
+        bgcolor: l.amber50,
+        color: l.amber700
+      },
+      children: [r.jsx(z, {
+        sx: {
+          fontSize: 16,
+          flexShrink: 0,
+          mt: "2px"
+        }
+      }), r.jsx(s, {
+        component: "span",
+        sx: {
+          fontWeight: 700,
+          flexShrink: 0
+        },
+        children: t("hr.birthday")
+      }), r.jsx(s, {
+        component: "span",
+        sx: {
+          minWidth: 0,
+          overflowWrap: "anywhere",
+          whiteSpace: "normal"
+        },
+        children: e.name
+      })]
+    })
+  });
+}
+const fe = 31;
+let b = {
+    orgSeq: 0,
+    items: []
+  },
+  C = 0;
+const T = new Set();
+let $ = null;
+function O(e) {
+  b = e, T.forEach(t => t());
+}
+function R(e) {
+  if (!e) return;
+  const t = ++C,
+    a = V().slice(0, 10),
+    n = new URLSearchParams({
+      from: w(a, -92),
+      to: w(a, 183)
+    });
+  Y.http.get(`/v1/office/reservations/mine?${n}`).then(i => {
+    t === C && O({
+      orgSeq: e,
+      items: i?.ok === !1 ? [] : i?.data?.items ?? []
+    });
+  }).catch(() => {
+    t === C && O({
+      orgSeq: e,
+      items: []
+    });
+  });
+}
+function he(e) {
+  return T.add(e), $ || ($ = B(["office_reservation"], () => {
+    const t = L();
+    t && b.orgSeq && R(t.seq);
+  })), () => T.delete(e);
+}
+function $e(e = !0) {
+  const t = h.useSyncExternalStore(he, () => b, () => b),
+    a = P()?.seq ?? 0,
+    n = p();
+  return h.useEffect(() => {
+    e && a && t.orgSeq !== a && R(a);
+  }, [e, a, t.orgSeq]), h.useMemo(() => {
+    const i = new Map();
+    if (t.orgSeq !== a) return i;
+    for (const o of t.items) {
+      const c = o.start_at.slice(0, 10),
+        m = o.end_at.slice(0, 10);
+      for (let u = c, f = 0; u <= m && f < fe; u = w(u, 1), f += 1) {
+        const d = i.get(u) ?? [];
+        d.push({
+          item: o,
+          label: u === c ? o.start_at.slice(11) : n("office.continued")
+        }), i.set(u, d);
+      }
+    }
+    return i;
+  }, [t, a, n]);
+}
+function Oe({
+  entry: e
+}) {
+  const t = p(),
+    a = q(),
+    {
+      item: n
+    } = e,
+    i = () => a(`${n.kind === "vehicle" ? J : Q}?reservation=${n.seq}`);
+  return r.jsx(x, {
+    title: `${t(G[U(n)])} · ${n.resource_name} · ${X(n.start_at, n.end_at)}${n.title ? ` · ${n.title}` : ""}`,
+    placement: "top",
+    disableInteractive: !0,
+    children: r.jsxs(s, {
+      role: "button",
+      tabIndex: 0,
+      onClick: o => {
+        o.stopPropagation(), i();
+      },
+      onKeyDown: o => {
+        (o.key === "Enter" || o.key === " ") && (o.preventDefault(), o.stopPropagation(), i());
+      },
+      sx: {
+        display: "flex",
+        alignItems: "flex-start",
+        gap: .5,
+        px: .75,
+        py: .375,
+        borderRadius: 1,
+        cursor: "pointer",
+        minWidth: 0,
+        bgcolor: l.sky100,
+        color: l.sky700,
+        fontSize: 14,
+        lineHeight: 1.35,
+        "&:hover": {
+          filter: "brightness(0.96)"
+        },
+        outline: "none",
+        "&:focus": {
+          outline: "none"
+        },
+        "&:focus-visible": {
+          outline: `2px solid ${l.sky700}`,
+          outlineOffset: 1
+        }
+      },
+      children: [r.jsx(s, {
+        component: "span",
+        sx: {
+          flexShrink: 0,
+          fontWeight: 600
+        },
+        children: e.label
+      }), r.jsx(s, {
+        component: "span",
+        sx: {
+          minWidth: 0,
+          overflowWrap: "anywhere",
+          whiteSpace: "normal"
+        },
+        children: n.resource_name
+      })]
+    })
+  });
+}
+function He({
+  entry: e,
+  onOpen: t
+}) {
+  const a = p(),
+    n = e.kind === "next",
+    i = a(n ? "hr.trainingNext" : "hr.employeeKindTraining"),
+    o = n ? l.cyan50 : l.violet50,
+    c = n ? l.cyan700 : l.violet700;
+  return r.jsx(x, {
+    title: `${i} · ${e.title}`,
+    placement: "top",
+    disableInteractive: !0,
+    children: r.jsxs(s, {
+      role: "button",
+      tabIndex: 0,
+      onClick: m => {
+        m.stopPropagation(), t();
+      },
+      onKeyDown: m => {
+        (m.key === "Enter" || m.key === " ") && (m.preventDefault(), m.stopPropagation(), t());
+      },
+      sx: {
+        display: "flex",
+        alignItems: "flex-start",
+        gap: .5,
+        px: .75,
+        py: .375,
+        borderRadius: 1,
+        cursor: "pointer",
+        minWidth: 0,
+        fontSize: 14,
+        lineHeight: 1.35,
+        bgcolor: o,
+        color: c,
+        "&:hover": {
+          filter: "brightness(0.96)"
+        },
+        outline: "none",
+        "&:focus": {
+          outline: "none"
+        },
+        "&:focus-visible": {
+          outline: `2px solid ${c}`,
+          outlineOffset: 1
+        }
+      },
+      children: [r.jsx(s, {
+        component: "span",
+        sx: {
+          fontWeight: 700,
+          flexShrink: 0
+        },
+        children: i
+      }), r.jsx(s, {
+        component: "span",
+        sx: {
+          minWidth: 0,
+          overflowWrap: "anywhere",
+          whiteSpace: "normal"
+        },
+        children: e.title
+      })]
+    })
+  });
+}
+const pe = [{
+    id: "withholding",
+    month: 0,
+    day: 10,
+    labelKey: "calendar.taxWithholding",
+    detailKey: "calendar.taxWithholdingDetail"
+  }, {
+    id: "simple-statement",
+    month: 0,
+    day: 0,
+    labelKey: "calendar.taxSimpleStatement",
+    detailKey: "calendar.taxSimpleStatementDetail"
+  }, {
+    id: "vat-2-final",
+    month: 1,
+    day: 25,
+    labelKey: "calendar.taxVat2Final",
+    detailKey: "calendar.taxVat2FinalDetail"
+  }, {
+    id: "biz-status",
+    month: 2,
+    day: 10,
+    labelKey: "calendar.taxBizStatus",
+    detailKey: "calendar.taxBizStatusDetail",
+    only: "개인사업자"
+  }, {
+    id: "statement-other",
+    month: 2,
+    day: 0,
+    labelKey: "calendar.taxStatementOther",
+    detailKey: "calendar.taxStatementOtherDetail"
+  }, {
+    id: "statement-wage",
+    month: 3,
+    day: 10,
+    labelKey: "calendar.taxStatementWage",
+    detailKey: "calendar.taxStatementWageDetail"
+  }, {
+    id: "corp-tax",
+    month: 3,
+    day: 31,
+    labelKey: "calendar.taxCorpTax",
+    detailKey: "calendar.taxCorpTaxDetail",
+    only: "법인사업자"
+  }, {
+    id: "vat-1-prelim",
+    month: 4,
+    day: 25,
+    labelKey: "calendar.taxVat1Prelim",
+    detailKey: "calendar.taxVat1PrelimDetail"
+  }, {
+    id: "corp-local-tax",
+    month: 4,
+    day: 30,
+    labelKey: "calendar.taxCorpLocalTax",
+    detailKey: "calendar.taxCorpLocalTaxDetail",
+    only: "법인사업자"
+  }, {
+    id: "income-tax",
+    month: 5,
+    day: 31,
+    labelKey: "calendar.taxIncomeTax",
+    detailKey: "calendar.taxIncomeTaxDetail",
+    only: "개인사업자"
+  }, {
+    id: "income-tax-sincere",
+    month: 6,
+    day: 30,
+    labelKey: "calendar.taxIncomeTaxSincere",
+    detailKey: "calendar.taxIncomeTaxSincereDetail",
+    only: "개인사업자"
+  }, {
+    id: "vat-1-final",
+    month: 7,
+    day: 25,
+    labelKey: "calendar.taxVat1Final",
+    detailKey: "calendar.taxVat1FinalDetail"
+  }, {
+    id: "corp-interim",
+    month: 8,
+    day: 31,
+    labelKey: "calendar.taxCorpInterim",
+    detailKey: "calendar.taxCorpInterimDetail",
+    only: "법인사업자"
+  }, {
+    id: "vat-2-prelim",
+    month: 10,
+    day: 25,
+    labelKey: "calendar.taxVat2Prelim",
+    detailKey: "calendar.taxVat2PrelimDetail"
+  }, {
+    id: "income-interim",
+    month: 11,
+    day: 30,
+    labelKey: "calendar.taxIncomeInterim",
+    detailKey: "calendar.taxIncomeInterimDetail",
+    only: "개인사업자"
+  }],
+  xe = new Map();
+function K(e) {
+  const t = String(e.getMonth() + 1).padStart(2, "0"),
+    a = String(e.getDate()).padStart(2, "0");
+  return `${e.getFullYear()}-${t}-${a}`;
+}
+function ge(e, t) {
+  const a = new Date(e);
+  for (; a.getDay() === 0 || a.getDay() === 6 || t.has(K(a));) a.setDate(a.getDate() + 1);
+  return a;
+}
+function ye(e) {
+  return !!e?.use_tax;
+}
+function Ae(e) {
+  const t = p(),
+    a = P(),
+    n = ye(a),
+    i = ne(n),
+    o = n ? [...new Set(e)].filter(Boolean).sort().join(",") : "",
+    c = h.useMemo(() => {
+      const u = o ? o.split(",").map(Number) : [];
+      if (u.length === 0) return [];
+      const f = [];
+      for (let d = u[0] - 1; d <= u[u.length - 1] + 1; d++) f.push(d);
+      return f;
+    }, [o]),
+    m = ie(c);
+  return h.useMemo(() => {
+    if (c.length === 0) return xe;
+    const u = new Map();
+    for (const f of c.slice(0, -1)) for (const d of pe) {
+      if (d.only && i && d.only !== i) continue;
+      const M = d.month ? [d.month] : Array.from({
+        length: 12
+      }, (S, g) => g + 1);
+      for (const S of M) {
+        const g = new Date(f, S, 0).getDate(),
+          I = new Date(f, S - 1, d.day ? Math.min(d.day, g) : g),
+          v = K(I),
+          W = K(ge(I, m)),
+          j = {
+            id: `${d.id}-${v}`,
+            label: t(d.labelKey),
+            detail: t(d.detailKey),
+            statutoryDay: v
+          },
+          _ = u.get(W);
+        _ ? _.push(j) : u.set(W, [j]);
+      }
+    }
+    return u;
+  }, [c, m, i, t]);
+}
+function H(e) {
+  return `${Number(e.slice(5, 7))}/${Number(e.slice(8, 10))}`;
+}
+function Pe({
+  entry: e,
+  day: t
+}) {
+  const a = p(),
+    n = e.statutoryDay !== t ? a("calendar.taxDeadlineShifted", {
+      detail: e.detail,
+      statutory: H(e.statutoryDay),
+      day: H(t)
+    }) : e.detail;
+  return r.jsx(x, {
+    title: n,
+    placement: "top",
+    disableInteractive: !0,
+    children: r.jsxs(s, {
+      onClick: i => i.stopPropagation(),
+      sx: {
+        display: "flex",
+        alignItems: "flex-start",
+        gap: .5,
+        px: .75,
+        py: .375,
+        borderRadius: 1,
+        minWidth: 0,
+        fontSize: 14,
+        lineHeight: 1.35,
+        bgcolor: l.emerald50,
+        color: l.emerald700
+      },
+      children: [r.jsx(Z, {
+        sx: {
+          fontSize: 16,
+          flexShrink: 0,
+          mt: "2px"
+        }
+      }), r.jsx(s, {
+        component: "span",
+        sx: {
+          fontWeight: 700,
+          minWidth: 0,
+          overflowWrap: "anywhere",
+          whiteSpace: "normal"
+        },
+        children: e.label
+      })]
+    })
+  });
+}
+function A(e) {
+  const t = new Date(Number(e.slice(0, 4)), Number(e.slice(5, 7)) - 1, Number(e.slice(8, 10)));
+  return new Intl.DateTimeFormat(ee(te()), {
+    year: "numeric",
+    month: "numeric",
+    day: "numeric"
+  }).format(t);
+}
+function Le({
+  entry: e
+}) {
+  const t = p(),
+    a = e.daysLeft === 0,
+    n = a ? t("calendar.docExpiresToday", {
+      label: e.label,
+      date: A(e.expireDay)
+    }) : t("calendar.docExpiresIn", {
+      label: e.label,
+      count: e.daysLeft,
+      date: A(e.expireDay)
+    });
+  return r.jsx(x, {
+    title: n,
+    placement: "top",
+    disableInteractive: !0,
+    children: r.jsxs(s, {
+      onClick: i => i.stopPropagation(),
+      sx: {
+        display: "flex",
+        alignItems: "flex-start",
+        gap: .5,
+        px: .75,
+        py: .375,
+        borderRadius: 1,
+        minWidth: 0,
+        fontSize: 14,
+        lineHeight: 1.35,
+        bgcolor: a ? l.rose50 : l.amber50,
+        color: a ? l.rose700 : l.amber800
+      },
+      children: [r.jsx(oe, {
+        sx: {
+          fontSize: 16,
+          flexShrink: 0,
+          mt: "2px"
+        }
+      }), r.jsx(s, {
+        component: "span",
+        sx: {
+          fontWeight: 700,
+          flexShrink: 0
+        },
+        children: a ? t("calendar.expired") : `D-${e.daysLeft}`
+      }), r.jsx(s, {
+        component: "span",
+        sx: {
+          minWidth: 0,
+          overflowWrap: "anywhere",
+          whiteSpace: "normal"
+        },
+        children: e.label
+      })]
+    })
+  });
+}
+let E = 0;
+const k = new Set();
+function F(e) {
+  E = e, k.forEach(t => t());
+}
+function Ne(e) {
+  ce(L()) && F(e);
+}
+function be() {
+  F(0);
+}
+function Se() {
+  return h.useSyncExternalStore(e => (k.add(e), () => k.delete(e)), () => E, () => E);
+}
+function Re() {
+  const e = Se(),
+    t = re({
+      modalId: "calendar-training-edit",
+      formId: "calendar-training-form",
+      onClose: be,
+      onSaved: a => {
+        ae({
+          message: a,
+          delay: 500
+        }), se();
+      }
+    });
+  return h.useEffect(() => {
+    e <= 0 || t.openEdit(e);
+  }, [e]), r.jsx(le, {
+    controller: t
+  });
+}
+function Fe({
+  entry: e,
+  onOpen: t,
+  maxLines: a
+}) {
+  const n = p(),
+    i = l.amber800;
+  return r.jsx(x, {
+    title: n("meetings.calendarChipTitle", {
+      title: `${e.time ? `${e.time} ` : ""}${e.title}`
+    }),
+    placement: "top",
+    disableInteractive: !0,
+    children: r.jsxs(s, {
+      role: "button",
+      tabIndex: 0,
+      onClick: o => {
+        o.stopPropagation(), t();
+      },
+      onKeyDown: o => {
+        (o.key === "Enter" || o.key === " ") && (o.preventDefault(), o.stopPropagation(), t());
+      },
+      sx: {
+        display: "flex",
+        alignItems: "flex-start",
+        gap: .5,
+        px: .75,
+        py: .375,
+        borderRadius: 1,
+        cursor: "pointer",
+        minWidth: 0,
+        fontSize: 14,
+        lineHeight: 1.35,
+        bgcolor: l.amber50,
+        color: i,
+        "&:hover": {
+          filter: "brightness(0.96)"
+        },
+        outline: "none",
+        "&:focus": {
+          outline: "none"
+        },
+        "&:focus-visible": {
+          outline: `2px solid ${i}`,
+          outlineOffset: 1
+        }
+      },
+      children: [r.jsx(s, {
+        component: "span",
+        sx: {
+          fontWeight: 700,
+          flexShrink: 0
+        },
+        children: n("meetings.meeting")
+      }), r.jsx(s, {
+        component: "span",
+        sx: {
+          minWidth: 0,
+          overflowWrap: "anywhere",
+          whiteSpace: "normal",
+          ...(a ? {
+            display: "-webkit-box",
+            WebkitBoxOrient: "vertical",
+            WebkitLineClamp: a,
+            overflow: "hidden"
+          } : {})
+        },
+        children: e.title
+      })]
+    })
+  });
+}
+export { _e as B, Ie as C, Le as D, Fe as M, Oe as O, Re as T, Ae as a, $e as b, We as c, Pe as d, He as e, ve as m, de as n, Ne as o, je as u };

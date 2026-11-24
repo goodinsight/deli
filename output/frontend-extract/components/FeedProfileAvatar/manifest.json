@@ -1,0 +1,376 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/FeedProfileAvatar-B6gqXpYU.js",
+  "path": "assets/vendor.d/FeedProfileAvatar-B6gqXpYU.js",
+  "name": "FeedProfileAvatar",
+  "kind": "ui",
+  "bytes": 8378,
+  "sha256": "bcaae49ce3e9d0fbffbfb82740f88d4343ae99dea6d45d61a466216e48bf8914",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/FeedProfileAvatar-B6gqXpYU.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "u",
+          "imported": "r"
+        },
+        {
+          "local": "K",
+          "imported": "u"
+        },
+        {
+          "local": "i",
+          "imported": "j"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "y",
+          "imported": "bM"
+        },
+        {
+          "local": "A",
+          "imported": "cz"
+        },
+        {
+          "local": "q",
+          "imported": "D"
+        },
+        {
+          "local": "j",
+          "imported": "bO"
+        },
+        {
+          "local": "E",
+          "imported": "bT"
+        },
+        {
+          "local": "W",
+          "imported": "dC"
+        },
+        {
+          "local": "w",
+          "imported": "by"
+        },
+        {
+          "local": "M",
+          "imported": "bv"
+        },
+        {
+          "local": "V",
+          "imported": "cj"
+        },
+        {
+          "local": "k",
+          "imported": "B"
+        },
+        {
+          "local": "G",
+          "imported": "mB"
+        },
+        {
+          "local": "P",
+          "imported": "bQ"
+        },
+        {
+          "local": "z",
+          "imported": "K"
+        },
+        {
+          "local": "X",
+          "imported": "eF"
+        },
+        {
+          "local": "H",
+          "imported": "e"
+        },
+        {
+          "local": "U",
+          "imported": "fq"
+        },
+        {
+          "local": "Q",
+          "imported": "y"
+        },
+        {
+          "local": "$",
+          "imported": "gd"
+        },
+        {
+          "local": "O",
+          "imported": "kH"
+        },
+        {
+          "local": "Z",
+          "imported": "c2"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./CallOutlined-B2W58-Kt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "J",
+          "imported": "C"
+        }
+      ],
+      "resolved": "assets/vendor.d/CallOutlined-B2W58-Kt.js"
+    },
+    {
+      "specifier": "./AccountAvatar-DtrhoS_d.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "L",
+          "imported": "A"
+        }
+      ],
+      "resolved": "assets/vendor.d/AccountAvatar-DtrhoS_d.js"
+    },
+    {
+      "specifier": "./squircle-CQM8EvXm.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "S",
+          "imported": "S"
+        }
+      ],
+      "resolved": "assets/vendor.d/squircle-CQM8EvXm.js"
+    },
+    {
+      "specifier": "./bootstrapController-BMV_i07c.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Y",
+          "imported": "z"
+        }
+      ],
+      "resolved": "assets/vendor.d/bootstrapController-BMV_i07c.js"
+    },
+    {
+      "specifier": "./aliasStore-DiN6Kp-5.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "C",
+          "imported": "m"
+        },
+        {
+          "local": "_",
+          "imported": "n"
+        },
+        {
+          "local": "T",
+          "imported": "z"
+        }
+      ],
+      "resolved": "assets/vendor.d/aliasStore-DiN6Kp-5.js"
+    },
+    {
+      "specifier": "./chatRoomHost-ImRyH_Na.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "B",
+          "imported": "o"
+        }
+      ],
+      "resolved": "assets/vendor.d/chatRoomHost-ImRyH_Na.js"
+    },
+    {
+      "specifier": "./callStore-DH1_RYeP.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ee",
+          "imported": "g"
+        },
+        {
+          "local": "te",
+          "imported": "p"
+        },
+        {
+          "local": "ne",
+          "imported": "j"
+        },
+        {
+          "local": "oe",
+          "imported": "h"
+        }
+      ],
+      "resolved": "assets/vendor.d/callStore-DH1_RYeP.js"
+    },
+    {
+      "specifier": "./videoMeetingApi-BCL1yHsp.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "re",
+          "imported": "videoMeetingApi"
+        }
+      ],
+      "resolved": "assets/vendor.d/videoMeetingApi-BCL1yHsp.js"
+    },
+    {
+      "specifier": "./EmployeeSelectDialog-Cdnxeoz9.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "se",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/EmployeeSelectDialog-Cdnxeoz9.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "Me",
+      "exported": "F"
+    },
+    {
+      "local": "pe",
+      "exported": "P"
+    },
+    {
+      "local": "de",
+      "exported": "a"
+    },
+    {
+      "local": "ce",
+      "exported": "b"
+    },
+    {
+      "local": "Ae",
+      "exported": "c"
+    },
+    {
+      "local": "Se",
+      "exported": "d"
+    },
+    {
+      "local": "ve",
+      "exported": "u"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "me",
+      "keys": [
+        "accountSeq",
+        "color",
+        "onCompose",
+        "known"
+      ]
+    },
+    {
+      "function": "de",
+      "keys": [
+        "person",
+        "size",
+        "iconFontSize",
+        "chat",
+        "label",
+        "labelGap",
+        "fill"
+      ]
+    },
+    {
+      "function": "pe",
+      "keys": [
+        "anchor",
+        "person",
+        "chat",
+        "onClose",
+        "onAction"
+      ]
+    },
+    {
+      "function": "he",
+      "keys": [
+        "anchor",
+        "onClose",
+        "children"
+      ]
+    },
+    {
+      "function": "Me",
+      "keys": [
+        "name",
+        "src",
+        "size"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "BoardListPage",
+    "BoardTrashPage",
+    "CalendarMonthListPage",
+    "CalendarMonthPage",
+    "DictationButton",
+    "Layout",
+    "MeetingsPage",
+    "MobileDashboardLayout",
+    "PostComposerHost",
+    "PostLockDialogs",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog",
+    "taskboxProviderConfig",
+    "useCalendarTasks"
+  ],
+  "service": "공통",
+  "purpose": "피드 프로필 아바타",
+  "reuseGrade": "B",
+  "integration": "프로필 팝업과 계정 상태 대체",
+  "exportedParameters": [
+    {
+      "export": "F",
+      "compiledLocal": "Me",
+      "keys": [
+        "name",
+        "src",
+        "size"
+      ]
+    },
+    {
+      "export": "P",
+      "compiledLocal": "pe",
+      "keys": [
+        "anchor",
+        "person",
+        "chat",
+        "onClose",
+        "onAction"
+      ]
+    },
+    {
+      "export": "a",
+      "compiledLocal": "de",
+      "keys": [
+        "person",
+        "size",
+        "iconFontSize",
+        "chat",
+        "label",
+        "labelGap",
+        "fill"
+      ]
+    }
+  ]
+}

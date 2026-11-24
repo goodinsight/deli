@@ -1,0 +1,496 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/ConsultHistoryPanel-X3hMdgAl.js",
+  "path": "assets/vendor.d/ConsultHistoryPanel-X3hMdgAl.js",
+  "name": "ConsultHistoryPanel",
+  "kind": "ui",
+  "bytes": 19892,
+  "sha256": "3cd85d0b51c62d35340e83eb74cd280091388e9732bfadee3d27d8e651d0cac9",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/ConsultHistoryPanel-X3hMdgAl.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "T",
+          "imported": "r"
+        },
+        {
+          "local": "t",
+          "imported": "j"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "pe",
+          "imported": "e"
+        },
+        {
+          "local": "ge",
+          "imported": "c8"
+        },
+        {
+          "local": "he",
+          "imported": "ak"
+        },
+        {
+          "local": "xe",
+          "imported": "dv"
+        },
+        {
+          "local": "_e",
+          "imported": "fA"
+        },
+        {
+          "local": "y",
+          "imported": "bO"
+        },
+        {
+          "local": "q",
+          "imported": "bT"
+        },
+        {
+          "local": "be",
+          "imported": "cL"
+        },
+        {
+          "local": "le",
+          "imported": "bx"
+        },
+        {
+          "local": "Ce",
+          "imported": "kM"
+        },
+        {
+          "local": "Q",
+          "imported": "bv"
+        },
+        {
+          "local": "ce",
+          "imported": "lJ"
+        },
+        {
+          "local": "J",
+          "imported": "fC"
+        },
+        {
+          "local": "qe",
+          "imported": "fB"
+        },
+        {
+          "local": "L",
+          "imported": "cG"
+        },
+        {
+          "local": "Se",
+          "imported": "S"
+        },
+        {
+          "local": "je",
+          "imported": "T"
+        },
+        {
+          "local": "ie",
+          "imported": "fJ"
+        },
+        {
+          "local": "me",
+          "imported": "fK"
+        },
+        {
+          "local": "ve",
+          "imported": "m"
+        },
+        {
+          "local": "de",
+          "imported": "lK"
+        },
+        {
+          "local": "ye",
+          "imported": "aR"
+        },
+        {
+          "local": "Oe",
+          "imported": "he"
+        },
+        {
+          "local": "Te",
+          "imported": "H"
+        },
+        {
+          "local": "Fe",
+          "imported": "D"
+        },
+        {
+          "local": "Ve",
+          "imported": "fL"
+        },
+        {
+          "local": "Ee",
+          "imported": "lM"
+        },
+        {
+          "local": "ke",
+          "imported": "fN"
+        },
+        {
+          "local": "Ne",
+          "imported": "cI"
+        },
+        {
+          "local": "_",
+          "imported": "B"
+        },
+        {
+          "local": "Z",
+          "imported": "ca"
+        },
+        {
+          "local": "Ie",
+          "imported": "cC"
+        },
+        {
+          "local": "Re",
+          "imported": "lN"
+        },
+        {
+          "local": "Le",
+          "imported": "lO"
+        },
+        {
+          "local": "U",
+          "imported": "lP"
+        },
+        {
+          "local": "P",
+          "imported": "aq"
+        },
+        {
+          "local": "we",
+          "imported": "lQ"
+        },
+        {
+          "local": "De",
+          "imported": "al"
+        },
+        {
+          "local": "Y",
+          "imported": "cn"
+        },
+        {
+          "local": "Me",
+          "imported": "cO"
+        },
+        {
+          "local": "w",
+          "imported": "bQ"
+        },
+        {
+          "local": "Ae",
+          "imported": "d8"
+        },
+        {
+          "local": "We",
+          "imported": "K"
+        },
+        {
+          "local": "ae",
+          "imported": "L"
+        },
+        {
+          "local": "re",
+          "imported": "s"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./taskDetailHost-C45bt_tL.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Pe",
+          "imported": "o"
+        }
+      ],
+      "resolved": "assets/vendor.d/taskDetailHost-C45bt_tL.js"
+    },
+    {
+      "specifier": "./customerMetaStore-Bj9KdRyn.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "O",
+          "imported": "c"
+        },
+        {
+          "local": "fe",
+          "imported": "g"
+        }
+      ],
+      "resolved": "assets/vendor.d/customerMetaStore-Bj9KdRyn.js"
+    },
+    {
+      "specifier": "./PropertyContentEditor-DIsouMXi.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "$e",
+          "imported": "u"
+        },
+        {
+          "local": "Be",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/PropertyContentEditor-DIsouMXi.js"
+    },
+    {
+      "specifier": "./propertySections-Bwsl7OH-.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "He",
+          "imported": "P"
+        }
+      ],
+      "resolved": "assets/vendor.d/propertySections-Bwsl7OH-.js"
+    },
+    {
+      "specifier": "./AltRouteOutlined-BY5W7vtA.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ue",
+          "imported": "A"
+        }
+      ],
+      "resolved": "assets/vendor.d/AltRouteOutlined-BY5W7vtA.js"
+    },
+    {
+      "specifier": "./CategoryOutlined-DcAqxAdD.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ye",
+          "imported": "C"
+        }
+      ],
+      "resolved": "assets/vendor.d/CategoryOutlined-DcAqxAdD.js"
+    },
+    {
+      "specifier": "./Title-WCY0exuZ.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ke",
+          "imported": "T"
+        }
+      ],
+      "resolved": "assets/vendor.d/Title-WCY0exuZ.js"
+    },
+    {
+      "specifier": "./RecordVoiceOverOutlined-C838alHh.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ge",
+          "imported": "R"
+        }
+      ],
+      "resolved": "assets/vendor.d/RecordVoiceOverOutlined-C838alHh.js"
+    },
+    {
+      "specifier": "./ForwardOutlined-L-S9T4to.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Qe",
+          "imported": "F"
+        }
+      ],
+      "resolved": "assets/vendor.d/ForwardOutlined-L-S9T4to.js"
+    },
+    {
+      "specifier": "./dealApi-CnzQt6qM.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Xe",
+          "imported": "d"
+        }
+      ],
+      "resolved": "assets/vendor.d/dealApi-CnzQt6qM.js"
+    },
+    {
+      "specifier": "./deal-B3IQ_ej7.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "ze",
+          "imported": "D"
+        }
+      ],
+      "resolved": "assets/vendor.d/deal-B3IQ_ej7.js"
+    },
+    {
+      "specifier": "./PropertyFields-TuJTG5XK.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "te",
+          "imported": "I"
+        },
+        {
+          "local": "Je",
+          "imported": "b"
+        }
+      ],
+      "resolved": "assets/vendor.d/PropertyFields-TuJTG5XK.js"
+    },
+    {
+      "specifier": "./FormValue-CAMilU-0.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "k",
+          "imported": "F"
+        }
+      ],
+      "resolved": "assets/vendor.d/FormValue-CAMilU-0.js"
+    },
+    {
+      "specifier": "./types-B1OAKh4b.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "K",
+          "imported": "g"
+        },
+        {
+          "local": "D",
+          "imported": "h"
+        },
+        {
+          "local": "ne",
+          "imported": "i"
+        }
+      ],
+      "resolved": "assets/vendor.d/types-B1OAKh4b.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "Rt",
+      "exported": "C"
+    },
+    {
+      "local": "ft",
+      "exported": "a"
+    },
+    {
+      "local": "Lt",
+      "exported": "b"
+    },
+    {
+      "local": "ht",
+      "exported": "c"
+    },
+    {
+      "local": "It",
+      "exported": "u"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "lt",
+      "keys": [
+        "controller",
+        "meta"
+      ]
+    },
+    {
+      "function": "at",
+      "keys": [
+        "controller",
+        "name"
+      ]
+    },
+    {
+      "function": "it",
+      "keys": [
+        "controller"
+      ]
+    },
+    {
+      "function": "Rt",
+      "keys": [
+        "controller",
+        "meta",
+        "rows",
+        "presentation",
+        "wide"
+      ]
+    },
+    {
+      "function": "Lt",
+      "keys": [
+        "consults",
+        "loading",
+        "categories",
+        "onCreate",
+        "onOpen"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [],
+  "missingDependencies": [],
+  "importedBy": [
+    "CalendarSidebarPanel",
+    "ConsultListPage",
+    "CustomerFormDialog",
+    "CustomerListPage",
+    "Layout",
+    "MobileDashboardLayout",
+    "PostComposerHost",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog"
+  ],
+  "service": "고객",
+  "purpose": "상담 이력 패널",
+  "reuseGrade": "C",
+  "integration": "고객 상담 이력과 조회 API 연결",
+  "exportedParameters": [
+    {
+      "export": "C",
+      "compiledLocal": "Rt",
+      "keys": [
+        "controller",
+        "meta",
+        "rows",
+        "presentation",
+        "wide"
+      ]
+    },
+    {
+      "export": "b",
+      "compiledLocal": "Lt",
+      "keys": [
+        "consults",
+        "loading",
+        "categories",
+        "onCreate",
+        "onOpen"
+      ]
+    }
+  ]
+}

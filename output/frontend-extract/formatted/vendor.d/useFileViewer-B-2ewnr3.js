@@ -1,0 +1,13 @@
+import { r } from "./react-CjxcGQav.js";
+import { f as o } from "./documentViewerStore-BlSjH3BG.js";
+function n() {
+  const s = r.useCallback(e => {
+      e && o.requestOpen(e);
+    }, []),
+    t = r.useCallback(() => o.requestClose(), []);
+  return {
+    open: s,
+    close: t
+  };
+}
+export { n as u };

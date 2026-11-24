@@ -1,0 +1,697 @@
+{
+  "url": "https://work-test.elimsafety.com/vendor.d/ApprovalDetailDialog-v7PUkzWr.js",
+  "path": "assets/vendor.d/ApprovalDetailDialog-v7PUkzWr.js",
+  "name": "ApprovalDetailDialog",
+  "kind": "ui",
+  "bytes": 609549,
+  "sha256": "06f9a7b9e8225f4a4bd23603740872b91ca47bf14fb4e1d2fcde995edde63bbd",
+  "status": "cached",
+  "formatted": "formatted/vendor.d/ApprovalDetailDialog-v7PUkzWr.js",
+  "imports": [
+    {
+      "specifier": "./react-CjxcGQav.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "H",
+          "imported": "j"
+        },
+        {
+          "local": "He",
+          "imported": "r"
+        },
+        {
+          "local": "Jo",
+          "imported": "p"
+        }
+      ],
+      "resolved": "assets/vendor.d/react-CjxcGQav.js"
+    },
+    {
+      "specifier": "../js.d/main-Cm9wS5wt.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "zf",
+          "imported": "c"
+        },
+        {
+          "local": "da",
+          "imported": "bv"
+        },
+        {
+          "local": "Qc",
+          "imported": "k3"
+        },
+        {
+          "local": "Bl",
+          "imported": "fL"
+        },
+        {
+          "local": "If",
+          "imported": "k4"
+        },
+        {
+          "local": "Ce",
+          "imported": "B"
+        },
+        {
+          "local": "$c",
+          "imported": "k5"
+        },
+        {
+          "local": "eh",
+          "imported": "k6"
+        },
+        {
+          "local": "nr",
+          "imported": "bQ"
+        },
+        {
+          "local": "th",
+          "imported": "b4"
+        },
+        {
+          "local": "rh",
+          "imported": "fE"
+        },
+        {
+          "local": "nh",
+          "imported": "k7"
+        },
+        {
+          "local": "ih",
+          "imported": "dv"
+        },
+        {
+          "local": "zl",
+          "imported": "k8"
+        },
+        {
+          "local": "Il",
+          "imported": "g2"
+        },
+        {
+          "local": "ah",
+          "imported": "fq"
+        },
+        {
+          "local": "oh",
+          "imported": "fr"
+        },
+        {
+          "local": "Tr",
+          "imported": "bI"
+        },
+        {
+          "local": "jf",
+          "imported": "go"
+        },
+        {
+          "local": "lh",
+          "imported": "fs"
+        },
+        {
+          "local": "Mf",
+          "imported": "d4"
+        },
+        {
+          "local": "sh",
+          "imported": "ft"
+        },
+        {
+          "local": "Ro",
+          "imported": "K"
+        },
+        {
+          "local": "fh",
+          "imported": "ds"
+        },
+        {
+          "local": "Fr",
+          "imported": "bH"
+        },
+        {
+          "local": "uh",
+          "imported": "d8"
+        },
+        {
+          "local": "kt",
+          "imported": "L"
+        },
+        {
+          "local": "Vf",
+          "imported": "I"
+        },
+        {
+          "local": "on",
+          "imported": "c4"
+        },
+        {
+          "local": "ch",
+          "imported": "k9"
+        },
+        {
+          "local": "hh",
+          "imported": "gO"
+        },
+        {
+          "local": "dh",
+          "imported": "ka"
+        },
+        {
+          "local": "vh",
+          "imported": "kb"
+        },
+        {
+          "local": "jl",
+          "imported": "kc"
+        },
+        {
+          "local": "ph",
+          "imported": "kd"
+        },
+        {
+          "local": "gh",
+          "imported": "ke"
+        },
+        {
+          "local": "hi",
+          "imported": "bM"
+        },
+        {
+          "local": "mh",
+          "imported": "hF"
+        },
+        {
+          "local": "bh",
+          "imported": "bF"
+        },
+        {
+          "local": "qa",
+          "imported": "jT"
+        },
+        {
+          "local": "Ml",
+          "imported": "jY"
+        },
+        {
+          "local": "yh",
+          "imported": "kf"
+        },
+        {
+          "local": "xh",
+          "imported": "ak"
+        },
+        {
+          "local": "Ha",
+          "imported": "cW"
+        },
+        {
+          "local": "Vl",
+          "imported": "cJ"
+        },
+        {
+          "local": "Lf",
+          "imported": "s"
+        },
+        {
+          "local": "wh",
+          "imported": "kg"
+        },
+        {
+          "local": "Ll",
+          "imported": "iH"
+        },
+        {
+          "local": "Sh",
+          "imported": "jN"
+        },
+        {
+          "local": "kh",
+          "imported": "kh"
+        },
+        {
+          "local": "Ul",
+          "imported": "cI"
+        },
+        {
+          "local": "ql",
+          "imported": "aR"
+        },
+        {
+          "local": "Fh",
+          "imported": "ki"
+        },
+        {
+          "local": "_h",
+          "imported": "kj"
+        },
+        {
+          "local": "Th",
+          "imported": "dj"
+        }
+      ],
+      "resolved": "assets/js.d/main-Cm9wS5wt.js"
+    },
+    {
+      "specifier": "./ReservationDialog-DnyeBFBI.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Hl",
+          "imported": "u"
+        },
+        {
+          "local": "Ch",
+          "imported": "R"
+        },
+        {
+          "local": "Wl",
+          "imported": "a"
+        }
+      ],
+      "resolved": "assets/vendor.d/ReservationDialog-DnyeBFBI.js"
+    },
+    {
+      "specifier": "./VehicleLogDialog-BPXUMXE7.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Dh",
+          "imported": "u"
+        },
+        {
+          "local": "Eh",
+          "imported": "V"
+        }
+      ],
+      "resolved": "assets/vendor.d/VehicleLogDialog-BPXUMXE7.js"
+    },
+    {
+      "specifier": "./Send-yl2RzZF4.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ah",
+          "imported": "S"
+        }
+      ],
+      "resolved": "assets/vendor.d/Send-yl2RzZF4.js"
+    },
+    {
+      "specifier": "./ZoomIn-B3VGPGla.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Rh",
+          "imported": "Z"
+        }
+      ],
+      "resolved": "assets/vendor.d/ZoomIn-B3VGPGla.js"
+    },
+    {
+      "specifier": "./bootstrapController-BMV_i07c.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Ph",
+          "imported": "C"
+        }
+      ],
+      "resolved": "assets/vendor.d/bootstrapController-BMV_i07c.js"
+    },
+    {
+      "specifier": "./printSvgDocument-DHC1JJCG.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "qr",
+          "imported": "p"
+        }
+      ],
+      "resolved": "assets/vendor.d/printSvgDocument-DHC1JJCG.js"
+    },
+    {
+      "specifier": "./printDocChrome-BMZLbM8A.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "va",
+          "imported": "h"
+        },
+        {
+          "local": "Uf",
+          "imported": "m"
+        },
+        {
+          "local": "qf",
+          "imported": "f"
+        },
+        {
+          "local": "Zi",
+          "imported": "L"
+        },
+        {
+          "local": "Hf",
+          "imported": "o"
+        },
+        {
+          "local": "pa",
+          "imported": "k"
+        },
+        {
+          "local": "dn",
+          "imported": "j"
+        },
+        {
+          "local": "Gt",
+          "imported": "e"
+        },
+        {
+          "local": "Wf",
+          "imported": "c"
+        },
+        {
+          "local": "ga",
+          "imported": "l"
+        },
+        {
+          "local": "ma",
+          "imported": "g"
+        },
+        {
+          "local": "Hr",
+          "imported": "D"
+        },
+        {
+          "local": "Oh",
+          "imported": "p"
+        },
+        {
+          "local": "Po",
+          "imported": "b"
+        },
+        {
+          "local": "Kf",
+          "imported": "w"
+        },
+        {
+          "local": "Dt",
+          "imported": "T"
+        },
+        {
+          "local": "Nh",
+          "imported": "a"
+        }
+      ],
+      "resolved": "assets/vendor.d/printDocChrome-BMZLbM8A.js"
+    },
+    {
+      "specifier": "./ReferenceList-mhfbKusm.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Gf",
+          "imported": "c"
+        },
+        {
+          "local": "Xi",
+          "imported": "C"
+        },
+        {
+          "local": "Qo",
+          "imported": "d"
+        },
+        {
+          "local": "$o",
+          "imported": "r"
+        },
+        {
+          "local": "Zf",
+          "imported": "A"
+        },
+        {
+          "local": "Xf",
+          "imported": "h"
+        },
+        {
+          "local": "Yf",
+          "imported": "e"
+        },
+        {
+          "local": "Br",
+          "imported": "g"
+        },
+        {
+          "local": "ba",
+          "imported": "P"
+        },
+        {
+          "local": "ya",
+          "imported": "i"
+        },
+        {
+          "local": "Jf",
+          "imported": "j"
+        },
+        {
+          "local": "el",
+          "imported": "k"
+        },
+        {
+          "local": "tl",
+          "imported": "l"
+        },
+        {
+          "local": "Qf",
+          "imported": "m"
+        },
+        {
+          "local": "Bh",
+          "imported": "S"
+        },
+        {
+          "local": "Wa",
+          "imported": "f"
+        },
+        {
+          "local": "zh",
+          "imported": "n"
+        },
+        {
+          "local": "Ih",
+          "imported": "o"
+        },
+        {
+          "local": "jh",
+          "imported": "p"
+        },
+        {
+          "local": "Mh",
+          "imported": "R"
+        }
+      ],
+      "resolved": "assets/vendor.d/ReferenceList-mhfbKusm.js"
+    },
+    {
+      "specifier": "./FileUploadBox-crZW1mG0.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Vh",
+          "imported": "F"
+        },
+        {
+          "local": "Lh",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/FileUploadBox-crZW1mG0.js"
+    },
+    {
+      "specifier": "./Image-BpXScS6T.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Uh",
+          "imported": "I"
+        }
+      ],
+      "resolved": "assets/vendor.d/Image-BpXScS6T.js"
+    },
+    {
+      "specifier": "./FileViewer-D5PyYcLh.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "qh",
+          "imported": "h"
+        },
+        {
+          "local": "Hh",
+          "imported": "i"
+        }
+      ],
+      "resolved": "assets/vendor.d/FileViewer-D5PyYcLh.js"
+    },
+    {
+      "specifier": "./documentViewerStore-BlSjH3BG.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Kl",
+          "imported": "s"
+        }
+      ],
+      "resolved": "assets/vendor.d/documentViewerStore-BlSjH3BG.js"
+    },
+    {
+      "specifier": "./useFileViewer-B-2ewnr3.js",
+      "type": "static",
+      "bindings": [
+        {
+          "local": "Wh",
+          "imported": "u"
+        }
+      ],
+      "resolved": "assets/vendor.d/useFileViewer-B-2ewnr3.js"
+    }
+  ],
+  "exports": [
+    {
+      "local": "Pm",
+      "exported": "A"
+    },
+    {
+      "local": "Xh",
+      "exported": "O"
+    },
+    {
+      "local": "dg",
+      "exported": "b"
+    },
+    {
+      "local": "Jh",
+      "exported": "m"
+    },
+    {
+      "local": "pg",
+      "exported": "p"
+    }
+  ],
+  "destructuredParameters": [
+    {
+      "function": "Xh",
+      "keys": [
+        "link",
+        "prefill",
+        "kinds",
+        "renderRow",
+        "scope"
+      ]
+    },
+    {
+      "function": "$g",
+      "keys": [
+        "open",
+        "mode",
+        "loading",
+        "onClose",
+        "onConfirm"
+      ]
+    },
+    {
+      "function": "nm",
+      "keys": [
+        "files",
+        "onAddFile",
+        "onDeleteFile",
+        "onOpenFile",
+        "hideActions",
+        "emptyMessage",
+        "emptyMinHeight",
+        "headerSx",
+        "headerTitleStyle",
+        "hideHeader"
+      ]
+    },
+    {
+      "function": "um",
+      "keys": [
+        "enabled",
+        "children"
+      ]
+    },
+    {
+      "function": "Pm",
+      "keys": [
+        "open",
+        "onClose",
+        "document",
+        "onApprove",
+        "onReject",
+        "onDelete",
+        "onCancel",
+        "onEdit",
+        "onHandle",
+        "onPickFolder",
+        "inFolder"
+      ]
+    }
+  ],
+  "sourceMapReferences": [],
+  "strings": [
+    ".ApprovalDetailDialog-root .ehfuse-editor-container"
+  ],
+  "missingDependencies": [],
+  "importedBy": [
+    "ApprovalAllDocumentsPage",
+    "ApprovalBoxPage",
+    "ApprovalDraftedPage",
+    "CalendarSidebarPanel",
+    "DictationButton",
+    "Layout",
+    "MobileDashboardLayout",
+    "PostComposerHost",
+    "StackedTaskDetailSlot",
+    "TaskBoxScreen",
+    "TaskCreateDrawerHost",
+    "TaskDetailDrawerHost",
+    "TaskTransferDialog"
+  ],
+  "service": "결재",
+  "purpose": "결재 상세·처리",
+  "reuseGrade": "C",
+  "integration": "결재 권한·상태 전이·첨부 어댑터 교체",
+  "exportedParameters": [
+    {
+      "export": "A",
+      "compiledLocal": "Pm",
+      "keys": [
+        "open",
+        "onClose",
+        "document",
+        "onApprove",
+        "onReject",
+        "onDelete",
+        "onCancel",
+        "onEdit",
+        "onHandle",
+        "onPickFolder",
+        "inFolder"
+      ]
+    },
+    {
+      "export": "O",
+      "compiledLocal": "Xh",
+      "keys": [
+        "link",
+        "prefill",
+        "kinds",
+        "renderRow",
+        "scope"
+      ]
+    }
+  ]
+}

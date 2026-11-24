@@ -1,0 +1,542 @@
+import { r as d, j as e, N as $ } from "./react-CjxcGQav.js";
+import { R as G } from "./Refresh-xoMt5L00.js";
+import { ak as z, bO as C, bx as D, u as V, D as K, n7 as H, B as i, L as m, bH as q, bI as U, b4 as Q, bb as P, cJ as R, cC as J, cF as M, bQ as Y, df as T } from "../js.d/main-Cm9wS5wt.js";
+import { C as X } from "./CloudQueueOutlined-D7LQhfzM.js";
+import { O as Z } from "./OptionToggleGroup-Cvm2wRyq.js";
+import { u as B } from "./useClientSort-CdwrAOWp.js";
+import { u as E } from "./useColumnWidths-DSAca5rC.js";
+import { T as N } from "./tableScrollbars-C9bhlJjO.js";
+import { a as ee } from "./AttendanceParts-mHb1cK0h.js";
+import { f as b, c as W } from "./format-eGvaaFks.js";
+import { videoOperatorApi as w } from "./videoMeetingApi-BCL1yHsp.js";
+import "./stylis-DdLD6a3t.js";
+import "./profileApi-Btafs-pM.js";
+import "./attendanceMgmt-B_e3bPBn.js";
+import "./i18nLabels-BNTLL7cu.js";
+const te = [{
+    value: 7,
+    label: "7일"
+  }, {
+    value: 30,
+    label: "30일"
+  }, {
+    value: 90,
+    label: "90일"
+  }],
+  A = t => ({
+    max_rooms: String(t.max_rooms),
+    daily_traffic_alert_gb: String(t.daily_traffic_alert_gb),
+    retain_unsaved_hours: String(t.retain_unsaved_hours ?? 24)
+  });
+function re() {
+  const [t, c] = d.useState(30),
+    [r, j] = d.useState(null),
+    [v, x] = d.useState(null),
+    [y, h] = d.useState(!0),
+    p = d.useRef(0),
+    g = z({
+      formId: "video-operator-settings-form",
+      initialValues: {
+        max_rooms: "2",
+        daily_traffic_alert_gb: "20",
+        retain_unsaved_hours: "24"
+      },
+      onValidate: n => {
+        for (const [a, l] of [["max_rooms", "동시 회의 수"], ["daily_traffic_alert_gb", "하루 전송량 알림(GB)"], ["retain_unsaved_hours", "미저장 보관(시간)"]]) {
+          const f = Number(n[a]);
+          if (!Number.isFinite(f) || f <= 0) return C(`${l}은(는) 0 보다 큰 숫자여야 합니다.`), !1;
+        }
+        return !0;
+      },
+      onSubmit: async n => {
+        try {
+          const a = await w.saveSettings({
+            max_rooms: Math.trunc(Number(n.max_rooms)),
+            daily_traffic_alert_gb: Number(n.daily_traffic_alert_gb),
+            retain_unsaved_hours: Math.trunc(Number(n.retain_unsaved_hours))
+          });
+          return g.setFormValues(A(a.settings)), x(a.open_rooms), j(l => l && {
+            ...l,
+            settings: a.settings
+          }), D({
+            message: "운영사 설정을 저장했습니다. 다음 요청부터 적용됩니다.",
+            delay: 1e3
+          }), !0;
+        } catch (a) {
+          return C(a instanceof Error ? a.message : "운영사 설정을 저장하지 못했습니다."), !1;
+        }
+      }
+    }),
+    _ = d.useCallback(async () => {
+      const n = ++p.current;
+      h(!0);
+      try {
+        const [a, l] = await Promise.all([w.traffic(t), w.settings().catch(() => null)]);
+        if (n !== p.current) return;
+        j(a), x(l ? l.open_rooms : a.open_rooms), g.setFormValues(A(l?.settings ?? a.settings));
+      } catch (a) {
+        n === p.current && C(a instanceof Error ? a.message : "사용량을 불러오지 못했습니다.");
+      } finally {
+        n === p.current && h(!1);
+      }
+    }, [t]);
+  return d.useEffect(() => {
+    _();
+  }, [_]), {
+    period: t,
+    setPeriod: c,
+    report: r,
+    openRooms: v,
+    loading: y,
+    reload: _,
+    form: g
+  };
+}
+function k(t) {
+  return t ? `${(t / 1024 ** 3).toLocaleString("ko-KR", {
+    maximumFractionDigits: 2
+  })} GB` : "0";
+}
+function F(t) {
+  return `${(t / 60).toLocaleString("ko-KR", {
+    maximumFractionDigits: 1
+  })}시간`;
+}
+function s({
+  text: t,
+  muted: c = !1,
+  strong: r = !1
+}) {
+  return e.jsx(m, {
+    sx: {
+      fontSize: 14,
+      fontWeight: r ? 700 : 400,
+      color: c ? "text.secondary" : "text.primary"
+    },
+    children: t || "-"
+  });
+}
+const oe = [{
+    id: "org_name",
+    text: "조직",
+    width: 220,
+    sortable: !0,
+    mobile: "title",
+    render: t => e.jsx(s, {
+      text: t.org_name,
+      muted: t.org_seq === 0
+    })
+  }, {
+    id: "participant_minutes",
+    text: "참가자시간",
+    width: 130,
+    align: "right",
+    sortable: !0,
+    render: t => e.jsx(s, {
+      text: F(t.participant_minutes)
+    })
+  }, {
+    id: "meeting_count",
+    text: "회의 수",
+    width: 100,
+    align: "right",
+    sortable: !0,
+    render: t => e.jsx(s, {
+      text: b(t.meeting_count)
+    })
+  }, {
+    id: "max_participants",
+    text: "최대 인원",
+    width: 100,
+    align: "right",
+    sortable: !0,
+    render: t => e.jsx(s, {
+      text: b(t.max_participants)
+    })
+  }, {
+    id: "billable_hours",
+    text: "과금 시간",
+    width: 120,
+    align: "right",
+    sortable: !0,
+    render: t => e.jsx(s, {
+      text: `${t.billable_hours.toLocaleString("ko-KR", {
+        maximumFractionDigits: 1
+      })}시간`,
+      muted: t.billable_hours === 0
+    })
+  }, {
+    id: "estimated_amount",
+    text: "예상 요금",
+    width: 130,
+    align: "right",
+    sortable: !0,
+    mobile: "badge",
+    render: t => e.jsx(s, {
+      text: `${W(t.estimated_amount)} 원`,
+      strong: t.estimated_amount > 0
+    })
+  }],
+  ae = [{
+    id: "date",
+    text: "날짜",
+    width: 120,
+    sortable: !0,
+    mobile: "title",
+    render: t => e.jsx(s, {
+      text: t.date
+    })
+  }, {
+    id: "bytes_in",
+    text: "들어옴",
+    width: 120,
+    align: "right",
+    sortable: !0,
+    render: t => e.jsx(s, {
+      text: k(t.bytes_in)
+    })
+  }, {
+    id: "bytes_out",
+    text: "나감",
+    width: 120,
+    align: "right",
+    sortable: !0,
+    render: t => e.jsx(s, {
+      text: k(t.bytes_out)
+    })
+  }, {
+    id: "rooms_peak",
+    text: "최고 동시 방",
+    width: 120,
+    align: "right",
+    sortable: !0,
+    render: t => e.jsx(s, {
+      text: b(t.rooms_peak)
+    })
+  }, {
+    id: "participants_peak",
+    text: "최고 동시 인원",
+    width: 130,
+    align: "right",
+    sortable: !0,
+    render: t => e.jsx(s, {
+      text: b(t.participants_peak)
+    })
+  }, {
+    id: "alerted",
+    text: "알림",
+    width: 90,
+    align: "center",
+    mobile: "badge",
+    render: t => e.jsx(s, {
+      text: t.alerted ? "한도 초과" : "",
+      muted: !t.alerted
+    })
+  }],
+  I = {
+    labelWidth: 168
+  };
+function S({
+  label: t,
+  value: c,
+  icon: r
+}) {
+  return e.jsxs(R, {
+    sx: {
+      p: 2,
+      display: "flex",
+      alignItems: "center",
+      gap: 1.5,
+      minWidth: 0
+    },
+    children: [e.jsx(i, {
+      sx: {
+        color: "text.secondary",
+        display: "flex"
+      },
+      children: r
+    }), e.jsxs(i, {
+      sx: {
+        minWidth: 0
+      },
+      children: [e.jsx(m, {
+        noWrap: !0,
+        sx: {
+          fontSize: 14,
+          color: "text.secondary"
+        },
+        children: t
+      }), e.jsx(m, {
+        noWrap: !0,
+        sx: {
+          fontSize: 20,
+          fontWeight: 700
+        },
+        children: c
+      })]
+    })]
+  });
+}
+function je() {
+  const t = V().useValue("account"),
+    c = K(),
+    r = re(),
+    j = E("video-operator.orgs"),
+    v = E("video-operator.traffic"),
+    x = d.useMemo(() => r.report?.usage.orgs ?? [], [r.report]),
+    y = d.useMemo(() => (r.report?.traffic ?? []).filter(o => o.bytes_in > 0 || o.bytes_out > 0 || o.rooms_peak > 0 || o.participants_peak > 0 || o.alerted).sort((o, u) => u.date.localeCompare(o.date)), [r.report]),
+    {
+      rows: h,
+      tableSort: p
+    } = B(x, {}),
+    {
+      rows: g,
+      tableSort: _
+    } = B(y, {}),
+    n = x.reduce((o, u) => o + u.participant_minutes, 0),
+    a = x.reduce((o, u) => o + u.estimated_amount, 0),
+    l = y.reduce((o, u) => o + u.bytes_in + u.bytes_out, 0),
+    f = r.report?.pricing;
+  if (t && !H(t)) return e.jsx($, {
+    to: "/dashboard",
+    replace: !0
+  });
+  const O = {
+      p: 2,
+      display: "flex",
+      flexDirection: "column",
+      gap: 1.5
+    },
+    L = {
+      border: `1px solid ${ee.borderStrong}`,
+      borderRadius: "4px",
+      overflow: "hidden"
+    };
+  return e.jsxs(i, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      gap: 2,
+      p: c ? 0 : .5
+    },
+    children: [e.jsxs(i, {
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        gap: 2,
+        flexWrap: "wrap"
+      },
+      children: [e.jsx(m, {
+        sx: {
+          fontSize: 20,
+          fontWeight: 700,
+          flex: 1,
+          minWidth: 0
+        },
+        children: "화상회의"
+      }), e.jsx(i, {
+        sx: {
+          "& .MuiToggleButtonGroup-root": {
+            height: 40,
+            flexWrap: "nowrap"
+          }
+        },
+        children: e.jsx(Z, {
+          size: "medium",
+          value: r.period,
+          onChange: o => o && r.setPeriod(o),
+          options: te,
+          sx: {
+            "& .MuiToggleButtonGroup-grouped": {
+              minWidth: 56,
+              px: 1.5,
+              fontSize: 13
+            }
+          }
+        })
+      }), e.jsx(q, {
+        title: "새로고침",
+        children: e.jsx("span", {
+          children: e.jsx(U, {
+            onClick: () => {
+              r.reload();
+            },
+            disabled: r.loading,
+            "aria-label": "새로고침",
+            children: e.jsx(G, {})
+          })
+        })
+      })]
+    }), e.jsxs(i, {
+      sx: {
+        display: "grid",
+        gap: 1.5,
+        gridTemplateColumns: {
+          xs: "repeat(2, minmax(0, 1fr))",
+          md: "repeat(4, minmax(0, 1fr))"
+        }
+      },
+      children: [e.jsx(S, {
+        label: "지금 진행 중인 방",
+        value: r.openRooms === null ? "-" : `${b(r.openRooms)}개`,
+        icon: e.jsx(Q, {})
+      }), e.jsx(S, {
+        label: "이번 달 참가자시간",
+        value: F(n),
+        icon: e.jsx(P, {})
+      }), e.jsx(S, {
+        label: "이번 달 예상 요금",
+        value: `${W(a)}원`,
+        icon: e.jsx(P, {})
+      }), e.jsx(S, {
+        label: `${r.period}일 전송량`,
+        value: k(l),
+        icon: e.jsx(X, {})
+      })]
+    }), e.jsxs(R, {
+      sx: O,
+      children: [e.jsx(m, {
+        variant: "h6",
+        sx: {
+          fontWeight: 700
+        },
+        children: "운영사 설정"
+      }), e.jsxs(i, {
+        sx: {
+          display: "grid",
+          gap: 2,
+          gridTemplateColumns: {
+            xs: "minmax(0, 1fr)",
+            md: "minmax(0, 520px) minmax(0, 1fr)"
+          },
+          alignItems: "start"
+        },
+        children: [e.jsxs(i, {
+          sx: {
+            border: 1,
+            borderColor: "divider",
+            borderRadius: 1.5,
+            p: 2
+          },
+          children: [e.jsxs(J, {
+            twoColumnMin: 1e5,
+            children: [e.jsx(M, {
+              label: "동시 회의 수",
+              form: r.form,
+              name: "max_rooms",
+              appearance: I,
+              inputMode: "numeric",
+              maxLength: 3,
+              readOnly: r.loading
+            }), e.jsx(M, {
+              label: "하루 전송량 알림(GB)",
+              form: r.form,
+              name: "daily_traffic_alert_gb",
+              appearance: I,
+              inputMode: "decimal",
+              maxLength: 6,
+              readOnly: r.loading
+            }), e.jsx(M, {
+              label: "미저장 통화 보관(시간)",
+              form: r.form,
+              name: "retain_unsaved_hours",
+              appearance: I,
+              inputMode: "numeric",
+              maxLength: 4,
+              readOnly: r.loading
+            })]
+          }), e.jsx(i, {
+            sx: {
+              display: "flex",
+              justifyContent: "flex-end",
+              mt: 1.5
+            },
+            children: e.jsx(Y, {
+              variant: "contained",
+              onClick: () => {
+                r.form.submit();
+              },
+              disabled: r.loading || r.form.isSubmitting,
+              children: "저장"
+            })
+          })]
+        }), e.jsxs(i, {
+          component: "ul",
+          sx: {
+            m: 0,
+            pl: 2.5,
+            fontSize: 14,
+            color: "text.secondary",
+            wordBreak: "keep-all",
+            display: "grid",
+            gap: .5
+          },
+          children: [e.jsx("li", {
+            children: '회선은 10Mbps 보장 · 초과 과금이라 동시 회의 수로 전송량을 막습니다(회의 하나 약 10Mbps). 넘으면 "지금 다른 회의가 진행 중입니다" 로 거절합니다.'
+          }), e.jsx("li", {
+            children: "하루 전송량이 알림 한도를 넘으면 운영사 직원에게 벨이 한 번 갑니다 — LiveKit 분리(별도 서버) 결정의 근거입니다."
+          }), e.jsx("li", {
+            children: "요약을 거절했거나 회의록으로 저장하지 않은 통화의 녹음 조각은 보관 시간이 지나면 지웁니다."
+          }), f ? e.jsxs("li", {
+            children: ["요금: 참가자시간당 ", W(f.price_per_participant_hour), "원, 조직당 월 ", f.free_participant_hours, "시간 무료(체험 중 무료)."]
+          }) : null]
+        })]
+      })]
+    }), e.jsxs(R, {
+      sx: O,
+      children: [e.jsxs(m, {
+        variant: "h6",
+        sx: {
+          fontWeight: 700
+        },
+        children: ["조직별 사용", r.report ? ` · ${r.report.usage.from} ~ ${r.report.usage.to}` : ""]
+      }), e.jsx(i, {
+        sx: L,
+        children: e.jsx(T, {
+          ...j,
+          scrollbars: N,
+          variant: "notion",
+          mobile: !0,
+          framed: !1,
+          showPaper: !1,
+          autoHeight: !0,
+          columns: oe,
+          data: h,
+          totalCount: h.length,
+          ...p,
+          loading: r.loading,
+          getRowId: o => o.org_seq,
+          emptyMessage: "이번 달에 화상회의를 쓴 조직이 없습니다."
+        })
+      })]
+    }), e.jsxs(R, {
+      sx: O,
+      children: [e.jsx(m, {
+        variant: "h6",
+        sx: {
+          fontWeight: 700
+        },
+        children: "일자별 트래픽"
+      }), e.jsx(i, {
+        sx: L,
+        children: e.jsx(T, {
+          ...v,
+          scrollbars: N,
+          variant: "notion",
+          mobile: !0,
+          framed: !1,
+          showPaper: !1,
+          autoHeight: !0,
+          columns: ae,
+          data: g,
+          totalCount: g.length,
+          ..._,
+          loading: r.loading,
+          getRowId: o => o.date,
+          emptyMessage: "아직 기록된 트래픽이 없습니다(10분마다 LiveKit 에서 읽습니다)."
+        })
+      })]
+    })]
+  });
+}
+export { je as default };

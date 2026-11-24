@@ -1,0 +1,122 @@
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>EmployeeFormDialog</title><style>*{box-sizing:border-box}body{margin:0;background:#f3f6fa;color:#142337;font:15px/1.65 "Malgun Gothic",sans-serif}main{max-width:1360px;margin:auto;padding:38px}header{background:#132c4a;color:white;padding:34px;border-radius:18px}h1{font-size:30px;margin:0 0 8px}h2{margin:32px 0 14px;font-size:22px}h3{margin:0 0 12px}a{color:#1767ad}header a{color:#c5e6ff}section,article{background:white;padding:24px;border:1px solid #dfe6ef;border-radius:13px;margin:16px 0}table{border-collapse:collapse;width:100%;font-size:14px}th,td{padding:10px;text-align:left;border-bottom:1px solid #dce4ed;vertical-align:top}th{background:#edf3f9}code,pre{font-family:Consolas,monospace}code{word-break:break-all}pre{background:#edf3f9;padding:20px;white-space:pre-wrap;overflow-wrap:anywhere}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.grid article{margin:0}.badge{display:inline-block;padding:3px 10px;border-radius:20px;background:#e8f2fc;color:#164f86;font-size:12px;margin:3px}.muted{color:#617187}.stat{font-size:30px;font-weight:bold}iframe{width:100%;height:760px;border:1px solid #ddd;background:white}details{padding:8px 0}summary{cursor:pointer;font-weight:bold}.small{font-size:13px}nav{margin:20px 0}nav a{margin-right:15px}@media(max-width:850px){.grid{grid-template-columns:1fr}main{padding:16px}table{display:block;overflow:auto}}</style><main><p><a href="../../index.html">← 카탈로그</a></p><header><h1>EmployeeFormDialog</h1><p>인사 · 직원 등록·수정 · 재사용 등급 C</p></header><section><h2>확보한 코드</h2><p><a href="../../assets/vendor.d/EmployeeFormDialog-BHKK47Dg.js">원본 배포 JS</a> · <a href="../../formatted/vendor.d/EmployeeFormDialog-BHKK47Dg.js">읽기용 정리 JS</a> · <a href="manifest.json">컴포넌트 manifest</a></p><p>controller/units/members 계약을 새 HR API에 연결</p><p class="muted">원본 TSX와 변수명은 복원되지 않았습니다. 정리본은 실행용 독립 패키지가 아닙니다. 컴포넌트 이름은 청크 파일명이며 청크에 여러 함수가 함께 들어 있을 수 있습니다.</p><h3>배포 export 별칭</h3><pre>[
+  {
+    &quot;local&quot;: &quot;ae&quot;,
+    &quot;exported&quot;: &quot;D&quot;
+  },
+  {
+    &quot;local&quot;: &quot;Gt&quot;,
+    &quot;exported&quot;: &quot;E&quot;
+  },
+  {
+    &quot;local&quot;: &quot;Qs&quot;,
+    &quot;exported&quot;: &quot;H&quot;
+  },
+  {
+    &quot;local&quot;: &quot;Do&quot;,
+    &quot;exported&quot;: &quot;I&quot;
+  },
+  {
+    &quot;local&quot;: &quot;Vo&quot;,
+    &quot;exported&quot;: &quot;L&quot;
+  },
+  {
+    &quot;local&quot;: &quot;Lo&quot;,
+    &quot;exported&quot;: &quot;M&quot;
+  },
+  {
+    &quot;local&quot;: &quot;te&quot;,
+    &quot;exported&quot;: &quot;N&quot;
+  },
+  {
+    &quot;local&quot;: &quot;tt&quot;,
+    &quot;exported&quot;: &quot;P&quot;
+  },
+  {
+    &quot;local&quot;: &quot;H&quot;,
+    &quot;exported&quot;: &quot;S&quot;
+  },
+  {
+    &quot;local&quot;: &quot;N&quot;,
+    &quot;exported&quot;: &quot;T&quot;
+  },
+  {
+    &quot;local&quot;: &quot;No&quot;,
+    &quot;exported&quot;: &quot;a&quot;
+  },
+  {
+    &quot;local&quot;: &quot;Xs&quot;,
+    &quot;exported&quot;: &quot;b&quot;
+  },
+  {
+    &quot;local&quot;: &quot;Dt&quot;,
+    &quot;exported&quot;: &quot;c&quot;
+  },
+  {
+    &quot;local&quot;: &quot;qo&quot;,
+    &quot;exported&quot;: &quot;d&quot;
+  },
+  {
+    &quot;local&quot;: &quot;$o&quot;,
+    &quot;exported&quot;: &quot;e&quot;
+  },
+  {
+    &quot;local&quot;: &quot;Ks&quot;,
+    &quot;exported&quot;: &quot;f&quot;
+  },
+  {
+    &quot;local&quot;: &quot;gt&quot;,
+    &quot;exported&quot;: &quot;g&quot;
+  },
+  {
+    &quot;local&quot;: &quot;we&quot;,
+    &quot;exported&quot;: &quot;h&quot;
+  },
+  {
+    &quot;local&quot;: &quot;ls&quot;,
+    &quot;exported&quot;: &quot;i&quot;
+  },
+  {
+    &quot;local&quot;: &quot;ne&quot;,
+    &quot;exported&quot;: &quot;j&quot;
+  },
+  {
+    &quot;local&quot;: &quot;To&quot;,
+    &quot;exported&quot;: &quot;k&quot;
+  },
+  {
+    &quot;local&quot;: &quot;Bt&quot;,
+    &quot;exported&quot;: &quot;l&quot;
+  },
+  {
+    &quot;local&quot;: &quot;hn&quot;,
+    &quot;exported&quot;: &quot;m&quot;
+  },
+  {
+    &quot;local&quot;: &quot;Zs&quot;,
+    &quot;exported&quot;: &quot;n&quot;
+  },
+  {
+    &quot;local&quot;: &quot;ts&quot;,
+    &quot;exported&quot;: &quot;o&quot;
+  },
+  {
+    &quot;local&quot;: &quot;Us&quot;,
+    &quot;exported&quot;: &quot;p&quot;
+  },
+  {
+    &quot;local&quot;: &quot;bt&quot;,
+    &quot;exported&quot;: &quot;q&quot;
+  },
+  {
+    &quot;local&quot;: &quot;pn&quot;,
+    &quot;exported&quot;: &quot;r&quot;
+  },
+  {
+    &quot;local&quot;: &quot;de&quot;,
+    &quot;exported&quot;: &quot;t&quot;
+  },
+  {
+    &quot;local&quot;: &quot;Js&quot;,
+    &quot;exported&quot;: &quot;u&quot;
+  }
+]</pre><h3>export 함수의 구조 분해 입력값</h3><ul><li><code>I ← Do</code>: controller</li><li><code>M ← Lo</code>: member, size</li><li><code>N ← te</code>: controller, icon, label, name, unit, decimal, max</li><li><code>S ← H</code>: controller, icon, label, name, options, emptyLabel, numeric</li><li><code>T ← N</code>: controller, icon, label, name, maxLength, placeholder, inputMode, wide, full, rowStart, multiline, normalize, date, format</li><li><code>b ← Xs</code>: controller, units, members, docked</li><li><code>h ← we</code>: controller, icon, label, name</li><li><code>n ← Zs</code>: employee, invite</li><li><code>p ← Us</code>: orgSeq, onChanged</li></ul><h3>직접 import</h3><ul><li><code>./react-CjxcGQav.js</code> — static</li><li><code>../js.d/main-Cm9wS5wt.js</code> — static</li><li><code>./useFileViewer-B-2ewnr3.js</code> — static</li><li><code>./employeeApi-CdGzOYcj.js</code> — static</li><li><code>./birthdayCalendar-CWu_jG3x.js</code> — static</li><li><code>./types-CVhETUvu.js</code> — static</li><li><code>./ContactPhoneOutlined-DpFEzROB.js</code> — static</li><li><code>./EmployeeSelectDialog-Cdnxeoz9.js</code> — static</li><li><code>./bootstrapController-BMV_i07c.js</code> — static</li><li><code>./InlineErrorAlert-D9ICJPt7.js</code> — static</li><li><code>./Trans-CU1vl0TZ.js</code> — static</li><li><code>./employeeAccountApi-p-ORLvrh.js</code> — static</li><li><code>./WomanOutlined-CzlFMUkT.js</code> — static</li><li><code>./tableScrollbars-C9bhlJjO.js</code> — static</li><li><code>./AccountBoxOutlined-BxNEw8I0.js</code> — static</li><li><code>./AssignmentIndOutlined-DynSb23A.js</code> — static</li><li><code>./EventBusyOutlined-DqcCaRMs.js</code> — static</li><li><code>./PaidOutlined-Cy1uVjW3.js</code> — static</li><li><code>./PercentOutlined-XX2JPqvz.js</code> — static</li><li><code>./PhoneAndroidOutlined-DafU-b-9.js</code> — static</li><li><code>./PhoneOutlined-Bjc_e42S.js</code> — static</li><li><code>./ScheduleOutlined-C_7j7r9e.js</code> — static</li><li><code>./ToggleOnOutlined-5BVdqdOm.js</code> — static</li><li><code>./WorkOutlineOutlined-D5AzVFs6.js</code> — static</li><li><code>./PropertyFields-TuJTG5XK.js</code> — static</li><li><code>./hrCodeApi-BRtc5fIX.js</code> — static</li><li><code>./i18nLabels-BNTLL7cu.js</code> — static</li><li><code>./propertySections-Bwsl7OH-.js</code> — static</li><li><code>./Person-DnoEHesw.js</code> — static</li><li><code>./squircle-CQM8EvXm.js</code> — static</li></ul><p>SHA-256: <code>3c4fc7066b48c664933c9c4ec0c3f49b0f6abead3d5b652af44810066a087b6e</code></p><p>출처: <a href="https://work-test.elimsafety.com/vendor.d/EmployeeFormDialog-BHKK47Dg.js">https://work-test.elimsafety.com/vendor.d/EmployeeFormDialog-BHKK47Dg.js</a></p></section></main></html>

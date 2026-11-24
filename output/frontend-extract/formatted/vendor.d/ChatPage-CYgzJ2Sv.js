@@ -1,0 +1,236 @@
+import { j as t } from "./react-CjxcGQav.js";
+import { c as a, B as e, N as n, aY as r, b2 as d, Z as m, bh as x, bi as u, T as I, aQ as j, bj as p, b0 as O, a1 as h, af as S, aX as T, aZ as E, bk as f, bl as A, ae as b } from "../js.d/main-Cm9wS5wt.js";
+import { R as _, S as C, P as N } from "./ShortcutOutlined-XcPoKpc0.js";
+import { P as L } from "./PhotoLibraryOutlined-7mbJKs9u.js";
+import { M as P } from "./MicNoneOutlined-CCn21vm0.js";
+import { V as R } from "./ViewColumnOutlined-kCZkrYOH.js";
+import { S as o } from "./homeSx-C09ESIq-.js";
+import { F, H as M, L as g, T as c, S as s, C as i, I as w, a as y } from "./featurePageParts-Deueehn5.js";
+import { E as H } from "./emphasize-CAl3kWp2.js";
+import { H as k, S as B } from "./screenShots-CYp-Froz.js";
+import "./stylis-DdLD6a3t.js";
+import "./publicPageSx-9Lwcd6Z3.js";
+import "./Reveal-C3c42DZa.js";
+const v = a(t.jsx("path", {
+    d: "M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96M19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95C8.08 7.14 9.94 6 12 6c2.62 0 4.88 1.86 5.39 4.43l.3 1.5 1.53.11c1.56.1 2.78 1.41 2.78 2.96 0 1.65-1.35 3-3 3M8 13h2.55v3h2.9v-3H16l-4-4z"
+  })),
+  D = a([t.jsx("circle", {
+    cx: "15.5",
+    cy: "9.5",
+    r: "1.5"
+  }, "0"), t.jsx("circle", {
+    cx: "8.5",
+    cy: "9.5",
+    r: "1.5"
+  }, "1"), t.jsx("path", {
+    d: "M12 18c2.28 0 4.22-1.66 5-4H7c.78 2.34 2.72 4 5 4"
+  }, "2"), t.jsx("path", {
+    d: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2M12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8"
+  }, "3")]),
+  U = l => `${l.toLocaleString("ko-KR")}원`,
+  K = Math.round(A / 365),
+  V = [{
+    icon: r,
+    art: "bubbles",
+    title: "1:1 과 단체 대화",
+    desc: "구성원과 바로 대화하고, 대화하다가 **사람을 초대해 단체방으로** 넓힙니다. 단체방은 이름을 붙이고, 방마다 알림을 끕니다."
+  }, {
+    icon: _,
+    art: "reply",
+    title: "답장",
+    desc: "어느 말에 대한 답인지 **그 말을 인용해 답장**합니다. 대화가 여러 갈래로 오가도 무엇에 대한 답인지 보입니다."
+  }, {
+    icon: D,
+    art: "emoji",
+    title: "이모지와 반응",
+    desc: "말풍선에 **이모지로 반응**하고, 이모지 판에서 검색하거나 최근에 쓴 것을 골라 넣습니다. /미소 처럼 이름을 치면 바로 들어갑니다."
+  }, {
+    icon: d,
+    art: "read",
+    title: "읽음 표시",
+    desc: "상대가 읽었는지 보입니다. 단체방에서는 **누가 읽었는지**까지 보입니다."
+  }, {
+    icon: m,
+    art: "notice",
+    title: "방 공지",
+    desc: "꼭 봐야 하는 말은 **방 맨 위에 공지로 고정**합니다."
+  }, {
+    icon: x,
+    art: "edit",
+    title: "보낸 뒤 고치기",
+    desc: "잘못 보낸 말은 **30분 안에 고치거나 지웁니다.**"
+  }, {
+    icon: C,
+    art: "forward",
+    title: "전달과 나에게 보내기",
+    desc: "받은 말·사진·파일을 다른 방에 전달합니다. **나에게 보내** 메모로 남길 수도 있습니다."
+  }],
+  X = [{
+    icon: u,
+    tag: "33개 언어",
+    art: "translate",
+    title: "자동 번역",
+    desc: "방에서 번역을 켜면 **상대가 쓴 말이 내 언어로** 보입니다. 앞선 대화를 문맥으로 삼아 번역합니다."
+  }, {
+    icon: I,
+    art: "toTask",
+    title: "말풍선을 업무로",
+    desc: "대화하다 나온 할 일은 **그 말에서 바로 업무로 등록**합니다. 그 말이 업무 제목으로 채워집니다."
+  }, {
+    icon: j,
+    art: "summary",
+    title: "AI 대화 요약",
+    desc: "길어진 대화를 요약해 **업무나 일정의 초안**을 만듭니다. 등록은 사람이 확인하고 합니다."
+  }],
+  Y = [{
+    icon: L,
+    art: "photos",
+    title: "사진",
+    desc: "사진을 **한 번에 10장까지 묶어** 보냅니다. 보내기 전에 자르고 손볼 수 있고, 화면 갈무리는 붙여넣기로 바로 올립니다."
+  }, {
+    icon: p,
+    art: "video",
+    title: "동영상",
+    desc: "동영상은 서버가 **용량을 줄여 저장**하고 말풍선에서 바로 재생합니다. 300MB·10분까지 올립니다."
+  }, {
+    icon: O,
+    art: "files",
+    title: "문서 파일",
+    desc: "PDF·오피스·한글·압축 파일을 **한 건 50MB 까지** 첨부합니다. 끌어다 놓아 올립니다."
+  }, {
+    icon: v,
+    art: "cloud",
+    title: "대용량 파일 전송",
+    desc: "더 큰 파일은 **한 건 500MB 까지** 보냅니다. 방 구성원만 받을 수 있고 3일 동안 보관합니다."
+  }, {
+    icon: P,
+    art: "mic",
+    title: "음성 메시지와 위치",
+    desc: "말로 남길 때는 **음성 메시지**를 녹음해 보내고, 만날 곳은 지도 위치로 보냅니다."
+  }, {
+    icon: N,
+    art: "gallery",
+    title: "첨부 모아 보기",
+    desc: "방에서 오간 **사진·파일·링크를 한데 모아** 봅니다. 드라이브의 첨부 모아 보기에도 나옵니다."
+  }],
+  $ = [{
+    icon: h,
+    art: "lock",
+    title: "비밀 대화방",
+    desc: "비밀 대화방의 글과 첨부는 **대화하는 사람의 기기에서만 풀리는 종단간 암호화**로 오갑니다. 서버가 읽지 못해 번역과 요약은 되지 않습니다."
+  }, {
+    icon: T,
+    art: "retention",
+    title: "보관 기간",
+    points: ["글은 **기한 없이** 남습니다", `사진·동영상·파일은 **${S}일 뒤 숨겨집니다**`, `대화 보관함을 켜면 **${K}년 동안** 보관(1인당 월 ${U(b)})`]
+  }, {
+    icon: E,
+    art: "bell",
+    title: "알림",
+    desc: "안드로이드 앱에서는 **푸시 알림**으로, PC 에서는 브라우저 알림으로 새 메시지를 알립니다. 보고 있는 방의 알림은 울리지 않습니다."
+  }, {
+    icon: R,
+    art: "columns",
+    title: "여러 방을 나란히",
+    desc: "PC 에서는 **여러 방을 옆으로 나란히** 열어 두고 오갑니다. 설치한 앱에서는 방을 따로 창으로 띄웁니다."
+  }, {
+    icon: f,
+    art: "palette",
+    title: "내게 맞게",
+    desc: "방마다 배경을 고르고 글자 크기를 조절합니다. 상대 이름은 **나만 보는 별칭**으로 바꿔 둡니다."
+  }];
+function ct() {
+  return t.jsxs(e, {
+    children: [t.jsx(F, {
+      eyebrow: "CHAT",
+      title: t.jsxs(t.Fragment, {
+        children: ["대화가 흩어지지 않고", t.jsx("br", {}), "그 자리에서 업무가 됩니다"]
+      }),
+      lead: t.jsxs(t.Fragment, {
+        children: ["구성원과 바로 대화하고, 다른 언어는 번역해 읽고, 대화하다 나온 할 일은 ", t.jsx(H, {
+          children: "그 말에서 업무로 등록"
+        }), "합니다.", t.jsx(g, {}), "업무 채팅은 기본 제공 기능이라 ", n, "명까지 기간 제한 없이 무료입니다."]
+      }),
+      children: t.jsx(k, {
+        wide: "chat-rooms",
+        phone: "chat-list-m",
+        wideAlt: "채팅 화면 — 대화방 목록과 나란히 연 대화방 두 개(답장 · 반응 · 방 공지)",
+        phoneAlt: "폰의 대화방 목록 — 단체방 · 1:1 방과 안 읽은 메시지 수",
+        sx: M
+      })
+    }), t.jsx(e, {
+      component: "section",
+      id: "talk",
+      sx: c,
+      children: t.jsxs(e, {
+        sx: o,
+        children: [t.jsx(s, {
+          eyebrow: "TALK",
+          title: "메신저처럼 바로 대화합니다",
+          lead: "새로 배울 것 없이, **쓰던 메신저처럼** 답장하고 이모지로 반응하고 공지합니다."
+        }), t.jsx(i, {
+          points: V,
+          columns: 3
+        })]
+      })
+    }), t.jsx(e, {
+      component: "section",
+      id: "work",
+      sx: {
+        bgcolor: "#fff"
+      },
+      children: t.jsxs(e, {
+        sx: o,
+        children: [t.jsx(s, {
+          eyebrow: "WORK",
+          title: "대화가 일로 이어집니다",
+          lead: "다른 언어는 번역해 읽고, 대화에서 나온 일은 **업무와 일정으로 옮깁니다**."
+        }), t.jsx(B, {
+          wide: "chat-task",
+          phone: "chat-task-m",
+          alt: "말풍선 메뉴 — 반응 · 답장 · 업무로 만들기 · 공지",
+          sx: w
+        }), t.jsx(i, {
+          points: X,
+          columns: 3
+        })]
+      })
+    }), t.jsx(e, {
+      component: "section",
+      id: "files",
+      sx: c,
+      children: t.jsxs(e, {
+        sx: o,
+        children: [t.jsx(s, {
+          eyebrow: "FILES",
+          title: "사진도 큰 파일도 대화로 보냅니다",
+          lead: "사진·동영상·문서·음성을 보내고, 오간 것은 **나중에 모아 봅니다**."
+        }), t.jsx(i, {
+          points: Y,
+          columns: 3
+        })]
+      })
+    }), t.jsx(e, {
+      component: "section",
+      id: "safe",
+      sx: {
+        bgcolor: "#fff"
+      },
+      children: t.jsxs(e, {
+        sx: o,
+        children: [t.jsx(s, {
+          eyebrow: "SAFE",
+          title: "안전하게, 내게 맞게 씁니다",
+          lead: "민감한 대화는 **비밀 대화방**에서 하고, 보관 기간과 알림은 정해진 대로 움직입니다."
+        }), t.jsx(i, {
+          points: $,
+          columns: 3
+        })]
+      })
+    }), t.jsx(y, {
+      title: "팀 대화를 업무함으로 옮겨 보세요",
+      lead: `업무 채팅은 기본 제공 기능입니다. **${n}명까지 기간 제한 없이 무료**입니다.`
+    })]
+  });
+}
+export { ct as default };

@@ -1,0 +1,120 @@
+import { l7 as S, l9 as v, l3 as m, la as b, m0 as N, m2 as p, kF as y, kG as _, kC as k, bx as T, bT as l, bO as F, bM as M } from "../js.d/main-Cm9wS5wt.js";
+import { m as d } from "./meetingsApi-CCkjq69B.js";
+import { r as g } from "./pendingRecordings-DpKJ8Y2R.js";
+import "./react-CjxcGQav.js";
+import "./stylis-DdLD6a3t.js";
+let u = !1;
+const P = 180 * 1e3,
+  x = e => new Date((e || Date.now()) + 540 * 60 * 1e3).toISOString().slice(0, 16).replace("T", " ").replace(":", "-");
+function R(e) {
+  return new Promise(s => {
+    let n = 0,
+      i = Promise.resolve();
+    const o = `회의 녹음 ${x(e.updated_at)}.m4a`,
+      t = () => {
+        window.clearTimeout(c), a(), s(n);
+      },
+      a = v(r => {
+        if (r.session === e.session) if (r.event === "part" && r.data) {
+          const w = Number(r.part) || 0,
+            h = b(r.data, o);
+          i = i.then(async () => {
+            try {
+              await d.recordingPartUpload(h, e.session, w), m("ack", {
+                session: e.session,
+                part: w
+              }), n += 1;
+            } catch {}
+          });
+        } else r.event === "resent" && i.then(t);
+      }),
+      c = window.setTimeout(t, P);
+    m("resend", {
+      session: e.session
+    });
+  });
+}
+async function G() {
+  if (!u) {
+    u = !0;
+    try {
+      const {
+        supported: e,
+        pending: s
+      } = await S();
+      if (!e || s.length === 0) return;
+      let n = 0;
+      for (const i of s) n += await R(i);
+      n > 0 && (await g());
+    } finally {
+      u = !1;
+    }
+  }
+}
+const f = new Set();
+function K(e) {
+  return f.add(e), () => {
+    f.delete(e);
+  };
+}
+async function q(e = 2e4) {
+  const s = Date.now() + e;
+  for (; !M.token;) {
+    if (Date.now() > s) return !1;
+    await new Promise(n => window.setTimeout(n, 500));
+  }
+  return !0;
+}
+async function L(e) {
+  const s = String(e.session ?? "");
+  if (!s || !N(s)) return;
+  if (!(await q())) {
+    p(s);
+    return;
+  }
+  const n = e.context ?? {},
+    i = Number(n.meeting_seq) || 0;
+  let o;
+  try {
+    o = await d.recordingFinish({
+      session: s,
+      seconds: Math.max(0, Math.round(Number(e.seconds) || 0)),
+      meeting_seq: i,
+      name: e.name || "회의 녹음.m4a",
+      speakers: Math.max(0, Math.round(Number(n.speakers) || 0))
+    });
+  } catch {
+    const t = await d.recordingPending().catch(() => null);
+    t && !t.some(a => a.session === s) ? m("finished_ack", {
+      session: s
+    }) : p(s), await g().catch(() => {});
+    return;
+  }
+  m("finished_ack", {
+    session: s
+  });
+  try {
+    if (!i) {
+      const t = n.meeting ?? {},
+        a = String(t.meeting_date ?? "") || y(),
+        c = String(t.meeting_time ?? "") || _();
+      await d.upsert({
+        ...t,
+        meeting_date: a,
+        meeting_time: c,
+        title: String(t.title ?? "").trim() || k(a, c),
+        recording_seqs: [o.seq]
+      });
+    }
+    T({
+      message: l("meetings.recordingSavedFill"),
+      delay: 2500
+    });
+  } catch (t) {
+    F(l("meetings.notesFailedRecordingSaved", {
+      reason: t instanceof Error && t.message ? t.message : l("meetings.saveFailed")
+    }));
+  }
+  await g().catch(() => {}), f.forEach(t => t());
+}
+export { L as settleNativeFinished, K as subscribeNativeSaved, G as syncNativeRecordingLeftovers };

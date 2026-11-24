@@ -1,0 +1,108 @@
+import { r as n, j as u } from "./react-CjxcGQav.js";
+import { fv as c, bT as a, bM as l, bO as y, oT as D, bx as w, bv as L, gS as O, oL as j } from "../js.d/main-Cm9wS5wt.js";
+import { I as B } from "./InsertDriveFileOutlined-DcD-Yh-v.js";
+import { T as E, t as h } from "./TrashList-DTn1aUwu.js";
+import "./stylis-DdLD6a3t.js";
+const p = {
+  list: async () => {
+    const r = c(await l.http.get("/v1/drive/trash"), a("drive.trashLoadFailed"));
+    return {
+      days: Number(r?.days) || 7,
+      items: Array.isArray(r?.items) ? r.items : []
+    };
+  },
+  restore: async r => {
+    c(await l.http.post("/v1/drive/trash/restore", {
+      root: r
+    }), a("drive.restoreFailed"));
+  },
+  purge: async r => {
+    c(await l.http.post("/v1/drive/trash/purge", {
+      root: r
+    }), a("drive.purgeFailed"));
+  }
+};
+function b() {
+  const [r, o] = n.useState([]),
+    [i, e] = n.useState(7),
+    [s, m] = n.useState(!1),
+    [x, v] = n.useState(""),
+    f = n.useCallback(async () => {
+      try {
+        const t = await p.list();
+        o(t.items), e(t.days);
+      } catch (t) {
+        y(t instanceof Error ? t.message : a("drive.trashLoadFailed"));
+      } finally {
+        m(!0);
+      }
+    }, []);
+  n.useEffect(() => {
+    f();
+  }, [f]);
+  const g = async (t, F, T) => {
+    v(t.root);
+    try {
+      await F(), o(d => d.filter(R => R.root !== t.root)), D(), w(T);
+    } catch (d) {
+      y(d instanceof Error ? d.message : a("drive.actionFailed"));
+    } finally {
+      v("");
+    }
+  };
+  return {
+    items: r,
+    days: i,
+    loaded: s,
+    busyRoot: x,
+    restore: t => g(t, () => p.restore(t.root), a("drive.restored", {
+      name: t.name
+    })),
+    purge: t => g(t, () => p.purge(t.root), a("drive.purged", {
+      name: t.name
+    }))
+  };
+}
+function k(r) {
+  return r >= 1024 * 1024 * 1024 ? `${(r / 1024 / 1024 / 1024).toFixed(1)}GB` : r >= 1024 * 1024 ? `${(r / 1024 / 1024).toFixed(1)}MB` : r >= 1024 ? `${Math.round(r / 1024)}KB` : `${r}B`;
+}
+function K() {
+  const r = L(),
+    o = b(),
+    i = new Map(o.items.map(e => [e.root, e]));
+  return u.jsx(E, {
+    description: r("drive.trashDescription", {
+      count: o.days
+    }),
+    loaded: o.loaded,
+    busyKey: o.busyRoot,
+    items: o.items.map(e => ({
+      key: e.root,
+      icon: e.kind === "folder" ? u.jsx(O, {
+        sx: {
+          color: j
+        }
+      }) : u.jsx(B, {}),
+      name: e.name,
+      meta: [e.space === "personal" ? r("drive.personalRoot") : r("drive.orgRoot"), e.kind === "folder" ? r("drive.fileCount", {
+        count: e.file_count
+      }) : "", k(e.size), r("drive.trashedOn", {
+        date: h(e.trashed_time)
+      }), r("drive.purgeOn", {
+        date: h(e.purge_date)
+      })].filter(Boolean).join(" · "),
+      purgeWarning: e.kind === "folder" ? r("drive.purgeFolderWarning", {
+        count: e.file_count
+      }) : r("drive.purgeFileWarning")
+    })),
+    onRestore: e => {
+      const s = i.get(e);
+      s && o.restore(s);
+    },
+    onPurge: e => {
+      const s = i.get(e);
+      s && o.purge(s);
+    }
+  });
+}
+export { K as default };

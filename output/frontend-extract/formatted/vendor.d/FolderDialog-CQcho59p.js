@@ -1,0 +1,294 @@
+import { r as v, l as W, j as r } from "./react-CjxcGQav.js";
+import { lJ as k, nH as Q, nI as y, e as U, ak as Y, nJ as D, nK as q, nL as h, bO as j, bT as E, bv as $, D as G, nM as J, nN as H, lK as X, nO as Z, fo as ee, w as P, fp as N, d8 as se, hj as oe, bh as te, cI as re, bQ as ne, K as ae, B as le, ca as ie, al as de, nP as ue, aB as ce } from "../js.d/main-Cm9wS5wt.js";
+function M(e, o) {
+  return e instanceof Error && e.message ? e.message : o;
+}
+function pe(e, o = {}) {
+  const m = v.useRef(o);
+  m.current = o;
+  const n = k(e),
+    [f, i] = W(),
+    d = Q(f.get(y)),
+    b = (s, t = !1) => i(a => {
+      const u = new URLSearchParams(a);
+      return s === "all" ? u.delete(y) : u.set(y, s === 0 ? "none" : String(s)), u;
+    }, {
+      replace: t
+    }),
+    [I, p] = v.useState(null),
+    [x, w] = v.useState(!1);
+  v.useEffect(() => {
+    n.loaded && typeof d == "number" && d > 0 && !n.folders.some(s => s.seq === d) && b("all", !0);
+  }, [n.loaded, n.folders, d]);
+  const g = {
+      folder: U({
+        modalId: `customer-folder-dialog-${e}`
+      })
+    },
+    _ = Y({
+      formId: `customer-folder-form-${e}`,
+      initialValues: {
+        seq: 0,
+        name: "",
+        parent_seq: 0
+      },
+      onValidate: s => String(s.name ?? "").trim() ? !0 : (j(E("customer.enterFolderName")), !1),
+      onSubmit: async s => {
+        try {
+          const t = await h.save({
+            kind: e,
+            seq: Number(s.seq) || void 0,
+            name: String(s.name ?? "").trim(),
+            parent_seq: Number(s.parent_seq) || 0
+          });
+          return g.folder.close(), await q(e), !s.seq && t && b(t), !0;
+        } catch (t) {
+          return j(M(t, E("customer.saveFolderFailed"))), !1;
+        }
+      }
+    }),
+    L = (s = 0) => {
+      _.setFormValues({
+        seq: 0,
+        name: "",
+        parent_seq: s
+      }), g.folder.open();
+    },
+    R = s => {
+      _.setFormValues({
+        seq: s.seq,
+        name: s.name,
+        parent_seq: s.parent_seq
+      }), g.folder.open();
+    },
+    B = async (s, t, a) => {
+      const u = n.folders.find(F => F.seq === s);
+      if (!(!u || s === t) && !(!a && u.parent_seq === t)) try {
+        if (a) {
+          const F = n.folders.filter(l => l.parent_seq === t && l.seq !== s).sort((l, c) => l.sort_no - c.sort_no),
+            O = F.findIndex(l => l.seq === a.targetSeq),
+            S = [...F];
+          S.splice(O < 0 ? S.length : a.mode === "before" ? O : O + 1, 0, u);
+          for (const [l, c] of S.entries()) {
+            const C = (l + 1) * 10;
+            c.seq === s ? (c.parent_seq !== t || c.sort_no !== C) && (await h.save({
+              kind: e,
+              seq: s,
+              parent_seq: t,
+              sort_no: C
+            })) : c.sort_no !== C && (await h.save({
+              kind: e,
+              seq: c.seq,
+              sort_no: C
+            }));
+          }
+        } else await h.save({
+          kind: e,
+          seq: s,
+          parent_seq: t
+        });
+        await q(e);
+      } catch (F) {
+        j(M(F, E("customer.moveFolderFailed")));
+      }
+    },
+    z = async () => {
+      const s = Number(_.getFormValue("seq")) || 0;
+      if (s) try {
+        await h.remove(e, s), g.folder.close(), await q(e), m.current.onMoved?.();
+      } catch (t) {
+        j(M(t, E("customer.deleteFolderFailed")));
+      }
+    },
+    T = async (s, t) => {
+      if (s.length !== 0) try {
+        await h.move(e, s, t), await q(e), m.current.onMoved?.();
+      } catch (a) {
+        j(M(a, E("customer.moveToFolderFailed")));
+      }
+    },
+    A = (s, t, a) => {
+      p({
+        x: s,
+        y: t,
+        folder: a
+      }), w(!0);
+    },
+    K = () => w(!1),
+    V = () => {
+      q(e);
+    };
+  return {
+    kind: e,
+    folders: n.folders,
+    total: n.total,
+    none: n.none,
+    pick: d,
+    setPick: b,
+    form: _,
+    modals: g,
+    saving: _.isSubmitting,
+    openFolderCreate: L,
+    openFolderEdit: R,
+    moveFolder: B,
+    removeFolder: z,
+    moveItems: T,
+    reload: V,
+    menu: I,
+    menuOpen: x,
+    openFolderMenu: A,
+    closeFolderMenu: K
+  };
+}
+function Fe(e) {
+  v.useEffect(() => {
+    D(e.kind, e);
+  }), v.useEffect(() => () => D(e.kind, null), [e.kind]);
+}
+function he({
+  controller: e
+}) {
+  const o = $(),
+    m = G(),
+    n = J(e.kind),
+    f = e.form,
+    i = Number(f.useFormValue("seq")) || 0,
+    d = i ? H(e.folders, i) : void 0,
+    b = [{
+      value: 0,
+      label: o("customer.folderTop")
+    }, ...X(e.folders, d)],
+    I = o(Z[e.kind].item),
+    p = e.menu?.folder ?? null,
+    x = w => () => {
+      e.closeFolderMenu(), w();
+    };
+  return r.jsxs(r.Fragment, {
+    children: [r.jsxs(ee, {
+      open: e.menuOpen && n,
+      onClose: e.closeFolderMenu,
+      anchorReference: "anchorPosition",
+      anchorPosition: e.menu ? {
+        top: e.menu.y,
+        left: e.menu.x
+      } : void 0,
+      transitionDuration: 0,
+      children: [p ? r.jsxs(P, {
+        onClick: x(() => e.openFolderCreate(p.seq)),
+        sx: {
+          fontSize: 15
+        },
+        children: [r.jsx(N, {
+          children: r.jsx(se, {
+            fontSize: "small"
+          })
+        }), o("customer.createSubfolder")]
+      }) : r.jsxs(P, {
+        onClick: x(() => e.openFolderCreate(0)),
+        sx: {
+          fontSize: 15
+        },
+        children: [r.jsx(N, {
+          children: r.jsx(oe, {
+            fontSize: "small"
+          })
+        }), o("customer.newFolder")]
+      }), p ? r.jsxs(P, {
+        onClick: x(() => e.openFolderEdit(p)),
+        sx: {
+          fontSize: 15
+        },
+        children: [r.jsx(N, {
+          children: r.jsx(te, {
+            fontSize: "small"
+          })
+        }), o("customer.edit")]
+      }) : null]
+    }), r.jsx(re, {
+      open: e.modals.folder.isOpen,
+      onClose: e.modals.folder.close,
+      title: o(i ? "customer.editFolder" : "customer.newFolder"),
+      width: "440px",
+      fullScreen: m,
+      mobilePresentation: m ? "slide" : "dialog",
+      backdropClick: !1,
+      tabs: {
+        visible: !1
+      },
+      titleIcons: {
+        delete: {
+          visible: !!i && n,
+          confirmConfig: {
+            title: o("customer.deleteFolder"),
+            message: o("customer.deleteFolderMessage", {
+              item: I
+            }),
+            confirmText: o("customer.delete"),
+            cancelText: o("customer.cancel")
+          }
+        },
+        print: {
+          visible: !1
+        },
+        share: {
+          visible: !1
+        }
+      },
+      onDelete: i ? () => {
+        e.removeFolder();
+      } : void 0,
+      scrollPastLastSection: !1,
+      sections: [{
+        id: `customer-folder-${e.kind}`,
+        title: o("customer.folder"),
+        showTitle: !1,
+        children: r.jsxs(le, {
+          sx: {
+            display: "flex",
+            flexDirection: "column",
+            gap: ie
+          },
+          children: [r.jsx(de, {
+            form: f,
+            name: "name",
+            label: o("customer.folderName"),
+            fullWidth: !0,
+            disabled: e.saving,
+            slotProps: {
+              htmlInput: {
+                maxLength: ue
+              }
+            }
+          }), r.jsx(ce, {
+            form: f,
+            name: "parent_seq",
+            label: o("customer.parentFolder"),
+            options: b,
+            showEmptyOption: !1,
+            fullWidth: !0,
+            disabled: e.saving
+          })]
+        })
+      }],
+      actions: {
+        visible: !0,
+        showCancelButton: !0,
+        right: n ? r.jsx(ne, {
+          variant: "contained",
+          onClick: () => {
+            f.submit();
+          },
+          disabled: e.saving,
+          sx: {
+            minWidth: 96
+          },
+          children: e.saving ? r.jsx(ae, {
+            size: 20,
+            color: "inherit"
+          }) : o("customer.save")
+        }) : void 0
+      }
+    })]
+  });
+}
+export { he as F, Fe as a, pe as u };

@@ -1,0 +1,15 @@
+import { bT as e } from "../js.d/main-Cm9wS5wt.js";
+const a = ["정책", "투자", "스타트업", "창업생태계", "인터뷰", "교육"],
+  t = ["전체", ...a],
+  s = [{
+    value: "free",
+    get label() {
+      return e("news.free");
+    }
+  }, {
+    value: "premium",
+    get label() {
+      return e("news.paid");
+    }
+  }];
+export { a as N, s as a, t as b };

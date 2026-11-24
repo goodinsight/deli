@@ -1,0 +1,473 @@
+import { r as y, j as t } from "./react-CjxcGQav.js";
+import { bv as S, bQ as L, fq as z, B as p, L as v, bI as N, go as w, px as D, D as H, jY as O, p3 as q, d7 as b, d6 as k, py as G, pz as I, pA as V, j_ as U, pB as Y, pC as K, pD as X, cJ as J, jA as f, cc as Q, pf as Z, kg as ee, j$ as E } from "../js.d/main-Cm9wS5wt.js";
+import { b as te, g as ae, a as ne, r as oe } from "./formPermission-dS9nHLBQ.js";
+import { u as re } from "./FileUploadBox-crZW1mG0.js";
+import { u as se } from "./useTeamApprovalSettings-C0SRRQJg.js";
+import { g as ie, M as le, h as pe } from "./MobileCardListLayout-D5_p2Xer.js";
+function ce(e) {
+  return {
+    min: String(e?.range?.min ?? e?.min ?? ""),
+    max: String(e?.range?.max ?? e?.max ?? "")
+  };
+}
+function me(e, n) {
+  return e && n ? `${e} ~ ${n}` : e || n || "";
+}
+function de({
+  title: e,
+  value: n,
+  onChange: o
+}) {
+  const r = S(),
+    {
+      min: c,
+      max: i
+    } = ce(n),
+    s = !!(c || i),
+    [l, m] = y.useState(!1);
+  return t.jsxs(t.Fragment, {
+    children: [t.jsx(L, {
+      variant: "outlined",
+      size: "small",
+      onClick: () => m(!0),
+      sx: {
+        height: 40,
+        borderRadius: "8px",
+        px: 1.5,
+        textTransform: "none",
+        fontWeight: 500,
+        whiteSpace: "nowrap",
+        color: s ? "primary.main" : "#334155",
+        borderColor: s ? "primary.main" : "#cbd5e1",
+        backgroundColor: s ? "rgba(37,99,235,0.06)" : "transparent",
+        "@media (hover: hover)": {
+          "&:hover": {
+            borderColor: s ? "primary.main" : "#94a3b8",
+            backgroundColor: "#f8fafc"
+          }
+        }
+      },
+      children: s ? `${e} · ${me(c, i)}` : e
+    }), t.jsxs(z, {
+      fullScreen: !0,
+      open: l,
+      onClose: () => m(!1),
+      disableScrollLock: !0,
+      disableRestoreFocus: !0,
+      slotProps: {
+        paper: {
+          sx: {
+            backgroundColor: "#ffffff"
+          }
+        }
+      },
+      children: [t.jsxs(p, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          px: 2.5,
+          py: 2,
+          borderBottom: "1px solid #e2e8f0"
+        },
+        children: [t.jsx(v, {
+          sx: {
+            fontSize: 20,
+            fontWeight: 700,
+            color: "#0f172a"
+          },
+          children: e
+        }), t.jsx(N, {
+          onClick: () => m(!1),
+          "aria-label": r("common.close"),
+          children: t.jsx(w, {})
+        })]
+      }), t.jsxs(p, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: 2,
+          p: 2.5
+        },
+        children: [t.jsx(D, {
+          label: r("components.startDate"),
+          value: c,
+          onChange: d => o({
+            min: d,
+            max: i
+          })
+        }), t.jsx(D, {
+          label: r("components.endDate"),
+          value: i,
+          onChange: d => o({
+            min: c,
+            max: d
+          })
+        })]
+      }), t.jsxs(p, {
+        sx: {
+          mt: "auto",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          px: 2.5,
+          py: 2,
+          borderTop: "1px solid #e2e8f0"
+        },
+        children: [t.jsx(L, {
+          variant: "text",
+          onClick: () => o({
+            min: "",
+            max: ""
+          }),
+          sx: {
+            color: "#64748b"
+          },
+          children: r("components.clear")
+        }), t.jsx(L, {
+          variant: "contained",
+          onClick: () => m(!1),
+          children: r("common.confirm")
+        })]
+      })]
+    })]
+  });
+}
+function ue(e) {
+  return [{
+    value: "draft",
+    label: e("approval.statusDraft")
+  }, {
+    value: "waiting",
+    label: e("approval.statusWaiting")
+  }, {
+    value: "in_progress",
+    label: e("approval.statusInProgress")
+  }, {
+    value: "approved",
+    label: e("approval.statusApproved")
+  }, {
+    value: "rejected",
+    label: e("approval.statusRejected")
+  }, {
+    value: "cancelled",
+    label: e("approval.statusCancelled")
+  }];
+}
+function fe(e) {
+  return [{
+    value: "긴급",
+    label: e("approval.importanceUrgent")
+  }, {
+    value: "높음",
+    label: e("approval.importanceHigh")
+  }, {
+    value: "보통",
+    label: e("approval.importanceNormal")
+  }, {
+    value: "낮음",
+    label: e("approval.importanceLow")
+  }];
+}
+function xe() {
+  const e = S(),
+    {
+      state: n
+    } = re(),
+    {
+      settings: o
+    } = se(),
+    r = n.getValue("global_vars"),
+    c = te(r?.pv_items);
+  return (ae(o) ?? ne()).filter(s => s in O).filter(s => {
+    const l = O[s],
+      m = oe(c, l.requiredPv, l.label);
+    return !m || n.actions.hasPv(m);
+  }).map(s => ({
+    value: s,
+    label: q(e, s)
+  }));
+}
+function Ae(e, n, o, r, c) {
+  const i = S(),
+    s = H(),
+    l = xe();
+  return [{
+    filters: [...(!s ? [] : [{
+      name: "status",
+      type: "checkbox",
+      title: i("approval.colStatus"),
+      showBadge: !0,
+      options: ue(i)
+    }, ...(r ? [] : [{
+      name: "type",
+      type: "checkbox",
+      title: i("approval.documentType"),
+      showBadge: !0,
+      options: l
+    }]), {
+      name: "importance",
+      type: "checkbox",
+      title: i("approval.importance"),
+      showBadge: !0,
+      options: fe(i)
+    }]), s ? {
+      type: "custom",
+      name: "dateRange",
+      node: y.createElement(de, {
+        title: i("approval.filterRequestPeriod"),
+        value: e ? {
+          min: e.start,
+          max: e.end
+        } : void 0,
+        onChange: d => n?.({
+          start: d.min,
+          end: d.max
+        })
+      })
+    } : {
+      name: "dateRange",
+      type: "date-range",
+      title: i("approval.filterRequestPeriod"),
+      showBadge: !0
+    }]
+  }];
+}
+function ge(e) {
+  const n = String(e ?? "").trim();
+  if (!n) return "-";
+  const o = new Date(n);
+  if (!Number.isFinite(o.getTime())) return n;
+  const r = c => String(c).padStart(2, "0");
+  return `${String(o.getFullYear()).slice(-2)}.${r(o.getMonth() + 1)}.${r(o.getDate())} ${r(o.getHours())}:${r(o.getMinutes())}`;
+}
+const W = {
+    긴급: "#d32f2f",
+    높음: "#f57c00",
+    낮음: "#388e3c"
+  },
+  T = "4.5em",
+  B = {
+    낮음: "approval.importanceLow",
+    보통: "approval.importanceNormal",
+    높음: "approval.importanceHigh",
+    긴급: "approval.importanceUrgent"
+  };
+function Ce({
+  items: e,
+  loading: n,
+  loadingMore: o,
+  onRowClick: r,
+  onLoadMore: c,
+  emptyText: i,
+  attachHead: s = !1
+}) {
+  const l = S(),
+    m = i ?? l("approval.noApprovalDocuments"),
+    d = y.useRef(null);
+  return y.useEffect(() => {
+    const a = d.current;
+    if (!a) return;
+    const g = new IntersectionObserver(j => {
+      j[0]?.isIntersecting && !n && !o && c();
+    }, {
+      root: ie(a),
+      rootMargin: "320px"
+    });
+    return g.observe(a), () => g.disconnect();
+  }, [n, o, c]), e.length === 0 && (n || o) ? t.jsx(le, {}) : t.jsxs(p, {
+    sx: {
+      display: "flex",
+      flexDirection: "column",
+      gap: k,
+      p: 0,
+      minWidth: 0,
+      ...(s ? {
+        mt: `-${b}px`
+      } : {})
+    },
+    children: [e.length === 0 ? t.jsx(p, {
+      sx: {
+        py: 6,
+        textAlign: "center",
+        color: "#94a3b8",
+        fontSize: "0.9rem"
+      },
+      children: m
+    }) : e.map(a => {
+      const g = G(a) || I(a) || l("approval.untitled"),
+        j = I(a),
+        P = V(a),
+        F = ge(a.created_time),
+        u = U(a.deadline_time, a.status),
+        h = a.status,
+        R = a._boxRole === "reference",
+        A = Y(a),
+        C = A ? String(a.handled_time ?? "").trim() ? {
+          bg: "#e5e7eb",
+          fg: "#374151"
+        } : {
+          bg: "#fef3c7",
+          fg: "#92400e"
+        } : R ? K : h ? X[h] : null,
+        x = String(a.importance ?? "").trim(),
+        M = String(a.account_name ?? a.user_name ?? a.created_by ?? "").trim(),
+        $ = Array.isArray(a.approvers) ? a.approvers : [];
+      return t.jsxs(J, {
+        elevation: 0,
+        role: "button",
+        tabIndex: 0,
+        onClick: () => r(a),
+        onKeyDown: _ => {
+          (_.key === "Enter" || _.key === " ") && (_.preventDefault(), r(a));
+        },
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          gap: .5,
+          px: `${b}px`,
+          py: 1.5,
+          minWidth: 0,
+          mx: `-${b}px`,
+          width: `calc(100% + ${b * 2}px)`,
+          boxSizing: "border-box",
+          borderRadius: 0,
+          cursor: "pointer",
+          userSelect: "none",
+          "&:active": {
+            bgcolor: "#f8fafc"
+          }
+        },
+        children: [t.jsxs(p, {
+          sx: {
+            display: "flex",
+            alignItems: "center",
+            gap: .75,
+            minWidth: 0
+          },
+          children: [t.jsx(p, {
+            component: "span",
+            sx: {
+              flexShrink: 0,
+              px: .75,
+              py: .15,
+              borderRadius: 1,
+              fontSize: f(15),
+              fontWeight: 700,
+              lineHeight: 1.5,
+              whiteSpace: "nowrap",
+              bgcolor: P.bg,
+              color: P.fg
+            },
+            children: j
+          }), x && W[x] ? t.jsx(p, {
+            component: "span",
+            sx: {
+              flexShrink: 0,
+              fontSize: f(14),
+              fontWeight: 600,
+              color: W[x]
+            },
+            children: B[x] ? l(B[x]) : x
+          }) : null, h && C ? t.jsx(Q, {
+            size: "small",
+            label: A ? A.label : R ? l("approval.reference") : Z(h),
+            sx: {
+              ml: "auto",
+              flexShrink: 0,
+              height: "auto",
+              borderRadius: 1,
+              bgcolor: C.bg,
+              color: C.fg,
+              "& .MuiChip-label": {
+                px: .9,
+                py: .35,
+                fontSize: f(13),
+                fontWeight: 600
+              }
+            }
+          }) : null]
+        }), t.jsx(v, {
+          sx: {
+            minWidth: 0,
+            fontSize: `calc(${f(17)} - var(--card-title-shrink, 0px))`,
+            fontWeight: 700,
+            color: "#111827",
+            whiteSpace: "normal",
+            wordBreak: "keep-all",
+            overflowWrap: "anywhere"
+          },
+          children: g
+        }), t.jsxs(p, {
+          sx: {
+            display: "flex",
+            alignItems: "baseline",
+            minWidth: 0
+          },
+          children: [t.jsx(p, {
+            component: "span",
+            sx: {
+              flexShrink: 0,
+              color: "#94a3b8",
+              fontSize: f(15),
+              width: T
+            },
+            children: l("approval.approvalLine")
+          }), t.jsx(p, {
+            sx: {
+              minWidth: 0,
+              overflow: "hidden"
+            },
+            children: t.jsx(ee, {
+              wrap: !0,
+              drafterName: M || "-",
+              approvers: $,
+              separatorMarginX: .25
+            })
+          })]
+        }), t.jsxs(v, {
+          sx: {
+            fontSize: f(15),
+            color: "#111827",
+            minWidth: 0,
+            whiteSpace: "nowrap"
+          },
+          children: [t.jsx(p, {
+            component: "span",
+            sx: {
+              color: "#94a3b8",
+              display: "inline-block",
+              width: T
+            },
+            children: l("approval.createdAt")
+          }), F]
+        }), u ? t.jsxs(v, {
+          sx: {
+            fontSize: f(15),
+            color: E[u.tone] === "inherit" ? "#111827" : E[u.tone],
+            fontWeight: u.ddayText ? 600 : void 0,
+            minWidth: 0,
+            whiteSpace: "nowrap"
+          },
+          children: [t.jsx(p, {
+            component: "span",
+            sx: {
+              color: "#94a3b8",
+              fontWeight: 400,
+              display: "inline-block",
+              width: T
+            },
+            children: l("approval.approvalDeadline")
+          }), u.longText, u.ddayText ? ` (${u.ddayText})` : ""]
+        }) : null]
+      }, String(a.seq ?? ""));
+    }), t.jsx(p, {
+      ref: d,
+      sx: {
+        height: "1px",
+        mt: `calc(-1px - ${k})`
+      }
+    }), o ? t.jsx(pe, {}) : null]
+  });
+}
+export { Ce as A, xe as a, ue as b, fe as i, Ae as u };

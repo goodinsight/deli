@@ -1,0 +1,470 @@
+import { r as k, j as t } from "./react-CjxcGQav.js";
+import { c8 as $, ak as L, bO as h, bT as p, bx as M, fL as P, bv as G, D as A, cz as F, dv as D, B as x, cJ as W, L as v, aq as I, bQ as y, K as E, aO as H, cH as U, s as K, ar as J, cc as Q } from "../js.d/main-Cm9wS5wt.js";
+import { O as z } from "./OptionToggleGroup-Cvm2wRyq.js";
+import { a as S } from "./accountingApi-BfPys7bV.js";
+import { a as Y, g as X, u as N } from "./glStore-Bh_caf5d.js";
+import { f as Z } from "./accounting-C0pu0niI.js";
+import { C as ee } from "./ClassificationFields-DGHklZBP.js";
+import "./stylis-DdLD6a3t.js";
+const te = i => i.replace(/\s/g, "").toLowerCase();
+function ne(i) {
+  const e = new Map(),
+    u = new Map();
+  for (const s of i.rows) {
+    if (s.skip) {
+      u.set(s.skip_reason || p("accounting.skipDefault"), (u.get(s.skip_reason || p("accounting.skipDefault")) ?? 0) + 1);
+      continue;
+    }
+    const r = `${s.direction}|${s.card_seq}|${te(s.text)}`,
+      a = e.get(r) ?? {
+        id: `g${e.size + 1}`,
+        direction: s.direction,
+        text: s.text || p("accounting.noDescription"),
+        rows: [],
+        amount: 0,
+        suggestion: null
+      };
+    a.rows.push(s), a.amount += s.amount, !a.suggestion && s.suggestion && (a.suggestion = s.suggestion), e.set(r, a);
+  }
+  return {
+    groups: [...e.values()].sort((s, r) => r.amount - s.amount),
+    skipped: [...u.entries()].map(([s, r]) => ({
+      reason: s,
+      count: r
+    }))
+  };
+}
+function oe() {
+  const i = $({
+      stateId: "accounting-import-ui",
+      initialValues: {
+        kind: "card",
+        cardSeq: 0,
+        bankbookSeq: 0,
+        ai: !0,
+        reading: !1,
+        preview: null,
+        groups: [],
+        skipped: []
+      }
+    }),
+    e = L({
+      formId: "accounting-import-form",
+      initialValues: {
+        groups: {}
+      },
+      onValidate: () => i.getValue("kind") === "bank" && !Number(i.getValue("bankbookSeq")) ? (h(p("accounting.selectImportBankbook")), !1) : !0,
+      onSubmit: async r => {
+        const a = i.getValue("groups") ?? [],
+          d = i.getValue("kind"),
+          c = a.flatMap(o => {
+            const g = r.groups?.[o.id];
+            if (!g?.include) return [];
+            const m = o.suggestion && g.tran_item === o.suggestion.tran_item && Number(g.ac_code) === o.suggestion.ac_code;
+            return o.rows.map(l => ({
+              date: l.date,
+              time: l.time,
+              direction: l.direction,
+              amount: l.amount,
+              text: l.text,
+              counterpart: l.counterpart,
+              memo: l.memo,
+              card_seq: l.card_seq,
+              import_key: l.import_key,
+              tran_item: g.tran_item,
+              ac_code: Number(g.ac_code) || 0,
+              classified_by: m ? o.suggestion?.by ?? "manual" : "manual"
+            }));
+          });
+        if (c.length === 0) return h(p("accounting.noRowsToImport")), !1;
+        try {
+          const o = await S.importCommit({
+            kind: d,
+            bankbook_seq: Number(i.getValue("bankbookSeq")) || void 0,
+            rows: c
+          });
+          return M({
+            message: o.skipped ? p("accounting.importedWithSkipped", {
+              inserted: o.inserted,
+              skipped: o.skipped
+            }) : p("accounting.imported", {
+              inserted: o.inserted
+            }),
+            delay: 800
+          }), u(), !0;
+        } catch (o) {
+          return h(o instanceof Error ? o.message : p("accounting.errImport")), !1;
+        }
+      }
+    }),
+    u = () => {
+      i.setValues({
+        preview: null,
+        groups: [],
+        skipped: []
+      }), e.setFormValues({
+        groups: {}
+      });
+    };
+  return {
+    ui: i,
+    form: e,
+    readFile: async r => {
+      const a = i.getValue("kind"),
+        d = Number(i.getValue("bankbookSeq")) || 0;
+      if (a === "bank" && !d) {
+        h(p("accounting.selectImportBankbookFirst"));
+        return;
+      }
+      i.setValue("reading", !0);
+      try {
+        const c = await S.importPreview(a, r, {
+            cardSeq: Number(i.getValue("cardSeq")) || void 0,
+            bankbookSeq: d || void 0,
+            ai: !!i.getValue("ai")
+          }),
+          {
+            groups: o,
+            skipped: g
+          } = ne(c);
+        i.setValues({
+          preview: c,
+          groups: o,
+          skipped: g
+        }), e.setFormValues({
+          groups: Object.fromEntries(o.map(m => [m.id, {
+            include: !0,
+            tran_item: m.suggestion?.tran_item ?? "",
+            ac_code: m.suggestion?.ac_code ?? 0,
+            ac_label: Y(X().accountByCode.get(m.suggestion?.ac_code ?? 0))
+          }]))
+        });
+      } catch (c) {
+        h(c instanceof Error ? c.message : p("accounting.errReadFile"));
+      } finally {
+        i.setValue("reading", !1);
+      }
+    },
+    reset: u
+  };
+}
+const V = 40,
+  se = {
+    org_rule: "accounting.suggestionOrgRule",
+    rule: "accounting.suggestionRule",
+    ai: "accounting.suggestionAi"
+  };
+function ae({
+  controller: i,
+  group: e,
+  stacked: u
+}) {
+  const s = G(),
+    {
+      form: r
+    } = i,
+    a = F()?.seq ?? 0,
+    d = N(a),
+    c = !!r.useValue(`groups.${e.id}.include`),
+    o = e.rows.map(g => g.date).sort();
+  return t.jsxs(x, {
+    sx: {
+      py: 2,
+      borderTop: 1,
+      borderColor: "divider",
+      opacity: c ? 1 : .55,
+      display: "grid",
+      gap: 1.5
+    },
+    children: [t.jsxs(x, {
+      sx: {
+        display: "flex",
+        alignItems: "center",
+        gap: 1,
+        flexWrap: "wrap",
+        minWidth: 0
+      },
+      children: [t.jsx(J, {
+        form: r,
+        name: `groups.${e.id}.include`,
+        label: "",
+        sx: {
+          p: .5
+        }
+      }), t.jsx(v, {
+        sx: {
+          fontSize: 16,
+          fontWeight: 600,
+          minWidth: 0,
+          wordBreak: "keep-all",
+          overflowWrap: "anywhere"
+        },
+        children: e.text
+      }), t.jsxs(v, {
+        sx: {
+          fontSize: 15,
+          color: "text.secondary",
+          whiteSpace: "nowrap"
+        },
+        children: [s(e.direction === "revenue" ? "accounting.groupMetaDeposit" : "accounting.groupMetaExpense", {
+          count: e.rows.length,
+          amount: Z(e.amount)
+        }), " · ", o[0], o.length > 1 && o[o.length - 1] !== o[0] ? ` ~ ${o[o.length - 1]}` : ""]
+      }), e.suggestion ? t.jsx(Q, {
+        size: "small",
+        label: s(se[e.suggestion.by] ?? "accounting.suggestionRule"),
+        sx: {
+          fontSize: 14,
+          height: 24
+        },
+        color: e.suggestion.by === "ai" ? "secondary" : "default"
+      }) : null]
+    }), c ? t.jsx(ee, {
+      form: r,
+      prefix: `groups.${e.id}.`,
+      items: d.items,
+      accounts: d.accounts,
+      accountByCode: d.accountByCode,
+      stacked: u
+    }) : null]
+  });
+}
+function me() {
+  const i = P("accounting"),
+    e = G(),
+    u = A(),
+    s = F()?.seq ?? 0;
+  N(s);
+  const r = oe(),
+    {
+      ui: a,
+      form: d
+    } = r,
+    c = a.useValue("kind"),
+    o = Number(a.useValue("cardSeq")) || 0,
+    g = Number(a.useValue("bankbookSeq")) || 0,
+    m = !!a.useValue("ai"),
+    l = !!a.useValue("reading"),
+    b = a.useValue("groups") ?? [],
+    _ = a.useValue("skipped") ?? [],
+    T = !!a.useValue("preview"),
+    q = d.isSubmitting,
+    [j, C] = k.useState({
+      bankbooks: [],
+      cards: []
+    }),
+    [w, B] = k.useState(V),
+    R = k.useRef(null);
+  k.useEffect(() => {
+    s && S.books().then(C).catch(() => {});
+  }, [s]), D(["bankbook", "bankbook_card"], () => {
+    S.books().then(C).catch(() => {});
+  }, {
+    enabled: s > 0
+  }), k.useEffect(() => B(V), [b]);
+  const O = b.reduce((n, f) => n + f.rows.length, 0);
+  return t.jsxs(x, {
+    sx: {
+      maxWidth: 960,
+      display: "grid",
+      gap: 2.5
+    },
+    children: [t.jsxs(W, {
+      sx: {
+        p: {
+          xs: 2,
+          sm: 3
+        },
+        borderRadius: 2,
+        boxShadow: "0 1px 3px rgba(0,0,0,0.12)",
+        display: "grid",
+        gap: 2.5
+      },
+      children: [t.jsx(v, {
+        variant: "h6",
+        sx: {
+          fontWeight: 700
+        },
+        children: e("accounting.importTitle")
+      }), t.jsxs(x, {
+        component: "ul",
+        sx: {
+          listStyleType: "disc",
+          m: 0,
+          pl: 2.5,
+          color: "text.secondary",
+          fontSize: 15,
+          display: "grid",
+          gap: .5
+        },
+        children: [t.jsx("li", {
+          children: e("accounting.importHelp1")
+        }), t.jsx("li", {
+          children: e("accounting.importHelp2")
+        }), t.jsx("li", {
+          children: e("accounting.importHelp3")
+        })]
+      }), t.jsxs(x, {
+        sx: {
+          display: "flex",
+          gap: 1.5,
+          flexWrap: "wrap",
+          alignItems: "center",
+          "& .MuiToggleButtonGroup-root": {
+            height: 40
+          }
+        },
+        children: [t.jsx(z, {
+          size: "medium",
+          value: c,
+          onChange: n => {
+            a.setValue("kind", n || "card"), r.reset();
+          },
+          options: [{
+            value: "card",
+            label: e("accounting.cardStatement")
+          }, {
+            value: "bank",
+            label: e("accounting.bankStatement")
+          }]
+        }), t.jsx(x, {
+          sx: {
+            minWidth: 240,
+            flex: u ? "1 1 100%" : "0 1 280px"
+          },
+          children: c === "card" ? t.jsx(I, {
+            label: e("accounting.card"),
+            value: o || "",
+            onChange: n => a.setValue("cardSeq", Number(n.target.value) || 0),
+            options: j.cards.map(n => ({
+              value: n.seq,
+              label: `${n.name}${n.card_number_tail ? ` (${n.card_number_tail})` : ""}`
+            })),
+            emptyLabel: e("accounting.matchByCardTail"),
+            fullWidth: !0
+          }) : t.jsx(I, {
+            label: e("accounting.bankbook"),
+            value: g || "",
+            onChange: n => a.setValue("bankbookSeq", Number(n.target.value) || 0),
+            options: j.bankbooks.map(n => ({
+              value: n.seq,
+              label: n.name
+            })),
+            emptyLabel: j.bankbooks.length ? e("accounting.select") : e("accounting.registerBankbookFirst"),
+            fullWidth: !0
+          })
+        }), t.jsx(z, {
+          size: "medium",
+          value: m ? "ai" : "",
+          onChange: n => a.setValue("ai", n === "ai"),
+          options: [{
+            value: "ai",
+            label: e("accounting.aiSuggest")
+          }]
+        }), t.jsx(y, {
+          variant: "contained",
+          disableElevation: !0,
+          startIcon: l ? t.jsx(E, {
+            size: 18,
+            color: "inherit"
+          }) : t.jsx(H, {}),
+          disabled: l,
+          onClick: () => R.current?.click(),
+          sx: {
+            height: 40
+          },
+          children: e(l ? "accounting.reading" : "accounting.uploadExcel")
+        }), t.jsx("input", {
+          ref: R,
+          type: "file",
+          accept: ".xls,.xlsx,.csv",
+          hidden: !0,
+          onChange: n => {
+            const f = n.target.files?.[0];
+            n.target.value = "", f && r.readFile(f);
+          }
+        })]
+      })]
+    }), T ? t.jsxs(W, {
+      sx: {
+        p: {
+          xs: 2,
+          sm: 3
+        },
+        borderRadius: 2,
+        boxShadow: "0 1px 3px rgba(0,0,0,0.12)",
+        display: "grid",
+        gap: 1
+      },
+      children: [t.jsxs(x, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: 1.5,
+          flexWrap: "wrap"
+        },
+        children: [t.jsx(v, {
+          variant: "h6",
+          sx: {
+            fontWeight: 700,
+            flex: 1,
+            minWidth: 0
+          },
+          children: e("accounting.previewSummary", {
+            rows: O,
+            groups: b.length
+          })
+        }), t.jsx(y, {
+          onClick: r.reset,
+          children: e("accounting.chooseAgain")
+        }), t.jsx(y, {
+          style: i.canWrite ? void 0 : {
+            display: "none"
+          },
+          variant: "contained",
+          disableElevation: !0,
+          onClick: () => {
+            d.submit();
+          },
+          disabled: q || b.length === 0,
+          children: q ? t.jsx(E, {
+            size: 20,
+            color: "inherit"
+          }) : e("accounting.addToLedger")
+        })]
+      }), _.length > 0 ? t.jsx(U, {
+        severity: "info",
+        sx: {
+          fontSize: 15
+        },
+        children: e("accounting.skippedRows", {
+          list: _.map(n => e("accounting.skippedItem", {
+            reason: n.reason,
+            count: n.count
+          })).join(" · ")
+        })
+      }) : null, b.length === 0 ? t.jsx(x, {
+        sx: {
+          py: 4,
+          textAlign: "center",
+          color: "text.secondary",
+          fontSize: 15
+        },
+        children: e("accounting.noNewRows")
+      }) : null, b.slice(0, w).map(n => t.jsx(ae, {
+        controller: r,
+        group: n,
+        stacked: u
+      }, n.id)), b.length > w ? t.jsx(y, {
+        onClick: () => B(n => n + V),
+        sx: {
+          color: K[600]
+        },
+        children: e("accounting.moreGroups", {
+          count: b.length - w
+        })
+      }) : null]
+    }) : null]
+  });
+}
+export { me as default };

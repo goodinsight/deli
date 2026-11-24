@@ -1,0 +1,11 @@
+import { r as n } from "./react-CjxcGQav.js";
+let t = null;
+const r = new Set();
+function a(e) {
+  !Number.isInteger(e) || e <= 0 || (t = {
+    roomSeq: e,
+    id: (t?.id ?? 0) + 1
+  }, r.forEach(o => o()));
+}
+const u = () => n.useSyncExternalStore(e => (r.add(e), () => r.delete(e)), () => t);
+export { a as o, u };

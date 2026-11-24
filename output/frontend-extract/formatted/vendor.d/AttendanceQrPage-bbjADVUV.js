@@ -1,0 +1,101 @@
+import { j as t, r } from "./react-CjxcGQav.js";
+import { Q as S } from "./browser-FfRve9p6.js";
+import { a as v } from "./attendanceMgmtApi-CC4DR0XR.js";
+import { bv as A, B as f, L as i, bT as Q } from "../js.d/main-Cm9wS5wt.js";
+import "./attendanceBio-C-9dHF9O.js";
+import "./stylis-DdLD6a3t.js";
+function T({
+  compact: s = !1
+}) {
+  const a = A(),
+    [l, x] = r.useState(""),
+    [h, d] = r.useState(0),
+    [m, u] = r.useState(""),
+    [g, p] = r.useState(() => new Date());
+  r.useEffect(() => {
+    let n = !0,
+      o = 0;
+    const c = async () => {
+      try {
+        const e = await v.qr(),
+          j = `${window.location.origin}/dashboard/attendance?qr=${e.code}`,
+          y = await S.toDataURL(j, {
+            width: 520,
+            margin: 1,
+            errorCorrectionLevel: "M"
+          });
+        if (!n) return;
+        x(y), d(e.expires_in), u(""), o = window.setTimeout(c, (e.expires_in + 1) * 1e3);
+      } catch (e) {
+        if (!n) return;
+        u(e instanceof Error ? e.message : Q("hr.errMakeQr")), o = window.setTimeout(c, 1e4);
+      }
+    };
+    return c(), () => {
+      n = !1, window.clearTimeout(o);
+    };
+  }, []), r.useEffect(() => {
+    const n = window.setInterval(() => {
+      p(new Date()), d(o => Math.max(0, o - 1));
+    }, 1e3);
+    return () => window.clearInterval(n);
+  }, []);
+  const w = g.toLocaleTimeString("ko-KR", {
+    timeZone: "Asia/Seoul",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit"
+  });
+  return t.jsxs(f, {
+    sx: {
+      minHeight: s ? void 0 : "100%",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: 2,
+      p: s ? 0 : 3,
+      bgcolor: "background.paper"
+    },
+    children: [t.jsx(i, {
+      sx: {
+        fontSize: 28,
+        fontWeight: 800
+      },
+      children: a("hr.myAttQrTitle")
+    }), t.jsx(i, {
+      sx: {
+        fontSize: 40,
+        fontWeight: 700,
+        fontVariantNumeric: "tabular-nums"
+      },
+      children: w
+    }), m ? t.jsx(i, {
+      sx: {
+        fontSize: 18,
+        color: "#b91c1c"
+      },
+      children: m
+    }) : l ? t.jsx(f, {
+      component: "img",
+      src: l,
+      alt: a("hr.myAttQrAlt"),
+      sx: {
+        width: s ? "min(100%, 420px)" : "min(80vw, 520px)",
+        height: "auto"
+      }
+    }) : null, t.jsx(i, {
+      sx: {
+        fontSize: 18,
+        color: "text.secondary"
+      },
+      children: a("hr.myAttQrHint", {
+        seconds: h
+      })
+    })]
+  });
+}
+function D() {
+  return t.jsx(T, {});
+}
+export { T as AttendanceQrBoard, D as default };

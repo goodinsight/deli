@@ -1,0 +1,1 @@
+import{fS as o,fT as t,fU as e}from"../js.d/main-Cm9wS5wt.js";const r="board.lastKey";function n(a){try{a&&window.localStorage.setItem(r,a)}catch{}}function c(){let a="";try{a=window.localStorage.getItem(r)??""}catch{a=""}return a&&o(a)?t(a):t(e(a||void 0).key)}export{c as l,n as r};

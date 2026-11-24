@@ -1,0 +1,576 @@
+import { r as g, j as e } from "./react-CjxcGQav.js";
+import { u as D, bO as E, bT as h, dv as U, bv as M, cz as $, D as B, B as l, L as S, a1 as I, df as L, lq as H } from "../js.d/main-Cm9wS5wt.js";
+import { b as q, C as K } from "./MobileCardListLayout-D5_p2Xer.js";
+import { a as V } from "./attendanceMgmtApi-CC4DR0XR.js";
+import { t as G, q as X } from "./attendanceMgmt-B_e3bPBn.js";
+import { c as F, d as N, m as J, P as b, S as Q, b as p, E as R, f as O } from "./AttendanceParts-mHb1cK0h.js";
+import { T as P } from "./tableScrollbars-C9bhlJjO.js";
+import { r as Y } from "./rowNoColumn-B_tyJFB_.js";
+import { w as Z } from "./headerCount-4t1ZKu-L.js";
+import "./stylis-DdLD6a3t.js";
+import "./mobileSearchOverlay-DYWcMOOb.js";
+import "./attendanceBio-C-9dHF9O.js";
+import "./i18nLabels-BNTLL7cu.js";
+const k = new Map(),
+  tt = 6e4;
+function et(r) {
+  const t = G().slice(0, 7),
+    [d, m] = g.useState(t),
+    i = D().useValue("account"),
+    o = c => `${Number(i?.seq ?? 0)}:${r}:${c}`,
+    [a, s] = g.useState(() => k.get(o(t))?.data ?? null),
+    [_, y] = g.useState(!1),
+    j = g.useRef(""),
+    u = o(d),
+    n = g.useCallback(async (c = !1) => {
+      if (r) {
+        j.current = d, c || y(!0);
+        try {
+          const v = await V.report(d);
+          k.set(u, {
+            data: v,
+            at: Date.now()
+          }), j.current === d && s(v);
+        } catch (v) {
+          c || E(v instanceof Error ? v.message : h("hr.errLoadAttendanceReport"));
+        } finally {
+          j.current === d && y(!1);
+        }
+      }
+    }, [r, d, u]);
+  return g.useEffect(() => {
+    const c = k.get(u);
+    if (c) {
+      j.current = d, s(c.data), y(!1), Date.now() - c.at > tt && n(!0);
+      return;
+    }
+    n();
+  }, [n]), U(["hr_clock", "hr_attendance", "hr_overtime", "hr_shift", "hr_work_assign", "employee"], () => {
+    n(!0);
+  }), {
+    month: d,
+    setMonth: c => m(c > t ? t : c),
+    data: a,
+    loading: _,
+    canNext: d < t,
+    reload: n
+  };
+}
+const f = r => h("hr.hoursOnly", {
+  h: X(r) || 0
+});
+function T({
+  title: r,
+  items: t,
+  color: d,
+  format: m
+}) {
+  const i = M(),
+    o = Math.max(1, ...t.map(a => a.value));
+  return e.jsxs(l, {
+    sx: {
+      minWidth: 0
+    },
+    children: [e.jsx(S, {
+      sx: {
+        fontSize: 15,
+        fontWeight: 600,
+        mb: 1
+      },
+      children: r
+    }), e.jsx(l, {
+      sx: {
+        display: "grid",
+        gridTemplateColumns: `repeat(${t.length}, minmax(0, 1fr))`,
+        gap: 1,
+        alignItems: "end",
+        height: 150
+      },
+      children: t.map(a => e.jsxs(l, {
+        sx: {
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-end",
+          alignItems: "center",
+          height: "100%",
+          minWidth: 0
+        },
+        children: [e.jsx(S, {
+          sx: {
+            fontSize: 14,
+            color: "text.secondary",
+            whiteSpace: "nowrap"
+          },
+          children: m(a.value)
+        }), e.jsx(l, {
+          sx: {
+            width: "70%",
+            maxWidth: 44,
+            height: `${Math.max(2, a.value / o * 100)}px`,
+            bgcolor: d,
+            borderRadius: "4px 4px 0 0"
+          }
+        })]
+      }, a.month))
+    }), e.jsx(l, {
+      sx: {
+        display: "grid",
+        gridTemplateColumns: `repeat(${t.length}, minmax(0, 1fr))`,
+        gap: 1,
+        mt: .5,
+        borderTop: "1px solid #e2e8f0",
+        pt: .5
+      },
+      children: t.map(a => e.jsx(S, {
+        sx: {
+          fontSize: 14,
+          textAlign: "center",
+          color: "text.secondary"
+        },
+        children: i("hr.monthN", {
+          month: Number(a.month.slice(5))
+        })
+      }, a.month))
+    })]
+  });
+}
+function A({
+  title: r,
+  items: t,
+  format: d,
+  danger: m
+}) {
+  const i = M(),
+    o = t.map((s, _) => ({
+      ...s,
+      rank: _ + 1
+    })),
+    a = [{
+      id: "rank",
+      text: "#",
+      width: 44,
+      align: "center",
+      render: s => s.rank
+    }, {
+      id: "name",
+      text: i("hr.employee"),
+      width: 90,
+      primary: !0,
+      render: s => s.name
+    }, {
+      id: "unit_name",
+      text: i("hr.attAdminUnit"),
+      width: 90,
+      render: s => e.jsx(l, {
+        component: "span",
+        sx: {
+          color: "text.secondary"
+        },
+        children: s.unit_name || "–"
+      })
+    }, {
+      id: "value",
+      text: i("hr.attAdminValue"),
+      width: 80,
+      align: "right",
+      render: s => e.jsx(l, {
+        component: "span",
+        sx: {
+          fontWeight: 600,
+          color: m ? "error.main" : "text.primary"
+        },
+        children: d(s.value)
+      })
+    }];
+  return e.jsxs(l, {
+    sx: {
+      minWidth: 0
+    },
+    children: [e.jsx(S, {
+      sx: {
+        fontSize: 15,
+        fontWeight: 600,
+        mb: 1
+      },
+      children: r
+    }), e.jsx(O, {
+      children: e.jsx(L, {
+        variant: "notion",
+        scrollbars: P,
+        autoHeight: !0,
+        showPaper: !1,
+        paddingX: 0,
+        data: o,
+        totalCount: o.length,
+        columns: a,
+        getRowId: s => String(s.seq),
+        emptyMessage: i("hr.none")
+      })
+    })]
+  });
+}
+const nt = r => [Y(), {
+    id: "name",
+    text: Z(h("hr.attAdminUnit"), r),
+    width: 160,
+    primary: !0,
+    sortable: !0,
+    style: {
+      fontWeight: 600
+    },
+    render: t => t.name
+  }, {
+    id: "headcount",
+    get text() {
+      return h("hr.attAdminHeadcount");
+    },
+    width: 80,
+    align: "right",
+    sortable: !0,
+    render: t => h("hr.peopleN", {
+      count: t.headcount
+    })
+  }, {
+    id: "rate",
+    get text() {
+      return h("hr.attAdminAttendanceRate");
+    },
+    width: 80,
+    align: "right",
+    sortable: !0,
+    render: t => t.attendance_rate === null ? "–" : `${t.attendance_rate}%`
+  }, {
+    id: "work",
+    get text() {
+      return h("hr.myAttActualWork");
+    },
+    width: 80,
+    align: "right",
+    sortable: !0,
+    render: t => f(t.work_minutes)
+  }, {
+    id: "overtime",
+    get text() {
+      return h("hr.attSetStatOvertime");
+    },
+    width: 80,
+    align: "right",
+    sortable: !0,
+    render: t => f(t.overtime_minutes)
+  }, {
+    id: "late",
+    get text() {
+      return h("hr.attSetStatLate");
+    },
+    width: 80,
+    align: "right",
+    sortable: !0,
+    render: t => h("hr.timesN", {
+      count: t.late_count
+    })
+  }, {
+    id: "absent",
+    get text() {
+      return h("hr.attSetDayStatusAbsent");
+    },
+    width: 80,
+    align: "right",
+    sortable: !0,
+    render: t => h("hr.daysN", {
+      count: t.absent_count
+    })
+  }, {
+    id: "leave",
+    get text() {
+      return h("hr.attSetDayStatusLeave");
+    },
+    width: 80,
+    align: "right",
+    sortable: !0,
+    render: t => h("hr.daysN", {
+      count: t.leave_days
+    })
+  }],
+  W = {
+    name: r => r.name,
+    headcount: r => r.headcount,
+    rate: r => r.attendance_rate ?? -1,
+    work: r => r.work_minutes,
+    overtime: r => r.overtime_minutes,
+    late: r => r.late_count,
+    absent: r => r.absent_count,
+    leave: r => r.leave_days
+  };
+function gt(r = {}) {
+  const t = M(),
+    d = $()?.seq ?? 0,
+    m = B(),
+    i = et(d),
+    o = i.data,
+    a = o?.summary,
+    [s, _] = g.useState(null),
+    y = g.useMemo(() => {
+      const n = o?.units ?? [];
+      if (!s || !W[s.by]) return n;
+      const x = W[s.by],
+        c = s.dir === "asc" ? 1 : -1;
+      return [...n].sort((v, z) => {
+        const w = x(v),
+          C = x(z);
+        return (typeof w == "string" ? w.localeCompare(String(C), "ko") : w - Number(C)) * c;
+      });
+    }, [o?.units, s]),
+    j = e.jsx(F, {
+      large: m,
+      label: J(i.month),
+      onPrev: () => i.setMonth(N(i.month, -1)),
+      onNext: () => i.setMonth(N(i.month, 1)),
+      pick: {
+        mode: "month",
+        value: i.month,
+        onPick: i.setMonth
+      }
+    }),
+    u = [e.jsxs(b, {
+      children: [m ? e.jsx(l, {
+        sx: {
+          display: "flex",
+          justifyContent: "center"
+        },
+        children: j
+      }) : e.jsxs(l, {
+        sx: {
+          display: "flex",
+          alignItems: "center",
+          gap: 1.5,
+          flexWrap: "wrap"
+        },
+        children: [e.jsx(S, {
+          sx: {
+            fontSize: 18,
+            fontWeight: 700,
+            mr: 1
+          },
+          children: t("hr.attPageReport")
+        }), j, o?.closed && e.jsxs(S, {
+          sx: {
+            fontSize: 14,
+            color: "text.secondary"
+          },
+          children: [e.jsx(I, {
+            sx: {
+              fontSize: 16,
+              verticalAlign: "text-bottom",
+              mr: .5
+            }
+          }), t("hr.attAdminClosedMonth")]
+        })]
+      }), a && e.jsxs(l, {
+        sx: {
+          display: "flex",
+          gap: Q,
+          flexWrap: "wrap",
+          mt: 1.5
+        },
+        children: [e.jsx(p, {
+          label: t("hr.attAdminHeadcount"),
+          value: t("hr.peopleN", {
+            count: a.headcount
+          })
+        }), e.jsx(p, {
+          label: t("hr.attAdminAttendanceRate"),
+          value: a.attendance_rate === null ? "–" : `${a.attendance_rate}%`,
+          tone: "work"
+        }), e.jsx(p, {
+          label: t("hr.attAdminWorkSum"),
+          value: f(a.work_minutes),
+          tone: "work"
+        }), e.jsx(p, {
+          label: t("hr.attAdminOvertimeSum"),
+          value: f(a.overtime_minutes),
+          tone: "extra"
+        }), e.jsx(p, {
+          label: t("hr.attAdminUnapprovedOt"),
+          value: f(a.unapproved_overtime_minutes),
+          danger: a.unapproved_overtime_minutes > 0
+        }), e.jsx(p, {
+          label: t("hr.attSetStatLate"),
+          value: t("hr.timesN", {
+            count: a.late_count
+          }),
+          danger: a.late_count > 0
+        }), e.jsx(p, {
+          label: t("hr.attSetDayStatusAbsent"),
+          value: t("hr.daysN", {
+            count: a.absent_count
+          }),
+          danger: a.absent_count > 0
+        }), e.jsx(p, {
+          label: t("hr.attSetDayStatusLeave"),
+          value: t("hr.daysN", {
+            count: a.leave_days
+          }),
+          tone: "leave"
+        }), e.jsx(p, {
+          label: t("hr.attAdminColWeeklyOver"),
+          value: t("hr.peopleN", {
+            count: a.weekly_over_people
+          }),
+          danger: a.weekly_over_people > 0
+        })]
+      })]
+    }, "head")];
+  return o ? o.summary.headcount === 0 ? u.push(e.jsx(b, {
+    children: e.jsx(R, {
+      text: t("hr.attAdminNoTargets")
+    })
+  }, "empty")) : (u.push(e.jsx(b, {
+    title: t("hr.attAdminLast6Months"),
+    children: e.jsxs(l, {
+      sx: {
+        display: "grid",
+        gridTemplateColumns: m ? "1fr" : "repeat(3, minmax(0, 1fr))",
+        gap: 3
+      },
+      children: [e.jsx(T, {
+        title: t("hr.myAttActualWork"),
+        color: "#3b82f6",
+        items: o.trend.map(n => ({
+          month: n.month,
+          value: n.work_minutes
+        })),
+        format: n => `${Math.round(n / 60)}h`
+      }), e.jsx(T, {
+        title: t("hr.attSetStatOvertime"),
+        color: "#8b5cf6",
+        items: o.trend.map(n => ({
+          month: n.month,
+          value: n.overtime_minutes
+        })),
+        format: n => `${Math.round(n / 60)}h`
+      }), e.jsx(T, {
+        title: t("hr.attSetStatLate"),
+        color: "#ef4444",
+        items: o.trend.map(n => ({
+          month: n.month,
+          value: n.late_count
+        })),
+        format: n => t("hr.timesN", {
+          count: n
+        })
+      })]
+    })
+  }, "trend"), e.jsx(b, {
+    title: t("hr.attAdminByUnit"),
+    children: e.jsx(O, {
+      children: e.jsx(L, {
+        variant: "notion",
+        scrollbars: P,
+        autoHeight: !0,
+        showPaper: !1,
+        paddingX: 0,
+        data: y,
+        totalCount: y.length,
+        columns: nt(y.length),
+        getRowId: n => n.name,
+        sortBy: s?.by,
+        sortDirection: s?.dir,
+        onSort: (n, x) => _({
+          by: String(n),
+          dir: x
+        }),
+        onSortClear: () => _(null)
+      })
+    })
+  }, "units"), e.jsx(b, {
+    title: t("hr.attAdminWatchlist"),
+    children: e.jsxs(l, {
+      sx: {
+        display: "grid",
+        gridTemplateColumns: m ? "1fr" : "repeat(4, minmax(0, 1fr))",
+        gap: 3
+      },
+      children: [e.jsx(A, {
+        title: t("hr.attAdminTopLate"),
+        items: o.top.late,
+        format: n => t("hr.timesN", {
+          count: n
+        }),
+        danger: !0
+      }), e.jsx(A, {
+        title: t("hr.attAdminTopAbsent"),
+        items: o.top.absent,
+        format: n => t("hr.daysN", {
+          count: n
+        }),
+        danger: !0
+      }), e.jsx(A, {
+        title: t("hr.attAdminTopOvertime"),
+        items: o.top.overtime,
+        format: f
+      }), e.jsx(A, {
+        title: t("hr.attAdminTopUnapproved"),
+        items: o.top.unapproved,
+        format: f,
+        danger: !0
+      })]
+    })
+  }, "top")), o.weekly_over.length && u.push(e.jsx(b, {
+    title: t("hr.attAdminOverWeekly", {
+      hours: Math.round((o.weekly_limit_minutes ?? 3120) / 60)
+    }),
+    children: e.jsx(l, {
+      component: "ul",
+      sx: {
+        listStyle: "none",
+        m: 0,
+        p: 0,
+        display: "grid",
+        gap: .5
+      },
+      children: o.weekly_over.map(n => e.jsxs(l, {
+        component: "li",
+        sx: {
+          fontSize: 15,
+          wordBreak: "keep-all"
+        },
+        children: [e.jsx(l, {
+          component: "span",
+          sx: {
+            fontWeight: 600
+          },
+          children: n.name
+        }), n.unit_name && e.jsx(l, {
+          component: "span",
+          sx: {
+            ml: .75,
+            fontSize: 14,
+            color: "text.secondary"
+          },
+          children: n.unit_name
+        }), e.jsx(l, {
+          component: "span",
+          sx: {
+            ml: 1.5,
+            color: "error.main"
+          },
+          children: n.weeks.map(x => t("hr.attAdminWeekLine", {
+            date: x.week_start.slice(5).replace("-", "/"),
+            duration: f(x.minutes)
+          })).join(" · ")
+        })]
+      }, n.seq))
+    })
+  }, "weekly"))) : u.push(e.jsx(b, {
+    children: e.jsx(R, {
+      text: i.loading ? t("hr.attAdminReportLoading") : t("hr.attAdminReportPickOrg")
+    })
+  }, "empty")), m ? e.jsx(q, {
+    attachHead: !0,
+    children: u
+  }) : e.jsx(H, {
+    gap: K,
+    children: u
+  });
+}
+export { gt as default };
