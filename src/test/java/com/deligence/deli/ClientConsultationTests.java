@@ -11,6 +11,14 @@ import com.deligence.deli.repository.ProductsRepository;
 import com.deligence.deli.repository.ConsultationQuoteRepository;
 import com.deligence.deli.domain.Products;
 import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.math.BigDecimal;
+import com.deligence.deli.domain.ConsultationQuote;
+import com.deligence.deli.domain.MaterialRequirementsList;
+import com.deligence.deli.dto.ProductionPlanningDTO;
+import com.deligence.deli.repository.ProductContractRepository;
+import com.deligence.deli.repository.MaterialRequirementsListRepository;
+import com.deligence.deli.service.ProductionPlanningService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -147,6 +155,46 @@ class ClientConsultationTests {
         assertThat(history.get(0).getTotal()).isEqualByComparingTo("320");
         assertThat(history).allMatch(q -> "manager".equals(q.getApprover()) && q.getApprovedAt() != null);
         mvc.perform(get(url).session(agent)).andExpect(content().string(containsString("승인자 manager")));
+    }
+
+    @Autowired ProductContractRepository contracts;
+    @Autowired MaterialRequirementsListRepository requirements;
+    @Autowired ProductionPlanningService planning;
+
+    @Test
+    void approvedRevisionCreatesOneTraceableContractUsableForProduction() throws Exception {
+        var customer = clients.save(CooperatorClient.builder().clientName("Contract customer").build());
+        var agent = employees.save(Employee.builder().employeeId("sales").employeeName("Sales").build());
+        var product = products.save(Products.builder().productName("Pump").productCode("P1").build());
+        var consultation = consultations.save(new ClientConsultation(customer, LocalDateTime.now(), "sales", "전화", "order"));
+        var due = LocalDate.of(2027, 2, 1);
+        var first = quotes.save(new ConsultationQuote(consultation, 1, product, 3, BigDecimal.TEN, due, "sales"));
+        first.approve("manager");
+        var latest = quotes.save(new ConsultationQuote(consultation, 2, product, 5, BigDecimal.TEN, due, "sales"));
+        var sales = session("CLIENT", "sales");
+        String url = "/CooperatorClient/consultations/" + consultation.getId() + "/quotes";
+        for (String revision : new String[]{"1", "2"}) {
+            mvc.perform(post(url + "/contract").session(sales).param("revision", revision)).andExpect(status().isConflict());
+        }
+        latest.approve("manager");
+        mvc.perform(post(url + "/contract").session(sales).param("revision", "2")).andExpect(status().is3xxRedirection());
+        var contract = latest.getContract();
+        int number = contract.getProductContractNo();
+        String detail = "/productContract/read?productContractNo=" + number;
+        mvc.perform(post(url + "/contract").session(sales).param("revision", "2")).andExpect(redirectedUrl(detail));
+        assertThat(contracts.count()).isEqualTo(1);
+        assertThat(contract.getCooperatorClient().getClientNo()).isEqualTo(customer.getClientNo());
+        assertThat(contract.getProducts().getProductNo()).isEqualTo(product.getProductNo());
+        assertThat(contract.getProductQuantity()).isEqualTo(5);
+        assertThat(contract.getProductDeliveryDate()).isEqualTo(due);
+        assertThat(contract.getProductContractState()).isEqualTo("자재검토중");
+        mvc.perform(get(detail).session(sales)).andExpect(status().isOk())
+                .andExpect(content().string(containsString("#quote-" + latest.getId())));
+        var bom = requirements.save(MaterialRequirementsList.builder().products(product).quantity(1).build());
+        int plan = planning.register(ProductionPlanningDTO.builder().productContractNo(number)
+                .materialRequirementsListNo(bom.getMaterialRequirementsListNo()).employeeNo(agent.getEmployeeNo())
+                .productionQuantity(5).productionDeliveryDate(due).build());
+        assertThat(plan).isPositive();
     }
 
     @Test

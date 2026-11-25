@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import com.deligence.deli.dto.ProductContractDTO;
 
 @Service
 @RequiredArgsConstructor
@@ -17,6 +19,38 @@ public class ConsultationQuoteService {
     private final ConsultationQuoteRepository quotes;
     private final ClientConsultationRepository consultations;
     private final ProductsRepository products;
+
+    private final EmployeeRepository employees;
+    private final ProductContractService contractService;
+    private final ProductContractRepository contracts;
+
+    public int convert(long id, int revision, String username) {
+        var consultation = consultations.lockForQuote(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        var quote = quotes.findByConsultation_IdAndRevision(id, revision)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        if (quote.getContract() != null) {
+            return quote.getContract().getProductContractNo();
+        }
+        var latest = quotes.findFirstByConsultation_IdOrderByRevisionDesc(id).orElseThrow();
+        if (quote.getApprovedAt() == null || !quote.getId().equals(latest.getId())) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "최신 승인 견적만 전환할 수 있습니다.");
+        }
+        var employee = employees.findByEmployeeId(username)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.CONFLICT, "계약 담당자를 확인하세요."));
+        var request = ProductContractDTO.builder()
+                .productContractCode("PC-Q" + quote.getId())
+                .clientNo(consultation.getClient().getClientNo())
+                .productNo(quote.getProductNo())
+                .productQuantity(quote.getQuantity())
+                .productContractDate(LocalDate.now(ZoneId.of("Asia/Seoul")))
+                .productDeliveryDate(quote.getDeliveryDate())
+                .productQuotation("단가 " + quote.getUnitPrice().toPlainString() + "원 · 합계 " + quote.getTotal().toPlainString() + "원")
+                .employeeNo(employee.getEmployeeNo()).build();
+        int contractNo = contractService.register(request);
+        quote.linkContract(contracts.getReferenceById(contractNo));
+        return contractNo;
+    }
 
     public void revise(long id, int baseRevision, int productNo, int quantity, BigDecimal price,
                        LocalDate deliveryDate, String author) {

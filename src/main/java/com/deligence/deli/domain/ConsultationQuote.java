@@ -45,6 +45,14 @@ public class ConsultationQuote {
         this.author = author;
     }
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_contract_no", unique = true)
+    private ProductContract contract;
+
+    public void linkContract(ProductContract contract) {
+        this.contract = contract;
+    }
+
     public BigDecimal getTotal() {
         return unitPrice.multiply(BigDecimal.valueOf(quantity));
     }

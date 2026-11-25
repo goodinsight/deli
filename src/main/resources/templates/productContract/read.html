@@ -10,6 +10,8 @@
 </head>
 
 <div layout:fragment="content">
+    <a th:if="${sourceQuote != null}" th:href="|@{/CooperatorClient/consultations/{id}/quotes(id=${sourceQuote.consultation.id})}#quote-${sourceQuote.id}|"
+       th:text="|원본 승인 견적 · 버전 ${sourceQuote.revision}|"></a>
 
     <div class="row mt-3">
         <div class="col">

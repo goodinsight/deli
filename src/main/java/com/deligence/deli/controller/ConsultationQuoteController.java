@@ -44,6 +44,12 @@ public class ConsultationQuoteController {
         return "redirect:/CooperatorClient/consultations/" + id + "/quotes";
     }
 
+    @PostMapping("/contract")
+    public String convert(@PathVariable long id, @RequestParam int revision, Principal principal) {
+        int contractNo = service.convert(id, revision, principal.getName());
+        return "redirect:/productContract/read?productContractNo=" + contractNo;
+    }
+
     @PostMapping("/approve")
     @PreAuthorize("hasRole('ADMIN')")
     public String approve(@PathVariable long id, @RequestParam int revision, Principal principal) {

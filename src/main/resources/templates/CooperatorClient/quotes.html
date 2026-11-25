@@ -20,11 +20,17 @@
     </form>
     <h2>견적 이력</h2>
     <p th:if="${history.empty}">등록된 견적이 없습니다.</p>
-    <article class="border-top py-2" th:each="q : ${history}">
+    <article class="border-top py-2" th:each="q : ${history}" th:id="|quote-${q.id}|">
         <h3 th:text="|버전 ${q.revision} · ${q.approvedAt != null ? '승인' : (q.id == latest.id ? '승인 대기' : '이전 버전')}|"></h3>
         <p th:text="|${q.productName} (${q.productCode}) · ${q.quantity}개 × ${q.unitPrice}원 = ${q.total}원|"></p>
         <p th:text="|납기 ${q.deliveryDate} · 작성자 ${q.author}|"></p>
         <p th:if="${q.approvedAt != null}" th:text="|승인자 ${q.approver} · ${q.approvedAt}|"></p>
+        <a th:if="${q.contract != null}" th:href="@{/productContract/read(productContractNo=${q.contract.productContractNo})}">제품계약 보기</a>
+        <form th:if="${q.contract == null and q.id == latest.id and q.approvedAt != null}" method="post"
+              th:action="@{/CooperatorClient/consultations/{id}/quotes/contract(id=${consultation.id})}">
+            <input type="hidden" name="revision" th:value="${q.revision}">
+            <button class="btn btn-primary">제품계약으로 전환</button>
+        </form>
         <form sec:authorize="hasRole('ADMIN')" th:if="${q.id == latest.id and q.approvedAt == null}" method="post"
               th:action="@{/CooperatorClient/consultations/{id}/quotes/approve(id=${consultation.id})}">
             <input type="hidden" name="revision" th:value="${q.revision}">

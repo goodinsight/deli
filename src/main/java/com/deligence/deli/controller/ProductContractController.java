@@ -1,5 +1,7 @@
 package com.deligence.deli.controller;
 
+import com.deligence.deli.repository.ConsultationQuoteRepository;
+
 import com.deligence.deli.domain.CooperatorClient;
 import com.deligence.deli.dto.*;
 import com.deligence.deli.service.CooperatorClientService;
@@ -24,6 +26,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ProductContractController {
 
+    private final ConsultationQuoteRepository consultationQuotes;
     private final ProductContractService productContractService;
 
     //비동기처리 -> Products, CooperatorClient
@@ -84,6 +87,8 @@ public class ProductContractController {
 
         log.info("search : productContractNo = " + productContractNo);
 
+        consultationQuotes.findByContract_ProductContractNo(productContractNo)
+                .ifPresent(quote -> model.addAttribute("sourceQuote", quote));
         ProductContractDetailDTO productContractDetailDTO = productContractService.read(productContractNo);
 
         log.info(productContractDetailDTO);
