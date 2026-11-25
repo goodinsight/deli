@@ -2,6 +2,12 @@ package com.deligence.deli;
 
 import com.deligence.deli.domain.CooperatorClient;
 import com.deligence.deli.repository.CooperatorClientRepository;
+import com.deligence.deli.domain.ClientConsultation;
+import com.deligence.deli.domain.Employee;
+import com.deligence.deli.domain.EmployeeRole;
+import com.deligence.deli.repository.ClientConsultationRepository;
+import com.deligence.deli.repository.EmployeeRepository;
+import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -30,7 +36,11 @@ class ClientConsultationTests {
     @Autowired CooperatorClientRepository clients;
 
     private MockHttpSession session(String role) {
-        var user = User.withUsername("employee-test").password("unused").roles(role).build();
+        return session(role, "employee-test");
+    }
+
+    private MockHttpSession session(String role, String username) {
+        var user = User.withUsername(username).password("unused").roles(role).build();
         var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
         var session = new MockHttpSession();
         session.setAttribute("SPRING_SECURITY_CONTEXT", new SecurityContextImpl(authentication));
@@ -57,6 +67,41 @@ class ClientConsultationTests {
                 .andExpect(content().string(not(containsString("forged-author"))));
         mvc.perform(get("/CooperatorClient/read").session(session("CLIENT")).param("clientNo", String.valueOf(other)))
                 .andExpect(status().isOk()).andExpect(content().string(not(containsString("quotation requested"))));
+    }
+
+    @Autowired EmployeeRepository employees;
+    @Autowired ClientConsultationRepository consultations;
+
+    @Test
+    void assignedEmployeeCanCompleteTheirPendingContactOnce() throws Exception {
+        var owner = Employee.builder().employeeId("owner").employeeName("Owner").build();
+        owner.addRole(EmployeeRole.CLIENT);
+        employees.save(owner);
+        var client = clients.save(CooperatorClient.builder().clientName("Followup Customer").build());
+        var consultation = consultations.save(new ClientConsultation(client, LocalDateTime.now(), "author", "전화", "request"));
+        String id = consultation.getId().toString();
+        var admin = session("ADMIN");
+        var assigned = session("CLIENT", "owner");
+        mvc.perform(post("/CooperatorClient/consultations/schedule").session(admin)
+                .param("id", id).param("employeeNo", String.valueOf(owner.getEmployeeNo())).param("dueDate", "2020-01-01"))
+                .andExpect(status().is3xxRedirection());
+        mvc.perform(get("/CooperatorClient/followUps").session(assigned)).andExpect(status().isOk())
+                .andExpect(content().string(containsString("기한 경과")))
+                .andExpect(content().string(containsString("#consultation-" + id)));
+        mvc.perform(get("/CooperatorClient/read").session(assigned).param("clientNo", String.valueOf(client.getClientNo())))
+                .andExpect(content().string(containsString("/CooperatorClient/consultations/complete")));
+        mvc.perform(get("/CooperatorClient/followUps").session(admin))
+                .andExpect(content().string(not(containsString("#consultation-" + id))));
+        mvc.perform(post("/CooperatorClient/consultations/complete").session(admin)
+                .param("id", id).param("result", "wrong user")).andExpect(status().isConflict());
+        mvc.perform(post("/CooperatorClient/consultations/complete").session(assigned)
+                .param("id", id).param("result", "delivery confirmed")).andExpect(redirectedUrl("/CooperatorClient/followUps"));
+        mvc.perform(post("/CooperatorClient/consultations/complete").session(assigned)
+                .param("id", id).param("result", "overwrite")).andExpect(status().isConflict());
+        mvc.perform(get("/CooperatorClient/followUps").session(assigned))
+                .andExpect(content().string(not(containsString("#consultation-" + id))));
+        mvc.perform(get("/CooperatorClient/read").session(admin).param("clientNo", String.valueOf(client.getClientNo())))
+                .andExpect(content().string(containsString("delivery confirmed")));
     }
 
     @Test

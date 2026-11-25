@@ -70,10 +70,29 @@
                             <button class="btn btn-primary my-2" type="submit">상담 등록</button>
                         </form>
                         <p th:if="${consultations.empty}">등록된 상담이 없습니다.</p>
-                        <article class="border-top py-2" th:each="item : ${consultations}">
+                        <article class="border-top py-2" th:each="item : ${consultations}" th:id="|consultation-${item.id}|">
                             <strong th:text="${#temporals.format(item.consultedAt, 'yyyy-MM-dd HH:mm')}"></strong>
                             <span th:text="${item.channel}"></span> · <span th:text="${item.author}"></span>
                             <p style="white-space: pre-wrap" th:text="${item.notes}"></p>
+                            <form th:if="${item.assignee == null}" method="post" th:action="@{/CooperatorClient/consultations/schedule}">
+                                <input type="hidden" name="id" th:value="${item.id}">
+                                <label>후속 담당자 <select name="employeeNo" required>
+                                    <option value="">담당자 선택</option>
+                                    <option th:each="e : ${assignees}" th:value="${e.employeeNo}" th:text="|${e.employeeName} (${e.employeeId})|"></option>
+                                </select></label>
+                                <label>연락 예정일 <input type="date" name="dueDate" required></label>
+                                <button class="btn btn-secondary">후속 연락 지정</button>
+                            </form>
+                            <div th:if="${item.assignee != null}">
+                                <p th:text="|후속 담당자 ${item.assignee.employeeId} · ${item.dueDate} · ${item.followUpResult == null ? '예정' : '완료'}|"></p>
+                                <p style="white-space: pre-wrap" th:text="${item.followUpResult}"></p>
+                                <form th:if="${item.followUpResult == null and item.assignee.employeeId == #authentication.name}"
+                                      method="post" th:action="@{/CooperatorClient/consultations/complete}">
+                                    <input type="hidden" name="id" th:value="${item.id}">
+                                    <label>처리 결과 <textarea name="result" maxlength="2000" required></textarea></label>
+                                    <button class="btn btn-primary">연락 완료</button>
+                                </form>
+                            </div>
                         </article>
                     </section>
                     <div class="my-4">

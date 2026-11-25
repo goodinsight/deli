@@ -20,6 +20,9 @@ public interface EmployeeRepository extends JpaRepository<Employee, String>, Emp
     Optional<Employee> getWithRoles(String employeeId);
 
 
+    @Query("select distinct e from Employee e join e.roleSet role where e.del = false and role in :roles order by e.employeeId")
+    List<Employee> findFollowUpAssignees(List<EmployeeRole> roles);
+
     Boolean existsByEmployeeId(String employeeId);
 
     Optional<Employee> findByEmployeeNo(int employeeNo);    //employeeNo로 직원 조회

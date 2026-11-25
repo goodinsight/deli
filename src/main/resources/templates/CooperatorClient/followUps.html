@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<div layout:fragment="content">
+    <h1>내 후속 연락</h1>
+    <p th:if="${items.empty}">예정된 후속 연락이 없습니다.</p>
+    <ul>
+        <li th:each="item : ${items}">
+            <strong th:text="${item.dueDate.isBefore(today) ? '기한 경과' : (item.dueDate.equals(today) ? '오늘' : '예정')}"></strong>
+            <span th:text="${item.dueDate}"></span>
+            <a th:href="|@{/CooperatorClient/read(clientNo=${item.client.clientNo})}#consultation-${item.id}|" th:text="${item.client.clientName}"></a>
+        </li>
+    </ul>
+    <a th:href="@{/CooperatorClient/list}">고객사 목록</a>
+</div>
+</html>

@@ -1,5 +1,6 @@
 package com.deligence.deli.domain;
 
+import java.time.LocalDate;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,6 +31,14 @@ public class ClientConsultation {
 
     @Column(nullable = false, length = 2000)
     private String notes;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Employee assignee;
+
+    private LocalDate dueDate;
+
+    @Column(length = 2000)
+    private String followUpResult;
 
     public ClientConsultation(CooperatorClient client, LocalDateTime consultedAt,
                               String author, String channel, String notes) {
