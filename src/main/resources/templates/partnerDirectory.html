@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<div layout:fragment="content">
+    <h1>거래처 통합 조회</h1>
+    <p role="status" th:if="${message}" th:text="${message}"></p>
+    <h2>동일 업체로 확인된 거래처</h2>
+    <p th:if="${links.empty}">연결된 거래처가 없습니다.</p>
+    <table th:unless="${links.empty}" class="table">
+        <thead><tr><th>연결 번호</th><th>고객사</th><th>공급사</th><th>확인자</th><th>확인 시각 (UTC)</th><th>관리</th></tr></thead>
+        <tbody><tr th:each="l : ${links}">
+            <td th:text="${l.id}"></td>
+            <td><a th:href="@{/CooperatorClient/read(clientNo=${l.client.clientNo})}" th:text="${l.client.clientName}"></a></td>
+            <td><a th:href="@{/cooperatorSupplier/read(supplierNo=${l.supplier.supplierNo})}" th:text="${l.supplier.supplierName}"></a></td>
+            <td th:text="${l.confirmedBy}"></td><td th:text="${l.confirmedAt}"></td>
+            <td><form method="post" th:action="@{/partnerDirectory/unlink}"><input type="hidden" name="linkId" th:value="${l.id}"><button>연결 해제</button></form></td>
+        </tr></tbody>
+    </table>
+    <h2>미연결 거래처</h2>
+    <form method="post" th:action="@{/partnerDirectory/link}">
+        <div class="row">
+            <fieldset class="col-md-6"><legend>고객사</legend>
+                <p th:if="${clients.empty}">미연결 고객사가 없습니다.</p>
+                <div th:each="c : ${clients}">
+                    <label><input type="radio" name="clientNo" required th:value="${c.clientNo}">
+                        <span th:text="|${c.clientName} · 사업자번호 ${c.corporateRegistrationNo} · 고객사 #${c.clientNo}|"></span>
+                    </label>
+                    <a th:href="@{/CooperatorClient/read(clientNo=${c.clientNo})}">상세</a>
+                </div>
+            </fieldset>
+            <fieldset class="col-md-6"><legend>공급사</legend>
+                <p th:if="${suppliers.empty}">미연결 공급사가 없습니다.</p>
+                <div th:each="s : ${suppliers}">
+                    <label><input type="radio" name="supplierNo" required th:value="${s.supplierNo}">
+                        <span th:text="|${s.supplierName} · 사업자번호 ${s.corporateRegistrationNo} · 공급사 #${s.supplierNo}|"></span>
+                    </label>
+                    <a th:href="@{/cooperatorSupplier/read(supplierNo=${s.supplierNo})}">상세</a>
+                </div>
+            </fieldset>
+        </div>
+        <button class="btn btn-primary" th:disabled="${clients.empty or suppliers.empty}">동일 업체로 확인하고 연결</button>
+    </form>
+</div>
+</html>

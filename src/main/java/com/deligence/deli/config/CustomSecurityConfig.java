@@ -74,6 +74,7 @@ public class CustomSecurityConfig {
                 .antMatchers("/order/**", "/progressInspection/**").hasAnyRole("ORDER", "ADMIN")
                 .antMatchers("/product/**").hasAnyRole("CLIENT", "PRODUCTION", "PRODUCT", "ADMIN")
                 .antMatchers("/materialRequirementsList/**", "/uploadProduct/**", "/viewProduct/**", "/removeProduct/**").hasAnyRole("PRODUCTION", "PRODUCT", "ADMIN")
+                .antMatchers("/partnerDirectory", "/partnerDirectory/**").hasRole("ADMIN")
                 .antMatchers("/productContract/**", "/CooperatorClient/**").hasAnyRole("CLIENT", "ADMIN")
                 .antMatchers("/productionPlanning/**").hasAnyRole("PRODUCTION", "MATERIAL", "ADMIN")
                 .antMatchers("/materialProcurementContract/**", "/materialProcurementPlanning/**").hasAnyRole("PROCUREMENT", "ADMIN")

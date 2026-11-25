@@ -1,6 +1,10 @@
 package com.deligence.deli;
 
 import com.deligence.deli.domain.CooperatorClient;
+import com.deligence.deli.domain.CooperatorSupplier;
+import com.deligence.deli.repository.CooperatorSupplierRepository;
+import com.deligence.deli.repository.PartnerLinkRepository;
+import org.springframework.transaction.annotation.Propagation;
 import com.deligence.deli.repository.CooperatorClientRepository;
 import com.deligence.deli.domain.ClientConsultation;
 import com.deligence.deli.domain.Employee;
@@ -195,6 +199,46 @@ class ClientConsultationTests {
                 .materialRequirementsListNo(bom.getMaterialRequirementsListNo()).employeeNo(agent.getEmployeeNo())
                 .productionQuantity(5).productionDeliveryDate(due).build());
         assertThat(plan).isPositive();
+    }
+
+    @Autowired CooperatorSupplierRepository suppliers;
+    @Autowired PartnerLinkRepository partnerLinks;
+
+    @Test
+    @Transactional(propagation = Propagation.NOT_SUPPORTED)
+    void adminConfirmsDistinctPartyRecordsAndCanUndoTheLink() throws Exception {
+        var client = clients.save(CooperatorClient.builder().clientName("Directory Example").build());
+        var second = clients.save(CooperatorClient.builder().clientName("Directory Example").build());
+        var supplier = suppliers.save(CooperatorSupplier.builder().supplierName("Directory Example").build());
+        var admin = session("ADMIN", "reviewer");
+        try {
+            mvc.perform(get("/partnerDirectory").session(session("CLIENT"))).andExpect(forwardedUrl("/error/deniedpage"));
+            mvc.perform(post("/partnerDirectory/link").session(session("SUPPLIER"))).andExpect(forwardedUrl("/error/deniedpage"));
+            mvc.perform(get("/partnerDirectory").session(admin)).andExpect(status().isOk())
+                    .andExpect(content().string(containsString("연결된 거래처가 없습니다.")));
+            for (var candidate : new CooperatorClient[]{client, client, second}) {
+                mvc.perform(post("/partnerDirectory/link").session(admin).param("clientNo", String.valueOf(candidate.getClientNo()))
+                        .param("supplierNo", supplier.getSupplierNo().toString())).andExpect(redirectedUrl("/partnerDirectory"));
+            }
+            var links = partnerLinks.directory();
+            assertThat(links).hasSize(1);
+            var link = links.get(0);
+            assertThat(link.getClient().getClientNo()).isEqualTo(client.getClientNo());
+            assertThat(link.getConfirmedBy()).isEqualTo("reviewer");
+            mvc.perform(get("/partnerDirectory").session(admin)).andExpect(status().isOk())
+                    .andExpect(content().string(containsString("/cooperatorSupplier/read?supplierNo=" + supplier.getSupplierNo())));
+            mvc.perform(post("/partnerDirectory/unlink").session(admin).param("linkId", link.getId().toString()))
+                    .andExpect(redirectedUrl("/partnerDirectory"));
+            assertThat(partnerLinks.directory()).isEmpty();
+            assertThat(clients.findUnlinked()).extracting(CooperatorClient::getClientNo).contains(client.getClientNo(), second.getClientNo());
+            assertThat(suppliers.findUnlinked()).extracting(CooperatorSupplier::getSupplierNo).contains(supplier.getSupplierNo());
+        } finally {
+            partnerLinks.directory().stream().filter(link -> link.getSupplier().getSupplierNo().equals(supplier.getSupplierNo()))
+                    .forEach(partnerLinks::delete);
+            clients.delete(client);
+            clients.delete(second);
+            suppliers.delete(supplier);
+        }
     }
 
     @Test
