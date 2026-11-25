@@ -10,6 +10,7 @@
 </head>
 
 <div layout:fragment="content">
+    <a th:href="@{/productContract/{id}/billing(id=${dto.productContractNo})}">청구·수금 내역</a>
     <a th:if="${sourceQuote != null}" th:href="|@{/CooperatorClient/consultations/{id}/quotes(id=${sourceQuote.consultation.id})}#quote-${sourceQuote.id}|"
        th:text="|원본 승인 견적 · 버전 ${sourceQuote.revision}|"></a>
 
