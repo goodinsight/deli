@@ -10,23 +10,37 @@
         <button>청구 확정</button>
     </form>
     <section th:unless="${entries.empty}">
-        <p th:text="|청구액 ${entries[0].amount}원 · 누적 수금액 ${entries[0].amount.subtract(balance)}원 · 미수잔액 ${balance}원|"></p>
+        <p th:text="|청구액 ${entries[0].amount}원 · 실수금액 ${netReceipts}원 · 미수잔액 ${balance}원|"></p>
         <form th:if="${balance.signum() > 0}" method="post" th:action="@{/productContract/{id}/billing/receipts(id=${contract.productContractNo})}">
             <input type="hidden" name="requestId" th:value="${requestId}">
             <label>수금액(원) <input type="number" name="amount" min="0.01" step="0.01" th:max="${balance}" required></label>
             <button>수금 등록</button>
         </form>
+        <p th:if="${cancelled}">청구 취소 완료</p>
+        <p th:if="${netReceipts.signum() > 0}">계약 파기 전 실제 환불·정산을 확인하고 해당 수금 행에 처리 근거를 기록하세요.</p>
+        <form th:if="${!cancelled and netReceipts.signum() == 0}" method="post"
+              th:action="@{/productContract/{id}/billing/invoice/cancel(id=${contract.productContractNo})}">
+            <label>청구 취소 사유 <input name="reason" required maxlength="250"></label>
+            <label th:if="${entries.size() > 1}"><input type="checkbox" name="reconciled" value="true" required>실제 입금 및 환불·정산 내역을 대조했습니다.</label>
+            <button>청구 취소</button>
+        </form>
         <table class="table">
             <thead><tr><th>구분</th><th>금액(원)</th><th>등록자</th><th>등록 시각(UTC)</th><th>취소 내역</th></tr></thead>
-            <tbody><tr th:each="entry : ${entries}"><td th:text="${entry.invoice ? '청구' : (entry.reversal ? '수금 취소' : '수금 #' + entry.id)}"></td>
+            <tbody><tr th:each="entry : ${entries}"><td th:text="${entry.invoice ? '청구' : (entry.invoiceCancellation ? '청구 취소' : (entry.settlement ? '환불·정산 확인' : (entry.reversal ? '수금 취소' : '수금 #' + entry.id)))}"></td>
                 <td th:text="${entry.amount}"></td><td th:text="${entry.recordedBy}"></td><td th:text="${entry.recordedAt}"></td>
                 <td>
+                    <span th:if="${entry.invoiceCancellation}" th:text="${entry.reversalReason}"></span>
                     <span th:if="${entry.reversal}" th:text="|원수금 #${entry.reversedReceipt.id} · ${entry.reversalReason}|"></span>
-                    <span th:if="${reversedIds.contains(entry.id)}">취소됨</span>
-                    <form th:if="${!entry.invoice and !entry.reversal and !reversedIds.contains(entry.id)}" method="post"
+                    <span th:if="${reversedIds.contains(entry.id)}">처리 완료</span>
+                    <form th:if="${!entry.invoice and !entry.invoiceCancellation and !entry.reversal and !reversedIds.contains(entry.id)}" method="post"
                           th:action="@{/productContract/{id}/billing/receipts/{receipt}/reverse(id=${contract.productContractNo},receipt=${entry.id})}">
                         <label>취소 사유 <input name="reason" required maxlength="250"></label>
                         <button>수금 취소</button>
+                    </form>
+                    <form th:if="${!entry.invoice and !entry.invoiceCancellation and !entry.reversal and !reversedIds.contains(entry.id)}" method="post"
+                          th:action="@{/productContract/{id}/billing/receipts/{receipt}/settle(id=${contract.productContractNo},receipt=${entry.id})}">
+                        <label>실제 전액 환불·정산 근거 <input name="reason" required maxlength="250"></label>
+                        <button>환불·정산 확인 기록</button>
                     </form>
                 </td>
             </tr></tbody>

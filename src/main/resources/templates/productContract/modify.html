@@ -10,6 +10,8 @@
 </head>
 
 <div layout:fragment="content">
+    <p th:text="|원청구액 ${invoiceAmount}원 · 실수금액 ${netReceipts}원 · 미수잔액 ${balance}원|"></p>
+    <a th:href="@{/productContract/{id}/billing(id=${dto.productContractNo})}">계약 파기 전 청구·수금 내역 확인</a>
 
     <div class="row mt-3">
         <div class="col">

@@ -24,6 +24,26 @@ public class ContractBillingService {
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
+    public static BigDecimal netReceipts(List<ContractLedgerEntry> entries) {
+        return entries.stream().filter(e -> !e.isInvoice() && !e.isInvoiceCancellation())
+                .map(e -> e.isReversal() ? e.getAmount().negate() : e.getAmount())
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    public void cancelInvoice(int id, String reason, boolean reconciled, String user) {
+        String explanation = checkedReason(reason);
+        records.lock(ProductContract.class, id);
+        var entries = ledger.findByContract_ProductContractNoOrderByIdAsc(id);
+        if (entries.stream().anyMatch(ContractLedgerEntry::isInvoiceCancellation)) return;
+        if (entries.isEmpty() || netReceipts(entries).signum() != 0) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "청구 및 미정산 수금액을 확인하세요.");
+        }
+        if (entries.size() > 1 && !reconciled) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "실제 입금과 환불·정산 내역을 확인하세요.");
+        }
+        ledger.save(ContractLedgerEntry.cancelInvoice(entries.get(0), explanation, user));
+    }
+
     public void invoice(int id, BigDecimal amount, String user) {
         validate(amount);
         var contract = records.lock(ProductContract.class, id);
@@ -59,21 +79,39 @@ public class ContractBillingService {
     }
 
     public void reverseReceipt(int id, long receiptId, String reason, String user) {
+        offsetReceipt(id, receiptId, reason, user, false);
+    }
+
+    public void confirmSettlement(int id, long receiptId, String reason, String user) {
+        offsetReceipt(id, receiptId, reason, user, true);
+    }
+
+    private String checkedReason(String reason) {
         String explanation = reason.strip();
         if (explanation.isEmpty() || explanation.length() > 250) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "취소 사유를 1~250자로 입력하세요.");
         }
+        return explanation;
+    }
+
+    private void offsetReceipt(int id, long receiptId, String reason, String user, boolean settlement) {
+        String explanation = checkedReason(reason);
         records.lock(ProductContract.class, id);
         var entries = ledger.findByContract_ProductContractNoOrderByIdAsc(id);
         var receipt = entries.stream().filter(e -> e.getId() == receiptId).findFirst()
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        if (receipt.isInvoice() || receipt.isReversal()) {
+        if (receipt.isInvoice() || receipt.isInvoiceCancellation() || receipt.isReversal()) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "원수금만 취소할 수 있습니다.");
         }
-        if (entries.stream().anyMatch(e -> e.isReversal() && e.getReversedReceipt().getId().equals(receiptId))) {
+        var existing = entries.stream().filter(e -> e.isReversal() && e.getReversedReceipt().getId().equals(receiptId)).findFirst();
+        if (existing.isPresent()) {
+            if (existing.get().isSettlement() != settlement) {
+                throw new ResponseStatusException(HttpStatus.CONFLICT, "이미 다른 방식으로 처리한 수금입니다.");
+            }
             return;
         }
-        ledger.save(ContractLedgerEntry.reversal(receipt, explanation, user));
+        ledger.save(settlement ? ContractLedgerEntry.settlement(receipt, explanation, user)
+                : ContractLedgerEntry.reversal(receipt, explanation, user));
     }
 
     private void validate(BigDecimal amount) {

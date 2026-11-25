@@ -57,6 +57,26 @@ public class ContractLedgerEntry {
         return reversal;
     }
 
+    public boolean isInvoiceCancellation() {
+        return "invoice-cancel".equals(entryKey);
+    }
+
+    public boolean isSettlement() {
+        return entryKey.startsWith("settled-");
+    }
+
+    public static ContractLedgerEntry settlement(ContractLedgerEntry receipt, String reason, String user) {
+        var entry = reversal(receipt, reason, user);
+        entry.entryKey = "settled-" + receipt.getId();
+        return entry;
+    }
+
+    public static ContractLedgerEntry cancelInvoice(ContractLedgerEntry invoice, String reason, String user) {
+        var entry = new ContractLedgerEntry(invoice.contract, "invoice-cancel", invoice.amount, user);
+        entry.reversalReason = reason;
+        return entry;
+    }
+
     public boolean isReversal() {
         return reversedReceipt != null;
     }

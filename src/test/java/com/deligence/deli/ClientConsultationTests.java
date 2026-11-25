@@ -301,6 +301,64 @@ class ClientConsultationTests {
         mvc.perform(get(url).session(staff)).andExpect(content().string(containsString("미수잔액 800000.00원")));
     }
 
+    @Autowired com.deligence.deli.repository.ProductionPlanningRepository productionPlans;
+
+    @Test
+    void unpaidInvoiceCancellationIsAuditedAndIdempotent() throws Exception {
+        int id = contracts.save(com.deligence.deli.domain.ProductContract.builder()
+                .productContractState("자재검토중").build()).getProductContractNo();
+        String url = "/productContract/" + id + "/billing";
+        var staff = session("CLIENT", "collector");
+        mvc.perform(post(url + "/invoice").session(staff).param("amount", "1100000.00")).andExpect(redirectedUrl(url));
+        for (int i = 0; i < 2; i++) {
+            mvc.perform(post(url + "/invoice/cancel").session(staff).param("reason", "요청 철회")).andExpect(redirectedUrl(url));
+        }
+        var entries = ledger.findByContract_ProductContractNoOrderByIdAsc(id);
+        assertThat(entries).hasSize(2);
+        assertThat(entries.get(1).getRecordedBy()).isEqualTo("collector");
+        assertThat(entries.get(1).getReversalReason()).isEqualTo("요청 철회");
+        mvc.perform(get(url).session(staff)).andExpect(content().string(containsString("미수잔액 0.00원")))
+                .andExpect(content().string(containsString("청구 취소 완료")));
+        var plan = productionPlans.save(com.deligence.deli.domain.ProductionPlanning.builder()
+                .productContract(contracts.getReferenceById(id)).productionState("자재조달단계").build());
+        mvc.perform(post("/productContract/remove").session(staff).param("productContractNo", String.valueOf(id)))
+                .andExpect(status().isConflict());
+        planning.remove(plan.getProductionPlanNo());
+        mvc.perform(post("/productContract/remove").session(staff).param("productContractNo", String.valueOf(id)))
+                .andExpect(redirectedUrl("/productContract/list"));
+    }
+
+    @Test
+    void partialReceiptHoldsTerminationUntilReconciledAndInvoiceCancelled() throws Exception {
+        int id = contracts.save(com.deligence.deli.domain.ProductContract.builder()
+                .productContractState("자재검토중").build()).getProductContractNo();
+        String url = "/productContract/" + id + "/billing";
+        var staff = session("ADMIN", "reviewer");
+        mvc.perform(post(url + "/invoice").session(staff).param("amount", "1100000.00")).andExpect(redirectedUrl(url));
+        mvc.perform(post(url + "/receipts").session(staff).param("requestId", java.util.UUID.randomUUID().toString())
+                .param("amount", "400000.00")).andExpect(redirectedUrl(url));
+        mvc.perform(get(url).session(staff)).andExpect(content().string(containsString("실수금액 400000.00원 · 미수잔액 700000.00원")));
+        mvc.perform(post("/productContract/remove").session(staff).param("productContractNo", String.valueOf(id)))
+                .andExpect(status().isConflict());
+        mvc.perform(post(url + "/invoice/cancel").session(staff).param("reason", "해지").param("reconciled","true"))
+                .andExpect(status().isConflict());
+        var receipt = ledger.findByContract_ProductContractNoOrderByIdAsc(id).get(1);
+        String receiptUrl = url + "/receipts/" + receipt.getId();
+        for (int i = 0; i < 2; i++) {
+            mvc.perform(post(receiptUrl + "/settle").session(staff).param("reason", "환불 이체 확인 A-102"))
+                    .andExpect(redirectedUrl(url));
+        }
+        mvc.perform(post(receiptUrl + "/reverse").session(staff).param("reason","정정")).andExpect(status().isConflict());
+        mvc.perform(post(url + "/invoice/cancel").session(staff).param("reason","해지")).andExpect(status().isConflict());
+        mvc.perform(post(url + "/invoice/cancel").session(staff).param("reason","해지").param("reconciled","true"))
+                .andExpect(redirectedUrl(url));
+        mvc.perform(get(url).session(staff)).andExpect(content().string(containsString("미수잔액 0.00원")))
+                .andExpect(content().string(containsString("환불 이체 확인 A-102")));
+        assertThat(ledger.findByContract_ProductContractNoOrderByIdAsc(id)).hasSize(4);
+        mvc.perform(post("/productContract/remove").session(staff).param("productContractNo", String.valueOf(id)))
+                .andExpect(redirectedUrl("/productContract/list"));
+    }
+
     @Test
     void materialRoleCannotReadOrRegisterConsultations() throws Exception {
         mvc.perform(get("/CooperatorClient/read").session(session("MATERIAL"))).andExpect(forwardedUrl("/error/deniedpage"));

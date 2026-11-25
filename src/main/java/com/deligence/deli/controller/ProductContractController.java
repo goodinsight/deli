@@ -1,5 +1,8 @@
 package com.deligence.deli.controller;
 
+import java.math.BigDecimal;
+import com.deligence.deli.service.ContractBillingService;
+import com.deligence.deli.repository.ContractLedgerRepository;
 import com.deligence.deli.repository.ConsultationQuoteRepository;
 
 import com.deligence.deli.domain.CooperatorClient;
@@ -27,6 +30,7 @@ import java.util.Map;
 public class ProductContractController {
 
     private final ConsultationQuoteRepository consultationQuotes;
+    private final ContractLedgerRepository ledger;
     private final ProductContractService productContractService;
 
     //비동기처리 -> Products, CooperatorClient
@@ -87,6 +91,10 @@ public class ProductContractController {
 
         log.info("search : productContractNo = " + productContractNo);
 
+        var entries = ledger.findByContract_ProductContractNoOrderByIdAsc(productContractNo);
+        model.addAttribute("invoiceAmount", entries.isEmpty() ? BigDecimal.ZERO : entries.get(0).getAmount());
+        model.addAttribute("netReceipts", ContractBillingService.netReceipts(entries));
+        model.addAttribute("balance", ContractBillingService.balance(entries));
         consultationQuotes.findByContract_ProductContractNo(productContractNo)
                 .ifPresent(quote -> model.addAttribute("sourceQuote", quote));
         ProductContractDetailDTO productContractDetailDTO = productContractService.read(productContractNo);

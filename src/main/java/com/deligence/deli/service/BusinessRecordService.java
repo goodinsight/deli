@@ -1,5 +1,6 @@
 package com.deligence.deli.service;
 
+import com.deligence.deli.repository.ContractLedgerRepository;
 import com.deligence.deli.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,6 +11,12 @@ import java.util.*;
 @Service
 @Transactional
 public class BusinessRecordService {
+    private final ContractLedgerRepository ledger;
+
+    public BusinessRecordService(ContractLedgerRepository ledger) {
+        this.ledger = ledger;
+    }
+
     @PersistenceContext private EntityManager em;
 
     public <T> T lock(Class<T> type, int id) {
@@ -49,6 +56,12 @@ public class BusinessRecordService {
         String current = state(entity);
         if (Objects.equals(current, next)) return;
         if (terminal(current)) throw new IllegalStateException("종료된 업무 상태를 다시 변경할 수 없습니다.");
+        if (type == ProductContract.class && "계약파기".equals(next)) {
+            var entries = ledger.findByContract_ProductContractNoOrderByIdAsc(id);
+            if (!entries.isEmpty() && entries.stream().noneMatch(ContractLedgerEntry::isInvoiceCancellation)) {
+                throw new IllegalStateException("청구·수금 내역에서 환불·정산 및 청구 취소를 먼저 확인하세요.");
+            }
+        }
         if (Set.of("계약파기", "계획중단").contains(next) && children(type, id, true) > 0)
             throw new IllegalStateException("진행 중인 하위 업무를 먼저 취소하세요.");
         if (entity instanceof ProductContract) ((ProductContract) entity).changeState(next);

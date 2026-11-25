@@ -32,12 +32,27 @@ public class ContractBillingController {
         var reversedIds = entries.stream().filter(entry -> entry.isReversal())
                 .map(entry -> entry.getReversedReceipt().getId()).collect(java.util.stream.Collectors.toSet());
         model.addAttribute("reversedIds", reversedIds);
+        model.addAttribute("cancelled", entries.stream().anyMatch(e -> e.isInvoiceCancellation()));
+        model.addAttribute("netReceipts", ContractBillingService.netReceipts(entries));
         model.addAttribute("balance", ContractBillingService.balance(entries));
         model.addAttribute("requestId", UUID.randomUUID());
         if (entries.isEmpty()) {
             quotes.findByContract_ProductContractNo(id).ifPresent(q -> model.addAttribute("suggested", q.getTotal()));
         }
         return "productContract/billing";
+    }
+
+    @PostMapping("/invoice/cancel")
+    public String cancel(@PathVariable int id, @RequestParam String reason,
+                         @RequestParam(defaultValue = "false") boolean reconciled, Principal principal) {
+        billing.cancelInvoice(id, reason, reconciled, principal.getName());
+        return "redirect:/productContract/" + id + "/billing";
+    }
+
+    @PostMapping("/receipts/{receiptId}/settle")
+    public String settle(@PathVariable int id, @PathVariable long receiptId, @RequestParam String reason, Principal principal) {
+        billing.confirmSettlement(id, receiptId, reason, principal.getName());
+        return "redirect:/productContract/" + id + "/billing";
     }
 
     @PostMapping("/invoice")
