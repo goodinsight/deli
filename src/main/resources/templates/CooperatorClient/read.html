@@ -74,6 +74,7 @@
                             <strong th:text="${#temporals.format(item.consultedAt, 'yyyy-MM-dd HH:mm')}"></strong>
                             <span th:text="${item.channel}"></span> · <span th:text="${item.author}"></span>
                             <p style="white-space: pre-wrap" th:text="${item.notes}"></p>
+                            <a th:href="@{/CooperatorClient/consultations/{id}/quotes(id=${item.id})}">견적 작성·이력</a>
                             <form th:if="${item.assignee == null}" method="post" th:action="@{/CooperatorClient/consultations/schedule}">
                                 <input type="hidden" name="id" th:value="${item.id}">
                                 <label>후속 담당자 <select name="employeeNo" required>

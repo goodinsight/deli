@@ -1,6 +1,9 @@
 package com.deligence.deli.repository;
 
 import java.time.LocalDate;
+import java.util.Optional;
+import javax.persistence.LockModeType;
+import org.springframework.data.jpa.repository.Lock;
 import com.deligence.deli.domain.Employee;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.Modifying;
@@ -11,6 +14,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ClientConsultationRepository extends JpaRepository<ClientConsultation, Long> {
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
+    @Query("select c from ClientConsultation c where c.id = :id")
+    Optional<ClientConsultation> lockForQuote(long id);
+
     List<ClientConsultation> findByClient_ClientNoOrderByConsultedAtDescIdDesc(int clientNo);
     @EntityGraph(attributePaths = "client")
     List<ClientConsultation> findByAssignee_EmployeeIdAndFollowUpResultIsNullOrderByDueDateAscIdAsc(String employeeId);

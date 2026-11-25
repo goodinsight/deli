@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security" layout:decorate="~{layout/layout}">
+<div layout:fragment="content">
+    <h1 th:text="|${consultation.client.clientName} 상담 견적|"></h1>
+    <p th:text="${consultation.notes}"></p>
+    <a th:href="|@{/CooperatorClient/read(clientNo=${consultation.client.clientNo})}#consultation-${consultation.id}|">원래 상담 보기</a>
+    <h2>견적 작성</h2>
+    <form method="post" th:action="@{/CooperatorClient/consultations/{id}/quotes(id=${consultation.id})}">
+        <input type="hidden" name="baseRevision" th:value="${latest == null ? 0 : latest.revision}">
+        <label>제품 <select name="productNo" required>
+            <option value="">제품 선택</option>
+            <option th:each="p : ${products}" th:value="${p.productNo}" th:selected="${latest != null and p.productNo == latest.productNo}"
+                    th:text="|${p.productName} (${p.productCode})|"></option>
+        </select></label>
+        <label>수량 <input name="quantity" type="number" min="1" max="2147483647" required th:value="${latest?.quantity}"></label>
+        <label>단가(원) <input name="unitPrice" type="number" min="0" max="99999999999999.99" step="0.01" required th:value="${latest?.unitPrice}"></label>
+        <label>납기 <input name="deliveryDate" type="date" required th:value="${latest?.deliveryDate}"></label>
+        <button class="btn btn-primary">새 버전 저장</button>
+    </form>
+    <h2>견적 이력</h2>
+    <p th:if="${history.empty}">등록된 견적이 없습니다.</p>
+    <article class="border-top py-2" th:each="q : ${history}">
+        <h3 th:text="|버전 ${q.revision} · ${q.approvedAt != null ? '승인' : (q.id == latest.id ? '승인 대기' : '이전 버전')}|"></h3>
+        <p th:text="|${q.productName} (${q.productCode}) · ${q.quantity}개 × ${q.unitPrice}원 = ${q.total}원|"></p>
+        <p th:text="|납기 ${q.deliveryDate} · 작성자 ${q.author}|"></p>
+        <p th:if="${q.approvedAt != null}" th:text="|승인자 ${q.approver} · ${q.approvedAt}|"></p>
+        <form sec:authorize="hasRole('ADMIN')" th:if="${q.id == latest.id and q.approvedAt == null}" method="post"
+              th:action="@{/CooperatorClient/consultations/{id}/quotes/approve(id=${consultation.id})}">
+            <input type="hidden" name="revision" th:value="${q.revision}">
+            <button class="btn btn-primary">이 버전 승인</button>
+        </form>
+    </article>
+</div>
+</html>
