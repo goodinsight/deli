@@ -271,6 +271,36 @@ class ClientConsultationTests {
                 .andExpect(content().string(not(containsString("수금 등록"))));
     }
 
+    @Autowired com.deligence.deli.repository.ContractLedgerRepository ledger;
+
+    @Test
+    void reversingReceiptRestoresBalanceOnceAndKeepsAuditHistory() throws Exception {
+        var contract = contracts.save(com.deligence.deli.domain.ProductContract.builder().productContractCode("reverse").build());
+        int id = contract.getProductContractNo();
+        String url = "/productContract/" + id + "/billing";
+        var staff = session("CLIENT", "collector");
+        mvc.perform(post(url + "/invoice").session(staff).param("amount", "1100000.00")).andExpect(redirectedUrl(url));
+        mvc.perform(post(url + "/receipts").session(staff).param("requestId", java.util.UUID.randomUUID().toString())
+                .param("amount", "400000.00")).andExpect(redirectedUrl(url));
+        var receipt = ledger.findByContract_ProductContractNoOrderByIdAsc(id).get(1);
+        String reverse = url + "/receipts/" + receipt.getId() + "/reverse";
+        mvc.perform(get(url).session(staff)).andExpect(content().string(containsString("미수잔액 700000.00원")));
+        mvc.perform(post(reverse).session(staff).param("reason", " ")).andExpect(status().isBadRequest());
+        mvc.perform(post(reverse).session(session("MATERIAL")).param("reason", "오입력")).andExpect(forwardedUrl("/error/deniedpage"));
+        for (int retry = 0; retry < 2; retry++) {
+            mvc.perform(post(reverse).session(session("ADMIN", "reviewer")).param("reason", "금액 오입력")).andExpect(redirectedUrl(url));
+        }
+        var entries = ledger.findByContract_ProductContractNoOrderByIdAsc(id);
+        assertThat(entries).hasSize(3);
+        assertThat(entries.get(2).getReversedReceipt().getId()).isEqualTo(receipt.getId());
+        assertThat(entries.get(2).getRecordedBy()).isEqualTo("reviewer");
+        mvc.perform(get(url).session(staff)).andExpect(content().string(containsString("미수잔액 1100000.00원")))
+                .andExpect(content().string(containsString("금액 오입력")));
+        mvc.perform(post(url + "/receipts").session(staff).param("requestId", java.util.UUID.randomUUID().toString())
+                .param("amount", "300000.00")).andExpect(redirectedUrl(url));
+        mvc.perform(get(url).session(staff)).andExpect(content().string(containsString("미수잔액 800000.00원")));
+    }
+
     @Test
     void materialRoleCannotReadOrRegisterConsultations() throws Exception {
         mvc.perform(get("/CooperatorClient/read").session(session("MATERIAL"))).andExpect(forwardedUrl("/error/deniedpage"));

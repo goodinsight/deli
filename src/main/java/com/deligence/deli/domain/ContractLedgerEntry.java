@@ -43,6 +43,24 @@ public class ContractLedgerEntry {
         return new ContractLedgerEntry(contract, requestId.toString(), amount, user);
     }
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "reversed_receipt_id", unique = true)
+    private ContractLedgerEntry reversedReceipt;
+
+    @Column(length = 250)
+    private String reversalReason;
+
+    public static ContractLedgerEntry reversal(ContractLedgerEntry receipt, String reason, String user) {
+        var reversal = new ContractLedgerEntry(receipt.getContract(), "reversal-" + receipt.getId(), receipt.getAmount(), user);
+        reversal.reversedReceipt = receipt;
+        reversal.reversalReason = reason;
+        return reversal;
+    }
+
+    public boolean isReversal() {
+        return reversedReceipt != null;
+    }
+
     public boolean isInvoice() {
         return INVOICE_KEY.equals(entryKey);
     }

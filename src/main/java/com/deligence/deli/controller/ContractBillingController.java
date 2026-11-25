@@ -29,6 +29,9 @@ public class ContractBillingController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
         var entries = ledger.findByContract_ProductContractNoOrderByIdAsc(id);
         model.addAttribute("entries", entries);
+        var reversedIds = entries.stream().filter(entry -> entry.isReversal())
+                .map(entry -> entry.getReversedReceipt().getId()).collect(java.util.stream.Collectors.toSet());
+        model.addAttribute("reversedIds", reversedIds);
         model.addAttribute("balance", ContractBillingService.balance(entries));
         model.addAttribute("requestId", UUID.randomUUID());
         if (entries.isEmpty()) {
@@ -40,6 +43,12 @@ public class ContractBillingController {
     @PostMapping("/invoice")
     public String invoice(@PathVariable int id, @RequestParam BigDecimal amount, Principal principal) {
         billing.invoice(id, amount, principal.getName());
+        return "redirect:/productContract/" + id + "/billing";
+    }
+
+    @PostMapping("/receipts/{receiptId}/reverse")
+    public String reverse(@PathVariable int id, @PathVariable long receiptId, @RequestParam String reason, Principal principal) {
+        billing.reverseReceipt(id, receiptId, reason, principal.getName());
         return "redirect:/productContract/" + id + "/billing";
     }
 

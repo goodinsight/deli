@@ -20,7 +20,7 @@ public class ContractBillingService {
     private final ContractLedgerRepository ledger;
 
     public static BigDecimal balance(List<ContractLedgerEntry> entries) {
-        return entries.stream().map(e -> e.isInvoice() ? e.getAmount() : e.getAmount().negate())
+        return entries.stream().map(e -> (e.isInvoice() || e.isReversal()) ? e.getAmount() : e.getAmount().negate())
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
@@ -56,6 +56,24 @@ public class ContractBillingService {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "미수잔액을 확인하세요.");
         }
         ledger.save(ContractLedgerEntry.receipt(contract, requestId, amount, user));
+    }
+
+    public void reverseReceipt(int id, long receiptId, String reason, String user) {
+        String explanation = reason.strip();
+        if (explanation.isEmpty() || explanation.length() > 250) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "취소 사유를 1~250자로 입력하세요.");
+        }
+        records.lock(ProductContract.class, id);
+        var entries = ledger.findByContract_ProductContractNoOrderByIdAsc(id);
+        var receipt = entries.stream().filter(e -> e.getId() == receiptId).findFirst()
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        if (receipt.isInvoice() || receipt.isReversal()) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "원수금만 취소할 수 있습니다.");
+        }
+        if (entries.stream().anyMatch(e -> e.isReversal() && e.getReversedReceipt().getId().equals(receiptId))) {
+            return;
+        }
+        ledger.save(ContractLedgerEntry.reversal(receipt, explanation, user));
     }
 
     private void validate(BigDecimal amount) {

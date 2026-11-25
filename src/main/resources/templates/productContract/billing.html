@@ -17,9 +17,18 @@
             <button>수금 등록</button>
         </form>
         <table class="table">
-            <thead><tr><th>구분</th><th>금액(원)</th><th>등록자</th><th>등록 시각(UTC)</th></tr></thead>
-            <tbody><tr th:each="entry : ${entries}"><td th:text="${entry.invoice ? '청구' : '수금'}"></td>
+            <thead><tr><th>구분</th><th>금액(원)</th><th>등록자</th><th>등록 시각(UTC)</th><th>취소 내역</th></tr></thead>
+            <tbody><tr th:each="entry : ${entries}"><td th:text="${entry.invoice ? '청구' : (entry.reversal ? '수금 취소' : '수금 #' + entry.id)}"></td>
                 <td th:text="${entry.amount}"></td><td th:text="${entry.recordedBy}"></td><td th:text="${entry.recordedAt}"></td>
+                <td>
+                    <span th:if="${entry.reversal}" th:text="|원수금 #${entry.reversedReceipt.id} · ${entry.reversalReason}|"></span>
+                    <span th:if="${reversedIds.contains(entry.id)}">취소됨</span>
+                    <form th:if="${!entry.invoice and !entry.reversal and !reversedIds.contains(entry.id)}" method="post"
+                          th:action="@{/productContract/{id}/billing/receipts/{receipt}/reverse(id=${contract.productContractNo},receipt=${entry.id})}">
+                        <label>취소 사유 <input name="reason" required maxlength="250"></label>
+                        <button>수금 취소</button>
+                    </form>
+                </td>
             </tr></tbody>
         </table>
     </section>
