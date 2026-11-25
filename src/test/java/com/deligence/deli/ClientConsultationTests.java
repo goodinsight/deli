@@ -360,6 +360,72 @@ class ClientConsultationTests {
     }
 
     @Test
+    void customerTotalsFollowContractLedgerAndKoreanDueDates() throws Exception {
+        var client = clients.save(CooperatorClient.builder().clientName("보고서 고객").build());
+        var staff = session("CLIENT");
+        var today = LocalDate.now(java.time.ZoneId.of("Asia/Seoul"));
+        String report = "/productContract/receivables";
+        int late = contracts.save(com.deligence.deli.domain.ProductContract.builder().cooperatorClient(client).build()).getProductContractNo();
+        int future = contracts.save(com.deligence.deli.domain.ProductContract.builder().cooperatorClient(client).build()).getProductContractNo();
+        String lateUrl = "/productContract/" + late + "/billing";
+        String futureUrl = "/productContract/" + future + "/billing";
+        mvc.perform(post(lateUrl + "/invoice").session(staff).param("amount", "1100000.00")).andExpect(redirectedUrl(lateUrl));
+        mvc.perform(get(report).session(staff)).andExpect(content().string(containsString("미지정")));
+        mvc.perform(post(lateUrl + "/due-date").session(staff).param("dueDate", today.minusDays(1).toString())).andExpect(redirectedUrl(lateUrl));
+        mvc.perform(post(futureUrl + "/invoice").session(staff).param("amount", "300000.00")
+                .param("dueDate", today.plusDays(1).toString())).andExpect(redirectedUrl(futureUrl));
+        mvc.perform(post(lateUrl + "/receipts").session(staff).param("amount", "400000.00")
+                .param("requestId", java.util.UUID.randomUUID().toString())).andExpect(redirectedUrl(lateUrl));
+        mvc.perform(get(report).session(staff)).andExpect(content().string(containsString("총 미수 1000000.00원 · 연체 700000.00원")));
+        var receipt = ledger.findByContract_ProductContractNoOrderByIdAsc(late).get(1);
+        mvc.perform(post(lateUrl + "/receipts/" + receipt.getId() + "/reverse").session(staff).param("reason","오입력"))
+                .andExpect(redirectedUrl(lateUrl));
+        mvc.perform(post(futureUrl + "/invoice/cancel").session(staff).param("reason","취소")).andExpect(redirectedUrl(futureUrl));
+        mvc.perform(get(report).session(staff)).andExpect(content().string(containsString("총 미수 1100000.00원 · 연체 1100000.00원")));
+    }
+
+    @Test
+    void uploadedDepositsStayPendingUntilMatchedAndCannotBeCountedTwice() throws Exception {
+        String url = "/productContract/receivables/deposits";
+        var staff = session("CLIENT");
+        int contract = contracts.save(com.deligence.deli.domain.ProductContract.builder().build()).getProductContractNo();
+        String billing = "/productContract/" + contract + "/billing";
+        mvc.perform(post(billing + "/invoice").session(staff).param("amount", "700000.00")).andExpect(redirectedUrl(billing));
+        String csv = "거래번호,입금일,입금액,입금자\nBANK-001,2026-11-25,400000,입금인\n";
+        var file = new org.springframework.mock.web.MockMultipartFile("file", "bank.csv", "text/csv",
+                csv.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+        for (int i = 0; i < 2; i++) {
+            mvc.perform(multipart(url).file(file).session(staff)).andExpect(redirectedUrl(url))
+                    .andExpect(flash().attribute("message", "새 입금 " + (1-i) + "건을 가져왔습니다."));
+        }
+        mvc.perform(get(url).session(staff)).andExpect(content().string(containsString("BANK-001")));
+        assertThat(ledger.findByContract_ProductContractNoOrderByIdAsc(contract)).hasSize(1);
+        for (int i = 0; i < 2; i++) {
+            mvc.perform(post(url + "/match").session(staff).param("reference","BANK-001").param("contractNo",String.valueOf(contract)))
+                    .andExpect(redirectedUrl(url));
+        }
+        assertThat(ledger.findByContract_ProductContractNoOrderByIdAsc(contract)).hasSize(2);
+        mvc.perform(get(billing).session(staff)).andExpect(content().string(containsString("미수잔액 300000.00원")))
+                .andExpect(content().string(containsString("입금 거래번호 BANK-001")));
+        mvc.perform(post(url + "/match").session(staff).param("reference","BANK-001").param("contractNo","-1"))
+                .andExpect(status().isConflict());
+        mvc.perform(get(url).session(session("MATERIAL"))).andExpect(forwardedUrl("/error/deniedpage"));
+    }
+
+    @Autowired com.deligence.deli.repository.BankDepositRepository importedDeposits;
+
+    @Test
+    @Transactional(propagation = Propagation.NOT_SUPPORTED)
+    void conflictingCsvRollsBackEarlierRowsInSameFile() throws Exception {
+        var csv = "거래번호,입금일,입금액,입금자\nROLLBACK-1,2026-11-25,10,회사\nROLLBACK-1,2026-11-25,20,회사";
+        var file = new org.springframework.mock.web.MockMultipartFile("file", "conflict.csv", "text/csv",
+                csv.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+        mvc.perform(multipart("/productContract/receivables/deposits").file(file).session(session("ADMIN")))
+                .andExpect(status().isConflict());
+        assertThat(importedDeposits.findById("ROLLBACK-1")).isEmpty();
+    }
+
+    @Test
     void materialRoleCannotReadOrRegisterConsultations() throws Exception {
         mvc.perform(get("/CooperatorClient/read").session(session("MATERIAL"))).andExpect(forwardedUrl("/error/deniedpage"));
         mvc.perform(post("/CooperatorClient/consultations").session(session("MATERIAL"))).andExpect(forwardedUrl("/error/deniedpage"));

@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
 import java.security.Principal;
 import java.util.UUID;
 
@@ -20,6 +22,7 @@ import java.util.UUID;
 public class ContractBillingController {
     private final ContractBillingService billing;
     private final ContractLedgerRepository ledger;
+    private final com.deligence.deli.repository.BankDepositRepository deposits;
     private final ProductContractRepository contracts;
     private final ConsultationQuoteRepository quotes;
 
@@ -29,6 +32,8 @@ public class ContractBillingController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
         var entries = ledger.findByContract_ProductContractNoOrderByIdAsc(id);
         model.addAttribute("entries", entries);
+        model.addAttribute("bankReferences", deposits.findByContract(id).stream().collect(
+                java.util.stream.Collectors.toMap(d -> d.getReceipt().getId(), d -> d.getReference())));
         var reversedIds = entries.stream().filter(entry -> entry.isReversal())
                 .map(entry -> entry.getReversedReceipt().getId()).collect(java.util.stream.Collectors.toSet());
         model.addAttribute("reversedIds", reversedIds);
@@ -55,9 +60,17 @@ public class ContractBillingController {
         return "redirect:/productContract/" + id + "/billing";
     }
 
+    @PostMapping("/due-date")
+    public String dueDate(@PathVariable int id, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dueDate) {
+        billing.setMissingDueDate(id, dueDate);
+        return "redirect:/productContract/" + id + "/billing";
+    }
+
     @PostMapping("/invoice")
-    public String invoice(@PathVariable int id, @RequestParam BigDecimal amount, Principal principal) {
-        billing.invoice(id, amount, principal.getName());
+    public String invoice(@PathVariable int id, @RequestParam BigDecimal amount,
+                          @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate dueDate,
+                          Principal principal) {
+        billing.invoice(id, amount, dueDate, principal.getName());
         return "redirect:/productContract/" + id + "/billing";
     }
 

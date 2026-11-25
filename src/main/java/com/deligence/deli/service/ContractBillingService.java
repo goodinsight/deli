@@ -44,7 +44,7 @@ public class ContractBillingService {
         ledger.save(ContractLedgerEntry.cancelInvoice(entries.get(0), explanation, user));
     }
 
-    public void invoice(int id, BigDecimal amount, String user) {
+    public void invoice(int id, BigDecimal amount, java.time.LocalDate dueDate, String user) {
         validate(amount);
         var contract = records.lock(ProductContract.class, id);
         var entries = ledger.findByContract_ProductContractNoOrderByIdAsc(id);
@@ -57,10 +57,23 @@ public class ContractBillingService {
         if ("계약파기".equals(contract.getProductContractState())) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "파기한 계약은 청구할 수 없습니다.");
         }
-        ledger.save(ContractLedgerEntry.invoice(contract, amount, user));
+        var invoice = ContractLedgerEntry.invoice(contract, amount, user);
+        invoice.setCollectionDueDate(dueDate);
+        ledger.save(invoice);
     }
 
-    public void receive(int id, UUID requestId, BigDecimal amount, String user) {
+    public void setMissingDueDate(int id, java.time.LocalDate dueDate) {
+        records.lock(ProductContract.class, id);
+        var entries = ledger.findByContract_ProductContractNoOrderByIdAsc(id);
+        if (entries.isEmpty() || balance(entries).signum() <= 0) throw new ResponseStatusException(HttpStatus.CONFLICT);
+        var invoice = entries.get(0);
+        if (invoice.getCollectionDueDate() != null && !dueDate.equals(invoice.getCollectionDueDate())) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "이미 예정일이 지정되었습니다.");
+        }
+        invoice.setCollectionDueDate(dueDate);
+    }
+
+    public ContractLedgerEntry receive(int id, UUID requestId, BigDecimal amount, String user) {
         validate(amount);
         var contract = records.lock(ProductContract.class, id);
         var entries = ledger.findByContract_ProductContractNoOrderByIdAsc(id);
@@ -69,13 +82,13 @@ public class ContractBillingService {
                 if (entry.getAmount().compareTo(amount) != 0) {
                     throw new ResponseStatusException(HttpStatus.CONFLICT, "이전 수금 요청과 금액이 다릅니다.");
                 }
-                return;
+                return entry;
             }
         }
         if (balance(entries).compareTo(amount) < 0) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "미수잔액을 확인하세요.");
         }
-        ledger.save(ContractLedgerEntry.receipt(contract, requestId, amount, user));
+        return ledger.save(ContractLedgerEntry.receipt(contract, requestId, amount, user));
     }
 
     public void reverseReceipt(int id, long receiptId, String reason, String user) {

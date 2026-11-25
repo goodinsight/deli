@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<div layout:fragment="content">
+    <h1>고객사별 미수 현황</h1>
+    <a th:href="@{/productContract/receivables/deposits}">입금 내역 가져오기·연결</a>
+    <p th:if="${customers.empty}">미수 계약이 없습니다.</p>
+    <details th:each="c : ${customers}">
+        <summary th:text="|${c.name} · 총 미수 ${c.total}원 · 연체 ${c.overdue}원|"></summary>
+        <table class="table"><thead><tr><th>계약</th><th>예정일</th><th>상태</th><th>미수잔액</th></tr></thead>
+            <tbody><tr th:each="i : ${c.invoices}">
+                <td><a th:href="@{/productContract/{id}/billing(id=${i.contract.productContractNo})}" th:text="|${i.contract.productContractCode} (#${i.contract.productContractNo})|"></a></td>
+                <td th:text="${i.due ?: '미지정'}"></td><td th:text="${i.status}"></td><td th:text="|${i.balance}원|"></td>
+            </tr></tbody>
+        </table>
+    </details>
+</div></html>

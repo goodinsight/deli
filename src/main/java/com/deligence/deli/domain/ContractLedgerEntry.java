@@ -35,6 +35,13 @@ public class ContractLedgerEntry {
         this.recordedAt = Instant.now();
     }
 
+    private java.time.LocalDate collectionDueDate;
+
+    public void setCollectionDueDate(java.time.LocalDate date) {
+        if (!isInvoice()) throw new IllegalStateException("청구 항목만 예정일을 지정할 수 있습니다.");
+        this.collectionDueDate = date;
+    }
+
     public static ContractLedgerEntry invoice(ProductContract contract, BigDecimal amount, String user) {
         return new ContractLedgerEntry(contract, INVOICE_KEY, amount, user);
     }

@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
 <div layout:fragment="content">
+    <a th:href="@{/productContract/receivables}">고객사별 미수 현황</a>
     <h1 th:text="|${contract.clientName} · 계약 ${contract.productContractCode} 청구·수금|"></h1>
     <a th:href="@{/productContract/read(productContractNo=${contract.productContractNo})}">계약 상세</a>
     <p th:if="${entries.empty}">청구 전</p>
     <form th:if="${entries.empty and contract.productContractState != '계약파기'}" method="post"
           th:action="@{/productContract/{id}/billing/invoice(id=${contract.productContractNo})}">
         <label>확정할 청구액(원) <input name="amount" type="number" min="0.01" step="0.01" required th:value="${suggested}"></label>
+        <label>수금 예정일 <input name="dueDate" type="date" required></label>
         <button>청구 확정</button>
     </form>
     <section th:unless="${entries.empty}">
+        <p th:text="|수금 예정일: ${entries[0].collectionDueDate ?: '미지정'}|"></p>
+        <form th:if="${entries[0].collectionDueDate == null and balance.signum() > 0}" method="post"
+              th:action="@{/productContract/{id}/billing/due-date(id=${contract.productContractNo})}">
+            <label>수금 예정일 <input type="date" name="dueDate" required></label><button>예정일 지정</button>
+        </form>
         <p th:text="|청구액 ${entries[0].amount}원 · 실수금액 ${netReceipts}원 · 미수잔액 ${balance}원|"></p>
         <form th:if="${balance.signum() > 0}" method="post" th:action="@{/productContract/{id}/billing/receipts(id=${contract.productContractNo})}">
             <input type="hidden" name="requestId" th:value="${requestId}">
@@ -27,7 +34,8 @@
         <table class="table">
             <thead><tr><th>구분</th><th>금액(원)</th><th>등록자</th><th>등록 시각(UTC)</th><th>취소 내역</th></tr></thead>
             <tbody><tr th:each="entry : ${entries}"><td th:text="${entry.invoice ? '청구' : (entry.invoiceCancellation ? '청구 취소' : (entry.settlement ? '환불·정산 확인' : (entry.reversal ? '수금 취소' : '수금 #' + entry.id)))}"></td>
-                <td th:text="${entry.amount}"></td><td th:text="${entry.recordedBy}"></td><td th:text="${entry.recordedAt}"></td>
+                <td><span th:text="${entry.amount}"></span>
+                    <small th:if="${bankReferences.containsKey(entry.id)}" th:text="|입금 거래번호 ${bankReferences.get(entry.id)}|"></small></td><td th:text="${entry.recordedBy}"></td><td th:text="${entry.recordedAt}"></td>
                 <td>
                     <span th:if="${entry.invoiceCancellation}" th:text="${entry.reversalReason}"></span>
                     <span th:if="${entry.reversal}" th:text="|원수금 #${entry.reversedReceipt.id} · ${entry.reversalReason}|"></span>
