@@ -55,6 +55,27 @@
                         <textarea name="clientEtc" rows="5" cols="50" class="form-control h-25" readonly>[[${dto.clientEtc}]]</textarea>
                     </div>
 
+                    <section aria-labelledby="consultations">
+                        <h2 id="consultations">상담 이력</h2>
+                        <p role="alert" th:if="${consultationMessage}" th:text="${consultationMessage}"></p>
+                        <form method="post" th:action="@{/CooperatorClient/consultations}">
+                            <input type="hidden" name="clientNo" th:value="${dto.clientNo}">
+                            <label>상담 일시 <input type="datetime-local" name="consultedAt" required></label>
+                            <label>연락 방식 <select name="channel" required>
+                                <option th:each="channel : ${channels}" th:text="${channel}" th:value="${channel}"></option>
+                            </select></label>
+                            <label class="d-block">상담 내용
+                                <textarea class="form-control" name="notes" maxlength="2000" required></textarea>
+                            </label>
+                            <button class="btn btn-primary my-2" type="submit">상담 등록</button>
+                        </form>
+                        <p th:if="${consultations.empty}">등록된 상담이 없습니다.</p>
+                        <article class="border-top py-2" th:each="item : ${consultations}">
+                            <strong th:text="${#temporals.format(item.consultedAt, 'yyyy-MM-dd HH:mm')}"></strong>
+                            <span th:text="${item.channel}"></span> · <span th:text="${item.author}"></span>
+                            <p style="white-space: pre-wrap" th:text="${item.notes}"></p>
+                        </article>
+                    </section>
                     <div class="my-4">
                         <div class="float-end" th:with="link = ${pageRequestDTO.getLink()}" >
                             <a th:href="|@{CooperatorClient}?${link}|" class="text-decoration-none">

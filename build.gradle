@@ -97,6 +97,7 @@ tasks.register('cascadeTest', Test) {
     classpath = sourceSets.test.runtimeClasspath
     useJUnitPlatform()
     include '**/CascadePersistenceTests.class'
+    include '**/ClientConsultationTests.class'
     include '**/EmployeeRoleCompatibilityTests.class'
     include '**/WorkflowPersistenceTests.class'
     include '**/FileCleanupPersistenceTests.class'
