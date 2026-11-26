@@ -48,9 +48,22 @@ public class SupplierInvoiceService {
     }
 
     @Transactional
-    public void cancelPayment(int contractNo, long invoiceId, long paymentId, String reason, String user) {
+    public void cancelInvoice(int contractNo, long invoiceId, String reason, String user) {
+        var invoice = lockInvoice(contractNo, invoiceId);
+        invoice.cancel(cancellationReason(reason), user);
+    }
+
+    private String cancellationReason(String reason) {
         String explanation = reason.strip();
-        if (explanation.isEmpty() || explanation.length() > 250) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "취소 사유를 1~250자로 입력하세요.");
+        if (explanation.isEmpty() || explanation.length() > 250) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "취소 사유를 1~250자로 입력하세요.");
+        }
+        return explanation;
+    }
+
+    @Transactional
+    public void cancelPayment(int contractNo, long invoiceId, long paymentId, String reason, String user) {
+        String explanation = cancellationReason(reason);
         var invoice = lockInvoice(contractNo, invoiceId);
         invoice.getPayments().stream().filter(p -> p.getId() == paymentId).findFirst()
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)).cancel(explanation, user);

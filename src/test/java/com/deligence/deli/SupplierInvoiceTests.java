@@ -145,6 +145,38 @@ class SupplierInvoiceTests {
     }
 
     @Test
+    void cancellingUnpaidInvoicePreservesHistoryAndRemovesOnlyItsBalance() throws Exception {
+        int id = contract(suppliers.save(CooperatorSupplier.builder().supplierName("취소 검증").build()));
+        var buyer = session("PROCUREMENT");
+        String yesterday = java.time.LocalDate.now(java.time.ZoneId.of("Asia/Seoul")).minusDays(1).toString();
+        for (String amount : java.util.List.of("700000", "300000")) {
+            mvc.perform(post(url(id)).session(buyer).param("number","C-" + amount).param("amount",amount)
+                    .param("invoiceDate",yesterday).param("dueDate",yesterday)).andExpect(redirectedUrl(url(id)));
+        }
+        var rows = invoices.findByContract_MaterialProcurementContractNoOrderByDueDateAscIdAsc(id);
+        String first = url(id) + "/" + rows.get(0).getId();
+        String second = url(id) + "/" + rows.get(1).getId();
+        mvc.perform(post(first + "/cancel").session(session("CLIENT")).param("reason","철회")).andExpect(forwardedUrl("/error/deniedpage"));
+        mvc.perform(post(first + "/cancel").session(buyer).param("reason"," ")).andExpect(status().isBadRequest());
+        mvc.perform(post(first + "/cancel").session(buyer).param("reason","공급사 철회")).andExpect(redirectedUrl(url(id)));
+        mvc.perform(post(first + "/cancel").session(buyer).param("reason","재시도")).andExpect(redirectedUrl(url(id)));
+        mvc.perform(get(url(id)).session(buyer)).andExpect(content().string(containsString("계약 미지급액 300000.00원")))
+                .andExpect(content().string(containsString("청구 취소 · 공급사 철회 · buyer")));
+        var original = invoices.findById(rows.get(0).getId()).orElseThrow();
+        assertThat(original.getNumber()).isEqualTo("C-700000");
+        assertThat(original.getAmount()).isEqualByComparingTo("700000");
+        assertThat(original.getCancelledAt()).isNotNull();
+        mvc.perform(get("/materialProcurementContract/payables").session(buyer))
+                .andExpect(content().string(containsString("총 미지급 300000.00원 · 연체 300000.00원")))
+                .andExpect(content().string(org.hamcrest.Matchers.not(containsString("C-700000"))));
+        mvc.perform(post(first + "/payments").session(buyer).param("requestId",java.util.UUID.randomUUID().toString())
+                .param("amount","1")).andExpect(status().isConflict());
+        mvc.perform(post(second + "/payments").session(buyer).param("requestId",java.util.UUID.randomUUID().toString())
+                .param("amount","100000")).andExpect(redirectedUrl(url(id)));
+        mvc.perform(post(second + "/cancel").session(buyer).param("reason","철회")).andExpect(status().isConflict());
+    }
+
+    @Test
     void concurrentPaymentsCannotExceedTheInvoice() throws Exception {
         int id = contract(suppliers.save(CooperatorSupplier.builder().supplierName("병렬 지급").build()));
         mvc.perform(confirm(id, "P-2", "100")).andExpect(redirectedUrl(url(id)));

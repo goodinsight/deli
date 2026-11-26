@@ -20,6 +20,11 @@
             <td th:text="${i.dueDate}"></td><td th:text="${i.amount}"></td><td th:text="${i.confirmedBy}"></td><td th:text="${i.confirmedAt}"></td>
             <td>
                 <p th:text="|지급액 ${i.paidAmount}원 · 미지급액 ${i.outstandingAmount}원|"></p>
+                <p th:if="${i.cancelledAt != null}" th:text="|청구 취소 · ${i.cancellationReason} · ${i.cancelledBy} · ${i.cancelledAt}|"></p>
+                <form th:if="${i.cancelledAt == null and i.payments.empty}" method="post"
+                      th:action="@{/materialProcurementContract/{c}/invoices/{i}/cancel(c=${contract.materialProcurementContractNo},i=${i.id})}">
+                    <label>청구 취소 사유 <input name="reason" maxlength="250" required></label><button>청구 취소</button>
+                </form>
                 <form th:if="${i.outstandingAmount.signum() > 0}" method="post" th:action="@{/materialProcurementContract/{c}/invoices/{i}/payments(c=${contract.materialProcurementContractNo},i=${i.id})}">
                     <input type="hidden" name="requestId" th:value="${requestId}">
                     <label>지급액(원) <input type="number" name="amount" min="0.01" step="0.01" th:max="${i.outstandingAmount}" required></label>

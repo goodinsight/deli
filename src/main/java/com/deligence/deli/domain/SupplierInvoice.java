@@ -42,8 +42,21 @@ public class SupplierInvoice {
                 .map(SupplierPayment::getAmount).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
+    private Instant cancelledAt;
+    private String cancelledBy;
+    @Column(length = 250)
+    private String cancellationReason;
+
+    public void cancel(String reason, String user) {
+        if (cancelledAt != null) return;
+        if (!payments.isEmpty()) throw new IllegalStateException("지급 이력이 있는 청구는 취소할 수 없습니다.");
+        cancellationReason = reason;
+        cancelledBy = user;
+        cancelledAt = Instant.now();
+    }
+
     public BigDecimal getOutstandingAmount() {
-        return amount.subtract(getPaidAmount());
+        return cancelledAt == null ? amount.subtract(getPaidAmount()) : BigDecimal.ZERO;
     }
 
     public SupplierInvoice(MaterialProcurementContract contract, String number, LocalDate invoiceDate,

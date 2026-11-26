@@ -33,6 +33,12 @@ public class SupplierInvoiceController {
         return "materialProcurementContract/invoices";
     }
 
+    @PostMapping("/{invoiceId}/cancel")
+    public String cancelInvoice(@PathVariable int id, @PathVariable long invoiceId, @RequestParam String reason, Principal principal) {
+        service.cancelInvoice(id, invoiceId, reason, principal.getName());
+        return "redirect:/materialProcurementContract/" + id + "/invoices";
+    }
+
     @PostMapping("/{invoiceId}/payments")
     public String pay(@PathVariable int id, @PathVariable long invoiceId, @RequestParam java.util.UUID requestId,
                       @RequestParam BigDecimal amount, Principal principal) {
