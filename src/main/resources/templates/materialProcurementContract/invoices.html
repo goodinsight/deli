@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
 <div layout:fragment="content">
+    <a th:href="@{/materialProcurementContract/payables}">공급사별 미지급·연체 현황</a>
     <h1>매입 청구 등록·내역</h1>
     <p th:text="|계약 ${contract.materialProcurementContractCode} · 공급사 ${contract.cooperatorSupplier?.supplierName ?: '미지정'}|"></p>
     <a th:href="@{/materialProcurementContract/read(materialProcurementContractNo=${contract.materialProcurementContractNo})}">조달계약 상세</a>
@@ -15,7 +16,7 @@
     <p th:text="|계약 미지급액 ${total}원|"></p>
     <table class="table" th:unless="${invoices.empty}">
         <thead><tr><th>청구번호</th><th>청구일</th><th>지급 예정일</th><th>금액(원)</th><th>확정자</th><th>확정 시각(UTC)</th><th>지급·정정</th></tr></thead>
-        <tbody><tr th:each="i : ${invoices}"><td th:text="${i.number}"></td><td th:text="${i.invoiceDate}"></td>
+        <tbody><tr th:each="i : ${invoices}" th:id="|invoice-${i.id}|"><td th:text="${i.number}"></td><td th:text="${i.invoiceDate}"></td>
             <td th:text="${i.dueDate}"></td><td th:text="${i.amount}"></td><td th:text="${i.confirmedBy}"></td><td th:text="${i.confirmedAt}"></td>
             <td>
                 <p th:text="|지급액 ${i.paidAmount}원 · 미지급액 ${i.outstandingAmount}원|"></p>

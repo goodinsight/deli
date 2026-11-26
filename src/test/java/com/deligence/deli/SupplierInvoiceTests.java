@@ -113,6 +113,38 @@ class SupplierInvoiceTests {
     }
 
     @Test
+    void reportGroupsOutstandingBalancesBySupplierAndUsesKoreanDueDates() throws Exception {
+        var supplier = suppliers.save(CooperatorSupplier.builder().supplierName("현황 검증").build());
+        int late = contract(supplier);
+        int current = contract(supplier);
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Asia/Seoul"));
+        var buyer = session("PROCUREMENT");
+        String report = "/materialProcurementContract/payables";
+        mvc.perform(get(report).session(session("CLIENT"))).andExpect(forwardedUrl("/error/deniedpage"));
+        mvc.perform(post(url(late)).session(buyer).param("number","LATE-REPORT").param("amount","1100000")
+                .param("invoiceDate",today.minusDays(2).toString()).param("dueDate",today.minusDays(1).toString()))
+                .andExpect(redirectedUrl(url(late)));
+        mvc.perform(post(url(current)).session(buyer).param("number","TODAY-REPORT").param("amount","300000")
+                .param("invoiceDate",today.toString()).param("dueDate",today.toString())).andExpect(redirectedUrl(url(current)));
+        var invoice = invoices.findByContract_MaterialProcurementContractNoOrderByDueDateAscIdAsc(late).get(0);
+        String payments = url(late) + "/" + invoice.getId() + "/payments";
+        mvc.perform(post(payments).session(buyer).param("requestId",java.util.UUID.randomUUID().toString()).param("amount","400000"))
+                .andExpect(redirectedUrl(url(late)));
+        mvc.perform(get(report).session(buyer)).andExpect(status().isOk())
+                .andExpect(content().string(containsString("총 미지급 1000000.00원 · 연체 700000.00원")))
+                .andExpect(content().string(containsString(url(late) + "#invoice-" + invoice.getId())))
+                .andExpect(content().string(containsString(">오늘<")));
+        mvc.perform(post(payments).session(buyer).param("requestId",java.util.UUID.randomUUID().toString()).param("amount","700000"))
+                .andExpect(redirectedUrl(url(late)));
+        mvc.perform(get(report).session(buyer)).andExpect(content().string(org.hamcrest.Matchers.not(containsString("LATE-REPORT"))));
+        var lastPayment = invoices.findByContract_MaterialProcurementContractNoOrderByDueDateAscIdAsc(late).get(0).getPayments().get(1);
+        mvc.perform(post(payments + "/" + lastPayment.getId() + "/cancel").session(buyer).param("reason","정정"))
+                .andExpect(redirectedUrl(url(late)));
+        mvc.perform(get(report).session(session("ADMIN")))
+                .andExpect(content().string(containsString("총 미지급 1000000.00원 · 연체 700000.00원")));
+    }
+
+    @Test
     void concurrentPaymentsCannotExceedTheInvoice() throws Exception {
         int id = contract(suppliers.save(CooperatorSupplier.builder().supplierName("병렬 지급").build()));
         mvc.perform(confirm(id, "P-2", "100")).andExpect(redirectedUrl(url(id)));

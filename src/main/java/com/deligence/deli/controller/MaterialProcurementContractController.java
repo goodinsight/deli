@@ -2,6 +2,9 @@ package com.deligence.deli.controller;
 
 import com.deligence.deli.dto.*;
 import com.deligence.deli.service.CooperatorSupplierService;
+import com.deligence.deli.service.SupplierPayablesReport;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import com.deligence.deli.service.MaterialProcurementContractService;
 import com.deligence.deli.service.MaterialProcurementPlanningService;
 import lombok.RequiredArgsConstructor;
@@ -31,6 +34,16 @@ public class MaterialProcurementContractController {
 
     //자재협력회사정보(협력회사일련번호->협력회사명,대표명, 연락처) 조회 구현
     private final CooperatorSupplierService cooperatorSupplierService;
+
+    private final SupplierPayablesReport payablesReport;
+
+    @GetMapping("/payables")
+    public String payables(Model model) {
+        LocalDate today = LocalDate.now(ZoneId.of("Asia/Seoul"));
+        model.addAttribute("today", today);
+        model.addAttribute("groups", payablesReport.summaries(today));
+        return "materialProcurementContract/payables";
+    }
 
     @GetMapping("/list")
     public void list(OrderPageRequestDTO orderPageRequestDTO, Model model) {

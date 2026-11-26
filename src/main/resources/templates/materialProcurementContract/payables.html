@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
+<div layout:fragment="content">
+    <h1>공급사별 미지급·연체 현황</h1>
+    <p th:text="|기준일 ${today} (한국 시간)|"></p>
+    <p th:if="${groups.empty}">미지급 청구가 없습니다.</p>
+    <details th:each="g : ${groups}">
+        <summary th:text="|${g.supplier.supplierName} (#${g.supplier.supplierNo}) · 총 미지급 ${g.total}원 · 연체 ${g.overdue}원|"></summary>
+        <table class="table">
+            <thead><tr><th>청구번호</th><th>조달계약</th><th>지급 예정일</th><th>상태</th><th>미지급액</th></tr></thead>
+            <tbody><tr th:each="i : ${g.openInvoices}">
+                <td><a th:href="|@{/materialProcurementContract/{id}/invoices(id=${i.contract.materialProcurementContractNo})}#invoice-${i.id}|" th:text="${i.number}"></a></td>
+                <td><a th:href="@{/materialProcurementContract/read(materialProcurementContractNo=${i.contract.materialProcurementContractNo})}"
+                       th:text="|${i.contract.materialProcurementContractCode} (#${i.contract.materialProcurementContractNo})|"></a></td>
+                <td th:text="${i.dueDate}"></td><td th:text="${i.dueDate.isBefore(today) ? '연체' : (i.dueDate.equals(today) ? '오늘' : '예정')}"></td>
+                <td th:text="|${i.outstandingAmount}원|"></td>
+            </tr></tbody>
+        </table>
+    </details>
+</div></html>
