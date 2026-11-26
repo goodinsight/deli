@@ -8,5 +8,9 @@ public interface ContractLedgerRepository extends JpaRepository<ContractLedgerEn
     @org.springframework.data.jpa.repository.Query("select e from ContractLedgerEntry e join fetch e.contract c left join fetch c.cooperatorClient order by c.productContractNo, e.id")
     List<ContractLedgerEntry> reportEntries();
 
+    @org.springframework.data.jpa.repository.Lock(javax.persistence.LockModeType.PESSIMISTIC_WRITE)
+    @org.springframework.data.jpa.repository.Query("select e from ContractLedgerEntry e where e.contract.productContractNo = :id order by e.id")
+    List<ContractLedgerEntry> lockContractEntries(int id);
+
     List<ContractLedgerEntry> findByContract_ProductContractNoOrderByIdAsc(int contractNo);
 }

@@ -1,6 +1,8 @@
 package com.deligence.deli.service;
 
+import com.deligence.deli.repository.DepositUnmatchRepository;
 import com.deligence.deli.domain.BankDeposit;
+import com.deligence.deli.domain.DepositUnmatch;
 import com.deligence.deli.repository.BankDepositRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.csv.*;
@@ -21,6 +23,7 @@ import java.util.*;
 @Transactional
 public class BankDepositService {
     private static final List<String> HEADER = List.of("거래번호", "입금일", "입금액", "입금자");
+    private final DepositUnmatchRepository corrections;
     private final BankDepositRepository deposits;
     private final EntityManager em;
     private final ContractBillingService billing;
@@ -65,14 +68,30 @@ public class BankDepositService {
         return added;
     }
 
-    public void match(String reference, int contractNo, String username) {
+    public void match(String reference, int contractNo, String matchKey, String username) {
         var deposit = deposits.lockDeposit(reference).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        if (matchKey == null ? corrections.existsByDeposit_Reference(reference) : !deposit.getReceiptKey().equals(matchKey)) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "입금 연결 상태가 변경되었습니다. 목록을 갱신하세요.");
+        }
         if (deposit.getContractNo() != null) {
             if (deposit.getContractNo() != contractNo) throw new ResponseStatusException(HttpStatus.CONFLICT, "이미 다른 계약에 연결했습니다.");
             return;
         }
         var receipt = billing.receive(contractNo, UUID.fromString(deposit.getReceiptKey()), deposit.getAmount(), username);
         deposit.match(receipt);
+    }
+
+    public void unmatch(String reference, long receiptId, String reason, String user) {
+        String explanation = reason.strip();
+        if (explanation.isEmpty() || explanation.length() > 250) throw invalid("연결 해제 사유를 1~250자로 입력하세요.");
+        var deposit = deposits.lockDeposit(reference).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        if (corrections.existsByDeposit_ReferenceAndReceipt_Id(reference, receiptId)) return;
+        if (deposit.getReceipt() == null || deposit.getReceipt().getId() != receiptId) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "현재 연결된 수금을 확인하세요.");
+        }
+        billing.reverseReceipt(deposit.getContractNo(), receiptId, explanation, user);
+        corrections.save(new DepositUnmatch(deposit, explanation, user));
+        deposit.unmatch();
     }
 
     private ResponseStatusException invalid(String message) {

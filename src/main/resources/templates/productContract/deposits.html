@@ -11,8 +11,15 @@
     <table class="table"><thead><tr><th>거래번호</th><th>입금일</th><th>입금자</th><th>금액</th><th>연결할 청구</th></tr></thead>
         <tbody><tr th:each="d : ${deposits}"><td th:text="${d.reference}"></td><td th:text="${d.depositDate}"></td><td th:text="${d.payer}"></td><td th:text="${d.amount}"></td>
             <td><a th:if="${d.contractNo != null}" th:href="@{/productContract/{id}/billing(id=${d.contractNo})}" th:text="|연결한 계약 #${d.contractNo}|"></a>
+                <form th:if="${d.contractNo != null}" method="post" th:action="@{/productContract/receivables/deposits/unmatch}">
+                    <input type="hidden" name="reference" th:value="${d.reference}">
+                    <input type="hidden" name="receiptId" th:value="${d.receipt.id}">
+                    <label>연결 해제 사유 <input name="reason" required maxlength="250"></label>
+                    <button>수금 연결 해제</button>
+                </form>
                 <form th:if="${d.contractNo == null}" method="post" th:action="@{/productContract/receivables/deposits/match}">
                     <input type="hidden" name="reference" th:value="${d.reference}">
+                    <input type="hidden" name="matchKey" th:value="${d.receiptKey}">
                     <select name="contractNo" required><option value="">미연결 · 청구 선택</option>
                         <optgroup th:each="c : ${customers}" th:label="${c.name}">
                             <option th:each="i : ${c.invoices}" th:if="${i.balance >= d.amount}" th:value="${i.contract.productContractNo}" th:text="|#${i.contract.productContractNo} ${i.contract.productContractCode} · 잔액 ${i.balance}원|"></option>
@@ -21,4 +28,14 @@
                 </form>
             </td></tr></tbody>
     </table>
+    <section th:unless="${corrections.empty}">
+        <h2>입금 연결 정정 이력</h2>
+        <table class="table"><thead><tr><th>거래번호</th><th>해제한 계약·수금</th><th>사유</th><th>처리자</th><th>시각(UTC)</th></tr></thead>
+            <tbody><tr th:each="c : ${corrections}">
+                <td th:text="${c.deposit.reference}"></td>
+                <td><a th:href="@{/productContract/{id}/billing(id=${c.receipt.contract.productContractNo})}" th:text="|계약 #${c.receipt.contract.productContractNo} · 수금 #${c.receipt.id}|"></a></td>
+                <td th:text="${c.reason}"></td><td th:text="${c.recordedBy}"></td><td th:text="${c.recordedAt}"></td>
+            </tr></tbody>
+        </table>
+    </section>
 </div></html>

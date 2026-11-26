@@ -426,6 +426,49 @@ class ClientConsultationTests {
     }
 
     @Test
+    void correctedDepositRestoresOnlyOriginalContractAndRejectsStaleMatching() throws Exception {
+        var staff = session("CLIENT", "reviewer");
+        int a = contracts.save(com.deligence.deli.domain.ProductContract.builder().build()).getProductContractNo();
+        int b = contracts.save(com.deligence.deli.domain.ProductContract.builder().build()).getProductContractNo();
+        String url = "/productContract/receivables/deposits";
+        for (int id : new int[]{a,b}) {
+            String billing = "/productContract/" + id + "/billing";
+            mvc.perform(post(billing + "/invoice").session(staff).param("amount", "700000.00")).andExpect(redirectedUrl(billing));
+        }
+        var d = importedDeposits.save(new com.deligence.deli.domain.BankDeposit("CORRECT-1", LocalDate.now(),
+                new BigDecimal("400000.00"), "payer"));
+        String firstKey = d.getReceiptKey();
+        mvc.perform(post(url + "/match").session(staff).param("reference",d.getReference()).param("matchKey",firstKey)
+                .param("contractNo",String.valueOf(a))).andExpect(redirectedUrl(url));
+        var receipt = ledger.findByContract_ProductContractNoOrderByIdAsc(a).get(1);
+        var unlink = post(url + "/unmatch").param("reference",d.getReference())
+                .param("receiptId",receipt.getId().toString()).param("reason","계약 선택 오류");
+        mvc.perform(unlink.session(session("MATERIAL"))).andExpect(forwardedUrl("/error/deniedpage"));
+        mvc.perform(unlink.session(staff)).andExpect(redirectedUrl(url));
+        mvc.perform(unlink.session(staff)).andExpect(redirectedUrl(url));
+        mvc.perform(post(url + "/match").session(staff).param("reference",d.getReference()).param("matchKey",firstKey)
+                .param("contractNo",String.valueOf(a))).andExpect(status().isConflict());
+        var current = importedDeposits.findById(d.getReference()).orElseThrow();
+        mvc.perform(post(url + "/match").session(staff).param("reference",d.getReference()).param("matchKey",current.getReceiptKey())
+                .param("contractNo",String.valueOf(b))).andExpect(redirectedUrl(url));
+        mvc.perform(unlink.session(staff)).andExpect(redirectedUrl(url));
+        assertThat(ledger.findByContract_ProductContractNoOrderByIdAsc(a)).hasSize(3);
+        mvc.perform(get("/productContract/" + a + "/billing").session(staff))
+                .andExpect(content().string(containsString("미수잔액 700000.00원")))
+                .andExpect(content().string(containsString("입금 거래번호 CORRECT-1")));
+        mvc.perform(get("/productContract/" + b + "/billing").session(staff))
+                .andExpect(content().string(containsString("미수잔액 300000.00원")));
+        mvc.perform(get(url).session(staff)).andExpect(content().string(containsString("계약 선택 오류")))
+                .andExpect(content().string(containsString("연결한 계약 #" + b)));
+        var receiptB = ledger.findByContract_ProductContractNoOrderByIdAsc(b).get(1);
+        mvc.perform(post("/productContract/" + b + "/billing/receipts/" + receiptB.getId() + "/settle")
+                .session(staff).param("reason","환불 이체 확인")).andExpect(status().is3xxRedirection());
+        mvc.perform(post(url + "/unmatch").session(staff).param("reference",d.getReference())
+                .param("receiptId",receiptB.getId().toString()).param("reason","재연결")).andExpect(status().isConflict());
+        assertThat(importedDeposits.findById(d.getReference()).orElseThrow().getContractNo()).isEqualTo(b);
+    }
+
+    @Test
     void materialRoleCannotReadOrRegisterConsultations() throws Exception {
         mvc.perform(get("/CooperatorClient/read").session(session("MATERIAL"))).andExpect(forwardedUrl("/error/deniedpage"));
         mvc.perform(post("/CooperatorClient/consultations").session(session("MATERIAL"))).andExpect(forwardedUrl("/error/deniedpage"));

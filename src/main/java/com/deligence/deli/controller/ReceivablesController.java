@@ -1,5 +1,6 @@
 package com.deligence.deli.controller;
 
+import com.deligence.deli.repository.DepositUnmatchRepository;
 import com.deligence.deli.repository.BankDepositRepository;
 import com.deligence.deli.service.BankDepositService;
 import com.deligence.deli.service.ReceivablesReport;
@@ -21,6 +22,7 @@ import java.security.Principal;
 public class ReceivablesController {
     private final ReceivablesReport report;
     private final BankDepositService service;
+    private final DepositUnmatchRepository corrections;
     private final BankDepositRepository deposits;
 
     @GetMapping
@@ -32,6 +34,7 @@ public class ReceivablesController {
     @GetMapping("/deposits")
     public String deposits(Model model) {
         model.addAttribute("customers", report.customers());
+        model.addAttribute("corrections", corrections.findAllByOrderByIdDesc());
         model.addAttribute("deposits", deposits.findAll(Sort.by("depositDate", "reference").descending()));
         return "productContract/deposits";
     }
@@ -44,9 +47,15 @@ public class ReceivablesController {
         return "redirect:/productContract/receivables/deposits";
     }
 
+    @PostMapping("/deposits/unmatch")
+    public String unmatch(@RequestParam String reference, @RequestParam long receiptId, @RequestParam String reason, Principal principal) {
+        service.unmatch(reference, receiptId, reason, principal.getName());
+        return "redirect:/productContract/receivables/deposits";
+    }
+
     @PostMapping("/deposits/match")
-    public String match(@RequestParam String reference, @RequestParam int contractNo, Principal principal) {
-        service.match(reference, contractNo, principal.getName());
+    public String match(@RequestParam String reference, @RequestParam int contractNo, @RequestParam(required = false) String matchKey, Principal principal) {
+        service.match(reference, contractNo, matchKey, principal.getName());
         return "redirect:/productContract/receivables/deposits";
     }
 }

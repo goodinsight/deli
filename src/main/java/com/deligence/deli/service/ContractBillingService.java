@@ -33,7 +33,7 @@ public class ContractBillingService {
     public void cancelInvoice(int id, String reason, boolean reconciled, String user) {
         String explanation = checkedReason(reason);
         records.lock(ProductContract.class, id);
-        var entries = ledger.findByContract_ProductContractNoOrderByIdAsc(id);
+        var entries = ledger.lockContractEntries(id);
         if (entries.stream().anyMatch(ContractLedgerEntry::isInvoiceCancellation)) return;
         if (entries.isEmpty() || netReceipts(entries).signum() != 0) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "청구 및 미정산 수금액을 확인하세요.");
@@ -47,7 +47,7 @@ public class ContractBillingService {
     public void invoice(int id, BigDecimal amount, java.time.LocalDate dueDate, String user) {
         validate(amount);
         var contract = records.lock(ProductContract.class, id);
-        var entries = ledger.findByContract_ProductContractNoOrderByIdAsc(id);
+        var entries = ledger.lockContractEntries(id);
         if (!entries.isEmpty()) {
             if (entries.get(0).getAmount().compareTo(amount) != 0) {
                 throw new ResponseStatusException(HttpStatus.CONFLICT, "기존 청구액을 확인하세요.");
@@ -64,7 +64,7 @@ public class ContractBillingService {
 
     public void setMissingDueDate(int id, java.time.LocalDate dueDate) {
         records.lock(ProductContract.class, id);
-        var entries = ledger.findByContract_ProductContractNoOrderByIdAsc(id);
+        var entries = ledger.lockContractEntries(id);
         if (entries.isEmpty() || balance(entries).signum() <= 0) throw new ResponseStatusException(HttpStatus.CONFLICT);
         var invoice = entries.get(0);
         if (invoice.getCollectionDueDate() != null && !dueDate.equals(invoice.getCollectionDueDate())) {
@@ -76,7 +76,7 @@ public class ContractBillingService {
     public ContractLedgerEntry receive(int id, UUID requestId, BigDecimal amount, String user) {
         validate(amount);
         var contract = records.lock(ProductContract.class, id);
-        var entries = ledger.findByContract_ProductContractNoOrderByIdAsc(id);
+        var entries = ledger.lockContractEntries(id);
         for (var entry : entries) {
             if (entry.getEntryKey().equals(requestId.toString())) {
                 if (entry.getAmount().compareTo(amount) != 0) {
@@ -110,7 +110,7 @@ public class ContractBillingService {
     private void offsetReceipt(int id, long receiptId, String reason, String user, boolean settlement) {
         String explanation = checkedReason(reason);
         records.lock(ProductContract.class, id);
-        var entries = ledger.findByContract_ProductContractNoOrderByIdAsc(id);
+        var entries = ledger.lockContractEntries(id);
         var receipt = entries.stream().filter(e -> e.getId() == receiptId).findFirst()
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         if (receipt.isInvoice() || receipt.isInvoiceCancellation() || receipt.isReversal()) {

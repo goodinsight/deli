@@ -1,5 +1,7 @@
 package com.deligence.deli.controller;
 
+import com.deligence.deli.repository.BankDepositRepository;
+import com.deligence.deli.repository.DepositUnmatchRepository;
 import com.deligence.deli.service.ContractBillingService;
 import com.deligence.deli.repository.ContractLedgerRepository;
 import com.deligence.deli.repository.ConsultationQuoteRepository;
@@ -22,7 +24,8 @@ import java.util.UUID;
 public class ContractBillingController {
     private final ContractBillingService billing;
     private final ContractLedgerRepository ledger;
-    private final com.deligence.deli.repository.BankDepositRepository deposits;
+    private final DepositUnmatchRepository corrections;
+    private final BankDepositRepository deposits;
     private final ProductContractRepository contracts;
     private final ConsultationQuoteRepository quotes;
 
@@ -32,8 +35,12 @@ public class ContractBillingController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
         var entries = ledger.findByContract_ProductContractNoOrderByIdAsc(id);
         model.addAttribute("entries", entries);
-        model.addAttribute("bankReferences", deposits.findByContract(id).stream().collect(
-                java.util.stream.Collectors.toMap(d -> d.getReceipt().getId(), d -> d.getReference())));
+        var bankReferences = deposits.findByContract(id).stream().collect(
+                java.util.stream.Collectors.toMap(d -> d.getReceipt().getId(), d -> d.getReference()));
+        for (var correction : corrections.findByReceipt_Contract_ProductContractNo(id)) {
+            bankReferences.put(correction.getReceipt().getId(), correction.getDeposit().getReference());
+        }
+        model.addAttribute("bankReferences", bankReferences);
         var reversedIds = entries.stream().filter(entry -> entry.isReversal())
                 .map(entry -> entry.getReversedReceipt().getId()).collect(java.util.stream.Collectors.toSet());
         model.addAttribute("reversedIds", reversedIds);

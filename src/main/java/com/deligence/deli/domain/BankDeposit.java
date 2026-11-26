@@ -34,6 +34,11 @@ public class BankDeposit {
         receiptKey = UUID.randomUUID().toString();
     }
 
+    public void unmatch() {
+        receipt = null;
+        receiptKey = UUID.randomUUID().toString();
+    }
+
     public void match(ContractLedgerEntry receipt) {
         this.receipt = receipt;
     }
