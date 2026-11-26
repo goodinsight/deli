@@ -14,8 +14,23 @@
     </form>
     <p th:text="|계약 미지급액 ${total}원|"></p>
     <table class="table" th:unless="${invoices.empty}">
-        <thead><tr><th>청구번호</th><th>청구일</th><th>지급 예정일</th><th>금액(원)</th><th>확정자</th><th>확정 시각(UTC)</th></tr></thead>
+        <thead><tr><th>청구번호</th><th>청구일</th><th>지급 예정일</th><th>금액(원)</th><th>확정자</th><th>확정 시각(UTC)</th><th>지급·정정</th></tr></thead>
         <tbody><tr th:each="i : ${invoices}"><td th:text="${i.number}"></td><td th:text="${i.invoiceDate}"></td>
-            <td th:text="${i.dueDate}"></td><td th:text="${i.amount}"></td><td th:text="${i.confirmedBy}"></td><td th:text="${i.confirmedAt}"></td></tr></tbody>
+            <td th:text="${i.dueDate}"></td><td th:text="${i.amount}"></td><td th:text="${i.confirmedBy}"></td><td th:text="${i.confirmedAt}"></td>
+            <td>
+                <p th:text="|지급액 ${i.paidAmount}원 · 미지급액 ${i.outstandingAmount}원|"></p>
+                <form th:if="${i.outstandingAmount.signum() > 0}" method="post" th:action="@{/materialProcurementContract/{c}/invoices/{i}/payments(c=${contract.materialProcurementContractNo},i=${i.id})}">
+                    <input type="hidden" name="requestId" th:value="${requestId}">
+                    <label>지급액(원) <input type="number" name="amount" min="0.01" step="0.01" th:max="${i.outstandingAmount}" required></label>
+                    <button>지급 기록</button>
+                </form>
+                <div th:each="p : ${i.payments}">
+                    <p th:text="|지급 #${p.id} · ${p.amount}원 · ${p.recordedBy} · ${p.recordedAt}|"></p>
+                    <p th:if="${p.cancelledAt != null}" th:text="|취소 · ${p.cancellationReason} · ${p.cancelledBy} · ${p.cancelledAt}|"></p>
+                    <form th:unless="${p.cancelledAt != null}" method="post" th:action="@{/materialProcurementContract/{c}/invoices/{i}/payments/{p}/cancel(c=${contract.materialProcurementContractNo},i=${i.id},p=${p.id})}">
+                        <label>취소 사유 <input name="reason" maxlength="250" required></label><button>지급 기록 취소</button>
+                    </form>
+                </div>
+            </td></tr></tbody>
     </table>
 </div></html>

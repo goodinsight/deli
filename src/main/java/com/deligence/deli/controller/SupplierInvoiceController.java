@@ -28,8 +28,23 @@ public class SupplierInvoiceController {
         model.addAttribute("contract", contracts.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
         var rows = invoices.findByContract_MaterialProcurementContractNoOrderByDueDateAscIdAsc(id);
         model.addAttribute("invoices", rows);
-        model.addAttribute("total", rows.stream().map(SupplierInvoice::getAmount).reduce(BigDecimal.ZERO, BigDecimal::add));
+        model.addAttribute("total", rows.stream().map(SupplierInvoice::getOutstandingAmount).reduce(BigDecimal.ZERO, BigDecimal::add));
+        model.addAttribute("requestId", java.util.UUID.randomUUID());
         return "materialProcurementContract/invoices";
+    }
+
+    @PostMapping("/{invoiceId}/payments")
+    public String pay(@PathVariable int id, @PathVariable long invoiceId, @RequestParam java.util.UUID requestId,
+                      @RequestParam BigDecimal amount, Principal principal) {
+        service.pay(id, invoiceId, requestId, amount, principal.getName());
+        return "redirect:/materialProcurementContract/" + id + "/invoices";
+    }
+
+    @PostMapping("/{invoiceId}/payments/{paymentId}/cancel")
+    public String cancel(@PathVariable int id, @PathVariable long invoiceId, @PathVariable long paymentId,
+                         @RequestParam String reason, Principal principal) {
+        service.cancelPayment(id, invoiceId, paymentId, reason, principal.getName());
+        return "redirect:/materialProcurementContract/" + id + "/invoices";
     }
 
     @PostMapping

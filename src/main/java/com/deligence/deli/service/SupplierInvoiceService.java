@@ -19,6 +19,43 @@ public class SupplierInvoiceService {
     private final SupplierInvoiceRepository invoices;
     private final EntityManager em;
 
+    private SupplierInvoice lockInvoice(int contractNo, long invoiceId) {
+        var invoice = em.find(SupplierInvoice.class, invoiceId, LockModeType.PESSIMISTIC_WRITE);
+        if (invoice == null || invoice.getContract().getMaterialProcurementContractNo() != contractNo) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+        return invoice;
+    }
+
+    @Transactional
+    public void pay(int contractNo, long invoiceId, java.util.UUID requestId, BigDecimal amount, String user) {
+        if (amount.signum() <= 0 || amount.scale() > 2 || amount.precision() - (long) amount.scale() > 24) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "지급액을 확인하세요.");
+        }
+        var invoice = lockInvoice(contractNo, invoiceId);
+        for (var payment : invoice.getPayments()) {
+            if (payment.getRequestKey().equals(requestId.toString())) {
+                if (payment.getAmount().compareTo(amount) != 0) throw new ResponseStatusException(HttpStatus.CONFLICT, "기존 지급 요청과 금액이 다릅니다.");
+                return;
+            }
+        }
+        if (amount.compareTo(invoice.getOutstandingAmount()) > 0) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "청구 미지급액을 초과합니다.");
+        }
+        var payment = new com.deligence.deli.domain.SupplierPayment(invoice, requestId, amount, user);
+        em.persist(payment);
+        invoice.getPayments().add(payment);
+    }
+
+    @Transactional
+    public void cancelPayment(int contractNo, long invoiceId, long paymentId, String reason, String user) {
+        String explanation = reason.strip();
+        if (explanation.isEmpty() || explanation.length() > 250) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "취소 사유를 1~250자로 입력하세요.");
+        var invoice = lockInvoice(contractNo, invoiceId);
+        invoice.getPayments().stream().filter(p -> p.getId() == paymentId).findFirst()
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)).cancel(explanation, user);
+    }
+
     @Transactional
     public void confirm(int contractNo, String invoiceNumber, LocalDate invoiceDate, LocalDate dueDate,
                         BigDecimal amount, String user) {

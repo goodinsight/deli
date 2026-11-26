@@ -11,5 +11,7 @@ import java.util.Optional;
 public interface SupplierInvoiceRepository extends JpaRepository<SupplierInvoice, Long> {
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     Optional<SupplierInvoice> findBySupplierAndNumber(CooperatorSupplier supplier, String number);
+    @org.springframework.data.jpa.repository.Query("select distinct i from SupplierInvoice i left join fetch i.payments " +
+            "where i.contract.materialProcurementContractNo = :contractNo order by i.dueDate, i.id")
     List<SupplierInvoice> findByContract_MaterialProcurementContractNoOrderByDueDateAscIdAsc(int contractNo);
 }

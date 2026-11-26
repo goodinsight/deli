@@ -33,6 +33,19 @@ public class SupplierInvoice {
     @Column(nullable = false)
     private Instant confirmedAt;
 
+    @OneToMany(mappedBy = "invoice")
+    @OrderBy("id ASC")
+    private java.util.List<SupplierPayment> payments = new java.util.ArrayList<>();
+
+    public BigDecimal getPaidAmount() {
+        return payments.stream().filter(payment -> payment.getCancelledAt() == null)
+                .map(SupplierPayment::getAmount).reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    public BigDecimal getOutstandingAmount() {
+        return amount.subtract(getPaidAmount());
+    }
+
     public SupplierInvoice(MaterialProcurementContract contract, String number, LocalDate invoiceDate,
                            LocalDate dueDate, BigDecimal amount, String user) {
         this.contract = contract;

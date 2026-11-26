@@ -78,6 +78,67 @@ class SupplierInvoiceTests {
     }
 
     @Test
+    void partialPaymentsCanBeCorrectedWithoutLosingTheOriginalRecord() throws Exception {
+        int id = contract(suppliers.save(CooperatorSupplier.builder().supplierName("지급 공급사").build()));
+        mvc.perform(confirm(id, "PAY-1", "1100000")).andExpect(redirectedUrl(url(id)));
+        long invoice = invoices.findByContract_MaterialProcurementContractNoOrderByDueDateAscIdAsc(id).get(0).getId();
+        String payments = url(id) + "/" + invoice + "/payments";
+        String key = java.util.UUID.randomUUID().toString();
+        var buyer = session("PROCUREMENT");
+        mvc.perform(post(payments).session(session("CLIENT")).param("amount", "400000").param("requestId", key))
+                .andExpect(forwardedUrl("/error/deniedpage"));
+        for (int i = 0; i < 2; i++) {
+            mvc.perform(post(payments).session(buyer).param("amount", "400000.00").param("requestId", key))
+                    .andExpect(redirectedUrl(url(id)));
+        }
+        mvc.perform(get(url(id)).session(buyer)).andExpect(content().string(containsString("계약 미지급액 700000.00원")));
+        mvc.perform(post(payments).session(buyer).param("amount","700001").param("requestId", java.util.UUID.randomUUID().toString()))
+                .andExpect(status().isConflict());
+        mvc.perform(post(payments).session(buyer).param("amount","300000").param("requestId", key)).andExpect(status().isConflict());
+        var original = invoices.findByContract_MaterialProcurementContractNoOrderByDueDateAscIdAsc(id).get(0).getPayments().get(0);
+        String cancel = payments + "/" + original.getId() + "/cancel";
+        mvc.perform(post(cancel).session(buyer).param("reason"," ")).andExpect(status().isBadRequest());
+        for (int i = 0; i < 2; i++) {
+            mvc.perform(post(cancel).session(buyer).param("reason","금액 오입력")).andExpect(redirectedUrl(url(id)));
+        }
+        mvc.perform(get(url(id)).session(buyer)).andExpect(content().string(containsString("계약 미지급액 1100000.00원")))
+                .andExpect(content().string(containsString("금액 오입력")));
+        mvc.perform(post(payments).session(buyer).param("amount","350000").param("requestId", java.util.UUID.randomUUID().toString()))
+                .andExpect(redirectedUrl(url(id)));
+        var row = invoices.findByContract_MaterialProcurementContractNoOrderByDueDateAscIdAsc(id).get(0);
+        assertThat(row.getPayments()).hasSize(2);
+        assertThat(row.getPayments().get(0).getAmount()).isEqualByComparingTo("400000");
+        assertThat(row.getPayments().get(0).getCancelledBy()).isEqualTo("buyer");
+        assertThat(row.getOutstandingAmount()).isEqualByComparingTo("750000");
+    }
+
+    @Test
+    void concurrentPaymentsCannotExceedTheInvoice() throws Exception {
+        int id = contract(suppliers.save(CooperatorSupplier.builder().supplierName("병렬 지급").build()));
+        mvc.perform(confirm(id, "P-2", "100")).andExpect(redirectedUrl(url(id)));
+        long invoice = invoices.findByContract_MaterialProcurementContractNoOrderByDueDateAscIdAsc(id).get(0).getId();
+        var start = new CountDownLatch(1);
+        var pool = Executors.newFixedThreadPool(2);
+        try {
+            Callable<Integer> submit = () -> {
+                start.await();
+                return mvc.perform(post(url(id) + "/" + invoice + "/payments").session(session("ADMIN"))
+                        .param("requestId", java.util.UUID.randomUUID().toString()).param("amount","70"))
+                        .andReturn().getResponse().getStatus();
+            };
+            var first = pool.submit(submit);
+            var second = pool.submit(submit);
+            start.countDown();
+            assertThat(java.util.List.of(first.get(20, TimeUnit.SECONDS), second.get(20, TimeUnit.SECONDS)))
+                    .containsExactlyInAnyOrder(302, 409);
+            assertThat(invoices.findByContract_MaterialProcurementContractNoOrderByDueDateAscIdAsc(id).get(0)
+                    .getOutstandingAmount()).isEqualByComparingTo("30");
+        } finally {
+            pool.shutdownNow();
+        }
+    }
+
+    @Test
     void concurrentSubmissionsRecordOneInvoice() throws Exception {
         int id = contract(suppliers.save(CooperatorSupplier.builder().supplierName("동시 확인").build()));
         var start = new CountDownLatch(1);
