@@ -466,6 +466,10 @@ class ClientConsultationTests {
         mvc.perform(post(url + "/unmatch").session(staff).param("reference",d.getReference())
                 .param("receiptId",receiptB.getId().toString()).param("reason","재연결")).andExpect(status().isConflict());
         assertThat(importedDeposits.findById(d.getReference()).orElseThrow().getContractNo()).isEqualTo(b);
+        mvc.perform(get("/productContract/receivables/reconciliation").session(staff))
+                .andExpect(content().string(containsString("환불·정산 400000.00원")))
+                .andExpect(content().string(containsString("미해결 차이 0원")));
+
     }
 
     @Autowired javax.persistence.EntityManager entityManager;
@@ -527,6 +531,16 @@ class ClientConsultationTests {
                 .param("amount","300000").param("contractNo",String.valueOf(b.getProductContractNo()))).andExpect(redirectedUrl(url));
         assertThat(deposit.getRemainingAmount()).isEqualByComparingTo("0");
         var receiptA = ledger.findByContract_ProductContractNoOrderByIdAsc(a.getProductContractNo()).get(1);
+        String reconciliation = "/productContract/receivables/reconciliation";
+        mvc.perform(get(reconciliation).session(session("MATERIAL"))).andExpect(forwardedUrl("/error/deniedpage"));
+        mvc.perform(post("/productContract/" + a.getProductContractNo() + "/billing/receipts/" + receiptA.getId() + "/reverse")
+                .session(staff).param("reason","장부 정정")).andExpect(status().is3xxRedirection());
+        mvc.perform(get(reconciliation).param("onlyDifferences","true").session(staff))
+                .andExpect(content().string(containsString("미해결 차이 700000.00원")))
+                .andExpect(content().string(containsString("확인 필요 · 수금 취소 후 연결 유지")))
+                .andExpect(content().string(containsString("#entry-" + receiptA.getId())))
+                .andExpect(content().string(containsString("deposits?reference=SPLIT-1")));
+
         for (int retry = 0; retry < 2; retry++) {
             mvc.perform(post(url + "/unmatch").session(staff).param("reference",ref).param("reason","배분 정정")
                     .param("receiptId",receiptA.getId().toString())).andExpect(redirectedUrl(url));
@@ -535,6 +549,11 @@ class ClientConsultationTests {
         entityManager.clear();
         deposit = importedDeposits.findById(ref).orElseThrow();
         assertThat(deposit.getRemainingAmount()).isEqualByComparingTo("700000");
+        mvc.perform(get(reconciliation).session(staff))
+                .andExpect(content().string(containsString("장부 수금 300000.00원 · 환불·정산 0원 · 미배분 700000.00원 · 미해결 차이 0원")));
+        mvc.perform(get(reconciliation).param("onlyDifferences","true").session(staff))
+                .andExpect(content().string(containsString("확인할 차이가 없습니다.")));
+
         assertThat(deposit.getAllocatedAmount().add(deposit.getRemainingAmount())).isEqualByComparingTo(deposit.getAmount());
         mvc.perform(get(url).session(staff)).andExpect(content().string(containsString("300000.00원 / 700000.00원")));
         mvc.perform(get("/productContract/" + b.getProductContractNo() + "/billing").session(staff))

@@ -33,7 +33,7 @@
         </form>
         <table class="table">
             <thead><tr><th>구분</th><th>금액(원)</th><th>등록자</th><th>등록 시각(UTC)</th><th>취소 내역</th></tr></thead>
-            <tbody><tr th:each="entry : ${entries}"><td th:text="${entry.invoice ? '청구' : (entry.invoiceCancellation ? '청구 취소' : (entry.settlement ? '환불·정산 확인' : (entry.reversal ? '수금 취소' : '수금 #' + entry.id)))}"></td>
+            <tbody><tr th:each="entry : ${entries}" th:id="|entry-${entry.id}|"><td th:text="${entry.invoice ? '청구' : (entry.invoiceCancellation ? '청구 취소' : (entry.settlement ? '환불·정산 확인' : (entry.reversal ? '수금 취소' : '수금 #' + entry.id)))}"></td>
                 <td><span th:text="${entry.amount}"></span>
                     <small th:if="${bankReferences.containsKey(entry.id)}" th:text="|입금 거래번호 ${bankReferences.get(entry.id)}|"></small></td><td th:text="${entry.recordedBy}"></td><td th:text="${entry.recordedAt}"></td>
                 <td>

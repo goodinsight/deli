@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
 <div layout:fragment="content">
+    <a th:href="@{/productContract/receivables/reconciliation}">입금·수금 장부 대사</a>
     <h1>고객사별 미수 현황</h1>
     <a th:href="@{/productContract/receivables/deposits}">입금 내역 가져오기·연결</a>
     <p th:if="${customers.empty}">미수 계약이 없습니다.</p>

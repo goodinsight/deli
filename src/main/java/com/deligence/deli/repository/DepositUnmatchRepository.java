@@ -9,4 +9,5 @@ public interface DepositUnmatchRepository extends JpaRepository<DepositUnmatch, 
     boolean existsByDeposit_Reference(String reference);
     List<DepositUnmatch> findByReceipt_Contract_ProductContractNo(int contractNo);
     List<DepositUnmatch> findAllByOrderByIdDesc();
+    List<DepositUnmatch> findByDeposit_ReferenceOrderByIdDesc(String reference);
 }

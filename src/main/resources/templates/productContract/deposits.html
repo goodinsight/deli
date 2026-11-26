@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout/layout}">
 <div layout:fragment="content">
+    <a th:href="@{/productContract/receivables/reconciliation}">입금·수금 장부 대사</a>
     <h1>입금 내역 가져오기·연결</h1>
     <a th:href="@{/productContract/receivables}">고객사별 미수 현황</a>
     <p>UTF-8 CSV 첫 행은 거래번호,입금일,입금액,입금자 순서입니다. 모든 계좌에서 고유한 거래번호, YYYY-MM-DD 날짜, 쉼표 없는 원화 금액을 사용하세요.</p>
@@ -8,6 +9,7 @@
         <label>CSV 파일 (최대 1MB) <input type="file" name="file" accept=".csv" required></label><button>가져오기</button>
     </form>
     <p role="status" th:if="${message}" th:text="${message}"></p>
+    <a th:if="${reference != null}" th:href="@{/productContract/receivables/deposits}">전체 입금 보기</a>
     <table class="table"><thead><tr><th>거래번호</th><th>입금일</th><th>입금자</th><th>금액</th><th>배분액 / 미배분액</th><th>연결할 청구</th></tr></thead>
         <tbody><tr th:each="d : ${deposits}"><td th:text="${d.reference}"></td><td th:text="${d.depositDate}"></td><td th:text="${d.payer}"></td><td th:text="${d.amount}"></td>
             <td th:text="|${d.allocatedAmount}원 / ${d.remainingAmount}원|"></td>

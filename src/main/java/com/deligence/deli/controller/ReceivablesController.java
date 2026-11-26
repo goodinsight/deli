@@ -21,6 +21,14 @@ import java.security.Principal;
 @RequestMapping("/productContract/receivables")
 public class ReceivablesController {
     private final ReceivablesReport report;
+    private final com.deligence.deli.service.DepositReconciliation reconciliation;
+
+    @GetMapping("/reconciliation")
+    public String reconciliation(@RequestParam(defaultValue = "false") boolean onlyDifferences, Model model) {
+        model.addAttribute("rows", reconciliation.rows(onlyDifferences));
+        model.addAttribute("onlyDifferences", onlyDifferences);
+        return "productContract/reconciliation";
+    }
     private final BankDepositService service;
     private final DepositUnmatchRepository corrections;
     private final BankDepositRepository deposits;
@@ -32,10 +40,13 @@ public class ReceivablesController {
     }
 
     @GetMapping("/deposits")
-    public String deposits(Model model) {
+    public String deposits(@RequestParam(required = false) String reference, Model model) {
         model.addAttribute("customers", report.customers());
-        model.addAttribute("corrections", corrections.findAllByOrderByIdDesc());
-        model.addAttribute("deposits", deposits.findAll(Sort.by("depositDate", "reference").descending()));
+        model.addAttribute("corrections", reference == null ? corrections.findAllByOrderByIdDesc()
+                : corrections.findByDeposit_ReferenceOrderByIdDesc(reference));
+        model.addAttribute("reference", reference);
+        model.addAttribute("deposits", reference == null ? deposits.findAll(Sort.by("depositDate", "reference").descending())
+                : java.util.List.of(deposits.findById(reference).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND))));
         return "productContract/deposits";
     }
 
