@@ -22,9 +22,9 @@ public class DepositUnmatch {
     private String recordedBy;
     private Instant recordedAt;
 
-    public DepositUnmatch(BankDeposit deposit, String reason, String user) {
+    public DepositUnmatch(BankDeposit deposit, ContractLedgerEntry receipt, String reason, String user) {
         this.deposit = deposit;
-        this.receipt = deposit.getReceipt();
+        this.receipt = receipt;
         this.reason = reason;
         recordedBy = user;
         recordedAt = Instant.now();

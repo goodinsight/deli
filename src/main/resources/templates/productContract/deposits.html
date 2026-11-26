@@ -8,21 +8,24 @@
         <label>CSV 파일 (최대 1MB) <input type="file" name="file" accept=".csv" required></label><button>가져오기</button>
     </form>
     <p role="status" th:if="${message}" th:text="${message}"></p>
-    <table class="table"><thead><tr><th>거래번호</th><th>입금일</th><th>입금자</th><th>금액</th><th>연결할 청구</th></tr></thead>
+    <table class="table"><thead><tr><th>거래번호</th><th>입금일</th><th>입금자</th><th>금액</th><th>배분액 / 미배분액</th><th>연결할 청구</th></tr></thead>
         <tbody><tr th:each="d : ${deposits}"><td th:text="${d.reference}"></td><td th:text="${d.depositDate}"></td><td th:text="${d.payer}"></td><td th:text="${d.amount}"></td>
-            <td><a th:if="${d.contractNo != null}" th:href="@{/productContract/{id}/billing(id=${d.contractNo})}" th:text="|연결한 계약 #${d.contractNo}|"></a>
-                <form th:if="${d.contractNo != null}" method="post" th:action="@{/productContract/receivables/deposits/unmatch}">
+            <td th:text="|${d.allocatedAmount}원 / ${d.remainingAmount}원|"></td>
+            <td><div th:each="r : ${d.activeReceipts}"><a th:href="@{/productContract/{id}/billing(id=${r.contract.productContractNo})}" th:text="|연결한 계약 #${r.contract.productContractNo} · ${r.amount}원|"></a>
+                <form method="post" th:action="@{/productContract/receivables/deposits/unmatch}">
                     <input type="hidden" name="reference" th:value="${d.reference}">
-                    <input type="hidden" name="receiptId" th:value="${d.receipt.id}">
+                    <input type="hidden" name="receiptId" th:value="${r.id}">
                     <label>연결 해제 사유 <input name="reason" required maxlength="250"></label>
                     <button>수금 연결 해제</button>
                 </form>
-                <form th:if="${d.contractNo == null}" method="post" th:action="@{/productContract/receivables/deposits/match}">
+                </div>
+                <form th:if="${d.remainingAmount.signum() > 0}" method="post" th:action="@{/productContract/receivables/deposits/match}">
                     <input type="hidden" name="reference" th:value="${d.reference}">
                     <input type="hidden" name="matchKey" th:value="${d.receiptKey}">
+                    <label>배분액(원) <input type="number" name="amount" min="0.01" step="0.01" th:max="${d.remainingAmount}" th:value="${d.remainingAmount}" required></label>
                     <select name="contractNo" required><option value="">미연결 · 청구 선택</option>
                         <optgroup th:each="c : ${customers}" th:label="${c.name}">
-                            <option th:each="i : ${c.invoices}" th:if="${i.balance >= d.amount}" th:value="${i.contract.productContractNo}" th:text="|#${i.contract.productContractNo} ${i.contract.productContractCode} · 잔액 ${i.balance}원|"></option>
+                            <option th:each="i : ${c.invoices}" th:if="${d.canAllocateTo(i.contract)}" th:value="${i.contract.productContractNo}" th:text="|#${i.contract.productContractNo} ${i.contract.productContractCode} · 잔액 ${i.balance}원|"></option>
                         </optgroup>
                     </select><button>수금 연결</button>
                 </form>

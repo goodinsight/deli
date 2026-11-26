@@ -6,7 +6,7 @@ import javax.persistence.LockModeType;
 import java.util.Optional;
 
 public interface BankDepositRepository extends JpaRepository<BankDeposit, String> {
-    @Query("select d from BankDeposit d join fetch d.receipt r where r.contract.productContractNo = :id")
+    @Query("select distinct d from BankDeposit d left join d.receipt legacy left join d.allocations a where legacy.contract.productContractNo = :id or a.contract.productContractNo = :id")
     java.util.List<BankDeposit> findByContract(int id);
 
     @Lock(LockModeType.PESSIMISTIC_WRITE)

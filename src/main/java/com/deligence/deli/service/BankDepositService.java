@@ -68,17 +68,35 @@ public class BankDepositService {
         return added;
     }
 
-    public void match(String reference, int contractNo, String matchKey, String username) {
+    public void match(String reference, int contractNo, BigDecimal requestedAmount, String matchKey, String username) {
         var deposit = deposits.lockDeposit(reference).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-        if (matchKey == null ? corrections.existsByDeposit_Reference(reference) : !deposit.getReceiptKey().equals(matchKey)) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "입금 연결 상태가 변경되었습니다. 목록을 갱신하세요.");
+        // Older clients submit a whole-deposit match without an amount.
+        BigDecimal amount = requestedAmount == null ? deposit.getAmount() : requestedAmount;
+        var active = deposit.getActiveReceipts();
+        if (matchKey == null && (requestedAmount != null || corrections.existsByDeposit_Reference(reference))) {
+            throw staleMatch();
         }
-        if (deposit.getContractNo() != null) {
-            if (deposit.getContractNo() != contractNo) throw new ResponseStatusException(HttpStatus.CONFLICT, "이미 다른 계약에 연결했습니다.");
-            return;
+        for (var prior : active) {
+            if (matchKey == null || prior.getEntryKey().equals(matchKey)) {
+                if (prior.getContract().getProductContractNo() == contractNo && prior.getAmount().compareTo(amount) == 0) return;
+                throw staleMatch();
+            }
         }
-        var receipt = billing.receive(contractNo, UUID.fromString(deposit.getReceiptKey()), deposit.getAmount(), username);
+        if (matchKey != null && !deposit.getReceiptKey().equals(matchKey)) throw staleMatch();
+        if (amount.signum() <= 0 || amount.compareTo(deposit.getRemainingAmount()) > 0) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "미배분 잔액 이내의 금액을 입력하세요.");
+        }
+        var contract = em.find(com.deligence.deli.domain.ProductContract.class, contractNo);
+        if (contract == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        if (!deposit.canAllocateTo(contract)) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "같은 고객사의 계약에 배분하세요.");
+        }
+        var receipt = billing.receive(contractNo, UUID.fromString(deposit.getReceiptKey()), amount, username);
         deposit.match(receipt);
+    }
+
+    private ResponseStatusException staleMatch() {
+        return new ResponseStatusException(HttpStatus.CONFLICT, "입금 연결 상태가 변경되었습니다. 목록을 갱신하세요.");
     }
 
     public void unmatch(String reference, long receiptId, String reason, String user) {
@@ -86,12 +104,11 @@ public class BankDepositService {
         if (explanation.isEmpty() || explanation.length() > 250) throw invalid("연결 해제 사유를 1~250자로 입력하세요.");
         var deposit = deposits.lockDeposit(reference).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         if (corrections.existsByDeposit_ReferenceAndReceipt_Id(reference, receiptId)) return;
-        if (deposit.getReceipt() == null || deposit.getReceipt().getId() != receiptId) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "현재 연결된 수금을 확인하세요.");
-        }
-        billing.reverseReceipt(deposit.getContractNo(), receiptId, explanation, user);
-        corrections.save(new DepositUnmatch(deposit, explanation, user));
-        deposit.unmatch();
+        var receipt = deposit.getActiveReceipts().stream().filter(r -> r.getId() == receiptId).findFirst()
+                .orElseThrow(this::staleMatch);
+        billing.reverseReceipt(receipt.getContract().getProductContractNo(), receiptId, explanation, user);
+        corrections.save(new DepositUnmatch(deposit, receipt, explanation, user));
+        deposit.unmatch(receipt);
     }
 
     private ResponseStatusException invalid(String message) {

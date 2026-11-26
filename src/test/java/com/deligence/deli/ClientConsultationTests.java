@@ -468,6 +468,82 @@ class ClientConsultationTests {
         assertThat(importedDeposits.findById(d.getReference()).orElseThrow().getContractNo()).isEqualTo(b);
     }
 
+    @Autowired javax.persistence.EntityManager entityManager;
+
+    @Test
+    void legacyWholeDepositIsStillVisibleAndCanBeReleased() throws Exception {
+        var staff = session("ADMIN");
+        int id = contracts.save(com.deligence.deli.domain.ProductContract.builder().build()).getProductContractNo();
+        String billing = "/productContract/" + id + "/billing";
+        String url = "/productContract/receivables/deposits";
+        var deposit = importedDeposits.save(new com.deligence.deli.domain.BankDeposit("LEGACY", LocalDate.now(),
+                new BigDecimal("100.00"), "legacy payer"));
+        mvc.perform(post(billing + "/invoice").session(staff).param("amount","100.00")).andExpect(redirectedUrl(billing));
+        mvc.perform(post(billing + "/receipts").session(staff).param("requestId", deposit.getReceiptKey())
+                .param("amount","100.00")).andExpect(redirectedUrl(billing));
+        long receipt = ledger.findByContract_ProductContractNoOrderByIdAsc(id).get(1).getId();
+        entityManager.createNativeQuery("update bank_deposit set receipt_id = :receipt where reference = 'LEGACY'")
+                .setParameter("receipt", receipt).executeUpdate();
+        entityManager.clear();
+        mvc.perform(get(billing).session(staff)).andExpect(content().string(containsString("입금 거래번호 LEGACY")));
+        assertThat(importedDeposits.findById("LEGACY").orElseThrow().getRemainingAmount()).isEqualByComparingTo("0");
+        mvc.perform(post(url + "/unmatch").session(staff).param("reference","LEGACY")
+                .param("receiptId",String.valueOf(receipt)).param("reason","정정")).andExpect(redirectedUrl(url));
+        assertThat(importedDeposits.findById("LEGACY").orElseThrow().getRemainingAmount()).isEqualByComparingTo("100.00");
+    }
+
+    @Test
+    void splitDepositReconcilesAfterRetryAndIndividualCorrection() throws Exception {
+        var customer = clients.save(CooperatorClient.builder().clientName("배분 고객").build());
+        var other = clients.save(CooperatorClient.builder().clientName("다른 고객").build());
+        var a = contracts.save(com.deligence.deli.domain.ProductContract.builder().cooperatorClient(customer).build());
+        var b = contracts.save(com.deligence.deli.domain.ProductContract.builder().cooperatorClient(customer).build());
+        var c = contracts.save(com.deligence.deli.domain.ProductContract.builder().cooperatorClient(other).build());
+        var staff = session("CLIENT");
+        for (var contract : java.util.List.of(a,b,c)) {
+            String url = "/productContract/" + contract.getProductContractNo() + "/billing";
+            mvc.perform(post(url + "/invoice").session(staff).param("amount","1000000.00")).andExpect(redirectedUrl(url));
+        }
+        String ref = "SPLIT-1";
+        String url = "/productContract/receivables/deposits";
+        var deposit = importedDeposits.save(new com.deligence.deli.domain.BankDeposit(ref, LocalDate.now(),
+                new BigDecimal("1000000.00"), "payer"));
+        String firstKey = deposit.getReceiptKey();
+        for (int retry = 0; retry < 2; retry++) {
+            mvc.perform(post(url + "/match").session(staff).param("reference",ref).param("matchKey",firstKey)
+                    .param("amount","700000").param("contractNo",String.valueOf(a.getProductContractNo())))
+                    .andExpect(redirectedUrl(url));
+        }
+        entityManager.flush();
+        entityManager.clear();
+        deposit = importedDeposits.findById(ref).orElseThrow();
+        assertThat(deposit.getRemainingAmount()).isEqualByComparingTo("300000");
+        String nextKey = deposit.getReceiptKey();
+        mvc.perform(post(url + "/match").session(staff).param("reference",ref).param("matchKey",nextKey)
+                .param("amount","300001").param("contractNo",String.valueOf(b.getProductContractNo()))).andExpect(status().isConflict());
+        mvc.perform(post(url + "/match").session(staff).param("reference",ref).param("matchKey",nextKey)
+                .param("amount","300000").param("contractNo",String.valueOf(c.getProductContractNo()))).andExpect(status().isConflict());
+        mvc.perform(post(url + "/match").session(staff).param("reference",ref).param("matchKey",nextKey)
+                .param("amount","300000").param("contractNo",String.valueOf(b.getProductContractNo()))).andExpect(redirectedUrl(url));
+        assertThat(deposit.getRemainingAmount()).isEqualByComparingTo("0");
+        var receiptA = ledger.findByContract_ProductContractNoOrderByIdAsc(a.getProductContractNo()).get(1);
+        for (int retry = 0; retry < 2; retry++) {
+            mvc.perform(post(url + "/unmatch").session(staff).param("reference",ref).param("reason","배분 정정")
+                    .param("receiptId",receiptA.getId().toString())).andExpect(redirectedUrl(url));
+        }
+        entityManager.flush();
+        entityManager.clear();
+        deposit = importedDeposits.findById(ref).orElseThrow();
+        assertThat(deposit.getRemainingAmount()).isEqualByComparingTo("700000");
+        assertThat(deposit.getAllocatedAmount().add(deposit.getRemainingAmount())).isEqualByComparingTo(deposit.getAmount());
+        mvc.perform(get(url).session(staff)).andExpect(content().string(containsString("300000.00원 / 700000.00원")));
+        mvc.perform(get("/productContract/" + b.getProductContractNo() + "/billing").session(staff))
+                .andExpect(content().string(containsString("미수잔액 700000.00원")))
+                .andExpect(content().string(containsString("입금 거래번호 SPLIT-1")));
+        mvc.perform(get("/productContract/receivables").session(staff))
+                .andExpect(content().string(containsString("배분 고객 · 총 미수 1700000.00원")));
+    }
+
     @Test
     void materialRoleCannotReadOrRegisterConsultations() throws Exception {
         mvc.perform(get("/CooperatorClient/read").session(session("MATERIAL"))).andExpect(forwardedUrl("/error/deniedpage"));

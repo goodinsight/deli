@@ -54,8 +54,9 @@ public class ReceivablesController {
     }
 
     @PostMapping("/deposits/match")
-    public String match(@RequestParam String reference, @RequestParam int contractNo, @RequestParam(required = false) String matchKey, Principal principal) {
-        service.match(reference, contractNo, matchKey, principal.getName());
+    public String match(@RequestParam String reference, @RequestParam int contractNo, @RequestParam(required = false) String matchKey,
+                        @RequestParam(required = false) java.math.BigDecimal amount, Principal principal) {
+        service.match(reference, contractNo, amount, matchKey, principal.getName());
         return "redirect:/productContract/receivables/deposits";
     }
 }

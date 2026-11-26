@@ -35,8 +35,12 @@ public class ContractBillingController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
         var entries = ledger.findByContract_ProductContractNoOrderByIdAsc(id);
         model.addAttribute("entries", entries);
-        var bankReferences = deposits.findByContract(id).stream().collect(
-                java.util.stream.Collectors.toMap(d -> d.getReceipt().getId(), d -> d.getReference()));
+        var bankReferences = new java.util.HashMap<Long, String>();
+        for (var deposit : deposits.findByContract(id)) {
+            for (var receipt : deposit.getActiveReceipts()) {
+                if (receipt.getContract().getProductContractNo() == id) bankReferences.put(receipt.getId(), deposit.getReference());
+            }
+        }
         for (var correction : corrections.findByReceipt_Contract_ProductContractNo(id)) {
             bankReferences.put(correction.getReceipt().getId(), correction.getDeposit().getReference());
         }
