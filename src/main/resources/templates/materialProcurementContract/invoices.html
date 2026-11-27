@@ -19,11 +19,16 @@
         <tbody><tr th:each="i : ${invoices}" th:id="|invoice-${i.id}|"><td th:text="${i.number}"></td><td th:text="${i.invoiceDate}"></td>
             <td th:text="${i.dueDate}"></td><td th:text="${i.amount}"></td><td th:text="${i.confirmedBy}"></td><td th:text="${i.confirmedAt}"></td>
             <td>
-                <p th:text="|지급액 ${i.paidAmount}원 · 미지급액 ${i.outstandingAmount}원|"></p>
+                <p th:text="|원청구액 ${i.amount}원 · 실지급액 ${i.paidAmount}원 · 미지급액 ${i.outstandingAmount}원|"></p>
                 <p th:if="${i.cancelledAt != null}" th:text="|청구 취소 · ${i.cancellationReason} · ${i.cancelledBy} · ${i.cancelledAt}|"></p>
                 <form th:if="${i.cancelledAt == null and i.payments.empty}" method="post"
                       th:action="@{/materialProcurementContract/{c}/invoices/{i}/cancel(c=${contract.materialProcurementContractNo},i=${i.id})}">
                     <label>청구 취소 사유 <input name="reason" maxlength="250" required></label><button>청구 취소</button>
+                </form>
+                <form th:if="${i.cancelledAt == null and !i.payments.empty and i.paidAmount.signum() == 0}" method="post"
+                      th:action="@{/materialProcurementContract/{c}/invoices/{i}/reconcile-cancel(c=${contract.materialProcurementContractNo},i=${i.id})}">
+                    <label><input type="checkbox" name="reconciled" value="true" required>실제 지급 및 환급·정산 내역을 대조했습니다.</label>
+                    <label>청구 취소 사유 <input name="reason" maxlength="250" required></label><button>대조 후 청구 취소</button>
                 </form>
                 <form th:if="${i.outstandingAmount.signum() > 0}" method="post" th:action="@{/materialProcurementContract/{c}/invoices/{i}/payments(c=${contract.materialProcurementContractNo},i=${i.id})}">
                     <input type="hidden" name="requestId" th:value="${requestId}">
@@ -33,7 +38,13 @@
                 <div th:each="p : ${i.payments}">
                     <p th:text="|지급 #${p.id} · ${p.amount}원 · ${p.recordedBy} · ${p.recordedAt}|"></p>
                     <p th:if="${p.cancelledAt != null}" th:text="|취소 · ${p.cancellationReason} · ${p.cancelledBy} · ${p.cancelledAt}|"></p>
-                    <form th:unless="${p.cancelledAt != null}" method="post" th:action="@{/materialProcurementContract/{c}/invoices/{i}/payments/{p}/cancel(c=${contract.materialProcurementContractNo},i=${i.id},p=${p.id})}">
+                    <p th:if="${p.settledAt != null}" th:text="|${p.settlementType.name() == 'REFUND' ? '공급사 환급' : '대체 정산'} · ${p.settlementEvidence} · ${p.settledBy} · ${p.settledAt}|"></p>
+                    <form th:if="${p.effective}" method="post"
+                          th:action="@{/materialProcurementContract/{c}/invoices/{i}/payments/{p}/settle(c=${contract.materialProcurementContractNo},i=${i.id},p=${p.id})}">
+                        <label>처리 유형 <select name="type" required><option value="">선택</option><option value="REFUND">공급사 환급</option><option value="OFFSET">대체 정산</option></select></label>
+                        <label>전액 처리 근거 <input name="evidence" maxlength="250" required></label><button>환급·정산 확인 기록</button>
+                    </form>
+                    <form th:if="${p.effective}" method="post" th:action="@{/materialProcurementContract/{c}/invoices/{i}/payments/{p}/cancel(c=${contract.materialProcurementContractNo},i=${i.id},p=${p.id})}">
                         <label>취소 사유 <input name="reason" maxlength="250" required></label><button>지급 기록 취소</button>
                     </form>
                 </div>

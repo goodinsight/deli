@@ -38,7 +38,7 @@ public class SupplierInvoice {
     private java.util.List<SupplierPayment> payments = new java.util.ArrayList<>();
 
     public BigDecimal getPaidAmount() {
-        return payments.stream().filter(payment -> payment.getCancelledAt() == null)
+        return payments.stream().filter(SupplierPayment::isEffective)
                 .map(SupplierPayment::getAmount).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
@@ -50,6 +50,18 @@ public class SupplierInvoice {
     public void cancel(String reason, String user) {
         if (cancelledAt != null) return;
         if (!payments.isEmpty()) throw new IllegalStateException("지급 이력이 있는 청구는 취소할 수 없습니다.");
+        recordCancellation(reason, user);
+    }
+
+    public void cancelAfterReconciliation(String reason, String user) {
+        if (cancelledAt != null) return;
+        if (payments.isEmpty() || getPaidAmount().signum() != 0) {
+            throw new IllegalStateException("모든 지급 기록의 환급·정산 또는 입력 정정을 먼저 확인하세요.");
+        }
+        recordCancellation(reason, user);
+    }
+
+    private void recordCancellation(String reason, String user) {
         cancellationReason = reason;
         cancelledBy = user;
         cancelledAt = Instant.now();

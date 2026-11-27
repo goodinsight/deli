@@ -39,7 +39,35 @@ public class SupplierPayment {
         recordedAt = Instant.now();
     }
 
+    public enum SettlementType { REFUND, OFFSET }
+
+    @Enumerated(EnumType.STRING)
+    private SettlementType settlementType;
+    @Column(length = 250)
+    private String settlementEvidence;
+    private Instant settledAt;
+    private String settledBy;
+
+    public boolean isEffective() {
+        return cancelledAt == null && settledAt == null;
+    }
+
+    public void settle(SettlementType type, String evidence, String user) {
+        if (cancelledAt != null) throw new IllegalStateException("입력 취소된 지급입니다.");
+        if (settledAt != null) {
+            if (settlementType != type || !settlementEvidence.equals(evidence)) {
+                throw new IllegalStateException("이미 다른 근거로 정산된 지급입니다.");
+            }
+            return;
+        }
+        settlementType = type;
+        settlementEvidence = evidence;
+        settledBy = user;
+        settledAt = Instant.now();
+    }
+
     public void cancel(String reason, String user) {
+        if (settledAt != null) throw new IllegalStateException("환급·정산된 지급입니다.");
         if (cancelledAt != null) return;
         cancellationReason = reason;
         cancelledBy = user;

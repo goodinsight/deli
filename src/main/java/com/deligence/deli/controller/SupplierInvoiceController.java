@@ -1,6 +1,7 @@
 package com.deligence.deli.controller;
 
 import com.deligence.deli.domain.SupplierInvoice;
+import com.deligence.deli.domain.SupplierPayment;
 import com.deligence.deli.repository.MaterialProcurementContractRepository;
 import com.deligence.deli.repository.SupplierInvoiceRepository;
 import com.deligence.deli.service.SupplierInvoiceService;
@@ -36,6 +37,20 @@ public class SupplierInvoiceController {
     @PostMapping("/{invoiceId}/cancel")
     public String cancelInvoice(@PathVariable int id, @PathVariable long invoiceId, @RequestParam String reason, Principal principal) {
         service.cancelInvoice(id, invoiceId, reason, principal.getName());
+        return "redirect:/materialProcurementContract/" + id + "/invoices";
+    }
+
+    @PostMapping("/{invoiceId}/reconcile-cancel")
+    public String reconcile(@PathVariable int id, @PathVariable long invoiceId, @RequestParam String reason,
+                            @RequestParam(defaultValue = "false") boolean reconciled, Principal principal) {
+        service.reconcileAndCancel(id, invoiceId, reason, reconciled, principal.getName());
+        return "redirect:/materialProcurementContract/" + id + "/invoices";
+    }
+
+    @PostMapping("/{invoiceId}/payments/{paymentId}/settle")
+    public String settle(@PathVariable int id, @PathVariable long invoiceId, @PathVariable long paymentId,
+                         @RequestParam SupplierPayment.SettlementType type, @RequestParam String evidence, Principal principal) {
+        service.settlePayment(id, invoiceId, paymentId, type, evidence, principal.getName());
         return "redirect:/materialProcurementContract/" + id + "/invoices";
     }
 

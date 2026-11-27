@@ -2,6 +2,7 @@ package com.deligence.deli.service;
 
 import com.deligence.deli.domain.MaterialProcurementContract;
 import com.deligence.deli.domain.SupplierInvoice;
+import com.deligence.deli.domain.SupplierPayment;
 import com.deligence.deli.repository.SupplierInvoiceRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -51,6 +52,22 @@ public class SupplierInvoiceService {
     public void cancelInvoice(int contractNo, long invoiceId, String reason, String user) {
         var invoice = lockInvoice(contractNo, invoiceId);
         invoice.cancel(cancellationReason(reason), user);
+    }
+
+    @Transactional
+    public void reconcileAndCancel(int contractNo, long invoiceId, String reason, boolean reconciled, String user) {
+        if (!reconciled) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "실제 지급 내역을 대조하세요.");
+        lockInvoice(contractNo, invoiceId).cancelAfterReconciliation(cancellationReason(reason), user);
+    }
+
+    @Transactional
+    public void settlePayment(int contractNo, long invoiceId, long paymentId, SupplierPayment.SettlementType type,
+                              String evidence, String user) {
+        var payment = lockInvoice(contractNo, invoiceId).getPayments().stream().filter(p -> p.getId() == paymentId)
+                .findFirst().orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        String note = evidence.strip();
+        if (note.isEmpty() || note.length() > 250) throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "환급·정산 근거를 1~250자로 입력하세요.");
+        payment.settle(type, note, user);
     }
 
     private String cancellationReason(String reason) {

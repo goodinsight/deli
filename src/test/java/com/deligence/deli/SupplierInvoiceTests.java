@@ -177,6 +177,42 @@ class SupplierInvoiceTests {
     }
 
     @Test
+    void cancellingPaidInvoiceRequiresSettlementEvidenceAndReconciliation() throws Exception {
+        int id = contract(suppliers.save(CooperatorSupplier.builder().supplierName("환급 검증").build()));
+        var buyer = session("PROCUREMENT");
+        mvc.perform(confirm(id, "REFUND-1", "1100000")).andExpect(redirectedUrl(url(id)));
+        long invoiceId = invoices.findByContract_MaterialProcurementContractNoOrderByDueDateAscIdAsc(id).get(0).getId();
+        String invoice = url(id) + "/" + invoiceId;
+        for (String amount : java.util.List.of("300000", "100000")) {
+            mvc.perform(post(invoice + "/payments").session(buyer).param("requestId",java.util.UUID.randomUUID().toString())
+                    .param("amount",amount)).andExpect(redirectedUrl(url(id)));
+        }
+        mvc.perform(get(url(id)).session(buyer)).andExpect(content().string(containsString("실지급액 400000.00원 · 미지급액 700000.00원")));
+        var payments = invoices.findByContract_MaterialProcurementContractNoOrderByDueDateAscIdAsc(id).get(0).getPayments();
+        String first = invoice + "/payments/" + payments.get(0).getId();
+        String second = invoice + "/payments/" + payments.get(1).getId();
+        mvc.perform(post(first + "/settle").session(buyer).param("type","REFUND").param("evidence"," ")).andExpect(status().isBadRequest());
+        for (int i = 0; i < 2; i++) {
+            mvc.perform(post(first + "/settle").session(buyer).param("type","REFUND").param("evidence","은행 거래 R-17"))
+                    .andExpect(redirectedUrl(url(id)));
+        }
+        mvc.perform(post(first + "/cancel").session(buyer).param("reason","입력 오류")).andExpect(status().isConflict());
+        mvc.perform(post(invoice + "/reconcile-cancel").session(buyer).param("reason","철회").param("reconciled","true"))
+                .andExpect(status().isConflict());
+        mvc.perform(post(second + "/settle").session(buyer).param("type","OFFSET").param("evidence","상계 합의 S-42"))
+                .andExpect(redirectedUrl(url(id)));
+        mvc.perform(post(invoice + "/reconcile-cancel").session(buyer).param("reason","철회")).andExpect(status().isBadRequest());
+        for (int i = 0; i < 2; i++) {
+            mvc.perform(post(invoice + "/reconcile-cancel").session(buyer).param("reason","철회").param("reconciled","true"))
+                    .andExpect(redirectedUrl(url(id)));
+        }
+        mvc.perform(get(url(id)).session(buyer)).andExpect(content().string(containsString("계약 미지급액 0원")))
+                .andExpect(content().string(containsString("공급사 환급 · 은행 거래 R-17 · buyer")))
+                .andExpect(content().string(containsString("대체 정산 · 상계 합의 S-42 · buyer")))
+                .andExpect(content().string(containsString("청구 취소 · 철회")));
+    }
+
+    @Test
     void concurrentPaymentsCannotExceedTheInvoice() throws Exception {
         int id = contract(suppliers.save(CooperatorSupplier.builder().supplierName("병렬 지급").build()));
         mvc.perform(confirm(id, "P-2", "100")).andExpect(redirectedUrl(url(id)));
