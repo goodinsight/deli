@@ -13,6 +13,10 @@ public interface SupplierInvoiceRepository extends JpaRepository<SupplierInvoice
             "join fetch i.contract left join fetch i.payments order by s.supplierName, s.supplierNo, i.dueDate, i.id")
     List<SupplierInvoice> forPayablesReport();
 
+    @org.springframework.data.jpa.repository.Query("select distinct i from SupplierInvoice i left join fetch i.payments " +
+            "where i.contract.materialProcurementContractNo = :contractNo and i.cancelledAt is null order by i.dueDate, i.id")
+    List<SupplierInvoice> openForContract(int contractNo);
+
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     Optional<SupplierInvoice> findBySupplierAndNumber(CooperatorSupplier supplier, String number);
     @org.springframework.data.jpa.repository.Query("select distinct i from SupplierInvoice i left join fetch i.payments " +

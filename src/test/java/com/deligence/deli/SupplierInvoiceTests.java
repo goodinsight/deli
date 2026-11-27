@@ -5,6 +5,9 @@ import com.deligence.deli.domain.MaterialProcurementContract;
 import com.deligence.deli.repository.CooperatorSupplierRepository;
 import com.deligence.deli.repository.MaterialProcurementContractRepository;
 import com.deligence.deli.repository.SupplierInvoiceRepository;
+import com.deligence.deli.service.BusinessRecordService;
+import com.deligence.deli.repository.MaterialProcurementPlanningRepository;
+import com.deligence.deli.domain.MaterialProcurementPlanning;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -33,6 +36,26 @@ class SupplierInvoiceTests {
     @Autowired CooperatorSupplierRepository suppliers;
     @Autowired MaterialProcurementContractRepository contracts;
     @Autowired SupplierInvoiceRepository invoices;
+
+    @Autowired BusinessRecordService records;
+    @Autowired MaterialProcurementPlanningRepository plans;
+
+    @Test
+    void terminationRequiresCancellationOfEveryInvoice() throws Exception {
+        var plan = plans.save(MaterialProcurementPlanning.builder().build());
+        var supplier = suppliers.save(CooperatorSupplier.builder().supplierName("계약 파기 테스트").build());
+        int id = contracts.save(MaterialProcurementContract.builder().cooperatorSupplier(supplier)
+                .materialProcurementPlanning(plan).materialProcurementContractState("발주진행중").build())
+                .getMaterialProcurementContractNo();
+        mvc.perform(confirm(id, "END-1", "100")).andExpect(redirectedUrl(url(id)));
+        org.assertj.core.api.Assertions.assertThatThrownBy(() -> records.cancel(MaterialProcurementContract.class, id))
+                .isInstanceOf(IllegalStateException.class).hasMessageContaining("매입 청구");
+        long invoice = invoices.findByContract_MaterialProcurementContractNoOrderByDueDateAscIdAsc(id).get(0).getId();
+        mvc.perform(post(url(id) + "/" + invoice + "/cancel").session(session("PROCUREMENT")).param("reason", "계약 종료"))
+                .andExpect(redirectedUrl(url(id)));
+        records.cancel(MaterialProcurementContract.class, id);
+        assertThat(contracts.findById(id).orElseThrow().getMaterialProcurementContractState()).isEqualTo("계약파기");
+    }
 
     private int contract(CooperatorSupplier supplier) {
         return contracts.save(MaterialProcurementContract.builder().cooperatorSupplier(supplier)

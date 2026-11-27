@@ -62,6 +62,14 @@ public class BusinessRecordService {
                 throw new IllegalStateException("청구·수금 내역에서 환불·정산 및 청구 취소를 먼저 확인하세요.");
             }
         }
+        if (type == MaterialProcurementContract.class && "계약파기".equals(next)) {
+            var openInvoices = em.createQuery("select i from SupplierInvoice i where " +
+                    "i.contract.materialProcurementContractNo = :id and i.cancelledAt is null", SupplierInvoice.class)
+                    .setParameter("id", id).setMaxResults(1).setLockMode(LockModeType.PESSIMISTIC_WRITE)
+                    .getResultList();
+            if (!openInvoices.isEmpty())
+                throw new IllegalStateException("매입 청구 내역에서 지급액을 대조하고 모든 청구를 취소하세요.");
+        }
         if (Set.of("계약파기", "계획중단").contains(next) && children(type, id, true) > 0)
             throw new IllegalStateException("진행 중인 하위 업무를 먼저 취소하세요.");
         if (entity instanceof ProductContract) ((ProductContract) entity).changeState(next);

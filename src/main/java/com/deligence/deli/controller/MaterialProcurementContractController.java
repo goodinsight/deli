@@ -1,6 +1,7 @@
 package com.deligence.deli.controller;
 
 import com.deligence.deli.dto.*;
+import com.deligence.deli.repository.SupplierInvoiceRepository;
 import com.deligence.deli.service.CooperatorSupplierService;
 import com.deligence.deli.service.SupplierPayablesReport;
 import java.time.LocalDate;
@@ -35,6 +36,7 @@ public class MaterialProcurementContractController {
     //자재협력회사정보(협력회사일련번호->협력회사명,대표명, 연락처) 조회 구현
     private final CooperatorSupplierService cooperatorSupplierService;
 
+    private final SupplierInvoiceRepository invoices;
     private final SupplierPayablesReport payablesReport;
 
     @GetMapping("/payables")
@@ -117,6 +119,7 @@ public class MaterialProcurementContractController {
 
         log.info(materialProcurementContractDetailDTO);
 
+        model.addAttribute("openInvoices", invoices.openForContract(materialProcurementContractNo));
         model.addAttribute("dto", materialProcurementContractDetailDTO);
 
         model.addAttribute("pageRequestDTO", orderPageRequestDTO);
