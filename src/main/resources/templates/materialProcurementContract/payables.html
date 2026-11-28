@@ -6,6 +6,9 @@
     <p th:if="${groups.empty}">미지급 청구가 없습니다.</p>
     <details th:each="g : ${groups}">
         <summary th:text="|${g.supplier.supplierName} (#${g.supplier.supplierNo}) · 총 미지급 ${g.total}원 · 연체 ${g.overdue}원|"></summary>
+        <ul th:unless="${g.aging.empty}" aria-label="연체 기간별 미지급액">
+            <li th:each="bucket : ${g.aging}" th:text="|${bucket.key.label} 연체 · ${bucket.value}원|"></li>
+        </ul>
         <table class="table">
             <thead><tr><th>청구번호</th><th>조달계약</th><th>지급 예정일</th><th>상태</th><th>미지급액</th></tr></thead>
             <tbody><tr th:each="i : ${g.openInvoices}">

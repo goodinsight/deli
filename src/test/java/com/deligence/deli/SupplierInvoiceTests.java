@@ -168,6 +168,24 @@ class SupplierInvoiceTests {
     }
 
     @Test
+    void reportShowsAgingAtDueDateBoundaries() throws Exception {
+        int id = contract(suppliers.save(CooperatorSupplier.builder().supplierName("연체 구간 검증").build()));
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Asia/Seoul"));
+        var buyer = session("PROCUREMENT");
+        for (int days : new int[]{0, 1, 30, 31, 60, 61, 90, 91}) {
+            String dueDate = today.minusDays(days).toString();
+            mvc.perform(post(url(id)).session(buyer).param("number", "AGING-" + days)
+                    .param("amount", Integer.toString(days + 1)).param("invoiceDate", dueDate).param("dueDate", dueDate))
+                    .andExpect(redirectedUrl(url(id)));
+        }
+        mvc.perform(get("/materialProcurementContract/payables").session(buyer)).andExpect(status().isOk())
+                .andExpect(content().string(containsString("1~30일 연체 · 33.00원")))
+                .andExpect(content().string(containsString("31~60일 연체 · 93.00원")))
+                .andExpect(content().string(containsString("61~90일 연체 · 153.00원")))
+                .andExpect(content().string(containsString("91일 이상 연체 · 92.00원")));
+    }
+
+    @Test
     void cancellingUnpaidInvoicePreservesHistoryAndRemovesOnlyItsBalance() throws Exception {
         int id = contract(suppliers.save(CooperatorSupplier.builder().supplierName("취소 검증").build()));
         var buyer = session("PROCUREMENT");
