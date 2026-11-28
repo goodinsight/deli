@@ -192,8 +192,33 @@ class SupplierInvoiceTests {
         assertThat(day).contains("WINDOW-0").doesNotContain("WINDOW-1", "WINDOW-7", "WINDOW-8");
         String week = mvc.perform(get(report).param("window", "NEXT_SEVEN").session(buyer)).andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString(java.nio.charset.StandardCharsets.UTF_8);
-        assertThat(week).containsSubsequence("WINDOW-1", "75.00원", "WINDOW-7")
+        assertThat(week).contains("2건 · 175.00원").containsSubsequence("WINDOW-1", "75.00원", "WINDOW-7")
                 .doesNotContain("WINDOW-0", "WINDOW-2", "WINDOW-3", "WINDOW-8");
+    }
+
+    @Autowired com.deligence.deli.service.SupplierPayablesReport payables;
+
+    @Test
+    void upcomingTotalsMatchInvoiceBalancesAcrossSuppliers() throws Exception {
+        var date = java.time.LocalDate.of(2099, 5, 1);
+        var buyer = session("PROCUREMENT");
+        var empty = payables.upcoming(date, date);
+        assertThat(empty.getInvoices()).isEmpty();
+        assertThat(empty.getTotal()).isEqualByComparingTo("0");
+        for (int supplierNo = 1; supplierNo <= 2; supplierNo++) {
+            int id = contract(suppliers.save(CooperatorSupplier.builder().supplierName("합계 공급사").build()));
+            for (int n = 1; n <= supplierNo; n++) {
+                mvc.perform(post(url(id)).session(buyer).param("number", "SUM-" + n).param("amount", "10.25")
+                        .param("invoiceDate", date.toString()).param("dueDate", date.toString()))
+                        .andExpect(redirectedUrl(url(id)));
+            }
+        }
+        var result = payables.upcoming(date, date);
+        assertThat(result.getInvoices()).hasSize(3);
+        assertThat(result.getSuppliers()).hasSize(2);
+        assertThat(result.getSuppliers()).extracting(g -> g.getOpenInvoices().size()).containsExactly(1, 2);
+        assertThat(result.getSuppliers()).extracting(g -> g.getTotal().toPlainString()).containsExactly("10.25", "20.50");
+        assertThat(result.getTotal()).isEqualByComparingTo("30.75");
     }
 
     @Test

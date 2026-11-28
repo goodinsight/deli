@@ -13,10 +13,15 @@
     </form>
     <section th:if="${window != 'ALL'}">
         <p th:text="|지급 예정일 ${start} ~ ${end}|"></p>
-        <p th:if="${upcoming.empty}">해당 기간에 지급할 청구가 없습니다.</p>
-        <table class="table" th:unless="${upcoming.empty}">
+        <p th:text="|지급 예정 합계 ${upcoming.invoices.size()}건 · ${upcoming.total}원|"></p>
+        <ul th:unless="${upcoming.invoices.empty}" aria-label="공급사별 지급 예정 소계">
+            <li th:each="g : ${upcoming.suppliers}"
+                th:text="|${g.supplier.supplierName} (#${g.supplier.supplierNo}) · ${g.openInvoices.size()}건 · ${g.total}원|"></li>
+        </ul>
+        <p th:if="${upcoming.invoices.empty}">해당 기간에 지급할 청구가 없습니다.</p>
+        <table class="table" th:unless="${upcoming.invoices.empty}">
             <thead><tr><th>지급 예정일</th><th>공급사</th><th>청구번호</th><th>미지급액</th></tr></thead>
-            <tbody><tr th:each="i : ${upcoming}">
+            <tbody><tr th:each="i : ${upcoming.invoices}">
                 <td th:text="${i.dueDate}"></td><td th:text="${i.supplier.supplierName}"></td>
                 <td><a th:href="|@{/materialProcurementContract/{id}/invoices(id=${i.contract.materialProcurementContractNo})}#invoice-${i.id}|" th:text="${i.number}"></a></td>
                 <td th:text="|${i.outstandingAmount}원|"></td>

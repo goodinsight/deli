@@ -20,11 +20,28 @@ public class SupplierPayablesReport {
 
     public enum DueWindow { ALL, TODAY, NEXT_SEVEN }
 
+    @Getter
+    @RequiredArgsConstructor
+    public static class UpcomingPayments {
+        private final List<SupplierInvoice> invoices;
+        private final Collection<SupplierSummary> suppliers;
+
+        public BigDecimal getTotal() {
+            return suppliers.stream().map(SupplierSummary::getTotal).reduce(BigDecimal.ZERO, BigDecimal::add);
+        }
+    }
+
     @Transactional(readOnly = true)
-    public List<SupplierInvoice> upcoming(LocalDate start, LocalDate end) {
-        return invoices.dueBetween(start, end).stream()
-                .filter(invoice -> invoice.getOutstandingAmount().signum() > 0)
-                .collect(java.util.stream.Collectors.toList());
+    public UpcomingPayments upcoming(LocalDate start, LocalDate end) {
+        List<SupplierInvoice> outstanding = new ArrayList<>();
+        Map<Integer, SupplierSummary> groups = new LinkedHashMap<>();
+        for (SupplierInvoice invoice : invoices.dueBetween(start, end)) {
+            BigDecimal balance = invoice.getOutstandingAmount();
+            if (balance.signum() <= 0) continue;
+            outstanding.add(invoice);
+            addToSupplier(groups, invoice, balance);
+        }
+        return new UpcomingPayments(outstanding, groups.values());
     }
 
     @Getter
@@ -67,13 +84,18 @@ public class SupplierPayablesReport {
         for (SupplierInvoice invoice : invoices.forPayablesReport()) {
             BigDecimal balance = invoice.getOutstandingAmount();
             if (balance.signum() <= 0) continue;
-            var supplier = invoice.getSupplier();
-            var group = groups.computeIfAbsent(supplier.getSupplierNo(), id -> new SupplierSummary(supplier));
-            group.openInvoices.add(invoice);
-            group.total = group.total.add(balance);
+            var group = addToSupplier(groups, invoice, balance);
             long daysOverdue = ChronoUnit.DAYS.between(invoice.getDueDate(), today);
             if (daysOverdue > 0) group.recordOverdue(daysOverdue, balance);
         }
         return groups.values();
+    }
+
+    private SupplierSummary addToSupplier(Map<Integer, SupplierSummary> groups, SupplierInvoice invoice, BigDecimal balance) {
+        var supplier = invoice.getSupplier();
+        var group = groups.computeIfAbsent(supplier.getSupplierNo(), id -> new SupplierSummary(supplier));
+        group.openInvoices.add(invoice);
+        group.total = group.total.add(balance);
+        return group;
     }
 }
