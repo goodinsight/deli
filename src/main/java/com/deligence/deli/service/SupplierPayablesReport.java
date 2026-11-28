@@ -18,6 +18,15 @@ import java.util.*;
 public class SupplierPayablesReport {
     private final SupplierInvoiceRepository invoices;
 
+    public enum DueWindow { ALL, TODAY, NEXT_SEVEN }
+
+    @Transactional(readOnly = true)
+    public List<SupplierInvoice> upcoming(LocalDate start, LocalDate end) {
+        return invoices.dueBetween(start, end).stream()
+                .filter(invoice -> invoice.getOutstandingAmount().signum() > 0)
+                .collect(java.util.stream.Collectors.toList());
+    }
+
     @Getter
     @RequiredArgsConstructor
     public enum OverduePeriod {

@@ -3,7 +3,27 @@
 <div layout:fragment="content">
     <h1>공급사별 미지급·연체 현황</h1>
     <p th:text="|기준일 ${today} (한국 시간)|"></p>
-    <p th:if="${groups.empty}">미지급 청구가 없습니다.</p>
+    <form method="get" th:action="@{/materialProcurementContract/payables}">
+        <label>지급 예정일 <select name="window">
+            <option value="ALL" th:selected="${window == 'ALL'}">전체</option>
+            <option value="TODAY" th:selected="${window == 'TODAY'}">오늘 지급</option>
+            <option value="NEXT_SEVEN" th:selected="${window == 'NEXT_SEVEN'}">향후 7일</option>
+        </select></label>
+        <button type="submit">조회</button>
+    </form>
+    <section th:if="${window != 'ALL'}">
+        <p th:text="|지급 예정일 ${start} ~ ${end}|"></p>
+        <p th:if="${upcoming.empty}">해당 기간에 지급할 청구가 없습니다.</p>
+        <table class="table" th:unless="${upcoming.empty}">
+            <thead><tr><th>지급 예정일</th><th>공급사</th><th>청구번호</th><th>미지급액</th></tr></thead>
+            <tbody><tr th:each="i : ${upcoming}">
+                <td th:text="${i.dueDate}"></td><td th:text="${i.supplier.supplierName}"></td>
+                <td><a th:href="|@{/materialProcurementContract/{id}/invoices(id=${i.contract.materialProcurementContractNo})}#invoice-${i.id}|" th:text="${i.number}"></a></td>
+                <td th:text="|${i.outstandingAmount}원|"></td>
+            </tr></tbody>
+        </table>
+    </section>
+    <p th:if="${window == 'ALL' and groups.empty}">미지급 청구가 없습니다.</p>
     <details th:each="g : ${groups}">
         <summary th:text="|${g.supplier.supplierName} (#${g.supplier.supplierNo}) · 총 미지급 ${g.total}원 · 연체 ${g.overdue}원|"></summary>
         <ul th:unless="${g.aging.empty}" aria-label="연체 기간별 미지급액">

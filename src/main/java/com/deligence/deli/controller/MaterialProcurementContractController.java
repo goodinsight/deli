@@ -4,6 +4,7 @@ import com.deligence.deli.dto.*;
 import com.deligence.deli.repository.SupplierInvoiceRepository;
 import com.deligence.deli.service.CooperatorSupplierService;
 import com.deligence.deli.service.SupplierPayablesReport;
+import com.deligence.deli.service.SupplierPayablesReport.DueWindow;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import com.deligence.deli.service.MaterialProcurementContractService;
@@ -40,10 +41,19 @@ public class MaterialProcurementContractController {
     private final SupplierPayablesReport payablesReport;
 
     @GetMapping("/payables")
-    public String payables(Model model) {
+    public String payables(@RequestParam(defaultValue = "ALL") DueWindow window, Model model) {
         LocalDate today = LocalDate.now(ZoneId.of("Asia/Seoul"));
         model.addAttribute("today", today);
-        model.addAttribute("groups", payablesReport.summaries(today));
+        model.addAttribute("window", window.name());
+        if (window == DueWindow.ALL) {
+            model.addAttribute("groups", payablesReport.summaries(today));
+        } else {
+            LocalDate start = window == DueWindow.TODAY ? today : today.plusDays(1);
+            LocalDate end = window == DueWindow.TODAY ? today : today.plusDays(7);
+            model.addAttribute("upcoming", payablesReport.upcoming(start, end));
+            model.addAttribute("start", start);
+            model.addAttribute("end", end);
+        }
         return "materialProcurementContract/payables";
     }
 

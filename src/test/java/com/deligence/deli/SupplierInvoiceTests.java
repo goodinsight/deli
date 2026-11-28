@@ -168,6 +168,35 @@ class SupplierInvoiceTests {
     }
 
     @Test
+    void upcomingPaymentsUseInclusiveKoreanDatesAndRemainingBalance() throws Exception {
+        int id = contract(suppliers.save(CooperatorSupplier.builder().supplierName("지급 일정 검증").build()));
+        var today = java.time.LocalDate.now(java.time.ZoneId.of("Asia/Seoul"));
+        var buyer = session("PROCUREMENT");
+        for (int days : new int[]{7, 1, 0, 8, 2, 3}) {
+            mvc.perform(post(url(id)).session(buyer).param("number", "WINDOW-" + days).param("amount", "100")
+                    .param("invoiceDate", today.toString()).param("dueDate", today.plusDays(days).toString()))
+                    .andExpect(redirectedUrl(url(id)));
+        }
+        for (var invoice : invoices.openForContract(id)) {
+            String path = url(id) + "/" + invoice.getId();
+            if (invoice.getNumber().equals("WINDOW-3")) {
+                mvc.perform(post(path + "/cancel").session(buyer).param("reason", "중복")).andExpect(redirectedUrl(url(id)));
+            } else if (invoice.getNumber().equals("WINDOW-1") || invoice.getNumber().equals("WINDOW-2")) {
+                mvc.perform(post(path + "/payments").session(buyer).param("requestId", java.util.UUID.randomUUID().toString())
+                        .param("amount", invoice.getNumber().equals("WINDOW-1") ? "25" : "100")).andExpect(redirectedUrl(url(id)));
+            }
+        }
+        String report = "/materialProcurementContract/payables";
+        String day = mvc.perform(get(report).param("window", "TODAY").session(buyer)).andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString(java.nio.charset.StandardCharsets.UTF_8);
+        assertThat(day).contains("WINDOW-0").doesNotContain("WINDOW-1", "WINDOW-7", "WINDOW-8");
+        String week = mvc.perform(get(report).param("window", "NEXT_SEVEN").session(buyer)).andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString(java.nio.charset.StandardCharsets.UTF_8);
+        assertThat(week).containsSubsequence("WINDOW-1", "75.00원", "WINDOW-7")
+                .doesNotContain("WINDOW-0", "WINDOW-2", "WINDOW-3", "WINDOW-8");
+    }
+
+    @Test
     void reportShowsAgingAtDueDateBoundaries() throws Exception {
         int id = contract(suppliers.save(CooperatorSupplier.builder().supplierName("연체 구간 검증").build()));
         var today = java.time.LocalDate.now(java.time.ZoneId.of("Asia/Seoul"));
